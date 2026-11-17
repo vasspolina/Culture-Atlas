@@ -93,10 +93,47 @@
     return { ended: ended.slice().sort((a, b) => (endYearOf(a) || 0) - (endYearOf(b) || 0)), first, kept };
   }
 
+  // ---- The money map's funders join the ledger's ----
+  // The funding maps (assets/money-maps.json and the offices of assets/hq.json, through window.atlasHq) name far more private
+  // funders than the ledger reads by hand. Each one with a head office joins the map as a dot, its spaces those the records
+  // name it on; a ledger funder gains the spaces the funding maps name it on beyond its ledger. A funder from the maps alone
+  // (moneyOnly) has no ledger: its record is its office's, which lists the spaces it funds. Public bodies stay out, as they
+  // do in the ledger: the question is what private money buys.
+  let merged = false;
+  function mergeMoney() {
+    const hq = window.atlasHq;
+    if (merged || !DATA || !hq || !hq.loaded || !hq.loaded() || !hq.moneyFunders) return;
+    merged = true;
+    const own = new Set(DATA.funders.map(f => f.key)), offices = new Set();
+    DATA.funders.forEach(f => {
+      const ledger = new Set(f.ties.map(t => t.space));
+      f.moneySpaces = hq.spacesOfKey(f.key).filter(q => !ledger.has(q.id));
+      const r = hq.funderRecord && hq.funderRecord(f.key); if (r && !r.noOffice) offices.add(r.key);
+    });
+    hq.moneyFunders().forEach(m => {
+      if (offices.has(m.key) || m.keys.some(k => own.has(k))) return;
+      const f = { key: m.key, name: m.name, kind: m.k === 'corp' ? 'corp' : m.k === 'priv' ? 'fund' : 'found', hq: m.hq, ties: [], moneySpaces: m.spaces, moneyOnly: true };
+      DATA.funders.push(f); BY_FUNDER.set(f.key, f);
+    });
+    DATA.funders.forEach(f => { delete f._ms; });
+    fan = null;
+    if (window.scheduleRender) window.scheduleRender();
+  }
+
   // ---- The map: the funders, not the spaces ----
   // No space is drawn while the mode is on, except the spaces of the funder picked, which come back joined to its office.
   let picked = null;   // the funder whose spaces are on the map
-  const spacesOf = f => new Set(f.ties.map(t => t.space));
+  // Every space a funder reaches on the map, from its ledger and, under Culture, from the funding maps (user, 17 Nov 2026:
+  // "Influence mode is now money map. Combine the research"): id -> { name, open }. A space every ledger tie of which ended
+  // is not open, so its line is dashed. Kept per funder and measure; mergeMoney clears it.
+  function mapSpaces(f, m = MEASURE) {
+    const c = f._ms || (f._ms = {}); if (c[m]) return c[m];
+    const out = new Map();
+    tiesFor(f, m).forEach(t => { const x = out.get(t.space) || { name: t.space_name, open: false }; if (!t.ended) x.open = true; out.set(t.space, x); });
+    if (m === 'culture') (f.moneySpaces || []).forEach(q => { if (!out.has(q.id)) out.set(q.id, { name: q.name, open: true }); });
+    return (c[m] = out);
+  }
+  const spacesOf = f => new Set(mapSpaces(f, 'culture').keys());
   let pickedSpaces = null;
   // A space opened some other way (the search, the chat, a record) stays on the map too, so its pin has somewhere to be.
   window.atlasModeKeep = () => (on && DATA ? (i => !!(i && ((pickedSpaces && pickedSpaces.has(i.id)) || i === g('selectedInstitution')))) : null);
@@ -161,7 +198,7 @@
     return `${sym}${Math.round(v)}`;
   };
   const fig = f => (f.sender && f.sender.figures) || {};
-  const cultureSpaces = f => (fig(f).culture || {}).spaces || new Set(f.ties.map(t => t.space)).size;
+  const cultureSpaces = f => Math.max((fig(f).culture || {}).spaces || 0, mapSpaces(f, 'culture').size);
   const MEASURES = {
     // A funder with no hand-sourced figures yet (the private fortunes added 17 Nov 2026) counts the spaces its kept entries
     // name, which is how the sourced figure is counted too; culture is never a missing filing, so never a hollow dot.
@@ -201,7 +238,7 @@
   // giving at a space by definition, so every tie counts for it. A funder with no linked tie is not drawn under the measure,
   // and a picked funder's lines go only to the linked spaces.
   const tiesFor = (f, m = MEASURE) => m === 'culture' ? f.ties : f.ties.filter(t => (t.links || []).some(l => l.measure === m));
-  const shown = f => tiesFor(f).length > 0;
+  const shown = f => mapSpaces(f).size > 0;
   function setMeasure(m) {
     if (!MEASURES[m] || (m === MEASURE && m !== 'culture')) m = 'culture';
     MEASURE = m;
@@ -247,7 +284,7 @@
   window.atlasInfluenceMeasure = () => MEASURE;
   window.atlasSetInfluenceMeasure = setMeasure;
 
-  let HITS = [], SPACE_HITS = [], hover = null, hoverSpace = null;
+  let HITS = [], SPACE_HITS = [], hover = null, hoverSpace = null, FOCUS = null;
   const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
   window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
     HITS = []; SPACE_HITS = [];
@@ -262,14 +299,21 @@
       const byId = new Map(insts.map(i => [i.id, i]));
       // A space that ended the tie is a dashed line, a running one solid: shape, not colour, says which. A space with ties
       // of both kinds takes the solid line, since some tie there is not said to have ended.
-      const pt = tiesFor(picked), running = new Set(pt.filter(t => !t.ended).map(t => t.space));
       ctx.strokeStyle = ink; ctx.lineWidth = 1;
-      new Set(pt.map(t => t.space)).forEach(id => {
+      mapSpaces(picked).forEach((x, id) => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
-        ctx.setLineDash(running.has(id) ? [] : [4, 4]);
+        ctx.setLineDash(x.open ? [] : [4, 4]);
         arc(ctx, project, r, cx, cy, picked.hq, i);
       });
       ctx.setLineDash([]);
+    }
+    // A space opened in the mode (its record's Money map button, the search, the chat) is joined to each funder's office, as
+    // the old money map set a space's funders round it; those funders' names are placed first.
+    const sel = !picked && g('selectedInstitution');
+    FOCUS = sel && typeof sel.lat === 'number' ? new Set(DATA.funders.filter(f => f.hq && spacesOf(f).has(sel.id))) : null;
+    if (FOCUS) {
+      ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.setLineDash([]);
+      FOCUS.forEach(f => arc(ctx, project, r, cx, cy, f.hq, sel));
     }
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
@@ -305,7 +349,7 @@
     // every place is taken by another space's name waits for the map to be zoomed in, as a funder's name does.
     if (picked) {
       const byId = new Map(insts.map(i => [i.id, i]));
-      const names = new Map(tiesFor(picked).map(t => [t.space, t.space_name]));
+      const names = new Map([...mapSpaces(picked)].map(([id, x]) => [id, x.name]));
       const pts = [];
       names.forEach((nm, id) => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
@@ -327,13 +371,18 @@
         ctx.fillStyle = hoverSpace === id ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, x + spot[0], y + spot[1]);
       });
     }
-    marks.slice().sort((a, b) => (picked === b.f) - (picked === a.f) || b.n - a.n).forEach(m => {
-      const { f, x, y, s } = m, sel = picked === f, hov = hover === f;
+    const first = f => picked === f ? 2 : FOCUS && FOCUS.has(f) ? 1 : 0;
+    let tried = 0;
+    marks.slice().sort((a, b) => first(b.f) - first(a.f) || b.n - a.n).forEach(m => {
+      const { f, x, y, s } = m, sel = picked === f || (FOCUS && FOCUS.has(f)), hov = hover === f;
       // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
       // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
       // name does, and shows once the map is zoomed in or the mark is pointed at; the picked funder's always shows.
       const figure = shown(f) ? MEASURES[MEASURE].text(f) : '';
       if (m.none && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      // The funding maps add some 600 funders; only the widest-reaching of them try for a name, so placing names stays quick.
+      // The rest show theirs when pointed at, picked, or tied to the space in focus.
+      if (f.moneyOnly && !sel && !hov && ++tried > 60) { HITS.push({ f, x, y, s, label: null }); return; }
       const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
@@ -395,17 +444,32 @@
       if (window.atlasCount) window.atlasCount('influence/on');
       await load();
       if (!on) return;   // switched off again while the data loaded
-      if (window.atlasHq && window.atlasHq.ready) window.atlasHq.ready(() => {});   // the funding maps, so a funder's record can open
+      if (window.atlasHq && window.atlasHq.ready) window.atlasHq.ready(mergeMoney);   // the funding maps: their funders join the map, and a funder's record can open
       measureButtons();
       greet();
     } else {
       picked = null; pickedSpaces = null; hover = null; hoverSpace = null; MEASURE = 'culture'; paintMeasureButtons();
-      say('<p class="no-indent">Influence mode is off. The map shows the museums again.</p>');
+      say('<p class="no-indent">Money map is off. The map shows the museums again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
     decorate();
   }
   window.toggleInfluenceMode = toggle;
+  // A space's Money map button (assets/layers.js, atlasShowMoney): the mode opens on that space and the chat lists who pays it.
+  window.atlasInfluenceFocusSpace = id => {
+    pick(null);
+    const go = () => {
+      mergeMoney();
+      if (!on || !DATA || !id) return;
+      const list = DATA.funders.filter(f => spacesOf(f).has(id)).sort((a, b) => (b.ties.length - a.ties.length) || a.name.localeCompare(b.name));
+      const inst = (g('ALL_INSTITUTIONS') || []).find(i => i.id === id);
+      if (!list.length || !inst) return;
+      const rows = list.map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button></li>`).join('');
+      say(`<div class="influence-chat"><p class="no-indent">${esc(inst.name)}: ${plural(list.length, 'private funder')} with a head office on the map.</p><ul class="influence-funders">${rows}</ul></div>`);
+      if (window.scheduleRender) window.scheduleRender();
+    };
+    if (window.atlasHq && window.atlasHq.ready && !window.atlasHq.loaded()) window.atlasHq.ready(go); else go();
+  };
   window.isInfluenceModeActive = () => on;
 
   // ---- The chat ----
@@ -413,12 +477,12 @@
     if (typeof appendCuratorMessage === 'function') appendCuratorMessage(html, [], null, null, false);
   }
   function greet() {
-    if (!DATA) { say('<p class="no-indent">Influence mode is on, but it could not load. Try again in a moment.</p>'); return; }
+    if (!DATA) { say('<p class="no-indent">Money map is on, but it could not load. Try again in a moment.</p>'); return; }
     // One short paragraph (user, 17 Nov 2026: "influence mode intro in chat is a slop, shorten it ... no need to list all
     // spaces"; then, of "351 entries on 25 private funders, read by hand from the spaces' records": "this is a slop, delete
     // all the jargon"). The funders are on the map and each record says what it got, so the chat does not list them again.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence mode is on. The map now shows ${DATA.funders.length} companies, foundations and private fortunes that pay for culture, at their head offices. The bigger the dot, the more museums it pays. Pick one to see what its money bought.</p>
+<p class="no-indent">Money map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and, where the records say, what its money bought.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -447,9 +511,8 @@
   // The picked funder's spaces in the chat as well as on the map (user, 17 Nov 2026: "show the museum names in the chat
   // too"): one line each, the name a link to its record, the city after it, and "ended" where every tie there ended.
   function sayFunderSpaces(f) {
-    const by = new Map();
-    f.ties.forEach(t => { const x = by.get(t.space) || { id: t.space, name: t.space_name, city: t.city, open: false }; if (!t.ended) x.open = true; by.set(t.space, x); });
-    const list = [...by.values()].sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    const city = new Map(f.ties.map(t => [t.space, t.city]));
+    const list = [...mapSpaces(f, 'culture')].map(([id, x]) => ({ id, name: x.name, city: city.get(id) || '', open: x.open })).sort((a, b) => String(a.name).localeCompare(String(b.name)));
     if (!list.length) return;
     const rows = list.map(x => `<li><button type="button" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</button>${x.city || !x.open ? `<span class="influence-meta">${x.city ? ', ' + esc(x.city) : ''}${x.open ? '' : ', ended'}</span>` : ''}</li>`).join('');
     say(`<div class="influence-chat">
@@ -575,7 +638,7 @@
     const name = norm(h.textContent);
     if (openFor && (norm(openFor.name) === name || name.includes(norm(openFor.name).slice(0, 6)))) return openFor;
     // Opened another way (a mark on the map, a funding line): match the record's name to a ledger funder.
-    return DATA.funders.find(f => norm(f.name) === name || norm(f.name.split(/[ /]/)[0]) === name || name.startsWith(norm(f.name.split(/[ /]/)[0]))) || null;
+    return DATA.funders.filter(f => !f.moneyOnly).find(f => norm(f.name) === name || norm(f.name.split(/[ /]/)[0]) === name || name.startsWith(norm(f.name.split(/[ /]/)[0]))) || null;
   }
 
   let busy = false;
@@ -589,7 +652,7 @@
       const panel = document.getElementById('hqPanel');
       if (panel && !panel.hidden && !panel.querySelector('.influence-part')) {
         const f = funderForPanel(panel), head = panel.querySelector('.record-head');
-        if (f && head) head.after(funderPart(f));
+        if (f && !f.moneyOnly && head) head.after(funderPart(f));
       }
       // A space's record: the desktop Details page, the phone's record page and its sheet.
       const inst = g('dossierInst') || g('selectedInstitution');
@@ -623,12 +686,12 @@
     const gossip = document.getElementById('gmGossipBtn');
     if (!gossip || document.getElementById('gmInfluenceBtn')) return !!gossip;
     const b = document.createElement('button');
-    b.type = 'button'; b.id = 'gmInfluenceBtn'; b.textContent = 'Influence mode';
+    b.type = 'button'; b.id = 'gmInfluenceBtn'; b.textContent = 'Money map';
     b.setAttribute('aria-pressed', String(on));
     b.addEventListener('click', () => toggle());
     gossip.after(b);
     const bar = gossip.parentElement;
-    if (bar && bar.getAttribute('aria-label')) bar.setAttribute('aria-label', 'Chat, dark mode, gossip mode and influence mode');
+    if (bar && bar.getAttribute('aria-label')) bar.setAttribute('aria-label', 'Chat, dark mode, gossip mode and money map');
     return true;
   }
 
@@ -639,7 +702,7 @@
     let n = 0;
     const t = setInterval(() => { watch(); measureButtons(); if ((phoneButton() && document.querySelector('[data-influence-measure]')) || ++n > 50) clearInterval(t); }, 200);
     // Load the entries early, so the first switch is instant and ?influence opens the page in the mode.
-    load().then(() => { if (/[?&]influence\b/.test(location.search)) toggle(true); });
+    load().then(() => { if (/[?&](?:influence|money)\b/.test(location.search)) toggle(true); });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

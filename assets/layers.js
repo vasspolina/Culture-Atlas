@@ -972,9 +972,13 @@
       if (inp) setBox(inp, false); else L[k] = false;
     });
     MONEY_MODE = null; setModeClass(false); document.documentElement.classList.remove('atlas-money-on');
+    // The money map is Influence mode now: the pill leaves the mode.
+    if (window.isInfluenceModeActive && window.isInfluenceModeActive()) window.toggleInfluenceMode(false);
     refilter();
   }
   window.atlasExitMoney = exitMoney;
+  // The way out shows for the old layer and for Influence mode, which is the money map now.
+  const moneyOn = () => !!L.money || !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
   function moneyExitBtn() {
     if (document.getElementById('moneyExitBtn')) return;
     const host = document.getElementById('globeViewport'); if (!host) return;
@@ -985,7 +989,7 @@
     b.addEventListener('click', exitMoney);
     host.appendChild(b);
     document.addEventListener('keydown', e => {
-      if (e.key !== 'Escape' || !L.money) return;
+      if (e.key !== 'Escape' || !moneyOn()) return;
       const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
       exitMoney();
     });
@@ -1000,7 +1004,7 @@
   // the canvas, step aside too (html.atlas-money-mode in assets/atlas.css). Hovering a space does not start the mode.
   window.atlasLayersDrawLate = function (ctx, ground) {
     // The exit shows whenever the money map is on, a space in focus or not (html.atlas-money-on in assets/atlas.css).
-    if (!STREET) { const el = document.documentElement; if (el.classList.contains('atlas-money-on') !== !!L.money) el.classList.toggle('atlas-money-on', !!L.money); if (L.money) moneyExitBtn(); }
+    if (!STREET) { const el = document.documentElement, mo = moneyOn(); if (el.classList.contains('atlas-money-on') !== mo) el.classList.toggle('atlas-money-on', mo); if (mo) moneyExitBtn(); }
     const m = L.money && (STREET || !streetUp()) ? MONEY_MODE : null;
     if (!m) { if (!STREET) setModeClass(false); return; }
     if (!STREET) setModeClass(true);
@@ -1196,6 +1200,24 @@
     const f = funderOf(key); if (!f) return null;
     return f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
   };
+  // THE MONEY MAP IS INFLUENCE MODE (user, 17 Nov 2026: "Influence mode is now money map. Combine the research. Make money map
+  // go into influence mode"). The mode (assets/influence-mode.js) draws every private funder with a head office on record,
+  // not only the ones whose ledgers are read by hand. These two give it the funding maps' side: the spaces a funder key is
+  // named on (every key the map groups with it), and every non-public office with the spaces its keys reach.
+  const spacesOfKeys = keys => {
+    const ids = new Set(); keys.forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
+    return [...ids].map(id => recById.get(id)).filter(Boolean).map(q => ({ id: q.id, name: q.n }));
+  };
+  hq.spacesOfKey = key => {
+    if (!keyIndex) return [];
+    const f = funderOf(key), o = HQ && HQ.byKey.get(key);
+    return spacesOfKeys([...new Set([key, ...(f ? f.keys : []), ...(o ? [o.key, ...(o.also || [])] : [])])]);
+  };
+  hq.moneyFunders = () => (HQ && keyIndex ? HQ.orgs.filter(o => o.k !== 'gov').map(o => {
+    const keys = [o.key, ...(o.also || [])];
+    return { key: o.key, keys, name: o.n, k: o.k, hq: { n: o.n, c: o.c, co: o.co, lat: o.lat, lon: o.lon, a: o.a }, spaces: spacesOfKeys(keys) };
+  }).filter(f => f.spaces.length) : []);
+  // A record's Money map button now opens the mode on that space (see atlasShowMoney below).
   window.atlasHq = hq;
 
   // ---- The other marks as things you can point at and click ----
@@ -1291,6 +1313,15 @@
 
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
+    // The money map is Influence mode now: the button opens the mode with this space picked, its funders joined to it.
+    if (typeof window.toggleInfluenceMode === 'function') {
+      if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
+      const go = () => { if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false); if (typeof window.atlasInfluenceFocusSpace === 'function') window.atlasInfluenceFocusSpace(id); };
+      const p = window.isInfluenceModeActive && window.isInfluenceModeActive() ? null : window.toggleInfluenceMode(true);
+      if (p && p.then) p.then(go); else go();
+      if (window.innerWidth < 768) { const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.add('hidden'); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('atlas'); }
+      return;
+    }
     // Not the ties: the money map draws no lines (see atlasLayersDraw).
     turnOn('money'); loadMoney();
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
