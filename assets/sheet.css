@@ -1697,7 +1697,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26)}
     :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(p,li,dd,blockquote,figcaption,.institution-summary,.d-row-sub,.ts-prose,.intro-line){
       hyphens:auto!important;-webkit-hyphens:auto!important;hyphenate-limit-chars:8 3 3!important;overflow-wrap:break-word!important;text-wrap:wrap!important}
-    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,.curator-suggest-chip,.starter-prompt){
+    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,a.influence-meta,.influence-meta a,.curator-suggest-chip,.starter-prompt){
       hyphens:none!important;-webkit-hyphens:none!important}
     #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:16px!important}
   }
@@ -2027,4 +2027,11 @@ body:not(.influence-mode-active) :is(#gmdChips,#gmChips) [data-influence-measure
 body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-measure]):not(#sh-x):not(#sh-y){display:none!important}
 .influence-chat ul{list-style:none!important;margin:0 0 var(--sh-gap) 0!important;padding:0!important}
 .influence-chat li::before{content:"\2013\00a0"!important}
+/* A funder's museums sit under its name with no second dash and no second indent (user, 17 Nov 2026: "Don't do double dash
+   with indent"): the nested items take the parent's text edge, the one the funder's name starts on, and the nested list
+   keeps no space under it; one gap separates one funder from the next. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li{padding:0!important;text-indent:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li::before{content:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li>ul{margin:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat>ul>li:has(>ul)+li{margin-top:var(--sh-s-lh)!important}
 }

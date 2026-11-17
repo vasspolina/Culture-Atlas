@@ -254,14 +254,14 @@
       // says happened there, with its source.
       const items = ranked.map(f => {
         const fig = M.text(f), links = tiesFor(f).flatMap(t => (t.links || []).filter(l => l.measure === MEASURE).map(l => ({ t, l })));
-        const sub = links.map(({ t, l }) => `<li><button type="button" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</button>: ${esc(l.text)}${l.source ? ` <a class="influence-meta" href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a>` : ''}</li>`).join('');
-        return `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button>${fig ? ` ${esc(fig)}` : ''}<ul class="influence-funders">${sub}</ul></li>`;
+        const sub = links.map(({ t, l }) => `<li><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>: ${esc(l.text)}${l.source ? ` <a class="influence-meta" href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a>` : ''}</li>`).join('');
+        return `<li><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a>${fig ? ` ${esc(fig)}` : ''}<ul class="influence-funders">${sub}</ul></li>`;
       }).join('');
       say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: a company is shown only where a record ties its ${esc(M.noun)} to a museum in the atlas.</p>${items ? `<ul class="influence-funders">${items}</ul>` : `<p class="no-indent">No record does yet, so no company is shown. What each one spends in general is in its own record.</p>`}</div>`);
       return;
     }
     const none = DATA.funders.filter(f => !M.value(f)).map(f => f.name);
-    const top = ranked.slice(0, 6).map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(M.text(f))}</li>`).join('');
+    const top = ranked.slice(0, 6).map(f => `<li><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a> ${esc(M.text(f))}</li>`).join('');
     say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is labelled with ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul>${none.length ? `<p class="no-indent influence-meta">Nothing found for ${esc(none.join(', '))}, which does not mean they spent nothing.</p>` : ''}</div>`);
   }
   // The buttons sit in the map's filter row (#gmdChips on a desktop, #gmChips on a phone) and take its place while the mode is
@@ -464,7 +464,7 @@
       const list = DATA.funders.filter(f => spacesOf(f).has(id)).sort((a, b) => (b.ties.length - a.ties.length) || a.name.localeCompare(b.name));
       const inst = (g('ALL_INSTITUTIONS') || []).find(i => i.id === id);
       if (!list.length || !inst) return;
-      const rows = list.map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button></li>`).join('');
+      const rows = list.map(f => `<li><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a></li>`).join('');
       say(`<div class="influence-chat"><p class="no-indent">${esc(inst.name)}: ${plural(list.length, 'private funder')} with a head office on the map.</p><ul class="influence-funders">${rows}</ul></div>`);
       if (window.scheduleRender) window.scheduleRender();
     };
@@ -514,7 +514,7 @@
     const city = new Map(f.ties.map(t => [t.space, t.city]));
     const list = [...mapSpaces(f, 'culture')].map(([id, x]) => ({ id, name: x.name, city: city.get(id) || '', open: x.open })).sort((a, b) => String(a.name).localeCompare(String(b.name)));
     if (!list.length) return;
-    const rows = list.map(x => `<li><button type="button" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</button>${x.city || !x.open ? `<span class="influence-meta">${x.city ? ', ' + esc(x.city) : ''}${x.open ? '' : ', ended'}</span>` : ''}</li>`).join('');
+    const rows = list.map(x => `<li><a href="#" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</a>${x.city || !x.open ? `<span class="influence-meta">${x.city ? ', ' + esc(x.city) : ''}${x.open ? '' : ', ended'}</span>` : ''}</li>`).join('');
     say(`<div class="influence-chat">
 <p class="no-indent">${esc(f.name)}: ${plural(list.length, 'museum')}.</p>
 <ul class="influence-funders">${rows}</ul>
@@ -531,8 +531,8 @@
     const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
     const kinds = t.kinds.length ? t.kinds.map(label).join(', ') : '';
-    const who = withFunder ? `<button type="button" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</button>` : '';
-    const where = withSpace ? `<button type="button" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</button>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
+    const who = withFunder ? `<a href="#" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</a>` : '';
+    const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
 <p class="no-indent">${who || where ? `<span class="influence-who">${who || where}</span> ` : ''}${kinds ? `<span class="lead-in">${esc(kinds)}.</span> ` : ''}${esc(t.summary)}</p>
 <p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', `<span class="influence-check">${esc(checkWords(t))}</span>`, src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
@@ -552,7 +552,7 @@
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', 'What funders got here');
     el.innerHTML = row('What funders got here', '', '') +
-      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</button></p>`)).join('');
+      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</a></p>`)).join('');
     return el;
   }
 
@@ -604,7 +604,7 @@
     const items = f.ties.flatMap(t => (t.links || []).map(l => ({ t, l })));
     if (!items.length) return '';
     const what = { us: 'US lobbying', eu: 'EU lobbying', politics: 'Political giving', other: 'Other lobbying' };
-    const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><button type="button" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</button></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`).join('');
+    const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`).join('');
     return row('Lobbying through museums', 'where a record ties its lobbying or political money to a space', `<ul class="d-row-list influence-list">${lis}</ul>`);
   }
   function funderPart(f) {
