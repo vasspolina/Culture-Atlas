@@ -191,7 +191,7 @@ return maplibregl$1;
       <button id="mobileInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="whitespace-nowrap" aria-pressed="false">Influence mode</button>
       <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" >Dark</button>
       <!-- Details: the record of the selected space, as the desktop's Details tab. Shown once a space is selected, so the sheet can be reopened after Close. -->
-      <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Space details">Details</button>
+      <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Museum details">Details</button>
       <button aria-label="New chat or reset" class="px-2 py-1" id="reset-state-btn" onclick="window.resetToNewChat(); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('chat');">
         Chat
       </button>
@@ -516,8 +516,8 @@ return maplibregl$1;
              in the top-trailing corner. Only this row stays put; the title scrolls away with the record below it. -->
         <div id="sheet-drag-handle" class="sheet-chrome">
           <span class="sheet-grabber" aria-hidden="true"></span>
-          <button type="button" id="sheet-size-btn" class="sheet-size" aria-label="Expand space details" aria-expanded="false"></button>
-          <button type="button" aria-label="Close space details" class="sheet-close" id="close-sheet-btn">
+          <button type="button" id="sheet-size-btn" class="sheet-size" aria-label="Expand museum details" aria-expanded="false"></button>
+          <button type="button" aria-label="Close museum details" class="sheet-close" id="close-sheet-btn">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3L3 21M3 3l18 18"/></svg>
           </button>
         </div>
@@ -564,7 +564,7 @@ return maplibregl$1;
           <span class="sheet-grabber" aria-hidden="true"></span>
           <div></div>
           <div class="flex items-center space-x-2">
-            <button id="chatSheetDetailsBtn" type="button" class="px-2 py-0_5 hidden" aria-label="Space details">Details</button>
+            <button id="chatSheetDetailsBtn" type="button" class="px-2 py-0_5 hidden" aria-label="Museum details">Details</button>
             <button id="curatorDrawerListenBtn" type="button" class="px-2 py-0_5">Listen</button>
             <button class="px-1" id="close-chat-view-btn" type="button" aria-label="Close the chat"><span>Close</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
           </div>
@@ -818,7 +818,7 @@ return maplibregl$1;
         <div id="phoneChatHead" class="md-hidden" aria-label="Chat">
           <span class="sheet-grabber" aria-hidden="true"></span>
           <span class="flex-1"></span>
-          <button id="phoneChatDetailsBtn" type="button" class="hidden" aria-label="Space details">Details</button>
+          <button id="phoneChatDetailsBtn" type="button" class="hidden" aria-label="Museum details">Details</button>
           <button id="phoneChatCloseBtn" type="button" aria-label="Close the chat and go back to the map"><span>Close</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
         </div>
 
@@ -876,7 +876,7 @@ return maplibregl$1;
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
-                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the space"></label>
+                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the museum"></label>
                 <datalist id="noteInstitutionList"></datalist>
                 <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Whistleblower"></label>
               </div>
@@ -7647,13 +7647,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             </svg>
           </div>
           <div class="space-y-1_5 max-w-sm">
-            <h3 class="t-lead t-strong">Select a space</h3>
+            <h3 class="t-lead t-strong">Select a museum</h3>
             <p class="">
-              Click a space on the globe, or ask in the chat.
+              Click a museum on the globe, or ask in the chat.
             </p>
           </div>
           <div class="pt-2 flex flex-col items-center gap-2">
-            <span class="meta">Explore Featured Spaces</span>
+            <span class="meta">Explore Featured Museums</span>
             <div class="flex items-center justify-center gap-2 flex-wrap">
               <button type="button" onclick="atlasSelectInst('Tate Modern');" class="px-3 py-1_5 t-strong">
                 Tate Modern
@@ -8924,8 +8924,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         id: matchedSig ? matchedSig.id : `custom-${targetCity.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`,
         city: targetCity,
         title: matchedSig ? matchedSig.title : `${targetCity} Independent Art Crawl`,
-        subtitle: matchedSig ? matchedSig.subtitle : `Algorithmic walking itinerary connecting ${stops.length} cultural spaces across ${targetCity}`,
-        description: matchedSig ? matchedSig.description : `Optimized curatorial route through ${targetCity}, minimizing transit friction between independent spaces with verified operating hours.`,
+        subtitle: matchedSig ? matchedSig.subtitle : `Algorithmic walking itinerary connecting ${stops.length} museums across ${targetCity}`,
+        description: matchedSig ? matchedSig.description : `Optimized curatorial route through ${targetCity}, minimizing transit friction between independent museums with verified operating hours.`,
         stops: stops,
         totalKm: totalKm,
         totalWalkMinutes: totalWalkMinutes,
@@ -9326,7 +9326,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                   <label class="meta t-strong block">Select Cultural City</label>
                   <select id="customCrawlCitySelect" class="w-full px-2_5 py-1_5 t-strong">
                     ${availableCities.map(c => `
-                      <option value="${escapeHtml(c.name)}" ${matchC(c.name, defaultCity) ? 'selected' : ''}>${escapeHtml(c.name)} (${c.count} spaces)</option>
+                      <option value="${escapeHtml(c.name)}" ${matchC(c.name, defaultCity) ? 'selected' : ''}>${escapeHtml(c.name)} (${c.count} museums)</option>
                     `).join('')}
                   </select>
                 </div>
@@ -9388,7 +9388,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           if (!route || !route.stops || route.stops.length === 0) {
             previewEl.innerHTML = `
               <div class="p-4 text-center">
-                No matching spaces found for the selected criteria in ${escapeHtml(city)}. Try disabling filters to expand the search.
+                No matching museums found for the selected criteria in ${escapeHtml(city)}. Try disabling filters to expand the search.
               </div>
             `;
             return;
@@ -10130,7 +10130,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           <!-- Atlas Integration Actions -->
           <div class="pt-2 rule-t flex flex-col gap-2">
             <button type="button" onclick="highlightConnectedInstitutionsOnMap('${node.id}')" class="w-full py-2 px-3 t-strong flex items-center justify-center gap-1_5">
-              <span>Focus Connected Spaces on Atlas Map</span>
+              <span>Focus Connected Museums on Atlas Map</span>
             </button>
             <button type="button" onclick="askCuratorAboutTrustee('${escapeHtml(node.name)}')" class="w-full py-1_5 px-3 flex items-center justify-center gap-1">
               <span>Ask in chat</span>
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v755';
+    const ATLAS_RELEASE = 'culture-atlas-v756';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11291,7 +11291,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const countryCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
           if (badgeIcon) badgeIcon.textContent = '';
           if (cityTitleEl) {
-            cityTitleEl.textContent = `${selectedCountryFilter}, ${countryMatches.length} ${countryMatches.length === 1 ? 'space' : 'spaces'} in ${countryCities.length} ${countryCities.length === 1 ? 'city' : 'cities'}`;
+            cityTitleEl.textContent = `${selectedCountryFilter}, ${countryMatches.length} ${countryMatches.length === 1 ? 'museum' : 'museums'} in ${countryCities.length} ${countryCities.length === 1 ? 'city' : 'cities'}`;
           }
           if (backCountryBtn) backCountryBtn.classList.add('hidden');
         } else {
@@ -12516,7 +12516,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const layer = (title, text) => text ? card(title, '', `<p class="t-lead">${e(text)}</p>`) : '';
       const layers = [layer('Its accounts', inst.finances_note), layer('Its affiliations', inst.affiliations_note), layer('What the field says', inst.critique_note)].filter(Boolean);
       const rows = layers.concat(studies);
-      return rows.length ? `<div class="py-3" role="group" aria-label="About this space">${rows.join('')}</div>` : '';
+      return rows.length ? `<div class="py-3" role="group" aria-label="About this museum">${rows.join('')}</div>` : '';
     }
     // A critical frame's quotation, word for word, with who wrote it and where it was published (data/research_attach/institutional_critiques.json).
     // The quotation is an inserted passage (Hochuli p.52, fig 70): the text's own size, not indented, set off by the space
@@ -12773,7 +12773,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     function flagStatement(inst) {
       return flagStatementParts(inst).map((x, i) => {
-        const text = escapeHtml(`${i ? 'It' : (inst.name || 'This space')} ${x.say}.`);
+        const text = escapeHtml(`${i ? 'It' : (inst.name || 'This museum')} ${x.say}.`);
         return /epstein/i.test(x.flag) ? text.replace(/(a recorded link to Jeffrey Epstein)/, '<mark class="flag-epstein">$1</mark>') : text;
       }).join(' ');
     }
@@ -12952,7 +12952,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // What employees report on review sites and Reddit: a summary of the 127 paraphrased accounts the records carry
     // (Glassdoor, Kununu, Reddit; 58 institutions in eight countries), written 17 October 2026. Individual accounts, not findings.
     const EMPLOYEE_REPORT = [
-      'The records hold 127 paraphrased posts about working at 57 spaces in Germany, the UK, France, the US, Spain and the Netherlands: 75 Glassdoor reviews, 15 on Kununu and 37 on Reddit. Each is one anonymous person\'s account, and none is verified.',
+      'The records hold 127 paraphrased posts about working at 57 museums in Germany, the UK, France, the US, Spain and the Netherlands: 75 Glassdoor reviews, 15 on Kununu and 37 on Reddit. Each is one anonymous person\'s account, and none is verified.',
       'Praised: colleagues, the collection, free entry and talks, flexible hours, and union protection and benefits where there is a union. Health cover at the large New York museums comes up more than once.',
       'Reported against: pay below the cost of living in London, New York, Paris and Madrid; slow decisions and hierarchy, mostly at French and German public institutions; little chance of promotion and high turnover; casual or zero-hours front-of-house contracts; unpaid or barely paid internships; understaffing after layoffs.',
       'A few posts go further: favouritism, bullying, HR that took no action, payments months late, restructuring that removed outspoken staff, and unequal treatment of security staff at one museum.',
@@ -13009,7 +13009,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The grade alone, "Grade B", and no sentence after it (user, 9 Nov 2026: "Grade B. No flagged funder or funding protest on record.
     // Funders are named; amounts are not." - "only keep grade b"). What decided it is behind the i button.
     function gradeScaleHtml(current) {
-      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This space</span>' : ''}</span></li>`).join('')}</ul>`;
+      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This museum</span>' : ''}</span></li>`).join('')}</ul>`;
     }
     let gradeInfoSeq = 0;
     // The i button and the panel it opens, for a graded space or an unrated one.
@@ -13021,7 +13021,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const evidence = (n >= 4 && inst.why_flagged) || inst.grade_basis || '';
       const head = n
         ? (evidence ? `<p class="no-indent">${escapeHtml(proseEnd(evidence))}</p>` : '')
-        : `<p class="no-indent">${escapeHtml(inst.name || 'This space')} is not graded: its funders are not yet confirmed by a source independent of the space.</p>`;
+        : `<p class="no-indent">${escapeHtml(inst.name || 'This museum')} is not graded: its funders are not yet confirmed by a source independent of the museum.</p>`;
       const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">Flagged means an oil, tobacco, gambling or arms funder. Public money alone never counts.</p><details class="grade-scale-more"><summary>All grades, A to F</summary>${gradeScaleHtml(n)}</details></div>`;
       const btn = `<button type="button" class="grade-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="How funding grades work"><span aria-hidden="true">i</span></button>`;
       return { btn, panel };
@@ -14759,7 +14759,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             <div>
               <div class="flex items-center justify-between gap-1 mb-1">
                 <span class="">${t.icon}</span>
-                <span class="meta t-strong px-1_5 py-0_5">${t.count} spaces</span>
+                <span class="meta t-strong px-1_5 py-0_5">${t.count} museums</span>
               </div>
               <strong class="block">${escapeHtml(t.label)}</strong>
               <p class="mt-0_5">${t.desc}</p>
@@ -21861,11 +21861,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=743"></script>
+<script src="assets/hq-detail.js?v=744"></script>
 <script src="assets/influence-mode.js?v=753"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=699"></script>
-<script src="assets/desktop-maps.js?v=741"></script>
+<script src="assets/phone-maps.js?v=700"></script>
+<script src="assets/desktop-maps.js?v=742"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>
 </html>
