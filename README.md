@@ -169,6 +169,35 @@ They come from the Sponsor Atlas research page (its `CASES`) through `tools/buil
 are linked from Map layers & legend, under Studies. Rebuild after each Sponsor Atlas import:
 `python3 tools/build_studies.py`.
 
+## Influence mode
+
+The atlas from the funders' side (user, 17 Nov 2026: "switch the perspective a little from the receivers to the senders ... and see what kind of influence they're buying"). Influence mode is a switch beside Gossip mode, in the desktop head bar and in the phone's row of top buttons, and `?influence` opens the page with it on. While it is on, the map shows only the spaces where a record says what a funder got for its money; the chat says what the mode is and lists the funders, each with a tally of what it got; a space's record leads with **What funders got here**; and a funder's record (the Details tab, `assets/hq-detail.js`) leads with its ledger, kind by kind and space by space. Switched off, the page is as it was. The code is `assets/influence-mode.js`; the map narrows through `window.atlasModeKeep`, which `atlasLayerKeep` in `assets/layers.js` reads; the look is the "INFLUENCE MODE" block at the end of `assets/sheet.css`.
+
+The kinds of influence an entry can name:
+
+| Kind | Counts |
+|---|---|
+| Name | its name on a prize, a room, a building or a programme |
+| Seat | a place on the board, or its people on it |
+| Programme | a show, a festival, research or education it paid for |
+| Building | a building, a refurbishment or an endowment |
+| Access | galas, corporate memberships, events and hospitality |
+| Silence | terms kept from the public, or work withdrawn |
+| Licence to operate | culture tied to its own operations or reputation |
+| Tax | a gift routed through a tax incentive |
+| Money only | money is stated, and nothing about what came with it |
+
+An entry also says whether the tie ended and whether it met protest; a protest or resignation with nothing bought stated is listed as pushback.
+
+**Where the entries come from.** `tools/build_influence.py` reads `institutions.json` and writes `data/influence_candidates.json`: every sentence of a record's own text (funding, watch, flags, details, confirmed reports, documented cases) that names one of the pilot funders in `FUNDERS`, with the field it is in, that field's sources and any date. The kinds it guesses from keywords are a reading aid only. Each candidate is then read by hand, and `data/influence_review.json` keeps the verdict: kept, with its kinds, a one-line summary, and whether it ended or met protest; or dropped, with the reason (BP that is the French *budget primitif*, a different Koch or Griffin, a shell mound, a law firm that acts for an oil company). Only kept entries reach `assets/influence.json`, which the page reads. Nothing is fetched and no record is changed.
+
+```bash
+python3 -I tools/build_influence.py   # candidates from the records, then assets/influence.json from the review
+node --test tests/influence.test.mjs  # every entry has a summary, known kinds, a real space and a source; no stale review
+```
+
+**What is covered.** The first batch (17 Nov 2026) is the fossil fuel, tobacco, mining and opioid money and the flagged family and finance senders: BP, Shell, TotalEnergies, Chevron, Eni, Equinor, the Sackler family, Koch, Ken Griffin / Citadel, the Blavatnik Family Foundation, Baillie Gifford, Japan Tobacco International, Philip Morris / Altria, Rio Tinto, Vale and the Lauder family: 136 entries on 89 spaces. Bloomberg, the banks (Bank of America, JPMorganChase, UBS, RBC, BMO), BMW, Hyundai and Chanel have candidates but are not read yet, so they are not shown; public funders are left out on purpose, since the question is what private money buys. Each entry is checked against its record, not yet against the source page the record cites; `check` in the data says so, and the chat says so. When the records change, re-run the tool: the test fails if a reviewed sentence is no longer in the records.
+
 ## Money maps
 
 The page opens on **one big map of every space and every sponsor** (`#all`): each space is a white circle, each sponsor a circle coloured by group (public bodies, corporate, foundations and donors), bigger the more spaces it funds, joined by a line for each tie. Tap a circle to light up its ties and zoom to them; search a sponsor in the second bar; filter the groups with the pills. Sponsors are merged across records by name (for example "NEA" and "National Endowment for the Arts"); public bodies are told apart by country, and generic ones such as "City government" stay with their own record so they never become one false hub. Records that name no funder are not in the big map. Two filters highlight part of the map and grey out the rest: **Mentions in the Epstein files** (33 spaces whose record has Epstein entries or an Epstein-linked flag, joined to the 23 people named in those entries; a space with only the flag is joined to Jeffrey Epstein) and **Right-wing funders**. The atlas records have no political field, so the second is a short curated list in `tools/build_money_maps.py` (`RIGHT`): only funders that appear in the records (as a sponsor or named in a record's own text) and have a published source for predominantly Republican or conservative giving, with that source shown in the panel. Currently Koch, Ken Griffin / Citadel, Ronald Lauder, Steven Cohen and Rebekah Mercer. It is not a complete list; add a name to it with a source, or remove one, and re-run the script. Each record also has its own map, at `money-maps.html#<record id>`.
