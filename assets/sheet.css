@@ -1902,7 +1902,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   /* Share information under the map's box, the box's width, set as the one under the chat's box: an ink pill with paper
      words (in dark mode the sheet's pale pill with ink words). */
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;height:42px!important;min-height:0!important;
-    margin:0 var(--gm-gap,12px)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
+    margin:0 var(--sh-pad)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
     box-shadow:none!important;outline:0!important;font-style:normal!important;line-height:1!important;white-space:nowrap!important;pointer-events:auto!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
@@ -1918,6 +1918,11 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
      bottom"): 6px between the Top story, the suggested questions, the box and Share information, where margins on top of
      the 10px gap had left about 24px, so the globe has the room above. */
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar:not(#sh-x):not(#sh-y){gap:6px!important}
+  /* The bar stands on the foot of the screen (user, 17 Nov 2026: "Fix bottom part", a screenshot with the globe's rim
+     showing under Share information). atlas.css floats the box 12px above the edge on a clear ground; this sheet gives the
+     bar the paper, so that 12px had become a strip of map under it. The bar now reaches the edge and the 12px, with the
+     phone's safe area, is its own padding. */
+  :root.gm-map #mobileStickyInputBar:not(#sh-x):not(#sh-y){bottom:0!important;padding-bottom:calc(12px + var(--safe-b,0px))!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar>#mobileComposerCard:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#mobileSuggestChips:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#gmStoryStrip:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
