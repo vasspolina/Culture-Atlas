@@ -10511,7 +10511,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v764';
+    const ATLAS_RELEASE = 'culture-atlas-v765';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -15713,7 +15713,7 @@ CHARACTER & VOICE GUIDELINES:
 
 2. CURATORIAL TONE:
    - Use informed precision and neutral language; distinguish recorded facts from interpretation.
-   - Speak the working language of the American and British art worlds, the way a curator, critic or arts-funding analyst talks, wherever a term names what the record states: institution, kunsthalle, non-collecting space, artist-run space, project space, blue-chip, mega-gallery, primary and secondary market, programming, commission, survey show, retrospective, acquisitions fund, deaccessioning, provenance, restitution, board seat, trustee, patrons' circle, naming rights, endowment, artwashing, soft power. Use the register of the space's own country: for a US space, board of trustees, donor, 501(c)(3), endowment draw, capital campaign, opening; for a UK space, Arts Council England National Portfolio Organisation, DCMS, registered charity, Gift Aid, Friends scheme, private view. A term carries a fact from the record or it is left out; jargon never replaces a name, a year or an amount, and the NO SLOP list below still applies.
+   - Write in plain everyday English that anyone can follow, not the language of curators, critics or arts-funding analysts. Leave out art-world and funding jargon (kunsthalle, non-collecting space, blue-chip, mega-gallery, primary and secondary market, programming, survey show, deaccessioning, provenance, restitution, patrons' circle, naming rights, endowment draw, capital campaign, artwashing, soft power, 501(c)(3), National Portfolio Organisation, DCMS, Gift Aid, private view and the like). Where a technical word is the only accurate one, say what it means in a few plain words the first time. A plain word never replaces a name, a year or an amount, and the NO SLOP list below still applies.
    - Avoid promotional, partisan or moralizing comparisons.
    - Keep observations grounded in the records and their cited sources.
 
@@ -17105,9 +17105,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countA = ALL_INSTITUTIONS.filter(i => i.tier === 'A').length;
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
-      const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I answer only from the records on this page: who funds a museum, what is reported about it, hours and prices where they are recorded, and the sources.</p><p>${countA} museums have a source outside the museum, ${countB} are flagged with a reason, and ${countU} are unverified.</p>`);
+      const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I only answer from this atlas: who funds a museum, what has been reported about it, opening hours and prices where we have them, and the sources.</p><p>${countA} museums have a source outside the museum, ${countB} are flagged, with the reason, and ${countU} are not checked yet.</p>`);
       const listOf = (items, title, gossip) => {
-        if (!items.length) { answer('<p>None are recorded.</p>', undefined, false); return; }
+        if (!items.length) { answer('<p>None found.</p>', undefined, false); return; }
         const st = { items, gossip: !!gossip, offset: 0, title };
         answer(`<p>${title}</p>${renderListPage(st)}`, window.atlasListMore ? ['Show more', ...followFor(true)].slice(0, 3) : followFor(true), !!gossip);
       };
@@ -17137,7 +17137,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None are recorded.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
+                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None found.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -17233,7 +17233,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         ALL_INSTITUTIONS.filter(i => inScope(i, place)).forEach(i => new Set((i.funder_links || []).map(f => f && f.funder).filter(Boolean)).forEach(f => { count[f] = (count[f] || 0) + 1; }));
         const top = Object.entries(count).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 5);
         if (top.length) {
-          answer(`<p>Funders named on the most records${pl ? ' in ' + escapeHtml(pl) : ''}: ${top.map(([k, c]) => `${escapeHtml(k)} ${c}`).join(', ')}.</p>`);
+          answer(`<p>Funders that pay for the most museums${pl ? ' in ' + escapeHtml(pl) : ''}: ${top.map(([k, c]) => `${escapeHtml(k)} ${c}`).join(', ')}.</p>`);
           return;
         }
       }
@@ -17249,7 +17249,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const level = asks(/\bstate[- ](?:run|owned)\b/) ? 5 : asks(/\bprivately (?:run|owned)\b/) ? 1 : 0;
         if (level) {
           const here = ALL_INSTITUTIONS.filter(i => i.bureaucracy && i.bureaucracy.level === level && inScope(i, place)).sort((a, b) => a.name.localeCompare(b.name));
-          listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} rated ${escapeHtml(BUREAUCRACY[level].toLowerCase())} for administration${here.length > 12 ? '. The first 12' : ''}:`);
+          listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} rated ${escapeHtml(BUREAUCRACY[level].toLowerCase())} for red tape${here.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
         let spec = null;
@@ -17260,7 +17260,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (spec) {
           const top = ALL_INSTITUTIONS.filter(i => inScope(i, place) && spec.ok(i)).sort((a, b) => (spec.asc ? 1 : -1) * (spec.val(a) - spec.val(b)) || a.name.localeCompare(b.name)).slice(0, 5);
           if (top.length) {
-            answer(`<p>${spec.title}${pl ? ' in ' + escapeHtml(pl) : ''}, where a figure is on record:</p>${top.map(i => `<p>${formatInstLink(i)}: ${escapeHtml(spec.show(i))}.</p>`).join('')}`);
+            answer(`<p>${spec.title}${pl ? ' in ' + escapeHtml(pl) : ''}, where the figure is known:</p>${top.map(i => `<p>${formatInstLink(i)}: ${escapeHtml(spec.show(i))}.</p>`).join('')}`);
             return;
           }
         }
@@ -17280,7 +17280,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const here = ALL_INSTITUTIONS.filter(i => inScope(i, place));
         if (here.length) {
           const byGrade = [1, 2, 3, 4, 5].map(g => `${gradeLetter(g)} ${here.filter(i => i.grade === g).length}`).join(', ');
-          answer(`<p>${escapeHtml(place)}: ${plural(here.length, 'museum', 'museums')}. Grades: ${byGrade}; ${here.filter(i => !i.grade).length} unrated. ${here.filter(i => i.tier === 'B' && i.why_flagged).length} flagged with a reason recorded.</p>`,
+          answer(`<p>${escapeHtml(place)}: ${plural(here.length, 'museum', 'museums')}. Grades: ${byGrade}; ${here.filter(i => !i.grade).length} not graded. ${here.filter(i => i.tier === 'B' && i.why_flagged).length} flagged, with the reason given.</p>`,
             [`Show grade A museums in ${place}`, `Show grade F museums in ${place}`, `Which museums in ${place} are flagged?`]);
           return;
         }
@@ -17289,7 +17289,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!explicit && !place && asks(/\bhow many\b.*\b(spaces|museums|galleries|institutions|records|places)\b|\bhow big is (?:the|this) (?:atlas|map)\b/)) {
         const rated = ALL_INSTITUTIONS.filter(i => i.grade).length;
         const cities = new Set(ALL_INSTITUTIONS.map(i => i.city).filter(Boolean)).size, countries = new Set(ALL_INSTITUTIONS.map(i => i.country).filter(Boolean)).size;
-        answer(`<p>${ALL_INSTITUTIONS.length} museums in ${cities} cities and ${countries} countries. ${rated} are graded and ${ALL_INSTITUTIONS.length - rated} unrated.</p>`, ['Show grade A museums', 'Show grade F museums', 'How are museums graded?']);
+        answer(`<p>${ALL_INSTITUTIONS.length} museums in ${cities} cities and ${countries} countries. ${rated} are graded and ${ALL_INSTITUTIONS.length - rated} are not.</p>`, ['Show grade A museums', 'Show grade F museums', 'How are museums graded?']);
         return;
       }
       if (!explicit && !place && asks(/\b(?:how many|what|which|list)\b.*\b(countries|cities)\b/) && !asks(/\b(most|top|highest|largest|dirtiest|cleanest|worst|best)\b/)) {
@@ -17306,7 +17306,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A place with no space named: its spaces that have accounts.
         if (place && !target) {
           const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && ((i.gossip_data || {}).accounts || []).length).sort((a, b) => a.name.localeCompare(b.name));
-          if (here.length) { listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)} with employee accounts, shown in Gossip mode${here.length > 12 ? '. The first 12' : ''}:`, true); return; }
+          if (here.length) { listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)} with posts by staff (shown in Gossip mode)${here.length > 12 ? '. The first 12' : ''}:`, true); return; }
         }
         // The space in view leads, with what its own accounts say; the summary of all of them follows. A space with no account gets the summary alone.
         const mine = target ? ((target.gossip_data || {}).accounts || []) : [];
@@ -17337,14 +17337,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           focus(target);
           const recordContext = target.why_flagged || target.watch;
           const hasTheory = (target.visual_critiques || []).some(v => v.kind === 'theory');
-          answer(`<p>${formatInstLink(target)}: the structured record does not list specific critics, reviews or public controversies. ${hasTheory ? 'Published critics write about this kind of museum; the quotations below are about the type, not evidence of how this museum itself was received.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p><strong>Recorded context:</strong> ${escapeHtml(recordContext)} This is institutional context from the record, not evidence of critical reception.</p>` : ''}${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}: this atlas has no critics, reviews or controversies for it. ${hasTheory ? 'Critics have written about museums like this one. The quotes below are about that kind of museum, not about this one.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p><strong>Recorded context:</strong> ${escapeHtml(recordContext)} This is institutional context from the record, not evidence of critical reception.</p>` : ''}${sourcesHtml(target)}`);
           return;
         }
         if (place) {
           const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && (i.visual_critiques || []).length).sort((a, b) => a.name.localeCompare(b.name));
-          if (here.length) { listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)} with published critics quoted on the record:`); return; }
+          if (here.length) { listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)} with critics quoted:`); return; }
         }
-        answer('<p>The Atlas attaches quotations from published critics (e-flux, L\u2019Internationale Online and similar press, with author and source named) to museums by type, but these are about the type, not evidence of how a given museum was received, and they are not reviews of it. The records do not provide a map-wide catalog of critical reception; name a museum to see its recorded context and sources.</p>');
+        answer('<p>The atlas quotes published critics (e-flux, L\u2019Internationale Online and similar, with the author and source named) about kinds of museum. The quotes are about the kind, not reviews of any one museum. There is no list of reviews for the whole map; name a museum to see what the atlas has on it.</p>');
         return;
       }
       // A record's funding transparency rating and what decided it, the spaces at one rating, or the rating scale.
@@ -17353,7 +17353,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // The spaces with no rating, in a place when one is named.
         if (asks(/\b(ungraded|unrated|not (?:graded|rated)|(?:no|without|missing)\s+(?:a\s+)?(?:grade|rating))\b/)) {
           const here = ALL_INSTITUTIONS.filter(i => !i.grade && inScope(i, place)).sort((a, b) => a.name.localeCompare(b.name));
-          listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} without a grade, because no independently sourced funder roster is on record${here.length > 12 ? '. The first 12' : ''}:`);
+          listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} without a grade, because no outside source lists their funders yet${here.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
         let wanted = q.match(/\bgrade(?:\s+([a-f])|\s*([1-5]))\b/i);
@@ -17379,7 +17379,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (wanted && explicit) {
           const g = gradeFromLetter(wanted[1]);
           focus(explicit);
-          answer(`<p>${formatInstLink(explicit)}. ${explicit.grade ? (explicit.grade === g ? `Grade ${gradeLetter(g)}.` : `Grade ${gradeLetter(explicit.grade)}, not grade ${gradeLetter(g)}.`) : 'Not rated.'}</p>${sourcesHtml(explicit)}`);
+          answer(`<p>${formatInstLink(explicit)}. ${explicit.grade ? (explicit.grade === g ? `Grade ${gradeLetter(g)}.` : `Grade ${gradeLetter(explicit.grade)}, not grade ${gradeLetter(g)}.`) : 'Not graded.'}</p>${sourcesHtml(explicit)}`);
           return;
         }
         if (wanted) {
@@ -17403,20 +17403,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A place with no letter named: its spaces, best rating first, in place of the scale.
         if (place && !asks(/\bhow\b/)) {
           const here = ALL_INSTITUTIONS.filter(i => inScope(i, place)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-          listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
+          listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)}, best grade first${here.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
         const n = {};
         ALL_INSTITUTIONS.forEach(i => { if (i.grade) n[i.grade] = (n[i.grade] || 0) + 1; });
-        answer(`<p>${GRADE_INTRO}</p>${gradeScaleHtml(0)}<p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} unrated. Ask for grade A museums in a city to compare their funding transparency.</p>`, ['Show grade A museums', 'Show grade F museums', 'How are museums assessed?']);
+        answer(`<p>${GRADE_INTRO}</p>${gradeScaleHtml(0)}<p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} not graded. Ask for grade A museums in a city to see which are most open about their money.</p>`, ['Show grade A museums', 'Show grade F museums', 'How are museums assessed?']);
         return;
       }
       if (!explicit && asks(/epstein/)) {
         const here = ALL_INSTITUTIONS.filter(i => ((i.epstein_records || []).length || (i.flags || []).includes('Epstein-linked')) && inScope(i, place));
-        listOf(here, `Museums${pl ? ' in ' + escapeHtml(pl) : ''} with a recorded Epstein-related item or flag. Each item is on its museum's page with its sources, and none is independently verified:`, true);
+        listOf(here, `Museums${pl ? ' in ' + escapeHtml(pl) : ''} linked to Epstein. Each link is on the museum’s page with its sources; none has been checked independently:`, true);
         return;
       }
-      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Museums with a recorded WikiLeaks document. Each is on its museum\'s page with its source, and none is independently verified:', true); return; }
+      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Museums named in a WikiLeaks document. Each is on the museum’s page with its source; none has been checked independently:', true); return; }
       // A named funder: the spaces whose records link it (funder_links), the same names the Funding block shows on each record.
       if (!explicit && asks(/\b(fund|funds|funded|funding|funder|back|backs|backed|sponsor|sponsors|sponsored|give|gives|money|connect|connects|pay|pays)\b/)) {
         const funders = {};
@@ -17424,7 +17424,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const named = Object.keys(funders).filter(f => new RegExp('\\b' + esc(f) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
         if (named) {
           const linked = funders[named].sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-          listOf(linked, `${named} is named as a funder on ${linked.length} ${linked.length === 1 ? 'record' : 'records'}, highest transparency rating first. Each record's Funding block has the detail and the sources${linked.length > 12 ? '. The first 12' : ''}:`);
+          listOf(linked, `${named} funds ${linked.length} ${linked.length === 1 ? 'museum' : 'museums'}, best grade first. Each museum’s Funding section has the details and sources${linked.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
       }
@@ -17434,13 +17434,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const topic = { label: topics.map(t => t.label).join(' or ') };
         const here = ALL_INSTITUTIONS.filter(i => (i.flags || []).some(f => topics.some(t => t.flag === f)) && inScope(i, place)).sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
         selectedCategoryFilter = 'all';
-        listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} with ${topic.label} on record${here.length > 12 ? '. The first 12' : ''}:`, true);
+        listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} with ${topic.label}${here.length > 12 ? '. The first 12' : ''}:`, true);
         return;
       }
       // Free admission, where a record has it.
       if (!explicit && !target && place && asks(/\bfree\b/)) {
         const here = ALL_INSTITUTIONS.filter(i => inScope(i, place) && /\bfree\b/i.test(i.admission_fee || i.admission_policy || '')).sort((a, b) => a.name.localeCompare(b.name));
-        listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)} with free admission on record${here.length > 12 ? '. The first 12' : ''}:`);
+        listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(place)} with free entry${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
       const inPlace = place && (new RegExp('\\b(in|near|around|across)\\s+' + esc(place) + '\\b', 'i').test(query) || (!explicit && asks(/\b(museums?|spaces?|galleries|institutions?|list|show|find)\b/)));
@@ -17448,7 +17448,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The spaces with nothing flagged.
       if (!explicit && asks(/\b(no flags?|not flagged|unflagged|without (?:any )?flags?|never flagged)\b/)) {
         const here = ALL_INSTITUTIONS.filter(i => !(i.flags || []).length && !i.why_flagged && inScope(i, place)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-        listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} with no flag on record, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
+        listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} with no flags, best grade first${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
       const wantsFlagged = !explicit && asks(/\bflag(ged|s)?\b/);
@@ -17456,7 +17456,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const here = ALL_INSTITUTIONS.filter(i => i.tier === 'B' && i.why_flagged && inScope(i, place))
           .sort((a, b) => (b.grade || 0) - (a.grade || 0) || a.name.localeCompare(b.name));
         selectedCategoryFilter = 'all';
-        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'museum' : 'museums'} with a reason recorded${pl ? ' in ' + escapeHtml(pl) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${(() => { const st = { items: here, gossip: true, offset: 0 }; return renderListPage(st); })()}` : `<p>No museum${pl ? ' in ' + escapeHtml(pl) : ''} is flagged with a reason recorded.</p>`);
+        answer(here.length ? `<p>${here.length} flagged ${here.length === 1 ? 'museum' : 'museums'}, with the reason${pl ? ' in ' + escapeHtml(pl) : ''}${here.length > 12 ? '. The first 12' : ''}:</p>${(() => { const st = { items: here, gossip: true, offset: 0 }; return renderListPage(st); })()}` : `<p>No museum${pl ? ' in ' + escapeHtml(pl) : ''} is flagged.</p>`);
         return;
       }
       if (inPlace) {
@@ -17476,7 +17476,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // A region with nothing else asked: its spaces, best rating first.
       if (region && !explicit && !target) {
         const here = ALL_INSTITUTIONS.filter(i => inScope(i)).sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-        listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(region.name)}, best rating first${here.length > 12 ? '. The first 12' : ''}:`);
+        listOf(here, `${plural(here.length, 'museum', 'museums')} in ${escapeHtml(region.name)}, best grade first${here.length > 12 ? '. The first 12' : ''}:`);
         return;
       }
       // A name typed on its own ("eflux") is answered from its record at once, in the chat: the chat does not wait for a web
@@ -17501,7 +17501,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (await askModel()) return;
       // No tourist advice (user, 13 Nov 2026): what to see, routes, when to go, getting there, where to eat or stay get one line, then the record's subjects.
       if (asks(/\b(itinerar\w*|day ?trip|art crawl|walking (tour|route)|plan (my|a|the) (visit|trip|day|route)|what (should|to|can) (i |we )?see|worth (a )?visit|must[- ]see|not to miss|how (do|can) (i|we) get|getting there|where (to|should i|can i|do i) (eat|stay|drink|park)|best time to (visit|go)|how long (should|to) (i )?(spend|stay)|things to do|nearby (caf|restaurant|bar|hotel))/)) {
-        answer('<p>The atlas does not give travel or visiting advice. It records who funds each museum, how it is governed and what is reported about it.</p>');
+        answer('<p>The atlas does not give travel or visiting advice. It shows who funds each museum, how it is run and what has been reported about it.</p>');
         return;
       }
       // A sub-topic of a space ("the archive at MoMA") is answered from the record lines that mention it, or says there are none.
@@ -17516,7 +17516,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         focus(target);
         const lines = [fact('Opening hours: ', target.opening_hours), fact('Admission: ', target.admission_fee || target.admission_policy), fact('Address: ', target.address)].join('');
         const page = target.visit_url || target.website;
-        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>No opening hours, prices or address are recorded for this museum.</p>'}${page ? `<p class="no-indent">The museum’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>The atlas has no opening hours, prices or address for this museum.</p>'}${page ? `<p class="no-indent">The museum’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
@@ -17533,13 +17533,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const f = reported ? null : recordFact(target, true);
           if (reported) answer(reported, [], true);
           else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + f.src : ''}</p>`, [], true);
-          else answer('<p>Nothing is reported for this museum in the records.</p>', []);
+          else answer('<p>Nothing has been reported about this museum.</p>', []);
           return;
         }
         // Each reported item already names its sources, so the record's own source line repeats only the hosts not shown yet.
         const shownHosts = new Set([...(reported || '').matchAll(/href="([^"]+)"/g)].map(m => hostOf(m[1].replace(/&amp;/g, '&'))).filter(Boolean));
         const rest = reported ? { ...target, sources: (target.sources || []).filter(u => !shownHosts.has(hostOf(u))) } : target;
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing is reported for this museum in the records.</p>'}${sourcesHtml(rest)}`);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing has been reported about this museum.</p>'}${sourcesHtml(rest)}`);
         return;
       }
       // "How does X fund <space>?" (the money map asks it of each funder name) is a funding question too; it fell through to
@@ -17551,12 +17551,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A funder the record does not name is said to be absent before the record's funding is given, so a false premise
         // is corrected rather than answered.
         const onRecord = askedFunder && (new RegExp('\\b' + askedFunder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(target.funding || '') || shared.some(f => f.funder.toLowerCase() === askedFunder.toLowerCase()));
-        const absent = askedFunder && !onRecord ? `<p>The record does not name ${escapeHtml(askedFunder)} as a funder of ${escapeHtml(target.name)}.</p>` : '';
-        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding detail is recorded for this museum yet.</p>'}${fact('', target.watch)}${shared.length ? `<p>Named at other museums on the map, this one included: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${sourcesHtml(target)}`);
+        const absent = askedFunder && !onRecord ? `<p>The atlas does not list ${escapeHtml(askedFunder)} as a funder of ${escapeHtml(target.name)}.</p>` : '';
+        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>The atlas has no funding details for this museum yet.</p>'}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
-        answer(`<p>${countA} museums have at least one source outside the museum. ${countB} are flagged with a reason recorded. ${countU} are unverified: no outside source, or no reason.</p>`);
+        answer(`<p>${countA} museums have at least one source outside the museum. ${countB} are flagged, with the reason given. ${countU} are not checked yet: no outside source, or no reason.</p>`);
         return;
       }
       // Anything else asked about the space ("symbol of the museum") is answered from the record lines that mention it, or the
