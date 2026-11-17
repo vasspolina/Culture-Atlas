@@ -273,7 +273,7 @@ FUNDERS = [
     ('lavazza', 'Lavazza', 'corp', r'Lavazza'),
     ('enel', 'Enel', 'corp', r'\bEnel\b'),
     ('erstebank', 'Erste Group and ERSTE Foundation', 'corp', r'\bErste\b|\bERSTE\b'),
-    ('raiffeisen', 'Raiffeisen', 'corp', r'Raiffeisen'),
+    ('raiffeisen', 'Raiffeisen banks (Swiss and Austrian groups)', 'corp', r'Raiffeisen'),
     ('omv', 'OMV', 'corp', r'\bOMV\b'),
     ('swarovski', 'Swarovski', 'corp', r'Swarovski'),
     ('rabobank', 'Rabobank', 'corp', r'Rabobank'),

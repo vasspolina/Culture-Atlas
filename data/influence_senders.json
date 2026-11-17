@@ -5843,5 +5843,594 @@
     "entries": 1
    }
   }
+ },
+ "volkswagen": {
+  "made_from": "Volkswagen's money comes from making and selling cars and vans under brands including Volkswagen, Audi and Porsche, and from car finance; Porsche Holding Salzburg, its car importer and dealer, belongs to Volkswagen AG.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Volkswagen Group reported 2025 sales revenue of 321.9 billion euros and an operating result of 8.9 billion euros, 53% below 2024.",
+    "date": "2026-03",
+    "source": "https://www.volkswagen-group.com/en/press-releases/volkswagen-group-strengthens-financial-resilience-in-2025-strong-fourth-quarter-in-a-challenging-environment-20202"
+   },
+   {
+    "kind": "harm",
+    "text": "In the US diesel emissions case over defeat devices that cheated federal emissions tests, Volkswagen paid a $1.45 billion civil penalty under the Clean Air Act and funded a $2.7 billion mitigation trust; Audi AG and Porsche AG were among the defendants.",
+    "date": "2017-04",
+    "source": "https://www.epa.gov/enforcement/volkswagen-clean-air-act-civil-settlement"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Volkswagen AG declared EU lobbying costs of €2,750,000 to €2,999,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=6504541970-40"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Volkswagen Group of America reported $1,150,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Volkswagen&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Volkswagen a C grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Volkswagen-9e7f6038049cce3caa35490440a6a54b"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2750000,
+    "eur_max": 2999999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=6504541970-40"
+   },
+   "us_lobbying": {
+    "usd": 1150000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Volkswagen&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 12,
+    "entries": 16
+   }
+  }
+ },
+ "mercedesbenz": {
+  "made_from": "Mercedes-Benz's money comes from making and selling cars and vans, and from car finance.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Mercedes-Benz reported net profit of 5.3 billion euros for 2025, down almost 49 percent from 2024, AFP reported.",
+    "date": "2026-02",
+    "source": "https://www.gpsdaily.com/reports/Mercedes-Benz_net_profit_nearly_halves_amid_China_US_woes_999.html"
+   },
+   {
+    "kind": "harm",
+    "text": "In a US settlement filed in September 2020 over undisclosed defeat devices in about 250,000 diesel vehicles, Daimler AG and Mercedes-Benz USA agreed to a recall and a civil penalty of $875 million.",
+    "date": "2020-09",
+    "source": "https://www.epa.gov/enforcement/daimler-ag-and-mercedes-benz-usa-llc-clean-air-act-civil-settlement"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Mercedes-Benz Group AG declared EU lobbying costs of €1,750,000 to €1,999,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=2349218828-41"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Mercedes-Benz USA reported $1,365,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Mercedes&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Mercedes-Benz a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Mercedes-Benz-7c1efd951fa2a6dfc2b58e9f311f6d7b"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1750000,
+    "eur_max": 1999999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=2349218828-41"
+   },
+   "us_lobbying": {
+    "usd": 1365000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Mercedes&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "deutschebank": {
+  "made_from": "Deutsche Bank's money comes from corporate and investment banking, private and retail banking and asset management.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Deutsche Bank reported 2025 profit before tax of 9.7 billion euros and net profit of 7.1 billion euros, double the year before.",
+    "date": "2026-01",
+    "source": "https://www.db.com/news/detail/20260129-full-year-results-2025"
+   },
+   {
+    "kind": "harm",
+    "text": "In July 2020 New York's Department of Financial Services imposed a $150 million penalty on Deutsche Bank for compliance failures in its relationship with Jeffrey Epstein and its correspondent relationships with Danske Estonia and FBME Bank.",
+    "date": "2020-07",
+    "source": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071"
+   },
+   {
+    "kind": "harm",
+    "text": "In January 2017 New York's Department of Financial Services fined Deutsche Bank $425 million for a Russian mirror-trading scheme it allowed its traders to run.",
+    "date": "2017-01",
+    "source": "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr1701301"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks Deutsche Bank 20th among the world's banks for fossil fuel financing in 2025, up $2.9 billion (19.9%) on 2024.",
+    "date": "2026",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Deutsche Bank AG declared EU lobbying costs of €1,500,000 to €1,749,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=271912611231-56"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1500000,
+    "eur_max": 1749999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=271912611231-56"
+   },
+   "us_lobbying": {
+    "usd": 240000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Deutsche%20Bank&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 8,
+    "entries": 9
+   }
+  }
+ },
+ "bbva": {
+  "made_from": "BBVA's money comes from retail and corporate banking, chiefly in Spain, Mexico, Turkey (through Garanti BBVA) and South America.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The BBVA Group reported a result of €10,511m for 2025, up 4.5% on the year before.",
+    "date": "2026-01",
+    "source": "https://shareholdersandinvestors.bbva.com/informes/shareholders-report-4q25/"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks BBVA 31st among the world's banks for fossil fuel financing in 2025, up $2.0 billion (23.1%) on 2024.",
+    "date": "2026",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BBVA declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=090350412968-04"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=090350412968-04"
+   },
+   "culture": {
+    "spaces": 11,
+    "entries": 14
+   }
+  }
+ },
+ "lacaixa": {
+  "made_from": "The \"la Caixa\" Foundation's budget comes from the dividends its holding CriteriaCaixa receives from its stakes in companies, CaixaBank first among them, with Naturgy, Telefónica and others.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "CaixaBank reported a net profit of 5,891 million euros for 2025, up 1.8%.",
+    "date": "2026-01",
+    "source": "https://www.caixabank.com/en/headlines/news/caixabank-posts-a-net-profit-of-5-89-billion-in-2025-up-1-8-driven-by-strong-business-growth"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 reports that CaixaBank diluted its coal commitments in the past year, backtracking on metallurgical coal used for steelmaking.",
+    "date": "2026",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "CaixaBank declared EU lobbying costs of €600,000 to €699,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=055017716307-39"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 600000,
+    "eur_max": 699999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=055017716307-39"
+   },
+   "culture": {
+    "spaces": 9,
+    "entries": 10
+   }
+  }
+ },
+ "engie": {
+  "made_from": "Engie's money comes from selling gas and electricity, running power plants, renewables and gas networks, and energy services.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "ENGIE declared EU lobbying costs of €2,000,000 to €2,249,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=90947457424-20"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Engie North America reported $270,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Engie&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Engie a C+ grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Engie-15788432cdf2e77819cea97f29fee349"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2000000,
+    "eur_max": 2249999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=90947457424-20"
+   },
+   "us_lobbying": {
+    "usd": 270000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Engie&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 8,
+    "entries": 9
+   }
+  }
+ },
+ "henkel": {
+  "made_from": "Henkel's money comes from adhesives and from consumer brands in laundry, home and hair care.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Henkel AG & Co. KGaA declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=13635802880-80"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Henkel of America reported $607,000 of its own US federal lobbying for 2025 in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Henkel&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=13635802880-80"
+   },
+   "us_lobbying": {
+    "usd": 607000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Henkel&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 4
+   }
+  }
+ },
+ "novartis": {
+  "made_from": "Novartis's money comes from making and selling prescription medicines.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In July 2020 Novartis Pharmaceuticals Corporation agreed to pay $678 million to settle a US fraud lawsuit over sham speaker programs through which it paid over $100 million to doctors to induce them to prescribe its drugs.",
+    "date": "2020-07",
+    "source": "https://www.vaoig.gov/articles/investigative-update/acting-manhattan-us-attorney-announces-678-million-settlement-fraud"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Novartis International AG declared EU lobbying costs of €2,500,000 to €2,749,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=91269481588-28"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Novartis reported $7,788,000 of its own US federal lobbying spending for 2025, in its quarterly reports under the Lobbying Disclosure Act, amended figures used where filed.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Novartis&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2500000,
+    "eur_max": 2749999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=91269481588-28"
+   },
+   "us_lobbying": {
+    "usd": 7788000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Novartis&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "vitra": {
+  "made_from": "The Fehlbaum family's money comes from Vitra, the Swiss furniture company it owns, which makes and sells designer furniture.",
+  "facts": []
+ },
+ "abnamro": {
+  "made_from": "ABN AMRO's money comes from retail, private and corporate banking, mainly in the Netherlands; Neuflize OBC is its private bank in France.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In April 2021 ABN AMRO paid 480 million euros, a 300 million euro fine and 180 million euros in disgorged gains, to settle a Dutch criminal case over serious shortcomings in money laundering prevention.",
+    "date": "2021-04",
+    "source": "https://www.prosecutionservice.nl/latest/news/2021/04/19/abn-amro-pays-eur-480-million-on-account-of-serious-shortcomings-in-money-laundering-prevention"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ABN AMRO Bank N.V. declared EU lobbying costs of €100,000 to €199,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=353231132587-96"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 100000,
+    "eur_max": 199999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=353231132587-96"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "iberdrola": {
+  "made_from": "Iberdrola's money comes from generating, distributing and selling electricity, and selling gas, in Spain, the UK (ScottishPower), the US and Brazil.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Iberdrola closed 2025 with a record profit of 6.285 billion euros.",
+    "date": "2026-02",
+    "source": "https://en.ara.cat/economy/iberdrola-closes-2025-with-record-profit-of-6-285-billion_1_5658733.html"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Iberdrola declared EU lobbying costs of €400,000 to €499,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=41816938101-07"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Iberdrola a B- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Iberdrola-a88bc60c58e2b3aa71b04be5271cc8c3"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 400000,
+    "eur_max": 499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=41816938101-07"
+   },
+   "culture": {
+    "spaces": 5,
+    "entries": 5
+   }
+  }
+ },
+ "ikea": {
+  "made_from": "IKEA's money comes from selling furniture and home goods: Inter IKEA owns the brand and franchises it, and the Ingka group runs most IKEA stores; Ingvar Kamprad founded IKEA.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "Disclose reported in November 2022 that several Belarusian companies that worked for IKEA over the past ten years used forced labour in penal colonies holding political prisoners.",
+    "date": "2022-11",
+    "source": "https://disclose.ngo/en/article/ikea-subcontractors-resort-forced-labour-in-belarus-prisons"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Inter IKEA Systems B.V. declared EU lobbying costs of €700,000 to €799,999 for September 2024 to August 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=774019931221-41"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Ingka Services A.B., of the Ingka group that runs most IKEA stores, declared EU lobbying costs of €1,250,000 to €1,499,999 for September 2024 to August 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=1095068839-59"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Outside firms reported $220,000 in 2025 fees for US federal lobbying from IKEA companies under the Lobbying Disclosure Act: $200,000 from IKEA US Retail and $20,000 from Inter IKEA Systems.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=IKEA&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 700000,
+    "eur_max": 799999,
+    "period": "2024-09 to 2025-08",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=774019931221-41"
+   },
+   "us_lobbying": {
+    "usd": 220000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=IKEA&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "axa": {
+  "made_from": "AXA's money comes from insurance and asset management.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "AXA declared EU lobbying costs of €1,250,000 to €1,499,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=36423781099-10"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1250000,
+    "eur_max": 1499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=36423781099-10"
+   },
+   "culture": {
+    "spaces": 6,
+    "entries": 6
+   }
+  }
+ },
+ "raiffeisen": {
+  "made_from": "Raiffeisen is not one company: the atlas ties name Swiss Raiffeisen banks (the Raiffeisen Switzerland cooperative group) and Austrian ones (Raiffeisenlandesbank Oberösterreich, Raiffeisen Salzburg), cooperative banks owned by their members.",
+  "facts": []
+ },
+ "klm": {
+  "made_from": "Air France-KLM's money comes from passenger flights, cargo and aircraft maintenance.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Air France-KLM declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=064616126640-05"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=064616126640-05"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 3
+   }
+  }
+ },
+ "repsol": {
+  "made_from": "Repsol's money comes from producing oil and gas, refining and selling fuels, chemicals, and electricity.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Repsol reported a net income of €1.899 billion for 2025, up 8%, and adjusted net income of €2.568 billion, 15% lower than in 2024.",
+    "date": "2026-02",
+    "source": "https://www.repsol.com/en/press-room/press-releases/2026/repsol-posts-adjusted-net-income-2568-billion/index.cshtml"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Repsol, S.A. declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=69240395197-02"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Repsol, S.A. reported $980,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Repsol&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Repsol a D grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Repsol-8752a6719f097064bf8688b57d17370e"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=69240395197-02"
+   },
+   "us_lobbying": {
+    "usd": 980000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Repsol&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "juliusbaer": {
+  "made_from": "Julius Baer's money comes from private banking and wealth management.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Bank Julius Baer & Co. Ltd declared EU lobbying costs of €400,000 to €499,999 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=234317527985-69"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 400000,
+    "eur_max": 499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=234317527985-69"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "vinci": {
+  "made_from": "Vinci's money comes from building and civil engineering (Vinci Construction) and from running motorways, airports and other concessions.",
+  "facts": []
+ },
+ "pictet": {
+  "made_from": "Pictet's money comes from private banking, wealth management and asset management; it is owned by its partners.",
+  "facts": []
  }
 }
