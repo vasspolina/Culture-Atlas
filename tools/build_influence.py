@@ -198,6 +198,16 @@ FUNDERS = [
     ('jardine', 'Jardine Matheson', 'corp', r'Jardine'),
     ('nanfung', 'Nan Fung Group (Chen family)', 'family', r'Nan Fung|Vanessa Cheung|Mill6|D\. ?H\. Chen'),
     ('anta', 'Anta Sports', 'corp', r'\bAnta\b'),
+    # Batch 8 (user, 17 Nov 2026: "add taiwan sponsors too"): Taiwan's bank and family foundations and its companies.
+    # Epson, a Japanese company, is read here with MOCA Taipei's other sponsors. Applied Materials (US) and Thermos are
+    # left out: the countries they answer to are already in the map.
+    ('ctbc', 'CTBC (Koo family)', 'corp', r'CTBC|Chinatrust'),
+    ('esun', 'E.SUN Financial', 'corp', r'E\.SUN|E\.Sun'),
+    ('kingstownbank', "King's Town Bank", 'corp', r"King's Town"),
+    ('taishin', 'Taishin Financial', 'corp', r'Taishin'),
+    ('chewsculture', "Chew's Culture Foundation (Hong Gah)", 'family', r"Chew's|Chew Culture"),
+    ('royalinn', 'Royal Inn', 'corp', r'Royal Inn'),
+    ('epson', 'Epson', 'corp', r'Epson'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
