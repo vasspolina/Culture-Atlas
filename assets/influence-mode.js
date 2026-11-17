@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=7', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=8', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -182,7 +182,7 @@
     // Political giving adds two filings that are told apart in the label: what the company's PAC gave federal candidates, and
     // what the people behind a family or individual funder gave in their own names (FEC individual contributions, 2023 to
     // 2024, to candidates, parties and PACs, super PACs included). A company's executives are not counted as the company.
-    politics: { label: 'Political giving', what: 'federal political giving in the 2023 to 2024 cycle, from reports to the Federal Election Commission: its corporate PAC’s gifts to candidates, and what the people behind a family or individual funder gave in their own names',
+    politics: { label: 'Political giving', what: 'federal political giving in the 2023 to 2024 cycle, from reports to the Federal Election Commission: its corporate PAC’s gifts to candidates, and what the people behind a family or individual funder gave in personal contributions',
       value: f => (((fig(f).political || {}).usd || 0) + ((fig(f).personal || {}).usd || 0)) || null,
       text: f => {
         const p = fig(f).political, q = fig(f).personal, parts = [];
@@ -233,6 +233,7 @@
     if (!on || !DATA) return;
     if (!fan) fanOut();
     const ink = text || (isDark() ? '#e6e1d7' : '#000000'), paper = ground || (isDark() ? '#151412' : '#ffffff');
+    const dpr = ctx.getTransform ? (ctx.getTransform().a || 1) : 1, W = ctx.canvas.width / dpr, H = ctx.canvas.height / dpr;
     const insts = g('ALL_INSTITUTIONS') || [];
     ctx.save();
     // The picked funder's ties: a line from its office to each space it got something from.
@@ -309,7 +310,9 @@
       const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
-      const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
+      // A place that runs off the map's edge counts as taken, so a long label (a figure beside the name) turns inward.
+      const off = b => b.x < 2 || b.y < 2 || b.x + b.w > W - 2 || b.y + b.h > H - 2;
+      const clash = b => off(b) || placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
       const free = spots.find(sp => !clash(boxAt(sp)));
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
       const spot = free || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
@@ -506,7 +509,7 @@
         : li('EU lobbying', 'Not found on the EU Transparency Register.', ''),
       p ? li('Political giving', `Its corporate PAC gave ${fmtMoney(p.usd, 'USD')} to federal candidates in 2023 to 2024, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats.`, p.source)
         : li('Political giving', 'No corporate PAC contributions to federal candidates found for 2023 to 2024.', ''),
-      ...((F.personal && F.personal.people) || []).map(x => li('Personal giving', `${x.name} gave ${fmtMoney(x.usd, 'USD')} in their own name in 2023 to 2024${x.top && x.top.length ? `; the largest recipients were ${x.top.map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`).join(', ')}` : ''}.`, x.source)),
+      ...((F.personal && F.personal.people) || []).map(x => li('Personal giving', `${x.name} gave ${fmtMoney(x.usd, 'USD')} in personal contributions in 2023 to 2024${x.top && x.top.length ? (x.top.length === 1 && Math.abs(x.top[0].usd - x.usd) < 1 ? `, all of it to ${x.top[0].name}` : `; the largest recipients were ${x.top.map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`).join(', ')}`) : ''}.`, x.source)),
     ];
     return row('Culture next to lobbying and politics', 'what it gives culture beside what it spends on governments', `<ul class="d-row-list influence-list">${rows.join('')}</ul>`);
   }
