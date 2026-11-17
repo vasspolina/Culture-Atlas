@@ -2204,3 +2204,18 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{transition:none!important}
 }
 }
+
+/* ---- the question box 20% less tall (user, 17 Nov 2026: "chat window can be 20% less tall") ----
+   Measured on the user's screenshot of the desktop box: 147px in all, of which the text took 80px (14px over it, a 10px gap
+   and the 31px Voice/Ask row and 10px under it). 20% off the whole is 29px, all of it taken from the empty field, so the
+   field is 51px, a line of text and the room for a second. desktop-maps.js growInput still grows it with what is typed:
+   its inline height measures scrollHeight, whose floor is this min-height. The paddings and the pills are unchanged. */
+@media (min-width:768px){
+  :is(#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq#shq,html) #workBottomDock #workInputCard:has(#workSendBtn:not(.is-on)) #workInput{height:51px!important;min-height:51px!important}
+}
+
+/* ---- the photograph under a record (user, 17 Nov 2026: a screenshot of the photo flush under the Sources links) ----
+   #desktopDossierInside sits inside #desktopDossierBody, which already has the column's padding, and atlas.css gave it 16px
+   of its own on each side with none on top: the photo stood 16px in from the text and touched the last link. It now takes
+   the text's left edge and one paragraph's space (--sh-s-lh) above it. */
+#desktopDossierInside:not(#sh-x):not(#sh-y){padding:var(--sh-s-lh) 0 0!important}
