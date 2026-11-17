@@ -63,7 +63,7 @@
     box.id = 'gmdSearch';
     box.setAttribute('role', 'search');
     box.innerHTML =
-      '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search museums and cities, or ask Leaving it on the table">' +
+      '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search museums and cities, or ask ' + (window.ATLAS_CHAT_NAME || 'Clio') + '">' +
       '<button type="button" id="gmdGo" class="gmd-ico-btn" aria-label="Search">' + svg(ICON.lens) + '</button>' +
       '<button type="button" id="gmdClear" class="gmd-ico-btn" aria-label="Clear the search" hidden>' + svg(ICON.close) + '</button>' +
       '<ul id="gmdResults" role="listbox" aria-label="Results" hidden></ul>';
@@ -117,7 +117,7 @@
     function render() {
       const q = input.value.trim();
       items = q ? find(q) : [];
-      if (q) items.push({ kind: 'ask', label: q, sub: 'Ask Leaving it on the table' });
+      if (q) items.push({ kind: 'ask', label: q, sub: 'Ask ' + (window.ATLAS_CHAT_NAME || 'Clio') });
       active = q && items.length > 1 ? 0 : -1;
       results.innerHTML = '';
       items.forEach((it, k) => {

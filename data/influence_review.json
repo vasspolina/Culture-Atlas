@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -77,7 +77,14 @@
   "summary": "Its name on the Portrait Award, the gallery’s best known prize, until 2022.",
   "ended": true,
   "date": "2022",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://jerseyeveningpost.com/news/2022/02/22/national-portrait-gallery-ends-partnership-with-bp-after-more-than-30-years/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the gallery and BP confirmed they would not be renewing their current partnership when its contract ends in December",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://jerseyeveningpost.com/news/2022/02/22/national-portrait-gallery-ends-partnership-with-bp-after-more-than-30-years/"
+  ]
  },
  "a1703d801a": {
   "kinds": [
@@ -380,7 +387,14 @@
   ],
   "summary": "Main sponsor of Progetto Genesi, “Art and Human Rights” (2023).",
   "date": "2023",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.banor.it/wp-content/uploads/2023/02/PROGETTO-GENESI_LANCIO.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Main sponsor delle tre tappe è Eni, mentre le tappe della mostra a Milano e a Brescia godono",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.banor.it/wp-content/uploads/2023/02/PROGETTO-GENESI_LANCIO.pdf"
+  ]
  },
  "5077a79234": {
   "kinds": [
@@ -552,7 +566,14 @@
   "summary": "Dropped Shell in 2018.",
   "ended": true,
   "date": "2018",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/news/2018/10/30102018-end-of-partnership-shell-national-gallery/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Shell has brought its 12-year partnership with the National Gallery to an end",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.museumsassociation.org/museums-journal/news/2018/10/30102018-end-of-partnership-shell-national-gallery/"
+  ]
  },
  "36fda8090a": {
   "kinds": [
@@ -561,7 +582,15 @@
   "summary": "Ended Shell sponsorship in 2019.",
   "ended": true,
   "date": "2019",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://theecologist.org/2019/oct/11/national-theatre-drops-shell-sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The National Theatre has declared a climate emergency and is ending its partnership with the oil company Shell.",
+  "checked_beyond_record": true,
+  "checked_missing": "the end date: the decision was announced in October 2019 but the page says the membership 'will come to an end in June 2020'",
+  "extra_sources": [
+   "https://theecologist.org/2019/oct/11/national-theatre-drops-shell-sponsorship"
+  ]
  },
  "e927492332": {
   "kinds": [
@@ -753,7 +782,15 @@
   "summary": "Stopped taking Sackler gifts in May 2019; renamed in 2023.",
   "ended": true,
   "date": "2019-05",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://hyperallergic.com/500479/sacklers-metropolitan-museum-amnh/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the American Museum of Natural History (AMNH) has also stopped accepting donations from the Sacklers",
+  "checked_beyond_record": true,
+  "checked_missing": "'renamed in 2023': no page found gives a 2023 renaming. Wikipedia says only that both AMNH Sackler names 'have since removed the Sackler name'.",
+  "extra_sources": [
+   "https://hyperallergic.com/500479/sacklers-metropolitan-museum-amnh/"
+  ]
  },
  "e6965258e6": {
   "kinds": [
@@ -762,7 +799,14 @@
   "summary": "Its name on rooms and endowments; removed in 2022.",
   "ended": true,
   "date": "2022",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://blooloop.com/museum/news/british-museum-removes-sackler-family-name/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Sackler name will now be removed from any galleries, rooms and endowments supported by the family.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://blooloop.com/museum/news/british-museum-removes-sackler-family-name/"
+  ]
  },
  "167cc0ef73": {
   "kinds": [
@@ -771,7 +815,15 @@
   "summary": "Dropped the Sackler name in 2019.",
   "ended": true,
   "date": "2019",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://en.wikipedia.org/wiki/List_of_things_named_after_the_Sackler_family",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In 2016, the Dia Art Foundation created the Sackler Institute, but removed the name in 2019.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://en.wikipedia.org/wiki/List_of_things_named_after_the_Sackler_family"
+  ],
+  "checked_missing": "a primary source: only Wikipedia’s list of things named after the Sacklers says it"
  },
  "fb5d2df7a5": {
   "kinds": [
@@ -806,7 +858,14 @@
   "summary": "The Harvard Corporation kept the name in July 2024 after a student proposal to remove it.",
   "protest": true,
   "date": "2024-07",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.harvard.edu/denamingproposals/arthur-m-sackler-building-and-museum",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In July, 2024, the Corporation accepted the committee's recommendation not to remove the Arthur M. Sackler name.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.harvard.edu/denamingproposals/arthur-m-sackler-building-and-museum"
+  ]
  },
  "006247e344": {
   "kinds": [
@@ -850,7 +909,15 @@
   "ended": true,
   "protest": true,
   "date": "2022",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://hyperallergic.com/731232/guggenheim-finally-drops-sackler-family-name/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Guggenheim Museum Finally Drops the Sackler Name",
+  "checked_beyond_record": true,
+  "checked_missing": "'under pressure' and the parent foundation's link to the Peggy Guggenheim Collection: the page covers the New York museum and names neither the foundation nor the Venice collection.",
+  "extra_sources": [
+   "https://hyperallergic.com/731232/guggenheim-finally-drops-sackler-family-name/"
+  ]
  },
  "96e783e087": {
   "kinds": [
@@ -916,7 +983,14 @@
   "summary": "The Sackler name was removed in 2022.",
   "ended": true,
   "date": "2022",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/news/2022/02/tate-becomes-latest-institution-to-drop-sackler-name/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In Tate Modern, the Sackler name is being taken off signage around the escalator and lifts, as well as another gallery room.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.museumsassociation.org/museums-journal/news/2022/02/tate-becomes-latest-institution-to-drop-sackler-name/"
+  ]
  },
  "6c58c028dd": {
   "kinds": [
@@ -964,7 +1038,14 @@
   "ended": true,
   "protest": true,
   "date": "2015-12",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://hyperallergic.com/introducing-the-new-koch-zero-billionaire-leaves-american-natural-history-museum-board",
+  "checked_on": "2026-11-17",
+  "checked_quote": "David Koch's term on the Board of the American Museum of Natural History ended on December 9, 2015,",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://hyperallergic.com/introducing-the-new-koch-zero-billionaire-leaves-american-natural-history-museum-board"
+  ]
  },
  "7eb3d90886": {
   "kinds": [
@@ -1117,7 +1198,14 @@
   ],
   "summary": "The building that opened on 9 February 2019, with new galleries and an auditorium, carries his name.",
   "date": "2019-02-09",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.architecturalrecord.com/articles/13890-foster-partners-expansion-of-the-norton-museum-of-art-opens-in-west-palm-beach-florida",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Norton Museum of Art's new Kenneth C. Griffin Building, designed by Foster + Partners, as seen from S. Dixie Highway.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.architecturalrecord.com/articles/13890-foster-partners-expansion-of-the-norton-museum-of-art-opens-in-west-palm-beach-florida"
+  ]
  },
  "14ba570099": {
   "kinds": [
@@ -1126,7 +1214,14 @@
   ],
   "summary": "$10 million, revealed at the museum’s gala (November 2024).",
   "date": "2024-11",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2024/11/11/kenneth-griffin-10m-donation-perez-art-museum-miami",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the Pérez Art Museum Miami (Pamm) revealed it had received a $10m gift from Griffin",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.theartnewspaper.com/2024/11/11/kenneth-griffin-10m-donation-perez-art-museum-miami"
+  ]
  },
  "86db5d1e4b": {
   "kinds": [
@@ -1135,7 +1230,14 @@
   ],
   "summary": "A Griffin Gallery, and the 2026 Basquiat exhibition is from his own collection.",
   "date": "2026",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.wlrn.org/arts-culture/2026-07-01/why-ken-griffins-first-basquiat-exhibition-was-always-meant-for-pamm",
+  "checked_on": "2026-11-17",
+  "checked_quote": "his $10 million gift to PAMM established the Kenneth C. Griffin Gallery ... The exhibition brings together 10 works by Jean-Michel Basquiat from the Kenneth C. Griffin Collection",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.wlrn.org/arts-culture/2026-07-01/why-ken-griffins-first-basquiat-exhibition-was-always-meant-for-pamm"
+  ]
  },
  "d6cb11dac8": {
   "kinds": [
@@ -1311,7 +1413,15 @@
   "ended": true,
   "protest": true,
   "date": "2024",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://morningstaronline.co.uk/node/241210",
+  "checked_on": "2026-11-17",
+  "checked_quote": "including the Edinburgh International Book Festival, Fruitmarket, Collective and Stills.",
+  "checked_beyond_record": true,
+  "checked_missing": "The 2024 end date and the six-year, £25,000 detail: the page names Fruitmarket among bodies that cut ties, with no date.",
+  "extra_sources": [
+   "https://morningstaronline.co.uk/node/241210"
+  ]
  },
  "291b52effc": {
   "kinds": [
@@ -1444,7 +1554,15 @@
    "access"
   ],
   "summary": "JTI Russia is a corporate member of the board of trustees, which Vladimir Potanin chairs.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://hermitagefoundation.com/?p=1939",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Vladimir Olegovich Potanin ... President of the Interros Company, Chairman of the Board of Trustees ... Dean Gilfillan ... General Manager, JTI Russia",
+  "checked_beyond_record": true,
+  "checked_missing": "JTI Russia (LLC) as a corporate member: the page lists JTI Russia's general manager as a trustee, not the company.",
+  "extra_sources": [
+   "https://hermitagefoundation.com/?p=1939"
+  ]
  },
  "d48a17d399": {
   "kinds": [
@@ -1628,7 +1746,14 @@
    "money"
   ],
   "summary": "Named a partner, beside the annual partners Bank Austria and Verbund.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://albertina.at/en/exhibitions/250-years-albertina/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "BMW Logo",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://albertina.at/en/exhibitions/250-years-albertina/"
+  ]
  },
  "24e2ed8f4f": {
   "kinds": [
@@ -1662,7 +1787,14 @@
   ],
   "summary": "Exclusive partner of the Preis der Nationalgalerie since 2006.",
   "date": "2006",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://newsroom.bmwgroup.com/global/bmw-celebrates-25-years-of-the-preis-der-nationalgalerie-to-mark-this-milestone-john-baldessaris-bmw-art-car-is-presented-on-the-terrace-of-the-neue-nationalgalerie",
+  "checked_on": "2026-11-17",
+  "checked_quote": "BMW has been the exclusive partner of this unique initiative since 2006.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://newsroom.bmwgroup.com/global/bmw-celebrates-25-years-of-the-preis-der-nationalgalerie-to-mark-this-milestone-john-baldessaris-bmw-art-car-is-presented-on-the-terrace-of-the-neue-nationalgalerie"
+  ]
  },
  "459efeaf59": {
   "kinds": [
@@ -1680,7 +1812,14 @@
   ],
   "summary": "Corporate partner of the Berlin Biennale, which used KW as a venue in 2018.",
   "date": "2018",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://ca.marketscreener.com/quote/stock/BAYERISCHE-MOTOREN-WERKE-435722/news/Bayerische-Motoren-Werke-10th-Berlin-Biennale-for-Contemporary-Art-from-June-9-to-September-9-201-26679104/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Besides KW Institute for Contemporary Art, this year's art works will also be displayed at",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://ca.marketscreener.com/quote/stock/BAYERISCHE-MOTOREN-WERKE-435722/news/Bayerische-Motoren-Werke-10th-Berlin-Biennale-for-Contemporary-Art-from-June-9-to-September-9-201-26679104/"
+  ]
  },
  "ee1496f728": {
   "kinds": [
@@ -1718,7 +1857,15 @@
    "money"
   ],
   "summary": "Named among its cultural partnerships, without detail.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://newswire.ca/news-releases/guggenheim-foundation-and-bmw-group-announce-a-major-new-global-initiative-545619602.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "NEW YORK, Oct. 1 /PRNewswire-USNewswire/ -- Richard Armstrong, Director of the Solomon R. Guggenheim Foundation",
+  "checked_beyond_record": true,
+  "checked_missing": "a current listing of BMW among the museum's cultural partnerships; the page announces the 2010 BMW Guggenheim Lab collaboration with the Foundation",
+  "extra_sources": [
+   "https://newswire.ca/news-releases/guggenheim-foundation-and-bmw-group-announce-a-major-new-global-initiative-545619602.html"
+  ]
  },
  "4b37049572": {
   "kinds": [
@@ -1866,7 +2013,14 @@
   ],
   "summary": "A named sponsor; patronage rose from €12.1M in 2015 to €23.6M in 2023.",
   "date": "2023",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.ccomptes.fr/fr/documents/72275",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Les principaux mécènes de l’Opéra sont EY, Paprec, Chanel, le Crédit agricole ou encore Rolex.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.ccomptes.fr/fr/documents/72275"
+  ]
  },
  "0997fb36cd": {
   "kinds": [
@@ -1874,7 +2028,15 @@
   ],
   "summary": "€90,258 through the Art Bonus tax credit, held at the end of 2024.",
   "date": "2024",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://www.visitmuve.it/wp-content/uploads/2025/07/Bilancio-MUVE-2024.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Chanel Srl - Art Bonus per Euro 90.258",
+  "checked_beyond_record": true,
+  "checked_missing": "the accounts are for the whole Fondazione Musei Civici di Venezia and do not tie Chanel's Art Bonus gift to Palazzo Ducale",
+  "extra_sources": [
+   "https://www.visitmuve.it/wp-content/uploads/2025/07/Bilancio-MUVE-2024.pdf"
+  ]
  },
  "5f4ec14718": {
   "kinds": [
@@ -1882,14 +2044,29 @@
   ],
   "summary": "Patron of the Worth exhibition.",
   "date": "2025",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.journalduluxe.fr/fr/mode/paris-nouvelle-exposition-petit-palais-haute-couture-worth",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Développée avec le Palais Galliera et le soutien de Chanel",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.journalduluxe.fr/fr/mode/paris-nouvelle-exposition-petit-palais-haute-couture-worth"
+  ]
  },
  "b1353d6d4a": {
   "kinds": [
    "money"
   ],
   "summary": "A master sponsor.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://www.seudinheiro.com/2025/lifestyle/o-louvre-do-brasil-museu-paulistano-e-patrocinado-por-joalheria-e-tera-baile-de-gala-com-a-chanel-mnog/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Na ocasião, a marca de luxo co-anfitriã será a Chanel.",
+  "checked_beyond_record": true,
+  "checked_missing": "Chanel's status as a master sponsor; pages show it co-hosting the gala and funding a women artists' residency, and name Bvlgari as the sponsor",
+  "extra_sources": [
+   "https://www.seudinheiro.com/2025/lifestyle/o-louvre-do-brasil-museu-paulistano-e-patrocinado-por-joalheria-e-tera-baile-de-gala-com-a-chanel-mnog/"
+  ]
  },
  "a2fa4e3f41": {
   "kinds": [
@@ -1908,7 +2085,14 @@
   ],
   "summary": "A group corporate partner in 2024 to 2025.",
   "date": "2024",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Chanel",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf"
+  ]
  },
  "4633541e6c": {
   "kinds": [
@@ -1969,7 +2153,15 @@
   ],
   "summary": "12 billion won over ten years for one solo show a year, the Hyundai Motor Series, the largest sponsorship in the museum’s history.",
   "date": "2014",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://www.sidae.com/article/2013111411358064800",
+  "checked_on": "2026-11-17",
+  "checked_quote": "지난 7일, 현대차는 경기도 과천의 국립현대미술관에 내년부터 2023년까지 10년 동안 총 120억원을 후원한다고 밝혔다. ... 매년 1명씩 중진 작가들을 선정해 국립현대미술관 서울관에서 최고 수준의 전시회를 열 계획이다.",
+  "checked_beyond_record": true,
+  "checked_missing": "'Largest in the museum's history': the page says it is the largest among Korean corporate arts sponsorships ('국내 기업의 문화·예술 후원 활동(메세나) 가운데 금액 면에서 가장 클'), not the museum's largest.",
+  "extra_sources": [
+   "https://www.sidae.com/article/2013111411358064800"
+  ]
  },
  "ba7da134b5": {
   "kinds": [
@@ -1978,7 +2170,15 @@
   "summary": "The Hyundai Motor Series ended in February 2024.",
   "date": "2024-02",
   "ended": true,
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000309",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Now in its 10th edition, MMCA Hyundai Motor Series provides substantial support for large-scale exhibitions.",
+  "checked_beyond_record": true,
+  "checked_missing": "An explicit statement that the series ended: the page gives the 10th show's run to 25 February 2024 but doesn't call it the last.",
+  "extra_sources": [
+   "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000309"
+  ]
  },
  "47a4974239": {
   "drop": true,
@@ -2001,14 +2201,28 @@
   ],
   "summary": "A group corporate partner in 2024 to 2025, its support extended to 2036.",
   "date": "2024",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Hyundai Motor, with whom Tate enjoys one of its most enduring partnerships, have extended their support until 2036",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf"
+  ]
  },
  "eeffe589e6": {
   "kinds": [
    "money"
   ],
   "summary": "A current corporate supporter, without years or amounts.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.whitworth.manchester.ac.uk/about/supportus/ourcurrentsponsorsandfunders",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Hyundai Motor Company",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.whitworth.manchester.ac.uk/about/supportus/ourcurrentsponsorsandfunders"
+  ]
  },
  "c5403751b9": {
   "kinds": [
@@ -2029,7 +2243,14 @@
   ],
   "summary": "Presenting sponsor of exhibitions and the Hyundai Art+Tech Program from 2020.",
   "date": "2020-11",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000587",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Hyundai Motor Company will launch ‘Hyundai Art+Tech Program’ in partnership with Yuz Museum Shanghai (YUZ)",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000587"
+  ]
  },
  "_about_batch2": "Batch 2 (17 Nov 2026): Bloomberg (Philanthropies, L.P. and Connects) and the banks: Bank of America, JPMorganChase, UBS, RBC, BMO. Dropped as not ties: sentences citing Bloomberg News or RBC Style (a Russian outlet) as a source, loans, a bank acting as an estate trustee, fines and lawsuits given as background, and campaigns aimed at other spaces.",
  "aaa4a6244f": {
@@ -2302,7 +2523,14 @@
   ],
   "summary": "A Tate group corporate partner in 2024 to 2025.",
   "date": "2024",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Tate would like to thank all the individuals, trusts, foundations and organisations who have so generously supported us this financial year.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf"
+  ]
  },
  "b15de7c43b": {
   "kinds": [
@@ -2339,7 +2567,14 @@
    "money"
   ],
   "summary": "A corporate member.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.thewadsworth.org/annual-reports/annual-report-2024/fy24-philanthropy/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Corporate Members ARI Accounting and Human Resources Bank of America The Barnes Group Foundation",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.thewadsworth.org/annual-reports/annual-report-2024/fy24-philanthropy/"
+  ]
  },
  "ad1c9367d0": {
   "kinds": [
@@ -2347,7 +2582,14 @@
   ],
   "summary": "Among the FY2024 funders.",
   "date": "2024",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.thewadsworth.org/annual-reports/annual-report-2024/fy24-philanthropy/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Corporate Members ARI Accounting and Human Resources Bank of America The Barnes Group Foundation",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.thewadsworth.org/annual-reports/annual-report-2024/fy24-philanthropy/"
+  ]
  },
  "e443d80f8e": {
   "drop": true,
@@ -2470,7 +2712,15 @@
    "name"
   ],
   "summary": "Major partner of the contemporary galleries.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://media.artgallery.nsw.gov.au/downloads/files/AGNSW_Annual_Report_2019-20.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "while UBS supported our contemporary art galleries as well as a number of significant exhibitions.",
+  "checked_beyond_record": true,
+  "checked_missing": "The 'major partner' title: the 2019-20 list gives 'UBS: Presenting partner; Contemporary Art: Contemporary Galleries', and the newer report the record follows could not be read.",
+  "extra_sources": [
+   "https://media.artgallery.nsw.gov.au/downloads/files/AGNSW_Annual_Report_2019-20.pdf"
+  ]
  },
  "0f4ad905b7": {
   "kinds": [
@@ -2717,7 +2967,14 @@
   ],
   "summary": "The RBC Foundation, a donor of $1 million or more to March 2025.",
   "date": "2025",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.glenbow.org/blog/rbc-invests-1-million-in-glenbow-to-drive-increased-accessibility/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Glenbow is delighted to announce a $1 million gift from the RBC Foundation",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.glenbow.org/blog/rbc-invests-1-million-in-glenbow-to-drive-increased-accessibility/"
+  ]
  },
  "058bfd9255": {
   "kinds": [
@@ -2790,14 +3047,30 @@
   ],
   "summary": "The RBC Emerging Artists Acquisition Fund, a curatorial post and national outreach; RBC Wealth Management presented the foundation’s gala (2024 to 2025).",
   "date": "2024",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://newswire.ca/news-releases/national-gallery-of-canada-receives-funding-from-rbc-for-re-creation-program-formation-of-rbc-emerging-artists-acquisition-fund-and-venice-biennale-sponsorship-886953126.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A newly formed RBC Emerging Artists Acquisition Fund, which will enable the acquisition of works from diverse Canadian emerging artists.",
+  "checked_beyond_record": true,
+  "checked_missing": "the curatorial post, the national outreach, RBC Wealth Management as presenting sponsor of the foundation's gala, and the 2024-25 period",
+  "extra_sources": [
+   "https://newswire.ca/news-releases/national-gallery-of-canada-receives-funding-from-rbc-for-re-creation-program-formation-of-rbc-emerging-artists-acquisition-fund-and-venice-biennale-sponsorship-886953126.html"
+  ]
  },
  "142b35475a": {
   "kinds": [
    "money"
   ],
   "summary": "The RBC Foundation is a corporate supporter.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://plugin.org/support-turn-on",
+  "checked_on": "2026-11-17",
+  "checked_quote": "RBC Royal Bank",
+  "checked_beyond_record": true,
+  "checked_missing": "the page names RBC Royal Bank (and RBC Dominion Securities) as donors to the Turn On campaign, in the $50,000 to $74,999 band, not the RBC Foundation as a corporate supporter",
+  "extra_sources": [
+   "https://plugin.org/support-turn-on"
+  ]
  },
  "b0feb6199a": {
   "kinds": [
@@ -2987,7 +3260,15 @@
   ],
   "summary": "A donor of $1 million or more to March 2025.",
   "date": "2025",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://newswire.ca/news-releases/bmo-financial-group-donates-1-million-to-glenbow-reimagined-campaign-865098685.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Glenbow and BMO Financial Group are delighted to announce a gift of $1 million to the museum",
+  "checked_beyond_record": true,
+  "checked_missing": "the donor list to 31 March 2025; the page is the 2021 gift announcement",
+  "extra_sources": [
+   "https://newswire.ca/news-releases/bmo-financial-group-donates-1-million-to-glenbow-reimagined-campaign-865098685.html"
+  ]
  },
  "76b29d5f1f": {
   "kinds": [
@@ -3175,7 +3456,15 @@
    "name"
   ],
   "summary": "Its free guide runs on Bloomberg Connects.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://www.charleston.org.uk/bloomberg-connects-digital-guide/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Discover our digital guide on the Bloomberg Connects app and enjoy collection and exhibition highlights, audio tours",
+  "checked_beyond_record": true,
+  "checked_missing": "that the guide is free",
+  "extra_sources": [
+   "https://www.charleston.org.uk/bloomberg-connects-digital-guide/"
+  ]
  },
  "4ac44101b6": {
   "kinds": [
@@ -3271,7 +3560,14 @@
    "money"
   ],
   "summary": "A $15,000 grant of unrestricted operating funds through the Arts Advancement Initiative.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.fluxfactory.org/?p=4119",
+  "checked_on": "2026-11-17",
+  "checked_quote": "We are so grateful to Bloomberg Philanthropies for awarding Flux Factory a grant this year in the amount of $15,000. Their Arts Advancement Initiative supports small and mid-sized arts and cultural organizations",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.fluxfactory.org/?p=4119"
+  ]
  },
  "44ac827d10": {
   "kinds": [
@@ -3365,7 +3661,14 @@
   ],
   "summary": "Sponsored the New Contemporaries exhibition at the ICA in January 2025; the ICA says the money went to New Contemporaries, not to it.",
   "date": "2025-01",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2025/01/16/artists-at-ica-london-stage-mass-walkout-in-support-of-pro-palestine-protesters",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the ICA hasn't received any funding from Bloomberg or Bloomberg Philanthropies since 2020,” says an ICA spokesperson, who also clarified that funding went directly to New Contemporaries.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.theartnewspaper.com/2025/01/16/artists-at-ica-london-stage-mass-walkout-in-support-of-pro-palestine-protesters"
+  ]
  },
  "ff561a195e": {
   "kinds": [
@@ -3534,7 +3837,14 @@
    "money"
   ],
   "summary": "Named on the sponsors page.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://malba.org.ar/wp-content/uploads/2025/07/Sin-titulo-1_0007_pngwing.com_.jpg",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Bloomberg",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://malba.org.ar/wp-content/uploads/2025/07/Sin-titulo-1_0007_pngwing.com_.jpg"
+  ]
  },
  "e8b1c221a4": {
   "kinds": [
@@ -3692,14 +4002,28 @@
    "money"
   ],
   "summary": "A gold sponsor.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://pinacoteca.org.br/wp-content/uploads/2026/10/painel-patrocinio_site_out26-1281x1536.png",
+  "checked_on": "2026-11-17",
+  "checked_quote": "PATROCINADORES OURO PLATINUM SPONSORS",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://pinacoteca.org.br/wp-content/uploads/2026/10/painel-patrocinio_site_out26-1281x1536.png"
+  ]
  },
  "05aaa3caf7": {
   "kinds": [
    "programme"
   ],
   "summary": "Among the museum’s project funders.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.rijksmuseum.nl/en/press/press-releases/the-rijksmuseum-in-2025",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Collection Online is made possible in part by KPN, Bloomberg Philanthropies, the Mondriaan Fund, the Rijksmuseum International Circle and private donors through the Rijksmuseum Fund",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.rijksmuseum.nl/en/press/press-releases/the-rijksmuseum-in-2025"
+  ]
  },
  "95f12554de": {
   "kinds": [
@@ -3778,7 +4102,14 @@
   ],
   "summary": "A Tate group corporate partner in 2024 to 2025.",
   "date": "2024",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "CORPORATE PARTNERS Action for Equality Scotland Anthropic Arcis Capital Audio Gold Bank of America Bloomberg Bottega Veneta Burberry Chanel",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf"
+  ]
  },
  "3f1d448eeb": {
   "kinds": [
@@ -3833,7 +4164,14 @@
    "money"
   ],
   "summary": "Thanked as a supporter.",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://thekitchen.org/about/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Thank you to our supporters",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://thekitchen.org/about/"
+  ]
  },
  "d517a361f3": {
   "kinds": [
@@ -3841,7 +4179,15 @@
   ],
   "summary": "Sponsored the 2024 gala; it has backed the gala for about 20 years.",
   "date": "2024",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://www.phillipscollection.org/sites/default/files/2024-04/press-release_the-phillips-collection-2024-annual-gala.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "As of April 18, 2024 Champion Bloomberg Philanthropies Judy Pomeranz Partner",
+  "checked_beyond_record": true,
+  "checked_missing": "that Bloomberg has backed the gala for about 20 years",
+  "extra_sources": [
+   "https://www.phillipscollection.org/sites/default/files/2024-04/press-release_the-phillips-collection-2024-annual-gala.pdf"
+  ]
  },
  "96ffd8c9db": {
   "kinds": [
@@ -3889,7 +4235,15 @@
   ],
   "summary": "Part of a $20 million Carnegie Corporation grant made possible by a donation from Michael Bloomberg (2005).",
   "date": "2005",
-  "check": "record"
+  "check": "source-partly",
+  "checked_source": "https://en.wikipedia.org/wiki/Wave_Hill",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In 2005, Wave Hill was among 406 New York City arts and social service institutions to receive part of a $20 million grant from the Carnegie Corporation, which was made possible through a donation by New York City mayor Michael Bloomberg.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://en.wikipedia.org/wiki/Wave_Hill"
+  ],
+  "checked_missing": "a primary source: only Wikipedia says it, citing The New York Times of 6 July 2005"
  },
  "6172e476eb": {
   "kinds": [
@@ -3908,7 +4262,14 @@
   ],
   "summary": "A major donor in the 2021 to 2022 report.",
   "date": "2021",
-  "check": "record"
+  "check": "source",
+  "checked_source": "https://opencharities.uk/ew/312162/files/2022-03-31-accounts.md",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Major Donors Asymmetry Art Foundation Bloomberg Philanthropies City Bridge Trust Collezione Maramotti Max Mara NEON Swarovski Foundation",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://opencharities.uk/ew/312162/files/2022-03-31-accounts.md"
+  ]
  },
  "71ab2b4564": {
   "kinds": [
@@ -4021,7 +4382,7 @@
   "drop": true,
   "why": "The record says the donors are not confirmed on the current page."
  },
- "_about_checks": "Checked against source pages, 17 Nov 2026: every page the entries cite was fetched once by an honest automated reader (1,151 pages, 1,083 read, PDFs as text). An entry is source checked when a page it cites names the funder and states the claim: automatically when every amount it gives sits beside the funder’s name on the page, or when it only says the funder is listed and the page lists it (in its text or, for a logo, in the image’s alt text or file name); otherwise by reading the page, with the excerpt kept as checked_quote. Partly checked: the page gives the tie but not one detail, named in checked_missing. Three entries the pages contradicted were corrected to what the page says, with the old wording kept in corrected. Not found: the pages cited do not state it, most often because the page that would (an annual report, a donor list) was not among the cited pages or could not be read; those entries stay as checked against the museum’s page in this atlas.",
+ "_about_checks": "Checked against source pages, 17 Nov 2026: every page the entries cite was fetched once by an honest automated reader (1,151 pages, 1,083 read, PDFs as text). An entry is source checked when a page it cites names the funder and states the claim: automatically when every amount it gives sits beside the funder’s name on the page, or when it only says the funder is listed and the page lists it (in its text or, for a logo, in the image’s alt text or file name); otherwise by reading the page, with the excerpt kept as checked_quote. Partly checked: the page gives the tie but not one detail, named in checked_missing. Three entries the pages contradicted were corrected to what the page says, with the old wording kept in corrected. Not found: the pages cited do not state it, most often because the page that would (an annual report, a donor list) was not among the cited pages or could not be read; those entries stay as checked against the museum’s page in this atlas. Second pass, 17 Nov 2026: the entries not found on their cited pages were searched for on the web (annual reports, donor pages, the funder’s own releases, reputable press); a page that bears one out is linked as checked_source and added to the entry’s sources as extra_sources, checked_beyond_record marking it. Some cited files the first pass could not read (government hospitality spreadsheets, the Art Not Oil report) were read this time. Wikipedia alone, or a return that names a guest without the title the entry gives, counts only as partly checked.",
  "eb46ef7fb9": {
   "kinds": [
    "seat"
@@ -4039,6 +4400,15 @@
     "text": "The same briefing covered Sony’s past support for the supervisor’s political committee.",
     "source": "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la"
    }
+  ],
+  "check": "source-partly",
+  "checked_source": "https://www.valuewalk.com/hacked-sony-emails/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "telling the CEO that the Ridley-Thomas-linked PAC was spending heavily to get his former aide elected. ... Sony had given $5,000 contributions to the Ridley-Thomas-linked PAC in years past",
+  "checked_beyond_record": true,
+  "checked_missing": "That the pre-lunch briefing covered LACMA's county-funding request: the page mentions the county's demand for a financial plan through Govan, not in Weaver's email.",
+  "extra_sources": [
+   "https://www.valuewalk.com/hacked-sony-emails/"
   ]
  },
  "8580afb3e1": {
@@ -4047,7 +4417,7 @@
    "access"
   ],
   "date": "2015-10",
-  "summary": "Paid for the Days of the Dead festival with the Mexican Embassy and asked for Mexican and UK government guests at its private evening, a month before Mexico opened bidding for deepwater drilling.",
+  "summary": "Paid for the Days of the Dead festival with the Mexican government and asked for Mexican and UK government guests at its private evening.",
   "links": [
    {
     "measure": "other",
@@ -4055,7 +4425,16 @@
     "text": "BP asked the museum to confirm Mexican government guests at the festival’s private evening as it prepared to bid for drilling licences in the Gulf of Mexico.",
     "source": "https://unearthed.greenpeace.org/?p=4489"
    }
-  ]
+  ],
+  "check": "source",
+  "checked_source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "…Do we have confirmation of Mexican government representation on the evening 30 October? Do we have confirmation from DCMS re UK Government representation on the evening of 30 October?",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
+  ],
+  "corrected": "The record added \"a month before Mexico opened bidding for deepwater drilling\"; the cited report puts the bidding terms on 17 December 2015, about seven weeks after the festival."
  },
  "80b9e2933f": {
   "kinds": [
@@ -4070,6 +4449,15 @@
     "text": "The museum set up a private meeting between two BP employees and Russia’s ambassador at the Scythians launch, as new US sanctions on Russia threatened BP’s stake in Rosneft.",
     "source": "https://hyperallergic.com/421880/culture-unstained-documents-british-museum-bp-russia/"
    }
+  ],
+  "check": "source-partly",
+  "checked_source": "https://hyperallergic.com/culture-unstained-documents-british-museum-bp-russia.md",
+  "checked_on": "2026-11-17",
+  "checked_quote": "a public affairs manager at the British Museum arranging a private meeting in May 2017 between Alexander Vladimirovich Yakovenko, the Russian ambassador to the UK, two unnamed BP employees, and the British Museum’s director (Hartwig Fischer)",
+  "checked_beyond_record": true,
+  "checked_missing": "'breakfast': the text says 'private meeting', and only the file name of the linked email image says 'invite-to-breakfast-with-bp'. The page also does not say that what was discussed is unknown.",
+  "extra_sources": [
+   "https://hyperallergic.com/culture-unstained-documents-british-museum-bp-russia.md"
   ]
  },
  "afd451a168": {
@@ -4090,6 +4478,14 @@
     "text": "BP’s chief executive invited the Culture Secretary to the Cosmonauts opening dinner, and he attended.",
     "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
    }
+  ],
+  "check": "source",
+  "checked_source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Invited the Secretary of State for Culture, Media and Sport, John Whittingdale MP, to attend a dinner to mark the opening of the Cosmonauts exhibition at the Science Museum, hosted by the Science Museum and BP. BP’s CEO, Bob Dudley, made the initial invitation personally.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
   ]
  },
  "540c312d91": {
@@ -4105,6 +4501,14 @@
     "text": "At a meeting with BP’s government affairs staff the Culture Minister welcomed its support for Cosmonauts; the rest was withheld as government policy.",
     "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
    }
+  ],
+  "check": "source",
+  "checked_source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Concluding, [Ed Vaizey] welcomed BP support for the Cosmonauts [exhibition at the Science Museum]’ 83 The second half of these meeting notes were largely redacted, with section 35 (1) (a) and section 35 (1) (d)",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
   ]
  },
  "e606459101": {
@@ -4120,6 +4524,14 @@
     "text": "BP held its business reception at the museum and invited the Culture Secretary; a business minister called in.",
     "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
    }
+  ],
+  "check": "source",
+  "checked_source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Invited the Secretary of State to attend the BP Annual Business Reception at the British Museum on Thursday 12th November 2015. A separate FOI to the Department for Business, Innovation and Skills confirmed that Baroness Neville-Rolfe ‘popped in’",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
   ]
  },
  "0b967cec96": {
@@ -4136,6 +4548,14 @@
     "text": "BP asked the gallery for government representatives among the Portrait Award’s VIPs and proposed inviting the Culture Minister.",
     "source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
    }
+  ],
+  "check": "source",
+  "checked_source": "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In one email from February 2015, BP demanded performance targets for the BP Portrait Award from the National Portrait Gallery, including: ‘A significant increase in the number of VIPs attending to at least 50 and a breakdown of who they are including govt representatives.’",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.artnotoil.org.uk/sites/default/files/BPs%20Corrupting%20Influence.pdf.pdf"
   ]
  },
  "5e1c9384ba": {
@@ -4150,6 +4570,15 @@
     "text": "Philip Morris got the museum to call New York’s Council Speaker and the Mayor’s office against the Vallone anti-smoking bill (1994).",
     "source": "https://www.industrydocuments.ucsf.edu/docs/iqa16c00"
    }
+  ],
+  "check": "source-partly",
+  "checked_source": "https://csts.ua.edu/files/2024/12/the-collaborators.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Philip Morris has sponsored many Met events and shows, including the Met's high-profile Matisse and Jacob Lawrence exhibits, and 1994's \"Origins of Impressionism.\"",
+  "checked_beyond_record": true,
+  "checked_missing": "The core claim, that Stephanie French had the Met call Speaker Vallone and the Mayor's office against the bill: this page confirms only the sponsorship.",
+  "extra_sources": [
+   "https://csts.ua.edu/files/2024/12/the-collaborators.pdf"
   ]
  },
  "628cba9d32": {
@@ -4164,6 +4593,15 @@
     "text": "After Philip Morris told the academy how it felt about the Vallone anti-smoking bill, the academy called City Council members (1994).",
     "source": "https://www.industrydocuments.ucsf.edu/docs/csj18d00"
    }
+  ],
+  "check": "source-partly",
+  "checked_source": "https://csts.ua.edu/files/2024/12/the-collaborators.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Philip Morris sponsored BAM's high-profile Next Wave Festival. ... During 1994's smokefree air act battle, .BAM \"made discreet calls, rt to City Council members to",
+  "checked_beyond_record": true,
+  "checked_missing": "That Philip Morris told BAM how it felt about the bill first, and the NYT 26 Sept 1994 attribution: this is a CSTS compilation quoting it, not the Times article.",
+  "extra_sources": [
+   "https://csts.ua.edu/files/2024/12/the-collaborators.pdf"
   ]
  },
  "b4a2d0a056": {
@@ -4179,6 +4617,14 @@
     "text": "BP gave a business department special adviser two tickets to an exhibition (2014, UK hospitality return).",
     "source": "https://assets.publishing.service.gov.uk/media/5a807bd7e5274a2e8ab5067c/bis-special-advisers-hospitality-july-september-2014.csv"
    }
+  ],
+  "check": "source",
+  "checked_source": "https://assets.publishing.service.gov.uk/media/5a807bd7e5274a2e8ab5067c/bis-special-advisers-hospitality-july-september-2014.csv",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Emily Walch,16-Sep,BP,2 tickets to British Museum exhibition",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://assets.publishing.service.gov.uk/media/5a807bd7e5274a2e8ab5067c/bis-special-advisers-hospitality-july-september-2014.csv"
   ]
  },
  "f9d3235533": {
@@ -4194,6 +4640,14 @@
     "text": "BP gave the Cabinet Office’s chief executive tickets to the Royal Opera House (2015, UK hospitality return).",
     "source": "https://assets.publishing.service.gov.uk/media/5a81b26de5274a2e8ab555ff/Cabinet_Office_SCS3__hospitality_Q1_2015_to_16.csv"
    }
+  ],
+  "check": "source",
+  "checked_source": "https://assets.publishing.service.gov.uk/media/5a81b26de5274a2e8ab555ff/Cabinet_Office_SCS3__hospitality_Q1_2015_to_16.csv",
+  "checked_on": "2026-11-17",
+  "checked_quote": "John Manzoni,10/06/2015,Royal Opera House with Dev Sanyal - BP,Tickets,Accompanied by spouse",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://assets.publishing.service.gov.uk/media/5a81b26de5274a2e8ab555ff/Cabinet_Office_SCS3__hospitality_Q1_2015_to_16.csv"
   ]
  },
  "bbed3de301": {
@@ -4209,7 +4663,16 @@
     "text": "BP hosted the culture department’s permanent secretary (2015) and the head of the Foreign Office (2018) at the Portrait Award (UK hospitality returns).",
     "source": "https://assets.publishing.service.gov.uk/media/5a75576a40f0b6397f35daad/Senior_Officials_Hospitality_Q1_2015.csv"
    }
-  ]
+  ],
+  "check": "source-partly",
+  "checked_source": "https://assets.publishing.service.gov.uk/media/5a75576a40f0b6397f35daad/Senior_Officials_Hospitality_Q1_2015.csv",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Sue Owen,16/06/2015,BP,Portrait Award 2015,",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://assets.publishing.service.gov.uk/media/5a75576a40f0b6397f35daad/Senior_Officials_Hospitality_Q1_2015.csv"
+  ],
+  "checked_missing": "the officials’ job titles; the government returns name them without them"
  },
  "2f78ba4e74": {
   "kinds": [
@@ -4224,7 +4687,16 @@
     "text": "Bloomberg Philanthropies and the Serpentine hosted the arts minister at a reception (2024, UK hospitality return).",
     "source": "https://assets.publishing.service.gov.uk/media/674887695ba46550018cebad/DCMS_ministerial_hospitality__1_April_to_30_June_2024.csv"
    }
-  ]
+  ],
+  "check": "source-partly",
+  "checked_source": "https://www.gov.uk/csv-preview/674887695ba46550018cebad/DCMS_ministerial_hospitality__1_April_to_30_June_2024.csv",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Stephen Parkinson,2024-04-19,Bloomberg Philanthropies and Serpentine,Reception,Yes",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.gov.uk/csv-preview/674887695ba46550018cebad/DCMS_ministerial_hospitality__1_April_to_30_June_2024.csv"
+  ],
+  "checked_missing": "the title arts minister; the government return names him without it"
  },
  "34d8f29ddc": {
   "kinds": [
@@ -4238,6 +4710,75 @@
     "gov": "United Kingdom",
     "text": "Bloomberg UK News hosted the Chief Whip at a reception and private viewing of the collection (2025, UK hospitality return).",
     "source": "https://assets.publishing.service.gov.uk/media/69283878345e31ab14ecf637/Leader_of_the_House_of_Commons_and_Whips_-_Ministers__Hospitality_-_October_2025.csv"
+   }
+  ],
+  "check": "source-partly",
+  "checked_source": "https://www.gov.uk/csv-preview/69283878345e31ab14ecf637/Leader_of_the_House_of_Commons_and_Whips_-_Ministers__Hospitality_-_October_2025.csv",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Jonathan Reynolds,2025-10-08,Bloomberg UK News,Drinks Reception and private viewing of collection at Tate Britain,No,Value Unknown",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.gov.uk/csv-preview/69283878345e31ab14ecf637/Leader_of_the_House_of_Commons_and_Whips_-_Ministers__Hospitality_-_October_2025.csv"
+  ],
+  "checked_missing": "the title Chief Whip; the government return names the guest without it"
+ },
+ "1e23b3f331": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2012-07",
+  "summary": "Gave an MP a London 2012 ticket with meals at its Technology Showcase at the Royal Opera House (2012).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP gave an MP a ticket and meals at its Technology Showcase at the Royal Opera House (2012, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2012-09-03.xml"
+   }
+  ]
+ },
+ "6839f29e5c": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2018-06",
+  "summary": "Gave a transport minister and a guest hospitality at the Royal Opera House through its Big Screen programme (2018).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "BP gave a transport minister and a guest hospitality at the Royal Opera House through its Big Screen programme (2018, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2018-09-10.xml"
+   }
+  ]
+ },
+ "8795c4e4b9": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2019-03",
+  "summary": "Gave the chair of the 1922 Committee and his wife a dinner at the British Museum (2019).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "JTI gave the chair of the 1922 Committee and his wife a dinner at the museum (2019, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
+   }
+  ]
+ },
+ "e1377e8f45": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2019-07",
+  "summary": "Gave an MP two tickets to its 20th anniversary celebration at the Royal Academy (2019).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "United Kingdom",
+    "text": "JTI gave an MP two tickets to its 20th anniversary celebration at the Royal Academy (2019, MPs’ register).",
+    "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
    }
   ]
  }
