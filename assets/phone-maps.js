@@ -695,7 +695,9 @@
         + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
       if (chrome) chrome.appendChild(fromChatBar);
-      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn, closeBtn].filter(Boolean);
+      // The cross stays (17 Nov 2026): the record opened from the chat has the chat's head, the round cross at the left that
+      // closes it to the map, as the chat's own cross does (assets/sheet.css, "Details from the chat as the chat").
+      const putAway = () => [sheet.querySelector('.sheet-grabber'), sizeBtn].filter(Boolean);
       let chatScrollTop = 0;
       function markFromChat() {
         if (!PHONE()) return;
