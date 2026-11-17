@@ -42,9 +42,10 @@ if (left.length) throw new Error('Entries in no group: ' + left.map(n => n.id).j
 // MoMA's private funders as dots on the Influence map (user, 17 Nov 2026: "show moma funders as dots on the influence map").
 // Only the entries the study says gave MoMA money: a company, foundation or person, with the head office or home city the
 // study or the company's own site gives. A funder the map already draws (a ledger key in `keys`, or the same name in
-// `names`) gains MoMA among its museums instead of a second dot. Public bodies stay off, as they do across the mode: the
-// question is what private money buys. Study names are listed in `from`, so the record and the dot are traced to the study.
+// `names`) gains MoMA among its museums instead of a second dot. Public bodies are listed last; the funding maps' own
+// public bodies stay off the mode, these are MoMA's alone. Study names are listed in `from`, so the record and the dot are traced to the study.
 const NY = { c: 'New York', co: 'United States', lat: 40.7128, lon: -74.006 };
+const DC = { c: 'Washington', co: 'United States', lat: 38.9072, lon: -77.0369 };
 const FUNDERS = [
   { name: 'BlackRock', kind: 'corp', hq: NY, from: ['BlackRock', 'Laurence D. Fink'] },
   { name: 'Pfizer', kind: 'corp', hq: NY, from: ['Pfizer Inc.', 'Albert Bourla · David Rockefeller Award 2021'] },
@@ -71,6 +72,17 @@ const FUNDERS = [
   { name: 'The Rockefeller University', kind: 'found', hq: NY, from: ['The Rockefeller University'] },
   { name: 'Rockefeller Brothers Fund', kind: 'found', names: ['Rockefeller Brothers Fund'], hq: NY, from: ['Rockefeller Brothers Fund'] },
   { name: 'David Rockefeller', kind: 'family', hq: NY, from: ['David Rockefeller'] },
+  // Public money (user, 17 Nov 2026: "show government funders too"): the bodies the study says paid MoMA, gave it a tax or
+  // bond advantage, or bought its work, each at its seat. A foreign government is set at its capital, since it is that
+  // government's money, not its consulate's or mission's.
+  { name: 'City of New York', kind: 'gov', hq: NY, from: ['City of New York'] },
+  { name: 'Trust for Cultural Resources of the City of New York', kind: 'gov', hq: NY, from: ['Trust for Cultural Resources', 'Museum Tower TEPs'] },
+  { name: 'NYC Department of Cultural Affairs', kind: 'gov', hq: NY, from: ['NYC Dept. of Cultural Affairs'] },
+  { name: 'US Small Business Administration', kind: 'gov', hq: DC, from: ['US Small Business Administration'] },
+  { name: 'National Endowment for the Arts', kind: 'gov', hq: DC, from: ['National Endowment for the Arts'] },
+  { name: 'Office of the Coordinator of Inter-American Affairs', kind: 'gov', hq: DC, from: ['Office of the Coordinator of Inter-American Affairs', 'MoMA Film Library (Iris Barry)'] },
+  { name: 'Government of Switzerland', kind: 'gov', hq: { c: 'Bern', co: 'Switzerland', lat: 46.948, lon: 7.4474 }, from: ['Consulate General of Switzerland'] },
+  { name: 'State of Qatar', kind: 'gov', hq: { c: 'Doha', co: 'Qatar', lat: 25.2854, lon: 51.531 }, from: ['Permanent Mission of Qatar'] },
 ];
 const allNames = new Set(N.map(n => n.label));
 FUNDERS.forEach(f => f.from.forEach(n => { if (!allNames.has(n)) throw new Error(`${f.name}: "${n}" is not an entry of the study`); }));

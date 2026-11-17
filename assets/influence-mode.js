@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=2', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    fetch('assets/moma-influence.json?v=3', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -123,8 +123,8 @@
     mergeStudy();
     if (window.scheduleRender) window.scheduleRender();
   }
-  // MoMA's private funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
-  // the influence map"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // MoMA's funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
+  // the influence map"; "show government funders too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
   // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
   // funding maps have joined, so a funder they name is never drawn twice.
   let studyMerged = false;
@@ -607,7 +607,8 @@
     const f = BY_FUNDER.get(key); if (!f) return;
     const go = () => {
       const hq = window.atlasHq;
-      let e = (hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : 'found', n: f.name, c: '', co: '', noOffice: true };
+      // A funder from the MoMA study has no record in the funding maps, whose lookup would answer with its key for a name.
+      let e = (!f.study && hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : f.kind === 'gov' ? 'gov' : 'found', n: f.name, c: '', co: '', noOffice: true };
       // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
       if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
       // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
@@ -773,6 +774,24 @@
   }
 
   let busy = false;
+  // A MoMA-study funder's record: what the study says about it at MoMA, entry by entry, each with its source (user, 17 Nov
+  // 2026: "show moma funders as dots on the influence map"; "show government funders too").
+  function studyFunderPart(f) {
+    if (!STUDY) return null;
+    const want = new Set(f.study || []);
+    const entries = STUDY.groups.flatMap(gr => gr.entries).filter(x => want.has(x.name));
+    if (!entries.length) return null;
+    const lis = entries.map(x => {
+      const src = (x.sources || [])[0];
+      return `<li class="influence-entry"><p class="no-indent">${entries.length > 1 || x.name !== f.name ? `<span class="influence-who">${esc(x.name)}.</span> ` : ''}${x.role ? `<span class="lead-in">${esc(x.role)}.</span> ` : ''}${x.money ? esc(x.money) + '. ' : ''}${esc(x.note)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    }).join('');
+    const el = document.createElement('div');
+    el.className = 'prose-part d-rows influence-part';
+    el.setAttribute('role', 'region');
+    el.setAttribute('aria-label', 'At MoMA');
+    el.innerHTML = row('At MoMA', 'from the MoMA Influence Map study', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> · <a href="${esc(STUDY.page)}">Open the study</a></p>`);
+    return el;
+  }
   function decorate() {
     if (busy) return;
     busy = true;
@@ -784,6 +803,7 @@
       if (panel && !panel.hidden && !panel.querySelector('.influence-part')) {
         const f = funderForPanel(panel), head = panel.querySelector('.record-head');
         if (f && !f.moneyOnly && head) head.after(funderPart(f));
+        else if (f && f.study && head) { const part = studyFunderPart(f); if (part) head.after(part); }
       }
       // A space's record: the desktop Details page, the phone's record page and its sheet.
       const inst = g('dossierInst') || g('selectedInstitution');
