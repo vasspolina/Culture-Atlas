@@ -105,7 +105,7 @@
     chooserReturn = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
     const items = [];
     t.marks.forEach(m => items.push({ label: m.e.n, sub: `${hq().kindLabel(m.e)} / ${m.e.c}`, go: () => openRecord(m.e, null) }));
-    t.spaces.forEach(s => items.push({ label: s.inst.name, sub: `Cultural space${s.inst.city ? ' / ' + s.inst.city : ''}`, go: () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(s.inst, false); } }));
+    t.spaces.forEach(s => items.push({ label: s.inst.name, sub: `Museum${s.inst.city ? ' / ' + s.inst.city : ''}`, go: () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(s.inst, false); } }));
     chooser = h('div', { id: 'hqChooser', role: 'dialog', 'aria-label': `${items.length} places here. Choose one.` },
       h('p', { class: 'hq-chooser-title', text: `${items.length} places here` }),
       h('ul', null, items.map(it => h('li', null, (() => {
@@ -173,7 +173,7 @@
     return li;
   };
   const officeRow = (o, shared) => {
-    const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: o.n }), h('span', { class: 'hq-s', text: `${hq().kindLabel(o)} / ${o.c} / ${shared} shared ${shared === 1 ? 'space' : 'spaces'}` }));
+    const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: o.n }), h('span', { class: 'hq-s', text: `${hq().kindLabel(o)} / ${o.c} / ${shared} shared ${shared === 1 ? 'museum' : 'museums'}` }));
     b.addEventListener('click', () => { hq().flyToOffice(o); openRecord(o, null, true); });
     return h('li', null, b);
   };
@@ -207,7 +207,7 @@
     const add = li => { if (li) facts.append(li); };
     add(fact(e.kind === 'person' ? 'Role' : 'Note', e.w));
     if (e.s) { let host = e.s; try { host = new URL(e.s).hostname.replace(/^www\./, ''); } catch (x) {} add(fact('Source', h('a', { href: e.s, target: '_blank', rel: 'noopener noreferrer', text: host }))); }
-    if (e.noOffice) facts.append(h('li', { text: 'No head office is mapped for this funder; the record is what the spaces’ funding lines say.' }));
+    if (e.noOffice) facts.append(h('li', { text: 'No head office is mapped for this funder; the record is what the museums’ funding lines say.' }));
     const info = row('hqInfoT', where(e) || 'Record', e.a || '', facts);
     const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
       h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
@@ -226,7 +226,7 @@
       group('hqConnSpaces', e.kind === 'org' ? 'Funds' : 'Named on', sp, spaceRow);
       if (e.kind === 'org') {
         group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
-        group('hqConnPeople', 'People the files tie to these spaces', rel.people, r => officeRow(r.e, r.shared));
+        group('hqConnPeople', 'People the files tie to these museums', rel.people, r => officeRow(r.e, r.shared));
       }
     }
     if (rows.childElementCount) p.replaceChildren(head, rows); else p.replaceChildren(head);
@@ -272,14 +272,14 @@
     const ask = h('button', { type: 'button', class: 'record-action', text: 'Ask in chat' });
     ask.addEventListener('click', () => {
       const fn = window.atlasAskInChat || window.atlasAskCurator;
-      if (typeof fn === 'function') fn(`What should I know about the spaces in ${c.name}?`);
+      if (typeof fn === 'function') fn(`What should I know about the museums in ${c.name}?`);
     });
     const n = c.spaces.length;
-    const info = row('hqInfoT', c.country || 'Place', `${n} ${n === 1 ? 'space' : 'spaces'} on the atlas`, null);
+    const info = row('hqInfoT', c.country || 'Place', `${n} ${n === 1 ? 'museum' : 'museums'} on the atlas`, null);
     const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
       h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
-    const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Spaces' });
-    if (n) rows.append(row('hqConnSpaces', 'Spaces', '', listOf(c.spaces, inst => {
+    const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Museums' });
+    if (n) rows.append(row('hqConnSpaces', 'Museums', '', listOf(c.spaces, inst => {
       const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: inst.shortName || inst.name }), h('span', { class: 'hq-s', text: [inst.neighborhood, inst.category].filter(Boolean).join(' / ') }));
       b.addEventListener('click', () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(inst, false); });
       return h('li', null, b);

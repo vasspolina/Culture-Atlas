@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=10', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=11', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -453,15 +453,19 @@
   let openFor = null;   // the funder whose record the ledger was asked for, so the ledger finds it even under another spelling
 
   // ---- The records ----
+  // Each line says how far it is checked (user, 17 Nov 2026: "check the entries against their source pages"): against a
+  // page it cites, partly (the page gives the tie but not one detail), or only against the museum's page in this atlas.
+  // The link is the page that bears it out where there is one.
+  const checkWords = t => t.check === 'source' ? 'Source checked' : t.check === 'source-partly' ? `Source checked, except ${t.checked_missing || 'one detail'}` : 'Not found on its sources yet';
   const lineFor = (t, withSpace, withFunder) => {
-    const src = (t.sources || [])[0];
+    const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
     const kinds = t.kinds.length ? t.kinds.map(label).join(', ') : '';
     const who = withFunder ? `<button type="button" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</button>` : '';
     const where = withSpace ? `<button type="button" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</button>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
 <p class="no-indent">${who || where ? `<span class="influence-who">${who || where}</span> ` : ''}${kinds ? `<span class="lead-in">${esc(kinds)}.</span> ` : ''}${esc(t.summary)}</p>
-<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
+<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', `<span class="influence-check">${esc(checkWords(t))}</span>`, src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
 </li>`;
   };
   const row = (title, sub, inner) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
@@ -558,7 +562,9 @@
     html += afterRows(f);
     const pushback = f.ties.filter(x => !x.kinds.length);
     if (pushback.length) html += row('Pushback', 'protests and resignations', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
-    if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'deal') + ' ended' : '', t.protest ? plural(t.protest, 'deal') + ' drew protest' : ''].filter(Boolean).join('; '))}. Each line matches the museum’s page in this atlas, but is not yet checked against its source.</p>`;
+    if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'deal') + ' ended' : '', t.protest ? plural(t.protest, 'deal') + ' drew protest' : ''].filter(Boolean).join('; '))}.</p>`;
+    { const ok = f.ties.filter(x => x.check === 'source').length, part = f.ties.filter(x => x.check === 'source-partly').length, n = f.ties.length;
+      html += `<p class="no-indent influence-meta">${esc(`${ok} of ${n} lines are checked against a page they cite${part ? `, ${part} more in part` : ''}; the rest match the museum’s page in this atlas.`)}</p>`; }
     el.innerHTML = html;
     return el;
   }
