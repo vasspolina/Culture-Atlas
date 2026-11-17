@@ -109,8 +109,8 @@
       // No icon before the words (user, 16 Nov 2026: "delete chat icon next to text in chat"): the box was led by a speech mark.
       // The desktop's prompt, word for word (user, 16 Nov 2026: "chat window says ask the atlas but it should say same as on
       // desktop"); it was "Ask the atlas". The box's name also says it finds places.
-      input.setAttribute('aria-label', 'Ask about a space, its funders or controversies, or type a space or a city to find it on the map');
-      input.setAttribute('placeholder', 'Ask about a space, its funders or controversies…');
+      input.setAttribute('aria-label', 'Ask about a space, a city or a funder, or type a name to find it on the map');
+      input.setAttribute('placeholder', 'Ask about a space, a city or a funder…');
 
       // Finding: a space's or a city's name on its own goes to the map (the record opens, or the map flies to the city)
       // instead of the chat. It is a find only when it has no question mark, is six words or fewer and names exactly one

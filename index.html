@@ -201,7 +201,7 @@ return maplibregl$1;
   <header class="hidden md-flex w-full h-14 rule-b px-3 sm-px-4 lg-px-6 flex items-center justify-between shrink-0 z-30 max-w-_100vw overflow-hidden gap-2">
     
     <!-- Left: Brand / Title (Click to Reset Globe View) -->
-    <button id="topBrandLogoBtn" class="shrink-0 min-h-_44px flex items-center gap-2 sm-gap-3 text-left" title="Reset Globe View" aria-label="Reset Globe View">
+    <button id="topBrandLogoBtn" class="shrink-0 min-h-_44px flex items-center gap-2 sm-gap-3 text-left" title="Back to the whole globe" aria-label="Leaving it on the table: back to the whole globe">
       <span class="t-lead whitespace-nowrap">Leaving it on the table</span>
       
     </button>
@@ -218,7 +218,7 @@ return maplibregl$1;
       <!-- Hidden Stubs Preserved for DOM & Test Safety -->
       <div class="hidden" style="display:none;" aria-hidden="true">
         <button id="topNewChatBtn" onclick="window.resetToNewChat();">
-          <span>New Chat</span>
+          <span>New chat</span>
         </button>
         <button id="mobileNewChatBtn" onclick="window.resetToNewChat();">
           <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -321,7 +321,7 @@ return maplibregl$1;
           <section class="layers-section">
             <h2 class="layers-section-title">Studies</h2>
             <div class="layers-list layers-studies">
-              <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil's tax incentives and more</span></a>
+              <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil’s tax incentives and more</span></a>
               <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Artists&rsquo; work on cultural institutions on one page, from the oldest to the newest, each open to zoom</span></a>
               <a href="moma-money-map.html"><span class="layer-name">MoMA Money Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
             </div>
@@ -411,7 +411,7 @@ return maplibregl$1;
         <!-- Drawer Header -->
         <div class="space-y-2 pb-3 rule-b">
           <div class="flex items-start justify-end gap-2">
-            <button id="closeFloatingCardBtn" class="p-1_5" title="Close drawer">
+            <button id="closeFloatingCardBtn" class="p-1_5" title="Close">
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -457,7 +457,7 @@ return maplibregl$1;
               <div id="floatingCardVcArtwork" class=""></div>
             </div>
             <div class="space-y-2">
-              <img id="floatingCardVcImg" alt="Visual Critique" style="display:none" class="w-full h-32 object-cover block" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
+              <img id="floatingCardVcImg" alt="An artist’s image of this space" style="display:none" class="w-full h-32 object-cover block" onclick="event.stopPropagation(); if (selectedInstitution) window.openDossier(selectedInstitution);" />
               <div class="space-y-1">
                 <div>
                   <span id="floatingCardVcMedium" class="meta inline-block"></span>
@@ -495,7 +495,7 @@ return maplibregl$1;
             <a id="floatingCardDirectWebBtn" href="#" target="_blank" rel="noopener noreferrer" 
                class="w-full px-2_5 py-1_5 flex items-center justify-center gap-1 block"
                onclick="event.stopPropagation()">
-              <span>Visit Website</span>
+              <span>Website</span>
               <span id="floatingCardDirectDomain" class="meta"></span>
             </a>
           </div>
@@ -594,13 +594,13 @@ return maplibregl$1;
 
       <!-- City & Country Navigation Banner (Uncontained) -->
       <div id="cityViewControlBanner" class="hidden absolute top-2 sm-top-3 left-2 sm-left-4 z-20 pointer-events-auto flex items-center gap-3 max-w-_calc_100_-16px overflow-x-auto px-3 py-1 rule-b">
-        <button id="exitStreetViewBtn" class="flex items-center gap-1 shrink-0" title="Exit street view to 3D Globe">
+        <button id="exitStreetViewBtn" class="flex items-center gap-1 shrink-0" title="Leave street view and go back to the globe">
           <span>Exit</span>
         </button>
-        <button id="backToWorldBtn" class="flex items-center gap-1 shrink-0" title="Reset to global world view">
+        <button id="backToWorldBtn" class="flex items-center gap-1 shrink-0" title="Back to the whole world">
           <span class="">World</span>
         </button>
-        <button id="backToCountryBtn" class="hidden flex items-center gap-1 shrink-0" title="Return to country overview">
+        <button id="backToCountryBtn" class="hidden flex items-center gap-1 shrink-0" title="Back to the whole country">
           <span id="backToCountryText" class="">Country</span>
         </button>
         <div id="cityViewTitleBadge" class="meta flex items-center gap-1 shrink-0 truncate max-w-_190px max-w-none">
@@ -621,7 +621,7 @@ return maplibregl$1;
               <span id="activeRouteStats" class="meta block"></span>
             </div>
           </div>
-          <button id="closeActiveRouteBtn" class="p-0_5" title="Exit active route"><svg class="w-3_5 h-3_5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          <button id="closeActiveRouteBtn" class="p-0_5" title="End the route"><svg class="w-3_5 h-3_5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
         </div>
 
         <!-- Current Stop Details Card -->
@@ -639,13 +639,13 @@ return maplibregl$1;
         <!-- Stop Controls Navigation -->
         <div class="flex items-center gap-3 pt-1 meta">
           <button id="routePrevStopBtn" class="text-left" disabled>
-            <span>&larr; Prev</span>
+            <span>&larr; Previous</span>
           </button>
           <button id="routeNextStopBtn" class="text-left t-strong">
-            <span>Next Stop</span>
+            <span>Next stop</span>
           </button>
-          <button id="routeOverviewBtn" class="text-left ml-auto" title="Fit all route stops on map">
-            <span>Fit All</span>
+          <button id="routeOverviewBtn" class="text-left ml-auto" title="Show every stop on the map">
+            <span>Show all stops</span>
           </button>
         </div>
       </div>
@@ -664,7 +664,7 @@ return maplibregl$1;
         <button id="hudWorldBtn" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Back to the whole world, with filters cleared">
           <span>Reset view</span>
         </button>
-        <button id="hudSpinBtn" data-globe-control="spin" aria-pressed="true" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Turn the globe's slow rotation on or off">
+        <button id="hudSpinBtn" data-globe-control="spin" aria-pressed="true" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Turn the globe’s slow rotation on or off">
           <span id="hudSpinText" data-globe-label>Rotate</span>
         </button>
         <button id="hudExpandBtn" data-globe-control="expand" aria-pressed="false" class="px-2 sm-px-2_5 h-7 sm-h-8 flex items-center gap-1 shrink-0" title="Give the map more of the window">
@@ -675,14 +675,14 @@ return maplibregl$1;
         <button id="hudEuropeBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to Europe">
           <span>Europe</span>
         </button>
-        <button id="hudAmericasBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to Americas">
+        <button id="hudAmericasBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to the Americas">
           <span>Americas</span>
         </button>
         <button id="hudAsiaBtn" class="px-2 h-7 sm-h-8 flex items-center shrink-0" title="Fly to Asia-Pacific">
           <span>Asia</span>
         </button>
         <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
-        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Share information on institutional sponsors">
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Write a note about an institution">
 
           <span>Share information</span>
         </button>
@@ -697,8 +697,8 @@ return maplibregl$1;
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a space, its funders or controversies…" class="flex-1 min-h-_44px" />
-          <button id="mobileAnchoredSearchSubmitBtn" type="button" class="w-9 h-9 flex items-center justify-center shrink-0 min-h-_44px min-w-_44px" title="Send query">
+          <input id="mobileAnchoredSearchInput" type="text" placeholder="Ask about a space, a city or a funder…" class="flex-1 min-h-_44px" />
+          <button id="mobileAnchoredSearchSubmitBtn" type="button" class="w-9 h-9 flex items-center justify-center shrink-0 min-h-_44px min-w-_44px" title="Send">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
             </svg>
@@ -733,8 +733,8 @@ return maplibregl$1;
 
             <span id="workspaceSelectedInstName" class="truncate max-w-_200px"></span>
           </div>
-          <button id="workspaceNewChatBtn" type="button" onclick="window.resetToNewChat();" class="meta flex items-center gap-1" title="Start new curator investigation">
-            <span>New Query</span>
+          <button id="workspaceNewChatBtn" type="button" onclick="window.resetToNewChat();" class="meta flex items-center gap-1" title="Start a new chat">
+            <span>New chat</span>
           </button>
         </div>
       </div>
@@ -793,7 +793,7 @@ return maplibregl$1;
           </div>
           <div id="mobileSheetInputRow" class="px-3 pb-2_5 pt-1">
             <div class="w-full rule-b px-2_5 py-1_5 flex items-center gap-2 min-h-_44px">
-              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this museum…" class="flex-1 min-h-_36px" />
+              <input id="mobileSheetQuickInput" type="text" placeholder="Ask about this space…" class="flex-1 min-h-_36px" />
               <button id="mobileSheetQuickSendBtn" type="button" class="w-8 h-8 flex items-center justify-center shrink-0 min-h-_36px min-w-_36px">
                 <svg class="w-3_5 h-3_5" viewBox="0 0 32 32" fill="currentColor"><path d="M27.71 4.29a1 1 0 0 0-1.05-.23l-22 8a1 1 0 0 0 0 1.87l8.59 3.43L20.59 10 22 11.41l-7.37 7.37 3.44 8.59A1 1 0 0 0 19 28a1 1 0 0 0 .92-.66l8-22a1 1 0 0 0-.21-1.05z"/></svg>
               </button>
@@ -884,7 +884,7 @@ return maplibregl$1;
                 <label id="noteInputLabel" for="workInput">Your note</label>
                 <!-- Files attached to the note, as chips above the box (assets/note-files.js). -->
                 <ul id="noteFileList" aria-label="Attached files" hidden></ul>
-                <textarea id="workInput" rows="2" spellcheck="true" autocorrect="on" autocapitalize="sentences" placeholder="Ask about a space, its funders or controversies…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
+                <textarea id="workInput" rows="2" spellcheck="true" autocorrect="on" autocapitalize="sentences" placeholder="Ask about a space, a city or a funder…" class="w-full resize-none min-h-_60px max-h-36 custom-scrollbar"></textarea>
                 <!-- Writing aids, shown only while a note is written (assets/note-aids.js). Nothing is sent anywhere to check the text. -->
                 <p id="noteAidsRow">
                   <label class="nf-aid" title="Backspace straight after a correction puts your spelling back"><input type="checkbox" id="noteAutoCorrect"><span>Correct spelling as I type</span></label>
@@ -911,7 +911,7 @@ return maplibregl$1;
                 <!-- Right Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Voice Toggle Button -->
-                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" aria-pressed="true" title="Auto-Voice: Speaks responses aloud (Click to mute)">
+                  <button id="curatorVoiceToggleBtn" type="button" class="meta flex items-center gap-1_5 is-on" aria-pressed="true" title="Answers are read aloud. Press to stop">
                     <span id="curatorVoiceToggleIcon"></span>
                     <span id="curatorVoiceToggleLabel">Voice</span>
                   </button>
@@ -992,7 +992,7 @@ return maplibregl$1;
   <div class="z-40 rule-t px-3 py-2 flex md-hidden flex-col gap-1_5 shrink-0" data-purpose="ai-chat-input-bar" id="mobileStickyInputBar">
     <!-- Composer card, laid out like the Claude app: text on top, controls in a row inside the card -->
     <div id="mobileComposerCard" class="relative">
-      <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a space, its funders or controversies…"></textarea>
+      <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a space, a city or a funder…"></textarea>
       <div id="mobileComposerActions">
         <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
         <span class="flex-1"></span>
@@ -1048,7 +1048,7 @@ return maplibregl$1;
       <div class="flex items-center justify-between rule-b pb-3 shrink-0">
         <div class="flex items-center gap-2_5">
           <div>
-            <h3 class="t-lead">AI Model Settings</h3>
+            <h3 class="t-lead">AI model settings</h3>
           </div>
         </div>
         <button id="closeSettingsModalBtn" class="atlas-pill-btn pill-sm" title="Close"><span>Close</span></button>
@@ -1073,7 +1073,7 @@ return maplibregl$1;
             Keys are sent only to the provider you pick.
           </div>
           <a id="providerGetKeyLink" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer" class="shrink-0 meta flex items-center gap-1">
-            Get Key
+            Get a key
           </a>
         </div>
       </div>
@@ -1081,8 +1081,8 @@ return maplibregl$1;
       <!-- API Key Input -->
       <div class="space-y-1_5">
         <div class="flex items-center justify-between">
-          <label class="block">API Key</label>
-          <span id="keyDetectBadge" class="meta">Auto-detecting provider...</span>
+          <label class="block">API key</label>
+          <span id="keyDetectBadge" class="meta">Detecting the provider…</span>
         </div>
         <div class="relative flex items-center">
           <input 
@@ -1091,7 +1091,7 @@ return maplibregl$1;
             placeholder="Paste an API key" 
             class="w-full px-3_5 py-2_5 meta pr-10"
           />
-          <button id="toggleKeyVisibilityBtn" class="absolute right-3 p-1 meta" title="Toggle visibility">Show</button>
+          <button id="toggleKeyVisibilityBtn" class="absolute right-3 p-1 meta" title="Show or hide the key">Show</button>
         </div>
         <div class="flex items-center justify-between">
           <span>A built-in key is active. Paste your own to replace it.</span>
@@ -1102,30 +1102,30 @@ return maplibregl$1;
       <div class="space-y-1_5">
         <label class="block">Model</label>
         <select id="aiModelSelect" class="w-full px-3_5 py-2 meta">
-          <option value="claude-sonnet-5-5">Anthropic Sonnet 5.5</option>
-          <option value="claude-opus-5-5">Anthropic Opus 5.5</option>
-          <option value="claude-haiku-5-5">Anthropic Haiku 5.5</option>
+          <option value="claude-sonnet-5-5">Claude Sonnet 5.5</option>
+          <option value="claude-opus-5-5">Claude Opus 5.5</option>
+          <option value="claude-haiku-5-5">Claude Haiku 5.5</option>
         </select>
       </div>
 
       <!-- Connection Test Status Box -->
       <div id="connectionTestBox" class="hidden p-3 flex items-center gap-2">
         <span id="testStatusIcon"></span>
-        <span id="testStatusMsg" class="meta">Testing connection...</span>
+        <span id="testStatusMsg" class="meta">Testing the connection…</span>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex flex-col sm-flex-row items-center justify-between gap-2_5 pt-2 rule-t">
         <div class="flex items-center gap-2 w-full sm-w-auto">
           <button id="testConnectionBtn" class="px-3_5 py-2 flex-1 sm-flex-initial">
-            Test Connection
+            Test connection
           </button>
-          <button id="clearApiKeyBtn" class="px-3 py-2 flex-1 sm-flex-initial" title="Reset to default system key">
-            Reset to Default
+          <button id="clearApiKeyBtn" class="px-3 py-2 flex-1 sm-flex-initial" title="Remove your key and go back to the built-in one">
+            Use the built-in key
           </button>
         </div>
         <button id="saveApiKeyBtn" class="w-full sm-w-auto px-5 py-2">
-          Save & Connect
+          Save and connect
         </button>
       </div>
 
@@ -9161,7 +9161,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
       const statsEl = document.getElementById('activeRouteStats');
       if (statsEl) {
-        statsEl.textContent = `${activeCuratorialRoute.stops.length} Stops, ~${activeCuratorialRoute.totalKm} km, ${activeCuratorialRoute.totalWalkMinutes} min walk, about ${activeCuratorialRoute.estimatedTotalHours} hrs counting 55 minutes a stop`;
+        statsEl.textContent = `${activeCuratorialRoute.stops.length} stops, about ${activeCuratorialRoute.totalKm} km and ${activeCuratorialRoute.totalWalkMinutes} minutes on foot, about ${activeCuratorialRoute.estimatedTotalHours} hours in all at 55 minutes a stop`;
       }
 
       const idx = activeCuratorialStopIndex || 0;
@@ -9199,9 +9199,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const nextBtn = document.getElementById('routeNextStopBtn');
       if (nextBtn) {
         if (idx === activeCuratorialRoute.stops.length - 1) {
-          nextBtn.innerHTML = '<span>Loop to Start</span>';
+          nextBtn.innerHTML = '<span>Back to the first stop</span>';
         } else {
-          nextBtn.innerHTML = '<span>Next Stop</span>';
+          nextBtn.innerHTML = '<span>Next stop</span>';
         }
       }
     }
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v746';
+    const ATLAS_RELEASE = 'culture-atlas-v747';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -12962,7 +12962,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ${blocks.join('')}
         ${stale.length ? `<h3 class="kicker">Older talk</h3>${stale.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
-        ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">User-generated: posts by staff and visitors on review sites and Reddit, quoted as posted. One person's experience each, not checked as fact and not findings about the institution.</p>${accounts.join('')}` : ''}
+        ${accounts.length ? `<h3 class="kicker">Personal accounts (${accounts.length})</h3><p class="no-indent account-note">User-generated: posts by staff and visitors on review sites and Reddit, quoted as posted. One person’s experience each, not checked as fact and not findings about the institution.</p>${accounts.join('')}` : ''}
       </div>`;
     }
 
@@ -14416,17 +14416,17 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     const PROVIDER_MODELS = {
       anthropic: [
-        { id: 'claude-sonnet-5-5', name: 'Anthropic Sonnet 5.5' },
-        { id: 'claude-opus-5-5', name: 'Anthropic Opus 5.5' },
-        { id: 'claude-haiku-5-5', name: 'Anthropic Haiku 5.5' }
+        { id: 'claude-sonnet-5-5', name: 'Claude Sonnet 5.5' },
+        { id: 'claude-opus-5-5', name: 'Claude Opus 5.5' },
+        { id: 'claude-haiku-5-5', name: 'Claude Haiku 5.5' }
       ],
       openai: [
-        { id: 'gpt-4o-mini', name: 'gpt-4o-mini' },
-        { id: 'gpt-4o', name: 'gpt-4o' }
+        { id: 'gpt-4o-mini', name: 'GPT-4o mini' },
+        { id: 'gpt-4o', name: 'GPT-4o' }
       ],
       gemini: [
-        { id: 'gemini-2.5-flash', name: 'gemini-2.5-flash' },
-        { id: 'gemini-1.5-flash', name: 'gemini-1.5-flash' }
+        { id: 'gemini-2.5-flash', name: 'Gemini 2.5 Flash' },
+        { id: 'gemini-1.5-flash', name: 'Gemini 1.5 Flash' }
       ]
     };
 
@@ -14489,19 +14489,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://console.anthropic.com/settings/keys';
-          providerGetKeyLink.textContent = 'Get Anthropic Key';
+          providerGetKeyLink.textContent = 'Get an Anthropic key';
         }
       } else if (prov === 'openai') {
         if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://platform.openai.com/api-keys';
-          providerGetKeyLink.textContent = 'Get OpenAI Key';
+          providerGetKeyLink.textContent = 'Get an OpenAI key';
         }
       } else {
         if (providerTip) providerTip.textContent = 'Keys are sent only to the provider you pick.';
         if (providerGetKeyLink) {
           providerGetKeyLink.href = 'https://aistudio.google.com/app/apikey';
-          providerGetKeyLink.textContent = 'Get Gemini Key (Free)';
+          providerGetKeyLink.textContent = 'Get a Gemini key (free)';
         }
       }
     }
@@ -14511,25 +14511,25 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!badge) return;
       const k = (val || '').trim();
       if (!k) {
-        badge.textContent = 'Built-in Universal System Key Active';
+        badge.textContent = 'Built-in key active';
         badge.className = 'meta';
         updateProviderUI('anthropic');
         return;
       }
       if (k.startsWith('sk-ant-')) {
-        badge.textContent = 'Custom Anthropic key detected';
+        badge.textContent = 'Anthropic key';
         badge.className = 'meta';
         updateProviderUI('anthropic');
       } else if (k.startsWith('sk-') || k.startsWith('sk-proj-')) {
-        badge.textContent = 'OpenAI key detected';
+        badge.textContent = 'OpenAI key';
         badge.className = 'meta';
         updateProviderUI('openai');
       } else if (k.startsWith('AIza')) {
-        badge.textContent = 'Google Gemini key detected';
+        badge.textContent = 'Gemini key';
         badge.className = 'meta';
         updateProviderUI('gemini');
       } else {
-        badge.textContent = 'Custom API key';
+        badge.textContent = 'Provider not recognised: pick one above';
         badge.className = 'meta';
       }
     }
@@ -14581,18 +14581,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (topDot) topDot.className = 'w-2 h-2 shrink-0';
         if (topLabel) {
           topLabel.className = 'meta flex items-center gap-1_5';
-          topLabel.innerHTML = `<span class="hidden sm-inline">${pName} Live</span>`;
+          topLabel.innerHTML = `<span class="hidden sm-inline">${pName}, live</span>`;
         }
         if (chatKeyBtn) {
           chatKeyBtn.className = 'flex items-center py-1';
-          chatKeyBtn.title = `${pName} is on. Click to change settings`;
+          chatKeyBtn.title = `${pName} answers. Press to change the settings`;
         }
         if (chatKeyIcon) {
           chatKeyIcon.className = 'w-1_5 h-1_5';
           chatKeyIcon.textContent = '';
         }
         if (chatKeyLabel) {
-          chatKeyLabel.textContent = `${pName} Active`;
+          chatKeyLabel.textContent = `${pName}, live`;
         }
         if (workLabel) {
           workLabel.textContent = `${pName}, Live`;
@@ -14601,18 +14601,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (topDot) topDot.className = 'w-1_5 sm-w-2 h-1_5 sm-h-2 shrink-0';
         if (topLabel) {
           topLabel.className = 'flex items-center gap-1';
-          topLabel.innerHTML = `<span class="hidden sm-inline">Add API Key</span>`;
+          topLabel.innerHTML = `<span class="hidden sm-inline">Add an API key</span>`;
         }
         if (chatKeyBtn) {
           chatKeyBtn.className = 'flex items-center py-1';
-          chatKeyBtn.title = 'Connect AI API Key';
+          chatKeyBtn.title = 'Add an API key';
         }
         if (chatKeyIcon) {
           chatKeyIcon.className = '';
           chatKeyIcon.textContent = '';
         }
         if (chatKeyLabel) {
-          chatKeyLabel.textContent = 'Add API Key';
+          chatKeyLabel.textContent = 'Add an API key';
         }
         if (workLabel) {
           workLabel.textContent = 'Answers from the records';
@@ -15921,7 +15921,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     async function testAPIConnection(prov, key, model) {
       const activeKey = key || aiApiKey || _SYS_KEY;
-      if (!activeKey) return { success: false, error: 'Please enter an API key' };
+      if (!activeKey) return { success: false, error: 'Paste an API key first.' };
       try {
         if (prov === 'anthropic') {
           const res = await fetch('https://api.anthropic.com/v1/messages', {
@@ -15942,7 +15942,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const err = await res.json().catch(() => ({}));
             return { success: false, error: err.error?.message || `HTTP ${res.status}` };
           }
-          return { success: true, message: 'Connected to Anthropic successfully!' };
+          return { success: true, message: 'Connected to Anthropic.' };
         } else if (prov === 'openai') {
           const res = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
@@ -15957,7 +15957,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const err = await res.json().catch(() => ({}));
             return { success: false, error: err.error?.message || `HTTP ${res.status}` };
           }
-          return { success: true, message: 'Connected to OpenAI successfully!' };
+          return { success: true, message: 'Connected to OpenAI.' };
         } else {
           const m = model || 'gemini-2.5-flash';
           const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent?key=${activeKey}`, {
@@ -15969,10 +15969,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
             const err = await res.json().catch(() => ({}));
             return { success: false, error: err.error?.message || `HTTP ${res.status}` };
           }
-          return { success: true, message: 'Connected to Gemini successfully!' };
+          return { success: true, message: 'Connected to Gemini.' };
         }
       } catch (e) {
-        return { success: false, error: e.message || 'Network request failed' };
+        return { success: false, error: e.message || 'No connection. Check your network and try again.' };
       }
     }
 
@@ -17494,7 +17494,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         focus(target);
         const lines = [fact('Opening hours: ', target.opening_hours), fact('Admission: ', target.admission_fee || target.admission_policy), fact('Address: ', target.address)].join('');
         const page = target.visit_url || target.website;
-        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>No opening hours, prices or address are recorded for this space.</p>'}${page ? `<p class="no-indent">The space's own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>No opening hours, prices or address are recorded for this space.</p>'}${page ? `<p class="no-indent">The space’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
@@ -18404,8 +18404,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
-        banner: 'Whistleblower reports cannot be sent because the report service is not configured. This is not a secure channel, so leave out your name and anything that identifies you.',
-        placeholder: 'The report service is not configured. Your report will not be saved.'
+        banner: 'Notes cannot be sent at the moment: the report service is not set up. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'The report service is not set up, so your note will not be saved.'
       };
 
     // Share information is a switch like Dark, Gossip mode, Voice and Rotate: the button is highlighted while the note is open and then reads Back to chat; pressing it returns to the chat.
@@ -18466,7 +18466,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (modeToggleBtn) {
         modeToggleBtn.innerHTML = '<span class="flex items-center gap-1_5"><span>Return to Chat</span></span>';
         modeToggleBtn.className = 'py-1 meta flex items-center';
-        modeToggleBtn.title = 'Switch back to General Chat mode';
+        modeToggleBtn.title = 'Back to the general chat';
       }
       const chatContributeBtn = document.getElementById('chatContributeBtn');
       if (chatContributeBtn) {
@@ -18501,7 +18501,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         try { if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || ''; } catch (err) { atlasDebugLog('institution', err); }
         try {
           const noteStatus = document.getElementById('noteFormStatus');
-          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not configured. A note cannot be sent.';
+          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not set up, so a note cannot be sent.';
           syncNoteReady();
         } catch (err) { atlasDebugLog('syncNoteReady', err); }
         try { if (!phone) (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus(); } catch (err) { atlasDebugLog('focus', err); }
@@ -18544,7 +18544,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         sendBtn.innerHTML = `
           <span>${ATLAS_REPORT_API_URL ? 'Send for review' : 'Unavailable'}</span>
         `;
-        sendBtn.title = ATLAS_REPORT_API_URL ? 'Send this note to the editor for review' : 'The report service is not configured';
+        sendBtn.title = ATLAS_REPORT_API_URL ? 'Send this note to the editor for review' : 'The report service is not set up';
       }
 
 
@@ -18636,7 +18636,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         workInput.rows = 2;
         workInput.classList.remove('min-h-_110px', 'sm-min-h-_130px', 'max-h-60', 'is-good');
         workInput.classList.add('min-h-_34px', 'sm-min-h-_42px', 'max-h-36');
-        workInput.placeholder = 'Ask about a space, its funders or controversies…';
+        workInput.placeholder = 'Ask about a space, a city or a funder…';
       }
 
       // 9. Restore suggestions and hero greeting
@@ -18686,7 +18686,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const input = document.getElementById('workInput');
       const institutionBox = document.getElementById('noteInstitution');
       const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
-      if (!ATLAS_REPORT_API_URL) return fail('The report service is not configured. The note was not sent.');
+      if (!ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
       const wanted = (institutionBox.value || '').trim().toLowerCase();
       const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
       if (!place) return fail('Choose the institution from the list. It must be a space on the atlas.', institutionBox);
@@ -18833,7 +18833,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       speechRecognizer.onstart = () => {
         isSpeechRecording = true;
         workMicBtn?.classList.add('is-bad');
-        if (workMicBtn) workMicBtn.title = 'Listening... Speak now';
+        if (workMicBtn) workMicBtn.title = 'Listening. Speak now';
       };
 
       speechRecognizer.onresult = (event) => {
@@ -18866,7 +18866,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     workMicBtn?.addEventListener('click', (e) => {
       e.stopPropagation();
       if (!speechRecognizer) {
-        alert('Voice speech recognition is supported in Google Chrome, Microsoft Edge, and Safari with microphone permissions.');
+        alert('Voice input works in Chrome, Edge and Safari once the page may use the microphone.');
         return;
       }
       if (isSpeechRecording) {
@@ -18894,14 +18894,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice';
         curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0 is-on';
         curatorVoiceToggleBtn.setAttribute('aria-pressed', 'true');
-        curatorVoiceToggleBtn.title = 'Auto-Voice: Speaks responses aloud (Click to mute)';
+        curatorVoiceToggleBtn.title = 'Answers are read aloud. Press to stop';
         const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.setAttribute('aria-pressed', 'true');
       } else {
         if (curatorVoiceToggleIcon) curatorVoiceToggleIcon.textContent = '';
         if (curatorVoiceToggleLabel) curatorVoiceToggleLabel.textContent = 'Voice';
         curatorVoiceToggleBtn.className = 'flex items-center py-1 shrink-0';
         curatorVoiceToggleBtn.setAttribute('aria-pressed', 'false');
-        curatorVoiceToggleBtn.title = 'Auto-Voice: Muted (Click to turn ON)';
+        curatorVoiceToggleBtn.title = 'Answers are not read aloud. Press to turn on';
         const mv = document.getElementById('mobileStickyVoiceBtn'); if (mv) mv.setAttribute('aria-pressed', 'false');
       }
     }
@@ -19087,7 +19087,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Remove "Culture Atlas Curator" header title if present in text, and CA avatar
       let txt = clone.innerText || clone.textContent || '';
       txt = txt.replace(/^CA\s+/gm, '')
-               .replace(/Culture Atlas Curator|Listen|Stop|Copied!|Copy Itinerary/g, '')
+               .replace(/Culture Atlas Curator|Listen|Stop|Copied!?|Copy Itinerary|Copy route/g, '')
                .trim();
       return txt;
     }
@@ -19151,7 +19151,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     function speakCuratorText(rawTextOrElement, btnElement) {
       if (!('speechSynthesis' in window)) {
-        alert('Speech synthesis is not supported on this device/browser.');
+        alert('This browser cannot read answers aloud.');
         return;
       }
 
@@ -19657,10 +19657,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         e.preventDefault();
         e.stopPropagation();
         const card = copyItineraryBtn.closest('.curator-message-wrap');
-        const text = card ? card.innerText.replace(/Culture Atlas Curator|Listen|Stop|Copy Itinerary|Copied!|.*$/g, '').trim() : '';
+        const text = card ? card.innerText.replace(/Culture Atlas Curator|Listen|Stop|Copy Itinerary|Copy route|Copied!?|.*$/g, '').trim() : '';
         navigator.clipboard.writeText(text).then(() => {
-          copyItineraryBtn.textContent = 'Copied!';
-          setTimeout(() => { copyItineraryBtn.textContent = 'Copy Itinerary'; }, 2500);
+          copyItineraryBtn.textContent = 'Copied';
+          setTimeout(() => { copyItineraryBtn.textContent = 'Copy route'; }, 2500);
         });
         return;
       }
@@ -19835,16 +19835,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       connectionTestBox.classList.remove('hidden', 'is-good', 'is-bad');
       connectionTestBox.classList.add('is-on');
       if (testStatusIcon) testStatusIcon.textContent = '';
-      if (testStatusMsg) testStatusMsg.textContent = 'Testing connection with live API...';
+      if (testStatusMsg) testStatusMsg.textContent = 'Testing the connection…';
 
       const res = await testAPIConnection(currentSelectedProvider, key, model);
       if (res.success) {
         connectionTestBox.classList.add('is-good');
-        if (testStatusIcon) testStatusIcon.textContent = 'OK ';
+        if (testStatusIcon) testStatusIcon.textContent = '';
         if (testStatusMsg) testStatusMsg.textContent = res.message;
       } else {
         connectionTestBox.classList.add('is-bad');
-        if (testStatusIcon) testStatusIcon.textContent = 'ERR ';
+        if (testStatusIcon) testStatusIcon.textContent = 'Not connected: ';
         if (testStatusMsg) testStatusMsg.textContent = res.error;
       }
     });
