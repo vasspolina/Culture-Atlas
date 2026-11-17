@@ -75,7 +75,7 @@
         (f.net_assets ? '; net assets ' + money(f.net_assets, f.currency) : '') +
         (f.url ? '. Source: ' + f.url : ''));
     }
-    if (i.funder_links && i.funder_links.length) fin.push('Funders also named at other spaces on the atlas: ' + i.funder_links.filter(function (x) { return x && x.funder; }).map(function (x) { return x.funder + ' (' + x.institutions + ' spaces)'; }).join(', '));
+    if (i.funder_links && i.funder_links.length) fin.push('Funders also named at other museums on the atlas: ' + i.funder_links.filter(function (x) { return x && x.funder; }).map(function (x) { return x.funder + ' (' + x.institutions + ' museums)'; }).join(', '));
     // records_note ("What it publishes") is not given to the chat: deleted from the record as slop (user, 16 Nov 2026).
     if (i.statutory_filings_url) fin.push('Statutory filings: ' + i.statutory_filings_url);
     else if (i.audit_dossier_url) fin.push('Statutory filings: ' + i.audit_dossier_url);
@@ -127,7 +127,7 @@
     (i.wikileaks_records || []).forEach(function (w) { rep.push('WikiLeaks record' + (w.date ? ' ' + w.date : '') + (w.doc_id ? ' (' + w.doc_id + ')' : '') + ': ' + cut(w.what_shows, 400) + (w.flags_added ? ' Flags added: ' + w.flags_added : '') + (w.sources && w.sources.length ? ' Sources: ' + urls(w.sources, 2) : '')); });
     (i.propaganda || []).forEach(function (p) { rep.push('Propaganda record' + (p.period ? ' (' + p.period + ')' : '') + ': ' + [p.kind, p.mechanism].filter(Boolean).join('; ') + ' — ' + cut(p.summary, 400)); });
     if (i.other_findings) rep.push('Other findings: ' + cut(i.other_findings, 600));
-    if (d.not_related && d.not_related.length) rep.push('Not related to this space (do not attribute): ' + d.not_related.slice(0, 4).map(function (p) { return cut(p, 200); }).join(' | '));
+    if (d.not_related && d.not_related.length) rep.push('Not related to this museum (do not attribute): ' + d.not_related.slice(0, 4).map(function (p) { return cut(p, 200); }).join(' | '));
     parts.push(section('REPORTED ON THE RECORD (each item names its source)', rep));
 
     var acc = ((i.gossip_data || {}).accounts || []).slice(0, opts.full ? 6 : 2).map(function (a) {
@@ -139,8 +139,8 @@
     if (i.critique_note) crit.push('Published critics on the record: ' + cut(i.critique_note, opts.full ? 1200 : 500));
     (i.visual_critiques || []).forEach(function (v) {
       if (!v) return;
-      if (v.kind === 'theory' && v.quotes && v.quotes.length) crit.push('Critical frame (' + (v.strategy || 'theory') + ', about this type of museum, not a finding on this space): ' + v.quotes.slice(0, opts.full ? 4 : 2).map(function (q) { return [q.author, q.title, q.publication, q.date].filter(Boolean).join(', ') + ': ' + cut(q.text, 260); }).join(' | '));
-      else if (v.artwork || v.artist) crit.push('Artist critique attached (a lens, not reception of this space): ' + [v.artist, v.artwork, v.year, v.target].filter(Boolean).join(', ') + (v.summary ? ' — ' + cut(v.summary, 220) : ''));
+      if (v.kind === 'theory' && v.quotes && v.quotes.length) crit.push('Critical frame (' + (v.strategy || 'theory') + ', about this type of museum, not a finding on this museum): ' + v.quotes.slice(0, opts.full ? 4 : 2).map(function (q) { return [q.author, q.title, q.publication, q.date].filter(Boolean).join(', ') + ': ' + cut(q.text, 260); }).join(' | '));
+      else if (v.artwork || v.artist) crit.push('Artist critique attached (a lens, not reception of this museum): ' + [v.artist, v.artwork, v.year, v.target].filter(Boolean).join(', ') + (v.summary ? ' — ' + cut(v.summary, 220) : ''));
     });
     (i.study_notes || []).forEach(function (s) { crit.push('Study: ' + [s.authors, s.title, s.journal, s.year].filter(Boolean).join(', ') + (s.text ? ' — ' + cut(s.text, 400) : '')); });
     if (i.case_study && i.case_study.title) crit.push('Case study on the atlas: ' + i.case_study.title + (i.case_study.kick ? ' — ' + cut(i.case_study.kick, 300) : ''));
@@ -192,9 +192,9 @@
     });
     var lines = [
       'Place: ' + placeName,
-      'Spaces on the atlas: ' + insts.length,
+      'Museums on the atlas: ' + insts.length,
       'Grades: ' + Object.keys(tally).sort().map(function (k) { return tally[k] + ' ' + k; }).join(', '),
-      'All spaces (grade): ' + insts.slice().sort(function (a, b) { return (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name); }).map(function (i) { return i.name + (i.grade ? ' (' + letter(i, GRADE) + ')' : ''); }).slice(0, 80).join('; ') + (insts.length > 80 ? ' …' : '')
+      'All museums (grade): ' + insts.slice().sort(function (a, b) { return (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name); }).map(function (i) { return i.name + (i.grade ? ' (' + letter(i, GRADE) + ')' : ''); }).slice(0, 80).join('; ') + (insts.length > 80 ? ' …' : '')
     ];
     if (flagged.length) lines.push('Flagged, with the reason on record: ' + flagged.slice(0, 25).map(function (i) { return i.name + ' — ' + cut(i.why_flagged || (i.flags || []).join(', '), 160); }).join(' | '));
     var top = Object.keys(funders).sort(function (a, b) { return funders[b] - funders[a]; }).slice(0, 8);
