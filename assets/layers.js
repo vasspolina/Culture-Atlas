@@ -834,7 +834,12 @@
     if (L.right && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.right, rec => rec.nodes.filter(RIGHT).map(n => n[0]), L.epstein ? -7 : 0, 'circle', 'Right-wing funder', rec => `Who funds ${rec.n}?`, true);
     if (L.epstein && recById) drawHighlight(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes, COL.epstein, epsteinOf, L.right ? 7 : 0, 'circle', 'Named in the Epstein files', rec => `What is ${rec.n}'s Epstein link?`, true);
 
-    if (L.hq || L.people) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
+    // The offices step aside under Influence mode (assets/influence-mode.js), which draws the private funders at their
+    // offices itself and places their names round each other. Left on, this layer drew a second set: coloured dots for every
+    // office, public bodies too, and names that knew nothing of the mode's, so the two printed over each other across
+    // Europe (user, 17 Nov 2026: "Banca Transilvania" over "Komerční banka", "Puig" under the exit button).
+    const influenceOn = !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
+    if ((L.hq || L.people) && !influenceOn) drawHq(ctx, project, r, baseRadius, cx, cy, sel, hov, boxes);
     if (window.atlasFundingViews && recById) window.atlasFundingViews.over(ctx, dots, r, baseRadius, sel, hov, project, cx, cy, boxes);
 
     if (L.money) {
