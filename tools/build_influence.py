@@ -412,6 +412,32 @@ FUNDERS = [
     ('barrick', 'Barrick Gold', 'corp', r'Barrick'),
     ('leechin', 'Michael Lee-Chin (Portland Holdings)', 'family', r'Lee-Chin'),
     ('bellcanada', 'BCE (Bell Canada)', 'corp', r'Bell Canada|Bell Media|\bBCE Inc'),
+    # New Zealand (user, 17 Nov 2026: "add new zealand sponsors too"): the trusts, firms and families on its galleries'
+    # partner lists. The gaming-machine trusts (Pub Charity, Lion Foundation, NZCT) give pokie money and are kept as
+    # gambling money; Lotto NZ, a Crown entity, is not. Methanex (Vancouver) is read here for its one tie, at Bocas Lit Fest.
+    ('chartwelltrust', 'Chartwell Trust (Gibson family)', 'family', r'Chartwell Trust|Chartwell Charitable'),
+    ('mackelvie', 'Mackelvie Trust', 'family', r'Mackelvie'),
+    ('anthonyharper', 'Anthony Harper (law firm)', 'corp', r'Anthony Harper'),
+    ('jbwere', 'JBWere', 'corp', r'JBWere'),
+    ('craigsinvestmentpartners', 'Craigs Investment Partners', 'corp', r'Craigs Investment|\bCraigs\b'),
+    ('pubcharity', 'Pub Charity (gaming machines)', 'corp', r'Pub ?Charity'),
+    ('lionfoundation', 'Lion Foundation (gaming machines)', 'corp', r'Lion Foundation'),
+    ('nzct', 'NZCT (gaming machines)', 'corp', r'\bNZCT\b|New Zealand Community Trust'),
+    ('skycity', 'SkyCity Entertainment', 'corp', r'Sky ?City'),
+    ('foundationnorth', 'Foundation North', 'found', r'Foundation North'),
+    ('stouttrust', 'Stout Trust', 'family', r'Stout Trust'),
+    ('quartzreef', 'Quartz Reef', 'corp', r'Quartz Reef'),
+    ('todd', 'Todd family (Todd Corporation)', 'family', r'Todd Corporation|Todd Energy|Todd Foundation|Todd family'),
+    ('fletcher', 'Fletcher (Fletcher Building, Fletcher Trust)', 'corp', r'Fletcher Building|Fletcher Trust|Fletcher Challenge|Fletcher Construction'),
+    ('gibbs', 'Alan and Jenny Gibbs', 'family', r'Jenny Gibbs|Alan Gibbs|Gibbs Farm'),
+    ('sparknz', 'Spark New Zealand', 'corp', r'Spark (?:New Zealand|NZ|Foundation)|\bSpark\b(?= (?:sponsor|is|was))'),
+    ('asb', 'ASB Bank', 'corp', r'\bASB\b'),
+    ('bnz', 'Bank of New Zealand', 'corp', r'Bank of New Zealand|\bBNZ\b'),
+    ('tsbnz', 'TSB and the TSB Community Trust', 'corp', r'TSB Community|TSB Bank|\bTSB\b(?= (?:Trust|Foundation))'),
+    ('simpsongrierson', 'Simpson Grierson (law firm)', 'corp', r'Simpson Grierson'),
+    ('steeltube', 'Steel & Tube', 'corp', r'Steel & Tube'),
+    ('dulux', 'Dulux (Nippon Paint)', 'corp', r'Dulux'),
+    ('methanex', 'Methanex', 'corp', r'Methanex'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
