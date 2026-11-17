@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v740';
+    const ATLAS_RELEASE = 'culture-atlas-v741';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13134,7 +13134,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
         // Gossip mode keeps the Details design (user, 5 Nov 2026); only the reported items turn yellow.
-        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : isGossipModeActive ? '<p class="no-indent t-lead">Nothing is reported for this space in the records.</p>' : '')) + placeReviewsHtml(inst);
+        // A space with nothing reported has no block here, in Gossip mode too: no "Nothing is reported" line (user, 17 Nov 2026).
+        record.innerHTML = (reported || (watchReported ? `<div data-gossip="watch"><p class="no-indent t-lead">${escapeHtml(inst.watch.trim())}</p></div>` : '')) + placeReviewsHtml(inst);
         record.classList.toggle('hidden', !record.innerHTML);
       }
       // The summary, the funding row and the reported items are filled apart; what one says, the next does not say again.
