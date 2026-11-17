@@ -95,7 +95,9 @@
   const shortAfter = f => {
     const a = afterNo(f); if (!a.ended.length) return '';
     const left = new Set(a.ended.map(t => t.space)).size, kept = new Set(a.kept.map(t => t.space)).size;
-    return `${plural(left, 'space')} ended it${a.first ? `, ${kept ? `${plural(kept, 'space')} still dated ${a.first} or later` : `none dated ${a.first} or later in the records`}` : ''}`;
+    // A clause the records have nothing for is left out (user, 17 Nov 2026: "only add section if there is an info"): no
+    // "none dated … or later in the records", just the spaces that ended it.
+    return `${plural(left, 'space')} ended it${a.first && kept ? `, ${plural(kept, 'space')} still dated ${a.first} or later` : ''}`;
   };
 
   // ---- The map: the funders, not the spaces ----
@@ -345,14 +347,16 @@
       return row(title, sub || '', `${lead}${list.length ? `<ul class="d-row-list influence-list">${list.map(factLine).join('')}</ul>` : ''}`);
     }).join('');
   }
+  // The section is drawn only when the records hold something on what came after a refusal: a tie dated after it, or what a
+  // source says happened next (user, 17 Nov 2026: "do not publish sections that lack the info, only add section if there is
+  // an info"). A refusal alone is not enough: the ended ties are already in the ledger, marked Ended, and a section that could
+  // only say the records do not say where the money went (Chevron) is not drawn.
   function afterRows(f) {
     const a = afterNo(f), told = ((f.sender && f.sender.facts) || []).filter(x => x.kind === 'after');
-    if (!a.ended.length && !told.length) return '';
+    if (!a.kept.length && !told.length) return '';
     let inner = '';
     if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Ended it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
-    if (a.first) inner += a.kept.length
-      ? `<p class="no-indent"><span class="lead-in">Dated ${esc(a.first)} or later, and not said to have ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`
-      : `<p class="no-indent">No tie in the records is dated ${esc(a.first)} or later without having ended. That says where the money did not go; the records do not say where it went.</p>`;
+    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Dated ${esc(a.first)} or later, and not said to have ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
     if (told.length) inner += `<p class="no-indent"><span class="lead-in">What the sources say happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
     return row('When a space said no', 'a refusal ends one tie, not the money', inner);
   }

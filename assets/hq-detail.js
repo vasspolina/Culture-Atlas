@@ -214,8 +214,8 @@
 
     const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Names and connections' });
     // A row is shown only when it has something in it: no 'no other name', 'no space', 'None' lines (user, 3 Nov 2026).
-    if (!ready) rows.append(row('hqConnT', 'Connections', 'Loading…'));
-    else {
+    // While the offices load, the slot stays empty rather than showing a "Loading…" row; fill() runs again once they arrive.
+    if (ready) {
       // The other spellings only: the funder's own name is the title above, and the sentence that explained the list is gone
       // (user, 9 Nov 2026: "Slop"). No row when every funding line spells it as the title does.
       const others = hq().names(e).filter(n => n !== e.n);
@@ -229,7 +229,7 @@
         group('hqConnPeople', 'People the files tie to these spaces', rel.people, r => officeRow(r.e, r.shared));
       }
     }
-    p.replaceChildren(head, rows);
+    if (rows.childElementCount) p.replaceChildren(head, rows); else p.replaceChildren(head);
     toTop(p);
   }
 
