@@ -473,6 +473,25 @@ FUNDERS = [
     # Added on main with the lobbying links (user, 17 Nov 2026: "same for funders ... keep adding both to atlas").
     ('santos', 'Santos', 'corp', r'\bSantos (?:GLNG|Ltd|Limited|Energy)\b'),
     ('woodside', 'Woodside Energy', 'corp', r'\bWoodside\b(?! (?:Avenue|Road|Street|Park))'),
+    # The poles (user, 17 Nov 2026: "research atarktika spaces and funders", "add arctic spaces and funders too"): the
+    # private money at the Antarctic heritage sites and programmes and at the new Arctic spaces. Public Antarctic programmes
+    # and Arctic councils and ministries are recorded on the spaces, not here.
+    ('hxexpeditions', 'HX (Hurtigruten Expeditions)', 'corp', r'\bHX\b|Hurtigruten'),
+    ('quarkexpeditions', 'Quark Expeditions', 'corp', r'\bQuark\b'),
+    ('heritageexpeditions', 'Heritage Expeditions', 'corp', r'Heritage Expeditions'),
+    ('kaspersky', 'Kaspersky Lab (Eugene Kaspersky)', 'corp', r'Kaspersky'),
+    ('sparebank1nordnorge', 'SpareBank 1 Nord-Norge', 'corp', r'SpareBank 1 Nord-Norge|Samfunnsløftet'),
+    ('akerbp', 'Aker BP', 'corp', r'Aker BP'),
+    ('storenorske', 'Store Norske (state coal miner)', 'corp', r'Store Norske'),
+    ('lkab', 'LKAB (state iron ore miner)', 'corp', r'\bLKAB\b'),
+    ('nornickel', 'Nornickel', 'corp', r'Nornickel|Norilsk Nickel'),
+    ('hofffamily', 'Venke and Rolf Hoff', 'family', r'Rolf Hoff|Venke'),
+    ('wihurifoundation', 'Jenny and Antti Wihuri Foundation', 'family', r'Wihuri'),
+    ('oakfoundation', 'Oak Foundation', 'family', r'Oak Foundation'),
+    ('frittord', 'Fritt Ord', 'family', r'Fritt Ord'),
+    ('inuvialuit', 'Inuvialuit Regional Corporation', 'corp', r'Inuvialuit Regional'),
+    ('airnorth', 'Air North', 'corp', r'Air North'),
+    ('northwestel', 'Northwestel', 'corp', r'Northwestel'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
