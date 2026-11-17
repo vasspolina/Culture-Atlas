@@ -6432,5 +6432,735 @@
  "pictet": {
   "made_from": "Pictet's money comes from private banking, wealth management and asset management; it is owned by its partners.",
   "facts": []
+ },
+ "lvmhlouisvuitton": {
+  "made_from": "LVMH's money comes from selling luxury goods, wines and spirits, fashion, perfume, watches and jewellery (Louis Vuitton, Dior, Moët Hennessy, Bulgari and others); Bernard Arnault and his family control the group.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "LVMH reported revenue of €80.807 billion and net income of €10.878 billion for 2025 (Wikipedia, from the group's results).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/LVMH"
+   },
+   {
+    "kind": "harm",
+    "text": "In December 2021 LVMH paid €10 million to settle claims in Paris and end criminal investigations into whether a former French intelligence chief, Bernard Squarcini, spied for the company, including on the journalist François Ruffin.",
+    "date": "2021-12",
+    "source": "https://en.wikipedia.org/wiki/LVMH"
+   },
+   {
+    "kind": "lobbying",
+    "text": "LVMH Moët Hennessy Louis Vuitton declared EU lobbying costs of €2,000,000 to €2,249,999 for 2025 to the EU Transparency Register, with 5.7 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=16094042309-21"
+   },
+   {
+    "kind": "lobbying",
+    "text": "LVMH Moët Hennessy Louis Vuitton Inc. paid the outside firm S-3 Group $240,000 for US federal lobbying in 2025 (four quarterly reports of $60,000 under the Lobbying Disclosure Act); Moët Hennessy USA reported $215,000 of its own in-house spending.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=LVMH&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2000000,
+    "eur_max": 2249999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=16094042309-21"
+   },
+   "us_lobbying": {
+    "usd": 240000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=LVMH&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Paid for Caillebotte's La Partie de bateau, priced at €43 million, for the Musée d'Orsay (2023).",
+     "amount": 43000000,
+     "currency": "EUR",
+     "source": "https://theconversation.com/the-group-louis-vuitton-lvmh-a-gift-to-the-musee-dorsay-and-a-huge-tax-incentive-business-as-usual-265403"
+    },
+    "spaces": 18,
+    "entries": 21
+   }
+  }
+ },
+ "carlsberg": {
+  "made_from": "The Carlsberg Foundation, set up by the brewer J.C. Jacobsen in 1876 with shares in his brewery, controls the Carlsberg brewing group; its money, and that of the New Carlsberg Foundation it oversees, comes from the brewery's dividends.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Carlsberg Breweries A/S declared EU lobbying costs of €50,000 to €99,999 for its financial year March 2024 to February 2025 to the EU Transparency Register, with 1.3 full-time-equivalent lobbyists.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=048387711728-21"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 50000,
+    "eur_max": 99999,
+    "period": "2024/25",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=048387711728-21"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "The Carlsberg Foundation and the New Carlsberg Foundation gave DKK 750 million each for the Ny Carlsberg Glyptotek's restoration (2026).",
+     "amount": 750000000,
+     "currency": "DKK",
+     "source": "https://www.carlsbergfondet.dk/en/news/the-carlsberg-foundation-donates-a-historic-grant-to-future-proof-the-ny-carlsberg-glyptotek/"
+    },
+    "spaces": 13,
+    "entries": 17
+   }
+  }
+ },
+ "intesasanpaolo": {
+  "made_from": "Intesa Sanpaolo's money comes from banking, insurance and asset management; it is Italy's largest bank.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Intesa Sanpaolo reported net income of €9.32 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Intesa_Sanpaolo"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks Intesa Sanpaolo 40th among the world's banks for fossil fuel financing in 2025, a change of -$27 million (-0.6%) from 2024.",
+    "date": "2026-06",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Intesa Sanpaolo declared EU lobbying costs of €700,000 to €799,999 for 2025 to the EU Transparency Register, with 3 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=24037141789-48"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 700000,
+    "eur_max": 799999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=24037141789-48"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "€760,000 forecast for Teatro La Fenice in 2025.",
+     "amount": 760000,
+     "currency": "EUR",
+     "source": "https://www.teatrolafenice.it/wp-content/uploads/2025/11/Budget-2025.pdf"
+    },
+    "spaces": 9,
+    "entries": 11
+   }
+  }
+ },
+ "prada": {
+  "made_from": "Prada's money comes from selling luxury fashion and leather goods (Prada, Miu Miu); Miuccia Prada and Patrizio Bertelli control the group.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Prada reported revenue of €5.431 billion and net income of €838.9 million for 2024 (Wikipedia).",
+    "date": "2024",
+    "source": "https://en.wikipedia.org/wiki/Prada"
+   }
+  ]
+ },
+ "cartier": {
+  "made_from": "Cartier's money comes from selling jewellery and watches; it is the largest house of Compagnie Financière Richemont, which also owns Van Cleef & Arpels.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Richemont reported revenue of €21.4 billion and net income of €2.75 billion for its 2025 financial year (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Richemont"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Richemont International SA declared EU lobbying costs of €200,000 to €299,999 for its financial year April 2025 to March 2026 to the EU Transparency Register, with 0.1 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=5433399106656-10"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 200000,
+    "eur_max": 299999,
+    "period": "2025/26",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=5433399106656-10"
+   },
+   "culture": {
+    "spaces": 6,
+    "entries": 9
+   }
+  }
+ },
+ "telefonica": {
+  "made_from": "Telefónica's money comes from telecoms: mobile, broadband and pay-TV services in Spain, Germany, the UK and Latin America.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 5 July 2007 the European Commission ordered Telefónica to pay an antitrust fine of almost €152 million for its conduct in the Spanish broadband market (Wikipedia).",
+    "date": "2007-07",
+    "source": "https://en.wikipedia.org/wiki/Telef%C3%B3nica"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Telefónica, S.A. declared EU lobbying costs of €2,000,000 to €2,249,999 for 2025 to the EU Transparency Register, with 5.5 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=52431421-12"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2000000,
+    "eur_max": 2249999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=52431421-12"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Gave its foundation €39 million for general activities in 2024.",
+     "amount": 39000000,
+     "currency": "EUR",
+     "source": "https://www.fundaciontelefonica.com/wp-content/uploads/2025/11/Fundacion-Telefonica_CCAA-2024_compressed-2.pdf"
+    },
+    "spaces": 7,
+    "entries": 8
+   }
+  }
+ },
+ "eon": {
+  "made_from": "E.ON's money comes from running electricity and gas networks and selling energy to customers across Europe.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In July 2009 the European Commission fined E.ON and GDF Suez €553 million each over market-sharing arrangements on the MEGAL gas pipeline.",
+    "date": "2009-07",
+    "source": "https://en.wikipedia.org/wiki/E.ON"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives E.ON a C+ grade for its climate policy engagement (summary updated Q3 2026).",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/E-ON"
+   },
+   {
+    "kind": "lobbying",
+    "text": "E.ON SE declared EU lobbying costs of €2,500,000 to €2,749,999 for 2025 to the EU Transparency Register, with 9.05 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=72760517350-57"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2500000,
+    "eur_max": 2749999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=72760517350-57"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "lavazza": {
+  "made_from": "Lavazza's money comes from roasting and selling coffee; the Lavazza family owns the group.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Luigi Lavazza S.p.A. declared EU lobbying costs of €50,000 to €99,999 for 2025 to the EU Transparency Register, with 1.75 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=496015851378-66"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 50000,
+    "eur_max": 99999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=496015851378-66"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "€200,000 of restricted donations released to the Museo Egizio's income in 2024.",
+     "amount": 200000,
+     "currency": "EUR",
+     "source": "https://api.museoegizio.it/wp-content/uploads/2026/05/Bilancio-consuntivo-2025_schemi-e-nota.pdf"
+    },
+    "spaces": 6,
+    "entries": 8
+   }
+  }
+ },
+ "unicredit": {
+  "made_from": "UniCredit's money comes from banking in Italy, Germany (HypoVereinsbank), Austria (Bank Austria) and Central and Eastern Europe.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "UniCredit reported net income of €9.719 billion for 2024 (Wikipedia).",
+    "date": "2024",
+    "source": "https://en.wikipedia.org/wiki/UniCredit"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks UniCredit 42nd among the world's banks for fossil fuel financing in 2025, a change of -$1.0 billion (-18.5%) from 2024.",
+    "date": "2026-06",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "UniCredit declared EU lobbying costs of €700,000 to €799,999 for 2025 to the EU Transparency Register, with 2.35 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=03094871618-32"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 700000,
+    "eur_max": 799999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=03094871618-32"
+   },
+   "culture": {
+    "spaces": 6,
+    "entries": 6
+   }
+  }
+ },
+ "generali": {
+  "made_from": "Generali's money comes from insurance and asset management; it is Italy's largest insurer.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Generali reported net income of €4.3 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Assicurazioni_Generali"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Assicurazioni Generali S.p.A declared EU lobbying costs of €1,250,000 to €1,499,999 for 2025 to the EU Transparency Register, with 3.95 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=600525713796-88"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1250000,
+    "eur_max": 1499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=600525713796-88"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Generali Italia gave €107,650 to MUVE for the Palazzo Ducale under the Art Bonus (held at the end of 2024).",
+     "amount": 107650,
+     "currency": "EUR",
+     "source": "https://palazzoducale.visitmuve.it/en/"
+    },
+    "spaces": 6,
+    "entries": 6
+   }
+  }
+ },
+ "bosch": {
+  "made_from": "Bosch's money comes from making car parts, industrial technology, power tools and home appliances; the Robert Bosch Stiftung, a foundation, holds most of the company's shares and lives on its dividends.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Robert Bosch GmbH reported revenue of €90.34 billion and net income of €1.332 billion for 2024 (Wikipedia).",
+    "date": "2024",
+    "source": "https://en.wikipedia.org/wiki/Robert_Bosch_GmbH"
+   },
+   {
+    "kind": "harm",
+    "text": "Bosch agreed in February 2017 to pay US consumers $327.5 million for its role in devising diesel emissions software, and in May 2019 paid a further $100 million fine over the Dieselgate scandal (Wikipedia).",
+    "date": "2019-05",
+    "source": "https://en.wikipedia.org/wiki/Robert_Bosch_GmbH"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Robert Bosch GmbH declared EU lobbying costs of €2,250,000 to €2,499,999 for 2025 to the EU Transparency Register, with 12 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=8999533555-91"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Robert Bosch Stiftung GmbH declared EU lobbying costs of €100,000 to €199,999 for 2025 to the EU Transparency Register, with 2 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=181823053178-62"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Robert Bosch LLC reported $860,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bosch&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 2250000,
+    "eur_max": 2499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=8999533555-91"
+   },
+   "us_lobbying": {
+    "usd": 860000,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bosch&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "enel": {
+  "made_from": "Enel's money comes from generating, distributing and selling electricity and gas in Italy, Spain (Endesa) and Latin America; the Italian state is its largest shareholder.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Enel reported revenue of €80.947 billion and net income of €4.225 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Enel"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Enel a B- grade for its climate policy engagement (summary updated Q3 2026).",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Enel-e3acfc23c1f0dfd05759e00c3fa35175"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ENEL SpA declared EU lobbying costs of €1,250,000 to €1,499,999 for 2025 to the EU Transparency Register, with 6 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=6256831207-27"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1250000,
+    "eur_max": 1499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=6256831207-27"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Gave MAXXI €600,000 in 2025, a yearly sum under an agreement to 2026.",
+     "amount": 600000,
+     "currency": "EUR",
+     "source": "https://www.maxxi.art/wp-content/uploads/2026/07/Bilancio-consuntivo-2025.pdf"
+    },
+    "spaces": 4,
+    "entries": 5
+   }
+  }
+ },
+ "rabobank": {
+  "made_from": "Rabobank's money comes from banking, above all lending to farmers and the food and agriculture business; it is a Dutch cooperative bank.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In 2013 Rabobank was fined $1 billion over the manipulation of Libor rates; its chief executive Piet Moerland resigned (Wikipedia).",
+    "date": "2013",
+    "source": "https://en.wikipedia.org/wiki/Rabobank"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks Rabobank 48th among the world's banks for fossil fuel financing in 2025, a change of -$212 million (-6.9%) from 2024.",
+    "date": "2026-06",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Rabobank declared EU lobbying costs of €300,000 to €399,999 for 2025 to the EU Transparency Register, with 2.25 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=006687715492-92"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 300000,
+    "eur_max": 399999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=006687715492-92"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "A €35,000 sustainability grant for solar panels at De Nollen.",
+     "amount": 35000,
+     "currency": "EUR",
+     "source": "https://projectdenollen.nl/wp-content/uploads/2026/03/Jaarrekening-en-jaarverslag-2025-Stichting-De-Nollen.pdf"
+    },
+    "spaces": 6,
+    "entries": 6
+   }
+  }
+ },
+ "hermes": {
+  "made_from": "Hermès's money comes from selling luxury leather goods, silk, ready-to-wear and perfume; the Hermès family controls the company.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Hermès reported revenue of €16.00 billion and net income of €4.52 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Herm%C3%A8s"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Hermès International declared EU lobbying costs of €50,000 to €99,999 for 2025 to the EU Transparency Register, with 0.75 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=919484116074-16"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 50000,
+    "eur_max": 99999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=919484116074-16"
+   },
+   "culture": {
+    "spaces": 5,
+    "entries": 6
+   }
+  }
+ },
+ "socgen": {
+  "made_from": "Société Générale's money comes from retail and investment banking in France and abroad, including BRD in Romania.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Société Générale reported revenue of €27.3 billion and net income of €6.00 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_G%C3%A9n%C3%A9rale"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks Société Générale 29th among the world's banks for fossil fuel financing in 2025, a change of +$807 million (+7.7%) from 2024.",
+    "date": "2026-06",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Société Générale declared EU lobbying costs of €1,500,000 to €1,749,999 for 2025 to the EU Transparency Register, with 1.85 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=34369111614-57"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 1500000,
+    "eur_max": 1749999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=34369111614-57"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 4
+   }
+  }
+ },
+ "ing": {
+  "made_from": "ING's money comes from retail and wholesale banking in the Netherlands, Belgium, Germany and other countries.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "ING Group reported revenue of €23.035 billion and net income of €6.327 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/ING_Group"
+   },
+   {
+    "kind": "harm",
+    "text": "In a 2018 settlement with Dutch prosecutors, ING was found negligent in preventing money laundering: between 2010 and 2016 clients misused accounts at ING to launder hundreds of millions of euros, and its chief financial officer stepped down (Wikipedia).",
+    "date": "2018",
+    "source": "https://en.wikipedia.org/wiki/ING_Group"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks ING Group 28th among the world's banks for fossil fuel financing in 2025, a change of +$1.2 billion (+11.3%) from 2024.",
+    "date": "2026-06",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ING Group declared EU lobbying costs of €600,000 to €699,999 for 2024, its last closed year on the register to the EU Transparency Register, with 2.25 full-time-equivalent lobbyists.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=12112965774-95"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 600000,
+    "eur_max": 699999,
+    "period": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=12112965774-95"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 4
+   }
+  }
+ },
+ "wurth": {
+  "made_from": "The Würth family's money comes from the Würth Group, a maker and seller of assembly and fastening materials built up by Reinhold Würth.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Würth Group reported revenue of €20.396 billion for 2023 (Wikipedia).",
+    "date": "2023",
+    "source": "https://en.wikipedia.org/wiki/W%C3%BCrth_Group"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2008 the Heilbronn District Court issued a penalty order of 700 daily fines against Reinhold Würth for tax evasion, reportedly up to €3.5 million; he had repaid the tax debt (Wikipedia).",
+    "date": "2008",
+    "source": "https://en.wikipedia.org/wiki/Reinhold_W%C3%BCrth"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Adolf Würth GmbH & Co. KG declared EU lobbying costs of €100,000 to €199,999 for 2025 to the EU Transparency Register, with 0.25 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=268816091687-73"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 100000,
+    "eur_max": 199999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=268816091687-73"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 3
+   }
+  }
+ },
+ "bayer": {
+  "made_from": "Bayer's money comes from crop science (seeds and pesticides, including Monsanto's glyphosate weedkiller Roundup), pharmaceuticals and consumer health products.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Bayer reported revenue of €46.6 billion and a net loss of €2.6 billion for 2024 (Wikipedia).",
+    "date": "2024",
+    "source": "https://en.wikipedia.org/wiki/Bayer"
+   },
+   {
+    "kind": "harm",
+    "text": "In June 2020 Bayer agreed to pay $9.6 billion to settle more than 10,000 lawsuits claiming harm from Roundup, and set aside $1.25 billion for future claims (Wikipedia).",
+    "date": "2020-06",
+    "source": "https://en.wikipedia.org/wiki/Bayer"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Bayer AG declared EU lobbying costs of €6,000,000 to €6,499,999 for 2025 to the EU Transparency Register, with 20 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=3523776801-85"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Bayer Corporation reported $9,190,000 of its own US federal lobbying spending for 2025, in its four consolidated quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bayer&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 6000000,
+    "eur_max": 6499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=3523776801-85"
+   },
+   "us_lobbying": {
+    "usd": 9190000,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Bayer&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "saintgobain": {
+  "made_from": "Saint-Gobain's money comes from making and selling building materials: glass, insulation, plaster and construction chemicals.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Compagnie de Saint-Gobain declared EU lobbying costs of €400,000 to €499,999 for 2025 to the EU Transparency Register, with 3.85 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=892857311821-20"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Saint-Gobain Corporation paid the outside firm Cozen O'Connor Public Strategies $80,000 for US federal lobbying in 2025 (four quarterly reports of $20,000).",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Saint-Gobain&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 400000,
+    "eur_max": 499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=892857311821-20"
+   },
+   "us_lobbying": {
+    "usd": 80000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Saint-Gobain&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Gave €20,000 to the Fondation Maeght's extension (2023).",
+     "amount": 20000,
+     "currency": "EUR",
+     "source": "https://www.artnewspaper.fr/2023/01/09/une-fondation-maeght-augmentee-"
+    },
+    "spaces": 3,
+    "entries": 3
+   }
+  }
+ },
+ "creditagricole": {
+  "made_from": "Crédit Agricole's money comes from banking, insurance and asset management; it is a French cooperative group of regional banks.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Crédit Agricole reported revenue of €39.56 billion and net income of €8.75 billion for 2025 (Wikipedia).",
+    "date": "2025",
+    "source": "https://en.wikipedia.org/wiki/Cr%C3%A9dit_Agricole"
+   },
+   {
+    "kind": "harm",
+    "text": "Banking on Climate Chaos 2026 ranks Crédit Agricole 30th among the world's banks for fossil fuel financing in 2025, a change of -$1.0 billion (-8.4%) from 2024.",
+    "date": "2026-06",
+    "source": "https://www.bankingonclimatechaos.org/banking-on-climate-chaos-2026-report/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Crédit Agricole S.A. declared EU lobbying costs of €800,000 to €899,999 for 2025 to the EU Transparency Register, with 2.75 full-time-equivalent lobbyists.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=35147251117-11"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 800000,
+    "eur_max": 899999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=35147251117-11"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 3
+   }
+  }
  }
 }

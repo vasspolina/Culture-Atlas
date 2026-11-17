@@ -264,7 +264,7 @@ FUNDERS = [
     ('vinci', 'Vinci', 'corp', r'\bVinci\b(?! (?:Code))|\bVINCI\b'),
     ('bouygues', 'Bouygues', 'corp', r'Bouygues'),
     ('saintgobain', 'Saint-Gobain', 'corp', r'Saint-Gobain'),
-    ('lvmhlouisvuitton', 'LVMH (Arnault family)', 'corp', r'LVMH|Louis Vuitton|\bDior\b|Bulgari|Bvlgari|Arnault'),
+    ('lvmhlouisvuitton', 'LVMH (Arnault family)', 'corp', r'LVMH|Louis Vuitton|\bDior\b|\bBulgari\b|Bvlgari|Arnault'),
     ('kering', 'Kering (Pinault family)', 'corp', r'Kering|\bGucci\b|Pinault|Artémis|Bottega Veneta|Saint Laurent(?= (?:Rive|Paris|sponsor))'),
     ('hermes', 'Hermès', 'corp', r'Hermès|Fondation d.entreprise Herm'),
     ('cartier', 'Cartier (Richemont)', 'corp', r'Cartier|Richemont'),
