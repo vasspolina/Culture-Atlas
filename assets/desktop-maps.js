@@ -63,7 +63,7 @@
     box.id = 'gmdSearch';
     box.setAttribute('role', 'search');
     box.innerHTML =
-      '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search spaces and cities, or ask Leaving it on the table">' +
+      '<input id="gmdInput" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gmdResults" placeholder="Search the atlas" aria-label="Search museums and cities, or ask Leaving it on the table">' +
       '<button type="button" id="gmdGo" class="gmd-ico-btn" aria-label="Search">' + svg(ICON.lens) + '</button>' +
       '<button type="button" id="gmdClear" class="gmd-ico-btn" aria-label="Clear the search" hidden>' + svg(ICON.close) + '</button>' +
       '<ul id="gmdResults" role="listbox" aria-label="Results" hidden></ul>';
@@ -99,7 +99,7 @@
       const out = [];
       ix.cities.forEach((x) => {
         const s = x.n === n ? 0 : x.n.startsWith(n) ? 1 : -1;
-        if (s >= 0) out.push({ kind: 'city', s, x: x.c, label: x.c.name, sub: [x.c.country, x.c.count ? x.c.count + (x.c.count === 1 ? ' space' : ' spaces') : ''].filter(Boolean).join(' · ') });
+        if (s >= 0) out.push({ kind: 'city', s, x: x.c, label: x.c.name, sub: [x.c.country, x.c.count ? x.c.count + (x.c.count === 1 ? ' museum' : ' museums') : ''].filter(Boolean).join(' · ') });
       });
       ix.insts.forEach((x) => {
         let s = -1;
@@ -351,8 +351,8 @@
       if (inCity) {
         const all = near(city, picked).filter((i) => !keep || keep(i)).sort((a, b) => a.name.localeCompare(b.name));
         const list = all.filter((i) => hit(i.name));
-        idxFind.placeholder = 'Find a space';
-        idxTitle.textContent = city + ', ' + plural(all.length, 'space', 'spaces');
+        idxFind.placeholder = 'Find a museum';
+        idxTitle.textContent = city + ', ' + plural(all.length, 'museum', 'museums');
         if (!q) frag.appendChild(back());
         list.forEach((i) => frag.appendChild(idxRow(i.name, '', i.tier === 'A' || i.tier === 'B' ? i.tier : 'U', !!sel && sel.name === i.name, () => {
           const pick = g('selectInstitution'); if (typeof pick === 'function') pick(i, false);
@@ -417,7 +417,7 @@
       if (keep && !shown.length) {
         const li = document.createElement('li');
         li.className = 'sh-reports-empty sh-report-meta';
-        li.textContent = 'No reports about these spaces yet.';
+        li.textContent = 'No reports about these museums yet.';
         frag.appendChild(li);
       }
       shown.forEach((x) => {
