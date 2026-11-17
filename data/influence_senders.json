@@ -1560,7 +1560,7 @@
    },
    {
     "kind": "politics",
-    "text": "The Sony Pictures Entertainment PAC gave $44,000 to federal candidates in the 2023 to 2024 cycle, in its reports to the Federal Election Commission.",
+    "text": "The Sony Pictures Entertainment PAC gave $27,000 to federal candidates in the 2023 to 2024 cycle, 39% to Republicans and 61% to Democrats, and $17,000 more to other political committees, in its reports to the Federal Election Commission.",
     "date": "2024",
     "source": "https://www.fec.gov/data/committee/C00282038/?cycle=2024"
    }
@@ -1578,8 +1578,10 @@
     "source": "https://lda.gov/api/v1/filings/?client_name=Sony+Pictures+Entertainment&filing_year=2025"
    },
    "political": {
-    "usd": 44000,
-    "source": "https://www.fec.gov/data/committee/C00282038/?cycle=2024"
+    "usd": 27000,
+    "source": "https://www.fec.gov/data/committee/C00282038/?cycle=2024",
+    "rep_usd": 10500,
+    "dem_usd": 16500
    }
   }
  }
