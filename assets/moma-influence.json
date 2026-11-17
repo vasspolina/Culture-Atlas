@@ -670,9 +670,10 @@
      "name": "David Rockefeller",
      "role": "Chairman (1962–72, 1987–93); Chairman Emeritus; $125M bequest (2017)",
      "money": "",
-     "note": "The David Rockefeller Award, MoMA's main corporate honor, is named for him. Chase Manhattan chairman; Council on Foreign Relations chairman.",
+     "note": "The David Rockefeller Award, MoMA's main corporate honor, is named for him. Chase Manhattan chairman; Council on Foreign Relations chairman. A MoMA trustee from 1948, he had dealings with the CIA, by the agency's own chief historian (Robarge, Studies in Intelligence, September 2025): a CIA conference on Latin American intelligence in January 1950; an offer in 1950 from CIA director Walter Bedell Smith to be his executive assistant, which he did not take; arranging to be detailed to the CIA if his reserve unit was called up; and active duty with the CIA for training in 1952 and 1953.",
      "sources": [
-      "https://news.artnet.com/market/moma-secret-weapon-massive-400m-expansion-1671187"
+      "https://news.artnet.com/market/moma-secret-weapon-massive-400m-expansion-1671187",
+      "https://www.cia.gov/resources/csi/static/Unclassified-Studies-Extracts-Sep-2025-19Sep2025.pdf"
      ]
     },
     {
@@ -753,10 +754,12 @@
      "name": "CIA International Organizations Division",
      "role": "Covert cultural funding, 1950s–60s",
      "money": "~$900,000 a year to the Congress for Cultural Freedom",
-     "note": "Documented: the division Braden ran paid for the CCF. Not documented: any direct CIA money to MoMA. Saunders (1999) and Kimmelman (1994) both say the MoMA link was people and shared aims, not funding.",
+     "note": "Documented: the division Braden ran paid for the CCF. Its money reached MoMA's exhibitions through the Farfield Foundation: it underwrote the CCF's 1952 Paris festival, which borrowed from MoMA, and, by Saunders's account (1999), paid for the London showing of MoMA's \"The New American Painting\" (Tate, 1959) when the Tate could not. JSTOR Daily says the CIA \"helped finance MoMA's international exhibitions\". No record found of CIA money paid to MoMA itself. The CIA's own chief historian records its ties with David Rockefeller, a MoMA trustee (2025).",
      "sources": [
+      "https://daily.jstor.org/was-modern-art-really-a-cia-psy-op/",
+      "https://www.counterpunch.org/2003/01/11/the-cia-as-art-patron/",
       "https://en.wikipedia.org/wiki/Tom_Braden",
-      "https://daily.jstor.org/was-modern-art-really-a-cia-psy-op/"
+      "https://www.cia.gov/resources/csi/static/Unclassified-Studies-Extracts-Sep-2025-19Sep2025.pdf"
      ]
     },
     {
@@ -773,7 +776,7 @@
      "name": "Farfield Foundation",
      "role": "CIA funding front",
      "money": "",
-     "note": "The agency's main pass-through for the CCF. Its president, Julius Fleischmann, sat on the board of MoMA's International Program; MoMA president William Burden is also described as a Farfield president.",
+     "note": "The agency's main pass-through for the CCF. Its president, Julius Fleischmann, sat on the board of MoMA's International Program; MoMA president William Burden is also described as a Farfield president. By Saunders's account (1999) it paid for the London showing of MoMA's \"The New American Painting\" (Tate, 1959).",
      "sources": [
       "https://www.sourcewatch.org/index.php/Farfield_Foundation",
       "https://www.counterpunch.org/2003/01/11/the-cia-as-art-patron/"
@@ -1300,6 +1303,136 @@
    },
    "from": [
     "Permanent Mission of Qatar"
+   ]
+  },
+  {
+   "name": "Federal Reserve",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Federal Reserve"
+   ]
+  },
+  {
+   "name": "US Department of Health and Human Services (BARDA)",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "HHS · BARDA · Operation Warp Speed"
+   ]
+  },
+  {
+   "name": "US State Department",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "US State Department"
+   ]
+  },
+  {
+   "name": "US Information Agency",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "US Information Agency"
+   ]
+  },
+  {
+   "name": "Office of Strategic Services",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Office of Strategic Services"
+   ]
+  },
+  {
+   "name": "CIA",
+   "kind": "gov",
+   "kindLabel": "Public funder, indirect",
+   "hq": {
+    "c": "Langley",
+    "co": "United States",
+    "lat": 38.9517,
+    "lon": -77.1467
+   },
+   "from": [
+    "CIA International Organizations Division",
+    "Congress for Cultural Freedom",
+    "Farfield Foundation",
+    "Whitney Trust",
+    "David Rockefeller"
+   ]
+  },
+  {
+   "name": "US Senate Finance Committee",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Senate Finance Committee (Sen. Wyden)"
+   ]
+  },
+  {
+   "name": "US Department of Justice",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "DOJ Epstein files (2025–26)"
+   ]
+  },
+  {
+   "name": "US Virgin Islands Attorney General",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Charlotte Amalie",
+    "co": "US Virgin Islands",
+    "lat": 18.3419,
+    "lon": -64.9307
+   },
+   "from": [
+    "US Virgin Islands Attorney General"
    ]
   }
  ]
