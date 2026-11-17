@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=3', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    fetch('assets/moma-influence.json?v=4', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -124,7 +124,7 @@
     if (window.scheduleRender) window.scheduleRender();
   }
   // MoMA's funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
-  // the influence map"; "show government funders too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // the influence map"; "show government funders too"; "add the other public bodies too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
   // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
   // funding maps have joined, so a funder they name is never drawn twice.
   let studyMerged = false;
@@ -139,7 +139,7 @@
       let f = (s.keys || []).map(k => BY_FUNDER.get(k)).find(Boolean) || DATA.funders.find(q => names.has(norm(q.name)));
       if (!f) {
         if (!s.hq) return;
-        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from };
+        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from, notFunder: !!s.notFunder };
         DATA.funders.push(f); BY_FUNDER.set(f.key, f);
       }
       f.moneySpaces = f.moneySpaces || [];
@@ -610,6 +610,7 @@
       // A funder from the MoMA study has no record in the funding maps, whose lookup would answer with its key for a name.
       let e = (!f.study && hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : f.kind === 'gov' ? 'gov' : 'found', n: f.name, c: '', co: '', noOffice: true };
       // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
+      if (f.notFunder) e = Object.assign({}, e, { kindLabel: 'Public body' });
       if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
       // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
       if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(Object.assign({}, e, { noLayer: true }));

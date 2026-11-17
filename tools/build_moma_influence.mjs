@@ -83,6 +83,18 @@ const FUNDERS = [
   { name: 'Office of the Coordinator of Inter-American Affairs', kind: 'gov', hq: DC, from: ['Office of the Coordinator of Inter-American Affairs', 'MoMA Film Library (Iris Barry)'] },
   { name: 'Government of Switzerland', kind: 'gov', hq: { c: 'Bern', co: 'Switzerland', lat: 46.948, lon: 7.4474 }, from: ['Consulate General of Switzerland'] },
   { name: 'State of Qatar', kind: 'gov', hq: { c: 'Doha', co: 'Qatar', lat: 25.2854, lon: 51.531 }, from: ['Permanent Mission of Qatar'] },
+  // The study's other public bodies (user, 17 Nov 2026: "add the other public bodies too"): they did not pay MoMA, but the
+  // study ties each to it: buyers of its members' products, the offices its leaders held, the Cold War agencies that used
+  // its exhibitions, and the inquiries into a trustee. The CIA's fronts are drawn as the CIA, since the money was its.
+  { name: 'Federal Reserve', kind: 'gov', notFunder: true, hq: DC, from: ['Federal Reserve'] },
+  { name: 'US Department of Health and Human Services (BARDA)', kind: 'gov', notFunder: true, hq: DC, from: ['HHS · BARDA · Operation Warp Speed'] },
+  { name: 'US State Department', kind: 'gov', notFunder: true, hq: DC, from: ['US State Department'] },
+  { name: 'US Information Agency', kind: 'gov', notFunder: true, hq: DC, from: ['US Information Agency'] },
+  { name: 'Office of Strategic Services', kind: 'gov', notFunder: true, hq: DC, from: ['Office of Strategic Services'] },
+  { name: 'CIA', kind: 'gov', notFunder: true, hq: { c: 'Langley', co: 'United States', lat: 38.9517, lon: -77.1467 }, from: ['CIA International Organizations Division', 'Congress for Cultural Freedom', 'Farfield Foundation', 'Whitney Trust'] },
+  { name: 'US Senate Finance Committee', kind: 'gov', notFunder: true, hq: DC, from: ['Senate Finance Committee (Sen. Wyden)'] },
+  { name: 'US Department of Justice', kind: 'gov', notFunder: true, hq: DC, from: ['DOJ Epstein files (2025–26)'] },
+  { name: 'US Virgin Islands Attorney General', kind: 'gov', notFunder: true, hq: { c: 'Charlotte Amalie', co: 'US Virgin Islands', lat: 18.3419, lon: -64.9307 }, from: ['US Virgin Islands Attorney General'] },
 ];
 const allNames = new Set(N.map(n => n.label));
 FUNDERS.forEach(f => f.from.forEach(n => { if (!allNames.has(n)) throw new Error(`${f.name}: "${n}" is not an entry of the study`); }));
