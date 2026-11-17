@@ -187,6 +187,9 @@ def build_layer(cands):
             'summary': v['summary'], 'quote': c['text'], 'field': c['field'],
             'date': v.get('date', c['date']), 'sources': c['sources'],
             'check': v.get('check', 'record'),
+            # What ties a money measure to this space (assets/influence-mode.js shows US lobbying, EU lobbying or political
+            # giving only at a space a record links it to): [{measure: 'us' | 'eu' | 'politics', text, source}].
+            **({'links': v['links']} if v.get('links') else {}),
         })
     for f in funders.values():
         f['ties'].sort(key=lambda t: (t['space_name'], t['date']))
