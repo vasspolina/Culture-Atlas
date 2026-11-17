@@ -2100,6 +2100,13 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
      since it scrolls sideways where the buttons are wider than the phone. */
   :root:is(.gm-map,.gm-chat,.gm-record) #gmTopBtns:not(#sh-x):not(#sh-y):not(#sh-z){border-bottom:0!important;
     background:linear-gradient(to bottom,var(--sh-paper) 0,var(--sh-paper) calc(env(safe-area-inset-top,0px) + 18px),color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)!important}
+  /* The sheet opens up to the menu (user, 17 Nov 2026: "Make this window open until menu"). It had started under the
+     filters, two rows of pills below the top buttons, so the conversation got the bottom two thirds of the screen. It now
+     rises to just under the row of top buttons (Dark, Gossip mode, Money map), 4px below its foot (--safe-t is that row's
+     height). The filters are put away while the chat is open, as they would sit behind the sheet; they come back with the
+     map, where the chip row is measured again (publishChips in assets/phone-maps.js keeps the last height while hidden). */
+  :root.gm-chat:not(.gm-from-chat):not(.gm-feed-open) #workViewContainer:not(#sh-x):not(#sh-y){top:calc(var(--safe-t,48px) + 4px)!important}
+  :root.gm-chat:not(.gm-from-chat):not(.gm-feed-open) #gmChips:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
 }
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
