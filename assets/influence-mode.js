@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=4', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=5', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -175,7 +175,7 @@
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
       const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
       const n = new Set(f.ties.map(t => t.space)).size;
-      marks.push({ f, x, y, s: 5 + 2 * Math.sqrt(n), n });
+      marks.push({ f, x, y, s: Math.min(16, 5 + 2 * Math.sqrt(n)), n });   // capped, so Bloomberg's 80 spaces do not cover New York
     });
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
     marks.forEach(m => {
@@ -267,7 +267,7 @@
     say(`<div class="influence-chat">
 <p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows the funders at their head offices instead of the spaces: a hexagon for a company, a triangle for a family or foundation, larger the more spaces it reaches. Pick one to open what it got and bring its spaces onto the map, joined to its office.</p>
 <p>A space that turns the money down ends one tie, not the money. So each funder’s record also says what its money is made from, what else it pays for beside culture, and, where a space ended a tie, which ties the records still date after that. On the map a picked funder’s ended ties are dashed lines and its running ones solid.</p>
-<p>These are ${total} entries on ${DATA.funders.length} funders, a first batch read by hand: oil and gas, tobacco, mining, the Sacklers, and the family and finance money the records flag. Bloomberg and the banks are not read yet, and public funders are left out on purpose: the question is what private money buys.</p>
+<p>These are ${total} entries on ${DATA.funders.length} funders, read by hand in two batches: first oil and gas, tobacco, mining, the Sacklers and the family and finance money the records flag; then Bloomberg and five banks (Bank of America, JPMorganChase, UBS, RBC and BMO). BMW, Hyundai and Chanel are not read yet, and public funders are left out on purpose: the question is what private money buys.</p>
 <ul class="influence-funders">${rows}</ul>
 <p>What each word counts:</p>
 <ul class="influence-kinds">${kinds}</ul>

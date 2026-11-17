@@ -27,7 +27,7 @@ FUNDERS = [
     ('right:koch', 'Koch', 'family', r'\bKoch\b'),
     ('right:griffin', 'Ken Griffin / Citadel', 'family', r'\bGriffin\b|\bCitadel\b'),
     ('blavatnikfamily', 'Blavatnik Family Foundation', 'family', r'Blavatnik'),
-    ('bloomberg', 'Bloomberg Philanthropies', 'corp', r'Bloomberg'),
+    ('bloomberg', 'Bloomberg Philanthropies', 'family', r'Bloomberg'),   # a foundation, drawn as one; L.P. and Connects entries say so
     ('bankofamerica', 'Bank of America', 'corp', r'Bank of America'),
     ('jpmorganchase', 'JPMorganChase', 'corp', r'JPMorgan|J\.P\. Morgan|JP Morgan'),
     ('ubs', 'UBS', 'corp', r'\bUBS\b'),
