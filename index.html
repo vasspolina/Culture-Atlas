@@ -21,6 +21,19 @@
   <meta name="description" content="Leaving it on the table: who funds cultural institutions across the world, with the sources." />
   <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
   <script>
+    // The chat's name: Clio or Iris, a new pick on every load (user, 17 Nov 2026: "Clio and Iris, change names on load";
+    // it was "the curator", then the atlas's own name). Clio is the muse of history and of the written record; Iris
+    // carries news between worlds. Both are short enough that "Chat with <name>" sits in the tab where "Chat with the
+    // curator" did. CSS reads it as --chat-name (the "Ask <name>" heading in atlas.css, the tab's sizing lines in
+    // sheet.css); markup carries data-chat-name and is filled below; scripts read window.ATLAS_CHAT_NAME.
+    (function(){
+      var n=Math.random()<.5?"Clio":"Iris";window.ATLAS_CHAT_NAME=n;
+      document.documentElement.style.setProperty("--chat-name",'"'+n+'"');
+      function fill(){var a=document.querySelectorAll("[data-chat-name]");for(var i=0;i<a.length;i++)a[i].textContent=n}
+      if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",fill);else fill();
+    })();
+  </script>
+  <script>
     // A new colour for the head bar and the filter pills on every load (user, 16 Nov 2026: "make atlas top and filters
     // change color on load pick light colors from displaay.net/typefaces", then "make same for dark mode with dark colors").
     // The light set is the pale grounds of the type cards on displaay.net/typefaces; ink #000 reads on every one (10:1 or
@@ -725,7 +738,7 @@ return maplibregl$1;
             <span id="workspaceTabDossierLabel">Details</span>
           </button>
           <button id="workspaceTabChat" type="button" onclick="window.setWorkspaceTab('chat');" class="py-1 px-3 t-strong flex items-center gap-1_5">
-            <span>Chat with Leaving it on the table</span>
+            <span>Chat with <span data-chat-name>Clio</span></span>
           </button>
         </div>
         <div class="flex items-center gap-3">
@@ -1027,7 +1040,7 @@ return maplibregl$1;
     <!-- Nav Item: Curator AI -->
     <button class="flex flex-col items-center space-y-1 relative" id="tab-chat" type="button">
 
-      <span class="t-strong">Leaving it on the table</span>
+      <span class="t-strong" data-chat-name>Clio</span>
     </button>
   </nav>
 
@@ -10484,7 +10497,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               <span>Map Board Interlocks</span>
             </button>
             <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the financial filings of ${escapeHtml(filing.name)} reveal?');" class="py-1_5 px-3 t-strong">
-              <span>Ask Leaving it on the table about these filings</span>
+              <span>Ask ${window.ATLAS_CHAT_NAME || 'Clio'} about these filings</span>
             </button>
           </div>
         </div>
@@ -10498,7 +10511,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v763';
+    const ATLAS_RELEASE = 'culture-atlas-v764';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -15705,6 +15718,7 @@ CHARACTER & VOICE GUIDELINES:
    - Keep observations grounded in the records and their cited sources.
 
 3. YOU ARE A VISITOR-FACING DOCENT AND RESEARCHER:
+   - Your name is ${window.ATLAS_CHAT_NAME || 'Clio'}. Use it only when asked who you are; never sign an answer with it.
    - You are chatting with museum visitors, art lovers and cultural researchers about who funds museums. You are not a travel guide.
    - NEVER review, evaluate, QA, or critique the atlas database, data structure, schema, or system itself.
    - NEVER say "I've reviewed the sample atlas data you provided" or flag issues with dataset templates.

@@ -52,6 +52,8 @@ To try the Share information form against a local backend, run the report API (s
 
 Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a funder, for example "Which spaces in Tokyo are Clean?" or "What does the record for Te Papa say about funding?". An optional API key can be added under settings.
 
+The chat is called Clio or Iris, picked again on every load (user, 17 Nov 2026): the tab reads "Chat with Clio", the heading "Ask Clio". The pick is the first script in `index.html` (`window.ATLAS_CHAT_NAME`, the CSS variable `--chat-name`, and `data-chat-name` in the markup), and the model is told the same name.
+
 ---
 
 ## Deploying
