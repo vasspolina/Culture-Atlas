@@ -319,7 +319,7 @@ FUNDERS = [
     ('google', 'Google (Alphabet)', 'corp', r'Google|Alphabet Inc'),
     ('apple', 'Apple', 'corp', r'\bApple\b(?= (?:Inc|sponsor|Music|TV|Store|funded|paid|partner)|,? the tech)'),
     ('netflix', 'Netflix', 'corp', r'Netflix'),
-    ('disney', 'Disney', 'corp', r'Disney'),
+    ('disney', 'Disney (the company and the Disney family)', 'corp', r'Disney'),
     ('dell', 'Michael Dell', 'family', r'Michael Dell|Dell Foundation|Dell Technologies'),
     ('hearst', 'Hearst', 'corp', r'Hearst'),
     ('americanexpress', 'American Express', 'corp', r'American Express|\bAmex\b'),

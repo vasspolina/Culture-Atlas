@@ -3877,5 +3877,490 @@
     "entries": 2
    }
   }
+ },
+ "getty": {
+  "made_from": "The J. Paul Getty Trust is endowed by the oilman J. Paul Getty's bequest of Getty Oil stock; the J. Paul Getty Jr. Charitable Trust is the separate trust of his son, Sir Paul Getty.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The J. Paul Getty Trust reported assets with a fair market value of $16,341,567,063 at the end of its tax year to June 2023, in its Form 990-PF.",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/951790021.json"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "a 50 million pound endowment from Sir Paul Getty to the National Gallery in 1985",
+     "amount": 50000000.0,
+     "currency": "GBP",
+     "source": "https://en.wikipedia.org/wiki/National_Gallery"
+    },
+    "spaces": 24,
+    "entries": 28
+   }
+  }
+ },
+ "ford": {
+  "made_from": "The Ford Foundation was set up in 1936 by Edsel Ford, son of the Ford Motor Company's founder, with Ford money; it is independent of the company, and every tie in this ledger is the foundation's.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Ford Foundation reported total assets of $16,791,366,964 at the end of 2023 and $607,405,678 in grants paid that year, in its Form 990-PF.",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/131684331.json"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "$5.4 million to the Brooklyn Academy of Music, by IRS grant data compiled by Impala",
+     "amount": 5400000.0,
+     "currency": "USD",
+     "source": "https://impala.digital/public/profiles/11-2201344"
+    },
+    "spaces": 32,
+    "entries": 34
+   }
+  }
+ },
+ "tisch": {
+  "made_from": "The Tisch family's money comes from Loews Corporation, the holding company of the insurer CNA Financial, Boardwalk Pipelines and Loews Hotels.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Loews Corporation reported net income of $1,667 million for 2025.",
+    "date": "2025",
+    "source": "https://s203.q4cdn.com/873173963/files/doc_financials/2025/q4/Q4-2025-LC-Earnings-Release-2-9-26-Website.pdf"
+   },
+   {
+    "kind": "lobbying",
+    "text": "One outside firm, OGR, reported $80,000 in 2025 fees from Loews Hotels Holding Corporation for US federal lobbying; Loews Corporation itself filed no 2025 report.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Loews&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 80000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Loews&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 5,
+    "entries": 7
+   }
+  }
+ },
+ "terra": {
+  "made_from": "The Terra Foundation for American Art was founded by the businessman and collector Daniel J. Terra and lives on its endowment.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Terra Foundation for American Art reported total assets of $583,846,758 at the end of its tax year to June 2023 and $9,907,025 in grants paid, in its Form 990-PF.",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/362999442.json"
+   }
+  ]
+ },
+ "luce": {
+  "made_from": "The Henry Luce Foundation was set up by Henry R. Luce, co-founder of Time, Fortune and Life, and lives on its endowment.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Henry Luce Foundation reported total assets of $1,090,872,427 at the end of 2023 and $48,012,564 in grants paid that year, in its Form 990-PF.",
+    "date": "2023",
+    "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/136001282.json"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "$1.6 million to the American Folk Art Museum in 2013 for the touring show Self-Taught Genius",
+     "amount": 1600000.0,
+     "currency": "USD",
+     "source": "https://folkartmuseum.org/news/henry-luce-foundation-grants-museum-1-6-million/"
+    },
+    "spaces": 15,
+    "entries": 15
+   }
+  }
+ },
+ "waltonfamily": {
+  "made_from": "The Walton family's money comes from Walmart, the retailer Sam Walton founded; the family's gifts go through the Walton Family Foundation and Alice Walton, the company's through Walmart Inc. and the Walmart Foundation.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Walmart reported total revenues of $713,163 million for the fiscal year to January 2026.",
+    "date": "2026",
+    "source": "https://corporate.walmart.com/content/dam/corporate/documents/newsroom/2026/02/19/walmart-releases-q4-fy26-earnings/q4-fy26-earnings-release.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In November 2022 state attorneys general announced a proposed $3.1 billion multistate settlement with Walmart over its role in the opioid epidemic.",
+    "date": "2022-11",
+    "source": "https://oag.ca.gov/news/press-releases/attorney-general-bonta-announces-proposed-31-billion-multistate-opioid"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Walmart reported $7,840,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Walmart&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 7840000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Walmart&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "$800 million in three endowments for Crystal Bridges from the Walton Family Foundation, announced in May 2011",
+     "amount": 800000000.0,
+     "currency": "USD",
+     "source": "https://talkbusiness.net/2011/05/walton-family-donates-800-million-to-crystal-bridges-museum/"
+    },
+    "spaces": 3,
+    "entries": 5
+   }
+  }
+ },
+ "fidelity": {
+  "made_from": "The Johnson family's money comes from Fidelity Investments, the Boston fund manager Edward C. Johnson II founded in 1946; the Fidelity Foundation is its US foundation and the Fidelity UK Foundation that of Fidelity International.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes says Fidelity Investments managed discretionary assets of $7.1 trillion as of December 2025, and that Abigail Johnson owns an estimated 29% of the firm.",
+    "date": "2025",
+    "source": "https://www.forbes.com/profile/abigail-johnson/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "FMR LLC, Fidelity's parent, reported $2,970,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=FMR&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 2970000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=FMR&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 9,
+    "entries": 9
+   }
+  }
+ },
+ "disney": {
+  "made_from": "Disney's money comes from The Walt Disney Company's film, television, streaming and theme parks; some ties here are gifts of Disney family foundations, which are separate from the company.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Walt Disney Company reported revenues of $94.4 billion for fiscal 2025.",
+    "date": "2025",
+    "source": "https://thewaltdisneycompany.com/the-walt-disney-company-reports-fourth-quarter-and-full-year-earnings-for-fiscal-2025/"
+   },
+   {
+    "kind": "harm",
+    "text": "In September 2025 Disney agreed to pay $10 million to settle a lawsuit brought on the FTC's referral over collecting children's data from its YouTube videos.",
+    "date": "2025-09",
+    "source": "https://www.cbsnews.com/news/disney-lawsuit-ftc-unlawful-collection-childrens-personal-data/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Disney Worldwide Services, the company's lobbying arm, reported $4,550,000 of in-house US federal lobbying spending for 2025, in four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Disney&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 4550000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Disney&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 5
+   }
+  }
+ },
+ "geffen": {
+  "made_from": "David Geffen's money comes from the record labels he founded, Asylum, Geffen and DGC, and the film studio DreamWorks.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes put David Geffen's net worth at $9.7 billion on 17 November 2026.",
+    "date": "2026",
+    "source": "https://www.forbes.com/profile/david-geffen/"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "$5 million from the David Geffen Foundation to MOCA in 1996, when the Temporary Contemporary was renamed for him",
+     "amount": 5000000.0,
+     "currency": "USD",
+     "source": "https://en.wikipedia.org/wiki/Museum_of_Contemporary_Art,_Los_Angeles"
+    },
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "lockheedmartin": {
+  "made_from": "Lockheed Martin's money comes from making weapons, military aircraft, missiles and space systems, most of it sold to the US government and its allies.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Lockheed Martin reported 2025 sales of $75.0 billion and net earnings of $5.0 billion.",
+    "date": "2025",
+    "source": "https://news.lockheedmartin.com/2026-01-29-Lockheed-Martin-Reports-Fourth-Quarter-and-Full-Year-2025-Financial-Results"
+   },
+   {
+    "kind": "harm",
+    "text": "Bellingcat recorded 79 geolocated incidents in Gaza where remnants of US-made munitions, among them the Hellfire missile Lockheed Martin makes, were found after strikes, many of which caused death and damage to schools, homes and healthcare buildings.",
+    "date": "2026-02",
+    "source": "https://www.bellingcat.com/news/2026/02/04/made-in-the-usa-how-american-built-weapons-have-wrought-destruction-in-gaza/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Lockheed Martin reported $15,550,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act (an amended second-quarter report counted once).",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Lockheed+Martin&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 15550000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Lockheed+Martin&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 2
+   }
+  }
+ },
+ "hearst": {
+  "made_from": "Hearst's money comes from the privately held Hearst Corporation's magazines, newspapers, television stations and business information services; the Hearst Foundations are its family's charities.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Outside firms reported $440,000 in 2025 fees for US federal lobbying from Hearst Corporation ($360,000) and Hearst Television ($80,000); Hearst filed no in-house report.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Hearst&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 440000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Hearst&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 4
+   }
+  }
+ },
+ "conocophillips": {
+  "made_from": "ConocoPhillips' money comes from exploring for and producing oil and gas, from Alaska and the US shale basins to Qatar.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "ConocoPhillips reported full-year 2025 earnings of $8.0 billion.",
+    "date": "2025",
+    "source": "https://static.conocophillips.com/files/resources/4q25_earnings_release-final.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "On 13 March 2023 the US Interior Department approved ConocoPhillips' Willow oil and gas project in Alaska's National Petroleum Reserve, denying two of the five drill sites it proposed.",
+    "date": "2023-03",
+    "source": "https://www.doi.gov/pressreleases/interior-department-substantially-reduces-scope-willow-project"
+   },
+   {
+    "kind": "lobbying",
+    "text": "ConocoPhillips reported $7,230,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=ConocoPhillips&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 7230000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=ConocoPhillips&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 3
+   }
+  }
+ },
+ "ibm": {
+  "made_from": "IBM's money comes from software, IT consulting and computer hardware, the mainframe among it.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "IBM reported 2025 revenue of $67.5 billion.",
+    "date": "2025",
+    "source": "https://newsroom.ibm.com/2026-01-28-IBM-RELEASES-FOURTH-QUARTER-RESULTS"
+   },
+   {
+    "kind": "lobbying",
+    "text": "IBM reported $3,630,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=IBM&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 3630000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=IBM&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "crownfamily": {
+  "made_from": "The Crown family's money comes from Henry Crown and Company, its private investment firm, and from its stake in General Dynamics, the defence contractor into which Henry Crown's Material Service Corporation merged in 1959.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "General Dynamics, in which the Crown family is a major shareholder, reported 2025 revenue of $52.6 billion and net earnings of $4.2 billion.",
+    "date": "2025",
+    "source": "https://s22.q4cdn.com/891946778/files/doc_financials/2025/q4/GD-2025-12-31-Exhibit-99-1-Final.pdf"
+   }
+  ]
+ },
+ "perelman": {
+  "made_from": "Ronald Perelman's money comes from MacAndrews & Forbes, the holding company through which he bought and sold businesses from candy to cosmetics, Revlon among them.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes put Ronald Perelman's net worth at $1.5 billion in November 2026, and says he lost his Revlon holdings in its 2023 bankruptcy proceedings after selling billions of dollars of assets to pay debt in late 2020.",
+    "date": "2026",
+    "source": "https://www.forbes.com/profile/ronald-perelman/"
+   }
+  ]
+ },
+ "dell": {
+  "made_from": "Michael Dell's money comes from Dell Technologies, the computer and data-centre maker he founded and runs.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes put Michael Dell's net worth at $197.7 billion on 17 November 2026.",
+    "date": "2026",
+    "source": "https://www.forbes.com/profile/michael-dell/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Dell Technologies reported $5,640,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Dell+Technologies&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 5640000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Dell+Technologies&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "delta": {
+  "made_from": "Delta Air Lines' money comes from flying passengers and cargo.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Delta Air Lines reported full-year 2025 GAAP operating revenue of $63.4 billion.",
+    "date": "2025",
+    "source": "https://news.delta.com/delta-air-lines-announces-december-quarter-and-full-year-2025-financial-results"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Delta Air Lines reported $5,970,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Delta+Air+Lines&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 5970000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Delta+Air+Lines&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "lucas": {
+  "made_from": "George Lucas's money comes from Lucasfilm, the Star Wars studio he sold to Disney in 2012; Mellody Hobson is co-CEO of Ariel Investments.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes says George Lucas sold Lucasfilm to Disney in 2012 for $4.1 billion in stock and cash, and put his net worth at $5.5 billion on 17 November 2026.",
+    "date": "2026",
+    "source": "https://www.forbes.com/profile/george-lucas/"
+   }
+  ]
+ },
+ "wellsfargo": {
+  "made_from": "Wells Fargo's money comes from consumer and commercial banking, lending and wealth management.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Wells Fargo reported net income of $21,338 million for 2025.",
+    "date": "2025",
+    "source": "https://wellsfargo.com/assets/pdf/about/investor-relations/earnings/fourth-quarter-2025-earnings.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In December 2022 the CFPB ordered Wells Fargo to pay more than $2 billion in consumer redress and a $1.7 billion penalty over the mismanagement of auto loans, mortgages and deposit accounts.",
+    "date": "2022-12",
+    "source": "https://www.consumerfinance.gov/enforcement/actions/wells-fargo-bank-na-2022/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Wells Fargo reported $2,700,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Wells+Fargo&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 2700000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Wells+Fargo&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
  }
 }
