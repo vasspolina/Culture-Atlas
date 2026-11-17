@@ -369,18 +369,16 @@ FUNDERS = [
     ('westpac', 'Westpac', 'corp', r'Westpac'),
     ('macquarie', 'Macquarie Group', 'corp', r'Macquarie (?:Group|Bank|Foundation)|Macquarie\b(?= (?:sponsor|is|was))'),
     ('nab', 'National Australia Bank', 'corp', r'\bNAB\b|National Australia Bank'),
-    ('commbank', 'Commonwealth Bank', 'corp', r'Commonwealth Bank|CommBank'),
     ('lendlease', 'Lendlease', 'corp', r'Lendlease|Lend Lease'),
     ('mirvac', 'Mirvac', 'corp', r'Mirvac'),
     ('stockland', 'Stockland', 'corp', r'Stockland'),
     ('crownresorts', 'Crown Resorts (Packer family)', 'corp', r'Crown Resorts|James Packer|Packer family|Packer Family Foundation'),
     ('kerrystokes', 'Kerry Stokes (Seven Group)', 'family', r'Kerry Stokes|Seven Group'),
-    ('besen', 'Besen family (Sussan)', 'family', r'Besen'),
+    ('besen', 'Besen family (Sussan)', 'family', r'\bBesen\b'),
     ('balnaves', 'Balnaves Foundation', 'family', r'Balnaves'),
     ('mordant', 'Simon Mordant', 'family', r'Mordant'),
     ('timfairfax', 'Tim Fairfax', 'family', r'Tim Fairfax'),
     ('canva', 'Canva', 'corp', r'\bCanva\b'),
-    ('perpetual', 'Perpetual (trustee of charitable trusts)', 'corp', r'Perpetual (?:Limited|Trustee|Foundation|IMPACT)|\bPerpetual\b(?= (?:trust|grant))'),
     # Canada beyond RBC and BMO (user, 17 Nov 2026: "add canadian sponsors too"): the banks, the oil sands and mining
     # companies, and the family fortunes. Hydro-Québec, a state-owned utility, is kept as a company, as Equinor is; the
     # Caisse de dépôt, a public pension fund, is not. The Garfield Weston Foundation is the British arm of the Weston family.
