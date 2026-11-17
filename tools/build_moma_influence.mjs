@@ -51,11 +51,18 @@ const FUNDERS = [
   { name: 'Pfizer', kind: 'corp', hq: NY, from: ['Pfizer Inc.', 'Albert Bourla · David Rockefeller Award 2021'] },
   { name: 'Johnson & Johnson', kind: 'corp', hq: { c: 'New Brunswick', co: 'United States', lat: 40.4862, lon: -74.4518 }, from: ['Johnson & Johnson'] },
   { name: 'Axsome Therapeutics', kind: 'corp', hq: NY, from: ['Axsome Therapeutics'] },
+  // Matching gifts only (user, 17 Nov 2026: "keep working on this"): each matched an employee's own gift to MoMA, so its
+  // record says so. One study entry names all five.
+  { name: 'Regeneron', kind: 'corp', kindLabel: 'Company, matching gifts only', hq: { c: 'Tarrytown', co: 'United States', lat: 41.0762, lon: -73.8587 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Merck', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Merck & Co.', 'Merck & Co'], hq: { c: 'Rahway', co: 'United States', lat: 40.6082, lon: -74.2776 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Bristol Myers Squibb', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Bristol-Myers Squibb'], hq: { c: 'Princeton', co: 'United States', lat: 40.3573, lon: -74.6672 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Eli Lilly', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Eli Lilly and Company', 'Lilly'], hq: { c: 'Indianapolis', co: 'United States', lat: 39.7684, lon: -86.1581 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
+  { name: 'Vertex Pharmaceuticals', kind: 'corp', kindLabel: 'Company, matching gifts only', names: ['Vertex'], hq: { c: 'Boston', co: 'United States', lat: 42.3601, lon: -71.0589 }, from: ['Regeneron · Merck · BMS · Lilly · Vertex'] },
   { name: 'Roche', kind: 'corp', names: ['F. Hoffmann-La Roche Ltd', 'Roche'], hq: { c: 'Basel', co: 'Switzerland', lat: 47.5596, lon: 7.5886 }, from: ['Roche Innovation Center NY', 'Roche (Hoffmann-La Roche)'] },
   { name: 'Maja Oeri', kind: 'family', kindLabel: 'MoMA trustee', hq: { c: 'Basel', co: 'Switzerland', lat: 47.5596, lon: 7.5886 }, from: ['Maja Oeri'] },
   { name: 'Ronald O. Perelman', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['Ronald O. Perelman'] },
   { name: 'Sackler family', kind: 'family', keys: ['sacklerfamily'], from: ['Jillian Sackler'] },
-  { name: 'Ronald S. Lauder', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['Ronald S. Lauder'] },
+  // Ronald Lauder is not drawn: the study took him out ("MoMA Money Map: Ronald Lauder removed", release 789).
   { name: 'Estée Lauder Companies', kind: 'corp', hq: NY, from: ['Estée Lauder Companies'] },
   { name: 'KKR and the Kravis family', kind: 'fund', keys: ['kkr'], from: ['Marie-Josée Kravis', 'Henry R. Kravis'] },
   { name: 'Steven Cohen (Point72)', kind: 'family', keys: ['right:cohen'], from: ['Steven A. Cohen'] },
@@ -70,8 +77,10 @@ const FUNDERS = [
   { name: 'Blavatnik Family Foundation', kind: 'family', keys: ['blavatnikfamily'], from: ['Schwarzman · Langone · Blavatnik · Loeb · Tepper'] },
   { name: 'Glenn Dubin (Highbridge Capital)', kind: 'family', keys: ['glenndubin'], from: ['Glenn Dubin'] },
   { name: 'The Rockefeller University', kind: 'found', hq: NY, from: ['The Rockefeller University'] },
-  { name: 'Rockefeller Brothers Fund', kind: 'found', names: ['Rockefeller Brothers Fund'], hq: NY, from: ['Rockefeller Brothers Fund'] },
-  { name: 'David Rockefeller', kind: 'family', kindLabel: 'Former MoMA trustee', hq: NY, from: ['David Rockefeller'] },
+  { name: 'Rockefeller family and foundations', kind: 'family', keys: ['rockefellerbrothers'], from: ['Rockefeller Brothers Fund'] },
+  // David Rockefeller's gifts are the family funder's (the ledger's 'Rockefeller family and foundations'); the trustees
+  // Nelson, David Jr. and Sharon Percy Rockefeller keep their own dots below, as board members.
+  { name: 'David Rockefeller', kind: 'family', keys: ['rockefellerbrothers'], from: ['David Rockefeller'] },
   // The other trustees and board members the study names (user, 17 Nov 2026: "add the other MoMA trustees as dots too"),
   // at the city they live or work in, whether or not the study gives a gift: the board is where the money governs.
   { name: 'Laurence D. Fink', kind: 'family', kindLabel: 'MoMA trustee', hq: NY, from: ['Laurence D. Fink'] },

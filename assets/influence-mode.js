@@ -40,7 +40,7 @@
     }).catch(() => { loading = null; return null; });
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
-    fetch('assets/moma-influence.json?v=7', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    fetch('assets/moma-influence.json?v=8', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -262,7 +262,9 @@
     // name, which is how the sourced figure is counted too; culture is never a missing filing, so never a hollow dot.
     culture: { label: 'Culture', what: 'how many museums it gives to',
       value: f => cultureSpaces(f) || null,
-      text: f => { const n = cultureSpaces(f); return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
+      // A funder known only from the MoMA study names MoMA instead of "1 museum" (user, 17 Nov 2026: "keep working on this"),
+      // so the CIA or a trustee does not read as a museum funder at large.
+      text: f => { const n = cultureSpaces(f); if (n === 1 && f.study) return 'MoMA'; return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
     us: { label: 'US lobbying', noun: 'US lobbying', what: 'what it spent lobbying the US government in 2025',
       value: f => (fig(f).us_lobbying || {}).usd || null,
       text: f => { const u = fig(f).us_lobbying; return u ? fmtMoney(u.usd, 'USD') : ''; } },
