@@ -516,7 +516,7 @@
       // map's filters and turns it on or off. The counts are read from the data.
       tag.innerHTML =
         '<p class="pt-head"><button type="button" class="pt-name" title="Back to the world view"><span class="pt-u">Leaving it</span> <span class="pt-small">on</span> <span class="pt-u">the table</span></button> <span class="pt-time">' + fmt(insts.length) + ' spaces</span></p>' +
-        '<p class="pt-para"><span class="pt-l1">An atlas of who pays for culture:</span><span class="pt-l2">every space in ' + fmt(cities) + ' cities graded by its funders,</span>' +
+        '<p class="pt-para"><span class="pt-l1">An atlas of who pays for culture:</span><span class="pt-l2">every museum in ' + fmt(cities) + ' cities graded by its funders,</span>' +
         '<span class="pt-l3">with questions answered <button type="button" class="pt-credit">in the chat.</button></span></p>' +
         '<p class="pt-with">with</p>' +
         '<div class="pt-lineup">' +

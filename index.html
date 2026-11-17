@@ -69,11 +69,11 @@
   <link rel="stylesheet" href="assets/sheet.css?v=745">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
-  <script src="assets/subtopic.js?v=669"></script>
+  <script src="assets/subtopic.js?v=670"></script>
   <script src="assets/names.js?v=669"></script>
-  <script src="assets/grounding.js?v=670"></script>
+  <script src="assets/grounding.js?v=671"></script>
   <script src="assets/repeats.js?v=669"></script>
-  <script src="assets/intro-narration.js?v=669"></script>
+  <script src="assets/intro-narration.js?v=670"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -7487,12 +7487,12 @@ return maplibregl$1;
       const useProxy = !key && !!ATLAS_AI_PROXY_URL;
       if (!useProxy && !(key && getEffectiveProvider() === 'anthropic')) return null;
       const item = (x) => [
-        `Space: ${x.inst.name} (${[x.inst.city, x.inst.country].filter(Boolean).join(', ')})`,
+        `Museum: ${x.inst.name} (${[x.inst.city, x.inst.country].filter(Boolean).join(', ')})`,
         `Headline: ${x.g.headline}`, `What is said: ${x.g.said}`, `Source: ${gossipAttribution(x.g)}`,
         `Status: ${x.g.status}`, x.g.response ? `Response: ${x.g.response}` : '', x.g.outcome ? `Outcome: ${x.g.outcome}` : ''
       ].filter(Boolean).join('\n');
-      const system = `You are the gossip voice of a cultural atlas that records who funds museums and art spaces. The visitor just switched Gossip mode on. Greet them like a well-informed friend leaning in across a table, in 3 or 4 short sentences of plain spoken English, under 90 words in all, then end with one question inviting them to ask for more.
-Rules: use only the facts in the ITEMS. Name who says each thing and when, in reported speech ("Hyperallergic reported in March 2024 that..."). Never state talk, a rumour or an allegation as fact. If an item is denied, say who denies it; if confirmed or resolved, say so. Name each space exactly as given. Do not invent people, figures, dates or quotes. No dashes, no headings, no lists, no emoji, no hedging filler. Do not say what is unknown or not found. Start with the words "Gossip mode is on".`;
+      const system = `You are the gossip voice of a cultural atlas that records who funds museums. The visitor just switched Gossip mode on. Greet them like a well-informed friend leaning in across a table, in 3 or 4 short sentences of plain spoken English, under 90 words in all, then end with one question inviting them to ask for more.
+Rules: use only the facts in the ITEMS. Name who says each thing and when, in reported speech ("Hyperallergic reported in March 2024 that..."). Never state talk, a rumour or an allegation as fact. If an item is denied, say who denies it; if confirmed or resolved, say so. Name each museum exactly as given. Do not invent people, figures, dates or quotes. No dashes, no headings, no lists, no emoji, no hedging filler. Do not say what is unknown or not found. Start with the words "Gossip mode is on".`;
       const user = `ITEMS\n\nMain story:\n${item(main)}${other ? `\n\nA second story to tease in one sentence:\n${item(other)}` : ''}`;
       const ctl = typeof AbortController === 'function' ? new AbortController() : null;
       const timer = ctl ? setTimeout(() => ctl.abort(), 9000) : null;
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v758';
+    const ATLAS_RELEASE = 'culture-atlas-v759';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -21856,8 +21856,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/typeset.js?v=669"></script>
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
-<script src="assets/funding-views.js?v=713"></script>
-<script src="assets/layers.js?v=739"></script>
+<script src="assets/funding-views.js?v=714"></script>
+<script src="assets/layers.js?v=740"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
@@ -21865,7 +21865,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/influence-mode.js?v=759"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=700"></script>
-<script src="assets/desktop-maps.js?v=742"></script>
+<script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>
 </html>
