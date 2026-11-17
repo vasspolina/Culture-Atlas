@@ -306,8 +306,22 @@
       openFor = f;
       pick(f);
       decorate();
+      if (on) sayFunderSpaces(f);
     };
     if (window.atlasHq && window.atlasHq.ready && !window.atlasHq.loaded()) window.atlasHq.ready(go); else go();
+  }
+  // The picked funder's spaces in the chat as well as on the map (user, 17 Nov 2026: "show the museum names in the chat
+  // too"): one line each, the name a link to its record, the city after it, and "ended" where every tie there ended.
+  function sayFunderSpaces(f) {
+    const by = new Map();
+    f.ties.forEach(t => { const x = by.get(t.space) || { id: t.space, name: t.space_name, city: t.city, open: false }; if (!t.ended) x.open = true; by.set(t.space, x); });
+    const list = [...by.values()].sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    if (!list.length) return;
+    const rows = list.map(x => `<li><button type="button" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</button>${x.city || !x.open ? `<span class="influence-meta">${x.city ? ', ' + esc(x.city) : ''}${x.open ? '' : ', ended'}</span>` : ''}</li>`).join('');
+    say(`<div class="influence-chat">
+<p class="no-indent">${esc(f.name)}: ${plural(list.length, 'space')}.</p>
+<ul class="influence-funders">${rows}</ul>
+</div>`);
   }
   let openFor = null;   // the funder whose record the ledger was asked for, so the ledger finds it even under another spelling
 
