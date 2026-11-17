@@ -512,12 +512,12 @@
       // underlined phrases with a small joining word and a small figure after them ("Jeudi 2 novembre au Sample 19h-23h");
       // a short paragraph whose first line steps in from the right, ending on an underlined italic credit; a small italic
       // "with"; then three large names, each with a tiny italic tag at its top left ("Live Aja"). The atlas's name is the
-      // first line and takes the map back to the world; the credit, the chat’s name, opens the chat; each name is one of the
+      // first line and takes the map back to the world; the credit, "in the chat", opens the chat; each name is one of the
       // map's filters and turns it on or off. The counts are read from the data.
       tag.innerHTML =
         '<p class="pt-head"><button type="button" class="pt-name" title="Back to the world view"><span class="pt-u">Leaving it</span> <span class="pt-small">on</span> <span class="pt-u">the table</span></button> <span class="pt-time">' + fmt(insts.length) + ' spaces</span></p>' +
         '<p class="pt-para"><span class="pt-l1">An atlas of who pays for culture:</span><span class="pt-l2">every space in ' + fmt(cities) + ' cities graded by its funders,</span>' +
-        '<span class="pt-l3">with questions answered by <button type="button" class="pt-credit">Leaving it on the table.</button></span></p>' +
+        '<span class="pt-l3">with questions answered <button type="button" class="pt-credit">in the chat.</button></span></p>' +
         '<p class="pt-with">with</p>' +
         '<div class="pt-lineup">' +
         '<p class="pt-row"><button type="button" class="pt-big" data-layer="funding"><i class="pt-tag">filter</i>Funding</button></p>' +
