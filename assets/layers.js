@@ -984,8 +984,8 @@
     const host = document.getElementById('globeViewport'); if (!host) return;
     const b = document.createElement('button');
     b.type = 'button'; b.id = 'moneyExitBtn';
-    b.innerHTML = '<span aria-hidden="true">×</span> Exit money map';
-    b.title = 'Leave the money map and show every museum again (Esc)';
+    b.innerHTML = '<span aria-hidden="true">×</span> Exit influence map';
+    b.title = 'Leave the influence map and show every museum again (Esc)';
     b.addEventListener('click', exitMoney);
     host.appendChild(b);
     document.addEventListener('keydown', e => {
