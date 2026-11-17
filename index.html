@@ -1156,7 +1156,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=725"></script>
+  <script src="assets/institutions.js?v=726"></script>
   <script src="assets/money-ids.js?v=717"></script>
   <script>
 
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v751';
+    const ATLAS_RELEASE = 'culture-atlas-v752';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13854,12 +13854,44 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const head = b && b.level ? `Level ${b.level} of 5, ${BUREAUCRACY[b.level]}. ${proseEnd(b.level_basis)}` : '';
       return proseRow('Bureaucracy', escapeHtml(head), lis);
     }
+    // Lobbying by the space itself (user, 17 Nov 2026: "find only info that tracks cultural spaces involved in lobbying ... add
+    // it to each space's record on the map"). inst.lobbying comes from data/space_lobbying.json through
+    // tools/attach_space_lobbying.py: the space as the client in the US Lobbying Disclosure Act reports or the EU Transparency
+    // Register, never a funder's lobbying. US amounts are what the reports state; a report under $5,000 states none, so a
+    // space whose every report was under it is said to be under $5,000 a quarter, not $0. The row is drawn only where a
+    // filing exists: no filing found is not the same as no lobbying, since state and city registers are not read.
+    function proseLobbyingRow(inst) {
+      const l = inst.lobbying; if (!l) return '';
+      const lis = [];
+      // Whole dollars in short form ($60k, $1.5M), as the funders' figures are given; the shared formatter keeps cents.
+      const usd = (v) => v >= 1e6 ? `$${(v / 1e6).toFixed(v >= 1e7 ? 0 : 1).replace(/\.0$/, '')}M` : v >= 1e3 ? `$${Math.round(v / 1e3)}k` : `$${Math.round(v)}`;
+      if (l.register === 'us') {
+        const [a, b] = l.years || [];
+        const span = a === b ? `in ${a}` : `from ${a} to ${b}`;
+        const spent = l.total_usd > 0
+          ? `, reporting ${usd(l.total_usd)} in all${l.last_year && l.last_year_usd ? `; ${usd(l.last_year_usd)} in ${l.last_year}` : ''}`
+          : ', each report under $5,000, the least a report has to state';
+        lis.push(proseLi('US federal:', escapeHtml(`Lobbied Congress and federal agencies ${span}${spent}.`)));
+        // A report line that only repeats the start of another (the same filing, shortened) is said once.
+        const on = (l.on || []).map(proseEnd).filter((t, i, all) => !all.some((u, j) => j !== i && u.length > t.length && u.toLowerCase().startsWith(t.slice(0, -1).toLowerCase())));
+        if (on.length) lis.push(proseLi('Latest reports:', escapeHtml(on.join(' '))));
+        const who = (l.firms || []).slice();
+        if (l.in_house) who.unshift('its own staff');
+        if (who.length) lis.push(proseLi('Lobbied by:', escapeHtml(proseEnd(who.join(', ')))));
+      } else if (l.register === 'eu') {
+        lis.push(proseLi('EU register:', escapeHtml(`${l.filed_as} joined the EU Transparency Register in ${String(l.registered || '').slice(0, 4)}.`)));
+        if (l.declared) lis.push(proseLi('', escapeHtml(proseEnd(l.declared))));
+      }
+      if (lis.length && l.source) lis.push(`<li>Source: ${proseLinks([l.source], 1)}.</li>`);
+      return proseRow('Lobbying', '', lis);
+    }
     function proseIntroHtml(inst) {
       const d = inst.details || {};
       const rows = [];
       rows.push(proseRow('Overview', '', proseChunks(d.overview, 0).map(t => proseLi('', escapeHtml(t))), { fold: 3 }));
       rows.push(proseFundingRow(inst));
       rows.push(proseScaleRow(inst));
+      rows.push(proseLobbyingRow(inst));
       rows.push(proseBureaucracyRow(inst));
       const note = (lead, t) => t ? proseLi(lead, escapeHtml(proseEnd(t))) : '';
       rows.push(fundingCritiqueRow(inst));
