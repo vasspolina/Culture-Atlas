@@ -2208,6 +2208,15 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
      chat the Chat tab goes back, so the record's Ask in chat, which was pressed there as a second way back, is put away. */
   :root.gm-chat body.chat-input-mode-active :is(#gmTopBtns #gmBackChatBtn,#workInputCard #chatShareBtn):not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
   :root.gm-from-chat #dossier-bottom-sheet #dossier-sheet-ask-btn:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+
+  /* The record sheet's head holds its cross (user, 17 Nov 2026: "Fix window"). At full the sheet kept the notch's padding at
+     its top (atlas.css, from when full covered the whole screen); since full stops under the row of top buttons (release 771)
+     that padding was a 48px band over the head, and the record scrolled through it: the actions and the name showed above
+     the grabber. And the head was 48px while the cross runs 12px + 44px, so the cross hung over the tabs. The padding goes,
+     the head is 64px (the cross and 8px under it), and the tabs stick under the head. */
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet[data-detent="full"]:not(#sh-x):not(#sh-y){padding-top:0!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-chrome:not(#sh-x):not(#sh-y){height:64px!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .gm-tabs:not(#sh-x):not(#sh-y){top:64px!important}
 }
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
