@@ -1697,7 +1697,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26)}
     :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(p,li,dd,blockquote,figcaption,.institution-summary,.d-row-sub,.ts-prose,.intro-line){
       hyphens:auto!important;-webkit-hyphens:auto!important;hyphenate-limit-chars:8 3 3!important;overflow-wrap:break-word!important;text-wrap:wrap!important}
-    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,.curator-suggest-chip,.starter-prompt){
+    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,a.influence-meta,.influence-meta a,.curator-suggest-chip,.starter-prompt){
       hyphens:none!important;-webkit-hyphens:none!important}
     #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:16px!important}
   }
