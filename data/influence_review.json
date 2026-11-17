@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]).",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -4021,5 +4021,24 @@
   "drop": true,
   "why": "The record says the donors are not confirmed on the current page."
  },
- "_about_checks": "Checked against source pages, 17 Nov 2026: every page the entries cite was fetched once by an honest automated reader (1,151 pages, 1,083 read, PDFs as text). An entry is source checked when a page it cites names the funder and states the claim: automatically when every amount it gives sits beside the funder’s name on the page, or when it only says the funder is listed and the page lists it (in its text or, for a logo, in the image’s alt text or file name); otherwise by reading the page, with the excerpt kept as checked_quote. Partly checked: the page gives the tie but not one detail, named in checked_missing. Three entries the pages contradicted were corrected to what the page says, with the old wording kept in corrected. Not found: the pages cited do not state it, most often because the page that would (an annual report, a donor list) was not among the cited pages or could not be read; those entries stay as checked against the museum’s page in this atlas."
+ "_about_checks": "Checked against source pages, 17 Nov 2026: every page the entries cite was fetched once by an honest automated reader (1,151 pages, 1,083 read, PDFs as text). An entry is source checked when a page it cites names the funder and states the claim: automatically when every amount it gives sits beside the funder’s name on the page, or when it only says the funder is listed and the page lists it (in its text or, for a logo, in the image’s alt text or file name); otherwise by reading the page, with the excerpt kept as checked_quote. Partly checked: the page gives the tie but not one detail, named in checked_missing. Three entries the pages contradicted were corrected to what the page says, with the old wording kept in corrected. Not found: the pages cited do not state it, most often because the page that would (an annual report, a donor list) was not among the cited pages or could not be read; those entries stay as checked against the museum’s page in this atlas.",
+ "eb46ef7fb9": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "In leaked Sony emails (2014), Sony’s lobbying chief briefed LACMA trustee Michael Lynton, then head of Sony Pictures, before his lunch with County Supervisor Ridley-Thomas about LACMA’s request for county money and Sony’s past support for the supervisor’s political committee.",
+  "date": "2014",
+  "links": [
+   {
+    "measure": "us",
+    "text": "Sony’s lobbying chief prepared the LACMA trustee for his meeting with the county supervisor about LACMA’s request for county money.",
+    "source": "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la"
+   },
+   {
+    "measure": "politics",
+    "text": "The same briefing covered Sony’s past support for the supervisor’s political committee.",
+    "source": "https://www.propublica.org/article/hacked-sony-emails-reveal-behind-the-scenes-political-dealings-in-la"
+   }
+  ]
+ }
 }

@@ -196,7 +196,7 @@
     list.filter(inp => inp.hasAttribute('data-chip')).forEach(inp => {
       const label = inp.closest('label'), nm = label && label.querySelector('.layer-name');
       const name = (nm ? nm.textContent : inp.dataset.layer).trim();
-      mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}; press again to show every space`);
+      mk(inp.dataset.layer, name, label ? label.style.getPropertyValue('--layer-color') : '', `Show only ${name}; press again to show every museum`);
     });
     // The phone adds its grade chips to the same row (assets/phone-maps.js) and keeps their state itself, so they are left out:
     // painted here they all showed pressed whenever the Images chip was pressed.
@@ -775,12 +775,12 @@
         const i = d.inst; if (!i) return;
         const k = selfKinds(i);
         if (L.independent && k.independent) {
-          LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: indepCol, label: 'Independent space', sub: i.name, ask: `How is ${i.name} independent?` });
+          LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: indepCol, label: 'Independent museum', sub: i.name, ask: `How is ${i.name} independent?` });
           shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = indepCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
         }
         if (L.artist && k.artist) {
           const x = d.x, y = d.y - 12;
-          LM.push({ x, y, r: 8, rec: i, col: COL.artist, label: 'Artist-run space', sub: i.name, ask: `Who runs ${i.name}?` });
+          LM.push({ x, y, r: 8, rec: i, col: COL.artist, label: 'Artist-run museum', sub: i.name, ask: `Who runs ${i.name}?` });
           shapePath(ctx, 'circle', x, y, 6); ctx.fillStyle = COL.artist; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
         }
       });
@@ -981,7 +981,7 @@
     const b = document.createElement('button');
     b.type = 'button'; b.id = 'moneyExitBtn';
     b.innerHTML = '<span aria-hidden="true">×</span> Exit money map';
-    b.title = 'Leave the money map and show every space again (Esc)';
+    b.title = 'Leave the money map and show every museum again (Esc)';
     b.addEventListener('click', exitMoney);
     host.appendChild(b);
     document.addEventListener('keydown', e => {
@@ -1344,11 +1344,11 @@
     const formatCount = count => new Intl.NumberFormat('en-US').format(count);
     if (typeof ALL_INSTITUTIONS !== 'undefined') {
       set('flags', `${formatCount(ALL_INSTITUTIONS.filter(i => i.flags && i.flags.length).length)}`);
-      set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0spaces`);
-      set('independent', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).independent).length)}\u00a0spaces`);
-      set('artist', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).artist).length)}\u00a0spaces`);
-      if (window.CRITIQUE_GALLERY) set('images', `${formatCount(ALL_INSTITUTIONS.filter(SPACE_TEST.images).length)}\u00a0spaces`);
-      set('openbooks', `${formatCount(ALL_INSTITUTIONS.filter(isOpenBooks).length)}\u00a0spaces`);
+      set('propaganda', `${formatCount(ALL_INSTITUTIONS.filter(i => (i.propaganda || []).length).length)}\u00a0museums`);
+      set('independent', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).independent).length)}\u00a0museums`);
+      set('artist', `${formatCount(ALL_INSTITUTIONS.filter(i => selfKinds(i).artist).length)}\u00a0museums`);
+      if (window.CRITIQUE_GALLERY) set('images', `${formatCount(ALL_INSTITUTIONS.filter(SPACE_TEST.images).length)}\u00a0museums`);
+      set('openbooks', `${formatCount(ALL_INSTITUTIONS.filter(isOpenBooks).length)}\u00a0museums`);
     }
     if (HQ) {
       set('hq', `${formatCount(HQ.orgs.length)}\u00a0offices`);
@@ -1358,11 +1358,11 @@
     if (web) {
       set('ties', `${formatCount(web.length)}\u00a0links`);
       const funded = [...recById.values()].filter(rec => rec.nodes.some(FUNDER)).length;
-      set('money', `${formatCount(funded)}\u00a0spaces`);
-      set('funding', `${formatCount(funded)}\u00a0spaces`);
+      set('money', `${formatCount(funded)}\u00a0museums`);
+      set('funding', `${formatCount(funded)}\u00a0museums`);
       const rightRecs = [...recById.values()].filter(rec => rec.nodes.some(RIGHT));
-      set('right', `${formatCount(rightRecs.length)}\u00a0spaces`);
-      set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0spaces`);
+      set('right', `${formatCount(rightRecs.length)}\u00a0museums`);
+      set('epstein', `${formatCount([...recById.values()].filter(rec => epsteinOf(rec).length).length)}\u00a0museums`);
       if (window.atlasFundingViews) window.atlasFundingViews.counts(set);
     }
   }
@@ -1494,7 +1494,7 @@
         b.setAttribute('role', 'switch');
         b.innerHTML = `<i class="shape-${KIND_SHAPE[t.kind]}" style="--marker-color:${COL[t.kind]}"></i><span class="tf-name"></span><span class="tf-n"></span><span class="filter-switch" aria-hidden="true"></span>`;
         b.querySelector('.tf-name').textContent = t.name;
-        b.querySelector('.tf-n').textContent = plural(t.n, 'space');
+        b.querySelector('.tf-n').textContent = plural(t.n, 'museum');
         b.addEventListener('mouseenter', () => previewTop(t));
         b.addEventListener('focus', () => previewTop(t));
         const leave = () => { if (REACH && !REACH.pinned && REACH.top === t) clearReach(); };
@@ -1507,7 +1507,7 @@
     [...box.children].forEach((b, i) => {
       const t = list[i], on = FILTERS.has(t);
       b.setAttribute('aria-checked', String(on));
-      b.title = `${t.name}: named on ${t.n} spaces. ${on ? 'Switch off to hide' : 'Switch on to keep'} its connections on the map.`;
+      b.title = `${t.name}: named on ${t.n} museums. ${on ? 'Switch off to hide' : 'Switch on to keep'} its connections on the map.`;
     });
   }
 
