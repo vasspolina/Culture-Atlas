@@ -208,6 +208,8 @@ FUNDERS = [
     ('chewsculture', "Chew's Culture Foundation (Hong Gah)", 'family', r"Chew's|Chew Culture"),
     ('royalinn', 'Royal Inn', 'corp', r'Royal Inn'),
     ('epson', 'Epson', 'corp', r'Epson'),
+    # HSBC (user, 17 Nov 2026: "add hsbc too"): founded in Hong Kong and Shanghai in 1865, head office in London since 1993.
+    ('hsbc', 'HSBC', 'corp', r'HSBC|Hongkong and Shanghai Bank'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
