@@ -1,0 +1,696 @@
+{
+ "_about": "Head offices for the Influence mode funders that assets/hq.json has no office for, researched 17 Nov 2026 (batches 5 to 8): city level, the listed head office, or for a family the company its money came from. tools/build_influence.py reads it into HQ_EXTRA.",
+ "standardbank": {
+  "n": "Standard Bank",
+  "c": "Johannesburg",
+  "co": "South Africa",
+  "lat": -26.2041,
+  "lon": 28.0473
+ },
+ "angloamerican": {
+  "n": "Anglo American",
+  "c": "London",
+  "co": "United Kingdom",
+  "lat": 51.5072,
+  "lon": -0.1276
+ },
+ "oppenheimer": {
+  "n": "Oppenheimer family",
+  "c": "Johannesburg",
+  "co": "South Africa",
+  "lat": -26.2041,
+  "lon": 28.0473
+ },
+ "mtn": {
+  "n": "MTN Group",
+  "c": "Johannesburg",
+  "co": "South Africa",
+  "lat": -26.2041,
+  "lon": 28.0473
+ },
+ "seplat": {
+  "n": "Seplat Energy",
+  "c": "Lagos",
+  "co": "Nigeria",
+  "lat": 6.5244,
+  "lon": 3.3792
+ },
+ "azurapower": {
+  "n": "Azura Power West Africa",
+  "c": "Lagos",
+  "co": "Nigeria",
+  "lat": 6.5244,
+  "lon": 3.3792
+ },
+ "accessbank": {
+  "n": "Access Bank",
+  "c": "Lagos",
+  "co": "Nigeria",
+  "lat": 6.5244,
+  "lon": 3.3792
+ },
+ "ihstowers": {
+  "n": "IHS Towers",
+  "c": "London",
+  "co": "United Kingdom",
+  "lat": 51.5072,
+  "lon": -0.1276
+ },
+ "africell": {
+  "n": "Africell",
+  "c": "London",
+  "co": "United Kingdom",
+  "lat": 51.5072,
+  "lon": -0.1276
+ },
+ "fnbfirstrand": {
+  "n": "FirstRand (FNB)",
+  "c": "Johannesburg",
+  "co": "South Africa",
+  "lat": -26.1076,
+  "lon": 28.0567
+ },
+ "bankwindhoek": {
+  "n": "Bank Windhoek (Capricorn Group)",
+  "c": "Windhoek",
+  "co": "Namibia",
+  "lat": -22.5609,
+  "lon": 17.0658
+ },
+ "isabeldossantos": {
+  "n": "Sindika Dokolo and Isabel dos Santos",
+  "c": "Luanda",
+  "co": "Angola",
+  "lat": -8.839,
+  "lon": 13.2894
+ },
+ "norval": {
+  "n": "Norval family",
+  "c": "Cape Town",
+  "co": "South Africa",
+  "lat": -33.9249,
+  "lon": 18.4241
+ },
+ "javett": {
+  "n": "Javett family",
+  "c": "Johannesburg",
+  "co": "South Africa",
+  "lat": -26.2041,
+  "lon": 28.0473
+ },
+ "kirsh": {
+  "n": "Kirsh family (Jetro Holdings)",
+  "c": "New York",
+  "co": "United States",
+  "lat": 40.7128,
+  "lon": -74.006
+ },
+ "shyllon": {
+  "n": "Yemisi Shyllon",
+  "c": "Lagos",
+  "co": "Nigeria",
+  "lat": 6.5244,
+  "lon": 3.3792
+ },
+ "oyebode": {
+  "n": "Aisha and Gbenga Oyebode",
+  "c": "Lagos",
+  "co": "Nigeria",
+  "lat": 6.5244,
+  "lon": 3.3792
+ },
+ "hiridjee": {
+  "n": "Hiridjee family (Axian)",
+  "c": "Antananarivo",
+  "co": "Madagascar",
+  "lat": -18.8792,
+  "lon": 47.5079
+ },
+ "nesr": {
+  "n": "Nesr family (Webcor)",
+  "c": "Geneva",
+  "co": "Switzerland",
+  "lat": 46.2044,
+  "lon": 6.1432
+ },
+ "zinsou": {
+  "n": "Zinsou family",
+  "c": "Paris",
+  "co": "France",
+  "lat": 48.8566,
+  "lon": 2.3522
+ },
+ "texaf": {
+  "n": "Texaf",
+  "c": "Brussels",
+  "co": "Belgium",
+  "lat": 50.8503,
+  "lon": 4.3517
+ },
+ "almada": {
+  "n": "Al Mada",
+  "c": "Casablanca",
+  "co": "Morocco",
+  "lat": 33.5731,
+  "lon": -7.5898
+ },
+ "lazraq": {
+  "n": "Groupe Alliances (Lazraq family)",
+  "c": "Casablanca",
+  "co": "Morocco",
+  "lat": 33.5731,
+  "lon": -7.5898
+ },
+ "jameel": {
+  "n": "Abdul Latif Jameel (Jameel family)",
+  "c": "Jeddah",
+  "co": "Saudi Arabia",
+  "lat": 21.4858,
+  "lon": 39.1925
+ },
+ "alserkal": {
+  "n": "Alserkal Avenue (Alserkal family)",
+  "c": "Dubai",
+  "co": "United Arab Emirates",
+  "lat": 25.2048,
+  "lon": 55.2708
+ },
+ "aramco": {
+  "n": "Saudi Aramco",
+  "c": "Dhahran",
+  "co": "Saudi Arabia",
+  "lat": 26.2361,
+  "lon": 50.0393
+ },
+ "eczacibasi": {
+  "n": "Eczacıbaşı Group (Eczacıbaşı family)",
+  "c": "Istanbul",
+  "co": "Turkey",
+  "lat": 41.0082,
+  "lon": 28.9784
+ },
+ "sabanci": {
+  "n": "Sabancı Holding (Sabancı family)",
+  "c": "Istanbul",
+  "co": "Turkey",
+  "lat": 41.0082,
+  "lon": 28.9784
+ },
+ "borusan": {
+  "n": "Borusan Holding (Kocabıyık family)",
+  "c": "Istanbul",
+  "co": "Turkey",
+  "lat": 41.0082,
+  "lon": 28.9784
+ },
+ "bradesco": {
+  "n": "Bradesco",
+  "c": "Osasco",
+  "co": "Brazil",
+  "lat": -23.5325,
+  "lon": -46.7917
+ },
+ "carlosslim": {
+  "n": "Grupo Carso (Carlos Slim)",
+  "c": "Mexico City",
+  "co": "Mexico",
+  "lat": 19.4326,
+  "lon": -99.1332
+ },
+ "fortabat": {
+  "n": "Loma Negra (Fortabat family)",
+  "c": "Buenos Aires",
+  "co": "Argentina",
+  "lat": -34.6037,
+  "lon": -58.3816
+ },
+ "tata": {
+  "n": "Tata Sons",
+  "c": "Mumbai",
+  "co": "India",
+  "lat": 18.9322,
+  "lon": 72.8336
+ },
+ "reliance": {
+  "n": "Reliance Industries",
+  "c": "Mumbai",
+  "co": "India",
+  "lat": 18.9256,
+  "lon": 72.8242
+ },
+ "nadar": {
+  "n": "HCL (Shiv and Kiran Nadar)",
+  "c": "Noida",
+  "co": "India",
+  "lat": 28.5355,
+  "lon": 77.391
+ },
+ "adani": {
+  "n": "Adani Group",
+  "c": "Ahmedabad",
+  "co": "India",
+  "lat": 23.0225,
+  "lon": 72.5714
+ },
+ "cpgroup": {
+  "n": "Charoen Pokphand Group",
+  "c": "Bangkok",
+  "co": "Thailand",
+  "lat": 13.7563,
+  "lon": 100.5018
+ },
+ "lg": {
+  "n": "LG Electronics",
+  "c": "Seoul",
+  "co": "South Korea",
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "skgroup": {
+  "n": "SK Group",
+  "c": "Seoul",
+  "co": "South Korea",
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "amorepacific": {
+  "n": "Amorepacific",
+  "c": "Seoul",
+  "co": "South Korea",
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "hanwha": {
+  "n": "Hanwha",
+  "c": "Seoul",
+  "co": "South Korea",
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "shinsegae": {
+  "n": "Shinsegae",
+  "c": "Seoul",
+  "co": "South Korea",
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "kumhoasiana": {
+  "n": "Kumho Asiana Group",
+  "c": "Seoul",
+  "co": "South Korea",
+  "lat": 37.5665,
+  "lon": 126.978
+ },
+ "benesse": {
+  "n": "Benesse Holdings",
+  "c": "Okayama",
+  "co": "Japan",
+  "lat": 34.6551,
+  "lon": 133.9195
+ },
+ "fastretailing": {
+  "n": "Fast Retailing",
+  "c": "Yamaguchi",
+  "co": "Japan",
+  "lat": 34.1785,
+  "lon": 131.4737
+ },
+ "suntory": {
+  "n": "Suntory Holdings",
+  "c": "Osaka",
+  "co": "Japan",
+  "lat": 34.6937,
+  "lon": 135.5023
+ },
+ "pola": {
+  "n": "Pola Orbis Holdings",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "ishibashi": {
+  "n": "Bridgestone (Ishibashi Foundation)",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "mitsubishi": {
+  "n": "Mitsubishi Electric",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "mitsui": {
+  "n": "Mitsui Fudosan",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "panasonic": {
+  "n": "Panasonic",
+  "c": "Kadoma",
+  "co": "Japan",
+  "lat": 34.7381,
+  "lon": 135.5869
+ },
+ "toyota": {
+  "n": "Toyota",
+  "c": "Toyota",
+  "co": "Japan",
+  "lat": 35.0825,
+  "lon": 137.1563
+ },
+ "canon": {
+  "n": "Canon",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "asahi": {
+  "n": "The Asahi Shimbun",
+  "c": "Osaka",
+  "co": "Japan",
+  "lat": 34.6937,
+  "lon": 135.5023
+ },
+ "obayashi": {
+  "n": "Obayashi",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "kajima": {
+  "n": "Kajima",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "takenaka": {
+  "n": "Takenaka",
+  "c": "Osaka",
+  "co": "Japan",
+  "lat": 34.6937,
+  "lon": 135.5023
+ },
+ "tepco": {
+  "n": "TEPCO",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "kao": {
+  "n": "Kao",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "shiseido": {
+  "n": "Shiseido",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "mizuho": {
+  "n": "Mizuho Financial Group",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "nomura": {
+  "n": "Nomura Holdings",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "nipponfoundation": {
+  "n": "Nippon Foundation",
+  "c": "Tokyo",
+  "co": "Japan",
+  "lat": 35.6762,
+  "lon": 139.6503
+ },
+ "mondotv": {
+  "n": "Mondo TV",
+  "c": "Rome",
+  "co": "Italy",
+  "lat": 41.9028,
+  "lon": 12.4964
+ },
+ "gazprom": {
+  "n": "Gazprom",
+  "c": "Saint Petersburg",
+  "co": "Russia",
+  "lat": 59.9311,
+  "lon": 30.3609
+ },
+ "gazprombank": {
+  "n": "Gazprombank",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "sberbank": {
+  "n": "Sberbank",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "vtb": {
+  "n": "VTB Bank",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "rosneft": {
+  "n": "Rosneft",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "lukoil": {
+  "n": "Lukoil",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "promsvyazbank": {
+  "n": "PSB (Promsvyazbank)",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "usmanov": {
+  "n": "USM / Metalloinvest (Alisher Usmanov)",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "alfagroup": {
+  "n": "Alfa-Bank (Alfa Group)",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "prokhorov": {
+  "n": "Onexim Group (Mikhail Prokhorov)",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "mordashov": {
+  "n": "Severstal (Alexei Mordashov)",
+  "c": "Cherepovets",
+  "co": "Russia",
+  "lat": 59.1333,
+  "lon": 37.9
+ },
+ "timchenko": {
+  "n": "Volga Group (Gennady Timchenko)",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "yandex": {
+  "n": "Yandex",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "borismints": {
+  "n": "O1 Group (Boris Mints)",
+  "c": "Moscow",
+  "co": "Russia",
+  "lat": 55.7558,
+  "lon": 37.6173
+ },
+ "pinchuk": {
+  "n": "Interpipe (Victor Pinchuk)",
+  "c": "Dnipro",
+  "co": "Ukraine",
+  "lat": 48.4647,
+  "lon": 35.0462
+ },
+ "liuyiqian": {
+  "n": "Sunline Group (Liu Yiqian and Wang Wei)",
+  "c": "Shanghai",
+  "co": "China",
+  "lat": 31.2304,
+  "lon": 121.4737
+ },
+ "buditek": {
+  "n": "Yuz Foundation (Budi Tek)",
+  "c": "Jakarta",
+  "co": "Indonesia",
+  "lat": -6.2088,
+  "lon": 106.8456
+ },
+ "pingan": {
+  "n": "Ping An Insurance",
+  "c": "Shenzhen",
+  "co": "China",
+  "lat": 22.5431,
+  "lon": 114.0579
+ },
+ "wanda": {
+  "n": "Dalian Wanda Group (Wang Jianlin)",
+  "c": "Beijing",
+  "co": "China",
+  "lat": 39.9042,
+  "lon": 116.4074
+ },
+ "bytedance": {
+  "n": "ByteDance",
+  "c": "Beijing",
+  "co": "China",
+  "lat": 39.9042,
+  "lon": 116.4074
+ },
+ "cnpc": {
+  "n": "China National Petroleum Corporation",
+  "c": "Beijing",
+  "co": "China",
+  "lat": 39.9042,
+  "lon": 116.4074
+ },
+ "bankofchina": {
+  "n": "Bank of China",
+  "c": "Beijing",
+  "co": "China",
+  "lat": 39.9042,
+  "lon": 116.4074
+ },
+ "octgroup": {
+  "n": "OCT Group",
+  "c": "Shenzhen",
+  "co": "China",
+  "lat": 22.5431,
+  "lon": 114.0579
+ },
+ "minsheng": {
+  "n": "Ningxia Minsheng Group",
+  "c": "Yinchuan",
+  "co": "China",
+  "lat": 38.4872,
+  "lon": 106.2309
+ },
+ "timeschina": {
+  "n": "Times China",
+  "c": "Guangzhou",
+  "co": "China",
+  "lat": 23.1291,
+  "lon": 113.2644
+ },
+ "qiaozhibing": {
+  "n": "Qiao Zhibing",
+  "c": "Shanghai",
+  "co": "China",
+  "lat": 31.2304,
+  "lon": 121.4737
+ },
+ "midea": {
+  "n": "Midea Group (He family)",
+  "c": "Foshan",
+  "co": "China",
+  "lat": 23.0215,
+  "lon": 113.1214
+ },
+ "aranya": {
+  "n": "Aranya",
+  "c": "Qinhuangdao",
+  "co": "China",
+  "lat": 39.9354,
+  "lon": 119.6005
+ },
+ "yanshijie": {
+  "n": "Yan Shijie and Cao Mei",
+  "c": "Beijing",
+  "co": "China",
+  "lat": 39.9042,
+  "lon": 116.4074
+ },
+ "zhenghao": {
+  "n": "Onehome Art Hotel (Zheng Hao)",
+  "c": "Shanghai",
+  "co": "China",
+  "lat": 31.2304,
+  "lon": 121.4737
+ },
+ "byd": {
+  "n": "BYD",
+  "c": "Shenzhen",
+  "co": "China",
+  "lat": 22.5431,
+  "lon": 114.0579
+ },
+ "swire": {
+  "n": "John Swire & Sons (Swire family)",
+  "c": "London",
+  "co": "United Kingdom",
+  "lat": 51.5074,
+  "lon": -0.1278
+ },
+ "jardine": {
+  "n": "Jardine Matheson",
+  "c": "Hong Kong",
+  "co": "China",
+  "lat": 22.3193,
+  "lon": 114.1694
+ },
+ "nanfung": {
+  "n": "Nan Fung Group",
+  "c": "Hong Kong",
+  "co": "China",
+  "lat": 22.3193,
+  "lon": 114.1694
+ },
+ "anta": {
+  "n": "Anta Sports",
+  "c": "Jinjiang",
+  "co": "China",
+  "lat": 24.7814,
+  "lon": 118.552
+ }
+}

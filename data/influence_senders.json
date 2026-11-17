@@ -49,7 +49,7 @@
   "figures": {
    "culture": {
     "spaces": 8,
-    "entries": 13,
+    "entries": 24,
     "largest_gift": {
      "text": "£50 million over ten years for the British Museum masterplan (2023)",
      "amount": 50000000.0,
@@ -116,8 +116,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 11,
-    "entries": 16,
+    "spaces": 12,
+    "entries": 19,
     "largest_gift": {
      "text": "C$1 million to C$4.99 million to the Banff Centre, lifetime to 2023",
      "amount": 1000000.0,
@@ -767,8 +767,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 8,
-    "entries": 8
+    "spaces": 9,
+    "entries": 10
    },
    "us_lobbying": {
     "usd": 590000.0,
@@ -815,8 +815,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 2,
-    "entries": 2,
+    "spaces": 4,
+    "entries": 4,
     "largest_gift": {
      "text": "$1 million to the National Museum of African American History and Culture’s capital campaign (2014)",
      "amount": 1000000.0,
@@ -883,8 +883,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 3,
-    "entries": 3,
+    "spaces": 4,
+    "entries": 4,
     "largest_gift": {
      "text": "$50,000 or more to the Montreal Museum of Fine Arts, 2024 to 2025",
      "amount": 50000.0,
@@ -1063,7 +1063,7 @@
   "figures": {
    "culture": {
     "spaces": 83,
-    "entries": 87,
+    "entries": 89,
     "largest_gift": {
      "text": "$75 million to The Shed’s capital campaign (2017)",
      "amount": 75000000.0,
@@ -1551,5 +1551,1582 @@
     "source": "https://www.fec.gov/data/committee/C00282038/?cycle=2024"
    }
   }
+ },
+ "standardbank": {
+  "made_from": "Standard Bank’s money comes from banking and insurance, in South Africa and across the rest of Africa.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Standard Bank Group reported headline earnings of R44 503 million for 2024, up 4%.",
+    "date": "2025-03",
+    "source": "https://www.standardbank.com/static_file/Investor%20Relations/Documents/Financial-results/Annual-Results/SBG-2024-Annual-Results-Factsheet.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In November 2015 Standard Bank Plc entered the UK’s first deferred prosecution agreement, paying $25.2 million and $7 million in compensation to Tanzania, over a $6 million payment in 2013 by its former sister company Stanbic Bank Tanzania.",
+    "date": "2015-11",
+    "source": "https://www.corporatecrimereporter.com/news/200/under-first-uk-deferred-prosecution-agreement-standard-bank-to-pay-25-2-million/"
+   },
+   {
+    "kind": "harm",
+    "text": "In March 2025 Standard Bank and Uganda’s Stanbic Bank were named among the lenders of the first external financing for the East African Crude Oil Pipeline, majority-controlled by TotalEnergies.",
+    "date": "2025-03",
+    "source": "https://www.climatechangenews.com/2025/03/28/african-banks-back-oil-export-pipeline-despite-climate-commitments/"
+   }
+  ]
+ },
+ "angloamerican": {
+  "made_from": "Anglo American’s money comes from mining, mainly copper and iron ore, and, through De Beers, diamonds.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "For 2025 Anglo American reported underlying EBITDA of $6.4 billion and a loss attributable to shareholders of $3.7 billion, including a $2.3 billion impairment on De Beers.",
+    "date": "2026-02",
+    "source": "https://www.angloamerican.com/media/press-releases/2026/20-02-2026"
+   },
+   {
+    "kind": "harm",
+    "text": "A class action for 140,000 women and children in Kabwe, Zambia, alleges lead poisoning from a mine Anglo American ran from 1925 to 1974; the Johannesburg High Court refused to certify it in December 2023 and allowed an appeal in April 2024.",
+    "date": "2024-04",
+    "source": "https://www.leighday.co.uk/news/news/2024-news/zambian-lead-poisoning-claimants-win-permission-to-appeal-class-action-against-anglo-american"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Anglo American reported $180,000 in its own 2025 US federal lobbying reports, on mining and critical minerals, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Anglo+American&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "De Beers plc reported $260,000 in its own 2025 US federal lobbying reports (its second-quarter report gives no amount), on US tariffs on natural diamonds.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=De+Beers&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 180000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Anglo+American&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 3
+   }
+  }
+ },
+ "mtn": {
+  "made_from": "MTN’s money comes from mobile voice, data and mobile money services across Africa.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "MTN Group’s service revenue rose 22.9% to R218.5 billion in 2025, on a reported basis.",
+    "date": "2026-03",
+    "source": "https://www.mtn.com/wp-content/uploads/2026/03/MTN-Group-FY-25-results-JSE-SENS.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In June 2016 MTN Nigeria agreed to pay 330 billion naira ($1.671 billion at the official rate) to settle a fine first set at $5.2 billion for failing to disconnect unregistered phone lines by a regulator’s deadline.",
+    "date": "2016-06",
+    "source": "https://www.timeslive.co.za/news/africa/2016-06-10-mtn-gets-reduced-fine-of-1671-billion-from-nigerian-authorities/"
+   },
+   {
+    "kind": "harm",
+    "text": "In September 2026 a US federal court in New York let two Anti-Terrorism Act suits proceed to discovery; families of more than 200 US soldiers killed and wounded in Afghanistan claim MTN paid protection money to the Taliban, which MTN denies.",
+    "date": "2026-09",
+    "source": "https://www.businessday.co.za/companies/2026-09-30-two-mtn-antiterrorism-cases-move-to-discovery-phase-in-the-us/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Two outside firms reported $590,000 in 2025 fees from MTN (Dubai) Limited for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=MTN&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 590000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=MTN&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "africell": {
+  "made_from": "Africell’s money comes from mobile phone networks in Africa.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "An outside firm reported $330,000 in 2025 fees from Africell UK Limited for US federal lobbying, on funding for broader mobile coverage in Africa.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Africell&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 330000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Africell&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "texaf": {
+  "made_from": "Texaf’s money comes mainly from renting property in its Kinshasa concession, with a sandstone quarry and a digital business; it began in 1925 as a textile company in the Belgian Congo.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Texaf reported 2025 revenue of €37.7 million, up 10%, and consolidated net profit of €8.9 million.",
+    "date": "2026-02",
+    "source": "https://www.texaf.be/sites/default/files/downloads/Communiqu%C3%A9%20260227ENG_V%20CA%20pour%20publication%20VF.pdf"
+   }
+  ]
+ },
+ "fnbfirstrand": {
+  "made_from": "FirstRand’s money comes from banking, through FNB, RMB and WesBank; the Thapong tie is its Botswana arm’s FNB Foundation.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "FirstRand’s normalised earnings rose 10% to R41.8 billion in the year to June 2025.",
+    "date": "2025-09",
+    "source": "https://www.ewn.co.za/2025/09/11/firstrand-delivers-10-earnings-rise-despite-almost-r3bn-provision-for-uk-car-loan-probe"
+   },
+   {
+    "kind": "harm",
+    "text": "In the same year it took a further R2.7 billion pre-tax provision tied to the UK investigation into the vehicle finance market, after R3 billion the year before.",
+    "date": "2025-09",
+    "source": "https://www.ewn.co.za/2025/09/11/firstrand-delivers-10-earnings-rise-despite-almost-r3bn-provision-for-uk-car-loan-probe"
+   }
+  ]
+ },
+ "ecobank": {
+  "made_from": "Ecobank’s money comes from banking in 39 African countries.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Ecobank’s net revenue rose 17% to $2.45 billion in 2025, and its pre-tax profit 21% to $801 million.",
+    "date": "2026-04",
+    "source": "https://allafrica.com/stories/202604140298.html"
+   }
+  ]
+ },
+ "seplat": {
+  "made_from": "Seplat’s money comes from oil and gas production in Nigeria, onshore and offshore.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Seplat Energy’s revenue rose 144.2% to $2,726 million in 2025, reflecting a full year of offshore assets.",
+    "date": "2026-02",
+    "source": "https://www.investegate.co.uk/announcement/rns/seplat-energy-di---sepl/full-year-2025-financial-results/9447668"
+   }
+  ]
+ },
+ "isabeldossantos": {
+  "made_from": "Isabel dos Santos’s money comes from large stakes in Angolan companies in banking, telecoms and supermarkets; she is the daughter of Angola’s former president, and Sindika Dokolo, the foundation’s founder, was her husband.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In January 2020 The Art Newspaper gave Forbes’s estimate of Isabel dos Santos’s personal fortune as $2.2 billion.",
+    "date": "2020-01",
+    "source": "https://www.theartnewspaper.com/2020/01/07/angola-freezes-assets-of-billionaire-and-her-art-collector-husband"
+   },
+   {
+    "kind": "harm",
+    "text": "In July 2020 a Luanda court called a deal between Angola’s state diamond company and Sindika Dokolo “fraudulent” and harmful to ordinary Angolans (Luanda Leaks).",
+    "date": "2020-07",
+    "source": "https://www.icij.org/investigations/luanda-leaks/court-ties-dos-santos-to-fraudulent-diamond-deal-as-portugal-further-freezes-out-billionaire/"
+   },
+   {
+    "kind": "harm",
+    "text": "In December 2023 London’s High Court granted Unitel a worldwide order freezing up to £580m of her assets, in its suit over loans made while she was a Unitel director.",
+    "date": "2023-12",
+    "source": "https://www.businessday.co.za/bd/world/africa/2023-12-20-angolas-isabel-dos-santos-loses-fight-against-freezing-order/"
+   },
+   {
+    "kind": "harm",
+    "text": "In November 2024 the UK sanctioned her under its anti-corruption regime; the Foreign Office said she stands accused of embezzling at least £350m from state-run firms.",
+    "date": "2024-11",
+    "source": "https://www.cityam.com/uk-sanctions-dmitry-firtash-and-isabel-dos-santos-as-it-ramps-up-crackdown-on-kleptocrats/"
+   }
+  ]
+ },
+ "kirsh": {
+  "made_from": "The Kirsh family’s money comes from Nathan Kirsh’s businesses; his Kirsh Group holds a majority of Jetro Holdings (Restaurant Depot, Jetro Cash and Carry).",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "A Mail & Guardian comment of April 2018 said Nathan Kirsh is the largest shareholder and a former director of Magal Security Systems, which it said supplies perimeter control systems for the West Bank wall.",
+    "date": "2018-04",
+    "source": "https://mg.co.za/article/2018-04-12-the-new-a4-gallerys-israeli-mirage/"
+   }
+  ]
+ },
+ "nesr": {
+  "made_from": "The Nesr family’s money comes from Webcor Group, one of Angola’s largest companies, which imports and distributes food; Wissam Nesr is its chief executive.",
+  "facts": []
+ },
+ "hiridjee": {
+  "made_from": "The Hiridjee family’s money comes from Axian Group, a pan-African group in telecommunications, energy, real estate and financial services led by Hassanein Hiridjee.",
+  "facts": []
+ },
+ "norval": {
+  "made_from": "Louis Norval’s money comes from property investment in South Africa.",
+  "facts": []
+ },
+ "javett": {
+  "made_from": "The Javett family gives through the Javett Foundation, a trust Michael Javett set up in 2013 to consolidate his and his family’s giving; the records do not say how the money was made.",
+  "facts": []
+ },
+ "shyllon": {
+  "made_from": "Yemisi Shyllon gives his own money and collection, through his art foundation; the records do not say how the money was made.",
+  "facts": []
+ },
+ "oyebode": {
+  "made_from": "Gbenga Oyebode’s money comes from law and business: he co-founded the law firm Aluko & Oyebode and chairs Okomu Oil Palm, in which he holds 4.37 percent.",
+  "facts": []
+ },
+ "zinsou": {
+  "made_from": "The Zinsou family finances the foundation; its Circle of Major Patrons lists Lionel Zinsou, Marie-Cécile Zinsou’s father, and Marie-Christine Zinsou.",
+  "facts": []
+ },
+ "accessbank": {
+  "made_from": "Access Bank’s money comes from banking in Nigeria and other African countries.",
+  "facts": []
+ },
+ "azurapower": {
+  "made_from": "Azura Power West Africa’s money comes from power generation in Nigeria.",
+  "facts": []
+ },
+ "lekoilnigeria": {
+  "made_from": "Lekoil’s money comes from oil exploration and production in Nigeria.",
+  "facts": []
+ },
+ "bankwindhoek": {
+  "made_from": "Bank Windhoek’s money comes from banking in Namibia; it belongs to Capricorn Group.",
+  "facts": []
+ },
+ "sococimcement": {
+  "made_from": "Sococim’s money comes from making cement in Senegal; it is owned by the French group Vicat.",
+  "facts": []
+ },
+ "ihstowers": {
+  "made_from": "IHS Towers’ money comes from leasing telecom towers, mainly in Nigeria, where IHS Nigeria is its arm.",
+  "facts": []
+ },
+ "almada": {
+  "made_from": "Al Mada’s money comes from its holdings in financial services (Attijariwafa bank), telecommunications, construction materials, retail, mining, energy, real estate and tourism.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Attijariwafa bank, the group’s bank, reported net income group share of 9.5 billion dirhams for 2024, up 26.6% from 7.5 billion in 2023.",
+    "date": "2025-02",
+    "source": "https://lematin.ma/economie/attijariwafa-bank-benefice-record-de-95-milliards-de-dirhams-en-2024/265901/amp"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Nareva, which the register entry calls a subsidiary of the Al Mada Group, declared EU lobbying costs of €400,000 to €499,999 for 2024, with 6 full-time-equivalent lobbyists.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=781539097560-59"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 400000,
+    "eur_max": 499999,
+    "period": "2024",
+    "filer": "NAREVA",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=781539097560-59"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 2
+   }
+  }
+ },
+ "alserkal": {
+  "made_from": "The Alserkal family’s Alserkal Avenue, founded by Abdelmonem Bin Eisa Alserkal, is an industrial compound of warehouses in Al Quoz, Dubai, that it leases to galleries and businesses.",
+  "facts": []
+ },
+ "aramco": {
+  "made_from": "Aramco’s money comes from producing and selling Saudi crude oil and gas and refined and chemical products; the Saudi state owns most of it.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Aramco reported net income of $106.2 billion for 2024, down 12.4% from $121.3 billion in 2023.",
+    "date": "2025-03",
+    "source": "https://economymiddleeast.com/news/saudi-arabias-aramco-reports-106-2-billion-net-income-for-2024"
+   },
+   {
+    "kind": "harm",
+    "text": "In the Carbon Majors data for 2024, Saudi Aramco was the biggest state-controlled polluter, responsible for 1.7 billion tonnes of CO2, much of it from exported oil.",
+    "date": "2026-01",
+    "source": "https://www.irishexaminer.com/news/arid-41779757.html?type=ampO"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Saudi Aramco a D- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Saudi-Aramco-5d080667c8b668082bdd862768bce38c"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The Brussels consultancy Boldt declared Aramco Overseas Company BV as a 2025 client on the European Green Deal and energy policy, for €25,000 to €49,999.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/x?rid=013432829763-33"
+   }
+  ]
+ },
+ "borusan": {
+  "made_from": "Borusan’s money comes from Borusan Holding, the Kocabıyık family’s Turkish industrial group, from steel pipe to machinery, logistics, cars and energy.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Borusan Group reported consolidated revenue of ₺257 billion for 2024, 39% growth.",
+    "date": "2025",
+    "source": "https://www.borusan.com/en/news/borusan-marks-its-80th-anniversary-with-39-growth-in-2024"
+   }
+  ]
+ },
+ "eczacibasi": {
+  "made_from": "The Eczacıbaşı family’s money comes from the Eczacıbaşı Group, a Turkish industrial group.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Eczacıbaşı Group reported net revenue of €1.9 billion for 2025, 53% of it from international operations.",
+    "date": "2026",
+    "source": "https://www.eczacibasi.com.tr/assets/corporate-brochure_2025.pdf"
+   }
+  ]
+ },
+ "itsincludesoilrefinertpra": {
+  "made_from": "The Koç family’s money comes from Koç Holding, a Turkish group in energy (the Tüpraş refineries), cars, home appliances and finance.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Koç Holding reported consolidated revenue of $65.8 billion for 2024, with $4.4 billion of combined investment.",
+    "date": "2025",
+    "source": "https://www.ekonomigazetesi.com/sirket-haberleri/koc-holdingin-2024-geliri-658-milyar-dolar-58755"
+   },
+   {
+    "kind": "politics",
+    "text": "In 2013 Koç Holding faced tax audits and lost a major naval defence contract after a hotel it owns sheltered Gezi Park protesters fleeing riot police, The Art Newspaper reported.",
+    "date": "2013",
+    "source": "https://www.theartnewspaper.com/2019/07/02/game-changer-museum-to-open-in-istanbul-in-time-for-citys-biennial"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "More than €120 million for Arter’s building and collection, according to the Koç Foundation (2019)",
+     "amount": 120000000.0,
+     "currency": "EUR",
+     "source": "https://www.theartnewspaper.com/2019/07/02/game-changer-museum-to-open-in-istanbul-in-time-for-citys-biennial"
+    },
+    "spaces": 2,
+    "entries": 7
+   }
+  }
+ },
+ "jameel": {
+  "made_from": "The Jameel family’s money comes from Abdul Latif Jameel, founded in 1945, which began as Toyota’s distributor in Saudi Arabia and now works in mobility, energy, water, finance, health and investments.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Forbes Middle East ranked Abdul Latif Jameel first among the Top 100 Arab Family Businesses of 2024; it operates in over 35 countries with more than 11,000 employees.",
+    "date": "2024-03",
+    "source": "https://www.forbesmiddleeast.com/lists/top-100-arab-family-businesses-2024/abdul-latif-jameel/"
+   }
+  ]
+ },
+ "kamellazaar": {
+  "made_from": "Kamel Lazaar’s money comes from Swicorp, the investment banking, private equity and asset management firm he founded in 1987, headquartered in Riyadh.",
+  "facts": []
+ },
+ "lazraq": {
+  "made_from": "The Lazraq family’s money comes from Groupe Alliances, the listed Moroccan property developer Alami Lazraq founded in 1994.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Alliances reported consolidated revenue of 2.363 billion dirhams for 2024, up 17%, and consolidated net income of 305 million dirhams.",
+    "date": "2025-03",
+    "source": "https://boursenews.ma/article/marches/Alliances-resultats-2024"
+   }
+  ]
+ },
+ "sabanci": {
+  "made_from": "The Sabancı family’s money comes from Sabancı Holding, a Turkish group in banking (Akbank), energy, building materials, mobility and digital businesses.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Sabancı Holding reported combined revenue of TL 1,243,518,569 thousand for 2024 and a consolidated net loss of TL 15,474,560 thousand.",
+    "date": "2025-03",
+    "source": "https://yatirimciiliskileri.sabanci.com/en/images/pdf/4q24-earnings-release.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2018 Turkey’s competition authority fined units of Enerjisa, jointly owned by Sabancı Holding and E.ON, 143 million lira ($26.1 million) for abusing a dominant market position.",
+    "date": "2018-08",
+    "source": "https://hurriyetdailynews.com/turkish-competition-authority-fines-enerjisa-units-26-mln-135663"
+   }
+  ]
+ },
+ "ita": {
+  "made_from": "Itaú’s money comes from banking through Itaú Unibanco: lending, cards, insurance and asset management, mainly in Brazil.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Itaú Unibanco closed 2024 with a record profit of R$41.403 billion.",
+    "date": "2025-02",
+    "source": "https://www.bloomberglinea.com.br/negocios/itau-tem-lucro-recorde-em-2024-e-aprova-r-122-bi-em-dividendos-extraordinarios/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "One outside firm, Arnold & Porter, reported $140,000 in 2025 fees from Banco Itaú International for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Itau&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 140000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Itau&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "R$10 million toward rebuilding the Museu Nacional, to December 2024",
+     "amount": 10000000.0,
+     "currency": "BRL",
+     "source": "https://museunacionalvive.org.br/wp-content/uploads/2025/04/sanitize_relatorio-pmnv-2024.pdf_070425-121701.pdf"
+    },
+    "spaces": 12,
+    "entries": 13
+   }
+  }
+ },
+ "bradesco": {
+  "made_from": "Bradesco’s money comes from banking and insurance in Brazil.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Bradesco’s recurring net profit rose 20% to R$19.554 billion in 2024.",
+    "date": "2025-02",
+    "source": "https://diariodocomercio.com.br/financas/bradesco-registra-crescimento-20-lucro-liquido-2024/"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "R$50 million toward rebuilding the Museu Nacional, to December 2024",
+     "amount": 50000000.0,
+     "currency": "BRL",
+     "source": "https://museunacionalvive.org.br/wp-content/uploads/2025/04/sanitize_relatorio-pmnv-2024.pdf_070425-121701.pdf"
+    },
+    "spaces": 5,
+    "entries": 5
+   }
+  }
+ },
+ "petrobras": {
+  "made_from": "Petrobras’s money comes from producing, refining and selling oil and gas in Brazil.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Petrobras ended 2024 with a net profit of R$36.6 billion (US$7.5 billion).",
+    "date": "2025-02",
+    "source": "https://agencia.petrobras.com.br/en/w/negocio/petrobras-lucra-r-36-6-bilhoes-em-2024"
+   },
+   {
+    "kind": "harm",
+    "text": "In 2018 Petrobras settled SEC charges that it misled US investors with false financial statements concealing a massive bribery and bid-rigging scheme, and took a non-prosecution agreement with the US Justice Department, agreeing to pay $933 million in disgorgement and interest and an $853 million penalty, subject to offsets.",
+    "date": "2018-09",
+    "source": "https://www.sec.gov/news/press-release/2018-215"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Petrobras a C- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Petrobras-cfbb83e866a19cb4f6348146333a07b4"
+   }
+  ]
+ },
+ "corporateartcollectionoffemsa": {
+  "made_from": "FEMSA’s money comes from OXXO convenience stores, drugstores and its stake in the Coca-Cola bottler Coca-Cola FEMSA.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "FEMSA reported total revenues of Ps. 781,585 million for 2024, up 11.2%.",
+    "date": "2025-02",
+    "source": "https://www.sec.gov/Archives/edgar/data/1061736/000110465925017826/tm257792d1_ex99-1.htm"
+   },
+   {
+    "kind": "harm",
+    "text": "Al Jazeera reported that the Femsa-run Coca-Cola bottling plant in San Cristóbal de las Casas has permits to take more than 300,000 gallons of water a day from the Huitepec volcano basin, where demand has led to severe water stress.",
+    "date": "2025-01",
+    "source": "https://www.aljazeera.com/news/longform/2025/1/8/forgotten-how-one-mexican-city-struggles-against-big-industry-for-water"
+   }
+  ]
+ },
+ "fundacinjumexgrants": {
+  "made_from": "The López family’s money comes from Grupo Jumex, the Mexican juice and food company; Eugenio López Alonso is its heir.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Expansión gave Jumex’s sales as between US$1,000 million and US$1,100 million, an analyst’s estimate, in 2013.",
+    "date": "2013-05",
+    "source": "https://expansion.mx/expansion/2013/05/06/el-precio-justo"
+   }
+  ]
+ },
+ "carlosslim": {
+  "made_from": "Carlos Slim’s money comes from telecoms and from Grupo Carso, his industrial, construction and retail group.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Grupo Carso had revenues of 202,983 million pesos in 2024, 2.3% above the year before.",
+    "date": "2025-02",
+    "source": "https://elceo.com/mercados/grupo-carso-reporta-ventas-historicas-asi-le-ayudo-la-depreciacion-del-peso/"
+   },
+   {
+    "kind": "harm",
+    "text": "The elevated section of Mexico City’s Metro Line 12 that Carso’s builder CICSA built and delivered in 2013 collapsed on 3 May 2021, killing 26 people; in October 2021 CICSA agreed to rehabilitate it while saying it was not responsible.",
+    "date": "2021-10",
+    "source": "https://www.bloomberglinea.com/2021/10/21/cicsa-de-slim-se-deslinda-de-responsabilidades-por-el-colapso-de-la-linea-12/"
+   },
+   {
+    "kind": "harm",
+    "text": "Carso’s October 2021 agreement with Mexico City over Line 12 includes a fund for the families of the 26 dead and the injured, its amount still under analysis at the time.",
+    "date": "2021-10",
+    "source": "https://politica.expansion.mx/cdmx/2021/10/21/el-acuerdo-entre-la-cdmx-y-carso-por-la-l12-incluye-fondo-de-atencion-a-victimas"
+   }
+  ]
+ },
+ "fortabat": {
+  "made_from": "The Fortabat fortune came from the cement maker Loma Negra, which Amalia Lacroze de Fortabat sold in 2005.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The sale of Loma Negra brought Amalia Lacroze de Fortabat US$1,025 million, from which US$440 million of debt had to be paid.",
+    "date": "2012-03",
+    "source": "https://www.lanacion.com.ar/sociedad/la-intrigante-herencia-de-amalita-nid1455590/"
+   },
+   {
+    "kind": "harm",
+    "text": "A 2014 study by Argentina’s Procuración General set out how Loma Negra gained from the 1976 coup and the 1977 murder of Carlos Alberto Moreno, a labour lawyer who had won occupational illness cases for its miners; Página/12 reported the inquiry moving to the board Amalia Fortabat chaired.",
+    "date": "2014-05",
+    "source": "https://www.pagina12.com.ar/diario/elpais/1-247054-2014-05-25.html"
+   }
+  ]
+ },
+ "fundacincostantini": {
+  "made_from": "Eduardo Costantini’s money comes from Consultatio, his listed real estate company, known for the Nordelta gated communities.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Costantini’s 72 percent stake in Consultatio was worth about US$580 million at the April 2024 share price.",
+    "date": "2024-04",
+    "source": "https://batimes.com.ar/news/economy/eduardo-costantini-real-estate-mogul-eyes-city-towns-from-patagonia-to-paraguay.phtml"
+   }
+  ]
+ },
+ "sura": {
+  "made_from": "Grupo SURA’s money comes from insurance, pensions and asset management in Latin America, and from its holdings in other companies.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Grupo SURA’s profit grew 294.5% in 2024 to COP 6.1 trillion (6,1 billones), on revenues of COP 37.2 trillion.",
+    "date": "2025-02",
+    "source": "https://www.portafolio.co/negocios/empresas/grupo-sura-reporto-294-5-de-sus-ganancias-en-2024-hasta-6-1-billones-624836"
+   }
+  ]
+ },
+ "bancolombia": {
+  "made_from": "Bancolombia’s money comes from banking, mainly in Colombia.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Grupo Bancolombia reported a consolidated profit of COP 6.3 trillion (6,3 billones) for 2024, the largest among Colombia’s lenders.",
+    "date": "2025-02",
+    "source": "https://forbes.co/economia-y-finanzas/bancolombia-reporto-utilidades-por-63-billones-de-pesos-en-2024"
+   }
+  ]
+ },
+ "adani": {
+  "made_from": "The Adani Group’s money comes from ports, power, coal mining and trading, airports and renewable energy in India and abroad.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "The Adani portfolio reported record EBITDA of INR 89,806 crore (US$10.5 billion) for the year to March 2025, up 8.2%.",
+    "date": "2025-05",
+    "source": "https://www.adani.com/newsroom/media-releases/adani-posts-stellar-fy25-performance-ebitda-hits-all-time-high"
+   },
+   {
+    "kind": "harm",
+    "text": "In January 2023 the short seller Hindenburg Research published a report accusing the Adani Group of a stock manipulation and accounting fraud scheme over decades.",
+    "date": "2023-01",
+    "source": "https://hindenburgresearch.com/adani/"
+   },
+   {
+    "kind": "harm",
+    "text": "In November 2024 US prosecutors indicted Gautam Adani, his nephew Sagar Adani and five others; the SEC accused them of conspiring to pay about $265m in bribes to Indian officials for solar power contracts.",
+    "date": "2024-11",
+    "source": "https://www.aljazeera.com/economy/2024/12/6/what-are-the-legal-options-for-gautam-adani-after-the-us-indictment"
+   },
+   {
+    "kind": "after",
+    "text": "In May 2026 the US Justice Department moved to dismiss the criminal charges against Gautam Adani after he pledged a $10bn US investment; the Treasury announced a $275m settlement with Adani over alleged Iran sanctions violations.",
+    "date": "2026-05",
+    "source": "https://www.aljazeera.com/economy/2026/5/18/us-drops-fraud-charges-after-billionaire-adani-pledges-10bn-investment"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Adani North America and its affiliates reported $110,000 of its own US federal lobbying spending for 2025 under the Lobbying Disclosure Act; two outside firms also reported $50,000 in fees from Adani Green Energy.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Adani&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 110000.0,
+    "year": 2025,
+    "outside_only": false,
+    "filer": "ADANI NORTH AMERICA AND ITS AFFILIATES",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Adani&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 3
+   }
+  }
+ },
+ "reliance": {
+  "made_from": "The Ambani family’s money comes from Reliance Industries: oil refining and petrochemicals, retail, Jio telecoms, oil and gas, and media.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Reliance Industries reported consolidated revenue of ₹10,71,174 crore (US$125.3 billion) for 2024-25, up 7.1%.",
+    "date": "2025",
+    "source": "https://www.ril.com/ar2024-25/financial-performance-and-review.html"
+   },
+   {
+    "kind": "harm",
+    "text": "In January 2021 SEBI fined Reliance Industries Rs 25 crore and Mukesh Ambani Rs 15 crore for manipulating trading in Reliance Petroleum shares in November 2007.",
+    "date": "2021-01",
+    "source": "https://scroll.in/latest/982968/scroll_in"
+   },
+   {
+    "kind": "after",
+    "text": "In December 2023 the Securities Appellate Tribunal quashed SEBI’s order against Mukesh Ambani and two other entities in the Reliance Petroleum case.",
+    "date": "2023-12",
+    "source": "https://www.deccanherald.com/business/rpl-case-sat-quashes-sebis-order-against-mukesh-ambani-2-others-2796389"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Eversheds Sutherland reported $195,000 in 2025 fees from Reliance Industries for US federal lobbying, under the Lobbying Disclosure Act (fourth quarter as amended).",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Reliance+Industries&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 195000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Reliance+Industries&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "nadar": {
+  "made_from": "The Nadar family’s money comes from HCL, the IT services group Shiv Nadar founded, chiefly HCLTech.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "HCLTech reported revenue of ₹117,055 crore, up 6.5%, and net income of ₹17,390 crore for the year to March 2025.",
+    "date": "2025-04",
+    "source": "https://www.aap.com.au/aapreleases/cision20250422ae70143/"
+   },
+   {
+    "kind": "after",
+    "text": "In March 2025 Shiv Nadar gifted 47% of his stake in HCL Corp and Vama Delhi to his daughter Roshni Nadar Malhotra, making her the majority shareholder of the family’s holding companies.",
+    "date": "2025-03",
+    "source": "https://www.businesstoday.in/latest/corporate/story/hcl-succession-shiv-nadar-gifts-47-stake-roshni-nadar-malhotra-takes-majority-control-467282-2025-03-08"
+   }
+  ]
+ },
+ "tata": {
+  "made_from": "Tata’s money comes from the Tata companies, among them TCS, Tata Steel and Tata Motors; 66% of the holding company Tata Sons is owned by the Tata Trusts.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In 2024-25 the aggregate revenue of Tata companies was more than $180 billion.",
+    "date": "2025",
+    "source": "https://www.tata.com/investors"
+   },
+   {
+    "kind": "harm",
+    "text": "In November 2023 the US Supreme Court declined to hear Tata Consultancy Services’ appeal against $140 million in punitive damages owed to Epic Systems in a trade secrets case.",
+    "date": "2023-11",
+    "source": "https://wisconsinhealthnews.com/2023/11/30/u-s-supreme-court-upholds-award-to-epic-in-trade-secrets-case/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Tata America International Corporation, TCS’s US arm, reported $540,000 of its own US federal lobbying spending for 2025 in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Tata&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Tata Steel Nederland declared EU lobbying costs of €200,000 to €299,999 for the financial year April 2025 to March 2026, with 1.6 full-time-equivalent lobbyists.",
+    "date": "2026",
+    "source": "https://www.lobbyfacts.eu/datacard/tata-steel-nederland-bv?rid=08746491502-16"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 540000.0,
+    "year": 2025,
+    "quarters": 4,
+    "outside_only": false,
+    "filer": "TATA AMERICA INTERNATIONAL CORPORATION",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Tata&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 200000,
+    "eur_max": 299999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/tata-steel-nederland-bv?rid=08746491502-16"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "Rs 5 crore or more from Tata Education and Development Trust to the Chhatrapati Shivaji Maharaj Vastu Sangrahalaya, since 1995",
+     "amount": 50000000.0,
+     "currency": "INR",
+     "source": "https://www.csmvs.in/patronage.html"
+    },
+    "spaces": 5,
+    "entries": 8
+   }
+  }
+ },
+ "thaibev": {
+  "made_from": "ThaiBev’s money comes from spirits, beer, soft drinks and food in Thailand and Southeast Asia; the Sirivadhanabhakdi family controls it.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "ThaiBev reported sales revenue of Baht 333,286 million for fiscal 2025, down 2.1%, and net profit of Baht 31,153 million, down 11.7%.",
+    "date": "2025-11",
+    "source": "https://www.rttnews.com/3598548/thai-beverage-public-company-posts-decline-in-fy25-net-profit.aspx"
+   }
+  ]
+ },
+ "cpgroup": {
+  "made_from": "The Chearavanont family’s money comes from Charoen Pokphand Group, Thailand’s largest agribusiness, with feed, meat and seafood, retail and telecoms.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "CP Foods, the group’s listed food arm, reported sales revenue of 571,135 million baht and net profit of 25,197 million baht for 2025.",
+    "date": "2026-02",
+    "source": "https://www.kaohooninternational.com/markets/578018"
+   },
+   {
+    "kind": "harm",
+    "text": "A 2014 Guardian investigation found CP Foods bought fishmeal for its farmed prawns from suppliers that own, operate or buy from fishing boats manned with slaves; CP Foods admitted slave labour was part of its supply chain.",
+    "date": "2014-06",
+    "source": "https://www.foodnavigator.com/Article/2014/06/11/Seafood-slavery-Asian-slave-labour-producing-prawns-for-European-and-US-retailers/"
+   }
+  ]
+ },
+ "ayalapresentsshows": {
+  "made_from": "Ayala Corporation’s money comes from banking (BPI), property (Ayala Land), telecoms (Globe), energy (ACEN) and other units in the Philippines.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Ayala Corporation’s core net income rose 7% to a record P48.3 billion in 2025, driven by Bank of the Philippine Islands and Ayala Land.",
+    "date": "2026-03",
+    "source": "https://tribune.net.ph/2026/03/13/ayala-profit-jumps-on-mynt-gains"
+   }
+  ]
+ },
+ "samsung": {
+  "made_from": "Samsung’s money comes from the Samsung group’s businesses, above all Samsung Electronics’ chips, phones and displays, and from the Lee family that controls it.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Samsung Electronics reported 2025 revenue of KRW 333.6 trillion and operating profit of KRW 43.6 trillion.",
+    "date": "2026-01",
+    "source": "https://news.samsung.com/global/samsung-electronics-announces-fourth-quarter-and-fy-2025-results"
+   },
+   {
+    "kind": "harm",
+    "text": "In July 2008 a Seoul court found Samsung chairman Lee Kun-hee guilty of tax evasion and gave him a suspended three-year prison sentence.",
+    "date": "2008-07",
+    "source": "https://www.industryweek.com/regulations/ex-samsung-boss-gets-suspended-sentence"
+   },
+   {
+    "kind": "harm",
+    "text": "Lee Kun-hee was pardoned by President Lee Myung-bak in December 2009.",
+    "date": "2009-12",
+    "source": "https://www.jurist.org/news/2009/12/korea-president-to-pardon-ex-samsung/"
+   },
+   {
+    "kind": "harm",
+    "text": "Lee Jae-yong, convicted of bribery and embezzlement in January 2021 and paroled in August 2021 after 18 months in prison, received a presidential pardon in August 2022.",
+    "date": "2022-08",
+    "source": "https://www.pbs.org/newshour/world/south-korean-president-to-pardon-samsung-leader-lee-jae-yong"
+   }
+  ]
+ },
+ "lg": {
+  "made_from": "LG’s money here comes from LG Electronics, which makes televisions, home appliances, vehicle parts and air conditioning.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "LG Electronics reported 2025 consolidated revenue of KRW 89.2 trillion and operating profit of KRW 2.48 trillion.",
+    "date": "2026-01",
+    "source": "https://www.lg.com/global/newsroom/news/corporate/lg-electronics-releases-fourth-quarter-and-full-year-2025-financial-results/"
+   },
+   {
+    "kind": "harm",
+    "text": "In December 2012 the European Commission fined LG Electronics €295.6 million for its part in two cathode ray tube cartels, and LG and Philips a further €392 million jointly.",
+    "date": "2012-12",
+    "source": "https://money.cnn.com/2012/12/05/news/europe-cartel-fine/index.html"
+   }
+  ]
+ },
+ "skgroup": {
+  "made_from": "SK Group’s money comes from energy and refining, telecoms (SK Telecom) and memory chips (SK hynix), under the Chey family.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In February 2014 South Korea’s Supreme Court upheld SK Group chairman Chey Tae-won’s four-year prison term for embezzling tens of billions of won from group affiliates.",
+    "date": "2014-02",
+    "source": "https://www.koreatimes.co.kr/southkorea/20140227/sk-heads-4-year-jail-term-upheld"
+   },
+   {
+    "kind": "harm",
+    "text": "President Park Geun-hye pardoned Chey Tae-won in August 2015.",
+    "date": "2015-08",
+    "source": "https://www.koreatimes.co.kr/southkorea/20150813/sk-chief-pardoned"
+   }
+  ]
+ },
+ "amorepacific": {
+  "made_from": "Amorepacific’s money comes from cosmetics and personal care, sold under brands such as Sulwhasoo, Laneige and Innisfree.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Amorepacific Co., the group’s flagship company, reported 2025 sales of 4.2528 trillion won and operating profit of 335.8 billion won.",
+    "date": "2026-02",
+    "source": "https://www.apgroup.com/int/en/news/2026-02-06-1.html"
+   },
+   {
+    "kind": "harm",
+    "text": "The Korea Fair Trade Commission fined Amorepacific 500 million won for abusing its power over door-to-door sales agencies by moving about 3,480 of their sales agents between 2005 and June 2013.",
+    "date": "2014",
+    "source": "https://www.koreajoongangdaily.com/business/ftc-fines-amorepacific-for-subcontractor-abuse/10232018"
+   }
+  ]
+ },
+ "hanwha": {
+  "made_from": "Hanwha’s money comes from a conglomerate of defence and aerospace, shipbuilding, chemicals, solar energy, finance and retail.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Hanwha Aerospace, the group’s defence company, reported 2025 consolidated revenue of 26.7 trillion won and operating profit of 3.09 trillion won.",
+    "date": "2026-06",
+    "source": "https://www.koreatimes.co.kr/business/companies/20260622/hanwha-aerospace-receives-a-issuer-credit-rating-from-sp"
+   },
+   {
+    "kind": "harm",
+    "text": "Norway’s sovereign wealth fund excluded Hanwha Corporation from 2008 for producing cluster munitions, and revoked the exclusion in 2021 after the company said it had stopped.",
+    "date": "2021-09",
+    "source": "https://www.nbim.no/en/news-and-insights/the-press/press-releases/2021/decisions-on-exclusion-and-revoking-of-exclusion/"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "€20 million to the Centre Pompidou for the right to use its name on Centre Pompidou Hanwha in Seoul",
+     "amount": 20000000,
+     "currency": "EUR",
+     "source": "https://apollo-magazine.com/pompidou-centre-closure-five-years-refurbishment/"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "kumhoasiana": {
+  "made_from": "Kumho Asiana Group’s money came from Asiana Airlines, construction (Kumho E&C) and tyres, under the Park family.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In August 2022 a Seoul court sentenced former Kumho Asiana chairman Park Sam-koo to 10 years in prison for embezzlement and breach of trust; in September 2025 the Seoul High Court cleared him of those charges and gave him a suspended sentence for breaking the Fair Trade Act.",
+    "date": "2025-09",
+    "source": "https://www.asiae.co.kr/en/article/2025091811284632408"
+   }
+  ]
+ },
+ "benesse": {
+  "made_from": "Benesse’s money comes from education and publishing (correspondence courses, Berlitz language schools) and elderly care; the Fukutake family’s foundations hold its shares.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In July 2014 Benesse disclosed a leak of customer records it later put at 35.04 million, and set aside 20 billion yen for compensation.",
+    "date": "2014",
+    "source": "https://monolith.law/en/general-corporate/risk-of-company-personal-information-leak-compensation-for-damages"
+   }
+  ]
+ },
+ "moribuilding": {
+  "made_from": "Mori Building’s money comes from developing and letting Tokyo property, such as Roppongi Hills, Toranomon Hills and Azabudai Hills.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In September 2005 the Tokyo District Court found two former Mori Building officials and a door maker’s former director guilty of professional negligence over a six-year-old boy’s death in a revolving door at Roppongi Hills in March 2004; they avoided prison.",
+    "date": "2005-09",
+    "source": "https://www.japantimes.co.jp/news/2005/10/01/national/execs-avoid-prison-over-roppongi-hills-fatality"
+   }
+  ]
+ },
+ "fastretailing": {
+  "made_from": "Fast Retailing’s money comes from clothing retail, above all Uniqlo, and GU.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Fast Retailing reported revenue of 3.4005 trillion yen for the year to August 2025, and operating profit of 564.2 billion yen.",
+    "date": "2025-10",
+    "source": "https://fashionunited.uk/news/business/uniqlos-global-expansion-drives-strong-financial-results-for-fast-retailing/2025100984335"
+   },
+   {
+    "kind": "harm",
+    "text": "US Customs and Border Protection blocked a January 2021 shipment of Uniqlo shirts under its order on cotton from the Xinjiang Production and Construction Corps, over forced-labour concerns, and rejected the company’s protest in May 2021.",
+    "date": "2021-05",
+    "source": "https://japantimes.co.jp/news/2021/05/19/business/us-customs-uniqlo"
+   }
+  ]
+ },
+ "suntory": {
+  "made_from": "Suntory’s money comes from beer, spirits (Beam Suntory, now Suntory Global Spirits) and soft drinks.",
+  "facts": []
+ },
+ "pola": {
+  "made_from": "The money came from the Pola cosmetics company and the Suzuki family that founded it; the foundation was set up with Tsuneji Suzuki’s personal assets.",
+  "facts": []
+ },
+ "ishibashi": {
+  "made_from": "The Ishibashi Foundation’s money comes from Bridgestone, the tyre maker Shojiro Ishibashi founded, chiefly through its holdings of investment securities.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Bridgestone reported 2025 revenue of about 4,429.5 billion yen and net income of 327.3 billion yen.",
+    "date": "2026-02",
+    "source": "https://www.bridgestone.com/ir/library/result/pdf/e_r7_4_results.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In February 2014 Bridgestone agreed to plead guilty and pay a $425 million US criminal fine for fixing prices of anti-vibration rubber car parts; it had pleaded guilty in 2011 in a separate marine hose case.",
+    "date": "2014-02",
+    "source": "https://www.fbi.gov/cleveland/press-releases/2014/bridgestone-corp.-agrees-to-plead-guilty-to-price-fixing-on-automobile-parts-installed-in-u.s.-cars"
+   }
+  ]
+ },
+ "mitsubishi": {
+  "made_from": "The ties name separate Mitsubishi companies, mostly Mitsubishi Electric (electrical and industrial equipment), and also Mitsubishi Motors, Mitsubishi Chemical and Mitsubishi Gas Chemical.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "An outside committee’s final report in October 2022 found 197 cases of improper quality inspections at Mitsubishi Electric sites in Japan.",
+    "date": "2022-10",
+    "source": "https://www.mitsubishielectric.com/news/2022/1027-a.html"
+   }
+  ]
+ },
+ "mitsui": {
+  "made_from": "The ties name Mitsui Fudosan, a Tokyo property developer, and Mitsui & Co., a trading house; they are separate companies of the Mitsui group.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In September 2023 ICOMOS issued a Heritage Alert over the Meiji Jingu Gaien redevelopment in Tokyo, of which Mitsui Fudosan is a major developer; the developers planned to cut down 743 trees.",
+    "date": "2023-09",
+    "source": "https://www.afpbb.com/articles/-/3483253"
+   }
+  ]
+ },
+ "panasonic": {
+  "made_from": "Panasonic’s money comes from electronics, batteries, appliances and business systems such as Panasonic Connect.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In April 2018 Panasonic and its in-flight entertainment unit Panasonic Avionics agreed to pay about $280 million to settle US charges under the Foreign Corrupt Practices Act.",
+    "date": "2018-04",
+    "source": "https://phys.org/news/2018-04-panasonic-fined-mn-bribery-scheme.amp"
+   }
+  ]
+ },
+ "toyota": {
+  "made_from": "The ties name Toyota Tsusho, the Toyota group’s trading company, and Toyota-Fonden, a Danish foundation bearing the Toyota name.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Toyota Tsusho reported revenue of about 10.31 trillion yen for the year to March 2025, and profit attributable to owners of 362.5 billion yen.",
+    "date": "2025-04",
+    "source": "https://www.toyota-tsusho.com/english/press/detail/250428_006573.html"
+   }
+  ]
+ },
+ "canon": {
+  "made_from": "Canon’s money comes from cameras, printers and office equipment, medical imaging and semiconductor equipment.",
+  "facts": []
+ },
+ "asahi": {
+  "made_from": "The Asahi Shimbun’s money comes from newspaper publishing, digital media and property.",
+  "facts": []
+ },
+ "obayashi": {
+  "made_from": "Obayashi’s money comes from general construction, civil engineering and property development.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In October 2018 the Tokyo District Court fined Obayashi Corporation 200 million yen for rigging bids for maglev (Chuo Shinkansen) station works.",
+    "date": "2018-10",
+    "source": "https://japantimes.co.jp/news/2018/10/23/national/crime-legal/court-fines-two-contractors-maglev-project-bid-rigging"
+   }
+  ]
+ },
+ "kajima": {
+  "made_from": "Kajima’s money comes from general construction, civil engineering and property development.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In September 2026 Japan’s Supreme Court dismissed Kajima Corporation’s appeal in the maglev bid-rigging case, finalising a 250 million yen fine and a suspended prison sentence for a former senior official.",
+    "date": "2026-09",
+    "source": "https://www.nippon.com/en/news/yjj2026091500874/"
+   }
+  ]
+ },
+ "takenaka": {
+  "made_from": "Takenaka’s money comes from building construction, as a privately held general contractor.",
+  "facts": []
+ },
+ "tepco": {
+  "made_from": "TEPCO’s money comes from generating and selling electricity in the Tokyo region; it operated the Fukushima Daiichi nuclear plant.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "TEPCO Holdings reported operating revenue of 6,810.3 billion yen for the year to March 2025 and net income of 161.2 billion yen.",
+    "date": "2025-04",
+    "source": "https://www.tepco.co.jp/en/hd/newsroom/press/archives/2025/pdf/250430e0101.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In December 2023 Japan’s government raised its estimate of the costs of the Fukushima Daiichi disaster to 23.4 trillion yen, including about 8 trillion yen to decommission the damaged reactors.",
+    "date": "2023-12",
+    "source": "https://japantimes.co.jp/news/2023/12/15/japan/fukushima-nuclear-compensation-rise"
+   },
+   {
+    "kind": "harm",
+    "text": "In June 2025 the Tokyo High Court overturned a 2022 ruling that had ordered four former TEPCO executives to pay the company 13 trillion yen over the Fukushima disaster.",
+    "date": "2025-06",
+    "source": "https://news.rthk.hk/rthk/en/component/k2/1807846-20250606.htm"
+   }
+  ]
+ },
+ "kao": {
+  "made_from": "Kao’s money comes from consumer goods (detergents, toiletries, cosmetics) and chemicals; the tie is the Kao Foundation for Arts and Sciences.",
+  "facts": []
+ },
+ "shiseido": {
+  "made_from": "Shiseido’s money comes from cosmetics and skincare.",
+  "facts": []
+ },
+ "mizuho": {
+  "made_from": "Mizuho’s money comes from banking, securities and trust business.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "Japan’s Financial Services Agency issued Mizuho a business improvement order in November 2021 over repeated system failures, and its chief executive Tatsufumi Sakai said he would step down.",
+    "date": "2021-11",
+    "source": "https://thenationalnews.com/business/banking/2021/11/26/mizuho-ceo-quits-after-criticism-by-japans-financial-regulator-on-system-issues"
+   }
+  ]
+ },
+ "nomura": {
+  "made_from": "Nomura’s money comes from securities brokerage, investment banking and asset management; the ties are Nomura Securities and the Nomura Foundation.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In 2024 Japanese regulators fined Nomura Securities 21.76 million yen for manipulating 10-year Japanese government bond futures in March 2021.",
+    "date": "2024-11",
+    "source": "https://fortune.com/2024/11/03/nomura-ceo-pay-cut-bond-market-manipulation/"
+   }
+  ]
+ },
+ "nipponfoundation": {
+  "made_from": "The Nippon Foundation’s money comes from a share of the proceeds of betting on motorboat racing in Japan; the Great Britain Sasakawa Foundation bears the name of its founder, Ryoichi Sasakawa.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "Ryoichi Sasakawa, who built the motorboat racing business behind the foundation, was held in Sugamo Prison for more than three years after the war as a suspected Class A war criminal and released without indictment.",
+    "date": "1948",
+    "source": "https://en.wikipedia.org/wiki/Ry%C5%8Dichi_Sasakawa"
+   }
+  ]
+ },
+ "vtb": {
+  "made_from": "VTB’s money comes from banking: it is Russia’s second-largest bank, controlled by the Russian state.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 24 February 2022 the US Treasury imposed full blocking sanctions on VTB Bank, which it described as Russia’s second-largest financial institution, holding nearly 20 percent of banking assets in Russia.",
+    "date": "2022-02",
+    "source": "https://home.treasury.gov/news/press-releases/jy0608"
+   }
+  ]
+ },
+ "sberbank": {
+  "made_from": "Sberbank’s money comes from banking: it is Russia’s largest bank and majority-owned by the Russian government.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 24 February 2022 the US Treasury made Sberbank, Russia’s largest financial institution, subject to its correspondent and payable-through account directive.",
+    "date": "2022-02",
+    "source": "https://home.treasury.gov/news/press-releases/jy0608"
+   },
+   {
+    "kind": "harm",
+    "text": "On 6 April 2022 the US Treasury imposed full blocking sanctions on Sberbank and 42 subsidiaries, describing it as majority-owned by the Russian government and holding about a third of all bank assets in Russia.",
+    "date": "2022-04",
+    "source": "https://home.treasury.gov/news/press-releases/jy0705"
+   }
+  ]
+ },
+ "gazprombank": {
+  "made_from": "Gazprombank’s money comes from banking: Russia’s third-largest financial institution, closely tied to the energy sector, it co-owns Belgazprombank in Belarus with Gazprom.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 24 February 2022 the US Treasury listed Gazprombank among 11 entities owned or controlled by the Russian government that are subject to prohibitions on new debt and equity.",
+    "date": "2022-02",
+    "source": "https://home.treasury.gov/news/press-releases/jy0608"
+   },
+   {
+    "kind": "harm",
+    "text": "On 21 November 2024 the US Treasury designated Gazprombank and six foreign subsidiaries, saying it is a conduit for Russia to buy military materiel and that the government uses it to pay soldiers, including combat bonuses.",
+    "date": "2024-11",
+    "source": "https://home.treasury.gov/news/press-releases/jy2725"
+   }
+  ]
+ },
+ "gazprom": {
+  "made_from": "Gazprom’s money comes from natural gas: the state-controlled company is, in the US Treasury’s words, the world’s largest natural gas company, and it co-owns Belgazprombank in Belarus with Gazprombank.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 24 February 2022 the US Treasury listed Gazprom, which it called the world’s largest natural gas company, among 11 entities owned or controlled by the Russian government that are subject to prohibitions on new debt and equity.",
+    "date": "2022-02",
+    "source": "https://home.treasury.gov/news/press-releases/jy0608"
+   }
+  ]
+ },
+ "promsvyazbank": {
+  "made_from": "PSB’s money comes from banking: a state-owned bank, nationalised in 2018, that the US Treasury calls critical to Russia’s defence sector.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 22 February 2022 the US Treasury sanctioned PSB and its subsidiaries, calling it critical to Russia’s defence sector, and designated its chairman and chief executive Petr Fradkov.",
+    "date": "2022-02",
+    "source": "https://home.treasury.gov/news/press-releases/jy0602"
+   }
+  ]
+ },
+ "rosneft": {
+  "made_from": "Rosneft’s money comes from oil and gas production, refining and sales; its largest shareholder is the Russian state holding company Rosneftegaz.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 22 October 2025 the US Treasury designated Rosneft and Lukoil, Russia’s two largest oil companies, with a number of their Russian subsidiaries.",
+    "date": "2025-10",
+    "source": "https://home.treasury.gov/news/press-releases/sb0290"
+   }
+  ]
+ },
+ "lukoil": {
+  "made_from": "Lukoil’s money comes from oil and gas: exploration, production, refining and sales in Russia and abroad.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 22 October 2025 the US Treasury designated Lukoil and Rosneft, Russia’s two largest oil companies, with a number of their Russian subsidiaries.",
+    "date": "2025-10",
+    "source": "https://home.treasury.gov/news/press-releases/sb0290"
+   }
+  ]
+ },
+ "alfagroup": {
+  "made_from": "The money comes from Alfa Group’s businesses, above all Alfa-Bank, Russia’s largest privately owned bank, built by Mikhail Fridman, Petr Aven and their partners.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 24 February 2022 the US Treasury made Alfa-Bank, Russia’s largest privately owned financial institution, subject to its directive on new debt and equity.",
+    "date": "2022-02",
+    "source": "https://home.treasury.gov/news/press-releases/jy0705"
+   },
+   {
+    "kind": "harm",
+    "text": "On 6 April 2022 the US Treasury imposed full blocking sanctions on Alfa-Bank and six subsidiaries.",
+    "date": "2022-04",
+    "source": "https://home.treasury.gov/news/press-releases/jy0705"
+   }
+  ]
+ },
+ "usmanov": {
+  "made_from": "Alisher Usmanov’s money comes from metals and mining, telecommunications and technology, held through USM, which owns Metalloinvest and of which he owns about 49 percent.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 3 March 2022 the US Treasury designated Usmanov, calling him close to Putin and Dmitry Medvedev, and identified his superyacht Dilbar and his Airbus A340 as blocked property.",
+    "date": "2022-03",
+    "source": "https://home.treasury.gov/news/press-releases/jy0628"
+   }
+  ]
+ },
+ "timchenko": {
+  "made_from": "Gennady Timchenko’s money comes from energy trading, as a founder of Gunvor, and from investments through his Volga Group.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 20 March 2014 the US Treasury designated Timchenko as a member of the Russian leadership’s inner circle, saying his activities in the energy sector, as a founder of Gunvor, have been directly linked to Putin.",
+    "date": "2014-03",
+    "source": "https://home.treasury.gov/news/press-releases/jl23331"
+   }
+  ]
+ },
+ "vladimirpotanin": {
+  "made_from": "Vladimir Potanin’s money comes from metals, through Interros and his stake in Norilsk Nickel, which he heads.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "On 15 December 2022 the US State Department designated Potanin, one of Russia’s richest men, and the Treasury designated Rosbank, a bank he had acquired that year.",
+    "date": "2022-12",
+    "source": "https://home.treasury.gov/news/press-releases/jy1163"
+   }
+  ]
+ },
+ "leonidmikhelsonvac": {
+  "made_from": "Leonid Mikhelson’s money comes from Novatek, the gas producer of which he is chairman and major shareholder.",
+  "facts": []
+ },
+ "mordashov": {
+  "made_from": "Alexei Mordashov’s money comes from Severstal, the steel and mining company he controls.",
+  "facts": []
+ },
+ "yandex": {
+  "made_from": "Yandex’s money comes from internet services in Russia and nearby countries: search, ride hailing (Yandex Go), food delivery (Yandex Eda) and advertising.",
+  "facts": []
+ },
+ "prokhorov": {
+  "made_from": "Mikhail Prokhorov’s money comes from metals, through his former stake in Norilsk Nickel, and from his investment group Onexim.",
+  "facts": []
+ },
+ "borismints": {
+  "made_from": "Boris Mints’s money comes from finance and property, through his O1 Group and O1 Properties.",
+  "facts": []
+ },
+ "pinchuk": {
+  "made_from": "Victor Pinchuk’s money comes from Interpipe, the maker of steel pipes and railway wheels he founded in 1990, and from his investment group EastOne.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Hogan Lovells reported $130,000 in 2025 fees from North American Interpipe for US federal lobbying on trade rules and duties, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Interpipe&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 130000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Interpipe&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 2
+   }
+  }
+ },
+ "mondotv": {
+  "made_from": "Mondo TV’s money comes from producing and selling animated programmes, much of the animation work outsourced.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In June 2024 Mondo TV agreed to pay $538,000 to settle 18 apparent violations of US sanctions on North Korea, for about $537,939 paid between May 2019 and November 2021 for animation work outsourced to a North Korean state-owned studio.",
+    "date": "2024-06",
+    "source": "https://ofac.treasury.gov/recent-actions/20240626"
+   }
+  ]
+ },
+ "yokonagaeceschina": {
+  "made_from": "Yoko Nagae Ceschina’s money was the $190 million fortune she inherited from her husband, Count Renzo Ceschina.",
+  "facts": []
+ },
+ "mykhaylova": {
+  "made_from": "Liubov Mykhaylova is a businesswoman who owns IZOLYATSIA; the sources do not say what her business is.",
+  "facts": []
+ },
+ "aranya": {
+  "made_from": "Aranya develops and runs a seaside resort and residential community at Beidaihe, Hebei, where UCCA Dune stands.",
+  "facts": []
+ },
+ "bankofchina": {
+  "made_from": "Bank of China is a state-owned commercial bank, one of China's largest lenders.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Bank of China (Europe)'s Brussels branch declared EU lobbying costs of €10,000 for 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/bank-of-china-europe-sa-brussels-branch?rid=3196379105041-39"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 0,
+    "eur_max": 10000,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/bank-of-china-europe-sa-brussels-branch?rid=3196379105041-39"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "buditek": {
+  "made_from": "Budi Tek was a Chinese-Indonesian entrepreneur and collector; the sources read do not name the business his money came from.",
+  "facts": []
+ },
+ "byd": {
+  "made_from": "BYD makes electric and hybrid cars, among them the Denza brand, as well as batteries and phone components.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "BYD reported total revenue of 777.102 billion yuan for 2024 and net profit attributable to shareholders of 40.254 billion yuan, up 34%.",
+    "date": "2025-03",
+    "source": "https://autonews.gasgoo.com/articles/news/byd-scores-yoy-jump-in-2024-annual-revenue-net-profit-70036461"
+   },
+   {
+    "kind": "harm",
+    "text": "In May 2025 Brazilian labour prosecutors sued BYD and two contractors over 220 Chinese workers found in conditions analogous to slavery at its Camaçari plant site, demanding 257 million reais from the three companies.",
+    "date": "2025-05",
+    "source": "https://fortune.com/2025/05/29/brazil-sues-byd-china-worker-conditions-analogous-to-slavery/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BYD Motors and its US subsidiaries reported $300,000 of their own US federal lobbying spending for 2025, in four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=BYD&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "BYD European B.V. declared EU lobbying costs of €200,000 to €299,999 a year, with 0.75 full-time-equivalent lobbyists (register as of 12 November 2026).",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/byd-european-bv?rid=0314340101350-13"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 300000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=BYD&filing_year=2025"
+   },
+   "eu_lobbying": {
+    "eur_min": 200000,
+    "eur_max": 299999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/byd-european-bv?rid=0314340101350-13"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "langhamhotels": {
+  "made_from": "Langham's money comes from hotels, run by Langham Hospitality Group, part of Hong Kong's Great Eagle Holdings.",
+  "facts": []
+ },
+ "liuyiqian": {
+  "made_from": "Liu Yiqian and Wang Wei's fortune comes from his share trading and his companies, Sunline Group and Guohua Life Insurance, which he chairs and cofounded.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Guohua Life Insurance, which Liu Yiqian chairs and cofounded, announced losses of between $23.3m and $28.7m for the first half of 2023.",
+    "date": "2023-08",
+    "source": "https://www.theartnewspaper.com/2023/08/22/shanghais-long-museum-to-sell-art-sothebys"
+   }
+  ]
+ },
+ "midea": {
+  "made_from": "The He family's fortune comes from Midea Group, the home appliance maker He Xiangjian founded.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Midea Group reported 2024 revenue of RMB 409.1 billion and net profit attributable to shareholders of RMB 38.5 billion.",
+    "date": "2025-03",
+    "source": "https://www.midea.com.cn/en/about-midea/news/midea-group-reports-record-2024-results--delivers-unprecedented-"
+   },
+   {
+    "kind": "harm",
+    "text": "The Bureau of Investigative Journalism reported in August 2025 that Midea owns factories linked to China's Uyghur labour transfer scheme; Midea did not respond.",
+    "date": "2025-08",
+    "source": "https://www.thebureauinvestigates.com/stories/2025-08-30/major-nba-brands-linked-to-forced-labour-in-china"
+   },
+   {
+    "kind": "lobbying",
+    "text": "One outside firm reported $30,000 in 2025 fees from Midea America for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Midea&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 30000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Midea&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "minsheng": {
+  "made_from": "Ningxia Minsheng Group is a regional property developer in Ningxia.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In 2015 Ningxia Minsheng Group planned to invest $5bn over the next decade in Huaxia-Hetu Art Town, the 18.8 sq. km development MoCA Yinchuan anchors.",
+    "date": "2015-08",
+    "source": "https://www.theartnewspaper.com/2015/08/27/new-museum-on-silk-road-breaks-the-chinese-mould"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "300m yuan to build MoCA Yinchuan, which it owns and operates",
+     "amount": 300000000.0,
+     "currency": "CNY",
+     "source": "https://www.theartnewspaper.com/2015/08/27/new-museum-on-silk-road-breaks-the-chinese-mould"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "nanfung": {
+  "made_from": "Nan Fung Group began as a Hong Kong cotton spinner and now makes its money from property development, financial investment, life sciences and shipping.",
+  "facts": []
+ },
+ "octgroup": {
+  "made_from": "OCT Group (Overseas Chinese Town) is a central state-owned enterprise in tourism, theme parks and property.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Overseas Chinese Town A, the group's Shenzhen-listed company, had revenue of 102.6 billion yuan in 2021, then a loss in 2022 and a net loss attributable to shareholders of 1.3 billion yuan in the first half of 2023.",
+    "date": "2023-10",
+    "source": "https://m.winshang.com/news717720.html"
+   }
+  ]
+ },
+ "pingan": {
+  "made_from": "Ping An is an insurance and financial services group.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Ping An Insurance reported 2024 revenue of RMB 1,141,346 million, and said net profit attributable to shareholders rose 47.8%.",
+    "date": "2025-03",
+    "source": "https://insurancebusinessmag.com/asia/news/breaking-news/ping-an-announces-financial-results-529175.aspx"
+   }
+  ]
+ },
+ "qiaozhibing": {
+  "made_from": "Qiao Zhibing's money comes from karaoke clubs in Shanghai.",
+  "facts": []
+ },
+ "swire": {
+  "made_from": "The Swire Charitable Trust's money comes from John Swire & Sons, the Swire family's trading group.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "John Swire & Sons gave the Swire Charitable Trust £5,000,000 without conditions in 2023 and paid £948,639 of its expenses; the trust gave £5,958,442 in grants that year.",
+    "date": "2023",
+    "source": "https://opencharities.uk/ew/270726/files/2023-12-31-accounts.html"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Ballard Partners reported $80,000 in 2025 fees from Swire Properties, Inc. for US federal lobbying, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Swire&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 80000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Swire&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "timeschina": {
+  "made_from": "Times China is a Guangzhou property developer.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In April 2024 Hang Seng Bank filed a winding-up petition against Times China, a defaulted developer, at Hong Kong's High Court over about US$173.2 million and HK$731.4 million.",
+    "date": "2024-04",
+    "source": "https://www.thestandard.com.hk/news/article/215394/Property-developer-Times-China-receives-winding-up-petition-in-Hong-Kong"
+   }
+  ]
+ },
+ "yanshijie": {
+  "made_from": "Yan Shijie is a collector and entrepreneur; the sources read do not name the business his money comes from.",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "Nearly RMB 400 million, with Cao Mei, to build the Red Brick Art Museum over eight years",
+     "amount": 400000000.0,
+     "currency": "CNY",
+     "source": "https://www.ourchinastory.com/cn/10523"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "zhenghao": {
+  "made_from": "Zheng Hao's money comes from hotels, among them the Onehome Art Hotel in the park the museum shares.",
+  "facts": []
  }
 }

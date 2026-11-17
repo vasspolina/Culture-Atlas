@@ -255,6 +255,14 @@ HQ_EXTRA = {
     'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
 }
 
+# Offices researched for batches 5 to 8 (17 Nov 2026), kept as data beside the review: data/influence_hq.json, the same
+# fields, city level, the listed head office or for a family the company its money came from.
+_hq_path = os.path.join(ROOT, 'data', 'influence_hq.json')
+if os.path.exists(_hq_path):
+    for _k, _v in json.load(open(_hq_path)).items():
+        if not _k.startswith('_'):
+            HQ_EXTRA.setdefault(_k, _v)
+
 # Kinds of influence, in the order the ledger lists them. Each is a pattern over one sentence that names the funder.
 KINDS = [
     ('name',      'Name',               r"\bnam(?:e|ed|es|ing)\b|\bwing\b|\bgallery\b(?= (?:is |was )?named)|\bpavilion\b|\bprize\b|\baward\b|\bcentre\b|\bcenter\b|\bgalleries\b|\broom\b|\bhall\b|\bcourt\b|\bstaircase\b|\bgarden\b|\bschool\b|\bfellowship\b"),
