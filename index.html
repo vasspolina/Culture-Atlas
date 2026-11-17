@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=698">
-  <link rel="stylesheet" href="assets/sheet.css?v=766">
+  <link rel="stylesheet" href="assets/sheet.css?v=769">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -201,7 +201,7 @@ return maplibregl$1;
       <!-- New Chat / Reset Quick Actions -->
       <button id="mobileGossipBtn" type="button" onclick="window.toggleGossipMode()" class="whitespace-nowrap" aria-pressed="false">Gossip mode</button>
       <!-- Influence mode (assets/influence-mode.js): the atlas from the funders' side, what the money bought. -->
-      <button id="mobileInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="whitespace-nowrap" aria-pressed="false">Influence mode</button>
+      <button id="mobileInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="whitespace-nowrap" aria-pressed="false">Money map</button>
       <button id="mobileThemeBtn" type="button" onclick="window.toggleTheme()" class="whitespace-nowrap" >Dark</button>
       <!-- Details: the record of the selected space, as the desktop's Details tab. Shown once a space is selected, so the sheet can be reopened after Close. -->
       <button id="mobileDetailsBtn" type="button" class="whitespace-nowrap hidden" onclick="if (typeof window.atlasOpenPhoneDetails === 'function') window.atlasOpenPhoneDetails();" aria-label="Museum details">Details</button>
@@ -223,7 +223,7 @@ return maplibregl$1;
     <!-- Right: Unified Action Buttons -->
     <div class="flex items-center gap-2_5 sm-gap-4 shrink-0">
       <button id="topGossipBtn" type="button" onclick="window.toggleGossipMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Gossip mode</button>
-      <button id="topInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Influence mode</button>
+      <button id="topInfluenceBtn" type="button" onclick="window.toggleInfluenceMode && window.toggleInfluenceMode()" class="hidden md-inline-flex whitespace-nowrap" aria-pressed="false">Money map</button>
       <button id="topThemeBtn" type="button" onclick="window.toggleTheme()" class="hidden md-inline-flex whitespace-nowrap" >Dark</button>
       <!-- The artists' images page (user, 13 Nov 2026: "add button to the pages with images on top"); on a phone it is in the menu (assets/phone-maps.js). -->
       <a id="topImagesBtn" href="artists-images.html" class="hidden md-inline-flex whitespace-nowrap">Images</a>
@@ -345,6 +345,7 @@ return maplibregl$1;
               <label class="filter-row" style="--marker-color:#7c9bff"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
               <label class="filter-row" style="--marker-color:#ffa3c8"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
               <label class="filter-row" style="--marker-color:#63c4fd"><i class="shape-dot"></i><span class="layer-name">Companies</span><input type="checkbox" role="switch" data-kind="corp" checked></label>
+              <label class="filter-row" style="--marker-color:#ffe14d"><i class="shape-dot"></i><span class="layer-name">Hedge funds and investors</span><input type="checkbox" role="switch" data-kind="priv" checked></label>
             </div>
           </section>
           <section class="layers-section">
@@ -365,6 +366,7 @@ return maplibregl$1;
               <span><i class="shape-dot" style="--marker-color:#7c9bff"></i>Public funding</span>
               <span><i class="shape-dot" style="--marker-color:#ffa3c8"></i>Foundation or individual donor</span>
               <span><i class="shape-dot" style="--marker-color:#63c4fd"></i>Company</span>
+              <span><i class="shape-dot" style="--marker-color:#ffe14d"></i>Hedge fund or investor</span>
               <span><i class="shape-dot shape-glow-right" style="--marker-color:#ff7b6e"></i>Right-wing funder</span>
               <span><i class="shape-dot shape-glow-epstein" style="--marker-color:#d39bff"></i>Mentioned in the Epstein files</span>
               <span><i class="shape-dot shape-glow" style="--marker-color:#ff5fa0"></i>Used for propaganda now</span>
@@ -1170,7 +1172,7 @@ return maplibregl$1;
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
   <script src="assets/institutions.js?v=765"></script>
-  <script src="assets/money-ids.js?v=717"></script>
+  <script src="assets/money-ids.js?v=767"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10511,7 +10513,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v766';
+    const ATLAS_RELEASE = 'culture-atlas-v769';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -21902,15 +21904,15 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/typeset.js?v=669"></script>
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
-<script src="assets/funding-views.js?v=714"></script>
-<script src="assets/layers.js?v=740"></script>
+<script src="assets/funding-views.js?v=767"></script>
+<script src="assets/layers.js?v=768"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=744"></script>
-<script src="assets/influence-mode.js?v=765"></script>
+<script src="assets/influence-mode.js?v=768"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=766"></script>
+<script src="assets/phone-maps.js?v=769"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 </body>

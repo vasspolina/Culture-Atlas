@@ -7,11 +7,11 @@
 // its dot when it is selected, hovered or the view is close enough. Right and Epstein: a square on each space the
 // funding map names, with the sponsor's or the person's name when the space is in focus or the view is close.
 (function () {
-  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, openbooks: false, bundle: false, flows: false, hulls: false, choro: false, glyphs: false, halos: false, lifted: false, flagged: false, years: null, choroMode: 'abroad', kinds: { gov: true, corp: true, found: true }, pkinds: { today: true, historical: true } };
+  const L = window.atlasLayers = { ties: false, flags: false, money: false, right: false, epstein: false, hq: false, people: false, propaganda: false, independent: false, artist: false, openbooks: false, bundle: false, flows: false, hulls: false, choro: false, glyphs: false, halos: false, lifted: false, flagged: false, years: null, choroMode: 'abroad', kinds: { gov: true, corp: true, found: true, priv: true }, pkinds: { today: true, historical: true } };
   // No two layers share a colour, and none repeats a tier colour of the pins (menthol clean, magenta flagged, yellow unverified)
   // (user, 6 Nov 2026). Open books was the clean tier's cyan and propaganda sat beside the flagged magenta. Every pair below,
   // and every layer against each tier colour and the person grey, is 21 or more apart in CIELAB (dE76) on both grounds.
-  const COL = { gov: '#7c9bff', corp: '#63c4fd', found: '#ffa3c8', flag: '#f9ab30', right: '#ff7b6e', epstein: '#d39bff', person: '#e5e7eb', prop: '#ff5fa0', indep: '#3fe05a', artist: '#b7d40c', open: '#0af0b0' };
+  const COL = { gov: '#7c9bff', corp: '#63c4fd', found: '#ffa3c8', priv: '#ffe14d', flag: '#f9ab30', right: '#ff7b6e', epstein: '#d39bff', person: '#e5e7eb', prop: '#ff5fa0', indep: '#3fe05a', artist: '#b7d40c', open: '#0af0b0' };
   // Open books: the clean grade (tier A) — filings linked, no flagged funder or funding protest on record.
   const isOpenBooks = i => i.tier === 'A';
   // Independent and artist-run: the records carry no field for either, so the two layers read the record's own words
@@ -29,7 +29,7 @@
   // The pale colours above are the fills of the name blocks (black text on them is 7:1 or better) and read on the black
   // ground of dark mode. On the white ground of light mode they measure 1.2 to 3:1, so the lines, rings and dots that carry
   // the data are drawn in a deeper step of the same hue there: 3.05:1 or better against white at the 0.8 alpha they are drawn at.
-  const LINE_LIGHT = { '#7c9bff': '#2f5de0', '#63c4fd': '#026caa', '#ffa3c8': '#b04f95', '#f9ab30': '#a36504', '#ff7b6e': '#d0160a', '#d39bff': '#9b30e8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#b7d40c': '#557f00', '#3fe05a': '#0a8a1f', '#0af0b0': '#0a7a48', '#2dd4bf': '#0d9488', '#ff5fa0': '#df0050' };
+  const LINE_LIGHT = { '#7c9bff': '#2f5de0', '#63c4fd': '#026caa', '#ffa3c8': '#b04f95', '#f9ab30': '#a36504', '#ff7b6e': '#d0160a', '#d39bff': '#9b30e8', '#e5e7eb': '#6e798f', '#22d3ee': '#0c889b', '#b7d40c': '#557f00', '#3fe05a': '#0a8a1f', '#0af0b0': '#0a7a48', '#2dd4bf': '#0d9488', '#ff5fa0': '#df0050', '#ffe14d': '#8a6d00' };
   const lineCol = c => (document.documentElement.getAttribute('data-theme') === 'dark' ? c : (LINE_LIGHT[c] || c));
   // A hex colour with an alpha, for the halos.
   const hexA = (h, a) => `rgba(${parseInt(h.slice(1, 3), 16)}, ${parseInt(h.slice(3, 5), 16)}, ${parseInt(h.slice(5, 7), 16)}, ${Math.max(0, Math.min(1, a)).toFixed(3)})`;
@@ -67,9 +67,9 @@
     shield: [[.5, 0], [1, .18], [.9, .72], [.5, 1], [.1, .72], [0, .18]],
     star: [[.5, 0], [.62, .35], [1, .35], [.69, .57], [.81, .95], [.5, .72], [.19, .95], [.31, .57], [0, .35], [.38, .35]]
   };
-  const KIND_SHAPE = { gov: 'circle', corp: 'circle', found: 'circle' };
+  const KIND_SHAPE = { gov: 'circle', corp: 'circle', found: 'circle', priv: 'circle' };
   // Every mark is a dot; the colour says the kind, and the names on the map say it in words too.
-  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation' };
+  const KIND_WORD = { gov: 'Public funding', corp: 'Company', found: 'Foundation', priv: 'Hedge fund or investor' };
   function shapePath(ctx, shape, x, y, s) {
     ctx.beginPath();
     const pts = SHAPES[shape];
@@ -83,7 +83,7 @@
   // The people who tie a space to the Epstein files; a flagged space with no named person is labelled with its own name,
   // since a tag that says only "Jeffrey Epstein" tells nothing about the pin it sits on.
   const epsteinOf = rec => (rec.ep || []).map(e => e.p).filter(Boolean).concat((rec.fl || []).indexOf('Epstein-linked') >= 0 && !(rec.ep || []).length ? [rec.n] : []);
-  const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found';
+  const FUNDER = n => n[1] === 'gov' || n[1] === 'corp' || n[1] === 'found' || n[1] === 'priv';
   const rad = Math.PI / 180;
   const kindOn = k => L.kinds[k] !== false;
   const PKINDS = ['today', 'historical'];
@@ -254,7 +254,7 @@
   // Label type is regular on the light theme and light on the dark one.
   const LW = () => document.documentElement.getAttribute('data-theme') !== 'dark' ? 400 : 300;
   // Headquarters of the funders and offices of the people the funding map names (assets/hq.json, built by tools/build_hq.py).
-  const KIND = { gov: COL.gov, corp: COL.corp, found: COL.found };
+  const KIND = { gov: COL.gov, corp: COL.corp, found: COL.found, priv: COL.priv };
   let HQ = null, hqLoading = false;
   // The mark drawn for each office last frame (x, y on the canvas) so a click, a hover and the keyboard buttons can find it;
   // the one picked in the detail panel (assets/hq-detail.js) and the one under the pointer or keyboard focus.
@@ -312,7 +312,7 @@
   }
   // The logo of a funder node: only a company's, by its office key (a funder's spelling key leads to its office).
   function logoOf(n) {
-    if (!LOGOS || n[1] !== 'corp' || !n[5] || !HQ) return null;
+    if (!LOGOS || (n[1] !== 'corp' && n[1] !== 'priv') || !n[5] || !HQ) return null;
     const o = HQ.byKey.get(n[5]), rc = o && (LOGOS.idx[o.key] || LOGOS.idx[n[5]]);
     if (!rc) return null;
     const k = LOGO_H / 48;
@@ -972,9 +972,13 @@
       if (inp) setBox(inp, false); else L[k] = false;
     });
     MONEY_MODE = null; setModeClass(false); document.documentElement.classList.remove('atlas-money-on');
+    // The money map is Influence mode now: the pill leaves the mode.
+    if (window.isInfluenceModeActive && window.isInfluenceModeActive()) window.toggleInfluenceMode(false);
     refilter();
   }
   window.atlasExitMoney = exitMoney;
+  // The way out shows for the old layer and for Influence mode, which is the money map now.
+  const moneyOn = () => !!L.money || !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
   function moneyExitBtn() {
     if (document.getElementById('moneyExitBtn')) return;
     const host = document.getElementById('globeViewport'); if (!host) return;
@@ -985,7 +989,7 @@
     b.addEventListener('click', exitMoney);
     host.appendChild(b);
     document.addEventListener('keydown', e => {
-      if (e.key !== 'Escape' || !L.money) return;
+      if (e.key !== 'Escape' || !moneyOn()) return;
       const t = e.target; if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
       exitMoney();
     });
@@ -1000,7 +1004,7 @@
   // the canvas, step aside too (html.atlas-money-mode in assets/atlas.css). Hovering a space does not start the mode.
   window.atlasLayersDrawLate = function (ctx, ground) {
     // The exit shows whenever the money map is on, a space in focus or not (html.atlas-money-on in assets/atlas.css).
-    if (!STREET) { const el = document.documentElement; if (el.classList.contains('atlas-money-on') !== !!L.money) el.classList.toggle('atlas-money-on', !!L.money); if (L.money) moneyExitBtn(); }
+    if (!STREET) { const el = document.documentElement, mo = moneyOn(); if (el.classList.contains('atlas-money-on') !== mo) el.classList.toggle('atlas-money-on', mo); if (mo) moneyExitBtn(); }
     const m = L.money && (STREET || !streetUp()) ? MONEY_MODE : null;
     if (!m) { if (!STREET) setModeClass(false); return; }
     if (!STREET) setModeClass(true);
@@ -1111,7 +1115,7 @@
   };
 
   // ---- Offices as things you can pick: hit-testing, the connections in the data, and the selection ----
-  const KIND_LABEL = { gov: 'Public funder', corp: 'Company', found: 'Foundation or individual donor', person: 'Individual\u2019s office' };
+  const KIND_LABEL = { gov: 'Public funder', corp: 'Company', found: 'Foundation or individual donor', priv: 'Hedge fund or investor', person: 'Individual\u2019s office' };
   const kindLabel = e => KIND_LABEL[e.kind === 'org' ? e.k : 'person'];
   // An office is keyed by funder key, and the same body can sit under two keys ('artscouncilengland|UK' and '|United Kingdom').
   const keysOf = e => { const ks = [e.key, ...(e.also || [])]; HQ.orgs.forEach(o => { if (o !== e && o.n === e.n && o.co === e.co) ks.push(o.key); }); return ks; };
@@ -1196,6 +1200,24 @@
     const f = funderOf(key); if (!f) return null;
     return f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
   };
+  // THE MONEY MAP IS INFLUENCE MODE (user, 17 Nov 2026: "Influence mode is now money map. Combine the research. Make money map
+  // go into influence mode"). The mode (assets/influence-mode.js) draws every private funder with a head office on record,
+  // not only the ones whose ledgers are read by hand. These two give it the funding maps' side: the spaces a funder key is
+  // named on (every key the map groups with it), and every non-public office with the spaces its keys reach.
+  const spacesOfKeys = keys => {
+    const ids = new Set(); keys.forEach(k => (keyIndex.get(k) || []).forEach(id => ids.add(id)));
+    return [...ids].map(id => recById.get(id)).filter(Boolean).map(q => ({ id: q.id, name: q.n }));
+  };
+  hq.spacesOfKey = key => {
+    if (!keyIndex) return [];
+    const f = funderOf(key), o = HQ && HQ.byKey.get(key);
+    return spacesOfKeys([...new Set([key, ...(f ? f.keys : []), ...(o ? [o.key, ...(o.also || [])] : [])])]);
+  };
+  hq.moneyFunders = () => (HQ && keyIndex ? HQ.orgs.filter(o => o.k !== 'gov').map(o => {
+    const keys = [o.key, ...(o.also || [])];
+    return { key: o.key, keys, name: o.n, k: o.k, hq: { n: o.n, c: o.c, co: o.co, lat: o.lat, lon: o.lon, a: o.a }, spaces: spacesOfKeys(keys) };
+  }).filter(f => f.spaces.length) : []);
+  // A record's Money map button now opens the mode on that space (see atlasShowMoney below).
   window.atlasHq = hq;
 
   // ---- The other marks as things you can point at and click ----
@@ -1291,6 +1313,15 @@
 
   // "Money map" on a record: turn the layers on and show that space's funders on the globe.
   window.atlasShowMoney = function (id) {
+    // The money map is Influence mode now: the button opens the mode with this space picked, its funders joined to it.
+    if (typeof window.toggleInfluenceMode === 'function') {
+      if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
+      const go = () => { if (id && typeof window.selectInstitution === 'function') window.selectInstitution(id, false); if (typeof window.atlasInfluenceFocusSpace === 'function') window.atlasInfluenceFocusSpace(id); };
+      const p = window.isInfluenceModeActive && window.isInfluenceModeActive() ? null : window.toggleInfluenceMode(true);
+      if (p && p.then) p.then(go); else go();
+      if (window.innerWidth < 768) { const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.add('hidden'); if (typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab('atlas'); }
+      return;
+    }
     // Not the ties: the money map draws no lines (see atlasLayersDraw).
     turnOn('money'); loadMoney();
     if (typeof window.exitCityStreetView === 'function') { try { window.exitCityStreetView(); } catch (e) {} }
