@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -4781,5 +4781,85 @@
     "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
    }
   ]
+ },
+ "d71570c9fa": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2013-11",
+  "summary": "A Rio Tinto representative met the Arts Minister with the company’s general manager to discuss portfolio matters (2013); no Rio Tinto sponsorship was found.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "A Rio Tinto representative met Queensland’s Arts Minister together with the company’s general manager (2013, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/november/walker.pdf"
+   }
+  ]
+ },
+ "20f9033e0d": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "2015",
+  "summary": "Shell’s QGC business has paid the museum $10.25 million since 2015, mostly for Future Makers, a STEM schools programme."
+ },
+ "cccfc01e27": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2018-07",
+  "summary": "QGC, Shell’s Queensland gas business, held a portfolio event with the museum network and the Arts Minister (2018).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Shell’s QGC business and the museum network hosted Queensland’s Arts Minister at a portfolio event (2018, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2018/july/leeanne-enoch.pdf"
+   }
+  ]
+ },
+ "f1718b2267": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2019-03",
+  "summary": "Shell representatives were at a portfolio event with the museum network, the Arts Minister, the local MP and the Gladstone mayor (2019).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Shell representatives met Queensland’s Arts Minister, the local MP and the Gladstone mayor at a portfolio event with the museum network (2019, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2019/march/leeanne-enoch.pdf"
+   }
+  ]
+ },
+ "185f856f65": {
+  "drop": true,
+  "why": "Same meeting as the case note."
+ },
+ "ac9c71eac0": {
+  "drop": true,
+  "why": "States that no sponsorship was found."
+ },
+ "be190e9b39": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "55537a8db6": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "f358ff1d01": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "90fe353ad4": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "7af4cde2fa": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
  }
 }
