@@ -39,3 +39,21 @@ test('the layer holds exactly the kept reviews', () => {
   const kept = Object.entries(review).filter(([k, v]) => !k.startsWith('_') && !v.drop).length;
   assert.equal(layer.funders.reduce((s, f) => s + f.ties.length, 0), kept);
 });
+
+// The sender's side (data/influence_senders.json): every fact is a short sentence with a known kind, a date and its own
+// source, and every key is a funder the layer has, so a misspelt key cannot silently drop a funder's facts.
+test('every sender fact has a known kind, a date and a source', () => {
+  const senders = read('data/influence_senders.json');
+  const keys = new Set(layer.funders.map((f) => f.key));
+  const factKinds = new Set(['harm', 'scale', 'lobbying', 'politics', 'after']);
+  for (const [k, v] of Object.entries(senders)) {
+    if (k.startsWith('_')) continue;
+    assert.ok(keys.has(k), `${k} is a funder in the layer`);
+    for (const x of v.facts || []) {
+      assert.ok(factKinds.has(x.kind), `${k}: kind ${x.kind}`);
+      assert.ok(x.text && x.text.length > 8 && !/—/.test(x.text), `${k}: a sentence with no em dash`);
+      assert.ok(/^(19|20)\d\d(-\d\d)?$/.test(String(x.date)), `${k}: a date, ${x.date}`);
+      assert.ok(/^https?:\/\//.test(x.source), `${k}: a source`);
+    }
+  }
+});
