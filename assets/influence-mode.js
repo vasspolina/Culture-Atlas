@@ -138,11 +138,11 @@
     }
     ctx.stroke();
   }
-  // A company is a hexagon and a family or foundation a triangle, as on the money map (README, "A mark is never told only by colour").
+  // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
+  // reaches. Company or family is said in its record and in the chat, not by the shape.
   function mark(ctx, f, x, y, s) {
     ctx.beginPath();
-    if (f.kind === 'corp') for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; ctx[i ? 'lineTo' : 'moveTo'](x + s * Math.cos(a), y + s * Math.sin(a)); }
-    else { ctx.moveTo(x, y - s * 1.15); ctx.lineTo(x + s, y + s * 0.75); ctx.lineTo(x - s, y + s * 0.75); }
+    ctx.arc(x, y, s * 0.85, 0, Math.PI * 2);
     ctx.closePath();
   }
   let HITS = [], hover = null;
@@ -265,9 +265,9 @@
     const rows = DATA.funders.map(f => { const a = shortAfter(f); return `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(tallyLine(f))}${a ? `<br><span class="influence-meta">${esc(a)}</span>` : ''}</li>`; }).join('');
     const kinds = ORDER.map(k => `<li><span class="lead-in">${esc(label(k))}</span> ${esc(MEANS[k])}</li>`).join('');
     say(`<div class="influence-chat">
-<p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows the funders at their head offices instead of the spaces: a hexagon for a company, a triangle for a family or foundation, larger the more spaces it reaches. Pick one to open what it got and bring its spaces onto the map, joined to its office.</p>
+<p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows the funders at their head offices instead of the spaces, each a dot, larger the more spaces it reaches. Pick one to open what it got and bring its spaces onto the map, joined to its office.</p>
 <p>A space that turns the money down ends one tie, not the money. So each funder’s record also says what its money is made from, what else it pays for beside culture, and, where a space ended a tie, which ties the records still date after that. On the map a picked funder’s ended ties are dashed lines and its running ones solid.</p>
-<p>These are ${total} entries on ${DATA.funders.length} funders, read by hand in two batches: first oil and gas, tobacco, mining, the Sacklers and the family and finance money the records flag; then Bloomberg and five banks (Bank of America, JPMorganChase, UBS, RBC and BMO). BMW, Hyundai and Chanel are not read yet, and public funders are left out on purpose: the question is what private money buys.</p>
+<p>These are ${total} entries on ${DATA.funders.length} funders, read by hand in three batches: first oil and gas, tobacco, mining, the Sacklers and the family and finance money the records flag; then the carmakers and luxury houses BMW, Hyundai and Chanel; then Bloomberg and five banks (Bank of America, JPMorganChase, UBS, RBC and BMO). Public funders are left out on purpose: the question is what private money buys.</p>
 <ul class="influence-funders">${rows}</ul>
 <p>What each word counts:</p>
 <ul class="influence-kinds">${kinds}</ul>
