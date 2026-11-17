@@ -1,5 +1,5 @@
 {
- "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space.",
+ "_about": "Editorial review of data/influence_candidates.json, batch 1 (17 Nov 2026): fossil fuel, tobacco, mining, opioid, and the flagged family and finance senders. A kept entry names the kinds of influence its sentence states, a one-line summary in the atlas voice, and whether the tie ended or met protest. A drop says why. Batch 2 (17 Nov 2026): BMW, Hyundai Motor, Chanel. Candidates not listed here are not reviewed yet and are not shown. check \"record\" means checked against the record text, not yet against the source page. Batch 3 (17 Nov 2026): Sony Pictures Entertainment at LACMA, the one tie where a record links a funder’s lobbying and political giving to a space (entries may carry links: [{measure, text, source}]). Batch 4 (17 Nov 2026): BP at the British Museum, the Days of the Dead evening (2015) and the Scythians breakfast (2017); measure 'other' is lobbying of a government outside the US and the EU, named in `gov`. Batch 5 (17 Nov 2026): BP and UK ministers at the Science Museum, British Museum and National Portrait Gallery (2015, Art Not Oil FOI releases); Philip Morris at the Met and BAM against the 1994 Vallone bill (Truth Tobacco Industry Documents). Batch 6 (17 Nov 2026): UK government hospitality returns naming BP or Bloomberg as host at a space (British Museum, Royal Opera House, National Portrait Gallery, Serpentine, Tate Britain): hospitality, not the subject of any request. Batch 7 (17 Nov 2026): the Commons Register of Members' Financial Interests (via TheyWorkForYou's copy), BP at the Royal Opera House and JTI at the British Museum and the Royal Academy: hospitality to MPs at a space. Batch 8 (17 Nov 2026): two new spaces, Opera Queensland and Queensland Museum, with Queensland ministerial diary entries (Rio Tinto 2013; Shell and its QGC business 2018, 2019) and Shell QGC's $10.25 million to the museum since 2015.",
  "613a479a8e": {
   "kinds": [
    "building"
@@ -4781,5 +4781,840 @@
     "source": "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
    }
   ]
+ },
+ "d71570c9fa": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2013-11",
+  "summary": "A Rio Tinto representative met the Arts Minister with the company’s general manager to discuss portfolio matters (2013); no Rio Tinto sponsorship was found.",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "A Rio Tinto representative met Queensland’s Arts Minister together with the company’s general manager (2013, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/november/walker.pdf"
+   }
+  ]
+ },
+ "20f9033e0d": {
+  "kinds": [
+   "programme"
+  ],
+  "date": "2015",
+  "summary": "Shell’s QGC business has paid the museum $10.25 million since 2015, mostly for Future Makers, a STEM schools programme."
+ },
+ "cccfc01e27": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2018-07",
+  "summary": "QGC, Shell’s Queensland gas business, held a portfolio event with the museum network and the Arts Minister (2018).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Shell’s QGC business and the museum network hosted Queensland’s Arts Minister at a portfolio event (2018, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2018/july/leeanne-enoch.pdf"
+   }
+  ]
+ },
+ "f1718b2267": {
+  "kinds": [
+   "access"
+  ],
+  "date": "2019-03",
+  "summary": "Shell representatives were at a portfolio event with the museum network, the Arts Minister, the local MP and the Gladstone mayor (2019).",
+  "links": [
+   {
+    "measure": "other",
+    "gov": "Queensland",
+    "text": "Shell representatives met Queensland’s Arts Minister, the local MP and the Gladstone mayor at a portfolio event with the museum network (2019, ministerial diary).",
+    "source": "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2019/march/leeanne-enoch.pdf"
+   }
+  ]
+ },
+ "185f856f65": {
+  "drop": true,
+  "why": "Same meeting as the case note."
+ },
+ "ac9c71eac0": {
+  "drop": true,
+  "why": "States that no sponsorship was found."
+ },
+ "be190e9b39": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "55537a8db6": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "f358ff1d01": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "90fe353ad4": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "7af4cde2fa": {
+  "drop": true,
+  "why": "Same tie as the $10.25 million entry."
+ },
+ "_about_batch4": "Batch 4 (17 Nov 2026), private money that is not a company's (user: \"add private funders not only corporations, like hedge funds etc\"): hedge fund and private equity fortunes (Leon Black of Apollo, Steven Cohen of Point72, Glenn Dubin of Highbridge, Stephen Schwarzman of Blackstone, John Paulson, David Harding's Winton, KKR and the Kravis family, the Soros family and Open Society Foundations, Warren Kanders) and Russian billionaires whose own money the records tie to a space (Roman Abramovich, Vladimir Potanin, Leonid Mikhelson and V-A-C, Viktor Vekselberg). Dropped: namesakes (the artist Steven Cohen, the Anschutz executive Steve Cohen, an Apollo Asia executive), Jeffrey and Peter Soros of another branch of the family, sanctions and fines given as background, unverified accusations, a shareholding in a sponsor, and sentences about another space (Potanin at the Guggenheim and the Pompidou, V-A-C in Venice); a seat on MoMA's board is kept at MoMA, not at PS1. Every entry is checked against the record text (check \"record\"), not yet against its source pages. Mercer and BlackRock have patterns but no kept entry yet.",
+ "4053f363ef": {
+  "drop": "a shareholding in the sponsor EDP, not a tie to the space"
+ },
+ "ddd72a4220": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "f085393948": {
+  "drop": "the seat is on MoMA's board, not PS1's"
+ },
+ "55396b764d": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Eva and Glenn Dubin are listed among PS1 Benefactors in MoMA's 2023-24 report; he is a MoMA trustee.",
+  "check": "record",
+  "date": "2023"
+ },
+ "f0f9e402a7": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Kanderses gave $50,000 to $99,000 in 2017-18, per the museum's donor list.",
+  "check": "record",
+  "date": "2017"
+ },
+ "316b67d420": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "36a622eef9": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "ddc63e4596": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "A trustee and vice chair; a scholars' and artists' letter over his Safariland ties called for him to go, and he resigned on 25 July 2019.",
+  "check": "record",
+  "ended": true,
+  "protest": true,
+  "date": "2019-07-25"
+ },
+ "586aa3ca5e": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "995410df0b": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "13b5dab884": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "4222e6c19b": {
+  "kinds": [
+   "access"
+  ],
+  "summary": "Henry and Marie-Josée Kravis were among the lead sponsors of the 2025 BMA Ball, which raised over $1.1 million.",
+  "check": "record",
+  "date": "2025-11"
+ },
+ "8b3da3a065": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "Marie-Josée Kravis, then MoMA's board chair, sits on the PS1 board ex officio.",
+  "check": "record"
+ },
+ "cd5c0a42ef": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "Marie-Josée Kravis chaired the board; climate protesters targeted her family firm's fossil fuel investments.",
+  "check": "record",
+  "protest": true
+ },
+ "ccd3919986": {
+  "kinds": [],
+  "summary": "KKR bought the festival's owner, Superstruct, in 2024; more than 70 artists signed a letter and dozens withdrew in 2025 over its Israel investments. Sónar says no festival money goes to KKR.",
+  "check": "record",
+  "protest": true,
+  "date": "2025"
+ },
+ "1476c1e142": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "365eaac5c0": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "1251cfe027": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "ae314265ac": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "7cde60b9a4": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "1c4e2c838b": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c50ae80055": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "63efb38aea": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Gave $250,000 for the arts, about 18 months after Epstein introduced him to Bard in December 2012.",
+  "check": "record",
+  "date": "2014"
+ },
+ "6ecd5734c1": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "The Debra and Leon Black Family Foundation gave $48 million in 2012 to build the centre.",
+  "check": "record",
+  "date": "2012"
+ },
+ "88ddf860b8": {
+  "kinds": [
+   "name",
+   "seat"
+  ],
+  "summary": "The centre carries the Black family name; Leon Black, founder of Apollo, was a Dartmouth trustee from 2002 to 2011.",
+  "check": "record"
+ },
+ "deaf35eddf": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "16f907981e": {
+  "drop": "a statement of no current relationship, not a tie"
+ },
+ "acf267b4b3": {
+  "drop": "a different person, from Apollo Management Asia Pacific, not Leon Black"
+ },
+ "ec35b9e2fc": {
+  "drop": "the seat is on MoMA's board, kept in MoMA's ledger"
+ },
+ "4e9f3c592f": {
+  "drop": "the seat is on MoMA's board, kept in MoMA's ledger"
+ },
+ "a908ae8033": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "Stepped back as chair amid scrutiny of his Epstein ties and still sits on the board, as of March 2025.",
+  "check": "record",
+  "date": "2025-03"
+ },
+ "41eaff899f": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "Still a trustee after his payments to Epstein; trustees were named in Strike MoMA and the 2024 sit-in.",
+  "check": "record",
+  "protest": true,
+  "date": "2024"
+ },
+ "84eff3e900": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Lent Van Gogh's \"Quarry near Saint-Rémy\" to the 2014 show \"Van Gogh/Artaud\".",
+  "check": "record",
+  "date": "2014"
+ },
+ "46ca45965b": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "3d631c24d8": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A 2013 joint purchase with the Neue Galerie, which sold five works for $19 million, and a joint Schwitters purchase for $25 million in 2014.",
+  "check": "record",
+  "date": "2013"
+ },
+ "7b98050342": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A gift to Elisa New, brokered by Epstein and not disclosed by Harvard; no page gives its amount or date.",
+  "check": "record"
+ },
+ "f31ea66ebf": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "5bb5276128": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "43d2c4b31d": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "a213b1daab": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "ca4f046231": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "8afb1e553a": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "His V-A-C Foundation built GES-2, at a cost put at around $300 million in 2018, a figure he said in 2019 had doubled.",
+  "check": "record",
+  "date": "2018"
+ },
+ "91d135b798": {
+  "kinds": [
+   "name",
+   "programme"
+  ],
+  "summary": "The Moscow venue of the V-A-C Foundation, which he founded in 2009; he transferred GES-2 to his daughter in 2023.",
+  "check": "record",
+  "date": "2009"
+ },
+ "a372a4abfb": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "232c9f6aa1": {
+  "drop": "about another space, not this record: V-A-C's Venice building"
+ },
+ "018f9f8b7d": {
+  "drop": "about another space, not this record: V-A-C's Venice building"
+ },
+ "b345d7cdad": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "ea8d1b7b52": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "12ebe45ab5": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "1a69522ebe": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "bbb89c47ab": {
+  "kinds": [
+   "silence"
+  ],
+  "summary": "After the 2022 invasion V-A-C's artistic director and music curator resigned and Ragnar Kjartansson withdrew his launch show.",
+  "check": "record",
+  "protest": true,
+  "date": "2022"
+ },
+ "8d388b216b": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The V-A-C Foundation is still listed among its funders.",
+  "check": "record"
+ },
+ "87d1d6baea": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Novatek, the gas producer he runs, paid for the renovation before the 2021 Architecture Biennale.",
+  "check": "record",
+  "date": "2021"
+ },
+ "20a63bf642": {
+  "drop": "unverified, a claim by Ukraine's culture ministry"
+ },
+ "60cca8c52f": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A private patron, for exhibition projects in Samara; no amounts or years given.",
+  "check": "record"
+ },
+ "08c2921f5f": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "e855c5a4ef": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Founded in 2005 and owned by Mikhelson.",
+  "check": "record",
+  "date": "2005"
+ },
+ "316b735f04": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "a05716bcdd": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "533392a1f9": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Named for his daughter Victoria.",
+  "check": "record"
+ },
+ "918a298b17": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c68277d1ad": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c92a18ed59": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Open Society Foundations is a core funder.",
+  "check": "record"
+ },
+ "e27b65c833": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Open Society Foundations is among the sponsors and partners whose logos the space shows.",
+  "check": "record"
+ },
+ "884788f9a4": {
+  "drop": "an unverified accusation by the Turkish state, not a stated tie"
+ },
+ "725600bc0f": {
+  "drop": "Peter Soros, of another branch of the family, not George Soros's money"
+ },
+ "9c8617992b": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Open Society Foundations gave $100 million from 2020, $10 million a year, and George Soros a $500 million endowment challenge grant in 2021.",
+  "check": "record",
+  "date": "2020"
+ },
+ "326ad9bc4b": {
+  "drop": "an unverified accusation by the Turkish state, not a stated tie"
+ },
+ "c9d2141699": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "5bf68ed232": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Open Society Foundations was its main funder for 29 years and paid a final grant in 2024.",
+  "check": "record",
+  "ended": true,
+  "date": "2024"
+ },
+ "a13e8c7ef1": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "93613bb443": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "1e2776a7e9": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Named in the Circle of Major Patrons.",
+  "check": "record"
+ },
+ "2b8d276c3c": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c2f207ea71": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A sponsor of the 36th Bienal, 2025.",
+  "check": "record",
+  "date": "2025"
+ },
+ "af9930d57d": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Jamie and Robert Soros are named donors to the campaign.",
+  "check": "record"
+ },
+ "64d5c6a897": {
+  "drop": "a director's remark about Soros, not a tie"
+ },
+ "dd28816a0a": {
+  "drop": "Jeffrey Soros, of another branch of the family, not George Soros's money"
+ },
+ "5acea7edee": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Among the funders of about $20 million raised by November 2024 towards the campus.",
+  "check": "record",
+  "date": "2024"
+ },
+ "1977d156f3": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Thanked by Riwaq among its funding partners.",
+  "check": "record"
+ },
+ "982ba77d1a": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "Robert Soros, George Soros's son, chairs the board.",
+  "check": "record"
+ },
+ "31a2a2de0e": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "584499ffe9": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arts Council of Mongolia, which runs the festival, was set up in 2002 with support from the Soros foundation in Mongolia.",
+  "check": "record",
+  "date": "2002"
+ },
+ "1b4821d6a4": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "The Paulson Family Foundation was a platinum sponsor.",
+  "check": "record"
+ },
+ "e83546f400": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "$15 million in 2021 for the 90th anniversary, to upgrade the main building and for the endowment.",
+  "check": "record",
+  "date": "2021"
+ },
+ "8698e3ea45": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "The main building is named the Paulson Family Foundation Building.",
+  "check": "record"
+ },
+ "c6fb783604": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "32961a7d37": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "2c53c6a626": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "25bb4686b0": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Steven & Alexandra Cohen Foundation is a named funder.",
+  "check": "record"
+ },
+ "3416b71f19": {
+  "drop": "the artist Steven Cohen, not the financier"
+ },
+ "a25d1406eb": {
+  "drop": "the artist Steven Cohen, not the financier"
+ },
+ "3619c7154a": {
+  "drop": "a different Steve Cohen, of the Anschutz Corporation"
+ },
+ "98ba54f15c": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "A trustee until the 2026-27 board roster, which omits him.",
+  "check": "record",
+  "ended": true,
+  "date": "2026"
+ },
+ "10802fea7f": {
+  "drop": "the tie is Garage's, kept in Garage's ledger"
+ },
+ "b51c968cf5": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "5209ea25f8": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named first among private donors to the endowment for 2018 to 2023, and absent from the 2024 to 2026 list.",
+  "check": "record",
+  "ended": true,
+  "date": "2018"
+ },
+ "376226df17": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Founded the museum with Dasha Zhukova in 2008, as a project of their IRIS Foundation.",
+  "check": "record",
+  "date": "2008"
+ },
+ "1dd5aef27c": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "e91dac8113": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "1ef2809d3e": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A US embassy cable says he paid to build the Bakhmetevsky garage space, Garage's home from 2008.",
+  "check": "record",
+  "date": "2008-09"
+ },
+ "0d003c66f9": {
+  "drop": "the cable is about the Jewish Museum, kept there"
+ },
+ "351c857403": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "ea725991ed": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A founding donor of the museum, opened in 2012.",
+  "check": "record"
+ },
+ "5e4c3ca984": {
+  "kinds": [
+   "access",
+   "building"
+  ],
+  "summary": "A co-founder of the endowment, which raised $4.5 million at one gala dinner in February 2014.",
+  "check": "record",
+  "date": "2014-02"
+ },
+ "6b7f4dcf05": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "e7917853e2": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "6579253392": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c5e492ae7e": {
+  "kinds": [
+   "building",
+   "licence"
+  ],
+  "summary": "His company Millhouse won the 2010 tender to restore the island and got a long-term lease, with a commitment of at least 12 billion roubles.",
+  "check": "record",
+  "date": "2010"
+ },
+ "7b0b4b11ac": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "His Iris Foundation, run with Dasha Zhukova, produced the public space concept.",
+  "check": "record"
+ },
+ "6d2075e891": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "f748bf305d": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "7f2a43502a": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "8466fd24f0": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "6f54f69bae": {
+  "drop": "about another space, not this record"
+ },
+ "e0ef0ddab6": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A strategic partnership for Holocaust research from 22 February 2022, worth several million shekels; Yad Vashem ended it on 10 March 2022, the day Britain froze his assets, after its leaders had asked the US not to sanction him.",
+  "check": "record",
+  "ended": true,
+  "date": "2022-02"
+ },
+ "dc33e8dbea": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "3f28b2aba5": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "d501e3a208": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Named on the entrance plaques among the donors.",
+  "check": "record"
+ },
+ "f1a846035a": {
+  "kinds": [
+   "name",
+   "building",
+   "seat"
+  ],
+  "summary": "A trustee, he gave the $35 million lead gift for the renovation; the new 218-seat auditorium carries his name.",
+  "check": "record",
+  "date": "2023"
+ },
+ "8355a78700": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "cddc6c0daa": {
+  "drop": "sanctions background; the cable is about the Jewish Museum"
+ },
+ "1929c7a5de": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "fbb2c6ef31": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Gave $4.5 million toward the roughly $50 million construction.",
+  "check": "record"
+ },
+ "9220ac857e": {
+  "kinds": [
+   "access",
+   "building"
+  ],
+  "summary": "A co-founder of the endowment, which raised $4.5 million at one gala dinner in February 2014.",
+  "check": "record",
+  "date": "2014-02"
+ },
+ "e3d2e6c505": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "43a1935ed1": {
+  "drop": "a seat at the Tretyakov, kept there"
+ },
+ "4075a06b9e": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "25734c142d": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "A trustee, not shown to pay the gallery himself.",
+  "check": "record"
+ },
+ "3c4594347c": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "fc5cce8c07": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "His Olympic Collection supplied the 140 objects of the 2026 show and is listed among its organisers.",
+  "check": "record",
+  "date": "2026"
+ },
+ "6016a61ccf": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "8ee20fdf25": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "f3d2b55e5e": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "ebae687c40": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "a78fd43dd2": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "d97dd45cab": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "d5efb3ed65": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "99c4562e82": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Since 2016 PRO ARTE has run the Potanin Foundation's grant competitions and its \"Museum without Borders\" events; the foundation is a named backer in the 2025 report.",
+  "check": "record",
+  "date": "2016"
+ },
+ "1386436325": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "5c810fa4f5": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "aedbed6f70": {
+  "drop": "about another space, not this record: the Guggenheim"
+ },
+ "5278e7da54": {
+  "drop": "about another space, not this record: the Centre Pompidou"
+ },
+ "01850c025c": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "71a02b0f08": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "faaa526bb7": {
+  "drop": "background on the funder, not a tie to this space"
+ },
+ "90fc578ece": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "b991044c5e": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Potanin, in the top Jupiter circle, and his foundation are on the 2026 sponsor list.",
+  "check": "record",
+  "date": "2026"
+ },
+ "635b358cec": {
+  "kinds": [
+   "seat"
+  ],
+  "summary": "Has chaired the Board of Trustees since April 2003.",
+  "check": "record",
+  "date": "2003-04"
+ },
+ "138ba43155": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "98a773962f": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "07baa8e72f": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Potanin Foundation is among its donors.",
+  "check": "record"
+ },
+ "87c4e303b1": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "e73c956bf5": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Named on the entrance plaques among the donors.",
+  "check": "record"
+ },
+ "653f47ffd9": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Named among the Fellows of the Ashmolean, the museum's roll of major benefactors.",
+  "check": "record"
+ },
+ "fd7001d9b2": {
+  "drop": "the same tie as another kept entry for this space"
  }
 }

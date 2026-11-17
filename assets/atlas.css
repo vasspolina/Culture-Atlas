@@ -798,7 +798,7 @@ body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:
 #layersPanel .layers-kinds{display:flex;flex-wrap:wrap;gap:4px}
 #layersPanel label.kind-chip{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 12px;flex:1 1 150px}
 #layersPanel label.kind-chip .layer-name{white-space:nowrap}
-/* Studies: links to studies.html and the MoMA Money Map, set as the layer rows are, without a checkbox. */
+/* Studies: links to studies.html and the MoMA Influence Map, set as the layer rows are, without a checkbox. */
 #layersPanel .layers-studies a{display:grid;grid-template-columns:11em minmax(0,1fr);align-items:center;column-gap:14px;min-height:40px;padding:8px 14px;border-radius:0;background:var(--row);color:var(--row-ink);font:400 var(--fs-s)/1.3 var(--sans);text-decoration:none}
 #layersPanel .layers-studies a:hover{background:var(--row-hover);color:#000;--row-dim:#6b6b6b}
 #layersPanel .layers-studies a:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
