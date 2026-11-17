@@ -109,8 +109,8 @@
       // No icon before the words (user, 16 Nov 2026: "delete chat icon next to text in chat"): the box was led by a speech mark.
       // The desktop's prompt, word for word (user, 16 Nov 2026: "chat window says ask the atlas but it should say same as on
       // desktop"); it was "Ask the atlas". The box's name also says it finds places.
-      input.setAttribute('aria-label', 'Ask about a space, a city or a funder, or type a name to find it on the map');
-      input.setAttribute('placeholder', 'Ask about a space, a city or a funder…');
+      input.setAttribute('aria-label', 'Ask about a museum, a city or a funder, or type a name to find it on the map');
+      input.setAttribute('placeholder', 'Ask about a museum, a city or a funder…');
 
       // Finding: a space's or a city's name on its own goes to the map (the record opens, or the map flies to the city)
       // instead of the chat. It is a find only when it has no question mark, is six words or fewer and names exactly one
@@ -299,7 +299,7 @@
       const strip = document.createElement('div');
       strip.className = 'gm-head-tabs';
       strip.setAttribute('role', 'tablist');
-      strip.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      strip.setAttribute('aria-label', 'Chat or the museum\u2019s details');
       const chatTab = document.createElement('button');
       chatTab.type = 'button';
       chatTab.id = 'gmChatTab';
@@ -493,7 +493,7 @@
           b.className = 'gm-filter-chip sh-grade-chip';
           b.dataset.grade = g;
           b.textContent = name;
-          b.title = `Show only ${name.toLowerCase()} spaces; press again to show every space`;
+          b.title = `Show only ${name.toLowerCase()} museums; press again to show every museum`;
           b.addEventListener('click', () => window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g));
           row.appendChild(b);
         });
@@ -675,7 +675,7 @@
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
       fromChatBar.setAttribute('role', 'tablist');
-      fromChatBar.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      fromChatBar.setAttribute('aria-label', 'Chat or the museum\u2019s details');
       fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" role="tab" aria-selected="false">Chat</button>'
         + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
@@ -1145,7 +1145,7 @@
       const gossipOn = () => !!window.isGossipModeActive;
       const store = { get(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (_) {} } };
       // Plain words, not research terms (user, 13 Nov 2026: "doesn't need to act like research, use plain language").
-      const STATUS = { confirmed: 'Confirmed', resolved: 'Resolved', talk: 'Rumour', denied: 'Denied', stale: 'Old rumour', documented: 'Documented', user: 'Unverified' };
+      const STATUS = { confirmed: 'Confirmed', resolved: 'Settled', talk: 'Rumour', denied: 'Denied', stale: 'Old rumour', documented: 'Documented', user: 'Not checked' };
       const KIND = { dispute: 'Dispute', report: 'Report', departure: 'Departure', money: 'Money', allegation: 'Allegation', leak: 'Leak', rumour: 'Rumour', case: 'Case', account: 'Post' };
       // What the item rests on, said outright. The two user-generated kinds say so.
       const SOURCE = {
@@ -1825,9 +1825,9 @@
         const chips = [label];
         if (alerts[0]) chips.push(chip('What is happening at ' + alerts[0].inst.name + '?', 'What is happening at ' + alerts[0].inst.name + '?', 'is-alert'));
         if (big) chips.push(chip('Who funds ' + big.name + '?', 'Who funds ' + big.name + '?'));
-        chips.push(chip('Flagged in ' + C, 'Which spaces in ' + C + ' are flagged, and why?'));
-        chips.push(chip('Oil and gas money in ' + C, 'Which spaces in ' + C + ' take oil and gas money?'));
-        if (gossip) chips.push(chip('Gossip in ' + C, "What's the gossip at spaces in " + C + '?'));
+        chips.push(chip('Flagged in ' + C, 'Which museums in ' + C + ' are flagged, and why?'));
+        chips.push(chip('Oil and gas money in ' + C, 'Which museums in ' + C + ' take oil and gas money?'));
+        if (gossip) chips.push(chip('Gossip in ' + C, "What's the gossip at museums in " + C + '?'));
         box.replaceChildren(...chips);
         box.setAttribute('aria-label', 'Suggested questions about ' + C);
       }

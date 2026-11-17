@@ -2015,6 +2015,11 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 /* The map carries the funders, not the spaces (user, 17 Nov 2026: "switch the map from culture spaces to cultural funders"),
    so the alert marks laid over spaces go while the mode is on; they also sat on top of the funders' marks in London. */
 body.influence-mode-active .gm-alert-mark:not(#sh-x):not(#sh-y){display:none!important}
+/* The measures (user, 17 Nov 2026: "Set cultural giving next to their public lobbying, political donation and sponsorship
+   filings (filters on influence map)"): Culture, US lobbying, EU lobbying and Political giving take the filter row's place
+   while the mode is on, in the row's own chip style; the space filters, which have no spaces to filter then, step aside. */
+body:not(.influence-mode-active) :is(#gmdChips,#gmChips) [data-influence-measure]:not(#sh-x):not(#sh-y){display:none!important}
+body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-measure]):not(#sh-x):not(#sh-y){display:none!important}
 .influence-chat ul{list-style:none!important;margin:0 0 var(--sh-gap) 0!important;padding:0!important}
 .influence-chat li::before{content:"\2013\00a0"!important}
 }

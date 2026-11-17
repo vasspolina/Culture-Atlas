@@ -38,13 +38,15 @@ FUNDERS = [
     ('hyundaimotor', 'Hyundai Motor', 'corp', r'Hyundai'),
     ('chanel', 'Chanel', 'corp', r'\bChanel\b'),
     ('jti', 'Japan Tobacco International', 'corp', r'Japan Tobacco|\bJTI\b'),
-    ('philipmorris', 'Philip Morris', 'corp', r'Philip Morris|Altria'),
+    ('philipmorris', 'Altria (Philip Morris USA)', 'corp', r'Philip Morris|Altria'),
     ('rheinmetall', 'Rheinmetall', 'corp', r'Rheinmetall'),
     ('leonardo', 'Leonardo', 'corp', r'\bLeonardo S\.?p\.?A|Leonardo \(defen'),
     ('glencore', 'Glencore', 'corp', r'Glencore'),
     ('riotinto', 'Rio Tinto', 'corp', r'Rio Tinto'),
     ('vale', 'Vale', 'corp', r'\bVale\b(?! of)'),
     ('lauder', 'Lauder family', 'family', r'\bLauder\b'),
+    # Added for one tie (user, 17 Nov 2026: "add the Sony LACMA link"): the leaked Sony emails put its lobbying at LACMA.
+    ('sonypictures', 'Sony Pictures Entertainment', 'corp', r'\bSony\b'),
 ]
 
 # Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
@@ -111,6 +113,10 @@ def segments(r):
         for t in (it.get('headline'), it.get('said'), it.get('outcome')):
             if t:
                 yield 'report', t, src or base, it.get('when')
+    # What a leaked document shows (WikiLeaks), one entry per document, with the document's own links.
+    for w in r.get('wikileaks_records', []) or []:
+        if isinstance(w, dict) and w.get('what_shows'):
+            yield 'wikileaks', w['what_shows'], w.get('sources') or base, w.get('date')
     for c in r.get('case_notes', []) or []:
         if c.get('text'):
             yield 'case_note', c['text'], c.get('sources') or base, c.get('meta')
@@ -187,6 +193,9 @@ def build_layer(cands):
             'summary': v['summary'], 'quote': c['text'], 'field': c['field'],
             'date': v.get('date', c['date']), 'sources': c['sources'],
             'check': v.get('check', 'record'),
+            # What ties a money measure to this space (assets/influence-mode.js shows US lobbying, EU lobbying or political
+            # giving only at a space a record links it to): [{measure: 'us' | 'eu' | 'politics', text, source}].
+            **({'links': v['links']} if v.get('links') else {}),
         })
     for f in funders.values():
         f['ties'].sort(key=lambda t: (t['space_name'], t['date']))
@@ -198,7 +207,7 @@ def build_layer(cands):
     for k, v in senders.items():
         if k.startswith('_') or k not in funders:
             continue
-        funders[k]['sender'] = {'made_from': v.get('made_from', ''), 'facts': v.get('facts', [])}
+        funders[k]['sender'] = {'made_from': v.get('made_from', ''), 'facts': v.get('facts', []), 'figures': v.get('figures', {})}
     data = {
         'about': 'What each pilot funder is stated to have got for its money, from the atlas records. Built by tools/build_influence.py from data/influence_review.json.',
         'kinds': [{'key': k, 'label': lab} for k, lab, _ in KINDS],

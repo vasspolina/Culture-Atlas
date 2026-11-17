@@ -27,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=5', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=9', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -43,7 +43,11 @@
 
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (_) { return ''; } };
-  const label = k => { const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
+  // Plain names for the kinds (user, 17 Nov 2026: "delete all the jargon"): "Seat", "Silence" and "Licence to operate" were
+  // the editor's shorthand, not words a reader uses. assets/influence.json keeps its own labels; these win.
+  const PLAIN = { name: 'Its name on something', seat: 'A board seat', programme: 'Shows and programmes', building: 'Buildings',
+    access: 'Parties and perks', silence: 'Secrecy', licence: 'A better image', tax: 'Tax breaks', money: 'Money only' };
+  const label = k => { if (PLAIN[k]) return PLAIN[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
   const plural = (n, one, many) => `${n} ${n === 1 ? one : (many || one + 's')}`;
   // What each kind means, said once in the chat and in the ledger's head, so a reader knows what "Seat" or "Silence" counts.
   const MEANS = {
@@ -53,9 +57,9 @@
     access: 'galas, corporate memberships, events and hospitality',
     building: 'a building, a refurbishment or an endowment',
     silence: 'terms kept from the public, or work withdrawn',
-    tax: 'a gift routed through a tax incentive',
-    licence: 'culture tied to its own operations or reputation',
-    money: 'money is stated, and nothing about what came with it'
+    tax: 'a gift that cut its tax bill',
+    licence: 'culture used to make its business look better',
+    money: 'money, with nothing said about what came back'
   };
   // The order a ledger lists kinds: what was bought first, money alone last.
   const ORDER = ['name', 'seat', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
@@ -67,27 +71,8 @@
     const spaces = new Set(ties.map(t => t.space)).size;
     return { n, ended, protest, spaces };
   }
-  // The ledger's head in words (user, 17 Nov 2026, of "11 spaces: name 3, programme 5, building 1, money only 6": "this is
-  // a slop"). The counts are ties, not spaces, and a tie can carry two kinds, so a bare tally after "11 spaces" added up to
-  // nothing a reader could check. It now says at how many ties something came back, what and how often, and at how many the records name only the money.
-  // Ended ties and protests are left to the line at the foot of the ledger, which already says them.
-  const GOT = {
-    name: 'its name', seat: 'a board seat', programme: 'a programme', building: 'a building',
-    access: 'hospitality', silence: 'terms kept from the public', licence: 'cover for its business', tax: 'a tax break'
-  };
-  const times = n => n === 1 ? 'once' : n === 2 ? 'twice' : `${n} times`;
-  const all = n => n === 2 ? 'both' : `all ${n}`;
-  const list = a => a.length > 1 ? a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1] : a[0];
-  function tallyLine(f) {
-    const t = tally(f.ties), ties = f.ties.filter(x => x.kinds.length);
-    const bought = ties.filter(x => x.kinds.some(k => k !== 'money')).length, bare = ties.length - bought;
-    const kinds = ORDER.filter(k => k !== 'money' && t.n[k]).sort((a, b) => t.n[b] - t.n[a]);
-    const sum = kinds.reduce((s, k) => s + t.n[k], 0);
-    let out = `${plural(ties.length, 'tie')} with ${plural(t.spaces, 'space')}.`;
-    if (bought) out += ` ${bought === ties.length ? (bought === 1 ? 'It' : `At ${all(bought)}`) : `At ${bought}`} ${bought === ties.length && bought === 1 ? 'got' : 'it got'} something back: ${list(kinds.map(k => `${GOT[k] || label(k).toLowerCase()} ${times(t.n[k])}`))}${sum > bought ? ' (one tie can carry two)' : ''}.`;
-    if (bare) out += ` ${bought ? `At the other ${bare === 1 ? 'one' : bare}` : (bare === 1 ? 'At the one' : `At ${all(bare)}`)}, the records name only the money.`;
-    return out;
-  }
+  // The ledger has no line under its title (user, 17 Nov 2026, of "15 ties with 14 spaces. At 7 it got something back: ...":
+  // "do not add this explanation"). The rows below say what it got, kind by kind.
 
   // A tie's year, from a date like "2023-12" or "2019"; a date the record could not give is null.
   const yearOf = t => { const m = String(t.date || '').match(/\b(1[89]|20)\d\d\b/); return m ? +m[0] : null; };
@@ -148,11 +133,103 @@
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
   // reaches. Company or family is said in its record and in the chat, not by the shape.
-  function mark(ctx, f, x, y, s) {
+  // Every dot is 4px across whatever the measure (user, 17 Nov 2026: "these dots are way too big, make all dots same size
+  // and like 4px"); the measure is said by the figure in the label, not by the size.
+  const DOT = 2;
+  function mark(ctx, f, x, y) {
     ctx.beginPath();
-    ctx.arc(x, y, s * 0.85, 0, Math.PI * 2);
+    ctx.arc(x, y, DOT, 0, Math.PI * 2);
     ctx.closePath();
   }
+  // ---- The measures: cultural giving next to lobbying and political giving ----
+  // (user, 17 Nov 2026: "Set cultural giving next to their public lobbying, political donation and sponsorship filings
+  // (filters on influence map) ... This is the part that actually answers 'who is at fault?'"). One measure at a time
+  // sizes the dots and labels each with its figure. Every figure is in data/influence_senders.json under `figures`, with
+  // its own source: culture from the atlas entries, US lobbying from the Lobbying Disclosure Act reports (lda.gov), EU
+  // lobbying from the EU Transparency Register, political giving from corporate PAC reports to the Federal Election
+  // Commission. A funder with no figure for the measure is a small hollow dot, its name only on pointing: no filing found
+  // is not the same as nothing spent, so it is never drawn as zero.
+  const fmtMoney = (v, cur) => {
+    const sym = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', BRL: 'R$', QAR: 'QAR ', INR: 'Rs ' }[cur] || '$';
+    if (v >= 1e9) return `${sym}${(v / 1e9).toFixed(v >= 1e10 ? 0 : 1).replace(/\.0$/, '')}bn`;
+    if (v >= 1e6) return `${sym}${(v / 1e6).toFixed(v >= 1e7 ? 0 : 1).replace(/\.0$/, '')}M`;
+    if (v >= 1e3) return `${sym}${Math.round(v / 1e3)}k`;
+    return `${sym}${Math.round(v)}`;
+  };
+  const fig = f => (f.sender && f.sender.figures) || {};
+  const MEASURES = {
+    culture: { label: 'Culture', what: 'how many museums it gives to',
+      value: f => (fig(f).culture || {}).spaces || null,
+      text: f => { const c = fig(f).culture || {}; return c.spaces ? `${c.spaces} ${c.spaces === 1 ? 'museum' : 'museums'}` : ''; } },
+    us: { label: 'US lobbying', noun: 'US lobbying', what: 'what it spent lobbying the US government in 2025',
+      value: f => (fig(f).us_lobbying || {}).usd || null,
+      text: f => { const u = fig(f).us_lobbying; return u ? fmtMoney(u.usd, 'USD') : ''; } },
+    eu: { label: 'EU lobbying', noun: 'EU lobbying', what: 'what it says it spent lobbying the EU in its last full year',
+      value: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min + e.eur_max) / 2 : null; },
+      text: f => { const e = fig(f).eu_lobbying; return e ? (e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')}–${fmtMoney(e.eur_max + 1, 'EUR')}` : `under ${fmtMoney(e.eur_max + 1, 'EUR')}`) : ''; } },
+    // Political giving adds two kinds of filing, told apart in the label: what the company's political fund (its PAC) gave US
+    // candidates, and what the people behind a family or individual funder gave in personal contributions (FEC individual
+    // contributions, 2023 and 2024, to candidates, parties and political groups, super PACs included). A company's
+    // executives are not counted as the company.
+    politics: { label: 'Political giving', noun: 'political giving', what: 'what its company political fund gave US candidates in 2023 and 2024, and what the people behind it gave personally',
+      value: f => (((fig(f).political || {}).usd || 0) + ((fig(f).personal || {}).usd || 0)) || null,
+      text: f => {
+        const p = fig(f).political, q = fig(f).personal, parts = [];
+        if (q) parts.push(`${fmtMoney(q.usd, 'USD')} personal`);
+        if (p) parts.push(`${fmtMoney(p.usd, 'USD')} company fund${p.rep_usd != null ? `, ${Math.round(100 * p.rep_usd / p.usd)}% Republican` : ''}`);
+        return parts.join('; ');
+      } },
+  };
+  let MEASURE = 'culture';
+  // A money measure shows only where a record ties it to a space (user, 17 Nov 2026: "the lobbying need to appear only if it
+  // was shown at that particular cultural space not that the company does lobbying in general, same for other filters").
+  // A company's lobbying or political giving in general says nothing about a museum; a tie's `links` (from
+  // data/influence_review.json, each { measure: 'us' | 'eu' | 'politics', text, source }) is a record that it reached that
+  // space: a filing that names the museum, a lobbying event held there, a candidate's fundraiser in its hall. Culture is
+  // giving at a space by definition, so every tie counts for it. A funder with no linked tie is not drawn under the measure,
+  // and a picked funder's lines go only to the linked spaces.
+  const tiesFor = (f, m = MEASURE) => m === 'culture' ? f.ties : f.ties.filter(t => (t.links || []).some(l => l.measure === m));
+  const shown = f => tiesFor(f).length > 0;
+  function setMeasure(m) {
+    if (!MEASURES[m] || (m === MEASURE && m !== 'culture')) m = 'culture';
+    MEASURE = m;
+    paintMeasureButtons();
+    if (window.scheduleRender) window.scheduleRender();
+    if (on && DATA) sayMeasure();
+  }
+  function sayMeasure() {
+    const M = MEASURES[MEASURE];
+    const ranked = DATA.funders.filter(f => shown(f) && M.value(f)).sort((a, b) => M.value(b) - M.value(a));
+    if (MEASURE !== 'culture') {
+      // Each funder is listed with the museums its money for this measure is recorded at, and nothing else.
+      const items = ranked.map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(M.text(f))}, at ${esc([...new Set(tiesFor(f).map(t => t.space_name))].join(', '))}</li>`).join('');
+      say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: a company is shown only where a record ties its ${esc(M.noun)} to a museum in the atlas.</p>${items ? `<ul class="influence-funders">${items}</ul>` : `<p class="no-indent">No record does yet, so no company is shown. What each one spends in general is in its own record.</p>`}</div>`);
+      return;
+    }
+    const none = DATA.funders.filter(f => !M.value(f)).map(f => f.name);
+    const top = ranked.slice(0, 6).map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(M.text(f))}</li>`).join('');
+    say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is labelled with ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul>${none.length ? `<p class="no-indent influence-meta">Nothing found for ${esc(none.join(', '))}, which does not mean they spent nothing.</p>` : ''}</div>`);
+  }
+  // The buttons sit in the map's filter row (#gmdChips on a desktop, #gmChips on a phone) and take its place while the mode is
+  // on: the space filters have nothing to filter when the map shows funders. assets/layers.js rebuilds that row, so the
+  // buttons are put back whenever they go.
+  function measureButtons() {
+    [['gmdChips', 'gmd-chip'], ['gmChips', 'gm-filter-chip']].forEach(([id, cls]) => {
+      const host = document.getElementById(id); if (!host || host.querySelector('[data-influence-measure]')) return;
+      Object.entries(MEASURES).forEach(([k, M]) => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = cls; b.dataset.influenceMeasure = k; b.textContent = M.label;
+        b.title = k === 'culture' ? `Label each funder with ${M.what}` : `Show only where a record ties ${M.noun} to a museum`;
+        b.addEventListener('click', () => setMeasure(k));
+        host.appendChild(b);
+      });
+      paintMeasureButtons();
+    });
+  }
+  function paintMeasureButtons() { document.querySelectorAll('[data-influence-measure]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.influenceMeasure === MEASURE))); }
+  window.atlasInfluenceMeasure = () => MEASURE;
+  window.atlasSetInfluenceMeasure = setMeasure;
+
   let HITS = [], SPACE_HITS = [], hover = null, hoverSpace = null;
   const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
   window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
@@ -160,6 +237,7 @@
     if (!on || !DATA) return;
     if (!fan) fanOut();
     const ink = text || (isDark() ? '#e6e1d7' : '#000000'), paper = ground || (isDark() ? '#151412' : '#ffffff');
+    const dpr = ctx.getTransform ? (ctx.getTransform().a || 1) : 1, W = ctx.canvas.width / dpr, H = ctx.canvas.height / dpr;
     const insts = g('ALL_INSTITUTIONS') || [];
     ctx.save();
     // The picked funder's ties: a line from its office to each space it got something from.
@@ -167,9 +245,9 @@
       const byId = new Map(insts.map(i => [i.id, i]));
       // A space that ended the tie is a dashed line, a running one solid: shape, not colour, says which. A space with ties
       // of both kinds takes the solid line, since some tie there is not said to have ended.
-      const running = new Set(picked.ties.filter(t => !t.ended).map(t => t.space));
+      const pt = tiesFor(picked), running = new Set(pt.filter(t => !t.ended).map(t => t.space));
       ctx.strokeStyle = ink; ctx.lineWidth = 1;
-      new Set(picked.ties.map(t => t.space)).forEach(id => {
+      new Set(pt.map(t => t.space)).forEach(id => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
         ctx.setLineDash(running.has(id) ? [] : [4, 4]);
         arc(ctx, project, r, cx, cy, picked.hq, i);
@@ -178,19 +256,29 @@
     }
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
+    const M = MEASURES[MEASURE];
     DATA.funders.forEach(f => {
       if (!f.hq) return;
+      // Not tied to any space under this measure: not drawn, unless it is the funder picked (opened from the chat), which
+      // keeps its dot but not the figure.
+      const linked = shown(f);
+      if (!linked && picked !== f) return;
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
       const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
-      const n = new Set(f.ties.map(t => t.space)).size;
-      marks.push({ f, x, y, s: Math.min(16, 5 + 2 * Math.sqrt(n)), n });   // capped, so Bloomberg's 80 spaces do not cover New York
+      const v = linked ? M.value(f) : null;
+      // Culture keeps its old scale, capped so Bloomberg's 80 spaces do not cover New York; a money measure is scaled to the
+      // largest figure on the map, by area. No figure: a small hollow dot.
+      const s = DOT;
+      marks.push({ f, x, y, s, n: v || 0, none: !v });
     });
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
     marks.forEach(m => {
       const sel = picked === m.f, hov = hover === m.f;
       mark(ctx, m.f, m.x, m.y, m.s);
-      ctx.fillStyle = sel || hov ? ink : paper; ctx.fill();
-      ctx.strokeStyle = ink; ctx.lineWidth = sel ? 2 : 1.5; ctx.stroke();
+      // Solid ink; a funder with no figure for the measure is hollow, the picked one gets a ring.
+      ctx.fillStyle = m.none && !sel && !hov ? paper : ink; ctx.fill();
+      ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.stroke();
+      if (sel) { ctx.beginPath(); ctx.arc(m.x, m.y, DOT + 3, 0, Math.PI * 2); ctx.stroke(); }
     });
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
@@ -198,7 +286,7 @@
     // every place is taken by another space's name waits for the map to be zoomed in, as a funder's name does.
     if (picked) {
       const byId = new Map(insts.map(i => [i.id, i]));
-      const names = new Map(picked.ties.map(t => [t.space, t.space_name]));
+      const names = new Map(tiesFor(picked).map(t => [t.space, t.space_name]));
       const pts = [];
       names.forEach((nm, id) => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
@@ -225,10 +313,14 @@
       // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
       // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
       // name does, and shows once the map is zoomed in or the mark is pointed at; the picked funder's always shows.
-      const label = f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const figure = shown(f) ? MEASURES[MEASURE].text(f) : '';
+      if (m.none && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
-      const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
+      // A place that runs off the map's edge counts as taken, so a long label (a figure beside the name) turns inward.
+      const off = b => b.x < 2 || b.y < 2 || b.x + b.w > W - 2 || b.y + b.h > H - 2;
+      const clash = b => off(b) || placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
       const free = spots.find(sp => !clash(boxAt(sp)));
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
       const spot = free || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
@@ -285,10 +377,11 @@
       await load();
       if (!on) return;   // switched off again while the data loaded
       if (window.atlasHq && window.atlasHq.ready) window.atlasHq.ready(() => {});   // the funding maps, so a funder's record can open
+      measureButtons();
       greet();
     } else {
-      picked = null; pickedSpaces = null; hover = null; hoverSpace = null;
-      say('<p class="no-indent">Influence mode is off. The map shows the spaces again.</p>');
+      picked = null; pickedSpaces = null; hover = null; hoverSpace = null; MEASURE = 'culture'; paintMeasureButtons();
+      say('<p class="no-indent">Influence mode is off. The map shows the museums again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
     decorate();
@@ -301,13 +394,12 @@
     if (typeof appendCuratorMessage === 'function') appendCuratorMessage(html, [], null, null, false);
   }
   function greet() {
-    if (!DATA) { say('<p class="no-indent">Influence mode is on, but its entries could not be loaded. Try again in a moment.</p>'); return; }
-    const total = DATA.funders.reduce((s, f) => s + f.ties.length, 0);
-    // Two short paragraphs (user, 17 Nov 2026: "influence mode intro in chat is a slop, shorten it ... no need to list all
-    // spaces"). The funders are on the map and each record says what it got, so the chat does not list them again.
+    if (!DATA) { say('<p class="no-indent">Influence mode is on, but it could not load. Try again in a moment.</p>'); return; }
+    // One short paragraph (user, 17 Nov 2026: "influence mode intro in chat is a slop, shorten it ... no need to list all
+    // spaces"; then, of "351 entries on 25 private funders, read by hand from the spaces' records": "this is a slop, delete
+    // all the jargon"). The funders are on the map and each record says what it got, so the chat does not list them again.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence mode is on. The map now shows who pays for culture, at their head offices: the bigger the dot, the more spaces it reaches. Pick one to see what its money bought and where.</p>
-<p>${total} entries on ${DATA.funders.length} private funders, read by hand from the spaces’ records.</p>
+<p class="no-indent">Influence mode is on. The map now shows ${DATA.funders.length} companies and foundations that pay for culture, at their head offices. The bigger the dot, the more museums it pays. Pick one to see what its money bought.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -342,7 +434,7 @@
     if (!list.length) return;
     const rows = list.map(x => `<li><button type="button" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</button>${x.city || !x.open ? `<span class="influence-meta">${x.city ? ', ' + esc(x.city) : ''}${x.open ? '' : ', ended'}</span>` : ''}</li>`).join('');
     say(`<div class="influence-chat">
-<p class="no-indent">${esc(f.name)}: ${plural(list.length, 'space')}.</p>
+<p class="no-indent">${esc(f.name)}: ${plural(list.length, 'museum')}.</p>
 <ul class="influence-funders">${rows}</ul>
 </div>`);
   }
@@ -351,7 +443,7 @@
   // ---- The records ----
   const lineFor = (t, withSpace, withFunder) => {
     const src = (t.sources || [])[0];
-    const marks = [t.ended ? 'Ended' : '', t.protest ? 'Met protest' : ''].filter(Boolean).join(', ');
+    const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
     const kinds = t.kinds.length ? t.kinds.map(label).join(', ') : '';
     const who = withFunder ? `<button type="button" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</button>` : '';
     const where = withSpace ? `<button type="button" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</button>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
@@ -382,9 +474,9 @@
   // sources say happened to the money after a space said no. Each fact carries its own source, read on its page.
   const FACT_ROWS = [
     ['harm', 'Where the money comes from', null],
-    ['scale', 'Beside culture: the business', 'the size of what makes the money, one stated year'],
-    ['lobbying', 'Beside culture: lobbying', 'what it spends on lobbying governments'],
-    ['politics', 'Beside culture: politics', 'political donations and campaigns']
+    ['scale', 'Its business', 'how big it is, for one year'],
+    ['lobbying', 'Lobbying', 'what it spends to sway governments'],
+    ['politics', 'Politics', 'political donations and campaigns']
   ];
   const factLine = x => `<li class="influence-entry"><p class="no-indent">${esc(x.text)}</p><p class="no-indent influence-meta">${[x.date ? esc(x.date) : '', x.source ? `<a href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">${esc(host(x.source))}</a>` : ''].filter(Boolean).join(' · ')}</p></li>`;
   function senderRows(f) {
@@ -405,10 +497,28 @@
     const a = afterNo(f), told = ((f.sender && f.sender.facts) || []).filter(x => x.kind === 'after');
     if (!a.kept.length && !told.length) return '';
     let inner = '';
-    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Ended it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
-    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Dated ${esc(a.first)} or later, and not said to have ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
-    if (told.length) inner += `<p class="no-indent"><span class="lead-in">What the sources say happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
-    return row('When a space said no', 'a refusal ends one tie, not the money', inner);
+    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that dropped it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
+    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts from ${esc(a.first)} on, with no word that they ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
+    if (told.length) inner += `<p class="no-indent"><span class="lead-in">What happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
+    return row('When a museum said no', 'saying no ends one deal, not the money', inner);
+  }
+
+  // Cultural giving next to lobbying and political giving, one line each, each with its own source; a line with no filing
+  // says so, since no filing found is not the same as nothing spent.
+  function compareRow(f) {
+    const F = fig(f), li = (lead, body, src) => `<li class="influence-entry"><p class="no-indent"><span class="lead-in">${esc(lead)}.</span> ${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    const c = F.culture || {}, u = F.us_lobbying, e = F.eu_lobbying, p = F.political;
+    const rows = [
+      li('Culture', `${c.spaces || 0} ${c.spaces === 1 ? 'museum' : 'museums'}${c.largest_gift ? `; the largest gift found is ${c.largest_gift.text}` : ', with no amount given'}.`, c.largest_gift && c.largest_gift.source),
+      u ? li('US lobbying', u.outside_only ? `Lobbying firms it hired were paid ${fmtMoney(u.usd, 'USD')} in ${u.year}; it reports nothing itself.` : `${fmtMoney(u.usd, 'USD')} spent lobbying the US government in ${u.year}${u.quarters && u.quarters < 4 ? `, counting ${u.quarters} of its 4 quarterly reports` : ''}.`, u.source)
+        : li('US lobbying', 'No US lobbying report found for 2025.', ''),
+      e ? li('EU lobbying', `${e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')} to ${fmtMoney(e.eur_max + 1, 'EUR')}` : `Under ${fmtMoney(e.eur_max + 1, 'EUR')}`} declared to the EU for ${e.period}.`, e.source)
+        : li('EU lobbying', 'Not on the EU lobbying register.', ''),
+      p ? li('Political giving', `Its company political fund gave ${fmtMoney(p.usd, 'USD')} to US candidates in 2023 and 2024${p.rep_usd != null ? `, ${Math.round(100 * p.rep_usd / p.usd)}% to Republicans and ${Math.round(100 * p.dem_usd / p.usd)}% to Democrats` : ''}.`, p.source)
+        : li('Political giving', 'No company political fund giving to US candidates found for 2023 and 2024.', ''),
+      ...((F.personal && F.personal.people) || []).map(x => li('Personal giving', `${x.name} gave ${fmtMoney(x.usd, 'USD')} of personal money to US candidates, parties and political groups in 2023 and 2024${x.top && x.top.length ? (x.top.length === 1 && Math.abs(x.top[0].usd - x.usd) < 1 ? `, all of it to ${x.top[0].name}` : `; the most went to ${x.top.map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`).join(', ')}`) : ''}.`, x.source)),
+    ];
+    return row('Culture next to lobbying and politics', 'what it gives culture, and what it spends on politics', `<ul class="d-row-list influence-list">${rows.join('')}</ul>`);
   }
 
   function funderPart(f) {
@@ -417,7 +527,8 @@
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', `What ${f.name} got`);
-    let html = row(`What ${f.name} got`, tallyLine(f), '');
+    let html = row(`What ${f.name} got`, '', '');
+    html += compareRow(f);
     html += senderRows(f);
     ORDER.forEach(k => {
       const ties = f.ties.filter(x => (x.kinds.length ? x.kinds : []).includes(k));
@@ -425,8 +536,8 @@
     });
     html += afterRows(f);
     const pushback = f.ties.filter(x => !x.kinds.length);
-    if (pushback.length) html += row('Pushback', 'protests and resignations with nothing bought stated', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
-    if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'tie') + ' ended' : '', t.protest ? plural(t.protest, 'entry', 'entries') + ' met protest' : ''].filter(Boolean).join('; '))}. Each entry is checked against the space’s record, not yet against its source.</p>`;
+    if (pushback.length) html += row('Pushback', 'protests and resignations', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
+    if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'deal') + ' ended' : '', t.protest ? plural(t.protest, 'deal') + ' drew protest' : ''].filter(Boolean).join('; '))}. Each line matches the museum’s page in this atlas, but is not yet checked against its source.</p>`;
     el.innerHTML = html;
     return el;
   }
@@ -495,10 +606,12 @@
     return true;
   }
 
+  // assets/layers.js repaints every chip in the row after a filter change, and would mark these as "All": they are painted after it.
+  document.addEventListener('atlas:filter', () => setTimeout(() => { measureButtons(); paintMeasureButtons(); }));
   function init() {
     watch();
     let n = 0;
-    const t = setInterval(() => { watch(); if (phoneButton() || ++n > 50) clearInterval(t); }, 200);
+    const t = setInterval(() => { watch(); measureButtons(); if ((phoneButton() && document.querySelector('[data-influence-measure]')) || ++n > 50) clearInterval(t); }, 200);
     // Load the entries early, so the first switch is instant and ?influence opens the page in the mode.
     load().then(() => { if (/[?&]influence\b/.test(location.search)) toggle(true); });
   }
