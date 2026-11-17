@@ -109,8 +109,8 @@
       // No icon before the words (user, 16 Nov 2026: "delete chat icon next to text in chat"): the box was led by a speech mark.
       // The desktop's prompt, word for word (user, 16 Nov 2026: "chat window says ask the atlas but it should say same as on
       // desktop"); it was "Ask the atlas". The box's name also says it finds places.
-      input.setAttribute('aria-label', 'Ask about a space, its funders or controversies, or type a space or a city to find it on the map');
-      input.setAttribute('placeholder', 'Ask about a space, its funders or controversies…');
+      input.setAttribute('aria-label', 'Ask about a museum, its funders or controversies, or type a museum or a city to find it on the map');
+      input.setAttribute('placeholder', 'Ask about a museum, its funders or controversies…');
 
       // Finding: a space's or a city's name on its own goes to the map (the record opens, or the map flies to the city)
       // instead of the chat. It is a find only when it has no question mark, is six words or fewer and names exactly one
@@ -299,7 +299,7 @@
       const strip = document.createElement('div');
       strip.className = 'gm-head-tabs';
       strip.setAttribute('role', 'tablist');
-      strip.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      strip.setAttribute('aria-label', 'Chat or the museum\u2019s details');
       const chatTab = document.createElement('button');
       chatTab.type = 'button';
       chatTab.id = 'gmChatTab';
@@ -675,7 +675,7 @@
       const fromChatBar = document.createElement('div');
       fromChatBar.className = 'gm-from-chat-bar';
       fromChatBar.setAttribute('role', 'tablist');
-      fromChatBar.setAttribute('aria-label', 'Chat or the space\u2019s details');
+      fromChatBar.setAttribute('aria-label', 'Chat or the museum\u2019s details');
       fromChatBar.innerHTML = '<button type="button" id="gmDetailsBackBtn" role="tab" aria-selected="false">Chat</button>'
         + '<button type="button" id="gmDetailsToggleBtn" role="tab" aria-selected="true">Details</button>';
       fromChatBar.hidden = true;
@@ -1825,9 +1825,9 @@
         const chips = [label];
         if (alerts[0]) chips.push(chip('What is happening at ' + alerts[0].inst.name + '?', 'What is happening at ' + alerts[0].inst.name + '?', 'is-alert'));
         if (big) chips.push(chip('Who funds ' + big.name + '?', 'Who funds ' + big.name + '?'));
-        chips.push(chip('Flagged in ' + C, 'Which spaces in ' + C + ' are flagged, and why?'));
-        chips.push(chip('Oil and gas money in ' + C, 'Which spaces in ' + C + ' take oil and gas money?'));
-        if (gossip) chips.push(chip('Gossip in ' + C, "What's the gossip at spaces in " + C + '?'));
+        chips.push(chip('Flagged in ' + C, 'Which museums in ' + C + ' are flagged, and why?'));
+        chips.push(chip('Oil and gas money in ' + C, 'Which museums in ' + C + ' take oil and gas money?'));
+        if (gossip) chips.push(chip('Gossip in ' + C, "What's the gossip at museums in " + C + '?'));
         box.replaceChildren(...chips);
         box.setAttribute('aria-label', 'Suggested questions about ' + C);
       }
