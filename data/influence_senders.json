@@ -1062,8 +1062,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 83,
-    "entries": 89,
+    "spaces": 84,
+    "entries": 90,
     "largest_gift": {
      "text": "$75 million to The Shed’s capital campaign (2017)",
      "amount": 75000000.0,
@@ -1406,8 +1406,8 @@
   ],
   "figures": {
    "culture": {
-    "spaces": 13,
-    "entries": 15
+    "spaces": 14,
+    "entries": 16
    },
    "us_lobbying": {
     "usd": 1270000.0,
@@ -4191,8 +4191,8 @@
     "source": "https://lda.gov/api/v1/filings/?client_name=ConocoPhillips&filing_year=2025"
    },
    "culture": {
-    "spaces": 2,
-    "entries": 3
+    "spaces": 3,
+    "entries": 4
    }
   }
  },
@@ -8058,8 +8058,8 @@
      "currency": "CAD",
      "source": "https://www.glenbow.org/support/our-supporters/"
     },
-    "spaces": 2,
-    "entries": 2
+    "spaces": 3,
+    "entries": 3
    }
   }
  },
@@ -8396,5 +8396,416 @@
  "northwestel": {
   "made_from": "Northwestel’s money comes from telephone and internet service across Yukon, the Northwest Territories and Nunavut; Bell Canada has been its parent since 1988.",
   "facts": []
+ },
+ "aes": {
+  "made_from": "AES’s money comes from generating and distributing electricity in the United States and abroad, Panama among its markets.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "AES reported total revenue of $12,233 million for 2025; net income attributable to the company fell 46% to $910 million.",
+    "date": "2026-03",
+    "source": "https://www.aes.com/sites/vault/files/2026-03/AES-Corp-2025-Annual-Report-03-20-2026.pdf"
+   },
+   {
+    "kind": "lobbying",
+    "text": "The AES Corporation reported $560,000 in its own federal lobbying reports for 2025 ($420,000, $60,000, $40,000 and $40,000 by quarter).",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=AES+Corporation&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 560000,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=AES+Corporation&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "angelramos": {
+  "made_from": "The Fundación Ángel Ramos carries the name of Ángel Ramos, the Puerto Rican owner of the newspaper El Mundo and founder of the island’s Telemundo station.",
+  "facts": []
+ },
+ "ansamcal": {
+  "made_from": "ANSA McAL’s money comes from a Trinidad and Tobago conglomerate of manufacturing, beverages, retail and distribution, and financial services.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "ANSA McAL’s revenue grew 9% to TT$7.788 billion in 2025 and its profit before tax rose 10% to TT$1.014 billion.",
+    "date": "2026-03",
+    "source": "https://www.ansamcal.com/chairmans-statement-ansa-mcals-2025-performance/"
+   }
+  ]
+ },
+ "b3": {
+  "made_from": "B3’s money comes from running Brazil’s stock exchange and its trading, clearing and registry services.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "B3’s recurring net profit was R$5.3 billion in 2025, up 10%.",
+    "date": "2026-02",
+    "source": "https://borainvestir.b3.com.br/noticias/empresas/b3-b3sa3-registra-receita-de-r-111-bilhoes-em-2025-crescimento-de-52/"
+   }
+  ]
+ },
+ "bago": {
+  "made_from": "Laboratorios Bagó’s money comes from making and selling medicines; it is an Argentine pharmaceutical group.",
+  "facts": []
+ },
+ "bancopopular": {
+  "made_from": "Popular, Inc.’s money comes from banking in Puerto Rico and the United States, through Banco Popular.",
+  "facts": []
+ },
+ "cloudwalk": {
+  "made_from": "CloudWalk’s money comes from payments and financial services for small businesses, sold in Brazil as InfinitePay.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "CloudWalk reported net profit of R$602 million for 2025, up 90%, on revenue of R$5.44 billion.",
+    "date": "2026-03",
+    "source": "https://forbes.com.br/geral/2026/03/cloudwalk-tem-salto-de-90-no-lucro-em-2025-com-apoio-de-nova-geracao-de-agentes-de-ia/"
+   }
+  ]
+ },
+ "credicorp": {
+  "made_from": "Credicorp’s money comes from banking, insurance and pensions in Peru and the region, through Banco de Crédito del Perú.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Credicorp’s net income attributable to the group rose 25.9% to S/6,925.4 million in 2025.",
+    "date": "2026-02",
+    "source": "https://www.stocktitan.net/sec-filings/BAP/6-k-credicorp-ltd-current-report-foreign-issuer-708fd4055a43.html"
+   }
+  ]
+ },
+ "cuervo": {
+  "made_from": "The Beckmann family’s money comes from Becle, the maker of José Cuervo tequila and other spirits.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Becle’s net sales were 43,087 million pesos in 2025, against 43,962 million in 2024 (Análisis B×+ results table).",
+    "date": "2026-02",
+    "source": "https://estrategia.vepormas.com/wp-content/uploads/2026/02/Trimestral-CUERVO-4T25.pdf"
+   }
+  ]
+ },
+ "digicel": {
+  "made_from": "Digicel’s money comes from mobile and broadband services in the Caribbean and Central America; it was founded by Denis O’Brien.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Bondholders took control of Digicel in a restructuring completed in January 2024 that cut Denis O’Brien’s stake to 10%.",
+    "date": "2024-01",
+    "source": "https://www.irishtimes.com/business/2024/01/29/digicel-completes-restructuring-that-cuts-obrien-stake-to-10"
+   },
+   {
+    "kind": "scale",
+    "text": "With the 2023 restructuring of Digicel Group Holdings, the schemes cut the group’s consolidated debt by about $1.7 billion and its annual cash interest by about $120 million.",
+    "date": "2024-02",
+    "source": "https://bernews.com/2024/02/digicel-holdings-completes-financial-restructuring"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Digicel Holdings (Bermuda) paid the firm Checkmate Government Relations $420,000 for federal lobbying in 2025, as the firm reported.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Digicel&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 420000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Digicel&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "espinosayglesias": {
+  "made_from": "Manuel Espinosa Yglesias made his money in cinemas and in banking, as the owner of Bancomer.",
+  "facts": []
+ },
+ "ferrerangel": {
+  "made_from": "The Ferré-Rangel family’s money comes from El Nuevo Día, the Puerto Rican newspaper it owns.",
+  "facts": []
+ },
+ "fonalledas": {
+  "made_from": "The Fonalledas family’s money comes from Empresas Fonalledas, owner of the Plaza Las Américas shopping centre in San Juan.",
+  "facts": []
+ },
+ "gracekennedy": {
+  "made_from": "GraceKennedy’s money comes from food manufacturing and distribution and from financial services, in Jamaica and abroad.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "GraceKennedy’s revenue rose 6.4% to J$177.8 billion in 2025, while net profit fell 18% to J$7.25 billion after Hurricane Melissa.",
+    "date": "2026-03",
+    "source": "https://jamaica-gleaner.com/article/business/20260306/gracekennedy-revenue-rises-profit-falls-hurricane-costs"
+   }
+  ]
+ },
+ "grupohabita": {
+  "made_from": "Grupo Habita’s money comes from running boutique hotels in Mexico.",
+  "facts": []
+ },
+ "grupoultra": {
+  "made_from": "Ultrapar’s money comes mainly from fuel distribution through Ipiranga, and from liquid bulk terminals (Ultracargo) and gas (Ultragaz).",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Ultrapar reported net profit of R$2.542 billion for 2025, up 1%, on net revenue of R$142.478 billion.",
+    "date": "2026-03",
+    "source": "https://timesbrasil.com.br/empresas-e-negocios/ultrapar-tem-queda-anual-de-71-no-lucro-liquido/"
+   }
+  ]
+ },
+ "harphelu": {
+  "made_from": "Alfredo Harp Helú made his fortune in banking, as a main shareholder of Banamex.",
+  "facts": []
+ },
+ "interceramic": {
+  "made_from": "Interceramic’s money comes from making and selling ceramic floor and wall tiles in Mexico and the United States.",
+  "facts": []
+ },
+ "leonjimenes": {
+  "made_from": "The León Jimenes family’s money comes from tobacco, through the La Aurora cigar company its founder set up in 1903, and from beer.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "In 2012 E. León Jimenes sold 41.76% of the Cervecería Nacional Dominicana to AmBev for US$1 billion in cash, keeping a minority stake.",
+    "date": "2012-04",
+    "source": "https://eldia.com.do/la-cerveceria-nacional-vende-el-51-de-sus-acciones-a-ambev/"
+   }
+  ]
+ },
+ "massy": {
+  "made_from": "Massy’s money comes from a Trinidad and Tobago group of industrial gases, motors and machinery, and retail across the Caribbean.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Massy’s third-party revenue rose 3% to TT$15.8 billion in the year to September 2025, and profit before tax from continuing operations rose 4% to TT$1.1 billion.",
+    "date": "2025-12",
+    "source": "https://guyanatimesgy.com/massy-reports-over-us113m-in-profits-with-guyana-among-key-contributors"
+   }
+  ]
+ },
+ "megacable": {
+  "made_from": "Megacable’s money comes from cable television, internet and telephone services in Mexico.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Megacable’s sales were 35,430 million pesos in 2025 and its net profit 2,840 million pesos (Análisis B×+ annual table).",
+    "date": "2026-02",
+    "source": "https://estrategia.vepormas.com/wp-content/uploads/2026/02/Trimestral-MEGA-4T25.pdf"
+   }
+  ]
+ },
+ "mendozafamily": {
+  "made_from": "The Mendoza family’s money came from the companies of Eugenio Mendoza Goiticoa, a Venezuelan industrialist.",
+  "facts": []
+ },
+ "motiva": {
+  "made_from": "Motiva, formerly CCR, makes its money from toll road, urban rail and airport concessions in Brazil.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In November 2018 CCR agreed to pay R$81.5 million to close a São Paulo prosecutors’ inquiry, begun after the Lava Jato informant Adir Assad said the company paid undeclared campaign money (caixa dois) to politicians of the PSDB, PMDB, PSD and PTB.",
+    "date": "2018-11",
+    "source": "https://capitalaberto.com.br/semana/acoes-da-ccr-sobem-apos-acordo-de-815-milhoes-com-ministerio-publico/"
+   }
+  ]
+ },
+ "naturgy": {
+  "made_from": "Naturgy’s money comes from gas and electricity: supplying and distributing gas and power in Spain and Latin America, Panama among them.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Naturgy’s net profit rose 6.4% to 2,023 million euros in 2025.",
+    "date": "2026-02",
+    "source": "https://theobjective.com/actualidad/2026-02-18/naturgy-2-023-millones-2025-un-64-mas/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Naturgy Energy Group declared EU lobbying costs of €100,000 to €199,999 for 2024 to the EU Transparency Register.",
+    "date": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/naturgy-energy-group?rid=67833029261-54"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Its US subsidiary Naturgy Candela Devco LLC paid SC Partners $80,000 for federal lobbying in 2025, as the firm reported.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Naturgy&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 100000,
+    "eur_max": 199999,
+    "period": "2024",
+    "source": "https://www.lobbyfacts.eu/datacard/naturgy-energy-group?rid=67833029261-54"
+   },
+   "us_lobbying": {
+    "usd": 80000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Naturgy&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "newfortress": {
+  "made_from": "New Fortress Energy’s money comes from importing and selling liquefied natural gas and from power generation, including Puerto Rico’s state power plants, which its subsidiary Genera PR operates.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In May 2025 Puerto Rico’s Energy Bureau ordered Genera PR to cease converting the Palo Seco and Mayagüez units to natural gas, citing the risk of a supply monopoly favouring its parent, New Fortress Energy.",
+    "date": "2025-05",
+    "source": "https://energia.pr.gov/wp-content/uploads/sites/7/2025/05/20250530-MI20240004-Order-Cease-and-Desist-and-OSC.pdf"
+   },
+   {
+    "kind": "lobbying",
+    "text": "New Fortress Energy paid the firm H.A. Cumber & Company $160,000 for federal lobbying in 2025, as the firm reported.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=New+Fortress+Energy&filing_year=2025"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Genera PR paid the firm Alta Crest $216,000 for federal lobbying in 2025, $54,000 a quarter, as the firm reported.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Genera+PR&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 160000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=New+Fortress+Energy&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "nubank": {
+  "made_from": "Nubank’s money comes from digital banking, credit cards and loans in Brazil, Mexico and Colombia.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Nu Holdings posted net income of $2.9 billion in 2025, against $2.0 billion in 2024.",
+    "date": "2026-02",
+    "source": "https://seekingalpha.com/pr/20414375"
+   }
+  ]
+ },
+ "ortizgurdian": {
+  "made_from": "The Ortiz Gurdián family’s money comes from banking: Ramiro Ortiz Mayorga presides over Banpro, a bank of the Grupo Promerica financial group.",
+  "facts": []
+ },
+ "paiz": {
+  "made_from": "The Paiz family’s money came from Almacenes Paiz, its chain of stores in Guatemala.",
+  "facts": []
+ },
+ "patino": {
+  "made_from": "The Patiño foundations’ money goes back to Simón I. Patiño’s tin mines in Bolivia, confiscated in the 1952 revolution; his heirs’ Geneva foundation manages the funds.",
+  "facts": []
+ },
+ "pumaenergy": {
+  "made_from": "Trafigura’s money comes from trading oil, metals and minerals; Puma Energy, the fuel distributor it controls, sells fuel in Latin America, Africa and Asia.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "Trafigura was behind the 2006 dumping of toxic waste in Abidjan, Côte d’Ivoire, after which over 100,000 people sought medical help (Amnesty International and Greenpeace Netherlands).",
+    "date": "2006",
+    "source": "https://www.amnesty.org/en/latest/news/2012/09/report-slams-failure-prevent-toxic-waste-dumping-west-africa/"
+   },
+   {
+    "kind": "harm",
+    "text": "Trafigura pleaded guilty in the United States to conspiring to violate the Foreign Corrupt Practices Act in Brazil, with a criminal penalty of about $80.5 million and forfeiture of about $46.5 million.",
+    "date": "2024-03",
+    "source": "https://www.complianceweek.com/regulatory-enforcement/trafigura-pleads-guilty-to-pay-127m-over-fcpa-violations-in-brazil/34579.article"
+   },
+   {
+    "kind": "harm",
+    "text": "Switzerland’s Federal Criminal Court found Trafigura guilty of “organizational failure” in relation to corruption in Angola, with a fine of CHF 3 million and a compensation claim of USD 145 million, for close to USD 5 million in bribes paid between 2009 and 2011.",
+    "date": "2025-01",
+    "source": "https://www.publiceye.ch/en/media-corner/press-releases/detail/swiss-court-sentences-trafiguras-wolves"
+   },
+   {
+    "kind": "scale",
+    "text": "Trafigura’s net profit was USD 2,666 million for the year to 30 September 2025, down three percent.",
+    "date": "2025-12",
+    "source": "https://www.trafigura.com/news-and-insights/press-releases/2025/trafigura-publishes-2025-annual-results/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Trafigura Pte Ltd declared EU lobbying costs of €400,000 to €499,999 for October 2024 to September 2025 to the EU Transparency Register.",
+    "date": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/trafigura-pte-ltd?rid=049566047779-57"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Trafigura Pte Ltd paid the firm Ragnar Group $160,000 for federal lobbying in 2025 ($80,000 in each of the third and fourth quarters), as the firm reported.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Trafigura&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "eu_lobbying": {
+    "eur_min": 400000,
+    "eur_max": 499999,
+    "period": "2025",
+    "source": "https://www.lobbyfacts.eu/datacard/trafigura-pte-ltd?rid=049566047779-57"
+   },
+   "us_lobbying": {
+    "usd": 160000,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Trafigura&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 3,
+    "entries": 3
+   }
+  }
+ },
+ "robertomarinho": {
+  "made_from": "The Marinho family’s money comes from Grupo Globo, Brazil’s largest media group, with television, newspapers and streaming.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Globo’s net profit fell to R$1.45 billion in 2025, despite growth in revenue.",
+    "date": "2026-03",
+    "source": "https://teletime.com.br/25/03/2026/lucro-da-globo-cai-para-r-145-bilhao-em-2025-apesar-de-crescimento-na-receita/"
+   },
+   {
+    "kind": "harm",
+    "text": "Roberto Marinho, then president of the group, wrote in 1984 that it had supported the 1964 “revolution”; in 2013 Globo said that support for the coup had been an error.",
+    "date": "2013",
+    "source": "https://www.infomoney.com.br/?p=59769"
+   }
+  ]
+ },
+ "yarur": {
+  "made_from": "The Yarur family’s money comes from Banco de Crédito e Inversiones (BCI), the Chilean bank it controls.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "BCI reported net profit of 996,212 million Chilean pesos for 2025.",
+    "date": "2026",
+    "source": "https://cdn3.bci.cl/uploads/2db87fed-a7aa-41e3-9752-a9b0a58edd44/original/Informe_de_Resultados_2025.pdf"
+   }
+  ]
  }
 }
