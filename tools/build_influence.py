@@ -181,12 +181,15 @@ def build_layer(cands):
             funders[c['funder']] = {'key': c['funder'], 'name': n, 'kind': kind, 'hq': hq, 'ties': []}
         f = funders[c['funder']]
         f['ties'].append({
-            'space': c['space'], 'space_name': c['space_name'], 'city': c['city'],
+            'cid': cid, 'space': c['space'], 'space_name': c['space_name'], 'city': c['city'],
             # Only what the review states: the keyword flags of a candidate are a reading aid, not a finding.
             'kinds': v.get('kinds', []), 'ended': bool(v.get('ended')), 'protest': bool(v.get('protest')),
             'summary': v['summary'], 'quote': c['text'], 'field': c['field'],
             'date': v.get('date', c['date']), 'sources': c['sources'],
             'check': v.get('check', 'record'),
+            # Checked against its source pages (17 Nov 2026): the page that bears it out, and for a partly checked entry
+            # the detail that page does not give.
+            'checked_source': v.get('checked_source'), 'checked_missing': v.get('checked_missing'),
         })
     for f in funders.values():
         f['ties'].sort(key=lambda t: (t['space_name'], t['date']))
