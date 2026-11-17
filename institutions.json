@@ -234141,11 +234141,13 @@
   {
     "name": "Opera Queensland",
     "location": "Brisbane, Australia",
-    "tier": "A",
+    "tier": "B",
     "size": "M",
     "funding": "Not-for-profit company. Of $8.9M operating income in 2025, $4.3M was government grants, $2.0M sponsorship and donations and $1.7M event income (annual report).",
-    "flags": [],
-    "why_flagged": null,
+    "flags": [
+      "Gambling"
+    ],
+    "why_flagged": "Its 2025 annual report names Brisbane Racing Club, which runs thoroughbred racing at Eagle Farm and Doomben and lists wagering among its products (Wikipedia), as a major partner.",
     "sources": [
       "https://www.oq.com.au/wp-content/uploads/2026/05/OQ-2025-Annual-Report.pdf",
       "https://www.oq.com.au/wp-content/uploads/2026/05/OQ-Financial-Statements-2025.pdf",
@@ -234155,7 +234157,8 @@
       "https://www.oq.com.au/wp-content/uploads/2020/10/2018-Opera-Queensland-Annual-Report_Spreads.pdf",
       "https://www.oq.com.au/wp-content/uploads/2020/10/Opera-Queensland-2016-Annual-Report.pdf",
       "https://cabinet.qld.gov.au/ministers-portfolios/assets/diary/2013/november/walker.pdf",
-      "https://en.wikipedia.org/wiki/Queensland_Conservatorium_Griffith_University"
+      "https://en.wikipedia.org/wiki/Queensland_Conservatorium_Griffith_University",
+      "https://en.wikipedia.org/wiki/Brisbane_Racing_Club"
     ],
     "lat": -27.4766,
     "lon": 153.0205,
@@ -234216,8 +234219,8 @@
         ]
       }
     ],
-    "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade": 4,
+    "grade_basis": "A funder tied to gambling."
   },
   {
     "name": "Queensland Museum",

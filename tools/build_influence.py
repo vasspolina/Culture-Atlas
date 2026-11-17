@@ -45,6 +45,25 @@ FUNDERS = [
     ('riotinto', 'Rio Tinto', 'corp', r'Rio Tinto'),
     ('vale', 'Vale', 'corp', r'\bVale\b(?! of)'),
     ('lauder', 'Lauder family', 'family', r'\bLauder\b'),
+    # Private money that is not a company's (user, 17 Nov 2026: "add private funders not only corporations, like hedge funds
+    # etc"): hedge fund and private equity fortunes, given in a person's or a family's name, and the firms where a record ties
+    # the firm itself. Then billionaires whose money the records tie to a space directly. 'fund' is a firm that manages others'
+    # money; 'family' is a person's or a family's own money, however it was made.
+    ('leonblack', 'Leon Black (Apollo)', 'family', r'Leon Black|Apollo Global|Apollo Management'),
+    ('right:cohen', 'Steven Cohen (Point72)', 'family', r'Steven (?:A\. )?Cohen|Steve Cohen|Point72|SAC Capital'),
+    ('right:mercer', 'Mercer family (Renaissance Technologies)', 'family', r'Rebekah Mercer|Robert Mercer|Mercer Family Foundation|Renaissance Technologies'),
+    ('glenndubin', 'Glenn Dubin (Highbridge Capital)', 'family', r'Glenn Dubin|\bDubin\b(?= (?:famil|Foundation))|Highbridge Capital'),
+    ('schwarzman', 'Stephen Schwarzman (Blackstone)', 'family', r'Schwarzman|\bBlackstone\b(?! ?(?:Valley|River|Hotel))'),
+    ('paulsonfamily', 'John Paulson (Paulson & Co.)', 'family', r'John Paulson|Paulson Family Foundation|Paulson & Co'),
+    ('opensociety', 'Soros family / Open Society Foundations', 'family', r'\bSoros\b|Open Society Foundations?'),
+    ('kanderses', 'Warren Kanders', 'family', r'Kanders'),
+    ('kkr', 'KKR and the Kravis family', 'fund', r'\bKKR\b|Kohlberg Kravis|Kravis'),
+    ('blackrock', 'BlackRock', 'fund', r'BlackRock|Larry Fink'),
+    ('wintoncapitalmanagement', 'David Harding (Winton)', 'family', r'Winton Capital|David Harding'),
+    ('romanabramovich', 'Roman Abramovich', 'family', r'Abramovich'),
+    ('vladimirpotanin', 'Vladimir Potanin', 'family', r'Potanin'),
+    ('leonidmikhelsonvac', 'Leonid Mikhelson / V-A-C', 'family', r'Mikhelson|V-A-C Foundation'),
+    ('viktorvekselberg', 'Viktor Vekselberg', 'family', r'Vekselberg'),
     # Added for one tie (user, 17 Nov 2026: "add the Sony LACMA link"): the leaked Sony emails put its lobbying at LACMA.
     ('sonypictures', 'Sony Pictures Entertainment', 'corp', r'\bSony\b'),
 ]
@@ -59,6 +78,19 @@ HQ_EXTRA = {
     'equinor': {'n': 'Equinor', 'c': 'Stavanger', 'co': 'Norway', 'lat': 58.9700, 'lon': 5.7331},
     'riotinto': {'n': 'Rio Tinto', 'c': 'London', 'co': 'United Kingdom', 'lat': 51.5074, 'lon': -0.1278},
     'philipmorris': {'n': 'Altria', 'c': 'Richmond, Virginia', 'co': 'United States', 'lat': 37.5407, 'lon': -77.4360},
+    # Private money (user, 17 Nov 2026: "add private funders not only corporations, like hedge funds etc"): the firm the
+    # fortune came from, at the city of its listed head office.
+    'leonblack': {'n': 'Apollo Global Management (Leon Black)', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'glenndubin': {'n': 'Highbridge Capital (Glenn Dubin)', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'schwarzman': {'n': 'Blackstone (Stephen Schwarzman)', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'paulsonfamily': {'n': 'Paulson & Co. (John Paulson)', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'kkr': {'n': 'KKR', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'kanderses': {'n': 'Kanders & Company (Warren Kanders)', 'c': 'Stamford', 'co': 'United States', 'lat': 41.0534, 'lon': -73.5387},
+    'wintoncapitalmanagement': {'n': 'Winton (David Harding)', 'c': 'London', 'co': 'United Kingdom', 'lat': 51.5074, 'lon': -0.1278},
+    'romanabramovich': {'n': 'Millhouse (Roman Abramovich)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
+    'vladimirpotanin': {'n': 'Interros (Vladimir Potanin)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
+    'leonidmikhelsonvac': {'n': 'Novatek (Leonid Mikhelson)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
+    'viktorvekselberg': {'n': 'Renova Group (Viktor Vekselberg)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
 }
 

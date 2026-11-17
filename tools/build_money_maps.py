@@ -83,6 +83,42 @@ def right_basis(label):
     for rid,lab,rx,tx,basis,urls in RIGHT:
         if rx.search(label): return {'id':rid,'b':basis,'u':urls}
     return None
+# Hedge funds and investors (user, 17 Nov 2026: "add private funders not only corporations, like hedge funds etc"): money
+# made by managing money, given by the firm or in the name of the person or family it made rich. A sponsor whose name
+# matches is its own group, 'priv', instead of a company or a foundation, under one key per funder: the key Influence mode
+# uses (assets/influence.json), so the two views name the same funder. Banks stay companies: they lend and take deposits.
+# Heirs and industrial fortunes (Koch, Lauder, Sackler, Blavatnik, the Russian billionaires) stay where they were; their
+# money was not made in finance.
+FINANCE=[  # (key, regex on a sponsor name)
+ ('opensociety',re.compile(r"\bopen society\b|\bosiwa\b|\bsoros\b(?! (?:center|centre) for contemporary)",re.I)),
+ ('right:griffin',re.compile(r"\b(?:ken(?:neth)? griffin|citadel)\b",re.I)),
+ ('right:cohen',re.compile(r"\bsteven (?:a\. )?cohen\b|\bsteven & alexandra cohen\b|\bpoint72\b",re.I)),
+ ('right:mercer',re.compile(r"\brebekah mercer\b|\bmercer family foundation\b|\brenaissance technologies\b",re.I)),
+ ('leonblack',re.compile(r"\bleon black\b|\bapollo global\b",re.I)),
+ ('glenndubin',re.compile(r"\bglenn dubin\b|\bhighbridge capital\b",re.I)),
+ ('schwarzman',re.compile(r"\bschwarzman\b|^blackstone\b",re.I)),
+ ('paulsonfamily',re.compile(r"\bpaulson family\b|\bjohn paulson\b",re.I)),
+ ('kkr',re.compile(r"\bkkr\b|\bkravis\b",re.I)),
+ ('kanderses',re.compile(r"\bkanders",re.I)),
+ ('wintoncapitalmanagement',re.compile(r"\bwinton capital\b",re.I)),
+ ('vycapital',re.compile(r"^vy capital\b",re.I)),
+ ('bailliegifford',re.compile(r"\bbaillie gifford\b",re.I)),
+ ('blackrock',re.compile(r"\bblackrock\b",re.I)),
+ ('fidelityuk',re.compile(r"^fidelity uk foundation$",re.I)),
+ ('fidelity',re.compile(r"^fidelity(?: investments| international)?$",re.I)),
+ ('schroders',re.compile(r"^schroders?\b",re.I)),
+ ('lazardfreresgestion',re.compile(r"\blazard fr[eè]res gestion\b",re.I)),
+ ('craigsinvestment',re.compile(r"^craigs investment",re.I)),
+]
+def finance_key(label):
+    for k,rx in FINANCE:
+        if rx.search(label): return k
+    return None
+def as_finance(n):
+    """A sponsor node made by hand from FINANCE: its group becomes 'priv' and its key the funder's one key."""
+    k=finance_key(n['label']) if n['cat'] in ('corp','found') and not re.search(r"\bno money\b",n['label']) else None
+    if k: n['cat']='priv'; n['key']=k; n['fin']=True
+    return n
 def cat_of(tok):
     if FOUND.search(tok) and not re.search(r"\b(state|city|government|ministry)\b",tok,re.I): return 'found'
     if GOV.search(tok): return 'gov'
@@ -165,16 +201,16 @@ nodes_by_inst={}
 for x in d:
     ns=[]; keys=set()
     for f in parse_funding(x.get('funding','')):
-        ns.append(dict(label=f['label'],cat=f['cat'],tier=3 if f['money'] else 2,note=('Stated amount '+f['money']) if f['money'] else '',key=f['key'],src='funding')); keys.add(f['key'])
+        ns.append(as_finance(dict(label=f['label'],cat=f['cat'],tier=3 if f['money'] else 2,note=('Stated amount '+f['money']) if f['money'] else '',key=f['key'],src='funding'))); keys.add(ns[-1]['key'])
     for fl in x.get('funder_links',[]):
-        k=norm(fl['funder'])
+        k=finance_key(fl['funder']) or norm(fl['funder'])
         if k in keys:
             for n in ns:
                 if n['key']==k: n['tier']=3; n['note']=(n['note']+'; ' if n['note'] else '')+f"Also named on {fl['institutions']} atlas records"
             continue
         fc=cat_of(fl['funder'])
         if fc=='corp' and re.fullmatch(r"[A-Z][a-z]+(?: [A-Z]\.)?(?: [A-Z][a-z]+){1,2}",fl['funder']) and not re.search(r"\b(card|motor|motors|bank|air|airlines|cars|group|capital|energy|oil|gas|bros|brothers|company|systems|labs?|media|studios?|partners|holdings|international|global|industries|petroleum|brewery|wines?)\b",fl['funder'],re.I): fc='found'
-        ns.append(dict(label=fl['funder'],cat=fc,tier=3,note=f"Named on {fl['institutions']} atlas records",key=k,src='links')); keys.add(k)
+        ns.append(as_finance(dict(label=fl['funder'],cat=fc,tier=3,note=f"Named on {fl['institutions']} atlas records",key=k,src='links'))); keys.add(ns[-1]['key'])
     flags=x.get('flags') or []
     why=(x.get('why_flagged') or '').strip()
     for i,fg in enumerate(flags):
@@ -202,7 +238,7 @@ for x in d:
     ns=u[:22]
     nodes=[];edges=[]
     for i,n in enumerate(ns):
-        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else merge_key(n['label'],n['cat'],x['country'],x['id'])) if n['cat'] in ('gov','corp','found') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
+        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(n['key'] if n.get('fin') else ('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else merge_key(n['label'],n['cat'],x['country'],x['id'])) if n['cat'] in ('gov','corp','found','priv') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found','priv') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
     taken={x['id']}; added=0
     for i,n in enumerate(ns):
         if not n['key']: continue
@@ -217,16 +253,34 @@ for x in d:
         f=x.get('funding') or '',w=x.get('watch') or '',fl=x.get('flags') or [],why=(x.get('why_flagged') or '')[:300],tn=(x.get('tier_note') or '')[:200],
         u=(x.get('sources') or [])[:6],ep=[{'p':e.get('person',''),'l':e.get('link',''),'s':e.get('status',''),'t':(e.get('summary','') or '')[:320]} for e in epstein_of(x)],web=x.get('website') or '',nodes=nodes,edges=edges)
     out.append(rec)
+# Records where the name is someone else's: the artist Steven Cohen, whose retrospective Iziko showed in 2025 (the same
+# reading Influence mode's review made).
+NAMESAKES={('cohen','iziko-south-african-national-gallery-cape-town')}
 # A donor named only in a record's own text (not parsed as a sponsor) still becomes a node on that record.
 src_by_id={x['id']:x for x in d}
 for rec in out:
     x=src_by_id[rec['id']]; text=' '.join(str(x.get(k) or '') for k in ('funding','watch','why_flagged','highlight'))
     for rid,lab,rx,tx,basis,urls in RIGHT:
         if any(len(n)>6 and n[6].get('id')==rid for n in rec['nodes']): continue
+        if (rid,rec['id']) in NAMESAKES: continue
         m=tx.search(text)
         if not m: continue
         note='Named in the record: \u201c'+text[max(0,m.start()-60):m.end()+60].strip().replace('\n',' ')+'\u201d'
-        rec['nodes'].append([lab,'found',3,note,0,'right:'+rid,{'id':rid,'b':basis,'u':urls}]); rec['edges'].append([0,len(rec['nodes']),'named in record'])
+        rec['nodes'].append([lab,'priv' if finance_key(lab) else 'found',3,note,0,'right:'+rid,{'id':rid,'b':basis,'u':urls}]); rec['edges'].append([0,len(rec['nodes']),'named in record'])
+# A hedge fund or investor tie read by hand in Influence mode (data/influence_review.json, through assets/influence.json)
+# becomes a node on that space when the sponsor parsing did not find it: Schwarzman at the Frick, Glenn Dubin at MoMA PS1.
+# Its note is the reviewed one-line summary; nothing is read from free text here.
+IPATH=os.path.join(ROOT,'assets','influence.json')
+FIN_KEYS={k for k,_ in FINANCE}
+if os.path.exists(IPATH):
+    by_id={r['id']:r for r in out}
+    for f in json.load(open(IPATH,encoding='utf-8'))['funders']:
+        if f['key'] not in FIN_KEYS: continue
+        for t in f['ties']:
+            rec=by_id.get(t['space'])
+            if not rec or not t.get('kinds') or any(len(n)>5 and n[5]==f['key'] for n in rec['nodes']): continue
+            rb=next(({'id':rid,'b':basis,'u':urls} for rid,lab,rx,tx,basis,urls in RIGHT if 'right:'+rid==f['key']),None)
+            rec['nodes'].append([f['name'],'priv',3,'Named in the record: '+t['summary'],0,f['key']]+([rb] if rb else [])); rec['edges'].append([0,len(rec['nodes']),'named in record'])
 with open(OUT,'w',encoding='utf-8') as fh:
     json.dump(out,fh,ensure_ascii=False,separators=(',',':'))
 print(len(out),'records written to',os.path.relpath(OUT,ROOT),str(os.path.getsize(OUT)//1024)+' KB')

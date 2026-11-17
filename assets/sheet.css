@@ -1697,7 +1697,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26)}
     :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(p,li,dd,blockquote,figcaption,.institution-summary,.d-row-sub,.ts-prose,.intro-line){
       hyphens:auto!important;-webkit-hyphens:auto!important;hyphenate-limit-chars:8 3 3!important;overflow-wrap:break-word!important;text-wrap:wrap!important}
-    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,.curator-suggest-chip,.starter-prompt){
+    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,a.influence-meta,.influence-meta a,.curator-suggest-chip,.starter-prompt){
       hyphens:none!important;-webkit-hyphens:none!important}
     #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:16px!important}
   }
@@ -1902,7 +1902,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   /* Share information under the map's box, the box's width, set as the one under the chat's box: an ink pill with paper
      words (in dark mode the sheet's pale pill with ink words). */
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;height:42px!important;min-height:0!important;
-    margin:0 var(--gm-gap,12px)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
+    margin:0 var(--sh-pad)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
     box-shadow:none!important;outline:0!important;font-style:normal!important;line-height:1!important;white-space:nowrap!important;pointer-events:auto!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
@@ -1918,6 +1918,11 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
      bottom"): 6px between the Top story, the suggested questions, the box and Share information, where margins on top of
      the 10px gap had left about 24px, so the globe has the room above. */
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar:not(#sh-x):not(#sh-y){gap:6px!important}
+  /* The bar stands on the foot of the screen (user, 17 Nov 2026: "Fix bottom part", a screenshot with the globe's rim
+     showing under Share information). atlas.css floats the box 12px above the edge on a clear ground; this sheet gives the
+     bar the paper, so that 12px had become a strip of map under it. The bar now reaches the edge and the 12px, with the
+     phone's safe area, is its own padding. */
+  :root.gm-map #mobileStickyInputBar:not(#sh-x):not(#sh-y){bottom:0!important;padding-bottom:calc(12px + var(--safe-b,0px))!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar>#mobileComposerCard:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#mobileSuggestChips:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#gmStoryStrip:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
@@ -2022,4 +2027,83 @@ body:not(.influence-mode-active) :is(#gmdChips,#gmChips) [data-influence-measure
 body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-measure]):not(#sh-x):not(#sh-y){display:none!important}
 .influence-chat ul{list-style:none!important;margin:0 0 var(--sh-gap) 0!important;padding:0!important}
 .influence-chat li::before{content:"\2013\00a0"!important}
+/* A funder's museums sit under its name with no second dash and no second indent (user, 17 Nov 2026: "Don't do double dash
+   with indent"): the nested items take the parent's text edge, the one the funder's name starts on, and the nested list
+   keeps no space under it; one gap separates one funder from the next. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li{padding:0!important;text-indent:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li::before{content:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li>ul{margin:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat>ul>li:has(>ul)+li{margin-top:var(--sh-s-lh)!important}
+}
+
+/* ==== THE CHAT WINDOW, SET AS AN iOS SHEET (user, 17 Nov 2026: "implement this top window treatment and window shape plus
+   interaction", after three screenshots of the iPhone's Settings, Billing and Edit Subscription sheets) ====
+   On a phone the chat is a window raised over the map: 32px corners at the top, a hairline round it and a soft shadow, so
+   it reads as a sheet laid on the page and not as more of the page. It slides up when it opens (the iOS sheet curve,
+   .42s) and is pulled down to close, as before (attachPullToClose in index.html).
+   Its head is no longer a bar with a rule under it. Round buttons float over the top of the conversation, the cross at the
+   left and the ⋮ menu at the right, each a 44px circle with a hairline ring, with the title (the Chat and Details tabs)
+   centred between them. While the conversation is at its top nothing is drawn behind them; once it is scrolled, the words
+   fade out under the buttons (paper to clear, with a blur that fades the same way), so the buttons always read. The
+   head carries data-scrolled, set in assets/phone-maps.js. With reduced motion the sheet appears in place.
+   And the row of top buttons (Back to chat, Dark, Gossip mode, Influence mode) loses its paper bar and rule: paper behind
+   the buttons fades to clear under them, so the map and the filters show through and the buttons stay legible. */
+@keyframes ca-sheet-up{from{transform:translateY(100%)}to{transform:none}}
+@layer sheet{
+@media (max-width:767px){
+  :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){border-radius:32px 32px 0 0!important;overflow:hidden!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important;
+    animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
+  :root[data-theme="dark"].gm-chat #workViewContainer:not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y){position:absolute!important;top:0!important;left:0!important;right:0!important;z-index:20!important;
+    display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:0!important;height:76px!important;min-height:0!important;
+    padding:16px 16px 0!important;margin:0!important;border:0!important;background:transparent!important}
+  /* The fade, in two layers drawn only once the chat is scrolled: a blur that thins out towards the foot (::before), and
+     over it paper, solid behind the buttons and clear 24px below them (::after). */
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{content:"";position:absolute;inset:0 0 -24px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s ease}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent)}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{
+    background:linear-gradient(to bottom,var(--sh-paper) 0%,var(--sh-paper) 58%,color-mix(in srgb,var(--sh-paper) 80%,transparent) 74%,color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)}
+  :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::before,
+  :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::after{opacity:1}
+  :root.gm-chat #workViewContainer #phoneChatHead .sheet-grabber:not(#sh-x):not(#sh-y){top:6px!important}
+
+  /* The round buttons: the cross first (at the left), the menu last (at the right). */
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y){position:relative!important;flex:none!important;align-self:flex-start!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-height:44px!important;
+    margin:0!important;padding:0!important;border:1px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;border-radius:50%!important;
+    background:var(--sh-paper)!important;color:var(--sh-ink)!important;box-shadow:0 1px 8px rgba(0,0,0,.08)!important;text-decoration:none!important;
+    transition:transform .15s ease,background-color .15s ease!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #phoneChatCloseBtn:not(#sh-x):not(#sh-y){order:-1!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #gmChatMenuBtn:not(#sh-x):not(#sh-y){order:9!important;margin-left:auto!important}
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y):is(:hover,[aria-expanded="true"]){background:color-mix(in srgb,var(--sh-ink) 8%,var(--sh-paper))!important}
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y):active{transform:scale(.92)!important}
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #phoneChatCloseBtn span:not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #phoneChatCloseBtn svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #gmChatMenuBtn svg:not(#sh-x):not(#sh-y){width:18px!important;height:18px!important}
+
+  /* The title: the tabs centred between the buttons. With Chat the only tab it is a title, in ink, with no underline. */
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs:not(#sh-x):not(#sh-y){position:absolute!important;top:16px!important;left:68px!important;right:68px!important;
+    display:flex!important;justify-content:center!important;align-items:center!important;gap:20px!important;height:44px!important;margin:0!important;pointer-events:none}
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs>*:not(#sh-x):not(#sh-y){pointer-events:auto}
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs:not(:has(#phoneChatDetailsBtn:not(.hidden))) #gmChatTab:not(#sh-x):not(#sh-y){color:var(--sh-ink)!important;cursor:default!important}
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs:not(:has(#phoneChatDetailsBtn:not(.hidden))) #gmChatTab:not(#sh-x):not(#sh-y)::after{display:none!important}
+
+  /* The conversation starts under the head and scrolls up beneath it. */
+  :root.gm-chat #workViewContainer #curatorScrollArea:not(#sh-x):not(#sh-y){padding-top:76px!important;scroll-padding-top:76px}
+
+  /* The row of top buttons: a fade, not a bar. Paper behind the buttons, clear at the foot. The row still takes touches,
+     since it scrolls sideways where the buttons are wider than the phone. */
+  :root:is(.gm-map,.gm-chat,.gm-record) #gmTopBtns:not(#sh-x):not(#sh-y):not(#sh-z){border-bottom:0!important;
+    background:linear-gradient(to bottom,var(--sh-paper) 0,var(--sh-paper) calc(env(safe-area-inset-top,0px) + 18px),color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)!important}
+}
+@media (max-width:767px) and (prefers-reduced-motion:reduce){
+  :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{transition:none!important}
+}
 }

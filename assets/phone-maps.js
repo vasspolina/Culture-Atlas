@@ -321,6 +321,14 @@
       b.addEventListener('click', () => { if (window.atlasToggleMenu) window.atlasToggleMenu(b); });
       const close = $('phoneChatCloseBtn');
       chatHead.insertBefore(b, close || null);
+      // The head's fade shows only once the conversation is scrolled under it (assets/sheet.css, "THE CHAT WINDOW, SET AS
+      // AN iOS SHEET"), as an iOS sheet's bar does.
+      const scroller = $('curatorScrollArea');
+      if (scroller) {
+        const mark = () => chatHead.toggleAttribute('data-scrolled', scroller.scrollTop > 2);
+        scroller.addEventListener('scroll', mark, { passive: true });
+        mark();
+      }
     }
 
     // ---- Buttons at the top of the screen: Back to chat, Dark, Gossip mode (user, 16 Nov 2026) ----------------------
