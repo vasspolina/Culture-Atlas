@@ -238,7 +238,7 @@
     closeChooser(false);
     if (!keepFocusOrigin) openFrom = from;
     openFor = e;
-    if (!e.noOffice) hq().showLayer(e);
+    if (!e.noOffice && !e.noLayer) hq().showLayer(e);   // Influence mode draws its own funders and asks for no office layer
     hq().select(e);
     fill(e);
     p.hidden = false;

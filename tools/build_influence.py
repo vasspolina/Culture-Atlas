@@ -47,6 +47,19 @@ FUNDERS = [
     ('lauder', 'Lauder family', 'family', r'\bLauder\b'),
 ]
 
+# Head offices for the funders assets/hq.json has no office for. City-level, as hq.json is: the publicly listed head office,
+# or for a family the company its money came from. Influence mode draws each funder here instead of the spaces.
+HQ_EXTRA = {
+    'sacklerfamily': {'n': 'Purdue Pharma (Sackler family)', 'c': 'Stamford', 'co': 'United States', 'lat': 41.0534, 'lon': -73.5387},
+    'vale': {'n': 'Vale', 'c': 'Rio de Janeiro', 'co': 'Brazil', 'lat': -22.9068, 'lon': -43.1729},
+    'jti': {'n': 'Japan Tobacco International', 'c': 'Geneva', 'co': 'Switzerland', 'lat': 46.2044, 'lon': 6.1432},
+    'eni': {'n': 'Eni', 'c': 'Rome', 'co': 'Italy', 'lat': 41.9028, 'lon': 12.4964},
+    'equinor': {'n': 'Equinor', 'c': 'Stavanger', 'co': 'Norway', 'lat': 58.9700, 'lon': 5.7331},
+    'riotinto': {'n': 'Rio Tinto', 'c': 'London', 'co': 'United Kingdom', 'lat': 51.5074, 'lon': -0.1278},
+    'philipmorris': {'n': 'Altria', 'c': 'Richmond, Virginia', 'co': 'United States', 'lat': 37.5407, 'lon': -77.4360},
+    'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+}
+
 # Kinds of influence, in the order the ledger lists them. Each is a pattern over one sentence that names the funder.
 KINDS = [
     ('name',      'Name',               r"\bnam(?:e|ed|es|ing)\b|\bwing\b|\bgallery\b(?= (?:is |was )?named)|\bpavilion\b|\bprize\b|\baward\b|\bcentre\b|\bcenter\b|\bgalleries\b|\broom\b|\bhall\b|\bcourt\b|\bstaircase\b|\bgarden\b|\bschool\b|\bfellowship\b"),
@@ -155,13 +168,18 @@ def build_layer(cands):
     if missing:
         print(f'warning: {len(missing)} reviewed candidates no longer in the records: {missing[:5]}')
     names = {k: (n, kind) for k, n, kind, _ in FUNDERS}
+    offices = json.load(open(os.path.join(ROOT, 'assets', 'hq.json')))['org']
     funders = {}
     for cid, v in review.items():
         if cid.startswith('_') or cid not in byc or v.get('drop'):
             continue
         c = byc[cid]
         n, kind = names[c['funder']]
-        f = funders.setdefault(c['funder'], {'key': c['funder'], 'name': n, 'kind': kind, 'ties': []})
+        if c['funder'] not in funders:
+            o = offices.get(c['funder']) or HQ_EXTRA.get(c['funder'])
+            hq = {k: o[k] for k in ('n', 'c', 'co', 'lat', 'lon', 'a') if o and k in o} if o else None
+            funders[c['funder']] = {'key': c['funder'], 'name': n, 'kind': kind, 'hq': hq, 'ties': []}
+        f = funders[c['funder']]
         f['ties'].append({
             'space': c['space'], 'space_name': c['space_name'], 'city': c['city'],
             # Only what the review states: the keyword flags of a candidate are a reading aid, not a finding.

@@ -7,7 +7,9 @@
 // entry is a sentence of the record, summarised by the editor, with the record's sources for it.
 //
 // Switched on, it does four things and nothing else:
-//   - the map shows only the spaces that hold an entry (window.atlasModeKeep, read by assets/layers.js)
+//   - the map shows the funders at their head offices instead of the spaces (user, 17 Nov 2026: "Influence mode needs to
+//     switch the map from culture spaces to cultural funders"); a picked funder shows its spaces, joined to its office
+//     (window.atlasModeKeep, read by assets/layers.js; atlasInfluenceDraw and atlasInfluencePointer, called by index.html)
 //   - the chat says what the mode is and lists the funders with what each got, each one a button
 //   - a space's record leads with "What funders got here"
 //   - a funder's record (assets/hq-detail.js) leads with its ledger: what it got, kind by kind, space by space
@@ -19,7 +21,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=1', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=2', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -66,8 +68,129 @@
     return `${plural(t.spaces, 'space')}: ${parts.join(', ')}${tail.length ? '; ' + tail.join(', ') : ''}`;
   }
 
-  // ---- The map: only the spaces with an entry ----
-  window.atlasModeKeep = () => (on && DATA ? (i => !!(i && BY_SPACE.has(i.id))) : null);
+  // ---- The map: the funders, not the spaces ----
+  // No space is drawn while the mode is on, except the spaces of the funder picked, which come back joined to its office.
+  let picked = null;   // the funder whose spaces are on the map
+  const spacesOf = f => new Set(f.ties.map(t => t.space));
+  let pickedSpaces = null;
+  // A space opened some other way (the search, the chat, a record) stays on the map too, so its pin has somewhere to be.
+  window.atlasModeKeep = () => (on && DATA ? (i => !!(i && ((pickedSpaces && pickedSpaces.has(i.id)) || i === g('selectedInstitution')))) : null);
+  function pick(f) {
+    picked = f; pickedSpaces = f ? spacesOf(f) : null;
+    if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
+    else if (window.scheduleRender) window.scheduleRender();
+  }
+  const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+  // Funders in one city fan out around it, as the offices of assets/layers.js do, so London's two never sit on each other.
+  let fan = null;
+  function fanOut() {
+    fan = new Map();
+    const byCity = new Map();
+    DATA.funders.filter(f => f.hq).forEach(f => { const k = f.hq.lat.toFixed(1) + ',' + f.hq.lon.toFixed(1); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(f); });
+    byCity.forEach(list => list.forEach((f, i) => { const a = -Math.PI / 2 + i * 2.39996, rr = i === 0 ? 0 : 18 + 6 * Math.sqrt(i); fan.set(f, { dx: Math.cos(a) * rr, dy: Math.sin(a) * rr }); }));
+  }
+  // A great-circle path from the office to a space, cut where it goes behind the globe.
+  function arc(ctx, project, r, cx, cy, a, b) {
+    const rad = Math.PI / 180, v = (lon, lat) => [Math.cos(lat * rad) * Math.cos(lon * rad), Math.cos(lat * rad) * Math.sin(lon * rad), Math.sin(lat * rad)];
+    const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
+    const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
+    const n = Math.max(2, Math.ceil(w / (2 * rad)));
+    let down = false;
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
+      const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
+      const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
+      if (!pt.front) { down = false; continue; }
+      if (down) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+    }
+    ctx.stroke();
+  }
+  // A company is a hexagon and a family or foundation a triangle, as on the money map (README, "A mark is never told only by colour").
+  function mark(ctx, f, x, y, s) {
+    ctx.beginPath();
+    if (f.kind === 'corp') for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; ctx[i ? 'lineTo' : 'moveTo'](x + s * Math.cos(a), y + s * Math.sin(a)); }
+    else { ctx.moveTo(x, y - s * 1.15); ctx.lineTo(x + s, y + s * 0.75); ctx.lineTo(x - s, y + s * 0.75); }
+    ctx.closePath();
+  }
+  let HITS = [], hover = null;
+  const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
+  window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
+    HITS = [];
+    if (!on || !DATA) return;
+    if (!fan) fanOut();
+    const ink = text || (isDark() ? '#e6e1d7' : '#000000'), paper = ground || (isDark() ? '#151412' : '#ffffff');
+    const insts = g('ALL_INSTITUTIONS') || [];
+    ctx.save();
+    // The picked funder's ties: a line from its office to each space it got something from.
+    if (picked && picked.hq) {
+      const byId = new Map(insts.map(i => [i.id, i]));
+      ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.setLineDash([]);
+      picked.ties.forEach(t => { const i = byId.get(t.space); if (i && typeof i.lat === 'number') arc(ctx, project, r, cx, cy, picked.hq, i); });
+    }
+    // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
+    const marks = [];
+    DATA.funders.forEach(f => {
+      if (!f.hq) return;
+      const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
+      const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
+      const n = new Set(f.ties.map(t => t.space)).size;
+      marks.push({ f, x, y, s: 5 + 2 * Math.sqrt(n), n });
+    });
+    const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
+    marks.forEach(m => {
+      const sel = picked === m.f, hov = hover === m.f;
+      mark(ctx, m.f, m.x, m.y, m.s);
+      ctx.fillStyle = sel || hov ? ink : paper; ctx.fill();
+      ctx.strokeStyle = ink; ctx.lineWidth = sel ? 2 : 1.5; ctx.stroke();
+    });
+    ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+    marks.slice().sort((a, b) => b.n - a.n).forEach(m => {
+      const { f, x, y, s } = m, sel = picked === f, hov = hover === f;
+      // The name beside the mark in plain type on a halo of the map's ground, never cut short, moved round the mark
+      // until it covers no other name or mark. Where every place is taken (Europe at world zoom) it waits, as a city's
+      // name does, and shows once the map is zoomed in or the mark is pointed at; the picked funder's always shows.
+      const label = f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
+      const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
+      const clash = b => placed.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
+      const free = spots.find(sp => !clash(boxAt(sp)));
+      if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      const spot = free || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
+      placed.push(b);
+      ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
+      ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
+      HITS.push({ f, x, y, s, label: b });
+    });
+    ctx.restore();
+  };
+  const hitAt = (mx, my) => {
+    let best = null, bd = Infinity;
+    HITS.forEach(h => {
+      const d = Math.hypot(h.x - mx, h.y - my), inLabel = !!h.label && mx >= h.label.x && mx <= h.label.x + h.label.w && my >= h.label.y && my <= h.label.y + h.label.h;
+      const dd = inLabel ? 0 : d;
+      if ((inLabel || d <= h.s + 6) && dd < bd) { bd = dd; best = h.f; }
+    });
+    return best;
+  };
+  // The marks drawn last frame, for checking the layer from a test script.
+  window.atlasInfluenceMarks = () => HITS.map(h => ({ key: h.f.key, name: h.f.name, x: h.x, y: h.y, s: h.s, label: h.label || null }));
+  window.atlasInfluencePointer = {
+    hover(mx, my) {
+      if (!on) return false;
+      const f = hitAt(mx, my);
+      if (f !== hover) { hover = f; if (window.scheduleRender) window.scheduleRender(); }
+      return !!f;
+    },
+    // A funder opens its ledger and its spaces come onto the map; picking it again puts it away.
+    click(mx, my) {
+      if (!on) return false;
+      const f = hitAt(mx, my); if (!f) return false;
+      if (picked === f) { pick(null); if (typeof window.atlasHqClose === 'function') window.atlasHqClose(); return true; }
+      openFunder(f.key);
+      return true;
+    }
+  };
 
   // ---- The toggle ----
   const BTN_IDS = ['topInfluenceBtn', 'mobileInfluenceBtn', 'gmInfluenceBtn'];
@@ -83,7 +206,8 @@
       if (window.atlasHq && window.atlasHq.ready) window.atlasHq.ready(() => {});   // the funding maps, so a funder's record can open
       greet();
     } else {
-      say('<p class="no-indent">Influence mode is off. The map shows every space again.</p>');
+      picked = null; pickedSpaces = null; hover = null;
+      say('<p class="no-indent">Influence mode is off. The map shows the spaces again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
     decorate();
@@ -98,11 +222,10 @@
   function greet() {
     if (!DATA) { say('<p class="no-indent">Influence mode is on, but its entries could not be loaded. Try again in a moment.</p>'); return; }
     const total = DATA.funders.reduce((s, f) => s + f.ties.length, 0);
-    const spaces = BY_SPACE.size;
     const rows = DATA.funders.map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(tallyLine(f))}</li>`).join('');
     const kinds = ORDER.map(k => `<li><span class="lead-in">${esc(label(k))}</span> ${esc(MEANS[k])}</li>`).join('');
     say(`<div class="influence-chat">
-<p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows only the ${spaces} spaces where a record says so.</p>
+<p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows the funders at their head offices instead of the spaces: a hexagon for a company, a triangle for a family or foundation, larger the more spaces it reaches. Pick one to open what it got and bring its spaces onto the map, joined to its office.</p>
 <p>These are ${total} entries on ${DATA.funders.length} funders, a first batch read by hand: oil and gas, tobacco, mining, the Sacklers, and the family and finance money the records flag. Bloomberg and the banks are not read yet, and public funders are left out on purpose: the question is what private money buys.</p>
 <ul class="influence-funders">${rows}</ul>
 <p>What each word counts:</p>
@@ -121,9 +244,13 @@
     const f = BY_FUNDER.get(key); if (!f) return;
     const go = () => {
       const hq = window.atlasHq;
-      const e = (hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : 'found', n: f.name, c: '', co: '', noOffice: true };
-      if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(e);
+      let e = (hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : 'found', n: f.name, c: '', co: '', noOffice: true };
+      // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
+      if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
+      // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
+      if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(Object.assign({}, e, { noLayer: true }));
       openFor = f;
+      pick(f);
       decorate();
     };
     if (window.atlasHq && window.atlasHq.ready && !window.atlasHq.loaded()) window.atlasHq.ready(go); else go();
