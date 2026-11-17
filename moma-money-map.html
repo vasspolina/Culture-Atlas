@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MoMA Money Map</title>
+<title>MoMA Influence Map</title>
 <meta name="description" content="Who funds and governs MoMA, drawn as a map of hollow circles and flowing lines.">
 <script>(function(){var t=null;try{t=localStorage.getItem("atlas-theme")}catch(e){}if(t!=="light"&&t!=="dark")t=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
 <style>
@@ -653,7 +653,7 @@ function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 function host(u){ try{ return new URL(u).hostname.replace(/^www\./,''); }catch(e){ return u; } }
 // ---------- top bars ----------
 const b1=document.getElementById('b1'), b2=document.getElementById('b2'), d1=document.getElementById('d1'), d2=document.getElementById('d2');
-function drops(w){ d1.hidden=(w!==1); d2.hidden=(w!==2); b1.textContent='MoMA Money Map'; b2.textContent='Views '+(w===2?'↑':'↓'); b1.setAttribute('aria-expanded',String(w===1)); b2.setAttribute('aria-expanded',String(w===2)); }
+function drops(w){ d1.hidden=(w!==1); d2.hidden=(w!==2); b1.textContent='MoMA Influence Map'; b2.textContent='Views '+(w===2?'↑':'↓'); b1.setAttribute('aria-expanded',String(w===1)); b2.setAttribute('aria-expanded',String(w===2)); }
 b1.onclick=()=>drops(d1.hidden?1:0); b2.onclick=()=>drops(d2.hidden?2:0); drops(0);
 // ---------- category pills (filters) ----------
 const on={gov:true,pharma:true,right:true,hist:true,epstein:true,protest:true,other:true};

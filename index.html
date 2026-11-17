@@ -336,7 +336,7 @@ return maplibregl$1;
             <div class="layers-list layers-studies">
               <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil’s tax incentives and more</span></a>
               <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Artists&rsquo; work on cultural institutions on one page, from the oldest to the newest, each open to zoom</span></a>
-              <a href="moma-money-map.html"><span class="layer-name">MoMA Money Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
+              <a href="moma-money-map.html"><span class="layer-name">MoMA Influence Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
             </div>
           </section>
           <section class="layers-section">
@@ -10513,7 +10513,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v774';
+    const ATLAS_RELEASE = 'culture-atlas-v775';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
