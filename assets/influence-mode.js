@@ -175,10 +175,11 @@
   const isDark = () => document.documentElement.getAttribute('data-theme') === 'dark';
   // Funders in one city fan out around it, as the offices of assets/layers.js do, so London's two never sit on each other.
   let fan = null;
+  const cityOf = new Map();   // funder -> its city's key, for gathering a crowded city into one mark
   function fanOut() {
-    fan = new Map();
+    fan = new Map(); cityOf.clear();
     const byCity = new Map();
-    DATA.funders.filter(f => f.hq).forEach(f => { const k = f.hq.lat.toFixed(1) + ',' + f.hq.lon.toFixed(1); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(f); });
+    DATA.funders.filter(f => f.hq).forEach(f => { const k = f.hq.lat.toFixed(1) + ',' + f.hq.lon.toFixed(1); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(f); cityOf.set(f, k); });
     byCity.forEach(list => list.forEach((f, i) => { const a = -Math.PI / 2 + i * 2.39996, rr = i === 0 ? 0 : 18 + 6 * Math.sqrt(i); fan.set(f, { dx: Math.cos(a) * rr, dy: Math.sin(a) * rr }); }));
   }
   // A great-circle path from the office to a space, cut where it goes behind the globe.
@@ -342,10 +343,17 @@
   window.atlasInfluenceMeasure = () => MEASURE;
   window.atlasSetInfluenceMeasure = setMeasure;
 
-  let HITS = [], SPACE_HITS = [], hover = null, hoverSpace = null, FOCUS = null;
+  let HITS = [], SPACE_HITS = [], CITY_HITS = [], hover = null, hoverSpace = null, hoverCity = null, FOCUS = null;
+  // A crowded city is one mark until the map is zoomed in close (user, 17 Nov 2026, of New York's offices fanned round
+  // the city: "now i see these circles"). Some 60 funders give New York as their office, all at the city's centre, so
+  // the fan round it grew into a disc of dots wider than New Jersey, none of them with room for a name. A city with
+  // CITY_MIN funders or more is drawn as one larger dot named with the city and its count; a click flies in, and from
+  // CITY_OPEN times the globe's base radius (where the city badges of the page have faded) its funders fan out, the fan
+  // widening as the map does. A city holding the picked funder is always open.
+  const CITY_MIN = 6, CITY_OPEN = 14, CITY_DOT = 7;
   const FONT = '400 15px "Atlas Serif", "Times New Roman", Times, "EB Garamond", serif';
   window.atlasInfluenceDraw = function (ctx, project, r, cx, cy, ground, text) {
-    HITS = []; SPACE_HITS = [];
+    HITS = []; SPACE_HITS = []; CITY_HITS = [];
     if (!on || !DATA) return;
     if (!fan) fanOut();
     const ink = text || (isDark() ? '#e6e1d7' : '#000000'), paper = ground || (isDark() ? '#151412' : '#ffffff');
@@ -376,6 +384,7 @@
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
     const M = MEASURES[MEASURE];
+    const base = window.getBaseRadius ? window.getBaseRadius() : 276, near = r >= base * CITY_OPEN, spread = Math.max(1, r / (base * CITY_OPEN));
     DATA.funders.forEach(f => {
       if (!f.hq) return;
       // Not tied to any space under this measure: not drawn, unless it is the funder picked (opened from the chat), which
@@ -383,16 +392,35 @@
       const linked = shown(f);
       if (!linked && picked !== f) return;
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
-      const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
+      const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx * spread, y = pt.y + o.dy * spread;
       const v = linked ? M.value(f) : null;
       // Culture keeps its old scale, capped so Bloomberg's 80 spaces do not cover New York; a money measure is scaled to the
       // largest figure on the map, by area. No figure: a small hollow dot.
       const s = DOT;
       // A funder tied to a space under a money measure is labelled even with no figure (lobbying of other governments has
       // no filing to total): the tie is what the filter shows.
-      marks.push({ f, x, y, s, n: v || 0, none: !v && !(linked && MEASURE !== 'culture') });
+      marks.push({ f, x, y, s, n: v || 0, none: !v && !(linked && MEASURE !== 'culture'), ck: cityOf.get(f), px: pt.x, py: pt.y });
     });
+    const cities = [];
+    if (!near) {
+      const groups = new Map();
+      marks.forEach(m => { if (!m.ck) return; if (!groups.has(m.ck)) groups.set(m.ck, []); groups.get(m.ck).push(m); });
+      groups.forEach((list, key) => {
+        if (list.length < CITY_MIN || list.some(m => m.f === picked)) return;
+        const hq = list[0].f.hq;
+        cities.push({ key, x: list[0].px, y: list[0].py, n: list.length, name: hq.c || '', lon: hq.lon, lat: hq.lat, members: list });
+      });
+      const gone = new Set(); cities.forEach(c => c.members.forEach(m => gone.add(m)));
+      for (let i = marks.length - 1; i >= 0; i--) if (gone.has(marks[i])) marks.splice(i, 1);
+    }
+
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
+    cities.forEach(c => {
+      placed.push({ x: c.x - CITY_DOT - 2, y: c.y - CITY_DOT - 2, w: 2 * CITY_DOT + 4, h: 2 * CITY_DOT + 4 });
+      // One solid dot, larger than a funder's; pointed at, it takes a ring, as the picked funder does.
+      ctx.beginPath(); ctx.arc(c.x, c.y, CITY_DOT, 0, Math.PI * 2); ctx.fillStyle = ink; ctx.fill();
+      if (hoverCity === c.key) { ctx.beginPath(); ctx.arc(c.x, c.y, CITY_DOT + 3, 0, Math.PI * 2); ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.stroke(); }
+    });
     marks.forEach(m => {
       const sel = picked === m.f, hov = hover === m.f;
       mark(ctx, m.f, m.x, m.y, m.s);
@@ -469,6 +497,20 @@
       ctx.fillStyle = ink; ctx.fillText(label, lx, ly);
       HITS.push({ f: picked, x: pickedMark.x, y: pickedMark.y, s: pickedMark.s, label: b });
     }
+    // The crowded cities' names, before any single funder's: each stands for many.
+    cities.sort((a, b) => b.n - a.n).forEach(c => {
+      const label = `${c.name ? c.name + '  ' : ''}${plural(c.n, 'funder')}`, w = ctx.measureText(label).width, gap = CITY_DOT + 5;
+      const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15]];
+      const boxAt = ([dx, dy]) => ({ x: c.x + dx - 2, y: c.y + dy - 9, w: w + 4, h: 18 });
+      const spot = spots.find(sp => { const b = boxAt(sp); return !off(b) && !hits(b, names) && !hits(b, placed.filter(q => q.x !== c.x - CITY_DOT - 2 || q.y !== c.y - CITY_DOT - 2)); });
+      let box = null;
+      if (spot) {
+        box = boxAt(spot); names.push(box);
+        ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, c.x + spot[0], c.y + spot[1]);
+        ctx.fillStyle = hoverCity === c.key ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, c.x + spot[0], c.y + spot[1]);
+      }
+      CITY_HITS.push({ c, box });
+    });
     const first = f => picked === f ? 2 : FOCUS && FOCUS.has(f) ? 1 : 0;
     let tried = 0;
     marks.slice().sort((a, b) => first(b.f) - first(a.f) || b.n - a.n).forEach(m => {
@@ -511,6 +553,12 @@
     ctx.restore();
   };
   // A picked funder's space named on the map, under the pointer.
+  const cityAt = (mx, my) => { const h = CITY_HITS.find(q => Math.hypot(q.c.x - mx, q.c.y - my) <= CITY_DOT + 6 || (q.box && mx >= q.box.x && mx <= q.box.x + q.box.w && my >= q.box.y && my <= q.box.y + q.box.h)); return h ? h.c : null; };
+  // A crowded city's mark flies in until its funders fan out.
+  function openCity(c) {
+    const base = window.getBaseRadius ? window.getBaseRadius() : 276, fly = window.flyTo || (typeof flyTo === 'function' ? flyTo : null);
+    if (fly) fly(c.lon, c.lat, base * CITY_OPEN * 1.15);
+  }
   const spaceAt = (mx, my) => { const h = SPACE_HITS.find(q => mx >= q.box.x && mx <= q.box.x + q.box.w && my >= q.box.y && my <= q.box.y + q.box.h); return h ? h.id : null; };
   const hitAt = (mx, my) => {
     let best = null, bd = Infinity;
@@ -526,9 +574,9 @@
   window.atlasInfluencePointer = {
     hover(mx, my) {
       if (!on) return false;
-      const sp = spaceAt(mx, my), f = sp ? null : hitAt(mx, my);
-      if (f !== hover || sp !== hoverSpace) { hover = f; hoverSpace = sp; if (window.scheduleRender) window.scheduleRender(); }
-      return !!(f || sp);
+      const sp = spaceAt(mx, my), c = sp ? null : cityAt(mx, my), f = sp || c ? null : hitAt(mx, my), ck = c ? c.key : null;
+      if (f !== hover || sp !== hoverSpace || ck !== hoverCity) { hover = f; hoverSpace = sp; hoverCity = ck; if (window.scheduleRender) window.scheduleRender(); }
+      return !!(f || sp || c);
     },
     // A funder opens its ledger and its spaces come onto the map; picking it again puts it away.
     click(mx, my) {
@@ -537,6 +585,7 @@
       // clickable on the map too").
       const sp = spaceAt(mx, my);
       if (sp) { if (typeof window.selectInstitution === 'function') window.selectInstitution(sp, false); return true; }
+      const c = cityAt(mx, my); if (c) { openCity(c); return true; }
       const f = hitAt(mx, my); if (!f) return false;
       if (picked === f) { pick(null); if (typeof window.atlasHqClose === 'function') window.atlasHqClose(); return true; }
       openFunder(f.key);
@@ -559,7 +608,7 @@
       measureButtons();
       greet();
     } else {
-      picked = null; pickedSpaces = null; hover = null; hoverSpace = null; MEASURE = 'culture'; paintMeasureButtons();
+      picked = null; pickedSpaces = null; hover = null; hoverSpace = null; hoverCity = null; MEASURE = 'culture'; paintMeasureButtons();
       say('<p class="no-indent">Influence map is off. The map shows the museums again.</p>');
     }
     if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
