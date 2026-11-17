@@ -13,6 +13,12 @@
 //   - the chat says what the mode is and lists the funders with what each got, each one a button
 //   - a space's record leads with "What funders got here"
 //   - a funder's record (assets/hq-detail.js) leads with its ledger: what it got, kind by kind, space by space
+//
+// The sender is the subject (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at
+// fault?"). A space that says no ends one tie, not the money: so a funder's ledger also says where its money comes from and
+// what else it pays for beside culture (hand-sourced facts, data/influence_senders.json, each with its own source), and,
+// when a space ended a tie, which ties the records still date after that and do not say ended. On the map an ended tie is a
+// dashed line and a running one solid, so a picked funder shows at a glance where it was refused and where it went on paying.
 // Switched off, all four go and the page is as it was. Its look is the "INFLUENCE MODE" block at the end of assets/sheet.css.
 (function () {
   let DATA = null, loading = null, on = false;
@@ -21,7 +27,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=2', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=3', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -67,6 +73,30 @@
     const tail = [t.ended ? `ended ${t.ended}` : '', t.protest ? `met protest ${t.protest}` : ''].filter(Boolean);
     return `${plural(t.spaces, 'space')}: ${parts.join(', ')}${tail.length ? '; ' + tail.join(', ') : ''}`;
   }
+
+  // A tie's year, from a date like "2023-12" or "2019"; a date the record could not give is null.
+  const yearOf = t => { const m = String(t.date || '').match(/\b(1[89]|20)\d\d\b/); return m ? +m[0] : null; };
+  // The year a tie ended. An entry is sometimes dated at the gift (the Guggenheim's Sackler centre, 1995; Hay, 2017) with
+  // the end in its summary ("the name was removed in 2022", "suspended in May 2024"), so it is the latest year either names.
+  const endYearOf = t => { const ys = (String(t.summary || '') + ' ' + String(t.date || '')).match(/\b(1[89]|20)\d\d\b/g); return ys ? Math.max(...ys.map(Number)) : null; };
+  // When a space said no: the ties that ended, and the ties the records date in or after the first refusal and do not say
+  // ended, at spaces that did not end it later. Nothing is claimed about the same money moving; only what the records date.
+  function afterNo(f) {
+    const ended = f.ties.filter(t => t.ended);
+    const ys = ended.map(endYearOf).filter(y => y != null);
+    if (!ended.length || !ys.length) return { ended, first: null, kept: [] };
+    const first = Math.min(...ys);
+    const endedAt = new Map();
+    ended.forEach(t => { const y = endYearOf(t); if (y != null) endedAt.set(t.space, Math.max(endedAt.get(t.space) || 0, y)); });
+    const kept = f.ties.filter(t => !t.ended && yearOf(t) != null && yearOf(t) >= first && !(endedAt.get(t.space) >= yearOf(t)))
+      .sort((a, b) => yearOf(a) - yearOf(b));
+    return { ended: ended.slice().sort((a, b) => (endYearOf(a) || 0) - (endYearOf(b) || 0)), first, kept };
+  }
+  const shortAfter = f => {
+    const a = afterNo(f); if (!a.ended.length) return '';
+    const left = new Set(a.ended.map(t => t.space)).size, kept = new Set(a.kept.map(t => t.space)).size;
+    return `${plural(left, 'space')} ended it${a.first ? `, ${kept ? `${plural(kept, 'space')} still dated ${a.first} or later` : `none dated ${a.first} or later in the records`}` : ''}`;
+  };
 
   // ---- The map: the funders, not the spaces ----
   // No space is drawn while the mode is on, except the spaces of the funder picked, which come back joined to its office.
@@ -125,8 +155,16 @@
     // The picked funder's ties: a line from its office to each space it got something from.
     if (picked && picked.hq) {
       const byId = new Map(insts.map(i => [i.id, i]));
-      ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.setLineDash([]);
-      picked.ties.forEach(t => { const i = byId.get(t.space); if (i && typeof i.lat === 'number') arc(ctx, project, r, cx, cy, picked.hq, i); });
+      // A space that ended the tie is a dashed line, a running one solid: shape, not colour, says which. A space with ties
+      // of both kinds takes the solid line, since some tie there is not said to have ended.
+      const running = new Set(picked.ties.filter(t => !t.ended).map(t => t.space));
+      ctx.strokeStyle = ink; ctx.lineWidth = 1;
+      new Set(picked.ties.map(t => t.space)).forEach(id => {
+        const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
+        ctx.setLineDash(running.has(id) ? [] : [4, 4]);
+        arc(ctx, project, r, cx, cy, picked.hq, i);
+      });
+      ctx.setLineDash([]);
     }
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
@@ -222,10 +260,11 @@
   function greet() {
     if (!DATA) { say('<p class="no-indent">Influence mode is on, but its entries could not be loaded. Try again in a moment.</p>'); return; }
     const total = DATA.funders.reduce((s, f) => s + f.ties.length, 0);
-    const rows = DATA.funders.map(f => `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(tallyLine(f))}</li>`).join('');
+    const rows = DATA.funders.map(f => { const a = shortAfter(f); return `<li><button type="button" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</button> ${esc(tallyLine(f))}${a ? `<br><span class="influence-meta">${esc(a)}</span>` : ''}</li>`; }).join('');
     const kinds = ORDER.map(k => `<li><span class="lead-in">${esc(label(k))}</span> ${esc(MEANS[k])}</li>`).join('');
     say(`<div class="influence-chat">
 <p class="no-indent">Influence mode is on. It turns the atlas round, from the spaces that take the money to the funders that give it, and asks what the money bought. The map now shows the funders at their head offices instead of the spaces: a hexagon for a company, a triangle for a family or foundation, larger the more spaces it reaches. Pick one to open what it got and bring its spaces onto the map, joined to its office.</p>
+<p>A space that turns the money down ends one tie, not the money. So each funder’s record also says what its money is made from, what else it pays for beside culture, and, where a space ended a tie, which ties the records still date after that. On the map a picked funder’s ended ties are dashed lines and its running ones solid.</p>
 <p>These are ${total} entries on ${DATA.funders.length} funders, a first batch read by hand: oil and gas, tobacco, mining, the Sacklers, and the family and finance money the records flag. Bloomberg and the banks are not read yet, and public funders are left out on purpose: the question is what private money buys.</p>
 <ul class="influence-funders">${rows}</ul>
 <p>What each word counts:</p>
@@ -287,6 +326,37 @@
     return el;
   }
 
+  // The sender's side, from data/influence_senders.json: what the money is made from, what else it pays for, and what the
+  // sources say happened to the money after a space said no. Each fact carries its own source, read on its page.
+  const FACT_ROWS = [
+    ['harm', 'Where the money comes from', null],
+    ['scale', 'Beside culture: the business', 'the size of what makes the money, one stated year'],
+    ['lobbying', 'Beside culture: lobbying', 'what it spends on lobbying governments'],
+    ['politics', 'Beside culture: politics', 'political donations and campaigns']
+  ];
+  const factLine = x => `<li class="influence-entry"><p class="no-indent">${esc(x.text)}</p><p class="no-indent influence-meta">${[x.date ? esc(x.date) : '', x.source ? `<a href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">${esc(host(x.source))}</a>` : ''].filter(Boolean).join(' · ')}</p></li>`;
+  function senderRows(f) {
+    const s = f.sender; if (!s) return '';
+    const facts = s.facts || [];
+    return FACT_ROWS.map(([k, title, sub]) => {
+      const list = facts.filter(x => x.kind === k);
+      const lead = k === 'harm' && s.made_from ? `<p class="no-indent">${esc(s.made_from)}</p>` : '';
+      if (!list.length && !lead) return '';
+      return row(title, sub || '', `${lead}${list.length ? `<ul class="d-row-list influence-list">${list.map(factLine).join('')}</ul>` : ''}`);
+    }).join('');
+  }
+  function afterRows(f) {
+    const a = afterNo(f), told = ((f.sender && f.sender.facts) || []).filter(x => x.kind === 'after');
+    if (!a.ended.length && !told.length) return '';
+    let inner = '';
+    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Ended it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
+    if (a.first) inner += a.kept.length
+      ? `<p class="no-indent"><span class="lead-in">Dated ${esc(a.first)} or later, and not said to have ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`
+      : `<p class="no-indent">No tie in the records is dated ${esc(a.first)} or later without having ended. That says where the money did not go; the records do not say where it went.</p>`;
+    if (told.length) inner += `<p class="no-indent"><span class="lead-in">What the sources say happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
+    return row('When a space said no', 'a refusal ends one tie, not the money', inner);
+  }
+
   function funderPart(f) {
     const t = tally(f.ties);
     const el = document.createElement('div');
@@ -294,10 +364,12 @@
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', `What ${f.name} got`);
     let html = row(`What ${f.name} got`, tallyLine(f), '');
+    html += senderRows(f);
     ORDER.forEach(k => {
       const ties = f.ties.filter(x => (x.kinds.length ? x.kinds : []).includes(k));
       if (ties.length) html += row(label(k), MEANS[k], `<ul class="d-row-list influence-list">${ties.map(x => lineFor(x, true, null)).join('')}</ul>`);
     });
+    html += afterRows(f);
     const pushback = f.ties.filter(x => !x.kinds.length);
     if (pushback.length) html += row('Pushback', 'protests and resignations with nothing bought stated', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
     if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'tie') + ' ended' : '', t.protest ? plural(t.protest, 'entry', 'entries') + ' met protest' : ''].filter(Boolean).join('; '))}. Each entry is checked against the space’s record, not yet against its source.</p>`;

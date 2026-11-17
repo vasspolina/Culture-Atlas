@@ -190,6 +190,15 @@ def build_layer(cands):
         })
     for f in funders.values():
         f['ties'].sort(key=lambda t: (t['space_name'], t['date']))
+    # The sender's side (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at fault?"):
+    # what each funder's money is made from and what else it pays for beside culture. Hand-sourced, one source per fact,
+    # read on that page; keyed by the same funder keys. A funder with no entry simply has no such rows.
+    spath = os.path.join(ROOT, 'data', 'influence_senders.json')
+    senders = json.load(open(spath)) if os.path.exists(spath) else {}
+    for k, v in senders.items():
+        if k.startswith('_') or k not in funders:
+            continue
+        funders[k]['sender'] = {'made_from': v.get('made_from', ''), 'facts': v.get('facts', [])}
     data = {
         'about': 'What each pilot funder is stated to have got for its money, from the atlas records. Built by tools/build_influence.py from data/influence_review.json.',
         'kinds': [{'key': k, 'label': lab} for k, lab, _ in KINDS],
