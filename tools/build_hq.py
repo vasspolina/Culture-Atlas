@@ -189,6 +189,11 @@ by_name = {}
 for n in lines: by_name.setdefault(n[0].lower(), set()).add(n[5])
 for k, o in out.items():
     if not ({k, *o.get('also', [])} & used) and o['n'].lower() in by_name: o['also'] = o.get('also', []) + sorted(by_name[o['n'].lower()])
+# An office whose funding lines are hedge funds or investors ('priv' in tools/build_money_maps.py, from 17 Nov 2026) takes that
+# group too, so its record and its dot say the same as the money map; the group is decided there, by name, not here.
+priv = {n[5] for n in lines if n[1] == 'priv'}
+for k, o in out.items():
+    if {k, *o.get('also', [])} & priv: o['k'] = 'priv'
 unused = sorted(k for k, o in out.items() if not ({k, *o.get('also', [])} & used))
 for k in unused: del out[k]
 print(len(unused), 'offices no funding line names, left off')
@@ -199,7 +204,7 @@ print(len(out), 'organisations,', len(people), 'people')
 # office drew its own pin and a funder's name beside it, nothing that shows where the money comes from.
 office = {k for k, o in out.items() for k in (k, *o.get('also', []))}
 ids = sorted({r['id'] for r in json.load(open(os.path.join(here, '..', 'assets', 'money-maps.json')))
-              for n in r['nodes'] if n[1] in ('gov', 'corp', 'found') and len(n) > 5 and n[5] in office})
+              for n in r['nodes'] if n[1] in ('gov', 'corp', 'found', 'priv') and len(n) > 5 and n[5] in office})
 with open(os.path.join(here, '..', 'assets', 'money-ids.js'), 'w') as fh:
     fh.write('// Written by tools/build_hq.py: the spaces whose funders have a head office on the money map.\n')
     fh.write('window.ATLAS_MONEY_IDS = new Set(' + json.dumps(ids, ensure_ascii=False, separators=(',', ':')) + ');\n')
