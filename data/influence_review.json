@@ -5,13 +5,21 @@
    "building"
   ],
   "summary": "£50M over ten years for the museum masterplan, announced in December 2023.",
-  "date": "2023-12"
+  "date": "2023-12",
+  "check": "source",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/news/2023/12/british-museum-announces-new-50m-bp-deal-to-fund-masterplan/",
+  "checked_on": "2026-11-17"
  },
  "f5bc19f575": {
   "kinds": [],
   "summary": "Trustee Ahdaf Soueif resigned over BP in 2019; 80 signed an open letter in 2023.",
   "protest": true,
-  "date": "2019"
+  "date": "2019",
+  "check": "source-partly",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/news/2023/12/british-museum-announces-new-50m-bp-deal-to-fund-masterplan/",
+  "checked_missing": "the 2023 open letter signed by 80; the page mentions only a 2022 letter from more than 300 heritage professionals",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In 2019, former trustee Ahdaf Soueif resigned in protest at the museum’s stance, while in 2022, a letter to the museum from more than 300 heritage professionals said BP"
  },
  "f9fa000ee2": {
   "kinds": [
@@ -19,21 +27,34 @@
    "licence"
   ],
   "summary": "Paid for the rescue archaeology along its own Baku-Tbilisi-Ceyhan and South Caucasus pipelines, 2000 to 2005, from survey to exhibition and publication.",
-  "date": "2000"
+  "date": "2000",
+  "check": "source",
+  "checked_source": "https://museum.ge/files/G%20Gamyrelidze/PDF/BP&Archaeology_Gamkrelidze_G_small.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "These activities took place in 2000-05 ... The responsibility of BP and its partners extended over the whole cycle of work: survey archaeology, field and laboratory work, ... exhibitions, publication"
  },
  "0f52b2134a": {
   "kinds": [
    "building"
   ],
   "summary": "Set up the conservation laboratory and an auditorium (BP volume, 2010).",
-  "date": "2010"
+  "date": "2010",
+  "check": "source",
+  "checked_source": "https://museum.ge/files/G%20Gamyrelidze/PDF/BP&Archaeology_Gamkrelidze_G_small.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the GNM has, with the support of BP Georgia and its partners, implemented the following: the construction of an auditorium; research on and the conservation of the site of Dmanisi; the establishment of a conservation laboratory"
  },
  "3957c623df": {
   "kinds": [
    "name"
   ],
   "summary": "Standing corporate partner, with its logo in the museum homepage footer (October 2026).",
-  "date": "2026-10"
+  "date": "2026-10",
+  "check": "source-partly",
+  "checked_source": "https://museum.ge/index.php?m=2",
+  "checked_missing": "that BP is described as a standing corporate partner or that the footer item is a logo linking to bpgeorgia.ge; the cached text shows only a bare 'BP' at the footer",
+  "checked_on": "2026-11-17",
+  "checked_quote": "bedava ligtv izle --> BP"
  },
  "b911a0876f": {
   "kinds": [
@@ -42,7 +63,11 @@
   ],
   "summary": "The BP Portrait Award toured to Edinburgh; the galleries ended it after the 2019 show.",
   "ended": true,
-  "date": "2019"
+  "date": "2019",
+  "check": "source",
+  "checked_source": "https://hyperallergic.com/527725/invoking-climate-emergency-national-galleries-of-scotland-will-end-ties-with-british-petroleum/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "after the 2019 BP Portrait Prize, which opens on December 7, the Edinburgh gallery will no longer host the exhibition “in its present form.”"
  },
  "de72b8692a": {
   "kinds": [
@@ -51,7 +76,8 @@
   ],
   "summary": "Its name on the Portrait Award, the gallery’s best known prize, until 2022.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "record"
  },
  "a1703d801a": {
   "kinds": [
@@ -59,7 +85,11 @@
   ],
   "summary": "Sponsor for 33 years, ended in 2022.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.whatsonstage.com/news/royal-opera-house-confirms-end-of-33-year-bp-sponsorship-deal_58217/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "agreed that the partnership would not extend beyond 22 December [2022], when BP’s contract came to an end."
  },
  "5e9812af1c": {
   "kinds": [
@@ -67,19 +97,32 @@
   ],
   "summary": "Sponsor for nearly 25 years: the former Energy Gallery, the 2015 Cosmonauts exhibition and the training academy. Ended 31 August 2026.",
   "ended": true,
-  "date": "2026-08-31"
+  "date": "2026-08-31",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2026/08/31/london-science-museum-ends-bp-sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "its partnership with BP will draw to a close on 31 August “at the end of its agreed term”. The partnership comprised BP sponsorship of the museum’s training academy"
  },
  "e60e024452": {
   "kinds": [
    "programme"
   ],
-  "summary": "BP’s own submission to Parliament describes its education collaboration with the museum and its corporate learning objectives."
+  "summary": "BP’s own submission to Parliament describes its education collaboration with the museum and its corporate learning objectives.",
+  "check": "source-partly",
+  "checked_source": "https://cultureunstained.org/2026/01/16/bp-played-dominant-role-in-developing-science-museums-stem-academy-documents-reveal/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In the submission, BP states that one of the ‘desired outcomes’ of its involvement with the Science Museum and other STEM initiatives – is to provide pupils with ‘industrial and BP context for their learning’",
+  "checked_missing": "the submission itself, seen only through Culture Unstained’s account of it"
  },
  "5faed685fb": {
   "kinds": [],
   "summary": "The National Education Union backed a schools boycott over the BP and Adani sponsorship (June 2025).",
   "protest": true,
-  "date": "2025-06-10"
+  "date": "2025-06-10",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2025/06/10/education-union-calls-on-schools-to-boycott-londons-science-museum-over-image-laundering-sponsorship-deals",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The UK’s largest education union has backed a new boycott of the Science Museum over its sponsorship deals with oil company BP and Adani Green Energy"
  },
  "5de29be2a5": {
   "kinds": [
@@ -88,14 +131,22 @@
   "summary": "Ended BP sponsorship in 2016 after protests.",
   "ended": true,
   "protest": true,
-  "date": "2016"
+  "date": "2016",
+  "check": "source",
+  "checked_source": "https://cultureunstained.org/successes-for-the-movement/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Tate galleries, UK and BP (April 2016)"
  },
  "f93b357ecd": {
   "kinds": [
    "money"
   ],
   "summary": "Lifetime donor, $1M to $4.99M, as BP Canada Energy Group (stated by the space, to March 2023).",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.banffcentre.ca/supporters-banff-centre",
+  "checked_on": "2026-11-17",
+  "checked_quote": "cumulatively as of March 31, 2023. ... $1 million - $4,999,999 CORPORATE BMO Financial Group BP Canada Energy Group ULC"
  },
  "6cbec8311e": {
   "drop": true,
@@ -182,39 +233,58 @@
    "money"
   ],
   "summary": "On the 2022 contributors list, without amounts.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.anchoragemuseum.org/media/jylb1bg0/2022-donor-list-for-website-and-donor-wall.pdf",
+  "checked_on": "2026-11-17"
  },
  "d72db3cd12": {
   "kinds": [
    "money"
   ],
   "summary": "Lifetime donor, $1M to $4.99M, as Chevron Canada Resources (stated by the space, to March 2023).",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.banffcentre.ca/supporters-banff-centre",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$1 million - $4,999,999 CORPORATE BMO Financial Group BP Canada Energy Group ULC Cenovus Energy Inc. Chevron Canada Resources"
  },
  "6ac9e627e7": {
   "kinds": [
    "money"
   ],
-  "summary": "Chevron Canada Resources gave $1,000 to $4,999."
+  "summary": "Chevron Canada Resources gave $1,000 to $4,999.",
+  "check": "record"
  },
  "324f4a61fd": {
   "kinds": [
    "money"
   ],
-  "summary": "Named on the sponsors page."
+  "summary": "Named on the sponsors page.",
+  "check": "source",
+  "checked_source": "https://malba.org.ar/sponsors/",
+  "checked_on": "2026-11-17"
  },
  "c1ec0623d7": {
   "kinds": [
    "programme"
   ],
   "summary": "$1 million for educational programming, announced 6 February 2006.",
-  "date": "2006-02-06"
+  "date": "2006-02-06",
+  "check": "source-partly",
+  "checked_source": "https://museumca.org/corporate-partners/",
+  "checked_missing": "the $1 million amount, the educational programming purpose and the 6 February 2006 announcement",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Benefactor Bloomberg Philanthropies Chevron Dodge & Cox"
  },
  "114ee8d44b": {
   "kinds": [
    "money"
   ],
-  "summary": "A current Benefactor-level corporate supporter."
+  "summary": "A current Benefactor-level corporate supporter.",
+  "check": "source",
+  "checked_source": "https://museumca.org/corporate-partners/",
+  "checked_on": "2026-11-17"
  },
  "df3422e0a6": {
   "kinds": [
@@ -222,7 +292,10 @@
    "programme"
   ],
   "summary": "Chevron Open Minds, a school programme under its name: more than $375,000 over three years from 2008.",
-  "date": "2008-12-16"
+  "date": "2008-12-16",
+  "check": "source",
+  "checked_source": "https://www.releases.gov.nl.ca/releases/2008/tcr/1216n02.htm",
+  "checked_on": "2026-11-17"
  },
  "86c253c3de": {
   "kinds": [
@@ -231,40 +304,63 @@
   ],
   "summary": "The school programme deal, $492,000 in all, ended in June 2025 and goes on as Curious Minds.",
   "ended": true,
-  "date": "2025-06"
+  "date": "2025-06",
+  "check": "source-partly",
+  "checked_source": "https://www.gov.nl.ca/tcar/files/TheRoomsAnnualReport2023-2024.pdf",
+  "checked_missing": "that the deal ended in June 2025 and continues as Curious Minds",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$185,000 from Chevron Canada Limited, an annual installment that is part of a three-year commitment of $492,226 in funding for the administration of the Chevron Open Minds at The Rooms program"
  },
  "18012a865e": {
   "kinds": [
    "money"
   ],
-  "summary": "Plenitude, controlled by Eni, is a strategic sponsor."
+  "summary": "Plenitude, controlled by Eni, is a strategic sponsor.",
+  "check": "source",
+  "checked_source": "https://www.centrobotin.org/en/the-centro-botin/patrocinios-y-colaboradores/current-sponsors/",
+  "checked_on": "2026-11-17"
  },
  "f19323814f": {
   "kinds": [
    "seat"
   ],
   "summary": "A Sostenitore with a seat on the General Council, held by its chief executive Claudio Descalzi (July 2026).",
-  "date": "2026-07-13"
+  "date": "2026-07-13",
+  "check": "source",
+  "checked_source": "https://www.cini.it/wp-content/uploads/2026/07/Governance_FGC_agg.-13-LUGLIO-2026.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "RAPPRESENTANTI DEI SOSTENITORI IN CONSIGLIO GENERALE (fino a 8): INTESA SANPAOLO Carlo MESSINA Enrico SALZA FONDAZIONE CARIPLO Andrea MASCETTI ENI Claudio DESCALZI"
  },
  "9ce71f8f02": {
   "kinds": [
    "programme"
   ],
   "summary": "Pays €48,750 (2025) for the museum’s architecture archive centre to catalogue Eni’s own archive, work that has run since 2012.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.maxxi.art/wp-content/uploads/2026/07/Bilancio-consuntivo-2025.pdf",
+  "checked_on": "2026-11-17"
  },
  "58fddfea90": {
   "kinds": [
    "programme"
   ],
   "summary": "A MAXXI and Eni collaboration shows Maurizio Nannucci’s work on the Gazometro G3 in Rome from November 2025.",
-  "date": "2025-11"
+  "date": "2025-11",
+  "check": "source",
+  "checked_source": "https://www.maxxi.art/wp-content/uploads/2026/07/Bilancio-consuntivo-2025.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "MAXXI ED ENI | Maurizio Nannucci. More Than Meets The Eye novembre 2025 - in corso Un evento speciale reso possibile grazie alla collaborazione tra il MAXXI e ENI S.p.A."
  },
  "1805680d9f": {
   "kinds": [],
   "summary": "Six artists withdrew and six collectives called a boycott over Eni, Leonardo and Gaza (27 October 2025).",
   "protest": true,
-  "date": "2025-10-27"
+  "date": "2025-10-27",
+  "check": "source",
+  "checked_source": "https://www.neroeditions.com/artists-pull-out/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In light of MAXXI’s position and affiliations, we cannot in good conscience collaborate with such an institution and have therefore collectively withdrawn from the exhibition."
  },
  "825a5713ae": {
   "kinds": [
@@ -272,39 +368,58 @@
    "name"
   ],
   "summary": "Main Partner of the 23rd International Exhibition (2022).",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.designdiffusion.com/en/2022/07/13/23rd-triennale-di-milano-a-journey-into-the-unknown/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The partners of the 239th International Exhibition (23rd Triennale Milano) are Eni and Lavazza Group, Main Partners"
  },
  "fa09c50daf": {
   "kinds": [
    "programme"
   ],
   "summary": "Main sponsor of Progetto Genesi, “Art and Human Rights” (2023).",
-  "date": "2023"
+  "date": "2023",
+  "check": "record"
  },
  "5077a79234": {
   "kinds": [
    "programme"
   ],
   "summary": "Festival partner, renewed in 2025 through its Bergen office; no amount or term was given.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source-partly",
+  "checked_source": "https://www.fib.no/stottespillere",
+  "checked_missing": "the 2025 renewal through its Bergen office",
+  "checked_on": "2026-11-17",
+  "checked_quote": "https://www.equinor.com/ | https://res.cloudinary.com/fib/image/upload/f_auto,q_auto,g_auto,w_3072,c_fill/Logoer-partner/Logosalat/R_Logosalat_Equinor_jtlipe"
  },
  "06e21832e4": {
   "kinds": [],
   "summary": "The 2025 renewal met protests.",
   "protest": true,
-  "date": "2025"
+  "date": "2025",
+  "check": "source-partly",
+  "checked_source": "https://www.fib.no/aktuelt/2025/fornyet-samarbeidsavtale-med-equinor",
+  "checked_missing": "that the renewal met protests",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Avtalen med Festspil lene i Bergen videreføres nå som en lokal sponsoravtale"
  },
  "040f0d1ec1": {
   "kinds": [
    "money"
   ],
-  "summary": "A master sponsor (museum website)."
+  "summary": "A master sponsor (museum website).",
+  "check": "source",
+  "checked_source": "https://museudeartedorio.org.br/o-mar/o-museu/",
+  "checked_on": "2026-11-17"
  },
  "e2a8c92546": {
   "kinds": [
    "money"
   ],
-  "summary": "A gold sponsor."
+  "summary": "A gold sponsor.",
+  "check": "record"
  },
  "d6ac57db64": {
   "kinds": [
@@ -312,7 +427,11 @@
   ],
   "summary": "Sponsorship ended in 2024.",
   "ended": true,
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2026/08/31/london-science-museum-ends-bp-sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In 2024, the Science Museum was forced to end its sponsorship agreement with the Norwegian oil and gas company Equinor"
  },
  "b3cb06fd4e": {
   "drop": true,
@@ -327,7 +446,11 @@
    "money"
   ],
   "summary": "Lifetime donor, $1M to $4.99M, as Shell Canada (stated by the space, to March 2023).",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.banffcentre.ca/supporters-banff-centre",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$1 million - $4,999,999 CORPORATE BMO Financial Group BP Canada Energy Group ULC Cenovus Energy Inc. Chevron Canada Resources CNOOC Petroleum North America ULC Enbridge Inc. Imperial Power Corporation of Canada Shaw Communications Inc. Shell Canada Limited"
  },
  "04bc8d4b3d": {
   "kinds": [
@@ -335,19 +458,26 @@
   ],
   "summary": "Corporate memberships of the Southbank Centre and the BFI, about £20,000 together; not renewed in 2020.",
   "ended": true,
-  "date": "2020"
+  "date": "2020",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2020/03/10/fossil-fuel-giant-shell-ends-its-support-of-londons-southbank-centre",
+  "checked_on": "2026-11-17"
  },
  "bbcd63981f": {
   "kinds": [
    "access"
   ],
-  "summary": "Shell Pakistan held corporate events at the museum, as a client, not a donor."
+  "summary": "Shell Pakistan held corporate events at the museum, as a client, not a donor.",
+  "check": "record"
  },
  "99d242199f": {
   "kinds": [
    "money"
   ],
-  "summary": "A master sponsor."
+  "summary": "A master sponsor.",
+  "check": "source",
+  "checked_source": "https://portalagita.com.br/inhotim-tera-entrada-gratuita-neste-domingo-13-com-patrocinio-da-shell/",
+  "checked_on": "2026-11-17"
  },
  "14c9a439ca": {
   "kinds": [
@@ -355,7 +485,11 @@
    "name"
   ],
   "summary": "Paid for a free admission day on 13 April 2025, marking its 112 years in Brazil.",
-  "date": "2025-04-13"
+  "date": "2025-04-13",
+  "check": "source",
+  "checked_source": "https://portalagita.com.br/inhotim-tera-entrada-gratuita-neste-domingo-13-com-patrocinio-da-shell/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "O Instituto Inhotim abrirá as portas gratuitamente para o público neste domingo, dia 13 de abril, em uma ação patrocinada pela Shell, em comemoração aos 112 anos da companhia no Brasil."
  },
  "73c928db56": {
   "kinds": [
@@ -363,26 +497,41 @@
   ],
   "summary": "Partner for six years, paying for technical research on Jan Steen’s paintings; ended July 2018.",
   "ended": true,
-  "date": "2018-07"
+  "date": "2018-07",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/news/shell-sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A Mauritshuis spokesman says that it had a six-year partnership contract with Shell, which was due to end in July and was not renewed."
  },
  "f201ba7e07": {
   "kinds": [],
   "summary": "Fossil Free Culture protested the partnership as “art-washing” (2018).",
   "protest": true,
-  "date": "2018"
+  "date": "2018",
+  "check": "source",
+  "checked_source": "https://hyperallergic.com/458217/as-dutch-museums-stop-accepting-fossil-fuel-money-oil-companies-eye-uk-museums/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Fossil fuel companies fund cultural institutions to clean up their public image. This recognized marketing strategy is known as art-washing."
  },
  "6093b5eae5": {
   "kinds": [
    "money"
   ],
-  "summary": "One of three maintainers (mantenedores)."
+  "summary": "One of three maintainers (mantenedores).",
+  "check": "source",
+  "checked_source": "https://museudoamanha.org.br/pt-br/apoiadores",
+  "checked_on": "2026-11-17"
  },
  "92c668cd93": {
   "kinds": [
    "programme"
   ],
   "summary": "Supported the Oceano exhibition, with Vale and Motiva (December 2025).",
-  "date": "2025-12"
+  "date": "2025-12",
+  "check": "source",
+  "checked_source": "https://folhadoleste.com.br/museu-do-amanha-10-anos-nova-exposicao/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A mesma data marca a abertura da exposição autoral “Oceano – o Mundo É um Arquipélago” , com apoio da Shell, Vale e Motiva."
  },
  "3071ec142f": {
   "kinds": [
@@ -390,7 +539,11 @@
    "programme"
   ],
   "summary": "Master sponsor, paying for the air conditioning and the renewal of the education work and the long-term exhibition (January 2025).",
-  "date": "2025-01-14"
+  "date": "2025-01-14",
+  "check": "source",
+  "checked_source": "https://www.jb.com.br/cadernob/2025/01/amp/1053857-museu-nacional-de-belas-artes-conclui-90-da-reforma-iniciada-em-2020.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A petrolífera Shell, patrocinadora master do Museu Nacional de Belas Artes, irá financiar a climatização e os trabalhos de renovação das atividades educativas e da exposição de longa duração."
  },
  "06240373ad": {
   "kinds": [
@@ -398,7 +551,8 @@
   ],
   "summary": "Dropped Shell in 2018.",
   "ended": true,
-  "date": "2018"
+  "date": "2018",
+  "check": "record"
  },
  "36fda8090a": {
   "kinds": [
@@ -406,7 +560,8 @@
   ],
   "summary": "Ended Shell sponsorship in 2019.",
   "ended": true,
-  "date": "2019"
+  "date": "2019",
+  "check": "record"
  },
  "e927492332": {
   "kinds": [
@@ -414,14 +569,23 @@
    "name"
   ],
   "summary": "Exclusive sponsor of the STEM Gallery at Dadu, the children’s museum, under a long-term agreement; amount not disclosed (April 2022).",
-  "date": "2022-04-18"
+  "date": "2022-04-18",
+  "check": "source",
+  "checked_source": "https://www.gulf-times.com/story/714742/dadu-signs-on-qatar-shell-as-founding-family-member",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Under the long-term sponsorship agreement, Qatar Shell will be the exclusive sponsor of Dadu’s Science, Technology, Engineering and Mathematics (STEM) Gallery"
  },
  "62fe0b0407": {
   "kinds": [
    "name"
   ],
   "summary": "Among the Dadu Founding Family with ConocoPhillips, ENI, ExxonMobil and TotalEnergies; members give QAR 3.65 million or more.",
-  "date": "2023-11"
+  "date": "2023-11",
+  "check": "source-partly",
+  "checked_source": "https://www.gulf-times.com/story/714742/dadu-signs-on-qatar-shell-as-founding-family-member",
+  "checked_missing": "the QAR 3.65 million threshold, and ConocoPhillips and ENI as fellow members",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Dadu, Children’s Museum of Qatar has signed on Qatar Shell as one of the “Founding Family” members"
  },
  "f0791b8eaa": {
   "kinds": [
@@ -429,13 +593,22 @@
   ],
   "summary": "Sponsored technical research on the paintings for 18 years; ended in August 2018 by what both called a mutual decision.",
   "ended": true,
-  "date": "2018-08"
+  "date": "2018-08",
+  "check": "source-partly",
+  "checked_source": "https://www.theartnewspaper.com/news/shell-sponsorship",
+  "checked_missing": "that the 18 years were all technical research (the page says the research focus covered the past five years), and that both sides called it mutual (only Shell's spokeswoman is quoted)",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A statement by the Van Gogh Museum says that after 18 years of Shell support, their sponsorship ended earlier this month. For the past five years, this has focussed on Van Gogh’s 1888-90 paintings"
  },
  "9ebc352a1d": {
   "kinds": [],
   "summary": "The end followed a campaign.",
   "protest": true,
-  "date": "2018"
+  "date": "2018",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/news/shell-sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Two of the major Dutch museums have just ended their collaboration with Shell, at a time of mounting protests over sponsorship by fossil fuel companies."
  },
  "965aa2c367": {
   "drop": true,
@@ -462,28 +635,44 @@
    "money"
   ],
   "summary": "A 2024 partner.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.dailynewsegypt.com/2024/10/06/forever-is-now-4th-edition-fusion-of-ancient-modern-at-giza-pyramids/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "This year’s exhibition is made possible due to the support of the exhibition’s partners, including Alex Bank, Barta & Partners, Afrexim Bank, Total Energies"
  },
  "429a872173": {
   "kinds": [
    "programme"
   ],
   "summary": "Grand mécène of the Eisenstein exhibition in 2019, after a first partnership in 2015, as Fondation Total.",
-  "date": "2019"
+  "date": "2019",
+  "check": "source",
+  "checked_source": "https://api.centrepompidou-metz.fr/files/5149bba0/ra_site_internet.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Sur L’ Œil extatique. Sergueï Eisenstein, cinéaste à la croisée des arts, la Fondation Total s’est inscrite en grand mécène de l’exposition. Partenaire du Centre Pompidou-Metz en 2015"
  },
  "07666fc7c5": {
   "kinds": [
    "programme"
   ],
   "summary": "Major sponsor in a 20-year partnership, backing “Parfums d’Orient” and “ARABOFUTURS”, 2023 to 2025.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://fondation.totalenergies.com/en/node/1496",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Institut du monde arabe and TotalEnergies Corporate Foundation - a 20-year partnership"
  },
  "a780fd5a40": {
   "kinds": [
    "programme"
   ],
   "summary": "Supported the 2018 mentoring programme: seven African artists hosting 35 young artists in residence.",
-  "date": "2018"
+  "date": "2018",
+  "check": "source",
+  "checked_source": "https://fondation.totalenergies.com/en/our-actions/our-cultural-dialogue-and-heritage-actions/supporting-young-african-artists-kampala",
+  "checked_on": "2026-11-17",
+  "checked_quote": "a mentoring program was also set up, whereby seven internationally renowned African artists hosted 35 young artists in residence for ten days."
  },
  "a92338f8cf": {
   "kinds": [
@@ -491,34 +680,55 @@
   ],
   "summary": "Funded exhibitions for two decades; the Louvre says there has been no direct partnership since 2018.",
   "ended": true,
-  "date": "2018"
+  "date": "2018",
+  "check": "source-partly",
+  "checked_source": "http://www.theartnewspaper.com/2017/03/07/liberty-fraternity-fossil-free-activists-protest-oil-giant-totals-sponsorship-at-louvre",
+  "checked_missing": "the Louvre’s statement that there has been no direct partnership since 2018",
+  "checked_on": "2026-11-17",
+  "checked_quote": "launched in January to demand an end to two decades of sponsorship of the museum by the French multinational energy giant Total."
  },
  "936d971969": {
   "kinds": [
    "money"
   ],
   "summary": "A 2025 sponsor.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://museomoderno.org/gracias/",
+  "checked_on": "2026-11-17"
  },
  "00cb844f15": {
   "kinds": [
    "programme"
   ],
-  "summary": "TotalEnergies Tanzania partners on the VIA Creative programme."
+  "summary": "TotalEnergies Tanzania partners on the VIA Creative programme.",
+  "check": "source",
+  "checked_source": "https://www.nafasiartspace.org/via-creative-awarding-ceremony/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Nafasi is pleased to announce its ongoing partnership with TotalEnergies Tanzania in implementing the VIA Creative program"
  },
  "e97f045882": {
   "kinds": [
    "name"
   ],
   "summary": "Among the Dadu Founding Family; members give QAR 3.65 million or more.",
-  "date": "2023-11"
+  "date": "2023-11",
+  "check": "source-partly",
+  "checked_source": "https://en.wikipedia.org/wiki/Qatar_Museums",
+  "checked_missing": "the QAR 3.65 million membership level",
+  "checked_on": "2026-11-17",
+  "checked_quote": "\"TotalEnergies joins Dadu, Children's Museum of Qatar as Founding Family member\" . Gulf Times . 19 June 2023"
  },
  "29182a3aba": {
   "kinds": [
    "building"
   ],
   "summary": "Supported phase one of the restoration, October 2020.",
-  "date": "2020-10"
+  "date": "2020-10",
+  "check": "source",
+  "checked_source": "https://www.fondation-patrimoine.org/61021",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Avril 2019 Ouverture de la campagne de collecte pour la première phase des travaux Octobre 2020 Soutien de la Fondation TotalEnergies Septembre 2022 Clôture de la première phase"
  },
  "8e83c6df5e": {
   "drop": true,
@@ -542,7 +752,8 @@
   ],
   "summary": "Stopped taking Sackler gifts in May 2019; renamed in 2023.",
   "ended": true,
-  "date": "2019-05"
+  "date": "2019-05",
+  "check": "record"
  },
  "e6965258e6": {
   "kinds": [
@@ -550,7 +761,8 @@
   ],
   "summary": "Its name on rooms and endowments; removed in 2022.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "record"
  },
  "167cc0ef73": {
   "kinds": [
@@ -558,7 +770,8 @@
   ],
   "summary": "Dropped the Sackler name in 2019.",
   "ended": true,
-  "date": "2019"
+  "date": "2019",
+  "check": "record"
  },
  "fb5d2df7a5": {
   "kinds": [
@@ -566,7 +779,11 @@
   ],
   "summary": "A Sackler-endowed post; the name dropped in 2022.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2022/06/02/dulwich-picture-gallery-drops-sackler-name",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the gallery’s latest financial accounts show that the director fund endowment provided by the Dr Mortimer and Theresa Sackler Foundation in the early 2000s was valued at £3.5m"
  },
  "9bf901b8f6": {
   "kinds": [
@@ -575,7 +792,12 @@
    "silence"
   ],
   "summary": "Paid for the building that carries the Sackler name, under a 1982 gift agreement that is not public.",
-  "date": "1982"
+  "date": "1982",
+  "check": "source-partly",
+  "checked_source": "https://harvardartmuseums.org/about/history",
+  "checked_missing": "the 1982 gift agreement and that it is not public",
+  "checked_on": "2026-11-17",
+  "checked_quote": "With funding from Dr. Arthur M. Sackler, a psychiatrist, entrepreneur, art collector, and philanthropist, the Harvard Art Museums constructed a new museum facility"
  },
  "cb4dd45f0d": {
   "kinds": [
@@ -583,7 +805,8 @@
   ],
   "summary": "The Harvard Corporation kept the name in July 2024 after a student proposal to remove it.",
   "protest": true,
-  "date": "2024-07"
+  "date": "2024-07",
+  "check": "record"
  },
  "006247e344": {
   "kinds": [
@@ -592,13 +815,21 @@
   "summary": "The Sackler name came off in July 2019 after a P.A.I.N. protest.",
   "ended": true,
   "protest": true,
-  "date": "2019-07"
+  "date": "2019-07",
+  "check": "source",
+  "checked_source": "https://apollo-magazine.com/sackler-name-removed-from-louvre-galleries-after-protests/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the Louvre has removed the Sackler name from its galleries, the Art Newspaper reports. The exact circumstances are still unclear. On 1 July PAIN, the opioid crisis activism group led by artist Nan Goldin, led a protest"
  },
  "abef2c36e4": {
   "kinds": [
    "building"
   ],
-  "summary": "The Sackler Trust is named among supporters of the Make Your Mark capital campaign, and the gallery still credits it."
+  "summary": "The Sackler Trust is named among supporters of the Make Your Mark capital campaign, and the gallery still credits it.",
+  "check": "source",
+  "checked_source": "https://mkgallery.org/support/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Make Your Mark Supporters Milton Keynes Council MK Community Foundation Reuben Foundation The Sackler Trust"
  },
  "e311cb79b3": {
   "kinds": [
@@ -606,7 +837,10 @@
   ],
   "summary": "Refused a £1M Sackler gift in 2019.",
   "ended": true,
-  "date": "2019"
+  "date": "2019",
+  "check": "source",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/news/2019/03/21032019-sackler-trust-cancels-npg-donation/",
+  "checked_on": "2026-11-17"
  },
  "3e5670659b": {
   "kinds": [
@@ -615,13 +849,18 @@
   "summary": "The parent foundation removed the Sackler name under pressure in 2022.",
   "ended": true,
   "protest": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "record"
  },
  "96e783e087": {
   "kinds": [
    "name"
   ],
-  "summary": "The Academy has a Sackler wing; it said in 2021 that it has had no donations from the Sackler trusts."
+  "summary": "The Academy has a Sackler wing; it said in 2021 that it has had no donations from the Sackler trusts.",
+  "check": "source",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/news/2021/12/metropolitan-museum-of-art-drops-sackler-name/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Royal Academy (RA) has opted not to change the name of its Sackler wing. In a statement given to Museums Journal, a spokesperson said: “The RA has not received donations from the Sackler Trust"
  },
  "a9c3ce14c5": {
   "kinds": [
@@ -629,7 +868,10 @@
    "name"
   ],
   "summary": "The Serpentine Sackler Gallery opened in 2013 on a £5.5M grant from the Mortimer and Theresa Sackler Foundation.",
-  "date": "2013"
+  "date": "2013",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/news/elephant-in-the-room-hito-steyerl-denounces-sackler-sponsorship-at-opening-of-her-show-at-serpentine-sackler-gallery",
+  "checked_on": "2026-11-17"
  },
  "c9da6b61d5": {
   "kinds": [
@@ -638,7 +880,11 @@
   "summary": "Renamed Serpentine North in 2021; the Sackler name came off the building in 2022.",
   "ended": true,
   "protest": true,
-  "date": "2022-01"
+  "date": "2022-01",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2022/01/12/serpentine-removes-sackler-name-from-building-replacing-it-with-north",
+  "checked_on": "2026-11-17",
+  "checked_quote": "London's Serpentine Galleries finally removes Sackler name from building, replacing it with North Institution rebranded to Serpentine North last spring, but the controversial family name remained above the gallery entrance José da Silva 12 January 2022"
  },
  "7ee3564269": {
   "kinds": [
@@ -647,7 +893,10 @@
   ],
   "summary": "$7M between 1995 and 2006 for the arts education center, and $2M for general support; the name was removed in 2022.",
   "ended": true,
-  "date": "1995"
+  "date": "1995",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2019/03/25/guggenheim-museum-says-it-does-not-plan-to-accept-any-gifts-from-the-sackler-family",
+  "checked_on": "2026-11-17"
  },
  "d03068f448": {
   "kinds": [
@@ -655,7 +904,10 @@
   ],
   "summary": "Offered £125,000 for an education centre in 2016; the trustees returned it in 2018 over reputational damage.",
   "ended": true,
-  "date": "2018"
+  "date": "2018",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2019/03/22/south-london-gallery-returned-funding-to-sackler-trust-last-year",
+  "checked_on": "2026-11-17"
  },
  "c77c181276": {
   "kinds": [
@@ -663,7 +915,8 @@
   ],
   "summary": "The Sackler name was removed in 2022.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "record"
  },
  "6c58c028dd": {
   "kinds": [
@@ -671,7 +924,11 @@
   ],
   "summary": "The Sackler name was removed only in 2021.",
   "ended": true,
-  "date": "2021"
+  "date": "2021",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2019/05/15/the-met-says-it-will-stop-accepting-gifts-from-sacklers-associated-with-purdue-pharma",
+  "checked_on": "2026-11-17",
+  "checked_quote": "9 December 2021 Metropolitan Museum drops Sackler name from its galleries"
  },
  "7074f0a9da": {
   "kinds": [
@@ -679,7 +936,11 @@
   ],
   "summary": "The Sackler name was removed in 2022.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2022/10/03/londons-victoria-and-albert-museum-announces-it-will-no-longer-carry-the-sackler-name",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Tom Seymour 3 October 2022 Share The Victoria and Albert museum's courtyard © Hufton + Crow; courtesy Victoria and Albert Museum The Victoria and Albert museum (V&A) in London has removed the Sackler name from its galleries."
  },
  "1779c1b9dd": {
   "drop": true,
@@ -690,7 +951,10 @@
    "name"
   ],
   "summary": "About $23 million over 23 years; the dinosaur wing still carries his name.",
-  "date": "2016"
+  "date": "2016",
+  "check": "source",
+  "checked_source": "https://hyperallergic.com/269664/introducing-the-new-koch-zero-billionaire-leaves-american-natural-history-museum-board/",
+  "checked_on": "2026-11-17"
  },
  "96dda079ed": {
   "kinds": [
@@ -699,20 +963,28 @@
   "summary": "David Koch left the board in December 2015 after scientists protested.",
   "ended": true,
   "protest": true,
-  "date": "2015-12"
+  "date": "2015-12",
+  "check": "record"
  },
  "7eb3d90886": {
   "kinds": [
    "name"
   ],
   "summary": "A $100M pledge in 2008 put the Koch name on the theater for at least fifty years, with first refusal on any new name for the family.",
-  "date": "2008"
+  "date": "2008",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/David_H._Koch_Theater",
+  "checked_on": "2026-11-17"
  },
  "3cf58f6f45": {
   "kinds": [],
   "summary": "Activists disrupted the Met Opera’s Carmen on 21 November 2025, demanding the Koch names come down.",
   "protest": true,
-  "date": "2025-11-21"
+  "date": "2025-11-21",
+  "check": "source",
+  "checked_source": "https://operawire.com/?p=105239",
+  "checked_on": "2026-11-17",
+  "checked_quote": "the group’s stated aim was to call on Lincoln Center to remove donor naming affiliations tied to Koch Industries, Chevron, and Texaco."
  },
  "715c8e7234": {
   "kinds": [
@@ -720,14 +992,23 @@
    "seat"
   ],
   "summary": "David Koch, a board member, backed the Hall of Human Origins, which carries his name (opened 2010).",
-  "date": "2010"
+  "date": "2010",
+  "check": "source-partly",
+  "checked_source": "https://www.democracynow.org/2015/3/26/why_is_climate_denier_david_koch",
+  "checked_missing": "that the hall opened in 2010",
+  "checked_on": "2026-11-17",
+  "checked_quote": "David Koch is a board member of both the American Museum of Natural History and the Smithsonian National Museum of Natural History."
  },
  "7c4fc454b1": {
   "kinds": [
    "licence"
   ],
   "summary": "A climate writer quoted by The New Yorker said the Koch-funded Hall of Human Origins “whitewashes the modern climate issue”.",
-  "date": "2010"
+  "date": "2010",
+  "check": "source",
+  "checked_source": "https://wikileaks.org/clinton-emails/emailid/29728",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Joseph Romm, a physicist who runs the Web site ClimateProgress.org , is infuriated by the Smithsonian's presentation. \"The whole exhibit whitewashes the modern climate issue,\" he said."
  },
  "988693fc3f": {
   "kinds": [
@@ -735,7 +1016,11 @@
   ],
   "summary": "In 2015, 15 groups campaigned to remove Koch from the board.",
   "protest": true,
-  "date": "2015"
+  "date": "2015",
+  "check": "source",
+  "checked_source": "https://www.salon.com/2015/03/24/scientists_to_museums_stop_taking_money_from_climate_deniers/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "a group of 15 non-profits launched a campaign of their own to get the Smithsonian, as well as the American Museum of Natural History, to boot David Koch from their boards of directors."
  },
  "58cb8a1426": {
   "kinds": [
@@ -743,7 +1028,12 @@
    "building"
   ],
   "summary": "A trustee, David Koch pledged at least $10M in 2010 to renovate the fountains, then $65M for the plaza, which carries his name since 2014.",
-  "date": "2014"
+  "date": "2014",
+  "check": "source-partly",
+  "checked_source": "https://wikileaks.org/clinton-emails/emailid/29728",
+  "checked_missing": "the $65M for the plaza and the plaza carrying his name since 2014",
+  "checked_on": "2026-11-17",
+  "checked_quote": "This spring, after noticing the decrepit state of the fountains outside the Metropolitan Museum of Art, Koch pledged at least ten million dollars for their renovation. He is a trustee of the museum"
  },
  "440090566e": {
   "drop": true,
@@ -768,39 +1058,57 @@
    "building"
   ],
   "summary": "Kenneth and Anne Griffin gave $19 million toward the Modern Wing, and he sat on the board (2008).",
-  "date": "2008"
+  "date": "2008",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2008/04/01/the-post-war-and-contemporary-collections-of-leading-american-collectors",
+  "checked_on": "2026-11-17"
  },
  "d6f52a2243": {
   "kinds": [
    "money"
   ],
   "summary": "Kenneth Griffin and Citadel in the top tier of Campus Fund supporters (June 2026).",
-  "date": "2026-06"
+  "date": "2026-06",
+  "check": "source",
+  "checked_source": "https://www.lincolncenter.org/campus-fund/our-supporters",
+  "checked_on": "2026-11-17"
  },
  "b214a3aa8e": {
   "kinds": [
    "money"
   ],
-  "summary": "Citadel is a Corporate Patron."
+  "summary": "Citadel is a Corporate Patron.",
+  "check": "source",
+  "checked_source": "https://www.mplus.org.hk/en/corporate-support/",
+  "checked_on": "2026-11-17"
  },
  "c04c08fb40": {
   "kinds": [
    "money"
   ],
   "summary": "A donor at $100,000 and above, July 2024 to June 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+  "checked_on": "2026-11-17"
  },
  "1db5353365": {
   "kinds": [
    "money"
   ],
-  "summary": "The Citadel is a Benefactor Member."
+  "summary": "The Citadel is a Benefactor Member.",
+  "check": "source",
+  "checked_source": "https://www.nationalgallery.org.uk/support-us/corporate-support",
+  "checked_on": "2026-11-17"
  },
  "564ef14724": {
   "kinds": [
    "money"
   ],
-  "summary": "Citadel is a Director’s Circle patron."
+  "summary": "Citadel is a Director’s Circle patron.",
+  "check": "source",
+  "checked_source": "https://www.nationalgallery.sg/sg/en/donate-and-volunteer/our-supporters.html",
+  "checked_on": "2026-11-17"
  },
  "26c0527123": {
   "kinds": [
@@ -808,7 +1116,8 @@
    "building"
   ],
   "summary": "The building that opened on 9 February 2019, with new galleries and an auditorium, carries his name.",
-  "date": "2019-02-09"
+  "date": "2019-02-09",
+  "check": "record"
  },
  "14ba570099": {
   "kinds": [
@@ -816,7 +1125,8 @@
    "money"
   ],
   "summary": "$10 million, revealed at the museum’s gala (November 2024).",
-  "date": "2024-11"
+  "date": "2024-11",
+  "check": "record"
  },
  "86db5d1e4b": {
   "kinds": [
@@ -824,27 +1134,37 @@
    "programme"
   ],
   "summary": "A Griffin Gallery, and the 2026 Basquiat exhibition is from his own collection.",
-  "date": "2026"
+  "date": "2026",
+  "check": "record"
  },
  "d6cb11dac8": {
   "kinds": [
    "money"
   ],
   "summary": "Citadel on the 2025 to 2026 corporate donor list, $20,000 to $49,999.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://thebass.org/join/donors/",
+  "checked_on": "2026-11-17"
  },
  "0fbbeaab4c": {
   "kinds": [
    "money"
   ],
   "summary": "A $20M gift, announced 7 November 2025.",
-  "date": "2025-11-07"
+  "date": "2025-11-07",
+  "check": "source",
+  "checked_source": "https://vizcaya.org/future/",
+  "checked_on": "2026-11-17"
  },
  "626083dede": {
   "kinds": [
    "money"
   ],
-  "summary": "Named among 118 donors, without amounts or years."
+  "summary": "Named among 118 donors, without amounts or years.",
+  "check": "source",
+  "checked_source": "https://airandspace.si.edu/transformation-donors",
+  "checked_on": "2026-11-17"
  },
  "534886ac33": {
   "drop": true,
@@ -862,7 +1182,10 @@
   "kinds": [
    "money"
   ],
-  "summary": "Listed on the supporters page; the timing and amount are not stated."
+  "summary": "Listed on the supporters page; the timing and amount are not stated.",
+  "check": "source",
+  "checked_source": "https://www.holburne.org/support-us/our-supporters/",
+  "checked_on": "2026-11-17"
  },
  "4f557c6858": {
   "kinds": [
@@ -870,7 +1193,11 @@
    "building"
   ],
   "summary": "Leonard Blavatnik co-founded the endowment, which raised $4.5M in one evening at a gala dinner (February 2014).",
-  "date": "2014-02"
+  "date": "2014-02",
+  "check": "source",
+  "checked_source": "https://www.kommersant.ru/doc/2400953",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Соучредителями эндаумент-фонда стали Виктор Вексельберг, Леонард Блаватник, Роман Абрамович, Вадим Мошкович, Алексей Лихтенфельд, Александр Клячин, Геннадий Тимченко, Михаил Гуцериев."
  },
  "6d1bea0abe": {
   "kinds": [
@@ -878,14 +1205,18 @@
   ],
   "summary": "The Leonard Blavatnik Foundation stopped supporting projects in Russia after the war began.",
   "ended": true,
-  "date": "2022"
+  "date": "2022",
+  "check": "record"
  },
  "de2af5511f": {
   "kinds": [
    "building"
   ],
   "summary": "£10 million in 2022 toward the refurbishment.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/National_Portrait_Gallery,_London",
+  "checked_on": "2026-11-17"
  },
  "75c9fcd679": {
   "kinds": [
@@ -893,7 +1224,11 @@
   ],
   "summary": "Gave in 2020 and 2021, and is not listed since.",
   "ended": true,
-  "date": "2020"
+  "date": "2020",
+  "check": "source",
+  "checked_source": "https://swissinstitute.net/support/institutional-partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "2021 Andy Warhol Foundation for the Visual Arts Arison Arts Foundation Balkan Projects Blavatnik Family Foundation"
  },
  "db48d44846": {
   "drop": true,
@@ -904,7 +1239,11 @@
    "building"
   ],
   "summary": "A pledger to the new Strand campus, set to open in 2029.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://courtauld.ac.uk/wp-content/uploads/2025/12/COurtauld-Accounts-Crowe-signed.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Foundation, the Blavatnik Family Foundation, the Rothschild Foundation, and others, the project is gathering pace."
  },
  "c9648a9033": {
   "kinds": [
@@ -912,14 +1251,21 @@
    "building"
   ],
   "summary": "With Warner Music Group, £10 million in 2023 for the David Bowie Centre at V&A East.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://blavatnikfoundation.org/va-east-storehouse-and-norwich-castle-among-finalists-for-museum-of-the-year",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In 2023, the Foundation and Warner Music Group jointly provided £10 million to create The David Bowie Centre for the Study of Performing Arts at V&A East"
  },
  "b6d4ce8c0a": {
   "kinds": [
    "money"
   ],
   "summary": "On the 2025 support page.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://whitecolumns.org/support-v2/",
+  "checked_on": "2026-11-17"
  },
  "0b337d6509": {
   "kinds": [
@@ -928,7 +1274,10 @@
   "summary": "Paid £25,000 toward the opening show; dropped in March 2024 under pressure.",
   "ended": true,
   "protest": true,
-  "date": "2024-03"
+  "date": "2024-03",
+  "check": "source",
+  "checked_source": "https://www.scotsman.com/whats-on/arts-and-entertainment/leading-scottish-art-gallery-ditches-baillie-gifford-as-ps25000-sponsor-after-being-targeted-by-activists-4657425",
+  "checked_on": "2026-11-17"
  },
  "d24ae440a0": {
   "kinds": [
@@ -937,13 +1286,22 @@
   ],
   "summary": "Principal sponsor for about 20 years, until the festival ended the deal in May 2024.",
   "ended": true,
-  "date": "2024-05"
+  "date": "2024-05",
+  "check": "source-partly",
+  "checked_source": "https://en.wikipedia.org/wiki/Edinburgh_International_Book_Festival",
+  "checked_missing": "the roughly 20-year length of the sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In May 2024, the festival announced that it was terminating Baillie Gifford's sponsorship."
  },
  "ffd3a31f62": {
   "kinds": [],
   "summary": "About 50 authors, Ali Smith and Zadie Smith among them, asked the festival to drop it (August 2023).",
   "protest": true,
-  "date": "2023-08"
+  "date": "2023-08",
+  "check": "source",
+  "checked_source": "https://theedinburghreporter.co.uk/2023/08/book-festival-responds-to-authors-over-baillie-gifford-sponsorship",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The authors include big names such as Ali Smith and Zadie Smith, and they are demanding that the EIBF puts pressure on the investment firm to change their tactics."
  },
  "66420219d8": {
   "kinds": [
@@ -952,7 +1310,8 @@
   "summary": "Sponsored the gallery until 2024; dropped under pressure.",
   "ended": true,
   "protest": true,
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "291b52effc": {
   "kinds": [
@@ -960,7 +1319,11 @@
   ],
   "summary": "A principal sponsor from 2017; suspended in May 2024.",
   "ended": true,
-  "date": "2017"
+  "date": "2017",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/Hay_Festival",
+  "checked_on": "2026-11-17",
+  "checked_quote": "From 2017, the Tata Group and Baillie Gifford are among the principal sponsors"
  },
  "bc91482c5a": {
   "kinds": [
@@ -969,7 +1332,11 @@
   ],
   "summary": "A sponsor that declined to discuss the value or length of the sponsorship; kept in 2024 after nine book festivals dropped it.",
   "protest": true,
-  "date": "2024-07-02"
+  "date": "2024-07-02",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2024/07/02/national-galleries-of-scotland-will-continue-to-take-sponsorship-from-baillie-gifford-despite-protests-over-ties-with-fossil-fuel-and-israel",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A Baillie Gifford spokesman declined to comment on the length and value of its sponsorship of the NGS"
  },
  "3b0a0c38dd": {
   "kinds": [
@@ -977,13 +1344,21 @@
   ],
   "summary": "Ended Baillie Gifford funding in June 2024.",
   "ended": true,
-  "date": "2024-06"
+  "date": "2024-06",
+  "check": "source",
+  "checked_source": "https://www.instagram.com/p/C76QxL6xAOR",
+  "checked_on": "2026-11-17",
+  "checked_quote": "One outcome is that we no longer plan on receiving or applying for further funding from Baillie Gifford, whose support has in the past been crucial for advancing the Stills School."
  },
  "ac3783fa8d": {
   "kinds": [
    "building"
   ],
-  "summary": "Named among the refurbishment supporters."
+  "summary": "Named among the refurbishment supporters.",
+  "check": "source",
+  "checked_source": "https://burrellcollection.com/supporters-and-partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Supporters Glasgow City Council National Lottery Heritage Fund Scottish Government and UK Government The Nairn Family Trust Sir William Burrell Trust A E B Charitable Trust AMW Charitable Trust Historic Environment Scotland Baillie Gifford Brewin Dolphin"
  },
  "11439e61f7": {
   "kinds": [
@@ -991,7 +1366,11 @@
    "name"
   ],
   "summary": "Ploom, Japan Tobacco’s heated-tobacco brand, was main partner of the 2025 biennial.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://canvasonline.com/event/art-encounters-2025/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Supported by main partner Ploom, strategic partners Banca Transilvania, and exhibition partners Catena."
  },
  "615b3a0c3f": {
   "kinds": [
@@ -999,7 +1378,11 @@
   ],
   "summary": "Japan Tobacco International sponsorship ended in September 2025; the museum and the campaigners give different reasons.",
   "ended": true,
-  "date": "2025-09"
+  "date": "2025-09",
+  "check": "source",
+  "checked_source": "https://www.theartnewspaper.com/2025/11/20/british-museum-stubs-out-controversial-tobacco-sponsorship-deal",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The museum’s contract with the maker of Benson & Hedges, Winston, Camel and Silk Cut expired in September"
  },
  "a8a7c0a372": {
   "kinds": [
@@ -1007,47 +1390,71 @@
    "access"
   ],
   "summary": "A corporate partner, credited with supporting the Long Night of museums event (2024).",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://jahresbericht.kunsthaus.ch/2024/media/pages/downloads/c50897c7a1-1745799883/01_kuns_jahresbericht_2024.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Das Kunsthaus verzeichnete an jenem Abend rund 7 800 sowie vom Kunsthaus selber durchgeführte Events ange- Besucherinnen und Besucher. boten: Artwalks mit Marc Bredemeier, Führungen durch Unterstützt durch JTI."
  },
  "8945d0a40d": {
   "kinds": [
    "money"
   ],
-  "summary": "One of six multi-year partners (MAMCO website)."
+  "summary": "One of six multi-year partners (MAMCO website).",
+  "check": "source",
+  "checked_source": "https://www.mamco.ch/fr/1517/Musee",
+  "checked_on": "2026-11-17"
  },
  "374a342711": {
   "kinds": [
    "name"
   ],
-  "summary": "Named among the exceptional supporters, with no year or amount."
+  "summary": "Named among the exceptional supporters, with no year or amount.",
+  "check": "source",
+  "checked_source": "https://www.mudam.com/get-involved/patrons",
+  "checked_on": "2026-11-17",
+  "checked_quote": "and especially for their exceptional support: The Leir Foundation, Inc. M. and Mme Norbert Becker-Dennewald Cargolux Luxembourg High Security Hub A&O Shearman Clearstream JTI"
  },
  "20715b9b6f": {
   "kinds": [
    "money"
   ],
   "summary": "Japan Tobacco among the official partners (April 2026).",
-  "date": "2026-04"
+  "date": "2026-04",
+  "check": "source-partly",
+  "checked_source": "https://www.ohara.or.jp/official/",
+  "checked_missing": "the April 2026 date",
+  "checked_on": "2026-11-17",
+  "checked_quote": "旭化成株式会社 日本たばこ産業 株式会社 ナガオ株式会社"
  },
  "c04a1388e3": {
   "kinds": [
    "money"
   ],
   "summary": "Japan Tobacco among the corporate sponsors (February 2025).",
-  "date": "2025-02"
+  "date": "2025-02",
+  "check": "source",
+  "checked_source": "https://setouchi-artfest.jp/en/support/grant-sponsor-donation/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "日本たばこ産業株式会社 | /img/archive-logo/logo_jt.png"
  },
  "bdaa7ddf99": {
   "kinds": [
    "seat",
    "access"
   ],
-  "summary": "JTI Russia is a corporate member of the board of trustees, which Vladimir Potanin chairs."
+  "summary": "JTI Russia is a corporate member of the board of trustees, which Vladimir Potanin chairs.",
+  "check": "record"
  },
  "d48a17d399": {
   "kinds": [
    "building"
   ],
   "summary": "Altria gave $1 million to the capital campaign (July 2014).",
-  "date": "2014-07-30"
+  "date": "2014-07-30",
+  "check": "source",
+  "checked_source": "https://artdaily.com/news/71879/Altria-Group-donates--1-million-to-the-Smithsonian-s-National-Museum-of-African-American-History-and-Culture",
+  "checked_on": "2026-11-17"
  },
  "ea455b8e22": {
   "kinds": [
@@ -1056,7 +1463,11 @@
    "name"
   ],
   "summary": "Altria: exhibition sponsor for more than 30 years, presenting sponsor of “Frank Stewart’s Nexus” and a benefactor of the 2023 gala.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.phillipscollection.org/corporate-partnerships",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Altria Group has sponsored exhibitions at The Phillips Collection for more than 30 years."
  },
  "22e23ef4bf": {
   "drop": true,
@@ -1067,86 +1478,137 @@
    "money"
   ],
   "summary": "Rio Tinto Alcan, a donor of $50,000 or more in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source-partly",
+  "checked_source": "https://www.mbam.qc.ca/workspace/uploads/files/mbam-rapportannuel2025_complet_final_en_web.pdf",
+  "checked_missing": "the $50,000 or more tier",
+  "checked_on": "2026-11-17",
+  "checked_quote": "RBC Royal Bank of Canada ADM Aéroports Vouloumanos, Vickie placement du Québec* Rio Tinto Alcan de Montréal"
  },
  "9c1ea565d9": {
   "kinds": [
    "money"
   ],
-  "summary": "A Platine donor, $25,000 to $49,999."
+  "summary": "A Platine donor, $25,000 to $49,999.",
+  "check": "source",
+  "checked_source": "https://www.mnbaq.org/en/support-us/our-donors",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Osisko Normand Pépin et Jocelyne Guay Fernande Plourde et Jacques Topping Yann Pocreau Rio Tinto Lyse Rochon"
  },
  "2c1715173e": {
   "kinds": [
    "money"
   ],
   "summary": "Rio Tinto Limited is a member of the NGV Foundation (2024 to 2025).",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.ngv.vic.gov.au/wp-content/uploads/2025/10/NGV_ANNUAL_REPORT_24_25.pdf",
+  "checked_on": "2026-11-17"
  },
  "b5e76f66a2": {
   "kinds": [
    "programme"
   ],
   "summary": "Sponsors the 2026 travelling show in Belém (stated by the space).",
-  "date": "2026"
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://bienal.org.br/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Em 2024, a 35ª Bienal já ocupou o Palácio Antônio Lemos, sede do MABE, para onde volta este ano. A exposição é assinada pela Vale."
  },
  "b2a5190a01": {
   "kinds": [
    "money"
   ],
   "summary": "Instituto Cultural Vale, a master sponsor of the 36th Bienal (2025).",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://bienal.org.br/",
+  "checked_on": "2026-11-17"
  },
  "0441303b42": {
   "kinds": [
    "tax"
   ],
-  "summary": "Half of the R$400M plan, which Inhotim calls the largest in Rouanet history, is incentivised money routed through the tax law."
+  "summary": "Half of the R$400M plan, which Inhotim calls the largest in Rouanet history, is incentivised money routed through the tax law.",
+  "check": "source-partly",
+  "checked_source": "https://www.inhotim.org.br/wp-content/uploads/2025/03/Inhotim_Demonstracao-Financeira.pdf",
+  "checked_missing": "the R$400M plan, the half routed via the tax law, and the 'largest in Rouanet history' claim",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A manutenção foi viabilizada por meio da Lei Federal de Incentivo à Cultura e contou com o patrocínio das seguintes Companhias no ano de 2024: Vale, Shell, B3, Itaú, Santander"
  },
  "74f32bf59b": {
   "kinds": [
    "money"
   ],
-  "summary": "Pays the operating budget, near the site of its 2019 dam collapse, which killed 270."
+  "summary": "Pays the operating budget, near the site of its 2019 dam collapse, which killed 270.",
+  "check": "source",
+  "checked_source": "https://peoplespalaceprojects.org.uk/en/projects/vale-is-it-worth-it-five-artists-in-the-front-line-against-brazils-worst-environmental-crime/",
+  "checked_on": "2026-11-17"
  },
  "e27625dbee": {
   "kinds": [
    "name"
   ],
-  "summary": "Instituto Cultural Vale is named as the museum’s maintainer (mantenedor)."
+  "summary": "Instituto Cultural Vale is named as the museum’s maintainer (mantenedor).",
+  "check": "source",
+  "checked_source": "https://museudeartedorio.org.br/o-mar/o-museu/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "O MAR conta cm Instituto Cultural Vale como mantenedor, com a Equinor e LATAM como patrocinadores master"
  },
  "f27aed5168": {
   "kinds": [
    "money"
   ],
-  "summary": "Instituto Cultural Vale is one of three maintainers."
+  "summary": "Instituto Cultural Vale is one of three maintainers.",
+  "check": "source",
+  "checked_source": "https://museudoamanha.org.br/pt-br/apoiadores",
+  "checked_on": "2026-11-17"
  },
  "b282547d99": {
   "kinds": [
    "programme"
   ],
   "summary": "Supported the Oceano exhibition, with Shell and Motiva (December 2025).",
-  "date": "2025-12"
+  "date": "2025-12",
+  "check": "source",
+  "checked_source": "https://folhadoleste.com.br/museu-do-amanha-10-anos-nova-exposicao/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "A mesma data marca a abertura da exposição autoral “Oceano – o Mundo É um Arquipélago” , com apoio da Shell, Vale e Motiva."
  },
  "fc8efa65f7": {
   "kinds": [
    "building"
   ],
   "summary": "R$50.5 million toward the rebuilding, the largest private sum, by 31 December 2024.",
-  "date": "2024-12-31"
+  "date": "2024-12-31",
+  "check": "source-partly",
+  "checked_source": "https://museunacionalvive.org.br/patrocinios/",
+  "checked_missing": "the R$50.5 million amount, the 31 December 2024 date and that it is the largest private sum",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Conta com o apoio financeiro do Banco Nacional de Desenvolvimento Econômico e Social ( BNDES ); patrocínio platina da Vale e do Bradesco"
  },
  "fefbf35537": {
   "kinds": [
    "seat"
   ],
   "summary": "Instituto Cultural Vale is one of the three parties that run the rebuilding, and sits on its executive committee (April 2025).",
-  "date": "2025-04"
+  "date": "2025-04",
+  "check": "source-partly",
+  "checked_source": "https://museunacionalvive.org.br/governanca/",
+  "checked_missing": "the April 2025 date",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Coordenadora do Setor de Cultura INSTITUTO CULTURAL VALE Mariana Luz Suplente: Luciana Gondim Flavia Constant Suplente: Marize Mattos REPRESENTANTE DA SOCIEDADE CIVIL"
  },
  "7d78457bc2": {
   "kinds": [
    "money"
   ],
   "summary": "Leonard Lauder’s 2008 gift of $131 million, the largest in the museum’s history.",
-  "date": "2008"
+  "date": "2008",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/Whitney_Museum_of_American_Art",
+  "checked_on": "2026-11-17"
  },
  "98f489c14f": {
   "drop": true,
@@ -1156,20 +1618,29 @@
   "kinds": [
    "money"
   ],
-  "summary": "Listed among the supporters."
+  "summary": "Listed among the supporters.",
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17"
  },
  "1e818c1295": {
   "kinds": [
    "money"
   ],
-  "summary": "Named a partner, beside the annual partners Bank Austria and Verbund."
+  "summary": "Named a partner, beside the annual partners Bank Austria and Verbund.",
+  "check": "record"
  },
  "24e2ed8f4f": {
   "kinds": [
    "programme"
   ],
   "summary": "Automotive partner of the annual exhibition since its second edition in 2018.",
-  "date": "2018"
+  "date": "2018",
+  "check": "source-partly",
+  "checked_source": "https://flair-magazine.com/2026/10/06/forever-is-now-06-art-degypte-pyramids/",
+  "checked_missing": "since its second edition in 2018",
+  "checked_on": "2026-11-17",
+  "checked_quote": "our main automotive partner BMW"
  },
  "2117156bfb": {
   "drop": true,
@@ -1180,47 +1651,63 @@
    "money"
   ],
   "summary": "A corporate partner in 2024 to 2025, without amounts.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://cdn.aucklandunlimited.com/artgallery/assets/media/aag-annualreview-2024-25.pdf",
+  "checked_on": "2026-11-17"
  },
  "ca9c131fc7": {
   "kinds": [
    "programme"
   ],
   "summary": "Exclusive partner of the Preis der Nationalgalerie since 2006.",
-  "date": "2006"
+  "date": "2006",
+  "check": "record"
  },
  "459efeaf59": {
   "kinds": [
    "money"
   ],
   "summary": "A main partner in 2022, when own income covered about a fifth of costs.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.kunsthallepraha.org/files/vyrocni-zprava-za-rok-2022.pdf",
+  "checked_on": "2026-11-17"
  },
  "32a202badf": {
   "kinds": [
    "programme"
   ],
   "summary": "Corporate partner of the Berlin Biennale, which used KW as a venue in 2018.",
-  "date": "2018"
+  "date": "2018",
+  "check": "record"
  },
  "ee1496f728": {
   "kinds": [
    "programme"
   ],
-  "summary": "Sponsors selected commissions."
+  "summary": "Sponsors selected commissions.",
+  "check": "record"
  },
  "d0364a326d": {
   "kinds": [
    "money"
   ],
   "summary": "A main partner of a festival whose money is mostly private.",
-  "date": "2026"
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://www.rencontres-arles.com/fr/a-propos-du-festival",
+  "checked_on": "2026-11-17"
  },
  "bb0d43cf8b": {
   "kinds": [
    "access"
   ],
-  "summary": "BMW Group Japan is among 46 gold corporate members."
+  "summary": "BMW Group Japan is among 46 gold corporate members.",
+  "check": "source",
+  "checked_source": "https://www.mori.art.museum/en/mamc/corporate/list/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Gold AMANO CORPORATION Hermès Japon Co., Ltd. IRIE MIYAKE ARCHITECTS & ENGINEERS KENCHIKU SETSUBI SEKKEI KENKYUSHO YAMATO TRANSPORT CO., LTD. IMPRESS CO.,LTD BMW GROUP JAPAN"
  },
  "91535d34f6": {
   "drop": true,
@@ -1230,27 +1717,40 @@
   "kinds": [
    "money"
   ],
-  "summary": "Named among its cultural partnerships, without detail."
+  "summary": "Named among its cultural partnerships, without detail.",
+  "check": "record"
  },
  "4b37049572": {
   "kinds": [
    "name",
    "programme"
   ],
-  "summary": "Its name on a programme, BMW OPERA NEXT."
+  "summary": "Its name on a programme, BMW OPERA NEXT.",
+  "check": "source",
+  "checked_source": "https://www.staatsoper-berlin.de/de/partner-freunde/partner/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Partner werden BMW OPERA NEXT"
  },
  "02f71a015e": {
   "kinds": [
    "access"
   ],
   "summary": "BMW Italia sponsored the opening night of 7 December 2024.",
-  "date": "2024-11"
+  "date": "2024-11",
+  "check": "source-partly",
+  "checked_source": "https://www.teatroallascala.org/en/support-us/our-partners.html",
+  "checked_missing": "the 2024 date and the BMW Italia entity; the current partners page puts a BMW logo among the opening-night partners only by the order of its logos",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Opening Night 7 December Main Partner Official Partners Partners and Official Suppliers of the Opening Night"
  },
  "658ebea157": {
   "kinds": [
    "money"
   ],
-  "summary": "Sandal MINI and BMW, a dealership, is a corporate partner by donation, sponsorship or in kind."
+  "summary": "Sandal MINI and BMW, a dealership, is a corporate partner by donation, sponsorship or in kind.",
+  "check": "source",
+  "checked_source": "https://ysp.org.uk/support-us/our-supporters",
+  "checked_on": "2026-11-17"
  },
  "3f3554b7a6": {
   "kinds": [
@@ -1258,19 +1758,30 @@
    "programme"
   ],
   "summary": "Three-year naming rights, 2024 to 2026: the BMW Centre for Art Education, and curatorial and education programmes.",
-  "date": "2024-09"
+  "date": "2024-09",
+  "check": "source",
+  "checked_source": "https://www.press.bmwgroup.com/south-africa/article/detail/T0445019EN/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "naming rights partnership with BMW Group South Africa and launches the renaming of its Centre for Art Education to BMW Centre for Art Education +++ The three-year partnership spans 2024, 2025 and 2026 and supports Zeitz MOCAA’s curatorial and education"
  },
  "85be8ccea2": {
   "kinds": [
    "money"
   ],
-  "summary": "Named a sponsor beside Gucci."
+  "summary": "Named a sponsor beside Gucci.",
+  "check": "source",
+  "checked_source": "https://zeitzmocaa.museum/about-us/",
+  "checked_on": "2026-11-17"
  },
  "930484719d": {
   "kinds": [
    "programme"
   ],
-  "summary": "Patron of the digitisation of the collection."
+  "summary": "Patron of the digitisation of the collection.",
+  "check": "source",
+  "checked_source": "https://www.fondationlecorbusier.fr/en/support-the-fondation/they-support-us/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "As a patron, Chanel supports the development and digitisation of the Foundation’s collection, in order to encourage its transmission and study by future generations."
  },
  "157c7fba2d": {
   "kinds": [
@@ -1278,7 +1789,10 @@
    "name"
   ],
   "summary": "€25 million toward the €466 million renovation; the ornamental entrance is renamed after the house.",
-  "date": "2018-02"
+  "date": "2018-02",
+  "check": "source",
+  "checked_source": "http://www.theartnewspaper.com/2018/02/13/plans-for-grand-palaiss-euro466m-facelift-revealed-six-new-galleries-and-a-chanel-sponsored-entrance",
+  "checked_on": "2026-11-17"
  },
  "b317e12c0a": {
   "kinds": [
@@ -1286,7 +1800,11 @@
    "access"
   ],
   "summary": "€30 million for the 2024 to 2028 programme; its fashion shows have been held there since 2005.",
-  "date": "2024-09"
+  "date": "2024-09",
+  "check": "source",
+  "checked_source": "https://numeromagazine.ch/chanels-ongoing-patronage-of-the-grand-palais/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "CHANEL is reinforcing its commitment with a new patronage of thirty million euros to support the 2024-2028 artistic and cultural program of the GrandPalaisRmn."
  },
  "a5cada99ff": {
   "kinds": [
@@ -1294,20 +1812,31 @@
    "programme"
   ],
   "summary": "The Chanel Culture Fund supports the Idea Museum programme.",
-  "date": "2026"
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://www.leeumhoam.org/leeum",
+  "checked_on": "2026-11-17",
+  "checked_quote": "'아이디어 뮤지엄'은 샤넬 컬처 펀드의 후원으로 진행됩니다."
  },
  "4576fddf87": {
   "kinds": [
    "access"
   ],
   "summary": "A governor partner of the 2024 gala, which raised more than a million dollars.",
-  "date": "2024-09"
+  "date": "2024-09",
+  "check": "source",
+  "checked_source": "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Soulignons les contributions de nos partenaires gouverneurs : Air Canada, AtkinsRéalis, Banque Nationale, Banque Scotia, Chanel, Desjardins"
  },
  "183dd4e382": {
   "kinds": [
    "money"
   ],
-  "summary": "Named a patron, with no amount."
+  "summary": "Named a patron, with no amount.",
+  "check": "source",
+  "checked_source": "https://www.mucem.org/mecenes/",
+  "checked_on": "2026-11-17"
  },
  "cb703de54b": {
   "kinds": [
@@ -1315,55 +1844,71 @@
    "programme"
   ],
   "summary": "Le19M, its craftsmanship hub, renovated one of the two buildings and paid for research and the garden.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.seneweb.com/news/Entretien/ucad-le-musee-theodore-monod-de-l-rsquo-_n_405570.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "le 19M a, par exemple, rénové l’un des deux bâtiments du musée. ... Une autre partie concerne le financement de la recherche et la rénovation du jardin"
  },
  "52c82794b5": {
   "kinds": [
    "money"
   ],
   "summary": "Gave $100,000 or more in the year to June 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+  "checked_on": "2026-11-17"
  },
  "b663d36924": {
   "kinds": [
    "money"
   ],
   "summary": "A named sponsor; patronage rose from €12.1M in 2015 to €23.6M in 2023.",
-  "date": "2023"
+  "date": "2023",
+  "check": "record"
  },
  "0997fb36cd": {
   "kinds": [
    "tax"
   ],
   "summary": "€90,258 through the Art Bonus tax credit, held at the end of 2024.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "5f4ec14718": {
   "kinds": [
    "programme"
   ],
   "summary": "Patron of the Worth exhibition.",
-  "date": "2025"
+  "date": "2025",
+  "check": "record"
  },
  "b1353d6d4a": {
   "kinds": [
    "money"
   ],
-  "summary": "A master sponsor."
+  "summary": "A master sponsor.",
+  "check": "record"
  },
  "a2fa4e3f41": {
   "kinds": [
    "money"
   ],
   "summary": "Listed in the 2025 sponsor directory.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.tfam.museum/Common/editor.aspx?id=84&ddlLang=zh-tw",
+  "checked_on": "2026-11-17",
+  "checked_quote": "2025 單位組織 贊助合作事項 備註 01 財團法人中國信託文教基金會 「2025台北雙年展」 依合約保密條款規定，不公告贊助金額 贊助 02 香奈兒有限公司 「館務發展計畫」"
  },
  "63f937607c": {
   "kinds": [
    "money"
   ],
   "summary": "A group corporate partner in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "4633541e6c": {
   "kinds": [
@@ -1371,7 +1916,11 @@
    "programme"
   ],
   "summary": "Its name on the Hyundai Translocal Series, first shown at the 2025 biennale.",
-  "date": "2025-02"
+  "date": "2025-02",
+  "check": "source",
+  "checked_source": "https://www.prnewswire.com/news-releases/cheongju-craft-biennale-2025-the-designer-of-a-new-world-built-by-craft-302603596.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "\"Hyundai Translocal Series: Entangled and Woven,\" will embark on a touring exhibition in India and the UK. As part of Hyundai Motor Company's new art partnership, this exhibition first premiered at the Cheongju Craft Bi"
  },
  "f8a9cbbd81": {
   "drop": true,
@@ -1382,7 +1931,11 @@
    "name",
    "programme"
   ],
-  "summary": "The VH Award, which Hyundai Motor hosts, is held here."
+  "summary": "The VH Award, which Hyundai Motor hosts, is held here.",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/House_of_Electronic_Arts",
+  "checked_on": "2026-11-17",
+  "checked_quote": "It also serves as the venue and exhibition space for works awarded the VH Award hosted by Hyundai Motor Company ."
  },
  "3e7e4c2e03": {
   "drop": true,
@@ -1393,7 +1946,8 @@
    "programme"
   ],
   "summary": "Its sponsorship set the 2025 programme at four exhibitions.",
-  "date": "2025-06"
+  "date": "2025-06",
+  "check": "record"
  },
  "7f331f4fa8": {
   "kinds": [
@@ -1401,7 +1955,12 @@
    "programme"
   ],
   "summary": "Runs the Hyundai Translocal Series, an exchange with the Pinacoteca de São Paulo opening in November 2026.",
-  "date": "2026-06"
+  "date": "2026-06",
+  "check": "source-partly",
+  "checked_source": "https://njpart.ggcf.kr/",
+  "checked_missing": "the exchange with the Pinacoteca de São Paulo",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Exhibition Hyundai Translocal Series: Via Satellite - Moon, Echo, Mosquitoes, and Memes Nov 5, 2026— Mar 28, 2027"
  },
  "eb3667357c": {
   "kinds": [
@@ -1409,7 +1968,8 @@
    "programme"
   ],
   "summary": "12 billion won over ten years for one solo show a year, the Hyundai Motor Series, the largest sponsorship in the museum’s history.",
-  "date": "2014"
+  "date": "2014",
+  "check": "record"
  },
  "ba7da134b5": {
   "kinds": [
@@ -1417,7 +1977,8 @@
   ],
   "summary": "The Hyundai Motor Series ended in February 2024.",
   "date": "2024-02",
-  "ended": true
+  "ended": true,
+  "check": "record"
  },
  "47a4974239": {
   "drop": true,
@@ -1428,20 +1989,26 @@
    "name",
    "programme"
   ],
-  "summary": "Extended its support, including the Turbine Hall commission, to 2036."
+  "summary": "Extended its support, including the Turbine Hall commission, to 2036.",
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Hyundai Motor, with whom Tate enjoys one of its most enduring partnerships, have extended their support until 2036, giving us the stability and freedom to look ahead and programme ambitious commissions."
  },
  "4504837043": {
   "kinds": [
    "money"
   ],
   "summary": "A group corporate partner in 2024 to 2025, its support extended to 2036.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "eeffe589e6": {
   "kinds": [
    "money"
   ],
-  "summary": "A current corporate supporter, without years or amounts."
+  "summary": "A current corporate supporter, without years or amounts.",
+  "check": "record"
  },
  "c5403751b9": {
   "kinds": [
@@ -1449,7 +2016,11 @@
    "programme"
   ],
   "summary": "A ten-year partnership: presenting partner of the Biennial and the Hyundai Terrace Commission.",
-  "date": "2024-02"
+  "date": "2024-02",
+  "check": "source",
+  "checked_source": "https://www.hyundai.com/worldwide/en/newsroom/detail/hyundai-motor-and-whitney-museum-announce-10-year-partnership-to-support-a-new-outdoor-exhibition-project-and-the-whitney-biennial-0000000409",
+  "checked_on": "2026-11-17",
+  "checked_quote": "In addition to supporting the Hyundai Terrace Commission, the company will also be the presenting partner for the Whitney Biennial"
  },
  "b582cf3c87": {
   "kinds": [
@@ -1457,87 +2028,122 @@
    "programme"
   ],
   "summary": "Presenting sponsor of exhibitions and the Hyundai Art+Tech Program from 2020.",
-  "date": "2020-11"
+  "date": "2020-11",
+  "check": "record"
  },
  "_about_batch2": "Batch 2 (17 Nov 2026): Bloomberg (Philanthropies, L.P. and Connects) and the banks: Bank of America, JPMorganChase, UBS, RBC, BMO. Dropped as not ties: sentences citing Bloomberg News or RBC Style (a Russian outlet) as a source, loans, a bank acting as an estate trustee, fines and lawsuits given as background, and campaigns aimed at other spaces.",
  "aaa4a6244f": {
   "kinds": [
    "money"
   ],
-  "summary": "The one corporate sponsor, with no amount or year."
+  "summary": "The one corporate sponsor, with no amount or year.",
+  "check": "source",
+  "checked_source": "https://ackland.org/support/businesses-foundations",
+  "checked_on": "2026-11-17"
  },
  "a8bf9cf4bb": {
   "kinds": [
    "money"
   ],
   "summary": "A donor of $1,000 or more in 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://thealdrich.org/support/our-supporters",
+  "checked_on": "2026-11-17"
  },
  "c7278e888d": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate patron, as Hyperallergic reported in 2023.",
-  "date": "2023"
+  "date": "2023",
+  "check": "record"
  },
  "9ad7a6c764": {
   "kinds": [
    "building"
   ],
   "summary": "The museum sat rent-free in a Bank of America-owned building in Miami as of March 2014.",
-  "date": "2014-03"
+  "date": "2014-03",
+  "check": "source",
+  "checked_source": "https://www.miamitodaynews.com/2015/07/14/cuban-museum-due-for-wrap-up/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The museum will be moving from its current location at 1500 S Dixie Hwy., where as of March of last year it was staying rent-free in a Bank of America-owned building."
  },
  "fe12409627": {
   "kinds": [
    "money"
   ],
   "summary": "On the 2022 contributors list, without amounts.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.anchoragemuseum.org/visit/hours-tickets/",
+  "checked_on": "2026-11-17"
  },
  "bd4534a7ca": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate partner."
+  "summary": "A corporate partner.",
+  "check": "source",
+  "checked_source": "https://give.asianart.org/institutional-partnerships/",
+  "checked_on": "2026-11-17"
  },
  "526df839f7": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate supporter, without year or amount."
+  "summary": "A corporate supporter, without year or amount.",
+  "check": "source",
+  "checked_source": "https://bronxmuseum.org/make-a-donation/support/our-supporters/",
+  "checked_on": "2026-11-17"
  },
  "4502f0d803": {
   "kinds": [
    "money"
   ],
   "summary": "A donor of Rs 10 crore or more since 1995, as Bank of America and Bank of America Merrill Lynch.",
-  "date": "1995"
+  "date": "1995",
+  "check": "source",
+  "checked_source": "https://csmvs.in/patronage.html",
+  "checked_on": "2026-11-17"
  },
  "f6be589724": {
   "kinds": [
    "money"
   ],
-  "summary": "Named among the museum’s donors, without amounts."
+  "summary": "Named among the museum’s donors, without amounts.",
+  "check": "source",
+  "checked_source": "https://galleriaborghese.cultura.gov.it/en/supporting/",
+  "checked_on": "2026-11-17"
  },
  "30342a6ef3": {
   "kinds": [
    "name",
    "programme"
   ],
-  "summary": "Free entry for Bank of America cardholders on the first full weekend of each month."
+  "summary": "Free entry for Bank of America cardholders on the first full weekend of each month.",
+  "check": "source",
+  "checked_source": "https://heard.org/visit/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The first full weekend of each month, present your active Bank of America or Merrill Lynch debit or credit card OR a current/valid Bank of America Corporation I.D. and valid photo I.D. to receive one free general admission"
  },
  "009e04a29a": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate sponsor at $5,000 or more."
+  "summary": "A corporate sponsor at $5,000 or more.",
+  "check": "record"
  },
  "71f6f72516": {
   "kinds": [
    "money"
   ],
   "summary": "The Bank of America Charitable Foundation is among the 2025 to 2026 grant givers.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.themodern.org/foundation-support",
+  "checked_on": "2026-11-17"
  },
  "41ec0f0559": {
   "kinds": [
@@ -1545,136 +2151,203 @@
    "name"
   ],
   "summary": "Its Art Conservation Project pays for the conservation of Jean Tinguely’s iron sculptures in Le Paradis Fantastique, 2023 and 2025.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.modernamuseet.se/app/uploads/2026/06/Moderna-Museet-Arsredovisning-2025.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Under 2023 inleddes konserveringen av Jean Tinguelys Le Paradis Fantastique, finansierat av Bank of America Art Conservation Project"
  },
  "e7fac756dd": {
   "kinds": [
    "programme"
   ],
-  "summary": "Thanked for supporting the renewal of the museum website."
+  "summary": "Thanked for supporting the renewal of the museum website.",
+  "check": "source",
+  "checked_source": "https://www.museofridakahlo.org.mx/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Agradecemos a Bank of America por el apoyo recibido para la renovación de este sitio web."
  },
  "403115b4b8": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate donor at $15,000 to $24,999 in 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+  "checked_on": "2026-11-17"
  },
  "5ed32ca759": {
   "kinds": [
    "money"
   ],
-  "summary": "Named among the banks that fund the museum."
+  "summary": "Named among the banks that fund the museum.",
+  "check": "source",
+  "checked_source": "https://www.mcasd.org/support/corporate-partners",
+  "checked_on": "2026-11-17"
  },
  "350a459866": {
   "kinds": [
    "money"
   ],
-  "summary": "Gave $10,000 to $24,999."
+  "summary": "In the $25,000 to $49,999 band of donors, July 2020 to June 2021.",
+  "check": "source",
+  "date": "2021",
+  "checked_source": "https://nasher.duke.edu/nasher-annual-report-2022/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$25,000 – $49,999 Robert David Arthur, II Bank of America",
+  "corrected": "The record gave $10,000 to $24,999 with no year; the cited 2022 annual report lists $25,000 to $49,999 for 2020 to 2021."
  },
  "b17670d8cc": {
   "kinds": [
    "money"
   ],
   "summary": "A Gallery Partner, with Bloomberg Philanthropies and LG (October 2026).",
-  "date": "2026-10"
+  "date": "2026-10",
+  "check": "source",
+  "checked_source": "https://www.nationalgallery.org.uk/support-us/corporate-support",
+  "checked_on": "2026-11-17"
  },
  "de53e66366": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate member at $10,000."
+  "summary": "A corporate member at $10,000.",
+  "check": "source",
+  "checked_source": "https://www.neuegalerie.org/join-and-support/corporate-membership",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Corporate Benefactors Agua Mágica Mezcal Bank of America Bloomberg Philanthropies"
  },
  "a18ba86120": {
   "kinds": [
    "programme"
   ],
   "summary": "Supports the Friday Nights series, with the Women’s Board (July 2026).",
-  "date": "2026-07-14"
+  "date": "2026-07-14",
+  "check": "source",
+  "checked_source": "https://museumca.org/es/press/omca-announces-public-programs-and-events-for-august-2026/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "El ciclo «Viernes por la noche en el OMCA con Off the Grid» cuenta con el orgulloso apoyo de la Junta de Mujeres del Museo de Oakland y del Bank of America."
  },
  "7e548b43e7": {
   "kinds": [
    "money"
   ],
-  "summary": "Named among the museum’s funders."
+  "summary": "Named among the museum’s funders.",
+  "check": "source",
+  "checked_source": "https://www.psmuseum.org/join-give/corporate-sponsors",
+  "checked_on": "2026-11-17",
+  "checked_quote": "https://www.bankofamerica.com/ | /storage/app/media/Logos/bank-of-america-logo-png-1.png"
  },
  "ec0fb6434f": {
   "kinds": [
    "money"
   ],
   "summary": "In the top tier of the 2024 donor list, $80,000 to $100,000 or more.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://parrishart.org/donor-recognition/",
+  "checked_on": "2026-11-17"
  },
  "bbbf2b4ca7": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate partner."
+  "summary": "A corporate partner.",
+  "check": "source",
+  "checked_source": "https://phxart.org/es/participar/corporate/",
+  "checked_on": "2026-11-17"
  },
  "73377b6bde": {
   "kinds": [
    "programme"
   ],
-  "summary": "The Bank of America Foundation is among the museum’s project funders."
+  "summary": "The Bank of America Foundation is among the museum’s project funders.",
+  "check": "source",
+  "checked_source": "https://www.rijksmuseum.nl/en/support/funds-and-foundations/overview",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Bank of America The Bank of America Foundation is supporting Operation Night Watch from 2025 through 2030."
  },
  "e373cda6d9": {
   "kinds": [
    "money"
   ],
-  "summary": "A listed sponsor."
+  "summary": "A listed sponsor.",
+  "check": "source",
+  "checked_source": "https://www.rbo.org.uk/join-and-support/corporate-opportunities",
+  "checked_on": "2026-11-17"
  },
  "f0048e5c12": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate partner."
+  "summary": "A corporate partner.",
+  "check": "source",
+  "checked_source": "https://www.somersethouse.org.uk/support-us/current-supporters",
+  "checked_on": "2026-11-17"
  },
  "07e4e82c3e": {
   "kinds": [
    "money"
   ],
   "summary": "The Bank of America Foundation is thanked in the 2024 annual report.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://s3-eu-west-1.amazonaws.com/production-static-stedelijk/images/_museum/Jaarverslagen/2024/Summary%202024_DEF.pdf",
+  "checked_on": "2026-11-17"
  },
  "650834b80a": {
   "kinds": [
    "money"
   ],
   "summary": "A Tate group corporate partner in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "b15de7c43b": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate partner in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17"
  },
  "fb72c63738": {
   "kinds": [
    "money"
   ],
-  "summary": "The Bank of America Charitable Foundation gave $5,000 to $9,999."
+  "summary": "The Bank of America Charitable Foundation gave $5,000 to $9,999.",
+  "check": "source",
+  "checked_source": "https://thebass.org/join/donors/",
+  "checked_on": "2026-11-17"
  },
  "529922fbdc": {
   "kinds": [
    "programme"
   ],
   "summary": "A conservation grant for two Cézanne works.",
-  "date": "2026-10"
+  "date": "2026-10",
+  "check": "source",
+  "checked_source": "https://www.phillipscollection.org/corporate-partnerships",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Funding for the conservation of Cézanne’s Mont Sainte-Victoire and Self-Portrait is generously provided through a grant from the Bank of America Art Conservation Project."
  },
  "03ea7f4b27": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate member."
+  "summary": "A corporate member.",
+  "check": "record"
  },
  "ad1c9367d0": {
   "kinds": [
    "money"
   ],
   "summary": "Among the FY2024 funders.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "e443d80f8e": {
   "drop": true,
@@ -1688,7 +2361,10 @@
   "kinds": [
    "money"
   ],
-  "summary": "A named supporter."
+  "summary": "A named supporter.",
+  "check": "source",
+  "checked_source": "https://assets.publishing.service.gov.uk/media/6a57634e6d6d5c7e2845c9c0/British_Library_Annual_Report_and_Accounts_2025-26_WEB_NAO_14_July_v2.pdf",
+  "checked_on": "2026-11-17"
  },
  "4a9fd5ba6f": {
   "kinds": [
@@ -1696,57 +2372,85 @@
    "name"
   ],
   "summary": "$1 million toward the renovation and expansion (2015); the learning space is the JPMorgan Chase Center for Creativity.",
-  "date": "2015"
+  "date": "2015",
+  "check": "source-partly",
+  "checked_source": "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-receives-dollar12-investment-from-battelle-for-fund-for-learning",
+  "checked_missing": "the $1 million gift toward the renovation and expansion, and the year 2015",
+  "checked_on": "2026-11-17",
+  "checked_quote": "CMA’s robust Learning and Engagement program, which includes the JPMorgan Chase Center for Creativity"
  },
  "50c26c7cb1": {
   "kinds": [
    "money"
   ],
   "summary": "The JPMorgan Chase Foundation gave in 2025, without an amount.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.flwright.org/sites/default/files/2026-06/Annual_Report_2025_v2.pdf",
+  "checked_on": "2026-11-17"
  },
  "dcb0152640": {
   "kinds": [
    "money"
   ],
   "summary": "In the top Leader tier of Campus Fund supporters (June 2026).",
-  "date": "2026-06"
+  "date": "2026-06",
+  "check": "source",
+  "checked_source": "https://www.lincolncenter.org/campus-fund/our-supporters",
+  "checked_on": "2026-11-17"
  },
  "e830ec2cc5": {
   "kinds": [
    "money"
   ],
-  "summary": "In the $5,000 to $9,999 band, undated."
+  "summary": "In the $5,000 to $9,999 band, undated.",
+  "check": "source",
+  "checked_source": "https://longhouse.org/pages/supporters",
+  "checked_on": "2026-11-17",
+  "checked_quote": "$5,000 - $9,999 Erik Batt ... Jewish Communal Fund JP Morgan Chase Roswitha and Andreas Junius"
  },
  "46b5ad5d75": {
   "kinds": [
    "money"
   ],
-  "summary": "The top corporate donor."
+  "summary": "The top corporate donor.",
+  "check": "record"
  },
  "49d3453e3d": {
   "kinds": [
    "money"
   ],
-  "summary": "Named among the banks that fund the museum."
+  "summary": "Named among the banks that fund the museum.",
+  "check": "source",
+  "checked_source": "https://www.mcasd.org/support/corporate-partners",
+  "checked_on": "2026-11-17"
  },
  "7ea08a80f6": {
   "kinds": [
    "money"
   ],
-  "summary": "A Benefactor Member."
+  "summary": "A Benefactor Member.",
+  "check": "source",
+  "checked_source": "https://www.nationalgallery.org.uk/support-us/corporate-support",
+  "checked_on": "2026-11-17"
  },
  "218bdbb530": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate partner at the Partner level."
+  "summary": "A corporate partner at the Partner level.",
+  "check": "source",
+  "checked_source": "https://phxart.org/es/participar/corporate/",
+  "checked_on": "2026-11-17"
  },
  "5c67548c34": {
   "kinds": [
    "money"
   ],
-  "summary": "Grants after the collapse of Washington Mutual, whose failure left the museum with about $56 million of accumulated debt; JPMorgan Chase bought Washington Mutual’s banking business."
+  "summary": "Grants after the collapse of Washington Mutual, whose failure left the museum with about $56 million of accumulated debt; JPMorgan Chase bought Washington Mutual’s banking business.",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/Seattle_Art_Museum",
+  "checked_on": "2026-11-17"
  },
  "7d001e7713": {
   "drop": true,
@@ -1765,78 +2469,119 @@
    "programme",
    "name"
   ],
-  "summary": "Major partner of the contemporary galleries."
+  "summary": "Major partner of the contemporary galleries.",
+  "check": "record"
  },
  "0f4ad905b7": {
   "kinds": [
    "programme"
   ],
   "summary": "Partnered on the 2022 exhibition “POWER NIGHTS: Being Mothers”; no amount is given.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.ubs.com/global/en/our-firm/art/2022/powerhouse.html",
+  "checked_on": "2026-11-17",
+  "checked_quote": "UBS recently partnered with the organisation in 2022 for POWER NIGHTS: Being Mothers, an interdisciplinary exhibition"
  },
  "5c397407a5": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Sponsors the UBS Artist Talks; Wikipedia lists it as a major partner."
+  "summary": "Sponsors the UBS Artist Talks; Wikipedia lists it as a major partner.",
+  "check": "source-partly",
+  "checked_source": "https://en.wikipedia.org/wiki/Fondation_Beyeler",
+  "checked_missing": "the UBS Artist Talks; the sponsoring page could not be read",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Major partners of the Foundation are Bayer AG, Novartis and Swiss bank UBS ."
  },
  "8e430d7cc4": {
   "kinds": [
    "money"
   ],
   "summary": "Listed among the supporters in the 2024 annual report.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://live.kunsthallesanktgallen.ch/asset/1029/17942/Jahresbericht_KunstHalleSanktGallen_2024.pdf",
+  "checked_on": "2026-11-17"
  },
  "fae6a113cf": {
   "kinds": [
    "money"
   ],
   "summary": "A main partner in 2022, with BMW and Dentons.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.kunsthallepraha.org/files/vyrocni-zprava-za-rok-2022.pdf",
+  "checked_on": "2026-11-17"
  },
  "2e9111df98": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Named “Partner Kunsthaus Zürich” on the museum’s site."
+  "summary": "Named “Partner Kunsthaus Zürich” on the museum’s site.",
+  "check": "source",
+  "checked_source": "https://jahresbericht.kunsthaus.ch/2024/media/pages/downloads/c50897c7a1-1745799883/01_kuns_jahresbericht_2024.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Unterstützt durch die UBS – Partnerin Kunsthaus Zürich."
  },
  "70144cb597": {
   "kinds": [
    "building"
   ],
-  "summary": "Among the private donors to the extension, which the city and canton funded by half."
+  "summary": "Among the private donors to the extension, which the city and canton funded by half.",
+  "check": "source",
+  "checked_source": "https://www.kunsthaus.ch/en/museum/ueber-uns/erweiterung/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "half of the construction costs have been met from private sources. The City and Canton of Zurich were responsible for the remaining half."
  },
  "686dbfc910": {
   "kinds": [
    "money"
   ],
-  "summary": "The museum’s partner, under the heading “Partner” on the donors page."
+  "summary": "The museum’s partner, under the heading “Partner” on the donors page.",
+  "check": "source",
+  "checked_source": "https://kunstmuseumbasel.ch/en/museum/lendersdonorssponsors",
+  "checked_on": "2026-11-17"
  },
  "c716b89e9f": {
   "kinds": [
    "money"
   ],
-  "summary": "The main sponsor (Hauptsponsor)."
+  "summary": "The main sponsor (Hauptsponsor).",
+  "check": "source-partly",
+  "checked_source": "https://www.kunstmuseumbern.ch/de/mitwirken/partner",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Subventionsgeber Hauptsponsor Ausstellungssponsoren Medienpartner",
+  "checked_missing": "its sponsor category, read only from the order of the logos"
  },
  "6b2235ac45": {
   "kinds": [
    "programme"
   ],
-  "summary": "A Programme Sponsor."
+  "summary": "A Programme Sponsor.",
+  "check": "source-partly",
+  "checked_source": "https://www.mplus.org.hk/en/corporate-support/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Travel Partner M+ Sponsors Programme Sponsors Corporate Patrons",
+  "checked_missing": "its sponsor category, read only from the order of the logos"
  },
  "316e304ad5": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate sponsor at $25,000 or more."
+  "summary": "A corporate sponsor at $25,000 or more.",
+  "check": "record"
  },
  "da9f6752fc": {
   "kinds": [
    "money"
   ],
-  "summary": "UBS Financial Services is among the collaborators."
+  "summary": "UBS Financial Services is among the collaborators.",
+  "check": "source",
+  "checked_source": "https://museoarteponce.org/apoyanos/patrocinadores/",
+  "checked_on": "2026-11-17"
  },
  "99f91e8947": {
   "drop": true,
@@ -1928,7 +2673,11 @@
    "programme"
   ],
   "summary": "Presented the gala and supported the artist residency (2024 annual report).",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.artgalleryofhamilton.com/wp-content/uploads/2025/09/AGH_AnnualReport_2024_WEB.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Gala presented by RBC Royal Bank, supported by Platinum Sponsors Effort Trust, Fox Harb’r Resort and LiUNA"
  },
  "104fdd6f97": {
   "kinds": [
@@ -1936,40 +2685,58 @@
    "name"
   ],
   "summary": "Free Thursdays, with the incite Foundation (2024).",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.artgalleryofhamilton.com/wp-content/uploads/2025/09/AGH_AnnualReport_2024_WEB.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "AGH Free Thursdays supported by the incite Foundation for the Arts and RBC Royal Bank."
  },
  "98f27eec65": {
   "kinds": [
    "money"
   ],
   "summary": "Gave C$100,000 to C$250,000 in 2022 to 2023.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.banffcentre.ca/supporters-banff-centre",
+  "checked_on": "2026-11-17"
  },
  "07929e9faf": {
   "kinds": [
    "programme"
   ],
-  "summary": "The RBC Foundation is named sponsor of the art gallery."
+  "summary": "The RBC Foundation is named sponsor of the art gallery.",
+  "check": "source",
+  "checked_source": "https://confederationcentre.com/wp-content/uploads/2024/12/2024_AnnualReport_Final.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "ART GALLERY SPONSOR Fitzgerald & Snow Limited Home Hardware - Charlottetown RBC Foundation"
  },
  "b55e402d6f": {
   "kinds": [
    "money"
   ],
   "summary": "The RBC Foundation, a donor of $1 million or more to March 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "record"
  },
  "058bfd9255": {
   "kinds": [
    "money"
   ],
   "summary": "RBC Dominion Securities, a 2025 sponsor.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://kag.bc.ca/news/sponsorship",
+  "checked_on": "2026-11-17"
  },
  "93a5383da4": {
   "kinds": [
    "money"
   ],
-  "summary": "The RBC Foundation is on the Foundation’s donor list."
+  "summary": "The RBC Foundation is on the Foundation’s donor list.",
+  "check": "source",
+  "checked_source": "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf",
+  "checked_on": "2026-11-17"
  },
  "47711f45a2": {
   "kinds": [
@@ -1977,27 +2744,43 @@
    "name"
   ],
   "summary": "A supported artist residency and the “RBC Emerging Artists” presentation (2025).",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://mackenzie.art/site-content/uploads/2025/06/03_MAG-Annual-Report_2024-25_FINAL-1.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "THICK AS THIEVES PRESENTED BY RBC EMERGING ARTISTS"
  },
  "d924e75e3b": {
   "kinds": [
    "money"
   ],
   "summary": "The RBC Foundation gave $50,000 to $74,999 in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://mackenzie.art/site-content/uploads/2025/06/03_MAG-Annual-Report_2024-25_FINAL-1.pdf",
+  "checked_on": "2026-11-17"
  },
  "9050688413": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "RBC Fondation funded the Prix MNBAQ en art actuel."
+  "summary": "RBC Fondation funded the Prix MNBAQ en art actuel.",
+  "check": "source",
+  "checked_source": "http://www.mnbaq.org/a-propos/le-musee",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Le Prix en art actuel du MNBAQ est créé grâce à la Fondation RBC."
  },
  "5f4795e07f": {
   "kinds": [
    "money"
   ],
-  "summary": "RBC Fondation gave C$100,000 to C$249,999."
+  "summary": "RBC Fondation is in the Majeur band, C$500,000 to C$999,999, on the museum’s donors page.",
+  "check": "source",
+  "checked_source": "https://www.mnbaq.org/en/support-us/our-donors",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Majeur (500 000 $ à 999 999 $)",
+  "corrected": "The record gave C$100,000 to C$249,999 for one year; the donors page lists RBC Fondation in the Majeur band."
  },
  "35faed79b5": {
   "kinds": [
@@ -2006,27 +2789,37 @@
    "access"
   ],
   "summary": "The RBC Emerging Artists Acquisition Fund, a curatorial post and national outreach; RBC Wealth Management presented the foundation’s gala (2024 to 2025).",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "142b35475a": {
   "kinds": [
    "money"
   ],
-  "summary": "The RBC Foundation is a corporate supporter."
+  "summary": "The RBC Foundation is a corporate supporter.",
+  "check": "record"
  },
  "b0feb6199a": {
   "kinds": [
    "money"
   ],
   "summary": "RBC Wealth Management, a 2025 sponsor.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://remaimodern.org/wp-content/uploads/2026/08/2025-Annual-Report-Final-PRINT-Edit3-compressed-compressed.pdf",
+  "checked_on": "2026-11-17"
  },
  "4e195601c9": {
   "kinds": [
    "access"
   ],
   "summary": "A sponsor of the 2024 Mayor’s Gala.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source-partly",
+  "checked_source": "https://thepolygon.ca/wp-content/uploads/2025/06/Annual-Report-2024.pdf",
+  "checked_missing": "that RBC sponsored the 2024 Mayor’s Gala; the report names RBC Foundation as an annual donor and Royal Bank of Canada as an endowment donor, not among the gala sponsors",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Jennifer and John Webb RBC Foundation* Richard White Rogers Communications* 2024 Mayor’s Gala Donors $15,000+ Presenting Sponsors"
  },
  "dabc05a499": {
   "kinds": [
@@ -2034,20 +2827,29 @@
    "name"
   ],
   "summary": "The RBC Emerging Artist Membership from 2023 to 2024, and the RBC Artist Program, seven programmes in 2025 to 2026.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source-partly",
+  "checked_source": "https://strapi-uploads-the-power-plant-live.s3.ca-central-1.amazonaws.com/The_Power_Plant_25_26_Annual_Report_412704971d.pdf",
+  "checked_missing": "the RBC Emerging Artist Membership for 2023 to 2024",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Thanks to the generous Budgetting Workshop No.9 Gardens support of RBC, we were for Artists with Artist Residency Shantae Cunningham August 27–31, 2025 able to provide seven"
  },
  "24fd9c4095": {
   "kinds": [
    "money"
   ],
-  "summary": "RBC Wealth Management gave $25,000 to $49,000."
+  "summary": "RBC Wealth Management gave $25,000 to $49,000.",
+  "check": "source",
+  "checked_source": "https://www.walkerart.org/join-give/corporate-support/",
+  "checked_on": "2026-11-17"
  },
  "a236fc13c9": {
   "kinds": [
    "money"
   ],
   "summary": "On the 2024 donor list.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "ce6b40029f": {
   "drop": true,
@@ -2143,93 +2945,137 @@
    "building"
   ],
   "summary": "C$500,000 in September 2019 for the NEXT Gallery project, which named a BMO Gallery for Canadian and British Columbian Art.",
-  "date": "2019-09"
+  "date": "2019-09",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/Art_Gallery_of_Greater_Victoria",
+  "checked_on": "2026-11-17"
  },
  "612b754dfa": {
   "kinds": [
    "programme"
   ],
   "summary": "Supported the art+music+food festival (2024 annual report).",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.artgalleryofhamilton.com/wp-content/uploads/2025/09/AGH_AnnualReport_2024_WEB.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "AGH art+music+food Festival presented by BMO Financial Group, the Government of Canada,"
  },
  "31cbf83c73": {
   "kinds": [
    "name",
    "programme"
   ],
-  "summary": "Free entry from 5 to 9pm on Thursdays, as BMO Free Access Thursday Nights."
+  "summary": "Free entry from 5 to 9pm on Thursdays, as BMO Free Access Thursday Nights.",
+  "check": "source",
+  "checked_source": "https://agns.ca/plan-your-visit/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Thanks to the generous support of BMO Financial Group, we are pleased to present BMO Free Access Thursday Nights, where admission from 5-9pm every Thursday is free of charge."
  },
  "7b4ea8a91d": {
   "kinds": [
    "money"
   ],
-  "summary": "A named sponsor."
+  "summary": "A named sponsor.",
+  "check": "source",
+  "checked_source": "https://confederationcentre.com/wp-content/uploads/2024/12/2024_AnnualReport_Final.pdf",
+  "checked_on": "2026-11-17"
  },
  "cb0210b1fc": {
   "kinds": [
    "money"
   ],
   "summary": "A donor of $1 million or more to March 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "record"
  },
  "76b29d5f1f": {
   "kinds": [
    "money"
   ],
-  "summary": "On the Foundation’s donor list."
+  "summary": "On the Foundation’s donor list.",
+  "check": "source",
+  "checked_source": "https://macm.org/app/uploads/2025/10/Rapport_Annuel_2024-2025.pdf",
+  "checked_on": "2026-11-17"
  },
  "3d2b6cc4c9": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate sponsor in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.mbam.qc.ca/workspace/uploads/files/mbam-rapportannuel2025_complet_final_en_web.pdf",
+  "checked_on": "2026-11-17"
  },
  "28759b8bc2": {
   "kinds": [
    "money"
   ],
   "summary": "BMO Bank gave $25,000 to $49,999 in 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://mcachicago.org/about/annual-reports/2025-annual-report/",
+  "checked_on": "2026-11-17"
  },
  "417c203fb3": {
   "kinds": [
    "money"
   ],
-  "summary": "BMO Groupe financier, in the C$1 million to C$4,999,999 tier."
+  "summary": "BMO Groupe financier, in the C$1 million to C$4,999,999 tier.",
+  "check": "source",
+  "checked_source": "https://www.mnbaq.org/en/support-us/our-donors",
+  "checked_on": "2026-11-17"
  },
  "3fb3a2136f": {
   "kinds": [
    "programme"
   ],
   "summary": "BMO Capital Markets, an exhibition and chair sponsor in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source-partly",
+  "checked_source": "https://www.rom.on.ca/sites/default/files/2026-06/rom_annual_report_2024_2025.pdf",
+  "checked_missing": "that BMO was a chair sponsor; the report names it only as a lead exhibition partner",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Lead Exhibition Partners: BMO Capital Markets Corp.; Labourers’ International Union of North America, LiUNA"
  },
  "74197e455f": {
   "kinds": [
    "money"
   ],
   "summary": "The top corporate supporter in 2024, at $150,000 or more.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://thepolygon.ca/wp-content/uploads/2025/06/Annual-Report-2024.pdf",
+  "checked_on": "2026-11-17"
  },
  "172a8d558a": {
   "kinds": [
    "programme"
   ],
-  "summary": "Sponsors free admission all year."
+  "summary": "Sponsors free admission all year.",
+  "check": "source",
+  "checked_source": "https://www.thepowerplant.org/join-and-support",
+  "checked_on": "2026-11-17",
+  "checked_quote": "All Year, All Free Free admission to the gallery all year thanks to BMO Financial Group"
  },
  "4434b42dca": {
   "kinds": [
    "seat"
   ],
-  "summary": "Katrina Rempel of BMO Capital Markets sits on the board of 14 directors."
+  "summary": "Katrina Rempel of BMO Capital Markets sits on the board of 14 directors.",
+  "check": "source",
+  "checked_source": "https://www.thepowerplant.org/about/leadership",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Katrina Rempel Katrina Rempel is a Managing Director at BMO Capital Market."
  },
  "822b6497b5": {
   "kinds": [
    "money"
   ],
   "summary": "$100,000 in 2024 to 2025, the last instalment of a $1M ten-year pledge.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "0c3d486987": {
   "kinds": [
@@ -2237,51 +3083,79 @@
    "programme"
   ],
   "summary": "Sponsors Free First Friday Nights (annual report 2025 to 2026).",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.vanartgallery.bc.ca/wp-content/uploads/2026/10/vag-annual-report-2025-26.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "23,776 visits to Free First Friday Nights presented by BMO"
  },
  "76e9522d9a": {
   "kinds": [
    "money"
   ],
-  "summary": "Shared in a $20 million Carnegie Corporation grant made possible by Michael Bloomberg; the year is unconfirmed."
+  "summary": "Shared in a $20 million Carnegie Corporation grant made possible by Michael Bloomberg; the year is unconfirmed.",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/American_Folk_Art_Museum",
+  "checked_on": "2026-11-17"
  },
  "039e35aeac": {
   "kinds": [
    "money"
   ],
   "summary": "On the 2022 contributors list.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.anchoragemuseum.org/media/jylb1bg0/2022-donor-list-for-website-and-donor-wall.pdf",
+  "checked_on": "2026-11-17"
  },
  "b255cf5016": {
   "kinds": [
    "programme"
   ],
-  "summary": "A current project partner."
+  "summary": "A current project partner.",
+  "check": "source",
+  "checked_source": "https://ars.electronica.art/center/en/partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "https://www.bloomberg.org/ | https://ars.electronica.art/center/files/2026/09/01.-bloomberg-philanthropies.jpg"
  },
  "9d9f7a1f83": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate partner."
+  "summary": "A corporate partner.",
+  "check": "source",
+  "checked_source": "https://give.asianart.org/institutional-partnerships/",
+  "checked_on": "2026-11-17"
  },
  "a5583feaba": {
   "kinds": [
    "programme"
   ],
   "summary": "Chosen in January 2025 for the Digital Accelerator Programme, support for technology and management; no amount is stated.",
-  "date": "2025-01"
+  "date": "2025-01",
+  "check": "source-partly",
+  "checked_source": "https://www.thebluecoat.org.uk/",
+  "checked_missing": "the January 2025 date and the Digital Accelerator Programme (only a funder logo on the homepage)",
+  "checked_on": "2026-11-17",
+  "checked_quote": "/cms/images/_logo/Bloomberg_logo_violetRGB.jpg | Bloomberg Philanthropies"
  },
  "cd90d114e0": {
   "kinds": [
    "money"
   ],
-  "summary": "A named supporter."
+  "summary": "A named supporter.",
+  "check": "source",
+  "checked_source": "https://assets.publishing.service.gov.uk/media/6a57634e6d6d5c7e2845c9c0/British_Library_Annual_Report_and_Accounts_2025-26_WEB_NAO_14_July_v2.pdf",
+  "checked_on": "2026-11-17"
  },
  "90295474fd": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate and foundation supporter."
+  "summary": "A corporate and foundation supporter.",
+  "check": "source",
+  "checked_source": "https://bronxmuseum.org/make-a-donation/support/our-supporters/",
+  "checked_on": "2026-11-17"
  },
  "ac12d914af": {
   "kinds": [
@@ -2289,48 +3163,70 @@
    "programme"
   ],
   "summary": "Title sponsor of New Contemporaries since 2001, which Camden hosted in 2024.",
-  "date": "2024-01"
+  "date": "2024-01",
+  "check": "source",
+  "checked_source": "https://camdenartcentre.org/whats-on/new-contemporaries",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Bloomberg Philanthropies is the title sponsor of the annual exhibitions since 2001."
  },
  "fc629acf76": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Its free guide runs on Bloomberg Connects."
+  "summary": "Its free guide runs on Bloomberg Connects.",
+  "check": "record"
  },
  "4ac44101b6": {
   "kinds": [
    "programme"
   ],
   "summary": "£120,000 in 2023 to 2024 for a digital accelerator programme: hardware, software and digital practice.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://opencharities.uk/ew/1026175/files/2024-03-31-accounts.md",
+  "checked_on": "2026-11-17"
  },
  "9e09f3e30e": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Bloomberg Connects is listed as a current supporter."
+  "summary": "Bloomberg Connects is listed as a current supporter.",
+  "check": "source",
+  "checked_source": "https://clyffordstillmuseum.org/join-and-give/corporate-partnerships/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "https://www.bloombergconnects.org/ | Bloomberg Connects | https://clyffordstillmuseum.org/wp-content/uploads/2025/11/BloombergConnects_PrimaryLockup_Black.png"
  },
  "429abbdc54": {
   "kinds": [
    "money"
   ],
   "summary": "Gave $25,000 to $49,999, October 2023 to September 2024.",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://www.cooperhewitt.org/membership/annual-report-of-gifts/",
+  "checked_on": "2026-11-17"
  },
  "43572576ea": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Bloomberg Connects is a corporate partner."
+  "summary": "Bloomberg Connects is a corporate partner.",
+  "check": "source",
+  "checked_source": "https://designmuseum.org/support-us/corporate-support",
+  "checked_on": "2026-11-17",
+  "checked_quote": "We are excited to be partnered with Bloomberg Connects, a free mobile app and website that provides access to expert-curated content and guides produced by museums."
  },
  "f9372cbf57": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate supporter."
+  "summary": "A corporate supporter.",
+  "check": "source",
+  "checked_source": "https://opencharities.uk/ew/1171287/files/2025-03-31-accounts.html",
+  "checked_on": "2026-11-17"
  },
  "15f5c91619": {
   "kinds": [
@@ -2338,66 +3234,98 @@
    "name"
   ],
   "summary": "On the roster, with Bloomberg Connects (August 2024).",
-  "date": "2024-08"
+  "date": "2024-08",
+  "check": "record"
  },
  "d3e19ef8ff": {
   "kinds": [
    "money"
   ],
-  "summary": "Among the trusts that give."
+  "summary": "Among the trusts that give.",
+  "check": "source",
+  "checked_source": "https://www.ballet.org.uk/support-us/thank-you/",
+  "checked_on": "2026-11-17"
  },
  "e65882d162": {
   "kinds": [
    "money"
   ],
-  "summary": "In the funders and supporters block."
+  "summary": "In the funders and supporters block.",
+  "check": "source",
+  "checked_source": "https://www.fact.co.uk/about/supporters",
+  "checked_on": "2026-11-17"
  },
  "d43c5f0da4": {
   "kinds": [
    "programme"
   ],
   "summary": "Selected in January 2025 for the Digital Accelerator programme, for its digital tools, website, digital fundraising and online shop.",
-  "date": "2025-01-30"
+  "date": "2025-01-30",
+  "check": "source",
+  "checked_source": "https://firstsite.uk/we-have-been-selected-to-join-the-prestigious-bloomberg-philanthropies-digital-accelerator-programme/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "We have been selected to join the prestigious Bloomberg Philanthropies Digital Accelerator Programme! 30th January 2025 Firstsite is joining 200 non-profit cultural organisations from across the U.S. and U.K."
  },
  "588a1592fa": {
   "kinds": [
    "money"
   ],
-  "summary": "A $15,000 grant of unrestricted operating funds through the Arts Advancement Initiative."
+  "summary": "A $15,000 grant of unrestricted operating funds through the Arts Advancement Initiative.",
+  "check": "record"
  },
  "44ac827d10": {
   "kinds": [
    "programme"
   ],
-  "summary": "A programme supporter."
+  "summary": "A programme supporter.",
+  "check": "source",
+  "checked_source": "https://www.fruitmarket.co.uk/current-supporters/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Programme Supporters Art Fund Barry Fish Bloomberg Edinburgh World Heritage"
  },
  "c892c19059": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Its free digital guide in 40 languages runs on Bloomberg Connects; who pays is not said."
+  "summary": "Its free digital guide in 40 languages runs on Bloomberg Connects, made possible by Bloomberg Philanthropies’ support.",
+  "check": "source",
+  "checked_source": "https://proa.org/esp/information.php",
+  "checked_on": "2026-11-17",
+  "checked_quote": "La experiencia digital de Bloomberg Connects es posible gracias al apoyo de Bloomberg Philanthropies.",
+  "corrected": "The record said who pays is not said; the page says Bloomberg Philanthropies makes the guide possible."
  },
  "89de423c0b": {
   "kinds": [
    "programme"
   ],
   "summary": "Bloomberg L.P. sponsorship outside the tax incentives, and a master sponsor of the 36th Bienal (2025).",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://bienal.org.br/wp-content/uploads/2026/07/demonstracoes-financeiras-exercicio-2025.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "As receitas de patrocínios (não incentivados) são obtidas por meio de parcerias com a Bloomberg L.P, OSPC , Klabin, e Serviço Social do Comércio-SESC, por conta da parceria em conjunto de atividades da 36ª Bienal de São Paulo."
  },
  "7cf4699e78": {
   "kinds": [
    "money"
   ],
   "summary": "Named in Glasgow Life’s 2025 to 2026 supporters list, not for GoMA alone.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.glasgowlife.org.uk/about-us/annual-review",
+  "checked_on": "2026-11-17"
  },
  "2b3ac15ae4": {
   "kinds": [
    "programme"
   ],
   "summary": "Grants for digital innovation at the Southbank Centre (2023 to 2024 accounts).",
-  "date": "2023"
+  "date": "2023",
+  "check": "source",
+  "checked_source": "https://bynder.southbankcentre.co.uk/m/390ddcf55b6692b/original/SBC-Accounts-202324-signed-by-Crowe-12122024-1.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "a £0.6m reduction in our restricted donations due to the phasing of grants from Apple to support Reframe and Bloomberg to support digital innovation at Southbank Centre."
  },
  "8a9f2785be": {
   "kinds": [
@@ -2405,19 +3333,30 @@
    "name"
   ],
   "summary": "£50,000 in December 2022 for the Foundation’s content on the Bloomberg Connects app.",
-  "date": "2022-12"
+  "date": "2022-12",
+  "check": "source",
+  "checked_source": "https://images.henry-moore.org/uploads/2024/09/2024-HMF-signed-accounts.pdf",
+  "checked_on": "2026-11-17"
  },
  "9263972abd": {
   "kinds": [
    "programme"
   ],
-  "summary": "The museum website was built with support from the Digital Accelerator Programme."
+  "summary": "The museum website was built with support from the Digital Accelerator Programme.",
+  "check": "source",
+  "checked_source": "https://www.holburne.org/support-us/our-supporters/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "This website has been developed with support from Bloomberg Philanthopies through the Digital Accelerator Programme."
  },
  "b8b89347b1": {
   "kinds": [
    "building"
   ],
-  "summary": "Among the named funders of the Nature + Love capital project."
+  "summary": "Among the named funders of the Nature + Love capital project.",
+  "check": "source",
+  "checked_source": "https://www.horniman.ac.uk/wp-content/uploads/2026/01/HMG-Annual-Report-Consolidated-Fin-Stats-31-Mar-25_signed-for-web.pdf",
+  "checked_on": "2026-11-17",
+  "checked_quote": "We are grateful to the following funders who have given or pledged support for our Nature + Love project: ▪ Bloomberg Philanthropies ▪ National Lottery Heritage Fund"
  },
  "0b28619eed": {
   "kinds": [
@@ -2425,14 +3364,18 @@
    "programme"
   ],
   "summary": "Sponsored the New Contemporaries exhibition at the ICA in January 2025; the ICA says the money went to New Contemporaries, not to it.",
-  "date": "2025-01"
+  "date": "2025-01",
+  "check": "record"
  },
  "ff561a195e": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate supporter in 2025 to 2026, alongside BAE Systems.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://assets.publishing.service.gov.uk/media/6a7c7363bbafcd1db3b6e49c/Imperial_War_Museum_Annual_Report_and_Accounts_2025_to_2026.pdf",
+  "checked_on": "2026-11-17"
  },
  "bc30457c9c": {
   "kinds": [
@@ -2440,28 +3383,41 @@
    "name"
   ],
   "summary": "Its digital guide runs on Bloomberg Connects, used by 4,116 people in 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://joslyn.org/about/impact/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "4,116 through Bloomberg Connects digital guide"
  },
  "f6ad78b290": {
   "kinds": [
    "money"
   ],
   "summary": "A supporter, July 2025 to June 2026.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://juddfoundation.org/visit/marfa/",
+  "checked_on": "2026-11-17"
  },
  "905412be96": {
   "kinds": [
    "money"
   ],
   "summary": "In the top Leader tier of Campus Fund supporters (June 2026).",
-  "date": "2026-06"
+  "date": "2026-06",
+  "check": "source",
+  "checked_source": "https://www.lincolncenter.org/campus-fund/our-supporters",
+  "checked_on": "2026-11-17"
  },
  "bac2ea4494": {
   "kinds": [
    "building"
   ],
   "summary": "£20 million, announced 18 March 2025, the museum’s largest private donation, for the Smithfield move and digital access.",
-  "date": "2025-03-18"
+  "date": "2025-03-18",
+  "check": "source",
+  "checked_source": "https://londonmuseum.org.uk/about/press/press-releases/roman-artefacts-20-million-bloomberg-philanthropies",
+  "checked_on": "2026-11-17"
  },
  "54d51e9451": {
   "kinds": [
@@ -2469,216 +3425,318 @@
    "licence"
   ],
   "summary": "Gave the Bloomberg Collection, more than 14,000 Roman artefacts found in the dig for its own City of London headquarters.",
-  "date": "2014"
+  "date": "2014",
+  "check": "source",
+  "checked_source": "https://londonmuseum.org.uk/about/press/press-releases/roman-artefacts-20-million-bloomberg-philanthropies",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Bloomberg Collection includes more than 14,000 Roman artefacts uncovered by Museum of London Archaeology (MOLA) archaeologists during the construction of Bloomberg’s European headquarters in the City of London between 2012 and 2014."
  },
  "66443f1fdc": {
   "kinds": [
    "money"
   ],
-  "summary": "In the $10,000 to $24,999 band."
+  "summary": "In the $10,000 to $24,999 band.",
+  "check": "source",
+  "checked_source": "https://longhouse.org/pages/supporters",
+  "checked_on": "2026-11-17"
  },
  "a30df5cda8": {
   "kinds": [
    "access"
   ],
-  "summary": "An associate member of Cercle Louvre Entreprises, the corporate circle."
+  "summary": "An associate member of Cercle Louvre Entreprises, the corporate circle.",
+  "check": "source",
+  "checked_source": "https://www.louvre.fr/soutenir-le-louvre/le-louvre-remercie-ses-mecenes-et-partenaires",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Le Cercle Louvre Entreprises Membres Fondateurs DELOITTE DS AUTOMOBILES Membres Associés BLOOMBERG FRAÎCHEUR DE PARIS"
  },
  "4c57a6c98c": {
   "kinds": [
    "money"
   ],
-  "summary": "A Corporate Patron."
+  "summary": "A Corporate Patron.",
+  "check": "source",
+  "checked_source": "https://www.mplus.org.hk/en/corporate-support/",
+  "checked_on": "2026-11-17"
  },
  "68bf80fe5b": {
   "kinds": [
    "money"
   ],
-  "summary": "A sponsor."
+  "summary": "A sponsor.",
+  "check": "source",
+  "checked_source": "https://maclima.pe/auspicios-mac-lima/",
+  "checked_on": "2026-11-17"
  },
  "f1f238a2c0": {
   "kinds": [
    "money"
   ],
-  "summary": "A named sponsor on the partner page."
+  "summary": "A named sponsor on the partner page.",
+  "check": "source",
+  "checked_source": "https://www.masp.org.br/en/support/parcerias",
+  "checked_on": "2026-11-17"
  },
  "92e5e1e523": {
   "kinds": [
    "money"
   ],
   "summary": "In the top tier of corporate sponsors, $100,000 or more (2026).",
-  "date": "2026"
+  "date": "2026",
+  "check": "record"
  },
  "c9fa302065": {
   "kinds": [
    "money"
   ],
-  "summary": "Lead institutional support."
+  "summary": "Lead institutional support.",
+  "check": "source",
+  "checked_source": "https://www.mocacleveland.org/sponsors",
+  "checked_on": "2026-11-17"
  },
  "d9d55d7803": {
   "kinds": [
    "money"
   ],
-  "summary": "A Leader-level supporter."
+  "summary": "A Leader-level supporter.",
+  "check": "source",
+  "checked_source": "https://www.momaps1.org/en/visit",
+  "checked_on": "2026-11-17"
  },
  "d4a12b36e5": {
   "kinds": [
    "money"
   ],
   "summary": "A Leader-level corporate supporter (July 2025).",
-  "date": "2025-07"
+  "date": "2025-07",
+  "check": "record"
  },
  "234ea4905d": {
   "kinds": [
    "money"
   ],
-  "summary": "One of 13 Diamond members."
+  "summary": "One of 13 Diamond members.",
+  "check": "source",
+  "checked_source": "https://www.mori.art.museum/en/mamc/corporate/list/",
+  "checked_on": "2026-11-17"
  },
  "0b227da9f3": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate ally, without saying which Bloomberg entity."
+  "summary": "A corporate ally, without saying which Bloomberg entity.",
+  "check": "source",
+  "checked_source": "https://muac.unam.mx/benefactores",
+  "checked_on": "2026-11-17"
  },
  "167c256e81": {
   "kinds": [
    "money"
   ],
-  "summary": "Named on the sponsors page."
+  "summary": "Named on the sponsors page.",
+  "check": "record"
  },
  "e8b1c221a4": {
   "kinds": [
    "programme",
    "name"
   ],
-  "summary": "Bloomberg Connects is shown among the sponsors."
+  "summary": "Bloomberg Connects is shown among the sponsors.",
+  "check": "source",
+  "checked_source": "https://www.museofridakahlo.org.mx/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Patrocinador01 | https://www.bloombergconnects.org/ | https://www.museofridakahlo.org.mx/wp/wp-content/uploads/2022/07/BBGC-Logomark-Stacked-Black.png"
  },
  "b41e7e03b1": {
   "kinds": [
    "money"
   ],
-  "summary": "Among the corporate sponsor logos."
+  "summary": "Among the corporate sponsor logos.",
+  "check": "source",
+  "checked_source": "https://www.museotamayo.org/visita",
+  "checked_on": "2026-11-17"
  },
  "78b6c5c647": {
   "kinds": [
    "money"
   ],
-  "summary": "A supporter."
+  "summary": "A supporter.",
+  "check": "source",
+  "checked_source": "https://museudoamanha.org.br/pt-br/apoiadores",
+  "checked_on": "2026-11-17"
  },
  "f54b08a080": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate member (2024 annual report).",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.mca.com.au/files/documents/MCA_Annual_Report_2024_v2.pdf",
+  "checked_on": "2026-11-17"
  },
  "523fc673ac": {
   "kinds": [
    "programme"
   ],
   "summary": "Supports Students Day, free entry for students, 10 to 12 October 2026.",
-  "date": "2026-10"
+  "date": "2026-10",
+  "check": "source",
+  "checked_source": "https://www.mot-art-museum.jp/en/exhibitions/Tada-Minami/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "[ Students Day supported by Bloomberg ] Free entry for students on October 10-12."
  },
  "6c6499cbe5": {
   "kinds": [
    "money"
   ],
-  "summary": "On an undated funder list."
+  "summary": "On an undated funder list.",
+  "check": "source",
+  "checked_source": "http://www.mjt.org/donors.html",
+  "checked_on": "2026-11-17"
  },
  "a57ea01349": {
   "kinds": [
    "money"
   ],
   "summary": "A Gallery Partner (October 2026).",
-  "date": "2026-10"
+  "date": "2026-10",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/National_Gallery",
+  "checked_on": "2026-11-17"
  },
  "34ad4a2e35": {
   "kinds": [
    "money"
   ],
-  "summary": "A Director’s Circle patron."
+  "summary": "A Director’s Circle patron.",
+  "check": "source",
+  "checked_source": "https://www.nationalgallery.sg/sg/en/donate-and-volunteer/our-supporters.html",
+  "checked_on": "2026-11-17"
  },
  "66fa1b1411": {
   "kinds": [],
   "summary": "Named in the May 2026 letter of more than 260 artists asking five theatres to end Bloomberg partnerships; Bloomberg lists the theatre among its participating organisations.",
   "protest": true,
-  "date": "2026-05"
+  "date": "2026-05",
+  "check": "source-partly",
+  "checked_source": "https://morningstaronline.co.uk/node/249891",
+  "checked_missing": "that Bloomberg lists the National Theatre itself among its participating organisations (the page says this only of unnamed theatres)",
+  "checked_on": "2026-11-17",
+  "checked_quote": "It says that the National Theatre, the Royal Shakespeare Company, the Royal Court, the Young Vic, and the Almeida are “actively undermining” their own ethical commitments by partnering with the arts funder."
  },
  "fbbb1fe0ef": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate member at $10,000."
+  "summary": "A corporate member at $10,000.",
+  "check": "source",
+  "checked_source": "https://www.neuegalerie.org/join-and-support/corporate-membership",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Corporate Benefactors Agua Mágica Mezcal Bank of America Bloomberg Philanthropies"
  },
  "fe8085db27": {
   "kinds": [
    "programme"
   ],
   "summary": "Joined the Digital Accelerator programme in 2025.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://newlynartgallery.co.uk/?p=28910",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Joining the Bloomberg Philanthropies Digital Accelerator Program will transform our systems, helping us connect more effectively with audiences now and into the future."
  },
  "f870591231": {
   "kinds": [
    "programme"
   ],
-  "summary": "Joined the Digital Accelerator Program to build a new customer relationship system; a Headline Supporter."
+  "summary": "Joined the Digital Accelerator Program to build a new customer relationship system; a Headline Supporter.",
+  "check": "source-partly",
+  "checked_source": "https://www.nottinghamcontemporary.org/support/",
+  "checked_missing": "the Digital Accelerator Program and the customer relationship system",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Headline Supporters Bloomberg Philanthropies Calouste Gulbenkian Foundation (UK Branch)"
  },
  "741ae53392": {
   "kinds": [
    "money"
   ],
-  "summary": "A Benefactor-level supporter; the museum also uses Bloomberg Connects."
+  "summary": "A Benefactor-level supporter; the museum also uses Bloomberg Connects.",
+  "check": "source",
+  "checked_source": "https://museumca.org/corporate-partners/",
+  "checked_on": "2026-11-17"
  },
  "81753108c0": {
   "kinds": [
    "programme"
   ],
   "summary": "A grant under the Arts Innovation and Management Program (2018).",
-  "date": "2018"
+  "date": "2018",
+  "check": "source",
+  "checked_source": "https://en.wikipedia.org/wiki/Ogden_Museum_of_Southern_Art",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Ogden Museum was selected to receive a grant from Bloomberg Philanthropies as part of its Arts Innovation and Management Program."
  },
  "8321aaed8c": {
   "kinds": [
    "money"
   ],
   "summary": "Gave $20,000 to $49,999 in 2024.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://parrishart.org/donor-recognition/",
+  "checked_on": "2026-11-17"
  },
  "6230adfe9d": {
   "kinds": [
    "money"
   ],
-  "summary": "A gold sponsor."
+  "summary": "A gold sponsor.",
+  "check": "record"
  },
  "05aaa3caf7": {
   "kinds": [
    "programme"
   ],
-  "summary": "Among the museum’s project funders."
+  "summary": "Among the museum’s project funders.",
+  "check": "record"
  },
  "95f12554de": {
   "kinds": [
    "money"
   ],
   "summary": "An institutional partner (May 2026).",
-  "date": "2026-05"
+  "date": "2026-05",
+  "check": "record"
  },
  "b5fe3ffeaf": {
   "kinds": [
    "seat"
   ],
   "summary": "Bloomberg chairs the trustees, appointed 14 January 2014.",
-  "date": "2014-01-14"
+  "date": "2014-01-14",
+  "check": "source",
+  "checked_source": "https://opencharities.uk/ew/298809",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Hon Michael R Bloomberg (Chair) Jan. 14, 2014"
  },
  "a485bec670": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate partner."
+  "summary": "A corporate partner.",
+  "check": "source",
+  "checked_source": "https://www.somersethouse.org.uk/support-us/current-supporters",
+  "checked_on": "2026-11-17"
  },
  "1e583394e0": {
   "kinds": [
    "money"
   ],
-  "summary": "Ongoing gallery support."
+  "summary": "Ongoing gallery support.",
+  "check": "source",
+  "checked_source": "https://www.southlondongallery.org/support-us/current-supporters/",
+  "checked_on": "2026-11-17"
  },
  "be891a0325": {
   "kinds": [
@@ -2687,13 +3745,20 @@
    "name"
   ],
   "summary": "An Ambassador donor at $100,000 or more in 2025, Bloomberg L.P. at $25,000 or more, and the digital guide runs on Bloomberg Connects.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://stormking.org/about/donors/",
+  "checked_on": "2026-11-17"
  },
  "d54aae72bf": {
   "kinds": [
    "programme"
   ],
-  "summary": "Supported the website through the Digital Accelerator Programme."
+  "summary": "Supported the website through the Digital Accelerator Programme.",
+  "check": "source",
+  "checked_source": "https://studiovoltaire.org/support/supporters-and-funders/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "Bloomberg Philanthropies supported this website via the Digital Accelerator Programme"
  },
  "39c64ce56b": {
   "kinds": [
@@ -2701,34 +3766,46 @@
   ],
   "summary": "Listed in 2018 and 2019 only.",
   "ended": true,
-  "date": "2018"
+  "date": "2018",
+  "check": "source",
+  "checked_source": "https://swissinstitute.net/support/institutional-partners/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "2018 Balkan Projects Bloomberg Philanthropies Burgergemeinde Bern"
  },
  "63330d61c7": {
   "kinds": [
    "money"
   ],
   "summary": "A Tate group corporate partner in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "3f1d448eeb": {
   "kinds": [
    "money"
   ],
   "summary": "A corporate partner in 2024 to 2025.",
-  "date": "2024"
+  "date": "2024",
+  "check": "source",
+  "checked_source": "https://www.tate.org.uk/documents/2210/Tate_Annual_Report_24_25.pdf",
+  "checked_on": "2026-11-17"
  },
  "e037cb0b87": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate member."
+  "summary": "A corporate member.",
+  "check": "source",
+  "checked_source": "https://www.tepapa.govt.nz/support-join/corporate-partnerships/current-partners",
+  "checked_on": "2026-11-17"
  },
  "1463c2ed94": {
   "kinds": [
    "money"
   ],
   "summary": "First on the Partners list, gifts of $1,000 or more, July 2023 to January 2025.",
-  "date": "2023"
+  "date": "2023",
+  "check": "record"
  },
  "156d6fe84b": {
   "kinds": [
@@ -2736,88 +3813,121 @@
    "name"
   ],
   "summary": "A partnership announced 27 May 2021 put its guide on the Bloomberg Connects app, its first free audio guide.",
-  "date": "2021-05-27"
+  "date": "2021-05-27",
+  "check": "source",
+  "checked_source": "https://hepworthwakefield.org/news/the-hepworth-wakefield-joins-bloomberg-connects/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Hepworth Wakefield joins Bloomberg Connects 27 May 2021 The Hepworth Wakefield is delighted to partner with Bloomberg Philanthropies"
  },
  "4b14bfb732": {
   "kinds": [
    "money"
   ],
-  "summary": "A Major Supporter."
+  "summary": "A Major Supporter.",
+  "check": "source",
+  "checked_source": "https://hepworthwakefield.org/visit/",
+  "checked_on": "2026-11-17"
  },
  "724cde1b3f": {
   "kinds": [
    "money"
   ],
-  "summary": "Thanked as a supporter."
+  "summary": "Thanked as a supporter.",
+  "check": "record"
  },
  "d517a361f3": {
   "kinds": [
    "access"
   ],
   "summary": "Sponsored the 2024 gala; it has backed the gala for about 20 years.",
-  "date": "2024"
+  "date": "2024",
+  "check": "record"
  },
  "96ffd8c9db": {
   "kinds": [
    "building"
   ],
   "summary": "$75 million to the capital campaign in May 2017; the Bloomberg administration had appropriated $75 million of public money before he left office in 2013.",
-  "date": "2017-05"
+  "date": "2017-05",
+  "check": "source",
+  "checked_source": "https://www.6sqft.com/michael-bloomberg-gives-75-million-to-hudson-yards-arts-center-the-shed/",
+  "checked_on": "2026-11-17"
  },
  "e538031938": {
   "kinds": [
    "money"
   ],
   "summary": "In Glasgow Life’s 2025 to 2026 thanks list, without naming a programme.",
-  "date": "2025"
+  "date": "2025",
+  "check": "source",
+  "checked_source": "https://www.glasgowlife.org.uk/about-us/annual-review",
+  "checked_on": "2026-11-17"
  },
  "6bec25ef08": {
   "kinds": [
    "money"
   ],
   "summary": "A sponsor since 2022.",
-  "date": "2022"
+  "date": "2022",
+  "check": "source",
+  "checked_source": "https://www.milanoluxurylife.it/venice-biennale-2026-brands-luxury-patronage/",
+  "checked_on": "2026-11-17"
  },
  "bd6219c919": {
   "kinds": [
    "money"
   ],
   "summary": "At $100,000 and above, and also among in-kind gifts.",
-  "date": "2026"
+  "date": "2026",
+  "check": "source",
+  "checked_source": "https://www.walkerart.org/join-give/corporate-support/",
+  "checked_on": "2026-11-17"
  },
  "78f171c9cf": {
   "kinds": [
    "money"
   ],
   "summary": "Part of a $20 million Carnegie Corporation grant made possible by a donation from Michael Bloomberg (2005).",
-  "date": "2005"
+  "date": "2005",
+  "check": "record"
  },
  "6172e476eb": {
   "kinds": [
    "programme"
   ],
   "summary": "Sponsored the Goshka Macuga work that opened the reopened gallery in 2009.",
-  "date": "2009-11"
+  "date": "2009-11",
+  "check": "source",
+  "checked_source": "https://www.museumsassociation.org/museums-journal/features/2009/11/18310-2/",
+  "checked_on": "2026-11-17",
+  "checked_quote": "The Macuga work is sponsored by financial information provider Bloomberg, which continues a long tradition of financial support from the nearby City."
  },
  "8c4bcfbc08": {
   "kinds": [
    "money"
   ],
   "summary": "A major donor in the 2021 to 2022 report.",
-  "date": "2021"
+  "date": "2021",
+  "check": "record"
  },
  "71ab2b4564": {
   "kinds": [
    "money"
   ],
-  "summary": "A corporate member."
+  "summary": "A corporate member.",
+  "check": "source",
+  "checked_source": "https://zeitzmocaa.museum/supporters/",
+  "checked_on": "2026-11-17"
  },
  "80a9e33e8b": {
   "kinds": [
    "money"
   ],
   "summary": "A 2005 Carnegie Corporation grant made possible by a donation from Michael Bloomberg.",
-  "date": "2005"
+  "date": "2005",
+  "check": "source",
+  "checked_source": "https://drawingcenter.org/visit",
+  "checked_on": "2026-11-17"
  },
  "d4b59c046f": {
   "drop": true,
@@ -2911,6 +4021,7 @@
   "drop": true,
   "why": "The record says the donors are not confirmed on the current page."
  },
+ "_about_checks": "Checked against source pages, 17 Nov 2026: every page the entries cite was fetched once by an honest automated reader (1,151 pages, 1,083 read, PDFs as text). An entry is source checked when a page it cites names the funder and states the claim: automatically when every amount it gives sits beside the funder’s name on the page, or when it only says the funder is listed and the page lists it (in its text or, for a logo, in the image’s alt text or file name); otherwise by reading the page, with the excerpt kept as checked_quote. Partly checked: the page gives the tie but not one detail, named in checked_missing. Three entries the pages contradicted were corrected to what the page says, with the old wording kept in corrected. Not found: the pages cited do not state it, most often because the page that would (an annual report, a donor list) was not among the cited pages or could not be read; those entries stay as checked against the museum’s page in this atlas.",
  "eb46ef7fb9": {
   "kinds": [
    "seat"
