@@ -493,7 +493,7 @@
           b.className = 'gm-filter-chip sh-grade-chip';
           b.dataset.grade = g;
           b.textContent = name;
-          b.title = `Show only ${name.toLowerCase()} spaces; press again to show every space`;
+          b.title = `Show only ${name.toLowerCase()} museums; press again to show every museum`;
           b.addEventListener('click', () => window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g));
           row.appendChild(b);
         });
