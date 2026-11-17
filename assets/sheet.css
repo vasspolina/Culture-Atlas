@@ -1925,17 +1925,17 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-chat body:not(.chat-input-mode-active) #gmTopBtns #gmBackChatBtn:not(#sh-x):not(#sh-y){display:none!important}
   /* The map's box carries the desktop's whole prompt, "Ask about a space, its funders or controversies…" (user, 16 Nov
      2026), so it wraps to two lines instead of being cut off mid-word on one. */
-  :root.gm-map #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){white-space:normal!important;overflow-wrap:break-word!important;overflow-y:hidden!important;
-    height:56px!important;padding:6px 4px 6px 0!important;line-height:22px!important}
+  :root:is(.gm-map,.gm-record) #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){white-space:normal!important;overflow-wrap:break-word!important;overflow-y:hidden!important;
+    height:56px!important;max-height:none!important;min-height:0!important;padding:6px 4px 6px 0!important;line-height:22px!important}
   /* Share information under the map's box, the box's width, set as the one under the chat's box: an ink pill with paper
      words (in dark mode the sheet's pale pill with ink words). */
-  :root.gm-map #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;height:42px!important;min-height:0!important;
+  :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;height:42px!important;min-height:0!important;
     margin:0 var(--gm-gap,12px)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
     box-shadow:none!important;outline:0!important;font-style:normal!important;line-height:1!important;white-space:nowrap!important;pointer-events:auto!important}
-  :root.gm-map #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important}
-  :root.gm-map #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
-  :root[data-theme="dark"].gm-map #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){background:var(--sh-pill)!important;color:var(--sh-ink)!important}
-  :root[data-theme="dark"].gm-map #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:var(--sh-pill-hover)!important;color:#fff!important}
+  :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important}
+  :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+  :root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){background:var(--sh-pill)!important;color:var(--sh-ink)!important}
+  :root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:var(--sh-pill-hover)!important;color:#fff!important}
   /* No ground under the filters (user, 16 Nov 2026: "Delete the background underneath filters"): the colour bar picked on
      load (--sh-top) goes, and the map shows between the pills, which keep their own paper ground. */
   :root #gmChips:not(#sh-x):not(#sh-y):not(#sh-z){background:transparent!important;border:0!important;box-shadow:none!important}
@@ -1945,8 +1945,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   /* The things at the bottom of the map sit closer (user, 16 Nov 2026: "reduce the line height between elements at the
      bottom"): 6px between the Top story, the suggested questions, the box and Share information, where margins on top of
      the 10px gap had left about 24px, so the globe has the room above. */
-  :root.gm-map #mobileStickyInputBar:not(#sh-x):not(#sh-y){gap:6px!important}
-  :root.gm-map #mobileStickyInputBar>#mobileComposerCard:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
+  :root:is(.gm-map,.gm-record) #mobileStickyInputBar:not(#sh-x):not(#sh-y){gap:6px!important}
+  :root:is(.gm-map,.gm-record) #mobileStickyInputBar>#mobileComposerCard:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#mobileSuggestChips:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#gmStoryStrip:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   /* The street map's bar (back to the globe and the place's name, "São Paulo, 10 spaces") hangs under the filters, beside the
@@ -1970,22 +1970,31 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   :root.gm-map #mobileStickyInputBar>#mobileSuggestChips:not(#sh-x):not(#sh-y){display:none!important}
 }
 @media (max-width:359px){
-  :root.gm-map #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){font-size:15px!important;line-height:19px!important;height:50px!important}
+  :root:is(.gm-map,.gm-record) #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){font-size:15px!important;line-height:19px!important;height:50px!important}
 }
 }
 
-/* ---- The question box on a phone's full record page (user, 16 Nov 2026: "on full record the chat is glitching") ----
-   With the record page open, the box stayed in the page's flow: it sat partway up the screen with the record running on
-   beneath it, its card was the screen's full width from 14px in, so it ran off the right edge, and the send arrow lay over
-   the words. It is now fixed to the foot of the screen, the screen's width less 12px each side, with the record scrolling
-   clear of it. */
+/* ---- The phone's full record page, set as the map and the chat (user, 16 Nov 2026: "on full record the chat is glitching",
+   then "make it same as on other modes") ----
+   With the record page open (html.gm-record, set by assets/phone-maps.js) the question box is the map's: the same rounded box
+   with the ⋮ menu, the send arrow only once something is typed, and Share information under it (the box's rules in atlas.css
+   and above are keyed off :is(.gm-map,.gm-record)). It had stayed in the page's flow partway up the screen, ran off the right
+   edge and laid its send arrow over the words. The old top bar (the name, Gossip mode, Light, Details, Chat) gives way to the
+   row of top buttons, Back to chat, Dark and Gossip mode, as on the map; the record's own cross still closes it. The box stands
+   on the paper at the foot of the screen, and the record scrolls clear of it. */
 @layer sheet{
 @media (max-width:767px){
-  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar:not(#sh-x):not(#sh-y){position:fixed!important;left:0!important;right:0!important;top:auto!important;bottom:0!important;z-index:60!important;
-    width:auto!important;margin:0!important;padding:8px 12px calc(8px + var(--safe-b,0px))!important;background:var(--sh-paper)!important;border:0!important;border-top:1px solid var(--sh-rule)!important;box-shadow:none!important}
-  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar #mobileComposerCard:not(#sh-x):not(#sh-y){position:relative!important;box-sizing:border-box!important;width:100%!important;max-width:100%!important;margin:0!important}
-  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar #mobileComposerCard #chat-input:not(#sh-x):not(#sh-y){flex:1 1 auto!important;min-width:0!important;width:auto!important;white-space:normal!important;overflow-wrap:break-word!important;overflow-y:hidden!important;height:44px!important;max-height:44px!important;min-height:44px!important;line-height:22px!important;padding:0 4px 0 0!important}
-  body:has(#detailDrawer:not(.hidden)) #mobileStickyInputBar #mobileComposerCard #mobileStickySendBtn:not(#sh-x):not(#sh-y){position:static!important;flex:none!important;inset:auto!important}
-  body:has(#detailDrawer:not(.hidden)) #detailBody:not(#sh-x):not(#sh-y){padding-bottom:calc(96px + var(--safe-b,0px))!important}
+  :root.gm-record #mobileTopBar:not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-record #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:61!important;
+    align-items:center!important;gap:6px!important;height:calc(env(safe-area-inset-top,0px) + 48px)!important;margin:0!important;padding:env(safe-area-inset-top,0px) var(--sh-pad) 0!important;
+    background:var(--sh-paper)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;overflow-x:auto!important;scrollbar-width:none}
+  :root.gm-record #gmTopBtns button:not(#sh-x):not(#sh-y){flex:none!important;display:inline-flex!important;align-items:center!important;height:36px!important;min-height:36px!important;margin:0!important;
+    padding:0 .8em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;box-shadow:none!important;outline:0!important;
+    font-size:calc(var(--sh-s) * .78)!important;font-style:normal!important;line-height:1.25!important;white-space:nowrap!important}
+  :root.gm-record #gmTopBtns #gmGossipBtn[aria-pressed="true"]:not(#sh-x):not(#sh-y){background:var(--sh-ink)!important;border-color:var(--sh-ink)!important;color:var(--sh-paper)!important}
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){top:calc(env(safe-area-inset-top,0px) + 48px)!important;bottom:0!important;height:auto!important}
+  :root.gm-record #mobileStickyInputBar:not(#sh-x):not(#sh-y){z-index:60!important;padding-top:8px!important;background:var(--sh-paper)!important;pointer-events:auto!important;bottom:0!important;padding-bottom:calc(12px + var(--safe-b,0px))!important}
+  :root.gm-record #mobileStickyInputBar>:is(#mobileSuggestChips,#gmStoryStrip):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-record #detailBody:not(#sh-x):not(#sh-y){padding-bottom:calc(150px + var(--safe-b,0px))!important}
 }
 }
