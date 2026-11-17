@@ -300,6 +300,7 @@
     // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
     // in influence mode"). They are placed before the other funders' names, so those give way to them; a space whose
     // every place is taken by another space's name waits for the map to be zoomed in, as a funder's name does.
+    const spaceDots = [];
     if (picked) {
       const byId = new Map(insts.map(i => [i.id, i]));
       const names = new Map(tiesFor(picked).map(t => [t.space, t.space_name]));
@@ -308,6 +309,7 @@
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
         const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
         pts.push({ id, x: pt.x, y: pt.y, label: i.name || nm || '' });
+        spaceDots.push({ id, x: pt.x, y: pt.y });
         placed.push({ x: pt.x - 6, y: pt.y - 6, w: 12, h: 12 });
       });
       pts.forEach(({ id, x, y, label }) => {
@@ -344,6 +346,15 @@
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
       ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
       HITS.push({ f, x, y, s, label: b });
+    });
+    // The picked funder's museums get their own dots, drawn last (user, 17 Nov 2026: "museums lost its dots"). The page's
+    // own dot for a space is a 3.5px ring 0.8px thick in its grade's colour, drawn before this layer, so the lines and the
+    // paper halos of the names covered it (Anchorage, Banff) and an Unverified ring, olive on paper, barely showed (MALBA).
+    // Here each is an ink ring 8px across on paper, 1.5px thick: hollow, so it is told from a funder's solid 6px dot.
+    ctx.setLineDash([]); ctx.lineWidth = 1.5; ctx.strokeStyle = ink;
+    spaceDots.forEach(({ id, x, y }) => {
+      ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = hoverSpace === id ? ink : paper; ctx.fill(); ctx.stroke();
     });
     ctx.restore();
   };
