@@ -7639,5 +7639,532 @@
     "source": "https://www.interest.co.nz/sites/default/files/2025-06/TSB%20Annual%20Report%20and%20Disclosure%20Statement%20%28for%20the%20year%20ended%2031%20March%202025%29.pdf"
    }
   ]
+ },
+ "tdbank": {
+  "made_from": "TD Bank Group’s money comes from retail and commercial banking in Canada and the eastern United States, wealth management, insurance and capital markets.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "TD Bank Group reported net income of $20,538 million for fiscal 2025, against $8,842 million the year before; adjusted net income was $15,025 million.",
+    "date": "2025",
+    "source": "https://td.mediaroom.com/2025-12-04-TD-Bank-Group-Reports-Fourth-Quarter-and-Fiscal-2025-Results"
+   },
+   {
+    "kind": "harm",
+    "text": "On 10 October 2024 TD Bank N.A. pleaded guilty to conspiring to fail to maintain an anti-money laundering programme, fail to file accurate currency transaction reports and launder monetary instruments; TD Bank agreed to pay a combined $1.8 billion in penalties to the Department of Justice and retain an independent monitor.",
+    "date": "2024-10",
+    "source": "https://www.justice.gov/criminal/case/united-states-america-v-td-bank-na"
+   },
+   {
+    "kind": "lobbying",
+    "text": "TD Bank N.A. reported $1,750,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=TD+Bank&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 1750000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=TD+Bank&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "$200,000 or more to the MacKenzie Art Gallery, as TD Ready Commitment, 2024 to 2025",
+     "amount": 200000.0,
+     "currency": "CAD",
+     "source": "https://mackenzie.art/site-content/uploads/2025/06/03_MAG-Annual-Report_2024-25_FINAL-1.pdf"
+    },
+    "spaces": 13,
+    "entries": 15
+   }
+  }
+ },
+ "scotiabank": {
+  "made_from": "Scotiabank’s money comes from banking in Canada and Latin America, wealth management and capital markets.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Scotiabank reported net income of $7,758 million for fiscal 2025, against $7,892 million; adjusted net income was $9,510 million.",
+    "date": "2025",
+    "source": "https://scotiabank.investorroom.com/2025-12-02-Scotiabank-reports-fourth-quarter-and-2025-results"
+   },
+   {
+    "kind": "harm",
+    "text": "In August 2020 the US Commodity Futures Trading Commission ordered The Bank of Nova Scotia to pay $127.4 million for spoofing, false statements, and compliance and supervision violations in precious metals futures.",
+    "date": "2020-08",
+    "source": "https://cftc.gov/PressRoom/PressReleases/8220-20"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "$10 million pledged in 2015 to the National Gallery of Canada’s Canadian Photography Institute",
+     "amount": 10000000.0,
+     "currency": "CAD",
+     "source": "https://www.scotiabank.com/photoaward/en/files/16/01/news_27112015.html"
+    },
+    "spaces": 6,
+    "entries": 6
+   }
+  }
+ },
+ "cibc": {
+  "made_from": "CIBC’s money comes from personal, commercial and wealth banking in Canada and the United States, and capital markets.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "CIBC reported net income of $8.5 billion for the year ended 31 October 2025.",
+    "date": "2025",
+    "source": "https://www.cibc.com/content/dam/cibc-public-assets/about-cibc/investor-relations/pdfs/quarterly-results/2025/q425newsrelease-en.pdf"
+   }
+  ]
+ },
+ "nationalbankcanada": {
+  "made_from": "National Bank of Canada’s money comes from banking, wealth management and capital markets, mostly in Quebec.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "National Bank reported fourth-quarter 2025 net income of $1.059 billion and full-year adjusted profit of $4.479 billion.",
+    "date": "2025",
+    "source": "https://www.mpamag.com/ca/news/general/national-bank-posts-higher-fourth-quarter-profits/558788"
+   }
+  ]
+ },
+ "desjardins": {
+  "made_from": "Desjardins Group is a financial cooperative; its money comes from members’ banking, insurance and wealth management, mainly in Quebec and Ontario.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Desjardins Group reported surplus earnings before member dividends of $3,811 million for 2025.",
+    "date": "2025",
+    "source": "https://www.desjardins.com/content/dam/pdf/en/news/CP_T4_2025_AN_Final.pdf"
+   },
+   {
+    "kind": "harm",
+    "text": "In June 2022 the Superior Court of Quebec approved a settlement of nearly $200.9 million in a class action over a data breach that compromised the data of 4.2 million people with active Desjardins accounts.",
+    "date": "2022-06",
+    "source": "https://globalnews.ca/news/8930182/desjardins-data-breach-class-action-settlement"
+   }
+  ]
+ },
+ "powercorp": {
+  "made_from": "Power Corporation of Canada, controlled by the Desmarais family, draws its money from life insurance and wealth management (Great-West Lifeco, IGM Financial) and from holdings in Europe through GBL.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Power Corporation reported net earnings from continuing operations of $2,572 million for 2025, against $2,792 million in 2024.",
+    "date": "2025",
+    "source": "https://www.placera.se/pressmeddelanden/power-corporation-of-canada-power-corporation-reports-fourth-quarter-and-2025-financial-results-and-dividend-increase-of-9-20260318"
+   }
+  ]
+ },
+ "hydroquebec": {
+  "made_from": "Hydro-Québec is the Quebec government’s electricity utility; its money comes from selling power from its dams in Quebec and to export markets in the United States and Ontario.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Hydro-Québec reported net income of $2.9 billion for 2025, up 9% from 2024.",
+    "date": "2025",
+    "source": "https://news.hydroquebec.com/news/press-releases/all-quebec/hydro-quebec-reports-solid-financial-results-major-contribution-quebec-economy.html"
+   },
+   {
+    "kind": "harm",
+    "text": "In January 2025 the Quebec Superior Court found that Hydro-Québec acted in institutional bad faith toward the Innu of Uashat and Mani-Utenam, failing to honour an agreement reached during the development of the La Romaine complex, and ordered it to pay $5 million in compensation.",
+    "date": "2025-01",
+    "source": "https://amp.cbc.ca/news/canada/montreal/hydro-quebec-fined-institutional-bad-faith-1.7433242"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Its US subsidiary H.Q. Energy Services (U.S.) did not file its own 2025 federal lobbying reports; two outside firms reported $350,000 in fees from it under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=H.Q.+Energy&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 350000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=H.Q.+Energy&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 4,
+    "entries": 6
+   }
+  }
+ },
+ "aircanada": {
+  "made_from": "Air Canada’s money comes from passenger and cargo flights.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Air Canada reported operating revenues of $22.4 billion for 2025 and operating income of $918 million.",
+    "date": "2025",
+    "source": "https://www.aircanada.com/media/air-canada-reports-fourth-quarter-and-full-year-2025-financial-results/"
+   }
+  ]
+ },
+ "suncor": {
+  "made_from": "Suncor’s money comes from Alberta oil sands mining and upgrading, refining and its Petro-Canada fuel stations.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Suncor reported fourth-quarter 2025 net earnings of $1.476 billion, and $12.8 billion of adjusted funds from operations for the year.",
+    "date": "2025",
+    "source": "https://seekingalpha.com/pr/20386958"
+   },
+   {
+    "kind": "harm",
+    "text": "Suncor was fined $495,000 after pleading guilty to one count under Alberta’s Occupational Health and Safety Code over a 2022 worker’s death at its Base Mine.",
+    "date": "2024",
+    "source": "https://www.thesafetymag.com/ca/topics/safety-and-ppe/suncor-2-others-convicted-in-2022-workers-death/530556"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Suncor Energy a D- grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Suncor-Energy"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Suncor Energy (U.S.A.) filed no 2025 federal lobbying reports of its own; its outside firm reported $60,000 in fees under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Suncor&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 60000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Suncor&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "$10 million from the Suncor Energy Foundation to the Banff Centre, given in late 2018",
+     "amount": 10000000.0,
+     "currency": "CAD",
+     "source": "https://canadianart.ca/news/concern-rises-regarding-banff-centre-layoffs-visual-arts-cutbacks/"
+    },
+    "spaces": 1,
+    "entries": 2
+   }
+  }
+ },
+ "cenovus": {
+  "made_from": "Cenovus’s money comes from oil sands and conventional oil and gas production and refining; it took over Husky Energy in 2021.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Cenovus reported net earnings of $3,930 million for 2025, against $3,142 million in 2024.",
+    "date": "2025",
+    "source": "https://cenovus.com/News-and-Stories/News-releases/2026/3240864"
+   },
+   {
+    "kind": "harm",
+    "text": "Husky Oil Operations Limited, now Cenovus, was sentenced in April 2024 to a total of $2.5 million after pleading guilty over a November 2018 oil spill in the White Rose field off Newfoundland.",
+    "date": "2024-04",
+    "source": "https://cnlopb.ca/news/husky-oil-operations-limited-fined-as-a-result-of-november-2018-spill-in-the-white-rose-field"
+   },
+   {
+    "kind": "lobbying",
+    "text": "InfluenceMap gives Cenovus an E+ grade for its climate policy engagement.",
+    "date": "2026",
+    "source": "https://lobbymap.org/company/Cenovus-Energy"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Cenovus US Corporation reported $770,000 of its own US federal lobbying spending for 2025, in four quarterly reports under the Lobbying Disclosure Act (the second quarter as amended).",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Cenovus&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 770000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Cenovus&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "imperialoil": {
+  "made_from": "Imperial’s money comes from oil sands mining (Kearl, and a share of Syncrude), refining and Esso fuel; ExxonMobil holds a majority of its shares.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Imperial reported net income of $3,268 million for 2025, against $4,790 million in 2024.",
+    "date": "2025",
+    "source": "https://wwww.stockwatch.com/News/Item/Z-C!IMO-3780033/C/IMO"
+   },
+   {
+    "kind": "harm",
+    "text": "In August 2024 Imperial Oil was fined $50,000 over the wastewater leak at its Kearl oil sands mine.",
+    "date": "2024-08",
+    "source": "https://guelph.ctvnews.ca/edmonton/article/imperial-oil-fined-50k-over-kearl-wastewater-leak"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "a $4 million package to Glenbow in 2006: archives, a $1.2 million endowment and $500,000 for a gallery",
+     "amount": 4000000.0,
+     "currency": "CAD",
+     "source": "https://www.glenbow.org/support/our-supporters/"
+    },
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "enbridge": {
+  "made_from": "Enbridge’s money comes from crude oil and gas pipelines across North America, gas utilities and some renewable power.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Enbridge reported GAAP earnings attributable to common shareholders of $7,072 million for 2025, against $5,053 million in 2024.",
+    "date": "2025",
+    "source": "https://www.enbridge.com/media-center/news/details?id=123871&lang=en"
+   },
+   {
+    "kind": "harm",
+    "text": "In July 2016 Enbridge settled US claims over its 2010 oil spills in Marshall, Michigan and Romeoville, Illinois: $62 million in Clean Water Act penalties, $61 million of it for discharging at least 20,082 barrels of oil in Marshall, and at least $110 million in spill-prevention measures.",
+    "date": "2016-07",
+    "source": "https://www.epa.gov/archive/epa/newsreleases/united-states-enbridge-reach-177-million-settlement-after-2010-oil-spills-michigan-and.html"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Enbridge (U.S.) reported $1,169,000 of its own US federal lobbying spending for 2025, in its four quarterly reports under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Enbridge&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 1169000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Enbridge&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "teck": {
+  "made_from": "Teck’s money comes from mining copper and zinc; it sold its steelmaking coal business in 2024.",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Teck reported fourth-quarter 2025 revenue of $3,058 million and profit from continuing operations attributable to shareholders of $544 million.",
+    "date": "2025",
+    "source": "https://www.teck.com/news/news-releases/2026/teck-reports-unaudited-fourth-quarter-results-for-2025"
+   },
+   {
+    "kind": "harm",
+    "text": "In March 2021 Teck Coal was fined $60 million for releases of selenium and calcite from its Elk Valley coal mines, the largest penalty ever handed down under the federal Fisheries Act.",
+    "date": "2021-03",
+    "source": "https://thenarwhal.ca/bc-teck-fined-60-million-selenium-fisheries-act/"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Teck filed no 2025 federal lobbying reports of its own; outside firms reported $330,000 in fees from Teck Resources and Teck American under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Teck&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 330000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Teck&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "barrick": {
+  "made_from": "Barrick’s money comes from gold and copper mining in North America, Africa, Latin America and Papua New Guinea.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "In February 2015 Acacia Mining, formerly African Barrick Gold, settled out of court with villagers over the deaths of six people at its North Mara mine in Tanzania.",
+    "date": "2015-02",
+    "source": "https://www.mining-technology.com/news/newsacacia-settles-out-of-court-over-six-deaths-at-tanzanias-north-mara-mine-4510793"
+   },
+   {
+    "kind": "lobbying",
+    "text": "Barrick Mining Corporation reported $1,900,000 of its own US federal lobbying spending for 2025 in three quarterly reports, and Barrick Gold of North America $1,290,000 in four, under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Barrick&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 3190000.0,
+    "year": 2025,
+    "outside_only": false,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Barrick&filing_year=2025"
+   },
+   "culture": {
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "garfieldweston": {
+  "made_from": "The Garfield Weston Foundation is a UK charity endowed by the Weston family; its income comes from Wittington Investments, of which it owns 79.2%, and through it a 46.0% holding in Associated British Foods (Primark, Twinings, British Sugar), whose controlling shareholder Wittington is. It is not the Canadian Weston branch (George Weston Ltd, Loblaw).",
+  "facts": [
+   {
+    "kind": "scale",
+    "text": "Associated British Foods reported group revenue of £19,459m and adjusted operating profit of £1,734m for the 52 weeks to 13 September 2025.",
+    "date": "2025",
+    "source": "https://www.abfingredients.com/en/news-and-events/news/2025-annual-results-announcement/"
+   },
+   {
+    "kind": "scale",
+    "text": "At 5 April 2025 the Foundation owned 79.2% of Wittington Investments, the ultimate holding company of Associated British Foods, and through it 46.0% of ABF.",
+    "date": "2025",
+    "source": "https://opencharities.uk/ew/230260/files/2025-04-05-accounts.html"
+   }
+  ],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "£3 million toward rebuilding Tate Liverpool",
+     "amount": 3000000.0,
+     "currency": "GBP",
+     "source": "https://www.tate.org.uk/about-us/projects/transforming-tate-liverpool"
+    },
+    "spaces": 37,
+    "entries": 41
+   }
+  }
+ },
+ "audain": {
+  "made_from": "Michael Audain’s money comes from Polygon Homes, the Vancouver home builder he chairs and is a major shareholder of; Polygon Homes also gives in its own name.",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "C$100 million pledged to the Vancouver Art Gallery’s new building",
+     "amount": 100000000.0,
+     "currency": "CAD",
+     "source": "https://www.theartnewspaper.com/2025/09/29/vancouver-art-gallery-new-architects-selected"
+    },
+    "spaces": 9,
+    "entries": 12
+   }
+  }
+ },
+ "thomson": {
+  "made_from": "The Thomson family’s money comes from Thomson Reuters, the information company it controls through the Woodbridge Company; Thomson Reuters also gives in its own name.",
+  "facts": [
+   {
+    "kind": "lobbying",
+    "text": "Thomson Reuters filed no 2025 federal lobbying reports of its own; outside firms reported $760,000 in fees from Thomson Reuters and its West Publishing unit under the Lobbying Disclosure Act.",
+    "date": "2025",
+    "source": "https://lda.gov/api/v1/filings/?client_name=Thomson+Reuters&filing_year=2025"
+   }
+  ],
+  "figures": {
+   "us_lobbying": {
+    "usd": 760000.0,
+    "year": 2025,
+    "outside_only": true,
+    "source": "https://lda.gov/api/v1/filings/?client_name=Thomson+Reuters&filing_year=2025"
+   },
+   "culture": {
+    "largest_gift": {
+     "text": "$50 million in capital for the Art Gallery of Ontario expansion, with over 2,000 works and $20 million in endowment, 2002",
+     "amount": 50000000.0,
+     "currency": "CAD",
+     "source": "https://www.thecanadianencyclopedia.ca/en/article/art-gallery-of-ontario"
+    },
+    "spaces": 2,
+    "entries": 2
+   }
+  }
+ },
+ "lassonde": {
+  "made_from": "Pierre Lassonde’s money comes from gold mining finance: he co-founded the royalty company Franco-Nevada and led Newmont.",
+  "facts": []
+ },
+ "bronfman": {
+  "made_from": "These ties are the Charles Bronfman branch of the Seagram fortune: the Claudine and Stephen Bronfman family foundation (Stephen is Charles Bronfman’s son, of Claridge) and the Samuel and Saidye Bronfman Family Foundation of Seagram’s founder; not Edgar Bronfman Jr. or Phyllis Lambert.",
+  "facts": []
+ },
+ "sobey": {
+  "made_from": "The Sobey family’s money comes from Empire Company, owner of the Sobeys grocery chain, through family foundations.",
+  "facts": []
+ },
+ "molson": {
+  "made_from": "The Molson family’s money comes from Molson Coors, the brewer the family controls with the Coors family, given through the Molson Foundation.",
+  "facts": []
+ },
+ "remai": {
+  "made_from": "Frank and Ellen Remai’s money comes from Frank Remai’s real estate business in Saskatoon, given through the Frank and Ellen Remai Foundation.",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "C$30 million announced in 2011 for Remai Modern’s construction and exhibitions",
+     "amount": 30000000.0,
+     "currency": "CAD",
+     "source": "https://remaimodern.org/about/"
+    },
+    "spaces": 1,
+    "entries": 2
+   }
+  }
+ },
+ "jackman": {
+  "made_from": "The Jackman family’s money comes from E-L Financial, the Toronto insurance and investment holding company of Hal Jackman.",
+  "facts": []
+ },
+ "leechin": {
+  "made_from": "Michael Lee-Chin’s money comes from AIC mutual funds and Portland Holdings, his investment company.",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "largest_gift": {
+     "text": "$30 million to the Royal Ontario Museum’s Renaissance ROM campaign",
+     "amount": 30000000.0,
+     "currency": "CAD",
+     "source": "https://www.thecanadianencyclopedia.ca/en/article/royal-ontario-museum"
+    },
+    "spaces": 1,
+    "entries": 1
+   }
+  }
+ },
+ "bombardier": {
+  "made_from": "The Beaudoin-Bombardier family’s money comes from Bombardier and BRP, the companies founded by Joseph-Armand Bombardier that it controls, given through the Fondation J. Armand Bombardier.",
+  "facts": []
+ },
+ "rogers": {
+  "made_from": "The Rogers family’s money comes from Rogers Communications, the wireless, cable and media company it controls; the ties here are gifts in the company’s name.",
+  "facts": [
+   {
+    "kind": "harm",
+    "text": "A review commissioned by the CRTC found that Rogers’ July 2022 outage, which caused a catastrophic loss of all wireless and wireline services, was caused by human error and prolonged by management deficiencies.",
+    "date": "2024-07",
+    "source": "https://mobilesyrup.com/2024/07/05/july-2022-rogers-outage-report-crtc/"
+   }
+  ]
+ },
+ "bellcanada": {
+  "made_from": "BCE’s money comes from Bell Canada’s wireless, internet and phone services and Bell Media.",
+  "facts": []
  }
 }
