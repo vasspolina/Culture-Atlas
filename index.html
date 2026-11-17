@@ -66,7 +66,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=698">
-  <link rel="stylesheet" href="assets/sheet.css?v=738">
+  <link rel="stylesheet" href="assets/sheet.css?v=739">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=669"></script>
@@ -10498,7 +10498,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v738';
+    const ATLAS_RELEASE = 'culture-atlas-v739';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11630,7 +11630,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         });
 
         // In the money map's mode (assets/layers.js, MONEY MODE) the map carries one space and its funders: no city marks.
-        const moneyModeOn = !!(window.atlasMoneyMode && window.atlasMoneyMode(selectedInstitution));
+        // Influence mode (assets/influence-mode.js) draws the funders instead of the spaces, so no city marks either.
+        const moneyModeOn = !!(window.atlasMoneyMode && window.atlasMoneyMode(selectedInstitution)) || !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
         sortedCities.forEach(city => {
           if (moneyModeOn) return;
           const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
@@ -11987,6 +11988,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
         if (window.atlasCritiqueDraw) window.atlasCritiqueDraw(ctx, visibleDots, selectedInstitution, hoveredInstitution, project, r, cx, cy);   // assets/critique-gallery.js
+        if (window.atlasInfluenceDraw && !isCityStreetViewActive) window.atlasInfluenceDraw(ctx, project, r, cx, cy, G_GROUND, G_TEXT);   // assets/influence-mode.js: the funders, in place of the spaces
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
@@ -20836,6 +20838,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (named) { selectInstitution(named.inst, false); return; }
       }
 
+      // Influence mode: a funder's mark opens its ledger and shows its spaces (assets/influence-mode.js).
+      if (!isCityStreetViewActive && window.atlasInfluencePointer && window.atlasInfluencePointer.click(mx, my)) return;
       // An office mark under the click opens its record; where marks and spaces crowd, a list offers each one.
       if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.click(mx, my, clientX, clientY, visibleDots)) return;
       // The other layer marks: a click asks the chat about the mark (a flag or grade mark then goes on to its space).
@@ -21069,6 +21073,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
       }
 
+      if (!isCityStreetViewActive && window.atlasInfluencePointer && window.atlasInfluencePointer.hover(mx, my)) {
+        canvas.style.cursor = 'pointer';
+        hoveredCity = null; hoveredCityCardHitbox = null; isHoveringCityExploreLink = false;
+        return;
+      }
       // A funder office or person's office mark under the pointer (and no space's dot nearer): assets/hq-detail.js
       if (!isCityStreetViewActive && window.atlasHqPointer && window.atlasHqPointer.hover(mx, my, visibleDots)) {
         canvas.style.cursor = 'pointer';
@@ -21868,8 +21877,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=669"></script>
-<script src="assets/influence-mode.js?v=738"></script>
+<script src="assets/hq-detail.js?v=739"></script>
+<script src="assets/influence-mode.js?v=739"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=696"></script>
 <script src="assets/desktop-maps.js?v=724"></script>

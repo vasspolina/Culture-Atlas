@@ -2040,6 +2040,9 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 :is(.influence-part,.influence-chat) .influence-mark{font-style:italic!important;color:var(--sh-ink)!important}
 :is(.influence-part,.influence-chat) :is(.influence-funder-link,.influence-space-link){display:inline!important;padding:0!important;margin:0!important;border:0!important;background:none!important;
   font:inherit!important;color:inherit!important;text-decoration:underline!important;text-underline-offset:2px!important;cursor:pointer!important;min-height:0!important}
+/* The map carries the funders, not the spaces (user, 17 Nov 2026: "switch the map from culture spaces to cultural funders"),
+   so the alert marks laid over spaces go while the mode is on; they also sat on top of the funders' marks in London. */
+body.influence-mode-active .gm-alert-mark:not(#sh-x):not(#sh-y){display:none!important}
 .influence-chat ul{list-style:none!important;margin:0 0 var(--sh-gap) 0!important;padding:0!important}
 .influence-chat li::before{content:"\2013\00a0"!important}
 }
