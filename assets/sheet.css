@@ -1883,8 +1883,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 #gmTopBtns,#gmMapShareBtn{display:none}
 @layer sheet{
 @media (max-width:767px){
-  :root:is(.gm-map,.gm-chat):not(.gm-feed-open){--safe-t:calc(env(safe-area-inset-top,0px) + 48px)!important}
-  :root:is(.gm-map,.gm-chat):not(.gm-feed-open) #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:52!important;
+  :root:is(.gm-map,.gm-chat){--safe-t:calc(env(safe-area-inset-top,0px) + 48px)!important}
+  :root:is(.gm-map,.gm-chat) #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:52!important;
     align-items:center!important;gap:6px!important;height:calc(env(safe-area-inset-top,0px) + 48px)!important;margin:0!important;padding:env(safe-area-inset-top,0px) var(--sh-pad) 0!important;
     background:var(--sh-paper)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;overflow-x:auto!important;scrollbar-width:none}
   #gmTopBtns::-webkit-scrollbar{display:none}
@@ -1979,8 +1979,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 /* ---- The Top story feed on a phone (user, 17 Nov 2026: "there is no way to close this window and also buttons stick on top") ----
    The feed's cross sat in .ts-pin, which this sheet set absolute, so it scrolled away with the first report and a feed pulled
    to full and read down had no way out. It is sticky again, as atlas.css meant (a holder of no height before the head), so the
-   cross stays at the top right however far the list is read. While the feed is open the row of top buttons is put away, as the
-   question box already is, and --safe-t is the phone's own again, so the feed starts at the top of the screen. */
+   cross stays at the top right however far the list is read. The row of top buttons was put away while the feed was open;
+   since 17 Nov 2026 it stays, and the feed stops under it as the chat does (see "The reports feed as the chat" below). */
 @layer sheet{
 @media (max-width:767px){
   :root.gm-feed-open #gmFeed .ts-pin:not(#sh-x):not(#sh-y){position:sticky!important;top:0!important;left:auto!important;right:auto!important;height:0!important;display:flex!important;
@@ -2128,6 +2128,23 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
     border-radius:50%!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;box-shadow:0 1px 8px rgba(0,0,0,.08)!important;
     pointer-events:auto!important;transition:transform .15s ease,background-color .15s ease!important}
   :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y){top:12px!important;right:16px!important}
+
+  /* The reports feed as the chat (user, 17 Nov 2026: "Make the reports feed look like this too"). The feed's sheet takes the
+     chat's 32px corners, hairline and shadow, and its cross is the chat's 44px round button with a hairline ring. It opens
+     up to the row of top buttons and no further: the row stays while the feed is open, and the feed's full height stops 4px
+     under it (room() in topStory, assets/phone-maps.js). */
+  :root.gm-feed-open #gmFeed:not([hidden]):not(#sh-x):not(#sh-y){border:0!important;border-radius:32px 32px 0 0!important;
+    max-height:calc(100vh - env(safe-area-inset-top,0px) - 48px - 4px)!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important}
+  :root[data-theme="dark"].gm-feed-open #gmFeed:not([hidden]):not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    width:44px!important;height:44px!important;min-height:44px!important;margin:12px 4px 0 0!important;padding:0!important;
+    border:1px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;border-radius:50%!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;
+    box-shadow:0 1px 8px rgba(0,0,0,.08)!important;transition:transform .15s ease,background-color .15s ease!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y):hover{background:color-mix(in srgb,var(--sh-ink) 8%,var(--sh-paper))!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y):active{transform:scale(.92)!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
 
   /* Details from the chat as the chat (user, 17 Nov 2026: "Make Details from chat look like this too"). The record opened
      from the chat was a page over the whole screen with a strip of two tabs at its top. It is now the chat's sheet: it

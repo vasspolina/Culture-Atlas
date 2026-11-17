@@ -1585,7 +1585,13 @@
           return v[side];
         };
       })();
-      const room = () => window.innerHeight - safe('top') - 8;
+      // Full stops 4px under the row of top buttons, as the chat does (user, 17 Nov 2026: "Make the reports feed look like this
+      // too"); with the row away it is the phone's own top, as before.
+      const room = () => {
+        const row = $('gmTopBtns');
+        if (row && row.offsetHeight) return Math.round(window.innerHeight - row.getBoundingClientRect().bottom - 4);
+        return window.innerHeight - safe('top') - 8;
+      };
       function grabLabel() {
         return detent === 'full' ? 'Shrink the reports to the top story' : detent === 'half' ? 'Expand the reports to full screen' : 'Expand the reports';
       }

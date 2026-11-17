@@ -78,9 +78,10 @@ for c in CASES:
         tabs.append({'title': t.get('title', ''), 'head': t.get('head', []), 'rows': rows})
     link = c.get('link')
     if link and 'TZtzbbCNYH8tNjEomKoyob' in str(link[1]):
-        link = ['Open the interactive MoMA Money Map', MOMA_PAGE]
+        link = ['Open the interactive MoMA Influence Map', MOMA_PAGE]
     out.append({
-        'key': c['key'], 'title': c['title'], 'kick': c.get('kick', ''),
+        # The MoMA study is called the MoMA Influence Map here (user, 17 Nov 2026: "rename MoMA Money Map too"), whatever the source says.
+        'key': c['key'], 'title': c['title'].replace('MoMA Money Map', 'MoMA Influence Map'), 'kick': c.get('kick', ''),
         'summary': c.get('summary', []), 'bullets': c.get('bullets', []), 'timeline': c.get('timeline', []),
         'stats': c.get('stats', []), 'tables': tabs, 'sources': c.get('sources', ''),
         'link': link, 'records': recs,
