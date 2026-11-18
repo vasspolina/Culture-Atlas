@@ -8981,10 +8981,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (cover > 0 && mapBox.height - 130 - cover - 30 >= 120) {
           const phoneBounds = new maplibregl.LngLatBounds();
           const shown = cityPinKeep ? cityInsts.filter(i => cityPinKeep(i)) : cityInsts;
-          (shown.length ? shown : cityInsts).forEach(i => phoneBounds.extend([i.lon, i.lat]));
+          // Fit the dense core, not every outlier: one museum 15 km out shrank the downtown cluster to a few dozen pixels
+          // (user, 18 Nov 2026: the phone map overlapped). Marks farther than 2.5 times the median distance from the median
+          // centre stay on the map, off to the side, and can be panned to.
+          const pool = shown.length ? shown : cityInsts;
+          const med = a => { const b = a.slice().sort((x, y) => x - y); return b[Math.floor(b.length / 2)]; };
+          const mLat = med(pool.map(i => i.lat)), mLon = med(pool.map(i => i.lon));
+          const dist = i => Math.hypot(i.lat - mLat, (i.lon - mLon) * Math.cos(mLat * Math.PI / 180));
+          const cut = Math.max(med(pool.map(dist)) * 2.5, 0.004);
+          const core = pool.filter(i => dist(i) <= cut);
+          (core.length >= 3 ? core : pool).forEach(i => phoneBounds.extend([i.lon, i.lat]));
           cityVectorMap.fitBounds(phoneBounds, {
             padding: { top: 130, bottom: cover + 30, left: 40, right: 40 },
-            maxZoom: 14.5,
+            maxZoom: 16,
             duration: 850,
             essential: true
           });
