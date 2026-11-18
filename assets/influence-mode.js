@@ -697,7 +697,7 @@
   // Each line says how far it is checked (user, 17 Nov 2026: "check the entries against their source pages"): against a
   // page it cites, partly (the page gives the tie but not one detail), or only against the museum's page in this atlas.
   // The link is the page that bears it out where there is one.
-  const checkWords = t => t.check === 'source' ? 'Source checked' : t.check === 'source-partly' ? `Source checked, except ${t.checked_missing || 'one detail'}` : 'Not found on its sources yet';
+  const checkWords = t => t.check === 'source' ? 'Source checked' : t.check === 'source-partly' ? `Source checked, except ${t.checked_missing || 'one detail'}` : '';
   const lineFor = (t, withSpace, withFunder) => {
     const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
@@ -706,10 +706,10 @@
     const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
 <p class="no-indent">${who || where ? `<span class="influence-who">${who || where}</span> ` : ''}${kinds ? `<span class="lead-in">${esc(kinds)}.</span> ` : ''}${esc(t.summary)}</p>
-<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', `<span class="influence-check">${esc(checkWords(t))}</span>`, src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
+<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', checkWords(t) ? `<span class="influence-check">${esc(checkWords(t))}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
 </li>`;
   };
-  const row = (title, sub, inner) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
+  const row = (title, sub, inner, titleHtml) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${titleHtml || esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
 
   // What the MoMA Influence Map study says (user, 17 Nov 2026: "add moma money map to moma on our influence map ... just
   // add info ... skip visualisation"): its entries group by group, each with its role, money, note and first source, as the
@@ -743,7 +743,7 @@
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', 'What funders got here');
     el.innerHTML = row('What funders got here', '', '') +
-      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</a></p>`)).join('') + study;
+      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul>`, `<a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a>`)).join('') + study;
     return el;
   }
 
