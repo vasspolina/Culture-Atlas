@@ -1,4 +1,4 @@
-# The whistleblower report API (server/ + prisma/), for Fly.io or any container host. See "Hosting the report API" in the README.
+# The whistleblower report API (server/ + prisma/), for Fly.io or any container host. See "Hosting the report API" in docs/GUIDE.md.
 FROM node:22-slim
 RUN apt-get update -y && apt-get install -y --no-install-recommends openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 WORKDIR /app

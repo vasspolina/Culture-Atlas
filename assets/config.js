@@ -1,4 +1,4 @@
-// The report API for whistleblower reviews (server/, hosted on Fly.io; see "Hosting the report API on Fly.io" in the README).
+// The report API for whistleblower reviews (server/, hosted on Fly.io; see "Hosting the report API on Fly.io" in docs/GUIDE.md).
 // Reviews are read from it and written to it only through the review form on a place's record. Empty means the record
 // shows no reviews and no form.
 window.ATLAS_REPORT_API_URL = 'https://culture-atlas-reports.fly.dev';
