@@ -14,10 +14,11 @@
     'Leaving it on the table looks up who funds museums.',
     'Each record names the funders it can source, from public money, companies and foundations, and links every fact to where it comes from.',
     'A grade from A to F says how much of that money we can see.',
-    'Most lives were never written down, so where the records of a museum, a theatre, a library or any cultural space go quiet, imagine who worked, made things and gathered there, and add what you know by clicking Share information.',
+    'Undocumented history',
+    'Know a cultural space that is missing from the map and hard to find online? Click Share information to tell us about it.',
     'Ask below about a museum, a city or a funder.'
   ];
-  // The fifth sentence (user, 18 Nov 2026): the undertone that a gap in the record is not a place without history, and the
+  // The fourth and fifth lines (user, 18 Nov 2026; reworded as "Undocumented history" the same day): the undertone that a gap in the record is not a place without history, and the
   // invitation to add to the atlas. It is the same undertone the Share information form opens with.
   var CHAR_MS = 22;      // about 45 characters a second: quick enough to read along, slow enough to be seen typing
   var PAUSE_MS = 420;    // a breath between sentences
