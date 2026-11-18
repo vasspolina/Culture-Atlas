@@ -6814,16 +6814,16 @@ return maplibregl$1;
         {
           id: 'poster_ground',
           type: 'background',
-          minzoom: 12.5,
-          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         {
           id: 'poster_park_fill',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          minzoom: 12.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         {
           id: 'poster_grass_fill',
@@ -6831,16 +6831,16 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'landcover',
           filter: ['match', ['get', 'class'], ['grass', 'wood'], true, false],
-          minzoom: 12.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         {
           id: 'poster_water_fill',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          minzoom: 12.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         // The streets: a casing in the line colour under a paper fill, every class casing first and fill after, so the
         // junctions open into each other as on the print. Paths and tracks are left out: on the print a footpath is not a street.
@@ -6850,11 +6850,11 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
-          minzoom: 12.5,
+          minzoom: 0,
           layout: { 'line-join': 'round', 'line-cap': 'round' },
           paint: {
             'line-color': '#787878',
-            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1],
             'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
               13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 5.5, ['secondary', 'tertiary'], 4.5, 'service', 2, 3],
               18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 58, ['secondary', 'tertiary'], 46, 'service', 16, 32]]
@@ -6866,11 +6866,11 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
-          minzoom: 12.5,
+          minzoom: 0,
           layout: { 'line-join': 'round', 'line-cap': 'round' },
           paint: {
             'line-color': '#ffffff',
-            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1],
             'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
               13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 3.5, ['secondary', 'tertiary'], 2.5, 'service', 0.5, 1.2],
               18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 56, ['secondary', 'tertiary'], 44, 'service', 14, 30]]
@@ -7019,7 +7019,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation_name',
           filter: ['match', ['get', 'class'], ['minor', 'tertiary', 'secondary', 'primary', 'trunk'], true, false],
-          minzoom: 13,
+          minzoom: 0,
           layout: {
             'symbol-placement': 'line',
             'symbol-spacing': 320,
@@ -7031,7 +7031,7 @@ return maplibregl$1;
             'text-max-angle': 30,
             'text-padding': 4
           },
-          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         // The squares, named in the middle of the block, as RUSSELL SQUARE is on the print. A wide halo: these names sit
         // inside the squares, over their path hairlines.
@@ -7041,7 +7041,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'poi',
           filter: ['all', ['has', 'name'], ['match', ['get', 'class'], ['park', 'garden'], true, false], ['<=', ['coalesce', ['get', 'rank'], 99], 20]],
-          minzoom: 13,
+          minzoom: 0,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Atlas Serif'],
@@ -7052,7 +7052,7 @@ return maplibregl$1;
             'text-max-width': 7,
             'text-padding': 6
           },
-          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         // Stations in a paper box with a 1px edge, as EUSTON SQUARE and HOLBORN are on the print.
         {
@@ -7061,7 +7061,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'poi',
           filter: ['all', ['has', 'name'], ['==', ['get', 'class'], 'railway'], ['match', ['get', 'subclass'], ['station', 'subway', 'halt'], true, false]],
-          minzoom: 13,
+          minzoom: 0,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Atlas Serif'],
@@ -7074,14 +7074,15 @@ return maplibregl$1;
             'icon-text-fit-padding': [3, 7, 2, 7],
             'text-padding': 6
           },
-          paint: { 'text-color': '#404040', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+          paint: { 'text-color': '#404040', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         }
       ]
     };
     // Where the street map turns from hairlines into the printed gallery map (the poster_ layers above): zoom 13, about where a
     // city opens, and every zoom closer than that (user, 18 Nov 2026: "keep it every zoom level that is close to zoom in"; 14 until
-    // then). The layers fade in over 12.5 to 13.5, the labels over 13 to 13.5.
-    const POSTER_ZOOM = 13;
+    // then). Since 18 Nov 2026 ("make map and museum tags always look like on full zoom") it holds at every zoom: POSTER_ZOOM is 0
+    // and the poster_ layers have no minzoom and no fade.
+    const POSTER_ZOOM = 0;
     // The stipple and the station box, drawn in the map's current ground and line colours: 6 CSS pixels a tile, two dots a tile
     // set on a diagonal, as a halftone is. Redrawn whenever the theme or gossip mode changes the colours.
     function posterImages(map, ground, ink) {
