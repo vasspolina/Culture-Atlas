@@ -2296,3 +2296,8 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .inst-pin-label.label-pos-right::after{left:auto!important;right:100%!important;top:50%!important;width:7px!important;height:12px!important;margin:-6px 0 0!important;clip-path:polygon(100% 0,100% 100%,0 50%)!important}
 #cityMapContainer.street-poster .inst-pin-label.label-pos-left::after{left:100%!important;top:50%!important;width:7px!important;height:12px!important;margin:-6px 0 0!important;clip-path:polygon(0 0,100% 50%,0 100%)!important}
 }
+
+/* THE CHAT BOX, 30% LESS TALL (user, 18 Nov 2026: "make chat 30% less tall"). Measured at 1900px: the card stood 157px, of
+   which the field's block held 80px for one 23px line. The block's floor drops to 32px, so the card stands 109px (31% less)
+   with the same text and buttons. */
+:root:root:root #workBottomDock #workInputCard:not(.is-mode):not(#a):not(#b) #noteInputBlock{min-height:32px!important;padding-top:4px!important;padding-bottom:4px!important}
