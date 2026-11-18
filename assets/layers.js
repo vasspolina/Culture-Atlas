@@ -770,7 +770,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !isOpenBooks(i)) return;
-        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open about money', sub: i.name, ask: `What do the filings show for ${i.name}?` });
+        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open about money', sub: i.name, ask: `What do the accounts show for ${i.name}?` });
         shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = openCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
       });
     }
@@ -1276,7 +1276,7 @@
         const same = LM_HOV && LM_HOV.line && LM_HOV.key === f.key;
         if (!same) {
           const n = reachOfKeys(f.keys), st = tag.a && tag.b ? `${tag.a.n} – ${tag.b.n}` : null;
-          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'museum')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
+          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'museum')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its page' : 'Click for details' };
         } else { LM_HOV.x = mx; LM_HOV.y = my; }
         if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, line: true }; }
         else { clearTimeout(reachTimer); reachTimer = 0; }
@@ -1305,7 +1305,7 @@
           clearTimeout(reachTimer); reachTimer = 0;
           REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
           if (typeof renderTop === 'function') renderTop();
-          if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its record';
+          if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its page';
           const e = f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
           if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(e);
           repaint();

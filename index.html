@@ -79,14 +79,14 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=788">
-  <link rel="stylesheet" href="assets/sheet.css?v=808">
+  <link rel="stylesheet" href="assets/sheet.css?v=809">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
   <script src="assets/names.js?v=669"></script>
   <script src="assets/grounding.js?v=671"></script>
   <script src="assets/repeats.js?v=669"></script>
-  <script src="assets/intro-narration.js?v=670"></script>
+  <script src="assets/intro-narration.js?v=671"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -592,10 +592,10 @@ return maplibregl$1;
           </div>
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
-            <summary>How the records work</summary>
+            <summary>How grades work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
               <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
               <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
               <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
@@ -697,7 +697,7 @@ return maplibregl$1;
           <span>Asia</span>
         </button>
         <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
-        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Write a note about an institution">
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Write a note about a museum">
 
           <span>Share information</span>
         </button>
@@ -824,7 +824,7 @@ return maplibregl$1;
             <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
             <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
             <div id="modeSwitchOpSecIndicator"></div>
-            <button id="workModelBtn"><span id="workModelLabel">Answers from the records</span></button>
+            <button id="workModelBtn"><span id="workModelLabel">Answers from the atlas</span></button>
           </div>
           <div id="chatInputModeHeader"></div>
         </div>
@@ -847,7 +847,7 @@ return maplibregl$1;
             
             <!-- Hero Greeting (Stitch title style) -->
             <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6">
-              <h1 id="curatorHeroTitle">Who funds this cultural institution?</h1>
+              <h1 id="curatorHeroTitle">Who funds this museum?</h1>
               <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
 
@@ -890,7 +890,7 @@ return maplibregl$1;
               <div id="noteFormFields">
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
-                <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads it before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</p>
+                <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads every note first, and an approved note appears on the museum’s page as a review. This is not a secure channel.</p>
                 <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the museum"></label>
                 <datalist id="noteInstitutionList"></datalist>
                 <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Whistleblower"></label>
@@ -920,7 +920,7 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about an institution">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about a museum">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -949,10 +949,10 @@ return maplibregl$1;
 
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
-              <summary>How the records work</summary>
+              <summary>How grades work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
               <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
               <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
               <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
@@ -1009,7 +1009,7 @@ return maplibregl$1;
     <div id="mobileComposerCard" class="relative">
       <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a museum, a city or a funder…"></textarea>
       <div id="mobileComposerActions">
-        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about an institution">Share information</button>
+        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about a museum">Share information</button>
         <span class="flex-1"></span>
         <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Voice: read answers aloud" title="Read answers aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
         <button id="mobileKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -10074,7 +10074,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                   ? (node.tier === 'A' ? 'is-good' : '')
                   : 'is-bad'
               }">
-                ${isInst ? (node.tier === 'A' ? 'Cultural institution, source cited' : 'Flagged cultural institution') : `Corporate Trustee, ${node.category}`}
+                ${isInst ? (node.tier === 'A' ? 'Museum, source cited' : 'Flagged museum') : `Corporate Trustee, ${node.category}`}
               </span>
               <span class="meta">${connectedEdges.length} Connected Interlocks</span>
             </div>
@@ -10517,7 +10517,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             <button type="button" onclick="window.openTrusteeConflictNetworkModal('${filing.id}'); closeStatutoryFilingsModal();" class="py-1_5 px-3 flex items-center gap-1">
               <span>Map Board Interlocks</span>
             </button>
-            <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the financial filings of ${escapeHtml(filing.name)} reveal?');" class="py-1_5 px-3 t-strong">
+            <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the accounts of ${escapeHtml(filing.name)} show?');" class="py-1_5 px-3 t-strong">
               <span>Ask ${window.ATLAS_CHAT_NAME || 'Clio'} about these filings</span>
             </button>
           </div>
@@ -10532,7 +10532,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v808';
+    const ATLAS_RELEASE = 'culture-atlas-v809';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -12793,8 +12793,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       'State censorship or punishment': 'has a funder or sponsor tied to state censorship or punishment',
       'Campaigned name': 'has a funder or sponsor that campaigners have targeted',
       'Sponsor dropped under pressure': 'has been pressed to drop a sponsor',
-      'Epstein-linked': 'has a recorded link to Jeffrey Epstein',
-      'Sanctions': 'has a recorded tie to sanctions',
+      'Epstein-linked': 'is linked to Jeffrey Epstein',
+      'Sanctions': 'is linked to sanctions',
       'Tobacco': 'has a funder or sponsor in the tobacco industry',
       'Gulf state body': 'has funding or patronage from a Gulf state body',
       'Gambling': 'has a funder or sponsor in gambling',
@@ -12892,7 +12892,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const gossipBrief = (g) => item('', { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` }, p('', proseEnd(g.headline)), (g.urls || []).slice(0, 1));
       if (brief) {
         const fresh = gossipItems(inst, true), shown = fresh.slice(0, 3), left = fresh.length - shown.length;
-        return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
+        return `<div class="py-3 rule-b" role="region" aria-label="Reports about this museum" data-gossip="items">
         ${shown.map(g => gossipBrief(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')).join('')}
       </div><p class="no-indent"><a href="#" class="dossier-link" data-name="${escapeHtml(inst.name)}">Read the full record${left > 0 ? `, with ${left} more ${left === 1 ? 'story' : 'stories'}` : ''}</a></p>`;
       }
@@ -12979,7 +12979,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const stale = gossipOn ? gossipItems(inst).filter(g => g.status === 'stale').map(g => gossipCard(g).replace('<div class="record-card', '<div data-gossip="stale" class="record-card')) : [];
       if (!blocks.length && !relatedReports.length && !accounts.length && !stale.length) return '';
       // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
-      return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
+      return `<div class="py-3 rule-b" role="region" aria-label="Reports about this museum" data-gossip="items">
         ${blocks.join('')}
         ${stale.length ? `<h3 class="kicker">Older talk</h3>${stale.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
@@ -13013,7 +13013,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
     const GRADE_INTRO = 'Funding grades run from A to F.';
-    const GRADE_ROWS = ['A: the record shows how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a protest.'];
+    const GRADE_ROWS = ['A: we can see how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a protest.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}: ${GRADE[inst.grade].label.toLowerCase()}`;
@@ -14271,7 +14271,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
         if (of) return { text: firstSentence(of), src: src(hosts(inst.sources), 2) };
         const acc = ((inst.gossip_data || {}).accounts || []);
-        if (acc.length) return { text: `${acc.length} unverified employee ${acc.length === 1 ? 'account' : 'accounts'} on review sites.`, src: '' };
+        if (acc.length) return { text: `${acc.length} ${acc.length === 1 ? 'post' : 'posts'} by staff on review sites, not checked.`, src: '' };
         return null;
       }
       if (inst.funding) return { text: firstSentence(inst.funding), src: src(hosts(inst.sources), 1) };
@@ -14680,7 +14680,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           chatKeyLabel.textContent = 'Add an API key';
         }
         if (workLabel) {
-          workLabel.textContent = 'Answers from the records';
+          workLabel.textContent = 'Answers from the atlas';
         }
       }
     }
@@ -16566,7 +16566,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The model takes 10 to 20 seconds to write a full answer, and a line that never changes reads as stuck (user, 3 Nov 2026):
       // the words move on while it writes.
       const word = (t) => document.querySelectorAll('[data-pending] .thinking').forEach((el) => { el.firstChild.nodeValue = t; });
-      showChatPending.timers = [setTimeout(() => word('Reading the record'), 4000), setTimeout(() => word('Writing the answer'), 9000), setTimeout(() => word('Nearly there'), 18000)];
+      showChatPending.timers = [setTimeout(() => word('Looking it up'), 4000), setTimeout(() => word('Writing the answer'), 9000), setTimeout(() => word('Nearly there'), 18000)];
     }
     function hideChatPending() {
       (showChatPending.timers || []).forEach(clearTimeout);
@@ -16668,7 +16668,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function generateThinkingPlan(query, mode = null) {
       const q = (query || '').toLowerCase().trim();
       const effMode = mode || getChatModeConfig(query);
-      return { mode: effMode, thought: '', step: 'Reading the records' };
+      return { mode: effMode, thought: '', step: 'Looking it up' };
     }
 
 
@@ -18482,7 +18482,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const chatInputKind = 'whistleblower';
     const INPUT_KIND_TEXT = {};
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
-        banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
+        banner: 'Whistleblower: choose the museum and write your note. It goes to the editor and appears on the museum’s page, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
         banner: 'Notes cannot be sent at the moment: the report service is not set up. This is not a secure channel, so leave out your name and anything that identifies you.',
@@ -18496,7 +18496,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       b.classList.toggle('is-on', on);
       b.setAttribute('aria-pressed', String(on));
       b.textContent = on ? 'Back to chat' : 'Share information';
-      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about an institution';
+      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about a museum';
     }
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
@@ -18770,7 +18770,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
       const wanted = (institutionBox.value || '').trim().toLowerCase();
       const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
-      if (!place) return fail('Choose the institution from the list. It must be a museum on the atlas.', institutionBox);
+      if (!place) return fail('Choose the museum from the list. It must be on the atlas.', institutionBox);
       const content = (input.value || '').trim();
       if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
       const ack = document.getElementById('noteAck');
@@ -19090,7 +19090,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         .replace(/\bAdmission:\b/gi, 'Admission: ')
         .replace(/\bTransit:\b/gi, 'Transit directions: ')
         .replace(/\bHighlight:\b/gi, 'Highlights: ')
-        .replace(/\bGovernance:\b/gi, 'Governance model: ')
+        .replace(/\bGovernance:\b/gi, 'How it is run: ')
         // Days of the week
         .replace(/\bTue[–-]Sat\b/gi, 'Tuesday through Saturday')
         .replace(/\bMon[–-]Fri\b/gi, 'Monday through Friday')
@@ -19458,7 +19458,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         resizeCanvas();
       };
       splitter.setAttribute('role', 'separator');
-      splitter.setAttribute('aria-label', 'Width of the globe and the record');
+      splitter.setAttribute('aria-label', 'Width of the globe and the museum page');
       splitter.setAttribute('tabindex', '0');
 
       let dragging = false;
@@ -19973,7 +19973,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // question the offline answers answer from the records, and the examples are picked at random from the records that hold the fact,
     // so nothing is promised that the data does not hold. With a space selected the prompts are about that space.
     // The chat title is one of four, picked on each load.
-    const HERO_TITLES = ['Who funds this cultural institution?', 'Who’s behind this cultural institution?', 'What should I know about this cultural institution?', 'What’s the story behind this cultural institution?'];
+    const HERO_TITLES = ['Who funds this museum?', 'Who’s behind this museum?', 'What should I know about this museum?', 'What’s the story behind this museum?'];
     const HERO_TITLE = HERO_TITLES[Math.floor(Math.random() * HERO_TITLES.length)];
     // The chip guard, kept cheap: findMentionedInst costs about 6 ms when a question names a record and about 145 ms when it names
     // none (a fuzzy pass over every name), so candidates are screened against a lowercase index of every name and alias first, and the
@@ -20047,7 +20047,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         epstein: { has: hasEpstein, q: (i) => `What is ${poss(say(i))} Epstein link?` },
         employees: { has: hasAccounts, q: (i) => `What do employees report at ${say(i)}?` },
         critics: { has: hasCritique, q: (i) => `What do critics say about ${say(i)}?` },
-        protests: { has: hasProtest, q: (i) => `What protests or boycotts are recorded at ${say(i)}?` },
+        protests: { has: hasProtest, q: (i) => `What protests or boycotts have there been at ${say(i)}?` },
         grade: { has: hasGrade, q: (i) => `Why is ${say(i)} graded ${gradeLetter(i.grade)}?` },
         fundedBy: { has: (i) => funderOf(i).length > 0, q: (i) => `Is ${say(i)} funded by ${article(pick(funderOf(i)).funder)}?` },
       };
@@ -21963,11 +21963,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=767"></script>
-<script src="assets/layers.js?v=808"></script>
+<script src="assets/layers.js?v=809"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=801"></script>
+<script src="assets/hq-detail.js?v=802"></script>
 <script src="assets/influence-mode.js?v=806"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=801"></script>
