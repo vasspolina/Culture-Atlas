@@ -339,13 +339,12 @@ Culture-Atlas/
 ├── worker/           # The chat proxy (Cloudflare Worker) and its tests
 ├── server/            # Express API for whistleblower reviews
 ├── prisma/            # Prisma schema and SQLite database (database file is ignored)
-├── admin/             # Reusable React AdminModerator component
 ├── editor/            # The data editor for institutions.json (run tools/editor.py; not deployed)
 ├── sw.js               # Service worker (network-first for the page, same-origin cache only)
 ├── manifest.json       # PWA manifest
 ├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
 ├── institutions.json   # Dataset
-├── data/               # Research sources, papers, corrections and the inputs behind the dataset
+├── data/               # Research sources, papers, corrections and the inputs behind the dataset (see data/README.md for what every file is)
 ├── tools/              # Data pipeline: clean_data (which calls grade_funding), embed_data, build_money_maps, the importers and verify_claims
 └── .github/workflows/  # Deploy to gh-pages on push to main
 ```
