@@ -342,7 +342,10 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
 /* What is hearsay is set in italic. */
 :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{font-style:italic!important}
-.curator-followups{display:block!important;margin:0 0 var(--sh-s-lh)!important;padding:0!important;gap:0!important}
+/* The suggestions keep one line of space under them, so the next turn starts as a new paragraph (user, 18 Nov 2026: "add
+   paragraph breaks"). Scoped to the transcript because the list sits two divs inside the turn, where
+   .curator-message-wrap>div>div above set its margin to 0 and the next answer ran straight on under the last suggestion. */
+.curator-followups,:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap .curator-followups{display:block!important;margin:0 0 var(--sh-s-lh)!important;padding:0!important;gap:0!important}
 .curator-followup-pill{display:block!important;width:100%!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important;border:0!important;background:transparent!important;white-space:normal!important}
 .curator-followup-pill::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
 #chatScrollBufferSpacer{height:var(--sh-lead)!important}
