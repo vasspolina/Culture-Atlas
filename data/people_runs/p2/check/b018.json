@@ -1,0 +1,95 @@
+[
+ {
+  "id": "jurkovic-villa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-stiassni",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-tugendhat",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bauer-villa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "brummel-house-adolf-loos-in-pilsen",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Magdalena Černá",
+    "field": "role",
+    "stored": "director",
+    "page says": "The Brummel House contact page lists her under 'Kontakt na provozovatele' as the operator's contact for PR, weddings and rentals, title 'vedoucí projektu Adolf Loos Plzeň' at Plzeň TURISMUS; the house belongs to Brummelův dům z.s. and the tour operator only organises tours, so no cited page says she heads the house.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "brummel-house-adolf-loos-in-pilsen",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "semler-residence",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dox-centre-for-contemporary-art-prague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "galerie-rudolfinum-prague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-praha-prague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-prague",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-bilek",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-muller",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-rothmayer",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bata-villa-thomas-bata-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zikmund-villa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-donwahi-abidjan",
+  "verdict": "ok",
+  "faults": []
+ }
+]

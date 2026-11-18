@@ -1,25 +1,27 @@
 // Culture Atlas chat backend: a Cloudflare Worker with one KV namespace.
 //
-// POST /chat forwards a conversation to Claude so the page can answer like a model. The Anthropic key lives here
-// as the secret ANTHROPIC_API_KEY and never reaches the browser. Only a short allowlist of models is accepted, the
-// reply length and the conversation size are capped, and each address gets CHATS_PER_HOUR answers an hour.
+// POST /chat answers a conversation with a small open model on Cloudflare Workers AI (the AI binding), so no API key
+// exists anywhere and the page never holds one. The model is fixed here whatever the page asks for, the reply length
+// and the conversation size are capped, and each address gets CHATS_PER_HOUR answers an hour. The answer goes back in
+// the shape the page already reads: { content: [{ type: 'text', text }] }.
 //
 // This Worker takes no notes and no reviews. Whistleblower reviews go to the report API (server/).
 //
 // Bindings (see worker/wrangler.toml and docs/GUIDE.md):
+//   AI               Workers AI binding
 //   SUBMISSIONS      KV namespace (holds only the hourly rate counters)
-//   ANTHROPIC_API_KEY secret
 //   ALLOWED_ORIGINS  comma-separated origins allowed to call the API
+//   RATE_SALT        optional secret mixed into the hashed address of the rate counters
 //
 // KV layout:
 //   chat:<hash>    answers sent to one address in the current hour (expires on its own)
 
-// The first model is the default, and also what a cached page asking for a retired model gets.
-const CHAT_MODELS = ['claude-sonnet-5-5', 'claude-opus-5-5', 'claude-haiku-5-5'];
-// These models always think before they answer, and the thinking counts against max_tokens, so the cap leaves room
-// for it and the effort is set per model: medium for Sonnet and Opus, low for the quick Haiku lookups.
-const CHAT_EFFORT = { 'claude-sonnet-5-5': 'medium', 'claude-opus-5-5': 'medium', 'claude-haiku-5-5': 'low' };
-const CHAT_MAX_TOKENS = 4000;
+// IBM Granite 4.0 H Micro: 3B parameters, a 131,000-token context (the page's grounding runs to about 40,000 tokens),
+// open to every account, $0.017 per million input tokens. Chosen 18 Nov 2026 over Llama 3.1 8B and Llama 3.2 3B,
+// which Workers AI retires on 20 Nov 2026. It does not think before answering, so the cap is all answer.
+const CHAT_MODEL = '@cf/ibm-granite/granite-4.0-h-micro';
+const CHAT_TEMPERATURE = 0.3;
+const CHAT_MAX_TOKENS = 2000;
 const CHAT_MAX_TURNS = 16;
 const CHAT_MAX_CHARS = 150000;
 const CHATS_PER_HOUR = 30;
@@ -47,9 +49,9 @@ async function route(request, env, url) {
   return json({ error: 'Not found.' }, 404);
 }
 
-// A reader asks a question. The conversation is checked, trimmed to what the page may send, and passed to Claude.
+// A reader asks a question. The conversation is checked, trimmed to what the page may send, and passed to the model.
 async function chat(request, env) {
-  if (!env.ANTHROPIC_API_KEY) return json({ error: 'The chat is not switched on.' }, 503);
+  if (!env.AI || typeof env.AI.run !== 'function') return json({ error: 'The chat is not switched on.' }, 503);
   const origin = request.headers.get('Origin') || '';
   const allowed = (env.ALLOWED_ORIGINS || '').split(',').map(x => x.trim()).filter(Boolean);
   if (origin && !allowed.includes(origin) && !/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) return json({ error: 'Not allowed from here.' }, 403);
@@ -68,33 +70,47 @@ async function chat(request, env) {
 
   if (await overLimit(request, env, 'chat:', CHATS_PER_HOUR)) return json({ error: 'Too many questions from here this hour. Try again later.' }, 429);
 
-  const model = CHAT_MODELS.includes(body.model) ? body.model : CHAT_MODELS[0];
-  const maxTokens = Math.min(Math.max(parseInt(body.max_tokens, 10) || 3000, 256), CHAT_MAX_TOKENS);
-  let res;
+  const maxTokens = Math.min(Math.max(parseInt(body.max_tokens, 10) || CHAT_MAX_TOKENS, 256), CHAT_MAX_TOKENS);
+  const input = { messages: system ? [{ role: 'system', content: system }, ...messages] : messages, max_tokens: maxTokens, temperature: CHAT_TEMPERATURE };
+  let data;
   try {
-    res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({ model, max_tokens: maxTokens, output_config: { effort: CHAT_EFFORT[model] }, system, messages }),
-      signal: AbortSignal.timeout(60000)
-    });
+    data = await withTimeout(env.AI.run(CHAT_MODEL, input), 60000);
   } catch (e) {
-    return json({ error: 'The model did not answer in time.' }, 504);
-  }
-  if (!res.ok) {
     // The reason goes to the Worker's own log (Cloudflare dashboard), never to the visitor.
-    console.error('anthropic', res.status, (await res.text().catch(() => '')).slice(0, 300));
-    return json({ error: 'The model could not answer.' }, res.status === 429 ? 429 : 502);
+    console.error('workers-ai', CHAT_MODEL, String(e && e.message || e).slice(0, 300));
+    if (e && e.name === 'TimeoutError') return json({ error: 'The model did not answer in time.' }, 504);
+    return json({ error: 'The model could not answer.' }, /capacity|rate|429|neuron/i.test(String(e && e.message)) ? 429 : 502);
   }
-  const data = await res.json();
-  return json({ content: Array.isArray(data.content) ? data.content : [] }, 200, { 'Cache-Control': 'no-store' });
+  const text = replyText(data);
+  if (!text) {
+    console.error('workers-ai', CHAT_MODEL, 'empty reply', JSON.stringify(data || null).slice(0, 300));
+    return json({ error: 'The model could not answer.' }, 502);
+  }
+  return json({ content: [{ type: 'text', text }] }, 200, { 'Cache-Control': 'no-store' });
+}
+
+// Workers AI text models answer as { response }; the newer ones as an OpenAI-style { choices }. Either becomes plain text.
+function replyText(data) {
+  if (!data) return '';
+  if (typeof data === 'string') return data.trim();
+  if (typeof data.response === 'string') return data.response.trim();
+  const msg = data.choices && data.choices[0] && data.choices[0].message;
+  return msg && typeof msg.content === 'string' ? msg.content.trim() : '';
+}
+
+function withTimeout(promise, ms) {
+  let timer;
+  const late = new Promise((_, reject) => {
+    timer = setTimeout(() => { const e = new Error('timed out'); e.name = 'TimeoutError'; reject(e); }, ms);
+  });
+  return Promise.race([promise, late]).finally(() => clearTimeout(timer));
 }
 
 // A fixed number of sends an hour from one address. Only a salted hash of the address is kept, for an hour.
 async function overLimit(request, env, prefix, limit) {
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   const hour = Math.floor(Date.now() / 3600000);
-  const key = prefix + (await sha256(ip + hour + (env.ANTHROPIC_API_KEY || ''))).slice(0, 32);
+  const key = prefix + (await sha256(ip + hour + (env.RATE_SALT || 'culture-atlas-chat'))).slice(0, 32);
   const count = parseInt((await env.SUBMISSIONS.get(key)) || '0', 10);
   if (count >= limit) return true;
   await env.SUBMISSIONS.put(key, String(count + 1), { expirationTtl: 3600 });

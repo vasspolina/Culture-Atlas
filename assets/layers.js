@@ -224,16 +224,24 @@
     GRADE = g; syncKey(); refilter(); explain('grade', g); };
   keyRows().forEach(b => b.addEventListener('click', () => window.atlasSetGradeFilter(GRADE === b.dataset.grade ? null : b.dataset.grade)));
   syncKey();
+  // The funding grade, A to F, as a filter (user, 15 Nov 2026, of the list of the five grades: "make these into color coded
+  // clickable filters"). 1 to 5 as a record stores it (A, B, C, D, F); one on at a time, and it narrows with whatever other
+  // filter is on, as the key's Clean and Flagged do. The buttons are in index.html ("GRADE FILTERS"), which listens for
+  // atlas:letter-grade to show which one is on.
+  let LETTER = null;
+  window.atlasLetterGrade = () => LETTER;
+  window.atlasSetLetterGrade = function (n) { n = Number(n); n = (n >= 1 && n <= 5) ? n : null; if (n === LETTER) return;
+    LETTER = n; refilter(); document.dispatchEvent(new CustomEvent('atlas:letter-grade', { detail: { grade: n } })); };
   window.atlasLayerKeep = function () {
     const on = spaceLayersOn();
     let funded = null;
     if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
     // A mode over the whole page (Influence mode, assets/influence-mode.js) narrows the map as a filter does, under any filter on.
     const mode = typeof window.atlasModeKeep === 'function' ? window.atlasModeKeep() : null;
-    if (!on.length && !funded && !GRADE && !mode) return null;
+    if (!on.length && !funded && !GRADE && !LETTER && !mode) return null;
     // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
     if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
-    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE) && (!mode || mode(i));
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE) && (!LETTER || Number(i.grade) === LETTER) && (!mode || mode(i));
   };
   let pinIndex = null;
   function refilter() {
@@ -762,7 +770,7 @@
       ctx.lineWidth = 0.8;
       dots.forEach(d => {
         const i = d.inst; if (!i || !isOpenBooks(i)) return;
-        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open books', sub: i.name, ask: `What do the filings show for ${i.name}?` });
+        LM.push({ x: d.x, y: d.y, r: 9, rec: i, col: openCol, label: 'Open about money', sub: i.name, ask: `What do the accounts show for ${i.name}?` });
         shapePath(ctx, 'circle', d.x, d.y, 5); ctx.fillStyle = openCol; ctx.fill(); ctx.strokeStyle = '#000'; ctx.stroke();
       });
     }
@@ -1268,7 +1276,7 @@
         const same = LM_HOV && LM_HOV.line && LM_HOV.key === f.key;
         if (!same) {
           const n = reachOfKeys(f.keys), st = tag.a && tag.b ? `${tag.a.n} – ${tag.b.n}` : null;
-          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'museum')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its record' : 'Click for details' };
+          LM_HOV = { line: true, key: f.key, x: mx, y: my, col: COL[f.kind], label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${plural(n.n, 'museum')} in ${n.countries} ${n.countries === 1 ? 'country' : 'countries'}`, sub2: st, tip: REACH && REACH.pinned && REACH.key === f.key ? 'Pinned · click to open its page' : 'Click for details' };
         } else { LM_HOV.x = mx; LM_HOV.y = my; }
         if (!(REACH && (REACH.pinned || REACH.tapped)) && (!REACH || REACH.key !== f.key)) { clearTimeout(reachTimer); reachTimer = 0; REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, line: true }; }
         else { clearTimeout(reachTimer); reachTimer = 0; }
@@ -1297,7 +1305,7 @@
           clearTimeout(reachTimer); reachTimer = 0;
           REACH = { key: f.key, keys: f.keys, kind: f.kind, space: f.office || tag.a || f.space, name: f.name, top: f.top, pinned: true, line: true };
           if (typeof renderTop === 'function') renderTop();
-          if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its record';
+          if (LM_HOV && LM_HOV.line) LM_HOV.tip = 'Pinned · click to open its page';
           const e = f.office || { key: f.key, kind: 'org', k: f.kind, n: f.name, c: '', co: '', noOffice: true, spaces: reachOfKeys(f.keys).n };
           if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(e);
           repaint();

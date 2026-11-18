@@ -1,0 +1,123 @@
+[
+ {
+  "id": "state-museum-of-the-history-of-the-temurids-amir-timur-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "uzbekistan-art-and-culture-development-foundation-tashkent",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vanuatu-cultural-centre-vanuatu-kaljoral-senta-port-vila",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centro-de-arte-la-estancia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cuartel-de-la-montana-4f-chavez-mausoleum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-oswaldo-vigas-caracas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundación-sala-mendoza-caracas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-contemporaneo-de-caracas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ho-chi-minh-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nha-san-collective-hanoi",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nguyen Phuong Linh",
+    "field": "current",
+    "stored": true,
+    "page says": "Our Team page is undated and says only 'In 2015, a board of curators was formed with' these five; the newest dated content on nhasan.org is from 2021 (News) and 2022 (Exhibitions), so nothing shows they hold the post now",
+    "fix": null
+   },
+   {
+    "person": "Tuan Mami",
+    "field": "current",
+    "stored": true,
+    "page says": "Our Team page is undated and says only 'In 2015, a board of curators was formed with' these five; the newest dated content on nhasan.org is from 2021 (News) and 2022 (Exhibitions), so nothing shows they hold the post now",
+    "fix": null
+   },
+   {
+    "person": "Vu Duc Toan",
+    "field": "current",
+    "stored": true,
+    "page says": "Our Team page is undated and says only 'In 2015, a board of curators was formed with' these five; the newest dated content on nhasan.org is from 2021 (News) and 2022 (Exhibitions), so nothing shows they hold the post now",
+    "fix": null
+   },
+   {
+    "person": "Truong Que Chi",
+    "field": "current",
+    "stored": true,
+    "page says": "Our Team page is undated and says only 'In 2015, a board of curators was formed with' these five; the newest dated content on nhasan.org is from 2021 (News) and 2022 (Exhibitions), so nothing shows they hold the post now",
+    "fix": null
+   },
+   {
+    "person": "Nguyen Quoc Thanh",
+    "field": "current",
+    "stored": true,
+    "page says": "Our Team page is undated and says only 'In 2015, a board of curators was formed with' these five; the newest dated content on nhasan.org is from 2021 (News) and 2022 (Exhibitions), so nothing shows they hold the post now",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "nha-san-collective-hanoi",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "vietnam-military-history-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "vincom-center-for-contemporary-art-hanoi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nguyen-art-foundation-ho-chi-minh-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "san-art-ho-chi-minh-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-factory-contemporary-arts-centre-ho-chi-minh-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "war-remnants-museum",
+  "verdict": "ok",
+  "faults": []
+ }
+]

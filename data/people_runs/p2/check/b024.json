@@ -1,0 +1,167 @@
+[
+ {
+  "id": "jeu-de-paume-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-bal-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "louvre-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "musée-dorsay-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-de-la-chasse-et-de-la-nature",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "palais-de-tokyo",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Guillaume Désanges",
+    "field": "sources",
+    "stored": [
+     "https://palaisdetokyo.com/mentions-legales/",
+     "https://www.culture.gouv.fr/Presse/Communiques-de-presse/Nomination-de-Guillaume-Desanges-a-la-presidence-du-Palais-de-Tokyo"
+    ],
+    "page says": "The only page cited for current is the legal notice, which says 'Mise à jour : janvier 2022' (older than 18 months). The Palais de Tokyo press kit of October 2026 (DP-FR-AUTOMNE-2026.pdf, linked from palaisdetokyo.com/presse/) prints 'Guillaume Désanges, Président du Palais de Tokyo', so he is current, but that page was not cited.",
+    "fix": [
+     "https://admin.palaisdetokyo.com/wp-content/uploads/2026/10/DP-FR-AUTOMNE-2026.pdf",
+     "https://palaisdetokyo.com/mentions-legales/",
+     "https://www.culture.gouv.fr/Presse/Communiques-de-presse/Nomination-de-Guillaume-Desanges-a-la-presidence-du-Palais-de-Tokyo"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "palais-de-tokyo",
+   "people": [
+    {
+     "name": "Guillaume Désanges",
+     "role": "director",
+     "title": "Président du Palais de Tokyo",
+     "current": true,
+     "since": "2022",
+     "until": null,
+     "previously": [
+      "Commissaire invité, Le Plateau-Frac Ile-de-France (2009 to 2011)",
+      "Programme artistique, La Verrière, Fondation d'entreprise Hermès, Brussels (from 2013)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://admin.palaisdetokyo.com/wp-content/uploads/2026/10/DP-FR-AUTOMNE-2026.pdf",
+      "https://palaisdetokyo.com/mentions-legales/",
+      "https://www.culture.gouv.fr/Presse/Communiques-de-presse/Nomination-de-Guillaume-Desanges-a-la-presidence-du-Palais-de-Tokyo"
+     ]
+    }
+   ],
+   "basis": "The Palais de Tokyo press kit for autumn 2026 names him as president; the Ministry of Culture press release of 10 January 2022 announces the appointment and his earlier posts."
+  }
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "paris-musees-reseau",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pinault-collection-bourse-de-commerce-paris",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "François Pinault",
+    "field": "sources",
+    "stored": [
+     "https://www.pinaultcollection.com/fr/une-equipe-pinault-collection-entre-paris-et-venise"
+    ],
+    "page says": "The cited team page lists him only as 'Président'; it does not say he founded the collection. The collection's own page 'Le regard du collectionneur' states 'le projet culturel de François Pinault s'est poursuivi avec l'ouverture de la Bourse de Commerce (2021)' and calls them 'ses propres musées', which supports founder, but it was not cited.",
+    "fix": [
+     "https://www.pinaultcollection.com/fr/une-equipe-pinault-collection-entre-paris-et-venise",
+     "https://www.pinaultcollection.com/fr/le-regard-du-collectionneur"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "pinault-collection-bourse-de-commerce-paris",
+   "people": [
+    {
+     "name": "Emma Lavigne",
+     "role": "director",
+     "title": "Directrice Générale de la Collection, Conservatrice Générale",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.pinaultcollection.com/fr/une-equipe-pinault-collection-entre-paris-et-venise"
+     ]
+    },
+    {
+     "name": "François Pinault",
+     "role": "founder",
+     "title": "Président",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.pinaultcollection.com/fr/une-equipe-pinault-collection-entre-paris-et-venise",
+      "https://www.pinaultcollection.com/fr/le-regard-du-collectionneur"
+     ]
+    }
+   ],
+   "basis": "The Pinault Collection's own team page for Paris and Venice names the president and the director general; its collector page describes the museums, the Bourse de Commerce among them, as François Pinault's own cultural project."
+  }
+ },
+ {
+  "id": "villa-savoye",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-confort-moderne-poitiers",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cap-moderne-villa-e-1027-and-le-cabanon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ceaac-strasbourg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "crac-occitanie-sète",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-fresnoy-studio-national-des-arts-contemporains",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pictanovo-tourcoing",
+  "verdict": "ok",
+  "faults": []
+ }
+]

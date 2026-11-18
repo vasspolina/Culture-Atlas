@@ -1,0 +1,125 @@
+[
+ {
+  "id": "momus-thessaloniki",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "greenland-national-museum-and-archives-nunatta-katersugaasivia-allagaateqarfialu-nuuk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "katuaq-greenland-cultural-centre-nuuk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nuuk-art-museum-nuuk-kunstmuseum-nuuk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "memorial-acte",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bienal-de-arte-paiz-guatemala-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-ixchel-del-traje-ind-gena-guatemala-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-nacional-de-arte-moderno-carlos-m-rida-munam-guatemala-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-popol-vuh-guatemala-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-national-de-guin-e-sandervalia-conakry",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fokal-port-au-prince",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ghetto-biennale-port-au-prince",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Leah Gordon",
+    "field": "title",
+    "stored": "Enquiries, applications & questions contact",
+    "page says": "The home page line 'Enquiries, applications & questions contact: Leah Gordon' is a contact line, not a job title; the site's contact page lists her under CURATORIAL TEAM as 'Co-founder of Ghetto Biennale, Curator'.",
+    "fix": "Co-founder of Ghetto Biennale, Curator"
+   },
+   {
+    "person": "Leah Gordon",
+    "field": "sources",
+    "stored": [
+     "https://www.ghettobiennale.org/",
+     "https://documenta-fifteen.de/en/lumbung-members-artists/atis-rezistans-ghetto-biennale/"
+    ],
+    "page says": "The page that states her post on the biennial's own site is its contact page, which was not cited.",
+    "fix": [
+     "https://www.ghettobiennale.org/page/contact/",
+     "https://www.ghettobiennale.org/",
+     "https://documenta-fifteen.de/en/lumbung-members-artists/atis-rezistans-ghetto-biennale/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "ghetto-biennale-port-au-prince",
+   "people": [
+    {
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "name": "Leah Gordon",
+     "role": "founder",
+     "title": "Co-founder of Ghetto Biennale, Curator",
+     "sources": [
+      "https://www.ghettobiennale.org/page/contact/",
+      "https://www.ghettobiennale.org/",
+      "https://documenta-fifteen.de/en/lumbung-members-artists/atis-rezistans-ghetto-biennale/"
+     ]
+    }
+   ],
+   "basis": "The biennial's own contact page lists Leah Gordon as co-founder of Ghetto Biennale and curator, its home page names her as the contact for enquiries, and the documenta fifteen page says she and André Eugène conceived and devised it."
+  }
+ },
+ {
+  "id": "museo-para-la-identidad-nacional-min-tegucigalpa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "asia-art-archive-hong-kong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chat-centre-for-heritage-arts-and-textile-hong-kong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "para-site",
+  "verdict": "ok",
+  "faults": []
+ }
+]

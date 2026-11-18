@@ -1,0 +1,250 @@
+[
+ {
+  "id": "kunsthalle-wien",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Carina Bukuts",
+    "field": "sources",
+    "stored": "https://pressefeuer.at/news/carina-bukuts-neue-chefkuratorin-der-kunsthalle-wien",
+    "page says": "Pressefeuer is an automated rewrite of the Kunsthalle's release (it points readers to 'die offizielle Pressemitteilung'), a mirror; the Kunsthalle's own release of 15.12.2025 and its PDF open and state 'Kuratorin des Portikus in Frankfurt am Main ... von 2022 bis 2025' and 'Von 2018 bis 2022 arbeitete sie als Redakteurin für Frieze Magazine'",
+    "fix": [
+     "https://kunsthallewien.at/presse/2025/12/15/neue-chefkuratorin",
+     "https://kunsthallewien.at/assets/general/pressemitteilungen-ohne-Ausstellung/carina-bukuts/PT_Kunsthalle-Wien-Carina-Bukuts_DE.pdf"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "kunsthalle-wien",
+   "people": [
+    {
+     "name": "Michelle Cotton",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": "2024-06",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "programming director, Musée d'Art Moderne Grand-Duc Jean, Luxembourg",
+      "director, Bonner Kunstverein (2015 to 2019)",
+      "chief curator, Firstsite, Colchester (2010 to 2015)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://kunsthallewien.at/en/about/team",
+      "https://kunsthallewien.at/assets/exhibitions/2026-05-lebt-und-arbeitet-in-wien/PT_Kunsthalle-Wien_Lebt-und-arbeitet-in-Wien_EN.pdf",
+      "https://www.artforum.com/news/michelle-cotton-to-lead-kunsthalle-wien-252627/",
+      "https://artreview.com/michelle-cotton-to-direct-the-kunsthalle-wien"
+     ]
+    },
+    {
+     "name": "Carina Bukuts",
+     "role": "chief curator",
+     "title": "Chief Curator",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Kuratorin, Portikus, Frankfurt am Main (2022 to 2025)",
+      "Redakteurin, Frieze Magazine (2018 to 2022)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://kunsthallewien.at/en/about/team",
+      "https://kunsthallewien.at/presse/2025/12/15/neue-chefkuratorin",
+      "https://kunsthallewien.at/assets/general/pressemitteilungen-ohne-Ausstellung/carina-bukuts/PT_Kunsthalle-Wien-Carina-Bukuts_DE.pdf"
+     ]
+    },
+    {
+     "name": "Ivet Ćurlin",
+     "role": "co-director",
+     "title": "director",
+     "current": false,
+     "since": "2019",
+     "until": "2024-06",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.artforum.com/news/curatorial-collective-whw-ousted-from-kunsthalle-wien-leadership-89858",
+      "https://www.artforum.com/news/michelle-cotton-to-lead-kunsthalle-wien-252627/"
+     ]
+    },
+    {
+     "name": "Nataša Ilić",
+     "role": "co-director",
+     "title": "director",
+     "current": false,
+     "since": "2019",
+     "until": "2024-06",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.artforum.com/news/curatorial-collective-whw-ousted-from-kunsthalle-wien-leadership-89858",
+      "https://www.artforum.com/news/michelle-cotton-to-lead-kunsthalle-wien-252627/"
+     ]
+    },
+    {
+     "name": "Sabina Sabolović",
+     "role": "co-director",
+     "title": "director",
+     "current": false,
+     "since": "2019",
+     "until": "2024-06",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.artforum.com/news/curatorial-collective-whw-ousted-from-kunsthalle-wien-leadership-89858",
+      "https://www.artforum.com/news/michelle-cotton-to-lead-kunsthalle-wien-252627/"
+     ]
+    }
+   ],
+   "basis": "The Kunsthalle Wien team page and a 2026 Kunsthalle press text name the current leaders; Artforum and ArtReview reports of 2023 give Cotton's earlier posts and name the three WHW members who held the directorship from 2019 until June 2024; Bukuts's earlier posts come from the Kunsthalle's own December 2025 press release."
+  }
+ },
+ {
+  "id": "leopold-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mak-museum-of-applied-arts-vienna",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "margarete-schutte-lihotzky-zentrum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "secession-vienna",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-beer",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mumok",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "baku-museum-of-modern-art-baku",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "heydar-aliyev-center-baku",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "military-trophy-park",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yarat-contemporary-art-space-baku",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Aida Mahmudova",
+    "field": "current",
+    "stored": true,
+    "page says": "AZERTAC, 12.06.2026: 'Aida Mahmudova, founder of the YARAT Contemporary Art Space, attended the opening ceremonies'. It does not say she runs the space, and the brief admits a founder only when she still runs it; YARAT's inner pages are behind a browser check, so no page shows who leads it now",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "yarat-contemporary-art-space-baku",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "national-art-gallery-of-the-bahamas-nassau",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "al-riwaq-art-space-manama",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rak-art-foundation-ras-al-khaimah",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bangladesh-shilpakala-academy",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Rezauddin Stalin",
+    "field": "since",
+    "stored": "2025-09",
+    "page says": "UNB, 21 September 2025: 'has been appointed as the new Director General ... according to a notification issued by the Ministry of Cultural Affairs on Sunday'; that is the announcement date, and neither page says he started that month",
+    "fix": "2025"
+   }
+  ],
+  "corrected": {
+   "id": "bangladesh-shilpakala-academy",
+   "people": [
+    {
+     "name": "Rezauddin Stalin",
+     "role": "director",
+     "title": "Director General",
+     "current": true,
+     "since": "2025",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "member secretary, National Poetry Council"
+     ],
+     "pay": null,
+     "sources": [
+      "https://unb.com.bd/category/Lifestyle/rezauddin-stalin-appointed-new-dg-of-bangladesh-shilpakala-academy/168880",
+      "https://bdnews24.com/bangladesh/d8e66e5d752b"
+     ]
+    },
+    {
+     "name": "Syed Jamil Ahmed",
+     "role": "director",
+     "title": "Director General",
+     "current": false,
+     "since": "2024",
+     "until": "2025-02",
+     "left_because": "resigned",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://unb.com.bd/category/Lifestyle/rezauddin-stalin-appointed-new-dg-of-bangladesh-shilpakala-academy/168880",
+      "https://bdnews24.com/glitz/01278ff639dd"
+     ]
+    }
+   ],
+   "basis": "UNB and bdnews24 reports of 21 September 2025 record Rezauddin Stalin's appointment as Director General, and UNB and a May 2025 bdnews24 report record Syed Jamil Ahmed's resignation in February 2025; no newer page was found, and the academy's own portal would not open."
+  }
+ }
+]

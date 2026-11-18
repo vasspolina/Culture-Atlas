@@ -1,0 +1,280 @@
+[
+ {
+  "id": "stpi-creative-workshop-gallery-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "singapore-art-museum-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "singapore-art-museum-sam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-bratislava",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nina Vidovencová",
+    "field": "role",
+    "stored": "director",
+    "page says": "The team page lists her only as 'Krízová manažérka' (Crisis Manager) and nowhere says she heads the Kunsthalle; the page's own record was last modified 2025-02-05, more than 18 months ago, and the impressum gives the Slovak National Gallery's billing details",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "kunsthalle-bratislava",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "slovak-national-gallery",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Juraj Králik",
+    "field": "since",
+    "stored": null,
+    "page says": "TASR on STVR, 14 April 2025: 'Novým generálnym riaditeľom SNG bude od utorka (15. 4.) Juraj Králik'",
+    "fix": "2025-04"
+   },
+   {
+    "person": "Jaroslav Niňaj",
+    "field": "people (missing predecessor)",
+    "stored": null,
+    "page says": "Same STVR page: 'Vo funkcii povereného riaditeľa SNG tak končí Jaroslav Niňaj'; he was the acting head before Králik and left in April 2025 (Kusá, dismissed August 2024, preceded the interim holders and is not the immediate predecessor)",
+    "fix": {
+     "name": "Jaroslav Niňaj",
+     "role": "director",
+     "title": "Poverený riaditeľ SNG",
+     "current": false,
+     "until": "2025-04",
+     "sources": [
+      "https://spravy.stvr.sk/2025/04/novym-riaditelom-sng-sa-stane-juraj-kralik/"
+     ]
+    }
+   }
+  ],
+  "corrected": {
+   "id": "slovak-national-gallery",
+   "people": [
+    {
+     "name": "Juraj Králik",
+     "role": "director",
+     "title": "Generálny riaditeľ",
+     "current": true,
+     "since": "2025-04",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.sng.sk/sk/sng-bratislava/stranka/kontaktne-udaje",
+      "https://sng.sk/storage/10726/d0bkOET0IUWZJspEY4Gbzu2Q7wa0vKAsBnEIkuw3.pdf",
+      "https://spravy.stvr.sk/2025/04/novym-riaditelom-sng-sa-stane-juraj-kralik/"
+     ]
+    },
+    {
+     "name": "Patrik Steinhauser",
+     "role": "artistic director",
+     "title": "Umelecký riaditeľ",
+     "current": true,
+     "since": "2026-07",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://sng.sk/storage/10726/d0bkOET0IUWZJspEY4Gbzu2Q7wa0vKAsBnEIkuw3.pdf"
+     ]
+    },
+    {
+     "name": "Jaroslav Niňaj",
+     "role": "director",
+     "title": "Poverený riaditeľ SNG",
+     "current": false,
+     "since": null,
+     "until": "2025-04",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://spravy.stvr.sk/2025/04/novym-riaditelom-sng-sa-stane-juraj-kralik/"
+     ]
+    }
+   ],
+   "basis": "The SNG contact page naming the general director, a TASR report on STVR of 14 April 2025 saying he takes the post from 15 April 2025 and that the acting director Jaroslav Niňaj leaves it, and an SNG press release of 7 July 2026 saying the new artistic director started on 1 July 2026."
+  }
+ },
+ {
+  "id": "kapelica-gallery-kersnikova-institute-ljubljana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mglc-international-centre-of-graphic-arts-ljubljana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moderna-galerija-ljubljana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "plecnik-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "solomon-islands-national-museum-honiara",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "a4-arts-foundation-cape-town",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "iziko-south-african-national-gallery-cape-town",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "norval-foundation",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Louis Norval",
+    "field": "role",
+    "stored": "chair of the board",
+    "page says": "The About page names 'Louis Norval – Chair' of the trustees but names no director or other head; the brief admits a chair only when the same page names the head",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "norval-foundation",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "zeitz-mocaa",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Elvira Dyangani Ose",
+    "field": "previously",
+    "stored": [
+     "Director, Museu d'Art Contemporani de Barcelona (MACBA)",
+     "Director, The Showroom London"
+    ],
+    "page says": "'She was director of MACBA, Barcelona, from September 2021 to April 2026. Previously, she was director and chief curator at The Showroom in London. Dyangani Ose was curator, International Art at Tate'",
+    "fix": [
+     "Director, MACBA, Barcelona (2021 to 2026)",
+     "Director and Chief Curator, The Showroom, London",
+     "Curator, International Art, Tate"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "zeitz-mocaa",
+   "people": [
+    {
+     "name": "Fawaz Mustapha",
+     "role": "director",
+     "title": "Acting Executive Director and Chief Operations Officer",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://zeitzmocaa.museum/zeitz-mocaa-welcomes-jessica-nowitzki-to-its-board-of-trustees/"
+     ]
+    },
+    {
+     "name": "Elvira Dyangani Ose",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": "2026-10",
+     "until": null,
+     "previously": [
+      "Director, MACBA, Barcelona (2021 to 2026)",
+      "Director and Chief Curator, The Showroom, London",
+      "Curator, International Art, Tate"
+     ],
+     "pay": null,
+     "sources": [
+      "https://zeitzmocaa.museum/elvira-dyangani-ose-announced-as-artistic-director-of-zeitz-mocaa/",
+      "https://zeitzmocaa.museum/gala-2027/"
+     ]
+    },
+    {
+     "name": "David Green",
+     "role": "chair of the board",
+     "title": "Co-founder and Co-chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://zeitzmocaa.museum/zeitz-mocaa-welcomes-jessica-nowitzki-to-its-board-of-trustees/",
+      "https://zeitzmocaa.museum/elvira-dyangani-ose-announced-as-artistic-director-of-zeitz-mocaa/"
+     ]
+    },
+    {
+     "name": "Jochen Zeitz",
+     "role": "chair of the board",
+     "title": "Co-founder and Co-chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://zeitzmocaa.museum/zeitz-mocaa-welcomes-jessica-nowitzki-to-its-board-of-trustees/",
+      "https://zeitzmocaa.museum/elvira-dyangani-ose-announced-as-artistic-director-of-zeitz-mocaa/"
+     ]
+    },
+    {
+     "name": "Koyo Kouoh",
+     "role": "director",
+     "title": "Executive Director and Chief Curator",
+     "current": false,
+     "since": "2019-05",
+     "until": "2025-05",
+     "left_because": "died",
+     "next_post": null,
+     "previously": [
+      "Founding Artistic Director, RAW Material Company",
+      "Curator of the Educational and Artistic Program, 1:54 Contemporary African Art Fair"
+     ],
+     "pay": null,
+     "sources": [
+      "https://zeitzmocaa.museum/koyo-kouoh-appointed-executive-director-and-chief-curator-of-zeitz-mocaa/",
+      "https://zeitzmocaa.museum/zeitz-mocaa-mourns-the-passing-of-koyo-kouoh-executive-director-and-chief-curator/"
+     ]
+    }
+   ],
+   "basis": "Zeitz MOCAA press releases: June 2026 naming the acting executive director and the co-chairs, August 2026 announcing the artistic director from 1 October 2026, March 2019 on Kouoh starting 6 May 2019, and the May 2025 staff tribute after her death."
+  }
+ },
+ {
+  "id": "bag-factory-johannesburg",
+  "verdict": "ok",
+  "faults": []
+ }
+]

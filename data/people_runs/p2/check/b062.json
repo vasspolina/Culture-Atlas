@@ -1,0 +1,111 @@
+[
+ {
+  "id": "arario-museum-in-space-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arko-art-center-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-sonje-center",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ilmin-museum-of-art-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-modern-and-contemporary-art-mmca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "songeun-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "seoul-museum-of-art-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "whanki-museum-seoul",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-bloc-museum-apartment",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundació-antoni-tàpies-barcelona",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fundaci-joan-mir",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hangar-barcelona",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-pedrera-casa-mila",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-virreina-barcelona",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Valentín Roma",
+    "field": "people",
+    "stored": [],
+    "page says": "La Virreina mission page: 'Valentín Roma, director de La Virreina Centre de la Imatge (2016 - maig 2026)'. He left after 1 January 2023, so he belongs as the predecessor; no current head is named on the site.",
+    "fix": "add Valentín Roma as predecessor director, since 2016, until 2026-05, left_because null, next_post null"
+   }
+  ],
+  "corrected": {
+   "id": "la-virreina-barcelona",
+   "people": [
+    {
+     "name": "Valentín Roma",
+     "role": "director",
+     "title": "director de La Virreina Centre de la Imatge",
+     "current": false,
+     "since": "2016",
+     "until": "2026-05",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://ajuntament.barcelona.cat/lavirreina/ca/missio"
+     ]
+    }
+   ],
+   "basis": "La Virreina's own mission page, which names Valentín Roma as its director from 2016 to May 2026; no page on the site names a successor."
+  }
+ },
+ {
+  "id": "macba-museu-d-art-contemporani-de-barcelona",
+  "verdict": "ok",
+  "faults": []
+ }
+]

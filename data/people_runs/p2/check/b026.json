@@ -1,0 +1,165 @@
+[
+ {
+  "id": "neuer-berliner-kunstverein",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "oyoun-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "savvy-contemporary-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "staatliche-museen-zu-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "stiftung-stadtmuseum-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "daadgalerie-berlin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "transmediale-berlin",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nóra Ó Murchú",
+    "field": "people",
+    "stored": null,
+    "page says": "transmediale history page, section '2021 - 2024': 'The appointment of Nóra Ó Murchú as artistic director in 2020 marked new trajectories ... the conceptual arc of the following 4 years.' The team page names no artistic director now, so she is the previous head and left in 2024, after 1 January 2023.",
+    "fix": {
+     "name": "Nóra Ó Murchú",
+     "role": "artistic director",
+     "title": "artistic director",
+     "current": false,
+     "since": null,
+     "until": "2024",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://transmediale.de/en/history"
+     ]
+    }
+   }
+  ],
+  "corrected": {
+   "id": "transmediale-berlin",
+   "people": [
+    {
+     "name": "Filippo Gianetta",
+     "role": "director",
+     "title": "managing director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://transmediale.de/en/team",
+      "https://transmediale.de/en/imprint"
+     ]
+    },
+    {
+     "name": "Barbara Cueto",
+     "role": "curator",
+     "title": "festival curator (transmediale 2027)",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://transmediale.de/en/team"
+     ]
+    },
+    {
+     "name": "Antonina Stebur",
+     "role": "curator",
+     "title": "exhibition curator (transmediale 2027)",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://transmediale.de/en/team"
+     ]
+    },
+    {
+     "name": "Nóra Ó Murchú",
+     "role": "artistic director",
+     "title": "artistic director",
+     "current": false,
+     "since": null,
+     "until": "2024",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://transmediale.de/en/history"
+     ]
+    }
+   ],
+   "basis": "The transmediale team page names the managing director and the curators of the 2027 edition; the imprint names the same person as chairman of transmediale e.V.; the history page places the last artistic director's term under 2021 to 2024."
+  }
+ },
+ {
+  "id": "kunsthalle-bielefeld-bielefeld",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstverein-bielefeld-bielefeld",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bonner-kunstverein-bonn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunstverein-braunschweig",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthalle-bremen",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-esche",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "haus-ungers-ungers-archiv-fur-architekturwissenschaft",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "koelnischer-kunstverein",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-ludwig",
+  "verdict": "ok",
+  "faults": []
+ }
+]

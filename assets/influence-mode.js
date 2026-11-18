@@ -435,12 +435,16 @@
   // The buttons sit in the map's filter row (#gmdChips on a desktop, #gmChips on a phone) and take its place while the mode is
   // on: the space filters have nothing to filter when the map shows funders. assets/layers.js rebuilds that row, so the
   // buttons are put back whenever they go.
+  const MEASURE_COLOURS = { culture: '#ffb066', us: '#8fc1ff', eu: '#d6a8ff', politics: '#f4b6c8', other: '#f2d95c', self: '#7fd1ae' };
   function measureButtons() {
     [['gmdChips', 'gmd-chip'], ['gmChips', 'gm-filter-chip']].forEach(([id, cls]) => {
       const host = document.getElementById(id); if (!host || host.querySelector('[data-influence-measure]')) return;
       Object.entries(MEASURES).forEach(([k, M]) => {
         const b = document.createElement('button');
         b.type = 'button'; b.className = cls; b.dataset.influenceMeasure = k; b.textContent = M.label;
+        // Each measure wears its own colour (user, 18 Nov 2026: "color code"), through the coloured-filters rules in
+        // atlas.css (.has-color + --layer-color): a pale wash off, the full fill on. Black text on every fill measures 10.9:1 or better.
+        b.style.setProperty('--layer-color', MEASURE_COLOURS[k]); b.classList.add('has-color');
         b.title = k === 'culture' ? `Label each funder with ${M.what}` : k === 'self' ? `Show ${M.what}` : `${M.label} at a museum`;
         b.addEventListener('click', () => setMeasure(k));
         host.appendChild(b);

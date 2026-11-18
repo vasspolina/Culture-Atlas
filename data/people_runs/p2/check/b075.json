@@ -1,0 +1,199 @@
+[
+ {
+  "id": "dia-beacon",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "crystal-bridges",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bampfa-berkeley",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "birmingham-museum-of-art-birmingham",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cranbrook-art-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Andrew Satake Blauvelt",
+    "field": "previously",
+    "stored": [
+     "Chief of Communications and Audience Engagement, Walker Art Center",
+     "Design Director, Walker Art Center"
+    ],
+    "page says": "About the Director names his Walker Art Center posts in this order: 'including as Design Director of its award-winning design department. As Chief of Communications and Audience Engagement, he...'",
+    "fix": [
+     "Design Director, Walker Art Center",
+     "Chief of Communications and Audience Engagement, Walker Art Center"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "cranbrook-art-museum",
+   "people": [
+    {
+     "name": "Andrew Satake Blauvelt",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2015",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Design Director, Walker Art Center",
+      "Chief of Communications and Audience Engagement, Walker Art Center"
+     ],
+     "pay": null,
+     "sources": [
+      "https://cranbrookartmuseum.org/about-the-director/",
+      "https://cranbrookartmuseum.org/staff/"
+     ]
+    },
+    {
+     "name": "Laura Mott",
+     "role": "chief curator",
+     "title": "Chief Curator",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://cranbrookartmuseum.org/staff/"
+     ]
+    }
+   ],
+   "basis": "The museum's About the Director page (arrival in 2015, earlier Walker Art Center posts) and its staff page, which also names the chief curator."
+  }
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Mindy Besaw",
+    "field": "previously",
+    "stored": "Director of Fellowships, Research and University Partnerships and Curator of American Art, Crystal Bridges Museum of American Art (2014 to 2025)",
+    "page says": "'Besaw currently serves as director of fellowships, research and university partnerships and curator of American art at Crystal Bridges... Since joining the institution in 2014': 2014 is when she joined Crystal Bridges, not a stated start date for this title",
+    "fix": "Director of Fellowships, Research and University Partnerships and Curator of American Art, Crystal Bridges Museum of American Art"
+   }
+  ],
+  "corrected": {
+   "id": "eskenazi-museum-of-art",
+   "people": [
+    {
+     "name": "Mindy Besaw",
+     "role": "director",
+     "title": "Wilma E. Kelley Director",
+     "current": true,
+     "since": "2025-08",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Director of Fellowships, Research and University Partnerships and Curator of American Art, Crystal Bridges Museum of American Art",
+      "Curator, Buffalo Bill Center of the West"
+     ],
+     "pay": null,
+     "sources": [
+      "https://artmuseum.indiana.edu/about/staff/index.html",
+      "https://news.iu.edu/eskenazimuseum/live/news/49762-mindy-n-besaw-appointed-new-director-for-eskenazi"
+     ]
+    },
+    {
+     "name": "Danielle Johnson",
+     "role": "chief curator",
+     "title": "Director of Curatorial Affairs",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://artmuseum.indiana.edu/about/staff/index.html"
+     ]
+    },
+    {
+     "name": "Mariah Keller",
+     "role": "director",
+     "title": "interim director",
+     "current": false,
+     "since": "2024-08",
+     "until": "2025",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://news.iu.edu/eskenazimuseum/live/news/49762-mindy-n-besaw-appointed-new-director-for-eskenazi"
+     ]
+    }
+   ],
+   "basis": "The museum's staff directory names the director and director of curatorial affairs; IU's 17 June 2025 announcement gives Besaw's 15 August start, her earlier posts, and the interim director she succeeded."
+  }
+ },
+ {
+  "id": "boise-art-museum-boise",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bronx-museum-of-the-arts-bronx",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wave-hill-bronx",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hasty-pudding-theatricals-cambridge",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mit-media-lab-cambridge",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "poetry-in-america-harvard-cambridge",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ackland-art-museum-chapel-hill",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gibbes-museum-of-art-charleston",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-institute-of-chicago-chicago",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-contemporary-art-chicago-mca",
+  "verdict": "ok",
+  "faults": []
+ }
+]

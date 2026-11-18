@@ -1,0 +1,151 @@
+[
+ {
+  "id": "recess-brooklyn-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "smack-mellon-brooklyn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "storefront-art-architecture-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "triple-canopy-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "white-columns-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "e-flux-new-york",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "slought-philadelphia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artpace-san-antonio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "galeria-de-la-raza-san-francisco",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "southern-exposure-san-francisco",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Valerie Imus",
+    "field": "sources",
+    "stored": [
+     "https://soex.org/news/2025/10/06/southern-exposure-announces-leadership-transition-and-search-next-executive-director",
+     "https://soex.org/news/2025/12/22/southern-exposure-appoints-julio-c%C3%A9sar-morales-executive-director"
+    ],
+    "page says": "The two cited pages only announce that she will depart in spring 2026 and remain through the spring; the who we are page (not cited for her) shows she no longer holds the post: Staff lists Julio César Morales, Executive Director, and Contributors lists 'Valerie Imus, Senior Consultant'. That page is what supports current false and until 2026.",
+    "fix": [
+     "https://soex.org/news/2025/10/06/southern-exposure-announces-leadership-transition-and-search-next-executive-director",
+     "https://soex.org/news/2025/12/22/southern-exposure-appoints-julio-c%C3%A9sar-morales-executive-director",
+     "https://soex.org/about/who-we-are"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "southern-exposure-san-francisco",
+   "people": [
+    {
+     "name": "Julio César Morales",
+     "role": "director",
+     "title": "Executive Director",
+     "current": true,
+     "since": "2026-01",
+     "until": null,
+     "previously": [
+      "Founder and director, Queens Nails Annex (2003 to 2012)",
+      "Executive Director, MOCA Tucson",
+      "Senior curator, Arizona State University Art Museum"
+     ],
+     "pay": null,
+     "sources": [
+      "https://soex.org/about/who-we-are",
+      "https://soex.org/news/2025/12/22/southern-exposure-appoints-julio-c%C3%A9sar-morales-executive-director"
+     ]
+    },
+    {
+     "name": "Valerie Imus",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": false,
+     "since": null,
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://soex.org/news/2025/10/06/southern-exposure-announces-leadership-transition-and-search-next-executive-director",
+      "https://soex.org/news/2025/12/22/southern-exposure-appoints-julio-c%C3%A9sar-morales-executive-director",
+      "https://soex.org/about/who-we-are"
+     ]
+    },
+    {
+     "name": "Nicole Lugtu",
+     "role": "chair of the board",
+     "title": "President",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://soex.org/about/who-we-are"
+     ]
+    }
+   ],
+   "basis": "Southern Exposure's who we are page names the executive director and board president and now lists Valerie Imus as a senior consultant, not artistic director; its December 2025 announcement says Morales would take the post in January 2026, and its October 2025 announcement says Artistic Director Valerie Imus would leave in spring 2026."
+  }
+ },
+ {
+  "id": "fundación-ama-amoedo-josé-ignacio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "espacio-de-arte-contemporaneo-eac-montevideo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-nacional-de-artes-visuales",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bukhara-biennial-bukhara",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-museum-of-arts-of-the-republic-of-karakalpakstan-savitsky-museum-nukus",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "state-museum-of-arts-of-uzbekistan-tashkent",
+  "verdict": "ok",
+  "faults": []
+ }
+]

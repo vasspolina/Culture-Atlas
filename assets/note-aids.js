@@ -173,13 +173,16 @@
   let rec = null, listening = false, base = '', tail = '', joiner = '', capFirst = false;
 
   // Chrome 139 and later can recognise speech on the device. Where that is installed, it is used and the reader is told so.
-  (async () => {
+  // Asked only when the reader first presses Dictate, never at page load: calling SpeechRecognition.available() as the page
+  // loads crashed the renderer in headless Chromium 157, which left the whole atlas blank.
+  let checked = null;
+  const checkOnDevice = () => checked || (checked = (async () => {
     try {
       if (typeof SR.available === 'function' && 'processLocally' in SR.prototype) {
         onDevice = (await SR.available({ langs: [lang], processLocally: true })) === 'available';
       }
     } catch (e) { onDevice = false; }
-  })();
+  })());
 
   const say = (text) => { if (info) { info.textContent = text; info.hidden = !text; } };
   const setButton = () => {
@@ -240,10 +243,11 @@
     try { rec.start(); } catch (e) { say('Dictation could not start.'); }
   }
 
-  micBtn.addEventListener('click', (e) => {
+  micBtn.addEventListener('click', async (e) => {
     e.preventDefault();
     e.stopPropagation();
     if (listening) { stop(); return; }
+    await checkOnDevice();
     if (!told) {
       told = true;
       try { sessionStorage.setItem('atlas-note-dictation-told', '1'); } catch (err) {}
