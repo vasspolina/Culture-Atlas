@@ -77,6 +77,49 @@ after(async () => {
   rmSync(dir, { recursive: true, force: true });
 });
 
+describe('suggesting a place the atlas is missing', () => {
+  const postNew = (body) => call('/api/new-places', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+
+  test('stores it PENDING as a new place with no record id, and never shows it as a review', async () => {
+    const res = await postNew({ placeName: '  The Back Room   Collective ', city: 'Lagos', content: NOTE, placeId: place.id });
+    assert.equal(res.status, 201);
+    const { id } = await res.json();
+    const row = await prisma.whistleblowerReport.findUnique({ where: { id } });
+    assert.equal(row.kind, 'new-place');
+    assert.equal(row.placeId, null);
+    assert.equal(row.institution, 'The Back Room Collective');
+    assert.equal(row.city, 'Lagos');
+    assert.equal(row.status, 'PENDING');
+    assert.ok((await pending()).some(r => r.id === id && r.kind === 'new-place'));
+  });
+
+  test('an approved new place named like a record does not show on that record', async () => {
+    const id = (await prisma.whistleblowerReport.create({
+      data: { kind: 'new-place', content: NOTE, city: place.city, institution: place.name, status: 'APPROVED' }
+    })).id;
+    assert.ok(!(await reviews()).some(r => r.id === id));
+  });
+
+  test('a name the atlas already has is refused with that record id', async () => {
+    const res = await postNew({ placeName: place.name.toUpperCase(), city: 'Anywhere', content: NOTE });
+    assert.equal(res.status, 409);
+    assert.equal((await res.json()).placeId, place.id);
+  });
+
+  test('needs a name, a city and a note of the usual length', async () => {
+    assert.equal((await postNew({ placeName: 'X', city: 'Lagos', content: NOTE })).status, 400);
+    assert.equal((await postNew({ placeName: 'x'.repeat(121), city: 'Lagos', content: NOTE })).status, 400);
+    assert.equal((await postNew({ placeName: 'The Back Room', city: '', content: NOTE })).status, 400);
+    assert.equal((await postNew({ placeName: 'The Back Room', city: 'x'.repeat(81), content: NOTE })).status, 400);
+    assert.equal((await postNew({ placeName: 'The Back Room', city: 'Lagos', content: 'Too short' })).status, 400);
+    assert.equal((await postNew({ placeName: '<b></b>', city: 'Lagos', content: NOTE })).status, 400);
+  });
+});
+
 test('health check answers without touching the database', async () => {
   const res = await call('/healthz');
   assert.equal(res.status, 200);
@@ -100,7 +143,7 @@ describe('submitting a review', () => {
     const id = await submit();
     const row = await prisma.whistleblowerReport.findUnique({ where: { id } });
     assert.deepEqual(Object.keys(row).sort(), [
-      'authorLabel', 'city', 'content', 'createdAt', 'id', 'institution', 'latitude', 'longitude', 'placeId', 'rating', 'status', 'updatedAt'
+      'authorLabel', 'city', 'content', 'createdAt', 'id', 'institution', 'kind', 'latitude', 'longitude', 'placeId', 'rating', 'status', 'updatedAt'
     ]);
     assert.equal(row.authorLabel, null);
     assert.equal(row.rating, null);

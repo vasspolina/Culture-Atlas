@@ -78,7 +78,7 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=789">
+  <link rel="stylesheet" href="assets/atlas.css?v=790">
   <link rel="stylesheet" href="assets/sheet.css?v=803">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
@@ -892,7 +892,10 @@ return maplibregl$1;
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <!-- The undertone (user, 18 Nov 2026): most lives were never written down, and a blank in the record is not a place without history. -->
                 <div id="noteFormIntro"><span class="nf-undertone">Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep, so where the record goes quiet people still lived, worked, made things and gathered. Imagine them, and do not take a blank on the map for a place without history.</span><span class="nf-undertone">If you know what the atlas is missing, from inside or from memory, write it here. The atlas is built with the people who add to it. The editor reads every note before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</span></div>
-                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the museum"></label>
+                <label class="nf-field"><span>Place</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
+                <!-- A place the atlas does not have (user, 18 Nov 2026): the form asks for its city and sends it as a new place. -->
+                <p id="notePlaceHint" role="status" aria-live="polite" hidden></p>
+                <label class="nf-field" id="noteCityField" hidden><span>City or town</span><input id="noteCity" type="text" maxlength="80" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Where the place is"></label>
                 <datalist id="noteInstitutionList"></datalist>
                 <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Whistleblower"></label>
               </div>
@@ -12707,18 +12710,36 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const section = placeReviewsSectionHtml(inst.id);
       return `<div class="prose-part d-rows place-reviews${section ? '' : ' hidden'}" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews" aria-live="polite">${section}</div>`;
     }
+    // What the Place box names: a record of the atlas (known), a place it is missing (isNew, two characters or more), or nothing yet.
+    // A new place shows the City field and a line saying it goes to the editor as a new place (user, 18 Nov 2026).
+    function notePlace() {
+      const box = document.getElementById('noteInstitution');
+      const name = (box && box.value || '').trim().replace(/\s+/g, ' ');
+      const lower = name.toLowerCase();
+      const known = lower ? ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === lower) || null : null;
+      const isNew = !known && name.length >= 2;
+      const cityField = document.getElementById('noteCityField');
+      const hint = document.getElementById('notePlaceHint');
+      if (cityField) cityField.hidden = !isNew;
+      if (hint) {
+        hint.hidden = !isNew;
+        hint.textContent = isNew ? 'Not on the atlas yet. It goes to the editor as a new place, with what you write about it.' : '';
+      }
+      return { name, known, isNew };
+    }
+    window.atlasNotePlace = notePlace;
     // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
     function syncNoteReady() {
       const sendBtn = document.getElementById('workSendBtn');
       if (!sendBtn) return;
-      const wanted = (document.getElementById('noteInstitution').value || '').trim().toLowerCase();
-      const known = wanted && ALL_INSTITUTIONS.some(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      const place = notePlace();
       const longEnough = (document.getElementById('workInput').value || '').trim().length >= REVIEW_LIMITS.min;
-      const ready = Boolean(known && longEnough && document.getElementById('noteAck').checked);
+      const placeOk = place.known || (place.isNew && (document.getElementById('noteCity').value || '').trim());
+      const ready = Boolean(placeOk && longEnough && document.getElementById('noteAck').checked);
       if (ready) sendBtn.dataset.ready = 'true'; else delete sendBtn.dataset.ready;
     }
     document.addEventListener('input', (e) => {
-      if (e.target.matches && e.target.matches('#noteInstitution, #workInput')) syncNoteReady();
+      if (e.target.matches && e.target.matches('#noteInstitution, #noteCity, #workInput')) syncNoteReady();
     });
     document.addEventListener('change', (e) => {
       if (e.target.matches && e.target.matches('#noteInstitution, #noteAck')) syncNoteReady();
@@ -16737,7 +16758,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // Removes the follow-up chips from every earlier answer, in the main chat and the phone drawer.
     function retireFollowUps() {
-      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups, #curatorMessages .curator-browse-suggest').forEach(el => el.remove());
+      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups, #curatorMessages .curator-browse-suggest, #curatorMessages .chat-share-invite, #curatorDrawerLiveStream .chat-share-invite').forEach(el => el.remove());
     }
     function appendUserMessage(text) {
       if (typeof curatorContext !== 'undefined') {
@@ -16803,13 +16824,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         items.push({ node, full: node.nodeValue, parts, shown: 0 });
         total += parts.length;
       }
-      const follow = root.querySelector('.curator-followups');
+      // The follow-ups and the Share information invite wait until the writing is done.
+      const follow = [...root.querySelectorAll('.curator-followups, .chat-share-invite')];
       if (!items.length || total < 4) { if (opts.onDone) opts.onDone(); return { finish() {} }; }
       // A balloon (gossip) is drawn to fit its text: the turn keeps its final height while it is written, so the balloon is drawn once.
       if (root.classList.contains('is-gossip')) root.style.minHeight = root.offsetHeight + 'px';
       root.dataset.typing = '1';
       items.forEach(i => { if (i.el) i.el.style.visibility = 'hidden'; else i.node.nodeValue = ''; });
-      if (follow) follow.style.visibility = 'hidden';
+      follow.forEach(f => { f.style.visibility = 'hidden'; });
       // About 28 words a second at most, never longer than 5 seconds however long the answer is.
       const duration = Math.min(5000, Math.max(700, total * 36));
       const start = performance.now();
@@ -16826,7 +16848,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (done) return; done = true;
         clearInterval(timer);
         items.forEach(i => { if (i.el) i.el.style.visibility = ''; else i.node.nodeValue = i.full; });
-        if (follow) follow.style.visibility = '';
+        follow.forEach(f => { f.style.visibility = ''; });
         root.style.minHeight = '';
         delete root.dataset.typing;
         if (opts.onTick) opts.onTick();
@@ -16839,6 +16861,30 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }, 30);
       root.addEventListener('click', finish, { once: true });
       return { finish };
+    }
+
+    // Every answer asks the visitor to share what they know (user, 18 Nov 2026: "it need to promote users to share information").
+    // One sentence carrying the lost-history undertone, named after the place in focus when there is one, then a Share
+    // information button set as a follow-up row, so it looks like the chat's own next step. The sentence turns over from
+    // answer to answer so it is not the same line every time. Where the model already closed on the invitation
+    // (UNRECORDED LIVES), only the button is added. Not spoken aloud.
+    let chatShareInviteTurn = 0;
+    function chatShareInvite(answerHtml) {
+      const inst = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || null;
+      const name = inst && inst.name ? escapeHtml(inst.name) : '';
+      const lines = name ? [
+        `Know something about ${name} that this record leaves out? Most of what happened in places like it was never written down, and what you remember can stand beside the record.`,
+        `If you worked at ${name}, made things there or lived nearby, your account belongs on the atlas. Archives kept what someone paid to keep; the rest is carried by people.`,
+        `Every record here is partial. Add what you know about ${name}, and the atlas grows with the people who use it.`
+      ] : [
+        'Most lives were never written down. A place with few records is not a place without history, so add what you know, from inside or from memory.',
+        'The atlas is built with the people who use it. If you know what a record leaves out, tell it here.',
+        'Archives kept what someone paid to keep. What you know about a museum, a city or the people around them can fill the quiet.'
+      ];
+      const asked = typeof answerHtml === 'string' && /share information/i.test(answerHtml.replace(/<[^>]+>/g, ' '));
+      const line = asked ? '' : `<p class="chat-share-invite-line">${lines[chatShareInviteTurn++ % lines.length]}</p>`;
+      const label = name ? `Share information about ${name}` : 'Share information';
+      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-invite="1">${label}</button></div></div>`;
     }
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {
@@ -16922,6 +16968,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       // A turn built from several records or fields says each statement once (assets/repeats.js).
       processedContent = dedupeView(processedContent);
+      const shareInviteHtml = chatShareInvite(processedContent);
 
       div.innerHTML = `
         <div class="space-y-2_5">
@@ -16929,7 +16976,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           ${processedContent}
           ${webIntelHtml}
           ${followUpHtml}
-
+          ${shareInviteHtml}
         </div>
       `;
       // A turn that holds gossip (reported, unverified items) is marked on the turn itself, so in gossip mode the comic balloon goes only around those.
@@ -16948,7 +16995,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         document.getElementById('curatorDrawerGreeting')?.classList.add('hidden');
         const mBot = document.createElement('div');
         mBot.className = 'curator-message-wrap';
-        mBot.innerHTML = processedContent + followUpHtml;
+        mBot.innerHTML = processedContent + followUpHtml + shareInviteHtml;
         if (mBot.querySelector('[data-gossip]')) mBot.classList.add('is-gossip');
         drawerLive.appendChild(mBot);
         if (typeof window.atlasTypesetRun === 'function') window.atlasTypesetRun(mBot);
@@ -18476,8 +18523,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const chatInputKind = 'whistleblower';
     const INPUT_KIND_TEXT = {};
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
-        banner: 'Whistleblower: choose the institution and write your note. It is sent to the editor and appears on that record, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
-        placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
+        banner: 'Choose a place on the atlas, or name one it is missing, and write what you know. It is sent to the editor; a note on a record appears there as a review once approved, and a new place is added once checked. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'Write what you know, from inside or from memory. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
         banner: 'Notes cannot be sent at the moment: the report service is not set up. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'The report service is not set up, so your note will not be saved.'
@@ -18762,14 +18809,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const institutionBox = document.getElementById('noteInstitution');
       const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
       if (!ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
-      const wanted = (institutionBox.value || '').trim().toLowerCase();
-      const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
-      if (!place) return fail('Choose the institution from the list. It must be a museum on the atlas.', institutionBox);
+      const chosen = notePlace();
+      const place = chosen.known;
+      const cityBox = document.getElementById('noteCity');
+      const city = (cityBox.value || '').trim();
+      if (!place && !chosen.isNew) return fail('Choose a place from the list, or write the name of one the atlas is missing.', institutionBox);
+      if (!place && !city) return fail('Write the city or town the new place is in.', cityBox);
       const content = (input.value || '').trim();
       if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
       const ack = document.getElementById('noteAck');
       if (!ack.checked) return fail('Tick the box to confirm you have left out anything that identifies you.', ack);
-      const body = { content };
+      const body = place ? { content } : { content, placeName: chosen.name, city };
       const label = (document.getElementById('noteAuthor').value || '').trim();
       if (label) body.authorLabel = label;
       const noteFiles = window.atlasNoteFiles;
@@ -18779,7 +18829,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       status.textContent = noteFiles && noteFiles.count() ? 'Sending the note and its files…' : 'Sending…';
       try {
         if (noteFiles && noteFiles.count()) body.files = await noteFiles.payload();
-        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
+        const res = await fetch(place ? `${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews` : `${ATLAS_REPORT_API_URL}/api/new-places`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
@@ -18787,14 +18837,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const out = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(out.error || 'The server did not take it.');
         input.value = '';
+        cityBox.value = '';
+        if (!place) institutionBox.value = '';
         document.getElementById('noteAuthor').value = '';
         if (noteFiles) noteFiles.clear();
         ack.checked = false;
+        notePlace();
         syncNoteReady();
         status.textContent = '';
         appendCuratorMessage(`
           <div class="space-y-1">
-            <p class="no-indent">Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.</p>
+            <p class="no-indent">${place ? `Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.` : `Sent to the editor as a new place: ${escapeHtml(chosen.name)}, ${escapeHtml(city)}. The editor checks it before it is added to the atlas. Thank you for adding what was missing.`}</p>
             <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
           </div>
         `, [], null, null, false);
@@ -19145,6 +19198,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const selectorsToRemove = [
         '.curator-speak-btn',
         '.curator-followup-pill',
+        '.chat-share-invite',
         '.copy-itinerary-btn',
         '.dossier-link',
         '.ext-web-link',
@@ -19704,6 +19758,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       // 0. Check for interactive follow-up suggestion pills
+      const shareInviteBtn = e.target.closest('[data-share-invite]');
+      if (shareInviteBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!isChatInputMode) enterChatInputMode('whistleblower');
+        return;
+      }
       const followUpBtn = e.target.closest('.curator-followup-pill');
       if (followUpBtn) {
         e.preventDefault();
