@@ -190,14 +190,17 @@
   }
   // A city's spiral, in pixels, at a globe radius of r. Its natural spacing (18px out, then 6 times the root of the place)
   // took New York's several hundred funders some 120px out over the Atlantic at world zoom, a cloud of dots at sea that
-  // read as places (user, 18 Nov 2026: "keep working on it", then "there are dots in the ocean"). So the spiral keeps its
-  // shape but its outer edge is held to a twenty-fourth of the globe's radius, about 15px at world zoom (never under 10px):
-  // New York packs into a clump over the city, which is what that much money looks like, a coastal city's few funders stay
-  // on its coast (at a twelfth, Los Angeles and San Francisco still spilled into the Pacific), and every spiral opens back
-  // out to the natural spacing as the map is zoomed in, where each dot can be pointed at again.
+  // read as places (user, 18 Nov 2026: "keep working on it", then "there are dots in the ocean"). A cap in pixels (a
+  // twenty-fourth of the globe's radius, never under 10px) cleared the Atlantic but not a narrow coast: Wellington's few
+  // funders still sat in the sea round New Zealand ("i still couls see some dots in the waterr"). So the cap is now a
+  // distance on the ground: the spiral's outer edge is held to SPIRAL_RAD of arc, about 19km, which is r * SPIRAL_RAD in
+  // pixels. At world zoom that is about a pixel, so a city's funders sit on its office; their pale dots are one shape
+  // filled once, so the pile does not darken. The spiral opens as the map closes in on the city, and reaches its natural
+  // spacing only where a city fills the screen and each dot can be pointed at.
+  const SPIRAL_RAD = 0.003;
   function spread(o, r) {
     if (!o || !o.rr) return { dx: 0, dy: 0 };
-    const k = Math.min(1, Math.max(10, r / 24) / o.outer), d = o.rr * k;
+    const k = Math.min(1, r * SPIRAL_RAD / o.outer), d = o.rr * k;
     return { dx: Math.cos(o.a) * d, dy: Math.sin(o.a) * d };
   }
   // A great-circle path from the office to a space, cut where it goes behind the globe.
