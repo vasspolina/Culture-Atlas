@@ -36,7 +36,8 @@ test('a short record stays within its budget and keeps its head and sources', ()
 test('a thin record writes what is there and nothing invented', () => {
   const t = formatRecord({ name: 'X', city: 'Y', country: 'Z', tier: 'C' }, { status: 'Unverified' });
   assert.match(t, /Governance Classification: Unverified/);
-  assert.match(t, /Funding on record: not stated/);
+  // A field the record lacks is left out, not filled with "not stated" or "none recorded" (user, 18 Nov 2026).
+  assert.doesNotMatch(t, /not stated|none recorded|Funding on record/);
   assert.doesNotMatch(t, /GOVERNANCE:/);
   assert.doesNotMatch(t, /VISITING:/);
 });

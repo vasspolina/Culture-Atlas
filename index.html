@@ -8916,9 +8916,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           lon: inst.lon,
           tier: inst.tier,
           address: inst.address || inst.location || inst.neighborhood || targetCity,
-          openingHours: rawH || 'not stated',
-          admissionFee: inst.admission_fee || 'not stated',
-          curatorialFocus: inst.curatorial_focus || inst.neighborhood || 'not stated',
+          openingHours: rawH || '',
+          admissionFee: inst.admission_fee || '',
+          curatorialFocus: inst.curatorial_focus || inst.neighborhood || '',
           legDistanceKm: legDist,
           legWalkMinutes: legMin,
           advisoryNote: advisory.trim()
@@ -9215,10 +9215,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (nameEl) nameEl.textContent = stop.name;
 
       const hoursEl = document.getElementById('activeRouteStopHours');
-      if (hoursEl) hoursEl.textContent = `${stop.openingHours}`;
+      if (hoursEl) { hoursEl.textContent = stop.openingHours; hoursEl.hidden = !stop.openingHours; }
 
       const feeEl = document.getElementById('activeRouteStopFee');
-      if (feeEl) feeEl.textContent = `${stop.admissionFee}`;
+      if (feeEl) { feeEl.textContent = stop.admissionFee; feeEl.hidden = !stop.admissionFee; }
 
       const focusEl = document.getElementById('activeRouteStopFocus');
       if (focusEl) focusEl.textContent = stop.curatorialFocus || stop.address || '';
@@ -15008,7 +15008,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         // Fallback to grounded database facts if external network is unavailable / mocked
         if (!scrapeResult.scrapedText && targetInst) {
-          scrapeResult.scrapedText = `${targetInst.name} in ${targetInst.city}, ${targetInst.country}. Tier: ${tierName(targetInst)}. Hours: ${targetInst.opening_hours || 'not stated'}. Admission: ${targetInst.admission_policy || targetInst.admission_fee || 'not stated'}. Highlights: ${targetInst.highlight || 'not stated'}. Nothing here has been independently verified.`;
+          scrapeResult.scrapedText = `${targetInst.name} in ${targetInst.city}, ${targetInst.country}. Tier: ${tierName(targetInst)}. ${[targetInst.opening_hours ? 'Hours: ' + targetInst.opening_hours + '.' : '', (targetInst.admission_policy || targetInst.admission_fee) ? 'Admission: ' + (targetInst.admission_policy || targetInst.admission_fee) + '.' : '', targetInst.highlight ? 'Highlights: ' + targetInst.highlight + '.' : ''].filter(Boolean).join(' ')}`;
           if (targetInst.website && !targetInst.website.includes('wikipedia.org')) {
             scrapeResult.trustedLinks.push({ title: `${targetInst.name} Official Site`, url: targetInst.website });
           }
@@ -15302,13 +15302,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     }
     function formatShortGrounding(i) {
       const cut = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
-      return `- ${i.name} (${i.city || i.location || 'no city'}, ${i.country || ''}) | ${tierName(i)} | Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none'} | Flags: ${(i.flags || []).join(', ') || 'none'} | Funding: ${cut(i.funding, 260) || 'not stated'} | Watch: ${cut(i.watch, 260) || 'none'}`;
+      return `- ${i.name} (${[i.city || i.location, i.country].filter(Boolean).join(', ')}) | ${tierName(i)}${i.grade && i.grade_basis ? ' | Grade Basis: ' + i.grade_basis : ''}${(i.flags || []).length ? ' | Flags: ' + i.flags.join(', ') : ''}${i.funding ? ' | Funding: ' + cut(i.funding, 260) : ''}${i.watch ? ' | Watch: ' + cut(i.watch, 260) : ''}`;
     }
 
     // The whole record, in labelled sections (assets/grounding.js); full is the record the question is about, the rest are shorter.
     function formatInstitutionGrounding(i, full) {
       if (window.AtlasGrounding) return AtlasGrounding.formatRecord(i, { status: tierName(i), watchGossip: watchIsGossip(i.watch), full: !!full });
-      return `- INSTITUTION: ${i.name}\n  Location: ${i.city}, ${i.country}\n  Governance Classification: ${tierName(i)}\n  Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none recorded'}\n  Public Funding: ${i.funding || 'not stated'}\n  Watch Line: ${i.watch || 'none recorded'}\n  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
+      return `- INSTITUTION: ${i.name}\n  Location: ${i.city}, ${i.country}\n  Governance Classification: ${tierName(i)}\n${i.grade && i.grade_basis ? '  Grade Basis: ' + i.grade_basis + '\n' : ''}${i.funding ? '  Public Funding: ' + i.funding + '\n' : ''}${i.watch ? '  Watch Line: ' + i.watch + '\n' : ''}  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
     }
 
     // =========================================================================
@@ -15676,9 +15676,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // 2. Build structured <current_target> XML block
       let currentTargetXml = '';
       if (currentTarget) {
-        const budgetStr = currentTarget.funding || 'not stated';
-        const holdingsStr = currentTarget.highlight || 'not stated';
-        currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${tierName(currentTarget)}\nFunding Profile: ${budgetStr}\nKey Collections & Archives: ${holdingsStr}\nAdmission Policy: ${currentTarget.admission_policy || 'not stated'}\n</current_target>\n\n`;
+        const budgetStr = currentTarget.funding || '';
+        const holdingsStr = currentTarget.highlight || '';
+        currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${tierName(currentTarget)}\n${budgetStr ? `Funding Profile: ${budgetStr}\n` : ''}${holdingsStr ? `Key Collections & Archives: ${holdingsStr}\n` : ''}${currentTarget.admission_policy ? `Admission Policy: ${currentTarget.admission_policy}\n` : ''}</current_target>\n\n`;
       } else {
         currentTargetXml = `<current_target>\nEntity: None explicitly selected (Global Inquiry across Leaving it on the table)\n</current_target>\n\n`;
       }
@@ -15934,7 +15934,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (!rawText.trim() && beforeAbsence.trim()) rawText = beforeAbsence.split(/\n\s*\n/)[0].trim();
           // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
           if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
-          if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing has been reported about this museum.</p>', gossip: false, none: true };
+          if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
       } catch (err) {
@@ -17168,7 +17168,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None found.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
+                appendCuratorMessage(aiRes.none ? (target ? `<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : ''}` : '<p>None.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -17497,7 +17497,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (isGossipModeActive) {
           const told = here.filter(i => recordFact(i, true));
           listOf(told, told.length ? `${told.length} of ${here.length} museums in ${escapeHtml(place)} have something reported${told.length > 12 ? '. The first 12' : ''}:` : '', true);
-          if (!told.length) answer(`<p>Nothing has been reported about the ${here.length} ${here.length === 1 ? 'museum' : 'museums'} in ${escapeHtml(place)}.</p>`);
+          if (!told.length) listOf(here, `${here.length} ${here.length === 1 ? 'museum' : 'museums'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
         listOf(here, `${here.length} ${here.length === 1 ? 'museum' : 'museums'} in ${escapeHtml(place)}${here.length > 12 ? '. The first 12' : ''}:`);
@@ -17547,7 +17547,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         focus(target);
         const lines = [fact('Opening hours: ', target.opening_hours), fact('Admission: ', target.admission_fee || target.admission_policy), fact('Address: ', target.address)].join('');
         const page = target.visit_url || target.website;
-        answer(`<p>${formatInstLink(target)}.</p>${lines || (page ? '' : '<p>No opening hours, prices or address for this museum.</p>')}${page ? `<p class="no-indent">The museum’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}.</p>${lines}${page ? `<p class="no-indent">The museum’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
@@ -17573,13 +17573,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           const f = reported ? null : recordFact(target, true);
           if (reported) answer(reported, [], true);
           else if (f) answer(`<p>${escapeHtml(f.full || f.text)}${f.src ? ' ' + f.src : ''}</p>`, [], true);
-          else answer('<p>Nothing has been reported about this museum.</p>', []);
+          else answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : ''}`, []);
           return;
         }
         // Each reported item already names its sources, so the record's own source line repeats only the hosts not shown yet.
         const shownHosts = new Set([...(reported || '').matchAll(/href="([^"]+)"/g)].map(m => hostOf(m[1].replace(/&amp;/g, '&'))).filter(Boolean));
         const rest = reported ? { ...target, sources: (target.sources || []).filter(u => !shownHosts.has(hostOf(u))) } : target;
-        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing has been reported about this museum.</p>'}${sourcesHtml(rest)}`);
+        answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || (target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '')}${sourcesHtml(rest)}`);
         return;
       }
       if (askedMoney) {
@@ -17588,8 +17588,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // A funder the record does not name is said to be absent before the record's funding is given, so a false premise
         // is corrected rather than answered.
         const onRecord = askedFunder && (new RegExp('\\b' + askedFunder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(target.funding || '') || shared.some(f => f.funder.toLowerCase() === askedFunder.toLowerCase()));
-        const absent = askedFunder && !onRecord ? `<p>The atlas does not list ${escapeHtml(askedFunder)} as a funder of ${escapeHtml(target.name)}.</p>` : '';
-        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding details for this museum.</p>'}${governanceHtml(target, askedGovernance)}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${gossipAsideHtml(target)}${sourcesHtml(target)}`);
+        const absent = askedFunder && !onRecord ? `<p>${escapeHtml(askedFunder)} is not among the funders of ${escapeHtml(target.name)}.</p>` : '';
+        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : ''}${governanceHtml(target, askedGovernance)}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${gossipAsideHtml(target)}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {

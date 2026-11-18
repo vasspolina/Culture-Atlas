@@ -51,16 +51,16 @@
     parts.push(head);
 
     parts.push(section('STATUS', [
-      'Governance Classification: ' + (opts.status || i.tier || 'not stated'),
-      'Grade Basis: ' + (i.grade && i.grade_basis ? i.grade_basis : 'none recorded'),
+      (opts.status || i.tier) ? 'Governance Classification: ' + (opts.status || i.tier) : '',
+      i.grade && i.grade_basis ? 'Grade Basis: ' + i.grade_basis : '',
       i.tier_note ? 'Tier note: ' + cut(i.tier_note, 400) : '',
-      'Recorded Flags: ' + ((i.flags || []).join(', ') || 'none recorded'),
+      (i.flags || []).length ? 'Recorded Flags: ' + i.flags.join(', ') : '',
       i.why_flagged ? 'Why flagged: ' + i.why_flagged : '',
-      'Watch Line: ' + (i.watch ? i.watch + ' (Watch Line Is Gossip: ' + (opts.watchGossip ? 'yes' : 'no, a clean result or a description') + ')' : 'none recorded')
+      (i.watch ? 'Watch Line: ' + i.watch + ' (Watch Line Is Gossip: ' + (opts.watchGossip ? 'yes' : 'no, a clean result or a description') + ')' : '')
     ]));
 
     var fin = [
-      'Funding on record: ' + (i.funding || 'not stated'),
+      i.funding ? 'Funding on record: ' + i.funding : '',
       d.funding_verdict ? 'Funding verdict: ' + d.funding_verdict : ''
     ];
     (d.funding || []).slice(0, 8).forEach(function (p) { fin.push('- ' + cut(p, 500)); });
@@ -84,7 +84,8 @@
     if (b || i.affiliations_note || i.red_tape) {
       var gov = [];
       if (b) {
-        gov.push('Legal form: ' + (b.legal_form || 'not stated') + (b.parent ? '; parent: ' + b.parent : '') + (b.budget_set_by ? '; budget set by ' + b.budget_set_by : '') + (b.year ? ' (' + b.year + ')' : ''));
+        var gl = [b.legal_form ? 'Legal form: ' + b.legal_form : '', b.parent ? 'parent: ' + b.parent : '', b.budget_set_by ? 'budget set by ' + b.budget_set_by : ''].filter(Boolean).join('; ');
+        if (gl) gov.push(gl + (b.year ? ' (' + b.year + ')' : ''));
         if (b.controls && b.controls.length) gov.push('Public controls it is under: ' + b.controls.join('; '));
         if (b.level_basis) gov.push('Administration rating basis: ' + b.level_basis);
       }
@@ -155,7 +156,7 @@
     ]));
 
     var src = urls((i.sources || []).concat(d.sources || []), opts.full ? 10 : 5);
-    parts.push(section('SOURCES', [src ? src : 'none recorded']));
+    parts.push(section('SOURCES', [src]));
 
     // Over budget, the longest section loses its last line, again and again, so the head, the visiting lines and the sources all
     // stay and no section is lost whole; a shortened section says so once.
