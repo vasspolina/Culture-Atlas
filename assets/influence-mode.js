@@ -17,8 +17,9 @@
 // The sender is the subject (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at
 // fault?"). A space that says no ends one tie, not the money: so a funder's ledger also says where its money comes from and
 // what else it pays for beside culture (hand-sourced facts, data/influence_senders.json, each with its own source), and,
-// when a space ended a tie, which ties the records still date after that and do not say ended. On the map an ended tie is a
-// dashed line and a running one solid, so a picked funder shows at a glance where it was refused and where it went on paying.
+// when a space ended a tie, which ties the records still date after that and do not say ended. On the map every space stays,
+// faint where no money goes and darker the more funders reach it; a picked funder's spaces come up in full ink and the rest of
+// the world stays pale (see "The field" below). An ended tie is a dashed line, the one line drawn unasked.
 // Switched off, all four go and the page is as it was. Its look is the "INFLUENCE MODE" block at the end of assets/sheet.css.
 (function () {
   let DATA = null, STUDY = null, loading = null, on = false;
@@ -299,6 +300,50 @@
   // and a picked funder's lines go only to the linked spaces.
   const tiesFor = (f, m = MEASURE) => m === 'culture' ? f.ties : f.ties.filter(t => (t.links || []).some(l => l.measure === m));
   const shown = f => mapSpaces(f).size > 0;
+  // ---- The field: the money as presence, its absence as fading ----
+  // (user, 18 Nov 2026: "Maybe it's a little bit about fading out where the money doesn't go? And not using the lines as
+  // much?", after Walid Raad, whose colours and lines withdraw from the artworks; then "do this": "Every space stays on the
+  // map, set faint. The spaces a funder pays come up in full ink. Picking a funder no longer draws a starburst ... Lines
+  // would become the exception: one appears only when you point at a space, or for an ended tie".) Before this the mode
+  // took every space off the map, so where the money did not go was not drawn at all, and the lines did all the telling.
+  // Now the page still hides the spaces (atlasModeKeep) and this layer draws all of them itself as small ink dots: with no
+  // funder picked, a space's ink follows how many funders on the map reach it under the measure (FAINT for none, then up
+  // a log scale to full ink for the most reached, MoMA); with one picked, its spaces are the page's own pins and this
+  // layer's rings, and every other space is FAINT. ?lines in the address brings back the old drawing, to compare.
+  const LINES = /[?&]lines(=|&|$)/.test(location.search);
+  // An unreached space; a funder that is not the one in question, its dot and its name. The dots are fainter than the names:
+  // at 0.3 the pale dots of Europe's hundreds of funders stacked back up into a dark mass round the picked funder's museums.
+  const FAINT = 0.12, DIM_DOT = 0.15, DIM = 0.35;
+  let REACH = null;
+  function reach() {
+    const key = MEASURE + ':' + DATA.funders.length + ':' + merged + ':' + studyMerged;
+    if (REACH && REACH.key === key) return REACH;
+    const by = new Map(); let max = 1;
+    DATA.funders.forEach(f => mapSpaces(f).forEach((x, id) => { const n = (by.get(id) || 0) + 1; by.set(id, n); if (n > max) max = n; }));
+    return (REACH = { key, by, max });
+  }
+  // Ink in eight steps, so the field is eight paths a frame and not 1,773.
+  const STEPS = 8;
+  const inkStep = (n, max) => n ? Math.max(1, Math.round(STEPS * Math.log(1 + n) / Math.log(1 + max))) : 0;
+  const stepAlpha = k => k ? 0.3 + 0.7 * k / STEPS : FAINT;
+  function field(ctx, project, r, cx, cy, ink, insts) {
+    const R = reach(), sel = g('selectedInstitution'), paths = [];
+    insts.forEach(i => {
+      if (typeof i.lat !== 'number' || i === sel || (pickedSpaces && pickedSpaces.has(i.id))) return;
+      const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
+      const k = picked ? 0 : inkStep(R.by.get(i.id) || 0, R.max);
+      (paths[k] || (paths[k] = [])).push(pt);
+    });
+    ctx.fillStyle = ink;
+    paths.forEach((pts, k) => {
+      if (!pts) return;
+      ctx.globalAlpha = stepAlpha(k);
+      ctx.beginPath();
+      pts.forEach(pt => { ctx.moveTo(pt.x + 2, pt.y); ctx.arc(pt.x, pt.y, 2, 0, Math.PI * 2); });
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+  }
   function setMeasure(m) {
     if (!MEASURES[m] || (m === MEASURE && m !== 'culture')) m = 'culture';
     MEASURE = m;
@@ -354,13 +399,17 @@
     const dpr = ctx.getTransform ? (ctx.getTransform().a || 1) : 1, W = ctx.canvas.width / dpr, H = ctx.canvas.height / dpr;
     const insts = g('ALL_INSTITUTIONS') || [];
     ctx.save();
-    // The picked funder's ties: a line from its office to each space it got something from.
+    if (!LINES) field(ctx, project, r, cx, cy, ink, insts);
+    // The picked funder's ties. A space that ended the tie is a dashed line, a running one solid: shape, not colour, says
+    // which; a space with ties of both kinds takes the solid line, since some tie there is not said to have ended. Only the
+    // dashed lines are drawn unasked, and a solid one to the space pointed at (its name here, or its pin on the page); the
+    // rest is said by the field, the picked funder's spaces in ink on a pale world.
     if (picked && picked.hq) {
       const byId = new Map(insts.map(i => [i.id, i]));
-      // A space that ended the tie is a dashed line, a running one solid: shape, not colour, says which. A space with ties
-      // of both kinds takes the solid line, since some tie there is not said to have ended.
+      const hovInst = g('hoveredInstitution'), pointed = hoverSpace || (hovInst && hovInst.id);
       ctx.strokeStyle = ink; ctx.lineWidth = 1;
       mapSpaces(picked).forEach((x, id) => {
+        if (!LINES && x.open && id !== pointed) return;
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
         ctx.setLineDash(x.open ? [] : [4, 4]);
         arc(ctx, project, r, cx, cy, picked.hq, i);
@@ -371,10 +420,14 @@
     // the old money map set a space's funders round it; those funders' names are placed first.
     const sel = !picked && g('selectedInstitution');
     FOCUS = sel && typeof sel.lat === 'number' ? new Set(DATA.funders.filter(f => f.hq && spacesOf(f).has(sel.id))) : null;
+    // Its funders stay in full ink and the others go pale; a line goes only to the funder pointed at.
     if (FOCUS) {
       ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.setLineDash([]);
-      FOCUS.forEach(f => arc(ctx, project, r, cx, cy, f.hq, sel));
+      FOCUS.forEach(f => { if (LINES || f === hover) arc(ctx, project, r, cx, cy, f.hq, sel); });
     }
+    // A funder that is not the one in question (the picked funder, or a funder of the space in focus) is drawn pale, name
+    // and dot, unless it is pointed at.
+    const dim = f => !LINES && f !== hover && ((picked && picked !== f) || (FOCUS && !FOCUS.has(f)));
     // Marks first, then names, the funders that reach most spaces first, so their names get the best place.
     const marks = [];
     const M = MEASURES[MEASURE];
@@ -398,11 +451,13 @@
     marks.forEach(m => {
       const sel = picked === m.f, hov = hover === m.f;
       mark(ctx, m.f, m.x, m.y, m.s);
+      ctx.globalAlpha = dim(m.f) ? DIM_DOT : 1;
       // Solid ink; a funder with no figure for the measure is hollow, the picked one gets a ring.
       ctx.fillStyle = m.none && !sel && !hov ? paper : ink; ctx.fill();
       ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.stroke();
       if (sel) { ctx.beginPath(); ctx.arc(m.x, m.y, DOT + 3, 0, Math.PI * 2); ctx.stroke(); }
     });
+    ctx.globalAlpha = 1;
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     const hits = (b, list) => list.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
     // A place that runs off the map's edge counts as taken, so a long label turns inward.
@@ -497,8 +552,10 @@
       if (!clear && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
       const spot = clear || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
       names.push(b);
+      ctx.globalAlpha = dim(f) ? DIM : 1;
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
       ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
+      ctx.globalAlpha = 1;
       HITS.push({ f, x, y, s, label: b });
     });
     // The picked funder's museums get their own dots, drawn last (user, 17 Nov 2026: "museums lost its dots"). The page's
