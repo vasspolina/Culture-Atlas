@@ -78,8 +78,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=810">
-  <link rel="stylesheet" href="assets/sheet.css?v=810">
+  <link rel="stylesheet" href="assets/atlas.css?v=813">
+  <link rel="stylesheet" href="assets/sheet.css?v=813">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -6802,22 +6802,22 @@ return maplibregl$1;
         // ---- Close in, the street map is set like a printed gallery map (user, 4 and 18 Nov 2026, after Fraser Muggeridge
         // studio's Bloomsbury Art Galleries map): the blocks a fine stipple of dots, the streets left as paper between two edges,
         // the squares and water plain paper, street names in Serrif capitals along the street, stations in a ruled box. Every
-        // poster_ layer fades in between zoom 13.5 and 14.5 (POSTER_ZOOM), so the city view keeps its hairlines and only the
+        // poster_ layer fades in between zoom 12.5 and 13.5 (POSTER_ZOOM, 13), so the city view keeps its hairlines and only the
         // zoomed-in map changes. applyCityMapGossip paints them in the map's ground and line colours (the 50% grey outside gossip
         // mode, so only the cultural spaces stand in full strength) and posterImages redraws the dots to match.
         {
           id: 'poster_ground',
           type: 'background',
-          minzoom: 13.5,
-          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+          minzoom: 12.5,
+          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
         },
         {
           id: 'poster_park_fill',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          minzoom: 13.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+          minzoom: 12.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
         },
         {
           id: 'poster_grass_fill',
@@ -6825,16 +6825,16 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'landcover',
           filter: ['match', ['get', 'class'], ['grass', 'wood'], true, false],
-          minzoom: 13.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+          minzoom: 12.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
         },
         {
           id: 'poster_water_fill',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          minzoom: 13.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1] }
+          minzoom: 12.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
         },
         // The streets: a casing in the line colour under a paper fill, every class casing first and fill after, so the
         // junctions open into each other as on the print. Paths and tracks are left out: on the print a footpath is not a street.
@@ -6844,13 +6844,13 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
-          minzoom: 13.5,
+          minzoom: 12.5,
           layout: { 'line-join': 'round', 'line-cap': 'round' },
           paint: {
             'line-color': '#787878',
-            'line-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1],
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
             'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
-              14, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 8, ['secondary', 'tertiary'], 6.5, 'service', 3, 4.5],
+              13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 5.5, ['secondary', 'tertiary'], 4.5, 'service', 2, 3],
               18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 58, ['secondary', 'tertiary'], 46, 'service', 16, 32]]
           }
         },
@@ -6860,13 +6860,13 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
-          minzoom: 13.5,
+          minzoom: 12.5,
           layout: { 'line-join': 'round', 'line-cap': 'round' },
           paint: {
             'line-color': '#ffffff',
-            'line-opacity': ['interpolate', ['linear'], ['zoom'], 13.5, 0, 14.5, 1],
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
             'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
-              14, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 6, ['secondary', 'tertiary'], 4.5, 'service', 1.5, 2.5],
+              13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 3.5, ['secondary', 'tertiary'], 2.5, 'service', 0.5, 1.2],
               18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 56, ['secondary', 'tertiary'], 44, 'service', 14, 30]]
           }
         },
@@ -6923,7 +6923,9 @@ return maplibregl$1;
             'fill-extrusion-color': '#ffffff',
             'fill-extrusion-height': CITY_BUILDING_TOP,
             'fill-extrusion-base': CITY_BUILDING_BASE,
-            'fill-extrusion-opacity': ['step', ['zoom'], 0, 16, 1],
+            // Drawn at no zoom since the printed gallery map holds at every close zoom (user, 18 Nov 2026): the solid volumes
+            // covered its stipple from 16. The layer stays, invisible, for xrayFindBuilding.
+            'fill-extrusion-opacity': 0,
             'fill-extrusion-vertical-gradient': true
           }
         },
@@ -6999,7 +7001,7 @@ return maplibregl$1;
             'text-letter-spacing': 0
           },
           paint: {
-            'text-color': '#808080',
+            'text-color': '#404040',
             'text-halo-color': '#ffffff',
             'text-halo-width': 1.5
           }
@@ -7011,19 +7013,19 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation_name',
           filter: ['match', ['get', 'class'], ['minor', 'tertiary', 'secondary', 'primary', 'trunk'], true, false],
-          minzoom: 14,
+          minzoom: 13,
           layout: {
             'symbol-placement': 'line',
             'symbol-spacing': 320,
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Serrif Light'],
-            'text-size': ['interpolate', ['linear'], ['zoom'], 14, 14, 18, 16],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 13, 14, 18, 16],
             'text-transform': 'uppercase',
             'text-letter-spacing': 0.08,
             'text-max-angle': 30,
             'text-padding': 4
           },
-          paint: { 'text-color': '#808080', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1] }
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
         },
         // The squares, named in the middle of the block, as RUSSELL SQUARE is on the print. A wide halo: these names sit
         // inside the squares, over their path hairlines.
@@ -7033,7 +7035,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'poi',
           filter: ['all', ['has', 'name'], ['match', ['get', 'class'], ['park', 'garden'], true, false], ['<=', ['coalesce', ['get', 'rank'], 99], 20]],
-          minzoom: 14,
+          minzoom: 13,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Serrif Light'],
@@ -7044,7 +7046,7 @@ return maplibregl$1;
             'text-max-width': 7,
             'text-padding': 6
           },
-          paint: { 'text-color': '#808080', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1] }
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
         },
         // Stations in a paper box with a 1px edge, as EUSTON SQUARE and HOLBORN are on the print.
         {
@@ -7053,7 +7055,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'poi',
           filter: ['all', ['has', 'name'], ['==', ['get', 'class'], 'railway'], ['match', ['get', 'subclass'], ['station', 'subway', 'halt'], true, false]],
-          minzoom: 14,
+          minzoom: 13,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Serrif Light'],
@@ -7066,12 +7068,14 @@ return maplibregl$1;
             'icon-text-fit-padding': [3, 7, 2, 7],
             'text-padding': 6
           },
-          paint: { 'text-color': '#808080', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 14, 0, 14.5, 1] }
+          paint: { 'text-color': '#404040', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
         }
       ]
     };
-    // Where the street map turns from hairlines into the printed gallery map (the poster_ layers above).
-    const POSTER_ZOOM = 14;
+    // Where the street map turns from hairlines into the printed gallery map (the poster_ layers above): zoom 13, about where a
+    // city opens, and every zoom closer than that (user, 18 Nov 2026: "keep it every zoom level that is close to zoom in"; 14 until
+    // then). The layers fade in over 12.5 to 13.5, the labels over 13 to 13.5.
+    const POSTER_ZOOM = 13;
     // The stipple and the station box, drawn in the map's current ground and line colours: 6 CSS pixels a tile, two dots a tile
     // set on a diagonal, as a halftone is. Redrawn whenever the theme or gossip mode changes the colours.
     function posterImages(map, ground, ink) {
@@ -7158,7 +7162,7 @@ return maplibregl$1;
         });
         // The dots and the box are images, so a style that asks for them before they are added gets them here.
         cityVectorMap.on('styleimagemissing', e => { if (e.id === 'poster-dots' || e.id === 'poster-box') applyCityMapGossip(); });
-        // The printed look holds only close in: a class on the container lets the pins and the frame follow it, and crossing the
+        // The printed look holds only close in: a class on the container lets the pins follow it, and crossing the
         // zoom rebuilds the hairlines, which leave the streets and buildings to the poster layers there.
         let posterWas = null;
         const posterSync = () => {
@@ -7170,11 +7174,7 @@ return maplibregl$1;
         };
         cityVectorMap.on('zoom', posterSync);
         cityVectorMap.on('load', posterSync);
-        // A frame round the map, as the print is framed, and a scale bar. Shown close in.
-        if (!mapEl.querySelector('.street-poster-frame')) {
-          const frame = document.createElement('div'); frame.className = 'street-poster-frame'; frame.setAttribute('aria-hidden', 'true');
-          mapEl.appendChild(frame);
-        }
+        // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
 
       } catch (e) {
@@ -7527,7 +7527,9 @@ return maplibregl$1;
       const line = isGossipModeActive ? (dark ? '#cfcfba' : '#000000') : '#787878';
       // The street map's own place names are 50% grey in both themes, so only the cultural spaces stand in full ink
       // (user, 10 Nov 2026: "make everything 50 % grey exept cultural spaces, map looks too crowded").
-      const label = isGossipModeActive ? line : '#808080';
+      // Half as much again in contrast (user, 18 Nov 2026: "other names on map can have 50% more contrast"): 75% ink, #404040 on
+      // the light ground and #c0c0c0 on the dark, where they were 50% grey (#808080) in both; the spaces' names keep full ink.
+      const label = isGossipModeActive ? line : (dark ? '#c0c0c0' : '#404040');
       // The printed map close in: dots in the line colour on the ground, streets in the ground between edges in the line colour.
       posterImages(map, ground, line);
       layers.forEach(l => {
@@ -8862,8 +8864,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         auraEl.style.background = 'transparent';
 
         const dotEl = document.createElement('div');
-        dotEl.className = 'inst-pin-dot';   // a hollow ring; close in, a solid red circle, square or triangle (atlas.css)
+        dotEl.className = 'inst-pin-dot';   // a hollow ring; close in, a solid circle, square or triangle in its grade's colour (atlas.css)
         pinEl.setAttribute('data-tier', inst.tier === 'A' || inst.tier === 'B' ? inst.tier : 'U');
+        // The mark's colour close in is the space's funding grade, A to E, in the grade colours the record uses (atlas.css).
+        if (inst.grade && typeof GRADE !== 'undefined' && GRADE[inst.grade]) pinEl.setAttribute('data-grade', String(inst.grade));
         dotEl.style.position = 'relative';
         dotEl.style.width = '15px';
         dotEl.style.height = '15px';
@@ -10729,7 +10733,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v812';
+    const ATLAS_RELEASE = 'culture-atlas-v813';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
