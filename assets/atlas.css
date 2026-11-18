@@ -5050,3 +5050,8 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 .tab-suggest-typed{color:transparent}
 .tab-suggest-ghost{color:color-mix(in srgb,var(--ink) 58%,var(--paper));pointer-events:auto;cursor:pointer}
 .tab-suggest-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+
+/* SHARE INFORMATION UNDERTONE (user, 18 Nov 2026): the note screen's intro is two paragraphs, the lost-history undertone
+   first, then the invitation and the editor's terms. They inherit #noteFormIntro's type; only the space between them is set. */
+#noteFormIntro .nf-undertone{display:block}
+#noteFormIntro .nf-undertone + .nf-undertone{margin-top:0.8em}

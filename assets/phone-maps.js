@@ -407,7 +407,7 @@
       ms.type = 'button';
       ms.id = 'gmMapShareBtn';
       ms.textContent = 'Share information';
-      ms.title = 'Write a note about an institution';
+      ms.title = 'Add what you know, or what the atlas is missing';
       ms.addEventListener('click', () => {
         openChat();
         setTimeout(() => {
