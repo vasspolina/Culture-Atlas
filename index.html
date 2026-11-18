@@ -7328,6 +7328,30 @@ return maplibregl$1;
           pinMarks.push({ pin, left: cx - h, right: cx + h, top: cy - h, bottom: cy + h });
         });
 
+        // On a phone (user, 18 Nov 2026: "the map on mobile looks very overlapping"): a name has to sit inside the part of the
+        // map the reader can see, not under the title and chips above, the open sheet below or off the side, and a mark that
+        // lands on another mark is drawn small so a cluster reads as a cluster and not one blob.
+        const phone = window.innerWidth < 768;
+        let view = null;
+        if (phone) {
+          const mapEl = document.getElementById('cityMapContainer');
+          const mb = mapEl ? mapEl.getBoundingClientRect() : null;
+          if (mb && mb.width) {
+            const sheetEl = document.getElementById('dossier-bottom-sheet');
+            const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) || 0 : 0;
+            const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : mb;
+            const cover = sheetH > 0 ? Math.max(0, mb.bottom - (hostBox.bottom - sheetH)) : 0;
+            view = { left: mb.left + 6, right: mb.right - 6, top: mb.top + 56, bottom: mb.bottom - cover - 6 };
+          }
+          const placedMarks = [];
+          pinMarks.forEach(m => {
+            const cx = (m.left + m.right) / 2, cy = (m.top + m.bottom) / 2;
+            const crowded = placedMarks.some(q => Math.hypot(q.x - cx, q.y - cy) < 16);
+            m.pin.classList.toggle('pin-crowded', crowded);
+            if (!crowded) placedMarks.push({ x: cx, y: cy });
+          });
+        }
+
         // Sort items so that the active/selected institution and Tier A institutions get priority
         labels.sort((a, b) => {
           const aId = a.getAttribute('data-entity-id') || a.getAttribute('data-name');
@@ -7359,7 +7383,8 @@ return maplibregl$1;
             };
 
             let collides = false;
-            for (const m of pinMarks) {
+            if (view && (r.left < view.left || r.right > view.right || r.top < view.top || r.bottom > view.bottom)) collides = true;
+            if (!collides) for (const m of pinMarks) {
               if (m.pin === parentPin) continue;
               if (!(testRect.right <= m.left || testRect.left >= m.right || testRect.bottom <= m.top || testRect.top >= m.bottom)) { collides = true; break; }
             }
