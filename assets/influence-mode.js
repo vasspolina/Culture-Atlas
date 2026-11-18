@@ -190,14 +190,17 @@
   }
   // A city's spiral, in pixels, at a globe radius of r. Its natural spacing (18px out, then 6 times the root of the place)
   // took New York's several hundred funders some 120px out over the Atlantic at world zoom, a cloud of dots at sea that
-  // read as places (user, 18 Nov 2026: "keep working on it", then "there are dots in the ocean"). So the spiral keeps its
-  // shape but its outer edge is held to a twenty-fourth of the globe's radius, about 15px at world zoom (never under 10px):
-  // New York packs into a clump over the city, which is what that much money looks like, a coastal city's few funders stay
-  // on its coast (at a twelfth, Los Angeles and San Francisco still spilled into the Pacific), and every spiral opens back
-  // out to the natural spacing as the map is zoomed in, where each dot can be pointed at again.
+  // read as places (user, 18 Nov 2026: "keep working on it", then "there are dots in the ocean"). A cap in pixels (a
+  // twenty-fourth of the globe's radius, never under 10px) cleared the Atlantic but not a narrow coast: Wellington's few
+  // funders still sat in the sea round New Zealand ("i still couls see some dots in the waterr"). So the cap is now a
+  // distance on the ground: the spiral's outer edge is held to SPIRAL_RAD of arc, about 19km, which is r * SPIRAL_RAD in
+  // pixels. At world zoom that is about a pixel, so a city's funders sit on its office; their pale dots are one shape
+  // filled once, so the pile does not darken. The spiral opens as the map closes in on the city, and reaches its natural
+  // spacing only where a city fills the screen and each dot can be pointed at.
+  const SPIRAL_RAD = 0.003;
   function spread(o, r) {
     if (!o || !o.rr) return { dx: 0, dy: 0 };
-    const k = Math.min(1, Math.max(10, r / 24) / o.outer), d = o.rr * k;
+    const k = Math.min(1, r * SPIRAL_RAD / o.outer), d = o.rr * k;
     return { dx: Math.cos(o.a) * d, dy: Math.sin(o.a) * d };
   }
   // A great-circle path from the office to a space, cut where it goes behind the globe.
@@ -331,7 +334,9 @@
   const LINES = /[?&]lines(=|&|$)/.test(location.search);
   // An unreached space; a funder that is not the one in question, its dot and its name. The dots are fainter than the names:
   // at 0.3 the pale dots of Europe's hundreds of funders stacked back up into a dark mass round the picked funder's museums.
-  const FAINT = 0.12, DIM_DOT = 0.15, DIM = 0.35;
+  // The pale dots are one shape filled once (below), so their ink no longer adds up where they overlap, and they have no
+  // outline; 0.2 reads about as 0.15 with an outline did.
+  const FAINT = 0.12, DIM_DOT = 0.2, DIM = 0.35;
   let REACH = null;
   function reach() {
     const key = MEASURE + ':' + DATA.funders.length + ':' + merged + ':' + studyMerged;
@@ -480,7 +485,17 @@
       if (sel) { ctx.beginPath(); ctx.arc(m.x, m.y, DOT + 3, 0, Math.PI * 2); ctx.stroke(); }
       ctx.globalAlpha = 1;
     };
-    marks.forEach(m => dot(m, dim(m.f) || (resting && hover !== m.f) ? DIM_DOT : 1));
+    // The pale dots are drawn as one shape and filled once, so where they overlap the ink does not add up: drawn one by one,
+    // a few hundred funders in one city at 0.15 each stacked into solid black, which on a phone, where a city's spiral is
+    // 10px across, made the US and Europe black blots over the field again (user, 18 Nov 2026: "keep working on this").
+    const pale = marks.filter(m => dim(m.f) || (resting && hover !== m.f));
+    if (pale.length) {
+      ctx.beginPath();
+      pale.forEach(m => { ctx.moveTo(m.x + m.s + 0.5, m.y); ctx.arc(m.x, m.y, m.s + 0.5, 0, Math.PI * 2); });
+      ctx.globalAlpha = DIM_DOT; ctx.fillStyle = ink; ctx.fill(); ctx.globalAlpha = 1;
+    }
+    const paleSet = new Set(pale);
+    marks.forEach(m => { if (!paleSet.has(m)) dot(m, 1); });
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     const hits = (b, list) => list.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
     // A place that runs off the map's edge counts as taken, so a long label turns inward.
@@ -489,6 +504,14 @@
     // it readable), never over another name (user, 17 Nov 2026: the picked funder's name, its museums' names and the
     // names round them were drawn over each other in Europe).
     const names = [];
+    // The measure buttons sit over the map (#gmdChips on a desktop, #gmChips on a phone), so their places count as taken: a
+    // name was set under them ("Samsung (Lee family)" under Other lobbying on a phone, a name cut by Political giving on
+    // a desktop). A hidden row measures nothing and takes no place.
+    const cr = ctx.canvas.getBoundingClientRect();
+    ['gmdChips', 'gmChips'].forEach(id => {
+      const h = document.getElementById(id); if (!h) return;
+      h.querySelectorAll('button').forEach(b => { const q = b.getBoundingClientRect(); if (q.width && q.height) names.push({ x: q.left - cr.left - 4, y: q.top - cr.top - 4, w: q.width + 8, h: q.height + 8 }); });
+    });
     // The picked funder's name always shows, beside its own dot: it may lie over other funders' dots (the halo keeps it
     // readable), and it is placed before any other name, so nothing else can be under it.
     const spotFor = (spots, boxAt) => spots.find(sp => !off(boxAt(sp))) || spots[0];
