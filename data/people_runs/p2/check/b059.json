@@ -1,0 +1,111 @@
+[
+ {
+  "id": "hayy-jameel-jeddah",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "misk-art-institute",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "african-renaissance-monument",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dakart-biennale-dakar",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ker-thiossane-dakar",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "musee-boribana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-th-odore-monod-d-art-africain-ifan-dakar",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "musée-des-civilisations-noires-dakar",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "raw-material-company-dakar",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": null,
+    "field": "basis",
+    "stored": "RAW Material Company's own about page lists its team, with Marie Helene Pereira as Artistic Director; the founder it still lists, Koyo Kouoh, has died (designboom, May 2026) and is left out.",
+    "page says": "RAW's own page for its 14 June celebration of Koyo speaks of the institution she created 17 years ago (founded 2008), so she died in 2025, not May 2026; the designboom article is not among the opened sources",
+    "fix": "RAW Material Company's own about page, linked from its current homepage, lists its team with Marie Helene Pereira as Artistic Director; the founder it still lists, Koyo Kouoh, has died and is left out."
+   }
+  ],
+  "corrected": {
+   "id": "raw-material-company-dakar",
+   "people": [
+    {
+     "name": "Marie Helene Pereira",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "http://www.rawmaterialcompany.org/_About_RAW_Material_Company?lang=en"
+     ]
+    }
+   ],
+   "basis": "RAW Material Company's own about page, linked from its current homepage, lists its team with Marie Helene Pereira as Artistic Director; the founder it still lists, Koyo Kouoh, has died and is left out."
+  }
+ },
+ {
+  "id": "center-for-cultural-decontamination-czkd-belgrade",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-contemporary-art-belgrade",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-yugoslavia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artscience-museum-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ntu-centre-for-contemporary-art-singapore-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-singapore-singapore",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "post-museum-singapore",
+  "verdict": "ok",
+  "faults": []
+ }
+]

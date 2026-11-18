@@ -1,0 +1,395 @@
+[
+ {
+  "id": "compton-verney-kineton",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "picker-house",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "henry-moore-institute-leeds",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "charleston",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bluecoat-liverpool",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Emer Grant",
+    "field": "current",
+    "stored": true,
+    "page says": "Bluecoat announcement of 20 October 2026: 'Grant will join Bluecoat early in 2027'; she does not hold the post yet",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "bluecoat-liverpool",
+   "people": [
+    {
+     "name": "Mary Cloake",
+     "role": "director",
+     "title": "Chief Executive",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.thebluecoat.org.uk/about/our-people"
+     ]
+    },
+    {
+     "name": "Eddie Berg",
+     "role": "chair of the board",
+     "title": "Co-Chair",
+     "current": true,
+     "since": "2025",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.thebluecoat.org.uk/about/our-people"
+     ]
+    },
+    {
+     "name": "Maureen Royce",
+     "role": "chair of the board",
+     "title": "Co-Chair",
+     "current": true,
+     "since": "2025",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.thebluecoat.org.uk/about/our-people"
+     ]
+    }
+   ],
+   "basis": "The Bluecoat's our people page names the chief executive and the two co-chairs appointed in 2025; Emer Grant, named Creative Director on 20 October 2026, joins only early in 2027 and is left out until she takes up the post."
+  }
+ },
+ {
+  "id": "fact-liverpool",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mostyn",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Alfredo Cramerotti",
+    "field": "predecessor",
+    "stored": "Alfredo Cramerotti, Director, until 2023-12",
+    "page says": "10 December 2025 announcement: Clare Harding was 'Interim Director' after Cramerotti left and departs for a new role; she, not Cramerotti, is the previous head",
+    "fix": "Clare Harding, Interim Director, since 2024-01 (starts 1 January 2024 per the 18 December 2023 post), until null (the December 2025 page gives no leaving date), left_because moved to another post ('her new role'), next_post null"
+   }
+  ],
+  "corrected": {
+   "id": "mostyn",
+   "people": [
+    {
+     "name": "Adam Lewis-Smythe",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2026",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://mostyn.org/about/our-team/",
+      "https://mostyn.org/mostyn-announce-new-director/"
+     ]
+    },
+    {
+     "name": "Kalliopi Tsipni-Kolaza",
+     "role": "curator",
+     "title": "Curator of Visual Arts",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://mostyn.org/about/our-team/"
+     ]
+    },
+    {
+     "name": "Clare Harding",
+     "role": "director",
+     "title": "Interim Director",
+     "current": false,
+     "since": "2024-01",
+     "until": null,
+     "left_because": "moved to another post",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://mostyn.org/director-dr-alfredo-cramerotti-leaving-mostyn/",
+      "https://mostyn.org/mostyn-announce-new-director/"
+     ]
+    },
+    {
+     "name": "Jeremy Salisbury",
+     "role": "chair of the board",
+     "title": "Chair of Mostyn's Board of Trustees",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://mostyn.org/mostyn-announce-new-director/"
+     ]
+    }
+   ],
+   "basis": "Mostyn's team page names Adam Lewis-Smythe as director; its 10 December 2025 announcement says he takes up the post in early 2026, names the chair, and marks the departure of interim director Clare Harding for a new role; Mostyn's 18 December 2023 post says she started as interim director on 1 January 2024 after Alfredo Cramerotti stepped down."
+  }
+ },
+ {
+  "id": "isokon-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-gallery-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-portrait-gallery-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nicholas Cullinan",
+    "field": "predecessor",
+    "stored": "Nicholas Cullinan, Director, until 2024-05",
+    "page says": "2024-25 accounts: 'Michael Elliott, Interim Director and Accounting Officer (from May 2024 to October 2024)'; Victoria Siddall Director from 28 October 2024; the previous head is Elliott",
+    "fix": "Michael Elliott, Interim Director, since 2024-05, until 2024-10, left_because null, next_post null"
+   }
+  ],
+  "corrected": {
+   "id": "national-portrait-gallery-london",
+   "people": [
+    {
+     "name": "Victoria Siddall",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": "2024-10",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": {
+      "amount": 215000,
+      "amount_to": 220000,
+      "currency": "GBP",
+      "year": "2025-26",
+      "what": "total remuneration (salary, bonus and pension benefits)",
+      "url": "https://assets.publishing.service.gov.uk/media/6a5dee5760a6e36813cb440a/E03594091_National_Portrait_Gallery_ARA_2025-26_Accessible.pdf"
+     },
+     "sources": [
+      "https://assets.publishing.service.gov.uk/media/6a5dee5760a6e36813cb440a/E03594091_National_Portrait_Gallery_ARA_2025-26_Accessible.pdf",
+      "https://assets.publishing.service.gov.uk/media/68888e2f741b74390ff0e4ea/gallery-accounts-2024-25.pdf"
+     ]
+    },
+    {
+     "name": "Flavia Frigeri",
+     "role": "chief curator",
+     "title": "Chief Curator",
+     "current": true,
+     "since": "2026-05",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Director of Curatorial and Collections, National Portrait Gallery (2025 to 2026)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://assets.publishing.service.gov.uk/media/6a5dee5760a6e36813cb440a/E03594091_National_Portrait_Gallery_ARA_2025-26_Accessible.pdf"
+     ]
+    },
+    {
+     "name": "Michael Elliott",
+     "role": "director",
+     "title": "Interim Director",
+     "current": false,
+     "since": "2024-05",
+     "until": "2024-10",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://assets.publishing.service.gov.uk/media/68888e2f741b74390ff0e4ea/gallery-accounts-2024-25.pdf",
+      "https://assets.publishing.service.gov.uk/media/6a5dee5760a6e36813cb440a/E03594091_National_Portrait_Gallery_ARA_2025-26_Accessible.pdf"
+     ]
+    },
+    {
+     "name": "Shearer West",
+     "role": "chair of the board",
+     "title": "Chair of the Board of Trustees",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://assets.publishing.service.gov.uk/media/6a5dee5760a6e36813cb440a/E03594091_National_Portrait_Gallery_ARA_2025-26_Accessible.pdf"
+     ]
+    }
+   ],
+   "basis": "The National Portrait Gallery's own site blocked access, so people come from its annual reports and accounts on gov.uk: 2025-26 (signed 7 July 2026) for the director, chief curator, chair and pay, and 2024-25 for Michael Elliott, interim director from May to October 2024 between Nicholas Cullinan and Victoria Siddall."
+  }
+ },
+ {
+  "id": "national-theatre-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Indhu Rubasingham",
+    "field": "role",
+    "stored": "director",
+    "page says": "NT news 9 July 2025: 'Co-Chief Executives Indhu Rubasingham and Kate Varah'; Dec 2023: 'a co-leadership model'; caption 'Director and Co-Chief Executive'",
+    "fix": "co-director, title 'Director and Co-Chief Executive'"
+   },
+   {
+    "person": "Kate Varah",
+    "field": "people",
+    "stored": null,
+    "page says": "NT news 9 July 2025 (within 18 months) names 'Kate Varah, Executive Director and Co-Chief Executive'",
+    "fix": "add Kate Varah, co-director, 'Executive Director and Co-Chief Executive', current, since null"
+   },
+   {
+    "person": "Damon Buffini",
+    "field": "people",
+    "stored": null,
+    "page says": "NT news 9 July 2025: 'National Theatre Chair, Damon Buffini', on the same page as the co-chief executives",
+    "fix": "add Damon Buffini, chair of the board, 'Chair', current, since null"
+   }
+  ],
+  "corrected": {
+   "id": "national-theatre-london",
+   "people": [
+    {
+     "name": "Indhu Rubasingham",
+     "role": "co-director",
+     "title": "Director and Co-Chief Executive",
+     "current": true,
+     "since": "2025",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Artistic Director, Kiln Theatre (from 2012)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.nationaltheatre.org.uk/news/indhu-rubasingham-delivers-2026-jennie-lee-lecture/",
+      "https://www.nationaltheatre.org.uk/news/indhu-rubasingham-appointed-as-director/",
+      "https://www.nationaltheatre.org.uk/news/new-appointments-to-our-executive-team-and-board-of-trustees/"
+     ]
+    },
+    {
+     "name": "Kate Varah",
+     "role": "co-director",
+     "title": "Executive Director and Co-Chief Executive",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.nationaltheatre.org.uk/news/new-appointments-to-our-executive-team-and-board-of-trustees/",
+      "https://www.nationaltheatre.org.uk/news/indhu-rubasingham-appointed-as-director/"
+     ]
+    },
+    {
+     "name": "Rufus Norris",
+     "role": "director",
+     "title": "Director and Chief Executive",
+     "current": false,
+     "since": null,
+     "until": "2025",
+     "left_because": "term ended",
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.nationaltheatre.org.uk/news/indhu-rubasingham-appointed-as-director/"
+     ]
+    },
+    {
+     "name": "Damon Buffini",
+     "role": "chair of the board",
+     "title": "Chair",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.nationaltheatre.org.uk/news/new-appointments-to-our-executive-team-and-board-of-trustees/"
+     ]
+    }
+   ],
+   "basis": "A National Theatre news page of 9 July 2025 names Indhu Rubasingham and Kate Varah as Co-Chief Executives and Damon Buffini as Chair, and a page of 26 February 2026 names Rubasingham as director; the theatre's December 2023 announcement says she succeeds Rufus Norris, who leaves in spring 2025 when his second term ends, in a co-leadership model with Varah."
+  }
+ },
+ {
+  "id": "royal-ballet-and-opera-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "royal-philharmonic-orchestra-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "science-museum-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sir-john-soane-s-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "somerset-house-london",
+  "verdict": "ok",
+  "faults": []
+ }
+]

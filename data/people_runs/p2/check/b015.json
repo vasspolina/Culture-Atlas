@@ -1,0 +1,108 @@
+[
+ {
+  "id": "museo-provincial-de-granma-manuel-munoz-cedeno",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-provincial-ignacio-agramonte",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "teatro-tomas-terry",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ballet-nacional-de-cuba",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "biblioteca-nacional-de-cuba-jose-marti",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bienal-de-la-habana-havana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Nelson Ramírez de Arellano",
+    "field": "current",
+    "stored": true,
+    "page says": "Only Brasil de Fato (25 November 2024, older than 18 months) names him the Biennial's director; Prensa Latina (26 March 2026) names him director of the Centro de Arte Contemporáneo Wifredo Lam, not of the Biennial",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "bienal-de-la-habana-havana",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "casa-oswaldo-guayasamin",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-de-las-americas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centro-de-arte-contemporaneo-wifredo-lam",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cinemateca-de-cuba",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "egrem",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "estudio-figueroa-vives",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "feria-internacional-del-libro-de-la-habana",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Juan Rodríguez Cabrera",
+    "field": "current",
+    "stored": true,
+    "page says": "Only Prensa Latina of 23 February 2025 (older than 18 months) names him presidente del comité organizador; the August 2026 pages call him presidente del Instituto Cubano del Libro, not president of the fair's committee",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "feria-internacional-del-libro-de-la-habana",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "festival-internacional-jazz-plaza",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "festival-internacional-del-nuevo-cine-latinoamericano-de-la-habana",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fototeca-de-cuba",
+  "verdict": "ok",
+  "faults": []
+ }
+]

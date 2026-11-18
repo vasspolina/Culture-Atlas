@@ -1,0 +1,143 @@
+[
+ {
+  "id": "triangle-asterides-marseille",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "49-nord-6-est-frac-lorraine-metz",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-doesburghuis",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "le-19-crac-montbéliard",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-majorelle",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-station-nice",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-arson-nice",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "frac-centre-val-de-loire",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "appartement-atelier-le-corbusier",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "betonsalon-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "centre-pompidou",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cit-internationale-des-arts-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-cartier",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-louis-vuitton-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "grand-palais-paris",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "institut-du-monde-arabe-paris",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Jack Lang",
+    "field": "until",
+    "stored": "2026-02",
+    "page says": "IMA presidents PDF: 'Jack Lang 2013-2026'; presidency page: Legendre presides 'Depuis le 17 février 2026' and 'succède à M. Jack Lang', but no cited page states the month Lang left",
+    "fix": "2026"
+   }
+  ],
+  "corrected": {
+   "id": "institut-du-monde-arabe-paris",
+   "people": [
+    {
+     "current": true,
+     "since": "2026-02",
+     "until": null,
+     "previously": [
+      "Ambassadrice de France auprès de l'État du Koweït (from 2020)",
+      "Porte-parole et Directrice de la communication, ministère de l'Europe et des Affaires étrangères (from 2021)",
+      "Conseillère Afrique du Nord et Moyen-Orient du Président de la République (2023 to 2026)"
+     ],
+     "pay": null,
+     "name": "Anne-Claire Legendre",
+     "role": "director",
+     "title": "Présidente de l'Institut du monde arabe",
+     "sources": [
+      "https://www.imarabe.org/fr/presidence",
+      "https://www.imarabe.org/fr/organigramme-institut-du-monde-arabe"
+     ]
+    },
+    {
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "name": "Nathalie Bondil",
+     "role": "chief curator",
+     "title": "Département du musée et des expositions",
+     "sources": [
+      "https://www.imarabe.org/fr/organigramme-institut-du-monde-arabe"
+     ]
+    },
+    {
+     "name": "Jack Lang",
+     "role": "director",
+     "title": "Président",
+     "current": false,
+     "since": "2013",
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.imarabe.org/fr/presidence",
+      "https://www.imarabe.org/sites/default/files/2026-02/les-presidents-et-secretaires-generaux-de-l-institut-du-monde-arabe-2026.pdf"
+     ]
+    }
+   ],
+   "basis": "The IMA presidency page says Anne-Claire Legendre has presided since 17 February 2026, succeeding Jack Lang, whose 2013 to 2026 term is in the institute's list of presidents; the organigramme names Nathalie Bondil at the head of the museum and exhibitions department."
+  }
+ }
+]

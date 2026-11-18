@@ -1,0 +1,216 @@
+[
+ {
+  "id": "hospitalfield-arbroath",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-bowes-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "holburne-museum-bath",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "belfast-exposed-belfast",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "golden-thread-gallery-belfast",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Peter Richards",
+    "field": "since",
+    "stored": "2001",
+    "page says": "'Peter Richards has led the Golden Thread Gallery since 2001'; the page does not date the Co-Director title, and his fellow Co-Director Sarah McAvera only joined the gallery in 2005, so the co-directorship is later than 2001 and its start is not stated",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "golden-thread-gallery-belfast",
+   "people": [
+    {
+     "name": "Peter Richards",
+     "role": "co-director",
+     "title": "Co-Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Chair, Belfast Visual Arts Forum",
+      "Co-director, Catalyst Arts"
+     ],
+     "pay": null,
+     "sources": [
+      "https://goldenthreadgallery.co.uk/about/staff-directory/",
+      "https://goldenthreadgallery.co.uk/about/"
+     ]
+    },
+    {
+     "name": "Sarah McAvera",
+     "role": "co-director",
+     "title": "Co-Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://goldenthreadgallery.co.uk/about/staff-directory/",
+      "https://goldenthreadgallery.co.uk/about/"
+     ]
+    }
+   ],
+   "basis": "The gallery's own about page and staff directory name the two co-directors; the directory says Peter Richards has led the gallery since 2001."
+  }
+ },
+ {
+  "id": "the-mac",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "de-la-warr-pavilion",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "eastside-projects",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Ruth Claxton",
+    "field": "sources",
+    "stored": [
+     "https://eastsideprojects.org/people/"
+    ],
+    "page says": "the cited bare-domain url does not open (connection error, empty page); the same page at www.eastsideprojects.org/people/ opens and states every stored fact: co-leads with the other two, Company Director, the titles Artist-Maker, Artist-Curator and Scout, and for Kooner 'became a Company Director and joined the Staff Team as Scout in 2026'",
+    "fix": [
+     "https://www.eastsideprojects.org/people/"
+    ]
+   },
+   {
+    "person": "Gavin Wade",
+    "field": "sources",
+    "stored": [
+     "https://eastsideprojects.org/people/"
+    ],
+    "page says": "the cited bare-domain url does not open (connection error, empty page); the same page at www.eastsideprojects.org/people/ opens and states every stored fact: co-leads with the other two, Company Director, the titles Artist-Maker, Artist-Curator and Scout, and for Kooner 'became a Company Director and joined the Staff Team as Scout in 2026'",
+    "fix": [
+     "https://www.eastsideprojects.org/people/"
+    ]
+   },
+   {
+    "person": "Sahjan Kooner",
+    "field": "sources",
+    "stored": [
+     "https://eastsideprojects.org/people/"
+    ],
+    "page says": "the cited bare-domain url does not open (connection error, empty page); the same page at www.eastsideprojects.org/people/ opens and states every stored fact: co-leads with the other two, Company Director, the titles Artist-Maker, Artist-Curator and Scout, and for Kooner 'became a Company Director and joined the Staff Team as Scout in 2026'",
+    "fix": [
+     "https://www.eastsideprojects.org/people/"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "eastside-projects",
+   "people": [
+    {
+     "name": "Ruth Claxton",
+     "role": "co-director",
+     "title": "Artist-Maker; Company Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.eastsideprojects.org/people/"
+     ]
+    },
+    {
+     "name": "Gavin Wade",
+     "role": "co-director",
+     "title": "Artist-Curator; Company Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.eastsideprojects.org/people/"
+     ]
+    },
+    {
+     "name": "Sahjan Kooner",
+     "role": "co-director",
+     "title": "Scout; Company Director",
+     "current": true,
+     "since": "2026",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.eastsideprojects.org/people/"
+     ]
+    }
+   ],
+   "basis": "Eastside Projects' own people page says Ruth Claxton, Gavin Wade and Sahjan Kooner co-lead it, and names Claxton and Wade as founders."
+  }
+ },
+ {
+  "id": "ikon-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wysing-arts-centre-bourn",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arnolfini",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kettle-s-yard",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chapter",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pallant-house-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "firstsite-colchester",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "grizedale-arts-coniston",
+  "verdict": "ok",
+  "faults": []
+ }
+]

@@ -1,0 +1,166 @@
+[
+ {
+  "id": "house-of-terror-terror-haza",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kassak-muzeum-budapest",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ludwig-museum-budapest-budapest",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-fine-arts-budapest-hungarian-national-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "trafo-house-budapest",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "walter-rozsi-villa",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kling-og-bang-reykjavik",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nylo-living-art-museum-reykjavik",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "reykjavík-art-museum-reykjavík",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Sunna Ástþórsdóttir",
+    "field": "previously",
+    "stored": [
+     "Safneignarfulltrúi, Nýlistasafnið",
+     "Framkvæmdarstjóri, Nýlistasafnið",
+     "Safnstjóri í afleysingu, Nýlistasafnið"
+    ],
+    "page says": "Nýló annual meeting page of 7 May 2025: these three posts are in the candidate statement of Odda Júlía Snorradóttir ('fyrst sem safneignarfulltrúi, síðan framkvæmdarstjóri og nú sem safnstjóri í afleysingu'), not Sunna's; the page lists Sunna Ástþórsdóttir only as 'formaður' of the outgoing board",
+    "fix": []
+   },
+   {
+    "person": "Sunna Ástþórsdóttir",
+    "field": "sources",
+    "stored": "https://www.nylo.is/frettir/arsfundur-kynning-a-frambo%C3%B0um-/",
+    "page says": "The Nýló page does not name her as Deildarstjóri sýninga og miðlunar at Listasafn Reykjavíkur",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "reykjavík-art-museum-reykjavík",
+   "people": [
+    {
+     "name": "Markús Þór Andrésson",
+     "role": "director",
+     "title": "Safnstjóri",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://listasafnreykjavikur.is/starfsfolk"
+     ]
+    },
+    {
+     "name": "Sunna Ástþórsdóttir",
+     "role": "chief curator",
+     "title": "Deildarstjóri sýninga og miðlunar",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://listasafnreykjavikur.is/starfsfolk"
+     ]
+    }
+   ],
+   "basis": "The museum's staff page names Markús Þór Andrésson as museum director and Sunna Ástþórsdóttir as head of exhibitions and outreach. No start dates are given."
+  }
+ },
+ {
+  "id": "1-shanthiroad-bengaluru",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-art-photography-map",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kochi-muziris-biennale-kochi",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "dr-bhau-daji-lad-mumbai-city-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "jehangir-art-gallery-mumbai",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "K. G Menon",
+    "field": "role",
+    "stored": "director",
+    "page says": "About page, under 'MANAGEMENT TEAM / Committee Members': 'Mrs. K. G Menon, Secretary', listed after 'Mr. Adi H Jehangir, Chairman' and before the bookings and accounts staff; it says 'The maintenance and management of these is currently undertaken by the committee of Jehangir Art Gallery' and nowhere that the Secretary heads the gallery",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "jehangir-art-gallery-mumbai",
+   "people": [
+    {
+     "name": "Adi H Jehangir",
+     "role": "chair of the board",
+     "title": "Chairman",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://jehangirartgallery.com/about"
+     ]
+    }
+   ],
+   "basis": "The gallery's about page says the committee of Jehangir Art Gallery undertakes its management and names Adi H Jehangir as Chairman of that committee, with no dates; it names no director."
+  }
+ },
+ {
+  "id": "nmacc-mumbai",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "khoj-new-delhi",
+  "verdict": "ok",
+  "faults": []
+ }
+]

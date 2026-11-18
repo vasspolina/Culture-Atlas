@@ -1,0 +1,128 @@
+[
+ {
+  "id": "guangdong-times-museum-guangzhou",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hong-kong-museum-of-the-war-of-resistance-and-coastal-defence",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "m-hong-kong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "m-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tai-kwun-hong-kong",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-macao-macau",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "nanjing-massacre-memorial-hall",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "how-art-museum-shanghai",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "long-museum-shanghai",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Liu Yiqian",
+    "field": "current",
+    "stored": true,
+    "page says": "The museum's About Us page (en and zh) says only that the museum was founded by Liu Yiqian and Wang Wei and is built on their collection; it does not say either runs it, and the museum is not artist-run, so the founder rule is not met",
+    "fix": null
+   },
+   {
+    "person": "Wang Wei",
+    "field": "current",
+    "stored": true,
+    "page says": "Same About Us page: founded by the couple, nothing says Wang Wei runs the museum; no other museum page opened names a director",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "long-museum-shanghai",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "memorial-of-the-site-of-the-first-national-congress-of-the-cpc",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "power-station-of-art-shanghai",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Gong Yan",
+    "field": "current",
+    "stored": true,
+    "page says": "The M+ press release is dated 11 Apr 2025, older than 18 months; the Mondriaan Fund profile is undated and marks the May 2025 visit canceled; the museum's own site shows no staff and nothing newer was found",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "power-station-of-art-shanghai",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "rockbund-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "shanghai-biennale",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "tank-shanghai",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Qiao Zhibing",
+    "field": "current",
+    "stored": true,
+    "page says": "The undated Council page lists Qiao Zhibing among council members and says he founded TANK Shanghai in 2019; it does not say he runs the space, and it is not artist-run",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "tank-shanghai",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "west-bund-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "yuz-museum-shanghai",
+  "verdict": "ok",
+  "faults": []
+ }
+]

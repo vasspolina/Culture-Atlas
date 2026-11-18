@@ -1,0 +1,150 @@
+[
+ {
+  "id": "art-metropole-toronto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mercer-union-toronto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-power-plant-contemporary-art-gallery",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Adelina Vlas",
+    "field": "previously",
+    "stored": [
+     "Head of Exhibitions & Publications, The Power Plant (from 2022)",
+     "Associate Curator of Contemporary Art, Art Gallery of Ontario"
+    ],
+    "page says": "The only cited page (thepowerplant.org/about/our-team) lists \"Adelina Vlas, Artistic Director\" and states no earlier posts; the March 2022 staff release the basis mentions is not cited and could not be found on the site.",
+    "fix": []
+   }
+  ],
+  "corrected": {
+   "id": "the-power-plant-contemporary-art-gallery",
+   "people": [
+    {
+     "name": "Carolyn Vesely",
+     "role": "director",
+     "title": "CEO",
+     "current": true,
+     "since": "2024-04",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "Interim Director, The Power Plant (2022 to 2024)",
+      "CEO, Ontario Arts Council",
+      "Executive Director, Kitchener-Waterloo Art Gallery"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.thepowerplant.org/about/our-team",
+      "https://www.thepowerplant.org/about/leadership",
+      "https://www.thepowerplant.org/about/news-and-press/the-power-plant-contemporary-art-gallery-announces-the-appointment-of-new-executive-director"
+     ]
+    },
+    {
+     "name": "Adelina Vlas",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.thepowerplant.org/about/our-team"
+     ]
+    },
+    {
+     "name": "Paul Boniferro",
+     "role": "chair of the board",
+     "title": "President and Chair",
+     "current": true,
+     "since": "2023",
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.thepowerplant.org/about/leadership"
+     ]
+    }
+   ],
+   "basis": "The Power Plant's Our Team and Leadership pages, and its 3 April 2024 release naming Vesely Executive Director effective 2 April 2024 after interim service from October 2022."
+  }
+ },
+ {
+  "id": "yyz-artists-outlet-toronto",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arthur-erickson-house-and-garden",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "artspeak-vancouver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "contemporary-art-gallery-cag",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "western-front-vancouver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "grunt-gallery-vancouver",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "art-gallery-of-greater-victoria-victoria",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "audain-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "plug-in-ica",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "urban-shaman-contemporary-aboriginal-art-winnipeg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bienal-de-artes-mediales-de-santiago",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-arte-contemporáneo-de-santiago-santiago",
+  "verdict": "ok",
+  "faults": []
+ }
+]
