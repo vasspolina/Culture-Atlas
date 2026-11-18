@@ -2267,9 +2267,9 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 /* ---- the street map close in, set like a printed gallery map (user, 18 Nov 2026, after Fraser Muggeridge studio's Bloomsbury
    Art Galleries map; the map layers are the poster_ layers in index.html, the marks the "STREET MAP CLOSE IN" block
    in atlas.css). From zoom 13 (#cityMapContainer.street-poster) each space's name is a speech bubble as on that map: ink, with
-   the name in Jokker Bold in the paper's colour, and a tail down to the space's mark; its corners are rounded (user, 18 Nov
-   2026: "make bubles like this but with rounded corners"). It replaces, close in only, the plain name with no strip of 16 Nov,
-   and the sheet's no-bold rule there; further out the names stay as they were. The open space's bubble keeps its grade under
+   the name in the atlas's own face, Atlas Serif, in the paper's colour (user, 18 Nov 2026: "change font to cultural atlas main
+   typeface"; Jokker Bold before), and a tail down to the space's mark; its corners are rounded (user, 18 Nov
+   2026: "make bubles like this but with rounded corners"). It replaces, close in only, the plain name with no strip of 16 Nov; further out the names stay as they were. The open space's bubble keeps its grade under
    the name. Contrast: paper on ink 21:1 light, 17:1 dark. ---- */
 @layer sheet{
 #cityMapContainer.street-poster .inst-pin-label,
@@ -2279,9 +2279,9 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label{height:auto!important;padding:4px 9px 5px!important;gap:0!important;background:var(--wc-ink)!important;color:var(--wc-ground)!important;border:0!important;border-radius:7px!important;box-shadow:none!important}
 #cityMapContainer.street-poster .inst-pin-label *,
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{color:var(--wc-ground)!important}
-#cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{font-family:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif!important;font-weight:700!important;font-size:14px!important;line-height:17px!important;letter-spacing:0!important}
+#cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{font-family:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif!important;font-weight:400!important;font-size:15px!important;line-height:18px!important;letter-spacing:0!important}
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name{font-size:18px!important;line-height:22px!important}
-#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{font-family:"Jokker","Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:14px!important;line-height:17px!important}
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{font-family:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif!important;font-size:14px!important;line-height:17px!important}
 :root:root #cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name,
 :root:root #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name,
 :root:root #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{text-shadow:none!important}
