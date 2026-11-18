@@ -86,3 +86,20 @@ test('every entry says how far it is checked, and a checked one names its page',
     if (t.check === 'source-partly') assert.ok(t.checked_missing && !/—/.test(t.checked_missing), `${f.name} at ${t.space_name}: what the page does not give`);
   }
 });
+
+// The Self-funded tab (assets/influence-mode.js, SELF_RECORDS) names three places read by hand from their records; each must
+// still be a record whose funding line says what pays for it, and none may be one a founder's fortune pays for.
+test('the hand-read self-funded places are records that say what pays for them', () => {
+  const src = readFileSync(new URL('../assets/influence-mode.js', import.meta.url), 'utf8');
+  const m = /const SELF_RECORDS = \[([^\]]*)\]/.exec(src);
+  assert.ok(m, 'SELF_RECORDS is found');
+  const list = [...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]);
+  assert.ok(list.length > 0, 'it names places');
+  const byId = new Map(read('institutions.json').map((i) => [i.id, i]));
+  for (const id of list) {
+    const i = byId.get(id);
+    assert.ok(i, `${id} is a record`);
+    assert.match(i.funding || '', /self-funded|sales|paid by artists/i, `${id}: its funding line says what pays for it`);
+    assert.doesNotMatch(i.funding || '', /by (its )?founder|family/i, `${id}: not paid for by a founder or a family`);
+  }
+});

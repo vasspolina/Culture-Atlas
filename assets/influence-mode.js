@@ -310,7 +310,37 @@
     other: { label: 'Other lobbying', noun: 'lobbying of another government', what: 'which governments it lobbied through a museum',
       value: () => null,
       text: f => { const g = [...new Set(tiesFor(f, 'other').flatMap(t => (t.links || []).filter(l => l.measure === 'other').map(l => l.gov)).filter(Boolean))]; return g.length ? `lobbying ${g.length > 1 ? g.slice(0, -1).join(', ') + ' and ' + g[g.length - 1] : g[0]}` : ''; } },
+    // The places that pay their own way, the other side of the map (user, 18 Nov 2026: "add tab about the places that have
+    // no funding, self funded institions"; of three readings offered, "Pays its own way"). It is a measure of spaces, not of
+    // funders, so no funder is drawn under it: the spaces it names are rings with their names, the rest of the world faint.
+    self: { label: 'Self-funded', noun: 'self-funding', what: 'the places that pay their own way',
+      value: () => null, text: () => '' },
   };
+  // A space pays its own way when either
+  //   - its accounts (the record's `finance`, read from a filed annual report) show at least half its income earned:
+  //     tickets, shop, hire, sales, the money a place makes itself rather than is given; or
+  //   - its record says in its own words that sales, visitors or artists pay for it, and names no private funder: the
+  //     three below, read by hand on 18 Nov 2026 from the records' funding lines.
+  // "Artist-run" alone is not enough: Khoj names the Ford Foundation and Sangeeta Jindal, the Lagos Biennial Terra and Ford,
+  // Urban Shaman runs on the Canada Council. Nor is "self-funded by its founder": a founder's own fortune is private money
+  // too (Ishara, Fabrika's paper mill, Bandjoun Station's coffee plantations), and Kupalaŭcy's record names projects paid
+  // through a politician's foundation. tests/influence.test.mjs checks that these ids are records.
+  const SELF_RECORDS = ['the-factory-contemporary-arts-centre-ho-chi-minh-city', 'taipei-contemporary-art-center-taipei', 'le-cube-independent-art-room-rabat'];
+  let SELF = null;
+  function selfFunded() {
+    if (SELF) return SELF;
+    const insts = g('ALL_INSTITUTIONS') || []; if (!insts.length) return new Map();
+    SELF = new Map();
+    insts.forEach(i => {
+      const f = i.finance;
+      if (f && f.income > 0 && f.earned != null && f.earned / f.income >= 0.5) {
+        const pct = Math.round(100 * f.earned / f.income);
+        SELF.set(i.id, { name: i.name, why: `earns ${pct}% of its income itself${f.fy ? ` (${f.fy} accounts)` : ''}`, source: f.url || '', share: f.earned / f.income });
+      }
+    });
+    SELF_RECORDS.forEach(id => { const i = insts.find(q => q.id === id); if (i && !SELF.has(id)) SELF.set(id, { name: i.name, why: (i.funding || '').split(/(?<=\.)\s/).find(x => /self-funded|sales|paid by artists/i.test(x)) || i.funding || '', source: (i.sources || [])[0] || '', share: null }); });
+    return SELF;
+  }
   let MEASURE = 'culture';
   // A money measure shows only where a record ties it to a space (user, 17 Nov 2026: "the lobbying need to appear only if it
   // was shown at that particular cultural space not that the company does lobbying in general, same for other filters").
@@ -350,11 +380,12 @@
   const inkStep = (n, max) => n ? Math.max(1, Math.round(STEPS * Math.log(1 + n) / Math.log(1 + max))) : 0;
   const stepAlpha = k => k ? 0.3 + 0.7 * k / STEPS : FAINT;
   function field(ctx, project, r, cx, cy, ink, insts) {
-    const R = reach(), sel = g('selectedInstitution'), paths = [];
+    const R = reach(), sel = g('selectedInstitution'), paths = [], selfOn = MEASURE === 'self' && !picked;
     insts.forEach(i => {
       if (typeof i.lat !== 'number' || i === sel || (pickedSpaces && pickedSpaces.has(i.id))) return;
+      if (selfOn && selfFunded().has(i.id)) return;
       const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
-      const k = picked ? 0 : inkStep(R.by.get(i.id) || 0, R.max);
+      const k = picked || selfOn ? 0 : inkStep(R.by.get(i.id) || 0, R.max);
       (paths[k] || (paths[k] = [])).push(pt);
     });
     ctx.fillStyle = ink;
@@ -376,6 +407,16 @@
   }
   function sayMeasure() {
     const M = MEASURES[MEASURE];
+    if (MEASURE === 'self') {
+      // The accounts first, those that earn most of their income at the top, then the records read by hand.
+      const list = [...selfFunded()].sort((a, b) => (b[1].share == null ? -1 : b[1].share) - (a[1].share == null ? -1 : a[1].share));
+      const items = list.map(([id, x]) => `<li><a href="#" class="influence-space-link" data-influence-space="${esc(id)}">${esc(x.name)}</a>: ${esc(x.why)}${x.source ? ` <a class="influence-meta" href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">${esc(host(x.source))}</a>` : ''}</li>`).join('');
+      // The list is kept out of assets/repeats.js: its lines differ by the place's name only (the National Theatre and English
+      // National Ballet both earn 64% in their 2024-25 accounts on the same register), so the pass took one for a repeat. And
+      // they are places, not all museums: an orchestra, a ballet, a college and a festival pay their own way too.
+      say(`<div class="influence-chat"><p class="no-indent">Self-funded: ${list.length} places that pay their own way. Their accounts show they earn at least half their income themselves, from tickets, shops, hire and sales, or their record says sales and artists pay for them. A founder's own fortune does not count.</p><ul class="influence-funders" data-repeat-ok>${items}</ul></div>`);
+      return;
+    }
     const ranked = DATA.funders.filter(f => shown(f) && (M.value(f) || MEASURE !== 'culture')).sort((a, b) => (M.value(b) || 0) - (M.value(a) || 0));
     if (MEASURE !== 'culture') {
       // Each funder is listed with the museums its money for this measure is recorded at, and under it what each record
@@ -400,7 +441,7 @@
       Object.entries(MEASURES).forEach(([k, M]) => {
         const b = document.createElement('button');
         b.type = 'button'; b.className = cls; b.dataset.influenceMeasure = k; b.textContent = M.label;
-        b.title = k === 'culture' ? `Label each funder with ${M.what}` : `${M.label} at a museum`;
+        b.title = k === 'culture' ? `Label each funder with ${M.what}` : k === 'self' ? `Show ${M.what}` : `${M.label} at a museum`;
         b.addEventListener('click', () => setMeasure(k));
         host.appendChild(b);
       });
@@ -532,9 +573,13 @@
     // in influence mode"). They are placed before the other funders' names, so those give way to them; a space whose
     // every place is taken by another name waits for the map to be zoomed in, as a funder's name does.
     const museumDots = [];
-    if (picked) {
+    // Under Self-funded, with no funder picked, the places that pay their own way take the picked funder's part: rings with
+    // their names, which open the place.
+    const ringNames = picked ? new Map([...mapSpaces(picked)].map(([id, x]) => [id, x.name]))
+      : MEASURE === 'self' ? new Map([...selfFunded()].map(([id, x]) => [id, x.name])) : null;
+    if (ringNames) {
       const byId = new Map(insts.map(i => [i.id, i]));
-      const spaceNames = new Map([...mapSpaces(picked)].map(([id, x]) => [id, x.name]));
+      const spaceNames = ringNames;
       const pts = [];
       spaceNames.forEach((nm, id) => {
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
@@ -701,8 +746,10 @@
     // One short paragraph (user, 17 Nov 2026: "influence mode intro in chat is a slop, shorten it ... no need to list all
     // spaces"; then, of "351 entries on 25 private funders, read by hand from the spaces' records": "this is a slop, delete
     // all the jargon"). The funders are on the map and each record says what it got, so the chat does not list them again.
+    // Its last sentence says what the field's ink means (user, 18 Nov 2026: "fading out where the money doesn't go"),
+    // since nothing else on the page does.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and what its money bought.</p>
+<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and what its money bought. A museum is darker the more of them pay it, and faint where none is on record.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
