@@ -18,6 +18,9 @@ enum ReportStatus {
 // (A rating column was added and then dropped from the form; rows keep it empty.)
 model WhistleblowerReport {
   id          String       @id @default(cuid())
+  // "review" is a note on a record the atlas has; "new-place" is a place the atlas is missing, named by the sender with its
+  // city, for the editor to add (user, 18 Nov 2026). A new place has no placeId and is never shown as a review.
+  kind        String       @default("review")
   placeId     String?
   city        String
   institution String?
@@ -34,6 +37,7 @@ model WhistleblowerReport {
   @@index([status])
   @@index([city])
   @@index([placeId, status])
+  @@index([kind, status])
 }
 
 // A photo, screenshot or PDF sent with a review (server/files.js). Shown publicly only while its review is APPROVED.

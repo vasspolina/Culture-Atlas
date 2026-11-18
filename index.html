@@ -78,9 +78,9 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=814">
-  <link rel="stylesheet" href="assets/sheet.css?v=814">
-  <script src="assets/config.js?v=679"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=815">
+  <link rel="stylesheet" href="assets/sheet.css?v=815">
+  <script src="assets/config.js?v=821"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
   <script src="assets/names.js?v=669"></script>
@@ -697,7 +697,7 @@ return maplibregl$1;
           <span>Asia</span>
         </button>
         <div class="w-_1px h-4 mx-0_5 shrink-0"></div>
-        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Write a note about a museum">
+        <button id="hudContributeBtn" type="button" onclick="window.triggerInChatContributeFlow(); if (event) event.stopPropagation();" class="px-2_5 h-7 sm-h-8 flex items-center gap-1_5 shrink-0" title="Add what you know, or what the atlas is missing">
 
           <span>Share information</span>
         </button>
@@ -890,8 +890,12 @@ return maplibregl$1;
               <div id="noteFormFields">
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
-                <p id="noteFormIntro">Tell the editor what you know from inside. The editor reads every note first, and an approved note appears on the museum’s page as a review. This is not a secure channel.</p>
-                <label class="nf-field"><span>Institution</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Start typing the name of the museum"></label>
+                <!-- The undertone (user, 18 Nov 2026): most lives were never written down, and a blank in the record is not a place without history. -->
+                <div id="noteFormIntro"><span class="nf-undertone">Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep, so where the record goes quiet people still lived, worked, made things and gathered. Imagine them, and do not take a blank on the map for a place without history.</span><span class="nf-undertone">If you know what the atlas is missing, from inside or from memory, write it here. The atlas is built with the people who add to it. The editor reads every note before anything appears, and an approved note appears on the museum’s page as a review. This is not a secure channel.</span></div>
+                <label class="nf-field"><span>Place</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
+                <!-- A place the atlas does not have (user, 18 Nov 2026): the form asks for its city and sends it as a new place. -->
+                <p id="notePlaceHint" role="status" aria-live="polite" hidden></p>
+                <label class="nf-field" id="noteCityField" hidden><span>City or town</span><input id="noteCity" type="text" maxlength="80" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Where the place is"></label>
                 <datalist id="noteInstitutionList"></datalist>
                 <label class="nf-field"><span>Name shown, optional</span><input id="noteAuthor" type="text" maxlength="40" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Whistleblower"></label>
               </div>
@@ -920,7 +924,7 @@ return maplibregl$1;
                 <!-- Left Controls -->
                 <div class="flex items-center gap-3">
                   <!-- Share information -->
-                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Write a note about a museum">Share information</button>
+                  <button id="chatShareBtn" type="button" onclick="window.toggleChatShare()" class="whitespace-nowrap" aria-pressed="false" title="Add what you know, or what the atlas is missing">Share information</button>
                 </div>
 
                 <!-- Right Controls -->
@@ -1009,7 +1013,7 @@ return maplibregl$1;
     <div id="mobileComposerCard" class="relative">
       <textarea class="w-full" id="chat-input" rows="1" placeholder="Ask about a museum, a city or a funder…"></textarea>
       <div id="mobileComposerActions">
-        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Write a note about a museum">Share information</button>
+        <button id="mobileStickyShareBtn" type="button" onclick="window.toggleChatShare()" title="Add what you know, or what the atlas is missing">Share information</button>
         <span class="flex-1"></span>
         <button id="mobileStickyVoiceBtn" type="button" aria-pressed="true" aria-label="Voice: read answers aloud" title="Read answers aloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
         <button id="mobileKbCloseBtn" class="kb-close-btn" type="button" aria-label="Close the keyboard" title="Close the keyboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1171,7 +1175,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=812"></script>
+  <script src="assets/institutions.js?v=821"></script>
   <script src="assets/money-ids.js?v=767"></script>
   <script>
 
@@ -6810,16 +6814,16 @@ return maplibregl$1;
         {
           id: 'poster_ground',
           type: 'background',
-          minzoom: 12.5,
-          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         {
           id: 'poster_park_fill',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'park',
-          minzoom: 12.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         {
           id: 'poster_grass_fill',
@@ -6827,16 +6831,16 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'landcover',
           filter: ['match', ['get', 'class'], ['grass', 'wood'], true, false],
-          minzoom: 12.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         {
           id: 'poster_water_fill',
           type: 'fill',
           source: 'openmaptiles',
           'source-layer': 'water',
-          minzoom: 12.5,
-          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+          minzoom: 0,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         // The streets: a casing in the line colour under a paper fill, every class casing first and fill after, so the
         // junctions open into each other as on the print. Paths and tracks are left out: on the print a footpath is not a street.
@@ -6846,11 +6850,11 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
-          minzoom: 12.5,
+          minzoom: 0,
           layout: { 'line-join': 'round', 'line-cap': 'round' },
           paint: {
             'line-color': '#787878',
-            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1],
             'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
               13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 5.5, ['secondary', 'tertiary'], 4.5, 'service', 2, 3],
               18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 58, ['secondary', 'tertiary'], 46, 'service', 16, 32]]
@@ -6862,11 +6866,11 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation',
           filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
-          minzoom: 12.5,
+          minzoom: 0,
           layout: { 'line-join': 'round', 'line-cap': 'round' },
           paint: {
             'line-color': '#ffffff',
-            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1],
             'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
               13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 3.5, ['secondary', 'tertiary'], 2.5, 'service', 0.5, 1.2],
               18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 56, ['secondary', 'tertiary'], 44, 'service', 14, 30]]
@@ -7015,7 +7019,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'transportation_name',
           filter: ['match', ['get', 'class'], ['minor', 'tertiary', 'secondary', 'primary', 'trunk'], true, false],
-          minzoom: 13,
+          minzoom: 0,
           layout: {
             'symbol-placement': 'line',
             'symbol-spacing': 320,
@@ -7027,7 +7031,7 @@ return maplibregl$1;
             'text-max-angle': 30,
             'text-padding': 4
           },
-          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         // The squares, named in the middle of the block, as RUSSELL SQUARE is on the print. A wide halo: these names sit
         // inside the squares, over their path hairlines.
@@ -7037,7 +7041,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'poi',
           filter: ['all', ['has', 'name'], ['match', ['get', 'class'], ['park', 'garden'], true, false], ['<=', ['coalesce', ['get', 'rank'], 99], 20]],
-          minzoom: 13,
+          minzoom: 0,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Atlas Serif'],
@@ -7048,7 +7052,7 @@ return maplibregl$1;
             'text-max-width': 7,
             'text-padding': 6
           },
-          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         },
         // Stations in a paper box with a 1px edge, as EUSTON SQUARE and HOLBORN are on the print.
         {
@@ -7057,7 +7061,7 @@ return maplibregl$1;
           source: 'openmaptiles',
           'source-layer': 'poi',
           filter: ['all', ['has', 'name'], ['==', ['get', 'class'], 'railway'], ['match', ['get', 'subclass'], ['station', 'subway', 'halt'], true, false]],
-          minzoom: 13,
+          minzoom: 0,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
             'text-font': ['Atlas Serif'],
@@ -7070,14 +7074,15 @@ return maplibregl$1;
             'icon-text-fit-padding': [3, 7, 2, 7],
             'text-padding': 6
           },
-          paint: { 'text-color': '#404040', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+          paint: { 'text-color': '#404040', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 0, 1, 24, 1] }
         }
       ]
     };
     // Where the street map turns from hairlines into the printed gallery map (the poster_ layers above): zoom 13, about where a
     // city opens, and every zoom closer than that (user, 18 Nov 2026: "keep it every zoom level that is close to zoom in"; 14 until
-    // then). The layers fade in over 12.5 to 13.5, the labels over 13 to 13.5.
-    const POSTER_ZOOM = 13;
+    // then). Since 18 Nov 2026 ("make map and museum tags always look like on full zoom") it holds at every zoom: POSTER_ZOOM is 0
+    // and the poster_ layers have no minzoom and no fade.
+    const POSTER_ZOOM = 0;
     // The stipple and the station box, drawn in the map's current ground and line colours: 6 CSS pixels a tile, two dots a tile
     // set on a diagonal, as a halftone is. Redrawn whenever the theme or gossip mode changes the colours.
     function posterImages(map, ground, ink) {
@@ -7312,6 +7317,16 @@ return maplibregl$1;
         const placements = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
         const placedRects = [];
         const BUFFER = 6;
+        // The marks themselves are obstacles too: a name placed over another space's mark hides it. Each pin's mark is the
+        // middle of its 32px box; the label's own pin is skipped when that label is tried.
+        const pinMarks = [];
+        document.querySelectorAll('.custom-inst-pin').forEach(pin => {
+          if (pin.style.opacity === '0' || pin.offsetParent === null) return;
+          const pr = pin.getBoundingClientRect();
+          if (!pr.width) return;
+          const cx = (pr.left + pr.right) / 2, cy = (pr.top + pr.bottom) / 2, h = 13;
+          pinMarks.push({ pin, left: cx - h, right: cx + h, top: cy - h, bottom: cy + h });
+        });
 
         // Sort items so that the active/selected institution and Tier A institutions get priority
         labels.sort((a, b) => {
@@ -7344,7 +7359,11 @@ return maplibregl$1;
             };
 
             let collides = false;
-            for (const prev of placedRects) {
+            for (const m of pinMarks) {
+              if (m.pin === parentPin) continue;
+              if (!(testRect.right <= m.left || testRect.left >= m.right || testRect.bottom <= m.top || testRect.top >= m.bottom)) { collides = true; break; }
+            }
+            if (!collides) for (const prev of placedRects) {
               const overlapX = !(testRect.right <= prev.left || testRect.left >= prev.right);
               const overlapY = !(testRect.bottom <= prev.top || testRect.top >= prev.bottom);
               if (overlapX && overlapY) {
@@ -10735,11 +10754,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v814';
+    const ATLAS_RELEASE = 'culture-atlas-v822';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=812').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=822').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12909,18 +12928,36 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const section = placeReviewsSectionHtml(inst.id);
       return `<div class="prose-part d-rows place-reviews${section ? '' : ' hidden'}" data-place="${escapeHtml(inst.id)}" role="region" aria-label="Whistleblower reviews" aria-live="polite">${section}</div>`;
     }
+    // What the Place box names: a record of the atlas (known), a place it is missing (isNew, two characters or more), or nothing yet.
+    // A new place shows the City field and a line saying it goes to the editor as a new place (user, 18 Nov 2026).
+    function notePlace() {
+      const box = document.getElementById('noteInstitution');
+      const name = (box && box.value || '').trim().replace(/\s+/g, ' ');
+      const lower = name.toLowerCase();
+      const known = lower ? ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === lower) || null : null;
+      const isNew = !known && name.length >= 2;
+      const cityField = document.getElementById('noteCityField');
+      const hint = document.getElementById('notePlaceHint');
+      if (cityField) cityField.hidden = !isNew;
+      if (hint) {
+        hint.hidden = !isNew;
+        hint.textContent = isNew ? 'Not on the atlas yet. It goes to the editor as a new place, with what you write about it.' : '';
+      }
+      return { name, known, isNew };
+    }
+    window.atlasNotePlace = notePlace;
     // Send for review looks ready (blue) once the form could be sent: an institution from the atlas, a note long enough, the box ticked.
     function syncNoteReady() {
       const sendBtn = document.getElementById('workSendBtn');
       if (!sendBtn) return;
-      const wanted = (document.getElementById('noteInstitution').value || '').trim().toLowerCase();
-      const known = wanted && ALL_INSTITUTIONS.some(i => i.id && i.name && i.name.toLowerCase() === wanted);
+      const place = notePlace();
       const longEnough = (document.getElementById('workInput').value || '').trim().length >= REVIEW_LIMITS.min;
-      const ready = Boolean(known && longEnough && document.getElementById('noteAck').checked);
+      const placeOk = place.known || (place.isNew && (document.getElementById('noteCity').value || '').trim());
+      const ready = Boolean(placeOk && longEnough && document.getElementById('noteAck').checked);
       if (ready) sendBtn.dataset.ready = 'true'; else delete sendBtn.dataset.ready;
     }
     document.addEventListener('input', (e) => {
-      if (e.target.matches && e.target.matches('#noteInstitution, #workInput')) syncNoteReady();
+      if (e.target.matches && e.target.matches('#noteInstitution, #noteCity, #workInput')) syncNoteReady();
     });
     document.addEventListener('change', (e) => {
       if (e.target.matches && e.target.matches('#noteInstitution, #noteAck')) syncNoteReady();
@@ -15831,7 +15868,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
       if (!activeKey && !useProxy) return null;
       const prov = useProxy ? 'anthropic' : getEffectiveProvider();
-      // Through the Worker the page asks for Sonnet 5.5 (Sonnet since 2 Nov 2026, 5.5 since 4 Nov); a visitor's own key uses the model chosen in settings.
+      // Through the Worker the answer comes from the small open model the Worker runs on Workers AI (IBM Granite 4.0 H Micro since 18 Nov 2026), whatever model is named here; a visitor's own key uses the model chosen in settings.
       const model = useProxy ? 'claude-sonnet-5-5' : getEffectiveModel();
 
       // A short reply to the chat's own question ("yes that one", "the second") means what the last answer offered, so it is
@@ -15885,6 +15922,17 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ? `<name_lookup>\nThe question is the name "${userPrompt.trim()}". No record carries that name${nearest && nearest.inst ? `; the nearest is ${nearest.inst.name} (${nearest.inst.city || nearest.inst.location || 'no city recorded'})` : ' and none is near it'}. ${nearest && nearest.inst ? 'If that record is the same museum under another spelling, answer from it as the atlas\'s record. Otherwise, s' : 'S'}ay in one sentence that the atlas has no record of it ("The atlas has no record of …"), then answer about it from your own knowledge, opening that part with the words "From general knowledge," once; keep to what you know well and give no figure, date or name you are not sure of. Do not describe the museum that happens to be open on the map, and do not ask the visitor to clarify.\n</name_lookup>\n\n`
         : '';
 
+      // Unrecorded lives (user, 18 Nov 2026: "how much of history is lost ... radically imagine the lives that lived in places where
+      // recording of lives was not happening"). Where the atlas is thin (a name with no record, a city or country with three records
+      // or fewer) or the visitor asks about history, archives or what is missing, the answer closes on that undertone and invites
+      // them to add what they know with Share information. Not in gossip mode, and not on an answer that only asks which museum.
+      const placeCount = placeAsked ? ALL_INSTITUTIONS.filter(i => [i.city, i.country, i.location].some(v => v && v.toLowerCase().includes(placeAsked.name.toLowerCase()))).length : -1;
+      const UNRECORDED_ASK = /\b(?:histor(?:y|ies|ical)|archives?|forgotten|erased|(?:lost|missing) (?:history|lives|stories|voices)|what(?:'s| is) missing|undocumented|unrecorded|oral|indigenous|colonial|nothing (?:here|there)|no (?:museums?|records?)|why (?:so )?(?:few|empty|nothing)|who (?:lived|was here))\b/i;
+      const unrecordedNote = !GOSSIP_ASK.test(userPrompt) && !(typeof isGossipModeActive !== 'undefined' && isGossipModeActive) && !ambiguousFollowUp
+        && (unknownName || (placeAsked && placeCount <= 3) || UNRECORDED_ASK.test(userPrompt))
+        ? `<unrecorded_lives>\nThe atlas is thin on what this question touches, or the visitor asked about history or what is missing. Answer the question first, as the other rules say. Then close with the UNRECORDED LIVES paragraph.\n</unrecorded_lives>\n\n`
+        : '';
+
       if (mentionedInst && typeof curatorContext !== 'undefined') {
         const prevTarget = curatorContext.activeFocusInst || curatorContext.lastInst;
         if (!prevTarget || prevTarget.id !== mentionedInst.id) {
@@ -15929,7 +15977,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the museum: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the museum, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the museum, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the museum, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.${gossipOnNow ? ' Gossip mode is on: answer the question first, from the record, then add at most one sentence with the newest item in the GOSSIP section, saying who says it and when, never as fact.' : ''}\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Give no tourist advice (NO TOURIST ADVICE in the system instructions). Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. None is a visiting, travel or itinerary question. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring museum or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${unrecordedNote}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Give no tourist advice (NO TOURIST ADVICE in the system instructions). Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. None is a visiting, travel or itinerary question. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring museum or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific museum:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a museum, answer about ${activeInst.name}, sticking to recorded funding, governance and what is reported about it. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -16023,6 +16071,8 @@ NAMES THAT HAVE NO RECORD: When the visitor names a museum and no supplied recor
 GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. Give the reason as the case behind it, from the Watch Line, Why flagged, the Epstein records and the reported cases: who, what and when. Never read the Grade Basis line back as a list of categories (a tie to Jeffrey Epstein, a campaign to remove a funder's name, a public protest) without the case each one stands for, never say "the basis is", and never repeat the grade's label after the letter: write "MoMA is Grade C" and go straight to the case. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
 
 LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only museums listed there, give the count, and say when the list is cut off. The page prints the count and the grade tally as the first line of your answer, so write no number of museums and no sentence about how many museums hold a grade or how many did something; start with the groups or the names. A museum's own grade is the one on its own line. Never name a museum as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a museum accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
+
+UNRECORDED LIVES (user, 18 Nov 2026): Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep: courts, churches, states, collectors, the institutions on this map. A place with few records is not a place without history. When an <unrecorded_lives> block is supplied, end the answer with one short paragraph of two or three sentences, in your own words each time, that carries this: people lived, worked, made things and gathered there whose lives no archive kept; ask the visitor to imagine them, boldly and concretely (who made things there, who taught, who sang, who met), rather than read the quiet as emptiness; then invite them to add what they know, from inside or from memory, with Share information, so the atlas is built by the people who use it. Write it as a statement about the past, never as a sentence about what the records do not list or hold. Never invent a named person, date, figure or event to fill the silence, and never present the imagined as the record. This is the one closing paragraph an answer may carry; without the block, leave it out, and never in gossip mode.
 
 GROUNDING: Answer from the records supplied with each question first. A figure given as the record's must appear in a record or its cited source, with that source named. Where the records have nothing on what was asked, give what they do hold, then fill the gap from general knowledge under the GENERAL KNOWLEDGE rule; never write a sentence about what the records do not say, other than the one sentence that opens a general-knowledge answer about a museum with no record.
 
@@ -16175,7 +16225,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // A sentence goes only when the whole of it is the absence: one that carries on ("..., but the treasurer is ...") or holds a figure stays.
     // A sentence that marks a general-knowledge answer ("From general knowledge, …", or the one that opens it, "The atlas has no
     // record of …") stays: it is what tells the reader that what follows is the model's and not the record's (user, 9 Nov 2026).
-    const absent = (p) => ABSENCE_RE.test(p.trim()) && !/general knowledge|atlas has no record of/i.test(p) && !/\d|USD|EUR|GBP|£|\$|€/.test(p) && !/[,;:]\s*(?:but|however|though|although|while|whereas|and|yet)\b|\b(?:but|however|although|whereas)\b/i.test(p);
+    const absent = (p) => ABSENCE_RE.test(p.trim()) && !/general knowledge|atlas has no record of|imagine|share information|written down|archives?\b/i.test(p) && !/\d|USD|EUR|GBP|£|\$|€/.test(p) && !/[,;:]\s*(?:but|however|though|although|while|whereas|and|yet)\b|\b(?:but|however|although|whereas)\b/i.test(p);
     function dropAbsenceLines(text) {
       if (!text || typeof text !== 'string') return text;
       return text.split('\n').map((line) => {
@@ -16946,7 +16996,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     // Removes the follow-up chips from every earlier answer, in the main chat and the phone drawer.
     function retireFollowUps() {
-      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups, #curatorMessages .curator-browse-suggest').forEach(el => el.remove());
+      document.querySelectorAll('#curatorMessages .curator-followups, #curatorDrawerLiveStream .curator-followups, #curatorMessages .curator-browse-suggest, #curatorMessages .chat-share-invite, #curatorDrawerLiveStream .chat-share-invite').forEach(el => el.remove());
     }
     function appendUserMessage(text) {
       if (typeof curatorContext !== 'undefined') {
@@ -17012,13 +17062,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         items.push({ node, full: node.nodeValue, parts, shown: 0 });
         total += parts.length;
       }
-      const follow = root.querySelector('.curator-followups');
+      // The follow-ups and the Share information invite wait until the writing is done.
+      const follow = [...root.querySelectorAll('.curator-followups, .chat-share-invite')];
       if (!items.length || total < 4) { if (opts.onDone) opts.onDone(); return { finish() {} }; }
       // A balloon (gossip) is drawn to fit its text: the turn keeps its final height while it is written, so the balloon is drawn once.
       if (root.classList.contains('is-gossip')) root.style.minHeight = root.offsetHeight + 'px';
       root.dataset.typing = '1';
       items.forEach(i => { if (i.el) i.el.style.visibility = 'hidden'; else i.node.nodeValue = ''; });
-      if (follow) follow.style.visibility = 'hidden';
+      follow.forEach(f => { f.style.visibility = 'hidden'; });
       // About 28 words a second at most, never longer than 5 seconds however long the answer is.
       const duration = Math.min(5000, Math.max(700, total * 36));
       const start = performance.now();
@@ -17035,7 +17086,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         if (done) return; done = true;
         clearInterval(timer);
         items.forEach(i => { if (i.el) i.el.style.visibility = ''; else i.node.nodeValue = i.full; });
-        if (follow) follow.style.visibility = '';
+        follow.forEach(f => { f.style.visibility = ''; });
         root.style.minHeight = '';
         delete root.dataset.typing;
         if (opts.onTick) opts.onTick();
@@ -17048,6 +17099,30 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }, 30);
       root.addEventListener('click', finish, { once: true });
       return { finish };
+    }
+
+    // Every answer asks the visitor to share what they know (user, 18 Nov 2026: "it need to promote users to share information").
+    // One sentence carrying the lost-history undertone, named after the place in focus when there is one, then a Share
+    // information button set as a follow-up row, so it looks like the chat's own next step. The sentence turns over from
+    // answer to answer so it is not the same line every time. Where the model already closed on the invitation
+    // (UNRECORDED LIVES), only the button is added. Not spoken aloud.
+    let chatShareInviteTurn = 0;
+    function chatShareInvite(answerHtml) {
+      const inst = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || null;
+      const name = inst && inst.name ? escapeHtml(inst.name) : '';
+      const lines = name ? [
+        `Know something about ${name} that this record leaves out? Most of what happened in places like it was never written down, and what you remember can stand beside the record.`,
+        `If you worked at ${name}, made things there or lived nearby, your account belongs on the atlas. Archives kept what someone paid to keep; the rest is carried by people.`,
+        `Every record here is partial. Add what you know about ${name}, and the atlas grows with the people who use it.`
+      ] : [
+        'Most lives were never written down. A place with few records is not a place without history, so add what you know, from inside or from memory.',
+        'The atlas is built with the people who use it. If you know what a record leaves out, tell it here.',
+        'Archives kept what someone paid to keep. What you know about a museum, a city or the people around them can fill the quiet.'
+      ];
+      const asked = typeof answerHtml === 'string' && /share information/i.test(answerHtml.replace(/<[^>]+>/g, ' '));
+      const line = asked ? '' : `<p class="chat-share-invite-line">${lines[chatShareInviteTurn++ % lines.length]}</p>`;
+      const label = name ? `Share information about ${name}` : 'Share information';
+      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-invite="1">${label}</button></div></div>`;
     }
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {
@@ -17131,6 +17206,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       // A turn built from several records or fields says each statement once (assets/repeats.js).
       processedContent = dedupeView(processedContent);
+      const shareInviteHtml = chatShareInvite(processedContent);
 
       div.innerHTML = `
         <div class="space-y-2_5">
@@ -17138,7 +17214,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           ${processedContent}
           ${webIntelHtml}
           ${followUpHtml}
-
+          ${shareInviteHtml}
         </div>
       `;
       // A turn that holds gossip (reported, unverified items) is marked on the turn itself, so in gossip mode the comic balloon goes only around those.
@@ -17157,7 +17233,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         document.getElementById('curatorDrawerGreeting')?.classList.add('hidden');
         const mBot = document.createElement('div');
         mBot.className = 'curator-message-wrap';
-        mBot.innerHTML = processedContent + followUpHtml;
+        mBot.innerHTML = processedContent + followUpHtml + shareInviteHtml;
         if (mBot.querySelector('[data-gossip]')) mBot.classList.add('is-gossip');
         drawerLive.appendChild(mBot);
         if (typeof window.atlasTypesetRun === 'function') window.atlasTypesetRun(mBot);
@@ -18685,8 +18761,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const chatInputKind = 'whistleblower';
     const INPUT_KIND_TEXT = {};
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
-        banner: 'Whistleblower: choose the museum and write your note. It goes to the editor and appears on the museum’s page, as a review, only once approved. This is not a secure channel, so leave out your name and anything that identifies you.',
-        placeholder: 'Write what you know from inside. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
+        banner: 'Choose a place on the atlas, or name one it is missing, and write what you know. It is sent to the editor; a note on a museum appears on its page as a review once approved, and a new place is added once checked. This is not a secure channel, so leave out your name and anything that identifies you.',
+        placeholder: 'Write what you know, from inside or from memory. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
         banner: 'Notes cannot be sent at the moment: the report service is not set up. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'The report service is not set up, so your note will not be saved.'
@@ -18699,7 +18775,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       b.classList.toggle('is-on', on);
       b.setAttribute('aria-pressed', String(on));
       b.textContent = on ? 'Back to chat' : 'Share information';
-      b.title = on ? 'Leave the note and go back to the chat' : 'Write a note about a museum';
+      b.title = on ? 'Leave the note and go back to the chat' : 'Add what you know, or what the atlas is missing';
     }
     function toggleChatShare() {
       if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
@@ -18971,14 +19047,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const institutionBox = document.getElementById('noteInstitution');
       const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
       if (!ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
-      const wanted = (institutionBox.value || '').trim().toLowerCase();
-      const place = wanted && ALL_INSTITUTIONS.find(i => i.id && i.name && i.name.toLowerCase() === wanted);
-      if (!place) return fail('Choose the museum from the list. It must be on the atlas.', institutionBox);
+      const chosen = notePlace();
+      const place = chosen.known;
+      const cityBox = document.getElementById('noteCity');
+      const city = (cityBox.value || '').trim();
+      if (!place && !chosen.isNew) return fail('Choose a place from the list, or write the name of one the atlas is missing.', institutionBox);
+      if (!place && !city) return fail('Write the city or town the new place is in.', cityBox);
       const content = (input.value || '').trim();
       if (content.length < REVIEW_LIMITS.min) return fail(`Write at least ${REVIEW_LIMITS.min} characters.`, input);
       const ack = document.getElementById('noteAck');
       if (!ack.checked) return fail('Tick the box to confirm you have left out anything that identifies you.', ack);
-      const body = { content };
+      const body = place ? { content } : { content, placeName: chosen.name, city };
       const label = (document.getElementById('noteAuthor').value || '').trim();
       if (label) body.authorLabel = label;
       const noteFiles = window.atlasNoteFiles;
@@ -18988,7 +19067,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       status.textContent = noteFiles && noteFiles.count() ? 'Sending the note and its files…' : 'Sending…';
       try {
         if (noteFiles && noteFiles.count()) body.files = await noteFiles.payload();
-        const res = await fetch(`${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews`, {
+        const res = await fetch(place ? `${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews` : `${ATLAS_REPORT_API_URL}/api/new-places`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body)
@@ -18996,14 +19075,17 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const out = await res.json().catch(() => ({}));
         if (!res.ok) throw new Error(out.error || 'The server did not take it.');
         input.value = '';
+        cityBox.value = '';
+        if (!place) institutionBox.value = '';
         document.getElementById('noteAuthor').value = '';
         if (noteFiles) noteFiles.clear();
         ack.checked = false;
+        notePlace();
         syncNoteReady();
         status.textContent = '';
         appendCuratorMessage(`
           <div class="space-y-1">
-            <p class="no-indent">Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.</p>
+            <p class="no-indent">${place ? `Sent to the editor for review. It appears on the record of ${escapeHtml(place.name)}, as a review, only once it is approved.` : `Sent to the editor as a new place: ${escapeHtml(chosen.name)}, ${escapeHtml(city)}. The editor checks it before it is added to the atlas. Thank you for adding what was missing.`}</p>
             <p class="no-indent"><a href="#" onclick="event.preventDefault();window.enterChatInputMode('whistleblower')">add another</a>, <a href="#" onclick="event.preventDefault();window.exitChatInputMode()">return to chat</a></p>
           </div>
         `, [], null, null, false);
@@ -19354,6 +19436,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const selectorsToRemove = [
         '.curator-speak-btn',
         '.curator-followup-pill',
+        '.chat-share-invite',
         '.copy-itinerary-btn',
         '.dossier-link',
         '.ext-web-link',
@@ -19913,6 +19996,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       // 0. Check for interactive follow-up suggestion pills
+      const shareInviteBtn = e.target.closest('[data-share-invite]');
+      if (shareInviteBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (!isChatInputMode) enterChatInputMode('whistleblower');
+        return;
+      }
       const followUpBtn = e.target.closest('.curator-followup-pill');
       if (followUpBtn) {
         e.preventDefault();
@@ -22163,7 +22253,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
   
   </script>
 <script src="assets/typeset.js?v=669"></script>
-<script src="assets/note-aids.js?v=669" defer></script>
+<script src="assets/note-aids.js?v=822" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=767"></script>
 <script src="assets/layers.js?v=809"></script>
@@ -22173,7 +22263,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/hq-detail.js?v=802"></script>
 <script src="assets/influence-mode.js?v=807"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=801"></script>
+<script src="assets/phone-maps.js?v=802"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 <script src="assets/tab-suggest.js?v=788"></script>

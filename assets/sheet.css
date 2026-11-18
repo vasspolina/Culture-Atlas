@@ -2277,6 +2277,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .inst-pin-label:hover,
 #cityMapContainer.street-poster .inst-pin-label:focus-visible,
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label{height:auto!important;padding:4px 9px 5px!important;gap:0!important;background:var(--wc-ink)!important;color:var(--wc-ground)!important;border:0!important;border-radius:7px!important;box-shadow:none!important}
+#cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{max-width:none!important;overflow:visible!important;text-overflow:clip!important;white-space:nowrap!important}
 #cityMapContainer.street-poster .inst-pin-label *,
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{color:var(--wc-ground)!important}
 #cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{font-family:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif!important;font-weight:400!important;font-size:15px!important;line-height:18px!important;letter-spacing:0!important}
@@ -2296,3 +2297,8 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .inst-pin-label.label-pos-right::after{left:auto!important;right:100%!important;top:50%!important;width:7px!important;height:12px!important;margin:-6px 0 0!important;clip-path:polygon(100% 0,100% 100%,0 50%)!important}
 #cityMapContainer.street-poster .inst-pin-label.label-pos-left::after{left:100%!important;top:50%!important;width:7px!important;height:12px!important;margin:-6px 0 0!important;clip-path:polygon(0 0,100% 50%,0 100%)!important}
 }
+
+/* THE CHAT BOX, 30% LESS TALL (user, 18 Nov 2026: "make chat 30% less tall"). Measured at 1900px: the card stood 157px, of
+   which the field's block held 80px for one 23px line. The block's floor drops to 32px, so the card stands 109px (31% less)
+   with the same text and buttons. */
+:root:root:root #workBottomDock #workInputCard:not(.is-mode):not(#a):not(#b) #noteInputBlock{min-height:32px!important;padding-top:4px!important;padding-bottom:4px!important}

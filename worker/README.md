@@ -1,14 +1,17 @@
 # worker/
 
-The chat proxy: a Cloudflare Worker that forwards a conversation to Claude so the page can answer
-like a model. It serves only `POST /chat`; it takes no notes or reviews (those go to `server/`).
+The chat proxy: a Cloudflare Worker that answers a conversation with a small open model on Workers AI
+(IBM Granite 4.0 H Micro, set as `CHAT_MODEL` in `index.js`). It serves only `POST /chat`; it takes no
+notes or reviews (those go to `server/`).
 
-- The Anthropic key is a Worker secret (`npx wrangler secret put ANTHROPIC_API_KEY`) and never reaches
-  the browser. It is not in this folder.
-- Only a short allowlist of models is accepted; reply length and conversation size are capped, and each
-  address is limited to a number of answers an hour.
-- `wrangler.toml` holds the allowed origin and the KV binding used for the limit.
+- There is no API key anywhere: the Worker reaches the model through its `AI` binding, and Workers AI
+  bills the Cloudflare account.
+- The model is fixed in the Worker whatever the page asks for. Reply length, conversation size and the
+  answers per address per hour are capped by the constants at the top of `index.js`; other origins than
+  `ALLOWED_ORIGINS` are refused.
+- `wrangler.toml` holds the allowed origin and the bindings (`AI`, and the KV namespace `SUBMISSIONS`
+  used only for the hourly rate counters).
 - Point the page at it with `window.ATLAS_AI_PROXY_URL` in `assets/config.js`.
 - Tests: `node --test worker/test/*.test.mjs`.
 
-Setup steps are in [docs/api.md](../docs/api.md) under "Live Claude answers".
+Setup and limits are in [docs/api.md](../docs/api.md) under "Live model answers".

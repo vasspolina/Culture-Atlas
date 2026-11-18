@@ -1,7 +1,7 @@
 # server/
 
 The whistleblower report API: an Express app over SQLite through Prisma. Sites send a review to it,
-it holds the review as waiting, and a note shows on the atlas only after the editor approves it on
+it holds the review as waiting (or a suggested new place, `POST /api/new-places`), and a note shows on the atlas only after the editor approves it on
 `reports-admin.html`. Endpoints, limits and hosting (Fly.io) are in [docs/api.md](../docs/api.md).
 
 | File | Role |
