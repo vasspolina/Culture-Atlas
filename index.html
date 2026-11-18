@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=788">
-  <link rel="stylesheet" href="assets/sheet.css?v=803">
+  <link rel="stylesheet" href="assets/sheet.css?v=809">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -595,11 +595,11 @@ return maplibregl$1;
             <summary>How grades work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
-              <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
-              <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
             </ul>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
@@ -952,11 +952,11 @@ return maplibregl$1;
               <summary>How grades work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
-              <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
-              <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
             </ul>
             </details>
 
@@ -10532,7 +10532,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v808';
+    const ATLAS_RELEASE = 'culture-atlas-v809';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13046,8 +13046,28 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const gradeWordHtml = (n) => GRADE[n] ? `<span class="grade-word grade-word-${n}">Grade ${GRADE[n].letter}</span>` : '';
     // The grade alone, "Grade B", and no sentence after it (user, 9 Nov 2026: "Grade B. No flagged funder or funding protest on record.
     // Funders are named; amounts are not." - "only keep grade b"). What decided it is behind the i button.
+    // GRADE FILTERS (user, 15 Nov 2026, of the A to F list: "make these into color coded clickable filters"). In every list of
+    // the five grades, each "Grade X" is a button on a pill of the grade's colour. Pressing it shows only that grade's
+    // spaces on the map (atlasSetLetterGrade in assets/layers.js, which narrows the map as the key's Clean and Flagged
+    // do, together with any other filter that is on); pressing it again shows every space. One grade at a time. The
+    // static lists in the page's HTML ("How the records work") carry the same buttons.
+    const gradeFilterOn = () => (typeof window.atlasLetterGrade === 'function' && window.atlasLetterGrade()) || 0;
+    const gradeFilterBtnHtml = (n) => GRADE[n] ? `<button type="button" class="grade-word grade-word-${n} grade-filter" data-grade-filter="${n}" aria-pressed="${gradeFilterOn() === n}" title="Show only grade ${GRADE[n].letter} spaces on the map; press again to show every space">Grade ${GRADE[n].letter}</button>` : '';
+    function syncGradeFilterButtons() {
+      const on = gradeFilterOn();
+      document.querySelectorAll('button.grade-filter[data-grade-filter]').forEach(b => { const v = String(Number(b.dataset.gradeFilter) === on); if (b.getAttribute('aria-pressed') !== v) b.setAttribute('aria-pressed', v); });
+    }
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('button.grade-filter[data-grade-filter]');
+      if (!b) return;
+      e.preventDefault();
+      const n = Number(b.dataset.gradeFilter);
+      if (typeof window.atlasSetLetterGrade === 'function') window.atlasSetLetterGrade(gradeFilterOn() === n ? null : n);
+      syncGradeFilterButtons();
+    });
+    document.addEventListener('atlas:letter-grade', syncGradeFilterButtons);
     function gradeScaleHtml(current) {
-      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This museum</span>' : ''}</span></li>`).join('')}</ul>`;
+      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeFilterBtnHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This museum</span>' : ''}</span></li>`).join('')}</ul>`;
     }
     let gradeInfoSeq = 0;
     // The i button and the panel it opens, for a graded space or an unrated one.
@@ -20487,6 +20507,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let selectedCategoryFilter = 'all';
 
     const FILTER_META = {
+      grade1: { label: 'Grade A' }, grade2: { label: 'Grade B' }, grade3: { label: 'Grade C' }, grade4: { label: 'Grade D' }, grade5: { label: 'Grade F' },
       free: { label: 'Free admission' },
       sculpture: { label: 'Outdoor & sculpture' },
       research: { label: 'Research & commons' },
@@ -21942,7 +21963,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=767"></script>
-<script src="assets/layers.js?v=782"></script>
+<script src="assets/layers.js?v=809"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
