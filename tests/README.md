@@ -12,7 +12,7 @@ scripts, so most tests load them into a `vm` context and call what they set on t
 | `gossip-kind.test.mjs` | A question about a kind of story is answered from the gossip data. |
 | `grounding.test.mjs` | The chat's grounding in the records. |
 | `influence.test.mjs` | Influence mode shows only what `data/influence_review.json` keeps. |
-| `live-feed.test.mjs` | `assets/live.json`: dated, sourced items only. Also run by the deploy workflow. |
+| `live-feed.test.mjs` | `assets/live.json`: dated, sourced items only. |
 | `name-request.test.mjs`, `names.test.mjs` | Matching a typed space or city name to a record. |
 | `release.test.mjs` | The page reloads itself when its release differs from the live one. |
 | `repeats.test.mjs` | A sentence is never shown twice. Also run by the deploy workflow. |
