@@ -5054,28 +5054,39 @@ body.chat-input-mode-active #workInputCard.is-file-over{outline:1.5px dashed cur
 .tab-suggest-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 
 /* ===== STREET MAP CLOSE IN: THE PRINTED GALLERY MAP (user, 4 Nov 2026) =====
-   From zoom 14 (POSTER_ZOOM in index.html) the street map is set like Fraser Muggeridge studio's Bloomsbury Art Galleries
+   From zoom 13 (POSTER_ZOOM in index.html) the street map is set like Fraser Muggeridge studio's Bloomsbury Art Galleries
    map: stippled blocks, paper streets between ink edges and serif capitals are the map style's poster_ layers; here are the
-   pins, the name tags, the frame and the scale bar. #cityMapContainer.street-poster is set by the map's zoom handler.
-   Each space is a solid red mark in its tier's shape (circle clean, square flagged, triangle unverified), so the tier is still
-   told by shape and not by colour. Its name is a black tag with paper text and a pointer at the mark; those rules are in sheet.css, in its layer, since
-   a layered !important there beats anything here.
-   Measured: #d71920 on #fff 5.3:1, #ff5a52 on #151412 6.0:1, #c8141b on the gossip pink #ffeff1 5.6:1, #ff5a52 on the gossip
-   navy #000050 5.9:1 (marks need 3:1); tag text 15:1 or better in every mode. The frame is in the map's line colour (--wc-rule),
-   the 50% grey outside gossip mode, like the streets. */
-#cityMapContainer{--wc-ground:#fff;--wc-ink:#000;--wc-rule:#787878;--wc-red:#d71920}
-:root[data-theme="dark"] #cityMapContainer{--wc-ground:#151412;--wc-ink:#f4f4f4;--wc-red:#ff5a52}
-body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc-rule:#000;--wc-red:#c8141b}
-:root[data-theme="dark"] body.gossip-mode-active #cityMapContainer{--wc-ground:#000050;--wc-ink:#cfcfba;--wc-rule:#cfcfba;--wc-red:#ff5a52}
+   pins, the name tags and the scale bar. #cityMapContainer.street-poster is set by the map's zoom handler.
+   Each space is a solid mark in its funding grade's colour (user, 18 Nov 2026: "color code the spaces dots based on grade"),
+   in its tier's shape (circle clean, square flagged, triangle unverified), so the tier is still told by shape. Its name is in a
+   rounded bubble with a tail at the mark; those rules are in sheet.css, in its layer, since a layered !important there beats
+   anything here. The scale bar is in the map's line colour (--wc-rule), the 50% grey outside gossip mode. */
+#cityMapContainer{--wc-ground:#fff;--wc-ink:#000;--wc-rule:#787878}
+:root[data-theme="dark"] #cityMapContainer{--wc-ground:#151412;--wc-ink:#f4f4f4}
+body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc-rule:#000}
+:root[data-theme="dark"] body.gossip-mode-active #cityMapContainer{--wc-ground:#000050;--wc-ink:#cfcfba;--wc-rule:#cfcfba}
+/* The grade colours, A to E, as the record and the open space's label set them (sheet.css); a space with no grade is the map's
+   grey. Each is 4.5:1 or better on the light ground and the dark one, where marks need 3:1. */
+#cityMapContainer .custom-inst-pin{--wc-mark:#6b6b6b}
+#cityMapContainer .custom-inst-pin[data-grade="1"]{--wc-mark:#1f7f5c}
+#cityMapContainer .custom-inst-pin[data-grade="2"]{--wc-mark:#1b7f73}
+#cityMapContainer .custom-inst-pin[data-grade="3"]{--wc-mark:#8c720c}
+#cityMapContainer .custom-inst-pin[data-grade="4"]{--wc-mark:#975824}
+#cityMapContainer .custom-inst-pin[data-grade="5"]{--wc-mark:#8f2929}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin{--wc-mark:#9a9a9a}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="1"]{--wc-mark:#34d399}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="2"]{--wc-mark:#2dd4bf}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="3"]{--wc-mark:#facc15}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="4"]{--wc-mark:#fb923c}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="5"]{--wc-mark:#ef4444}
 
-:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin .inst-pin-dot{width:18px!important;height:18px!important;border:0!important;border-radius:50%!important;background:var(--wc-red)!important;box-shadow:none!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin .inst-pin-dot{width:18px!important;height:18px!important;border:0!important;border-radius:50%!important;background:var(--wc-mark)!important;box-shadow:none!important}
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="B"] .inst-pin-dot{width:16px!important;height:16px!important;border-radius:0!important}
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="U"] .inst-pin-dot{width:22px!important;height:19px!important;border-radius:0!important;clip-path:polygon(50% 0,100% 100%,0 100%)}
+/* No dropped pin close in (user, 18 Nov 2026: "dont do pins"): the open space is told by its bubble, which carries its grade.
+   The globe keeps its pin. */
+#cityMapContainer.street-poster .atlas-drop-pin{display:none!important}
 
-
-/* The frame: a paper margin and a 1px ink line round the map, as the print is framed. Over the map, under its controls. */
-#cityMapContainer .street-poster-frame{display:none}
-#cityMapContainer.street-poster .street-poster-frame{display:block;position:absolute;inset:8px;z-index:1;pointer-events:none;border:1px solid var(--wc-rule);box-shadow:0 0 0 8px var(--wc-ground)}
 /* The scale bar, set as the print's: an ink rule with its ticks, the figure in 14px. Close in only. */
 #cityMapContainer .maplibregl-ctrl-scale{display:none}
 /* It sits at the bottom right, left of the map's own buttons and above the Top story strip, clear of Layers. */
