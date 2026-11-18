@@ -252,6 +252,11 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li:last-child{padding-bottom:0!important}
 /* The Programme row is a list of short names, one per line, not paragraphs: no space between them (user, 11 Nov 2026). */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list.is-bulleted>li{padding-bottom:0!important}
+/* The Sources row is a list of links, one per line, centred under its centred title, with no space between them
+   (user, 18 Nov 2026: "center the sources", "no need for paragraph break here"). The fold's "N more" follows. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row.is-sources .d-row-list{text-align:center!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row.is-sources .d-row-list>li{padding-bottom:0!important;margin-top:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row.is-sources details[open]>summary{padding-bottom:0!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li::before{content:none!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,dd,blockquote,figcaption){margin-top:0!important;margin-bottom:0!important;text-indent:0!important;max-width:none!important;hyphens:manual!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary{display:block!important;color:var(--sh-fold)!important}

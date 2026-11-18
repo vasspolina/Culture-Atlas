@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=788">
-  <link rel="stylesheet" href="assets/sheet.css?v=797">
+  <link rel="stylesheet" href="assets/sheet.css?v=802">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -10530,7 +10530,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v801';
+    const ATLAS_RELEASE = 'culture-atlas-v802';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13149,7 +13149,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // Gossip mode shows Funding and Visiting as Details does (user, 5–6 Nov 2026).
 
       const srcBox = document.getElementById('dossier-sheet-sources');
-      if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b)], 'Sources') : ''; }
+      if (srcBox) { const b = sourcesHtml(inst, true, true) || []; srcBox.innerHTML = b.length ? proseRows([proseRow('Sources', '', b, { cls: 'is-sources' })], 'Sources') : ''; }
       const record = document.getElementById('dossier-sheet-record');
       if (record) {
         // Gossip mode keeps the Details design (user, 5 Nov 2026); only the reported items turn yellow.
@@ -13793,7 +13793,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const items = list.join('');
       if (!title || !items) return '';
       const g = opts.gossip ? ' data-gossip="item"' : '';
-      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${opts.after || ''}</div><ul class="d-row-list">${items}</ul></section>`;
+      return `<section class="d-row${opts.tone ? ' is-' + opts.tone : ''}${opts.cls ? ' ' + opts.cls : ''}"><div class="d-row-head"><h3 class="d-row-title"${g}>${title}</h3>${opts.after || ''}</div><ul class="d-row-list">${items}</ul></section>`;
     }
     const proseRows = (rows, label, gossip) => { const body = rows.filter(Boolean).join(''); return body ? `<div class="prose-part d-rows" role="region" aria-label="${label}"${gossip ? ' data-gossip="items"' : ''}>${body}</div>` : ''; };
     // Overview and funding: what the space is, then who pays for it, from the report where there is one and from the archive otherwise.
@@ -14013,7 +14013,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (fil && fil !== reg) regLinks.push(`Annual filings: ${link(fil, registryName(fil))}`);
       // Where the founding year and the address came from leads the list; the registry and the filings close it.
       const basics = sourcesHtml(inst, true, true) || [];
-      rows.push(proseRow('Sources', d.retrieved ? `Checked ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : []), { fold: 6 }));
+      rows.push(proseRow('Sources', d.retrieved ? `Checked ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : []), { fold: 6, cls: 'is-sources' }));
       return proseRows(rows, 'Reporting and context');
     }
     // Accounts from review sites and Reddit, and what readers sent in: the same rows, the caution said once as the subtitle.
