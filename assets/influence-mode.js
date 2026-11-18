@@ -365,9 +365,8 @@
       say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: a company is shown only where a record ties its ${esc(M.noun)} to a museum in the atlas.</p>${items ? `<ul class="influence-funders">${items}</ul>` : `<p class="no-indent">No record does yet, so no company is shown. What each one spends in general is in its own record.</p>`}</div>`);
       return;
     }
-    const none = DATA.funders.filter(f => !M.value(f)).map(f => f.name);
     const top = ranked.slice(0, 6).map(f => `<li><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a> ${esc(M.text(f))}</li>`).join('');
-    say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is labelled with ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul>${none.length ? `<p class="no-indent influence-meta">Nothing found for ${esc(none.join(', '))}, which does not mean they spent nothing.</p>` : ''}</div>`);
+    say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: each dot is labelled with ${esc(M.what)}.</p><ul class="influence-funders">${top}</ul></div>`);
   }
   // The buttons sit in the map's filter row (#gmdChips on a desktop, #gmChips on a phone) and take its place while the mode is
   // on: the space filters have nothing to filter when the map shows funders. assets/layers.js rebuilds that row, so the
@@ -722,7 +721,7 @@
       const src = (x.sources || [])[0];
       return `<li class="influence-entry"><p class="no-indent"><span class="influence-who">${esc(x.name)}.</span> ${x.role ? `<span class="lead-in">${esc(x.role)}.</span> ` : ''}${x.money ? esc(x.money) + '. ' : ''}${esc(x.note)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
     };
-    const head = row('From the MoMA Influence Map', 'who funds and governs MoMA, from the study',
+    const head = row('From the MoMA Influence Map', 'who funds and governs MoMA',
       `${STUDY.museum && STUDY.museum.note ? `<p class="no-indent">${esc(STUDY.museum.role)} ${esc(STUDY.museum.note)}</p>` : ''}<p class="no-indent influence-more"><a href="${esc(STUDY.page)}">Open the study</a></p>`);
     return head + STUDY.groups.map(g => {
       const shown = g.entries.slice(0, STUDY_KEEP).map(line), rest = g.entries.slice(STUDY_KEEP).map(line);
@@ -778,7 +777,7 @@
     if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that dropped it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
     if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts from ${esc(a.first)} on, with no word that they ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
     if (told.length) inner += `<p class="no-indent"><span class="lead-in">What happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
-    return row('When a museum said no', 'saying no ends one deal, not the money', inner);
+    return row('When a museum said no', '', inner);
   }
 
   // What it gives culture, with the largest gift the atlas entries state and that gift's source. The lobbying and political
@@ -787,8 +786,8 @@
   function compareRow(f) {
     const c = fig(f).culture || {}, src = c.largest_gift && c.largest_gift.source;
     const n = cultureSpaces(f);
-    const body = `${n} ${n === 1 ? 'museum' : 'museums'}${c.largest_gift ? `; the largest gift found is ${c.largest_gift.text}` : ', with no amount given'}.`;
-    return row('Culture', 'what it gives culture', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
+    const body = `Gives to ${n} ${n === 1 ? 'museum' : 'museums'}.${c.largest_gift ? ` The largest gift is ${c.largest_gift.text}.` : ''}`;
+    return row('Culture', '', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
   }
 
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.
@@ -797,7 +796,7 @@
     if (!items.length) return '';
     const what = { us: 'US lobbying', eu: 'EU lobbying', politics: 'Political giving', other: 'Other lobbying' };
     const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`).join('');
-    return row('Lobbying through museums', 'where a record ties its lobbying or political money to a space', `<ul class="d-row-list influence-list">${lis}</ul>`);
+    return row('Lobbying through museums', '', `<ul class="d-row-list influence-list">${lis}</ul>`);
   }
   function funderPart(f) {
     const t = tally(f.ties);
@@ -817,8 +816,6 @@
     const pushback = f.ties.filter(x => !x.kinds.length);
     if (pushback.length) html += row('Pushback', 'protests and resignations', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
     if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'deal') + ' ended' : '', t.protest ? plural(t.protest, 'deal') + ' drew protest' : ''].filter(Boolean).join('; '))}.</p>`;
-    { const ok = f.ties.filter(x => x.check === 'source').length, part = f.ties.filter(x => x.check === 'source-partly').length, n = f.ties.length;
-      html += `<p class="no-indent influence-meta">${esc(`${ok} of ${n} lines are checked against a page they cite${part ? `, ${part} more in part` : ''}; the rest match the museum’s page in this atlas.`)}</p>`; }
     el.innerHTML = html;
     return el;
   }
