@@ -77,7 +77,7 @@ edit the record (or `corrections.json`).
 
 | Folder | Contents |
 |---|---|
-| `inputs/` | The research as first received: `user_research.csv` and `user_research_tables.csv` (the founding institution list), `academic_papers.json`, `incoming_research.txt`. |
+| `inputs/` | The research as first received: `user_research.csv` and `user_research_tables.csv` (the founding institution list), `academic_papers.json`, `incoming_research.txt`. `confederation-centre-annual-report-2023-24.pdf` is a local copy of the Confederation Centre of the Arts 2023/24 annual report, the source cited by that record (`confederationcentre.com/wp-content/uploads/2024/12/2024_AnnualReport_Final.pdf`); kept so the figures can be re-checked if the link dies. |
 | `library/` | `case_studies.json` (the MoMA and other case studies shown on the studies page) and `academic_research.json` (the paper summaries). Read by `tools/attach_research.py`. |
 | `papers/` | Twelve CSV exports from the literature search (donor transparency, sponsor connections, controversies, governance). Source material for the library; not read by scripts. |
 
