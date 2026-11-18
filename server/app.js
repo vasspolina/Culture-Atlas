@@ -3,12 +3,12 @@ import cors from 'cors';
 import express from 'express';
 import { Prisma } from '@prisma/client';
 import { FILE_TYPES, validateFiles } from './files.js';
-import { findPlace, validateReview } from './validate.js';
+import { findPlace, validateNewPlace, validateReview } from './validate.js';
 
 const STATUSES = ['PENDING', 'APPROVED', 'REJECTED'];
 const MAX_PUBLIC_REVIEWS = 200;
 const FILE_META = { select: { id: true, type: true, size: true }, orderBy: { position: 'asc' } };
-const REVIEW_PATH = /^\/api\/places\/[^/]+\/reviews\/?$/;
+const REVIEW_PATH = /^\/api\/(?:places\/[^/]+\/reviews|new-places)\/?$/;
 
 // Counts submissions per sender for one window. The address is hashed with a salt that exists only in this
 // process's memory, and neither the address nor the hash is written to the database or a log: when the process
@@ -77,12 +77,8 @@ export function createApp({
   // For the host's health check. Touches nothing.
   app.get('/healthz', (_req, res) => res.json({ ok: true }));
 
-  // The only way a review enters the system. It is stored PENDING; nothing public reads PENDING rows.
-  app.post('/api/places/:placeId/reviews', async (req, res, next) => {
-    const place = findPlace(req.params.placeId, institutions);
-    if (!place) return res.status(404).json({ error: 'That place is not on the atlas.' });
-    const result = validateReview(req.body, place);
-    if (result.error) return res.status(400).json({ error: result.error });
+  // A review and a new place are stored the same way: PENDING, with their files, under the same rate limit.
+  async function storeNote(req, res, next, result, message) {
     const attached = validateFiles(req.body?.files);
     if (attached.error) return res.status(400).json({ error: attached.error });
 
@@ -101,13 +97,27 @@ export function createApp({
         },
         select: { id: true }
       });
-      return res.status(201).json({
-        message: 'Review submitted for the editor to read. It appears here once approved.',
-        id: report.id
-      });
+      return res.status(201).json({ message, id: report.id });
     } catch (error) {
       return next(error);
     }
+  }
+
+  // The only way a review enters the system. It is stored PENDING; nothing public reads PENDING rows.
+  app.post('/api/places/:placeId/reviews', (req, res, next) => {
+    const place = findPlace(req.params.placeId, institutions);
+    if (!place) return res.status(404).json({ error: 'That place is not on the atlas.' });
+    const result = validateReview(req.body, place);
+    if (result.error) return res.status(400).json({ error: result.error });
+    return storeNote(req, res, next, result, 'Review submitted for the editor to read. It appears here once approved.');
+  });
+
+  // A place the atlas is missing (user, 18 Nov 2026). Stored PENDING as kind "new-place" with no placeId, so it never
+  // shows as a review; the editor reads it on reports-admin.html and adds the place to the atlas by hand.
+  app.post('/api/new-places', (req, res, next) => {
+    const result = validateNewPlace(req.body, institutions);
+    if (result.error) return res.status(result.status || 400).json(result.placeId ? { error: result.error, placeId: result.placeId } : { error: result.error });
+    return storeNote(req, res, next, result, 'New place sent to the editor. It is added to the atlas once it is checked.');
   });
 
   // What a place shows: its approved reviews, newest first, and only the fields a review needs. Reviews stored before
@@ -119,6 +129,7 @@ export function createApp({
       const reviews = await prisma.whistleblowerReport.findMany({
         where: {
           status: 'APPROVED',
+          kind: 'review',
           OR: [{ placeId: place.id }, { placeId: null, institution: place.name }]
         },
         select: { id: true, authorLabel: true, content: true, createdAt: true, files: FILE_META },

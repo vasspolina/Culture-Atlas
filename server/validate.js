@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120 };
+export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120, placeName: 120, minPlaceName: 2, city: 80 };
 
 // Plain text only. Tags (and what a script or style tag holds), control characters and stray angle brackets are
 // removed, runs of spaces collapse, and no more than one blank line survives. The page escapes the text again.
@@ -25,12 +25,20 @@ export function loadInstitutions(file) {
   const rows = JSON.parse(readFileSync(file, 'utf8'));
   if (!Array.isArray(rows) || !rows.length) throw new Error(`No institutions found in ${file}.`);
   const byId = new Map();
+  const byName = new Map();
   for (const row of rows) {
     if (!row || typeof row.id !== 'string' || typeof row.name !== 'string') continue;
-    byId.set(row.id, { id: row.id, name: row.name, city: row.city || '' });
+    const place = { id: row.id, name: row.name, city: row.city || '' };
+    byId.set(row.id, place);
+    byName.set(nameKey(row.name), place);
   }
   if (!byId.size) throw new Error(`No institutions with an id found in ${file}.`);
-  return { byId };
+  return { byId, byName };
+}
+
+// Names compared without case, accents or punctuation, so "Musée d'Orsay" and "musee dorsay" are the same place.
+export function nameKey(name) {
+  return String(name || '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '');
 }
 
 export function findPlace(placeId, institutions) {
@@ -57,5 +65,27 @@ export function validateReview(body, place) {
     authorLabel = authorLabel || null;
   }
 
-  return { data: { content, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
+  return { data: { kind: 'review', content, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
+}
+
+function oneLine(value) {
+  return cleanText(typeof value === 'string' ? value.slice(0, 1000) : '').replace(/\s+/g, ' ');
+}
+
+// A place the atlas is missing (user, 18 Nov 2026). The sender names it and its city; the note says what they know.
+// A name the atlas already has is refused with that record's id, so the note goes on the record instead.
+// Returns { error, status?, placeId? } or { data }.
+export function validateNewPlace(body, institutions) {
+  const source = body && typeof body === 'object' ? body : {};
+  const name = oneLine(source.placeName);
+  if (name.length < LIMITS.minPlaceName) return { error: 'Write the name of the place.' };
+  if (name.length > LIMITS.placeName) return { error: `The name of the place cannot be longer than ${LIMITS.placeName} characters.` };
+  const city = oneLine(source.city);
+  if (!city) return { error: 'Write the city or town the place is in.' };
+  if (city.length > LIMITS.city) return { error: `The city cannot be longer than ${LIMITS.city} characters.` };
+  const known = institutions.byName && institutions.byName.get(nameKey(name));
+  if (known) return { error: `${known.name} is on the atlas already. Choose it from the list to add to its record.`, status: 409, placeId: known.id };
+  const result = validateReview(source, { id: null, name, city });
+  if (result.error) return result;
+  return { data: { ...result.data, kind: 'new-place', placeId: null } };
 }
