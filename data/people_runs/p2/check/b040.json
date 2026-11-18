@@ -1,0 +1,151 @@
+[
+ {
+  "id": "fondation-h-antananarivo",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "galeri-petronas",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ilham-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-visual-arts-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mus-e-national-du-mali-bamako",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "rencontres-de-bamako-bamako",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "micas-malta-international-contemporary-art-space",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Phyllis Muscat",
+    "field": "role",
+    "stored": "chair of the board",
+    "page says": "micas.art/contact: 'Management CEO Ms Phyllis Muscat'; micas.art/about: 'Phyllis Muscat Executive Chairperson ... led the board of directors from 2018 onwards'. No other head is named, so she is the head of the space.",
+    "fix": "director"
+   },
+   {
+    "person": "Phyllis Muscat",
+    "field": "sources",
+    "stored": [
+     "https://micas.art/about/"
+    ],
+    "page says": "The page that shows she runs the space (CEO under Management) is the contact page, not among the cited urls.",
+    "fix": [
+     "https://micas.art/about/",
+     "https://micas.art/contact/"
+    ]
+   },
+   {
+    "person": "Edith Devaney",
+    "field": "people",
+    "stored": null,
+    "page says": "micas.art/about, Creative Committee: 'Edith Devaney Artistic Director. Edith Devaney was senior curator at the Royal Academy of Arts in London for over twenty years ... In her capacity as head of Summer Exhibition at the Royal Academy ... Devaney left the Royal Academy in 2021'. The programme post is on the same cited page and was left out.",
+    "fix": {
+     "name": "Edith Devaney",
+     "role": "artistic director",
+     "title": "Artistic Director"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "micas-malta-international-contemporary-art-space",
+   "people": [
+    {
+     "name": "Phyllis Muscat",
+     "role": "director",
+     "title": "Executive Chairperson",
+     "current": true,
+     "since": "2018",
+     "until": null,
+     "previously": [
+      "Head of the Taskforce, Commonwealth Heads of Government Meeting (2015)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://micas.art/about/",
+      "https://micas.art/contact/"
+     ]
+    },
+    {
+     "name": "Edith Devaney",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [
+      "Senior curator, Royal Academy of Arts (to 2021)",
+      "Head of Summer Exhibition, Royal Academy of Arts"
+     ],
+     "pay": null,
+     "sources": [
+      "https://micas.art/about/"
+     ]
+    }
+   ],
+   "basis": "The MICAS About page, which lists Phyllis Muscat as Executive Chairperson leading the board since 2018 and Edith Devaney as Artistic Director, and the MICAS contact page, which names Phyllis Muscat as CEO under Management."
+  }
+ },
+ {
+  "id": "institute-of-contemporary-art-indian-ocean-icaio",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "festival-internacional-cervantino",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bikini-wax-eps-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "crater-invertido-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "muac-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-experimental-el-eco-mexico-city",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-jumex",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-soumaya",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-tamayo",
+  "verdict": "ok",
+  "faults": []
+ }
+]

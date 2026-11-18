@@ -1,0 +1,136 @@
+[
+ {
+  "id": "museo-de-la-memoria-y-los-derechos-humanos",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-de-la-solidaridad-salvador-allende",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-museum-of-fine-arts-of-chile-mnba",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "crac-valparaiso",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chairman-mao-memorial-hall",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "military-museum-of-the-chinese-people-s-revolution",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-the-communist-party-of-china",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-the-war-of-chinese-people-s-resistance-against-japanese-aggression",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "national-art-museum-of-china",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Wu Weishan",
+    "field": "sources",
+    "stored": [
+     "https://govt.chinadaily.com.cn/s/202403/11/WS65ee7334498ed2d7b7ea95af/director-advocates-greater-public-art-education.html"
+    ],
+    "page says": "The only cited page (China Daily, March 2024) shows Wu as current director; nothing cited for him shows he left. The June 2026 China Writers page names Pan Yikui as 中国美术馆馆长 and Wu as 第十四届全国政协副秘书长、民盟中央专职副主席 at the same event.",
+    "fix": [
+     "https://govt.chinadaily.com.cn/s/202403/11/WS65ee7334498ed2d7b7ea95af/director-advocates-greater-public-art-education.html",
+     "https://www.chinawriter.com.cn/n1/2026/0616/c419390-40741622.html"
+    ]
+   }
+  ],
+  "corrected": {
+   "id": "national-art-museum-of-china",
+   "people": [
+    {
+     "name": "潘义奎",
+     "role": "director",
+     "title": "中国美术馆馆长",
+     "current": true,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [
+      "副馆长, 中国美术馆"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.chinawriter.com.cn/n1/2026/0616/c419390-40741622.html",
+      "https://sd.china.com/yishu/20002521/20260514/26000188_5.html",
+      "https://cn.chinadaily.com.cn/a/202309/19/WS65094e9da310936092f227d0.html"
+     ]
+    },
+    {
+     "name": "Wu Weishan",
+     "role": "director",
+     "title": "director of the National Art Museum of China",
+     "current": false,
+     "since": null,
+     "until": null,
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://govt.chinadaily.com.cn/s/202403/11/WS65ee7334498ed2d7b7ea95af/director-advocates-greater-public-art-education.html",
+      "https://www.chinawriter.com.cn/n1/2026/0616/c419390-40741622.html"
+     ]
+    }
+   ],
+   "basis": "China Writers Association news (June 2026) names Pan Yikui director of the National Art Museum of China and, at the same event, gives Wu Weishan other posts; a May 2026 article signed by Pan gives the same title; China Daily (September 2023) has Pan as deputy director and China Daily (March 2024) still has Wu as director, so Wu left between March 2024 and June 2026 on a date no page opened states."
+  }
+ },
+ {
+  "id": "national-museum-of-china",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "red-brick-art-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ucca-center-for-contemporary-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "memorial-hall-of-the-war-to-resist-us-aggression-and-aid-korea",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "liu-manor-museum-rent-collection-courtyard",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "verdict": "ok",
+  "faults": []
+ }
+]

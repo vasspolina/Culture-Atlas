@@ -1,0 +1,384 @@
+[
+ {
+  "id": "barbican-art-gallery-the-curve",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "barbican-centre-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Claire Spencer",
+    "field": "predecessor",
+    "stored": "Claire Spencer, CEO, until 2024-07",
+    "page says": "The Pogson release thanks David Farnsworth, who has served as Interim CEO of the Barbican for the past year, and Pogson took up the role on 5 January 2026; the previous head was the interim, not Spencer",
+    "fix": {
+     "name": "David Farnsworth",
+     "role": "director",
+     "title": "Interim CEO",
+     "current": false,
+     "since": null,
+     "until": "2026-01",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.barbican.org.uk/our-story/press-room/abigail-pogson-announced-as-new-barbican-centre-ceo",
+      "https://www.barbican.org.uk/our-story/press-room/barbican-centre-seeks-new-chief-executive-officer"
+     ],
+     "left_because": null,
+     "next_post": null
+    }
+   }
+  ],
+  "corrected": {
+   "id": "barbican-centre-london",
+   "people": [
+    {
+     "name": "Abigail Pogson",
+     "role": "director",
+     "title": "CEO",
+     "current": true,
+     "since": "2026-01",
+     "until": null,
+     "previously": [
+      "Chief Executive Officer, The Glasshouse International Centre for Music (2015 to 2025)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.barbican.org.uk/our-story/about-us/meet-the-team",
+      "https://www.barbican.org.uk/our-story/press-room/abigail-pogson-announced-as-new-barbican-centre-ceo"
+     ]
+    },
+    {
+     "name": "William Russell",
+     "role": "chair of the board",
+     "title": "Chair, Barbican Board",
+     "current": true,
+     "since": "2024-05",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.barbican.org.uk/our-story/about-us/meet-the-team"
+     ]
+    },
+    {
+     "name": "David Farnsworth",
+     "role": "director",
+     "title": "Interim CEO",
+     "current": false,
+     "since": null,
+     "until": "2026-01",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.barbican.org.uk/our-story/press-room/abigail-pogson-announced-as-new-barbican-centre-ceo",
+      "https://www.barbican.org.uk/our-story/press-room/barbican-centre-seeks-new-chief-executive-officer"
+     ],
+     "left_because": null,
+     "next_post": null
+    }
+   ],
+   "basis": "The Barbican's meet the team page and its press releases on the new CEO, who started on 5 January 2026, and on the CEO search; David Farnsworth served as interim CEO between Claire Spencer, who stepped down in July 2024, and Abigail Pogson."
+  }
+ },
+ {
+  "id": "belarus-free-theatre-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cubitt-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "francis-skaryna-belarusian-library-and-museum-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "hayward-gallery-southbank-centre",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Sally Tallant",
+    "field": "people",
+    "stored": null,
+    "page says": "Sally Tallant has been named director of the Hayward Gallery and visual arts at the Southbank Centre. She takes over from Ralph Rugoff. She will take up the role from July (The Art Newspaper, 21 January 2026)",
+    "fix": {
+     "name": "Sally Tallant",
+     "role": "director",
+     "title": "Director of the Hayward Gallery and Visual Arts",
+     "current": true,
+     "since": "2026-07",
+     "until": null,
+     "previously": [
+      "Director, Queens Museum",
+      "Artistic Director and Chief Executive, Liverpool Biennial (2011 to 2019)",
+      "Head of Programmes, Serpentine Gallery (2001 to 2011)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2026/01/21/sally-tallant-director-of-new-yorks-queens-museum-to-lead-hayward-gallery"
+     ]
+    }
+   }
+  ],
+  "corrected": {
+   "id": "hayward-gallery-southbank-centre",
+   "people": [
+    {
+     "name": "Sally Tallant",
+     "role": "director",
+     "title": "Director of the Hayward Gallery and Visual Arts",
+     "current": true,
+     "since": "2026-07",
+     "until": null,
+     "previously": [
+      "Director, Queens Museum",
+      "Artistic Director and Chief Executive, Liverpool Biennial (2011 to 2019)",
+      "Head of Programmes, Serpentine Gallery (2001 to 2011)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2026/01/21/sally-tallant-director-of-new-yorks-queens-museum-to-lead-hayward-gallery"
+     ]
+    },
+    {
+     "name": "Ralph Rugoff",
+     "role": "director",
+     "title": "Director",
+     "current": false,
+     "since": "2006",
+     "until": "2026",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2025/09/10/londons-hayward-gallery-director-ralph-rugoff-to-step-down-after-20-years-in-role"
+     ]
+    }
+   ],
+   "basis": "The Art Newspaper of 21 January 2026 on Sally Tallant being named director of the Hayward Gallery and visual arts from July 2026, and its 10 September 2025 report on Ralph Rugoff leaving in spring 2026; the Southbank Centre site blocks automated access."
+  }
+ },
+ {
+  "id": "iniva-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ica-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "london-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "raven-row-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Alex Sainsbury",
+    "field": "people",
+    "stored": [],
+    "page says": "Contact page: Director Alex Sainsbury; Deputy Director Rhian Smith",
+    "fix": {
+     "name": "Alex Sainsbury",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.ravenrow.org/contact"
+     ]
+    }
+   }
+  ],
+  "corrected": {
+   "id": "raven-row-london",
+   "people": [
+    {
+     "name": "Alex Sainsbury",
+     "role": "director",
+     "title": "Director",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.ravenrow.org/contact"
+     ]
+    }
+   ],
+   "basis": "Raven Row's own contact page, which lists Alex Sainsbury as Director; its about page says the programme is by Alex Sainsbury. The site is a script app whose text was read from its pages feed."
+  }
+ },
+ {
+  "id": "royal-academy-of-arts-london",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Simon Wallis",
+    "field": "people",
+    "stored": [],
+    "page says": "Simon Wallis has been appointed as the new secretary and chief executive of the Royal Academy of Arts; named in post in March 2026",
+    "fix": {
+     "name": "Simon Wallis",
+     "role": "director",
+     "title": "Secretary and Chief Executive",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [
+      "Director, Hepworth Wakefield (from 2008)",
+      "Director, Chisenhale Gallery",
+      "Senior Exhibitions Organiser, ICA"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2025/06/06/simon-wallis-appointed-chief-executive-of-londons-royal-academy",
+      "https://www.theartnewspaper.com/2026/03/18/helen-legg-appointed-artistic-director-of-londons-royal-academy-of-arts"
+     ]
+    }
+   },
+   {
+    "person": "Helen Legg",
+    "field": "people",
+    "stored": [],
+    "page says": "Helen Legg has been appointed the artistic director of the RA, taking up the new role in June 2026",
+    "fix": {
+     "name": "Helen Legg",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": "2026-06",
+     "until": null,
+     "previously": [
+      "Director, Tate Liverpool (from 2018)",
+      "Director, Spike Island (2010 to 2018)",
+      "Curator, Ikon Gallery"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2026/03/18/helen-legg-appointed-artistic-director-of-londons-royal-academy-of-arts"
+     ]
+    }
+   },
+   {
+    "person": "Axel Rüger",
+    "field": "people",
+    "stored": [],
+    "page says": "Secretary and chief executive since 2019; stepped down in October 2024 to become director of the Frick Collection",
+    "fix": {
+     "name": "Axel Rüger",
+     "role": "director",
+     "title": "Secretary and Chief Executive",
+     "current": false,
+     "since": "2019",
+     "until": "2024-10",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2024/09/20/axel-ruger-leaves-londons-royal-academy-for-the-frick-collection",
+      "https://www.theartnewspaper.com/2025/06/06/simon-wallis-appointed-chief-executive-of-londons-royal-academy"
+     ],
+     "left_because": "moved to another post",
+     "next_post": "Director, The Frick Collection"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "royal-academy-of-arts-london",
+   "people": [
+    {
+     "name": "Simon Wallis",
+     "role": "director",
+     "title": "Secretary and Chief Executive",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [
+      "Director, Hepworth Wakefield (from 2008)",
+      "Director, Chisenhale Gallery",
+      "Senior Exhibitions Organiser, ICA"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2025/06/06/simon-wallis-appointed-chief-executive-of-londons-royal-academy",
+      "https://www.theartnewspaper.com/2026/03/18/helen-legg-appointed-artistic-director-of-londons-royal-academy-of-arts"
+     ]
+    },
+    {
+     "name": "Helen Legg",
+     "role": "artistic director",
+     "title": "Artistic Director",
+     "current": true,
+     "since": "2026-06",
+     "until": null,
+     "previously": [
+      "Director, Tate Liverpool (from 2018)",
+      "Director, Spike Island (2010 to 2018)",
+      "Curator, Ikon Gallery"
+     ],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2026/03/18/helen-legg-appointed-artistic-director-of-londons-royal-academy-of-arts"
+     ]
+    },
+    {
+     "name": "Axel Rüger",
+     "role": "director",
+     "title": "Secretary and Chief Executive",
+     "current": false,
+     "since": "2019",
+     "until": "2024-10",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://www.theartnewspaper.com/2024/09/20/axel-ruger-leaves-londons-royal-academy-for-the-frick-collection",
+      "https://www.theartnewspaper.com/2025/06/06/simon-wallis-appointed-chief-executive-of-londons-royal-academy"
+     ],
+     "left_because": "moved to another post",
+     "next_post": "Director, The Frick Collection"
+    }
+   ],
+   "basis": "The Art Newspaper on Simon Wallis appointed Secretary and Chief Executive (June 2025) replacing Axel Ruger, who left in October 2024 for the Frick Collection, and on Helen Legg appointed Artistic Director from June 2026 (March 2026), which also names Wallis in post; the RA site blocks automated access."
+  }
+ },
+ {
+  "id": "serpentine-galleries",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-photographers-gallery",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-showroom-london",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "castlefield-gallery-manchester",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "the-newbridge-project-newcastle",
+  "verdict": "ok",
+  "faults": []
+ }
+]

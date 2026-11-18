@@ -1,0 +1,501 @@
+[
+ {
+  "id": "south-london-gallery",
+  "people": [
+   {
+    "name": "Margot Heller",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.southlondongallery.org/about-us/staff-and-trustees/"
+    ]
+   },
+   {
+    "name": "Sarah Allen",
+    "role": "chief curator",
+    "title": "Head of Programme",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.southlondongallery.org/about-us/staff-and-trustees/"
+    ]
+   }
+  ],
+  "basis": "The gallery's staff and trustees page, which gives no start dates."
+ },
+ {
+  "id": "studio-voltaire",
+  "people": [
+   {
+    "name": "Joe Scotland",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://studiovoltaire.org/staff-and-trustees/"
+    ]
+   },
+   {
+    "name": "Emma Goltz",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://studiovoltaire.org/staff-and-trustees/"
+    ]
+   }
+  ],
+  "basis": "Studio Voltaire's staff, trustees and committees page, which names the director and the chair of the board but no start dates."
+ },
+ {
+  "id": "tate-modern",
+  "people": [
+   {
+    "name": "Catherine Wood",
+    "role": "director",
+    "title": "Interim Director, Tate Modern",
+    "current": true,
+    "since": "2026-01",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.tate.org.uk/documents/2469/Tate_Gallery_Annual_Report_and_Accounts_2025-26.pdf"
+    ]
+   },
+   {
+    "name": "Karin Hindsbo",
+    "role": "director",
+    "title": "Deputy Director and Director, Tate Modern",
+    "current": false,
+    "since": null,
+    "until": "2025-12",
+    "left_because": "moved to another post",
+    "next_post": "Interim Director, Tate",
+    "previously": [],
+    "pay": {
+     "amount": 145000,
+     "amount_to": 150000,
+     "currency": "GBP",
+     "year": "2025-26",
+     "what": "single total figure of remuneration as Deputy Director, April to December 2025",
+     "url": "https://www.tate.org.uk/documents/2469/Tate_Gallery_Annual_Report_and_Accounts_2025-26.pdf"
+    },
+    "sources": [
+     "https://www.tate.org.uk/documents/2469/Tate_Gallery_Annual_Report_and_Accounts_2025-26.pdf"
+    ]
+   },
+   {
+    "name": "Roland Rudd",
+    "role": "chair of the board",
+    "title": "Chairman",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.tate.org.uk/documents/2469/Tate_Gallery_Annual_Report_and_Accounts_2025-26.pdf"
+    ]
+   }
+  ],
+  "basis": "Tate's Annual Report and Accounts 2025-26 (signed 10 July 2026), which lists Catherine Wood as Director of Curatorial and Chief Curator, Tate Modern and Interim Director, Tate Modern from January 2026, after Karin Hindsbo became Interim Director of Tate; Tate's governance page still names Maria Balshaw as Tate Director, and the newer report wins."
+ },
+ {
+  "id": "va-london",
+  "people": [
+   {
+    "name": "Tristram Hunt",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": "2017",
+    "until": null,
+    "previously": [],
+    "pay": {
+     "amount": 250000,
+     "amount_to": 255000,
+     "currency": "GBP",
+     "year": "2024-25",
+     "what": "total remuneration including bonus and pension benefits",
+     "url": "https://vanda-production-assets.s3.amazonaws.com/2025/09/18/10/47/20/06c92032-bce8-4439-8a66-17b2be0c75b8/VA%20Museum%20Signed%20Accounts%2024-25%20certified%20090925%20-C&AG%20Signature%20removed.pdf"
+    },
+    "sources": [
+     "https://www.vam.ac.uk/info/va-directors",
+     "https://www.vam.ac.uk/info/about-us",
+     "https://vanda-production-assets.s3.amazonaws.com/2025/09/18/10/47/20/06c92032-bce8-4439-8a66-17b2be0c75b8/VA%20Museum%20Signed%20Accounts%2024-25%20certified%20090925%20-C&AG%20Signature%20removed.pdf"
+    ]
+   },
+   {
+    "name": "Minouche Shafik",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": "2025-01",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.vam.ac.uk/info/trustees",
+     "https://vanda-production-assets.s3.amazonaws.com/2025/09/18/10/47/20/06c92032-bce8-4439-8a66-17b2be0c75b8/VA%20Museum%20Signed%20Accounts%2024-25%20certified%20090925%20-C&AG%20Signature%20removed.pdf"
+    ]
+   }
+  ],
+  "basis": "The V&A's about page and its list of directors, with pay from the V&A Annual Report and Accounts 2024-25 and the chair from the trustees page."
+ },
+ {
+  "id": "wellcome-collection",
+  "people": [
+   {
+    "name": "Sam Owen",
+    "role": "director",
+    "title": "Interim Director",
+    "current": true,
+    "since": "2026",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://wellcomecollection.org/pages/aWjFfhEAACAA4Cpf"
+    ]
+   },
+   {
+    "name": "Melanie Keen",
+    "role": "director",
+    "title": "Director of Wellcome Collection",
+    "current": false,
+    "since": "2019",
+    "until": "2026",
+    "left_because": null,
+    "next_post": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://wellcomecollection.org/pages/aWjFfhEAACAA4Cpf"
+    ]
+   }
+  ],
+  "basis": "Wellcome Collection's announcement of 15 January 2026 that Melanie Keen would step down in spring 2026 and that Sam Owen, Associate Director Strategy and Governance, would act as Interim Director."
+ },
+ {
+  "id": "whitechapel-gallery",
+  "people": [
+   {
+    "name": "Gilane Tawadros",
+    "role": "director",
+    "title": "Director, Whitechapel Gallery",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.whitechapelgallery.org/about/press/through-holes-in-the-clouds-artists-and-the-postcolonial-imagination/",
+     "https://www.whitechapelgallery.org/about/press/mariana-mazzucato-economist-in-residence/"
+    ]
+   }
+  ],
+  "basis": "Whitechapel Gallery press releases of April and October 2026 that name Gilane Tawadros as the gallery's Director; neither gives her start date."
+ },
+ {
+  "id": "zabludowicz-collection-london",
+  "people": [
+   {
+    "name": "Tiffany Zabludowicz",
+    "role": "artistic director",
+    "title": "Artistic Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.zabludowiczcollection.com/about/people"
+    ]
+   }
+  ],
+  "basis": "The collection's own people page, which lists the Artistic Director at the head of the staff; the founders page names Anita and Poju Zabludowicz as founders but does not say they run it."
+ },
+ {
+  "id": "home-manchester",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "manchester-museum",
+  "people": [
+   {
+    "name": "Esme Ward",
+    "role": "director",
+    "title": "Museum Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.museum.manchester.ac.uk/about/staff-list"
+    ]
+   },
+   {
+    "name": "George Young",
+    "role": "chief curator",
+    "title": "Head of Exhibitions and Collections",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.museum.manchester.ac.uk/about/staff-list"
+    ]
+   }
+  ],
+  "basis": "Manchester Museum's staff list, which gives no start dates."
+ },
+ {
+  "id": "the-whitworth",
+  "people": [
+   {
+    "name": "Sook-Kyung Lee",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [
+     "Artistic Director, 14th Gwangju Biennale (2023)",
+     "Senior Curator, International Art, Tate Modern"
+    ],
+    "pay": null,
+    "sources": [
+     "https://www.whitworth.manchester.ac.uk/about/staff/"
+    ]
+   },
+   {
+    "name": "Darren Pih",
+    "role": "chief curator",
+    "title": "Head of Exhibitions & Collections",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.whitworth.manchester.ac.uk/about/staff/"
+    ]
+   }
+  ],
+  "basis": "The Whitworth's staff page; it gives no start date, and the previous director Alistair Hudson left before 2023 so is not listed."
+ },
+ {
+  "id": "the-crab-museum",
+  "people": [
+   {
+    "name": "Ned Suesat-Williams",
+    "role": "co-director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.crabmuseum.org/theteam"
+    ]
+   },
+   {
+    "name": "Bertie Suesat-Williams",
+    "role": "co-director",
+    "title": "Director",
+    "current": true,
+    "since": "2019-09",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.crabmuseum.org/theteam",
+     "https://find-and-update.company-information.service.gov.uk/company/12227892/officers"
+    ]
+   },
+   {
+    "name": "Chase Coley",
+    "role": "co-director",
+    "title": "Director",
+    "current": true,
+    "since": "2019-09",
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://www.crabmuseum.org/theteam",
+     "https://find-and-update.company-information.service.gov.uk/company/12227892/officers"
+    ]
+   }
+  ],
+  "basis": "The museum's team page names the three as directors, and Companies House lists them as the directors of Crab Museum CIC appointed on 26 September 2019."
+ },
+ {
+  "id": "turner-contemporary-margate",
+  "people": [
+   {
+    "name": "Clarrie Wallis",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://turnercontemporary.org/people-and-policies"
+    ]
+   }
+  ],
+  "basis": "Turner Contemporary's people and policies page, which names the Director but gives no start date."
+ },
+ {
+  "id": "mima",
+  "people": [
+   {
+    "name": "Laura Sillars",
+    "role": "director",
+    "title": "Director MIMA and Dean of Culture & Creativity at Teesside University",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://mima.art/about-us/"
+    ]
+   },
+   {
+    "name": "Helen Welford",
+    "role": "chief curator",
+    "title": "Head of Programmes",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://mima.art/about-us/"
+    ]
+   }
+  ],
+  "basis": "MIMA's team page, which lists who leads its curatorial and programme work but gives no start dates."
+ },
+ {
+  "id": "mk-gallery-milton-keynes",
+  "people": [
+   {
+    "name": "Anthony Spira",
+    "role": "director",
+    "title": "Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://mkgallery.org/about/"
+    ]
+   },
+   {
+    "name": "Fay Blanchard",
+    "role": "chief curator",
+    "title": "Head of Exhibitions",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://mkgallery.org/about/"
+    ]
+   },
+   {
+    "name": "Liz Gifford",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://mkgallery.org/about/"
+    ]
+   }
+  ],
+  "basis": "MK Gallery's about page, which lists the team and the board but gives no start dates."
+ },
+ {
+  "id": "78-derngate",
+  "people": [],
+  "basis": ""
+ },
+ {
+  "id": "new-art-exchange-nottingham",
+  "people": [
+   {
+    "name": "Saad Eddine Said",
+    "role": "director",
+    "title": "CEO and Artistic Director",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://nae.org.uk/about/team/",
+     "https://nae.org.uk/news/latest-news/saad-eddine-said-appointed-new-co-chair-of-cvan/"
+    ]
+   },
+   {
+    "name": "David Sinclair",
+    "role": "chief curator",
+    "title": "Head Curator",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://nae.org.uk/about/team/"
+    ]
+   },
+   {
+    "name": "Samori Gambrah",
+    "role": "chair of the board",
+    "title": "Chair",
+    "current": true,
+    "since": null,
+    "until": null,
+    "previously": [],
+    "pay": null,
+    "sources": [
+     "https://nae.org.uk/about/team/"
+    ]
+   }
+  ],
+  "basis": "New Art Exchange's team and board page, which gives no start dates."
+ }
+]

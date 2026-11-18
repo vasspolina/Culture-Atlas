@@ -13,7 +13,7 @@
   var LINES = [
     'Leaving it on the table looks up who funds museums.',
     'Each record names the funders it can source, from public money, companies and foundations, and links every fact to where it comes from.',
-    'A grade from A to F says how much of that money the record shows.',
+    'A grade from A to F says how much of that money we can see.',
     'Most lives were never written down, so where the records go quiet, imagine who lived there, and add what you know with Share information.',
     'Ask below about a museum, a city or a funder.'
   ];

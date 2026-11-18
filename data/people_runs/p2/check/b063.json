@@ -1,0 +1,145 @@
+[
+ {
+  "id": "muhba-bon-pastor",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sonar-festival",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "azkuna-zentroa-bilbao",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "guggenheim-bilbao-bilbao",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-broner",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "laboral-centro-de-arte-y-creaci-n-industrial-gij-n",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-maso",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "chillida-leku-hernani",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museo-casa-botines-gaudi",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Raúl Fernández Sobrino",
+    "field": "sources",
+    "stored": "https://www.casabotines.es/equipo/",
+    "page says": "the only cited page returns a bot check (curl) and HTTP 403 (WebFetch); its web.archive.org copy of 18 July 2026 would not load, so the name and title cannot be confirmed",
+    "fix": null
+   },
+   {
+    "person": "Jorge Luis García Vázquez",
+    "field": "sources",
+    "stored": "https://www.casabotines.es/equipo/",
+    "page says": "the only cited page cannot be opened (bot check, HTTP 403, archive copy would not load); nothing confirms the Presidente heads the museum's board rather than the owning foundation",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "museo-casa-botines-gaudi",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "centre-dart-la-panera-lleida",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ca2m-madrid",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Manuel Segade",
+    "field": "next_post",
+    "stored": "Director del Museo Nacional Centro de Arte Reina Sofía",
+    "page says": "Sobre nosotros says he was CA2M director 2016 to 2023 and, in a later jury list, names him 'Director del Museo Nacional Centro de Arte Reina Sofía y anterior director del Museo Centro de Arte Dos de Mayo'; it does not state he left CA2M for that post",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "ca2m-madrid",
+   "people": [
+    {
+     "name": "Tania Pardo",
+     "role": "director",
+     "title": "Dirección; directora del Museo Centro de Artes Dos de Mayo",
+     "current": true,
+     "since": "2024",
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://ca2m.org/el-museo/equipo",
+      "https://ca2m.org/el-museo/sobre-nosotros"
+     ]
+    },
+    {
+     "name": "Manuel Segade",
+     "role": "director",
+     "title": "director del Museo CA2M",
+     "current": false,
+     "since": "2016",
+     "until": "2023",
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://ca2m.org/el-museo/sobre-nosotros"
+     ],
+     "left_because": null,
+     "next_post": null
+    }
+   ],
+   "basis": "The museum team page and its Sobre nosotros page, which says Segade was director from 2016 to 2023 and Pardo was appointed in 2024."
+  }
+ },
+ {
+  "id": "caixaforum-madrid",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "casa-de-la-arquitectura-madrid",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "la-casa-encendida-madrid",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "matadero-madrid",
+  "verdict": "ok",
+  "faults": []
+ }
+]

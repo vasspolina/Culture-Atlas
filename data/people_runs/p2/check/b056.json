@@ -1,0 +1,167 @@
+[
+ {
+  "id": "ploshchad-mira-museum-centre-krasnoyarsk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "patriot-park",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "az-museum-anatoly-zverev-museum-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "central-lenin-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fabrika-centre-for-creative-industries-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ges-2-house-of-culture-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "garage-museum-moscow",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Дарья Котова",
+    "field": "since",
+    "stored": null,
+    "page says": "Garage news, 17 Apr 2025: С 17 апреля 2025 года к исполнению обязанностей приступает Дарья Котова",
+    "fix": "2025-04"
+   },
+   {
+    "person": "Антон Белов",
+    "field": "people (predecessor)",
+    "stored": null,
+    "page says": "Same news item: Она сменит на этом посту Антона Белова, возглавлявшего Музей с 2010 года; he left in April 2025, after 1 January 2023, so the brief requires him as predecessor",
+    "fix": {
+     "name": "Антон Белов",
+     "role": "director",
+     "current": false,
+     "since": "2010",
+     "until": "2025-04"
+    }
+   }
+  ],
+  "corrected": {
+   "id": "garage-museum-moscow",
+   "people": [
+    {
+     "name": "Дарья Котова",
+     "role": "director",
+     "title": "Директор Музея современного искусства «Гараж»",
+     "current": true,
+     "since": "2025-04",
+     "until": null,
+     "previously": [
+      "руководитель департамента развития, маркетинга и рекламы, Музей «Гараж» (from 2014)",
+      "директор эндаумент-фонда Музея «Гараж» (from 2021)"
+     ],
+     "pay": null,
+     "sources": [
+      "https://garagemca.org/ru/about",
+      "https://garagemca.org/ru/news/daria-kotova-appointed-director-of-garage-museum-of-contemporary-art"
+     ]
+    },
+    {
+     "name": "Антон Белов",
+     "role": "director",
+     "title": "директор Музея современного искусства «Гараж»",
+     "current": false,
+     "since": "2010",
+     "until": "2025-04",
+     "left_because": null,
+     "next_post": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://garagemca.org/ru/news/daria-kotova-appointed-director-of-garage-museum-of-contemporary-art"
+     ]
+    },
+    {
+     "name": "Дарья Жукова",
+     "role": "founder",
+     "title": "Сооснователь Музея современного искусства «Гараж»",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://garagemca.org/ru/about"
+     ]
+    },
+    {
+     "name": "Роман Абрамович",
+     "role": "founder",
+     "title": "Сооснователь Музея современного искусства «Гараж»",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://garagemca.org/ru/about"
+     ]
+    }
+   ],
+   "basis": "The museum leadership section of Garage's own about page names the director and the two co-founders, and Garage's news item of 17 April 2025 says Daria Kotova takes up the post from that day, succeeding Anton Belov, who had led the museum since 2010."
+  }
+ },
+ {
+  "id": "jewish-museum-and-tolerance-center-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moscow-international-biennale-of-contemporary-art-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "moscow-museum-of-modern-art-mmoma-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "multimedia-art-museum-moscow-mamm-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-contemporary-history-of-russia",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-of-russian-impressionism-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "pushkin-state-museum-of-fine-arts-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ruarts-foundation-moscow",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "russia-my-history-vdnkh",
+  "verdict": "ok",
+  "faults": []
+ }
+]

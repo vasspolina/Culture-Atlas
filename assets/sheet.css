@@ -294,6 +294,20 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :root[data-theme="dark"] .gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#facc15!important}
 :root[data-theme="dark"] .gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#fb923c!important}
 :root[data-theme="dark"] .gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ef4444!important}
+/* GRADE FILTERS (user, 15 Nov 2026: "make these into color coded clickable filters"). In a list of the five grades each
+   "Grade X" is a button: a pill of the grade's bright colour with black text on it (F on the lighter red, so all five clear
+   7:1), in both themes. The one that is on has a 2px ink edge and a tick after its letter, so it is not told by colour alone.
+   The colon the list puts after a grade word is dropped, since the pill ends the label. index.html, "GRADE FILTERS". */
+:root:root button.grade-filter.grade-word{display:inline-block!important;text-indent:0!important;margin:2px 8px 2px 0!important;padding:1px 10px!important;min-height:24px!important;border:2px solid transparent!important;border-radius:999px!important;color:#000!important;-webkit-text-fill-color:#000!important;font:inherit!important;font-size:var(--sh-s)!important;line-height:var(--sh-s-lh)!important;cursor:pointer!important;text-transform:none!important;letter-spacing:0!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="1"]{background:#34d399!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="2"]{background:#2dd4bf!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="3"]{background:#facc15!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="4"]{background:#fb923c!important}
+:root:root button.grade-filter.grade-word[data-grade-filter="5"]{background:#f87171!important}
+:root:root button.grade-filter.grade-word[aria-pressed="true"]{border-color:var(--sh-ink)!important}
+:root:root button.grade-filter.grade-word::after{content:none!important}
+:root:root button.grade-filter.grade-word[aria-pressed="true"]::after{content:" \2713"!important}
+:root:root button.grade-filter.grade-word:focus-visible{outline:2px solid var(--sh-ink)!important;outline-offset:2px!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
@@ -2249,3 +2263,36 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root[data-theme="dark"]:has(body.gossip-mode-active){--sh-paper:#000050;--paper:#000050}
 :root[data-theme="dark"] body.gossip-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#000050}
 :root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#ffeff1!important}
+
+/* ---- the street map close in, set like a printed gallery map (user, 18 Nov 2026, after Fraser Muggeridge studio's Bloomsbury
+   Art Galleries map; the map layers are the poster_ layers in index.html, the marks the "STREET MAP CLOSE IN" block
+   in atlas.css). From zoom 13 (#cityMapContainer.street-poster) each space's name is a speech bubble as on that map: ink, with
+   the name in the atlas's own face, Atlas Serif, in the paper's colour (user, 18 Nov 2026: "change font to cultural atlas main
+   typeface"; Jokker Bold before), and a tail down to the space's mark; its corners are rounded (user, 18 Nov
+   2026: "make bubles like this but with rounded corners"). It replaces, close in only, the plain name with no strip of 16 Nov; further out the names stay as they were. The open space's bubble keeps its grade under
+   the name. Contrast: paper on ink 21:1 light, 17:1 dark. ---- */
+@layer sheet{
+#cityMapContainer.street-poster .inst-pin-label,
+#cityMapContainer.street-poster .custom-inst-pin:hover .inst-pin-label,
+#cityMapContainer.street-poster .inst-pin-label:hover,
+#cityMapContainer.street-poster .inst-pin-label:focus-visible,
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label{height:auto!important;padding:4px 9px 5px!important;gap:0!important;background:var(--wc-ink)!important;color:var(--wc-ground)!important;border:0!important;border-radius:7px!important;box-shadow:none!important}
+#cityMapContainer.street-poster .inst-pin-label *,
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{color:var(--wc-ground)!important}
+#cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{font-family:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif!important;font-weight:400!important;font-size:15px!important;line-height:18px!important;letter-spacing:0!important}
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name{font-size:18px!important;line-height:22px!important}
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{font-family:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif!important;font-size:14px!important;line-height:17px!important}
+:root:root #cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name,
+:root:root #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name,
+:root:root #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{text-shadow:none!important}
+#cityMapContainer.street-poster .inst-pin-label:not(.label-pos-bottom):not(.label-pos-left):not(.label-pos-right){bottom:calc(100% + 7px)!important}
+#cityMapContainer.street-poster .inst-pin-label.label-pos-bottom{top:calc(100% + 7px)!important}
+#cityMapContainer.street-poster .inst-pin-label.label-pos-right{left:calc(100% + 6px)!important}
+#cityMapContainer.street-poster .inst-pin-label.label-pos-left{right:calc(100% + 6px)!important}
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label{bottom:calc(100% + 7px)!important}
+/* The tail: from the bubble's edge toward the mark, on whichever side the bubble was placed. */
+#cityMapContainer.street-poster .inst-pin-label::after{content:""!important;position:absolute!important;left:50%!important;top:calc(100% - 1px)!important;width:12px!important;height:9px!important;margin-left:-6px!important;background:var(--wc-ink)!important;clip-path:polygon(0 0,100% 0,50% 100%)!important;pointer-events:none!important}
+#cityMapContainer.street-poster .inst-pin-label.label-pos-bottom::after{top:auto!important;bottom:100%!important;clip-path:polygon(50% 0,100% 100%,0 100%)!important}
+#cityMapContainer.street-poster .inst-pin-label.label-pos-right::after{left:auto!important;right:100%!important;top:50%!important;width:7px!important;height:12px!important;margin:-6px 0 0!important;clip-path:polygon(100% 0,100% 100%,0 50%)!important}
+#cityMapContainer.street-poster .inst-pin-label.label-pos-left::after{left:100%!important;top:50%!important;width:7px!important;height:12px!important;margin:-6px 0 0!important;clip-path:polygon(0 0,100% 50%,0 100%)!important}
+}

@@ -1,0 +1,149 @@
+[
+ {
+  "id": "bishkek-school-of-contemporary-art-bisca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kaysone-phomvihane-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kim-contemporary-art-centre-riga",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "latvian-national-museum-of-art",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "riga-international-biennial-of-contemporary-art-riboca",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arab-image-foundation-beirut",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ashkal-alwan-beirut",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "beirut-art-center-bac",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "sursock-museum",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "arete-foundation-for-arts-and-culture-tripoli",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "cac-vilnius",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mo-museum-vilnius",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "zolak-vilnius",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Пётр Маркелаў",
+    "field": "since",
+    "stored": "2025",
+    "page says": "The 11 June 2025 article says the space will open on 14 June and has already hosted a workshop and film screenings; it gives no date for when the creators founded it.",
+    "fix": null
+   },
+   {
+    "person": "Аліна Нагорная",
+    "field": "since",
+    "stored": "2025",
+    "page says": "The 11 June 2025 article says the space will open on 14 June and has already hosted a workshop and film screenings; it gives no date for when the creators founded it.",
+    "fix": null
+   },
+   {
+    "person": "Сяргей Гудзілін",
+    "field": "since",
+    "stored": "2025",
+    "page says": "The 11 June 2025 article says the space will open on 14 June and has already hosted a workshop and film screenings; it gives no date for when the creators founded it.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "zolak-vilnius",
+   "people": [
+    {
+     "name": "Пётр Маркелаў",
+     "role": "founder",
+     "title": "сярод стваральнікаў",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://reform.news/u-vilni-adkryvaecca-novaja-belaruskaja-prastora-zolak"
+     ]
+    },
+    {
+     "name": "Аліна Нагорная",
+     "role": "founder",
+     "title": "сярод стваральнікаў",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://reform.news/u-vilni-adkryvaecca-novaja-belaruskaja-prastora-zolak"
+     ]
+    },
+    {
+     "name": "Сяргей Гудзілін",
+     "role": "founder",
+     "title": "сярод стваральнікаў",
+     "current": true,
+     "since": null,
+     "until": null,
+     "previously": [],
+     "pay": null,
+     "sources": [
+      "https://reform.news/u-vilni-adkryvaecca-novaja-belaruskaja-prastora-zolak"
+     ]
+    }
+   ],
+   "basis": "A Reform.news article of 11 June 2025 on the opening of the community-run space names its creators; the space's own site names no one."
+  }
+ },
+ {
+  "id": "casino-luxembourg",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "mudam-mus-e-d-art-moderne-grand-duc-jean",
+  "verdict": "ok",
+  "faults": []
+ }
+]

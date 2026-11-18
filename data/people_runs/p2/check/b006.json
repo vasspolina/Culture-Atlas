@@ -1,0 +1,95 @@
+[
+ {
+  "id": "m-hka-antwerp",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "argos-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "beursschouwburg-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "constant-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "fondation-cab-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "horta-museum",
+  "verdict": "fault",
+  "faults": [
+   {
+    "person": "Benjamin Zurstrassen",
+    "field": "current",
+    "stored": true,
+    "page says": "The only page naming him director is an undated TL Magazine contributor note (\"has been its curator and director since 2018\"), which proves neither the date nor that he still holds the post; the dated June 2026 press kit lists him only among the exhibition's CURATEURS (with Elise Koering and Jérémie Cerman), and the museum's own team page (hortamuseum.be/equipe) renders no names without scripts. No page from the last 18 months shows him as director.",
+    "fix": null
+   }
+  ],
+  "corrected": {
+   "id": "horta-museum",
+   "people": [],
+   "basis": ""
+  }
+ },
+ {
+  "id": "la-loge-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "van-buuren-museum-gardens",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "villa-empain-boghossian-foundation",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "wiels-contemporary-art-centre",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "imal-brussels",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "museum-dhondt-dhaenens-deurle",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "ciap-genk",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kiosk-ghent",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "kunsthal-gent",
+  "verdict": "ok",
+  "faults": []
+ },
+ {
+  "id": "s-m-a-k",
+  "verdict": "ok",
+  "faults": []
+ }
+]

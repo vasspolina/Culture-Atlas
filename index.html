@@ -78,8 +78,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=790">
-  <link rel="stylesheet" href="assets/sheet.css?v=803">
+  <link rel="stylesheet" href="assets/atlas.css?v=815">
+  <link rel="stylesheet" href="assets/sheet.css?v=814">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -286,35 +286,35 @@ return maplibregl$1;
                    out, Artist-run in; 13 Nov 2026: Images in; 15 Nov 2026: "delete images filter and unverified, put propaganda and epstein
                    connections underneat artist run", so Images is out and Propaganda and Epstein follow Artist-run); the other two are in this menu only. -->
               <label style="--layer-color:#f9ab30"><input type="checkbox" data-layer="funding" data-layers="ties flags money hq right"> <span class="layer-name">Funding connections</span><span class="layer-desc">Lines between museums that share a funder, flagged and right-wing funders, the funders around a museum in focus and their head offices</span><span class="layers-count" data-count="funding"></span></label>
-              <label style="--layer-color:#3fe05a"><input type="checkbox" data-layer="independent" data-chip> <span class="layer-name">Independent</span><span class="layer-desc">Museums whose record describes them as an independent museum or institution</span><span class="layers-count" data-count="independent"></span></label>
-              <label style="--layer-color:#0af0b0"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open books</span><span class="layer-desc">Museums graded clean: filings are linked and no flagged funder or funding protest is on record</span><span class="layers-count" data-count="openbooks"></span></label>
-              <label style="--layer-color:#b7d40c"><input type="checkbox" data-layer="artist" data-chip> <span class="layer-name">Artist-run</span><span class="layer-desc">Museums whose record describes them as artist-run, artist-led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
-              <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Museums a state has used to promote its line</span><span class="layers-count" data-count="propaganda"></span></label>
-              <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Museums whose funders or people appear in the files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
+              <label style="--layer-color:#3fe05a"><input type="checkbox" data-layer="independent" data-chip> <span class="layer-name">Independent</span><span class="layer-desc">Museums that call themselves independent</span><span class="layers-count" data-count="independent"></span></label>
+              <label style="--layer-color:#0af0b0"><input type="checkbox" data-layer="openbooks"> <span class="layer-name">Open about money</span><span class="layer-desc">Museums that publish their accounts, with no flagged funder and no protest over their funding</span><span class="layers-count" data-count="openbooks"></span></label>
+              <label style="--layer-color:#b7d40c"><input type="checkbox" data-layer="artist" data-chip> <span class="layer-name">Artist-run</span><span class="layer-desc">Museums run, led or founded by artists</span><span class="layers-count" data-count="artist"></span></label>
+              <label style="--layer-color:#ff5fa0"><input type="checkbox" data-layer="propaganda" data-chip> <span class="layer-name">Propaganda</span><span class="layer-desc">Museums a government has used to push its message</span><span class="layers-count" data-count="propaganda"></span></label>
+              <label style="--layer-color:#d39bff"><input type="checkbox" data-layer="epstein" data-layers="epstein people" data-chip> <span class="layer-name">Epstein connections</span><span class="layer-desc">Museums whose funders or people appear in the Epstein files, and those people’s offices</span><span class="layers-count" data-count="epstein"></span></label>
             </div>
           </section>
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Artists</h2>
             <div class="layers-list">
               <!-- assets/critique-gallery.js: not a filter (every space stays on the map), so it is not a data-layer box and assets/layers.js leaves it alone. -->
-              <label style="--layer-color:#ffd600"><input type="checkbox" id="critiqueLayerBox"> <span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Museums named in artists&rsquo; and designers&rsquo; work on cultural institutions, marked with a diamond: point at one to see its images, open them as a gallery</span><span class="layers-count" data-count="critique"></span></label>
+              <label style="--layer-color:#ffd600"><input type="checkbox" id="critiqueLayerBox"> <span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Museums that artists and designers have made work about, marked with a diamond. Point at one to see the work</span><span class="layers-count" data-count="critique"></span></label>
             </div>
           </section>
           <section class="layers-section" data-no-chips>
             <h2 class="layers-section-title">Funding views</h2>
             <div class="layers-list">
-              <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">The lines between museums that share a funder, gathered into one trunk per pair of countries, as thick as the links it carries and in the colour of its main funder type</span><span class="layers-count" data-count="bundle"></span></label>
+              <label style="--layer-color:#96a960"><input type="checkbox" data-layer="bundle"> <span class="layer-name">Bundled lines</span><span class="layer-desc">Lines between museums that share a funder, grouped into one line per pair of countries: the thicker, the more links, coloured by the main kind of funder</span><span class="layers-count" data-count="bundle"></span></label>
               <label style="--layer-color:#f8ff94"><input type="checkbox" data-layer="flows"> <span class="layer-name">Flows between countries</span><span class="layer-desc">From the country of a funder&rsquo;s head office to the country of each museum it funds: wide at the source, narrow at the end</span><span class="layers-count" data-count="flows"></span></label>
-              <label style="--layer-color:#41aa87"><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country by the share of its museums&rsquo; funders based abroad, or by its main funder type</span><span class="layers-count" data-count="choro"></span></label>
-              <label style="--layer-color:#ffc694"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funder territories</span><span class="layer-desc">A shaded area around the museums each of the six widest-reaching funders pays for</span></label>
+              <label style="--layer-color:#41aa87"><input type="checkbox" data-layer="choro"> <span class="layer-name">Countries shaded</span><span class="layer-desc">Each country shaded by how many of its museums&rsquo; funders are based abroad, or by its main kind of funder</span><span class="layers-count" data-count="choro"></span></label>
+              <label style="--layer-color:#ffc694"><input type="checkbox" data-layer="hulls"> <span class="layer-name">Funders&rsquo; reach</span><span class="layer-desc">A shaded area around the museums each of the six biggest funders pays for</span></label>
               <label style="--layer-color:#1bff0a"><input type="checkbox" data-layer="glyphs"> <span class="layer-name">Funding mix on each museum</span><span class="layer-desc">A ring around each museum, split by its public, foundation and company funders</span></label>
               <label style="--layer-color:#ab9cc9"><input type="checkbox" data-layer="halos"> <span class="layer-name">Shared-funder glow</span><span class="layer-desc">With a museum in focus, every museum that shares a funder with it glows, brighter the more they share</span></label>
-              <label style="--layer-color:#c2ffc6"><input type="checkbox" data-layer="lifted"> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The widest-reaching funders float over their head office, higher the more museums they fund, with a line down to each</span></label>
+              <label style="--layer-color:#c2ffc6"><input type="checkbox" data-layer="lifted"> <span class="layer-name">Funders above the globe</span><span class="layer-desc">The biggest funders float over their head office, higher the more museums they fund, with a line down to each</span></label>
               <label style="--layer-color:#ff6c0a"><input type="checkbox" data-layer="flagged"> <span class="layer-name">Flagged money only</span><span class="layer-desc">Lines from flagged museums, and from museums with a right-wing funder, to their funders&rsquo; head offices</span><span class="layers-count" data-count="flagged"></span></label>
             </div>
             <div class="layers-kinds layers-choro" role="radiogroup" aria-label="Countries shaded by">
               <label class="kind-chip"><input type="radio" name="choroMode" data-choro="abroad" checked> <span class="layer-name">Funders abroad</span></label>
-              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="kind"> <span class="layer-name">Main funder type</span></label>
+              <label class="kind-chip"><input type="radio" name="choroMode" data-choro="kind"> <span class="layer-name">Main kind of funder</span></label>
             </div>
             <div class="layers-choro-legend" data-choro-legend><span>None abroad</span><i aria-hidden="true"></i><span>All abroad</span></div>
             <div class="layers-years">
@@ -325,7 +325,7 @@ return maplibregl$1;
             </div>
           </section>
           <section class="layers-section">
-            <h2 class="layers-section-title">Propaganda periods</h2>
+            <h2 class="layers-section-title">Propaganda: when</h2>
             <div class="layers-kinds">
               <label class="kind-chip" style="--marker-color:#ff5fa0"><input type="checkbox" data-pkind="today" checked> <i class="shape-dot shape-glow"></i><span class="layer-name">Now</span></label>
               <label class="kind-chip" style="--marker-color:#ff5fa0"><input type="checkbox" data-pkind="historical" checked> <i class="shape-ring shape-glow"></i><span class="layer-name">In the past</span></label>
@@ -340,7 +340,7 @@ return maplibregl$1;
             </div>
           </section>
           <section class="layers-section">
-            <h2 class="layers-section-title">Funder types</h2>
+            <h2 class="layers-section-title">Kinds of funder</h2>
             <div class="layers-filters">
               <label class="filter-row" style="--marker-color:#7c9bff"><i class="shape-dot"></i><span class="layer-name">Public funding</span><input type="checkbox" role="switch" data-kind="gov" checked></label>
               <label class="filter-row" style="--marker-color:#ffa3c8"><i class="shape-dot"></i><span class="layer-name">Foundations</span><input type="checkbox" role="switch" data-kind="found" checked></label>
@@ -349,15 +349,15 @@ return maplibregl$1;
             </div>
           </section>
           <section class="layers-section">
-            <h2 class="layers-section-title">Widest-reaching funders</h2>
-            <div id="topFunders" class="layers-filters layers-top" role="group" aria-label="Widest-reaching funders"></div>
+            <h2 class="layers-section-title">Biggest funders</h2>
+            <div id="topFunders" class="layers-filters layers-top" role="group" aria-label="Biggest funders"></div>
           </section>
           <section class="layers-section">
             <h2 class="layers-section-title">Museums on the map</h2>
             <div class="layers-key layers-tier-key">
-              <span><i class="shape-dot" style="--marker-color:var(--tier-a)"></i>Clean: a source is cited</span>
-              <span><i class="shape-dot" style="--marker-color:var(--tier-b)"></i>Flagged: a recorded reason</span>
-              <span><i class="shape-dot" style="--marker-color:var(--tier-u)"></i>Unverified</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-a)"></i>Clean: has an outside source</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-b)"></i>Flagged: a reason is given</span>
+              <span><i class="shape-dot" style="--marker-color:var(--tier-u)"></i>Not checked yet</span>
             </div>
           </section>
           <section class="layers-section">
@@ -373,7 +373,7 @@ return maplibregl$1;
               <span><i class="shape-ring shape-glow" style="--marker-color:#ff5fa0"></i>Used for propaganda in the past</span>
               <span><i class="shape-dot shape-glow-green" style="--marker-color:#3fe05a"></i>Independent museum</span>
               <span><i class="shape-dot" style="--marker-color:#b7d40c"></i>Artist-run museum</span>
-              <span><i class="shape-dot shape-glow-cyan" style="--marker-color:#0af0b0"></i>Open books: clean grade</span>
+              <span><i class="shape-dot shape-glow-cyan" style="--marker-color:#0af0b0"></i>Open about money</span>
             </div>
           </section>
         </div>
@@ -396,13 +396,13 @@ return maplibregl$1;
           <li><button type="button" class="mck-row" data-grade="B" aria-pressed="false" title="Show only flagged museums; press again to show every museum"><span class="mck-pill" data-tier="B">Flagged</span></button></li>
         </ul>
         <div class="grade-info mck-info" id="mapColourKeyInfo" role="region" aria-label="How museums are graded" data-repeat-ok hidden>
-          <p>The colour of a name on the map is the grade of its record. It says how well the record is sourced, not a verdict on the museum.</p>
+          <p>The colour of a name on the map shows how well its sources back it up. It is not a verdict on the museum.</p>
           <ul class="grade-scale mck-scale">
             <li><span class="mck-word" data-tier="A">Clean</span><span>needs at least one source outside the museum&rsquo;s own website.</span></li>
-            <li><span class="mck-word" data-tier="B">Flagged</span><span>needs a recorded reason, such as a flagged funder or a protest over its funding.</span></li>
-            <li><span class="mck-word" data-tier="U">Unverified</span><span>is every other museum: its record cites no source outside the museum&rsquo;s own website yet.</span></li>
+            <li><span class="mck-word" data-tier="B">Flagged</span><span>needs a reason, such as a flagged funder or a protest over its funding.</span></li>
+            <li><span class="mck-word" data-tier="U">Not checked yet</span><span>is every other museum: no source outside its own website yet.</span></li>
           </ul>
-          <p>A city takes the colour most of its museums have. Open a museum to read its record and the sources behind its grade.</p>
+          <p>A city takes the colour most of its museums have. Open a museum to see its sources.</p>
         </div>
       </section>
 
@@ -592,14 +592,14 @@ return maplibregl$1;
           </div>
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
-            <summary>How the records work</summary>
+            <summary>How grades work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
-              <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
-              <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
             </ul>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
@@ -824,7 +824,7 @@ return maplibregl$1;
             <button id="modeTabGeneralChat" onclick="window.exitChatInputMode()">General</button>
             <button id="modeTabWhistleblower" onclick="window.enterChatInputMode()">Whistleblower</button>
             <div id="modeSwitchOpSecIndicator"></div>
-            <button id="workModelBtn"><span id="workModelLabel">Answers from the records</span></button>
+            <button id="workModelBtn"><span id="workModelLabel">Answers from the atlas</span></button>
           </div>
           <div id="chatInputModeHeader"></div>
         </div>
@@ -847,7 +847,7 @@ return maplibregl$1;
             
             <!-- Hero Greeting (Stitch title style) -->
             <div id="curatorHeroGreeting" class="curator-message-wrap w-full flex flex-col items-center justify-center text-center py-6">
-              <h1 id="curatorHeroTitle">Who funds this cultural institution?</h1>
+              <h1 id="curatorHeroTitle">Who funds this museum?</h1>
               <div id="curatorStarterPrompts" class="starter-prompts"></div>
             </div>
 
@@ -891,7 +891,7 @@ return maplibregl$1;
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
                 <!-- The undertone (user, 18 Nov 2026): most lives were never written down, and a blank in the record is not a place without history. -->
-                <div id="noteFormIntro"><span class="nf-undertone">Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep, so where the record goes quiet people still lived, worked, made things and gathered. Imagine them, and do not take a blank on the map for a place without history.</span><span class="nf-undertone">If you know what the atlas is missing, from inside or from memory, write it here. The atlas is built with the people who add to it. The editor reads every note before anything appears, and an approved note is shown on the record of the institution as a review. This is not a secure channel.</span></div>
+                <div id="noteFormIntro"><span class="nf-undertone">Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep, so where the record goes quiet people still lived, worked, made things and gathered. Imagine them, and do not take a blank on the map for a place without history.</span><span class="nf-undertone">If you know what the atlas is missing, from inside or from memory, write it here. The atlas is built with the people who add to it. The editor reads every note before anything appears, and an approved note appears on the museum’s page as a review. This is not a secure channel.</span></div>
                 <label class="nf-field"><span>Place</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
                 <!-- A place the atlas does not have (user, 18 Nov 2026): the form asks for its city and sends it as a new place. -->
                 <p id="notePlaceHint" role="status" aria-live="polite" hidden></p>
@@ -953,14 +953,14 @@ return maplibregl$1;
 
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
-              <summary>How the records work</summary>
+              <summary>How grades work</summary>
             <p class="no-indent">Funding grades run from A to F.</p>
             <ul class="grade-list grade-scale">
-              <li><span class="grade-word grade-word-1">Grade A</span><span class="grade-scale-text">the record shows how much money came in, and no funder is flagged.</span></li>
-              <li><span class="grade-word grade-word-2">Grade B</span><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><span class="grade-word grade-word-3">Grade C</span><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
-              <li><span class="grade-word grade-word-4">Grade D</span><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><span class="grade-word grade-word-5">Grade F</span><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
             </ul>
             </details>
 
@@ -1175,7 +1175,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=791"></script>
+  <script src="assets/institutions.js?v=812"></script>
   <script src="assets/money-ids.js?v=767"></script>
   <script>
 
@@ -6790,8 +6790,10 @@ return maplibregl$1;
           minzoom: 0
         }
       },
-      // Street-map labels are set in Serrif Light (user's instruction, 5 Nov 2026): glyphs generated from fonts/Serrif-TRIAL-Light.woff2 into
-      // assets/glyphs/Serrif Light, not the map host's Noto Sans. The museum tag is an HTML marker and stays in Jokker.
+      // Street-map labels are set in the atlas's own face, Atlas Serif (user, 18 Nov 2026: "change font to cultural atlas main
+      // typeface"; Serrif Light from 5 Nov until then). The page's Atlas Serif is Times New Roman from the reader's machine, which
+      // cannot be shipped; the map's glyphs are cut from Liberation Serif, drawn to Times New Roman's widths and under the SIL Open
+      // Font License (assets/glyphs/Atlas Serif/LiberationSerif-OFL.txt), so map and page read as one face.
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
         // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
@@ -6802,6 +6804,77 @@ return maplibregl$1;
           id: 'background',
           type: 'background',
           paint: { 'background-color': '#ffffff' }
+        },
+        // ---- Close in, the street map is set like a printed gallery map (user, 4 and 18 Nov 2026, after Fraser Muggeridge
+        // studio's Bloomsbury Art Galleries map): the blocks a fine stipple of dots, the streets left as paper between two edges,
+        // the squares and water plain paper, street names in Atlas Serif capitals along the street, stations in a ruled box. Every
+        // poster_ layer fades in between zoom 12.5 and 13.5 (POSTER_ZOOM, 13), so the city view keeps its hairlines and only the
+        // zoomed-in map changes. applyCityMapGossip paints them in the map's ground and line colours (the 50% grey outside gossip
+        // mode, so only the cultural spaces stand in full strength) and posterImages redraws the dots to match.
+        {
+          id: 'poster_ground',
+          type: 'background',
+          minzoom: 12.5,
+          paint: { 'background-pattern': 'poster-dots', 'background-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+        },
+        {
+          id: 'poster_park_fill',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'park',
+          minzoom: 12.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+        },
+        {
+          id: 'poster_grass_fill',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'landcover',
+          filter: ['match', ['get', 'class'], ['grass', 'wood'], true, false],
+          minzoom: 12.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+        },
+        {
+          id: 'poster_water_fill',
+          type: 'fill',
+          source: 'openmaptiles',
+          'source-layer': 'water',
+          minzoom: 12.5,
+          paint: { 'fill-color': '#ffffff', 'fill-antialias': false, 'fill-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1] }
+        },
+        // The streets: a casing in the line colour under a paper fill, every class casing first and fill after, so the
+        // junctions open into each other as on the print. Paths and tracks are left out: on the print a footpath is not a street.
+        {
+          id: 'poster_road_casing',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
+          minzoom: 12.5,
+          layout: { 'line-join': 'round', 'line-cap': 'round' },
+          paint: {
+            'line-color': '#787878',
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
+            'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
+              13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 5.5, ['secondary', 'tertiary'], 4.5, 'service', 2, 3],
+              18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 58, ['secondary', 'tertiary'], 46, 'service', 16, 32]]
+          }
+        },
+        {
+          id: 'poster_road_fill',
+          type: 'line',
+          source: 'openmaptiles',
+          'source-layer': 'transportation',
+          filter: ['match', ['get', 'class'], ['minor', 'service', 'tertiary', 'secondary', 'primary', 'trunk', 'motorway'], true, false],
+          minzoom: 12.5,
+          layout: { 'line-join': 'round', 'line-cap': 'round' },
+          paint: {
+            'line-color': '#ffffff',
+            'line-opacity': ['interpolate', ['linear'], ['zoom'], 12.5, 0, 13.5, 1],
+            'line-width': ['interpolate', ['exponential', 1.6], ['zoom'],
+              13, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 3.5, ['secondary', 'tertiary'], 2.5, 'service', 0.5, 1.2],
+              18, ['match', ['get', 'class'], ['primary', 'trunk', 'motorway'], 56, ['secondary', 'tertiary'], 44, 'service', 14, 30]]
+          }
         },
         {
           id: 'landcover_grass',
@@ -6856,7 +6929,9 @@ return maplibregl$1;
             'fill-extrusion-color': '#ffffff',
             'fill-extrusion-height': CITY_BUILDING_TOP,
             'fill-extrusion-base': CITY_BUILDING_BASE,
-            'fill-extrusion-opacity': ['step', ['zoom'], 0, 16, 1],
+            // Drawn at no zoom since the printed gallery map holds at every close zoom (user, 18 Nov 2026): the solid volumes
+            // covered its stipple from 16. The layer stays, invisible, for xrayFindBuilding.
+            'fill-extrusion-opacity': 0,
             'fill-extrusion-vertical-gradient': true
           }
         },
@@ -6926,19 +7001,106 @@ return maplibregl$1;
           minzoom: 8,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['Serrif Light'],
+            'text-font': ['Atlas Serif'],
             'text-size': 15,
             'text-transform': 'none',
             'text-letter-spacing': 0
           },
           paint: {
-            'text-color': '#808080',
+            'text-color': '#404040',
             'text-halo-color': '#ffffff',
             'text-halo-width': 1.5
           }
+        },
+        // Street names in Atlas Serif capitals, spaced, along the street.
+        {
+          id: 'poster_street_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'transportation_name',
+          filter: ['match', ['get', 'class'], ['minor', 'tertiary', 'secondary', 'primary', 'trunk'], true, false],
+          minzoom: 13,
+          layout: {
+            'symbol-placement': 'line',
+            'symbol-spacing': 320,
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['Atlas Serif'],
+            'text-size': ['interpolate', ['linear'], ['zoom'], 13, 14, 18, 16],
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.08,
+            'text-max-angle': 30,
+            'text-padding': 4
+          },
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+        },
+        // The squares, named in the middle of the block, as RUSSELL SQUARE is on the print. A wide halo: these names sit
+        // inside the squares, over their path hairlines.
+        {
+          id: 'poster_area_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'poi',
+          filter: ['all', ['has', 'name'], ['match', ['get', 'class'], ['park', 'garden'], true, false], ['<=', ['coalesce', ['get', 'rank'], 99], 20]],
+          minzoom: 13,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['Atlas Serif'],
+            'text-size': 14,
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.06,
+            'text-line-height': 1.1,
+            'text-max-width': 7,
+            'text-padding': 6
+          },
+          paint: { 'text-color': '#404040', 'text-halo-color': '#ffffff', 'text-halo-width': 3.5, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
+        },
+        // Stations in a paper box with a 1px edge, as EUSTON SQUARE and HOLBORN are on the print.
+        {
+          id: 'poster_station_label',
+          type: 'symbol',
+          source: 'openmaptiles',
+          'source-layer': 'poi',
+          filter: ['all', ['has', 'name'], ['==', ['get', 'class'], 'railway'], ['match', ['get', 'subclass'], ['station', 'subway', 'halt'], true, false]],
+          minzoom: 13,
+          layout: {
+            'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
+            'text-font': ['Atlas Serif'],
+            'text-size': 14,
+            'text-transform': 'uppercase',
+            'text-letter-spacing': 0.06,
+            'text-max-width': 12,
+            'icon-image': 'poster-box',
+            'icon-text-fit': 'both',
+            'icon-text-fit-padding': [3, 7, 2, 7],
+            'text-padding': 6
+          },
+          paint: { 'text-color': '#404040', 'text-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1], 'icon-opacity': ['interpolate', ['linear'], ['zoom'], 13, 0, 13.5, 1] }
         }
       ]
     };
+    // Where the street map turns from hairlines into the printed gallery map (the poster_ layers above): zoom 13, about where a
+    // city opens, and every zoom closer than that (user, 18 Nov 2026: "keep it every zoom level that is close to zoom in"; 14 until
+    // then). The layers fade in over 12.5 to 13.5, the labels over 13 to 13.5.
+    const POSTER_ZOOM = 13;
+    // The stipple and the station box, drawn in the map's current ground and line colours: 6 CSS pixels a tile, two dots a tile
+    // set on a diagonal, as a halftone is. Redrawn whenever the theme or gossip mode changes the colours.
+    function posterImages(map, ground, ink) {
+      if (!map || typeof map.addImage !== 'function' || typeof document === 'undefined') return;
+      const R = 2, put = (id, w, h, draw, opts) => {
+        const c = document.createElement('canvas'); c.width = w * R; c.height = h * R;
+        const g = c.getContext('2d'); g.scale(R, R); draw(g);
+        const img = g.getImageData(0, 0, c.width, c.height);
+        try { if (map.hasImage(id)) map.removeImage(id); map.addImage(id, img, Object.assign({ pixelRatio: R }, opts || {})); } catch (e) { /* style not ready */ }
+      };
+      put('poster-dots', 6, 6, g => {
+        g.fillStyle = ground; g.fillRect(0, 0, 6, 6);
+        g.fillStyle = ink; [[1.5, 1.5], [4.5, 4.5]].forEach(([x, y]) => { g.beginPath(); g.arc(x, y, 0.6, 0, Math.PI * 2); g.fill(); });
+      });
+      put('poster-box', 12, 12, g => {
+        g.fillStyle = ink; g.fillRect(0, 0, 12, 12);
+        g.fillStyle = ground; g.fillRect(1, 1, 10, 10);
+      }, { stretchX: [[2 * R, 10 * R]], stretchY: [[2 * R, 10 * R]], content: [2 * R, 2 * R, 10 * R, 10 * R] });
+    }
 
     let cityVectorMap = null;
     let cityVectorMarkers = [];
@@ -6961,7 +7123,7 @@ return maplibregl$1;
       }
     };
     let cityLeafletMap = null;
-    // The glyph ranges cut from Serrif Light (and earlier PP Neue Gstaad) into assets/glyphs. Add a range here when its file is added.
+    // The glyph ranges cut from Atlas Serif (Liberation Serif; earlier Serrif Light and PP Neue Gstaad) into assets/glyphs. Add a range here when its file is added.
     const CITY_MAP_LOCAL_GLYPHS = new Set(['0-255', '256-511', '7680-7935', '8192-8447', '8448-8703']);
 
     function initCityMapIfNeeded() {
@@ -7004,6 +7166,22 @@ return maplibregl$1;
           applyCityMapGossip();
           cityStreetLinesInit();
         });
+        // The dots and the box are images, so a style that asks for them before they are added gets them here.
+        cityVectorMap.on('styleimagemissing', e => { if (e.id === 'poster-dots' || e.id === 'poster-box') applyCityMapGossip(); });
+        // The printed look holds only close in: a class on the container lets the pins follow it, and crossing the
+        // zoom rebuilds the hairlines, which leave the streets and buildings to the poster layers there.
+        let posterWas = null;
+        const posterSync = () => {
+          const on = cityVectorMap.getZoom() >= POSTER_ZOOM;
+          if (on === posterWas) return;
+          posterWas = on;
+          mapEl.classList.toggle('street-poster', on);
+          if (typeof streetLinesSchedule === 'function') streetLinesSchedule();
+        };
+        cityVectorMap.on('zoom', posterSync);
+        cityVectorMap.on('load', posterSync);
+        // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
+        cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
@@ -7213,6 +7391,10 @@ return maplibregl$1;
       cityVectorMap.on('move', () => {
         if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
       });
+      // Once more where the camera comes to rest, so the tags are placed from where the pins finally are.
+      cityVectorMap.on('moveend', () => {
+        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
+      });
       cityVectorMap.on('rotate', () => {
       });
       cityVectorMap.on('pitch', () => {
@@ -7351,9 +7533,23 @@ return maplibregl$1;
       const line = isGossipModeActive ? (dark ? '#cfcfba' : '#000000') : '#787878';
       // The street map's own place names are 50% grey in both themes, so only the cultural spaces stand in full ink
       // (user, 10 Nov 2026: "make everything 50 % grey exept cultural spaces, map looks too crowded").
-      const label = isGossipModeActive ? line : '#808080';
+      // Half as much again in contrast (user, 18 Nov 2026: "other names on map can have 50% more contrast"): 75% ink, #404040 on
+      // the light ground and #c0c0c0 on the dark, where they were 50% grey (#808080) in both; the spaces' names keep full ink.
+      const label = isGossipModeActive ? line : (dark ? '#c0c0c0' : '#404040');
+      // The printed map close in: dots in the line colour on the ground, streets in the ground between edges in the line colour.
+      posterImages(map, ground, line);
       layers.forEach(l => {
         if (l.id && l.id.indexOf('xray') === 0) return; // the building view keeps its own colours
+        if (l.id && l.id.indexOf('poster_') === 0) {
+          try {
+            if (l.id === 'poster_ground') map.setPaintProperty(l.id, 'background-pattern', 'poster-dots');
+            else if (l.id === 'poster_road_casing') map.setPaintProperty(l.id, 'line-color', line);
+            else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', ground);
+            else if (l.type === 'fill') map.setPaintProperty(l.id, 'fill-color', ground);
+            else if (l.type === 'symbol') { map.setPaintProperty(l.id, 'text-color', label); if (l.id !== 'poster_station_label') map.setPaintProperty(l.id, 'text-halo-color', ground); }
+          } catch (e) { /* a layer this map does not have */ }
+          return;
+        }
         try {
           if (l.type === 'background') map.setPaintProperty(l.id, 'background-color', ground);
           else if (l.type === 'line') map.setPaintProperty(l.id, 'line-color', line);
@@ -8161,7 +8357,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!map || !layer) return;
       const sc = map.style && map.style.sourceCaches && map.style.sourceCaches[STREET_SOURCE];
       if (!sc || typeof sc.getRenderableIds !== 'function') return;
-      const view = map.getBounds(), zoom = map.getZoom();
+      const view = map.getBounds(), zoom = map.getZoom(), poster = zoom >= POSTER_ZOOM;
       const padX = (view.getEast() - view.getWest()) * 0.6, padY = (view.getNorth() - view.getSouth()) * 0.6;
       const box = { w: view.getWest() - padX, e: view.getEast() + padX, s: view.getSouth() - padY, n: view.getNorth() + padY };
       const out = []; let n = 0;
@@ -8192,6 +8388,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         };
         for (const def of STREET_FEATURES) {
           if (def.minzoom && zoom < def.minzoom) continue;
+          // Close in the streets are the poster's paper bands and the blocks its dots: the hairlines keep only the edges of the
+          // squares and the water, which the print draws as a line.
+          if (poster && (def.layer === 'transportation' || def.layer === 'building')) continue;
           const feats = [];
           try { tile.querySourceFeatures(feats, { sourceLayer: def.layer }); } catch (e) { continue; }
           for (const f of feats) {
@@ -8671,6 +8870,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         auraEl.style.background = 'transparent';
 
         const dotEl = document.createElement('div');
+        dotEl.className = 'inst-pin-dot';   // a hollow ring; close in, a solid circle, square or triangle in its grade's colour (atlas.css)
+        pinEl.setAttribute('data-tier', inst.tier === 'A' || inst.tier === 'B' ? inst.tier : 'U');
+        // The mark's colour close in is the space's funding grade, A to E, in the grade colours the record uses (atlas.css).
+        if (inst.grade && typeof GRADE !== 'undefined' && GRADE[inst.grade]) pinEl.setAttribute('data-grade', String(inst.grade));
         dotEl.style.position = 'relative';
         dotEl.style.width = '15px';
         dotEl.style.height = '15px';
@@ -10078,7 +10281,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                   ? (node.tier === 'A' ? 'is-good' : '')
                   : 'is-bad'
               }">
-                ${isInst ? (node.tier === 'A' ? 'Cultural institution, source cited' : 'Flagged cultural institution') : `Corporate Trustee, ${node.category}`}
+                ${isInst ? (node.tier === 'A' ? 'Museum, source cited' : 'Flagged museum') : `Corporate Trustee, ${node.category}`}
               </span>
               <span class="meta">${connectedEdges.length} Connected Interlocks</span>
             </div>
@@ -10521,7 +10724,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             <button type="button" onclick="window.openTrusteeConflictNetworkModal('${filing.id}'); closeStatutoryFilingsModal();" class="py-1_5 px-3 flex items-center gap-1">
               <span>Map Board Interlocks</span>
             </button>
-            <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the financial filings of ${escapeHtml(filing.name)} reveal?');" class="py-1_5 px-3 t-strong">
+            <button type="button" onclick="closeStatutoryFilingsModal(); handleCuratorQuery('What do the accounts of ${escapeHtml(filing.name)} show?');" class="py-1_5 px-3 t-strong">
               <span>Ask ${window.ATLAS_CHAT_NAME || 'Clio'} about these filings</span>
             </button>
           </div>
@@ -10536,11 +10739,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v807';
+    const ATLAS_RELEASE = 'culture-atlas-v815';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=725').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=812').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12815,8 +13018,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       'State censorship or punishment': 'has a funder or sponsor tied to state censorship or punishment',
       'Campaigned name': 'has a funder or sponsor that campaigners have targeted',
       'Sponsor dropped under pressure': 'has been pressed to drop a sponsor',
-      'Epstein-linked': 'has a recorded link to Jeffrey Epstein',
-      'Sanctions': 'has a recorded tie to sanctions',
+      'Epstein-linked': 'is linked to Jeffrey Epstein',
+      'Sanctions': 'is linked to sanctions',
       'Tobacco': 'has a funder or sponsor in the tobacco industry',
       'Gulf state body': 'has funding or patronage from a Gulf state body',
       'Gambling': 'has a funder or sponsor in gambling',
@@ -12914,7 +13117,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const gossipBrief = (g) => item('', { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` }, p('', proseEnd(g.headline)), (g.urls || []).slice(0, 1));
       if (brief) {
         const fresh = gossipItems(inst, true), shown = fresh.slice(0, 3), left = fresh.length - shown.length;
-        return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
+        return `<div class="py-3 rule-b" role="region" aria-label="Reports about this museum" data-gossip="items">
         ${shown.map(g => gossipBrief(g).replace('<div class="record-card', '<div data-gossip="item" class="record-card')).join('')}
       </div><p class="no-indent"><a href="#" class="dossier-link" data-name="${escapeHtml(inst.name)}">Read the full record${left > 0 ? `, with ${left} more ${left === 1 ? 'story' : 'stories'}` : ''}</a></p>`;
       }
@@ -13001,7 +13204,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const stale = gossipOn ? gossipItems(inst).filter(g => g.status === 'stale').map(g => gossipCard(g).replace('<div class="record-card', '<div data-gossip="stale" class="record-card')) : [];
       if (!blocks.length && !relatedReports.length && !accounts.length && !stale.length) return '';
       // data-gossip marks the one block of a reply that is gossip: assets/bubbles.js draws a comic balloon only around a turn that holds it.
-      return `<div class="py-3 rule-b" role="region" aria-label="Institutional reporting and records" data-gossip="items">
+      return `<div class="py-3 rule-b" role="region" aria-label="Reports about this museum" data-gossip="items">
         ${blocks.join('')}
         ${stale.length ? `<h3 class="kicker">Older talk</h3>${stale.join('')}` : ''}
         ${relatedReports.length ? `<h3 class="kicker">Related reporting</h3>${relatedReports.join('')}` : ''}
@@ -13035,7 +13238,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
     const GRADE_INTRO = 'Funding grades run from A to F.';
-    const GRADE_ROWS = ['A: the record shows how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a protest.'];
+    const GRADE_ROWS = ['A: we can see how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a protest.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}: ${GRADE[inst.grade].label.toLowerCase()}`;
@@ -13068,8 +13271,28 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const gradeWordHtml = (n) => GRADE[n] ? `<span class="grade-word grade-word-${n}">Grade ${GRADE[n].letter}</span>` : '';
     // The grade alone, "Grade B", and no sentence after it (user, 9 Nov 2026: "Grade B. No flagged funder or funding protest on record.
     // Funders are named; amounts are not." - "only keep grade b"). What decided it is behind the i button.
+    // GRADE FILTERS (user, 15 Nov 2026, of the A to F list: "make these into color coded clickable filters"). In every list of
+    // the five grades, each "Grade X" is a button on a pill of the grade's colour. Pressing it shows only that grade's
+    // spaces on the map (atlasSetLetterGrade in assets/layers.js, which narrows the map as the key's Clean and Flagged
+    // do, together with any other filter that is on); pressing it again shows every space. One grade at a time. The
+    // static lists in the page's HTML ("How the records work") carry the same buttons.
+    const gradeFilterOn = () => (typeof window.atlasLetterGrade === 'function' && window.atlasLetterGrade()) || 0;
+    const gradeFilterBtnHtml = (n) => GRADE[n] ? `<button type="button" class="grade-word grade-word-${n} grade-filter" data-grade-filter="${n}" aria-pressed="${gradeFilterOn() === n}" title="Show only grade ${GRADE[n].letter} spaces on the map; press again to show every space">Grade ${GRADE[n].letter}</button>` : '';
+    function syncGradeFilterButtons() {
+      const on = gradeFilterOn();
+      document.querySelectorAll('button.grade-filter[data-grade-filter]').forEach(b => { const v = String(Number(b.dataset.gradeFilter) === on); if (b.getAttribute('aria-pressed') !== v) b.setAttribute('aria-pressed', v); });
+    }
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('button.grade-filter[data-grade-filter]');
+      if (!b) return;
+      e.preventDefault();
+      const n = Number(b.dataset.gradeFilter);
+      if (typeof window.atlasSetLetterGrade === 'function') window.atlasSetLetterGrade(gradeFilterOn() === n ? null : n);
+      syncGradeFilterButtons();
+    });
+    document.addEventListener('atlas:letter-grade', syncGradeFilterButtons);
     function gradeScaleHtml(current) {
-      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeWordHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This museum</span>' : ''}</span></li>`).join('')}</ul>`;
+      return `<ul class="grade-scale">${[1, 2, 3, 4, 5].map(n => `<li${n === current ? ' class="is-this"' : ''}>${gradeFilterBtnHtml(n)}<span class="grade-scale-text">${escapeHtml(GRADE_ROWS[n - 1].replace(/^[A-F]:\s*/, ''))}${n === current ? ' <span class="grade-this">This museum</span>' : ''}</span></li>`).join('')}</ul>`;
     }
     let gradeInfoSeq = 0;
     // The i button and the panel it opens, for a graded space or an unrated one.
@@ -14273,7 +14496,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const of = typeof inst.other_findings === 'string' ? inst.other_findings.split(' | ')[0] : '';
         if (of) return { text: firstSentence(of), src: src(hosts(inst.sources), 2) };
         const acc = ((inst.gossip_data || {}).accounts || []);
-        if (acc.length) return { text: `${acc.length} unverified employee ${acc.length === 1 ? 'account' : 'accounts'} on review sites.`, src: '' };
+        if (acc.length) return { text: `${acc.length} ${acc.length === 1 ? 'post' : 'posts'} by staff on review sites, not checked.`, src: '' };
         return null;
       }
       if (inst.funding) return { text: firstSentence(inst.funding), src: src(hosts(inst.sources), 1) };
@@ -14682,7 +14905,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           chatKeyLabel.textContent = 'Add an API key';
         }
         if (workLabel) {
-          workLabel.textContent = 'Answers from the records';
+          workLabel.textContent = 'Answers from the atlas';
         }
       }
     }
@@ -16581,7 +16804,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The model takes 10 to 20 seconds to write a full answer, and a line that never changes reads as stuck (user, 3 Nov 2026):
       // the words move on while it writes.
       const word = (t) => document.querySelectorAll('[data-pending] .thinking').forEach((el) => { el.firstChild.nodeValue = t; });
-      showChatPending.timers = [setTimeout(() => word('Reading the record'), 4000), setTimeout(() => word('Writing the answer'), 9000), setTimeout(() => word('Nearly there'), 18000)];
+      showChatPending.timers = [setTimeout(() => word('Looking it up'), 4000), setTimeout(() => word('Writing the answer'), 9000), setTimeout(() => word('Nearly there'), 18000)];
     }
     function hideChatPending() {
       (showChatPending.timers || []).forEach(clearTimeout);
@@ -16683,7 +16906,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function generateThinkingPlan(query, mode = null) {
       const q = (query || '').toLowerCase().trim();
       const effMode = mode || getChatModeConfig(query);
-      return { mode: effMode, thought: '', step: 'Reading the records' };
+      return { mode: effMode, thought: '', step: 'Looking it up' };
     }
 
 
@@ -18523,7 +18746,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     const chatInputKind = 'whistleblower';
     const INPUT_KIND_TEXT = {};
     INPUT_KIND_TEXT.whistleblower = ATLAS_REPORT_API_URL ? {
-        banner: 'Choose a place on the atlas, or name one it is missing, and write what you know. It is sent to the editor; a note on a record appears there as a review once approved, and a new place is added once checked. This is not a secure channel, so leave out your name and anything that identifies you.',
+        banner: 'Choose a place on the atlas, or name one it is missing, and write what you know. It is sent to the editor; a note on a museum appears on its page as a review once approved, and a new place is added once checked. This is not a secure channel, so leave out your name and anything that identifies you.',
         placeholder: 'Write what you know, from inside or from memory. The editor reads it before anything appears. This is not a secure channel, so leave out anything that identifies you.'
       } : {
         banner: 'Notes cannot be sent at the moment: the report service is not set up. This is not a secure channel, so leave out your name and anything that identifies you.',
@@ -19137,7 +19360,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         .replace(/\bAdmission:\b/gi, 'Admission: ')
         .replace(/\bTransit:\b/gi, 'Transit directions: ')
         .replace(/\bHighlight:\b/gi, 'Highlights: ')
-        .replace(/\bGovernance:\b/gi, 'Governance model: ')
+        .replace(/\bGovernance:\b/gi, 'How it is run: ')
         // Days of the week
         .replace(/\bTue[–-]Sat\b/gi, 'Tuesday through Saturday')
         .replace(/\bMon[–-]Fri\b/gi, 'Monday through Friday')
@@ -19506,7 +19729,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         resizeCanvas();
       };
       splitter.setAttribute('role', 'separator');
-      splitter.setAttribute('aria-label', 'Width of the globe and the record');
+      splitter.setAttribute('aria-label', 'Width of the globe and the museum page');
       splitter.setAttribute('tabindex', '0');
 
       let dragging = false;
@@ -20028,7 +20251,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // question the offline answers answer from the records, and the examples are picked at random from the records that hold the fact,
     // so nothing is promised that the data does not hold. With a space selected the prompts are about that space.
     // The chat title is one of four, picked on each load.
-    const HERO_TITLES = ['Who funds this cultural institution?', 'Who’s behind this cultural institution?', 'What should I know about this cultural institution?', 'What’s the story behind this cultural institution?'];
+    const HERO_TITLES = ['Who funds this museum?', 'Who’s behind this museum?', 'What should I know about this museum?', 'What’s the story behind this museum?'];
     const HERO_TITLE = HERO_TITLES[Math.floor(Math.random() * HERO_TITLES.length)];
     // The chip guard, kept cheap: findMentionedInst costs about 6 ms when a question names a record and about 145 ms when it names
     // none (a fuzzy pass over every name), so candidates are screened against a lowercase index of every name and alias first, and the
@@ -20102,7 +20325,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         epstein: { has: hasEpstein, q: (i) => `What is ${poss(say(i))} Epstein link?` },
         employees: { has: hasAccounts, q: (i) => `What do employees report at ${say(i)}?` },
         critics: { has: hasCritique, q: (i) => `What do critics say about ${say(i)}?` },
-        protests: { has: hasProtest, q: (i) => `What protests or boycotts are recorded at ${say(i)}?` },
+        protests: { has: hasProtest, q: (i) => `What protests or boycotts have there been at ${say(i)}?` },
         grade: { has: hasGrade, q: (i) => `Why is ${say(i)} graded ${gradeLetter(i.grade)}?` },
         fundedBy: { has: (i) => funderOf(i).length > 0, q: (i) => `Is ${say(i)} funded by ${article(pick(funderOf(i)).funder)}?` },
       };
@@ -20383,7 +20606,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       B: ['Why are museums flagged?'],
       U: ['What does unverified mean?']
     };
-    const GRADE_NAME = { A: ['Clean', 'Museums whose record cites a source for its funding'], B: ['Flagged', 'Museums whose record carries a recorded reason, such as a flagged funder'], U: ['Unverified', 'Museums whose record has no checked source yet'] };
+    const GRADE_NAME = { A: ['Clean', 'Museums with an outside source for their funding'], B: ['Flagged', 'Museums with a reason given, such as a flagged funder'], U: ['Not checked yet', 'Museums with no outside source yet'] };
     let lastExplained = { key: null, t: 0 };
     function explainFilter(kind, key, tries = 0) {
       const now = Date.now();
@@ -20562,6 +20785,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     let selectedCategoryFilter = 'all';
 
     const FILTER_META = {
+      grade1: { label: 'Grade A' }, grade2: { label: 'Grade B' }, grade3: { label: 'Grade C' }, grade4: { label: 'Grade D' }, grade5: { label: 'Grade F' },
       free: { label: 'Free admission' },
       sculpture: { label: 'Outdoor & sculpture' },
       research: { label: 'Research & commons' },
@@ -22017,12 +22241,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=767"></script>
-<script src="assets/layers.js?v=780"></script>
+<script src="assets/layers.js?v=809"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=801"></script>
-<script src="assets/influence-mode.js?v=806"></script>
+<script src="assets/hq-detail.js?v=802"></script>
+<script src="assets/influence-mode.js?v=807"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
 <script src="assets/phone-maps.js?v=802"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
