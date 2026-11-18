@@ -1,0 +1,1681 @@
+{
+ "about": "Written by tools/build_moma_influence.mjs from the MoMA Influence Map study (moma-money-map.html). Text only; the network drawing is not copied.",
+ "space": "moma-the-museum-of-modern-art",
+ "page": "moma-money-map.html",
+ "museum": {
+  "role": "New York. FY2024 revenue $324.7M; FY2025 $362.0M.",
+  "note": "Reported government grants: $49,965 (FY2020), $20,000 (FY2021), $10.0M (FY2022, federal SVOG), none (FY2023, FY2024).",
+  "sources": [
+   "https://www.moma.org/about/documents-policies",
+   "https://projects.propublica.org/nonprofits/organizations/131624100"
+  ]
+ },
+ "groups": [
+  {
+   "key": "gov",
+   "title": "Government and public office",
+   "entries": [
+    {
+     "name": "City of New York",
+     "role": "Capital funder; three ex officio board seats",
+     "money": "$65M, 1998–2001",
+     "note": "The City put $65M into the $650M Taniguchi expansion (opened 2004). The Mayor, Council Speaker and Comptroller sit ex officio on MoMA's board. MoMA gets no city operating subsidy; it is not in the Cultural Institutions Group.",
+     "sources": [
+      "https://www.nyc.gov/html/om/html/2001a/pr145-01.html",
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Trust for Cultural Resources",
+     "role": "NY State public-benefit corporation; conduit bond issuer",
+     "money": "~$700M bonds since 1996; $167.7M outstanding (June 2024)",
+     "note": "Issued tax-exempt Series 1996, 2000 ($75.75M), 2001 ($235M) and 2016-One-E ($278.4M par) bonds for MoMA. Also administers the Museum Tower tax-equivalency scheme.",
+     "sources": [
+      "https://edc.nyc/sites/default/files/2025-03/Annual%20Report%20for%202024.pdf",
+      "https://www.moma.org/docs/about/MoMAFY_24.pdf"
+     ]
+    },
+    {
+     "name": "Museum Tower TEPs",
+     "role": "Property-tax diversion under NY Arts & Cultural Affairs Law",
+     "money": "$21.2M owed to MoMA + $163.4M unrecorded interest",
+     "note": "The condo tower above MoMA pays no property tax. The Trust collects equivalent payments and routes them to the City, then bond service, then back to MoMA, which advanced $45M between 1980 and 2000.",
+     "sources": [
+      "https://www.moma.org/docs/about/MoMAFY_24.pdf"
+     ]
+    },
+    {
+     "name": "US Small Business Administration",
+     "role": "Shuttered Venue Operators Grant",
+     "money": "$10,000,000, July 2021",
+     "note": "MoMA's only large federal grant on record; disclosed as a subsequent event in the FY2021 audited statements and as government grants on the FY2022 Form 990. No PPP loan appears in any filing.",
+     "sources": [
+      "https://www.moma.org/docs/about/MoMAFY_21.pdf",
+      "https://www.moma.org/docs/about/moma_990__fy_2022.pdf"
+     ]
+    },
+    {
+     "name": "National Endowment for the Arts",
+     "role": "Federal grants; named endowment fund",
+     "money": "$115,000 in 2008–09; nothing since",
+     "note": "USAspending shows three NEA grants (film preservation, architecture) in 2008–09. MoMA carries a \"National Endowment for the Arts Endowment Fund\" from earlier challenge grants.",
+     "sources": [
+      "https://www.usaspending.gov/"
+     ]
+    },
+    {
+     "name": "NYC Dept. of Cultural Affairs",
+     "role": "Ex officio on the MoMA PS1 board; PS1 is a CIG member since 1982",
+     "money": "",
+     "note": "The Commissioner, the Queens Borough President and the 26th District Council Member sit on the PS1 board.",
+     "sources": [
+      "https://www.momaps1.org/en/about",
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Consulate General of Switzerland",
+     "role": "Annual Exhibition Fund donor",
+     "money": "FY2016, FY2024, FY2025",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "Permanent Mission of Qatar",
+     "role": "Corporate member",
+     "money": "$50,000 tier, FY2024",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/250416_MoMA_2025_Annual_Report.pdf"
+     ]
+    },
+    {
+     "name": "Other foreign cultural agencies",
+     "role": "Exhibition and project funders",
+     "money": "FY2016–FY2021",
+     "note": "Consulates of Brazil and Spain, Government of Flanders, Japan Foundation, Taiwan Ministry of Culture, Ministério da Cultura do Brasil, Institut Ramon Llull, Pro Helvetia, French Embassy (PS1).",
+     "sources": [
+      "https://www.moma.org/interactives/annualreportFY16/assets/MoMA_2015-16_Donors.pdf"
+     ]
+    },
+    {
+     "name": "Sharon Percy Rockefeller",
+     "role": "Trustee; President of The International Council",
+     "money": "",
+     "note": "Spouse of former Senator Jay Rockefeller; daughter of Senator Charles Percy.",
+     "sources": [
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Laurence D. Fink",
+     "role": "Trustee; BlackRock chairman and CEO",
+     "money": "FEC 2015–24: $199,900 (mostly Democrats)",
+     "note": "Sat on Trump's Strategic and Policy Forum in 2017. Targeted by Strike MoMA in 2021 for that and for BlackRock's holdings.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Strategic_and_Policy_Forum",
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "BlackRock",
+     "role": "Corporate member; the world's largest asset manager ($15.3T, June 2026), not a hedge fund",
+     "money": "$25,000 tier FY2019–FY2025; $250,000 lead gift, 2016 award luncheon honoring Fink",
+     "note": "Hired by the Federal Reserve in March 2020 to run its corporate-credit purchase facilities. Full list of investment firms under Directory.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "Federal Reserve",
+     "role": "2020 corporate-credit facilities",
+     "money": "",
+     "note": "BlackRock's Financial Markets Advisory unit managed the purchases.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/BlackRock"
+     ]
+    },
+    {
+     "name": "HHS · BARDA · Operation Warp Speed",
+     "role": "Federal buyer of MoMA members' products",
+     "money": "$1.95B Pfizer · $1B J&J · $450M Regeneron · up to $629M SIGA",
+     "note": "The secondary link between MoMA's pharma members and Washington: the 2020 vaccine and antibody purchase agreements, and BARDA's smallpox-antiviral stockpile contracts with SIGA.",
+     "sources": [
+      "https://www.npr.org/sections/coronavirus-live-updates/2020/07/22/894184607/u-s-to-get-100-million-doses-of-pfizer-coronavirus-vaccine-in-1-95-billion-deal",
+      "https://medicalxpress.com/news/2020-08-billion-vaccine-johnson.html",
+      "https://www.biospace.com/regeneron-receives-450-million-barda-contract-for-covid-19-antibody-cocktail",
+      "https://www.drugdeliverybusiness.com/siga-lands-629m-barda-contract-to-stockpile-smallpox-treatment/"
+     ]
+    },
+    {
+     "name": "US State Department",
+     "role": "Ambassadorships held by MoMA leaders",
+     "money": "",
+     "note": "John Hay Whitney (UK, 1957–61), William A. M. Burden (Belgium, 1959–61). Nelson Rockefeller was Assistant Secretary of State for Latin America, 1944–45. René d'Harnoncourt sat on the Department's Advisory Committee on Art.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/William_A._M._Burden",
+      "https://en.wikipedia.org/wiki/John_Hay_Whitney"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "pharma",
+   "title": "Pharma and med-tech",
+   "entries": [
+    {
+     "name": "Pfizer Inc.",
+     "role": "Corporate member every sampled year since FY2016",
+     "money": "$25,000 tier; $100,000 at the 2021 award",
+     "note": "Leader level in 2018; $25k tier FY2019–FY2025. Employee matching gifts too.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2020-21_Donors.pdf"
+     ]
+    },
+    {
+     "name": "Albert Bourla · David Rockefeller Award 2021",
+     "role": "Honoree, 8 April 2021",
+     "money": "Pfizer gave $100,000",
+     "note": "MoMA honored Pfizer's CEO \"accepting on behalf of Pfizer Inc.\" in a virtual conversation with Marie-Josée Kravis. The event funds MoMA's Department of Education.",
+     "sources": [
+      "https://www.moma.org/calendar/events/6946"
+     ]
+    },
+    {
+     "name": "Johnson & Johnson",
+     "role": "Corporate member every sampled year",
+     "money": "$25,000 tier + matching gifts",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "Axsome Therapeutics",
+     "role": "Corporate member (new)",
+     "money": "$50,000 tier, FY2025",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "Roche Innovation Center NY",
+     "role": "Corporate member, Friend level",
+     "money": "FY2016–FY2019",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/give/2018.10_roster_by_level.pdf"
+     ]
+    },
+    {
+     "name": "Roche (Hoffmann-La Roche)",
+     "role": "Basel pharma group",
+     "money": "",
+     "note": "The founding family pool holds a majority of Roche voting shares.",
+     "sources": [
+      "https://www.forbes.com/sites/tatianaserafin/2013/01/11/swiss-heiress-moma-trustee-joins-billionaire-ranks/"
+     ]
+    },
+    {
+     "name": "Maja Oeri",
+     "role": "Vice Chair of the Board",
+     "money": "",
+     "note": "Great-granddaughter of the Roche founder; about 7.5% of Roche voting equity. Major gifts to the collection; a permanent-collection gallery is named for her and Hans Bodenmann.",
+     "sources": [
+      "https://www.moma.org/about/trustees",
+      "https://www.artnews.com/art-collectors/top-200-profiles/maja-oeri/"
+     ]
+    },
+    {
+     "name": "Jon Stryker",
+     "role": "Trustee; Jon Stryker Endowment Fund",
+     "money": "",
+     "note": "Heir to Stryker Corporation (orthopaedics and medical devices).",
+     "sources": [
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Stryker Corporation",
+     "role": "Medical devices",
+     "money": "",
+     "note": "",
+     "sources": []
+    },
+    {
+     "name": "Regeneron · Merck · BMS · Lilly · Vertex",
+     "role": "Matching-gift programs only",
+     "money": "FY2016–FY2024",
+     "note": "These companies appear only in the Matching Gifts list, meaning they matched an employee's personal gift.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2018-19_Donors.pdf"
+     ]
+    },
+    {
+     "name": "Jillian Sackler",
+     "role": "Individual member, Contributor level+",
+     "money": "FY2021, FY2024",
+     "note": "Widow of Arthur M. Sackler, who died in 1987 before Purdue launched OxyContin. No Sackler-named space or board role at MoMA.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/250416_MoMA_2025_Annual_Report.pdf"
+     ]
+    },
+    {
+     "name": "Ronald O. Perelman",
+     "role": "Trustee until c. 2019; $100,000+ donor FY2019",
+     "money": "",
+     "note": "Republican donor. Controls SIGA Technologies, whose smallpox antiviral TPOXX is sold to the US national stockpile.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2018-19_Donors.pdf"
+     ]
+    },
+    {
+     "name": "SIGA Technologies",
+     "role": "US government stockpile contractor",
+     "money": "BARDA contract up to $629M (2018)",
+     "note": "",
+     "sources": [
+      "https://www.drugdeliverybusiness.com/siga-lands-629m-barda-contract-to-stockpile-smallpox-treatment/"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "right",
+   "title": "Right-wing donors",
+   "entries": [
+    {
+     "name": "Trump administration & 2017 inaugural",
+     "role": "Where MoMA's donors and the executive branch meet",
+     "money": "$1M each from Henry Kravis, Steven Cohen and Len Blavatnik to the inaugural",
+     "note": "Larry Fink and Stephen Schwarzman sat on the 2017 Strategic and Policy Forum (Schwarzman chaired it). John Paulson was a campaign economic adviser.",
+     "sources": [
+      "https://www.theartnewspaper.com/2017/04/19/art-collector-steven-cohen-gave-dollar1m-to-trump-inauguration",
+      "https://www.cnbc.com/2017/04/19/trumps-inaugural-committee-raised-a-record-106-7-million--heres-who-donated.html",
+      "https://en.wikipedia.org/wiki/Strategic_and_Policy_Forum"
+     ]
+    },
+    {
+     "name": "Senate & Congressional Leadership Funds",
+     "role": "Republican leadership super PACs",
+     "money": "",
+     "note": "Steven Cohen is the top individual donor to both. Ken Griffin has given about $78M to these and allied Republican groups. Steven Tananbaum gives to GOP committees.",
+     "sources": [
+      "https://news.artnet.com/art-world/steve-cohen-republican-donor-1207619",
+      "https://floridapolitics.com/archives/454940-ron-desantis-biggest-backer-ken-griffin-spends-big-on-politics/"
+     ]
+    },
+    {
+     "name": "Estée Lauder Companies",
+     "role": "Corporate member",
+     "money": "$25,000 tier",
+     "note": "",
+     "sources": []
+    },
+    {
+     "name": "Marie-Josée Kravis",
+     "role": "Chair of the Board since 2021; President 2005–2018",
+     "money": "FEC 2015–24: $97,400",
+     "note": "Vice Chair of the Hudson Institute; former executive director of the Hudson Institute of Canada.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Marie-Jos%C3%A9e_Kravis"
+     ]
+    },
+    {
+     "name": "Henry R. Kravis",
+     "role": "Kravis Studio and chief-curator chair namesake",
+     "money": "FEC 2015–24: $2.6M+",
+     "note": "$1M to Trump's 2017 inaugural; $300,000+ to the RNC in 2016. KKR co-founder.",
+     "sources": [
+      "https://hyperallergic.com/641899/moma-announces-new-board-chair-to-replace-leon-black/"
+     ]
+    },
+    {
+     "name": "Hudson Institute",
+     "role": "Conservative think tank, Washington DC",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Hudson_Institute"
+     ]
+    },
+    {
+     "name": "Sid R. Bass",
+     "role": "Vice Chair",
+     "money": "FEC 2015–24: $637,668",
+     "note": "Texas Bass family, long-time Republican donors.",
+     "sources": [
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Steven A. Cohen",
+     "role": "Trustee; $50M to the 2019 expansion",
+     "money": "$1M to the 2017 inaugural",
+     "note": "Republican-only donor since 2010 per Artnet; top individual donor to the Senate Leadership Fund and Congressional Leadership Fund.",
+     "sources": [
+      "https://news.artnet.com/art-world/steve-cohen-republican-donor-1207619",
+      "https://www.theartnewspaper.com/2017/04/19/art-collector-steven-cohen-gave-dollar1m-to-trump-inauguration"
+     ]
+    },
+    {
+     "name": "Steven Tananbaum",
+     "role": "Trustee; $100,000–$149,999 donor; named curator chair",
+     "money": "FEC 2015–24: $672,200",
+     "note": "About $250,000 to GOP committees since 2019, including JD Vance's 2022 Senate run. GoldenTree founder.",
+     "sources": [
+      "https://www.conservativenewsdaily.net/breaking-news/gop-donors-could-win-billions-after-trump-dismantled-key-puerto-rico-oversight-board/"
+     ]
+    },
+    {
+     "name": "Leon D. Black",
+     "role": "Trustee; Chair 2018–2021; $40M to the expansion",
+     "money": "FEC 2015–24: $821,600",
+     "note": "Mostly Republican giving. Paid Epstein $158M–$170M for tax and estate advice (2012–17); stepped down as Chair in 2021 but remains a trustee. A New York Times investigation (October 2025) of emails showed Epstein structuring Black's art transactions for tax purposes, including around the $120M purchase of Munch's \"The Scream\"; Black's lawyer says the fees were for legitimate advice. Subject of a Senate Finance Committee inquiry; named in the January 2026 DOJ release; testified to House Oversight in June 2026. DOJ files show Epstein guided his $115M purchase of Picasso's \"Buste de Femme (Marie-Thérèse)\" from Gagosian, a sculpture shown in MoMA's 2015 \"Picasso Sculpture\". In 2023 he paid the US Virgin Islands $62.5M to settle Epstein-related claims; the settlement notes he was not accused of wrongdoing. He also funds Bard College, Dartmouth's Black Family Visual Arts Center, Harvard's Poetry in America and the Neue Galerie (Leaving it on the table).",
+     "sources": [
+      "https://www.theartnewspaper.com/2021/02/05/toxic-philanthropy-versus-egalitarian-principles-artists-art-workers-and-activists-call-for-leon-blacks-removal-as-moma-board-chairman",
+      "https://www.artnews.com/art-news/news/jeffrey-epstein-leon-black-gagosian-picasso-sculpture-1234771752/",
+      "https://www.cbsnews.com/news/sen-ron-wyden-leon-black-paid-epstein-170-million-tax-planning/"
+     ]
+    },
+    {
+     "name": "Apollo Global Management",
+     "role": "Corporate member",
+     "money": "$50,000+ tier FY2021; Benefactor 2018",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2020-21_Donors.pdf"
+     ]
+    },
+    {
+     "name": "Maurice R. Greenberg",
+     "role": "Life Trustee",
+     "money": "$10M to Right to Rise (Jeb Bush), 2016",
+     "note": "Former AIG chief; gave via C.V. Starr & Co.",
+     "sources": [
+      "https://www.cnn.com/2016/01/07/politics/maurice-greenberg-right-to-rise-aig/index.html"
+     ]
+    },
+    {
+     "name": "Kenneth C. Griffin",
+     "role": "East Wing namesake ($40M, 2015); Annual Exhibition Fund donor FY2021–FY2025",
+     "money": "$75M–$100M+ to Republicans, 2022 cycle",
+     "note": "He also funds Lincoln Center, M+ (Hong Kong), the National Gallery (London), National Gallery Singapore, Pérez Art Museum Miami, The Bass and the Whitney (Leaving it on the table); activists targeted him at the Whitney in 2023, not at MoMA. DeSantis's largest donor; third-largest donor of the 2022 midterms. His ex-spouse Anne Dias Griffin is a trustee.",
+     "sources": [
+      "https://www.theartnewspaper.com/2015/12/26/kenneth-griffin-gives-moma-dollar40mone-of-the-new-york-museums-largest-ever-donations",
+      "https://www.influencewatch.org/person/ken-griffin/"
+     ]
+    },
+    {
+     "name": "Citadel",
+     "role": "Corporate member",
+     "money": "$50,000 tier FY2021–FY2025",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "Anne Dias Griffin",
+     "role": "Trustee",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Helen Zell",
+     "role": "Trustee; Zell Family Foundation $150,000+ FY2025",
+     "money": "",
+     "note": "Widow of Sam Zell, a major Republican donor.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "Murdoch family · News Corp",
+     "role": "Owner of two MoMA corporate members",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Fox_Corporation"
+     ]
+    },
+    {
+     "name": "Fox Corporation · 21st Century Fox",
+     "role": "Corporate members",
+     "money": "$25,000 tier, FY2016–FY2025",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    },
+    {
+     "name": "The Wall Street Journal",
+     "role": "Corporate member",
+     "money": "Sponsor 2018; $50,000+ tier FY2021",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/give/2018.10_roster_by_level.pdf"
+     ]
+    },
+    {
+     "name": "Paulson & Co. (John Paulson)",
+     "role": "Corporate member, Friend level",
+     "money": "FY2016, 2018",
+     "note": "John Paulson was a Trump economic adviser and donor.",
+     "sources": [
+      "https://www.moma.org/momaorg/shared/pdfs/docs/give/2018.10_roster_by_level.pdf"
+     ]
+    },
+    {
+     "name": "Schwarzman · Langone · Blavatnik · Loeb · Tepper",
+     "role": "Lower-tier donors",
+     "money": "$10,000–$99,999 tiers",
+     "note": "Christine and Stephen Schwarzman ($50k–$99k, FY2016), Elaine and Ken Langone ($25k, FY2016), Blavatnik Family Foundation ($25k, FY2019), Margaret and Daniel Loeb ($10k–$15k), Appaloosa LP ($10k, FY2016).",
+     "sources": [
+      "https://www.moma.org/interactives/annualreportFY16/assets/MoMA_2015-16_Donors.pdf"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "epstein",
+   "title": "Epstein ties",
+   "entries": [
+    {
+     "name": "Jeffrey Epstein",
+     "role": "Financier; convicted sex offender (2008); died in federal custody 2019",
+     "money": "",
+     "note": "Two current MoMA trustees had long financial or personal relationships with him. He was never a MoMA donor or board member on any record found; a similarly named foundation in MoMA's lists (Epstein Teicher Philanthropies) is an unrelated Teicher-family fund founded in 1977.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Jeffrey_Epstein"
+     ]
+    },
+    {
+     "name": "Glenn Dubin",
+     "role": "Trustee",
+     "money": "FEC 2015–24: $491,589 (mostly Democrats)",
+     "note": "Family friend of Epstein since the 1980s; the Dubins appear in Epstein's pilot logs at least 18 times between 1996 and 2005. Epstein invested in Highbridge Capital, Dubin's firm, saying in a 2011 deposition that his stake grew from $50M–$100M to more than $300M; Dubin's representatives say it was far smaller and fully withdrawn. Virginia Giuffre named him in a 2015 filing; he has categorically denied it and says flight records disprove it. Subpoenaed by the US Virgin Islands in 2020 and named in documents unsealed in January 2024. The New York Post reported in October 2019 that MoMA had named a fourth-floor gallery after him and his wife.",
+     "sources": [
+      "https://hyperallergic.com/art-collectors-patrons-named-in-unsealed-epstein-documents/",
+      "https://hyperallergic.com/virgin-islands-glenn-dubin-subpoena/",
+      "https://en.wikipedia.org/wiki/Glenn_Dubin"
+     ]
+    },
+    {
+     "name": "Eva Andersson-Dubin",
+     "role": "Physician; Dubin Breast Center founder",
+     "money": "",
+     "note": "Dated Epstein in the early 1980s and stayed close to him. Bloomberg (February 2026) reported from the files that she introduced Epstein to hedge-fund managers as late as 2016 and that the correspondence ran until shortly before his death; Mount Sinai opened a review of her Epstein ties in March 2026.",
+     "sources": [
+      "https://www.bloomberg.com/news/features/2026-02-13/how-jeffrey-epstein-got-into-hedge-funds-billionaire-dubins-helped",
+      "https://news.bloomberglaw.com/new-york-brief/use-dr-eva-epstein-files-show-reliance-on-dubin-mount-sinai"
+     ]
+    },
+    {
+     "name": "Dechert review (Jan 2021)",
+     "role": "Independent review commissioned by Apollo's board",
+     "money": "$158M paid by Black to Epstein, 2012–17",
+     "note": "Found the payments were for tax and estate advice and found no wrongdoing by Black. Black stepped down as Apollo CEO in March 2021 and did not seek re-election as MoMA Chair; his chairmanship ended 1 July 2021.",
+     "sources": [
+      "https://fortune.com/2021/01/26/leon-black-jeffrey-epstein-apollo",
+      "https://www.theartnewspaper.com/2021/03/22/momas-board-leader-leon-black-quits-equity-firm-citing-relentless-scrutiny-over-links-to-epstein"
+     ]
+    },
+    {
+     "name": "US Virgin Islands Attorney General",
+     "role": "Civil enforcement against the Epstein estate",
+     "money": "Black paid $62.5M to settle (2023)",
+     "note": "Subpoenaed Black and Dubin in 2020 for Epstein-related records. Black's settlement released him from future USVI claims.",
+     "sources": [
+      "https://abcnews.com/US/us-virgin-islands-jeffrey-epstein-related-documents-ny/story?id=72892602",
+      "https://en.wikipedia.org/wiki/Leon_Black"
+     ]
+    },
+    {
+     "name": "Senate Finance Committee (Sen. Wyden)",
+     "role": "Investigation of Epstein's finances, including Black's payments, 2023–26; Wyden as Chair to January 2025, then Ranking Member",
+     "money": "",
+     "note": "Wyden unveiled the inquiry in July 2023, asked the IRS in July 2025 why the transactions were never audited (putting the payments at $170M), and wrote to Black again in March 2026 over what the files suggest were \"hush money\" payments and surveillance of women. An August 2026 committee report turned to the banks that handled Epstein's money.",
+     "sources": [
+      "https://www.finance.senate.gov/chairmans-news/wyden-unveils-ongoing-investigation-into-private-equity-billionaire-leon-blacks-tax-planning-and-financial-ties-with-jeffrey-epstein",
+      "https://www.finance.senate.gov/continuing-epstein-investigation-wyden-questions-leon-black-over-new-revelations-in-epstein-files-appearance-of-hush-money-payments-and-surveillance-of-women",
+      "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs"
+     ]
+    },
+    {
+     "name": "DOJ Epstein files (2025–26)",
+     "role": "Justice Department releases: February 2025 (pilot flight logs), December 2025 and 30 January 2026 (3 million+ pages) under the Epstein Files Transparency Act",
+     "money": "",
+     "note": "The January 2026 tranche included an apparent diary and emails alleging abuse by Leon Black, which he denies; he told the House Oversight Committee in June 2026 that Epstein \"duped\" him and sued the committee in September 2026 over a further subpoena. The files also document Epstein's financial ties to the Dubins (Bloomberg, February 2026).",
+     "sources": [
+      "https://hyperallergic.com/epstein-files-detail-gruesome-allegations-against-leon-black/",
+      "https://www.britannica.com/topic/The-Epstein-Files-A-Timeline/2026-Contempt-delays-and-more-documents",
+      "https://www.npr.org/2026/09/03/nx-s1-5955643/leon-black-jeffrey-epstein-lawsuit",
+      "https://www.bloomberg.com/news/features/2026-02-13/how-jeffrey-epstein-got-into-hedge-funds-billionaire-dubins-helped"
+     ]
+    },
+    {
+     "name": "Strike MoMA (2021)",
+     "role": "Ten-week protest campaign, April–June 2021",
+     "money": "",
+     "note": "Followed a letter from 150+ artists demanding Black's removal. Named five trustees: Black, Dubin, Tananbaum, Cohen and Fink. The Guerrilla Girls ran an ad outside the museum targeting the Epstein-linked trustees.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Strike_MoMA",
+      "https://news.artnet.com/art-world/guerrilla-girls-moma-jeffrey-epstein-1702119"
+     ]
+    },
+    {
+     "name": "The Rockefeller University",
+     "role": "Corporate member",
+     "money": "$25,000 tier; Leader 2018",
+     "note": "A weak link: Epstein joined its board of trustees in 2000 and left after one term. The university is a long-running MoMA corporate member.",
+     "sources": [
+      "https://www.scribd.com/document/492861047/The-Rockefeller-University-Epstein-Kandel-and-Kissinger-Join-Rockefeller-University-Board-of-Trustees",
+      "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2025_Donors_v2.pdf"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "protest",
+   "title": "Protests",
+   "entries": [
+    {
+     "name": "Guerrilla Girls ad takeover (2019)",
+     "role": "Billboard and ad campaign, November 2019",
+     "money": "",
+     "note": "Called for Leon Black and Glenn Dubin to be removed from the board and for their galleries to be draped in black. MoMA did not comment.",
+     "sources": [
+      "https://hyperallergic.com/guerrilla-girls-target-moma-trustees-with-ties-to-jeffrey-epstein-in-an-ad-takeover/"
+     ]
+    },
+    {
+     "name": "Climate occupation (Sept 2023)",
+     "role": "Sit-in that shut MoMA for more than five hours, 17 September 2023",
+     "money": "",
+     "note": "At least 16 climate activists were arrested. The target was Henry Kravis, KKR co-founder, over KKR's fossil-fuel holdings; Marie-Josée Kravis chairs the board. Held during the 75,000-strong March to End Fossil Fuels.",
+     "sources": [
+      "https://www.theartnewspaper.com/2023/09/15/museum-modern-art-protesters-climate-change-fossil-fuel-marie-josee-henry-kravis-kkr",
+      "https://www.democracynow.org/2023/9/18/headlines/75_000_march_to_end_fossil_fuels_in_nyc_as_hundreds_of_thousands_worldwide_demand_climate_justice"
+     ]
+    },
+    {
+     "name": "Palestine occupation (Feb 2024)",
+     "role": "About 500 protesters filled the atrium and shut the galleries, 10 February 2024",
+     "money": "",
+     "note": "Protesters handed out mock pamphlets naming trustees' investments in Israeli weapons makers; more than 100 cultural workers signed a letter on institutional silence over Gaza.",
+     "sources": [
+      "https://hyperallergic.com/moma-shutters-as-500-protesters-infiltrate-atrium-in-support-of-palestine/",
+      "https://www.democracynow.org/2024/2/12/headlines/hundreds_protest_art_institutions_complicity_and_silence_over_gaza_forcing_moma_to_close_doors"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "other",
+   "title": "Other institutions the same funders pay for",
+   "entries": [
+    {
+     "name": "Seven other institutions Griffin funds",
+     "role": "From the atlas study of shared funders",
+     "money": "",
+     "note": "Lincoln Center for the Performing Arts; M+, Hong Kong; National Gallery, London; National Gallery Singapore; Pérez Art Museum Miami; The Bass, Miami Beach; Whitney Museum of American Art.",
+     "sources": [
+      "studies.html#network"
+     ]
+    },
+    {
+     "name": "Four other institutions Black funds",
+     "role": "From the atlas study of shared funders",
+     "money": "",
+     "note": "Bard College; Black Family Visual Arts Center, Dartmouth; Poetry in America, Harvard; Neue Galerie New York.",
+     "sources": [
+      "studies.html#network"
+     ]
+    },
+    {
+     "name": "Leaving it on the table",
+     "role": "Who pays for the cultural spaces on the atlas",
+     "money": "",
+     "note": "MoMA is one pin there, flagged for Epstein links, campaigned names and protest. Only Griffin and Black turn up as MoMA funders at other atlas institutions.",
+     "sources": [
+      "./?inst=MoMA"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "hist",
+   "title": "Historical: the Rockefellers and the Cold War",
+   "entries": [
+    {
+     "name": "David Rockefeller",
+     "role": "Chairman (1962–72, 1987–93); Chairman Emeritus; $125M bequest (2017)",
+     "money": "",
+     "note": "The David Rockefeller Award, MoMA's main corporate honor, is named for him. Chase Manhattan chairman; Council on Foreign Relations chairman. A MoMA trustee from 1948, he had dealings with the CIA, by the agency's own chief historian (Robarge, Studies in Intelligence, September 2025): a CIA conference on Latin American intelligence in January 1950; an offer in 1950 from CIA director Walter Bedell Smith to be his executive assistant, which he did not take; arranging to be detailed to the CIA if his reserve unit was called up; and active duty with the CIA for training in 1952 and 1953.",
+     "sources": [
+      "https://news.artnet.com/market/moma-secret-weapon-massive-400m-expansion-1671187",
+      "https://www.cia.gov/resources/csi/static/Unclassified-Studies-Extracts-Sep-2025-19Sep2025.pdf"
+     ]
+    },
+    {
+     "name": "David Rockefeller, Jr.",
+     "role": "Life Trustee",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://www.moma.org/about/trustees"
+     ]
+    },
+    {
+     "name": "Rockefeller Brothers Fund",
+     "role": "Funded MoMA's International Program",
+     "money": "$625,000 over five years from 1952",
+     "note": "The family fund paid $125,000 a year to launch the program that sent Abstract Expressionism abroad.",
+     "sources": [
+      "https://www.moma.org/explore/inside_out/2010/08/30/what-is-momas-international-program/"
+     ]
+    },
+    {
+     "name": "Nelson A. Rockefeller",
+     "role": "MoMA President (1939–41, 1946–53); NY Governor; US Vice President",
+     "money": "",
+     "note": "Ran the wartime Office of the Coordinator of Inter-American Affairs, then was Assistant Secretary of State (1944–45) and Eisenhower's Special Assistant for Cold War strategy (1954–55), chairing the Planning Coordination Group that oversaw CIA covert operations. Called Abstract Expressionism \"free enterprise painting\".",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Nelson_Rockefeller",
+      "https://www.artforum.com/features/abstract-expressionism-weapon-of-the-cold-war-214234/"
+     ]
+    },
+    {
+     "name": "Office of the Coordinator of Inter-American Affairs",
+     "role": "Wartime propaganda agency, 1940–45",
+     "money": "38 contracts, $1,590,234",
+     "note": "MoMA was \"a minor war contractor\": 38 contracts for cultural materials with the Library of Congress, the Office of War Information and above all Rockefeller's CIAA, including 19 exhibitions of American painting shipped around Latin America (Lynes, cited by Cockcroft 1974).",
+     "sources": [
+      "https://www.artforum.com/features/abstract-expressionism-weapon-of-the-cold-war-214234/"
+     ]
+    },
+    {
+     "name": "René d'Harnoncourt",
+     "role": "MoMA Director, 1949–67",
+     "money": "",
+     "note": "Acting head of the CIAA Art Section (1943–44) and member of the State Department's Advisory Committee on Art before Rockefeller brought him to MoMA in 1944.",
+     "sources": [
+      "https://www.moma.org/research/archives/finding-aids/dHarnoncourtb.html"
+     ]
+    },
+    {
+     "name": "Porter McCray",
+     "role": "Director of the International Program, 1952–61",
+     "money": "",
+     "note": "Worked at the CIAA during the war; entered the Rockefeller orbit through architect Wallace Harrison.",
+     "sources": [
+      "https://www.artforum.com/features/abstract-expressionism-weapon-of-the-cold-war-214234/"
+     ]
+    },
+    {
+     "name": "MoMA International Program",
+     "role": "Circulating exhibitions abroad, from 1952",
+     "money": "",
+     "note": "Sent \"The New American Painting\" (1958–59) through eight European countries and owned the US pavilion at the Venice Biennale (1954–62), the only privately owned national pavilion. The International Council formed in 1953 to support it.",
+     "sources": [
+      "https://www.moma.org/explore/inside_out/2010/08/30/what-is-momas-international-program/",
+      "https://www.moma.org/momaorg/shared/pdfs/docs/press_archives/1812/releases/MOMA_1954_0033_32.pdf"
+     ]
+    },
+    {
+     "name": "Thomas W. Braden",
+     "role": "MoMA executive secretary, April 1948–Nov 1949",
+     "money": "",
+     "note": "Then director of the CIA's International Organizations Division (1951–54). His 1967 Saturday Evening Post piece \"I'm Glad the CIA Is 'Immoral'\" described the covert cultural program.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Tom_Braden"
+     ]
+    },
+    {
+     "name": "CIA International Organizations Division",
+     "role": "Covert cultural funding, 1950s–60s",
+     "money": "~$900,000 a year to the Congress for Cultural Freedom",
+     "note": "Documented: the division Braden ran paid for the CCF. Its money reached MoMA's exhibitions through the Farfield Foundation: it underwrote the CCF's 1952 Paris festival, which borrowed from MoMA, and, by Saunders's account (The Independent, 1995), paid for the London showing of MoMA's \"The New American Painting\" (Tate, 1959) when the Tate could not. The Tate's own account of the show, from its archive, names MoMA's International Program and the Arts Council as its organisers and does not mention Farfield money. JSTOR Daily says the CIA \"helped finance MoMA's international exhibitions\". No record found of CIA money paid to MoMA itself. The CIA's own chief historian records its ties with David Rockefeller, a MoMA trustee (2025).",
+     "sources": [
+      "https://daily.jstor.org/was-modern-art-really-a-cia-psy-op/",
+      "https://www.independent.co.uk/news/world/modern-art-was-cia-weapon-1578808.html",
+      "https://www.tate.org.uk/research/publications/modern-american-art-at-tate/essays/new-american-painting",
+      "https://www.counterpunch.org/2003/01/11/the-cia-as-art-patron/",
+      "https://en.wikipedia.org/wiki/Tom_Braden",
+      "https://www.cia.gov/resources/csi/static/Unclassified-Studies-Extracts-Sep-2025-19Sep2025.pdf"
+     ]
+    },
+    {
+     "name": "Congress for Cultural Freedom",
+     "role": "CIA-funded cultural front, 1950–67",
+     "money": "",
+     "note": "Its 1952 Paris festival \"Masterpieces of the Twentieth Century\" was underwritten by the Farfield Foundation and drew works from MoMA's collection, curated by former MoMA curator James Johnson Sweeney.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Congress_for_Cultural_Freedom",
+      "https://news.artnet.com/art-world/artcurious-cia-art-excerpt-1909623"
+     ]
+    },
+    {
+     "name": "Farfield Foundation",
+     "role": "CIA funding front",
+     "money": "",
+     "note": "The agency's main pass-through for the CCF. Its president, Julius Fleischmann, sat on the board of MoMA's International Program; MoMA president William Burden is also described as a Farfield president. By Saunders's account (The Independent, 1995) it paid for the London showing of MoMA's \"The New American Painting\" (Tate, 1959). The Tate's own account of the show, from its archive, names MoMA's International Program and the Arts Council as its organisers and does not mention Farfield money.",
+     "sources": [
+      "https://www.sourcewatch.org/index.php/Farfield_Foundation",
+      "https://www.independent.co.uk/news/world/modern-art-was-cia-weapon-1578808.html",
+      "https://www.tate.org.uk/research/publications/modern-american-art-at-tate/essays/new-american-painting",
+      "https://www.counterpunch.org/2003/01/11/the-cia-as-art-patron/"
+     ]
+    },
+    {
+     "name": "William A. M. Burden",
+     "role": "MoMA President, 1953–59",
+     "money": "",
+     "note": "Assistant Secretary of Commerce for Air (1943–47), Air Force special assistant for R&D (1950–52), Ambassador to Belgium (1959–61). Described by Saunders and CounterPunch as a president of the Farfield Foundation; the president on the record is Julius Fleischmann. Announced MoMA's purchase of the Venice pavilion in 1954.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/William_A._M._Burden",
+      "https://www.moma.org/docs/press_archives/1843/releases/MOMA_1954_0064_60c.pdf"
+     ]
+    },
+    {
+     "name": "Julius Fleischmann",
+     "role": "Member of the board of MoMA's International Program",
+     "money": "",
+     "note": "Cincinnati yeast heir; president of the Farfield Foundation, the CIA's pass-through for the Congress for Cultural Freedom (Saunders 1999).",
+     "sources": [
+      "https://www.sourcewatch.org/index.php/Farfield_Foundation"
+     ]
+    },
+    {
+     "name": "US Information Agency",
+     "role": "Circulated MoMA's \"The Family of Man\" abroad, 1955–63",
+     "money": "",
+     "note": "MoMA handed Steichen's 503-photograph exhibition to the USIA after its 1955 run; the agency funded and routed it through 37 countries on six continents for eight years, to more than 9 million visitors. A USIS officer in London also helped place MoMA's 1956 Tate show.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/The_Family_of_Man",
+      "https://www.tate.org.uk/research/publications/modern-american-art-at-tate/essays/modern-art-in-the-united-states"
+     ]
+    },
+    {
+     "name": "MoMA Film Library (Iris Barry)",
+     "role": "Wartime contractor to the CIAA",
+     "money": "",
+     "note": "Under its CIAA contract the Film Library produced and re-edited documentaries for Latin America and prepared abridged Nazi propaganda films for study groups.",
+     "sources": [
+      "https://www.moma.org/magazine/articles/1030"
+     ]
+    },
+    {
+     "name": "Luis Buñuel",
+     "role": "Chief editor, Film Library, 1941–43",
+     "money": "",
+     "note": "Hired through the CIAA contract to supervise anti-fascist films for Latin America; dismissed in 1943 after Dalí's memoir called him an atheist and a man of the left.",
+     "sources": [
+      "https://www.moma.org/magazine/articles/1030"
+     ]
+    },
+    {
+     "name": "James Johnson Sweeney",
+     "role": "MoMA Director of Painting & Sculpture, 1945–46",
+     "money": "",
+     "note": "Curated the CCF's 1952 Paris exhibition; later ran the Guggenheim.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/James_Johnson_Sweeney"
+     ]
+    },
+    {
+     "name": "John Hay Whitney",
+     "role": "MoMA President (1941–46), Chairman (1946–56)",
+     "money": "",
+     "note": "OSS officer in WWII; Eisenhower's Ambassador to the UK; publisher of the New York Herald Tribune.",
+     "sources": [
+      "https://en.wikipedia.org/wiki/John_Hay_Whitney"
+     ]
+    },
+    {
+     "name": "Whitney Trust",
+     "role": "Charitable trust exposed in 1967 as a CIA conduit",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://en.wikipedia.org/wiki/John_Hay_Whitney"
+     ]
+    },
+    {
+     "name": "Office of Strategic Services",
+     "role": "WWII intelligence agency, CIA predecessor",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Office_of_Strategic_Services"
+     ]
+    },
+    {
+     "name": "William S. Paley",
+     "role": "MoMA President and Chairman; CBS founder",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://en.wikipedia.org/wiki/William_S._Paley"
+     ]
+    },
+    {
+     "name": "Peter G. Peterson",
+     "role": "Life Trustee (d. 2018); Nixon's Commerce Secretary; Blackstone co-founder",
+     "money": "",
+     "note": "",
+     "sources": [
+      "https://en.wikipedia.org/wiki/Peter_G._Peterson"
+     ]
+    }
+   ]
+  }
+ ],
+ "funders": [
+  {
+   "name": "BlackRock",
+   "kind": "corp",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "BlackRock"
+   ]
+  },
+  {
+   "name": "Pfizer",
+   "kind": "corp",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Pfizer Inc.",
+    "Albert Bourla · David Rockefeller Award 2021"
+   ]
+  },
+  {
+   "name": "Johnson & Johnson",
+   "kind": "corp",
+   "hq": {
+    "c": "New Brunswick",
+    "co": "United States",
+    "lat": 40.4862,
+    "lon": -74.4518
+   },
+   "from": [
+    "Johnson & Johnson"
+   ]
+  },
+  {
+   "name": "Axsome Therapeutics",
+   "kind": "corp",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Axsome Therapeutics"
+   ]
+  },
+  {
+   "name": "Regeneron",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "hq": {
+    "c": "Tarrytown",
+    "co": "United States",
+    "lat": 41.0762,
+    "lon": -73.8587
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Merck",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Merck & Co.",
+    "Merck & Co"
+   ],
+   "hq": {
+    "c": "Rahway",
+    "co": "United States",
+    "lat": 40.6082,
+    "lon": -74.2776
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Bristol Myers Squibb",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Bristol-Myers Squibb"
+   ],
+   "hq": {
+    "c": "Princeton",
+    "co": "United States",
+    "lat": 40.3573,
+    "lon": -74.6672
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Eli Lilly",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Eli Lilly and Company",
+    "Lilly"
+   ],
+   "hq": {
+    "c": "Indianapolis",
+    "co": "United States",
+    "lat": 39.7684,
+    "lon": -86.1581
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Vertex Pharmaceuticals",
+   "kind": "corp",
+   "kindLabel": "Company, matching gifts only",
+   "names": [
+    "Vertex"
+   ],
+   "hq": {
+    "c": "Boston",
+    "co": "United States",
+    "lat": 42.3601,
+    "lon": -71.0589
+   },
+   "from": [
+    "Regeneron · Merck · BMS · Lilly · Vertex"
+   ]
+  },
+  {
+   "name": "Roche",
+   "kind": "corp",
+   "names": [
+    "F. Hoffmann-La Roche Ltd",
+    "Roche"
+   ],
+   "hq": {
+    "c": "Basel",
+    "co": "Switzerland",
+    "lat": 47.5596,
+    "lon": 7.5886
+   },
+   "from": [
+    "Roche Innovation Center NY",
+    "Roche (Hoffmann-La Roche)"
+   ]
+  },
+  {
+   "name": "Maja Oeri",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Basel",
+    "co": "Switzerland",
+    "lat": 47.5596,
+    "lon": 7.5886
+   },
+   "from": [
+    "Maja Oeri"
+   ]
+  },
+  {
+   "name": "Ronald O. Perelman",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Ronald O. Perelman"
+   ]
+  },
+  {
+   "name": "Sackler family",
+   "kind": "family",
+   "keys": [
+    "sacklerfamily"
+   ],
+   "from": [
+    "Jillian Sackler"
+   ]
+  },
+  {
+   "name": "Estée Lauder Companies",
+   "kind": "corp",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Estée Lauder Companies"
+   ]
+  },
+  {
+   "name": "KKR and the Kravis family",
+   "kind": "fund",
+   "keys": [
+    "kkr"
+   ],
+   "from": [
+    "Marie-Josée Kravis",
+    "Henry R. Kravis"
+   ]
+  },
+  {
+   "name": "Steven Cohen (Point72)",
+   "kind": "family",
+   "keys": [
+    "right:cohen"
+   ],
+   "from": [
+    "Steven A. Cohen"
+   ]
+  },
+  {
+   "name": "Steven Tananbaum",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Steven Tananbaum"
+   ]
+  },
+  {
+   "name": "Leon Black (Apollo)",
+   "kind": "family",
+   "keys": [
+    "leonblack"
+   ],
+   "from": [
+    "Leon D. Black",
+    "Apollo Global Management"
+   ]
+  },
+  {
+   "name": "Ken Griffin / Citadel",
+   "kind": "family",
+   "keys": [
+    "right:griffin"
+   ],
+   "from": [
+    "Kenneth C. Griffin",
+    "Citadel"
+   ]
+  },
+  {
+   "name": "Helen Zell",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Chicago",
+    "co": "United States",
+    "lat": 41.8781,
+    "lon": -87.6298
+   },
+   "from": [
+    "Helen Zell"
+   ]
+  },
+  {
+   "name": "Fox Corporation",
+   "kind": "corp",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Fox Corporation · 21st Century Fox",
+    "Murdoch family · News Corp"
+   ]
+  },
+  {
+   "name": "The Wall Street Journal (Dow Jones)",
+   "kind": "corp",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "The Wall Street Journal"
+   ]
+  },
+  {
+   "name": "John Paulson (Paulson & Co.)",
+   "kind": "family",
+   "keys": [
+    "paulsonfamily"
+   ],
+   "from": [
+    "Paulson & Co. (John Paulson)"
+   ]
+  },
+  {
+   "name": "Stephen Schwarzman (Blackstone)",
+   "kind": "family",
+   "keys": [
+    "schwarzman"
+   ],
+   "from": [
+    "Schwarzman · Langone · Blavatnik · Loeb · Tepper"
+   ]
+  },
+  {
+   "name": "Blavatnik Family Foundation",
+   "kind": "family",
+   "keys": [
+    "blavatnikfamily"
+   ],
+   "from": [
+    "Schwarzman · Langone · Blavatnik · Loeb · Tepper"
+   ]
+  },
+  {
+   "name": "Glenn Dubin (Highbridge Capital)",
+   "kind": "family",
+   "keys": [
+    "glenndubin"
+   ],
+   "from": [
+    "Glenn Dubin"
+   ]
+  },
+  {
+   "name": "The Rockefeller University",
+   "kind": "found",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "The Rockefeller University"
+   ]
+  },
+  {
+   "name": "Rockefeller family and foundations",
+   "kind": "family",
+   "keys": [
+    "rockefellerbrothers"
+   ],
+   "from": [
+    "Rockefeller Brothers Fund"
+   ]
+  },
+  {
+   "name": "David Rockefeller",
+   "kind": "family",
+   "keys": [
+    "rockefellerbrothers"
+   ],
+   "from": [
+    "David Rockefeller"
+   ]
+  },
+  {
+   "name": "Laurence D. Fink",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Laurence D. Fink"
+   ]
+  },
+  {
+   "name": "Sharon Percy Rockefeller",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Sharon Percy Rockefeller"
+   ]
+  },
+  {
+   "name": "Jon Stryker",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Jon Stryker",
+    "Stryker Corporation"
+   ]
+  },
+  {
+   "name": "Sid R. Bass",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Fort Worth",
+    "co": "United States",
+    "lat": 32.7555,
+    "lon": -97.3308
+   },
+   "from": [
+    "Sid R. Bass"
+   ]
+  },
+  {
+   "name": "Maurice R. Greenberg",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Maurice R. Greenberg"
+   ]
+  },
+  {
+   "name": "Anne Dias Griffin",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "Chicago",
+    "co": "United States",
+    "lat": 41.8781,
+    "lon": -87.6298
+   },
+   "from": [
+    "Anne Dias Griffin"
+   ]
+  },
+  {
+   "name": "David Rockefeller, Jr.",
+   "kind": "family",
+   "kindLabel": "MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "David Rockefeller, Jr."
+   ]
+  },
+  {
+   "name": "Nelson A. Rockefeller",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Nelson A. Rockefeller"
+   ]
+  },
+  {
+   "name": "John Hay Whitney",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "John Hay Whitney",
+    "Whitney Trust"
+   ]
+  },
+  {
+   "name": "William A. M. Burden",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "William A. M. Burden"
+   ]
+  },
+  {
+   "name": "William S. Paley",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "William S. Paley"
+   ]
+  },
+  {
+   "name": "Peter G. Peterson",
+   "kind": "family",
+   "kindLabel": "Former MoMA trustee",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Peter G. Peterson"
+   ]
+  },
+  {
+   "name": "Julius Fleischmann",
+   "kind": "family",
+   "kindLabel": "MoMA International Program board",
+   "hq": {
+    "c": "Cincinnati",
+    "co": "United States",
+    "lat": 39.1031,
+    "lon": -84.512
+   },
+   "from": [
+    "Julius Fleischmann",
+    "Farfield Foundation"
+   ]
+  },
+  {
+   "name": "City of New York",
+   "kind": "gov",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "City of New York"
+   ]
+  },
+  {
+   "name": "Trust for Cultural Resources of the City of New York",
+   "kind": "gov",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "Trust for Cultural Resources",
+    "Museum Tower TEPs"
+   ]
+  },
+  {
+   "name": "NYC Department of Cultural Affairs",
+   "kind": "gov",
+   "hq": {
+    "c": "New York",
+    "co": "United States",
+    "lat": 40.7128,
+    "lon": -74.006
+   },
+   "from": [
+    "NYC Dept. of Cultural Affairs"
+   ]
+  },
+  {
+   "name": "US Small Business Administration",
+   "kind": "gov",
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "US Small Business Administration"
+   ]
+  },
+  {
+   "name": "National Endowment for the Arts",
+   "kind": "gov",
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "National Endowment for the Arts"
+   ]
+  },
+  {
+   "name": "Office of the Coordinator of Inter-American Affairs",
+   "kind": "gov",
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Office of the Coordinator of Inter-American Affairs",
+    "MoMA Film Library (Iris Barry)"
+   ]
+  },
+  {
+   "name": "Government of Switzerland",
+   "kind": "gov",
+   "hq": {
+    "c": "Bern",
+    "co": "Switzerland",
+    "lat": 46.948,
+    "lon": 7.4474
+   },
+   "from": [
+    "Consulate General of Switzerland"
+   ]
+  },
+  {
+   "name": "State of Qatar",
+   "kind": "gov",
+   "hq": {
+    "c": "Doha",
+    "co": "Qatar",
+    "lat": 25.2854,
+    "lon": 51.531
+   },
+   "from": [
+    "Permanent Mission of Qatar"
+   ]
+  },
+  {
+   "name": "Federal Reserve",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Federal Reserve"
+   ]
+  },
+  {
+   "name": "US Department of Health and Human Services (BARDA)",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "HHS · BARDA · Operation Warp Speed"
+   ]
+  },
+  {
+   "name": "US State Department",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "US State Department"
+   ]
+  },
+  {
+   "name": "US Information Agency",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "US Information Agency"
+   ]
+  },
+  {
+   "name": "Office of Strategic Services",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Office of Strategic Services"
+   ]
+  },
+  {
+   "name": "CIA",
+   "kind": "gov",
+   "kindLabel": "Public funder, indirect",
+   "hq": {
+    "c": "Langley",
+    "co": "United States",
+    "lat": 38.9517,
+    "lon": -77.1467
+   },
+   "from": [
+    "CIA International Organizations Division",
+    "Congress for Cultural Freedom",
+    "Farfield Foundation",
+    "Whitney Trust",
+    "David Rockefeller"
+   ]
+  },
+  {
+   "name": "US Senate Finance Committee",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "Senate Finance Committee (Sen. Wyden)"
+   ]
+  },
+  {
+   "name": "US Department of Justice",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Washington",
+    "co": "United States",
+    "lat": 38.9072,
+    "lon": -77.0369
+   },
+   "from": [
+    "DOJ Epstein files (2025–26)"
+   ]
+  },
+  {
+   "name": "US Virgin Islands Attorney General",
+   "kind": "gov",
+   "notFunder": true,
+   "hq": {
+    "c": "Charlotte Amalie",
+    "co": "US Virgin Islands",
+    "lat": 18.3419,
+    "lon": -64.9307
+   },
+   "from": [
+    "US Virgin Islands Attorney General"
+   ]
+  }
+ ]
+}

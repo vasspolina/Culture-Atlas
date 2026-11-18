@@ -252,6 +252,11 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li:last-child{padding-bottom:0!important}
 /* The Programme row is a list of short names, one per line, not paragraphs: no space between them (user, 11 Nov 2026). */
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list.is-bulleted>li{padding-bottom:0!important}
+/* The Sources row is a list of links, one per line, centred under its centred title, with no space between them
+   (user, 18 Nov 2026: "center the sources", "no need for paragraph break here"). The fold's "N more" follows. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row.is-sources .d-row-list{text-align:center!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row.is-sources .d-row-list>li{padding-bottom:0!important;margin-top:0!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row.is-sources details[open]>summary{padding-bottom:0!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-list>li::before{content:none!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(p,li,dd,blockquote,figcaption){margin-top:0!important;margin-bottom:0!important;text-indent:0!important;max-width:none!important;hyphens:manual!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) details>summary{display:block!important;color:var(--sh-fold)!important}
@@ -276,6 +281,19 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
    pairs atlas.css keeps on .grade-word-1 to -5. The grade under the open space's name on the map takes the same colours. */
 .grade-word[class*="grade-word-"]{color:var(--grade-ink)!important}
 :root[data-theme="dark"] .grade-word[class*="grade-word-"]{color:var(--grade-col)!important}
+/* The phone sheet's rating line names the grade by its letter (.gm-grade-word[data-grade], assets/phone-maps.js) and had come
+   out in ink (user, 17 Nov 2026: "color grades with grade color on mobile and desktop"). It takes the colours of .grade-word,
+   the record's and the chat's, so a grade is one colour wherever it is named. */
+.gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1f7f5c!important}
+.gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1b7f73!important}
+.gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8c720c!important}
+.gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#975824!important}
+.gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8f2929!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#34d399!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#2dd4bf!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#facc15!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#fb923c!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ef4444!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
@@ -329,7 +347,14 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
 /* What is hearsay is set in italic. */
 :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{font-style:italic!important}
-.curator-followups{display:block!important;margin:0 0 var(--sh-s-lh)!important;padding:0!important;gap:0!important}
+/* And in colour (user, 18 Nov 2026: "make gossip mode text go yellow on dark and brown on light"): brown #7a4416 on the
+   white sheet measures 7.9:1, yellow #f2cf3a on the dark sheet 12.1:1 (9.5:1 on its stone). */
+:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{color:#7a4416!important}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{color:#f2cf3a!important}
+/* The suggestions keep one line of space under them, so the next turn starts as a new paragraph (user, 18 Nov 2026: "add
+   paragraph breaks"). Scoped to the transcript because the list sits two divs inside the turn, where
+   .curator-message-wrap>div>div above set its margin to 0 and the next answer ran straight on under the last suggestion. */
+.curator-followups,:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap .curator-followups{display:block!important;margin:0 0 var(--sh-s-lh)!important;padding:0!important;gap:0!important}
 .curator-followup-pill{display:block!important;width:100%!important;margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important;border:0!important;background:transparent!important;white-space:normal!important}
 .curator-followup-pill::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
 #chatScrollBufferSpacer{height:var(--sh-lead)!important}
@@ -1697,7 +1722,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26)}
     :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(p,li,dd,blockquote,figcaption,.institution-summary,.d-row-sub,.ts-prose,.intro-line){
       hyphens:auto!important;-webkit-hyphens:auto!important;hyphenate-limit-chars:8 3 3!important;overflow-wrap:break-word!important;text-wrap:wrap!important}
-    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,.curator-suggest-chip,.starter-prompt){
+    :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,a.influence-meta,.influence-meta a,.curator-suggest-chip,.starter-prompt){
       hyphens:none!important;-webkit-hyphens:none!important}
     #dossier-bottom-sheet .gm-tabs:has(#gmTab-images:not([hidden])) [role="tab"]:not(#sh-x){font-size:16px!important}
   }
@@ -1878,13 +1903,13 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    Back to chat shows where the chat is not what is on screen: on the map, and on the Share information form, where it
    leaves the note. They are set as the filter pills under them: paper, a 1px ink outline, the serif; Gossip mode while on
    is the ink pill with paper text, as a filter that is on. The row pushes the filters, and so the chat sheet and the map's
-   buttons, down by its height through --safe-t. The record opened from the chat (gm-from-chat) covers the screen with its
-   own way back, so the row is put away there. Built in assets/phone-maps.js. */
+   buttons, down by its height through --safe-t. The record opened from the chat (gm-from-chat) keeps the row too, since
+   17 Nov 2026 it is a sheet under it as the chat is (see "Details from the chat" below). Built in assets/phone-maps.js. */
 #gmTopBtns,#gmMapShareBtn{display:none}
 @layer sheet{
 @media (max-width:767px){
-  :root:is(.gm-map,.gm-chat):not(.gm-from-chat):not(.gm-feed-open){--safe-t:calc(env(safe-area-inset-top,0px) + 48px)!important}
-  :root:is(.gm-map,.gm-chat):not(.gm-from-chat):not(.gm-feed-open) #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:52!important;
+  :root:is(.gm-map,.gm-chat){--safe-t:calc(env(safe-area-inset-top,0px) + 48px)!important}
+  :root:is(.gm-map,.gm-chat) #gmTopBtns:not(#sh-x):not(#sh-y){display:flex!important;position:fixed!important;top:0!important;left:0!important;right:0!important;z-index:52!important;
     align-items:center!important;gap:6px!important;height:calc(env(safe-area-inset-top,0px) + 48px)!important;margin:0!important;padding:env(safe-area-inset-top,0px) var(--sh-pad) 0!important;
     background:var(--sh-paper)!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;overflow-x:auto!important;scrollbar-width:none}
   #gmTopBtns::-webkit-scrollbar{display:none}
@@ -1902,7 +1927,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
   /* Share information under the map's box, the box's width, set as the one under the chat's box: an ink pill with paper
      words (in dark mode the sheet's pale pill with ink words). */
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y){display:flex!important;align-items:center!important;justify-content:center!important;height:42px!important;min-height:0!important;
-    margin:0 var(--gm-gap,12px)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
+    margin:0 var(--sh-pad)!important;padding:0 1em!important;border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-ink)!important;color:var(--sh-paper)!important;
     box-shadow:none!important;outline:0!important;font-style:normal!important;line-height:1!important;white-space:nowrap!important;pointer-events:auto!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):is(:hover,:active){background:color-mix(in srgb,var(--sh-ink) 78%,var(--sh-paper))!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
@@ -1918,6 +1943,11 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
      bottom"): 6px between the Top story, the suggested questions, the box and Share information, where margins on top of
      the 10px gap had left about 24px, so the globe has the room above. */
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar:not(#sh-x):not(#sh-y){gap:6px!important}
+  /* The bar stands on the foot of the screen (user, 17 Nov 2026: "Fix bottom part", a screenshot with the globe's rim
+     showing under Share information). atlas.css floats the box 12px above the edge on a clear ground; this sheet gives the
+     bar the paper, so that 12px had become a strip of map under it. The bar now reaches the edge and the 12px, with the
+     phone's safe area, is its own padding. */
+  :root.gm-map #mobileStickyInputBar:not(#sh-x):not(#sh-y){bottom:0!important;padding-bottom:calc(12px + var(--safe-b,0px))!important}
   :root:is(.gm-map,.gm-record) #mobileStickyInputBar>#mobileComposerCard:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#mobileSuggestChips:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
   :root.gm-map #mobileStickyInputBar>#gmStoryStrip:not(#sh-x):not(#sh-y){margin-top:0!important;margin-bottom:0!important}
@@ -1974,8 +2004,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 /* ---- The Top story feed on a phone (user, 17 Nov 2026: "there is no way to close this window and also buttons stick on top") ----
    The feed's cross sat in .ts-pin, which this sheet set absolute, so it scrolled away with the first report and a feed pulled
    to full and read down had no way out. It is sticky again, as atlas.css meant (a holder of no height before the head), so the
-   cross stays at the top right however far the list is read. While the feed is open the row of top buttons is put away, as the
-   question box already is, and --safe-t is the phone's own again, so the feed starts at the top of the screen. */
+   cross stays at the top right however far the list is read. The row of top buttons was put away while the feed was open;
+   since 17 Nov 2026 it stays, and the feed stops under it as the chat does (see "The reports feed as the chat" below). */
 @layer sheet{
 @media (max-width:767px){
   :root.gm-feed-open #gmFeed .ts-pin:not(#sh-x):not(#sh-y){position:sticky!important;top:0!important;left:auto!important;right:auto!important;height:0!important;display:flex!important;
@@ -2022,4 +2052,200 @@ body:not(.influence-mode-active) :is(#gmdChips,#gmChips) [data-influence-measure
 body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-measure]):not(#sh-x):not(#sh-y){display:none!important}
 .influence-chat ul{list-style:none!important;margin:0 0 var(--sh-gap) 0!important;padding:0!important}
 .influence-chat li::before{content:"\2013\00a0"!important}
+/* A funder's museums sit under its name with no second dash and no second indent (user, 17 Nov 2026: "Don't do double dash
+   with indent"): the nested items take the parent's text edge, the one the funder's name starts on, and the nested list
+   keeps no space under it; one gap separates one funder from the next. */
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li{padding:0!important;text-indent:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li li::before{content:none!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat li>ul{margin:0!important}
+:is(#curatorMessages,#curatorDrawerLiveStream) .influence-chat>ul>li:has(>ul)+li{margin-top:var(--sh-s-lh)!important}
 }
+
+/* ==== THE CHAT WINDOW, SET AS AN iOS SHEET (user, 17 Nov 2026: "implement this top window treatment and window shape plus
+   interaction", after three screenshots of the iPhone's Settings, Billing and Edit Subscription sheets) ====
+   On a phone the chat is a window raised over the map: 32px corners at the top, a hairline round it and a soft shadow, so
+   it reads as a sheet laid on the page and not as more of the page. It slides up when it opens (the iOS sheet curve,
+   .42s) and is pulled down to close, as before (attachPullToClose in index.html).
+   Its head is no longer a bar with a rule under it. Round buttons float over the top of the conversation, the cross at the
+   left and the ⋮ menu at the right, each a 44px circle with a hairline ring, with the title (the Chat and Details tabs)
+   centred between them. While the conversation is at its top nothing is drawn behind them; once it is scrolled, the words
+   fade out under the buttons (paper to clear, with a blur that fades the same way), so the buttons always read. The
+   head carries data-scrolled, set in assets/phone-maps.js. With reduced motion the sheet appears in place.
+   And the row of top buttons (Back to chat, Dark, Gossip mode, Influence mode) loses its paper bar and rule: paper behind
+   the buttons fades to clear under them, so the map and the filters show through and the buttons stay legible. */
+@keyframes ca-sheet-up{from{transform:translateY(100%)}to{transform:none}}
+@layer sheet{
+@media (max-width:767px){
+  :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){border-radius:32px 32px 0 0!important;overflow:hidden!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important;
+    animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
+  :root[data-theme="dark"].gm-chat #workViewContainer:not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y){position:absolute!important;top:0!important;left:0!important;right:0!important;z-index:20!important;
+    display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:0!important;height:76px!important;min-height:0!important;
+    padding:16px 16px 0!important;margin:0!important;border:0!important;background:transparent!important}
+  /* The fade, in two layers drawn only once the chat is scrolled: a blur that thins out towards the foot (::before), and
+     over it paper, solid behind the buttons and clear 24px below them (::after). */
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{content:"";position:absolute;inset:0 0 -24px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s ease}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+    -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent)}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{
+    background:linear-gradient(to bottom,var(--sh-paper) 0%,var(--sh-paper) 58%,color-mix(in srgb,var(--sh-paper) 80%,transparent) 74%,color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)}
+  :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::before,
+  :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::after{opacity:1}
+  :root.gm-chat #workViewContainer #phoneChatHead .sheet-grabber:not(#sh-x):not(#sh-y){top:6px!important}
+
+  /* The round buttons: the cross first (at the left), the menu last (at the right). */
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y){position:relative!important;flex:none!important;align-self:flex-start!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;min-height:44px!important;
+    margin:0!important;padding:0!important;border:1px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;border-radius:50%!important;
+    background:var(--sh-paper)!important;color:var(--sh-ink)!important;box-shadow:0 1px 8px rgba(0,0,0,.08)!important;text-decoration:none!important;
+    transition:transform .15s ease,background-color .15s ease!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #phoneChatCloseBtn:not(#sh-x):not(#sh-y){order:-1!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #gmChatMenuBtn:not(#sh-x):not(#sh-y){order:9!important;margin-left:auto!important}
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y):is(:hover,[aria-expanded="true"]){background:color-mix(in srgb,var(--sh-ink) 8%,var(--sh-paper))!important}
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y):active{transform:scale(.92)!important}
+  :root.gm-chat #workViewContainer #phoneChatHead :is(#phoneChatCloseBtn,#gmChatMenuBtn):not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #phoneChatCloseBtn span:not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #phoneChatCloseBtn svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
+  :root.gm-chat #workViewContainer #phoneChatHead #gmChatMenuBtn svg:not(#sh-x):not(#sh-y){width:18px!important;height:18px!important}
+
+  /* The title: the tabs centred between the buttons. With Chat the only tab it is a title, in ink, with no underline. */
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs:not(#sh-x):not(#sh-y){position:absolute!important;top:16px!important;left:68px!important;right:68px!important;
+    display:flex!important;justify-content:center!important;align-items:center!important;gap:20px!important;height:44px!important;margin:0!important;pointer-events:none}
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs>*:not(#sh-x):not(#sh-y){pointer-events:auto}
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs:not(:has(#phoneChatDetailsBtn:not(.hidden))) #gmChatTab:not(#sh-x):not(#sh-y){color:var(--sh-ink)!important;cursor:default!important}
+  :root.gm-chat #workViewContainer #phoneChatHead .gm-head-tabs:not(:has(#phoneChatDetailsBtn:not(.hidden))) #gmChatTab:not(#sh-x):not(#sh-y)::after{display:none!important}
+
+  /* The conversation starts under the head and scrolls up beneath it. */
+  :root.gm-chat #workViewContainer #curatorScrollArea:not(#sh-x):not(#sh-y){padding-top:76px!important;scroll-padding-top:76px}
+
+  /* The row of top buttons: a fade, not a bar. Paper behind the buttons, clear at the foot. The row still takes touches,
+     since it scrolls sideways where the buttons are wider than the phone. */
+  :root:is(.gm-map,.gm-chat,.gm-record) #gmTopBtns:not(#sh-x):not(#sh-y):not(#sh-z){border-bottom:0!important;
+    background:linear-gradient(to bottom,var(--sh-paper) 0,var(--sh-paper) calc(env(safe-area-inset-top,0px) + 18px),color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)!important}
+  /* The sheet opens up to the menu (user, 17 Nov 2026: "Make this window open until menu"). It had started under the
+     filters, two rows of pills below the top buttons, so the conversation got the bottom two thirds of the screen. It now
+     rises to just under the row of top buttons (Dark, Gossip mode, Money map), 4px below its foot (--safe-t is that row's
+     height). The filters are put away while the chat is open, as they would sit behind the sheet; they come back with the
+     map, where the chip row is measured again (publishChips in assets/phone-maps.js keeps the last height while hidden). */
+  :root.gm-chat:not(.gm-from-chat):not(.gm-feed-open) #workViewContainer:not(#sh-x):not(#sh-y){top:calc(var(--safe-t,48px) + 4px)!important}
+  :root.gm-chat:not(.gm-from-chat):not(.gm-feed-open) #gmChips:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  /* The other windows as the chat (user, 17 Nov 2026: "Make other windows look like this too"). The record sheet on the
+     map and the full record page are laid on the page as the chat is: 32px corners at the top, a hairline round them and
+     the soft shadow, and the cross a 44px round button with a hairline ring at the top right. Each opens up to the row of
+     top buttons and no further: the record page starts 4px under it, and the record sheet's full height stops there
+     (heightOf in assets/phone-maps.js), with the filters put away at full as they are in the chat. The record opened from
+     the chat (gm-from-chat), the chat's Details tab, follows below. */
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet:not(#sh-x):not(#sh-y),
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){border:0!important;border-radius:32px 32px 0 0!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important}
+  :root[data-theme="dark"].gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet:not(#sh-x):not(#sh-y),
+  :root[data-theme="dark"].gm-record #detailDrawer:not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){top:calc(env(safe-area-inset-top,0px) + 48px + 4px)!important;overflow:hidden!important;
+    animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
+  :root.gm-map:not(.gm-from-chat):has(#dossier-bottom-sheet[data-detent="full"]:not(.hidden)) :is(#gmChips,#layersControl,#mapColourKey):not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+
+  :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y),
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    width:44px!important;height:44px!important;min-height:44px!important;padding:0!important;border:1px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;
+    border-radius:50%!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;box-shadow:0 1px 8px rgba(0,0,0,.08)!important;
+    pointer-events:auto!important;transition:transform .15s ease,background-color .15s ease!important}
+  :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y){top:12px!important;right:16px!important}
+
+  /* The reports feed as the chat (user, 17 Nov 2026: "Make the reports feed look like this too"). The feed's sheet takes the
+     chat's 32px corners, hairline and shadow, and its cross is the chat's 44px round button with a hairline ring. It opens
+     up to the row of top buttons and no further: the row stays while the feed is open, and the feed's full height stops 4px
+     under it (room() in topStory, assets/phone-maps.js). */
+  :root.gm-feed-open #gmFeed:not([hidden]):not(#sh-x):not(#sh-y){border:0!important;border-radius:32px 32px 0 0!important;
+    max-height:calc(100vh - env(safe-area-inset-top,0px) - 48px - 4px)!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important}
+  :root[data-theme="dark"].gm-feed-open #gmFeed:not([hidden]):not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    width:44px!important;height:44px!important;min-height:44px!important;margin:12px 4px 0 0!important;padding:0!important;
+    border:1px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;border-radius:50%!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;
+    box-shadow:0 1px 8px rgba(0,0,0,.08)!important;transition:transform .15s ease,background-color .15s ease!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y):hover{background:color-mix(in srgb,var(--sh-ink) 8%,var(--sh-paper))!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y):active{transform:scale(.92)!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  :root.gm-feed-open #gmFeed .ts-pin .gm-feed-close svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
+
+  /* Details from the chat as the chat (user, 17 Nov 2026: "Make Details from chat look like this too"). The record opened
+     from the chat was a page over the whole screen with a strip of two tabs at its top. It is now the chat's sheet: it
+     starts 4px under the row of top buttons, which stays (Back to chat is left out, as the Chat tab does it), with the
+     32px corners, the hairline and the shadow, and it slides up. Its head is the chat's: the round cross at the left (it
+     closes the record to the map, as the chat's closes the chat), the Chat and Details tabs centred, on paper that stays
+     put while the record scrolls under it. */
+  :root.gm-from-chat #gmTopBtns #gmBackChatBtn:not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){top:calc(env(safe-area-inset-top,0px) + 48px + 4px)!important;bottom:0!important;height:auto!important;
+    padding-top:0!important;border:0!important;border-radius:32px 32px 0 0!important;
+    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important;
+    animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
+  :root[data-theme="dark"].gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .sheet-chrome:not(#sh-x):not(#sh-y){position:sticky!important;top:0!important;z-index:5!important;height:76px!important;
+    padding:0!important;border:0!important;border-radius:0!important;background:var(--sh-paper)!important;cursor:default!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y){position:absolute!important;top:16px!important;left:16px!important;right:auto!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .gm-from-chat-bar:not([hidden]):not(#sh-x):not(#sh-y){position:absolute!important;top:16px!important;left:68px!important;right:68px!important;bottom:auto!important;
+    height:44px!important;display:flex!important;justify-content:center!important;align-items:center!important;gap:20px!important;padding:0!important;margin:0!important;
+    border:0!important;background:transparent!important}
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y){top:16px!important;right:16px!important}
+  :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y):hover,
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y):hover{background:color-mix(in srgb,var(--sh-ink) 8%,var(--sh-paper))!important}
+  :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y):active,
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y):active{transform:scale(.92)!important}
+  :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y):focus-visible,
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y):focus-visible{outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  :root.gm-map #globeViewport #dossier-bottom-sheet .sheet-close svg:not(#sh-x):not(#sh-y),
+  :root.gm-record #detailDrawer .detail-bar #closeDetailBtn svg:not(#sh-x):not(#sh-y){width:20px!important;height:20px!important;stroke-width:1.6!important}
+
+  /* The Share information form as the chat (user, 17 Nov 2026: "Make the share information form look like this too"). The
+     form opens in the chat's window and already had its corners and its place under the top buttons, but the chat's head
+     (the cross, Chat, the menu) was laid over the form's own row (Back, Share information, Close). The form now takes the
+     chat's head: its title centred where Chat stands (.gm-share-title, assets/phone-maps.js), and the round cross at the
+     left closes it back to the chat. Its own row is put away, the heading kept for screen readers, and the form starts
+     under the head. */
+  #phoneChatHead .gm-share-title{display:none}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #phoneChatHead .gm-head-tabs :is(#gmChatTab,#phoneChatDetailsBtn):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #phoneChatHead .gm-head-tabs .gm-share-title:not(#sh-x):not(#sh-y){display:inline-flex!important;align-items:center!important;
+    height:44px!important;color:var(--sh-ink)!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer :is(#noteFormBackBtn,#noteFormCloseBtn):not(#sh-x):not(#sh-y){display:none!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #noteFormHead:not(#sh-x):not(#sh-y){position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;
+    padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+  :root.gm-chat body.chat-input-mode-active #workViewContainer #workBottomDock:not(#sh-x):not(#sh-y){padding-top:76px!important;scroll-padding-top:76px}
+
+  /* One way back to the chat at a time (user, 17 Nov 2026: "do not double buttons on screen", "you have back to chat
+     twice"). On the form the round cross at the top left goes back to the chat, so Back to chat in the row of top buttons
+     and the Back to chat pill under the form (the Share information button, pressed) are put away. In Details from the
+     chat the Chat tab goes back, so the record's Ask in chat, which was pressed there as a second way back, is put away. */
+  :root.gm-chat body.chat-input-mode-active :is(#gmTopBtns #gmBackChatBtn,#workInputCard #chatShareBtn):not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  :root.gm-from-chat #dossier-bottom-sheet #dossier-sheet-ask-btn:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+
+  /* The record sheet's head holds its cross (user, 17 Nov 2026: "Fix window"). At full the sheet kept the notch's padding at
+     its top (atlas.css, from when full covered the whole screen); since full stops under the row of top buttons (release 771)
+     that padding was a 48px band over the head, and the record scrolled through it: the actions and the name showed above
+     the grabber. And the head was 48px while the cross runs 12px + 44px, so the cross hung over the tabs. The padding goes,
+     the head is 64px (the cross and 8px under it), and the tabs stick under the head. */
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet[data-detent="full"]:not(#sh-x):not(#sh-y){padding-top:0!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-chrome:not(#sh-x):not(#sh-y){height:64px!important}
+  :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .gm-tabs:not(#sh-x):not(#sh-y){top:64px!important}
+}
+@media (max-width:767px) and (prefers-reduced-motion:reduce){
+  :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
+  :root.gm-record #detailDrawer:not(#sh-x):not(#sh-y){animation:none!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(#sh-x):not(#sh-y){animation:none!important}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{transition:none!important}
+}
+}
+
+/* ==== GOSSIP MODE'S GROUND (user, 18 Nov 2026: "make gossip mode whole background on light this color", a #FFEFF1
+   swatch, then "and this for dark mode", a navy swatch, #000050) ====
+   In gossip mode the page, the panels and the sheet's paper are pink on the light theme and navy on the dark; the street
+   map and the globe take the same ground in index.html (applyCityMapGossip, G_GROUND). Ink #000 on #ffeff1 is 19:1, and
+   the gossip greens and browns stay at 4.5:1 or better on it (#2a6010 6.8, #7a4416 7.1, #3d7a0f 4.7); ink #e6e1d7 on #000050 is 14:1.
+   The paper is on html (body stays transparent so the two bars show), so the colours are set on the root, by :has(). */
+:root:not([data-theme="dark"]):has(body.gossip-mode-active){--sh-paper:#ffeff1;--paper:#ffeff1}
+:root[data-theme="dark"]:has(body.gossip-mode-active){--sh-paper:#000050;--paper:#000050}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#000050}
+:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#ffeff1!important}
