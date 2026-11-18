@@ -1461,8 +1461,7 @@
         // What the feed holds, and the rule for an alert, are said once, at the foot, in the same ink as the rest.
         const about = (gossipOn()
             ? 'Gossip mode is on, so rumours and denials are shown too.'
-            : 'Confirmed news only. Turn on Gossip mode to see rumours.')
-          + ' Each item links to its source.';
+            : 'Confirmed news only. Turn on Gossip mode to see rumours.');
         const alertRule = 'Alerts are protests, strikes, disputes and allegations from the last ' + ALERT_DAYS + ' days that are still open.';
         // The close is the record's big thin cross, two 1.1px lines on a paper square with no circle (user, 7 Nov 2026: "make proper
         // cross like big one with no outline"). It sits before the head in a sticky holder of no height, so the head scrolls away with

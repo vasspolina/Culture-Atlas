@@ -207,7 +207,6 @@
     const add = li => { if (li) facts.append(li); };
     add(fact(e.kind === 'person' ? 'Role' : 'Note', e.w));
     if (e.s) { let host = e.s; try { host = new URL(e.s).hostname.replace(/^www\./, ''); } catch (x) {} add(fact('Source', h('a', { href: e.s, target: '_blank', rel: 'noopener noreferrer', text: host }))); }
-    if (e.noOffice) facts.append(h('li', { text: 'No head office is mapped for this funder; the record is what the museums’ funding lines say.' }));
     const info = row('hqInfoT', where(e) || 'Record', e.a || '', facts);
     const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
       h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));

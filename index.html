@@ -10530,7 +10530,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v799';
+    const ATLAS_RELEASE = 'culture-atlas-v800';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -17456,7 +17456,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const named = Object.keys(funders).filter(f => new RegExp('\\b' + esc(f) + '\\b', 'i').test(query)).sort((a, b) => b.length - a.length)[0];
         if (named) {
           const linked = funders[named].sort((a, b) => (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name));
-          listOf(linked, `${named} funds ${linked.length} ${linked.length === 1 ? 'museum' : 'museums'}, best grade first. Each museum’s Funding section has the details and sources${linked.length > 12 ? '. The first 12' : ''}:`);
+          listOf(linked, `${named} funds ${linked.length} ${linked.length === 1 ? 'museum' : 'museums'}, best grade first${linked.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
       }
@@ -21945,10 +21945,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=744"></script>
+<script src="assets/hq-detail.js?v=800"></script>
 <script src="assets/influence-mode.js?v=799"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=781"></script>
+<script src="assets/phone-maps.js?v=800"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 <script src="assets/tab-suggest.js?v=788"></script>
