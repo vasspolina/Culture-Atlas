@@ -64,6 +64,13 @@ FUNDERS = [
     ('vladimirpotanin', 'Vladimir Potanin', 'family', r'Potanin|Norilsk Nickel|Nornickel|Interros'),
     ('leonidmikhelsonvac', 'Leonid Mikhelson / V-A-C', 'family', r'Mikhelson|V-A-C Foundation|Novatek'),
     ('viktorvekselberg', 'Viktor Vekselberg', 'family', r'Vekselberg'),
+    # Individual donors (user, 17 Nov 2026: "donors", then "add more individual donors"): families and people the records
+    # name often whose money is their own or their family foundation's, and that no batch above already covers.
+    ('wolfson', 'Wolfson family (Wolfson Foundation)', 'family', r'Wolfson'),
+    ('sigridrausingtrust', 'Rausing family', 'family', r'Rausing'),
+    ('arisonarts', 'Arison family', 'family', r'Arison'),
+    ('agnesgund', 'Agnes Gund', 'family', r'Agnes Gund'),
+    ('safra', 'Safra family', 'family', r'\bSafra\b'),
     # Added for one tie (user, 17 Nov 2026: "add the Sony LACMA link"): the leaked Sony emails put its lobbying at LACMA.
     ('sonypictures', 'Sony Pictures Entertainment', 'corp', r'\bSony\b'),
     # Batch 5 (user, 17 Nov 2026: "add african or other not covered contryes sponsors to the influense map, do same
@@ -517,6 +524,9 @@ HQ_EXTRA = {
     'vladimirpotanin': {'n': 'Interros (Vladimir Potanin)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'leonidmikhelsonvac': {'n': 'Novatek (Leonid Mikhelson)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
     'viktorvekselberg': {'n': 'Renova Group (Viktor Vekselberg)', 'c': 'Moscow', 'co': 'Russia', 'lat': 55.7558, 'lon': 37.6173},
+    'arisonarts': {'n': 'Carnival Corporation (Arison family)', 'c': 'Miami', 'co': 'United States', 'lat': 25.7617, 'lon': -80.1918},
+    'agnesgund': {'n': 'Agnes Gund', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
+    'safra': {'n': 'Edmond J. Safra Philanthropic Foundation (Safra family)', 'c': 'Geneva', 'co': 'Switzerland', 'lat': 46.2044, 'lon': 6.1432},
     'lauder': {'n': 'Lauder family', 'c': 'New York', 'co': 'United States', 'lat': 40.7128, 'lon': -74.0060},
     'bhp': {'n': 'BHP', 'c': 'Melbourne', 'co': 'Australia', 'lat': -37.8136, 'lon': 144.9631},
     'santos': {'n': 'Santos', 'c': 'Adelaide', 'co': 'Australia', 'lat': -34.9285, 'lon': 138.6007},
