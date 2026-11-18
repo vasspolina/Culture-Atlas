@@ -447,16 +447,22 @@
       marks.push({ f, x, y, s, n: v || 0, none: !v && !(linked && MEASURE !== 'culture') });
     });
     const placed = marks.map(m => ({ x: m.x - m.s - 2, y: m.y - m.s - 2, w: 2 * m.s + 4, h: 2 * m.s + 4 }));
-    marks.forEach(m => {
+    // At rest (nothing picked, no space in focus) the field is what the map says, so the funders step back: every dot is
+    // drawn pale here, and only the funders whose names find a place are set again in full ink once the names are down
+    // (below). With 1,216 solid dots the field could not be seen (user, 18 Nov 2026: "keep working", on the question of
+    // whether the funder dots should give way); the dots keep their one size, as the user asked on 17 Nov 2026.
+    const resting = !LINES && !picked && !FOCUS;
+    const dot = (m, a) => {
       const sel = picked === m.f, hov = hover === m.f;
       mark(ctx, m.f, m.x, m.y, m.s);
-      ctx.globalAlpha = dim(m.f) ? DIM_DOT : 1;
+      ctx.globalAlpha = a;
       // Solid ink; a funder with no figure for the measure is hollow, the picked one gets a ring.
       ctx.fillStyle = m.none && !sel && !hov ? paper : ink; ctx.fill();
       ctx.strokeStyle = ink; ctx.lineWidth = 1; ctx.stroke();
       if (sel) { ctx.beginPath(); ctx.arc(m.x, m.y, DOT + 3, 0, Math.PI * 2); ctx.stroke(); }
-    });
-    ctx.globalAlpha = 1;
+      ctx.globalAlpha = 1;
+    };
+    marks.forEach(m => dot(m, dim(m.f) || (resting && hover !== m.f) ? DIM_DOT : 1));
     ctx.font = FONT; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
     const hits = (b, list) => list.some(q => b.x < q.x + q.w && q.x < b.x + b.w && b.y < q.y + q.h && q.y < b.y + b.h);
     // A place that runs off the map's edge counts as taken, so a long label turns inward.
@@ -557,6 +563,10 @@
       ctx.globalAlpha = 1;
       HITS.push({ f, x, y, s, label: b });
     });
+    if (resting) {
+      const named = new Set(HITS.filter(h => h.label).map(h => h.f));
+      marks.forEach(m => { if (named.has(m.f) && hover !== m.f) dot(m, 1); });
+    }
     // The picked funder's museums get their own dots, drawn last (user, 17 Nov 2026: "museums lost its dots"). The page's
     // own dot for a space is a 3.5px ring 0.8px thick in its grade's colour, drawn before this layer, so the lines and the
     // paper halos of the names covered it (Anchorage, Banff) and an Unverified ring, olive on paper, barely showed (MALBA).
