@@ -1175,7 +1175,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=812"></script>
+  <script src="assets/institutions.js?v=820"></script>
   <script src="assets/money-ids.js?v=767"></script>
   <script>
 
@@ -7317,6 +7317,16 @@ return maplibregl$1;
         const placements = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
         const placedRects = [];
         const BUFFER = 6;
+        // The marks themselves are obstacles too: a name placed over another space's mark hides it. Each pin's mark is the
+        // middle of its 32px box; the label's own pin is skipped when that label is tried.
+        const pinMarks = [];
+        document.querySelectorAll('.custom-inst-pin').forEach(pin => {
+          if (pin.style.opacity === '0' || pin.offsetParent === null) return;
+          const pr = pin.getBoundingClientRect();
+          if (!pr.width) return;
+          const cx = (pr.left + pr.right) / 2, cy = (pr.top + pr.bottom) / 2, h = 13;
+          pinMarks.push({ pin, left: cx - h, right: cx + h, top: cy - h, bottom: cy + h });
+        });
 
         // Sort items so that the active/selected institution and Tier A institutions get priority
         labels.sort((a, b) => {
@@ -7349,7 +7359,11 @@ return maplibregl$1;
             };
 
             let collides = false;
-            for (const prev of placedRects) {
+            for (const m of pinMarks) {
+              if (m.pin === parentPin) continue;
+              if (!(testRect.right <= m.left || testRect.left >= m.right || testRect.bottom <= m.top || testRect.top >= m.bottom)) { collides = true; break; }
+            }
+            if (!collides) for (const prev of placedRects) {
               const overlapX = !(testRect.right <= prev.left || testRect.left >= prev.right);
               const overlapY = !(testRect.bottom <= prev.top || testRect.top >= prev.bottom);
               if (overlapX && overlapY) {
@@ -10740,11 +10754,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v815';
+    const ATLAS_RELEASE = 'culture-atlas-v820';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=812').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=820').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
