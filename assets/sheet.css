@@ -2277,6 +2277,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .inst-pin-label:hover,
 #cityMapContainer.street-poster .inst-pin-label:focus-visible,
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label{height:auto!important;padding:4px 9px 5px!important;gap:0!important;background:var(--wc-ink)!important;color:var(--wc-ground)!important;border:0!important;border-radius:7px!important;box-shadow:none!important}
+#cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{max-width:none!important;overflow:visible!important;text-overflow:clip!important;white-space:nowrap!important}
 #cityMapContainer.street-poster .inst-pin-label *,
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade{color:var(--wc-ground)!important}
 #cityMapContainer.street-poster .inst-pin-label .inst-pin-label-name{font-family:"Atlas Serif","Times New Roman",Times,"EB Garamond",serif!important;font-weight:400!important;font-size:15px!important;line-height:18px!important;letter-spacing:0!important}
