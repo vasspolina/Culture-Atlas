@@ -225,7 +225,7 @@
       group('hqConnSpaces', e.kind === 'org' ? 'Funds' : 'Named on', sp, spaceRow);
       if (e.kind === 'org') {
         group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
-        group('hqConnPeople', 'People the files tie to these museums', rel.people, r => officeRow(r.e, r.shared));
+        group('hqConnPeople', 'Named with these museums in the Epstein files', rel.people, r => officeRow(r.e, r.shared));
       }
     }
     if (rows.childElementCount) p.replaceChildren(head, rows); else p.replaceChildren(head);

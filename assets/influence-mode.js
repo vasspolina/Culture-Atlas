@@ -63,7 +63,7 @@
     silence: 'terms kept from the public, or work withdrawn',
     tax: 'a gift that cut its tax bill',
     licence: 'culture used to make its business look better',
-    money: 'money, with nothing said about what came back'
+    money: 'money alone'
   };
   // The order a ledger lists kinds: what was bought first, money alone last.
   const ORDER = ['name', 'seat', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
@@ -362,7 +362,7 @@
         const sub = links.map(({ t, l }) => `<li><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>: ${esc(l.text)}${l.source ? ` <a class="influence-meta" href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a>` : ''}</li>`).join('');
         return `<li><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a>${fig ? ` ${esc(fig)}` : ''}<ul class="influence-funders">${sub}</ul></li>`;
       }).join('');
-      say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)}: a company is shown only where a record ties its ${esc(M.noun)} to a museum in the atlas.</p>${items ? `<ul class="influence-funders">${items}</ul>` : `<p class="no-indent">No record does yet, so no company is shown. What each one spends in general is in its own record.</p>`}</div>`);
+      say(`<div class="influence-chat"><p class="no-indent">${esc(M.label)} at a museum${items ? '' : ': none'}.</p>${items ? `<ul class="influence-funders">${items}</ul>` : ''}</div>`);
       return;
     }
     const top = ranked.slice(0, 6).map(f => `<li><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a> ${esc(M.text(f))}</li>`).join('');
@@ -377,7 +377,7 @@
       Object.entries(MEASURES).forEach(([k, M]) => {
         const b = document.createElement('button');
         b.type = 'button'; b.className = cls; b.dataset.influenceMeasure = k; b.textContent = M.label;
-        b.title = k === 'culture' ? `Label each funder with ${M.what}` : `Show only where a record ties ${M.noun} to a museum`;
+        b.title = k === 'culture' ? `Label each funder with ${M.what}` : `${M.label} at a museum`;
         b.addEventListener('click', () => setMeasure(k));
         host.appendChild(b);
       });
@@ -651,7 +651,7 @@
     // spaces"; then, of "351 entries on 25 private funders, read by hand from the spaces' records": "this is a slop, delete
     // all the jargon"). The funders are on the map and each record says what it got, so the chat does not list them again.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and, where the records say, what its money bought.</p>
+<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and what its money bought.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -694,10 +694,10 @@
   let openFor = null;   // the funder whose record the ledger was asked for, so the ledger finds it even under another spelling
 
   // ---- The records ----
-  // Each line says how far it is checked (user, 17 Nov 2026: "check the entries against their source pages"): against a
-  // page it cites, partly (the page gives the tie but not one detail), or only against the museum's page in this atlas.
+  // Each line was checked against its source pages (user, 17 Nov 2026: "check the entries against their source pages"); the
+  // result stays in the data (check, checked_source) and is not printed: "Source checked" and "Not found on its sources yet"
+  // were notes on the research, not facts about the funder (user, 18 Nov 2026: "notes like founded not founded ... gone").
   // The link is the page that bears it out where there is one.
-  const checkWords = t => t.check === 'source' ? 'Source checked' : t.check === 'source-partly' ? `Source checked, except ${t.checked_missing || 'one detail'}` : '';
   const lineFor = (t, withSpace, withFunder) => {
     const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
@@ -706,7 +706,7 @@
     const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
 <p class="no-indent">${who || where ? `<span class="influence-who">${who || where}</span> ` : ''}${kinds ? `<span class="lead-in">${esc(kinds)}.</span> ` : ''}${esc(t.summary)}</p>
-<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', checkWords(t) ? `<span class="influence-check">${esc(checkWords(t))}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
+<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
 </li>`;
   };
   const row = (title, sub, inner, titleHtml) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${titleHtml || esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
@@ -775,7 +775,7 @@
     if (!a.kept.length && !told.length) return '';
     let inner = '';
     if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that dropped it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
-    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts from ${esc(a.first)} on, with no word that they ended.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
+    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts since ${esc(a.first)}.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
     if (told.length) inner += `<p class="no-indent"><span class="lead-in">What happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
     return row('When a museum said no', '', inner);
   }

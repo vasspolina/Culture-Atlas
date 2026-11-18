@@ -1393,7 +1393,7 @@
       function card(x, poster, alert) {
         const i = list.indexOf(x);
         const n = x.urls.length;
-        const src = SOURCE[x.who] || ['Source type not recorded', false];
+        const src = SOURCE[x.who] || [x.urls[0] ? String(x.urls[0]).replace(/^https?:\/\/(www\.)?/, '').split('/')[0] : '', false];
         // A reply printed in full is its own part; only its absence is a line in the facts.
         const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
         // Each fact is said once (user, 4 Nov 2026: "remove all repetition"). A leak's own dating (months) is kept when it says

@@ -10530,7 +10530,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v800';
+    const ATLAS_RELEASE = 'culture-atlas-v801';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -12988,7 +12988,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // What employees report on review sites and Reddit: a summary of the 127 paraphrased accounts the records carry
     // (Glassdoor, Kununu, Reddit; 58 institutions in eight countries), written 17 October 2026. Individual accounts, not findings.
     const EMPLOYEE_REPORT = [
-      'The records hold 127 paraphrased posts about working at 57 museums in Germany, the UK, France, the US, Spain and the Netherlands: 75 Glassdoor reviews, 15 on Kununu and 37 on Reddit. Each is one anonymous person\'s account, and none is verified.',
+      '127 paraphrased posts about working at 57 museums in Germany, the UK, France, the US, Spain and the Netherlands: 75 Glassdoor reviews, 15 on Kununu and 37 on Reddit. Each is one anonymous person\'s account.',
       'Praised: colleagues, the collection, free entry and talks, flexible hours, and union protection and benefits where there is a union. Health cover at the large New York museums comes up more than once.',
       'Reported against: pay below the cost of living in London, New York, Paris and Madrid; slow decisions and hierarchy, mostly at French and German public institutions; little chance of promotion and high turnover; casual or zero-hours front-of-house contracts; unpaid or barely paid internships; understaffing after layoffs.',
       'A few posts go further: favouritism, bullying, HR that took no action, payments months late, restructuring that removed outspoken staff, and unequal treatment of security staff at one museum.',
@@ -14105,9 +14105,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           ${vcs.length > 0 && vc ? critiqueRowHtml(inst, vc, vcs, vcIdx) : ''}
           ${window.critiqueGalleryRowHtml && window.critiqueGalleryRowHtml(inst) ? proseRows([proseRow('Artists’ images', '', [], { box: window.critiqueGalleryRowHtml(inst) })], 'Artists’ images') : ''}
 
-          ${isCommunity ? proseRows([proseRow('Sent in by a reader', 'Not checked yet', [
-            proseLi('', 'This item comes from a community submission. It is kept apart from the records and has not been checked against any source.'),
-            proseLi('Contributor:', escapeHtml(inst.contributor || 'not stated')),
+          ${isCommunity ? proseRows([proseRow('Sent in by a reader', '', [
+            inst.contributor ? proseLi('Contributor:', escapeHtml(inst.contributor)) : '',
             inst.sourceUrl ? `<li><a href="${escapeHtml(inst.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source link</a></li>` : '',
           ])], 'Sent in by a reader') : ''}
 
@@ -14255,11 +14254,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
       if (inst.funding) return { text: firstSentence(inst.funding), src: src(hosts(inst.sources), 1) };
       if (inst.watch) return { text: firstSentence(inst.watch), src: '' };
-      return { text: 'No funders on record.', src: '' };
+      return null;
     }
     function chatLineHtml(inst, gossip, same) {
       same = same || {};
-      const f = recordFact(inst, gossip) || { text: 'Reported items are on its record page.', src: '' };
+      const f = recordFact(inst, gossip) || { text: '', src: '' };
       const url = ownSiteUrl(inst), dom = hostOf(url);
       const site = dom ? ` (<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" class="ext-web-link">${escapeHtml(dom)}</a>)` : '';
       const g = !same.grade && inst.grade && GRADE[inst.grade] ? ` Grade ${gradeLetter(inst.grade)}.` : '';
@@ -14268,7 +14267,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // A grade D or F line states the funder that set the grade too, when the reported item is about something else.
       const why = String(inst.why_flagged || '').trim();
       if (gossip && inst.grade >= 4 && why && why.length <= 200 && !text.includes(why.slice(0, 40))) text = `${proseEnd(why)} ${text}`;
-      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>${same.place ? '' : ' in ' + escapeHtml(placeLabel(inst))}${site}. ${escapeHtml(text)}${f.src ? ' ' + f.src : ''}${g}</p>`;
+      return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(inst.name)}">${escapeHtml(inst.name)}</a>${same.place ? '' : ' in ' + escapeHtml(placeLabel(inst))}${site}.${text ? ' ' + escapeHtml(text) : ''}${f.src ? ' ' + f.src : ''}${g}</p>`;
     }
     // What every line of a list would repeat: the place, when all its spaces share one and the list's title names it, and the grade,
     // when all share one and the title says it. Each line then gives only what is its own (user, 5 Nov 2026: too much text). A list
@@ -14854,7 +14853,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             <div class="p-2_5 flex items-center justify-between gap-2 flex-wrap">
               <div class="min-w-_180px">
                 <strong class="block">${escapeHtml(inst.name)}</strong>
-                <span class="meta">${escapeHtml(inst.city)}, ${escapeHtml(inst.country)}, ${escapeHtml(fd.budget_tier || 'not stated')}</span>
+                <span class="meta">${escapeHtml(inst.city)}, ${escapeHtml(inst.country)}${fd.budget_tier ? ', ' + escapeHtml(fd.budget_tier) : ''}</span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="text-right meta">
@@ -17137,7 +17136,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const countA = ALL_INSTITUTIONS.filter(i => i.tier === 'A').length;
       const countB = ALL_INSTITUTIONS.filter(i => i.tier === 'B').length;
       const countU = ALL_INSTITUTIONS.filter(i => i.tier !== 'A' && i.tier !== 'B').length;
-      const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I only answer from this atlas: who funds a museum, what has been reported about it, opening hours and prices where we have them, and the sources.</p><p>${countA} museums have a source outside the museum, ${countB} are flagged, with the reason, and ${countU} are not checked yet.</p>`);
+      const guidance = () => answer(`<p>Ask about a museum by name, or about a city or a country. I only answer from this atlas: who funds a museum, what has been reported about it, opening hours and prices, and the sources.</p><p>${countA} museums have a source outside the museum, ${countB} are flagged, with the reason, and ${countU} are not checked yet.</p>`);
       const listOf = (items, title, gossip) => {
         if (!items.length) { answer('<p>None found.</p>', undefined, false); return; }
         const st = { items, gossip: !!gossip, offset: 0, title };
@@ -17369,7 +17368,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           focus(target);
           const recordContext = target.why_flagged || target.watch;
           const hasTheory = (target.visual_critiques || []).some(v => v.kind === 'theory');
-          answer(`<p>${formatInstLink(target)}: this atlas has no critics, reviews or controversies for it. ${hasTheory ? 'Critics have written about museums like this one. The quotes below are about that kind of museum, not about this one.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p><strong>Recorded context:</strong> ${escapeHtml(recordContext)} This is institutional context from the record, not evidence of critical reception.</p>` : ''}${sourcesHtml(target)}`);
+          answer(`<p>${formatInstLink(target)}.${hasTheory ? ' Critics have written about museums like this one. The quotes below are about that kind of museum, not about this one.' : ''}</p>${(target.visual_critiques || []).filter(v => v.kind === 'theory').map(v => (v.quotes || []).map(critiqueQuoteHtml).join('')).join('')}${recordContext ? `<p>${escapeHtml(recordContext)}</p>` : ''}${sourcesHtml(target)}`);
           return;
         }
         if (place) {
@@ -17445,10 +17444,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
       if (!explicit && asks(/epstein/)) {
         const here = ALL_INSTITUTIONS.filter(i => ((i.epstein_records || []).length || (i.flags || []).includes('Epstein-linked')) && inScope(i, place));
-        listOf(here, `Museums${pl ? ' in ' + escapeHtml(pl) : ''} linked to Epstein. Each link is on the museum’s page with its sources; none has been checked independently:`, true);
+        listOf(here, `Museums${pl ? ' in ' + escapeHtml(pl) : ''} linked to Epstein.:`, true);
         return;
       }
-      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Museums named in a WikiLeaks document. Each is on the museum’s page with its source; none has been checked independently:', true); return; }
+      if (!explicit && asks(/wikileaks|cablegate|embassy cable/)) { listOf(ALL_INSTITUTIONS.filter(i => (i.wikileaks_records || []).length), 'Museums named in a WikiLeaks document:', true); return; }
       // A named funder: the spaces whose records link it (funder_links), the same names the Funding block shows on each record.
       if (!explicit && asks(/\b(fund|funds|funded|funding|funder|back|backs|backed|sponsor|sponsors|sponsored|give|gives|money|connect|connects|pay|pays)\b/)) {
         const funders = {};
@@ -17548,11 +17547,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         focus(target);
         const lines = [fact('Opening hours: ', target.opening_hours), fact('Admission: ', target.admission_fee || target.admission_policy), fact('Address: ', target.address)].join('');
         const page = target.visit_url || target.website;
-        answer(`<p>${formatInstLink(target)}.</p>${lines || '<p>The atlas has no opening hours, prices or address for this museum.</p>'}${page ? `<p class="no-indent">The museum’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
+        answer(`<p>${formatInstLink(target)}.</p>${lines || (page ? '' : '<p>No opening hours, prices or address for this museum.</p>')}${page ? `<p class="no-indent">The museum’s own page: <a href="${escapeHtml(page)}" target="_blank" rel="noopener noreferrer">${escapeHtml(page.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''))}</a></p>` : ''}${sourcesHtml(target)}`);
         return;
       }
       if (isGossipModeActive && !target && !inPlace) {
-        listOf([...ALL_INSTITUTIONS].sort((a, b) => gossipItems(b, true).length - gossipItems(a, true).length).filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Museums people are talking about, the most talked about first. None of it is checked unless it says confirmed or settled:', true);
+        listOf([...ALL_INSTITUTIONS].sort((a, b) => gossipItems(b, true).length - gossipItems(a, true).length).filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Museums people are talking about, the most talked about first:', true);
         return;
       }
       // "How does X fund <space>?" (the money map asks it of each funder name) is a funding question too; it fell through to
@@ -17590,7 +17589,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // is corrected rather than answered.
         const onRecord = askedFunder && (new RegExp('\\b' + askedFunder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(target.funding || '') || shared.some(f => f.funder.toLowerCase() === askedFunder.toLowerCase()));
         const absent = askedFunder && !onRecord ? `<p>The atlas does not list ${escapeHtml(askedFunder)} as a funder of ${escapeHtml(target.name)}.</p>` : '';
-        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>The atlas has no funding details for this museum yet.</p>'}${governanceHtml(target, askedGovernance)}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${gossipAsideHtml(target)}${sourcesHtml(target)}`);
+        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>No funding details for this museum.</p>'}${governanceHtml(target, askedGovernance)}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${gossipAsideHtml(target)}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
@@ -21945,10 +21944,10 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=800"></script>
-<script src="assets/influence-mode.js?v=799"></script>
+<script src="assets/hq-detail.js?v=801"></script>
+<script src="assets/influence-mode.js?v=801"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=800"></script>
+<script src="assets/phone-maps.js?v=801"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
 <script src="assets/tab-suggest.js?v=788"></script>
