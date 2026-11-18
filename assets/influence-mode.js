@@ -180,7 +180,25 @@
     fan = new Map();
     const byCity = new Map();
     DATA.funders.filter(f => f.hq).forEach(f => { const k = f.hq.lat.toFixed(1) + ',' + f.hq.lon.toFixed(1); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(f); });
-    byCity.forEach(list => list.forEach((f, i) => { const a = -Math.PI / 2 + i * 2.39996, rr = i === 0 ? 0 : 18 + 6 * Math.sqrt(i); fan.set(f, { dx: Math.cos(a) * rr, dy: Math.sin(a) * rr }); }));
+    // The widest-reaching funder sits on the office and the rest spiral out from it in order of reach, so the big names
+    // stay nearest their city. Only the place in the spiral is kept here; spread() turns it into pixels at the map's zoom.
+    byCity.forEach(list => {
+      list.sort((a, b) => cultureSpaces(b) - cultureSpaces(a));
+      const outer = list.length > 1 ? 18 + 6 * Math.sqrt(list.length - 1) : 0;
+      list.forEach((f, i) => fan.set(f, { a: -Math.PI / 2 + i * 2.39996, rr: i === 0 ? 0 : 18 + 6 * Math.sqrt(i), outer }));
+    });
+  }
+  // A city's spiral, in pixels, at a globe radius of r. Its natural spacing (18px out, then 6 times the root of the place)
+  // took New York's several hundred funders some 120px out over the Atlantic at world zoom, a cloud of dots at sea that
+  // read as places (user, 18 Nov 2026: "keep working on it", then "there are dots in the ocean"). So the spiral keeps its
+  // shape but its outer edge is held to a twenty-fourth of the globe's radius, about 15px at world zoom (never under 10px):
+  // New York packs into a clump over the city, which is what that much money looks like, a coastal city's few funders stay
+  // on its coast (at a twelfth, Los Angeles and San Francisco still spilled into the Pacific), and every spiral opens back
+  // out to the natural spacing as the map is zoomed in, where each dot can be pointed at again.
+  function spread(o, r) {
+    if (!o || !o.rr) return { dx: 0, dy: 0 };
+    const k = Math.min(1, Math.max(10, r / 24) / o.outer), d = o.rr * k;
+    return { dx: Math.cos(o.a) * d, dy: Math.sin(o.a) * d };
   }
   // A great-circle path from the office to a space, cut where it goes behind the globe.
   function arc(ctx, project, r, cx, cy, a, b) {
@@ -437,7 +455,7 @@
       const linked = shown(f);
       if (!linked && picked !== f) return;
       const pt = project(f.hq.lon, f.hq.lat, r, cx, cy); if (!pt.front) return;
-      const o = fan.get(f) || { dx: 0, dy: 0 }, x = pt.x + o.dx, y = pt.y + o.dy;
+      const o = spread(fan.get(f), r), x = pt.x + o.dx, y = pt.y + o.dy;
       const v = linked ? M.value(f) : null;
       // Culture keeps its old scale, capped so Bloomberg's 80 spaces do not cover New York; a money measure is scaled to the
       // largest figure on the map, by area. No figure: a small hollow dot.
