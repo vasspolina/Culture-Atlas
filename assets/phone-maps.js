@@ -1393,7 +1393,7 @@
       function card(x, poster, alert) {
         const i = list.indexOf(x);
         const n = x.urls.length;
-        const src = SOURCE[x.who] || ['Source type not recorded', false];
+        const src = SOURCE[x.who] || [x.urls[0] ? String(x.urls[0]).replace(/^https?:\/\/(www\.)?/, '').split('/')[0] : '', false];
         // A reply printed in full is its own part; only its absence is a line in the facts.
         const hasReply = x.type === 'gossip' && x.reply && !/^no reply/i.test(x.reply);
         // Each fact is said once (user, 4 Nov 2026: "remove all repetition"). A leak's own dating (months) is kept when it says
@@ -1461,8 +1461,7 @@
         // What the feed holds, and the rule for an alert, are said once, at the foot, in the same ink as the rest.
         const about = (gossipOn()
             ? 'Gossip mode is on, so rumours and denials are shown too.'
-            : 'Confirmed news only. Turn on Gossip mode to see rumours.')
-          + ' Each item links to its source.';
+            : 'Confirmed news only. Turn on Gossip mode to see rumours.');
         const alertRule = 'Alerts are protests, strikes, disputes and allegations from the last ' + ALERT_DAYS + ' days that are still open.';
         // The close is the record's big thin cross, two 1.1px lines on a paper square with no circle (user, 7 Nov 2026: "make proper
         // cross like big one with no outline"). It sits before the head in a sticky holder of no height, so the head scrolls away with
