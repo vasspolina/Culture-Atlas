@@ -4862,7 +4862,7 @@
   "drop": true,
   "why": "Same tie as the $10.25 million entry."
  },
- "_about_batch4": "Batch 4 (17 Nov 2026), private money that is not a company's (user: \"add private funders not only corporations, like hedge funds etc\"): hedge fund and private equity fortunes (Leon Black of Apollo, Steven Cohen of Point72, Glenn Dubin of Highbridge, Stephen Schwarzman of Blackstone, John Paulson, David Harding's Winton, KKR and the Kravis family, the Soros family and Open Society Foundations, Warren Kanders) and Russian billionaires whose own money the records tie to a space (Roman Abramovich, Vladimir Potanin, Leonid Mikhelson and V-A-C, Viktor Vekselberg). Dropped: namesakes (the artist Steven Cohen, the Anschutz executive Steve Cohen, an Apollo Asia executive), Jeffrey and Peter Soros of another branch of the family, sanctions and fines given as background, unverified accusations, a shareholding in a sponsor, and sentences about another space (Potanin at the Guggenheim and the Pompidou, V-A-C in Venice); a seat on MoMA's board is kept at MoMA, not at PS1. Every entry is checked against the record text (check \"record\"), not yet against its source pages. Mercer and BlackRock have patterns but no kept entry yet.",
+ "_about_batch4": "Batch 4 (17 Nov 2026), private money that is not a company's (user: \"add private funders not only corporations, like hedge funds etc\"): hedge fund and private equity fortunes (Leon Black of Apollo, Steven Cohen of Point72, Glenn Dubin of Highbridge, Stephen Schwarzman of Blackstone, John Paulson, David Harding's Winton, KKR and the Kravis family, the Soros family and Open Society Foundations, Warren Kanders) and Russian billionaires whose own money the records tie to a space (Roman Abramovich, Vladimir Potanin, Leonid Mikhelson and V-A-C, Viktor Vekselberg). Dropped: namesakes (the artist Steven Cohen, the Anschutz executive Steve Cohen, an Apollo Asia executive), Jeffrey and Peter Soros of another branch of the family, sanctions and fines given as background, unverified accusations, a shareholding in a sponsor, and sentences about another space (Potanin at the Guggenheim and the Pompidou, V-A-C in Venice); a seat on MoMA's board is kept at MoMA, not at PS1. Checked against its source pages on 17 Nov 2026, under the rules in _about_checks: 42 source checked, 12 partly, 5 not found on their pages (behind pages that refuse an automated reader, a bad certificate, or a donor list without names in text). Mercer and BlackRock have patterns but no kept entry yet.",
  "4053f363ef": {
   "drop": "a shareholding in the sponsor EDP, not a tie to the space"
  },
@@ -4877,16 +4877,23 @@
    "money"
   ],
   "summary": "Eva and Glenn Dubin are listed among PS1 Benefactors in MoMA's 2023-24 report; he is a MoMA trustee.",
-  "check": "record",
-  "date": "2023"
+  "check": "source",
+  "date": "2023",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2024_Annual_Report.pdf",
+  "checked_quote": "MoMA PS1 Donors ... Benefactors The Coby Foundation The Contemporary Arts Council of The Museum of Modern Art Paula H. Crown David Dechman and Michel Mercure Eva and Glenn Dubin"
  },
  "f0f9e402a7": {
   "kinds": [
    "money"
   ],
   "summary": "The Kanderses gave $50,000 to $99,000 in 2017-18, per the museum's donor list.",
-  "check": "record",
-  "date": "2017"
+  "check": "source-partly",
+  "date": "2017",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2019/08/06/mega-collectors-raise-dollar23m-at-aspen-art-museums-annual-artcrush-benefit",
+  "checked_quote": "The Kanderses gave the museum a cash gift between $50,000 and $99,000, according to the museum’s donor acknowledgements",
+  "checked_missing": "the year, 2017-18"
  },
  "316b67d420": {
   "drop": "background on the funder, not a tie to this space"
@@ -4899,10 +4906,13 @@
    "seat"
   ],
   "summary": "A trustee and vice chair; a scholars' and artists' letter over his Safariland ties called for him to go, and he resigned on 25 July 2019.",
-  "check": "record",
+  "check": "source",
   "ended": true,
   "protest": true,
-  "date": "2019-07-25"
+  "date": "2019-07-25",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2019/07/25/whitney-museum-vice-chairman-warren-kanders-steps-down-after-months-of-protests",
+  "checked_quote": "Warren Kanders ... has stepped down as vice chairman"
  },
  "586aa3ca5e": {
   "drop": "the same tie as another kept entry for this space"
@@ -4918,30 +4928,46 @@
    "access"
   ],
   "summary": "Henry and Marie-Josée Kravis were among the lead sponsors of the 2025 BMA Ball, which raised over $1.1 million.",
-  "check": "record",
-  "date": "2025-11"
+  "check": "source",
+  "date": "2025-11",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://artbmadevsite.org/wp-content/uploads/2026/03/NEWSRELEASE_Recap_2025_BMA_Ball_and_After_Party_final2.pdf",
+  "checked_quote": "Lead sponsors for the 2025 BMA Ball were Michael Arougheti, Henry and Marie-Josée Kravis"
  },
  "8b3da3a065": {
   "kinds": [
    "seat"
   ],
   "summary": "Marie-Josée Kravis, then MoMA's board chair, sits on the PS1 board ex officio.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.moma.org/momaorg/shared/pdfs/docs/about/MoMA_2024_Annual_Report.pdf",
+  "checked_quote": "Board of Directors of MoMA PS1 ... Ex Officio ... Marie-Josée Kravis Chair, Board of Trustees, The Museum of Modern Art"
  },
  "cd5c0a42ef": {
   "kinds": [
    "seat"
   ],
   "summary": "Marie-Josée Kravis chaired the board; climate protesters targeted her family firm's fossil fuel investments.",
-  "check": "record",
-  "protest": true
+  "check": "source",
+  "protest": true,
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2025/03/28/moma-next-director-christophe-cherix-succeeding-glenn-lowry",
+  "checked_quote": "Kravis’s appointment as Black’s successor has also prompted a series of protests due to her and her husband’s investments in the oil and gas industry.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.theartnewspaper.com/2025/03/28/moma-next-director-christophe-cherix-succeeding-glenn-lowry"
+  ]
  },
  "ccd3919986": {
   "kinds": [],
   "summary": "KKR bought the festival's owner, Superstruct, in 2024; more than 70 artists signed a letter and dozens withdrew in 2025 over its Israel investments. Sónar says no festival money goes to KKR.",
-  "check": "record",
+  "check": "source",
   "protest": true,
-  "date": "2025"
+  "date": "2025",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.catalannews.com/culture/item/arca-and-rone-x-lahorde-cancel-sonar-show-over-ties-to-israeli-investment-fund",
+  "checked_quote": "Sónar has publicly distanced itself from KKR, stating that it has no direct relationship with the fund ... \"not a single euro\" of the festival's revenue goes to KKR"
  },
  "1476c1e142": {
   "drop": "the same tie as another kept entry for this space"
@@ -4969,16 +4995,22 @@
    "money"
   ],
   "summary": "Gave $250,000 for the arts, about 18 months after Epstein introduced him to Bard in December 2012.",
-  "check": "record",
-  "date": "2014"
+  "check": "source",
+  "date": "2014",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.wamc.org/news/2026-02-10/bard-college-presidents-letter-to-college-explains-his-relationship-to-epstein",
+  "checked_quote": "This fundraising trip resulted in a $250,000 gift from Leon Black in support of the arts at Bard approximately 18 months later."
  },
  "6ecd5734c1": {
   "kinds": [
    "building"
   ],
   "summary": "The Debra and Leon Black Family Foundation gave $48 million in 2012 to build the centre.",
-  "check": "record",
-  "date": "2012"
+  "check": "source",
+  "date": "2012",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.thedartmouth.com/article/2012/03/black-contributes-48-million-to-vac",
+  "checked_quote": "The College's new Visual Arts Center will be renamed in honor of Debra and Leon Black '73, who donated $48 million to fund its construction."
  },
  "88ddf860b8": {
   "kinds": [
@@ -4986,7 +5018,11 @@
    "seat"
   ],
   "summary": "The centre carries the Black family name; Leon Black, founder of Apollo, was a Dartmouth trustee from 2002 to 2011.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://thedartmouth.com/article/2026/06/students-rally-outside-bvac-call-for-college-to-rename-building",
+  "checked_quote": "to remove eponymous alumnus and former trustee Leon Black '73's name from the building",
+  "checked_missing": "the years of his trusteeship, 2002 to 2011"
  },
  "deaf35eddf": {
   "drop": "background on the funder, not a tie to this space"
@@ -5008,25 +5044,39 @@
    "seat"
   ],
   "summary": "Stepped back as chair amid scrutiny of his Epstein ties and still sits on the board, as of March 2025.",
-  "check": "record",
-  "date": "2025-03"
+  "check": "source",
+  "date": "2025-03",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2025/03/28/moma-next-director-christophe-cherix-succeeding-glenn-lowry",
+  "checked_quote": "after Black opted not to seek re-election as board chair, he was accused of rape in multiple lawsuits. (Black still serves as a trustee of the museum.)",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.theartnewspaper.com/2025/03/28/moma-next-director-christophe-cherix-succeeding-glenn-lowry"
+  ]
  },
  "41eaff899f": {
   "kinds": [
    "seat"
   ],
   "summary": "Still a trustee after his payments to Epstein; trustees were named in Strike MoMA and the 2024 sit-in.",
-  "check": "record",
+  "check": "source-partly",
   "protest": true,
-  "date": "2024"
+  "date": "2024",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
+  "checked_quote": "US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein",
+  "checked_missing": "that trustees were named in Strike MoMA and the 2024 sit-in"
  },
  "84eff3e900": {
   "kinds": [
    "programme"
   ],
   "summary": "Lent Van Gogh's \"Quarry near Saint-Rémy\" to the 2014 show \"Van Gogh/Artaud\".",
-  "check": "record",
-  "date": "2014"
+  "check": "source",
+  "date": "2014",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2026/02/13/epstein-papers-reveal-leon-black-as-key-collector-of-van-gogh-works",
+  "checked_quote": "In 2014 Black lent the landscape to the Musée d’Orsay in Paris, for its exhibition Van Gogh/Artaud: Le Suicidé de la Société."
  },
  "46ca45965b": {
   "drop": "the same tie as another kept entry for this space"
@@ -5037,14 +5087,18 @@
   ],
   "summary": "A 2013 joint purchase with the Neue Galerie, which sold five works for $19 million, and a joint Schwitters purchase for $25 million in 2014.",
   "check": "record",
-  "date": "2013"
+  "date": "2013",
+  "checked_on": "2026-11-17"
  },
  "7b98050342": {
   "kinds": [
    "programme"
   ],
   "summary": "A gift to Elisa New, brokered by Epstein and not disclosed by Harvard; no page gives its amount or date.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.thecrimson.com/article/2025/12/12/poetry-show-pulled/",
+  "checked_quote": "a donation of an unspecified amount of money to New from Leon D. Black, an executive at private equity behemoth Apollo, brokered by Epstein"
  },
  "f31ea66ebf": {
   "drop": "the same tie as another kept entry for this space"
@@ -5066,8 +5120,11 @@
    "building"
   ],
   "summary": "His V-A-C Foundation built GES-2, at a cost put at around $300 million in 2018, a figure he said in 2019 had doubled.",
-  "check": "record",
-  "date": "2018"
+  "check": "source",
+  "date": "2018",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2021/12/03/moscows-ges-2-house-of-culture-raises-curtain-with-soap-opera-drama",
+  "checked_quote": "In 2018, Mavica had put the cost of GES-2 at around $300m. At a 2019 news conference, Mikhelson would say only that \"the frightening figure in my mind has doubled\""
  },
  "91d135b798": {
   "kinds": [
@@ -5075,8 +5132,12 @@
    "programme"
   ],
   "summary": "The Moscow venue of the V-A-C Foundation, which he founded in 2009; he transferred GES-2 to his daughter in 2023.",
-  "check": "record",
-  "date": "2009"
+  "check": "source-partly",
+  "date": "2009",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://v-a-c.org/en/about",
+  "checked_quote": "V–A–C was established in Moscow in 2009 by Leonid Mikhelson.",
+  "checked_missing": "the transfer of GES-2 to his daughter in 2023"
  },
  "a372a4abfb": {
   "drop": "the same tie as another kept entry for this space"
@@ -5104,16 +5165,22 @@
    "silence"
   ],
   "summary": "After the 2022 invasion V-A-C's artistic director and music curator resigned and Ragnar Kjartansson withdrew his launch show.",
-  "check": "record",
+  "check": "source",
   "protest": true,
-  "date": "2022"
+  "date": "2022",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2022/10/19/moscows-ges-2-house-of-culture-the-rise-and-fall-of-russian-billionaires-huge-new-art-hub",
+  "checked_quote": "Francesco Manacorda, V-A-C Foundation’s artistic director, resigned in March, citing the war ... Kjartansson pulled the plug on the project and his affiliation with GES-2 following the invasion of Ukraine"
  },
  "8d388b216b": {
   "kinds": [
    "money"
   ],
   "summary": "The V-A-C Foundation is still listed among its funders.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.muhka.be/en/your-support-is-crucial/partners-of-m-hka/",
+  "checked_quote": "Our partners Structural partners Media partners Foundations ... V-A-C"
  },
  "87d1d6baea": {
   "kinds": [
@@ -5121,7 +5188,8 @@
   ],
   "summary": "Novatek, the gas producer he runs, paid for the renovation before the 2021 Architecture Biennale.",
   "check": "record",
-  "date": "2021"
+  "date": "2021",
+  "checked_on": "2026-11-17"
  },
  "20a63bf642": {
   "drop": "unverified, a claim by Ukraine's culture ministry"
@@ -5131,7 +5199,10 @@
    "programme"
   ],
   "summary": "A private patron, for exhibition projects in Samara; no amounts or years given.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://partners.tretyakov.ru/partners",
+  "checked_quote": "Михельсон Леонид Викторович – поддержка выставочных проектов Третьяковской галереи в Самаре"
  },
  "08c2921f5f": {
   "drop": "the same tie as another kept entry for this space"
@@ -5141,8 +5212,11 @@
    "building"
   ],
   "summary": "Founded in 2005 and owned by Mikhelson.",
-  "check": "record",
-  "date": "2005"
+  "check": "source",
+  "date": "2005",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+  "checked_quote": "В 2005 году в Самаре открыла двери художественная галерея «Виктория». Она была основана предпринимателем из Новокуйбышевска Леонидом Михельсоном"
  },
  "316b735f04": {
   "drop": "background on the funder, not a tie to this space"
@@ -5155,7 +5229,10 @@
    "name"
   ],
   "summary": "Named for his daughter Victoria.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.kommersant.ru/doc/8497660",
+  "checked_quote": "Все художественные структуры, которыми владеет третий номер российского Forbes Леонид Михельсон, связаны с именем его дочери"
  },
  "918a298b17": {
   "drop": "the same tie as another kept entry for this space"
@@ -5168,14 +5245,16 @@
    "money"
   ],
   "summary": "Open Society Foundations is a core funder.",
-  "check": "record"
+  "check": "record",
+  "checked_on": "2026-11-17"
  },
  "e27b65c833": {
   "kinds": [
    "money"
   ],
   "summary": "Open Society Foundations is among the sponsors and partners whose logos the space shows.",
-  "check": "record"
+  "check": "record",
+  "checked_on": "2026-11-17"
  },
  "884788f9a4": {
   "drop": "an unverified accusation by the Turkish state, not a stated tie"
@@ -5188,8 +5267,12 @@
    "building"
   ],
   "summary": "Open Society Foundations gave $100 million from 2020, $10 million a year, and George Soros a $500 million endowment challenge grant in 2021.",
-  "check": "record",
-  "date": "2020"
+  "check": "source-partly",
+  "date": "2020",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://en.wikipedia.org/wiki/Bard_College",
+  "checked_quote": "the college received a US$100 million gift from the Open Society Foundations ... In April 2021, Bard received a $500 million endowment challenge grant from George Soros.",
+  "checked_missing": "a source beyond Wikipedia"
  },
  "326ad9bc4b": {
   "drop": "an unverified accusation by the Turkish state, not a stated tie"
@@ -5202,9 +5285,12 @@
    "money"
   ],
   "summary": "Open Society Foundations was its main funder for 29 years and paid a final grant in 2024.",
-  "check": "record",
+  "check": "source",
   "ended": true,
-  "date": "2024"
+  "date": "2024",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://fokal.org/wp-content/uploads/2026/01/Annual-report-2024_web.pdf",
+  "checked_quote": "In 2024 the Open Society Foundations gave FOKAL its last grant. After 29 years of generous support"
  },
  "a13e8c7ef1": {
   "drop": "the same tie as another kept entry for this space"
@@ -5217,7 +5303,10 @@
    "name"
   ],
   "summary": "Named in the Circle of Major Patrons.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.fondation-zinsou.org/mecenes",
+  "checked_quote": "Circle of Major Patrons ... Open Society Foundations"
  },
  "2b8d276c3c": {
   "drop": "the same tie as another kept entry for this space"
@@ -5227,15 +5316,21 @@
    "programme"
   ],
   "summary": "A sponsor of the 36th Bienal, 2025.",
-  "check": "record",
-  "date": "2025"
+  "check": "source",
+  "date": "2025",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://timesbrasil.com.br/colunas/felipe-machado/bienal-ibirapuera-participantes-apoio-empresas/",
+  "checked_quote": "Entre outras empresas que apoiam a Fundação Bienal de São Paulo estão Motiva, Open Society Foundations, Alupar, Iguatemi e Rolex."
  },
  "af9930d57d": {
   "kinds": [
    "building"
   ],
   "summary": "Jamie and Robert Soros are named donors to the campaign.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://hammer.ucla.edu/museum-transformation/capital-campaign",
+  "checked_quote": "Jamie and Robert Soros"
  },
  "64d5c6a897": {
   "drop": "a director's remark about Soros, not a tie"
@@ -5248,22 +5343,36 @@
    "building"
   ],
   "summary": "Among the funders of about $20 million raised by November 2024 towards the campus.",
-  "check": "record",
-  "date": "2024"
+  "check": "source",
+  "date": "2024",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2024/11/01/benin-city-museum-opens-first-part-of-planned-campus",
+  "checked_quote": "So far, MOWAA has raised about $20m from sponsors including ... Open Society Foundation and the Ford Foundation.",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://www.theartnewspaper.com/2024/11/01/benin-city-museum-opens-first-part-of-planned-campus"
+  ]
  },
  "1977d156f3": {
   "kinds": [
    "money"
   ],
   "summary": "Thanked by Riwaq among its funding partners.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.riwaq.org/page/9",
+  "checked_quote": "Open Society Foundation"
  },
  "982ba77d1a": {
   "kinds": [
    "seat"
   ],
   "summary": "Robert Soros, George Soros's son, chairs the board.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://thekitchen.org/about/",
+  "checked_quote": "Board of Directors Robert Soros Chairperson",
+  "checked_missing": "that he is George Soros's son"
  },
  "31a2a2de0e": {
   "drop": "the same tie as another kept entry for this space"
@@ -5273,30 +5382,46 @@
    "money"
   ],
   "summary": "The Arts Council of Mongolia, which runs the festival, was set up in 2002 with support from the Soros foundation in Mongolia.",
-  "check": "record",
-  "date": "2002"
+  "check": "source",
+  "date": "2002",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://culture360.asef.org/news-events/arts-council-mongolia-celebrates-15th-anniversary",
+  "checked_quote": "Arts Council of Mongolia (ACM) is an arts and culture NGO, established by Mongolian arts, civic, and business leaders in 2002 with the support of the Mongolian Foundation for an Open Society (Soros Foundation).",
+  "checked_beyond_record": true,
+  "extra_sources": [
+   "https://culture360.asef.org/news-events/arts-council-mongolia-celebrates-15th-anniversary"
+  ]
  },
  "1b4821d6a4": {
   "kinds": [
    "programme"
   ],
   "summary": "The Paulson Family Foundation was a platinum sponsor.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://museoarteponce.org/apoyanos/patrocinadores/",
+  "checked_quote": "Patrocinador Platino: Condado Vanderbilt Hotel Emilio Olabarrieta- Event Atelier Paulson Family Foundation"
  },
  "e83546f400": {
   "kinds": [
    "building"
   ],
   "summary": "$15 million in 2021 for the 90th anniversary, to upgrade the main building and for the endowment.",
-  "check": "record",
-  "date": "2021"
+  "check": "source",
+  "date": "2021",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://tamuseum.org.il/en/paulson-family-foundation-donation/",
+  "checked_quote": "PAULSON FAMILY FOUNDATION DONATES $15 MILLION TO TEL AVIV MUSEUM OF ART IN CELEBRATION OF ITS 90TH ANNIVERSARY ... Creating Endowment"
  },
  "8698e3ea45": {
   "kinds": [
    "name"
   ],
   "summary": "The main building is named the Paulson Family Foundation Building.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://tamuseum.org.il/en/about/buildings-and-architecture/the-main-building/",
+  "checked_quote": "Paulson Family Foundation Building"
  },
  "c6fb783604": {
   "drop": "the same tie as another kept entry for this space"
@@ -5312,7 +5437,10 @@
    "money"
   ],
   "summary": "The Steven & Alexandra Cohen Foundation is a named funder.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://thealdrich.org/support/our-supporters",
+  "checked_quote": "Steven & Alexandra Cohen Foundation"
  },
  "3416b71f19": {
   "drop": "the artist Steven Cohen, not the financier"
@@ -5328,9 +5456,11 @@
    "seat"
   ],
   "summary": "A trustee until the 2026-27 board roster, which omits him.",
-  "check": "record",
+  "check": "source",
   "ended": true,
-  "date": "2026"
+  "date": "2026",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.moca.org/moca-board-of-trustees"
  },
  "10802fea7f": {
   "drop": "the tie is Garage's, kept in Garage's ledger"
@@ -5343,17 +5473,24 @@
    "money"
   ],
   "summary": "Named first among private donors to the endowment for 2018 to 2023, and absent from the 2024 to 2026 list.",
-  "check": "record",
+  "check": "source",
   "ended": true,
-  "date": "2018"
+  "date": "2018",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://endowment.garagemca.org/en/donors",
+  "checked_quote": "2018-2023 Private donors Corporate donors Roman Abramovich Ruslan Isakov ..."
  },
  "376226df17": {
   "kinds": [
    "name"
   ],
   "summary": "Founded the museum with Dasha Zhukova in 2008, as a project of their IRIS Foundation.",
-  "check": "record",
-  "date": "2008"
+  "check": "source-partly",
+  "date": "2008",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2025/07/14/amid-cracks-down-on-dissent-russias-beleaguered-private-museums-fight-to-survive",
+  "checked_quote": "the Garage Museum of Contemporary Art, founded by Roman Abramovich and Dasha Zhukova, opened in Moscow in 2008",
+  "checked_missing": "that it is a project of their IRIS Foundation"
  },
  "1dd5aef27c": {
   "drop": "the same tie as another kept entry for this space"
@@ -5366,8 +5503,11 @@
    "building"
   ],
   "summary": "A US embassy cable says he paid to build the Bakhmetevsky garage space, Garage's home from 2008.",
-  "check": "record",
-  "date": "2008-09"
+  "check": "source",
+  "date": "2008-09",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://wikileaks.org/plusd/cables/08MOSCOW2700_a.html",
+  "checked_quote": "Abramovich also financed the construction of the museum's exposition center as a gift for his fiancee, Darya Zhukova ... incorporating the architecturally-unique Bakhmetev garage"
  },
  "0d003c66f9": {
   "drop": "the cable is about the Jewish Museum, kept there"
@@ -5380,7 +5520,11 @@
    "building"
   ],
   "summary": "A founding donor of the museum, opened in 2012.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://en.wikipedia.org/wiki/Jewish_Museum_and_Tolerance_Center",
+  "checked_quote": "In 2012, thanks to funding from oligarchs like Roman Abramovich and Viktor Vekselberg",
+  "checked_missing": "a source beyond Wikipedia"
  },
  "5e4c3ca984": {
   "kinds": [
@@ -5388,8 +5532,11 @@
    "building"
   ],
   "summary": "A co-founder of the endowment, which raised $4.5 million at one gala dinner in February 2014.",
-  "check": "record",
-  "date": "2014-02"
+  "check": "source",
+  "date": "2014-02",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.kommersant.ru/doc/2400953",
+  "checked_quote": "За один вечер благотворители собрали $4,5 млн ... Соучредителями эндаумент-фонда стали Виктор Вексельберг, Леонард Блаватник, Роман Абрамович"
  },
  "6b7f4dcf05": {
   "drop": "the same tie as another kept entry for this space"
@@ -5406,15 +5553,22 @@
    "licence"
   ],
   "summary": "His company Millhouse won the 2010 tender to restore the island and got a long-term lease, with a commitment of at least 12 billion roubles.",
-  "check": "record",
-  "date": "2010"
+  "check": "source-partly",
+  "date": "2010",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.fontanka.ru/2022/06/08/71396537/",
+  "checked_quote": "основанная Романом Абрамовичем компания Millhouse LLC выиграла тендер на реставрацию зданий и реорганизацию всей Новой Голландии в 2010 году ... На бюджет закладывали более 12 млрд рублей.",
+  "checked_missing": "the long-term lease"
  },
  "7b0b4b11ac": {
   "kinds": [
    "programme"
   ],
   "summary": "His Iris Foundation, run with Dasha Zhukova, produced the public space concept.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.fontanka.ru/2022/06/08/71396537/",
+  "checked_quote": "Концепцию общественного пространства создавал фонд «Айрис» Абрамовича и его экс-супруги Дарьи Жуковой."
  },
  "6d2075e891": {
   "drop": "the same tie as another kept entry for this space"
@@ -5436,9 +5590,13 @@
    "programme"
   ],
   "summary": "A strategic partnership for Holocaust research from 22 February 2022, worth several million shekels; Yad Vashem ended it on 10 March 2022, the day Britain froze his assets, after its leaders had asked the US not to sanction him.",
-  "check": "record",
+  "check": "source-partly",
   "ended": true,
-  "date": "2022-02"
+  "date": "2022-02",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.thejc.com/opinion/all-yad-vashems-troubles-stem-from-the-need-for-it-to-fundraise-fck01n72",
+  "checked_quote": "Yad Vashem would partner with the foundation of ... Roman Abramovich ... \"Yad Vashem has decided to suspend the strategic partnership with Mr. Roman Abramovich.\"",
+  "checked_missing": "the date it ended, and that its leaders had asked the US not to sanction him"
  },
  "dc33e8dbea": {
   "drop": "the same tie as another kept entry for this space"
@@ -5451,7 +5609,10 @@
    "name"
   ],
   "summary": "Named on the entrance plaques among the donors.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://alrf.ru/news/3214423/",
+  "checked_quote": "таблички с именами людей и организаций, пожертвовавших на строительство. Среди них ... бизнесмены Владимир Потанин и Роман Абрамович"
  },
  "f1a846035a": {
   "kinds": [
@@ -5460,8 +5621,11 @@
    "seat"
   ],
   "summary": "A trustee, he gave the $35 million lead gift for the renovation; the new 218-seat auditorium carries his name.",
-  "check": "record",
-  "date": "2023"
+  "check": "source",
+  "date": "2023",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.theartnewspaper.com/2023/11/03/frick-collection-fundraising-campaign-expansion-242m",
+  "checked_quote": "a lead gift of $35m by trustee Stephen A. Schwarzman ... The Frick's new state-of-the-art auditorium will be named after Schwarzman"
  },
  "8355a78700": {
   "drop": "the same tie as another kept entry for this space"
@@ -5477,7 +5641,11 @@
    "building"
   ],
   "summary": "Gave $4.5 million toward the roughly $50 million construction.",
-  "check": "record"
+  "check": "source-partly",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://en.wikipedia.org/wiki/Viktor_Vekselberg",
+  "checked_quote": "He donated $4.5 million to the construction of the $50 million Jewish Museum and Tolerance Center in Moscow",
+  "checked_missing": "a source beyond Wikipedia"
  },
  "9220ac857e": {
   "kinds": [
@@ -5485,8 +5653,11 @@
    "building"
   ],
   "summary": "A co-founder of the endowment, which raised $4.5 million at one gala dinner in February 2014.",
-  "check": "record",
-  "date": "2014-02"
+  "check": "source",
+  "date": "2014-02",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.kommersant.ru/doc/2400953",
+  "checked_quote": "За один вечер благотворители собрали $4,5 млн ... Соучредителями эндаумент-фонда стали Виктор Вексельберг"
  },
  "e3d2e6c505": {
   "drop": "background on the funder, not a tie to this space"
@@ -5502,7 +5673,10 @@
    "seat"
   ],
   "summary": "A trustee, not shown to pay the gallery himself.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://partners.tretyakov.ru/partners",
+  "checked_quote": "Вексельберг Виктор Феликсович"
  },
  "3c4594347c": {
   "drop": "the same tie as another kept entry for this space"
@@ -5512,8 +5686,11 @@
    "programme"
   ],
   "summary": "His Olympic Collection supplied the 140 objects of the 2026 show and is listed among its organisers.",
-  "check": "record",
-  "date": "2026"
+  "check": "source",
+  "date": "2026",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://nmrk.kz/en/press/news/945/",
+  "checked_quote": "The exhibition «From Athens to Astana: Olympic Artifacts from the Vladimir Potanin Collection» has opened at the National Museum of the Republic of Kazakhstan."
  },
  "6016a61ccf": {
   "drop": "background on the funder, not a tie to this space"
@@ -5541,8 +5718,11 @@
    "programme"
   ],
   "summary": "Since 2016 PRO ARTE has run the Potanin Foundation's grant competitions and its \"Museum without Borders\" events; the foundation is a named backer in the 2025 report.",
-  "check": "record",
-  "date": "2016"
+  "check": "source",
+  "date": "2016",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.proarte.ru/projects/proekty-s-fondom-vladimira-potanina/",
+  "checked_quote": "С 2016 года Фонд «ПРО АРТЕ» сотрудничает с Благотворительным Фондом Владимира Потанина, являясь оператором грантовых конкурсов и организатором различных событий программы «Музей без границ»."
  },
  "1386436325": {
   "drop": "the same tie as another kept entry for this space"
@@ -5574,15 +5754,20 @@
   ],
   "summary": "Potanin, in the top Jupiter circle, and his foundation are on the 2026 sponsor list.",
   "check": "record",
-  "date": "2026"
+  "date": "2026",
+  "checked_on": "2026-11-17"
  },
  "635b358cec": {
   "kinds": [
    "seat"
   ],
   "summary": "Has chaired the Board of Trustees since April 2003.",
-  "check": "record",
-  "date": "2003-04"
+  "check": "source-partly",
+  "date": "2003-04",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://en.wikipedia.org/wiki/Vladimir_Potanin",
+  "checked_quote": "Since April 2003, he has been Chairman of the Board of Trustees of the State Hermitage Museum.",
+  "checked_missing": "a source beyond Wikipedia"
  },
  "138ba43155": {
   "drop": "the same tie as another kept entry for this space"
@@ -5595,7 +5780,10 @@
    "money"
   ],
   "summary": "The Potanin Foundation is among its donors.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://partners.tretyakov.ru/partners",
+  "checked_quote": "Благотворительный фонд В. Потанина – поддержка проекта"
  },
  "87c4e303b1": {
   "drop": "the same tie as another kept entry for this space"
@@ -5605,14 +5793,20 @@
    "name"
   ],
   "summary": "Named on the entrance plaques among the donors.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://alrf.ru/news/3214423/",
+  "checked_quote": "таблички с именами людей и организаций, пожертвовавших на строительство. Среди них ... бизнесмены Владимир Потанин и Роман Абрамович"
  },
  "653f47ffd9": {
   "kinds": [
    "name"
   ],
   "summary": "Named among the Fellows of the Ashmolean, the museum's roll of major benefactors.",
-  "check": "record"
+  "check": "source",
+  "checked_on": "2026-11-17",
+  "checked_source": "https://www.ashmolean.org/sitefiles/ashmolean-annual-review-2024-5.pdf",
+  "checked_quote": "Fellows of the Ashmolean ... Winton Capital Management"
  },
  "fd7001d9b2": {
   "drop": "the same tie as another kept entry for this space"
@@ -26654,5 +26848,535 @@
  },
  "b498f08db7": {
   "drop": "the same tie as another kept entry for this space"
+ },
+ "_about_donors": "Individual donors (17 Nov 2026; user: \"donors\", then \"add more individual donors\"): the families the records name often whose money is their own or their family foundation’s and that no earlier batch covered: the Wolfsons (the Wolfson Foundation, the Charles Wolfson Charitable Trust, the Lord Leonard and Lady Estelle Wolfson Foundation), the Rausings (the Sigrid, Julia and Hans Rausing trusts), the Arisons (the Arison Arts Foundation, Sarah Arison), Agnes Gund and the Safras. 90 candidate sentences, 59 kept. Dropped: repeats of a tie already kept for a space, a bank (Safra Sarasin), facts about a building cited to the funder’s page, background on a donor, and a grant kept at the organisation that received it (Anadolu Kültür) rather than the space it runs (Depo). The Weston, Rockefeller, Rothschild, Pritzker, Pinault, Tisch, Annenberg, Crown, Geffen, Walton and Sainsbury families were already in the candidate scan from the US and European batches. Checked against the record text (check \"record\"), not yet against the source pages.",
+ "faa73538ff": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation is listed among its funders.",
+  "check": "record"
+ },
+ "313bf6fd75": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation is an institutional supporter.",
+  "check": "record"
+ },
+ "ec26e10d69": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "a9e11247bb": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "177c3441ed": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Sarah Arison is credited as additional support and an exhibition patron.",
+  "check": "record"
+ },
+ "46249a4329": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c85dfef120": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation is a named supporter.",
+  "check": "record"
+ },
+ "1e56b7cc26": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation gives through the Collaborative Arts Network New York.",
+  "check": "record"
+ },
+ "231709525f": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "6f94ae3084": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation is a named supporter, and gave operating support through the Collaborative Arts Network New York.",
+  "check": "record",
+  "date": "2025"
+ },
+ "1046cced55": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "6cbb2249a6": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "cc7aaa9ba6": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation is a current institutional supporter.",
+  "check": "record"
+ },
+ "e41d58caa7": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Arison Arts Foundation is listed among additional supporters from September 2025.",
+  "check": "record",
+  "date": "2025"
+ },
+ "1975546eb5": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Agnes Gund co-founded it in 1968 as The New Gallery.",
+  "check": "record",
+  "date": "1968"
+ },
+ "d2a6dce60d": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Agnes Gund is a Champion, the top tier of PS1 donors.",
+  "check": "record"
+ },
+ "fc227ff979": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "A staff cottage, the “Twin A’s”, carries her gift, and she is a campaign donor.",
+  "check": "record"
+ },
+ "b42f850c2f": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "680f3c8ac0": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A Benefactor, at $50,000 or more.",
+  "check": "record"
+ },
+ "c0aec81cab": {
+  "drop": "Safra Sarasin, a bank, is a company and not the family’s own giving"
+ },
+ "88722adc7d": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Safra Philanthropic Foundation gave $12 million in 2009.",
+  "check": "record",
+  "date": "2009"
+ },
+ "ee5ef058e3": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "The fine arts wing is named for Edmond and Lily Safra.",
+  "check": "record"
+ },
+ "43bf572c55": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "ab3646aa1c": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Safra Philanthropic Foundation is named among its trusts.",
+  "check": "record"
+ },
+ "df11377e04": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Sigrid Rausing Trust has supported it since 2019: £500,000 in earlier grants and £80,000 from May 2026.",
+  "check": "record",
+  "date": "2019"
+ },
+ "527089b897": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "b9dd9c55b7": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "d733e0e782": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Sigrid Rausing Trust supports it from 2022 to 2026, £250,000 in previous grants.",
+  "check": "record",
+  "date": "2022"
+ },
+ "b54e9b1bbc": {
+  "drop": "background on the family, not a tie to this space"
+ },
+ "5706d2cc44": {
+  "drop": "background on the family, not a tie to this space"
+ },
+ "b2f8d6e82d": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c7df627df4": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Sigrid Rausing Trust supports it from 2022 to 2026, £320,000 in previous grants.",
+  "check": "record",
+  "date": "2022"
+ },
+ "52f583c006": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "d4475db760": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "Hans and Märit Rausing are named among the Fellows of the Ashmolean, its roll of major benefactors.",
+  "check": "record"
+ },
+ "93dd8c4611": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A Sigrid Rausing Trust grant supported the four company members who sought asylum in the UK.",
+  "check": "record",
+  "date": "2012"
+ },
+ "6be09f9e38": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Sigrid Rausing Trust supported it from 2020 to 2024, £280,000 in all.",
+  "check": "record",
+  "date": "2020"
+ },
+ "023416bbc4": {
+  "drop": "a fact about the building, cited to the funder’s page"
+ },
+ "a04acc3649": {
+  "drop": "a fact about the building, cited to the funder’s page"
+ },
+ "cf3dbb48c4": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "£30,000 from the Sigrid Rausing Trust for the Barn Development Project from April 2026, after £255,500 since 2016.",
+  "check": "record",
+  "date": "2026-04"
+ },
+ "7d4b409fde": {
+  "drop": "the grant is to Anadolu Kültür, kept in its ledger"
+ },
+ "ea3ee5c30d": {
+  "drop": "the grant is to Anadolu Kültür, kept in its ledger"
+ },
+ "f623b5c6d3": {
+  "drop": "background on the family, not a tie to this space"
+ },
+ "a305409bcd": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "The Julia Rausing Trust is a major supporter of Open Art.",
+  "check": "record"
+ },
+ "dd4e01b8f7": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "The Julia Rausing Trust gave £150 million of the £375 million secured for the gallery’s new wing.",
+  "check": "record"
+ },
+ "3c42507075": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Julia Rausing Trust is its principal philanthropist.",
+  "check": "record"
+ },
+ "8e6631534e": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Julia Rausing Trust is named on the supporters page.",
+  "check": "record"
+ },
+ "929b35b05b": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "The Julia and Hans Rausing Trust supported the exhibition Now You See Us.",
+  "check": "record",
+  "date": "2024"
+ },
+ "6b5457df25": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "481917ec93": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Julia Rausing Trust is a major supporter.",
+  "check": "record"
+ },
+ "347257708a": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "9bff324051": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "The Wolfson Foundation is named among the Fellows of the Ashmolean, its roll of major benefactors.",
+  "check": "record"
+ },
+ "21870e2bef": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "The DCMS/Wolfson Museums and Galleries Improvement Fund supported the October 2024 reopening of its galleries.",
+  "check": "record",
+  "date": "2024-10"
+ },
+ "a209d27840": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named with Art Fund among the foundations and trusts the library thanks.",
+  "check": "record",
+  "date": "2025"
+ },
+ "c59ecdf5d7": {
+  "kinds": [
+   "name"
+  ],
+  "summary": "The Wolfson Gallery at Charleston carries the name.",
+  "check": "record"
+ },
+ "81495bbf37": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Among the foundations that paid for the redevelopment.",
+  "check": "record"
+ },
+ "fc39c35305": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A major supporter of Open Art.",
+  "check": "record"
+ },
+ "a8c450ffcb": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A major donor to the building project.",
+  "check": "record"
+ },
+ "76fa775492": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named among the trusts and foundations on the supporters page.",
+  "check": "record"
+ },
+ "f916ca7008": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A founding supporter.",
+  "check": "record"
+ },
+ "67e6f2174c": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A named funder in the 2024-25 annual report.",
+  "check": "record",
+  "date": "2024"
+ },
+ "d0ea534442": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "Among the named funders of the Nature + Love capital project.",
+  "check": "record"
+ },
+ "bc70a0d7c0": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A funder of the redevelopment.",
+  "check": "record"
+ },
+ "54b8e18e1d": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "The Charles Wolfson Charitable Trust is a donor to the expansion.",
+  "check": "record"
+ },
+ "6a9c562ac6": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A Stepping Up and Take Your Seat supporter.",
+  "check": "record"
+ },
+ "45fffd0359": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A capital project donor in 2024-25.",
+  "check": "record",
+  "date": "2024"
+ },
+ "978169dc3c": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "d2b12068aa": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Two grants totalling £28,000, recorded on GrantNav since 2004.",
+  "check": "record",
+  "date": "2004"
+ },
+ "c42b7fae4a": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "2c95358fc6": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c61b8d699b": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named on the support page.",
+  "check": "record"
+ },
+ "e5a2dc1e6b": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "£19,000, among grants recorded on GrantNav from 2007 to 2025.",
+  "check": "record",
+  "date": "2007"
+ },
+ "0bc3be0a15": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A funder of the 2018 capital expansion.",
+  "check": "record",
+  "date": "2018"
+ },
+ "b29d149772": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "5571212498": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "Supports its sustainability work.",
+  "check": "record"
+ },
+ "6fd0de869b": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A principal supporter of the Fire Station campaign.",
+  "check": "record"
+ },
+ "4dd31fff98": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "Named among the trusts and foundations, and a sustainability funder.",
+  "check": "record"
+ },
+ "5b72aaa71f": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "c652711d81": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "1d869cc54b": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "£1.25 million from the Wolfson Foundation for rebuilding Tate Liverpool’s home on the Royal Albert Dock.",
+  "check": "record",
+  "date": "2025"
+ },
+ "12203337ff": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "43de1877a4": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "£154,500 from the Wolfson Foundation to redevelop three founder galleries.",
+  "check": "record"
+ },
+ "f726470326": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "581a20f00e": {
+  "drop": "the same tie as another kept entry for this space"
+ },
+ "e64c7e35eb": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A founding funder of the building.",
+  "check": "record"
+ },
+ "7f15012dc4": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A supporter of the refurbishment.",
+  "check": "record"
+ },
+ "c91de03930": {
+  "kinds": [
+   "programme"
+  ],
+  "summary": "A major supporter, with Art Fund, of the Barbara Hepworth Campaign 2025.",
+  "check": "record",
+  "date": "2025"
+ },
+ "e7eaa7cdd5": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "A supporter of the gallery, with Arts Council England and the Deutsche Börse Foundation, per The Art Newspaper in 2022.",
+  "check": "record",
+  "date": "2022"
+ },
+ "e692c0d682": {
+  "kinds": [
+   "money"
+  ],
+  "summary": "The Lord Leonard and Lady Estelle Wolfson Foundation is thanked for 2024-25.",
+  "check": "record",
+  "date": "2024"
+ },
+ "fc7d2e0f90": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A capital funder.",
+  "check": "record"
+ },
+ "08207fbe3d": {
+  "kinds": [
+   "building"
+  ],
+  "summary": "A donor to the Europe 1600-1815 galleries, 2015.",
+  "check": "record",
+  "date": "2015"
  }
 }
