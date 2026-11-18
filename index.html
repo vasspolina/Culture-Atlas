@@ -78,8 +78,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=813">
-  <link rel="stylesheet" href="assets/sheet.css?v=813">
+  <link rel="stylesheet" href="assets/atlas.css?v=814">
+  <link rel="stylesheet" href="assets/sheet.css?v=814">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -6786,8 +6786,10 @@ return maplibregl$1;
           minzoom: 0
         }
       },
-      // Street-map labels are set in Serrif Light (user's instruction, 5 Nov 2026): glyphs generated from fonts/Serrif-TRIAL-Light.woff2 into
-      // assets/glyphs/Serrif Light, not the map host's Noto Sans. The museum tag is an HTML marker and stays in Jokker.
+      // Street-map labels are set in the atlas's own face, Atlas Serif (user, 18 Nov 2026: "change font to cultural atlas main
+      // typeface"; Serrif Light from 5 Nov until then). The page's Atlas Serif is Times New Roman from the reader's machine, which
+      // cannot be shipped; the map's glyphs are cut from Liberation Serif, drawn to Times New Roman's widths and under the SIL Open
+      // Font License (assets/glyphs/Atlas Serif/LiberationSerif-OFL.txt), so map and page read as one face.
       glyphs: location.href.replace(/[?#].*$/, '').replace(/[^/]*$/, '') + 'assets/glyphs/{fontstack}/{range}.pbf',
       layers: [
         // Every line fades in with the zoom (CITY_LINE_FADE, above): none on the whole-city view, full grey at street level.
@@ -6801,7 +6803,7 @@ return maplibregl$1;
         },
         // ---- Close in, the street map is set like a printed gallery map (user, 4 and 18 Nov 2026, after Fraser Muggeridge
         // studio's Bloomsbury Art Galleries map): the blocks a fine stipple of dots, the streets left as paper between two edges,
-        // the squares and water plain paper, street names in Serrif capitals along the street, stations in a ruled box. Every
+        // the squares and water plain paper, street names in Atlas Serif capitals along the street, stations in a ruled box. Every
         // poster_ layer fades in between zoom 12.5 and 13.5 (POSTER_ZOOM, 13), so the city view keeps its hairlines and only the
         // zoomed-in map changes. applyCityMapGossip paints them in the map's ground and line colours (the 50% grey outside gossip
         // mode, so only the cultural spaces stand in full strength) and posterImages redraws the dots to match.
@@ -6995,7 +6997,7 @@ return maplibregl$1;
           minzoom: 8,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['Serrif Light'],
+            'text-font': ['Atlas Serif'],
             'text-size': 15,
             'text-transform': 'none',
             'text-letter-spacing': 0
@@ -7006,7 +7008,7 @@ return maplibregl$1;
             'text-halo-width': 1.5
           }
         },
-        // Street names in Serrif capitals, spaced, along the street.
+        // Street names in Atlas Serif capitals, spaced, along the street.
         {
           id: 'poster_street_label',
           type: 'symbol',
@@ -7018,7 +7020,7 @@ return maplibregl$1;
             'symbol-placement': 'line',
             'symbol-spacing': 320,
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['Serrif Light'],
+            'text-font': ['Atlas Serif'],
             'text-size': ['interpolate', ['linear'], ['zoom'], 13, 14, 18, 16],
             'text-transform': 'uppercase',
             'text-letter-spacing': 0.08,
@@ -7038,7 +7040,7 @@ return maplibregl$1;
           minzoom: 13,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['Serrif Light'],
+            'text-font': ['Atlas Serif'],
             'text-size': 14,
             'text-transform': 'uppercase',
             'text-letter-spacing': 0.06,
@@ -7058,7 +7060,7 @@ return maplibregl$1;
           minzoom: 13,
           layout: {
             'text-field': ['coalesce', ['get', 'name_en'], ['get', 'name']],
-            'text-font': ['Serrif Light'],
+            'text-font': ['Atlas Serif'],
             'text-size': 14,
             'text-transform': 'uppercase',
             'text-letter-spacing': 0.06,
@@ -7117,7 +7119,7 @@ return maplibregl$1;
       }
     };
     let cityLeafletMap = null;
-    // The glyph ranges cut from Serrif Light (and earlier PP Neue Gstaad) into assets/glyphs. Add a range here when its file is added.
+    // The glyph ranges cut from Atlas Serif (Liberation Serif; earlier Serrif Light and PP Neue Gstaad) into assets/glyphs. Add a range here when its file is added.
     const CITY_MAP_LOCAL_GLYPHS = new Set(['0-255', '256-511', '7680-7935', '8192-8447', '8448-8703']);
 
     function initCityMapIfNeeded() {
@@ -10733,7 +10735,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v813';
+    const ATLAS_RELEASE = 'culture-atlas-v814';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
