@@ -2238,3 +2238,14 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{transition:none!important}
 }
 }
+
+/* ==== GOSSIP MODE'S GROUND (user, 18 Nov 2026: "make gossip mode whole background on light this color", a #FFEFF1
+   swatch, then "and this for dark mode", a navy swatch, #000050) ====
+   In gossip mode the page, the panels and the sheet's paper are pink on the light theme and navy on the dark; the street
+   map and the globe take the same ground in index.html (applyCityMapGossip, G_GROUND). Ink #000 on #ffeff1 is 19:1, and
+   the gossip greens and browns stay at 4.5:1 or better on it (#2a6010 6.8, #7a4416 7.1, #3d7a0f 4.7); ink #e6e1d7 on #000050 is 14:1.
+   The paper is on html (body stays transparent so the two bars show), so the colours are set on the root, by :has(). */
+:root:not([data-theme="dark"]):has(body.gossip-mode-active){--sh-paper:#ffeff1;--paper:#ffeff1}
+:root[data-theme="dark"]:has(body.gossip-mode-active){--sh-paper:#000050;--paper:#000050}
+:root[data-theme="dark"] body.gossip-mode-active :is(#curatorIntelligenceColumn,#curator-chat-drawer){--paper:#000050}
+:root:not([data-theme="dark"]) body.gossip-mode-active #globeViewport{background:#ffeff1!important}

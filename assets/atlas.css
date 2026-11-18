@@ -753,7 +753,8 @@ body:has(#cityMapContainer:not(.hidden)) #zoomControls{display:none!important}
 /* Gossip mode: the menu bar keeps its colours (yellow is for gossip alone); the Gossip mode button and the street map ground turn lime (dark green on the dark theme). */
 body.gossip-mode-active #topGossipBtn,body.gossip-mode-active #mobileGossipBtn{background:var(--gossip);color:var(--gossip-ink)}
 body.gossip-mode-active #topGossipBtn:hover,body.gossip-mode-active #mobileGossipBtn:hover{background:#000;color:#fff}
-body.gossip-mode-active #cityMapContainer{background:#cfcfba}
+body.gossip-mode-active #cityMapContainer{background:#ffeff1}
+:root[data-theme="dark"] body.gossip-mode-active #cityMapContainer{background:#000050}
 /* In the street view the globe's own controls would sit behind the street-view bar and poke out at its ends. */
 body:has(#cityViewControlBanner:not(.hidden)) #desktopGlobeTopControls,
 body:has(#cityViewControlBanner:not(.hidden)) #mobileFilterChipsSection{display:none}
@@ -2712,7 +2713,7 @@ div:has(>#topThemeBtn){column-gap:0}
 :root:root:root:root:root:root:root:root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet) :is(#desktopDossierName,#dossier-sheet-name,.dossier-main-heading,h2.dossier-main-heading){text-wrap:wrap!important;max-width:none!important;width:auto!important}
 
 /* Gossip mode on the dark theme: the globe's ground is the dark green of the Gossip button. */
-:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#1e4d2b!important}
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root[data-theme="dark"] body.gossip-mode-active #globeViewport{background:#000050!important}
 
 /* The labels on the city street map are drawn like the labels on the globe: the map's ground behind, a thin soft rounded outline and the type in the tier's colour (Displaay menthol clean, magenta flagged, yellow unverified; green in Gossip mode). */
 :root{--tier-a:#007a80;--tier-b:#b000b0;--tier-u:#7a7000}

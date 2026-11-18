@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=788">
-  <link rel="stylesheet" href="assets/sheet.css?v=802">
+  <link rel="stylesheet" href="assets/sheet.css?v=803">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -7339,7 +7339,9 @@ return maplibregl$1;
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
       // Gossip mode: Displaay's lime with black lines; on the dark theme a dark green with lime lines (user, 4 Nov 2026).
       // THE SHEET: the sheet's paper and its grey rule (#787878), in both themes.
-      const ground = isGossipModeActive ? (dark ? '#1e4d2b' : '#cfcfba') : dark ? '#151412' : '#ffffff';
+      // Gossip mode's ground is pink #ffeff1 on the light theme and navy #000050 on the dark (user, 18 Nov 2026: "make gossip
+      // mode whole background on light this color", "and this for dark mode"; beige #cfcfba and green #1e4d2b until then).
+      const ground = isGossipModeActive ? (dark ? '#000050' : '#ffeff1') : dark ? '#151412' : '#ffffff';
       // Outside gossip mode the lines are 50% grey in both themes (user, 6 Nov 2026: near-black lines made the map busy). They are
       // decoration, not text: the place names keep full ink (`label`), as before.
       const line = isGossipModeActive ? (dark ? '#cfcfba' : '#000000') : '#787878';
@@ -10530,7 +10532,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v802';
+    const ATLAS_RELEASE = 'culture-atlas-v803';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -11191,7 +11193,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
       // THE SHEET: white water, grey land #cfcfba, a chosen country and a pressed label in the lime of the bars #e2f86c
       // (user, 11 Nov 2026: "use these colors for atlas instead of beige", swatches lime, white, grey), the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
-      const G_GROUND = GLOBE_LIGHT ? '#ffffff' : (GOSSIP_DARK ? '#1e4d2b' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#275c36' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#9db8a4' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = '#808080';
+      const G_GROUND = GLOBE_LIGHT ? (isGossipModeActive ? '#ffeff1' : '#ffffff') : (GOSSIP_DARK ? '#000050' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#14146e' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#8c8fd0' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = '#808080';
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
         const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
         const TIER_SHAPE_SIZE = { circle: 3 };
@@ -11539,7 +11541,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // A badge's fill and type colour. The city hover card takes the same pair, so it reads as the badge opened out.
         const pillColors = (active, tier) => {
           const darkLabel = !GLOBE_LIGHT && !active;
-          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? '#1e4d2b' : '#cfcfba')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
+          const fill = isGossipModeActive ? (active ? '#ffffff' : (darkLabel ? '#000050' : '#cfcfba')) : (active ? '#ffffff' : (darkLabel ? (TIER_FILL_DARK[tier] || UNVERIFIED_FILL_DARK) : (TIER_FILL[tier] || '#c6c6c6')));
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
