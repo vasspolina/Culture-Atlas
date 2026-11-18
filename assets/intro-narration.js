@@ -14,7 +14,7 @@
     'Leaving it on the table looks up who funds museums.',
     'Each record names the funders it can source, from public money, companies and foundations, and links every fact to where it comes from.',
     'A grade from A to F says how much of that money we can see.',
-    'Most lives were never written down, so where the records go quiet, imagine who lived there, and add what you know with Share information.',
+    'Most lives were never written down, so where the records of a museum, a theatre, a library or any cultural space go quiet, imagine who worked, made things and gathered there, and add what you know by clicking Share information.',
     'Ask below about a museum, a city or a funder.'
   ];
   // The fifth sentence (user, 18 Nov 2026): the undertone that a gap in the record is not a place without history, and the
