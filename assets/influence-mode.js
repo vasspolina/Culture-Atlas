@@ -21,13 +21,13 @@
 // dashed line and a running one solid, so a picked funder shows at a glance where it was refused and where it went on paying.
 // Switched off, all four go and the page is as it was. Its look is the "INFLUENCE MODE" block at the end of assets/sheet.css.
 (function () {
-  let DATA = null, loading = null, on = false;
+  let DATA = null, STUDY = null, loading = null, on = false;
   const BY_SPACE = new Map(), BY_FUNDER = new Map();
 
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=16', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=20', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -38,6 +38,9 @@
       });
       return d;
     }).catch(() => { loading = null; return null; });
+    // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
+    // beside the ledger; if it fails to load, MoMA's record simply goes without it.
+    fetch('assets/moma-influence.json?v=8', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
     return loading;
   }
 
@@ -117,6 +120,33 @@
     });
     DATA.funders.forEach(f => { delete f._ms; });
     fan = null;
+    mergeStudy();
+    if (window.scheduleRender) window.scheduleRender();
+  }
+  // MoMA's funders from the MoMA Influence Map study join as dots (user, 17 Nov 2026: "show moma funders as dots on
+  // the influence map"; "show government funders too"; "add the other public bodies too"; "add the other MoMA trustees as dots too"; the list and the offices are in tools/build_moma_influence.mjs). One the map already draws gains
+  // MoMA among its museums; the rest are new dots at their offices, with MoMA as their one museum. Run once, after the
+  // funding maps have joined, so a funder they name is never drawn twice.
+  let studyMerged = false;
+  function mergeStudy() {
+    if (studyMerged || !merged || !DATA || !STUDY || !STUDY.funders) return;
+    studyMerged = true;
+    const inst = (g('ALL_INSTITUTIONS') || []).find(i => i.id === STUDY.space);
+    const space = { id: STUDY.space, name: inst ? inst.name : 'MoMA' };
+    const norm = x => String(x || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    STUDY.funders.forEach(s => {
+      const names = new Set([s.name, ...(s.names || [])].map(norm));
+      let f = (s.keys || []).map(k => BY_FUNDER.get(k)).find(Boolean) || DATA.funders.find(q => names.has(norm(q.name)));
+      if (!f) {
+        if (!s.hq) return;
+        f = { key: 'moma-study:' + norm(s.name).replace(/ /g, '-'), name: s.name, kind: s.kind, hq: Object.assign({ n: s.name }, s.hq), ties: [], moneySpaces: [], moneyOnly: true, study: s.from, notFunder: !!s.notFunder, kindLabel: s.kindLabel || (s.notFunder ? 'Public body' : '') };
+        DATA.funders.push(f); BY_FUNDER.set(f.key, f);
+      }
+      f.moneySpaces = f.moneySpaces || [];
+      if (!f.ties.some(t => t.space === space.id) && !f.moneySpaces.some(q => q.id === space.id)) f.moneySpaces.push(space);
+      delete f._ms;
+    });
+    fan = null;
     if (window.scheduleRender) window.scheduleRender();
   }
 
@@ -157,19 +187,47 @@
     const p = v(a.lon, a.lat), q = v(b.lon, b.lat);
     const w = Math.acos(Math.max(-1, Math.min(1, p[0] * q[0] + p[1] * q[1] + p[2] * q[2])));
     const n = Math.max(2, Math.ceil(w / (2 * rad)));
-    let down = false, lam = null;
-    ctx.beginPath();
+    const pts = [];
     for (let i = 0; i <= n; i++) {
       const t = i / n, s1 = w ? Math.sin((1 - t) * w) / Math.sin(w) : 1 - t, s2 = w ? Math.sin(t * w) / Math.sin(w) : t;
       const x = s1 * p[0] + s2 * q[0], y = s1 * p[1] + s2 * q[1], z = s1 * p[2] + s2 * q[2];
-      const pt = project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy);
-      if (!pt.front) { down = false; continue; }
-      // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other.
-      // Lift the pen there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
-      const seam = pt.lam != null && lam != null && Math.abs(pt.lam - lam) > Math.PI;
-      lam = pt.lam != null ? pt.lam : null;
-      if (down && !seam) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+      pts.push(project(Math.atan2(y, x) / rad, Math.atan2(z, Math.hypot(x, y)) / rad, r, cx, cy));
     }
+    // On the flat (Winkel) map every point is "front", so a path that runs off one edge comes back in at the other: the
+    // pen lifts there, as the coastlines do (index.html), or the two ends are joined by a straight line across the map.
+    const flat = pts[0].lam != null;
+    const seamAt = i => flat && Math.abs(pts[i].lam - pts[i - 1].lam) > Math.PI;
+    ctx.beginPath();
+    // On the flat map a route that wanders far out of its way, as Munich to Tokyo does over the top of the map, where the
+    // pole is a line (user, 17 Nov 2026: "Shorten the Tokyo line so it doesn't run along the top edge"), is drawn as a
+    // gentle bow between its two ends instead, bent the way the true route goes. "Far out of its way" is a path more than a
+    // tenth longer than the straight line between its ends; the bow is at most 15% of that line. A route that crosses the
+    // edge is bowed only when every crossing comes back in nearer than its two ends are to each other, as one over the pole
+    // line does; a route that leaves at one side of the map and comes back at the other (Munich to Auckland) keeps its
+    // two pieces, since a straight bow would invent a way across the map that the route does not take.
+    if (flat) {
+      const A = pts[0], B = pts[pts.length - 1], chord = Math.hypot(B.x - A.x, B.y - A.y);
+      let len = 0, wide = false;
+      for (let i = 1; i < pts.length; i++) {
+        const d = Math.hypot(pts[i].x - pts[i - 1].x, pts[i].y - pts[i - 1].y);
+        if (seamAt(i)) { if (d >= chord) wide = true; } else len += d;
+      }
+      if (!wide && chord > 0 && len > 1.1 * chord) {
+        const mx = (A.x + B.x) / 2, my = (A.y + B.y) / 2, M = pts[Math.floor(pts.length / 2)];
+        const nx = -(B.y - A.y) / chord, ny = (B.x - A.x) / chord;   // the chord's normal
+        const side = Math.sign((M.x - mx) * nx + (M.y - my) * ny) || 1;
+        const k = 0.3 * chord * side;   // a quadratic's middle sits halfway to its control point: a bow of 15%
+        ctx.moveTo(A.x, A.y);
+        ctx.quadraticCurveTo(mx + nx * k, my + ny * k, B.x, B.y);
+        ctx.stroke();
+        return;
+      }
+    }
+    let down = false;
+    pts.forEach((pt, i) => {
+      if (!pt.front) { down = false; return; }
+      if (down && !seamAt(i)) ctx.lineTo(pt.x, pt.y); else { ctx.moveTo(pt.x, pt.y); down = true; }
+    });
     ctx.stroke();
   }
   // Every funder is a dot (user, 17 Nov 2026: "just do dots dont do different figure"); its size says how many spaces it
@@ -204,7 +262,9 @@
     // name, which is how the sourced figure is counted too; culture is never a missing filing, so never a hollow dot.
     culture: { label: 'Culture', what: 'how many museums it gives to',
       value: f => cultureSpaces(f) || null,
-      text: f => { const n = cultureSpaces(f); return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
+      // A funder known only from the MoMA study names MoMA instead of "1 museum" (user, 17 Nov 2026: "keep working on this"),
+      // so the CIA or a trustee does not read as a museum funder at large.
+      text: f => { const n = cultureSpaces(f); if (n === 1 && f.study) return 'MoMA'; return n ? `${n} ${n === 1 ? 'museum' : 'museums'}` : ''; } },
     us: { label: 'US lobbying', noun: 'US lobbying', what: 'what it spent lobbying the US government in 2025',
       value: f => (fig(f).us_lobbying || {}).usd || null,
       text: f => { const u = fig(f).us_lobbying; return u ? fmtMoney(u.usd, 'USD') : ''; } },
@@ -370,6 +430,7 @@
     // The picked funder's spaces are named on the map (user, 17 Nov 2026: "show names of the museums when i click on dots
     // in influence mode"). They are placed before the other funders' names, so those give way to them; a space whose
     // every place is taken by another name waits for the map to be zoomed in, as a funder's name does.
+    const museumDots = [];
     if (picked) {
       const byId = new Map(insts.map(i => [i.id, i]));
       const spaceNames = new Map([...mapSpaces(picked)].map(([id, x]) => [id, x.name]));
@@ -378,12 +439,20 @@
         const i = byId.get(id); if (!i || typeof i.lat !== 'number') return;
         const pt = project(i.lon, i.lat, r, cx, cy); if (!pt.front) return;
         pts.push({ id, x: pt.x, y: pt.y, label: i.name || nm || '' });
+        museumDots.push({ id, x: pt.x, y: pt.y });
       });
+      // The space in focus is named by the globe itself, above its dot (index.html): it is not named twice here, and that
+      // name's place is kept clear: it is set larger than these names and stands above the pin, so the box is wide and tall.
+      const selNow = g('selectedInstitution');
+      if (selNow && typeof selNow.lat === 'number') {
+        const sp = project(selNow.lon, selNow.lat, r, cx, cy);
+        if (sp.front) { const w = ctx.measureText(selNow.name || '').width * 1.6 + 24; names.push({ x: sp.x - w / 2, y: sp.y - 70, w, h: 64 }); }
+      }
       // A space's own dot is kept clear by every name, its own and the others'.
       const spaceDots = pts.map(q => ({ x: q.x - 5, y: q.y - 5, w: 10, h: 10 }));
       if (pickedMark) spaceDots.push({ x: pickedMark.x - DOT - 5, y: pickedMark.y - DOT - 5, w: 2 * DOT + 10, h: 2 * DOT + 10 });
       pts.forEach(({ id, x, y, label }) => {
-        if (!label) return;
+        if (!label || (selNow && selNow.id === id)) return;
         const w = ctx.measureText(label).width, gap = 9;
         const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 6], [-w / 2, -gap - 6], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
         const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
@@ -421,12 +490,25 @@
       const clash = b => off(b) || hits(b, placed) || hits(b, names);
       const free = spots.find(sp => !clash(boxAt(sp)));
       if (!free && !sel && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
-      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names.
-      const spot = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names)) || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
+      // Never over another name: a focused or pointed-at funder with no free place takes the first place clear of names. A
+      // funder of the space in focus with none (MoMA's two dozen, all in New York) keeps its dot and line and waits for the
+      // map to be zoomed in, as any other name does; only the one pointed at insists.
+      const clear = free || spots.find(sp => !off(boxAt(sp)) && !hits(boxAt(sp), names));
+      if (!clear && !hov) { HITS.push({ f, x, y, s, label: null }); return; }
+      const spot = clear || spots[0], b = boxAt(spot), lx = x + spot[0], ly = y + spot[1];
       names.push(b);
       ctx.lineWidth = 4; ctx.strokeStyle = paper; ctx.strokeText(label, lx, ly);
       ctx.fillStyle = hov && !sel ? (isDark() ? '#8bbdf5' : '#1f5fbf') : ink; ctx.fillText(label, lx, ly);
       HITS.push({ f, x, y, s, label: b });
+    });
+    // The picked funder's museums get their own dots, drawn last (user, 17 Nov 2026: "museums lost its dots"). The page's
+    // own dot for a space is a 3.5px ring 0.8px thick in its grade's colour, drawn before this layer, so the lines and the
+    // paper halos of the names covered it (Anchorage, Banff) and an Unverified ring, olive on paper, barely showed (MALBA).
+    // Here each is an ink ring 8px across on paper, 1.5px thick: hollow, so it is told from a funder's solid 6px dot.
+    ctx.setLineDash([]); ctx.lineWidth = 1.5; ctx.strokeStyle = ink;
+    museumDots.forEach(({ id, x, y }) => {
+      ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = hoverSpace === id ? ink : paper; ctx.fill(); ctx.stroke();
     });
     ctx.restore();
   };
@@ -527,8 +609,10 @@
     const f = BY_FUNDER.get(key); if (!f) return;
     const go = () => {
       const hq = window.atlasHq;
-      let e = (hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : 'found', n: f.name, c: '', co: '', noOffice: true };
+      // A funder from the MoMA study has no record in the funding maps, whose lookup would answer with its key for a name.
+      let e = (!f.study && hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : f.kind === 'gov' ? 'gov' : 'found', n: f.name, c: '', co: '', noOffice: true };
       // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
+      if (f.kindLabel) e = Object.assign({}, e, { kindLabel: f.kindLabel });
       if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
       // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
       if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(Object.assign({}, e, { noLayer: true }));
@@ -571,9 +655,29 @@
   };
   const row = (title, sub, inner) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
 
+  // What the MoMA Influence Map study says (user, 17 Nov 2026: "add moma money map to moma on our influence map ... just
+  // add info ... skip visualisation"): its entries group by group, each with its role, money, note and first source, as the
+  // study states them. A group shows three and folds the rest, as a record's long lists do.
+  const STUDY_KEEP = 3;
+  function studyRows(inst) {
+    if (!STUDY || !inst || inst.id !== STUDY.space) return '';
+    const line = x => {
+      const src = (x.sources || [])[0];
+      return `<li class="influence-entry"><p class="no-indent"><span class="influence-who">${esc(x.name)}.</span> ${x.role ? `<span class="lead-in">${esc(x.role)}.</span> ` : ''}${x.money ? esc(x.money) + '. ' : ''}${esc(x.note)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    };
+    const head = row('From the MoMA Influence Map', 'who funds and governs MoMA, from the study',
+      `${STUDY.museum && STUDY.museum.note ? `<p class="no-indent">${esc(STUDY.museum.role)} ${esc(STUDY.museum.note)}</p>` : ''}<p class="no-indent influence-more"><a href="${esc(STUDY.page)}">Open the study</a></p>`);
+    return head + STUDY.groups.map(g => {
+      const shown = g.entries.slice(0, STUDY_KEEP).map(line), rest = g.entries.slice(STUDY_KEEP).map(line);
+      const fold = rest.length ? `<li class="d-row-fold"><details><summary><span class="fold-closed">${rest.length} more</span><span class="fold-open">Fewer</span></summary><ul class="d-row-list influence-list">${rest.join('')}</ul></details></li>` : '';
+      return row(g.title, '', `<ul class="d-row-list influence-list">${shown.join('')}${fold}</ul>`);
+    }).join('');
+  }
+
   function spacePart(inst) {
-    const list = inst && BY_SPACE.get(inst.id);
-    if (!list || !list.length) return null;
+    const list = (inst && BY_SPACE.get(inst.id)) || [];
+    const study = studyRows(inst);
+    if (!list.length && !study) return null;
     const byF = new Map();
     list.forEach(({ funder, tie }) => { if (!byF.has(funder)) byF.set(funder, []); byF.get(funder).push(tie); });
     // What was bought first, newest first; a protest or resignation with nothing bought stated comes after.
@@ -583,7 +687,7 @@
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', 'What funders got here');
     el.innerHTML = row('What funders got here', '', '') +
-      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</a></p>`)).join('');
+      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul><p class="no-indent influence-more"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">Everything ${esc(f.name)} got</a></p>`)).join('') + study;
     return el;
   }
 
@@ -673,6 +777,25 @@
   }
 
   let busy = false;
+  // A MoMA-study funder's record: what the study says about it at MoMA, entry by entry, each with its source (user, 17 Nov
+  // 2026: "show moma funders as dots on the influence map"; "show government funders too").
+  function studyFunderPart(f) {
+    if (!STUDY) return null;
+    // In the order the funder's list gives them, so its own entry leads.
+    const all = STUDY.groups.flatMap(gr => gr.entries);
+    const entries = (f.study || []).map(n => all.find(x => x.name === n)).filter(Boolean);
+    if (!entries.length) return null;
+    const lis = entries.map(x => {
+      const src = (x.sources || [])[0];
+      return `<li class="influence-entry"><p class="no-indent">${entries.length > 1 || x.name !== f.name ? `<span class="influence-who">${esc(x.name)}.</span> ` : ''}${x.role ? `<span class="lead-in">${esc(x.role)}.</span> ` : ''}${x.money ? esc(x.money) + '. ' : ''}${esc(x.note)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    }).join('');
+    const el = document.createElement('div');
+    el.className = 'prose-part d-rows influence-part';
+    el.setAttribute('role', 'region');
+    el.setAttribute('aria-label', 'At MoMA');
+    el.innerHTML = row('At MoMA', 'from the MoMA Influence Map study', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> · <a href="${esc(STUDY.page)}">Open the study</a></p>`);
+    return el;
+  }
   function decorate() {
     if (busy) return;
     busy = true;
@@ -684,6 +807,7 @@
       if (panel && !panel.hidden && !panel.querySelector('.influence-part')) {
         const f = funderForPanel(panel), head = panel.querySelector('.record-head');
         if (f && !f.moneyOnly && head) head.after(funderPart(f));
+        else if (f && f.study && head) { const part = studyFunderPart(f); if (part) head.after(part); }
       }
       // A space's record: the desktop Details page, the phone's record page and its sheet.
       const inst = g('dossierInst') || g('selectedInstitution');

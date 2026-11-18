@@ -78,8 +78,8 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=698">
-  <link rel="stylesheet" href="assets/sheet.css?v=773">
+  <link rel="stylesheet" href="assets/atlas.css?v=788">
+  <link rel="stylesheet" href="assets/sheet.css?v=794">
   <script src="assets/config.js?v=679"></script>
   <script src="assets/analytics.js?v=679"></script>
   <script src="assets/subtopic.js?v=670"></script>
@@ -336,7 +336,7 @@ return maplibregl$1;
             <div class="layers-list layers-studies">
               <a href="studies.html"><span class="layer-name">Studies across the atlas</span><span class="layer-desc">Epstein, Democracy Now!, Bellingcat, WikiLeaks, shared funders, Brazil’s tax incentives and more</span></a>
               <a href="artists-images.html"><span class="layer-name">Artists&rsquo; images</span><span class="layer-desc">Artists&rsquo; work on cultural institutions on one page, from the oldest to the newest, each open to zoom</span></a>
-              <a href="moma-money-map.html"><span class="layer-name">MoMA Money Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
+              <a href="moma-money-map.html"><span class="layer-name">MoMA Influence Map</span><span class="layer-desc">Who funds and governs MoMA, drawn as one network</span></a>
             </div>
           </section>
           <section class="layers-section">
@@ -1171,7 +1171,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=766"></script>
+  <script src="assets/institutions.js?v=791"></script>
   <script src="assets/money-ids.js?v=767"></script>
   <script>
 
@@ -7455,9 +7455,25 @@ return maplibregl$1;
       const place = placeLabel(x.inst);
       return `<p class="no-indent"><a href="#" class="inst-link" data-name="${escapeHtml(x.inst.name)}">${escapeHtml(x.inst.name)}</a>${place ? ' in ' + escapeHtml(place) : ''}. ${escapeHtml(proseEnd(x.g.headline))} ${escapeHtml(`${gossipAttribution(x.g)} ${gossipStatusLine(x)}`.trim())}${src}</p>`;
     }
+    // Who runs a space, from its record: the legal form and parent body, and, when governance was asked, what the record says
+    // about its papers. Nothing is said where the record holds nothing.
+    function governanceHtml(inst, full) {
+      const b = inst.bureaucracy || {};
+      const form = b.legal_form ? `It is ${/^[aeiou]/i.test(b.legal_form) ? 'an' : 'a'} ${b.legal_form}${b.parent ? `, part of ${b.parent}` : ''}.` : (b.parent ? `It is part of ${b.parent}.` : '');
+      const lines = [form, full ? inst.records_note : ''].filter(Boolean).map(t => proseEnd(String(t)));
+      return lines.length ? `<p>${escapeHtml(lines.join(' '))}</p>` : '';
+    }
+    // In Gossip mode a money or governance answer adds the newest talk about the space in one attributed sentence, not instead of it.
+    function gossipAsideHtml(inst) {
+      if (typeof isGossipModeActive === 'undefined' || !isGossipModeActive) return '';
+      const g = gossipItems(inst, true)[0];
+      if (!g || !g.headline) return '';
+      return `<div data-gossip="aside"><p>Also being said: ${escapeHtml(proseEnd(g.headline))} ${escapeHtml(`${gossipAttribution(g)} ${GOSSIP_STATUS_LINE[g.status] || ''}`.trim())}</p></div>`;
+    }
     function gossipChips(main, other, pool) {
       const chips = [];
       const add = (q, inst) => { if (q && !chips.includes(q) && (!inst || typeof resolvesTo !== 'function' || resolvesTo(q, inst))) chips.push(q); };
+      add('Tell me another');
       add(`What is the gossip about ${main.inst.name}?`, main.inst);
       if (other) add(`What are people saying about ${other.inst.name}?`, other.inst);
       const kinds = [...new Set(pool.slice(0, 60).map(x => x.g.kind).filter(k => KIND_CHIP[k] && k !== main.g.kind))];
@@ -7476,11 +7492,13 @@ return maplibregl$1;
       'Gossip mode is on. Lean in.',
       'Gossip mode is on. Fresh off the internet:'
     ];
+    // The greeting tells one story and asks before telling another (user, 17 Nov 2026: "says too many gossip on start say one
+    // and ask if user want to hear more").
     const GOSSIP_HOOKS = [
-      'Want the whole story, or shall we try somewhere else?',
-      'Shall I tell you the rest?',
-      'Ask me about any museum and I will tell you what people say about it.',
-      'Want more, or another city?'
+      'Want to hear more?',
+      'Shall I tell you another?',
+      'Want the next one?',
+      'More?'
     ];
     const GOSSIP_OFF = [
       'Gossip mode is off. Back to who funds what.',
@@ -7488,16 +7506,14 @@ return maplibregl$1;
       'Gossip mode is off. Ask me who funds a museum.'
     ];
     let lastOpener = '';
-    function gossipTemplate(main, other) {
-      let opener = pickOne(GOSSIP_OPENERS.filter(o => o !== lastOpener)); lastOpener = opener;
-      const head = (x) => x.g.headline.replace(/\.$/, '');
-      const said = `The story at ${main.inst.name}: ${head(main)}.`;
-      const more = other ? `Meanwhile at ${other.inst.name}: ${head(other)}. ${gossipAttribution(other.g)}` : '';
-      return [opener, said, `${gossipAttribution(main.g)} ${gossipStatusLine(main)}`.trim(), more, pickOne(GOSSIP_HOOKS)].filter(Boolean).map(s => `<p class="no-indent">${escapeHtml(s)}</p>`).join('');
+    function gossipTemplate(main, next) {
+      let opener = next ? '' : pickOne(GOSSIP_OPENERS.filter(o => o !== lastOpener)); if (opener) lastOpener = opener;
+      const said = `At ${main.inst.name}: ${main.g.headline.replace(/\.$/, '')}. ${gossipAttribution(main.g)} ${gossipStatusLine(main)}`.trim();
+      return [opener, said, pickOne(GOSSIP_HOOKS)].filter(Boolean).map(s => `<p class="no-indent">${escapeHtml(s)}</p>`).join('');
     }
     // The model's version, from the items' own fields only. Null when no model is reachable, it is slow, or the text strays
     // (a name not given, a dash, a heading, a list), so the page falls back to its own sentences.
-    async function gossipModelGreeting(main, other) {
+    async function gossipModelGreeting(main) {
       const key = aiApiKey || _SYS_KEY;
       const useProxy = !key && !!ATLAS_AI_PROXY_URL;
       if (!useProxy && !(key && getEffectiveProvider() === 'anthropic')) return null;
@@ -7506,9 +7522,9 @@ return maplibregl$1;
         `Headline: ${x.g.headline}`, `What is said: ${x.g.said}`, `Source: ${gossipAttribution(x.g)}`,
         `Status: ${x.g.status}`, x.g.response ? `Response: ${x.g.response}` : '', x.g.outcome ? `Outcome: ${x.g.outcome}` : ''
       ].filter(Boolean).join('\n');
-      const system = `You are the gossip voice of a cultural atlas that records who funds museums. The visitor just switched Gossip mode on. Greet them like a well-informed friend leaning in across a table, in 3 or 4 short sentences of plain spoken English, under 90 words in all, then end with one question inviting them to ask for more.
+      const system = `You are the gossip voice of a cultural atlas that records who funds museums. The visitor just switched Gossip mode on. Greet them like a well-informed friend leaning in across a table: tell the one story in the ITEMS in 2 or 3 short sentences of plain spoken English, under 60 words in all, then end with one short question asking whether they want to hear more. Tell only that one story; do not mention any other museum.
 Rules: use only the facts in the ITEMS. Name who says each thing and when, in reported speech ("Hyperallergic reported in March 2024 that..."). Never state talk, a rumour or an allegation as fact. If an item is denied, say who denies it; if confirmed or resolved, say so. Name each museum exactly as given. Do not invent people, figures, dates or quotes. No dashes, no headings, no lists, no emoji, no hedging filler. Do not say what is unknown or not found. Start with the words "Gossip mode is on".`;
-      const user = `ITEMS\n\nMain story:\n${item(main)}${other ? `\n\nA second story to tease in one sentence:\n${item(other)}` : ''}`;
+      const user = `ITEMS\n\nThe story:\n${item(main)}`;
       const ctl = typeof AbortController === 'function' ? new AbortController() : null;
       const timer = ctl ? setTimeout(() => ctl.abort(), 9000) : null;
       try {
@@ -7526,7 +7542,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         return text.split(/\n{2,}/).map(p => `<p class="no-indent">${escapeHtml(p.replace(/\s*\n\s*/g, ' '))}</p>`).join('');
       } catch (e) { return null; } finally { if (timer) clearTimeout(timer); }
     }
-    async function gossipGreeting(on) {
+    // next: the visitor said yes to "Want to hear more?", so the next story is told without the opener.
+    async function gossipGreeting(on, next) {
       const seq = ++gossipGreetSeq;
       if (!on) { appendCuratorMessage(`<p class="no-indent">${escapeHtml(pickOne(GOSSIP_OFF))}</p>`, [], null, null, false); return; }
       const pool = gossipPool();
@@ -7536,12 +7553,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const chips = gossipChips(main, other, pool);
       const typing = document.getElementById('curatorTyping');
       if (typing) typing.classList.remove('hidden');
-      const html = await gossipModelGreeting(main, other);
+      const html = next ? null : await gossipModelGreeting(main);
       if (typing) typing.classList.add('hidden');
       // A second click while the model was writing: only the latest switch speaks.
       if (seq !== gossipGreetSeq || !isGossipModeActive) return;
       // data-gossip: the turn is talk, so it is drawn as a balloon and set in the gossip colour.
-      appendCuratorMessage(`<div data-gossip="greeting">${html || gossipTemplate(main, other)}</div>`, chips, null, null, false);
+      appendCuratorMessage(`<div data-gossip="greeting">${html || gossipTemplate(main, next)}</div>`, chips, null, null, false);
     }
 
     let currentCardMode = 'info';
@@ -10513,7 +10530,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v775';
+    const ATLAS_RELEASE = 'culture-atlas-v794';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -15583,6 +15600,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
     // A request for gossip, by the words used: the chat then prints the gossip itself and nothing around it.
     const GOSSIP_ASK = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i;
+    // A question about who pays for a space or who runs it. In Gossip mode it is still answered as asked, with the talk after it.
+    const MONEY_GOV_ASK = /\b(who funds|funding|funded|funders?|donors?|money|finance[ds]?|backers?|independen\w*|autonom\w*|governance|governed|curatorial|who runs|run by|board|structure|architecture)\b/i;
     async function queryAI(userPrompt, webIntel = null) {
       const activeKey = aiApiKey || _SYS_KEY;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
@@ -15679,10 +15698,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
 
       // 4. Assemble XML Structured User Prompt with Explicit Constraints and Investigative Journalism Directives
-      const isGossipMode = (typeof isGossipModeActive !== 'undefined' && isGossipModeActive) || GOSSIP_ASK.test(userPrompt);
+      const gossipOnNow = typeof isGossipModeActive !== 'undefined' && isGossipModeActive;
+      const askedMoneyGov = MONEY_GOV_ASK.test(userPrompt) && !GOSSIP_ASK.test(userPrompt);
+      const isGossipMode = (gossipOnNow && !askedMoneyGov) || GOSSIP_ASK.test(userPrompt);
       const gossipDirective = isGossipMode
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the museum: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the museum, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the museum, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
-        : `\n\n<record_mode>\nLead with the neutral record: who funds the museum, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.\n</record_mode>`;
+        : `\n\n<record_mode>\nLead with the neutral record: who funds the museum, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.${gossipOnNow ? ' Gossip mode is on: answer the question first, from the record, then add at most one sentence with the newest item in the GOSSIP section, saying who says it and when, never as fact.' : ''}\n</record_mode>`;
 
       const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Give no tourist advice (NO TOURIST ADVICE in the system instructions). Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. None is a visiting, travel or itinerary question. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring museum or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
@@ -17090,6 +17111,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // gossip: the whole reply is reported, unverified items (a list of flagged spaces); a plain record, a city list or a status line is not.
       const answer = (html, follow, gossip) => appendCuratorMessage(`<div class="space-y-3"${gossip ? ' data-gossip="list"' : ''}>${html}</div>`, follow || followFor());
       const asks = (re) => re.test(q);
+      // A yes to the Gossip-mode "Want to hear more?": the next story, one at a time.
+      if (isGossipModeActive && /^\s*(yes|yeah|yep|yes please|sure|ok(ay)?|more|go on|tell me (another|more)|another( one)?|next( one)?)[\s.!?]*$/i.test(query)) {
+        gossipGreeting(true, true);
+        return;
+      }
       const explicit = findMentionedInst(query);
       const active = typeof getActiveTargetInstitution === 'function' ? getActiveTargetInstitution(q) : null;
       let target = explicit || active;
@@ -17493,7 +17519,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         return;
       }
       // A kind of story across the records ("Which directors left under a cloud?"): the items themselves, newest first.
-      const kindQ = !explicit && (isGossipModeActive || GOSSIP_ASK.test(query) || Object.values(KIND_CHIP).some(a => a.includes(query.trim()))) ? gossipKindOf(query) : null;
+      const kindQ = !explicit && !target && (isGossipModeActive || GOSSIP_ASK.test(query) || Object.values(KIND_CHIP).some(a => a.includes(query.trim()))) ? gossipKindOf(query) : null;
       if (kindQ) {
         const items = gossipPool().filter(x => x.g.kind === kindQ.kind && inScope(x.inst, place));
         if (items.length) {
@@ -17529,7 +17555,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         listOf([...ALL_INSTITUTIONS].sort((a, b) => gossipItems(b, true).length - gossipItems(a, true).length).filter(i => documentedRecordHtml(i) || watchIsGossip(i.watch)), 'Museums people are talking about, the most talked about first. None of it is checked unless it says confirmed or settled:', true);
         return;
       }
-      if (target && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
+      // "How does X fund <space>?" (the money map asks it of each funder name) is a funding question too; it fell through to
+      // the record lines that mention X, so "How does Sundays fund Museo del Oro?" was answered with the ticket price.
+      const askedFunder = target ? ((query.match(/\b(?:how|why|when|where|does|do|did)\s+(?:does|do|did\s+)?(.+?)\s+(?:fund|funds|back|sponsor|pay for|finance)\s/i) || [])[1] || '').trim().replace(/^(?:does|do|did)\s+/i, '').replace(/^the\s+/i, '').trim() : '';
+      // Who runs it and how free its programme is: answered from the record's governance lines, beside its funding.
+      const askedGovernance = asks(/\b(independen\w*|autonom\w*|governance|governed|curatorial|editorial|who runs|run by|board|state[- ]run|arm'?s[- ]length|structure|architecture)\b/);
+      const askedMoney = !!target && (!!askedFunder || askedGovernance || asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/));
+      // A question about money or governance is answered as asked in Gossip mode too. Gossip mode used to send every question
+      // naming a space to the gossip brief, so "the funding architecture and curatorial independence of Nairobi National
+      // Museum" was answered with one headline about ghost workers (user, 17 Nov 2026: "this is a slop").
+      if (target && !(askedMoney && !GOSSIP_ASK.test(query)) && (isGossipModeActive || GOSSIP_ASK.test(query) || asks(/\b(flag|flagged|why|sponsor|controvers|epstein|boycott|protest|strike|labou?r|trustee|scandal|conflict|reported|wikileaks|cables?|censorship|detention|dropped|campaigned)\b/))) {
         focus(target);
         const askedGossip = isGossipModeActive || GOSSIP_ASK.test(query);
         const reported = chatReportingHtml(documentedRecordHtml(target, { brief: askedGossip && isGossipModeActive }));
@@ -17548,17 +17583,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         answer(`<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${reported || '<p>Nothing has been reported about this museum.</p>'}${sourcesHtml(rest)}`);
         return;
       }
-      // "How does X fund <space>?" (the money map asks it of each funder name) is a funding question too; it fell through to
-      // the record lines that mention X, so "How does Sundays fund Museo del Oro?" was answered with the ticket price.
-      const askedFunder = target ? ((query.match(/\b(?:how|why|when|where|does|do|did)\s+(?:does|do|did\s+)?(.+?)\s+(?:fund|funds|back|sponsor|pay for|finance)\s/i) || [])[1] || '').trim().replace(/^(?:does|do|did)\s+/i, '').replace(/^the\s+/i, '').trim() : '';
-      if (target && (askedFunder || asks(/\b(who funds|funding|funded|funder|donor|money|pays?|finance|financed|backers?)\b/))) {
+      if (askedMoney) {
         focus(target);
         const shared = (target.funder_links || []).filter(f => f && f.funder);
         // A funder the record does not name is said to be absent before the record's funding is given, so a false premise
         // is corrected rather than answered.
         const onRecord = askedFunder && (new RegExp('\\b' + askedFunder.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(target.funding || '') || shared.some(f => f.funder.toLowerCase() === askedFunder.toLowerCase()));
         const absent = askedFunder && !onRecord ? `<p>The atlas does not list ${escapeHtml(askedFunder)} as a funder of ${escapeHtml(target.name)}.</p>` : '';
-        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>The atlas has no funding details for this museum yet.</p>'}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${sourcesHtml(target)}`);
+        answer(`${absent}<p>${formatInstLink(target)}. ${escapeHtml(tierName(target))}.</p>${target.funding ? `<p>${escapeHtml(target.funding)}</p>` : '<p>The atlas has no funding details for this museum yet.</p>'}${governanceHtml(target, askedGovernance)}${fact('', target.watch)}${shared.length ? `<p>Funders it shares with other museums on the map: ${shared.map(f => `${escapeHtml(f.funder)} (${f.institutions})`).join(', ')}.</p>` : ''}${gossipAsideHtml(target)}${sourcesHtml(target)}`);
         return;
       }
       if (asks(/\b(method|verif|how do you|criteria|where does this|where do you get|sources?\b|tier|what does (clean|flagged)|assess\w*|trust)\b/)) {
@@ -21909,15 +21941,16 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/note-aids.js?v=669" defer></script>
 <script src="assets/note-files.js?v=669" defer></script>
 <script src="assets/funding-views.js?v=767"></script>
-<script src="assets/layers.js?v=768"></script>
+<script src="assets/layers.js?v=780"></script>
 <script src="assets/critique-gallery-data.js?v=692"></script>
 <script src="assets/critique-captions.js?v=692"></script>
 <script src="assets/critique-gallery.js?v=692"></script>
 <script src="assets/hq-detail.js?v=744"></script>
-<script src="assets/influence-mode.js?v=775"></script>
+<script src="assets/influence-mode.js?v=779"></script>
 <script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=773"></script>
+<script src="assets/phone-maps.js?v=781"></script>
 <script src="assets/desktop-maps.js?v=743"></script>
 <script src="assets/chat-resize.js?v=691"></script>
+<script src="assets/tab-suggest.js?v=788"></script>
 </body>
 </html>
