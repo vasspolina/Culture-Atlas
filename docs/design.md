@@ -12,7 +12,7 @@ Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for 
 
 Behaviour that holds whatever the look: titles stay on one line and are never cut (`fitTitles` in `assets/typeset.js` sets a long one smaller); only the top and bottom edges of the map are fogged; the selected space's label on the globe carries its whole name; there are no hover cards on the map (11 Nov 2026) except the Artists' images layer's, which shows only while that layer is on; the desktop chat column can be dragged wider by its left edge, up to full screen (double-click the edge to toggle; `assets/chat-resize.js`).
 
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
+The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see [Whistleblower reviews](api.md)). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
 
 ## Editing the page
 

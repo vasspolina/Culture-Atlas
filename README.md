@@ -12,7 +12,7 @@ python3 -m http.server 8080
 
 Then open [http://localhost:8080](http://localhost:8080).
 
-To try the Share information form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
+To try the Share information form against a local backend, run the report API (see [docs/api.md](docs/api.md)) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
 ## Project Structure
 
