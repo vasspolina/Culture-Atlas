@@ -49,8 +49,8 @@
   const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (_) { return ''; } };
   // What came with the money, one plain label per kind, the user's own list (user, 19 Nov 2026: "just keep this not need
   // another column"): no second wording for the influence, and no note under a ledger row's heading. assets/influence.json
-  // keeps its own labels and these win.
-  const CAME = { name: 'Its name on something', seat: 'A board seat', programme: 'A show or programme it paid for',
+  // keeps its own labels and these win. "Its name on something" became "Its name on a building, room or prize" (user, 19 Nov 2026).
+  const CAME = { name: 'Its name on a building, room or prize', seat: 'A board seat', programme: 'A show or programme it paid for',
     building: 'A building or endowment', access: 'Galas and perks', silence: 'Secrecy', licence: 'An image clean-up',
     tax: 'A tax break', money: 'Money only' };
   const label = k => { if (CAME[k]) return CAME[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
