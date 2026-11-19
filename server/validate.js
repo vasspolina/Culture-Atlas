@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120, placeName: 120, minPlaceName: 2, city: 80 };
+export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120, placeName: 120, minPlaceName: 2, city: 80, address: 200 };
 
 // Plain text only. Tags (and what a script or style tag holds), control characters and stray angle brackets are
 // removed, runs of spaces collapse, and no more than one blank line survives. The page escapes the text again.
@@ -68,6 +68,14 @@ export function validateReview(body, place) {
   return { data: { kind: 'review', content, authorLabel, placeId: place.id, institution: place.name, city: place.city || 'Unspecified' } };
 }
 
+// Keyboard mash is not a new place (user, 19 Nov 2026): a Latin word of five letters or more with no vowel (a word
+// with two capitals or more, an acronym such as VDNKh, is let through), or a letter four times in a row. Other scripts are not judged. Same rule as
+// looksLikeName in index.html.
+export function looksLikeName(name) {
+  const words = String(name || '').match(/[A-Za-z]+/g) || [];
+  return !words.some(w => (w.length >= 5 && (w.match(/[A-Z]/g) || []).length < 2 && !/[aeiouy]/i.test(w)) || /([a-z])\1{3}/i.test(w));
+}
+
 function oneLine(value) {
   return cleanText(typeof value === 'string' ? value.slice(0, 1000) : '').replace(/\s+/g, ' ');
 }
@@ -80,12 +88,16 @@ export function validateNewPlace(body, institutions) {
   const name = oneLine(source.placeName);
   if (name.length < LIMITS.minPlaceName) return { error: 'Write the name of the place.' };
   if (name.length > LIMITS.placeName) return { error: `The name of the place cannot be longer than ${LIMITS.placeName} characters.` };
+  if (!looksLikeName(name)) return { error: 'That does not look like the name of a place. Write it the way it is written.' };
   const city = oneLine(source.city);
   if (!city) return { error: 'Write the city or town the place is in.' };
   if (city.length > LIMITS.city) return { error: `The city cannot be longer than ${LIMITS.city} characters.` };
+  // The street address is optional (user, 19 Nov 2026), so the editor can find the place.
+  const address = oneLine(source.address);
+  if (address.length > LIMITS.address) return { error: `The address cannot be longer than ${LIMITS.address} characters.` };
   const known = institutions.byName && institutions.byName.get(nameKey(name));
   if (known) return { error: `${known.name} is on the atlas already. Choose it from the list to add to its record.`, status: 409, placeId: known.id };
   const result = validateReview(source, { id: null, name, city });
   if (result.error) return result;
-  return { data: { ...result.data, kind: 'new-place', placeId: null } };
+  return { data: { ...result.data, kind: 'new-place', placeId: null, address: address || null } };
 }
