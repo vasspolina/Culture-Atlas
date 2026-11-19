@@ -16,6 +16,10 @@
    The page and the map both ask for "Atlas Serif". */
 @font-face{font-family:"Atlas Serif";font-style:normal;font-weight:400;font-display:swap;src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("LiberationSerif"),local("Tinos"),local("Tinos-Regular")}
 @font-face{font-family:"Atlas Serif";font-style:italic;font-weight:400;font-display:swap;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT"),local("Liberation Serif Italic"),local("LiberationSerif-Italic"),local("Tinos Italic"),local("Tinos-Italic")}
+/* The bold of the atlas serif, under a name of its own so only the text that asks for it turns bold (the page sets
+   font-synthesis:none, and a 700 face under "Atlas Serif" would embolden every weight rule in the sheet). Used by the
+   invitations to share (user, 19 Nov 2026: "make this in bold and 5% letter spacing"). */
+@font-face{font-family:"Atlas Serif Bold";font-style:normal;font-weight:700;font-display:swap;src:local("Times New Roman Bold"),local("TimesNewRomanPS-BoldMT"),local("Liberation Serif Bold"),local("LiberationSerif-Bold"),local("Tinos Bold"),local("Tinos-Bold")}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-cyrillic-ext.woff2") format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-greek-ext.woff2") format("woff2");unicode-range:U+1F00-1FFF}
@@ -2370,6 +2374,10 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    is the form's dark green (--sh-green), bold, tracked 0.2em. */
 @layer sheet{
 :root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important;font-weight:700!important;letter-spacing:.2em!important}
+/* Bold in the serif's own bold, tracked 5% (user, 19 Nov 2026: "make this in bold and 5%letter spacing"; was 20%). The
+   Share information form's undertone takes the same. */
+:root:root #curatorMessages .chat-share-invite-line,
+:root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:"Atlas Serif Bold",var(--sh-serif)!important;font-weight:700!important;letter-spacing:.05em!important}
 }
 
 /* ==== A NAME BUBBLE TO THE LEFT OF ITS MARK KEEPS ITS WIDTH (user, 19 Nov 2026, a screenshot of Galeria Foksal close in:
@@ -2394,4 +2402,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible) *,
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible) *{color:var(--sh-paper)!important}
+/* The form's description starts on the left edge with the labels and fields (user, 19 Nov 2026: "allign description to
+   the left"); it had the sheet's indent. */
+:root:root #noteFormIntro{padding-left:0!important;margin-left:0!important;text-indent:0!important}
 }
