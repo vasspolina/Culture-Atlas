@@ -2107,14 +2107,12 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y){position:absolute!important;top:0!important;left:0!important;right:0!important;z-index:20!important;
     display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:0!important;height:76px!important;min-height:0!important;
     padding:16px 16px 0!important;margin:0!important;border:0!important;background:transparent!important}
-  /* The fade, in two layers drawn only once the chat is scrolled: a blur that thins out towards the foot (::before), and
-     over it paper, solid behind the buttons and clear 24px below them (::after). */
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{content:"";position:absolute;inset:0 0 -24px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s ease}
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent)}
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{
-    background:linear-gradient(to bottom,var(--sh-paper) 0%,var(--sh-paper) 58%,color-mix(in srgb,var(--sh-paper) 80%,transparent) 74%,color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)}
+  /* Once the chat is scrolled the bar is solid paper with a hairline at its foot (user, 19 Nov 2026: "the top bar needs to be
+     fixed"). It had been a blur and a fade reaching 24px below the bar, so a line passing under it showed as a smudge with
+     its top half cut off. Text now goes cleanly under a straight edge. */
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before{content:none!important}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s ease;
+    background:var(--sh-paper);border-bottom:1px solid color-mix(in srgb,var(--sh-rule) 70%,transparent)}
   :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::before,
   :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::after{opacity:1}
   :root.gm-chat #workViewContainer #phoneChatHead .sheet-grabber:not(#sh-x):not(#sh-y){top:6px!important}
@@ -2338,10 +2336,12 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    The note's words (title, undertone, labels, the text written, the pledge) are dark green. The places are no longer the
    browser's datalist drop-down, which the system draws in its own sans: assets/place-list.js draws #notePlaceList, set
    here as the sheet sets its lists, the serif at the text size and leading, a place's city after it in a lighter green,
-   the row under the pointer or the arrow keys on the lime band. Contrast: #1d4a2a on white 10:1, on the lime 8.7:1;
-   #4a6b52 on white 6:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
+   the row under the pointer or the arrow keys on the lime band. Contrast: #3e6826 on white 6.5:1, on the lime 5.6:1;
+   #4d703e on white 5.7:1, on the lime 4.8:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
 @layer sheet{
-:root{--sh-green:#1d4a2a;--sh-green-2:#4a6b52}
+/* The light theme's green (user, 19 Nov 2026: "green color for light needs to be this but 30% darker", a swatch of about
+   #589437): each channel times 0.7, #3e6826; the lighter green beside it is the same hue, #4d703e. */
+:root{--sh-green:#3e6826;--sh-green-2:#4d703e}
 :root[data-theme="dark"]{--sh-green:#9fd0a6;--sh-green-2:#7fa886}
 :root body.chat-input-mode-active #workInputCard :is(#noteFormFields,#noteFormFields *,#noteInputLabel,#noteAckRow,#noteAckRow *,#noteFormStatus,#noteFileInfo,#noteAidsRow,#noteAidsRow *),
 :root body.chat-input-mode-active #workInputCard #workInput{color:var(--sh-green)!important}
@@ -2398,7 +2398,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    thin outline round it, labels in the lighter green. Words that could identify the writer and a message that stops the note
    are red. The form's own link to the chat sits under its undertone. */
 @layer sheet{
-:root #curatorMessages .chat-share-card{margin:calc(6px * var(--sh-k)) 0 0!important;padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important;
+:root #curatorMessages .chat-share-card{margin:calc(6px * var(--sh-k)) 0 calc(10px * var(--sh-k))!important;padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important;
   border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:transparent!important;color:var(--sh-green)!important}
 :root #curatorMessages .chat-share-card *{color:var(--sh-green)!important}
 :root #curatorMessages .chat-share-card .chat-share-k,:root #curatorMessages .chat-share-card .chat-share-new{color:var(--sh-green-2)!important;font-style:italic!important}
@@ -2419,7 +2419,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    on hover as well") ====
    The black Share information button (and Back to chat, the same button while a note is written) and the chat's "Share
    information about ..." follow-up take the form's dark green, --sh-green, under the pointer or the keyboard, with the
-   paper's colour on it: white on #1d4a2a 10:1; on the dark theme #151412 on #9fd0a6 10:1. */
+   paper's colour on it: white on #3e6826 6.5:1; on the dark theme #151412 on #9fd0a6 10:1. */
 @layer sheet{
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible),
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
