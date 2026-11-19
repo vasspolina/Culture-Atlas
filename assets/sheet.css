@@ -2363,3 +2363,23 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    "#noteFormFields .nf-field{display:block}" had shown the city box under every known place too. */
 #noteFormFields :is(#noteCityField,#notePlaceHint)[hidden]{display:none!important}
 }
+
+/* ==== THE CHAT'S INVITATION TO SHARE (user, 19 Nov 2026: "color these all about sharing in green and make it bold with 20%
+   letterspacing") ====
+   The sentence under each answer that asks the reader to add what they know (chatShareInvite in index.html, every variant)
+   is the form's dark green (--sh-green), bold, tracked 0.2em. */
+@layer sheet{
+:root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important;font-weight:700!important;letter-spacing:.2em!important}
+}
+
+/* ==== A NAME BUBBLE TO THE LEFT OF ITS MARK KEEPS ITS WIDTH (user, 19 Nov 2026, a screenshot of Galeria Foksal close in:
+   "whats this?") ====
+   A bubble placed left of its mark (label-pos-left: right:calc(100% + 6px), left:auto) took its width from the mark, 18px,
+   so it showed only the grade and the name ran out of it in the paper's colour, unseen on the map. It is as wide as its text. */
+@layer sheet{
+#cityMapContainer.street-poster .inst-pin-label{width:max-content!important}
+/* A bubble set beside its mark sits level with it, the tail pointing at it: the centring of a bubble above the mark
+   (left 50%, translateX(-50%)) had carried over onto these too. */
+#cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-left{left:auto!important;right:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
+#cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-right{right:auto!important;left:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
+}
