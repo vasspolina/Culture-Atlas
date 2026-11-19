@@ -1562,6 +1562,11 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel ul.d-row-list.hq-list>li::before{content:none}
 #hqPanel.is-details .hq-list .hq-note{margin:calc(var(--H) / 2) 0 0}
 #hqPanel.is-details .hq-names li{padding:0}
+/* The funder's profile (19 Nov 2026): its sentences as prose, each dated fact with its date and source on a line under it. */
+#hqPanel .hq-prose p{margin:0}
+#hqPanel .hq-prose p+p{margin-top:calc(var(--H) / 2)}
+#hqPanel .hq-fact .hq-s{display:block;margin-top:2px}
+#hqPanel .hq-src li{padding:0}
 #hqPanel.is-details .hq-more{margin-top:var(--H);min-height:44px;font-size:var(--fs-s)}
 /* Chat answers: a section heading sits close to the text it opens and is not pushed away by the box margins of its own h3; the paragraph under it starts flush */
 #curatorMessages .curator-section-hdr{margin:1em 0 .3em;padding:0;display:block}
