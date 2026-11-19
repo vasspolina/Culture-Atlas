@@ -11,7 +11,7 @@
 //     switch the map from culture spaces to cultural funders"); a picked funder shows its spaces, joined to its office
 //     (window.atlasModeKeep, read by assets/layers.js; atlasInfluenceDraw and atlasInfluencePointer, called by index.html)
 //   - the chat says in two lines what the mode is
-//   - a space's record leads with "What funders got here"
+//   - a space's record leads with "What came with the money"
 //   - a funder's record (assets/hq-detail.js) leads with its ledger: what it got, kind by kind, space by space
 //
 // The sender is the subject (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at
@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=21', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=23', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -47,24 +47,21 @@
 
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (_) { return ''; } };
-  // Plain names for the kinds (user, 17 Nov 2026: "delete all the jargon"): "Seat", "Silence" and "Licence to operate" were
-  // the editor's shorthand, not words a reader uses. assets/influence.json keeps its own labels; these win.
-  const PLAIN = { name: 'Its name on something', seat: 'A board seat', programme: 'Shows and programmes', building: 'Buildings',
-    access: 'Parties and perks', silence: 'Secrecy', licence: 'A better image', tax: 'Tax breaks', money: 'Money only' };
-  const label = k => { if (PLAIN[k]) return PLAIN[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
+  // What came with the money, one plain label per kind, the user's own list (user, 19 Nov 2026: "just keep this not need
+  // another column"): no second wording for the influence, and no note under a ledger row's heading. assets/influence.json
+  // keeps its own labels and these win. "Its name on something" became "Its name on a building, room or prize" (user, 19 Nov 2026).
+  const CAME = { name: 'Its name on a building, room or prize', seat: 'A board seat', programme: 'A show or programme it paid for',
+    building: 'A building or endowment', access: 'Galas and perks', silence: 'Secrecy', licence: 'An image clean-up',
+    tax: 'A tax break', money: 'Money only' };
+  const label = k => { if (CAME[k]) return CAME[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
+  // A line opens with what came with its money, the labels joined as a list (user, 19 Nov 2026, of "Buildings, Its name on
+  // something.": "incorrectly composed sentences"). A tie that got money alone opens with its sentence.
+  function gotPhrase(kinds) {
+    const parts = ORDER.filter(k => kinds.includes(k) && k !== 'money').map((k, i) => i ? label(k).charAt(0).toLowerCase() + label(k).slice(1) : label(k));
+    if (!parts.length) return '';
+    return parts.length === 1 ? parts[0] : parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1];
+  }
   const plural = (n, one, many) => `${n} ${n === 1 ? one : (many || one + 's')}`;
-  // What each kind means, said once in the chat and in the ledger's head, so a reader knows what "Seat" or "Silence" counts.
-  const MEANS = {
-    name: 'its name on a prize, a room, a building or a programme',
-    seat: 'a place on the board, or its people on it',
-    programme: 'a show, a festival, research or education it paid for',
-    access: 'galas, corporate memberships, events and hospitality',
-    building: 'a building, a refurbishment or an endowment',
-    silence: 'terms kept from the public, or work withdrawn',
-    tax: 'a gift that cut its tax bill',
-    licence: 'culture used to make its business look better',
-    money: 'money alone'
-  };
   // The order a ledger lists kinds: what was bought first, money alone last.
   const ORDER = ['name', 'seat', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
 
@@ -803,7 +800,7 @@
   const lineFor = (t, withSpace, withFunder) => {
     const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
-    const kinds = t.kinds.length ? t.kinds.map(label).join(', ') : '';
+    const kinds = gotPhrase(t.kinds);
     const who = withFunder ? `<a href="#" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</a>` : '';
     const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
@@ -843,8 +840,8 @@
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', 'What funders got here');
-    el.innerHTML = row('What funders got here', '', '') +
+    el.setAttribute('aria-label', 'What came with the money');
+    el.innerHTML = row('What came with the money', '', '') +
       [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul>`, `<a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a>`)).join('') + study;
     return el;
   }
@@ -853,7 +850,7 @@
   // sources say happened to the money after a space said no. Each fact carries its own source, read on its page.
   const FACT_ROWS = [
     ['harm', 'Where the money comes from', null],
-    ['scale', 'Its business', 'how big it is, for one year']
+    ['scale', 'Size of its business', 'in one year']
   ];
   // Lobbying and politics facts are no longer drawn in the record (user, 17 Nov 2026: "only keep relevant info to cultural
   // spaces"); they stay in the data.
@@ -889,7 +886,7 @@
     const c = fig(f).culture || {}, src = c.largest_gift && c.largest_gift.source;
     const n = cultureSpaces(f);
     const body = `Gives to ${n} ${n === 1 ? 'museum' : 'museums'}.${c.largest_gift ? ` The largest gift is ${c.largest_gift.text}.` : ''}`;
-    return row('Culture', '', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
+    return row('Giving to museums', '', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
   }
 
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.
@@ -905,18 +902,18 @@
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', `What ${f.name} got`);
-    let html = row(`What ${f.name} got`, '', '');
+    el.setAttribute('aria-label', 'What came with the money');
+    let html = row('What came with the money', '', '');
     html += compareRow(f);
     html += linkRows(f);
     html += senderRows(f);
     ORDER.forEach(k => {
       const ties = f.ties.filter(x => (x.kinds.length ? x.kinds : []).includes(k));
-      if (ties.length) html += row(label(k), MEANS[k], `<ul class="d-row-list influence-list">${ties.map(x => lineFor(x, true, null)).join('')}</ul>`);
+      if (ties.length) html += row(label(k), '', `<ul class="d-row-list influence-list">${ties.map(x => lineFor(x, true, null)).join('')}</ul>`);
     });
     html += afterRows(f);
     const pushback = f.ties.filter(x => !x.kinds.length);
-    if (pushback.length) html += row('Pushback', 'protests and resignations', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
+    if (pushback.length) html += row('Protests and resignations', '', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
     if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'deal') + ' ended' : '', t.protest ? plural(t.protest, 'deal') + ' drew protest' : ''].filter(Boolean).join('; '))}.</p>`;
     el.innerHTML = html;
     return el;
@@ -949,7 +946,7 @@
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', 'At MoMA');
-    el.innerHTML = row('At MoMA', 'from the MoMA Influence Map study', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> · <a href="${esc(STUDY.page)}">Open the study</a></p>`);
+    el.innerHTML = row('At MoMA', 'from the MoMA Influence Map', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> · <a href="${esc(STUDY.page)}">Open the study</a></p>`);
     return el;
   }
   function decorate() {

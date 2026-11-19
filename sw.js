@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v826';
+const CACHE_NAME = 'culture-atlas-v832';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -39,6 +39,7 @@ const ASSETS_TO_CACHE = [
   './assets/note-aids.js',
   './assets/note-files.js',
   './assets/place-list.js',
+  './assets/chat-share.js',
   './assets/phone-maps.js',
   './assets/desktop-maps.js',
   './assets/chat-resize.js',
