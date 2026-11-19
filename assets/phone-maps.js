@@ -518,22 +518,25 @@
       // Clean, Flagged and Unverified follow the other filters, as on the desktop (user, 11 Nov 2026: "filters and chat need
       // to match desktop version"). They drive the grade filter in assets/layers.js; one at a time, pressed again for all.
       // Unverified is not a filter (user, 15 Nov 2026: "delete images filter and unverified").
-      const GRADES = [['A', 'Clean'], ['B', 'Flagged']];
+      // The five funding grades, A to F, in place of Clean and Flagged, as on the desktop (user, 19 Nov 2026): they drive
+      // the grade filter the list of grades does (assets/layers.js atlasSetLetterGrade). data-grade is 1 to 5.
+      const GRADES = [[1, 'A'], [2, 'B'], [3, 'C'], [4, 'D'], [5, 'F']];
       const gradeChips = () => {
-        if (typeof window.atlasSetGradeFilter !== 'function' || !row.querySelector('button')) return;
-        if (!row.querySelector('button[data-grade]')) GRADES.forEach(([g, name]) => {
+        if (typeof window.atlasSetLetterGrade !== 'function' || !row.querySelector('button')) return;
+        if (!row.querySelector('button[data-grade]')) GRADES.forEach(([n, l]) => {
           const b = document.createElement('button');
           b.type = 'button';
-          b.className = 'gm-filter-chip sh-grade-chip';
-          b.dataset.grade = g;
-          b.textContent = name;
-          b.title = `Show only ${name.toLowerCase()} museums; press again to show every museum`;
-          b.addEventListener('click', () => window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g));
+          b.className = 'gm-filter-chip sh-grade-chip sh-letter-chip';
+          b.dataset.grade = String(n);
+          b.textContent = 'Grade ' + l;
+          b.title = `Show only grade ${l} spaces; press again to show every space`;
+          b.addEventListener('click', () => window.atlasSetLetterGrade(window.atlasLetterGrade() === n ? null : n));
           row.appendChild(b);
         });
-        const on = window.atlasGradeFilter();
-        row.querySelectorAll('button[data-grade]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.grade === on)));
+        const on = window.atlasLetterGrade();
+        row.querySelectorAll('button[data-grade]').forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.grade) === on)));
       };
+      document.addEventListener('atlas:letter-grade', () => gradeChips());
       // After assets/layers.js has repainted the row, which marks every chip without a layer as "All".
       document.addEventListener('atlas:filter', () => setTimeout(gradeChips));
       const build = () => typeof window.atlasFilterChips === 'function' && window.atlasFilterChips(row, 'gm-filter-chip') && (gradeChips(), true);

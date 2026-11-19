@@ -28,7 +28,7 @@ ALIASES = os.path.join(ROOT, 'tools', 'hq_aliases.json')
 
 LIMIT = {'what': 30, 'money': 25, 'arts': 30}
 HEDGE = re.compile(r"\b((?-i:may)|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|possibly|perhaps|some say)\b", re.I)
-PROMO = re.compile(r"\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament|nestled|boasts?|showcases?|fosters?|underscores?|delves?|navigates?|ecosystem|leading|dedicated to|committed to|passionate|plays? a (?:crucial|key|vital) role|a (?:diverse|wide) range|among others|and more)\b", re.I)
+PROMO = re.compile(r"\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament|nestled|boasts?|showcases?|(?-i:fosters?)|underscores?|delves?|navigates?|ecosystem|leading|dedicated to|committed to|passionate|plays? a (?:crucial|key|vital) role|a (?:diverse|wide) range|among others|and more)\b", re.I)
 ABSENCE = re.compile(r"\b(not found|no (?:public |published )?(?:information|record|details|figures?|accounts?) (?:found|published|available)|could not (?:be )?(?:find|found|confirm|read|verify)|not (?:published|available|disclosed) online|unclear|unknown)\b", re.I)
 DASH = re.compile(r"[–—]| - ")
 WEAK = re.compile(r"fundraiso|causeiq|grantedai|bringo|mergerlinks|lei\.bloomberg|/jobs?[./]|indeed\.|glassdoor|zoominfo|dnb\.com|opencorporates", re.I)
@@ -93,11 +93,28 @@ def merge(paths):
 def build():
     truth = json.load(open(TRUTH)) if os.path.exists(TRUTH) else {}
     senders = json.load(open(SENDERS)) if os.path.exists(SENDERS) else {}
+    # One body under several office keys (Arts Council England as 'artscouncilengland|UK', 'acenpo', 'artscouncilnpo|UK')
+    # reads the same on every page: each key takes the profile of the first batch that researched that name.
+    order = lambda p: int(re.sub(r'\D', '', p.get('batch', '')) or 999)
+    first = {}
+    for k, p in sorted(truth.items(), key=lambda kv: (order(kv[1]), kv[0])):
+        n = (p.get('name') or '').strip().lower()
+        if n and not p.get('wrong_match'): first.setdefault(n, p)
     out = {}
     for k, p in truth.items():
+        if not p.get('wrong_match'): p = first.get((p.get('name') or '').strip().lower(), p)
         if p.get('wrong_match'): continue
         e = {'what': p.get('what', ''), 'money': p.get('money', ''), 'arts': p.get('arts', ''), 'site': p.get('site', ''), 'src': p.get('sources', [])}
         out[k] = {f: v for f, v in e.items() if v}
+    # An office no batch reached under its own key takes the profile researched under its name ('Duvel Moortgat' as
+    # 'duvelbrewery' and 'duvel').
+    hq_path = os.path.join(ROOT, 'assets', 'hq.json')
+    if os.path.exists(hq_path):
+        for k, o in json.load(open(hq_path))['org'].items():
+            p = first.get((o.get('n') or '').strip().lower())
+            if p and k not in truth and not any(x in out for x in [k] + o.get('also', [])):
+                e = {'what': p.get('what', ''), 'money': p.get('money', ''), 'arts': p.get('arts', ''), 'site': p.get('site', ''), 'src': p.get('sources', [])}
+                out[k] = {f: v for f, v in e.items() if v}
     for k, s in senders.items():
         if not isinstance(s, dict): continue
         e = out.setdefault(k, {})

@@ -288,40 +288,55 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 /* The phone sheet's rating line names the grade by its letter (.gm-grade-word[data-grade], assets/phone-maps.js) and had come
    out in ink (user, 17 Nov 2026: "color grades with grade color on mobile and desktop"). It takes the colours of .grade-word,
    the record's and the chat's, so a grade is one colour wherever it is named. */
-.gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1f7f5c!important}
-.gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#1b7f73!important}
-.gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8c720c!important}
-.gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#975824!important}
-.gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8f2929!important}
-:root[data-theme="dark"] .gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#34d399!important}
-:root[data-theme="dark"] .gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#2dd4bf!important}
-:root[data-theme="dark"] .gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#facc15!important}
-:root[data-theme="dark"] .gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#fb923c!important}
-:root[data-theme="dark"] .gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ef4444!important}
-/* GRADE FILTERS (user, 15 Nov 2026: "make these into color coded clickable filters"). In a list of the five grades each
-   "Grade X" is a button: a pill of the grade's bright colour with black text on it (F on the lighter red, so all five clear
-   7:1), in both themes. The one that is on has a 2px ink edge and a tick after its letter, so it is not told by colour alone.
-   The colon the list puts after a grade word is dropped, since the pill ends the label. index.html, "GRADE FILTERS". */
-:root:root button.grade-filter.grade-word{display:inline-block!important;text-indent:0!important;margin:2px 8px 2px 0!important;padding:1px 10px!important;min-height:24px!important;border:2px solid transparent!important;border-radius:999px!important;color:#000!important;-webkit-text-fill-color:#000!important;font:inherit!important;font-size:var(--sh-s)!important;line-height:var(--sh-s-lh)!important;cursor:pointer!important;text-transform:none!important;letter-spacing:0!important}
-:root:root button.grade-filter.grade-word[data-grade-filter="1"]{background:#34d399!important}
-:root:root button.grade-filter.grade-word[data-grade-filter="2"]{background:#2dd4bf!important}
-:root:root button.grade-filter.grade-word[data-grade-filter="3"]{background:#facc15!important}
-:root:root button.grade-filter.grade-word[data-grade-filter="4"]{background:#fb923c!important}
-:root:root button.grade-filter.grade-word[data-grade-filter="5"]{background:#f87171!important}
-:root:root button.grade-filter.grade-word[aria-pressed="true"]{border-color:var(--sh-ink)!important}
-:root:root button.grade-filter.grade-word::after{content:none!important}
-:root:root button.grade-filter.grade-word[aria-pressed="true"]::after{content:" \2713"!important}
-:root:root button.grade-filter.grade-word:focus-visible{outline:2px solid var(--sh-ink)!important;outline-offset:2px!important}
-.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#1f7f5c!important}
-.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#1b7f73!important}
-.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#8c720c!important}
-.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#975824!important}
-.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#8f2929!important}
-:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#34d399!important}
-:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#2dd4bf!important}
-:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#facc15!important}
-:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#fb923c!important}
-:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#ef4444!important}
+.gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#007a80!important}
+.gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#0000ff!important}
+.gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#6e6a00!important}
+.gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#8a322e!important}
+.gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#b000b0!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="A"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#b8fbff!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="B"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#9466ff!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="C"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ffff3c!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="D"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ff3b1f!important}
+:root[data-theme="dark"] .gm-grade-word[data-grade="F"]:not(#sh-x):not(#sh-y):not(#sh-z){color:#ff5eff!important}
+/* GRADE FILTERS (user, 15 Nov 2026: "make these into color coded clickable filters"; 19 Nov 2026: "typeset as the rest",
+   "color code all text ... make text colored"). In a list of the five grades each "Grade X" is a button set as the text
+   round it: the same face, size and leading, no pill. The grade's name and its line are both in the grade's colour (the
+   darker cut on paper, the bright one on the dark ground, the --g1 to --g5 pairs below). The one that is on is underlined,
+   so it is not told by colour alone. index.html, "GRADE FILTERS". */
+:root{--g1:#007a80;--g2:#0000ff;--g3:#6e6a00;--g4:#8a322e;--g5:#b000b0;--g0:#6b6b6b}
+:root[data-theme="dark"]{--g1:#b8fbff;--g2:#9466ff;--g3:#ffff3c;--g4:#ff3b1f;--g5:#ff5eff;--g0:#a3a3a3}
+:root:root button.grade-filter.grade-word{display:inline!important;text-indent:0!important;margin:0!important;padding:0!important;min-height:0!important;border:0!important;border-radius:0!important;background:transparent!important;font:inherit!important;cursor:pointer!important;text-decoration:none!important}
+:root:root button.grade-filter.grade-word:hover{text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:.18em!important}
+:root:root button.grade-filter.grade-word[aria-pressed="true"]{text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:.18em!important}
+:root:root button.grade-filter.grade-word:focus-visible{outline:2px solid currentColor!important;outline-offset:2px!important}
+:root:root .grade-scale li:has(.grade-word-1),:root:root .grade-scale li:has(.grade-word-1) *{color:var(--g1)!important;-webkit-text-fill-color:var(--g1)!important}
+:root:root .grade-scale li:has(.grade-word-2),:root:root .grade-scale li:has(.grade-word-2) *{color:var(--g2)!important;-webkit-text-fill-color:var(--g2)!important}
+:root:root .grade-scale li:has(.grade-word-3),:root:root .grade-scale li:has(.grade-word-3) *{color:var(--g3)!important;-webkit-text-fill-color:var(--g3)!important}
+:root:root .grade-scale li:has(.grade-word-4),:root:root .grade-scale li:has(.grade-word-4) *{color:var(--g4)!important;-webkit-text-fill-color:var(--g4)!important}
+:root:root .grade-scale li:has(.grade-word-5),:root:root .grade-scale li:has(.grade-word-5) *{color:var(--g5)!important;-webkit-text-fill-color:var(--g5)!important}
+/* The whole row presses the filter (user, 19 Nov 2026, of "How grades work": "make them clickable here too", as the
+   Grade A to F pills under the map are). Only the words "Grade X" were a target and nothing showed it; a press on the
+   line beside them did nothing. The button's hit area is stretched over its row (::before, inset 0; ::after is the
+   colon), so the button and its short name stay as they were. On hover the whole row is underlined and the pointer
+   shows; the grade that is on underlines its whole row, 2px, so it is not told by colour alone. */
+:root:root .grade-scale li:has(> button.grade-filter){position:relative!important;cursor:pointer!important}
+/* No filter, transform or containment on the button in any state: a pressed button took filter: brightness(.85) from
+   the general pressed style, which made the button the box its ::before fills, so the target shrank back to the words. */
+:root:root .grade-scale li > button.grade-filter.grade-word{position:static!important;filter:none!important;transform:none!important;contain:none!important}
+:root:root .grade-scale li > button.grade-filter.grade-word::before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;cursor:pointer!important}:root:root .grade-scale li:has(> button.grade-filter):hover :is(button.grade-filter,.grade-scale-text){text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:.18em!important}
+:root:root .grade-scale li:has(> button.grade-filter[aria-pressed="true"]) :is(button.grade-filter,.grade-scale-text){text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:.18em!important}
+/* The line over the list starts flush, as the chat's other paragraphs and the list under it do (it was set in 26px). */
+:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>p{padding-left:0!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#007a80!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#0000ff!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#6e6a00!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#8a322e!important}
+.custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#b000b0!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#b8fbff!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="2"]{color:#9466ff!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="3"]{color:#ffff3c!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="4"]{color:#ff3b1f!important}
+:root[data-theme="dark"] .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="5"]{color:#ff5eff!important}
 /* Visiting: the label in italic, the fact after it. */
 .visit-cols,.visit-rows{display:block!important;margin:0!important;padding:0!important}
 .visit-item{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important;border:0!important}
@@ -626,6 +641,20 @@ main#main .study{border:0!important}
 .inst-pin-label[data-tier="A"],.inst-pin-label[data-tier="A"] *{color:var(--tier-a,#007a80)!important}
 .inst-pin-label[data-tier="B"],.inst-pin-label[data-tier="B"] *{color:var(--tier-b,#b000b0)!important}
 .inst-pin-label[data-tier="U"],.inst-pin-label[data-tier="U"] *,.inst-pin-label:not([data-tier="A"],[data-tier="B"]),.inst-pin-label:not([data-tier="A"],[data-tier="B"]) *{color:var(--tier-u,#7a7000)!important}
+/* A space's name in the index and on the street map, and its index dot, take its funding grade's colour (user, 19 Nov 2026:
+   "color code all text and map dots for each grade"): --g1 to --g5, --g0 for a space with no grade. index.html, GRADE_INK. */
+#shIndex .sh-index-row[data-g="0"] .sh-index-name,.inst-pin-label[data-g="0"],.inst-pin-label[data-g="0"] *{color:var(--g0)!important;--lc:var(--g0)}
+:root.gmd #shIndex [data-g="0"] .sh-index-dot{background:var(--g0)!important}
+#shIndex .sh-index-row[data-g="1"] .sh-index-name,.inst-pin-label[data-g="1"],.inst-pin-label[data-g="1"] *{color:var(--g1)!important;--lc:var(--g1)}
+:root.gmd #shIndex [data-g="1"] .sh-index-dot{background:var(--g1)!important}
+#shIndex .sh-index-row[data-g="2"] .sh-index-name,.inst-pin-label[data-g="2"],.inst-pin-label[data-g="2"] *{color:var(--g2)!important;--lc:var(--g2)}
+:root.gmd #shIndex [data-g="2"] .sh-index-dot{background:var(--g2)!important}
+#shIndex .sh-index-row[data-g="3"] .sh-index-name,.inst-pin-label[data-g="3"],.inst-pin-label[data-g="3"] *{color:var(--g3)!important;--lc:var(--g3)}
+:root.gmd #shIndex [data-g="3"] .sh-index-dot{background:var(--g3)!important}
+#shIndex .sh-index-row[data-g="4"] .sh-index-name,.inst-pin-label[data-g="4"],.inst-pin-label[data-g="4"] *{color:var(--g4)!important;--lc:var(--g4)}
+:root.gmd #shIndex [data-g="4"] .sh-index-dot{background:var(--g4)!important}
+#shIndex .sh-index-row[data-g="5"] .sh-index-name,.inst-pin-label[data-g="5"],.inst-pin-label[data-g="5"] *{color:var(--g5)!important;--lc:var(--g5)}
+:root.gmd #shIndex [data-g="5"] .sh-index-dot{background:var(--g5)!important}
 .custom-inst-pin.popup-active .inst-pin-label,.custom-inst-pin.popup-active .inst-pin-label *{color:var(--sh-ink)!important}
 :root:root .custom-inst-pin:not(.popup-active):hover .inst-pin-label,:root:root .custom-inst-pin:not(.popup-active):hover .inst-pin-label *,:root:root .inst-pin-label:focus-visible,:root:root .inst-pin-label:focus-visible *{color:var(--sh-hover)!important}
 
@@ -1851,6 +1880,17 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 :is(.gmd-chip,.gm-filter-chip)[data-grade="A"]{--sh-code:var(--tier-a,#007a80)}
 :is(.gmd-chip,.gm-filter-chip)[data-grade="B"]{--sh-code:var(--tier-b,#b000b0)}
 :is(.gmd-chip,.gm-filter-chip)[data-grade="U"]{--sh-code:var(--tier-u,#7a7000)}
+/* The five grade chips (1 to 5, A to F): outline and type in the grade's colour, --g1 to --g5. */
+:is(.gmd-chip,.gm-filter-chip).sh-letter-chip[data-grade="1"]{--sh-code:var(--g1)}
+:root:root:root #gmdChips .gmd-chip.sh-letter-chip[data-grade="1"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y),:root:root:root #gmChips .gm-filter-chip.sh-letter-chip[data-grade="1"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){color:var(--g1)!important}
+:is(.gmd-chip,.gm-filter-chip).sh-letter-chip[data-grade="2"]{--sh-code:var(--g2)}
+:root:root:root #gmdChips .gmd-chip.sh-letter-chip[data-grade="2"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y),:root:root:root #gmChips .gm-filter-chip.sh-letter-chip[data-grade="2"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){color:var(--g2)!important}
+:is(.gmd-chip,.gm-filter-chip).sh-letter-chip[data-grade="3"]{--sh-code:var(--g3)}
+:root:root:root #gmdChips .gmd-chip.sh-letter-chip[data-grade="3"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y),:root:root:root #gmChips .gm-filter-chip.sh-letter-chip[data-grade="3"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){color:var(--g3)!important}
+:is(.gmd-chip,.gm-filter-chip).sh-letter-chip[data-grade="4"]{--sh-code:var(--g4)}
+:root:root:root #gmdChips .gmd-chip.sh-letter-chip[data-grade="4"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y),:root:root:root #gmChips .gm-filter-chip.sh-letter-chip[data-grade="4"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){color:var(--g4)!important}
+:is(.gmd-chip,.gm-filter-chip).sh-letter-chip[data-grade="5"]{--sh-code:var(--g5)}
+:root:root:root #gmdChips .gmd-chip.sh-letter-chip[data-grade="5"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y),:root:root:root #gmChips .gm-filter-chip.sh-letter-chip[data-grade="5"]:not([aria-pressed="true"]):not(#sh-x):not(#sh-y){color:var(--g5)!important}
 :root{--sh-top:var(--sh-top-l,var(--sh-stone));--sh-chip:var(--sh-chip-l,var(--sh-paper))}
 :root[data-theme="dark"]{--sh-top:var(--sh-top-d,var(--sh-stone));--sh-chip:var(--sh-chip-d,var(--sh-paper))}
 @media (min-width:768px){
@@ -2107,14 +2147,12 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y){position:absolute!important;top:0!important;left:0!important;right:0!important;z-index:20!important;
     display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:0!important;height:76px!important;min-height:0!important;
     padding:16px 16px 0!important;margin:0!important;border:0!important;background:transparent!important}
-  /* The fade, in two layers drawn only once the chat is scrolled: a blur that thins out towards the foot (::before), and
-     over it paper, solid behind the buttons and clear 24px below them (::after). */
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before,
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{content:"";position:absolute;inset:0 0 -24px 0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s ease}
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-    -webkit-mask-image:linear-gradient(to bottom,#000 50%,transparent);mask-image:linear-gradient(to bottom,#000 50%,transparent)}
-  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{
-    background:linear-gradient(to bottom,var(--sh-paper) 0%,var(--sh-paper) 58%,color-mix(in srgb,var(--sh-paper) 80%,transparent) 74%,color-mix(in srgb,var(--sh-paper) 0%,transparent) 100%)}
+  /* Once the chat is scrolled the bar is solid paper with a hairline at its foot (user, 19 Nov 2026: "the top bar needs to be
+     fixed"). It had been a blur and a fade reaching 24px below the bar, so a line passing under it showed as a smudge with
+     its top half cut off. Text now goes cleanly under a straight edge. */
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::before{content:none!important}
+  :root.gm-chat #workViewContainer #phoneChatHead:not(#sh-x):not(#sh-y)::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;transition:opacity .2s ease;
+    background:var(--sh-paper);border-bottom:1px solid color-mix(in srgb,var(--sh-rule) 70%,transparent)}
   :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::before,
   :root.gm-chat #workViewContainer #phoneChatHead[data-scrolled]:not(#sh-x):not(#sh-y)::after{opacity:1}
   :root.gm-chat #workViewContainer #phoneChatHead .sheet-grabber:not(#sh-x):not(#sh-y){top:6px!important}
@@ -2338,10 +2376,12 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    The note's words (title, undertone, labels, the text written, the pledge) are dark green. The places are no longer the
    browser's datalist drop-down, which the system draws in its own sans: assets/place-list.js draws #notePlaceList, set
    here as the sheet sets its lists, the serif at the text size and leading, a place's city after it in a lighter green,
-   the row under the pointer or the arrow keys on the lime band. Contrast: #1d4a2a on white 10:1, on the lime 8.7:1;
-   #4a6b52 on white 6:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
+   the row under the pointer or the arrow keys on the lime band. Contrast: #3e6826 on white 6.5:1, on the lime 5.6:1;
+   #4d703e on white 5.7:1, on the lime 4.8:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
 @layer sheet{
-:root{--sh-green:#1d4a2a;--sh-green-2:#4a6b52}
+/* The light theme's green (user, 19 Nov 2026: "green color for light needs to be this but 30% darker", a swatch of about
+   #589437): each channel times 0.7, #3e6826; the lighter green beside it is the same hue, #4d703e. */
+:root{--sh-green:#3e6826;--sh-green-2:#4d703e}
 :root[data-theme="dark"]{--sh-green:#9fd0a6;--sh-green-2:#7fa886}
 :root body.chat-input-mode-active #workInputCard :is(#noteFormFields,#noteFormFields *,#noteInputLabel,#noteAckRow,#noteAckRow *,#noteFormStatus,#noteFileInfo,#noteAidsRow,#noteAidsRow *),
 :root body.chat-input-mode-active #workInputCard #workInput{color:var(--sh-green)!important}
@@ -2365,7 +2405,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root body.chat-input-mode-active #workInputCard #noteFormStatus[data-state="error"]{color:var(--sh-alert)!important}
 /* City or town and the new-place hint stay hidden until the place typed is not on the atlas: the sheet's
    "#noteFormFields .nf-field{display:block}" had shown the city box under every known place too. */
-#noteFormFields :is(#noteCityField,#notePlaceHint)[hidden]{display:none!important}
+#noteFormFields :is(#noteCityField,#noteAddressField,#notePlaceHint)[hidden]{display:none!important}
 }
 
 /* ==== THE CHAT'S INVITATION TO SHARE (user, 19 Nov 2026: "color these all about sharing in green and make it bold with 20%
@@ -2373,10 +2413,11 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    The sentence under each answer that asks the reader to add what they know (chatShareInvite in index.html, every variant)
    is the form's dark green (--sh-green), bold, tracked 0.2em. */
 @layer sheet{
-:root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important;font-weight:700!important;letter-spacing:.2em!important}
-/* Bold in the serif's own bold, tracked 5% (user, 19 Nov 2026: "make this in bold and 5%letter spacing"; was 20%). The
-   Share information form's undertone takes the same. */
-:root:root #curatorMessages .chat-share-invite-line,
+:root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important}
+/* The chat's line is set plain, the serif's regular weight with no tracking (user, 19 Nov 2026: "make the green line not
+   bold or spaced out"). The Share information form's undertone stays bold, tracked 5% (user, 19 Nov 2026: "make this in
+   bold and 5%letter spacing"). */
+:root:root #curatorMessages .chat-share-invite-line{font-family:var(--sh-serif)!important;font-weight:400!important;letter-spacing:normal!important}
 :root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:"Atlas Serif Bold",var(--sh-serif)!important;font-weight:700!important;letter-spacing:.05em!important}
 }
 
@@ -2398,7 +2439,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    thin outline round it, labels in the lighter green. Words that could identify the writer and a message that stops the note
    are red. The form's own link to the chat sits under its undertone. */
 @layer sheet{
-:root #curatorMessages .chat-share-card{margin:calc(6px * var(--sh-k)) 0 0!important;padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important;
+:root #curatorMessages .chat-share-card{margin:calc(6px * var(--sh-k)) 0 calc(10px * var(--sh-k))!important;padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important;
   border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:transparent!important;color:var(--sh-green)!important}
 :root #curatorMessages .chat-share-card *{color:var(--sh-green)!important}
 :root #curatorMessages .chat-share-card .chat-share-k,:root #curatorMessages .chat-share-card .chat-share-new{color:var(--sh-green-2)!important;font-style:italic!important}
@@ -2411,15 +2452,22 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root #curatorMessages :is(.chat-share-help,.chat-share-warn){margin-top:calc(8px * var(--sh-k))!important}
 :root #curatorMessages .chat-share-card.is-sent{border-style:dashed!important}
 :root #curatorMessages .chat-share-chat-btn,:root #curatorMessages .chat-share-choice{color:var(--sh-green)!important}
-#noteFormIntro .nf-to-chat{display:block!important;margin:calc(4px * var(--sh-k)) 0 0!important;padding:0!important;border:0!important;background:transparent!important;
-  color:var(--sh-green)!important;font:inherit!important;text-decoration:underline!important;text-underline-offset:.2em!important;cursor:pointer!important;text-align:left!important}
+/* "Tell it in the chat" is a button, not an underlined line (user, 19 Nov 2026: "make this into button and delete the
+   description"): a pill like Back to chat, in the form's dark green, outlined; under the pointer it fills dark green with
+   the paper's colour on it (10:1 both themes, as Share information). Regular, not the intro's bold. */
+:root:root body #workInputCard #noteFormIntro .nf-to-chat.nf-to-chat{display:inline-flex!important;align-items:center!important;margin:0!important;
+  min-height:calc(var(--sh-lead) + 12px * var(--sh-k))!important;padding:calc(6px * var(--sh-k)) calc(10px * var(--sh-k))!important;border:1px solid var(--sh-green)!important;border-radius:999px!important;
+  background:transparent!important;color:var(--sh-green)!important;font-family:var(--sh-serif)!important;font-weight:400!important;
+  letter-spacing:0!important;text-decoration:none!important;cursor:pointer!important;text-align:left!important}
+:root:root body #workInputCard #noteFormIntro .nf-to-chat.nf-to-chat:is(:hover,:focus-visible){background:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root body #workInputCard #noteFormIntro .nf-to-chat.nf-to-chat:focus-visible{outline:1px solid var(--sh-green)!important;outline-offset:2px!important}
 }
 
 /* ==== SHARE INFORMATION TURNS DARK GREEN UNDER THE POINTER (user, 19 Nov 2026: "make share information button dark green
    on hover as well") ====
    The black Share information button (and Back to chat, the same button while a note is written) and the chat's "Share
    information about ..." follow-up take the form's dark green, --sh-green, under the pointer or the keyboard, with the
-   paper's colour on it: white on #1d4a2a 10:1; on the dark theme #151412 on #9fd0a6 10:1. */
+   paper's colour on it: white on #3e6826 6.5:1; on the dark theme #151412 on #9fd0a6 10:1. */
 @layer sheet{
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible),
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
@@ -2438,4 +2486,58 @@ body.chat-input-mode-active #noteFormHead>#noteFormTitle{grid-column:2!important
 body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!important;justify-self:end!important;margin:0!important}
 /* Your note is 30% taller (user, 19 Nov 2026: "make your note 30% taller bigger field"): 92px to 120px. */
 :root:root body.chat-input-mode-active #workBottomDock #workInputCard #workInput{min-height:120px!important}
+}
+
+/* ==== SHARE AS A CHAT: REAL BUTTONS, A CARD EDITED IN PLACE (user, 19 Nov 2026: "make these into buttons", "i need to edit
+   it inside of this") ====
+   The choices under Clio's questions and the draft card are buttons in a row, not the chat's dashed suggestion list: a
+   thin green outline, round ends; Send to the editor filled green with the paper's colour on it. The card's place, city,
+   name shown and note are fields: a rule under each line field, the note in a box that grows with the text. */
+@layer sheet{
+:root #curatorMessages .chat-share-choices{display:flex!important;flex-wrap:wrap!important;gap:calc(8px * var(--sh-k))!important;align-items:center!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice{display:inline-flex!important;align-items:center!important;width:auto!important;margin:0!important;
+  padding:calc(5px * var(--sh-k)) calc(14px * var(--sh-k))!important;text-indent:0!important;white-space:nowrap!important;
+  border:1px solid var(--sh-green)!important;border-radius:999px!important;background:transparent!important;color:var(--sh-green)!important;cursor:pointer!important;
+  font:inherit!important;line-height:var(--sh-lead)!important;text-decoration:none!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice::before{content:none!important;display:none!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice:is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 12%,transparent)!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice:focus-visible{outline:2px solid var(--sh-green)!important;outline-offset:2px!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-primary{background:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-primary:is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 85%,var(--sh-ink))!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice:disabled{opacity:.5!important;cursor:default!important}
+:root #curatorMessages .chat-share-card .chat-share-row{display:flex!important;align-items:baseline!important;gap:calc(8px * var(--sh-k))!important;margin:0 0 calc(6px * var(--sh-k))!important}
+:root #curatorMessages .chat-share-card .chat-share-row[hidden]{display:none!important}
+:root #curatorMessages .chat-share-card .chat-share-row .chat-share-k{flex:0 0 7.5em!important;min-width:0!important}
+:root #curatorMessages .chat-share-card .chat-share-in{display:block!important;flex:1 1 auto!important;min-width:0!important;width:100%!important;box-sizing:border-box!important;margin:0!important;
+  padding:0 0 2px!important;border:0!important;border-bottom:1px solid color-mix(in srgb,var(--sh-green) 45%,transparent)!important;border-radius:0!important;
+  background:transparent!important;color:var(--sh-green)!important;font:inherit!important;line-height:var(--sh-lead)!important;box-shadow:none!important;outline:0!important}
+:root #curatorMessages .chat-share-card .chat-share-in:focus{border-bottom-color:var(--sh-green)!important;box-shadow:0 1px 0 var(--sh-green)!important}
+:root #curatorMessages .chat-share-card .chat-share-in::placeholder{color:var(--sh-green-2)!important;opacity:1!important}
+:root #curatorMessages .chat-share-card .chat-share-new{margin:0 0 calc(6px * var(--sh-k)) calc(7.5em + 8px * var(--sh-k))!important;color:var(--sh-green-2)!important;font-style:italic!important}
+:root #curatorMessages .chat-share-card .chat-share-new:empty{display:none!important}
+:root #curatorMessages .chat-share-card .chat-share-notebox{display:block!important;margin:calc(8px * var(--sh-k)) 0!important}
+:root #curatorMessages .chat-share-card .chat-share-notebox .chat-share-k{display:block!important;margin:0 0 2px!important}
+:root #curatorMessages .chat-share-card textarea.chat-share-note{resize:none!important;overflow:hidden!important;min-height:calc(3 * var(--sh-lead))!important;
+  padding:calc(6px * var(--sh-k)) calc(8px * var(--sh-k))!important;border:1px solid color-mix(in srgb,var(--sh-green) 45%,transparent)!important;border-radius:6px!important;white-space:pre-wrap!important}
+:root #curatorMessages .chat-share-card textarea.chat-share-note:focus{border-color:var(--sh-green)!important;box-shadow:0 0 0 1px var(--sh-green)!important}
+:root #curatorMessages .chat-share-card.is-sent .chat-share-in{border-color:transparent!important;box-shadow:none!important}
+}
+
+/* ==== SHARE AS A CHAT, CALMER (user, 19 Nov 2026: "is it too busy?", then "yes, cut") ====
+   (The outline was taken off here, then brought back dotted, below.) A known place's city sits in italic on the place line, the
+   help paragraph is gone (the chat box says "Or tell me what to change"), Cancel is a plain link beside the two buttons,
+   and the Share information bar is put away while Clio is asking (body.chat-share-active, assets/chat-share.js). */
+@layer sheet{
+/* The outline comes back, blue and dotted (user, 19 Nov 2026: "i liked the outline", "make it back, blue and dotted"). */
+:root #curatorMessages .chat-share-card,:root #curatorMessages .chat-share-card.is-sent{border:1.5px dotted var(--sh-outline)!important;border-radius:8px!important;
+  padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important}
+:root #curatorMessages .chat-share-card .chat-share-placecity{flex:none!important;color:var(--sh-green-2)!important;font-style:italic!important}
+:root #curatorMessages .chat-share-card .chat-share-placecity:empty{display:none!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-link{border-color:transparent!important;padding-left:calc(4px * var(--sh-k))!important;padding-right:calc(4px * var(--sh-k))!important;
+  text-decoration:underline!important;text-underline-offset:.2em!important;text-decoration-thickness:1px!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-link:is(:hover,:focus-visible){background:transparent!important;text-decoration-thickness:2px!important}
+/* Seven ids: the phone's ":root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #chatShareBtn:not(#a):not(#b):not(#c)"
+   (six) sets it to flex. */
+:root:root body.chat-share-active #workBottomDock #workInputCard #chatShareBtn:not(#cs-a):not(#cs-b):not(#cs-c):not(#cs-d),
+:root:root body.chat-share-active :is(#mobileStickyShareBtn,#gmMapShareBtn):not(#cs-a):not(#cs-b):not(#cs-c):not(#cs-d):not(#cs-e):not(#cs-f){display:none!important}
 }
