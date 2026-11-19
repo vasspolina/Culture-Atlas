@@ -58,7 +58,7 @@
     var row = '';
     if (choices && choices.length) {
       row = '<div class="curator-followups chat-share-choices mt-3 flex flex-col items-start gap-1">' + choices.map(function (c) {
-        return '<button type="button" class="curator-followup-pill chat-share-choice' + (c.primary ? ' is-primary' : '') + ' text-left py-1" data-chat-share-act="' + esc(c.act) + '"' +
+        return '<button type="button" class="curator-followup-pill chat-share-choice' + (c.primary ? ' is-primary' : '') + (c.link ? ' is-link' : '') + ' text-left py-1" data-chat-share-act="' + esc(c.act) + '"' +
           (c.value != null ? ' data-chat-share-value="' + esc(c.value) + '"' : '') + '>' + esc(c.label) + '</button>';
       }).join('') + '</div>';
     }
@@ -81,12 +81,15 @@
   function OUT() { return [{ label: 'Or fill in a form', act: 'form' }, { label: 'Cancel', act: 'cancel' }]; }
   function p(text) { return '<p class="no-indent">' + esc(text) + '</p>'; }
 
-  function setPlaceholder(on) {
+  // While Clio asks, the chat box says what it is for, and the Share information bar is put away (assets/sheet.css,
+  // body.chat-share-active): the visitor is sharing already. On the draft the box takes the request for a change.
+  function setPlaceholder(on, text) {
     var box = input();
+    document.body.classList.toggle('chat-share-active', !!on);
     if (!box) return;
     if (on) {
       if (keptPlaceholder == null) keptPlaceholder = box.placeholder;
-      box.placeholder = 'Answer here, or write cancel';
+      box.placeholder = text || 'Answer here, or write cancel';
     } else if (keptPlaceholder != null) {
       box.placeholder = keptPlaceholder;
       keptPlaceholder = null;
@@ -112,6 +115,7 @@
 
   function askPlace(suggest) {
     s.step = 'place';
+    setPlaceholder(true);
     var known = suggest ? findPlaces(suggest).exact : null;
     if (known) {
       clio(p('Is it about ' + known.name + '? If it is about another place, write its name, on the atlas or not.'),
@@ -191,7 +195,9 @@
   function placeState() {
     var row = s.card && s.card.querySelector('.chat-share-cityrow'), tag = s.card && s.card.querySelector('.chat-share-new');
     if (row) row.hidden = !s.isNew;
-    if (tag) tag.textContent = s.isNew ? 'Not on the atlas yet: it goes to the editor as a new place.' : (s.place && s.place.city ? s.place.city : '');
+    if (tag) tag.textContent = s.isNew ? 'Not on the atlas yet: it goes to the editor as a new place.' : '';
+    var city = s.card && s.card.querySelector('.chat-share-placecity');
+    if (city) city.textContent = !s.isNew && s.place && s.place.city ? s.place.city : '';
   }
   function sizeNote(el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; }
 
@@ -200,23 +206,23 @@
     // One card at a time: a changed note replaces the earlier card, so no outdated draft (or its tick box) is left above.
     if (s.card && s.card.isConnected) s.card.remove();
     var l = limits();
-    var html = (lead ? p(lead) : p('Here is your note. Change anything in it here. Nothing is sent until you press Send.')) +
+    var html = (lead ? p(lead) : p('Here is your note. Nothing is sent until you press Send.')) +
       '<div class="chat-share-card" role="group" aria-label="Your note, not sent">' +
-        '<label class="chat-share-row"><span class="chat-share-k">Place</span><input type="text" class="chat-share-in" data-chat-share-field="name" value="' + esc(s.name) + '" maxlength="120" autocomplete="off" spellcheck="false" autocapitalize="words"></label>' +
+        '<label class="chat-share-row"><span class="chat-share-k">Place</span><input type="text" class="chat-share-in" data-chat-share-field="name" value="' + esc(s.name) + '" maxlength="120" autocomplete="off" spellcheck="false" autocapitalize="words"><span class="chat-share-placecity"></span></label>' +
         '<p class="no-indent chat-share-new"></p>' +
         '<label class="chat-share-row chat-share-cityrow"' + (s.isNew ? '' : ' hidden') + '><span class="chat-share-k">City or town</span><input type="text" class="chat-share-in" data-chat-share-field="city" value="' + esc(s.city) + '" maxlength="80" autocomplete="off" spellcheck="false" autocapitalize="words"></label>' +
         '<label class="chat-share-row"><span class="chat-share-k">Name shown</span><input type="text" class="chat-share-in" data-chat-share-field="author" value="' + esc(s.author) + '" maxlength="' + l.name + '" placeholder="Whistleblower" autocomplete="off" spellcheck="false"></label>' +
         '<label class="chat-share-notebox"><span class="chat-share-k">Your note</span><textarea class="chat-share-in chat-share-note" data-chat-share-field="note" rows="3" maxlength="' + l.max + '" spellcheck="true" autocapitalize="sentences">' + esc(s.note) + '</textarea></label>' +
         '<label class="nf-check chat-share-ack"><input type="checkbox" data-chat-share-ack' + (s.ack ? ' checked' : '') + '><span>I have left out my name and anything that identifies me.</span></label>' +
         '<p class="no-indent chat-share-status" role="status" aria-live="polite"></p>' +
-      '</div><div class="chat-share-checks">' + checksHtml() + '</div>' +
-      '<p class="no-indent chat-share-help">You can also tell me here: “add: …”, “sign it …”, or say what to change, and the chat model rewrites the note. To attach a photo or a PDF, use Edit in the form.</p>';
+      '</div><div class="chat-share-checks">' + checksHtml() + '</div>';
     var div = clio(html, [
       { label: 'Send to the editor', act: 'send', primary: true },
       { label: 'Edit in the form', act: 'form' },
-      { label: 'Cancel', act: 'cancel' }
+      { label: 'Cancel', act: 'cancel', link: true }
     ]);
     s.card = div;
+    setPlaceholder(true, 'Or tell me what to change');
     placeState();
     var note = div && div.querySelector('textarea.chat-share-note');
     if (note) sizeNote(note);
