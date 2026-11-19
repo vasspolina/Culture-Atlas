@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=844"></script>
+  <script src="assets/load-image-data.js?v=846"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=844">
-  <link rel="stylesheet" href="assets/sheet.css?v=844">
-  <script src="assets/config.js?v=844"></script>
-  <script src="assets/analytics.js?v=844"></script>
-  <script src="assets/subtopic.js?v=844"></script>
-  <script src="assets/names.js?v=844"></script>
-  <script src="assets/grounding.js?v=844"></script>
-  <script src="assets/repeats.js?v=844"></script>
-  <script src="assets/intro-narration.js?v=844"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=846">
+  <link rel="stylesheet" href="assets/sheet.css?v=846">
+  <script src="assets/config.js?v=846"></script>
+  <script src="assets/analytics.js?v=846"></script>
+  <script src="assets/subtopic.js?v=846"></script>
+  <script src="assets/names.js?v=846"></script>
+  <script src="assets/grounding.js?v=846"></script>
+  <script src="assets/repeats.js?v=846"></script>
+  <script src="assets/intro-narration.js?v=846"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=844"></script>
+  <script src="assets/load-image.js?v=846"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1175,8 +1175,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=844"></script>
-  <script src="assets/money-ids.js?v=844"></script>
+  <script src="assets/institutions.js?v=846"></script>
+  <script src="assets/money-ids.js?v=846"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10777,11 +10777,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v844';
+    const ATLAS_RELEASE = 'culture-atlas-v846';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=844').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=846').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17130,25 +17130,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
 
     // Every answer asks the visitor to share what they know (user, 18 Nov 2026: "it need to promote users to share information").
-    // One sentence carrying the lost-history undertone, named after the place in focus when there is one, then a Share
-    // information button set as a follow-up row, so it looks like the chat's own next step. The sentence turns over from
-    // answer to answer so it is not the same line every time. Where the model already closed on the invitation
-    // (UNRECORDED LIVES), only the button is added. Not spoken aloud.
-    let chatShareInviteTurn = 0;
+    // One short plain line, then the Share information button (user, 19 Nov 2026, of the longer rotating lines: "this is a
+    // slop, make it simple"). Where the model already closed on the invitation, only the button is added. Not spoken aloud.
     function chatShareInvite(answerHtml) {
       const inst = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || null;
       const name = inst && inst.name ? escapeHtml(inst.name) : '';
-      const lines = name ? [
-        `Know something about ${name} that this record leaves out? Most of what happened in places like it was never written down, and what you remember can stand beside the record.`,
-        `If you worked at ${name}, made things there or lived nearby, your account belongs on the atlas. Archives kept what someone paid to keep; the rest is carried by people.`,
-        `Every record here is partial. Add what you know about ${name}, and the atlas grows with the people who use it.`
-      ] : [
-        'Most lives were never written down. A place with few records is not a place without history, so add what you know, from inside or from memory.',
-        'The atlas is built with the people who use it. If you know what a record leaves out, tell it here.',
-        'Archives kept what someone paid to keep. What you know about a museum, a city or the people around them can fill the quiet.'
-      ];
+      const text = name ? `If you know more about ${name}, please share it.` : 'If you know more, please share it.';
       const asked = typeof answerHtml === 'string' && /share information/i.test(answerHtml.replace(/<[^>]+>/g, ' '));
-      const line = asked ? '' : `<p class="chat-share-invite-line">${lines[chatShareInviteTurn++ % lines.length]}</p>`;
+      const line = asked ? '' : `<p class="chat-share-invite-line">${text}</p>`;
       const label = name ? `Share information about ${name}` : 'Share information';
       return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-chat="${name}">${label}</button><button type="button" class="curator-followup-pill chat-share-invite-btn chat-share-form-btn text-left py-1" data-share-invite="1">Or fill in a form</button></div></div>`;
     }
@@ -22328,22 +22317,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=844"></script>
-<script src="assets/note-aids.js?v=844" defer></script>
-<script src="assets/place-list.js?v=844" defer></script>
-<script src="assets/chat-share.js?v=844" defer></script>
-<script src="assets/note-files.js?v=844" defer></script>
-<script src="assets/funding-views.js?v=844"></script>
-<script src="assets/layers.js?v=844"></script>
-<script src="assets/critique-gallery-data.js?v=844"></script>
-<script src="assets/critique-captions.js?v=844"></script>
-<script src="assets/critique-gallery.js?v=844"></script>
-<script src="assets/hq-detail.js?v=844"></script>
-<script src="assets/influence-mode.js?v=844"></script>
-<script src="assets/bubbles.js?v=844" defer></script>
-<script src="assets/phone-maps.js?v=844"></script>
-<script src="assets/desktop-maps.js?v=844"></script>
-<script src="assets/chat-resize.js?v=844"></script>
-<script src="assets/tab-suggest.js?v=844"></script>
+<script src="assets/typeset.js?v=846"></script>
+<script src="assets/note-aids.js?v=846" defer></script>
+<script src="assets/place-list.js?v=846" defer></script>
+<script src="assets/chat-share.js?v=846" defer></script>
+<script src="assets/note-files.js?v=846" defer></script>
+<script src="assets/funding-views.js?v=846"></script>
+<script src="assets/layers.js?v=846"></script>
+<script src="assets/critique-gallery-data.js?v=846"></script>
+<script src="assets/critique-captions.js?v=846"></script>
+<script src="assets/critique-gallery.js?v=846"></script>
+<script src="assets/hq-detail.js?v=846"></script>
+<script src="assets/influence-mode.js?v=846"></script>
+<script src="assets/bubbles.js?v=846" defer></script>
+<script src="assets/phone-maps.js?v=846"></script>
+<script src="assets/desktop-maps.js?v=846"></script>
+<script src="assets/chat-resize.js?v=846"></script>
+<script src="assets/tab-suggest.js?v=846"></script>
 </body>
 </html>
