@@ -2037,7 +2037,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    for now like a gossip mode") ----
    assets/influence-mode.js. The switch sits beside Gossip mode in each head bar and takes the same form: on the desktop a word
    in the bar, italic and blue when on (the sheet's rule for a pressed button); on a phone a pill in the row of top buttons,
-   filled with ink when on. In a record, "What each funder got for its money" and a funder's ledger are rows of the record like any other,
+   filled with ink when on. In a record, "The influence each funder bought" and a funder's ledger are rows of the record like any other,
    under one rule, each entry an en-dash line with the kinds as its italic lead-in and its date, marks and source under it. */
 @layer sheet{
 @media (min-width:768px){
