@@ -2336,10 +2336,12 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    The note's words (title, undertone, labels, the text written, the pledge) are dark green. The places are no longer the
    browser's datalist drop-down, which the system draws in its own sans: assets/place-list.js draws #notePlaceList, set
    here as the sheet sets its lists, the serif at the text size and leading, a place's city after it in a lighter green,
-   the row under the pointer or the arrow keys on the lime band. Contrast: #1d4a2a on white 10:1, on the lime 8.7:1;
-   #4a6b52 on white 6:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
+   the row under the pointer or the arrow keys on the lime band. Contrast: #3e6826 on white 6.5:1, on the lime 5.6:1;
+   #4d703e on white 5.7:1, on the lime 4.8:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
 @layer sheet{
-:root{--sh-green:#1d4a2a;--sh-green-2:#4a6b52}
+/* The light theme's green (user, 19 Nov 2026: "green color for light needs to be this but 30% darker", a swatch of about
+   #589437): each channel times 0.7, #3e6826; the lighter green beside it is the same hue, #4d703e. */
+:root{--sh-green:#3e6826;--sh-green-2:#4d703e}
 :root[data-theme="dark"]{--sh-green:#9fd0a6;--sh-green-2:#7fa886}
 :root body.chat-input-mode-active #workInputCard :is(#noteFormFields,#noteFormFields *,#noteInputLabel,#noteAckRow,#noteAckRow *,#noteFormStatus,#noteFileInfo,#noteAidsRow,#noteAidsRow *),
 :root body.chat-input-mode-active #workInputCard #workInput{color:var(--sh-green)!important}
@@ -2417,7 +2419,7 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    on hover as well") ====
    The black Share information button (and Back to chat, the same button while a note is written) and the chat's "Share
    information about ..." follow-up take the form's dark green, --sh-green, under the pointer or the keyboard, with the
-   paper's colour on it: white on #1d4a2a 10:1; on the dark theme #151412 on #9fd0a6 10:1. */
+   paper's colour on it: white on #3e6826 6.5:1; on the dark theme #151412 on #9fd0a6 10:1. */
 @layer sheet{
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible),
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
