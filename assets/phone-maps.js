@@ -874,7 +874,15 @@
       // its sections are sorted into the tabs, and the sheet's shorter blocks that say the same give way to it.
       const full = document.createElement('div');
       full.id = 'gmFull';
+      // recordHtml has already taken its own repeats out. The sheet's pass (updateMobileDossier, index.html) runs over the
+      // whole pane each time the sheet is written, and on a second write for the same space it read the sheet's hidden
+      // Funding block first and then cut the same lines from this copy, the one on screen: Funding showed the grade and
+      // nothing under it (19 Nov 2026, Neue Nationalgalerie opened from the chat). data-repeat-ok keeps it out of that pass.
+      full.setAttribute('data-repeat-ok', '');
       pane.appendChild(full);
+      const FLAG_MONEY = /fund|sponsor|donor|donat|benefactor|supporter|membership|partner|naming rights|money|fortune|endow|bequest|wealth|patron|financ|budget|subsid|grant|gift|bank|fossil|\boil\b|\bgas\b|coal|mining|petrol|energy|tobacco|\barms\b|weapon|defen[cs]e|gambl|gaming|betting|casino|lotter|opioid|sackler|sanction|launder|\btax|debt|receivable|deficit|loss(?:es)?\b|insolven|going concern|cost|spent|spending|\bpaid\b|payment|revenue|income|invest|shareholder|\bowned\b|billionaire|oligarch|gulf state|state body|epstein|philanthrop|foundation|trustee|\bbp\b/;
+      const FLAG_EVENT = /governance|labou?r|staff|union|strike|layoff|job cuts|dismiss|ouster|resign|director|curator|leadership|censor|punish|pressure|police|arrest|looted|holdings|provenance|restitution|return|dispute|petition|open letter|campaign|cancel|withdr[ae]w|removal|removed|closure|closed|delay|audit|allegation|racism|occupation|sit-in|encampment|vandal|threat/;
+      const FLAG_FUNDER = /\b(?:sponsor\w*|funder\w*|donor\w*|benefactor\w*|corporate (?:member|partner)\w*|founding partner|main partner|lead partner)\b/i;
       const tabOf = (el) => {
         if (el.matches('figure')) return 'overview';
         const t = ((el.querySelector('.d-row-title') || {}).textContent || '').trim().toLowerCase();
@@ -885,8 +893,15 @@
         // tab"). Few spaces have any, and the tab is offered only for those.
         if (/^artists.? images\b/.test(t)) return 'images';
         // A flag about money (fossil fuels, opioids, arms, tobacco and the rest) is about who funds the space; a protest,
-        // a case or a personal account is part of its record.
-        if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) return 'funding';
+        // a case or a personal account is part of its record. A flag goes under Funding only when its title names money or
+        // a funder, or, where the title names neither money nor an event, when its text names a sponsor or donor. Before
+        // 19 Nov 2026 every flag went there unless its title held one of seven words, so "2024 dispute over a Nan Goldin
+        // slide", censorship, governance and labour disputes were all read under Funding (user: "this is funding but the
+        // info it's not funding"). Measured on the 1,247 flags in the records: 562 under Funding, 685 under Record.
+        if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) {
+          if (FLAG_MONEY.test(t)) return 'funding';
+          if (!FLAG_EVENT.test(t) && FLAG_FUNDER.test(el.textContent || '')) return 'funding';
+        }
         return 'record';
       };
       function buildFull(inst) {
