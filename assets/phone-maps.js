@@ -611,7 +611,7 @@
         return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
       }
       function setDetent(d, animate) {
-        if (root.classList.contains('gm-from-chat')) d = 'full';   // opened from the chat: a page of its own, always full
+        if (PHONE() || root.classList.contains('gm-from-chat')) d = 'full';   // on a phone the record is a full sheet, always (user, 19 Nov 2026)
         detent = d;
         sheet.dataset.detent = d;
         sheet.classList.toggle('is-large', d === 'full');
@@ -630,7 +630,7 @@
       // The ask holds until the sheet is closed and stays closed (opening a record can hide and show it in one go), or is
       // moved by hand or by the map to another height.
       let askedFull = false;
-      const openAt = () => (root.classList.contains('gm-from-chat') || askedFull ? 'full' : 'peek');
+      const openAt = () => (PHONE() || root.classList.contains('gm-from-chat') || askedFull ? 'full' : 'peek');
       window.atlasSetSheetDetent = (d) => { if (!DETENTS.includes(d)) return; askedFull = d === 'full'; setDetent(d); };
 
       // The grabber, tapped or pressed with Enter, steps up a height, and from full goes back to peek.
@@ -673,7 +673,7 @@
       const speed = dragSpeed();
       sheet.addEventListener('touchstart', (e) => {
         // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
-        if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }
+        if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }   // on a phone the sheet is never dragged
         if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
         x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; h0 = sheet.offsetHeight; dragging = false; speed.start(y0, e.timeStamp);
       }, { passive: true });
@@ -762,11 +762,16 @@
       window.atlasDetailsBackToChat = backToChat;
       $('gmDetailsBackBtn')?.addEventListener('click', backToChat);   // the open tab, Details, does nothing
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); backToChat(); }
+        if (e.key === 'Escape' && root.classList.contains('gm-from-chat') && !sheet.classList.contains('hidden')) { e.preventDefault(); closeBtn?.click(); }
       });
       // Anything else that closes the record (a link to another screen, the map's own controls) ends the mode too.
-      new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
-        .observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      // The record is the same full page wherever it is opened from (user, 19 Nov 2026: "make it full sheet mode always
+      // covering full screen", "where is chat details button"): opened from the map it takes the chat's Chat and Details
+      // tabs, the cross at the left and the whole screen, instead of a half sheet that jumped to full. Chat opens the chat.
+      new MutationObserver(() => {
+        if (sheet.classList.contains('hidden')) clearFromChat();
+        else if (PHONE() && !root.classList.contains('gm-from-chat')) markFromChat();
+      }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
       window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
 
       // ---- The record's actions as toggles (user, 7 Nov 2026: "make buttons toggles") ----
