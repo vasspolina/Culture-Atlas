@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=23', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=24', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -57,13 +57,6 @@
     building: 'A building or endowment', access: 'Galas and perks', silence: 'Secrecy', licence: 'An image clean-up',
     tax: 'A tax break', money: 'Money only' };
   const label = k => { if (CAME[k]) return CAME[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
-  // A line opens with what came with its money, the labels joined as a list (user, 19 Nov 2026, of "Buildings, Its name on
-  // something.": "incorrectly composed sentences"). A tie that got money alone opens with its sentence.
-  function gotPhrase(kinds) {
-    const parts = ORDER.filter(k => kinds.includes(k) && k !== 'money').map((k, i) => i ? label(k).charAt(0).toLowerCase() + label(k).slice(1) : label(k));
-    if (!parts.length) return '';
-    return parts.length === 1 ? parts[0] : parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1];
-  }
   const plural = (n, one, many) => `${n} ${n === 1 ? one : (many || one + 's')}`;
   // The order a ledger lists kinds: what was bought first, money alone last.
   const ORDER = ['name', 'seat', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
@@ -805,7 +798,9 @@
   const lineFor = (t, withSpace, withFunder) => {
     const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
-    const kinds = gotPhrase(t.kinds);
+    // No label opens the line (user, 19 Nov 2026: "keep it simple by saying what actually he put the name on, and skipping
+    // the title"): the sentence says what the money paid for or what carries the name.
+    const kinds = '';
     const who = withFunder ? `<a href="#" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</a>` : '';
     const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
