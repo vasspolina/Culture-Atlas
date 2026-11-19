@@ -2414,11 +2414,10 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    is the form's dark green (--sh-green), bold, tracked 0.2em. */
 @layer sheet{
 :root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important}
-/* The chat's line is set plain, the serif's regular weight with no tracking (user, 19 Nov 2026: "make the green line not
-   bold or spaced out"). The Share information form's undertone stays bold, tracked 5% (user, 19 Nov 2026: "make this in
-   bold and 5%letter spacing"). */
-:root:root #curatorMessages .chat-share-invite-line{font-family:var(--sh-serif)!important;font-weight:400!important;letter-spacing:normal!important}
-:root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:"Atlas Serif Bold",var(--sh-serif)!important;font-weight:700!important;letter-spacing:.05em!important}
+/* The chat's line and the Share information form's undertone are set plain, the serif's regular weight with no tracking
+   (user, 19 Nov 2026: "make the green line not bold or spaced out", then of the form's undertone: "plain too"). */
+:root:root #curatorMessages .chat-share-invite-line,
+:root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:var(--sh-serif)!important;font-weight:400!important;letter-spacing:normal!important}
 }
 
 /* ==== A NAME BUBBLE TO THE LEFT OF ITS MARK KEEPS ITS WIDTH (user, 19 Nov 2026, a screenshot of Galeria Foksal close in:
