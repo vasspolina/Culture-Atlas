@@ -2405,4 +2405,14 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 /* The form's description starts on the left edge with the labels and fields (user, 19 Nov 2026: "allign description to
    the left"); it had the sheet's indent. */
 :root:root #noteFormIntro{padding-left:0!important;margin-left:0!important;text-indent:0!important}
+/* The form's head on one line (user, 19 Nov 2026: "put close and back on same level and share information in the middle"):
+   Back at the left edge, the title in the middle, Close at the right edge. Back and the head share the first row of the
+   fields' grid; the head is three columns, the first left empty for Back. */
+body.chat-input-mode-active #workInputCard #noteFormFields{display:grid!important;grid-template-columns:minmax(0,1fr)!important;align-items:start!important}
+body.chat-input-mode-active #noteFormFields>#noteFormBackBtn{grid-row:1!important;grid-column:1!important;justify-self:start!important;align-self:stretch!important;display:inline-flex!important;align-items:center!important;position:relative!important;z-index:1!important;margin:0 0 var(--sh-s-lh)!important}
+body.chat-input-mode-active #noteFormFields>#noteFormHead{grid-row:1!important;grid-column:1!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;width:100%!important}
+body.chat-input-mode-active #noteFormHead>#noteFormTitle{grid-column:2!important;text-align:center!important;margin:0!important}
+body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!important;justify-self:end!important;margin:0!important}
+/* Your note is 30% taller (user, 19 Nov 2026: "make your note 30% taller bigger field"): 92px to 120px. */
+:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workInput{min-height:120px!important}
 }
