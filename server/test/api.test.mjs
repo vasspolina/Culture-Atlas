@@ -126,6 +126,7 @@ describe('suggesting a place the atlas is missing', () => {
     assert.equal((await postNew({ placeName: 'The Back Room', city: 'x'.repeat(81), content: NOTE })).status, 400);
     assert.equal((await postNew({ placeName: 'The Back Room', city: 'Lagos', content: 'Too short' })).status, 400);
     assert.equal((await postNew({ placeName: '<b></b>', city: 'Lagos', content: NOTE })).status, 400);
+    assert.equal((await postNew({ placeName: 'hfhgffjghghk', city: 'Lagos', content: NOTE })).status, 400);
   });
 });
 

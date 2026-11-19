@@ -139,6 +139,12 @@
   function newPlace(name) {
     name = String(name || '').replace(/\s+/g, ' ').trim();
     if (name.length < 2) { clio(p('Write the place’s name, two letters or more.'), [{ label: 'Cancel', act: 'cancel' }]); return; }
+    // Keyboard mash is not a new place (window.atlasLooksLikeName in index.html; user, 19 Nov 2026).
+    if (typeof window.atlasLooksLikeName === 'function' && !window.atlasLooksLikeName(name)) {
+      s.step = 'place';
+      clio(p('That does not look like the name of a place. Write it the way it is written on the place or in the press.'), [{ label: 'Cancel', act: 'cancel' }]);
+      return;
+    }
     s.place = null; s.isNew = true; s.name = name.slice(0, 120);
     if (s.city) return afterPlace();
     s.step = 'city';
