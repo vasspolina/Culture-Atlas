@@ -106,6 +106,15 @@ def build():
         if p.get('wrong_match'): continue
         e = {'what': p.get('what', ''), 'money': p.get('money', ''), 'arts': p.get('arts', ''), 'site': p.get('site', ''), 'src': p.get('sources', [])}
         out[k] = {f: v for f, v in e.items() if v}
+    # An office no batch reached under its own key takes the profile researched under its name ('Duvel Moortgat' as
+    # 'duvelbrewery' and 'duvel').
+    hq_path = os.path.join(ROOT, 'assets', 'hq.json')
+    if os.path.exists(hq_path):
+        for k, o in json.load(open(hq_path))['org'].items():
+            p = first.get((o.get('n') or '').strip().lower())
+            if p and k not in truth and not any(x in out for x in [k] + o.get('also', [])):
+                e = {'what': p.get('what', ''), 'money': p.get('money', ''), 'arts': p.get('arts', ''), 'site': p.get('site', ''), 'src': p.get('sources', [])}
+                out[k] = {f: v for f, v in e.items() if v}
     for k, s in senders.items():
         if not isinstance(s, dict): continue
         e = out.setdefault(k, {})
