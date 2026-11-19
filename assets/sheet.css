@@ -314,6 +314,17 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :root:root .grade-scale li:has(.grade-word-3),:root:root .grade-scale li:has(.grade-word-3) *{color:var(--g3)!important;-webkit-text-fill-color:var(--g3)!important}
 :root:root .grade-scale li:has(.grade-word-4),:root:root .grade-scale li:has(.grade-word-4) *{color:var(--g4)!important;-webkit-text-fill-color:var(--g4)!important}
 :root:root .grade-scale li:has(.grade-word-5),:root:root .grade-scale li:has(.grade-word-5) *{color:var(--g5)!important;-webkit-text-fill-color:var(--g5)!important}
+/* The whole row presses the filter (user, 19 Nov 2026, of "How grades work": "make them clickable here too", as the
+   Grade A to F pills under the map are). Only the words "Grade X" were a target and nothing showed it; a press on the
+   line beside them did nothing. The button's hit area is stretched over its row (::before, inset 0; ::after is the
+   colon), so the button and its short name stay as they were. On hover the whole row is underlined and the pointer
+   shows; the grade that is on underlines its whole row, 2px, so it is not told by colour alone. */
+:root:root .grade-scale li:has(> button.grade-filter){position:relative!important;cursor:pointer!important}
+/* No filter, transform or containment on the button in any state: a pressed button took filter: brightness(.85) from
+   the general pressed style, which made the button the box its ::before fills, so the target shrank back to the words. */
+:root:root .grade-scale li > button.grade-filter.grade-word{position:static!important;filter:none!important;transform:none!important;contain:none!important}
+:root:root .grade-scale li > button.grade-filter.grade-word::before{content:""!important;position:absolute!important;inset:0!important;z-index:1!important;cursor:pointer!important}:root:root .grade-scale li:has(> button.grade-filter):hover :is(button.grade-filter,.grade-scale-text){text-decoration:underline!important;text-decoration-thickness:1px!important;text-underline-offset:.18em!important}
+:root:root .grade-scale li:has(> button.grade-filter[aria-pressed="true"]) :is(button.grade-filter,.grade-scale-text){text-decoration:underline!important;text-decoration-thickness:2px!important;text-underline-offset:.18em!important}
 /* The line over the list starts flush, as the chat's other paragraphs and the list under it do (it was set in 26px). */
 :root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root:root :is(#chatRecordsInfo,#chatRecordsInfoMobile)>p{padding-left:0!important}
 .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-grade[data-grade="1"]{color:#007a80!important}
