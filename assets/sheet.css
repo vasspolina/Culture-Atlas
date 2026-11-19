@@ -2328,3 +2328,38 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    which the field's block held 80px for one 23px line. The block's floor drops to 32px, so the card stands 109px (31% less)
    with the same text and buttons. */
 :root:root:root #workBottomDock #workInputCard:not(.is-mode):not(#a):not(#b) #noteInputBlock{min-height:32px!important;padding-top:4px!important;padding-bottom:4px!important}
+
+/* ==== SHARE INFORMATION IN DARK GREEN, WITH A PLACE LIST IN THE SHEET'S TYPE (user, 19 Nov 2026: "make font dark green,
+   cultural place or a story about it, design this using atlas typography") ====
+   The note's words (title, undertone, labels, the text written, the pledge) are dark green. The places are no longer the
+   browser's datalist drop-down, which the system draws in its own sans: assets/place-list.js draws #notePlaceList, set
+   here as the sheet sets its lists, the serif at the text size and leading, a place's city after it in a lighter green,
+   the row under the pointer or the arrow keys on the lime band. Contrast: #1d4a2a on white 10:1, on the lime 8.7:1;
+   #4a6b52 on white 6:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
+@layer sheet{
+:root{--sh-green:#1d4a2a;--sh-green-2:#4a6b52}
+:root[data-theme="dark"]{--sh-green:#9fd0a6;--sh-green-2:#7fa886}
+:root body.chat-input-mode-active #workInputCard :is(#noteFormFields,#noteFormFields *,#noteInputLabel,#noteAckRow,#noteAckRow *,#noteFormStatus,#noteFileInfo,#noteAidsRow,#noteAidsRow *),
+:root body.chat-input-mode-active #workInputCard #workInput{color:var(--sh-green)!important}
+:root body.chat-input-mode-active #workInputCard :is(#noteFormFields input,#workInput)::placeholder{color:var(--sh-green-2)!important;opacity:1!important}
+#notePlaceList{position:fixed!important;z-index:10000!important;box-sizing:border-box!important;margin:0!important;padding:calc(4px * var(--sh-k)) 0!important;
+  list-style:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  background:var(--sh-paper)!important;border:1px solid var(--sh-outline)!important;border-radius:8px!important;box-shadow:none!important;
+  font:400 var(--sh-s)/var(--sh-lead) var(--sh-serif)!important;color:var(--sh-green)!important;text-align:left!important}
+#notePlaceList[hidden]{display:none!important}
+#notePlaceList li{display:flex!important;align-items:baseline!important;gap:calc(8px * var(--sh-k))!important;margin:0!important;
+  padding:calc(3px * var(--sh-k)) calc(10px * var(--sh-k))!important;cursor:pointer!important;color:var(--sh-green)!important;background:transparent!important}
+#notePlaceList li[aria-selected="true"]{background:var(--sh-stone)!important}
+#notePlaceList .npl-name{flex:0 1 auto!important;min-width:0!important}
+#notePlaceList .npl-city{flex:none!important;margin-left:auto!important;color:var(--sh-green-2)!important;font-style:italic!important}
+:root[data-theme="dark"] #notePlaceList li[aria-selected="true"]{background:var(--sh-stone-2)!important;color:var(--sh-paper)!important}
+:root[data-theme="dark"] #notePlaceList li[aria-selected="true"] .npl-city{color:var(--sh-paper)!important}
+/* A message that stops the note (Write at least 10 characters, Choose a place, Not sent) is red (user, 19 Nov 2026: "this
+   text needs to be red"). #b3261e on white 6.5:1, on the gossip pink 6:1; dark #ff8a80 on #151412 8:1. */
+:root{--sh-alert:#b3261e}
+:root[data-theme="dark"]{--sh-alert:#ff8a80}
+:root body.chat-input-mode-active #workInputCard #noteFormStatus[data-state="error"]{color:var(--sh-alert)!important}
+/* City or town and the new-place hint stay hidden until the place typed is not on the atlas: the sheet's
+   "#noteFormFields .nf-field{display:block}" had shown the city box under every known place too. */
+#noteFormFields :is(#noteCityField,#notePlaceHint)[hidden]{display:none!important}
+}
