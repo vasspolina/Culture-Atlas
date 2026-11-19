@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v831';
+const CACHE_NAME = 'culture-atlas-v832';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -30,6 +30,7 @@ const ASSETS_TO_CACHE = [
   './assets/hq.json',
   './assets/money-ids.js',
   './assets/funder-logos.json',
+  './assets/funder-profiles.json',
   './assets/funder-logos.png',
   './assets/config.js',
   './assets/analytics.js',
