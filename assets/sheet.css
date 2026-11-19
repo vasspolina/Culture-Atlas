@@ -2383,3 +2383,26 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-left{left:auto!important;right:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
 #cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-right{right:auto!important;left:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
 }
+
+/* ==== SHARE INFORMATION AS A CHAT (user, 19 Nov 2026: "make share information as chat as well, so it can edit your info or
+   send it") ====
+   The draft note Clio writes in the chat (assets/chat-share.js) is set like the form: the serif in the form's dark green, a
+   thin outline round it, labels in the lighter green. Words that could identify the writer and a message that stops the note
+   are red. The form's own link to the chat sits under its undertone. */
+@layer sheet{
+:root #curatorMessages .chat-share-card{margin:calc(6px * var(--sh-k)) 0 0!important;padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important;
+  border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:transparent!important;color:var(--sh-green)!important}
+:root #curatorMessages .chat-share-card *{color:var(--sh-green)!important}
+:root #curatorMessages .chat-share-card .chat-share-k,:root #curatorMessages .chat-share-card .chat-share-new{color:var(--sh-green-2)!important;font-style:italic!important}
+:root #curatorMessages .chat-share-card .chat-share-k{display:inline-block!important;min-width:7.5em!important}
+:root #curatorMessages .chat-share-note{margin:calc(6px * var(--sh-k)) 0!important;white-space:normal!important}
+:root #curatorMessages .chat-share-ack{display:flex!important;align-items:flex-start!important;gap:calc(var(--sh-pad) / 2)!important;margin:0!important;cursor:pointer!important}
+:root #curatorMessages .chat-share-status:empty{display:none!important}
+:root #curatorMessages .chat-share-status[data-state="error"],:root #curatorMessages .chat-share-warn{color:var(--sh-alert)!important}
+:root #curatorMessages .chat-share-help{color:var(--sh-green-2)!important}
+:root #curatorMessages :is(.chat-share-help,.chat-share-warn){margin-top:calc(8px * var(--sh-k))!important}
+:root #curatorMessages .chat-share-card.is-sent{border-style:dashed!important}
+:root #curatorMessages .chat-share-chat-btn,:root #curatorMessages .chat-share-choice{color:var(--sh-green)!important}
+#noteFormIntro .nf-to-chat{display:block!important;margin:calc(4px * var(--sh-k)) 0 0!important;padding:0!important;border:0!important;background:transparent!important;
+  color:var(--sh-green)!important;font:inherit!important;text-decoration:underline!important;text-underline-offset:.2em!important;cursor:pointer!important;text-align:left!important}
+}
