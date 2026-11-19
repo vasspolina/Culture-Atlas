@@ -77,6 +77,8 @@
     root.appendChild(div);
     scroll();
   }
+  // The way out under every question: the form instead (it takes what was answered so far), or stop.
+  function OUT() { return [{ label: 'Or fill in a form', act: 'form' }, { label: 'Cancel', act: 'cancel' }]; }
   function p(text) { return '<p class="no-indent">' + esc(text) + '</p>'; }
 
   function setPlaceholder(on) {
@@ -104,7 +106,7 @@
       else if (at > 0 && /[\s(\-'’]/.test(k.charAt(at - 1))) word.push(i);
       else if (q.length >= 4 && (at > 0 || q.indexOf(k) >= 0)) rest.push(i);
     });
-    return { exact: exact, near: first.concat(word, rest).slice(0, 4) };
+    return { exact: exact, near: first.concat(word, rest).slice(0, 6) };
   }
   function placeLabel(i) { return i.city ? i.name + ', ' + i.city : i.name; }
 
@@ -113,10 +115,10 @@
     var known = suggest ? findPlaces(suggest).exact : null;
     if (known) {
       clio(p('Is it about ' + known.name + '? If it is about another place, write its name, on the atlas or not.'),
-        [{ label: 'Yes, ' + known.name, act: 'place', value: known.id }, { label: 'Cancel', act: 'cancel' }]);
+        [{ label: 'Yes, ' + known.name, act: 'place', value: known.id }].concat(OUT()));
     } else {
       clio(p('Which place is it about? Write its name. It can be a place on the atlas, or one the atlas is missing.'),
-        [{ label: 'Cancel', act: 'cancel' }]);
+        OUT());
     }
   }
   function takePlace(text) {
@@ -127,7 +129,7 @@
       s.typed = text.trim();
       clio(p('Which of these is it? If none, it goes to the editor as a new place.'),
         hit.near.map(function (i) { return { label: placeLabel(i), act: 'place', value: i.id }; })
-          .concat([{ label: 'None of these: ' + s.typed + ' is a new place', act: 'newplace' }, { label: 'Cancel', act: 'cancel' }]));
+          .concat([{ label: 'None of these: ' + s.typed + ' is a new place', act: 'newplace' }], OUT()));
       return;
     }
     newPlace(text.trim());
@@ -138,17 +140,17 @@
   }
   function newPlace(name) {
     name = String(name || '').replace(/\s+/g, ' ').trim();
-    if (name.length < 2) { clio(p('Write the place’s name, two letters or more.'), [{ label: 'Cancel', act: 'cancel' }]); return; }
+    if (name.length < 2) { clio(p('Write the place’s name, two letters or more.'), OUT()); return; }
     s.place = null; s.isNew = true; s.name = name.slice(0, 120);
     if (s.city) return afterPlace();
     s.step = 'city';
-    clio(p(s.name + ' is not on the atlas yet. It goes to the editor as a new place. Which city or town is it in?'), [{ label: 'Cancel', act: 'cancel' }]);
+    clio(p(s.name + ' is not on the atlas yet. It goes to the editor as a new place. Which city or town is it in?'), OUT());
   }
   function afterPlace() {
     if (s.note) return showDraft();
     s.step = 'note';
     clio(p('What should people know about ' + s.name + '? Write it the way you would tell someone: what happened, when, and how you know. Leave out your name and anything that points to you.'),
-      [{ label: 'Cancel', act: 'cancel' }]);
+      OUT());
   }
 
   // ---- words that could identify the writer ----
@@ -285,7 +287,7 @@
     var l = limits();
     if (typeof window.atlasPostNote !== 'function' || !window.ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
     if (!s.place && !s.isNew) return fail('Choose a place first.');
-    if (s.isNew && !s.city) { s.step = 'city'; return clio(p('Which city or town is ' + s.name + ' in?'), [{ label: 'Cancel', act: 'cancel' }]); }
+    if (s.isNew && !s.city) { s.step = 'city'; return clio(p('Which city or town is ' + s.name + ' in?'), OUT()); }
     if (s.note.length < l.min) return fail('Write at least ' + l.min + ' characters.');
     if (!s.ack) return fail('Tick the box to confirm you have left out anything that identifies you.');
     var body = s.place ? { content: s.note } : { content: s.note, placeName: s.name, city: s.city };
@@ -315,7 +317,8 @@
     end(true);
     if (typeof window.enterChatInputMode !== 'function') return;
     window.enterChatInputMode('whistleblower');
-    var set = function (id, v) { var el = document.getElementById(id); if (el) { el.value = v || ''; el.dispatchEvent(new Event('input', { bubbles: true })); } };
+    // Only what was answered is carried over: an empty answer leaves the form's own value (the open record's name) in place.
+    var set = function (id, v) { var el = document.getElementById(id); if (el && v) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); } };
     set('noteInstitution', d.name);
     if (d.isNew) set('noteCity', d.city);
     set('noteAuthor', d.author);
@@ -336,6 +339,7 @@
     opts = opts || {};
     if (document.body.classList.contains('chat-input-mode-active') && typeof window.exitChatInputMode === 'function') window.exitChatInputMode(true);
     if (typeof window.setWorkspaceTab === 'function' && window.innerWidth >= 768) { try { window.setWorkspaceTab('chat'); } catch (e) {} }
+    if (typeof window.setMobileViewMode === 'function' && window.innerWidth < 768) { try { window.setMobileViewMode('chat'); } catch (e) {} }
     s = fresh();
     s.suggest = opts.place || '';
     setPlaceholder(true);
@@ -365,7 +369,7 @@
         s.city = text.replace(/\.$/, '').slice(0, 80);
         afterPlace(); break;
       case 'note':
-        if (text.length < l.min) { clio(p('Write a little more, at least ' + l.min + ' characters.'), [{ label: 'Cancel', act: 'cancel' }]); break; }
+        if (text.length < l.min) { clio(p('Write a little more, at least ' + l.min + ' characters.'), OUT()); break; }
         s.note = text.slice(0, l.max);
         showDraft(text.length > l.max ? 'The note was longer than ' + l.max + ' characters, so the end was cut. Check it before you send.' : '');
         break;
