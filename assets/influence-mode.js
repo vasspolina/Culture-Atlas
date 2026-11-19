@@ -22,7 +22,7 @@
 // the world stays pale (see "The field" below). An ended tie is a dashed line, the one line drawn unasked.
 // Switched off, all four go and the page is as it was. Its look is the "INFLUENCE MODE" block at the end of assets/sheet.css.
 (function () {
-  let DATA = null, STUDY = null, loading = null, on = false;
+  let DATA = null, STUDY = null, ART = null, loading = null, on = false;
   const BY_SPACE = new Map(), BY_FUNDER = new Map();
 
   function load() {
@@ -42,6 +42,9 @@
     // The MoMA Influence Map study's entries, text only (assets/moma-influence.json, tools/build_moma_influence.mjs). Read
     // beside the ledger; if it fails to load, MoMA's record simply goes without it.
     fetch('assets/moma-influence.json?v=8d', { cache: 'no-cache' }).then(r => r.json()).then(d => { STUDY = d; mergeStudy(); }).catch(() => {});
+    // What art each funder's money goes to (tools/build_art_periods.py). Read beside the ledger; without it a record
+    // simply goes without the row.
+    fetch('assets/art-periods.json?v=1', { cache: 'no-cache' }).then(r => r.json()).then(d => { ART = d; }).catch(() => {});
     return loading;
   }
 
@@ -750,7 +753,7 @@
     // Its last sentence says what the field's ink means (user, 18 Nov 2026: "fading out where the money doesn't go"),
     // since nothing else on the page does.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays and what its money bought. A museum is darker the more of them pay it, and faint where none is on record.</p>
+<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays, what its money bought and what kind of art it backs. A museum is darker the more of them pay it, and faint where none is on record.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -785,8 +788,10 @@
     const list = [...mapSpaces(f, 'culture')].map(([id, x]) => ({ id, name: x.name, city: city.get(id) || '', open: x.open })).sort((a, b) => String(a.name).localeCompare(String(b.name)));
     if (!list.length) return;
     const rows = list.map(x => `<li><a href="#" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</a>${x.city || !x.open ? `<span class="influence-meta">${x.city ? ', ' + esc(x.city) : ''}${x.open ? '' : ', ended'}</span>` : ''}</li>`).join('');
+    const art = artLine(f);
     say(`<div class="influence-chat">
-<p class="no-indent">${esc(f.name)}: ${plural(list.length, 'museum')}.</p>
+<p class="no-indent">${esc(f.name)}: ${plural(list.length, 'museum')}.</p>${art ? `
+<p class="no-indent">${esc(art)}</p>` : ''}
 <ul class="influence-funders">${rows}</ul>
 </div>`);
   }
@@ -897,6 +902,75 @@
     const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`).join('');
     return row('Lobbying through museums', '', `<ul class="d-row-list influence-list">${lis}</ul>`);
   }
+  // ---- What art the money pays for ----
+  // Reader feedback (user, 19 Nov 2026): "see what kind of influence they're buying. I.e. are they funding modern art,
+  // contemporary, or old masters?" assets/art-periods.json, from tools/build_art_periods.py, reads each space from its own
+  // description in the atlas and keeps the sentence that decided it; where a tie's own line names the art the gift paid for
+  // ("Major partner of the contemporary galleries"), that wins for that space. A space whose words name no period is
+  // counted as not stated, never guessed: the Louvre's and the Prado's descriptions name none, so they are not old masters
+  // here until a record says so. The spaces are the ones the map joins to the funder, so the counts add up to "Gives to N".
+  const ART_KEYS = ['ancient', 'old', 'c19', 'modern', 'contemporary', 'all', 'art'];
+  const NOT_ART = ['mixed', 'performing', 'design', 'photo', 'books', 'history', 'science'];
+  function artGroups(f) {
+    if (!ART) return null;
+    const gift = new Map();
+    f.ties.forEach(t => { const x = t.cid && ART.ties[t.cid]; if (x) gift.set(t.space, [...new Set([...(gift.get(t.space) || []), ...x.p])]); });
+    const groups = new Map();
+    for (const [id, x] of mapSpaces(f, 'culture')) {
+      const s = ART.spaces[id];
+      let keys = gift.get(id);
+      const fromGift = !!keys;
+      if (keys) keys = keys.length >= 4 ? ['all'] : keys;
+      else keys = !s ? ['none'] : s.f === 'all' ? ['all'] : (s.p || [s.f]);
+      keys.forEach(k => { if (!groups.has(k)) groups.set(k, []); groups.get(k).push({ id, name: x.name, gift: fromGift, field: s && !s.p ? s.f : null }); });
+    }
+    groups.forEach(l => l.sort((a, b) => String(a.name).localeCompare(String(b.name))));
+    return groups;
+  }
+  const artLabel = k => {
+    if (k === 'none') return 'Not stated';
+    const x = ART && [...ART.periods, ...ART.fields].find(q => q.key === k);
+    return x ? x.label : k;
+  };
+  const artSpan = k => { const x = ART && ART.periods.find(q => q.key === k); return x ? x.span : ''; };
+  // One line for the chat: the periods first, then everything that is not visual art in one count.
+  function artLine(f) {
+    const g = artGroups(f); if (!g || !g.size) return '';
+    const parts = ART_KEYS.filter(k => g.has(k)).map(k => `${artLabel(k).toLowerCase()} ${g.get(k).length}`);
+    const other = new Set(NOT_ART.flatMap(k => (g.get(k) || []).map(x => x.id))).size;
+    if (other) parts.push(`not visual art ${other}`);
+    if (g.has('none')) parts.push(`not stated ${g.get('none').length}`);
+    return parts.length ? `What art it backs: ${parts.join(', ')}.` : '';
+  }
+  const ART_SHOWN = 8;
+  function artNames(list, withField) {
+    const one = x => `<a href="#" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</a>${withField && x.field ? `<span class="influence-meta"> (${esc(artLabel(x.field).toLowerCase())})</span>` : ''}${x.gift ? '<span class="influence-meta"> (named in the gift)</span>' : ''}`;
+    const shown = list.slice(0, ART_SHOWN).map(one).join(', '), rest = list.slice(ART_SHOWN).map(one).join(', ');
+    return shown + (rest ? `<details class="influence-art-more"><summary><span class="fold-closed">${list.length - ART_SHOWN} more</span><span class="fold-open">Fewer</span></summary>${rest}</details>` : '');
+  }
+  function artRow(f) {
+    const g = artGroups(f);
+    // Not drawn when no museum of the funder's says what it shows: a row of "not stated" alone tells nothing.
+    if (!g || !g.size || (g.size === 1 && g.has('none'))) return '';
+    const line = (lead, list, meta, withField) => `<li class="influence-entry"><p class="no-indent"><span class="lead-in">${esc(lead)}.</span> ${plural(list.length, 'museum')}: ${artNames(list, withField)}</p>${meta ? `<p class="no-indent influence-meta">${esc(meta)}</p>` : ''}</li>`;
+    let lis = ART_KEYS.filter(k => g.has(k)).map(k => line(artLabel(k), g.get(k), artSpan(k), false)).join('');
+    const seen = new Set(), other = [];
+    NOT_ART.forEach(k => (g.get(k) || []).forEach(x => { if (!seen.has(x.id)) { seen.add(x.id); other.push(x); } }));
+    other.sort((a, b) => String(a.name).localeCompare(String(b.name)));
+    if (other.length) lis += line('Not visual art', other, '', true);
+    if (g.has('none')) lis += line('Not stated', g.get('none'), 'the atlas does not yet say what these show', false);
+    return row('What art it backs', '', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-meta">From each museum’s own description in the atlas, or the gift’s own line where it names the art.</p>`);
+  }
+  // A funder from the funding maps alone has no ledger, but its museums still say what they show.
+  function artPart(f) {
+    const html = artRow(f); if (!html) return null;
+    const el = document.createElement('div');
+    el.className = 'prose-part d-rows influence-part';
+    el.setAttribute('role', 'region');
+    el.setAttribute('aria-label', 'What art it backs');
+    el.innerHTML = html;
+    return el;
+  }
   function funderPart(f) {
     const t = tally(f.ties);
     const el = document.createElement('div');
@@ -905,6 +979,7 @@
     el.setAttribute('aria-label', 'What came with the money');
     let html = row('What came with the money', '', '');
     html += compareRow(f);
+    html += artRow(f);
     html += linkRows(f);
     html += senderRows(f);
     ORDER.forEach(k => {
@@ -961,6 +1036,7 @@
         const f = funderForPanel(panel), head = panel.querySelector('.record-head');
         if (f && !f.moneyOnly && head) head.after(funderPart(f));
         else if (f && f.study && head) { const part = studyFunderPart(f); if (part) head.after(part); }
+        else if (f && f.moneyOnly && head) { const part = artPart(f); if (part) head.after(part); }
       }
       // A space's record: the desktop Details page, the phone's record page and its sheet.
       const inst = g('dossierInst') || g('selectedInstitution');
