@@ -11,7 +11,7 @@
 //     switch the map from culture spaces to cultural funders"); a picked funder shows its spaces, joined to its office
 //     (window.atlasModeKeep, read by assets/layers.js; atlasInfluenceDraw and atlasInfluencePointer, called by index.html)
 //   - the chat says in two lines what the mode is
-//   - a space's record leads with "What funders got here"
+//   - a space's record leads with "The influence each funder bought"
 //   - a funder's record (assets/hq-detail.js) leads with its ledger: what it got, kind by kind, space by space
 //
 // The sender is the subject (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at
@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=21', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=23', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -47,11 +47,23 @@
 
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (_) { return ''; } };
-  // Plain names for the kinds (user, 17 Nov 2026: "delete all the jargon"): "Seat", "Silence" and "Licence to operate" were
-  // the editor's shorthand, not words a reader uses. assets/influence.json keeps its own labels; these win.
-  const PLAIN = { name: 'Its name on something', seat: 'A board seat', programme: 'Shows and programmes', building: 'Buildings',
-    access: 'Parties and perks', silence: 'Secrecy', licence: 'A better image', tax: 'Tax breaks', money: 'Money only' };
-  const label = k => { if (PLAIN[k]) return PLAIN[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
+  // What each kind buys, named as influence (user, 17 Nov 2026: "see what kind of influence they're buying"; 19 Nov 2026:
+  // "say what kind of influence they're buying"). Plain words, no editor's shorthand (user, 17 Nov 2026: "delete all the
+  // jargon"); assets/influence.json keeps its own labels and these win. They head the rows of a funder's ledger, with MEANS
+  // below saying what came with the money.
+  const BUYS = { name: 'public prestige', seat: 'a say in how it is run', programme: 'a part in what it shows',
+    building: 'a permanent presence', access: 'access to its patrons and guests', silence: 'control over what the public knows',
+    licence: 'a cleaner public image', tax: 'a lower tax bill', money: 'money only' };
+  const cap = x => x.charAt(0).toUpperCase() + x.slice(1);
+  const label = k => { if (BUYS[k]) return cap(BUYS[k]); const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
+  // A line opens with the influence its tie bought, as one phrase a reader can say aloud (user, 19 Nov 2026, of "Buildings,
+  // Its name on something.": "vague slop ... the word something and incorrectly composed sentences"). A tie that got money
+  // alone opens with its sentence.
+  function gotPhrase(kinds) {
+    const parts = kinds.filter(k => k !== 'money').map(k => BUYS[k] || label(k).toLowerCase());
+    if (!parts.length) return '';
+    return cap(parts.length === 1 ? parts[0] : parts.slice(0, -1).join(', ') + ' and ' + parts[parts.length - 1]);
+  }
   const plural = (n, one, many) => `${n} ${n === 1 ? one : (many || one + 's')}`;
   // What each kind means, said once in the chat and in the ledger's head, so a reader knows what "Seat" or "Silence" counts.
   const MEANS = {
@@ -803,7 +815,7 @@
   const lineFor = (t, withSpace, withFunder) => {
     const src = t.checked_source || (t.sources || [])[0];
     const marks = [t.ended ? 'Ended' : '', t.protest ? 'Protested' : ''].filter(Boolean).join(', ');
-    const kinds = t.kinds.length ? t.kinds.map(label).join(', ') : '';
+    const kinds = gotPhrase(t.kinds);
     const who = withFunder ? `<a href="#" class="influence-funder-link" data-influence-funder="${esc(withFunder.key)}">${esc(withFunder.name)}</a>` : '';
     const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
@@ -843,8 +855,8 @@
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', 'What funders got here');
-    el.innerHTML = row('What funders got here', '', '') +
+    el.setAttribute('aria-label', 'The influence each funder bought');
+    el.innerHTML = row('The influence each funder bought', '', '') +
       [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul>`, `<a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a>`)).join('') + study;
     return el;
   }
@@ -905,8 +917,8 @@
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', `What ${f.name} got`);
-    let html = row(`What ${f.name} got`, '', '');
+    el.setAttribute('aria-label', `The influence ${f.name} bought`);
+    let html = row(`The influence ${f.name} bought`, '', '');
     html += compareRow(f);
     html += linkRows(f);
     html += senderRows(f);
