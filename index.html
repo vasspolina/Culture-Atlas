@@ -14028,7 +14028,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function proseChunks(sentences, limit) {
       const out = [];
       let cur = '';
-      (sentences || []).map(proseEnd).filter(Boolean).forEach(t => { if (cur && cur.length + t.length > limit) { out.push(cur); cur = t; } else cur = cur ? cur + ' ' + t : t; });
+      // A report field that holds one paragraph can be stored as a string, not a list (wider_context on eight records, 19 Nov 2026):
+      // read as a list it threw, and those spaces showed no record at all.
+      [].concat(sentences || []).map(proseEnd).filter(Boolean).forEach(t => { if (cur && cur.length + t.length > limit) { out.push(cur); cur = t; } else cur = cur ? cur + ' ' + t : t; });
       if (cur) out.push(cur);
       return out;
     }
@@ -14105,7 +14107,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const archiveFunding = String(inst.funding || '').split(/\n+/).map(proseEnd).filter(Boolean).join(' ');
       const hasReport = d.funding_verdict || (d.funding || []).length;
       const verdict = d.funding_verdict ? proseVerdict(d.funding_verdict) : '';
-      const funding = hasReport ? (d.funding || []).filter(Boolean) : [archiveFunding, proseEnd(money)].filter(Boolean);
+      // A report with a verdict and no funding points of its own (Guangdong Museum, 19 Nov 2026) left the row empty and the
+      // space without a Funding section, though the archive states its funding: the archive's account stands in.
+      const reported = [].concat(d.funding || []).filter(Boolean);
+      const funding = hasReport && reported.length ? reported : [archiveFunding, proseEnd(money)].filter(Boolean);
       // The grade leads the Funding section in its colour, on its own.
       const lead = inst.grade && GRADE[inst.grade] ? `<li class="grade-fund"><span>${gradeWordHtml(inst.grade)}</span></li>` : '';
       return proseRow('Funding', escapeHtml(verdict), proseChunks(funding, 0).map(t => proseLi('', escapeHtml(t))), { fold: 4, lead });
