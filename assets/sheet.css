@@ -2383,3 +2383,15 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 #cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-left{left:auto!important;right:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
 #cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-right{right:auto!important;left:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
 }
+
+/* ==== SHARE INFORMATION TURNS DARK GREEN UNDER THE POINTER (user, 19 Nov 2026: "make share information button dark green
+   on hover as well") ====
+   The black Share information button (and Back to chat, the same button while a note is written) and the chat's "Share
+   information about ..." follow-up take the form's dark green, --sh-green, under the pointer or the keyboard, with the
+   paper's colour on it: white on #1d4a2a 10:1; on the dark theme #151412 on #9fd0a6 10:1. */
+@layer sheet{
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible),
+:root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible) *,
+:root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible) *{color:var(--sh-paper)!important}
+}
