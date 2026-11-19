@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=699"></script>
+  <script src="assets/load-image-data.js?v=824"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=815">
-  <link rel="stylesheet" href="assets/sheet.css?v=815">
-  <script src="assets/config.js?v=821"></script>
-  <script src="assets/analytics.js?v=679"></script>
-  <script src="assets/subtopic.js?v=670"></script>
-  <script src="assets/names.js?v=669"></script>
-  <script src="assets/grounding.js?v=671"></script>
-  <script src="assets/repeats.js?v=669"></script>
-  <script src="assets/intro-narration.js?v=671"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=824">
+  <link rel="stylesheet" href="assets/sheet.css?v=824">
+  <script src="assets/config.js?v=824"></script>
+  <script src="assets/analytics.js?v=824"></script>
+  <script src="assets/subtopic.js?v=824"></script>
+  <script src="assets/names.js?v=824"></script>
+  <script src="assets/grounding.js?v=824"></script>
+  <script src="assets/repeats.js?v=824"></script>
+  <script src="assets/intro-narration.js?v=824"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=673"></script>
+  <script src="assets/load-image.js?v=824"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1175,8 +1175,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=821"></script>
-  <script src="assets/money-ids.js?v=767"></script>
+  <script src="assets/institutions.js?v=824"></script>
+  <script src="assets/money-ids.js?v=824"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7183,6 +7183,20 @@ return maplibregl$1;
         cityVectorMap.on('load', posterSync);
         // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
+        // The street map starts under the name and the city's line (user, 19 Nov 2026, yes to keeping the tags and the map's
+        // place names off them; the globe had dropped below the name on 16 Nov). The line wraps to two rows in a narrow map, so
+        // its foot is measured: --street-top is how far below the map's box it ends, and sheet.css sets the map's top there.
+        const streetBanner = document.getElementById('cityViewControlBanner');
+        const streetTopSync = () => {
+          const host = mapEl.parentElement;
+          if (!streetBanner || !host) return;
+          const b = streetBanner.getBoundingClientRect(), h = host.getBoundingClientRect();
+          if (!b.height) return;   // the line is hidden: keep the last measure
+          host.style.setProperty('--street-top', Math.max(0, Math.round(b.bottom - h.top)) + 'px');
+        };
+        if (streetBanner && typeof ResizeObserver === 'function') new ResizeObserver(streetTopSync).observe(streetBanner, { box: 'border-box' });
+        window.addEventListener('resize', streetTopSync);
+        cityVectorMap.on('load', streetTopSync);
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
@@ -7300,6 +7314,33 @@ return maplibregl$1;
         mapEl.classList.remove('map-zoomed-out');
         if (cityVectorMap.getZoom() < 15.2 && typeof hideBuildingXray === 'function') hideBuildingXray();
       }
+      // Where each space's name tag goes: above its mark, else below, right or left, else hidden until hovered. Tags may not cover
+      // one another or another space's mark.
+      // On a zoom this ran twice a frame (on 'zoom' and on 'move'), cleared every tag and placed them all afresh, trying each side by
+      // switching a class and measuring, about two hundred forced layouts a frame. It also measured the pins before MapLibre had
+      // moved them (the markers follow 'move' after this handler), so it placed tags from the frame before; tags blinked on and off,
+      // swapped sides and lay on top of each other while the map zoomed (user, 19 Nov 2026: "the map on zoom is glitching").
+      // Now it runs once a frame, after the markers have moved; a tag's four positions are measured once, as offsets from its pin,
+      // and only again when the tag changes size; and a tag that had a place keeps it, on the same side, until something takes it.
+      const tagOffsetCache = new WeakMap();
+      const TAG_SIDES = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
+      function tagOffsets(lbl, pin, pr, poster) {
+        const key = lbl.offsetWidth + 'x' + lbl.offsetHeight + (poster ? 'p' : '') + (pin.classList.contains('popup-active') ? 'a' : '');
+        const had = tagOffsetCache.get(lbl);
+        if (had && had.key === key) return had.offs;
+        const was = TAG_SIDES.find(c => lbl.classList.contains(c));
+        const offs = {};
+        for (const side of TAG_SIDES) {
+          lbl.classList.remove(...TAG_SIDES);
+          lbl.classList.add(side);
+          const r = lbl.getBoundingClientRect();
+          offs[side] = (r.width || r.height) ? { l: r.left - pr.left, t: r.top - pr.top, w: r.width, h: r.height } : null;
+        }
+        lbl.classList.remove(...TAG_SIDES);
+        if (was) lbl.classList.add(was);
+        tagOffsetCache.set(lbl, { key, offs });
+        return offs;
+      }
       function resolveCityMarkerCollisions() {
         if (typeof document === 'undefined') return;
         const labels = Array.from(document.querySelectorAll('.custom-inst-pin .inst-pin-label'));
@@ -7307,133 +7348,103 @@ return maplibregl$1;
 
         const currentActiveInst = selectedInstitution;
         const currentActiveId = currentActiveInst ? (currentActiveInst.id || currentActiveInst.name) : null;
-
-        // Reset any previously assigned directional / occlusion classes
-        labels.forEach(lbl => {
-          lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left', 'collision-occluded');
-        });
-
-        // Placements to attempt in order of aesthetic visual balance: top (default), bottom, right, left
-        const placements = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
-        const placedRects = [];
+        const idOf = lbl => lbl.getAttribute('data-entity-id') || lbl.getAttribute('data-name');
+        const box = document.getElementById('cityMapContainer');
+        const poster = !!(box && box.classList.contains('street-poster'));
         const BUFFER = 6;
-        // The marks themselves are obstacles too: a name placed over another space's mark hides it. Each pin's mark is the
-        // middle of its 32px box; the label's own pin is skipped when that label is tried.
+        // A tag that would run off the map is cut by its edge, so that side is not free.
+        const edge = box ? box.getBoundingClientRect() : null;
+        // On a phone (user, 18 Nov 2026: "the map on mobile looks very overlapping") the part of the map in sight is smaller: the
+        // title and chips lie over the top, and the open record sheet over the bottom. A name there is cut or sits under them.
+        let view = edge;
+        if (edge && edge.width > 0 && window.innerWidth < 768) {
+          const sheetEl = document.getElementById('dossier-bottom-sheet');
+          const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) || 0 : 0;
+          const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : edge;
+          const cover = sheetH > 0 ? Math.max(0, edge.bottom - (hostBox.bottom - sheetH)) : 0;
+          // A sheet over nearly the whole map (a phone's record is a full sheet) leaves no room to place in: then only the top
+          // is held back, so the tags are already in place when the sheet is closed.
+          const room = edge.bottom - cover - (edge.top + 56);
+          view = { left: edge.left, right: edge.right, top: edge.top + 56, bottom: room >= 160 ? edge.bottom - cover : edge.bottom };
+        }
+        const offMap = r => !!view && view.right - view.left > 0 && (r.left + BUFFER < view.left || r.right - BUFFER > view.right || r.top + BUFFER < view.top || r.bottom - BUFFER > view.bottom);
+
+        // Read everything first: the marks, every shown pin's box and its tag's four positions.
         const pinMarks = [];
-        document.querySelectorAll('.custom-inst-pin').forEach(pin => {
-          if (pin.style.opacity === '0' || pin.offsetParent === null) return;
-          const pr = pin.getBoundingClientRect();
-          if (!pr.width) return;
+        const items = [];
+        labels.forEach(lbl => {
+          const pin = lbl.closest('.custom-inst-pin');
+          const shown = pin && pin.style.opacity !== '0' && pin.offsetParent !== null;
+          const pr = shown ? pin.getBoundingClientRect() : null;
+          if (!pr || !pr.width) { items.push({ lbl, hidden: true }); return; }
+          // A pin's mark is the middle of its 32px box; the label's own pin is skipped when that label is tried.
           const cx = (pr.left + pr.right) / 2, cy = (pr.top + pr.bottom) / 2, h = 13;
           pinMarks.push({ pin, left: cx - h, right: cx + h, top: cy - h, bottom: cy + h });
+          const was = TAG_SIDES.find(c => lbl.classList.contains(c)) || null;
+          items.push({ lbl, pin, pr, was, placed: !!was && !lbl.classList.contains('collision-occluded'), active: !!currentActiveId && idOf(lbl) === currentActiveId });
         });
+        items.forEach(it => { if (!it.hidden) it.offs = tagOffsets(it.lbl, it.pin, it.pr, poster); });
 
-        // On a phone (user, 18 Nov 2026: "the map on mobile looks very overlapping"): a name has to sit inside the part of the
-        // map the reader can see, not under the title and chips above, the open sheet below or off the side, and a mark that
-        // lands on another mark is drawn small so a cluster reads as a cluster and not one blob.
-        const phone = window.innerWidth < 768;
-        let view = null;
-        if (phone) {
-          const mapEl = document.getElementById('cityMapContainer');
-          const mb = mapEl ? mapEl.getBoundingClientRect() : null;
-          if (mb && mb.width) {
-            const sheetEl = document.getElementById('dossier-bottom-sheet');
-            const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) || 0 : 0;
-            const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : mb;
-            const cover = sheetH > 0 ? Math.max(0, mb.bottom - (hostBox.bottom - sheetH)) : 0;
-            view = { left: mb.left + 6, right: mb.right - 6, top: mb.top + 56, bottom: mb.bottom - cover - 6 };
-          }
-          const placedMarks = [];
+        // A mark that lands on another mark is drawn small on a phone (assets/atlas.css), so a cluster reads as a cluster.
+        if (window.innerWidth < 768) {
+          const seen = [];
           pinMarks.forEach(m => {
             const cx = (m.left + m.right) / 2, cy = (m.top + m.bottom) / 2;
-            const crowded = placedMarks.some(q => Math.hypot(q.x - cx, q.y - cy) < 16);
-            m.pin.classList.toggle('pin-crowded', crowded);
-            if (!crowded) placedMarks.push({ x: cx, y: cy });
+            const crowded = seen.some(q => Math.hypot(q.x - cx, q.y - cy) < 16);
+            if (m.pin.classList.contains('pin-crowded') !== crowded) m.pin.classList.toggle('pin-crowded', crowded);
+            if (!crowded) seen.push({ x: cx, y: cy });
           });
         }
 
-        // Sort items so that the active/selected institution and Tier A institutions get priority
-        labels.sort((a, b) => {
-          const aId = a.getAttribute('data-entity-id') || a.getAttribute('data-name');
-          const bId = b.getAttribute('data-entity-id') || b.getAttribute('data-name');
-          if (currentActiveId && aId === currentActiveId) return -1;
-          if (currentActiveId && bId === currentActiveId) return 1;
-          return 0;
+        // The selected space first, then the tags that already have a place (so they hold it), then the rest in their order.
+        const rank = it => it.hidden ? 3 : it.active ? 0 : it.placed ? 1 : 2;
+        const order = items.map((it, i) => [rank(it), i, it]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
+
+        const placedRects = [];
+        const overlaps = (r, m) => !(r.right <= m.left || r.left >= m.right || r.bottom <= m.top || r.top >= m.bottom);
+        order.forEach(it => {
+          if (it.hidden) { it.side = null; it.occluded = false; return; }
+          // The side it had first, then the usual order: top, bottom, right, left.
+          const sides = it.placed ? [it.was].concat(TAG_SIDES.filter(s => s !== it.was)) : TAG_SIDES;
+          let best = null;
+          for (const side of sides) {
+            const o = it.offs[side];
+            if (!o) continue;
+            const r = { left: it.pr.left + o.l - BUFFER, top: it.pr.top + o.t - BUFFER, right: it.pr.left + o.l + o.w + BUFFER, bottom: it.pr.top + o.t + o.h + BUFFER };
+            if (offMap(r) || pinMarks.some(m => m.pin !== it.pin && overlaps(r, m)) || placedRects.some(m => overlaps(r, m))) continue;
+            best = { side, r };
+            break;
+          }
+          if (best) { it.side = best.side; it.occluded = false; placedRects.push(best.r); }
+          else if (it.active) {
+            // The selected space keeps its name on top, whatever it covers.
+            const o = it.offs['label-pos-top'];
+            it.side = 'label-pos-top'; it.occluded = false;
+            if (o) placedRects.push({ left: it.pr.left + o.l, top: it.pr.top + o.t, right: it.pr.left + o.l + o.w, bottom: it.pr.top + o.t + o.h });
+          } else { it.side = it.was || 'label-pos-top'; it.occluded = true; }   // hidden where it was, so it does not jump when hovered
         });
 
-        labels.forEach(lbl => {
-          const parentPin = lbl.closest('.custom-inst-pin');
-          if (!parentPin || parentPin.style.opacity === '0' || parentPin.offsetParent === null) return;
-
-          let bestPlacement = null;
-          let bestRect = null;
-
-          for (const posClass of placements) {
-            lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
-            lbl.classList.add(posClass);
-
-            const r = lbl.getBoundingClientRect();
-            if (r.width === 0 && r.height === 0) continue;
-
-            const testRect = {
-              left: r.left - BUFFER,
-              right: r.right + BUFFER,
-              top: r.top - BUFFER,
-              bottom: r.bottom + BUFFER
-            };
-
-            let collides = false;
-            if (view && (r.left < view.left || r.right > view.right || r.top < view.top || r.bottom > view.bottom)) collides = true;
-            if (!collides) for (const m of pinMarks) {
-              if (m.pin === parentPin) continue;
-              if (!(testRect.right <= m.left || testRect.left >= m.right || testRect.bottom <= m.top || testRect.top >= m.bottom)) { collides = true; break; }
-            }
-            if (!collides) for (const prev of placedRects) {
-              const overlapX = !(testRect.right <= prev.left || testRect.left >= prev.right);
-              const overlapY = !(testRect.bottom <= prev.top || testRect.top >= prev.bottom);
-              if (overlapX && overlapY) {
-                collides = true;
-                break;
-              }
-            }
-
-            if (!collides) {
-              bestPlacement = posClass;
-              bestRect = testRect;
-              break;
-            }
-          }
-
-          if (bestPlacement) {
-            lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
-            lbl.classList.add(bestPlacement);
-            placedRects.push(bestRect);
-          } else {
-            // If all 4 directions collide, occlude label cleanly (hover/focus will reveal with z-index: 9999)
-            // But if it is the currently selected institution, always keep it visible on top
-            const lblId = lbl.getAttribute('data-entity-id') || lbl.getAttribute('data-name');
-            if (currentActiveId && lblId === currentActiveId) {
-              lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
-              lbl.classList.add('label-pos-top');
-              placedRects.push(lbl.getBoundingClientRect());
-            } else {
-              lbl.classList.add('collision-occluded');
-            }
-          }
+        // Then write, and only what changed.
+        items.forEach(it => {
+          const lbl = it.lbl;
+          TAG_SIDES.forEach(c => { if (c !== it.side && lbl.classList.contains(c)) lbl.classList.remove(c); });
+          if (it.side && !lbl.classList.contains(it.side)) lbl.classList.add(it.side);
+          if (lbl.classList.contains('collision-occluded') !== it.occluded) lbl.classList.toggle('collision-occluded', it.occluded);
         });
       }
       window.resolveCityMarkerCollisions = resolveCityMarkerCollisions;
 
       cityVectorMap.on('zoom', updateCityZoomClasses);
-      cityVectorMap.on('zoom', () => {
-        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
-      });
+      // Once a frame while the camera moves ('zoom' comes with a 'move'), in the frame after the markers have followed it.
+      let tagFrame = 0;
       cityVectorMap.on('move', () => {
-        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
+        if (tagFrame || typeof requestAnimationFrame !== 'function') return;
+        tagFrame = requestAnimationFrame(() => { tagFrame = 0; resolveCityMarkerCollisions(); });
       });
       // Once more where the camera comes to rest, so the tags are placed from where the pins finally are.
       cityVectorMap.on('moveend', () => {
-        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
+        if (tagFrame) { cancelAnimationFrame(tagFrame); tagFrame = 0; }
+        resolveCityMarkerCollisions();
       });
       cityVectorMap.on('rotate', () => {
       });
@@ -8976,9 +8987,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) : 0;
         const mapBox = mapEl.getBoundingClientRect();
         const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : mapBox;
-        const cover = sheetH > 0 ? Math.max(0, mapBox.bottom - (hostBox.bottom - sheetH)) : 0;
-        // Never so much padding that less than 120px of map is left to fit into.
-        if (cover > 0 && mapBox.height - 130 - cover - 30 >= 120) {
+        let cover = sheetH > 0 ? Math.max(0, mapBox.bottom - (hostBox.bottom - sheetH)) : 0;
+        // Never so much padding that less than 120px of map is left to fit into. A phone's record is a full sheet over the whole
+        // map: the city is then fitted to the whole map, so it is already spread out when the sheet is closed.
+        const fullSheet = cover > 0 && mapBox.height - 130 - cover - 30 < 120;
+        if (fullSheet) cover = 0;
+        if (cover > 0 || fullSheet) {
           const phoneBounds = new maplibregl.LngLatBounds();
           const shown = cityPinKeep ? cityInsts.filter(i => cityPinKeep(i)) : cityInsts;
           // Fit the dense core, not every outlier: one museum 15 km out shrank the downtown cluster to a few dozen pixels
@@ -10788,11 +10802,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v822';
+    const ATLAS_RELEASE = 'culture-atlas-v824';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=822').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=824').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -22286,20 +22300,20 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=669"></script>
-<script src="assets/note-aids.js?v=822" defer></script>
-<script src="assets/note-files.js?v=669" defer></script>
-<script src="assets/funding-views.js?v=767"></script>
-<script src="assets/layers.js?v=809"></script>
-<script src="assets/critique-gallery-data.js?v=692"></script>
-<script src="assets/critique-captions.js?v=692"></script>
-<script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=802"></script>
-<script src="assets/influence-mode.js?v=807"></script>
-<script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=802"></script>
-<script src="assets/desktop-maps.js?v=743"></script>
-<script src="assets/chat-resize.js?v=691"></script>
-<script src="assets/tab-suggest.js?v=788"></script>
+<script src="assets/typeset.js?v=824"></script>
+<script src="assets/note-aids.js?v=824" defer></script>
+<script src="assets/note-files.js?v=824" defer></script>
+<script src="assets/funding-views.js?v=824"></script>
+<script src="assets/layers.js?v=824"></script>
+<script src="assets/critique-gallery-data.js?v=824"></script>
+<script src="assets/critique-captions.js?v=824"></script>
+<script src="assets/critique-gallery.js?v=824"></script>
+<script src="assets/hq-detail.js?v=824"></script>
+<script src="assets/influence-mode.js?v=824"></script>
+<script src="assets/bubbles.js?v=824" defer></script>
+<script src="assets/phone-maps.js?v=824"></script>
+<script src="assets/desktop-maps.js?v=824"></script>
+<script src="assets/chat-resize.js?v=824"></script>
+<script src="assets/tab-suggest.js?v=824"></script>
 </body>
 </html>
