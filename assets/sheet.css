@@ -2474,3 +2474,20 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 :root #curatorMessages .chat-share-card textarea.chat-share-note:focus{border-color:var(--sh-green)!important;box-shadow:0 0 0 1px var(--sh-green)!important}
 :root #curatorMessages .chat-share-card.is-sent .chat-share-in{border-color:transparent!important;box-shadow:none!important}
 }
+
+/* ==== SHARE AS A CHAT, CALMER (user, 19 Nov 2026: "is it too busy?", then "yes, cut") ====
+   The draft card loses its outline (the fields are the card), a known place's city sits in italic on the place line, the
+   help paragraph is gone (the chat box says "Or tell me what to change"), Cancel is a plain link beside the two buttons,
+   and the Share information bar is put away while Clio is asking (body.chat-share-active, assets/chat-share.js). */
+@layer sheet{
+:root #curatorMessages .chat-share-card{border:0!important;border-radius:0!important;padding:0!important}
+:root #curatorMessages .chat-share-card .chat-share-placecity{flex:none!important;color:var(--sh-green-2)!important;font-style:italic!important}
+:root #curatorMessages .chat-share-card .chat-share-placecity:empty{display:none!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-link{border-color:transparent!important;padding-left:calc(4px * var(--sh-k))!important;padding-right:calc(4px * var(--sh-k))!important;
+  text-decoration:underline!important;text-underline-offset:.2em!important;text-decoration-thickness:1px!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-link:is(:hover,:focus-visible){background:transparent!important;text-decoration-thickness:2px!important}
+/* Seven ids: the phone's ":root.gm-chat body:not(.chat-input-mode-active) #workBottomDock #workInputCard #chatShareBtn:not(#a):not(#b):not(#c)"
+   (six) sets it to flex. */
+:root:root body.chat-share-active #workBottomDock #workInputCard #chatShareBtn:not(#cs-a):not(#cs-b):not(#cs-c):not(#cs-d),
+:root:root body.chat-share-active :is(#mobileStickyShareBtn,#gmMapShareBtn):not(#cs-a):not(#cs-b):not(#cs-c):not(#cs-d):not(#cs-e):not(#cs-f){display:none!important}
+}
