@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=837"></script>
+  <script src="assets/load-image-data.js?v=839"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=837">
-  <link rel="stylesheet" href="assets/sheet.css?v=837">
-  <script src="assets/config.js?v=837"></script>
-  <script src="assets/analytics.js?v=837"></script>
-  <script src="assets/subtopic.js?v=837"></script>
-  <script src="assets/names.js?v=837"></script>
-  <script src="assets/grounding.js?v=837"></script>
-  <script src="assets/repeats.js?v=837"></script>
-  <script src="assets/intro-narration.js?v=837"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=839">
+  <link rel="stylesheet" href="assets/sheet.css?v=839">
+  <script src="assets/config.js?v=839"></script>
+  <script src="assets/analytics.js?v=839"></script>
+  <script src="assets/subtopic.js?v=839"></script>
+  <script src="assets/names.js?v=839"></script>
+  <script src="assets/grounding.js?v=839"></script>
+  <script src="assets/repeats.js?v=839"></script>
+  <script src="assets/intro-narration.js?v=839"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=837"></script>
+  <script src="assets/load-image.js?v=839"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1175,8 +1175,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=837"></script>
-  <script src="assets/money-ids.js?v=837"></script>
+  <script src="assets/institutions.js?v=839"></script>
+  <script src="assets/money-ids.js?v=839"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10777,11 +10777,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v837';
+    const ATLAS_RELEASE = 'culture-atlas-v839';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=837').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=839').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17150,7 +17150,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const asked = typeof answerHtml === 'string' && /share information/i.test(answerHtml.replace(/<[^>]+>/g, ' '));
       const line = asked ? '' : `<p class="chat-share-invite-line">${lines[chatShareInviteTurn++ % lines.length]}</p>`;
       const label = name ? `Share information about ${name}` : 'Share information';
-      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-invite="1">${label}</button><button type="button" class="curator-followup-pill chat-share-invite-btn chat-share-chat-btn text-left py-1" data-share-chat="${name}">Tell it here in the chat</button></div></div>`;
+      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-chat="${name}">${label}</button><button type="button" class="curator-followup-pill chat-share-invite-btn chat-share-form-btn text-left py-1" data-share-invite="1">Or fill in a form</button></div></div>`;
     }
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {
@@ -18805,9 +18805,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       b.textContent = on ? 'Back to chat' : 'Share information';
       b.title = on ? 'Leave the note and go back to the chat' : 'Add what you know, or what the atlas is missing';
     }
+    // Share information opens the chat first (user, 19 Nov 2026: "make chat first and or fill in a form button"): Clio asks
+    // for the note one question at a time (assets/chat-share.js), and "Or fill in a form" under each question opens the form.
+    // On the form the same button leaves it. While Clio is already asking, it only brings the box back.
     function toggleChatShare() {
-      if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
+      if (isChatInputMode) { exitChatInputMode(); return; }
+      const cs = window.atlasChatShare;
+      if (!cs) { enterChatInputMode('whistleblower'); return; }
+      if (cs.active()) {
+        if (window.innerWidth >= 768 && currentWorkspaceTab === 'dossier') setWorkspaceTab('chat');
+        if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+        scrollChatToBottom(true);
+        if (window.innerWidth >= 768) document.getElementById('workInput')?.focus();
+        return;
+      }
+      const focus = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || (typeof dossierInst !== 'undefined' ? dossierInst : null);
+      cs.start({ place: focus && focus.name ? focus.name : '' });
     }
+    function openShareForm() { if (!isChatInputMode) enterChatInputMode('whistleblower'); }
     // Clicking another tab (Details, or on a phone Atlas and Dossier) closes the note screen; the chat is left as it was, with no message.
     document.addEventListener('click', (e) => {
       if (isChatInputMode && e.target.closest && e.target.closest('#workspaceTabDossier, #tab-atlas, #tab-dossier')) exitChatInputMode(true);
@@ -19067,6 +19082,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.enterChatInputMode = enterChatInputMode;
     window.exitChatInputMode = exitChatInputMode;
     window.toggleChatShare = toggleChatShare;
+    window.openShareForm = openShareForm;
 
     // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
     // Posts a note to the report service: a review of a place on the atlas, or a new place. The form and the chat
@@ -22312,22 +22328,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=837"></script>
-<script src="assets/note-aids.js?v=837" defer></script>
-<script src="assets/place-list.js?v=837" defer></script>
-<script src="assets/chat-share.js?v=837" defer></script>
-<script src="assets/note-files.js?v=837" defer></script>
-<script src="assets/funding-views.js?v=837"></script>
-<script src="assets/layers.js?v=837"></script>
-<script src="assets/critique-gallery-data.js?v=837"></script>
-<script src="assets/critique-captions.js?v=837"></script>
-<script src="assets/critique-gallery.js?v=837"></script>
-<script src="assets/hq-detail.js?v=837"></script>
-<script src="assets/influence-mode.js?v=837"></script>
-<script src="assets/bubbles.js?v=837" defer></script>
-<script src="assets/phone-maps.js?v=837"></script>
-<script src="assets/desktop-maps.js?v=837"></script>
-<script src="assets/chat-resize.js?v=837"></script>
-<script src="assets/tab-suggest.js?v=837"></script>
+<script src="assets/typeset.js?v=839"></script>
+<script src="assets/note-aids.js?v=839" defer></script>
+<script src="assets/place-list.js?v=839" defer></script>
+<script src="assets/chat-share.js?v=839" defer></script>
+<script src="assets/note-files.js?v=839" defer></script>
+<script src="assets/funding-views.js?v=839"></script>
+<script src="assets/layers.js?v=839"></script>
+<script src="assets/critique-gallery-data.js?v=839"></script>
+<script src="assets/critique-captions.js?v=839"></script>
+<script src="assets/critique-gallery.js?v=839"></script>
+<script src="assets/hq-detail.js?v=839"></script>
+<script src="assets/influence-mode.js?v=839"></script>
+<script src="assets/bubbles.js?v=839" defer></script>
+<script src="assets/phone-maps.js?v=839"></script>
+<script src="assets/desktop-maps.js?v=839"></script>
+<script src="assets/chat-resize.js?v=839"></script>
+<script src="assets/tab-suggest.js?v=839"></script>
 </body>
 </html>
