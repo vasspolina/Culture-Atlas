@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=826"></script>
+  <script src="assets/load-image-data.js?v=827"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=826">
-  <link rel="stylesheet" href="assets/sheet.css?v=826">
-  <script src="assets/config.js?v=826"></script>
-  <script src="assets/analytics.js?v=826"></script>
-  <script src="assets/subtopic.js?v=826"></script>
-  <script src="assets/names.js?v=826"></script>
-  <script src="assets/grounding.js?v=826"></script>
-  <script src="assets/repeats.js?v=826"></script>
-  <script src="assets/intro-narration.js?v=826"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=827">
+  <link rel="stylesheet" href="assets/sheet.css?v=827">
+  <script src="assets/config.js?v=827"></script>
+  <script src="assets/analytics.js?v=827"></script>
+  <script src="assets/subtopic.js?v=827"></script>
+  <script src="assets/names.js?v=827"></script>
+  <script src="assets/grounding.js?v=827"></script>
+  <script src="assets/repeats.js?v=827"></script>
+  <script src="assets/intro-narration.js?v=827"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=826"></script>
+  <script src="assets/load-image.js?v=827"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -890,9 +890,9 @@ return maplibregl$1;
               <div id="noteFormFields">
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
-                <!-- The undertone (user, 18 Nov 2026): most lives were never written down, and a blank in the record is not a place without history. -->
-                <div id="noteFormIntro"><span class="nf-undertone">Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep, so where the record goes quiet people still lived, worked, made things and gathered. Imagine them, and do not take a blank on the map for a place without history.</span><span class="nf-undertone">If you know what the atlas is missing, from inside or from memory, write it here. The atlas is built with the people who add to it. The editor reads every note before anything appears, and an approved note appears on the museum’s page as a review. This is not a secure channel.</span></div>
-                <label class="nf-field"><span>Place</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
+                <!-- The undertone (user, 18 Nov 2026; shortened 19 Nov 2026): a blank in the record is not a place without history. -->
+                <div id="noteFormIntro"><span class="nf-undertone">Archives kept what someone could pay to keep. Where the record goes quiet, people still lived, worked, made things and gathered. A blank on the map is not a place without history.</span><span class="nf-undertone">If you know what is missing, from inside or from memory, write it here. The editor reads every note first, and an approved note appears on the museum’s page as a review. This is not a secure channel.</span></div>
+                <label class="nf-field"><span>Cultural place or a story about it</span><input id="noteInstitution" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
                 <!-- A place the atlas does not have (user, 18 Nov 2026): the form asks for its city and sends it as a new place. -->
                 <p id="notePlaceHint" role="status" aria-live="polite" hidden></p>
                 <label class="nf-field" id="noteCityField" hidden><span>City or town</span><input id="noteCity" type="text" maxlength="80" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Where the place is"></label>
@@ -1175,8 +1175,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=826"></script>
-  <script src="assets/money-ids.js?v=826"></script>
+  <script src="assets/institutions.js?v=827"></script>
+  <script src="assets/money-ids.js?v=827"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10766,11 +10766,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v826';
+    const ATLAS_RELEASE = 'culture-atlas-v827';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=826').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=827').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12976,11 +12976,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     });
     // On a phone the list is built the first time the Institution box is used.
     document.addEventListener('focusin', (e) => { if (e.target && e.target.id === 'noteInstitution') { try { fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); } } });
-    // Fills the institution list of the note form once, from the atlas records.
+    // Fills the institution list of the note form once, from the atlas records. The datalist is no longer tied to the box:
+    // the browser's own drop-down cannot take the atlas's type, so assets/place-list.js reads it and draws its own list.
     function fillNoteInstitutions() {
       const list = document.getElementById('noteInstitutionList');
       if (!list || list.childElementCount) return;
-      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}"></option>`).join('');
+      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}" data-city="${escapeHtml(i.city || '')}"></option>`).join('');
     }
     // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
     function humanDate(d) {
@@ -16746,7 +16747,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!area || !list) return;
       const away = () => { chatStickToBottom = area.scrollHeight - area.scrollTop - area.clientHeight < 140; };
       ['wheel', 'touchmove', 'keydown', 'pointerdown'].forEach(ev => area.addEventListener(ev, () => setTimeout(away, 80), { passive: true }));
-      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
+      // Before the first message the chat is the greeting, read from its top: "Ask Clio", the intro typing out and the questions
+      // under it grow the list on load, and following them to the bottom left the title cut off under the bar (user, 19 Nov 2026:
+      // "fix chat on load its cuts off on top"). The greeting stays at the top until a message is added.
+      const greeting = () => !document.querySelector('#curatorMessages > *');
+      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (greeting()) { area.scrollTop = 0; return; } if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
     })();
 
     // An arrow down over the composer, as in the Claude app (user, 9 Nov 2026: "Add arrow down button to mobile chat"). It shows once
@@ -18873,7 +18878,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         try { if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || ''; } catch (err) { atlasDebugLog('institution', err); }
         try {
           const noteStatus = document.getElementById('noteFormStatus');
-          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not set up, so a note cannot be sent.';
+          if (noteStatus) { noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not set up, so a note cannot be sent.'; if (ATLAS_REPORT_API_URL) delete noteStatus.dataset.state; else noteStatus.dataset.state = 'error'; }
           syncNoteReady();
         } catch (err) { atlasDebugLog('syncNoteReady', err); }
         try { if (!phone) (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus(); } catch (err) { atlasDebugLog('focus', err); }
@@ -19057,7 +19062,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const status = document.getElementById('noteFormStatus');
       const input = document.getElementById('workInput');
       const institutionBox = document.getElementById('noteInstitution');
-      const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
+      // A message that stops the note is red (assets/sheet.css, #noteFormStatus[data-state="error"]; user, 19 Nov 2026).
+      const fail = (message, focusEl) => { status.textContent = message; status.dataset.state = 'error'; if (focusEl) focusEl.focus(); };
       if (!ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
       const chosen = notePlace();
       const place = chosen.known;
@@ -19076,6 +19082,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (noteFiles && noteFiles.busy()) return fail('A file is still being prepared. Send again in a moment.');
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) sendBtn.disabled = true;
+      delete status.dataset.state;
       status.textContent = noteFiles && noteFiles.count() ? 'Sending the note and its files…' : 'Sending…';
       try {
         if (noteFiles && noteFiles.count()) body.files = await noteFiles.payload();
@@ -19103,6 +19110,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         `, [], null, null, false);
         scrollChatToBottom(true);
       } catch (err) {
+        status.dataset.state = 'error';
         status.textContent = `Not sent: ${err.message || 'no connection'}. Your note${noteFiles && noteFiles.count() ? ' and its files are' : ' is'} still in the box.`;
       } finally {
         if (sendBtn) sendBtn.disabled = false;
@@ -22264,20 +22272,21 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=826"></script>
-<script src="assets/note-aids.js?v=826" defer></script>
-<script src="assets/note-files.js?v=826" defer></script>
-<script src="assets/funding-views.js?v=826"></script>
-<script src="assets/layers.js?v=826"></script>
-<script src="assets/critique-gallery-data.js?v=826"></script>
-<script src="assets/critique-captions.js?v=826"></script>
-<script src="assets/critique-gallery.js?v=826"></script>
-<script src="assets/hq-detail.js?v=826"></script>
-<script src="assets/influence-mode.js?v=826"></script>
-<script src="assets/bubbles.js?v=826" defer></script>
-<script src="assets/phone-maps.js?v=826"></script>
-<script src="assets/desktop-maps.js?v=826"></script>
-<script src="assets/chat-resize.js?v=826"></script>
-<script src="assets/tab-suggest.js?v=826"></script>
+<script src="assets/typeset.js?v=827"></script>
+<script src="assets/note-aids.js?v=827" defer></script>
+<script src="assets/place-list.js?v=827" defer></script>
+<script src="assets/note-files.js?v=827" defer></script>
+<script src="assets/funding-views.js?v=827"></script>
+<script src="assets/layers.js?v=827"></script>
+<script src="assets/critique-gallery-data.js?v=827"></script>
+<script src="assets/critique-captions.js?v=827"></script>
+<script src="assets/critique-gallery.js?v=827"></script>
+<script src="assets/hq-detail.js?v=827"></script>
+<script src="assets/influence-mode.js?v=827"></script>
+<script src="assets/bubbles.js?v=827" defer></script>
+<script src="assets/phone-maps.js?v=827"></script>
+<script src="assets/desktop-maps.js?v=827"></script>
+<script src="assets/chat-resize.js?v=827"></script>
+<script src="assets/tab-suggest.js?v=827"></script>
 </body>
 </html>
