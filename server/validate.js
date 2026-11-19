@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 
-export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120, placeName: 120, minPlaceName: 2, city: 80 };
+export const LIMITS = { content: 2000, minContent: 10, label: 40, placeId: 120, placeName: 120, minPlaceName: 2, city: 80, address: 200 };
 
 // Plain text only. Tags (and what a script or style tag holds), control characters and stray angle brackets are
 // removed, runs of spaces collapse, and no more than one blank line survives. The page escapes the text again.
@@ -83,9 +83,12 @@ export function validateNewPlace(body, institutions) {
   const city = oneLine(source.city);
   if (!city) return { error: 'Write the city or town the place is in.' };
   if (city.length > LIMITS.city) return { error: `The city cannot be longer than ${LIMITS.city} characters.` };
+  // The street address is optional (user, 19 Nov 2026), so the editor can find the place.
+  const address = oneLine(source.address);
+  if (address.length > LIMITS.address) return { error: `The address cannot be longer than ${LIMITS.address} characters.` };
   const known = institutions.byName && institutions.byName.get(nameKey(name));
   if (known) return { error: `${known.name} is on the atlas already. Choose it from the list to add to its record.`, status: 409, placeId: known.id };
   const result = validateReview(source, { id: null, name, city });
   if (result.error) return result;
-  return { data: { ...result.data, kind: 'new-place', placeId: null } };
+  return { data: { ...result.data, kind: 'new-place', placeId: null, address: address || null } };
 }

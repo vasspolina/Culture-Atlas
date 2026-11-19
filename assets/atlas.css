@@ -5094,12 +5094,7 @@ body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc
 @media (max-width:767px){#cityMapContainer.street-poster .maplibregl-ctrl-scale{display:none!important}}
 #cityMapContainer.street-poster .maplibregl-ctrl-scale{display:block;background:transparent!important;border:1px solid var(--wc-rule)!important;border-top:0!important;color:var(--wc-ink)!important;font:400 14px/1.2 var(--sans)!important;padding:0 6px!important;box-shadow:none!important}
 
-/* SHARE INFORMATION UNDERTONE (user, 18 Nov 2026): the note screen's intro is two paragraphs, the lost-history undertone
-   first, then the invitation and the editor's terms. They inherit #noteFormIntro's type; only the space between them is set. */
-#noteFormIntro .nf-undertone{display:block}
-#noteFormIntro .nf-undertone + .nf-undertone{margin-top:0.8em}
-
 /* A NEW PLACE ON THE NOTE FORM (user, 18 Nov 2026): the City field and the line under Place show only while the Place box
    names something the atlas does not have. The field rules above set display with !important, so hidden needs this weight. */
-:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #noteFormFields :is(#noteCityField,#notePlaceHint)[hidden]{display:none!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #noteFormFields :is(#noteCityField,#noteAddressField,#notePlaceHint)[hidden]{display:none!important}
 #notePlaceHint{margin:0 0 12px;font:400 var(--fs-s)/1.3 var(--sans)}
