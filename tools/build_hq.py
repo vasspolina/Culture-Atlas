@@ -192,6 +192,9 @@ for k, p in (json.load(open(prof_path)) if os.path.exists(prof_path) else {}).it
     if p.get('name'): o['n'] = p['name']
     if p.get('address') and (not o.get('c') or p.get('city', o.get('c')) == o.get('c')): o['a'] = p['address']
     if p.get('sources'): o['s'] = p['sources'][0]
+    # The researcher's kind over the one guessed from the name: a person is labelled as one, not as the company the line named.
+    if p.get('kind') == 'person': o['kindLabel'] = 'Individual donor'; o['k'] = 'found'
+    elif p.get('kind') in ('gov', 'corp', 'found'): o['k'] = p['kind']
 lines = [n for r in json.load(open(os.path.join(here, '..', 'assets', 'money-maps.json'))) for n in r['nodes'] if len(n) > 5 and n[5]]
 used = {n[5] for n in lines}
 # An office whose keys no line uses also takes the keys of the lines that spell its name ('LINZ AG' and 'Linz AG').
