@@ -2,7 +2,7 @@
    The browser's own drop-down for a datalist is drawn by the system in its own sans and cannot be styled, so the box no
    longer points at the datalist. This script reads the same options (filled by fillNoteInstitutions in index.html, with
    each place's city) and draws a list of its own under the box, set in the sheet's serif (assets/sheet.css, #notePlaceList).
-   It is a combobox: typing narrows the list (accents and case ignored, names that start with the text first), the arrow
+   It is a combobox that opens only when the visitor types (or presses the down arrow): typing narrows the list (accents and case ignored, names that start with the text first), the arrow
    keys move, Enter or a click picks, Escape closes. A pick fires input and change on the box, so the form's own checks
    (a known place, a new one with its city, Send ready) run as they did with the datalist. */
 (function () {
@@ -124,8 +124,8 @@
     box.setAttribute('aria-controls', 'notePlaceList');
     box.setAttribute('aria-expanded', 'false');
 
-    // The datalist is filled on the box's first focus (index.html); the list is drawn just after that.
-    box.addEventListener('focus', function () { setTimeout(function () { if (document.activeElement === box) render(); }, 0); });
+    // No list on focus or when the form opens (user, 19 Nov 2026: "do not offer to choose on load, because they may type
+    // unexisting place"): it opens once the visitor types, or with the down arrow. The datalist is filled on first focus.
     box.addEventListener('input', function (e) { if (e.isTrusted) render(); });
     box.addEventListener('blur', function () { setTimeout(close, 120); });
     box.addEventListener('keydown', function (e) {

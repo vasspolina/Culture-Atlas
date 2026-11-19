@@ -23,6 +23,8 @@ model WhistleblowerReport {
   kind        String       @default("review")
   placeId     String?
   city        String
+  // A new place's street address, optional (user, 19 Nov 2026: "add adress field"). Reviews leave it empty.
+  address     String?
   institution String?
   content     String
   rating      Int?
