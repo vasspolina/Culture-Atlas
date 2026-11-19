@@ -7,7 +7,7 @@
      index.html), to the same report service, for the editor to read first.
    - The note keeps the visitor's words. A change asked for in plain words ("drop the second sentence") goes to the chat model
      with the note and nothing else, and its version is taken only when it adds no name or number the visitor did not write.
-     Short commands are done here without the model: "add: ...", "sign it ...", "no name", "the city is ...", "it is about ...".
+     Short commands are done here without the model: "add: ...", "sign it ...", "no name", "the city is ...", "the address is ...", "it is about ...".
    - Clio points at words in the draft that could identify the visitor (an email, a phone number, "my name is", "my manager").
      The tick stays the visitor's own.
    - None of these turns enter the chat's history, so a note is never sent to the model with a later question. */
@@ -15,7 +15,7 @@
   'use strict';
 
   var MIN = 10, MAX = 2000, NAME_MAX = 40;
-  var s = null;              // the interview: { step, place, isNew, name, city, note, author, choices }
+  var s = null;              // the interview: { step, place, isNew, name, city, address, note, author, choices }
   var keptPlaceholder = null;
 
   function esc(t) {
@@ -78,6 +78,8 @@
     scroll();
   }
   // The way out under every question: the form instead (it takes what was answered so far), or stop.
+  // A typed name that is keyboard mash is not a new place (user, 19 Nov 2026).
+  function nameOk(name) { return typeof window.atlasLooksLikeName !== 'function' || window.atlasLooksLikeName(name); }
   function OUT() { return [{ label: 'Or fill in a form', act: 'form' }, { label: 'Cancel', act: 'cancel' }]; }
   function p(text) { return '<p class="no-indent">' + esc(text) + '</p>'; }
 
@@ -139,16 +141,28 @@
     newPlace(text.trim());
   }
   function choosePlace(inst) {
-    s.place = inst; s.isNew = false; s.name = inst.name; s.city = '';
+    s.place = inst; s.isNew = false; s.name = inst.name; s.city = ''; s.address = '';
     afterPlace();
   }
   function newPlace(name) {
     name = String(name || '').replace(/\s+/g, ' ').trim();
     if (name.length < 2) { clio(p('Write the place’s name, two letters or more.'), OUT()); return; }
+    // Keyboard mash is not a new place (window.atlasLooksLikeName in index.html; user, 19 Nov 2026).
+    if (!nameOk(name)) {
+      s.step = 'place';
+      clio(p('That does not look like the name of a place. Write it the way it is written on the place or in the press.'), OUT());
+      return;
+    }
     s.place = null; s.isNew = true; s.name = name.slice(0, 120);
     if (s.city) return afterPlace();
     s.step = 'city';
     clio(p(s.name + ' is not on the atlas yet. It goes to the editor as a new place. Which city or town is it in?'), OUT());
+  }
+  // A new place's street address, optional (user, 19 Nov 2026: "add adress field"). Asked once, after the city.
+  function askAddress() {
+    s.step = 'address';
+    clio(p('What is the address of ' + s.name + '? If you do not know it, skip this.'),
+      [{ label: 'Skip', act: 'skipaddress' }].concat(OUT()));
   }
   function afterPlace() {
     if (s.note) return showDraft();
@@ -195,7 +209,11 @@
   function placeState() {
     var row = s.card && s.card.querySelector('.chat-share-cityrow'), tag = s.card && s.card.querySelector('.chat-share-new');
     if (row) row.hidden = !s.isNew;
-    if (tag) tag.textContent = s.isNew ? 'Not on the atlas yet: it goes to the editor as a new place.' : '';
+    var addressRow = s.card && s.card.querySelector('.chat-share-addressrow');
+    if (addressRow) addressRow.hidden = !s.isNew;
+    var mash = !s.place && !s.isNew && s.name.length >= 2;
+    if (tag) tag.textContent = s.isNew ? 'Not on the atlas yet: it goes to the editor as a new place.'
+      : mash ? 'That does not look like the name of a place.' : '';
     var city = s.card && s.card.querySelector('.chat-share-placecity');
     if (city) city.textContent = !s.isNew && s.place && s.place.city ? s.place.city : '';
   }
@@ -211,6 +229,7 @@
         '<label class="chat-share-row"><span class="chat-share-k">Place</span><input type="text" class="chat-share-in" data-chat-share-field="name" value="' + esc(s.name) + '" maxlength="120" autocomplete="off" spellcheck="false" autocapitalize="words"><span class="chat-share-placecity"></span></label>' +
         '<p class="no-indent chat-share-new"></p>' +
         '<label class="chat-share-row chat-share-cityrow"' + (s.isNew ? '' : ' hidden') + '><span class="chat-share-k">City or town</span><input type="text" class="chat-share-in" data-chat-share-field="city" value="' + esc(s.city) + '" maxlength="80" autocomplete="off" spellcheck="false" autocapitalize="words"></label>' +
+        '<label class="chat-share-row chat-share-addressrow"' + (s.isNew ? '' : ' hidden') + '><span class="chat-share-k">Address</span><input type="text" class="chat-share-in" data-chat-share-field="address" value="' + esc(s.address) + '" maxlength="200" placeholder="Optional" autocomplete="off" spellcheck="false" autocapitalize="words"></label>' +
         '<label class="chat-share-row"><span class="chat-share-k">Name shown</span><input type="text" class="chat-share-in" data-chat-share-field="author" value="' + esc(s.author) + '" maxlength="' + l.name + '" placeholder="Whistleblower" autocomplete="off" spellcheck="false"></label>' +
         '<label class="chat-share-notebox"><span class="chat-share-k">Your note</span><textarea class="chat-share-in chat-share-note" data-chat-share-field="note" rows="3" maxlength="' + l.max + '" spellcheck="true" autocapitalize="sentences">' + esc(s.note) + '</textarea></label>' +
         '<label class="nf-check chat-share-ack"><input type="checkbox" data-chat-share-ack' + (s.ack ? ' checked' : '') + '><span>I have left out my name and anything that identifies me.</span></label>' +
@@ -236,10 +255,11 @@
     if (f === 'note') { s.note = v.trim(); sizeNote(el); refreshChecks(); }
     else if (f === 'author') s.author = v.trim().slice(0, limits().name);
     else if (f === 'city') s.city = v.trim().slice(0, 80);
+    else if (f === 'address') s.address = v.replace(/\s+/g, ' ').trim().slice(0, 200);
     else if (f === 'name') {
       var name = v.replace(/\s+/g, ' ').trim(), hit = findPlaces(name).exact;
       s.name = name;
-      if (hit) { s.place = hit; s.isNew = false; s.name = hit.name; } else { s.place = null; s.isNew = name.length >= 2; }
+      if (hit) { s.place = hit; s.isNew = false; s.name = hit.name; } else { s.place = null; s.isNew = name.length >= 2 && nameOk(name); }
       placeState();
     }
     var st = s.card.querySelector('.chat-share-status');
@@ -267,8 +287,13 @@
       s.city = m[1].trim().replace(/\.$/, '').slice(0, 80);
       return showDraft('The city is ' + s.city + '.');
     }
+    if ((m = t.match(/^(?:the )?address(?: is)?\s*[:,]?\s+(.+)$/i))) {
+      if (!s.isNew) return showDraft(s.name + ' is on the atlas already, so its address is not needed.');
+      s.address = m[1].trim().replace(/\.$/, '').replace(/\s+/g, ' ').slice(0, 200);
+      return showDraft('The address is ' + s.address + '.');
+    }
     if ((m = t.match(/^(?:the )?place(?: is)?\s*[:,]?\s+(.+)$/i) || t.match(/^it'?s about\s+(.+)$/i) || t.match(/^it is about\s+(.+)$/i))) {
-      s.city = '';
+      s.city = ''; s.address = '';
       return takePlace(m[1].trim().replace(/\.$/, ''));
     }
     return modelEdit(t);
@@ -331,11 +356,12 @@
     var fail = function (m) { if (status) { status.textContent = m; status.dataset.state = 'error'; } };
     var l = limits();
     if (typeof window.atlasPostNote !== 'function' || !window.ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
-    if (!s.place && !s.isNew) return fail('Write the place the note is about.');
+    if (!s.place && !s.isNew) return fail(s.name.length >= 2 ? 'That does not look like the name of a place. Write it the way it is written.' : 'Write the place the note is about.');
     if (s.isNew && !s.city) { var cityIn = card.querySelector('[data-chat-share-field="city"]'); if (cityIn) cityIn.focus(); return fail('Write the city or town ' + s.name + ' is in.'); }
     if (s.note.length < l.min) return fail('Write at least ' + l.min + ' characters.');
     if (!s.ack) return fail('Tick the box to confirm you have left out anything that identifies you.');
     var body = s.place ? { content: s.note } : { content: s.note, placeName: s.name, city: s.city };
+    if (!s.place && s.address) body.address = s.address;
     if (s.author) body.authorLabel = s.author;
     if (status) { delete status.dataset.state; status.textContent = 'Sending…'; }
     var buttons = card.querySelectorAll('.chat-share-choice');
@@ -366,7 +392,7 @@
     // Only what was answered is carried over: an empty answer leaves the form's own value (the open record's name) in place.
     var set = function (id, v) { var el = document.getElementById(id); if (el && v) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); } };
     set('noteInstitution', d.name);
-    if (d.isNew) set('noteCity', d.city);
+    if (d.isNew) { set('noteCity', d.city); set('noteAddress', d.address); }
     set('noteAuthor', d.author);
     set('workInput', d.note);
     var ack = document.getElementById('noteAck');
@@ -374,7 +400,7 @@
     if (typeof window.atlasNotePlace === 'function') window.atlasNotePlace();
   }
 
-  function fresh() { return { step: 'place', place: null, isNew: false, name: '', city: '', note: '', author: '', ack: false, card: null, suggest: '' }; }
+  function fresh() { return { step: 'place', place: null, isNew: false, name: '', city: '', address: '', note: '', author: '', ack: false, card: null, suggest: '' }; }
   function end(quiet) {
     s = null;
     setPlaceholder(false);
@@ -389,7 +415,7 @@
     s = fresh();
     s.suggest = opts.place || '';
     setPlaceholder(true);
-    clio(p('Tell me what you know, a few questions at a time. Archives kept what someone could pay to keep; what you remember can stand beside the record. The editor reads every note before anything goes on the atlas.'));
+    clio(p('Tell me what you know. Archives kept what someone could pay to keep; what you remember can stand beside the record. The editor reads every note before anything goes on the atlas.'));
     askPlace(s.suggest);
     var box = input();
     if (box && window.innerWidth >= 768) box.focus();
@@ -413,6 +439,9 @@
         takePlace(text); break;
       case 'city':
         s.city = text.replace(/\.$/, '').slice(0, 80);
+        askAddress(); break;
+      case 'address':
+        if (!/^(skip|no|none|don'?t know|i don'?t know|not sure)\.?$/i.test(text)) s.address = text.replace(/\s+/g, ' ').slice(0, 200);
         afterPlace(); break;
       case 'note':
         if (text.length < l.min) { clio(p('Write a little more, at least ' + l.min + ' characters.'), OUT()); break; }
@@ -445,6 +474,7 @@
       return;
     }
     if (act === 'newplace') { said(b.textContent); newPlace(s.typed); return; }
+    if (act === 'skipaddress') { said(b.textContent); afterPlace(); return; }
     if (act === 'send') { send(); return; }
     if (act === 'form') { toForm(); return; }
   }, true);
