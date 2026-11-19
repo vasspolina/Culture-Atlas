@@ -32,6 +32,36 @@
   ],
   "batch": "fp4"
  },
+ "adjarastamba": {
+  "name": "Adjara Group",
+  "kind": "corp",
+  "what": "A Georgian hospitality holding founded in Tbilisi in 2010 by the entrepreneur Temur Ugulava, who died in 2026; its brands include Rooms Hotels, Stamba and Fabrika.",
+  "money": "Revenue from its hotels, restaurants, bars, co-working offices and event spaces in Georgia; the group employs about 1,700 people.",
+  "site": "https://adjaragroup.com",
+  "city": "Tbilisi",
+  "country": "Georgia",
+  "address": "14 M. Kostava Str, 0108 Tbilisi",
+  "status": "done",
+  "sources": [
+   "https://adjaragroup.com/",
+   "https://www.cbw.ge/business/founder-of-adjaragroup-temur-ugulava-passes-away-at-56"
+  ],
+  "batch": "fp6"
+ },
+ "aerok": {
+  "name": "Aero K",
+  "kind": "corp",
+  "what": "A South Korean low-cost airline founded on 18 May 2016, flying since April 2021 from Cheongju International Airport; its parent is Aero K Holdings (Daemyung Chemical).",
+  "money": "Passenger fares on its scheduled routes from Cheongju, flown with a fleet of nine aircraft.",
+  "site": "https://www.aerok.com",
+  "city": "Cheongju",
+  "country": "South Korea",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Aero_K"
+  ],
+  "batch": "fp6"
+ },
  "aesop": {
   "name": "Aesop",
   "kind": "corp",
@@ -64,6 +94,22 @@
   ],
   "batch": "fp1"
  },
+ "afd": {
+  "name": "Agence française de développement",
+  "short": "AFD",
+  "kind": "gov",
+  "what": "A French public financial institution, founded by Charles de Gaulle in 1941 as the Caisse Centrale de la France Libre, that finances development projects for the French state.",
+  "money": "Bonds it issues on the capital markets fund its loans; six of its board members represent French ministries.",
+  "site": "https://www.afd.fr",
+  "city": "Paris",
+  "country": "France",
+  "address": "5 rue Roland Barthes, 75012 Paris",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Agence_fran%C3%A7aise_de_d%C3%A9veloppement"
+  ],
+  "batch": "fp6"
+ },
  "ag2rlamondiale": {
   "name": "AG2R La Mondiale",
   "kind": "corp",
@@ -77,6 +123,24 @@
    "https://fr.wikipedia.org/wiki/AG2R_La_Mondiale"
   ],
   "batch": "fp3"
+ },
+ "agencyforculturalaffairsjac|Japan": {
+  "name": "Agency for Cultural Affairs, Government of Japan",
+  "short": "Bunkachō",
+  "kind": "gov",
+  "what": "A special body of Japan's Ministry of Education, Culture, Sports, Science and Technology, set up in 1968 to promote arts and culture, with its main offices in Kyoto since 2023.",
+  "money": "Japan's national budget through the Ministry of Education, Culture, Sports, Science and Technology; its budget was 107 billion yen in 2026.",
+  "arts": "Its divisions protect the nation's cultural properties and oversee the Japan Arts Council.",
+  "site": "https://www.bunka.go.jp/english/",
+  "city": "Kyoto",
+  "country": "Japan",
+  "address": "85-4 Yabunouchi-cho, Shimochoja-machi-dori, Shinmachi-nishi-iru, Kamigyo-ku, Kyoto 602-8959",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Agency_for_Cultural_Affairs",
+   "https://www.bunka.go.jp/english/"
+  ],
+  "batch": "fp6"
  },
  "ahlstrmkiinteisttoy": {
   "name": "A. Ahlström Kiinteistöt Oy",
@@ -94,6 +158,22 @@
    "https://visit.alvaraalto.fi/en/destinations/ahlstroms-noormarkku-works-in-pori/"
   ],
   "batch": "fp5"
+ },
+ "aig": {
+  "name": "American International Group, Inc.",
+  "short": "AIG",
+  "kind": "corp",
+  "what": "An American multinational insurance company founded in Shanghai on 19 December 1919 by Cornelius Vander Starr, now headquartered in New York City.",
+  "money": "Premiums and investment income from commercial and personal property, casualty, liability and specialty insurance; revenue was US$26.77 billion in 2025.",
+  "site": "https://www.aig.com",
+  "city": "New York",
+  "country": "United States",
+  "address": "1271 Avenue of the Americas, New York, NY 10020",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/AIG"
+  ],
+  "batch": "fp6"
  },
  "ajuntamentdebarcelona": {
   "name": "Ajuntament de Barcelona",
@@ -129,6 +209,58 @@
   ],
   "batch": "fp2"
  },
+ "alcaldademedelln": {
+  "name": "Alcaldía de Medellín",
+  "short": "Medellín City Government",
+  "kind": "gov",
+  "what": "The executive government of the Special District of Medellín, Colombia, a city of 2,427,129 people led by mayor Federico Gutiérrez; the city owns the utility company EPM.",
+  "money": "The district budget, funded by local taxes such as property and business tax; budgeted revenue grew to 12.90 trillion pesos for 2026.",
+  "site": "https://www.medellin.gov.co",
+  "city": "Medellín",
+  "country": "Colombia",
+  "address": "Calle 44 # 52-165, Centro Administrativo La Alpujarra",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Medell%C3%ADn",
+   "https://www.elcolombiano.com/medellin/distrito-medellin-superavit-excedente-fiscal-inversion-II36946790",
+   "https://en.wikipedia.org/wiki/Empresas_P%C3%BAblicas_de_Medell%C3%ADn"
+  ],
+  "batch": "fp6"
+ },
+ "alexanders": {
+  "name": "Alexander S. Onassis Public Benefit Foundation",
+  "short": "Onassis Foundation",
+  "kind": "found",
+  "what": "A private foundation set up in Vaduz, Liechtenstein, in 1975 under the will of the shipowner Aristotle Onassis, in memory of his son Alexander.",
+  "money": "Profits of the Onassis Business Foundation, its holding for maritime transport and real estate, formed from half of Aristotle Onassis's estate.",
+  "arts": "It endows Greek studies chairs at universities and runs Onassis USA, its New York affiliate based in the Olympic Tower on Fifth Avenue.",
+  "site": "https://www.onassis.org",
+  "city": "Vaduz",
+  "country": "Liechtenstein",
+  "address": "Heiligkreuz 2, 9490 Vaduz",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Alexander_S._Onassis_Foundation"
+  ],
+  "batch": "fp6"
+ },
+ "alexandertutsek": {
+  "name": "Alexander Tutsek-Stiftung",
+  "short": "Alexander Tutsek Foundation",
+  "kind": "found",
+  "what": "A non-profit foundation for art and engineering science, set up in Munich in 2000 by Alexander Tutsek and his wife Eva-Maria Fahrner-Tutsek, with its seat in Munich-Schwabing.",
+  "money": "The fortune of Alexander Tutsek (1927 to 2011), previous shareholder of the Refratechnik Group, a Munich maker of refractory products for cement and steel plants.",
+  "arts": "It collects glass sculpture and modern photography, holds exhibitions at its Schwabing headquarters and gives the C/O Berlin Talent Award to young photographers.",
+  "site": "https://www.atstiftung.de",
+  "city": "Munich",
+  "country": "Germany",
+  "address": "Karl-Theodor-Straße 27, 80803 Munich",
+  "status": "done",
+  "sources": [
+   "https://www.refra.com/en/Alexander-Tutsek-Foundation/"
+  ],
+  "batch": "fp6"
+ },
  "aliph": {
   "name": "ALIPH Foundation",
   "short": "International Alliance for the Protection of Heritage (ALIPH)",
@@ -144,6 +276,104 @@
    "https://parispeaceforum.org/projects/aliph/"
   ],
   "batch": "fp2"
+ },
+ "alkenmaes": {
+  "name": "Brouwerij Alken-Maes",
+  "short": "Alken-Maes",
+  "kind": "corp",
+  "what": "A Belgian brewery formed in 1988 by merging the Maes brewery at Kontich-Waarloos with Cristal-Alken at Alken, headquartered in Mechelen and owned by Heineken.",
+  "money": "Beer sales, with profits going to its owner, the Dutch brewer Heineken.",
+  "city": "Mechelen",
+  "country": "Belgium",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Alken-Maes"
+  ],
+  "batch": "fp6"
+ },
+ "allagash": {
+  "name": "Allagash Brewing Company",
+  "short": "Allagash",
+  "kind": "corp",
+  "what": "A craft brewery founded in Portland, Maine, in 1995 by Rob Tod, who owns it; it specialises in Belgian-style beers.",
+  "money": "Beer sales: it was the Maine craft brewery with the highest sales volume in 2024 and brewed 94,743 barrels in 2017.",
+  "site": "https://www.allagash.com",
+  "city": "Portland, Maine",
+  "country": "United States",
+  "address": "50 Industrial Way, Portland, ME 04103",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Allagash_Brewing_Company"
+  ],
+  "batch": "fp6"
+ },
+ "allies": {
+  "name": "Allies and Morrison LLP",
+  "short": "Allies and Morrison",
+  "kind": "corp",
+  "what": "A London architecture and urban planning practice founded in 1984 by Bob Allies and Graham Morrison, with studios in Cambridge, Manchester, Dublin, Jeddah and Toronto.",
+  "money": "Fees from architecture, urban planning and consultancy commissions, much of it repeat work for long-term clients.",
+  "site": "https://www.alliesandmorrison.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "85 Southwark Street, London SE1 0HX",
+  "status": "done",
+  "sources": [
+   "https://www.alliesandmorrison.com/practice",
+   "https://www.alliesandmorrison.com/contact",
+   "https://en.wikipedia.org/wiki/Allies_and_Morrison"
+  ],
+  "batch": "fp6"
+ },
+ "altum": {
+  "name": "JSC Development Finance Institution Altum",
+  "short": "ALTUM",
+  "kind": "gov",
+  "what": "A Latvian state-owned development finance company set up on 27 December 2013 by merging three state institutions; the finance, economics and agriculture ministries hold its shares.",
+  "money": "Latvian state and EU funds for the support programmes it runs, plus money it raises from international institutions and capital markets.",
+  "site": "https://www.altum.lv",
+  "city": "Riga",
+  "country": "Latvia",
+  "address": "Doma laukums 4, Rīga, LV-1050",
+  "status": "done",
+  "sources": [
+   "https://www.altum.lv/en/about-altum/who-we-are/",
+   "https://www.altum.lv/en/about-altum/history/"
+  ],
+  "batch": "fp6"
+ },
+ "americaforbulgaria": {
+  "name": "America for Bulgaria Foundation",
+  "short": "ABF",
+  "kind": "found",
+  "what": "An independent American philanthropic foundation working in Bulgaria, founded in 2008 as successor to the Bulgarian-American Enterprise Fund, a USAID investment fund set up under the 1989 SEED Act.",
+  "money": "A $400 million endowment descended from the Bulgarian-American Enterprise Fund, which US tax money financed; it gives about $20 million a year.",
+  "site": "https://us4bg.org",
+  "city": "Sofia",
+  "country": "Bulgaria",
+  "address": "6 Malyovica Street, Sofia 1000",
+  "status": "done",
+  "sources": [
+   "https://us4bg.org/wp-content/uploads/2021/07/ABF-Annual-Report-2020.pdf",
+   "https://en.bia-bg.com/service/view/11499/"
+  ],
+  "batch": "fp6"
+ },
+ "americanfriendsofisraelmuseumraisedover": {
+  "name": "American Friends of the Israel Museum",
+  "short": "AFIM",
+  "kind": "found",
+  "what": "A New York non-profit, tax-exempt since May 1972, that raises money in the United States for the Israel Museum in Jerusalem.",
+  "money": "Donations: in 2024 contributions were $11.8 million of its $15.9 million revenue, with $3.4 million in investment income.",
+  "site": "https://www.afimnyc.org",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/237182582",
+   "https://www.afimnyc.org/"
+  ],
+  "batch": "fp6"
  },
  "ammodo": {
   "name": "Stichting Ammodo",
@@ -163,6 +393,25 @@
   ],
   "batch": "fp1"
  },
+ "amosanderson": {
+  "name": "Amos Andersons fond rf",
+  "short": "Amos Anderson Fund",
+  "kind": "found",
+  "what": "A Finnish association founded in 1940 by the businessman and newspaper publisher Amos Anderson, renamed from Föreningen Konstsamfundet in 2025, based in Helsinki.",
+  "money": "The fortune Amos Anderson bequeathed to it as sole legatee, held in investments and in Hufvudstadsbladet, the Swedish-language newspaper it wholly owns.",
+  "arts": "It funds fine arts, publications, music and theatre for Swedish-speaking Finns and runs the Söderlångvik museum in Anderson's former summer home in Dragsfjärd.",
+  "site": "https://amosanderson.fi",
+  "city": "Helsinki",
+  "country": "Finland",
+  "address": "Mannerheimintie 18, 6th floor, 00100 Helsinki",
+  "status": "done",
+  "sources": [
+   "https://amosanderson.fi/en/about-us/",
+   "https://en.wikipedia.org/wiki/Konstsamfundet",
+   "https://en.wikipedia.org/wiki/Amos_Rex"
+  ],
+  "batch": "fp6"
+ },
  "ampersand": {
   "name": "The Ampersand Foundation",
   "kind": "found",
@@ -180,6 +429,25 @@
    "https://opencharities.uk/ew/1167018.md"
   ],
   "batch": "fp2"
+ },
+ "amsterdamforarts": {
+  "name": "Stichting Amsterdams Fonds voor de Kunst",
+  "short": "AFK",
+  "kind": "found",
+  "what": "A private-law foundation that distributes Amsterdam's arts subsidies, listed in the Dutch register of organisations with government involvement, based at Pakhuis de Zwijger in Amsterdam.",
+  "money": "The City of Amsterdam's arts budget: the mayor and aldermen adopt its grant schemes within the city's Kunstenplan 2025-2028.",
+  "arts": "It gives four-year and project subsidies to Amsterdam arts organisations and makers, and awards the Amsterdamprijs voor de Kunst.",
+  "site": "https://www.amsterdamsfondsvoordekunst.nl",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "address": "Piet Heinkade 179, 1019 HC Amsterdam",
+  "status": "done",
+  "sources": [
+   "https://www.amsterdamsfondsvoordekunst.nl/over-afk/",
+   "https://organisaties.overheid.nl/27909945/Stichting_Amsterdams_Fonds_voor_de_Kunst",
+   "https://www.amsterdamsfondsvoordekunst.nl/site/assets/files/19467/afk_regeling_vierjarige_subsidies_2025-2028_def.pdf"
+  ],
+  "batch": "fp6"
  },
  "amsterdamsvoordekunst": {
   "name": "Amsterdams Fonds voor de Kunst",
@@ -218,6 +486,26 @@
   ],
   "batch": "fp2"
  },
+ "annenbergtrustatsunnylands": {
+  "name": "The Annenberg Foundation Trust at Sunnylands",
+  "short": "Sunnylands",
+  "kind": "found",
+  "what": "A not-for-profit trust that owns and runs Sunnylands, the 200-acre Rancho Mirage winter estate of Walter and Leonore Annenberg, as a retreat for world leaders and a public site.",
+  "money": "Returns on the Annenberg fortune, made publishing TV Guide, The Philadelphia Inquirer and Seventeen; revenue was $40.5 million in the year to June 2025.",
+  "arts": "It holds the Sunnylands Collection of modern sculpture by Rodin, Giacometti, Arp and Agam, and runs public programmes on culture, music and film.",
+  "site": "https://sunnylands.org",
+  "city": "Rancho Mirage",
+  "country": "United States",
+  "address": "37977 Bob Hope Drive, Rancho Mirage, California",
+  "status": "done",
+  "sources": [
+   "https://sunnylands.org/about-sunnylands/",
+   "https://projects.propublica.org/nonprofits/organizations/256774871",
+   "https://en.wikipedia.org/wiki/Sunnylands",
+   "https://en.wikipedia.org/wiki/Walter_Annenberg"
+  ],
+  "batch": "fp6"
+ },
  "anschutz": {
   "name": "Anschutz Foundation",
   "kind": "found",
@@ -232,6 +520,86 @@
    "https://en.wikipedia.org/wiki/Anschutz_Corporation"
   ],
   "batch": "fp3"
+ },
+ "aon": {
+  "name": "Aon plc",
+  "short": "Aon",
+  "kind": "corp",
+  "what": "A professional services firm created in 1982 when Patrick Ryan's Ryan Insurance Group merged with Combined Insurance Company of America; corporate seat in Dublin, operations run from London.",
+  "money": "Fees and commissions from insurance and reinsurance brokerage and from risk, health and retirement consulting; revenue was US$15.70 billion in 2024.",
+  "site": "https://www.aon.com",
+  "city": "Dublin",
+  "country": "Ireland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Aon_(company)"
+  ],
+  "batch": "fp6"
+ },
+ "appliedmaterialstaiwan": {
+  "name": "Applied Materials Taiwan",
+  "kind": "corp",
+  "what": "The Taiwan subsidiary of Applied Materials, Inc., the US semiconductor and display equipment maker founded in 1967 in Santa Clara, California; it has sites in Hsinchu, Tainan and elsewhere.",
+  "money": "Sales and servicing of chip and display manufacturing equipment; the parent's revenue was US$34.446 billion in 2026.",
+  "site": "https://www.appliedmaterials.com",
+  "city": "Hsinchu",
+  "country": "Taiwan",
+  "status": "thin",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Applied_Materials",
+   "https://www.cake.me/companies/amat"
+  ],
+  "batch": "fp6"
+ },
+ "aqualand": {
+  "name": "Aqualand",
+  "kind": "corp",
+  "what": "An Australian luxury property, hospitality and investment group established in Sydney in 2014 and started by its managing director Jin Lin.",
+  "money": "Sales and leasing of its Sydney residential, commercial and mixed-use developments, such as Central Barangaroo, plus its AL Capital funds and Etymon Projects hospitality arm.",
+  "site": "https://www.aqualand.com.au",
+  "city": "Sydney",
+  "country": "Australia",
+  "address": "Level 37, 264 George Street, Sydney NSW 2000",
+  "status": "done",
+  "sources": [
+   "https://www.aqualand.com.au/about-us/",
+   "https://www.aqualand.com.au/news/aqualand-celebrates-10-years-in-transforming-sydneys-cityscape/"
+  ],
+  "batch": "fp6"
+ },
+ "arabforarts": {
+  "name": "Arab Fund for Arts and Culture",
+  "short": "AFAC",
+  "kind": "found",
+  "what": "An independent non-profit foundation set up in 2007 by Arab cultural activists and based in Beirut, supporting artists, writers and organisations across the Arab region.",
+  "money": "Gifts from individual donors through its Friends of AFAC circle, and grants and sponsorship from foundations, companies and cultural institutions.",
+  "arts": "It awards about 250 grants a year across seven programmes, including performing arts, visual arts, documentary film, music and writing.",
+  "site": "https://www.arabculturefund.org",
+  "city": "Beirut",
+  "country": "Lebanon",
+  "status": "done",
+  "sources": [
+   "https://www.arabculturefund.org/page/8/About",
+   "https://www.arabculturefund.org/page/25/Support-Us",
+   "https://en.wikipedia.org/wiki/Arab_Fund_for_Arts_and_Culture"
+  ],
+  "batch": "fp6"
+ },
+ "arabpotash": {
+  "name": "Arab Potash Company",
+  "short": "APC",
+  "kind": "corp",
+  "what": "A Jordanian mining company founded in 1956 as a pan-Arab venture, based in Amman and the Arab world's sole potash producer; China's SDIC Mining bought 28% in 2018.",
+  "money": "Sales of potash and derivatives harvested from the Dead Sea; net profit after tax and mining royalties was about JOD 173 million in 2025.",
+  "site": "https://www.arabpotash.com",
+  "city": "Amman",
+  "country": "Jordan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Arab_Potash_Company",
+   "https://www.arabpotash.com/Default/En"
+  ],
+  "batch": "fp6"
  },
  "arpels": {
   "name": "Van Cleef & Arpels",
@@ -385,6 +753,23 @@
   ],
   "batch": "fp3"
  },
+ "atuge": {
+  "name": "Association des Tunisiens des Grandes Écoles",
+  "short": "ATUGE",
+  "kind": "found",
+  "what": "A non-profit, independent and non-political association of Tunisian graduates of the French grandes écoles, created in 1990, with branches in Tunis, Paris, the United Kingdom and Shanghai.",
+  "money": "Membership dues from its more than 8,000 members worldwide.",
+  "site": "https://www.atuge.org",
+  "city": "Paris",
+  "country": "France",
+  "address": "22 rue Deparcieux, 75014 Paris",
+  "status": "done",
+  "sources": [
+   "https://www.atuge.org/fr/page/presentation",
+   "https://www.atuge.org/fr/page/les-statuts"
+  ],
+  "batch": "fp6"
+ },
  "aucklandcouncil|New Zealand": {
   "name": "Auckland Council",
   "kind": "gov",
@@ -418,6 +803,36 @@
    "https://en.wikipedia.org/wiki/Augustinus_Fonden"
   ],
   "batch": "fp1"
+ },
+ "axaforexhibitions": {
+  "name": "AXA",
+  "kind": "corp",
+  "what": "A French multinational insurance company listed on Euronext Paris, with roots in an insurer founded in Rouen in 1817; Claude Bébéar's group took the AXA name in 1985.",
+  "money": "Premiums and investment income from property, casualty, health and life insurance, savings and pensions; revenue was €115.5 billion in 2025.",
+  "site": "https://www.axa.com",
+  "city": "Paris",
+  "country": "France",
+  "address": "25 avenue Matignon, 75008 Paris",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/AXA"
+  ],
+  "batch": "fp6"
+ },
+ "bahr": {
+  "name": "Advokatfirmaet BAHR AS",
+  "short": "BAHR",
+  "kind": "corp",
+  "what": "A Norwegian commercial law firm established in 1966, with 77 partners, more than 300 employees and offices in Oslo, Bergen, Tromsø, Copenhagen and Stockholm.",
+  "money": "Legal fees from commercial clients and public sector organisations.",
+  "site": "https://bahr.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "status": "done",
+  "sources": [
+   "https://bahr.no/about-bahr"
+  ],
+  "batch": "fp6"
  },
  "bailletlatour": {
   "name": "Fonds Baillet Latour",
@@ -770,6 +1185,26 @@
    "https://en.wikipedia.org/wiki/Canada_Life"
   ],
   "batch": "fp5"
+ },
+ "carter": {
+  "name": "Amon G. Carter Foundation",
+  "kind": "found",
+  "what": "A Texas private foundation incorporated in 1945 by Amon G. Carter, publisher of the Fort Worth Star-Telegram, and his wife Nenetta Burton Carter, based in Fort Worth.",
+  "money": "An endowment seeded in 1947 with $8,511,712 from the sale of the Carters' Wasson Field oil interests; net assets were $553,053,361 in 2024.",
+  "arts": "Its grants cover art and culture among other fields, and its charitable gifts passed $900 million by 31 December 2025.",
+  "site": "https://www.agcf.org",
+  "city": "Fort Worth",
+  "country": "United States",
+  "address": "201 Main Street, Suite 1945, Fort Worth, TX 76102",
+  "status": "done",
+  "sources": [
+   "https://www.agcf.org/history-of-the-foundation/",
+   "https://www.agcf.org/about-the-foundation/",
+   "https://www.agcf.org/amon-g-carter/",
+   "https://projects.propublica.org/nonprofits/organizations/756000331",
+   "https://www.agcf.org/contact/"
+  ],
+  "batch": "fp6"
  },
  "casinosaustria": {
   "name": "Casinos Austria AG",
@@ -1738,6 +2173,23 @@
   ],
   "batch": "fp1"
  },
+ "goldshoman": {
+  "name": "Abdul Hameed Shoman Foundation",
+  "short": "Shoman Foundation",
+  "kind": "found",
+  "what": "A non-profit foundation that Arab Bank set up in Amman in 1978 to support science, the humanities and culture in the Arab world.",
+  "money": "Arab Bank's profits: in 2011 the bank gave it over 8 million Jordanian dinars, about 87% of its community investment budget.",
+  "arts": "It runs a cultural forum, film screenings and musical evenings in Amman, and gives cultural grants and an award for creativity.",
+  "site": "https://www.shoman.org",
+  "city": "Amman",
+  "country": "Jordan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Arab_Bank",
+   "https://www.shoman.org/en"
+  ],
+  "batch": "fp6"
+ },
  "goldsmith": {
   "name": "Horace W. Goldsmith Foundation",
   "kind": "found",
@@ -1943,6 +2395,24 @@
   "batch": "fp3",
   "renamed": "The Cologne, Beijing and Havana sentences describe gifts by Peter and Irene Ludwig themselves; the 1976 Museum Ludwig gift came before the foundation existed."
  },
+ "jameelfamily": {
+  "name": "Abdul Latif Jameel Company Ltd",
+  "short": "Abdul Latif Jameel",
+  "kind": "corp",
+  "what": "A family-owned diversified business founded in Jeddah in 1945 by Sheikh Abdul Latif Jameel, active in more than 30 countries.",
+  "money": "Its businesses in vehicle distribution, as a Toyota distributor in Saudi Arabia since 1955, and in finance, machinery, real estate, energy and consumer products.",
+  "arts": "Through Art Jameel, which the family founded in 2003 and funds privately, it supports the Jameel Arts Centre in Dubai, a free contemporary art institution.",
+  "site": "https://alj.com",
+  "city": "Jeddah",
+  "country": "Saudi Arabia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Abdul_Latif_Jameel",
+   "https://www.thenationalnews.com/arts-culture/art-design/2026/01/20/art-jameel-founder-receives-cultural-honour-in-france",
+   "https://alj.com/en/perspective/artistic-renaissance-redefining-our-global-presence"
+  ],
+  "batch": "fp6"
+ },
  "janetbuxton": {
   "name": "Michael and Janet Buxton Foundation",
   "short": "Michael and Janet Buxton",
@@ -1977,6 +2447,24 @@
    "https://www.jpf.go.jp/e/about/result/ar/2023/03_05.html"
   ],
   "batch": "fp2"
+ },
+ "japansagencyforculturalaffairs|Japan": {
+  "name": "Agency for Cultural Affairs, Government of Japan",
+  "short": "Bunkachō",
+  "kind": "gov",
+  "what": "A special body of Japan's Ministry of Education, Culture, Sports, Science and Technology, set up in 1968 to promote arts and culture, with its main offices in Kyoto since 2023.",
+  "money": "Japan's national budget through the Ministry of Education, Culture, Sports, Science and Technology; its budget was 107 billion yen in 2026.",
+  "arts": "Its divisions protect the nation's cultural properties and oversee the Japan Arts Council.",
+  "site": "https://www.bunka.go.jp/english/",
+  "city": "Kyoto",
+  "country": "Japan",
+  "address": "85-4 Yabunouchi-cho, Shimochoja-machi-dori, Shinmachi-nishi-iru, Kamigyo-ku, Kyoto 602-8959",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Agency_for_Cultural_Affairs",
+   "https://www.bunka.go.jp/english/"
+  ],
+  "batch": "fp6"
  },
  "japantobacco": {
   "name": "Japan Tobacco Inc.",
@@ -2081,6 +2569,63 @@
    "https://old-drupal.lambentfoundation.org/about.html"
   ],
   "batch": "fp4"
+ },
+ "landvorarlberg|Austria": {
+  "name": "Amt der Vorarlberger Landesregierung",
+  "short": "Land Vorarlberg",
+  "kind": "gov",
+  "what": "The administration of the government of the Austrian state of Vorarlberg, population 401,674, led by Landeshauptmann Markus Wallner (ÖVP) and seated in the Landhaus in Bregenz.",
+  "money": "The state budget of Vorarlberg, which plans €2.8 billion in spending for 2026, including about €200 million in new borrowing.",
+  "site": "https://vorarlberg.at",
+  "city": "Bregenz",
+  "country": "Austria",
+  "address": "Landhaus, Römerstraße 15, 6900 Bregenz",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Vorarlberg",
+   "https://www.vol.at/landtag-beraet-ueber-budget-2026-sparzwang-praegt-debatte/9862898"
+  ],
+  "batch": "fp6"
+ },
+ "lazraqfamily": {
+  "name": "Alliances Développement Immobilier",
+  "short": "Groupe Alliances",
+  "kind": "corp",
+  "what": "A Moroccan property developer listed in Casablanca, founded by Alami Lazraq, who chairs it and controls 51.7 percent of its shares.",
+  "money": "Sales of residential, commercial and tourism property developments across North Africa.",
+  "arts": "Its cultural patronage covers the Fondation MACAAL, built on the art collection of Alami and Farida Lazraq, and a sculpture park.",
+  "site": "https://www.alliances.co.ma",
+  "city": "Casablanca",
+  "country": "Morocco",
+  "address": "16 rue Ali Abderrazak, Casablanca",
+  "status": "done",
+  "sources": [
+   "https://www.billionaires.africa/2025/08/23/alami-lazraq-alliance-stake-recovers-700-million/",
+   "https://fr.le360.ma/economie/alliances-developpement-immobilier-affiche-des-perspectives-encourageantes-pour-la-periode-2022-2025-254502/",
+   "https://en.wikipedia.org/wiki/MACAAL",
+   "https://www.alliances.co.ma/"
+  ],
+  "batch": "fp6"
+ },
+ "leventis": {
+  "name": "A. G. Leventis Foundation",
+  "short": "Leventis Foundation",
+  "kind": "found",
+  "what": "A private foundation set up in May 1979 under provisions made by Anastasios G. Leventis, a Greek Cypriot trader in West Africa, with its executive office in Zurich.",
+  "money": "The fortune Anastasios G. Leventis made with A. G. Leventis & Company, his West African trading group founded in 1936.",
+  "arts": "Its own initiatives are the A. G. Leventis Gallery and the Leventis Municipal Museum, and it gives grants for heritage conservation, museums and libraries.",
+  "site": "https://www.leventisfoundation.org",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "address": "Tödistrasse 44, CH-8002 Zurich",
+  "status": "done",
+  "sources": [
+   "https://www.leventisfoundation.org/our-history",
+   "https://www.leventisfoundation.org/our-founder",
+   "https://www.leventisfoundation.org/contact-us",
+   "https://en.wikipedia.org/wiki/A._G._Leventis"
+  ],
+  "batch": "fp6"
  },
  "linbury": {
   "name": "The Linbury Trust",
@@ -2268,6 +2813,40 @@
   ],
   "batch": "fp2"
  },
+ "mllerfonden": {
+  "name": "A.P. Møller og Hustru Chastine Mc-Kinney Møllers Fond til almene Formaal",
+  "short": "A.P. Møller Fonden",
+  "kind": "found",
+  "what": "A commercial foundation set up in Copenhagen in 1953 by the shipowner Arnold Peter Møller, split from a family foundation he had created in 1946.",
+  "money": "Its holdings through A.P. Moller Holding, its investment arm since 2013, which owns the majority of the Maersk shipping and logistics group.",
+  "arts": "Its purposes include Danish culture and the upkeep of buildings of cultural and historical value; it paid to restore Kastellet in Copenhagen in 1989 and 1999.",
+  "site": "https://www.apmollerfonde.dk",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "status": "done",
+  "sources": [
+   "https://lex.dk/A.P._M%C3%B8ller_Fonden",
+   "https://apmoller.com/the-a-p-moller-foundation-as-an-owner"
+  ],
+  "batch": "fp6"
+ },
+ "mlleroghustruchastinemckinneymllersfond": {
+  "name": "A.P. Møller og Hustru Chastine Mc-Kinney Møllers Fond til almene Formaal",
+  "short": "A.P. Møller Fonden",
+  "kind": "found",
+  "what": "A commercial foundation set up in Copenhagen in 1953 by the shipowner Arnold Peter Møller, split from a family foundation he had created in 1946.",
+  "money": "Its holdings through A.P. Moller Holding, its investment arm since 2013, which owns the majority of the Maersk shipping and logistics group.",
+  "arts": "Its purposes include Danish culture and the upkeep of buildings of cultural and historical value; it paid to restore Kastellet in Copenhagen in 1989 and 1999.",
+  "site": "https://www.apmollerfonde.dk",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "status": "done",
+  "sources": [
+   "https://lex.dk/A.P._M%C3%B8ller_Fonden",
+   "https://apmoller.com/the-a-p-moller-foundation-as-an-owner"
+  ],
+  "batch": "fp6"
+ },
  "mondriaan": {
   "name": "Mondriaan Fonds",
   "short": "Mondriaan Fund",
@@ -2285,6 +2864,24 @@
    "https://www.mondriaanfonds.nl/en/about-the-fund/"
   ],
   "batch": "fp1"
+ },
+ "morrison": {
+  "name": "Allies and Morrison LLP",
+  "short": "Allies and Morrison",
+  "kind": "corp",
+  "what": "A London architecture and urban planning practice founded in 1984 by Bob Allies and Graham Morrison, with studios in Cambridge, Manchester, Dublin, Jeddah and Toronto.",
+  "money": "Fees from architecture, urban planning and consultancy commissions, much of it repeat work for long-term clients.",
+  "site": "https://www.alliesandmorrison.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "85 Southwark Street, London SE1 0HX",
+  "status": "done",
+  "sources": [
+   "https://www.alliesandmorrison.com/practice",
+   "https://www.alliesandmorrison.com/contact",
+   "https://en.wikipedia.org/wiki/Allies_and_Morrison"
+  ],
+  "batch": "fp6"
  },
  "nationalendowmentforarts": {
   "name": "National Endowment for the Arts",
@@ -2586,6 +3183,23 @@
   ],
   "batch": "fp5"
  },
+ "onassis": {
+  "name": "Alexander S. Onassis Public Benefit Foundation",
+  "short": "Onassis Foundation",
+  "kind": "found",
+  "what": "A private foundation set up in Vaduz, Liechtenstein, in 1975 under the will of the shipowner Aristotle Onassis, in memory of his son Alexander.",
+  "money": "Profits of the Onassis Business Foundation, its holding for maritime transport and real estate, formed from half of Aristotle Onassis's estate.",
+  "arts": "It endows Greek studies chairs at universities and runs Onassis USA, its New York affiliate based in the Olympic Tower on Fifth Avenue.",
+  "site": "https://www.onassis.org",
+  "city": "Vaduz",
+  "country": "Liechtenstein",
+  "address": "Heiligkreuz 2, 9490 Vaduz",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Alexander_S._Onassis_Foundation"
+  ],
+  "batch": "fp6"
+ },
  "ontarioartscouncil|Canada": {
   "name": "Ontario Arts Council",
   "short": "OAC",
@@ -2621,6 +3235,40 @@
   ],
   "batch": "fp1"
  },
+ "palmacouncil|Spain": {
+  "name": "Ajuntament de Palma",
+  "short": "Palma City Council",
+  "kind": "gov",
+  "what": "The municipal government of Palma, Mallorca, a city of 438,234 people in 2024, led by mayor Jaime Martínez Llabrés of the People's Party.",
+  "money": "The city's municipal budget, set at €626.67 million for 2026 and approved by the council in December 2025.",
+  "site": "https://www.palma.es",
+  "city": "Palma",
+  "country": "Spain",
+  "address": "Plaça de Cort, 1, 07001 Palma",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Palma_de_Mallorca",
+   "https://mallorcaglobalmag.es/palma-presupuesto-2026/",
+   "https://www.palma.es/en"
+  ],
+  "batch": "fp6"
+ },
+ "partnersincludeafricanculture": {
+  "name": "African Culture Fund",
+  "kind": "found",
+  "what": "A pan-African non-profit trust set up in Bamako in February 2018 by African artists and cultural actors, registered in Mali under a headquarters agreement.",
+  "money": "Contributions from African artists and cultural actors, and grants from DOEN, the Swiss Agency for Development and Cooperation, the Ford Foundation and Open Society Foundations.",
+  "arts": "It finances artistic projects across Africa through calls for projects and trains cultural managers through its ACF Academy.",
+  "site": "https://www.africanculturefund.net",
+  "city": "Bamako",
+  "country": "Mali",
+  "status": "done",
+  "sources": [
+   "https://www.africanculturefund.net/en/presentation-pan-african-organization/",
+   "https://www.africanculturefund.net/en/institutionals-partners/"
+  ],
+  "batch": "fp6"
+ },
  "paulgettytrust": {
   "name": "J. Paul Getty Trust",
   "short": "Getty",
@@ -2655,6 +3303,20 @@
    "https://en.wikipedia.org/wiki/Paul_Hamlyn_Foundation"
   ],
   "batch": "fp1"
+ },
+ "pellerestates": {
+  "name": "Andrew Peller Limited",
+  "kind": "corp",
+  "what": "A Canadian wine producer listed in Toronto and based in Grimsby, Ontario, whose brands include Peller Estates; in June 2026 it agreed to be bought by Fairfax Financial.",
+  "money": "Sales of wine, ciders and spirits, including through 101 company stores in Ontario; revenue was C$393.0 million in the year to 31 March 2026.",
+  "site": "https://www.andrewpeller.com",
+  "city": "Grimsby, Ontario",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://www.finanznachrichten.de/nachrichten-2026-06/68788922-andrew-peller-limited-reports-financial-results-for-fourth-quarter-and-fiscal-year-2026-399.htm"
+  ],
+  "batch": "fp6"
  },
  "phillips": {
   "name": "Phillips",
@@ -2807,6 +3469,25 @@
    "https://www.qattanfoundation.org/en/about"
   ],
   "batch": "fp3"
+ },
+ "qattantodate": {
+  "name": "A. M. Qattan Foundation",
+  "short": "Qattan Foundation",
+  "kind": "found",
+  "what": "An independent foundation for culture and education in Palestine and the Arab world, set up in 1993 by the Palestinian businessman Abdel Mohsin Al-Qattan and based in Ramallah.",
+  "money": "Al-Qattan family money: in 2011 the founder put a quarter of his wealth, made through Al-Hani Construction and Trading, into the Al-Qattan Charitable Trust.",
+  "arts": "It runs the Al-Qattan Cultural Centre in Ramallah, opened in June 2018 at a cost of $21 million, and a cultural centre in Gaza.",
+  "site": "https://www.qattanfoundation.org",
+  "city": "Ramallah",
+  "country": "Palestine",
+  "status": "done",
+  "sources": [
+   "https://www.qattanfoundation.org/en/about-us/about-foundation",
+   "https://qattanfoundation.org/en/about/how-it-all-began/abdel-mohsin-al-qattan",
+   "https://isc.qattanfoundation.org/en/in-qattan/news/abdel-mohsin-al-qattan-allocates-25-his-wealth-philanthropy",
+   "https://en.wikipedia.org/wiki/A._M._Qattan_Foundation"
+  ],
+  "batch": "fp6"
  },
  "realdania": {
   "name": "Realdania",
