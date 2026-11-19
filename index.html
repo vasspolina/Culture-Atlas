@@ -21169,9 +21169,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // A finger needs more reach than a mouse; the reach is larger when zoomed in, where dots are far apart and labels are shown.
       const isZoomedIn = (selectedCountryFilter !== 'all' || currentRadius >= baseRadius * 1.8);
       const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
-      const dotReach = (isZoomedIn ? 12 : 9) * (touch ? 1.6 : 1);
+      // A finger's pad is about 44px across (Apple's and Material's minimum target), so 22px from a dot's centre on a phone: it was
+      // 14px zoomed out and 19px zoomed in (x1.6), and on the phone's small globe a tap beside a dot found nothing.
+      const dotReach = Math.max((isZoomedIn ? 12 : 9) * (touch ? 2.4 : 1), touch ? 22 : 0);
       // 12-14px, not 16-26: at 16 a dot two labels away was taken for the one under the pointer.
-      const fallbackReach = (isZoomedIn ? 14 : 12) * (touch ? 1.6 : 1);
+      const fallbackReach = Math.max((isZoomedIn ? 14 : 12) * (touch ? 2.4 : 1), touch ? 28 : 0);
 
       // 1. The nearest dot whose centre is within reach of the pointer
       let nearest = null, nearestDist = Infinity;
@@ -21637,7 +21639,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const pins = Array.from(mapEl.querySelectorAll('.custom-inst-pin')).filter(pn => pn.style.display !== 'none');
         if (!pins.length) return;
         const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
-        const reach = 16 * (touch ? 1.6 : 1);
+        const reach = touch ? 28 : 16;   // a finger's pad, as on the globe
         let best = null, bestDist = Infinity;
         pins.forEach((pn) => {
           const r = (pn.lastElementChild || pn).getBoundingClientRect();
@@ -21657,9 +21659,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Reliable click detector for canvas
     canvas.addEventListener('click', e => {
       const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
-      // 6px for a mouse, 8px for a finger (Android's touch slop): a press that moved further has turned the globe, and a
-      // drag is not also a click on whatever ended up under it. It was 22px for both.
-      const tol = (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 8 : 6;
+      // 6px for a mouse, 10px for a finger (Android's touch slop is 8dp, iOS about 10pt): a press that moved further has turned
+      // the globe, and a drag is not also a click on whatever ended up under it. It was 22px for both.
+      const tol = (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 10 : 6;
       if (dist < tol) {
         handleGlobeClick(e.clientX, e.clientY);
       }
@@ -22200,7 +22202,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.addEventListener('pointermove', e => {
       if (isDragging && pinching) return;
       if (isDragging && !dragArmed) {
-        if (Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY) < 4) return;
+        // A finger drifts several pixels in an ordinary tap, and the globe turning from 4px slid the dot out from under it
+        // (a tap then missed): it arms at 10px for touch, the same as the tap tolerance above.
+        if (Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY) < (e.pointerType === 'mouse' ? 4 : 10)) return;
         dragArmed = true;
         canvas.classList.add('dragging');
         lastX = e.clientX;
