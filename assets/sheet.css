@@ -2439,3 +2439,38 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 /* Your note is 30% taller (user, 19 Nov 2026: "make your note 30% taller bigger field"): 92px to 120px. */
 :root:root body.chat-input-mode-active #workBottomDock #workInputCard #workInput{min-height:120px!important}
 }
+
+/* ==== SHARE AS A CHAT: REAL BUTTONS, A CARD EDITED IN PLACE (user, 19 Nov 2026: "make these into buttons", "i need to edit
+   it inside of this") ====
+   The choices under Clio's questions and the draft card are buttons in a row, not the chat's dashed suggestion list: a
+   thin green outline, round ends; Send to the editor filled green with the paper's colour on it. The card's place, city,
+   name shown and note are fields: a rule under each line field, the note in a box that grows with the text. */
+@layer sheet{
+:root #curatorMessages .chat-share-choices{display:flex!important;flex-wrap:wrap!important;gap:calc(8px * var(--sh-k))!important;align-items:center!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice{display:inline-flex!important;align-items:center!important;width:auto!important;margin:0!important;
+  padding:calc(5px * var(--sh-k)) calc(14px * var(--sh-k))!important;text-indent:0!important;white-space:nowrap!important;
+  border:1px solid var(--sh-green)!important;border-radius:999px!important;background:transparent!important;color:var(--sh-green)!important;cursor:pointer!important;
+  font:inherit!important;line-height:var(--sh-lead)!important;text-decoration:none!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice::before{content:none!important;display:none!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice:is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 12%,transparent)!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice:focus-visible{outline:2px solid var(--sh-green)!important;outline-offset:2px!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-primary{background:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice.is-primary:is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 85%,var(--sh-ink))!important}
+:root #curatorMessages .chat-share-choices .chat-share-choice:disabled{opacity:.5!important;cursor:default!important}
+:root #curatorMessages .chat-share-card .chat-share-row{display:flex!important;align-items:baseline!important;gap:calc(8px * var(--sh-k))!important;margin:0 0 calc(6px * var(--sh-k))!important}
+:root #curatorMessages .chat-share-card .chat-share-row[hidden]{display:none!important}
+:root #curatorMessages .chat-share-card .chat-share-row .chat-share-k{flex:0 0 7.5em!important;min-width:0!important}
+:root #curatorMessages .chat-share-card .chat-share-in{display:block!important;flex:1 1 auto!important;min-width:0!important;width:100%!important;box-sizing:border-box!important;margin:0!important;
+  padding:0 0 2px!important;border:0!important;border-bottom:1px solid color-mix(in srgb,var(--sh-green) 45%,transparent)!important;border-radius:0!important;
+  background:transparent!important;color:var(--sh-green)!important;font:inherit!important;line-height:var(--sh-lead)!important;box-shadow:none!important;outline:0!important}
+:root #curatorMessages .chat-share-card .chat-share-in:focus{border-bottom-color:var(--sh-green)!important;box-shadow:0 1px 0 var(--sh-green)!important}
+:root #curatorMessages .chat-share-card .chat-share-in::placeholder{color:var(--sh-green-2)!important;opacity:1!important}
+:root #curatorMessages .chat-share-card .chat-share-new{margin:0 0 calc(6px * var(--sh-k)) calc(7.5em + 8px * var(--sh-k))!important;color:var(--sh-green-2)!important;font-style:italic!important}
+:root #curatorMessages .chat-share-card .chat-share-new:empty{display:none!important}
+:root #curatorMessages .chat-share-card .chat-share-notebox{display:block!important;margin:calc(8px * var(--sh-k)) 0!important}
+:root #curatorMessages .chat-share-card .chat-share-notebox .chat-share-k{display:block!important;margin:0 0 2px!important}
+:root #curatorMessages .chat-share-card textarea.chat-share-note{resize:none!important;overflow:hidden!important;min-height:calc(3 * var(--sh-lead))!important;
+  padding:calc(6px * var(--sh-k)) calc(8px * var(--sh-k))!important;border:1px solid color-mix(in srgb,var(--sh-green) 45%,transparent)!important;border-radius:6px!important;white-space:pre-wrap!important}
+:root #curatorMessages .chat-share-card textarea.chat-share-note:focus{border-color:var(--sh-green)!important;box-shadow:0 0 0 1px var(--sh-green)!important}
+:root #curatorMessages .chat-share-card.is-sent .chat-share-in{border-color:transparent!important;box-shadow:none!important}
+}
