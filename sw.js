@@ -30,6 +30,7 @@ const ASSETS_TO_CACHE = [
   './assets/hq.json',
   './assets/money-ids.js',
   './assets/funder-logos.json',
+  './assets/funder-profiles.json',
   './assets/funder-logos.png',
   './assets/config.js',
   './assets/analytics.js',
