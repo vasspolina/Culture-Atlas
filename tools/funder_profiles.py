@@ -28,7 +28,7 @@ ALIASES = os.path.join(ROOT, 'tools', 'hq_aliases.json')
 
 LIMIT = {'what': 30, 'money': 25, 'arts': 30}
 HEDGE = re.compile(r"\b(may|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|possibly|perhaps|some say)\b", re.I)
-PROMO = re.compile(r"\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament|nestled|boasts?|showcases?|fosters?|underscores?|delves?|navigates?|ecosystem|leading|premier|dedicated to|committed to|passionate|plays? a (?:crucial|key|vital) role|a (?:diverse|wide) range|among others|and more)\b", re.I)
+PROMO = re.compile(r"\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament|nestled|boasts?|showcases?|fosters?|underscores?|delves?|navigates?|ecosystem|leading|dedicated to|committed to|passionate|plays? a (?:crucial|key|vital) role|a (?:diverse|wide) range|among others|and more)\b", re.I)
 ABSENCE = re.compile(r"\b(not found|no (?:public |published )?(?:information|record|details|figures?|accounts?) (?:found|published|available)|could not (?:be )?(?:find|found|confirm|read|verify)|not (?:published|available|disclosed) online|unclear|unknown)\b", re.I)
 DASH = re.compile(r"[–—]| - ")
 WEAK = re.compile(r"fundraiso|causeiq|grantedai|bringo|mergerlinks|lei\.bloomberg|/jobs?[./]|indeed\.|glassdoor|zoominfo|dnb\.com|opencorporates", re.I)
