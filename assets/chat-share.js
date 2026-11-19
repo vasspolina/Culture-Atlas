@@ -58,7 +58,7 @@
     var row = '';
     if (choices && choices.length) {
       row = '<div class="curator-followups chat-share-choices mt-3 flex flex-col items-start gap-1">' + choices.map(function (c) {
-        return '<button type="button" class="curator-followup-pill chat-share-choice text-left py-1" data-chat-share-act="' + esc(c.act) + '"' +
+        return '<button type="button" class="curator-followup-pill chat-share-choice' + (c.primary ? ' is-primary' : '') + (c.link ? ' is-link' : '') + ' text-left py-1" data-chat-share-act="' + esc(c.act) + '"' +
           (c.value != null ? ' data-chat-share-value="' + esc(c.value) + '"' : '') + '>' + esc(c.label) + '</button>';
       }).join('') + '</div>';
     }
@@ -77,14 +77,19 @@
     root.appendChild(div);
     scroll();
   }
+  // The way out under every question: the form instead (it takes what was answered so far), or stop.
+  function OUT() { return [{ label: 'Or fill in a form', act: 'form' }, { label: 'Cancel', act: 'cancel' }]; }
   function p(text) { return '<p class="no-indent">' + esc(text) + '</p>'; }
 
-  function setPlaceholder(on) {
+  // While Clio asks, the chat box says what it is for, and the Share information bar is put away (assets/sheet.css,
+  // body.chat-share-active): the visitor is sharing already. On the draft the box takes the request for a change.
+  function setPlaceholder(on, text) {
     var box = input();
+    document.body.classList.toggle('chat-share-active', !!on);
     if (!box) return;
     if (on) {
       if (keptPlaceholder == null) keptPlaceholder = box.placeholder;
-      box.placeholder = 'Answer here, or write cancel';
+      box.placeholder = text || 'Answer here, or write cancel';
     } else if (keptPlaceholder != null) {
       box.placeholder = keptPlaceholder;
       keptPlaceholder = null;
@@ -104,19 +109,20 @@
       else if (at > 0 && /[\s(\-'’]/.test(k.charAt(at - 1))) word.push(i);
       else if (q.length >= 4 && (at > 0 || q.indexOf(k) >= 0)) rest.push(i);
     });
-    return { exact: exact, near: first.concat(word, rest).slice(0, 4) };
+    return { exact: exact, near: first.concat(word, rest).slice(0, 6) };
   }
   function placeLabel(i) { return i.city ? i.name + ', ' + i.city : i.name; }
 
   function askPlace(suggest) {
     s.step = 'place';
+    setPlaceholder(true);
     var known = suggest ? findPlaces(suggest).exact : null;
     if (known) {
       clio(p('Is it about ' + known.name + '? If it is about another place, write its name, on the atlas or not.'),
-        [{ label: 'Yes, ' + known.name, act: 'place', value: known.id }, { label: 'Cancel', act: 'cancel' }]);
+        [{ label: 'Yes, ' + known.name, act: 'place', value: known.id }].concat(OUT()));
     } else {
       clio(p('Which place is it about? Write its name. It can be a place on the atlas, or one the atlas is missing.'),
-        [{ label: 'Cancel', act: 'cancel' }]);
+        OUT());
     }
   }
   function takePlace(text) {
@@ -127,7 +133,7 @@
       s.typed = text.trim();
       clio(p('Which of these is it? If none, it goes to the editor as a new place.'),
         hit.near.map(function (i) { return { label: placeLabel(i), act: 'place', value: i.id }; })
-          .concat([{ label: 'None of these: ' + s.typed + ' is a new place', act: 'newplace' }, { label: 'Cancel', act: 'cancel' }]));
+          .concat([{ label: 'None of these: ' + s.typed + ' is a new place', act: 'newplace' }], OUT()));
       return;
     }
     newPlace(text.trim());
@@ -138,17 +144,17 @@
   }
   function newPlace(name) {
     name = String(name || '').replace(/\s+/g, ' ').trim();
-    if (name.length < 2) { clio(p('Write the place’s name, two letters or more.'), [{ label: 'Cancel', act: 'cancel' }]); return; }
+    if (name.length < 2) { clio(p('Write the place’s name, two letters or more.'), OUT()); return; }
     s.place = null; s.isNew = true; s.name = name.slice(0, 120);
     if (s.city) return afterPlace();
     s.step = 'city';
-    clio(p(s.name + ' is not on the atlas yet. It goes to the editor as a new place. Which city or town is it in?'), [{ label: 'Cancel', act: 'cancel' }]);
+    clio(p(s.name + ' is not on the atlas yet. It goes to the editor as a new place. Which city or town is it in?'), OUT());
   }
   function afterPlace() {
     if (s.note) return showDraft();
     s.step = 'note';
     clio(p('What should people know about ' + s.name + '? Write it the way you would tell someone: what happened, when, and how you know. Leave out your name and anything that points to you.'),
-      [{ label: 'Cancel', act: 'cancel' }]);
+      OUT());
   }
 
   // ---- words that could identify the writer ----
@@ -170,34 +176,75 @@
   }
 
   // ---- the draft card ----
+  // The card is edited in place (user, 19 Nov 2026: "i need to edit it inside of this"): the place, a new place's city, the
+  // name shown and the note are fields of the card itself. What is typed there is the draft; a change asked for in the chat
+  // redraws the card from it. The checks under the card (words that could identify the writer, a note too short) follow
+  // the typing.
+  function checksHtml() {
+    var l = limits(), warn = tells(s.note);
+    var w = warn.length ? '<p class="no-indent chat-share-warn">These words could point to you: ' + warn.map(function (x) {
+      return '“' + esc(x.words) + '” (' + esc(x.what) + ')';
+    }).join('; ') + '. Change them in the card.</p>' : '';
+    var short = s.note.length < l.min ? '<p class="no-indent chat-share-warn">The note needs at least ' + l.min + ' characters.</p>' : '';
+    return w + short;
+  }
+  function refreshChecks() {
+    var box = s && s.card && s.card.querySelector('.chat-share-checks');
+    if (box) box.innerHTML = checksHtml();
+  }
+  function placeState() {
+    var row = s.card && s.card.querySelector('.chat-share-cityrow'), tag = s.card && s.card.querySelector('.chat-share-new');
+    if (row) row.hidden = !s.isNew;
+    if (tag) tag.textContent = s.isNew ? 'Not on the atlas yet: it goes to the editor as a new place.' : '';
+    var city = s.card && s.card.querySelector('.chat-share-placecity');
+    if (city) city.textContent = !s.isNew && s.place && s.place.city ? s.place.city : '';
+  }
+  function sizeNote(el) { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; }
+
   function showDraft(lead) {
     s.step = 'draft';
     // One card at a time: a changed note replaces the earlier card, so no outdated draft (or its tick box) is left above.
     if (s.card && s.card.isConnected) s.card.remove();
     var l = limits();
-    var where = s.isNew ? esc(s.name) + (s.city ? ', ' + esc(s.city) : '') + ' <span class="chat-share-new">(new place)</span>'
-      : esc(s.name) + (s.place && s.place.city ? ', ' + esc(s.place.city) : '');
-    var warn = tells(s.note);
-    var warnHtml = warn.length ? '<p class="no-indent chat-share-warn">These words could point to you: ' + warn.map(function (w) {
-      return '“' + esc(w.words) + '” (' + esc(w.what) + ')';
-    }).join('; ') + '. Tell me what to write instead, or change them in the form.</p>' : '';
-    var short = s.note.length < l.min ? '<p class="no-indent chat-share-warn">The note needs at least ' + l.min + ' characters.</p>' : '';
     var html = (lead ? p(lead) : p('Here is your note. Nothing is sent until you press Send.')) +
       '<div class="chat-share-card" role="group" aria-label="Your note, not sent">' +
-        '<p class="no-indent chat-share-row"><span class="chat-share-k">Place</span> ' + where + '</p>' +
-        '<p class="no-indent chat-share-row"><span class="chat-share-k">Name shown</span> ' + esc(s.author || 'Whistleblower') + '</p>' +
-        '<p class="no-indent chat-share-note">' + esc(s.note).replace(/\n/g, '<br>') + '</p>' +
+        '<label class="chat-share-row"><span class="chat-share-k">Place</span><input type="text" class="chat-share-in" data-chat-share-field="name" value="' + esc(s.name) + '" maxlength="120" autocomplete="off" spellcheck="false" autocapitalize="words"><span class="chat-share-placecity"></span></label>' +
+        '<p class="no-indent chat-share-new"></p>' +
+        '<label class="chat-share-row chat-share-cityrow"' + (s.isNew ? '' : ' hidden') + '><span class="chat-share-k">City or town</span><input type="text" class="chat-share-in" data-chat-share-field="city" value="' + esc(s.city) + '" maxlength="80" autocomplete="off" spellcheck="false" autocapitalize="words"></label>' +
+        '<label class="chat-share-row"><span class="chat-share-k">Name shown</span><input type="text" class="chat-share-in" data-chat-share-field="author" value="' + esc(s.author) + '" maxlength="' + l.name + '" placeholder="Whistleblower" autocomplete="off" spellcheck="false"></label>' +
+        '<label class="chat-share-notebox"><span class="chat-share-k">Your note</span><textarea class="chat-share-in chat-share-note" data-chat-share-field="note" rows="3" maxlength="' + l.max + '" spellcheck="true" autocapitalize="sentences">' + esc(s.note) + '</textarea></label>' +
         '<label class="nf-check chat-share-ack"><input type="checkbox" data-chat-share-ack' + (s.ack ? ' checked' : '') + '><span>I have left out my name and anything that identifies me.</span></label>' +
         '<p class="no-indent chat-share-status" role="status" aria-live="polite"></p>' +
-      '</div>' + warnHtml + short +
-      '<p class="no-indent chat-share-help">To change it, tell me here: “add: …”, “sign it …”, “no name”, or say what to change. A change in your own words is made by the chat model. To attach a photo or a PDF, use Edit in the form.</p>';
+      '</div><div class="chat-share-checks">' + checksHtml() + '</div>';
     var div = clio(html, [
-      { label: 'Send to the editor', act: 'send' },
+      { label: 'Send to the editor', act: 'send', primary: true },
       { label: 'Edit in the form', act: 'form' },
-      { label: 'Cancel', act: 'cancel' }
+      { label: 'Cancel', act: 'cancel', link: true }
     ]);
     s.card = div;
+    setPlaceholder(true, 'Or tell me what to change');
+    placeState();
+    var note = div && div.querySelector('textarea.chat-share-note');
+    if (note) sizeNote(note);
   }
+
+  // Typing in the card keeps the draft current.
+  document.addEventListener('input', function (e) {
+    var el = e.target;
+    if (!s || !s.card || !el || !el.matches || !el.matches('[data-chat-share-field]') || !s.card.contains(el)) return;
+    var f = el.getAttribute('data-chat-share-field'), v = el.value;
+    if (f === 'note') { s.note = v.trim(); sizeNote(el); refreshChecks(); }
+    else if (f === 'author') s.author = v.trim().slice(0, limits().name);
+    else if (f === 'city') s.city = v.trim().slice(0, 80);
+    else if (f === 'name') {
+      var name = v.replace(/\s+/g, ' ').trim(), hit = findPlaces(name).exact;
+      s.name = name;
+      if (hit) { s.place = hit; s.isNew = false; s.name = hit.name; } else { s.place = null; s.isNew = name.length >= 2; }
+      placeState();
+    }
+    var st = s.card.querySelector('.chat-share-status');
+    if (st && st.dataset.state === 'error') { st.textContent = ''; delete st.dataset.state; }
+  });
 
   // Simple changes done here; anything else is asked of the model.
   function takeEdit(text) {
@@ -284,8 +331,8 @@
     var fail = function (m) { if (status) { status.textContent = m; status.dataset.state = 'error'; } };
     var l = limits();
     if (typeof window.atlasPostNote !== 'function' || !window.ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
-    if (!s.place && !s.isNew) return fail('Choose a place first.');
-    if (s.isNew && !s.city) { s.step = 'city'; return clio(p('Which city or town is ' + s.name + ' in?'), [{ label: 'Cancel', act: 'cancel' }]); }
+    if (!s.place && !s.isNew) return fail('Write the place the note is about.');
+    if (s.isNew && !s.city) { var cityIn = card.querySelector('[data-chat-share-field="city"]'); if (cityIn) cityIn.focus(); return fail('Write the city or town ' + s.name + ' is in.'); }
     if (s.note.length < l.min) return fail('Write at least ' + l.min + ' characters.');
     if (!s.ack) return fail('Tick the box to confirm you have left out anything that identifies you.');
     var body = s.place ? { content: s.note } : { content: s.note, placeName: s.name, city: s.city };
@@ -304,7 +351,8 @@
     var cardDone = card.querySelector('.chat-share-card');
     if (cardDone) cardDone.classList.add('is-sent');
     card.querySelectorAll('.chat-share-ack, .chat-share-status').forEach(function (el) { el.remove(); });
-    card.querySelectorAll('.chat-share-help, .chat-share-warn').forEach(function (el) { el.remove(); });
+    card.querySelectorAll('.chat-share-help, .chat-share-checks').forEach(function (el) { el.remove(); });
+    card.querySelectorAll('[data-chat-share-field]').forEach(function (el) { el.readOnly = true; el.tabIndex = -1; });
     clio(p(isNew ? 'Sent to the editor as a new place: ' + name + '. It goes on the atlas only once the editor approves it.'
       : 'Sent to the editor for review. It appears on the record of ' + name + ', as a review, only once it is approved.'),
       [{ label: 'Share something else', act: 'again' }]);
@@ -315,7 +363,8 @@
     end(true);
     if (typeof window.enterChatInputMode !== 'function') return;
     window.enterChatInputMode('whistleblower');
-    var set = function (id, v) { var el = document.getElementById(id); if (el) { el.value = v || ''; el.dispatchEvent(new Event('input', { bubbles: true })); } };
+    // Only what was answered is carried over: an empty answer leaves the form's own value (the open record's name) in place.
+    var set = function (id, v) { var el = document.getElementById(id); if (el && v) { el.value = v; el.dispatchEvent(new Event('input', { bubbles: true })); } };
     set('noteInstitution', d.name);
     if (d.isNew) set('noteCity', d.city);
     set('noteAuthor', d.author);
@@ -336,6 +385,7 @@
     opts = opts || {};
     if (document.body.classList.contains('chat-input-mode-active') && typeof window.exitChatInputMode === 'function') window.exitChatInputMode(true);
     if (typeof window.setWorkspaceTab === 'function' && window.innerWidth >= 768) { try { window.setWorkspaceTab('chat'); } catch (e) {} }
+    if (typeof window.setMobileViewMode === 'function' && window.innerWidth < 768) { try { window.setMobileViewMode('chat'); } catch (e) {} }
     s = fresh();
     s.suggest = opts.place || '';
     setPlaceholder(true);
@@ -365,7 +415,7 @@
         s.city = text.replace(/\.$/, '').slice(0, 80);
         afterPlace(); break;
       case 'note':
-        if (text.length < l.min) { clio(p('Write a little more, at least ' + l.min + ' characters.'), [{ label: 'Cancel', act: 'cancel' }]); break; }
+        if (text.length < l.min) { clio(p('Write a little more, at least ' + l.min + ' characters.'), OUT()); break; }
         s.note = text.slice(0, l.max);
         showDraft(text.length > l.max ? 'The note was longer than ' + l.max + ' characters, so the end was cut. Check it before you send.' : '');
         break;

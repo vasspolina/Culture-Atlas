@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=835"></script>
+  <script src="assets/load-image-data.js?v=841"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=835">
-  <link rel="stylesheet" href="assets/sheet.css?v=835">
-  <script src="assets/config.js?v=835"></script>
-  <script src="assets/analytics.js?v=835"></script>
-  <script src="assets/subtopic.js?v=835"></script>
-  <script src="assets/names.js?v=835"></script>
-  <script src="assets/grounding.js?v=835"></script>
-  <script src="assets/repeats.js?v=835"></script>
-  <script src="assets/intro-narration.js?v=835"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=841">
+  <link rel="stylesheet" href="assets/sheet.css?v=841">
+  <script src="assets/config.js?v=841"></script>
+  <script src="assets/analytics.js?v=841"></script>
+  <script src="assets/subtopic.js?v=841"></script>
+  <script src="assets/names.js?v=841"></script>
+  <script src="assets/grounding.js?v=841"></script>
+  <script src="assets/repeats.js?v=841"></script>
+  <script src="assets/intro-narration.js?v=841"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=835"></script>
+  <script src="assets/load-image.js?v=841"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -593,13 +593,13 @@ return maplibregl$1;
           <!-- Chat info on a phone: the same text as under the composer on a desktop. -->
           <details id="chatRecordsInfoMobile" class="chat-info">
             <summary>How grades work</summary>
-            <p class="no-indent">Funding grades run from A to F.</p>
+            <p class="no-indent">Grades run from A to F. Press one to show only its spaces on the map.</p>
             <ul class="grade-list grade-scale">
-              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
-              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
-              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">Funders and amounts are public, and none is harmful.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">Funders are public, amounts are not, and none is harmful.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">No harmful funder, but a sponsor drew a protest or pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">One harmful funder, such as an oil, arms, tobacco or gambling firm.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">Two or more harmful funders, or one and a protest.</span></li>
             </ul>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
@@ -954,13 +954,13 @@ return maplibregl$1;
             <!-- Chat info: how the records work -->
             <details id="chatRecordsInfo" class="chat-info">
               <summary>How grades work</summary>
-            <p class="no-indent">Funding grades run from A to F.</p>
+            <p class="no-indent">Grades run from A to F. Press one to show only its spaces on the map.</p>
             <ul class="grade-list grade-scale">
-              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">we can see how much money came in, and no funder is flagged.</span></li>
-              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">funders are named without amounts, and none is flagged.</span></li>
-              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.</span></li>
-              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">one funder is flagged, such as an oil, tobacco, gambling or arms company.</span></li>
-              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">two or more funders are flagged, or one flagged funder and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">Funders and amounts are public, and none is harmful.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">Funders are public, amounts are not, and none is harmful.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">No harmful funder, but a sponsor drew a protest or pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">One harmful funder, such as an oil, arms, tobacco or gambling firm.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">Two or more harmful funders, or one and a protest.</span></li>
             </ul>
             </details>
 
@@ -1175,8 +1175,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=835"></script>
-  <script src="assets/money-ids.js?v=835"></script>
+  <script src="assets/institutions.js?v=841"></script>
+  <script src="assets/money-ids.js?v=841"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -8877,6 +8877,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         nameSpan.textContent = inst.name;
         nameSpan.setAttribute('aria-hidden', 'true');
         if (inst.tier === 'A' || inst.tier === 'B') labelEl.setAttribute('data-tier', inst.tier);
+        labelEl.setAttribute('data-g', String(gradeKey(inst)));   // its colour, the grade's (assets/sheet.css)
 
         labelEl.appendChild(tierDot);
         labelEl.appendChild(nameSpan);
@@ -8906,7 +8907,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         dotEl.style.height = '15px';
         dotEl.style.borderRadius = '50%';
         dotEl.style.background = 'transparent';
-        dotEl.style.border = `1px solid var(--tier-${inst.tier === 'A' || inst.tier === 'B' ? inst.tier.toLowerCase() : 'u'})`; // a hollow ring in the tier's colour, like its label
+        dotEl.style.border = `1px solid var(--g${gradeKey(inst)})`; // a hollow ring in the grade's colour, like its label
         dotEl.style.boxShadow = 'none';
 
         if (selectedInstitution && selectedInstitution.name === inst.name) pinEl.classList.add('popup-active');
@@ -10765,12 +10766,22 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // assets/atlas.css carries the same values as --tier-a, --tier-b and --tier-u for the city map and the Layers key.
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
+    // A SPACE'S COLOUR IS ITS FUNDING GRADE (user, 19 Nov 2026: "color code all text and map dots for each grade", "make sure
+    // colors are far different from filters, actualy i like colors that a currently on the map"). The map's three colours
+    // stay: menthol teal is A, the yellow (olive on paper) is C, magenta is F. B is blue and D a brick red, each 35 or more
+    // apart in CIELAB (dE76) from every filter colour in assets/layers.js, on both grounds; a space with no grade is grey.
+    // Dot, ring, name, street pin and index row all take it. assets/sheet.css carries the same values as --g0 to --g5.
+    const GRADE_INK = { light: ['#6b6b6b', '#007a80', '#0000ff', '#6e6a00', '#8a322e', '#b000b0'], dark: ['#a3a3a3', '#b8fbff', '#9466ff', '#ffff3c', '#ff3b1f', '#ff5eff'] };
+    const gradeKey = (inst) => { const g = Number(inst && inst.grade); return g >= 1 && g <= 5 ? g : 0; };
+    function spaceInk(inst, light) { return GRADE_INK[light ? 'light' : 'dark'][gradeKey(inst)]; }
+    window.atlasGradeKey = gradeKey;
+    window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v835';
+    const ATLAS_RELEASE = 'culture-atlas-v841';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=835').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=841').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11779,7 +11790,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           return { fill, ink: darkLabel ? '#ffffff' : '#000000' };
         };
         // The type and outline colour of a city label, and of the card it opens into.
-        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2a6010' : '#cfcfba') : tierInk(tier, GLOBE_LIGHT);
+        const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2a6010' : '#cfcfba') : (tier && typeof tier === 'object' ? spaceInk(tier, GLOBE_LIGHT) : tierInk(tier, GLOBE_LIGHT));
         // THE SHEET: no pill, no outline and no dot. A name is type in the colour of its grade on a strip of the
         // sheet's paper (user, 10 Nov 2026: "just colored text ... and color spases as well"); the selected name is in ink
         // on a stone band with the grey rule round it. The strip is the size the old pill was (the name's width + 28, or
@@ -12175,8 +12186,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
             : isGossipModeActive 
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#cfcfba') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
-            : tierInk(d.inst.tier, GLOBE_LIGHT);
-          // Hollow rings in the tier's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
+            : spaceInk(d.inst, GLOBE_LIGHT);
+          // Hollow rings in the grade's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
           ctx.lineWidth = 0.8;
           // On the stone land a ring is filled with paper, so it reads as a ring.
           ctx.fillStyle = (isSel || (isGossipModeActive && hasGossip(d.inst))) ? ctx.strokeStyle : G_GROUND; ctx.fill();
@@ -12234,7 +12245,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst.tier);
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst);
             }
             ctx.restore();
           }
@@ -13253,11 +13264,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
     // A record without an independently sourced funder roster has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
-      1: { letter: 'A', label: 'Amounts published, no flagged funder', col: '#34d399' },
-      2: { letter: 'B', label: 'Funders named, no flagged funder', col: '#2dd4bf' },
-      3: { letter: 'C', label: 'No flagged funder, but a contested sponsor or a protest', col: '#facc15' },
-      4: { letter: 'D', label: 'One flagged funder', col: '#fb923c' },
-      5: { letter: 'F', label: 'Two or more flagged funders, or one and a protest', col: '#ef4444', mark: '#f87171' },  // the mark is a lighter red, so black on it clears 7:1
+      1: { letter: 'A', label: 'Amounts published, no harmful funder', col: '#b8fbff' },
+      2: { letter: 'B', label: 'Funders named, no harmful funder', col: '#9466ff' },
+      3: { letter: 'C', label: 'No harmful funder, but a protest or a sponsor pulled out', col: '#ffff3c' },
+      4: { letter: 'D', label: 'One harmful funder', col: '#ff3b1f' },
+      5: { letter: 'F', label: 'Two or more harmful funders, or one and a protest', col: '#ff5eff', mark: '#ff5eff' },  // the mark is a lighter red, so black on it clears 7:1
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
@@ -13265,8 +13276,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const gradeFromLetter = (s) => { const k = String(s || '').trim().toUpperCase(); return [1, 2, 3, 4, 5].find(n => GRADE[n].letter === k || String(n) === k) || null; };
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
-    const GRADE_INTRO = 'Funding grades run from A to F.';
-    const GRADE_ROWS = ['A: we can see how much money came in, and no funder is flagged.', 'B: funders are named without amounts, and none is flagged.', 'C: no funder is flagged, but a sponsor is contested or there has been a protest, or a sponsor pulled out.', 'D: one funder is flagged, such as an oil, tobacco, gambling or arms company.', 'F: two or more funders are flagged, or one flagged funder and a protest.'];
+    const GRADE_INTRO = 'Grades run from A to F. Press one to show only its spaces on the map.';
+    const GRADE_ROWS = ['A: Funders and amounts are public, and none is harmful.', 'B: Funders are public, amounts are not, and none is harmful.', 'C: No harmful funder, but a sponsor drew a protest or pulled out.', 'D: One harmful funder, such as an oil, arms, tobacco or gambling firm.', 'F: Two or more harmful funders, or one and a protest.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}: ${GRADE[inst.grade].label.toLowerCase()}`;
@@ -13531,7 +13542,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function atlasPinColour(inst) {
       if (!inst) return ATLAS_PIN_RED;
       const light = document.documentElement.getAttribute('data-theme') !== 'dark';
-      return tierInk(inst.tier === 'A' || inst.tier === 'B' ? inst.tier : 'U', light);
+      return spaceInk(inst, light);
     }
     function atlasPinShades(hex) {
       const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || '')) || [0, 'e8291d'], v = parseInt(m[1], 16);
@@ -17139,7 +17150,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const asked = typeof answerHtml === 'string' && /share information/i.test(answerHtml.replace(/<[^>]+>/g, ' '));
       const line = asked ? '' : `<p class="chat-share-invite-line">${lines[chatShareInviteTurn++ % lines.length]}</p>`;
       const label = name ? `Share information about ${name}` : 'Share information';
-      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-invite="1">${label}</button><button type="button" class="curator-followup-pill chat-share-invite-btn chat-share-chat-btn text-left py-1" data-share-chat="${name}">Tell it here in the chat</button></div></div>`;
+      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-chat="${name}">${label}</button><button type="button" class="curator-followup-pill chat-share-invite-btn chat-share-form-btn text-left py-1" data-share-invite="1">Or fill in a form</button></div></div>`;
     }
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {
@@ -18794,9 +18805,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       b.textContent = on ? 'Back to chat' : 'Share information';
       b.title = on ? 'Leave the note and go back to the chat' : 'Add what you know, or what the atlas is missing';
     }
+    // Share information opens the chat first (user, 19 Nov 2026: "make chat first and or fill in a form button"): Clio asks
+    // for the note one question at a time (assets/chat-share.js), and "Or fill in a form" under each question opens the form.
+    // On the form the same button leaves it. While Clio is already asking, it only brings the box back.
     function toggleChatShare() {
-      if (isChatInputMode) exitChatInputMode(); else enterChatInputMode('whistleblower');
+      if (isChatInputMode) { exitChatInputMode(); return; }
+      const cs = window.atlasChatShare;
+      if (!cs) { enterChatInputMode('whistleblower'); return; }
+      if (cs.active()) {
+        if (window.innerWidth >= 768 && currentWorkspaceTab === 'dossier') setWorkspaceTab('chat');
+        if (window.innerWidth < 768 && typeof setMobileViewMode === 'function') setMobileViewMode('chat');
+        scrollChatToBottom(true);
+        if (window.innerWidth >= 768) document.getElementById('workInput')?.focus();
+        return;
+      }
+      const focus = (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || (typeof dossierInst !== 'undefined' ? dossierInst : null);
+      cs.start({ place: focus && focus.name ? focus.name : '' });
     }
+    function openShareForm() { if (!isChatInputMode) enterChatInputMode('whistleblower'); }
     // Clicking another tab (Details, or on a phone Atlas and Dossier) closes the note screen; the chat is left as it was, with no message.
     document.addEventListener('click', (e) => {
       if (isChatInputMode && e.target.closest && e.target.closest('#workspaceTabDossier, #tab-atlas, #tab-dossier')) exitChatInputMode(true);
@@ -19056,6 +19082,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.enterChatInputMode = enterChatInputMode;
     window.exitChatInputMode = exitChatInputMode;
     window.toggleChatShare = toggleChatShare;
+    window.openShareForm = openShareForm;
 
     // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
     // Posts a note to the report service: a review of a place on the atlas, or a new place. The form and the chat
@@ -22301,22 +22328,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=835"></script>
-<script src="assets/note-aids.js?v=835" defer></script>
-<script src="assets/place-list.js?v=835" defer></script>
-<script src="assets/chat-share.js?v=835" defer></script>
-<script src="assets/note-files.js?v=835" defer></script>
-<script src="assets/funding-views.js?v=835"></script>
-<script src="assets/layers.js?v=835"></script>
-<script src="assets/critique-gallery-data.js?v=835"></script>
-<script src="assets/critique-captions.js?v=835"></script>
-<script src="assets/critique-gallery.js?v=835"></script>
-<script src="assets/hq-detail.js?v=835"></script>
-<script src="assets/influence-mode.js?v=835"></script>
-<script src="assets/bubbles.js?v=835" defer></script>
-<script src="assets/phone-maps.js?v=835"></script>
-<script src="assets/desktop-maps.js?v=835"></script>
-<script src="assets/chat-resize.js?v=835"></script>
-<script src="assets/tab-suggest.js?v=835"></script>
+<script src="assets/typeset.js?v=841"></script>
+<script src="assets/note-aids.js?v=841" defer></script>
+<script src="assets/place-list.js?v=841" defer></script>
+<script src="assets/chat-share.js?v=841" defer></script>
+<script src="assets/note-files.js?v=841" defer></script>
+<script src="assets/funding-views.js?v=841"></script>
+<script src="assets/layers.js?v=841"></script>
+<script src="assets/critique-gallery-data.js?v=841"></script>
+<script src="assets/critique-captions.js?v=841"></script>
+<script src="assets/critique-gallery.js?v=841"></script>
+<script src="assets/hq-detail.js?v=841"></script>
+<script src="assets/influence-mode.js?v=841"></script>
+<script src="assets/bubbles.js?v=841" defer></script>
+<script src="assets/phone-maps.js?v=841"></script>
+<script src="assets/desktop-maps.js?v=841"></script>
+<script src="assets/chat-resize.js?v=841"></script>
+<script src="assets/tab-suggest.js?v=841"></script>
 </body>
 </html>
