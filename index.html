@@ -7183,6 +7183,20 @@ return maplibregl$1;
         cityVectorMap.on('load', posterSync);
         // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
+        // The street map starts under the name and the city's line (user, 19 Nov 2026, yes to keeping the tags and the map's
+        // place names off them; the globe had dropped below the name on 16 Nov). The line wraps to two rows in a narrow map, so
+        // its foot is measured: --street-top is how far below the map's box it ends, and sheet.css sets the map's top there.
+        const streetBanner = document.getElementById('cityViewControlBanner');
+        const streetTopSync = () => {
+          const host = mapEl.parentElement;
+          if (!streetBanner || !host) return;
+          const b = streetBanner.getBoundingClientRect(), h = host.getBoundingClientRect();
+          if (!b.height) return;   // the line is hidden: keep the last measure
+          host.style.setProperty('--street-top', Math.max(0, Math.round(b.bottom - h.top)) + 'px');
+        };
+        if (streetBanner && typeof ResizeObserver === 'function') new ResizeObserver(streetTopSync).observe(streetBanner, { box: 'border-box' });
+        window.addEventListener('resize', streetTopSync);
+        cityVectorMap.on('load', streetTopSync);
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
@@ -7338,6 +7352,9 @@ return maplibregl$1;
         const box = document.getElementById('cityMapContainer');
         const poster = !!(box && box.classList.contains('street-poster'));
         const BUFFER = 6;
+        // A tag that would run off the map is cut by its edge, so that side is not free.
+        const edge = box ? box.getBoundingClientRect() : null;
+        const offMap = r => !!edge && edge.width > 0 && (r.left + BUFFER < edge.left || r.right - BUFFER > edge.right || r.top + BUFFER < edge.top || r.bottom - BUFFER > edge.bottom);
 
         // Read everything first: the marks, every shown pin's box and its tag's four positions.
         const pinMarks = [];
@@ -7370,7 +7387,7 @@ return maplibregl$1;
             const o = it.offs[side];
             if (!o) continue;
             const r = { left: it.pr.left + o.l - BUFFER, top: it.pr.top + o.t - BUFFER, right: it.pr.left + o.l + o.w + BUFFER, bottom: it.pr.top + o.t + o.h + BUFFER };
-            if (pinMarks.some(m => m.pin !== it.pin && overlaps(r, m)) || placedRects.some(m => overlaps(r, m))) continue;
+            if (offMap(r) || pinMarks.some(m => m.pin !== it.pin && overlaps(r, m)) || placedRects.some(m => overlaps(r, m))) continue;
             best = { side, r };
             break;
           }
