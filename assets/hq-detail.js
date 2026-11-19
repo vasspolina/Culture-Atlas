@@ -22,6 +22,27 @@
     return n;
   }
   const where = e => [e.c, e.co].filter(Boolean).join(', ');
+  // Who a funder is and where its money comes from (assets/funder-profiles.json, written by tools/funder_profiles.py from the
+  // researched profiles in data/funder_profiles.json and the influence study's facts). Fetched once, when a funder first opens.
+  let PROFILES = null, profilesLoading = false;
+  function loadProfiles(cb) {
+    if (PROFILES) return cb();
+    if (profilesLoading) return;
+    profilesLoading = true;
+    fetch('assets/funder-profiles.json').then(r => r.json()).then(d => { PROFILES = d; }).catch(() => { PROFILES = {}; }).then(cb);
+  }
+  const profileOf = e => (PROFILES && e.kind === 'org' && [e.key, ...(e.also || [])].map(k => PROFILES[k]).find(Boolean)) || null;
+  const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (x) { return u; } };
+  const link = u => h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: hostOf(u) });
+  // The sentences of a space's funding line (else its note) that name this funder: what the space's own record says it gave.
+  function giftLines(rec, names) {
+    const low = names.map(n => n.toLowerCase()).filter(n => n.length > 2);
+    for (const text of [rec.f, rec.w]) {
+      const hit = String(text || '').split(/(?<=[.!?])\s+(?=[A-Z0-9"\u201c$\u00a3\u20ac])/).filter(x => { const l = x.toLowerCase(); return low.some(n => l.includes(n)); });
+      if (hit.length) return hit.slice(0, 2).join(' ');
+    }
+    return '';
+  }
   const markName = e => `${e.n}, ${hq().kindLabel(e)}, ${where(e)}`;
 
   // ---- Keyboard: a button over each mark in view ----
@@ -168,7 +189,7 @@
     const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: s.rec.n }), h('span', { class: 'hq-s', text: s.rec.c || '' }));
     b.addEventListener('click', () => hq().flyToSpace(s.rec));
     const li = h('li', null, b);
-    // A person's tie to a space is shown as the record's own sentence, without its category tag.
+    // The tie as the space's own record words it: a person's line from the files, a funder's sentence from the funding line.
     if (s.text) li.append(h('p', { class: 'hq-note', text: s.text }));
     return li;
   };
@@ -205,8 +226,10 @@
     // Head: the pill on the left; the place as the row's title, the address under it, then the note and the source as the row's points.
     const facts = h('ul', { class: 'd-row-list' });
     const add = li => { if (li) facts.append(li); };
+    const pf = profileOf(e);
     add(fact(e.kind === 'person' ? 'Role' : 'Note', e.w));
-    if (e.s) { let host = e.s; try { host = new URL(e.s).hostname.replace(/^www\./, ''); } catch (x) {} add(fact('Source', h('a', { href: e.s, target: '_blank', rel: 'noopener noreferrer', text: host }))); }
+    if (pf && pf.site) add(fact('Website', link(pf.site)));
+    else if (e.s && !(pf && pf.src && pf.src.length)) add(fact('Source', link(e.s)));
     const info = row('hqInfoT', where(e) || 'Record', e.a || '', facts);
     const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
       h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
@@ -217,9 +240,18 @@
     if (ready) {
       // The other spellings only: the funder's own name is the title above, and the sentence that explained the list is gone
       // (user, 9 Nov 2026: "Slop"). No row when every funding line spells it as the title does.
-      const others = hq().names(e).filter(n => n !== e.n);
-      if (others.length) rows.append(row('hqNamesT', 'Also written', '', h('ul', { class: 'd-row-list hq-names' }, others.map(n => h('li', { text: n })))));
-      const sp = hq().spaces(e), rel = hq().related(e);
+      const names = hq().names(e), others = names.filter(n => n !== e.n);
+      // The profile: what the funder is, where its money comes from, what it gives to culture, each a sentence from a
+      // source opened for it, with those sources under them; then the dated facts the influence study read.
+      if (pf) {
+        const said = [pf.what, pf.arts].filter(Boolean);
+        if (said.length) rows.append(row('hqWhatT', 'What it is', '', h('div', { class: 'hq-prose' }, said.map(t => h('p', { class: 'no-indent', text: t })))));
+        if (pf.money) rows.append(row('hqMoneyT', 'Where the money comes from', '', h('div', { class: 'hq-prose' }, h('p', { class: 'no-indent', text: pf.money }))));
+        if (pf.facts && pf.facts.length) rows.append(row('hqFactsT', 'On record', '', listOf(pf.facts, f => h('li', { class: 'hq-fact' },
+          h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' / ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
+        if (pf.src && pf.src.length) rows.append(row('hqSrcT', 'Sources', '', h('ul', { class: 'd-row-list hq-src' }, pf.src.map(u => h('li', null, link(u))))));
+      }
+      const sp = hq().spaces(e).map(s => (s.text || e.kind !== 'org') ? s : Object.assign({}, s, { text: giftLines(s.rec, names) })), rel = hq().related(e);
       const group = (id, title, list, build) => { if (list.length) rows.append(row(id, title, '', listOf(list, build, LIST_SHOWN))); };
       // The row's title is the relation, not a count ("Funds 1 space": user, 9 Nov 2026, "Slop"); the list under it is the count.
       group('hqConnSpaces', e.kind === 'org' ? 'Funds' : 'Named on', sp, spaceRow);
@@ -227,6 +259,7 @@
         group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
         group('hqConnPeople', 'Named with these museums in the Epstein files', rel.people, r => officeRow(r.e, r.shared));
       }
+      if (others.length) rows.append(row('hqNamesT', 'Also written', '', h('ul', { class: 'd-row-list hq-names' }, others.map(n => h('li', { text: n })))));
     }
     if (rows.childElementCount) p.replaceChildren(head, rows); else p.replaceChildren(head);
     toTop(p);
@@ -245,6 +278,7 @@
     p.querySelector('h2').setAttribute('tabindex', '-1');
     p.focus({ preventScroll: true });
     if (!hq().loaded()) hq().ready(() => { if (openFor === e) fill(e); });
+    if (!PROFILES && e.kind === 'org') loadProfiles(() => { if (openFor === e) fill(e); });
   }
   function closeRecord(restore) {
     if (!panel || panel.hidden) return;

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=699"></script>
+  <script src="assets/load-image-data.js?v=834"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=815">
-  <link rel="stylesheet" href="assets/sheet.css?v=815">
-  <script src="assets/config.js?v=821"></script>
-  <script src="assets/analytics.js?v=679"></script>
-  <script src="assets/subtopic.js?v=670"></script>
-  <script src="assets/names.js?v=669"></script>
-  <script src="assets/grounding.js?v=671"></script>
-  <script src="assets/repeats.js?v=669"></script>
-  <script src="assets/intro-narration.js?v=671"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=834">
+  <link rel="stylesheet" href="assets/sheet.css?v=834">
+  <script src="assets/config.js?v=834"></script>
+  <script src="assets/analytics.js?v=834"></script>
+  <script src="assets/subtopic.js?v=834"></script>
+  <script src="assets/names.js?v=834"></script>
+  <script src="assets/grounding.js?v=834"></script>
+  <script src="assets/repeats.js?v=834"></script>
+  <script src="assets/intro-narration.js?v=834"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=673"></script>
+  <script src="assets/load-image.js?v=834"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -890,9 +890,9 @@ return maplibregl$1;
               <div id="noteFormFields">
                 <button id="noteFormBackBtn" type="button" onclick="window.toggleChatShare()" aria-label="Back to the chat"><svg class="note-back-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="11 5 4 12 11 19"/></svg>Back</button>
                 <div id="noteFormHead"><h3 id="noteFormTitle">Share information</h3><button id="noteFormCloseBtn" type="button" onclick="window.toggleChatShare()" aria-label="Close the note and go back to the chat" title="Close">Close <svg class="note-close-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><line x1="21" y1="3" x2="3" y2="21"></line><line x1="3" y1="3" x2="21" y2="21"></line></svg></button></div>
-                <!-- The undertone (user, 18 Nov 2026): most lives were never written down, and a blank in the record is not a place without history. -->
-                <div id="noteFormIntro"><span class="nf-undertone">Most of the lives lived in any place were never written down. Archives kept what someone could pay to keep, so where the record goes quiet people still lived, worked, made things and gathered. Imagine them, and do not take a blank on the map for a place without history.</span><span class="nf-undertone">If you know what the atlas is missing, from inside or from memory, write it here. The atlas is built with the people who add to it. The editor reads every note before anything appears, and an approved note appears on the museum’s page as a review. This is not a secure channel.</span></div>
-                <label class="nf-field"><span>Place</span><input id="noteInstitution" type="text" list="noteInstitutionList" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
+                <!-- The undertone (user, 18 Nov 2026; shortened 19 Nov 2026): a blank in the record is not a place without history. -->
+                <div id="noteFormIntro"><span class="nf-undertone">Archives kept what someone could pay to keep. Where the record goes quiet, people still lived, worked, made things and gathered. A blank on the map is not a place without history.</span><span class="nf-undertone">If you know what is missing, from inside or from memory, write it here.</span><button type="button" class="nf-to-chat" onclick="window.atlasChatShare &amp;&amp; window.atlasChatShare.start({ place: (document.getElementById('noteInstitution') || {}).value || '' })">Or tell it in the chat, a question at a time</button></div>
+                <label class="nf-field"><span>Cultural place or a story about it</span><input id="noteInstitution" type="text" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Choose a place on the atlas, or name one it is missing" aria-describedby="notePlaceHint"></label>
                 <!-- A place the atlas does not have (user, 18 Nov 2026): the form asks for its city and sends it as a new place. -->
                 <p id="notePlaceHint" role="status" aria-live="polite" hidden></p>
                 <label class="nf-field" id="noteCityField" hidden><span>City or town</span><input id="noteCity" type="text" maxlength="80" autocomplete="off" spellcheck="false" autocorrect="off" autocapitalize="words" placeholder="Where the place is"></label>
@@ -1175,8 +1175,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=821"></script>
-  <script src="assets/money-ids.js?v=767"></script>
+  <script src="assets/institutions.js?v=834"></script>
+  <script src="assets/money-ids.js?v=834"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7183,6 +7183,20 @@ return maplibregl$1;
         cityVectorMap.on('load', posterSync);
         // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
+        // The street map starts under the name and the city's line (user, 19 Nov 2026, yes to keeping the tags and the map's
+        // place names off them; the globe had dropped below the name on 16 Nov). The line wraps to two rows in a narrow map, so
+        // its foot is measured: --street-top is how far below the map's box it ends, and sheet.css sets the map's top there.
+        const streetBanner = document.getElementById('cityViewControlBanner');
+        const streetTopSync = () => {
+          const host = mapEl.parentElement;
+          if (!streetBanner || !host) return;
+          const b = streetBanner.getBoundingClientRect(), h = host.getBoundingClientRect();
+          if (!b.height) return;   // the line is hidden: keep the last measure
+          host.style.setProperty('--street-top', Math.max(0, Math.round(b.bottom - h.top)) + 'px');
+        };
+        if (streetBanner && typeof ResizeObserver === 'function') new ResizeObserver(streetTopSync).observe(streetBanner, { box: 'border-box' });
+        window.addEventListener('resize', streetTopSync);
+        cityVectorMap.on('load', streetTopSync);
 
       } catch (e) {
         console.warn('MapLibre WebGL unavailable, using mock map fallback:', e);
@@ -7300,6 +7314,33 @@ return maplibregl$1;
         mapEl.classList.remove('map-zoomed-out');
         if (cityVectorMap.getZoom() < 15.2 && typeof hideBuildingXray === 'function') hideBuildingXray();
       }
+      // Where each space's name tag goes: above its mark, else below, right or left, else hidden until hovered. Tags may not cover
+      // one another or another space's mark.
+      // On a zoom this ran twice a frame (on 'zoom' and on 'move'), cleared every tag and placed them all afresh, trying each side by
+      // switching a class and measuring, about two hundred forced layouts a frame. It also measured the pins before MapLibre had
+      // moved them (the markers follow 'move' after this handler), so it placed tags from the frame before; tags blinked on and off,
+      // swapped sides and lay on top of each other while the map zoomed (user, 19 Nov 2026: "the map on zoom is glitching").
+      // Now it runs once a frame, after the markers have moved; a tag's four positions are measured once, as offsets from its pin,
+      // and only again when the tag changes size; and a tag that had a place keeps it, on the same side, until something takes it.
+      const tagOffsetCache = new WeakMap();
+      const TAG_SIDES = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
+      function tagOffsets(lbl, pin, pr, poster) {
+        const key = lbl.offsetWidth + 'x' + lbl.offsetHeight + (poster ? 'p' : '') + (pin.classList.contains('popup-active') ? 'a' : '');
+        const had = tagOffsetCache.get(lbl);
+        if (had && had.key === key) return had.offs;
+        const was = TAG_SIDES.find(c => lbl.classList.contains(c));
+        const offs = {};
+        for (const side of TAG_SIDES) {
+          lbl.classList.remove(...TAG_SIDES);
+          lbl.classList.add(side);
+          const r = lbl.getBoundingClientRect();
+          offs[side] = (r.width || r.height) ? { l: r.left - pr.left, t: r.top - pr.top, w: r.width, h: r.height } : null;
+        }
+        lbl.classList.remove(...TAG_SIDES);
+        if (was) lbl.classList.add(was);
+        tagOffsetCache.set(lbl, { key, offs });
+        return offs;
+      }
       function resolveCityMarkerCollisions() {
         if (typeof document === 'undefined') return;
         const labels = Array.from(document.querySelectorAll('.custom-inst-pin .inst-pin-label'));
@@ -7307,108 +7348,79 @@ return maplibregl$1;
 
         const currentActiveInst = selectedInstitution;
         const currentActiveId = currentActiveInst ? (currentActiveInst.id || currentActiveInst.name) : null;
-
-        // Reset any previously assigned directional / occlusion classes
-        labels.forEach(lbl => {
-          lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left', 'collision-occluded');
-        });
-
-        // Placements to attempt in order of aesthetic visual balance: top (default), bottom, right, left
-        const placements = ['label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left'];
-        const placedRects = [];
+        const idOf = lbl => lbl.getAttribute('data-entity-id') || lbl.getAttribute('data-name');
+        const box = document.getElementById('cityMapContainer');
+        const poster = !!(box && box.classList.contains('street-poster'));
         const BUFFER = 6;
-        // The marks themselves are obstacles too: a name placed over another space's mark hides it. Each pin's mark is the
-        // middle of its 32px box; the label's own pin is skipped when that label is tried.
+        // A tag that would run off the map is cut by its edge, so that side is not free.
+        const edge = box ? box.getBoundingClientRect() : null;
+        const offMap = r => !!edge && edge.width > 0 && (r.left + BUFFER < edge.left || r.right - BUFFER > edge.right || r.top + BUFFER < edge.top || r.bottom - BUFFER > edge.bottom);
+
+        // Read everything first: the marks, every shown pin's box and its tag's four positions.
         const pinMarks = [];
-        document.querySelectorAll('.custom-inst-pin').forEach(pin => {
-          if (pin.style.opacity === '0' || pin.offsetParent === null) return;
-          const pr = pin.getBoundingClientRect();
-          if (!pr.width) return;
+        const items = [];
+        labels.forEach(lbl => {
+          const pin = lbl.closest('.custom-inst-pin');
+          const shown = pin && pin.style.opacity !== '0' && pin.offsetParent !== null;
+          const pr = shown ? pin.getBoundingClientRect() : null;
+          if (!pr || !pr.width) { items.push({ lbl, hidden: true }); return; }
+          // A pin's mark is the middle of its 32px box; the label's own pin is skipped when that label is tried.
           const cx = (pr.left + pr.right) / 2, cy = (pr.top + pr.bottom) / 2, h = 13;
           pinMarks.push({ pin, left: cx - h, right: cx + h, top: cy - h, bottom: cy + h });
+          const was = TAG_SIDES.find(c => lbl.classList.contains(c)) || null;
+          items.push({ lbl, pin, pr, was, placed: !!was && !lbl.classList.contains('collision-occluded'), active: !!currentActiveId && idOf(lbl) === currentActiveId });
+        });
+        items.forEach(it => { if (!it.hidden) it.offs = tagOffsets(it.lbl, it.pin, it.pr, poster); });
+
+        // The selected space first, then the tags that already have a place (so they hold it), then the rest in their order.
+        const rank = it => it.hidden ? 3 : it.active ? 0 : it.placed ? 1 : 2;
+        const order = items.map((it, i) => [rank(it), i, it]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
+
+        const placedRects = [];
+        const overlaps = (r, m) => !(r.right <= m.left || r.left >= m.right || r.bottom <= m.top || r.top >= m.bottom);
+        order.forEach(it => {
+          if (it.hidden) { it.side = null; it.occluded = false; return; }
+          // The side it had first, then the usual order: top, bottom, right, left.
+          const sides = it.placed ? [it.was].concat(TAG_SIDES.filter(s => s !== it.was)) : TAG_SIDES;
+          let best = null;
+          for (const side of sides) {
+            const o = it.offs[side];
+            if (!o) continue;
+            const r = { left: it.pr.left + o.l - BUFFER, top: it.pr.top + o.t - BUFFER, right: it.pr.left + o.l + o.w + BUFFER, bottom: it.pr.top + o.t + o.h + BUFFER };
+            if (offMap(r) || pinMarks.some(m => m.pin !== it.pin && overlaps(r, m)) || placedRects.some(m => overlaps(r, m))) continue;
+            best = { side, r };
+            break;
+          }
+          if (best) { it.side = best.side; it.occluded = false; placedRects.push(best.r); }
+          else if (it.active) {
+            // The selected space keeps its name on top, whatever it covers.
+            const o = it.offs['label-pos-top'];
+            it.side = 'label-pos-top'; it.occluded = false;
+            if (o) placedRects.push({ left: it.pr.left + o.l, top: it.pr.top + o.t, right: it.pr.left + o.l + o.w, bottom: it.pr.top + o.t + o.h });
+          } else { it.side = it.was || 'label-pos-top'; it.occluded = true; }   // hidden where it was, so it does not jump when hovered
         });
 
-        // Sort items so that the active/selected institution and Tier A institutions get priority
-        labels.sort((a, b) => {
-          const aId = a.getAttribute('data-entity-id') || a.getAttribute('data-name');
-          const bId = b.getAttribute('data-entity-id') || b.getAttribute('data-name');
-          if (currentActiveId && aId === currentActiveId) return -1;
-          if (currentActiveId && bId === currentActiveId) return 1;
-          return 0;
-        });
-
-        labels.forEach(lbl => {
-          const parentPin = lbl.closest('.custom-inst-pin');
-          if (!parentPin || parentPin.style.opacity === '0' || parentPin.offsetParent === null) return;
-
-          let bestPlacement = null;
-          let bestRect = null;
-
-          for (const posClass of placements) {
-            lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
-            lbl.classList.add(posClass);
-
-            const r = lbl.getBoundingClientRect();
-            if (r.width === 0 && r.height === 0) continue;
-
-            const testRect = {
-              left: r.left - BUFFER,
-              right: r.right + BUFFER,
-              top: r.top - BUFFER,
-              bottom: r.bottom + BUFFER
-            };
-
-            let collides = false;
-            for (const m of pinMarks) {
-              if (m.pin === parentPin) continue;
-              if (!(testRect.right <= m.left || testRect.left >= m.right || testRect.bottom <= m.top || testRect.top >= m.bottom)) { collides = true; break; }
-            }
-            if (!collides) for (const prev of placedRects) {
-              const overlapX = !(testRect.right <= prev.left || testRect.left >= prev.right);
-              const overlapY = !(testRect.bottom <= prev.top || testRect.top >= prev.bottom);
-              if (overlapX && overlapY) {
-                collides = true;
-                break;
-              }
-            }
-
-            if (!collides) {
-              bestPlacement = posClass;
-              bestRect = testRect;
-              break;
-            }
-          }
-
-          if (bestPlacement) {
-            lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
-            lbl.classList.add(bestPlacement);
-            placedRects.push(bestRect);
-          } else {
-            // If all 4 directions collide, occlude label cleanly (hover/focus will reveal with z-index: 9999)
-            // But if it is the currently selected institution, always keep it visible on top
-            const lblId = lbl.getAttribute('data-entity-id') || lbl.getAttribute('data-name');
-            if (currentActiveId && lblId === currentActiveId) {
-              lbl.classList.remove('label-pos-top', 'label-pos-bottom', 'label-pos-right', 'label-pos-left');
-              lbl.classList.add('label-pos-top');
-              placedRects.push(lbl.getBoundingClientRect());
-            } else {
-              lbl.classList.add('collision-occluded');
-            }
-          }
+        // Then write, and only what changed.
+        items.forEach(it => {
+          const lbl = it.lbl;
+          TAG_SIDES.forEach(c => { if (c !== it.side && lbl.classList.contains(c)) lbl.classList.remove(c); });
+          if (it.side && !lbl.classList.contains(it.side)) lbl.classList.add(it.side);
+          if (lbl.classList.contains('collision-occluded') !== it.occluded) lbl.classList.toggle('collision-occluded', it.occluded);
         });
       }
       window.resolveCityMarkerCollisions = resolveCityMarkerCollisions;
 
       cityVectorMap.on('zoom', updateCityZoomClasses);
-      cityVectorMap.on('zoom', () => {
-        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
-      });
+      // Once a frame while the camera moves ('zoom' comes with a 'move'), in the frame after the markers have followed it.
+      let tagFrame = 0;
       cityVectorMap.on('move', () => {
-        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
+        if (tagFrame || typeof requestAnimationFrame !== 'function') return;
+        tagFrame = requestAnimationFrame(() => { tagFrame = 0; resolveCityMarkerCollisions(); });
       });
       // Once more where the camera comes to rest, so the tags are placed from where the pins finally are.
       cityVectorMap.on('moveend', () => {
-        if (typeof resolveCityMarkerCollisions === 'function') resolveCityMarkerCollisions();
+        if (tagFrame) { cancelAnimationFrame(tagFrame); tagFrame = 0; }
+        resolveCityMarkerCollisions();
       });
       cityVectorMap.on('rotate', () => {
       });
@@ -10754,11 +10766,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const TIER_INK = { light: { A: '#007a80', B: '#b000b0', U: '#7a7000' }, dark: { A: '#b8fbff', B: '#ff5eff', U: '#ffff3c' } };
     function tierInk(tier, light) { const t = TIER_INK[light ? 'light' : 'dark']; return t[tier] || t.U; }
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v822';
+    const ATLAS_RELEASE = 'culture-atlas-v834';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=822').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=834').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12964,11 +12976,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     });
     // On a phone the list is built the first time the Institution box is used.
     document.addEventListener('focusin', (e) => { if (e.target && e.target.id === 'noteInstitution') { try { fillNoteInstitutions(); } catch (err) { atlasDebugLog('fillNoteInstitutions', err); } } });
-    // Fills the institution list of the note form once, from the atlas records.
+    // Fills the institution list of the note form once, from the atlas records. The datalist is no longer tied to the box:
+    // the browser's own drop-down cannot take the atlas's type, so assets/place-list.js reads it and draws its own list.
     function fillNoteInstitutions() {
       const list = document.getElementById('noteInstitutionList');
       if (!list || list.childElementCount) return;
-      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}"></option>`).join('');
+      list.innerHTML = ALL_INSTITUTIONS.filter(i => i.id && i.name).map(i => `<option value="${escapeHtml(i.name)}" data-city="${escapeHtml(i.city || '')}"></option>`).join('');
     }
     // Dates as people read them (25 Sept 2025), not as the research table stores them. A year or year-month stays as given.
     function humanDate(d) {
@@ -16734,7 +16747,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (!area || !list) return;
       const away = () => { chatStickToBottom = area.scrollHeight - area.scrollTop - area.clientHeight < 140; };
       ['wheel', 'touchmove', 'keydown', 'pointerdown'].forEach(ev => area.addEventListener(ev, () => setTimeout(away, 80), { passive: true }));
-      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
+      // Before the first message the chat is the greeting, read from its top: "Ask Clio", the intro typing out and the questions
+      // under it grow the list on load, and following them to the bottom left the title cut off under the bar (user, 19 Nov 2026:
+      // "fix chat on load its cuts off on top"). The greeting stays at the top until a message is added.
+      const greeting = () => !document.querySelector('#curatorMessages > *');
+      if (typeof ResizeObserver === 'function') new ResizeObserver(() => { if (greeting()) { area.scrollTop = 0; return; } if (chatStickToBottom) area.scrollTop = chatFollowTop(area); }).observe(list);
     })();
 
     // An arrow down over the composer, as in the Claude app (user, 9 Nov 2026: "Add arrow down button to mobile chat"). It shows once
@@ -17122,7 +17139,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const asked = typeof answerHtml === 'string' && /share information/i.test(answerHtml.replace(/<[^>]+>/g, ' '));
       const line = asked ? '' : `<p class="chat-share-invite-line">${lines[chatShareInviteTurn++ % lines.length]}</p>`;
       const label = name ? `Share information about ${name}` : 'Share information';
-      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-invite="1">${label}</button></div></div>`;
+      return `<div class="chat-share-invite" data-exclude-speech="true">${line}<div class="curator-followups flex flex-col items-start gap-1"><button type="button" class="curator-followup-pill chat-share-invite-btn text-left py-1" data-share-invite="1">${label}</button><button type="button" class="curator-followup-pill chat-share-invite-btn chat-share-chat-btn text-left py-1" data-share-chat="${name}">Tell it here in the chat</button></div></div>`;
     }
 
     function appendCuratorMessage(htmlContent, followUps = [], webIntel = null, thinkingData = null, showSpeak = true) {
@@ -18861,7 +18878,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         try { if (noteInstitution && dossierInst && !noteInstitution.value) noteInstitution.value = dossierInst.name || ''; } catch (err) { atlasDebugLog('institution', err); }
         try {
           const noteStatus = document.getElementById('noteFormStatus');
-          if (noteStatus) noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not set up, so a note cannot be sent.';
+          if (noteStatus) { noteStatus.textContent = ATLAS_REPORT_API_URL ? '' : 'The report service is not set up, so a note cannot be sent.'; if (ATLAS_REPORT_API_URL) delete noteStatus.dataset.state; else noteStatus.dataset.state = 'error'; }
           syncNoteReady();
         } catch (err) { atlasDebugLog('syncNoteReady', err); }
         try { if (!phone) (noteInstitution && !noteInstitution.value ? noteInstitution : workInput).focus(); } catch (err) { atlasDebugLog('focus', err); }
@@ -19041,11 +19058,27 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.toggleChatShare = toggleChatShare;
 
     // Sends the note screen's form to the report API. Nothing is kept in this browser: a note that is not sent stays in the form.
+    // Posts a note to the report service: a review of a place on the atlas, or a new place. The form and the chat
+    // (assets/chat-share.js) both send through it.
+    async function postNote(place, body) {
+      const res = await fetch(place ? `${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews` : `${ATLAS_REPORT_API_URL}/api/new-places`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+      return out;
+    }
+    window.atlasPostNote = postNote;
+    window.atlasReviewLimits = REVIEW_LIMITS;
+
     async function submitNoteForm() {
       const status = document.getElementById('noteFormStatus');
       const input = document.getElementById('workInput');
       const institutionBox = document.getElementById('noteInstitution');
-      const fail = (message, focusEl) => { status.textContent = message; if (focusEl) focusEl.focus(); };
+      // A message that stops the note is red (assets/sheet.css, #noteFormStatus[data-state="error"]; user, 19 Nov 2026).
+      const fail = (message, focusEl) => { status.textContent = message; status.dataset.state = 'error'; if (focusEl) focusEl.focus(); };
       if (!ATLAS_REPORT_API_URL) return fail('The report service is not set up, so the note was not sent.');
       const chosen = notePlace();
       const place = chosen.known;
@@ -19064,16 +19097,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (noteFiles && noteFiles.busy()) return fail('A file is still being prepared. Send again in a moment.');
       const sendBtn = document.getElementById('workSendBtn');
       if (sendBtn) sendBtn.disabled = true;
+      delete status.dataset.state;
       status.textContent = noteFiles && noteFiles.count() ? 'Sending the note and its files…' : 'Sending…';
       try {
         if (noteFiles && noteFiles.count()) body.files = await noteFiles.payload();
-        const res = await fetch(place ? `${ATLAS_REPORT_API_URL}/api/places/${encodeURIComponent(place.id)}/reviews` : `${ATLAS_REPORT_API_URL}/api/new-places`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        });
-        const out = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(out.error || 'The server did not take it.');
+        await postNote(place, body);
         input.value = '';
         cityBox.value = '';
         if (!place) institutionBox.value = '';
@@ -19091,6 +19119,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         `, [], null, null, false);
         scrollChatToBottom(true);
       } catch (err) {
+        status.dataset.state = 'error';
         status.textContent = `Not sent: ${err.message || 'no connection'}. Your note${noteFiles && noteFiles.count() ? ' and its files are' : ' is'} still in the box.`;
       } finally {
         if (sendBtn) sendBtn.disabled = false;
@@ -19157,6 +19186,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 
     async function handleWorkSend() {
       if (isChatInputMode) { await submitNoteForm(); return; }
+      // While Clio is asking for a note in the chat, what is written answers her and never goes to the model as a question.
+      if (window.atlasChatShare && window.atlasChatShare.active()) {
+        const answer = (workInput?.value || '').trim();
+        if (!answer) return;
+        workInput.value = '';
+        window.atlasChatShare.take(answer);
+        return;
+      }
       const text = (workInput?.value || '').trim();
       if (!text) return;
       workInput.value = '';
@@ -19996,6 +20033,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       }
 
       // 0. Check for interactive follow-up suggestion pills
+      // Tell it here in the chat: the same note, asked for one question at a time (assets/chat-share.js).
+      const shareChatBtn = e.target.closest('[data-share-chat]');
+      if (shareChatBtn) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (window.atlasChatShare) window.atlasChatShare.start({ place: shareChatBtn.getAttribute('data-share-chat') || '' });
+        return;
+      }
       const shareInviteBtn = e.target.closest('[data-share-invite]');
       if (shareInviteBtn) {
         e.preventDefault();
@@ -21124,9 +21169,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // A finger needs more reach than a mouse; the reach is larger when zoomed in, where dots are far apart and labels are shown.
       const isZoomedIn = (selectedCountryFilter !== 'all' || currentRadius >= baseRadius * 1.8);
       const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
-      const dotReach = (isZoomedIn ? 12 : 9) * (touch ? 1.6 : 1);
+      // A finger's pad is about 44px across (Apple's and Material's minimum target), so 22px from a dot's centre on a phone: it was
+      // 14px zoomed out and 19px zoomed in (x1.6), and on the phone's small globe a tap beside a dot found nothing.
+      const dotReach = Math.max((isZoomedIn ? 12 : 9) * (touch ? 2.4 : 1), touch ? 22 : 0);
       // 12-14px, not 16-26: at 16 a dot two labels away was taken for the one under the pointer.
-      const fallbackReach = (isZoomedIn ? 14 : 12) * (touch ? 1.6 : 1);
+      const fallbackReach = Math.max((isZoomedIn ? 14 : 12) * (touch ? 2.4 : 1), touch ? 28 : 0);
 
       // 1. The nearest dot whose centre is within reach of the pointer
       let nearest = null, nearestDist = Infinity;
@@ -21592,7 +21639,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const pins = Array.from(mapEl.querySelectorAll('.custom-inst-pin')).filter(pn => pn.style.display !== 'none');
         if (!pins.length) return;
         const touch = window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen';
-        const reach = 16 * (touch ? 1.6 : 1);
+        const reach = touch ? 28 : 16;   // a finger's pad, as on the globe
         let best = null, bestDist = Infinity;
         pins.forEach((pn) => {
           const r = (pn.lastElementChild || pn).getBoundingClientRect();
@@ -21612,9 +21659,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     // Reliable click detector for canvas
     canvas.addEventListener('click', e => {
       const dist = Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY);
-      // 6px for a mouse, 8px for a finger (Android's touch slop): a press that moved further has turned the globe, and a
-      // drag is not also a click on whatever ended up under it. It was 22px for both.
-      const tol = (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 8 : 6;
+      // 6px for a mouse, 10px for a finger (Android's touch slop is 8dp, iOS about 10pt): a press that moved further has turned
+      // the globe, and a drag is not also a click on whatever ended up under it. It was 22px for both.
+      const tol = (window.__lastPointerType === 'touch' || window.__lastPointerType === 'pen') ? 10 : 6;
       if (dist < tol) {
         handleGlobeClick(e.clientX, e.clientY);
       }
@@ -22155,7 +22202,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.addEventListener('pointermove', e => {
       if (isDragging && pinching) return;
       if (isDragging && !dragArmed) {
-        if (Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY) < 4) return;
+        // A finger drifts several pixels in an ordinary tap, and the globe turning from 4px slid the dot out from under it
+        // (a tap then missed): it arms at 10px for touch, the same as the tap tolerance above.
+        if (Math.hypot(e.clientX - pointerStartX, e.clientY - pointerStartY) < (e.pointerType === 'mouse' ? 4 : 10)) return;
         dragArmed = true;
         canvas.classList.add('dragging');
         lastX = e.clientX;
@@ -22252,20 +22301,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=669"></script>
-<script src="assets/note-aids.js?v=822" defer></script>
-<script src="assets/note-files.js?v=669" defer></script>
-<script src="assets/funding-views.js?v=767"></script>
-<script src="assets/layers.js?v=809"></script>
-<script src="assets/critique-gallery-data.js?v=692"></script>
-<script src="assets/critique-captions.js?v=692"></script>
-<script src="assets/critique-gallery.js?v=692"></script>
-<script src="assets/hq-detail.js?v=802"></script>
-<script src="assets/influence-mode.js?v=807"></script>
-<script src="assets/bubbles.js?v=669" defer></script>
-<script src="assets/phone-maps.js?v=802"></script>
-<script src="assets/desktop-maps.js?v=743"></script>
-<script src="assets/chat-resize.js?v=691"></script>
-<script src="assets/tab-suggest.js?v=788"></script>
+<script src="assets/typeset.js?v=834"></script>
+<script src="assets/note-aids.js?v=834" defer></script>
+<script src="assets/place-list.js?v=834" defer></script>
+<script src="assets/chat-share.js?v=834" defer></script>
+<script src="assets/note-files.js?v=834" defer></script>
+<script src="assets/funding-views.js?v=834"></script>
+<script src="assets/layers.js?v=834"></script>
+<script src="assets/critique-gallery-data.js?v=834"></script>
+<script src="assets/critique-captions.js?v=834"></script>
+<script src="assets/critique-gallery.js?v=834"></script>
+<script src="assets/hq-detail.js?v=834"></script>
+<script src="assets/influence-mode.js?v=834"></script>
+<script src="assets/bubbles.js?v=834" defer></script>
+<script src="assets/phone-maps.js?v=834"></script>
+<script src="assets/desktop-maps.js?v=834"></script>
+<script src="assets/chat-resize.js?v=834"></script>
+<script src="assets/tab-suggest.js?v=834"></script>
 </body>
 </html>

@@ -16,6 +16,10 @@
    The page and the map both ask for "Atlas Serif". */
 @font-face{font-family:"Atlas Serif";font-style:normal;font-weight:400;font-display:swap;src:local("Times New Roman"),local("TimesNewRomanPSMT"),local("Liberation Serif"),local("LiberationSerif"),local("Tinos"),local("Tinos-Regular")}
 @font-face{font-family:"Atlas Serif";font-style:italic;font-weight:400;font-display:swap;src:local("Times New Roman Italic"),local("TimesNewRomanPS-ItalicMT"),local("Liberation Serif Italic"),local("LiberationSerif-Italic"),local("Tinos Italic"),local("Tinos-Italic")}
+/* The bold of the atlas serif, under a name of its own so only the text that asks for it turns bold (the page sets
+   font-synthesis:none, and a 700 face under "Atlas Serif" would embolden every weight rule in the sheet). Used by the
+   invitations to share (user, 19 Nov 2026: "make this in bold and 5% letter spacing"). */
+@font-face{font-family:"Atlas Serif Bold";font-style:normal;font-weight:700;font-display:swap;src:local("Times New Roman Bold"),local("TimesNewRomanPS-BoldMT"),local("Liberation Serif Bold"),local("LiberationSerif-Bold"),local("Tinos Bold"),local("Tinos-Bold")}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-cyrillic-ext.woff2") format("woff2");unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-cyrillic.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:"EB Garamond";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/EBGaramond-Regular-greek-ext.woff2") format("woff2");unicode-range:U+1F00-1FFF}
@@ -1821,6 +1825,11 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #cityViewControlBanner:not(#sh-x) #cityViewTitleBadge{display:block!important;flex:0 0 auto!important;max-width:100%!important;
       overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;pointer-events:auto!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #cityViewControlBanner:not(#sh-x) #cityViewTitleText{display:inline!important;overflow:visible!important}
+    /* The street map starts under the name and this line, so neither the spaces' tags nor the map's place names are drawn
+       over them (19 Nov 2026), as the globe drops below the name. --street-top is the line's measured foot (index.html,
+       initCityMapIfNeeded); before it is measured, the name's line and one row of this one. */
+    :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #cityMapContainer:not(#sh-x){
+      top:var(--street-top,calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-head) * .8))!important;bottom:0!important;height:auto!important}
   }
 }
 
@@ -2032,7 +2041,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    for now like a gossip mode") ----
    assets/influence-mode.js. The switch sits beside Gossip mode in each head bar and takes the same form: on the desktop a word
    in the bar, italic and blue when on (the sheet's rule for a pressed button); on a phone a pill in the row of top buttons,
-   filled with ink when on. In a record, "What funders got here" and a funder's ledger are rows of the record like any other,
+   filled with ink when on. In a record, "What came with the money" and a funder's ledger are rows of the record like any other,
    under one rule, each entry an en-dash line with the kinds as its italic lead-in and its date, marks and source under it. */
 @layer sheet{
 @media (min-width:768px){
@@ -2192,15 +2201,15 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
      closes the record to the map, as the chat's closes the chat), the Chat and Details tabs centred, on paper that stays
      put while the record scrolls under it. */
   :root.gm-from-chat #gmTopBtns #gmBackChatBtn:not(#sh-x):not(#sh-y){display:none!important}
-  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){top:calc(env(safe-area-inset-top,0px) + 48px + 4px)!important;bottom:0!important;height:auto!important;
-    padding-top:0!important;border:0!important;border-radius:32px 32px 0 0!important;
-    box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 45%,transparent),0 -8px 32px rgba(0,0,0,.14)!important;
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){top:0!important;bottom:0!important;height:auto!important;
+    padding-top:0!important;border:0!important;border-radius:0!important;
+    box-shadow:none!important;
     animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
   :root[data-theme="dark"].gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){box-shadow:0 0 0 1px color-mix(in srgb,var(--sh-rule) 60%,transparent),0 -8px 32px rgba(0,0,0,.5)!important}
-  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .sheet-chrome:not(#sh-x):not(#sh-y){position:sticky!important;top:0!important;z-index:5!important;height:76px!important;
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .sheet-chrome:not(#sh-x):not(#sh-y){position:sticky!important;top:0!important;z-index:5!important;height:calc(76px + env(safe-area-inset-top,0px))!important;
     padding:0!important;border:0!important;border-radius:0!important;background:var(--sh-paper)!important;cursor:default!important}
-  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y){position:absolute!important;top:16px!important;left:16px!important;right:auto!important}
-  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .gm-from-chat-bar:not([hidden]):not(#sh-x):not(#sh-y){position:absolute!important;top:16px!important;left:68px!important;right:68px!important;bottom:auto!important;
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .sheet-close:not(#sh-x):not(#sh-y){position:absolute!important;top:calc(16px + env(safe-area-inset-top,0px))!important;left:16px!important;right:auto!important}
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet .gm-from-chat-bar:not([hidden]):not(#sh-x):not(#sh-y){position:absolute!important;top:calc(16px + env(safe-area-inset-top,0px))!important;left:68px!important;right:68px!important;bottom:auto!important;
     height:44px!important;display:flex!important;justify-content:center!important;align-items:center!important;gap:20px!important;padding:0!important;margin:0!important;
     border:0!important;background:transparent!important}
   :root.gm-record #detailDrawer .detail-bar #closeDetailBtn:not(#sh-x):not(#sh-y){top:16px!important;right:16px!important}
@@ -2243,6 +2252,27 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
   :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet[data-detent="full"]:not(#sh-x):not(#sh-y){padding-top:0!important}
   :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .sheet-chrome:not(#sh-x):not(#sh-y){height:64px!important}
   :root.gm-map:not(.gm-from-chat) #globeViewport #dossier-bottom-sheet .gm-tabs:not(#sh-x):not(#sh-y){top:64px!important}
+}
+
+@layer sheet{
+@media (max-width:767px){
+  /* The record is a full sheet, always (user, 19 Nov 2026: "make it full sheet mode always covering full screen"). It covers
+     the row of top buttons too, which were left standing over its top edge, and the head's cross and tabs clear the status bar. */
+  :root.gm-from-chat #gmTopBtns:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+
+  /* Museum details as iOS tabs (user, 19 Nov 2026: "the content toggle do not need background, use apple ui to make it into
+     tabs on mobile"): four equal labels on the sheet's own paper, no stone ground and no boxes round them, a hairline under
+     the row, the open one in the system blue, upright so the labels do not change width, with a 2px bar under it. */
+  #dossier-bottom-sheet .gm-tabs:not(#sh-x):not(#sh-y):not(#sh-z){height:44px!important;padding:0 8px!important;gap:0!important;justify-content:space-between!important;
+    background:var(--sh-paper)!important;border:0!important;border-bottom:.5px solid color-mix(in srgb,var(--sh-rule) 55%,transparent)!important;overflow:hidden!important}
+  :root.gm-from-chat #dossier-bottom-sheet .gm-tabs:not(#sh-x):not(#sh-y):not(#sh-z){top:calc(76px + env(safe-area-inset-top,0px))!important}
+  #dossier-bottom-sheet .gm-tabs [role="tab"]:not(#sh-x):not(#sh-y):not(#sh-z){position:relative!important;flex:1 1 0!important;min-width:0!important;height:44px!important;min-height:44px!important;line-height:44px!important;
+    padding:0 4px!important;border:0!important;border-radius:0!important;background:transparent!important;font-size:16px!important;font-style:normal!important;
+    color:color-mix(in srgb,var(--sh-ink) 55%,var(--sh-paper))!important;-webkit-tap-highlight-color:transparent}
+  #dossier-bottom-sheet .gm-tabs [role="tab"][aria-selected="true"]:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--sh-hover)!important;font-style:normal!important}
+  #dossier-bottom-sheet .gm-tabs [role="tab"][aria-selected="true"]:not(#sh-x):not(#sh-y):not(#sh-z)::after{content:""!important;position:absolute!important;left:12px!important;right:12px!important;bottom:0!important;
+    height:2px!important;border-radius:2px 2px 0 0!important;background:var(--sh-hover)!important}
+}
 }
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   :root.gm-chat #workViewContainer:not(#sh-x):not(#sh-y){animation:none!important}
@@ -2302,3 +2332,110 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    which the field's block held 80px for one 23px line. The block's floor drops to 32px, so the card stands 109px (31% less)
    with the same text and buttons. */
 :root:root:root #workBottomDock #workInputCard:not(.is-mode):not(#a):not(#b) #noteInputBlock{min-height:32px!important;padding-top:4px!important;padding-bottom:4px!important}
+
+/* ==== SHARE INFORMATION IN DARK GREEN, WITH A PLACE LIST IN THE SHEET'S TYPE (user, 19 Nov 2026: "make font dark green,
+   cultural place or a story about it, design this using atlas typography") ====
+   The note's words (title, undertone, labels, the text written, the pledge) are dark green. The places are no longer the
+   browser's datalist drop-down, which the system draws in its own sans: assets/place-list.js draws #notePlaceList, set
+   here as the sheet sets its lists, the serif at the text size and leading, a place's city after it in a lighter green,
+   the row under the pointer or the arrow keys on the lime band. Contrast: #1d4a2a on white 10:1, on the lime 8.7:1;
+   #4a6b52 on white 6:1; dark #9fd0a6 on #151412 10:1, #7fa886 6.5:1. */
+@layer sheet{
+:root{--sh-green:#1d4a2a;--sh-green-2:#4a6b52}
+:root[data-theme="dark"]{--sh-green:#9fd0a6;--sh-green-2:#7fa886}
+:root body.chat-input-mode-active #workInputCard :is(#noteFormFields,#noteFormFields *,#noteInputLabel,#noteAckRow,#noteAckRow *,#noteFormStatus,#noteFileInfo,#noteAidsRow,#noteAidsRow *),
+:root body.chat-input-mode-active #workInputCard #workInput{color:var(--sh-green)!important}
+:root body.chat-input-mode-active #workInputCard :is(#noteFormFields input,#workInput)::placeholder{color:var(--sh-green-2)!important;opacity:1!important}
+#notePlaceList{position:fixed!important;z-index:10000!important;box-sizing:border-box!important;margin:0!important;padding:calc(4px * var(--sh-k)) 0!important;
+  list-style:none!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+  background:var(--sh-paper)!important;border:1px solid var(--sh-outline)!important;border-radius:8px!important;box-shadow:none!important;
+  font:400 var(--sh-s)/var(--sh-lead) var(--sh-serif)!important;color:var(--sh-green)!important;text-align:left!important}
+#notePlaceList[hidden]{display:none!important}
+#notePlaceList li{display:flex!important;align-items:baseline!important;gap:calc(8px * var(--sh-k))!important;margin:0!important;
+  padding:calc(3px * var(--sh-k)) calc(10px * var(--sh-k))!important;cursor:pointer!important;color:var(--sh-green)!important;background:transparent!important}
+#notePlaceList li[aria-selected="true"]{background:var(--sh-stone)!important}
+#notePlaceList .npl-name{flex:0 1 auto!important;min-width:0!important}
+#notePlaceList .npl-city{flex:none!important;margin-left:auto!important;color:var(--sh-green-2)!important;font-style:italic!important}
+:root[data-theme="dark"] #notePlaceList li[aria-selected="true"]{background:var(--sh-stone-2)!important;color:var(--sh-paper)!important}
+:root[data-theme="dark"] #notePlaceList li[aria-selected="true"] .npl-city{color:var(--sh-paper)!important}
+/* A message that stops the note (Write at least 10 characters, Choose a place, Not sent) is red (user, 19 Nov 2026: "this
+   text needs to be red"). #b3261e on white 6.5:1, on the gossip pink 6:1; dark #ff8a80 on #151412 8:1. */
+:root{--sh-alert:#b3261e}
+:root[data-theme="dark"]{--sh-alert:#ff8a80}
+:root body.chat-input-mode-active #workInputCard #noteFormStatus[data-state="error"]{color:var(--sh-alert)!important}
+/* City or town and the new-place hint stay hidden until the place typed is not on the atlas: the sheet's
+   "#noteFormFields .nf-field{display:block}" had shown the city box under every known place too. */
+#noteFormFields :is(#noteCityField,#notePlaceHint)[hidden]{display:none!important}
+}
+
+/* ==== THE CHAT'S INVITATION TO SHARE (user, 19 Nov 2026: "color these all about sharing in green and make it bold with 20%
+   letterspacing") ====
+   The sentence under each answer that asks the reader to add what they know (chatShareInvite in index.html, every variant)
+   is the form's dark green (--sh-green), bold, tracked 0.2em. */
+@layer sheet{
+:root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important;font-weight:700!important;letter-spacing:.2em!important}
+/* Bold in the serif's own bold, tracked 5% (user, 19 Nov 2026: "make this in bold and 5%letter spacing"; was 20%). The
+   Share information form's undertone takes the same. */
+:root:root #curatorMessages .chat-share-invite-line,
+:root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:"Atlas Serif Bold",var(--sh-serif)!important;font-weight:700!important;letter-spacing:.05em!important}
+}
+
+/* ==== A NAME BUBBLE TO THE LEFT OF ITS MARK KEEPS ITS WIDTH (user, 19 Nov 2026, a screenshot of Galeria Foksal close in:
+   "whats this?") ====
+   A bubble placed left of its mark (label-pos-left: right:calc(100% + 6px), left:auto) took its width from the mark, 18px,
+   so it showed only the grade and the name ran out of it in the paper's colour, unseen on the map. It is as wide as its text. */
+@layer sheet{
+#cityMapContainer.street-poster .inst-pin-label{width:max-content!important}
+/* A bubble set beside its mark sits level with it, the tail pointing at it: the centring of a bubble above the mark
+   (left 50%, translateX(-50%)) had carried over onto these too. */
+#cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-left{left:auto!important;right:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
+#cityMapContainer.street-poster .custom-inst-pin .inst-pin-label.label-pos-right{right:auto!important;left:calc(100% + 6px)!important;top:50%!important;bottom:auto!important;transform:translateY(-50%)!important}
+}
+
+/* ==== SHARE INFORMATION AS A CHAT (user, 19 Nov 2026: "make share information as chat as well, so it can edit your info or
+   send it") ====
+   The draft note Clio writes in the chat (assets/chat-share.js) is set like the form: the serif in the form's dark green, a
+   thin outline round it, labels in the lighter green. Words that could identify the writer and a message that stops the note
+   are red. The form's own link to the chat sits under its undertone. */
+@layer sheet{
+:root #curatorMessages .chat-share-card{margin:calc(6px * var(--sh-k)) 0 0!important;padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important;
+  border:1px solid var(--sh-outline)!important;border-radius:8px!important;background:transparent!important;color:var(--sh-green)!important}
+:root #curatorMessages .chat-share-card *{color:var(--sh-green)!important}
+:root #curatorMessages .chat-share-card .chat-share-k,:root #curatorMessages .chat-share-card .chat-share-new{color:var(--sh-green-2)!important;font-style:italic!important}
+:root #curatorMessages .chat-share-card .chat-share-k{display:inline-block!important;min-width:7.5em!important}
+:root #curatorMessages .chat-share-note{margin:calc(6px * var(--sh-k)) 0!important;white-space:normal!important}
+:root #curatorMessages .chat-share-ack{display:flex!important;align-items:flex-start!important;gap:calc(var(--sh-pad) / 2)!important;margin:0!important;cursor:pointer!important}
+:root #curatorMessages .chat-share-status:empty{display:none!important}
+:root #curatorMessages .chat-share-status[data-state="error"],:root #curatorMessages .chat-share-warn{color:var(--sh-alert)!important}
+:root #curatorMessages .chat-share-help{color:var(--sh-green-2)!important}
+:root #curatorMessages :is(.chat-share-help,.chat-share-warn){margin-top:calc(8px * var(--sh-k))!important}
+:root #curatorMessages .chat-share-card.is-sent{border-style:dashed!important}
+:root #curatorMessages .chat-share-chat-btn,:root #curatorMessages .chat-share-choice{color:var(--sh-green)!important}
+#noteFormIntro .nf-to-chat{display:block!important;margin:calc(4px * var(--sh-k)) 0 0!important;padding:0!important;border:0!important;background:transparent!important;
+  color:var(--sh-green)!important;font:inherit!important;text-decoration:underline!important;text-underline-offset:.2em!important;cursor:pointer!important;text-align:left!important}
+}
+
+/* ==== SHARE INFORMATION TURNS DARK GREEN UNDER THE POINTER (user, 19 Nov 2026: "make share information button dark green
+   on hover as well") ====
+   The black Share information button (and Back to chat, the same button while a note is written) and the chat's "Share
+   information about ..." follow-up take the form's dark green, --sh-green, under the pointer or the keyboard, with the
+   paper's colour on it: white on #1d4a2a 10:1; on the dark theme #151412 on #9fd0a6 10:1. */
+@layer sheet{
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible),
+:root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible) *,
+:root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible) *{color:var(--sh-paper)!important}
+/* The form's description starts on the left edge with the labels and fields (user, 19 Nov 2026: "allign description to
+   the left"); it had the sheet's indent. */
+:root:root #noteFormIntro{padding-left:0!important;margin-left:0!important;text-indent:0!important}
+/* The form's head on one line (user, 19 Nov 2026: "put close and back on same level and share information in the middle"):
+   Back at the left edge, the title in the middle, Close at the right edge. Back and the head share the first row of the
+   fields' grid; the head is three columns, the first left empty for Back. */
+body.chat-input-mode-active #workInputCard #noteFormFields{display:grid!important;grid-template-columns:minmax(0,1fr)!important;align-items:start!important}
+body.chat-input-mode-active #noteFormFields>#noteFormBackBtn{grid-row:1!important;grid-column:1!important;justify-self:start!important;align-self:stretch!important;display:inline-flex!important;align-items:center!important;position:relative!important;z-index:1!important;margin:0 0 var(--sh-s-lh)!important}
+body.chat-input-mode-active #noteFormFields>#noteFormHead{grid-row:1!important;grid-column:1!important;display:grid!important;grid-template-columns:1fr auto 1fr!important;align-items:center!important;width:100%!important}
+body.chat-input-mode-active #noteFormHead>#noteFormTitle{grid-column:2!important;text-align:center!important;margin:0!important}
+body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!important;justify-self:end!important;margin:0!important}
+/* Your note is 30% taller (user, 19 Nov 2026: "make your note 30% taller bigger field"): 92px to 120px. */
+:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workInput{min-height:120px!important}
+}
