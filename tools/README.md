@@ -54,6 +54,8 @@ Descriptions below are each script's own docstring; read the script for details.
 
 | Script | What it does |
 |---|---|
+| `build_art_periods.py` | What kind of art each funder's money goes to: writes `assets/art-periods.json` from each space's own words (run after `build_influence.py`). |
+| `funder_profiles.py` | Funder profiles for the funder page: who a funder is and where its money comes from; merges researched batches into `data/funder_profiles.json` and writes `assets/funder-profiles.json`. |
 | `build_bureaucracy_batches.py` | Cut institutions.json into research batches for data/bureaucracy_prompt.md. |
 | `build_critique_frames.py` | Write data/research_attach/institutional_critiques.json from verified quotations. |
 | `build_critique_gallery.py` | Build the artists' image gallery layer from the cultural space critique collection (references 1801-2000). |

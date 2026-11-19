@@ -6,6 +6,7 @@ scripts, so most tests load them into a `vm` context and call what they set on t
 
 | Test | Checks |
 |---|---|
+| `art-periods.test.mjs` | Every art period rests on a sentence of its record, and every tie is a ledger tie. |
 | `analytics.test.mjs` | `assets/analytics.js` is off without an address or when the browser says not to track. |
 | `data-noise.test.mjs` | The records carry no broken links or empty points. |
 | `editor.test.mjs`, `editor-structure.test.mjs` | The data editor (`tools/editor.py`, `editor/`): a save writes only the edited record. |

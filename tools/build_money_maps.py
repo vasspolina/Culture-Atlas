@@ -31,7 +31,7 @@ SPLIT=re.compile(r",|;|\band\b|\bplus\b|\bwith\b|\bvia\b|\bthrough\b|\bfrom\b| &
 def norm(s):
     s=s.lower(); s=re.sub(r"\b(the|foundations?|funds?|fonds|stiftung|fondation|inc|ltd|llc|plc|co|corp|corporation|group|philanthropies)\b"," ",s); return re.sub(r"[^a-z0-9]","",s)
 # Names that are not funders (the free text yields a few), and names that mean the same funder.
-JUNK={'created','frank','german','spanish','projectsponsors','friendsassociation','eur','usd','gbp','municipal','triennial','artistrun','foundationcontributing','corporate','founding','privatephilanthropic','publicculturalbody','botdeal','francophonie','cabinet','senate','family','france','poland','namibianlaw','partnerscommittee','departement','christie','sotheby','expenses','culture','members','arts','tourism','501nonprofit','nonprofit','nonprofitassociation','related','founderfunded','selffunded','other','others','public','private','local','national','regional'}
+JUNK={'created','frank','german','spanish','projectsponsors','friendsassociation','eur','usd','gbp','municipal','triennial','artistrun','foundationcontributing','corporate','founding','privatephilanthropic','publicculturalbody','botdeal','francophonie','cabinet','senate','family','france','poland','namibianlaw','partnerscommittee','departement','christie','sotheby','expenses','culture','members','arts','tourism','501nonprofit','nonprofit','nonprofitassociation','related','founderfunded','selffunded','sports','shne','members','it','brandlicensingpartners','brandlicensing','agnciabrasil','artnewspaper','jakobsondeclinedto','other','others','public','private','local','national','regional'}
 # Fiscal years, percentages, counts and amounts are figures from the funding text, not funders.
 JUNK_RE=re.compile(r"(registered charity|subsidiary of|part of |sat on |shows credit|residenc|\bno\. ?\d|\b(19|20)\d\d\b"
                    r"|\bFY\s?\d|\d\s?%|^\d[\d.,]*\+?\s+(?:works|members|individuals|families|for|non-?profit|edition|report|artists|donors|people|employees)\b"
@@ -43,11 +43,18 @@ ROLE_RE=re.compile(r"\s+as\s+(?:the\s+|an?\s+|its\s+)?[a-z].*$")
 # A sum glued to a name ('Intesa Sanpaolo 464k', 'Ministry of Culture 2.9M', 'Enel 600k as a promoter member') is cut off
 # at the sum; a number without a unit ('Fonds 21', 'Tequila 1800', 'WDR 3') is part of the name and stays.
 TRAIL_SUM_RE=re.compile(r"\s+\d[\d.,]*\s?(?:[kKmMbB]|million|billion|thousand|mn|bn)\b.*$")
-ALIAS={'warhol':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland',
+ALIAS={'warhol':'andywarhol','andywarholforvisualarts':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland',
        # Open Society's national and regional foundations and its old names are one network (George Soros).
        'opensocietyinstitute':'opensociety','soros':'opensociety','sorosfoundations':'opensociety','kosovaforopensociety':'opensociety','opensocietyinitiativeforwestafrica':'opensociety','osiwa':'opensociety','mongolianforanopensociety':'opensociety','openinstitute':'opensociety'}  # values are norm() forms
 GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state'}
+# A funding sentence's verb rides along with the last name in it ("Mondriaan Fund also give", "Ville de Marseille support it",
+# "Stadt Wien gives an annual subsidy", "Logos include the National Lottery"): the verb and what follows it are cut off, so the
+# name keys with the same funder named elsewhere instead of making a second funder called "...also give" (user, 19 Nov 2026:
+# the Beisheim foundation's page was titled from "Beisheim foundations also give").
+VERB_TAIL_RE=re.compile(r"\s+(?:also\s+|each\s+|both\s+)?(?:gives?|support(?:s)?(?=\s+(?:it|its|the|in)\b)|fund(?:s)?\s+it|leads?\s+support|takes?\s+gifts?|helps?(?=\s+(?:fund|it|pay)\b))\b.*$",re.I)
+VERB_LEAD_RE=re.compile(r"^(?:logos|(?:prize |corporate |main |other )?partners|sponsors|funders|supporters)\s+include\s+(?:the\s+)?",re.I)
 def clean_label(nm):
+    nm=VERB_LEAD_RE.sub('',VERB_TAIL_RE.sub('',nm)).strip(' .,;-')
     nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',ROLE_RE.sub('',SUFFIX_RE.sub('',nm)))).strip(' .,;-')
     if len(nm)<3 or len(nm)>60 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
     return nm

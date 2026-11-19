@@ -38,6 +38,7 @@ research agents (prompts below) -> data/*_runs/ -> tools/import_*.py / merge_*.p
 | `space_lobbying.json` | Lobbying records (US and EU) per space. | `tools/attach_space_lobbying.py` |
 | `critique_additions.json` | The 29 additional artists' critique images (source page, credit, date, story) added after the original collection. | `tools/add_critique_images.py` |
 | `visual_critique_refs.json` | Reference list for the visual critique images (id, artist, title, source URL). | read by people; no script |
+| `funder_profiles.json` | Researched profile of each funder (what it is, where its money comes from, what it funds), keyed by funder id; shown on the funder page. | `tools/funder_profiles.py` |
 | `funder_logos_sources.json` | Where each funder logo was fetched from. | `tools/build_funder_logos.py` |
 
 ### Influence map

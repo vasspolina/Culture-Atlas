@@ -1,5 +1,5 @@
 // Culture Atlas Service Worker (network-first for the page, same-origin cache only)
-const CACHE_NAME = 'culture-atlas-v822';
+const CACHE_NAME = 'culture-atlas-v834';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -20,6 +20,7 @@ const ASSETS_TO_CACHE = [
   './assets/influence-mode.js',
   './assets/influence.json',
   './assets/moma-influence.json',
+  './assets/art-periods.json',
   './assets/bubbles.js',
   './assets/money-maps.json',
   './assets/studies.json',
@@ -30,6 +31,7 @@ const ASSETS_TO_CACHE = [
   './assets/hq.json',
   './assets/money-ids.js',
   './assets/funder-logos.json',
+  './assets/funder-profiles.json',
   './assets/funder-logos.png',
   './assets/config.js',
   './assets/analytics.js',
@@ -37,6 +39,8 @@ const ASSETS_TO_CACHE = [
   './assets/intro-narration.js',
   './assets/note-aids.js',
   './assets/note-files.js',
+  './assets/place-list.js',
+  './assets/chat-share.js',
   './assets/phone-maps.js',
   './assets/desktop-maps.js',
   './assets/chat-resize.js',
