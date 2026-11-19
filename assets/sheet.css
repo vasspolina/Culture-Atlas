@@ -2505,11 +2505,13 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 }
 
 /* ==== SHARE AS A CHAT, CALMER (user, 19 Nov 2026: "is it too busy?", then "yes, cut") ====
-   The draft card loses its outline (the fields are the card), a known place's city sits in italic on the place line, the
+   (The outline was taken off here, then brought back dotted, below.) A known place's city sits in italic on the place line, the
    help paragraph is gone (the chat box says "Or tell me what to change"), Cancel is a plain link beside the two buttons,
    and the Share information bar is put away while Clio is asking (body.chat-share-active, assets/chat-share.js). */
 @layer sheet{
-:root #curatorMessages .chat-share-card{border:0!important;border-radius:0!important;padding:0!important}
+/* The outline comes back, blue and dotted (user, 19 Nov 2026: "i liked the outline", "make it back, blue and dotted"). */
+:root #curatorMessages .chat-share-card,:root #curatorMessages .chat-share-card.is-sent{border:1.5px dotted var(--sh-outline)!important;border-radius:8px!important;
+  padding:calc(8px * var(--sh-k)) calc(12px * var(--sh-k))!important}
 :root #curatorMessages .chat-share-card .chat-share-placecity{flex:none!important;color:var(--sh-green-2)!important;font-style:italic!important}
 :root #curatorMessages .chat-share-card .chat-share-placecity:empty{display:none!important}
 :root #curatorMessages .chat-share-choices .chat-share-choice.is-link{border-color:transparent!important;padding-left:calc(4px * var(--sh-k))!important;padding-right:calc(4px * var(--sh-k))!important;
