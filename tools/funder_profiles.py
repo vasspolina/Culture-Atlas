@@ -27,7 +27,7 @@ SENDERS = os.path.join(ROOT, 'data', 'influence_senders.json')
 ALIASES = os.path.join(ROOT, 'tools', 'hq_aliases.json')
 
 LIMIT = {'what': 30, 'money': 25, 'arts': 30}
-HEDGE = re.compile(r"\b(may|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|possibly|perhaps|some say)\b", re.I)
+HEDGE = re.compile(r"\b((?-i:may)|might|reportedly|allegedly|appears? to|seems?|arguably|is said to|believed to|likely|possibly|perhaps|some say)\b", re.I)
 PROMO = re.compile(r"\b(vibrant|renowned|prestigious|world-class|iconic|landmark|cutting-edge|dynamic|thriving|esteemed|pivotal|tapestry|testament|nestled|boasts?|showcases?|fosters?|underscores?|delves?|navigates?|ecosystem|leading|dedicated to|committed to|passionate|plays? a (?:crucial|key|vital) role|a (?:diverse|wide) range|among others|and more)\b", re.I)
 ABSENCE = re.compile(r"\b(not found|no (?:public |published )?(?:information|record|details|figures?|accounts?) (?:found|published|available)|could not (?:be )?(?:find|found|confirm|read|verify)|not (?:published|available|disclosed) online|unclear|unknown)\b", re.I)
 DASH = re.compile(r"[–—]| - ")
@@ -75,9 +75,12 @@ def merge(paths):
             srcs = [s for s in r.get('sources') or [] if isinstance(s, str) and s.startswith('http')]
             # The best source first, with register scrapers last: the page links the first one.
             srcs.sort(key=lambda s: bool(WEAK.search(s)))
+            # A wrong match the editor read as a rename (the profile names the body the museum sentences mean) stays published.
+            renamed = (truth.get(k) or {}).get('renamed')
             truth[k] = {f: (r.get(f) or '').strip() for f in ('name', 'short', 'kind', 'what', 'money', 'arts', 'site', 'city', 'country', 'address', 'wrong_match', 'status')}
             truth[k]['sources'] = srcs[:5]
             truth[k]['batch'] = os.path.basename(p).replace('-result.json', '')
+            if renamed and truth[k].get('wrong_match'): truth[k]['renamed'] = truth[k].pop('wrong_match')
             truth[k] = {f: v for f, v in truth[k].items() if v}
             added += 1
     json.dump(dict(sorted(truth.items())), open(TRUTH, 'w'), ensure_ascii=False, indent=1)
