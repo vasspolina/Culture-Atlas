@@ -1,0 +1,527 @@
+[
+ {
+  "id": "rovaniemi-art-museum-korundi",
+  "section": "FUNDING",
+  "problems": [
+   "date conflict: Wihuri gift 2024 vs 2025"
+  ],
+  "before": "in March 2024 gave the city EUR 150,000 ... (Yle)",
+  "after": "gave the city EUR 150,000 ... (Yle, 14 March 2024; a Yle report of 21 May 2025 placed the gift earlier in 2025)",
+  "sources": [
+   "https://yle.fi/a/74-20079110",
+   "https://yle.fi/a/74-20163203"
+  ],
+  "reason": "Yle reported the gift on 14 March 2024; its May 2025 story says 'earlier this year' while linking back to the 2024 report. The dated report is kept and the 2025 wording stated."
+ },
+ {
+  "id": "rovaniemi-art-museum-korundi",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'raises money for the museum's outreach work'"
+  ],
+  "before": "raises money for the museum's outreach work",
+  "after": "supports the museum's work and art research",
+  "sources": [
+   "https://korundi.fi/en/visit/rovaniemi-art-museum/about-us"
+  ],
+  "reason": "The museum's page says the Friends support museum work and art research; nothing about raising money for outreach."
+ },
+ {
+  "id": "rovaniemi-art-museum-korundi",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restates funding"
+  ],
+  "before": "Clean money: a city museum on public funds, with a private Finnish foundation behind its main collection and its building design, and no flagged funder on record. Worth watching: the renovation bill.",
+  "after": "Clean money, with no flagged funder. The point to watch is how the city pays for the renovation.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "sarestoniemi-museum-kittila",
+  "section": "Red flags",
+  "problems": [
+   "heading lacks year of partnership",
+   "date missing"
+  ],
+  "before": "Red flags: Centenary partner Agnico Eagle Finland, fined in 2021 for a death at its Kittilä mine / In 2021 the Lapland District Court",
+  "after": "Red flags: 2025 centenary partner Agnico Eagle Finland, fined in 2021 over a death at its Kittilä mine / On 30 April 2021 the Lapland District Court",
+  "sources": [
+   "https://www.kaleva.fi/kittilan-kultakaivosyhtio-agnico-eagle-130-000-eur/3564580",
+   "https://www.sarestoniemimuseo.com/"
+  ],
+  "reason": "Kaleva (30 April 2021) confirms the EUR 130,000 corporate fine, the 15 December 2016 death and four supervisors fined. The museum's page names Agnico Eagle Finland's Kittilä mine among the main partners of the 2025 Reidar100 year (past tense: the centenary year)."
+ },
+ {
+  "id": "sarestoniemi-museum-kittila",
+  "section": "Red flags",
+  "problems": [
+   "two issues under one heading"
+  ],
+  "before": "In 2011 residents near the mine complained of discharges into the Seurujoki river ... (Yle).",
+  "after": "(cut)",
+  "sources": [
+   "https://yle.fi/a/3-5417961"
+  ],
+  "reason": "A separate, older environmental complaint about the mine, not about the museum; cut rather than fold into the fine's heading. Source removed from SOURCES."
+ },
+ {
+  "id": "sarestoniemi-museum-kittila",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Mostly clean: a museum that lives on its own ticket and shop income plus Finnish state money. The weak point is its centenary partnership with a gold miner convicted over a worker's death.",
+  "after": "Mostly clean money. The weak point is a centenary partner convicted over a worker's death.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "kadist-paris",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported link: 'Akat' filer tied to KADIST by shared director"
+  ],
+  "before": "A further filer, Akat of San Francisco, lists Terdjman among its directors: 2024 contributions USD 1,384,903 ...",
+  "after": "(cut)",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/981516659",
+   "https://kadist.org/about/"
+  ],
+  "reason": "ProPublica lists Terdjman as a director of Akat but no source states that Akat is part of KADIST; kadist.org names only AKAT KADIST (French endowment fund), Artnow International and KADIST Collection Manager. Cut per ruling; source removed."
+ },
+ {
+  "id": "kadist-paris",
+  "section": "FUNDING",
+  "problems": [
+   "unclear attribution"
+  ],
+  "before": "Mission Local found that 2023 direct charitable activities reached",
+  "after": "Mission Local found that on KADIST's 2023 tax form direct charitable activities reached",
+  "sources": [
+   "https://missionlocal.org/2025/09/kadist-mission-district-art-gallery-closing-after-14-years/"
+  ],
+  "reason": "Mission Local's figure comes from KADIST's 2023 tax form."
+ },
+ {
+  "id": "kadist-paris",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Private family money, tied to a venture capital career, with no flagged funder on record.",
+  "after": "Private family money, with no flagged funder.",
+  "sources": [],
+  "reason": "Venture capital already stated in FUNDING."
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "section": "Red flags",
+  "problems": [
+   "ruling: protest older than five years"
+  ],
+  "before": "Red flags: 2007 resignation of eight historians ... / Red flags: 2010 to 2011 occupation by undocumented workers",
+  "after": "WIDER CONTEXT points",
+  "sources": [
+   "https://laviedesidees.fr/Parler-d-autres-langages-que-celui-de-la-science",
+   "https://www.ccme.org.ma/reouverture-de-la-cite-de-l-immigration-sans-les-sans-papiers/",
+   "https://www.politis.fr/articles/2011/02/sans-papiers-hors-de-la-cite-12902/"
+  ],
+  "reason": "Both cases predate October 2021; moved to WIDER CONTEXT and condensed. Noiriel's reason reworded to what La Vie des idées says: the museum's aim clashed with the new president's campaign."
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "section": "Red flags",
+  "problems": [
+   "ruling: not a documented protest"
+  ],
+  "before": "Red flags: 2023 dispute over a Louis XIV metro poster",
+  "after": "WIDER CONTEXT point",
+  "sources": [
+   "https://questions.assemblee-nationale.fr/dyn/16/questions/QANR5L16QE9689.pdf"
+  ],
+  "reason": "The only documented objection is one RN deputy's written question to the culture minister, not a protest, open letter or petition aimed at the museum; moved to WIDER CONTEXT."
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "section": "FUNDING",
+  "problems": [
+   "wording"
+  ],
+  "before": "directorate for integration and nationality",
+  "after": "directorate for integration and access to nationality",
+  "sources": [
+   "https://www.cncdh.fr/sites/default/files/2023-06/Contribution%20Palais%20de%20la%20Porte%20dor%C3%A9e%20Rapport%20CNCDH%20Racisme%202022.pdf"
+  ],
+  "reason": "Matches the CNCDH contribution's 'direction de l'intégration et de l'accès à la nationalité'."
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "stronger than source"
+  ],
+  "before": "the museum will be left documenting harsher immigration laws.",
+  "after": "The author expects the museum to go on documenting harsher immigration laws.",
+  "sources": [
+   "https://apollo-magazine.com/france-immigration-museum-paris-porte-de-la-doree/"
+  ],
+  "reason": "Apollo frames it as an expectation."
+ },
+ {
+  "id": "palais-de-la-porte-doree-musee-national-de-l-histoire-de-l-immigration",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Clean public money from the French state, with no private sponsor on record. The weak points are political: a museum founded in a colonial propaganda building and exposed to each government's immigration policy.",
+  "after": "Clean public money, with no flagged funder. The weak point is political: the museum depends on the government whose immigration policy it documents.",
+  "sources": [],
+  "reason": "Verdict only; also under 800 words now."
+ },
+ {
+  "id": "joseph-stalin-museum",
+  "section": "Red flags",
+  "problems": [
+   "ruling: not a flag"
+  ],
+  "before": "Red flags: Plans since 2012 to refocus the museum on Stalin's crimes, never carried out",
+  "after": "OVERVIEW points (2012 Rurua plan, 2013 Karumidze plan, 2019 and 2024 press descriptions)",
+  "sources": [
+   "https://old.civil.ge/eng/article.php?id=24643",
+   "https://dfwatch.net/stalin-statue-to-be-restored-at-the-museum-in-his-hometown-36908-21722/",
+   "https://www.voanews.com/a/georgia-tries-to-reconcile-contested-soviet-history-with-western-future/7668055.html"
+  ],
+  "reason": "Moved to OVERVIEW. Civil.ge's own dateline confirms 9 April 2012. 'Never carried out' dropped as unstated by any source."
+ },
+ {
+  "id": "joseph-stalin-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: architect rests on a blog citing the spam-hijacked site"
+  ],
+  "before": "The main building is by the Georgian architect Archil Kurdiani, in the Stalinist style, with a red-carpeted marble staircase rising to a statue of Stalin (museumstudiesabroad.org, Irish Times).",
+  "after": "Visitors climb a red-carpeted marble staircase to a tall stone statue of Stalin (Irish Times).",
+  "sources": [
+   "https://museumstudiesabroad.org/stalin-museum-gori-georgia/",
+   "https://www.irishtimes.com/world/europe/2024/10/25/for-them-the-soviet-past-is-something-to-protect-history-a-political-battleground-in-stalins-homeland/"
+  ],
+  "reason": "The blog credits Kurdiani 'according to the official website', now serving spam; no other opened source names him. Architect cut."
+ },
+ {
+  "id": "joseph-stalin-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: halls from the blog"
+  ],
+  "before": "six halls ... death mask displayed alone in a red marble hall (museumstudiesabroad.org)",
+  "after": "The main building's six halls run in rough chronological order and end with a copy of Stalin's death mask; the complex also holds his personal railway carriage (Wikipedia, Civil.ge).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Joseph_Stalin_Museum,_Gori",
+   "https://old.civil.ge/eng/article.php?id=24643"
+  ],
+  "reason": "Resourced to Wikipedia and Civil.ge."
+ },
+ {
+  "id": "joseph-stalin-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unverified figure stated as fact"
+  ],
+  "before": "About 162,000 people visited in 2018, a figure given by Gori's tourist centre that SBS could not check (SBS, from The New York Times).",
+  "after": "Unverified: about 162,000 people visited in 2018, a figure from a worker at Gori's tourist centre quoted by The New York Times (SBS).",
+  "sources": [
+   "https://www.sbs.com.au/news/article/what-gulag-at-the-stalin-museum-hes-a-hometown-hero/7ifr4jhk6"
+  ],
+  "reason": "The figure is one clerk's word, relayed by the NYT via SBS; labelled Unverified with who claims it."
+ },
+ {
+  "id": "joseph-stalin-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "State money from the Georgian government, with no private funder on record. The concern is content, not money: a state budget keeps a Soviet shrine to Stalin largely as it was built.",
+  "after": "State money with no funder issue. The concern is content, not money: public funds keep a Soviet shrine largely as it was built.",
+  "sources": [
+   "https://unn.ua/en/news/stalin-museum-in-georgia-to-spend-dollar39-thousand-on-restoration-of-dictators-house"
+  ],
+  "reason": "Verdict only. The UNN tender point already credits Mtavari TV; kept."
+ },
+ {
+  "id": "deutsches-hygiene-museum",
+  "section": "Red flags",
+  "problems": [
+   "ruling: Beisheim identity was an inference",
+   "unsupported: before accepting his gift"
+  ],
+  "before": "The Prof. Otto Beisheim Stiftung in Munich (WHU) is named for Otto Beisheim ... asked for an investigation before accepting his gift ...",
+  "after": "The museum's press kit for \"Wie geht's?\" credits the Beisheim Stiftung and gives its site, beisheim-stiftung.com, which belongs to the Prof. Otto Beisheim Stiftung of Munich ... after he offered money to a grammar school in Rottach, Bavaria, students and teachers asked for an investigation; ... a stormtrooper and low-ranking SS member ...",
+  "sources": [
+   "https://shop.dhmd.de/assets/uploads/page/Wie-gehts_Medieninformation_final.pdf",
+   "https://www.beisheim-stiftung.com/",
+   "https://www.jta.org/2006/06/23/lifestyle/does-german-magnate-have-dirty-past"
+  ],
+  "reason": "Identity confirmed: the DHMD press kit's funder credit names beisheim-stiftung.com, whose footer reads Prof. Otto Beisheim Stiftung, Maximilianstrasse 35 C, Munich. Flag kept; JTA wording matched; WHU source replaced."
+ },
+ {
+  "id": "deutsches-hygiene-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Clean public money from Saxony and Dresden, topped up by federal grants and corporate and foundation sponsors. The one name to know is the Beisheim money behind its 2026 exhibition.",
+  "after": "Mainly clean public money. The one name to know is the Beisheim foundation; the point to watch is whether shrinking city money leaves the programme more dependent on sponsors.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "haus-der-kunst",
+  "section": "Red flags",
+  "problems": [
+   "ruling: staff dispute older than five years"
+  ],
+  "before": "Red flags: 2017 dismissal of a Scientologist personnel manager and the 2019 court case",
+  "after": "WIDER CONTEXT points",
+  "sources": [
+   "https://www.artforum.com/news/germany-investigates-munichs-haus-der-kunst-after-employee-pressures-staff-to-join-church-of-scientology-233131/",
+   "https://www.artforum.com/news/scientologist-and-former-employee-wins-lawsuit-against-munichs-haus-der-kunst-243270/"
+  ],
+  "reason": "Moved per ruling; figures confirmed (USD 123,000, full pension)."
+ },
+ {
+  "id": "haus-der-kunst",
+  "section": "Red flags",
+  "problems": [
+   "ruling: Beisheim identity"
+  ],
+  "before": "Red flags: Beisheim Stiftung, after a 2005 dispute over Otto Beisheim's SS past",
+  "after": "Red flags: Supporter Beisheim Stiftung and the 2005 finding on Otto Beisheim's SS membership; first point: Beisheim Stiftung is the public name of the Prof. Otto Beisheim Stiftung of Munich (beisheim-stiftung.com, DHMD press kit).",
+  "sources": [
+   "https://www.hausderkunst.de/en/about-us/support",
+   "https://www.beisheim-stiftung.com/",
+   "https://shop.dhmd.de/assets/uploads/page/Wie-gehts_Medieninformation_final.pdf"
+  ],
+  "reason": "Haus der Kunst credits 'Beisheim Stiftung' by name and logo only. The foundation uses exactly that name on its own site, footer Prof. Otto Beisheim Stiftung, Munich, and the DHMD credit links the same name to that site. Kept on that basis; the editor may want a Haus der Kunst page naming the full foundation."
+ },
+ {
+  "id": "haus-der-kunst",
+  "section": "Red flags",
+  "problems": [
+   "unsupported: Enwezor rejected the blame",
+   "heading lacked year"
+  ],
+  "before": "Enwezor, who had left in June 2018, rejected the blame / Red flags: Delays and rising cost of the renovation planned since 2012",
+  "after": "director Okwui Enwezor, who had left in June 2018, said the last figures he saw gave no sign of problems / Red flags: Delays and rising cost of the Chipperfield renovation, 2017 to 2020",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/08/20/okwui-enwezor-hits-out-at-besmirching-by-haus-der-kunst",
+   "https://www.abendzeitung-muenchen.de/muenchen/muenchens-museen-schwaecheln-art-486658"
+  ],
+  "reason": "Matched to The Art Newspaper's wording; deficit and renovation cost and delays kept as money issues per ruling."
+ },
+ {
+  "id": "haus-der-kunst",
+  "section": "whole report",
+  "problems": [
+   "over 800 words"
+  ],
+  "before": "823 words",
+  "after": "792 words",
+  "sources": [
+   "https://atstiftung.de/en/ueber-uns/"
+  ],
+  "reason": "Tightened Tutsek, supervisory board, renovation pledge and Lüpertz points; cut the record-show detail. No heading dropped."
+ },
+ {
+  "id": "haus-der-kunst",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Mainly Bavarian state money with Munich private foundations, and no flagged industry funder. The weak points are governance, a stalled public renovation and the Beisheim name among its supporters.",
+  "after": "Mainly clean public money, with no flagged industry funder. The weak points are financial management, a stalled public renovation and one name to know among its supporters.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "section": "OVERVIEW",
+  "problems": [
+   "number off: '32-member academic council'"
+  ],
+  "before": "president of its 32-member academic council",
+  "after": "president of its academic council of 32 historians",
+  "sources": [
+   "https://www.bpb.de/shop/zeitschriften/apuz/archiv/536958/die-gruendung-des-museums-fuer-deutsche-geschichte-in-der-ddr/"
+  ],
+  "reason": "Pfundt: a council of thirty-two historians and a president."
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "section": "OVERVIEW",
+  "problems": [
+   "source conflict not stated"
+  ],
+  "before": "Its first permanent exhibition opened in mid-1952 at a provisional site, Clara-Zetkin-Straße 26, and it moved into the rebuilt Zeughaus in the early 1960s (DHM).",
+  "after": "The DHM places its first permanent exhibition, in mid-1952, at a provisional site, Clara-Zetkin-Straße 26, and its move into the rebuilt Zeughaus in the early 1960s; Pfundt places a July 1952 exhibition in the Zeughaus rooms (Aus Politik und Zeitgeschichte).",
+  "sources": [
+   "https://www.dhm.de/en/museum/about-us/history",
+   "https://www.bpb.de/shop/zeitschriften/apuz/archiv/536958/die-gruendung-des-museums-fuer-deutsche-geschichte-in-der-ddr/"
+  ],
+  "reason": "Both sources stated. Ruling applied: founding-decision conflict (Politburo February 1950 vs Central Committee August 1950) kept with both sources; both Red flags confirmed (bpb on SED steering and censorship and the 13 June 1952 Politburo inspection; DHM on land-reform expropriations)."
+ },
+ {
+  "id": "museum-fur-deutsche-geschichte",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "A party-state propaganda museum, wholly funded and controlled by the GDR and closed in 1990. The open question today is the provenance of the expropriated objects now held by its successor.",
+  "after": "State money under party control, with the party steering what it showed. What stays open is the provenance of expropriated objects its successor holds.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "ilulissat-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "ruling: client publishing claim",
+   "own claim not marked"
+  ],
+  "before": "Andreas Hoffmann is director. The museum describes itself as Greenland's most visited art museum (Scan Magazine, ilulissatmuseums.gl).",
+  "after": "Andreas Hoffmann is director (Scan Magazine); the museum's own site calls it Greenland's most visited art museum (ilulissatmuseums.gl).",
+  "sources": [
+   "https://scanmagazine.co.uk/ilulissat-art-museum-art-that-challenges-changes-and-charms/",
+   "https://ilulissatmuseums.gl/the-ilulissat-art-museum/"
+  ],
+  "reason": "Scan Magazine supports names and titles only; the superlative credited to the museum's own site."
+ },
+ {
+  "id": "ilulissat-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "ruling: client publishing used for a fact",
+   "repetition: municipal stated twice"
+  ],
+  "before": "A municipal museum (lex.dk); the house was turned into the museum by the municipality in 1995 (Scan Magazine). / Overview: two small municipal art museums",
+  "after": "A municipal museum (lex.dk); its museum office takes bookings at an Avannaata Municipality address (ilulissatmuseums.gl). / Overview: two small art museums",
+  "sources": [
+   "https://lex.dk/Gr%C3%B8nlands_kunstmuseer",
+   "https://ilulissatmuseums.gl/ammaffissat-opening-hours/"
+  ],
+  "reason": "Scan Magazine fact removed; 'municipal' kept once. Nunafonden credit confirmed on the museum page."
+ },
+ {
+  "id": "ilulissat-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Clean municipal money for a small public museum, with one named foundation behind a single show.",
+  "after": "Clean public money, with no flagged funder.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "OVERVIEW",
+  "problems": [
+   "ruling: client publishing used for facts"
+  ],
+  "before": "It also serves as a community centre for local people in the dark season and offers free teaching material ... Visiting: open all year; in high season tickets are sold for set time slots ...",
+  "after": "Elisabeth Momme heads it (Scan Magazine, 2024).",
+  "sources": [
+   "https://scanmagazine.co.uk/the-icefjord-centre-in-symbiosis-with-the-ice-of-greenland/"
+  ],
+  "reason": "Scan Magazine supports names and titles only; the school service is already sourced to BYGGERI+arkitektur under FUNDING."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "Red flags",
+  "problems": [
+   "unsupported: 'whose purpose includes funding the foundation's grants'",
+   "heading lacked year"
+  ],
+  "before": "an investment company whose purpose includes funding the foundation's grants / Red flags: Exhibition funder Augustinus Fonden, a major Scandinavian Tobacco Group shareholder",
+  "after": "a foundation-owned investment company / Red flags: Exhibition funder Augustinus Fonden and its 2025 stake in Scandinavian Tobacco Group",
+  "sources": [
+   "https://augustinusfabrikker.dk/en/history",
+   "https://www.st-group.com/investor/shareholder-information/",
+   "https://byggeri-arkitektur.dk/ilulissat-isfjordscenter-i-groenland-goer-klar-til-aabning"
+  ],
+  "reason": "Confirmed from primary pages: 100% ownership, c. 25% of STG at c. 6% of its balance; STG lists Chr. Augustinus Fabrikker above 25% as of 1 May 2025. BYGGERI+arkitektur confirms the four exhibition funders."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "Red flags",
+  "problems": [
+   "heading wording"
+  ],
+  "before": "Red flags: Exhibition funder Nordea-fonden, built on Nordea Bank shares fined for money-laundering failures in 2024",
+  "after": "Red flags: Exhibition funder Nordea-fonden and Nordea Bank's 2024 anti-money-laundering penalty",
+  "sources": [
+   "https://nordeafonden.dk/about-nordea-fonden/who-we-are/investments",
+   "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr20240827"
+  ],
+  "reason": "Confirmed: 71% of Nordea-fonden's capital in Nordea Bank Abp (Q1 2026); NYDFS press release of 27 August 2024 on the USD 35 million penalty."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "Website",
+  "problems": [
+   "re-try"
+  ],
+  "before": "(checked 2026-11-20; down, the domain did not resolve)",
+  "after": "(checked 2026-11-20, twice; down, the domain did not resolve)",
+  "sources": [],
+  "reason": "Re-tried with curl (502 at proxy) and WebFetch (ENOTFOUND)."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The building money is Danish foundation and Greenlandic public money. The weak points are two exhibition funders: tobacco money through Augustinus Fonden and Nordea Bank money through Nordea-fonden.",
+  "after": "The building money is clean. Two of the four exhibition funders carry red flags, one for tobacco and one for a bank penalty.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "Red flags",
+  "problems": [
+   "ambiguous: 'about 6% of its balance sheet'"
+  ],
+  "before": "about 25% of Scandinavian Tobacco Group, about 6% of its balance sheet",
+  "after": "about 25% of Scandinavian Tobacco Group, a holding worth about 6% of Chr. Augustinus Fabrikker's balance sheet",
+  "sources": [
+   "https://augustinusfabrikker.dk/en/history"
+  ],
+  "reason": "The 6% is of the investment company's own balance, not STG's."
+ },
+ {
+  "id": "ilulissat-icefjord-centre",
+  "section": "OVERVIEW",
+  "problems": [
+   "credit: walkable roof not on Realdania page"
+  ],
+  "before": "(Realdania, BYGGERI+arkitektur)",
+  "after": "(designboom, BYGGERI+arkitektur)",
+  "sources": [
+   "https://www.designboom.com/architecture/dorte-mandrup-icefjord-centre-greenland-09-09-2021/"
+  ],
+  "reason": "designboom describes the twisting form and walkable roof."
+ },
+ {
+  "id": "ilulissat-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line one sentence after trim"
+  ],
+  "before": "Clean public money, with no flagged funder.",
+  "after": "Clean public money, with no flagged funder. Its one named private backer pays for a single show, not the running costs.",
+  "sources": [],
+  "reason": "Bottom line needs two or three sentences."
+ }
+]
