@@ -6,6 +6,42 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 
 ## Grade or flag questions
 
+- pinacoteca-agnelli: main sponsor Stellantis's unit FCA US pleaded guilty in the US in 2022 (name to
+  know); the Elkann and Ferrero tax case is pending (WIDER CONTEXT).
+- museo-revoltella: July 2022 open letter (Protest); attendants' pay disputes 2023 to 2026.
+- reggia-di-caserta: 2025 oak-felling protest (Protest).
+- okayama-art-summit-okayama: Tobacco only if text names JT as a Summit sponsor; Protest if a petition
+  is dated November 2021 or later. Its tier_note says no reason is recorded.
+- new-national-theatre-tokyo-nntt: MHI Machinery Systems co-sponsored a 2024 children's ballet (arms
+  question). Bloomberg L.P. is a sponsor, no campaign at this theatre.
+- 21st-century-museum-of-contemporary-art: Fossil fuels confirmed (Kanazawa Energy: Hokuriku Electric
+  48%, Toho Gas 43%).
+
+- museo-nacional-de-historia-castillo-de-chapultepec: 2026 FIFA gala dinner, INAH researchers'
+  complaint of misuse (staff objection, Protest); investigation open.
+- nairobi-national-museum: Auditor-General's audit of National Museums of Kenya (Dec 2022).
+- gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek: no Red flag remains (2019 cases are WIDER
+  CONTEXT).
+
+- oman-across-ages-museum and royal-opera-house-muscat: Gulf state body (run under Royal Court Affairs
+  by Royal Decree 15/2023; Royal Decree 105/2010 and a Higher Committee under the Deputy Prime
+  Minister). Records have no flags.
+- nasjonalmuseet-national-museum-of-norway: Protest flag fits (June 2022 artists' appeal against the
+  Fredriksen agreement). Fredriksen's 2014 US oil-fraud fine (Kunstkritikk) could be a name to know.
+
+- tehran-museum-of-contemporary-art-tmoca: owner ministry itself on the US SDN list: Sanctions stays.
+- gallerie-d-italia: owner Intesa Sanpaolo's fossil lending is not a flag; 2025 Extinction Rebellion
+  occupation (protest) and 2026 privacy fines (name to know).
+- habima-theatre: all disputes pre-2021, no current flag.
+
+- mus-e-mohammed-vi-d-art-moderne-et-contemporain-mmvi-rabat and national-art-gallery-of-namibia-windhoek:
+  record flags rest on 2014 censorship episodes, now WIDER CONTEXT under the five-year rule.
+- african-artists-foundation-lagos: Deutsche Bank flag (NYDFS Epstein-related penalty, 2020) rested
+  on logo file names; kept only if a text source names the sponsorship. Mike Adenuga (who also
+  controls Conoil) supports LagosPhoto personally and through Globacom: no flag.
+- heroes-acre-windhoek: 2002 cost overrun and builder Mansudae's 2016 to 2017 sanctions are WIDER
+  CONTEXT; record flags may need review.
+
 - national-museum-of-cambodia: no Red flags remain (Latchford's 2008 honour and 2019 indictment are
   WIDER CONTEXT); check whether the record carries a flag that rested on them.
 - nuuk-art-museum-nuuk-kunstmuseum-nuuk: Tobacco confirmed on STG's own page (Chr. Augustinus
@@ -62,6 +98,71 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   under the five-year rule; no red flag remains.
 
 ## Record fields that are wrong
+
+- pinacoteca-agnelli: funding says the funder is not stated; it is the foundation, Stellantis and
+  Lingotto IM.
+- reggia-di-caserta: director now Antonio Tarasco, interim since June 2026.
+- gotoh-museum: funding and records_note wrong; the foundation publishes plans and reports for 2012 to
+  2026, and Tokyu Corporation is the funder.
+- new-national-theatre-tokyo-nntt: Nippon Life and the 2026/27 sponsor list unverified.
+- okayama-art-summit-okayama: funding names Stripe International and Chugoku Bank; the 2025 page lists
+  Chugin Financial Group and Ishikawa Holdings. Ishikawa was executive producer, not director (Taro
+  Nasu executive director, Philippe Parreno artistic director).
+- pola-museum-of-art-hakone: founder spelled Tsuneji and Tsuneshi in different fields.
+- tokyo-metropolitan-art-museum: operator is the Tokyo Metropolitan Foundation for History and Culture,
+  re-selected in September 2026 for 2027 to 2037.
+
+- gapar-aitiev-kyrgyz-national-museum-of-fine-arts-bishkek: no website field; site is https://artmuseum.kg.
+- museo-de-la-ciudad-de-méxico-mexico-city: why_flagged repeats the funding line.
+- museo-de-los-pintores-oaxaqueños-oaxaca: website is a state press release returning HTTP 500; opening
+  year 2003, 2004 or 2006 by source.
+- museo-nacional-de-historia-castillo-de-chapultepec: funding and records_note use "pages read" wording.
+- museo-universitario-del-chopo-mexico-city: watch says the Juan Gabriel show was postponed with no
+  reason given; it opened hours later with an administrative reason.
+- zanabazar-museum-of-fine-art-ulaanbaatar: "state museum" unconfirmed; zanabazarmuseum.mn returns 404.
+- crater-invertido-mexico-city: year_founded 2012; highlight, MUAC and its own site say 2011.
+- montresso-art-foundation-jardin-rouge-marrakech: watch's 40 artists a year and 20 km; Arterritory
+  says about thirty and half an hour's drive.
+
+- sinchon-museum-of-american-war-atrocities-sinchon: website (kcnawatch.org) is not the museum's.
+- victorious-fatherland-liberation-war-museum: funding cites Koryo Tours for the 1963 move; Koryo no
+  longer says it.
+- oman-across-ages-museum, royal-opera-house-muscat: funding, watch and records_note say no funder was
+  found ("pages read" wording); the royal decrees name the state bodies.
+- s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok: county and Arts Council funders appear
+  only as logos; the director post was advertised again in February 2026.
+- uks-unge-kunstneres-samfund-oslo: tier_note "no source outside the museum" is out of date.
+- centro-cultural-de-la-republica-el-cabildo: Balmelli was not Congress president at the 2004 opening
+  (ABC Color: Miguel Carrizosa); Balmelli had the idea.
+
+- habima-theatre: watch puts the 2010 Ariel row at Beersheva; Arutz Sheva quotes Habima's co-manager
+  saying Habima would perform in Ariel. Funding is stale: a Tel Aviv municipal corporation since
+  24 March 2022.
+- jakarta-biennale: watch says KEBAL runs to 28 November; the site gives 4 to 28 October (main show)
+  and programmes to 24 November. Funding's partner names come from logos only.
+- galeri-nasional-indonesia: closed since 12 October 2026 for revitalisation; website domain does not
+  resolve.
+- ruang-mes-56-yogyakarta, museo-archeologico-nazionale-di-reggio-calabria-marrc: tier_note "no source
+  outside the museum" is out of date.
+- museo-archeologico-nazionale-di-napoli, museum-nasional-indonesia: funding and records_note still
+  carry "pages read did not state" lines.
+
+- national-art-gallery-of-namibia-windhoek: tier_note says no outside source; the BDO-audited annual
+  report and Bank Windhoek's release exist. finances_note's 2024/25 PDF now returns 404.
+- tent-rotterdam: no funding field; CBK's 2025 accounts give the City of Rotterdam's structural
+  subsidy as €4.021m of €4.459m. Address: Coolhaven 34 (CBK) or 32 (TENT).
+- van-schijndel-house: offered for sale at €1,900,000 in March 2026.
+- african-artists-foundation-lagos: no funding field.
+- mus-e-mohammed-vi-d-art-moderne-et-contemporain-mmvi-rabat: Nadia Sabri director since October 2025.
+
+- teatro-nacional-de-cuba: funding gives the halls as 2,254 and 805 seats; EcuRed gives 850 for the
+  Covarrubias.
+- 6th-of-october-war-panorama: funding and affiliations_note say the National Military Museums
+  Department runs it, from unreferenced Wikipedia text.
+- union-de-escritores-y-artistas-de-cuba-uneac, museo-de-arte-moderno-de-santo-domingo: why_flagged
+  repeats the funding text.
+- contemporary-image-collective-cairo, medrar-for-contemporary-art-cairo: tier_note says no outside
+  source; outside sources now exist (Ford grants database, Contemporary And, DutchCulture, AFAC).
 
 - korean-art-gallery-pyongyang: website (korean-books.com.kp) is the Foreign Languages Publishing
   House site and returned 502; year_founded 1954 vs 1948 (Wikipedia, Koryo Studio).
@@ -147,7 +248,14 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 
 ## Thin sourcing to know about
 
-- Archive-copy review before import also covers: museo-para-la-identidad-nacional-min-tegucigalpa
+- villa-arson-nice: French Wikipedia cites a Libération piece (8 July 2022) on a Ministry of Culture
+  inquiry finding a "climat délétère" and sexist and racist remarks; Libération refuses automated
+  reads, so it is not in the report. Worth reading by hand.
+- brucke-museum: the 2024 budget lists 500,000 euros each from the Kulturstiftung der Länder and the
+  Ernst von Siemens Kunststiftung as "Entschädigung von Gemälde Kirchner"; no source explains it.
+
+- Archive-copy review before import also covers: taller-experimental-de-grafica-de-la-habana
+  (Smithsonian 2016, archive copy after a live 403); museo-para-la-identidad-nacional-min-tegucigalpa
   (Hyperallergic, November 2020 archive copy) and skulpturenpark-waldfrieden (Westdeutsche Zeitung
   2012, archived copy).
 

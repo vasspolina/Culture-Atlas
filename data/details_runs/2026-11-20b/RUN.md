@@ -41,8 +41,13 @@ existing Red flags section or press item unless a source shows it is wrong; say 
 - A dispute about a different institution goes under WIDER CONTEXT with the connection stated.
 - An investigation or charge that has not ended in a conviction is a note (WIDER CONTEXT), not a Red
   flag; a court order or conviction is stated plainly and can be a Red flag.
+- An audit finding, cost overrun or closed tender older than five years is WIDER CONTEXT, as is a
+  builder or contractor that did not fund the space.
 - A budget cut is a funding fact: a dated point under FUNDING, not a Red flag. A cost overrun or an
   audit's criticism of public money is a Red flag.
+- A bank's lending to fossil-fuel companies is not a Fossil fuels flag (only a bank whose stated role
+  is financing an arms industry counts as Arms and defence); a bank's criminal plea or regulatory fine
+  is a name to know.
 - Buyers of a space's services (paid announcements, venue hire, tickets) are clients, not funders.
 
 ## Wording rules

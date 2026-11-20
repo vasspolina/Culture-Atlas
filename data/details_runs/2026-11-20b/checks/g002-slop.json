@@ -1,0 +1,615 @@
+[
+ {
+  "id": "art-gallery-of-nova-scotia",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only figure",
+   "repetition",
+   "over length"
+  ],
+  "before": "OVERVIEW\n- Provincial art museum at 1723 Hollis Street in downtown Halifax, which describes itself as the largest art museum in Atlantic Canada and an agency of the Province of Nova Scotia (AGNS website).\n- Founded in 1908 as the Nova Scotia Museum of Fine Arts to keep the Crown's 200-piece art collection; renamed in 1975 (AGNS website).\n- It opened its downtown home in 1988, the former Dominion Building of 1867 by David Stirling and William Hay, and added two floors of the neighbouring Provincial Building in 1998, with room for the Maud Lewis House and Gallery (AGNS website; Wikipedia).\n- The permanent collection holds over 19,000 works (AGNS website); Wikipedia states that the gallery held 55 works by Maud Lewis in June 2017 and acquired 2,070 images by Annie Leibovitz in June 2013.\n- Sarah Moore Fillmore is chief executive and Grant Machum chairs the board (2025-26 annual report).\n- The main gallery closed from February 2024 and reopened in June 2024 with a new 600,000 dollar sprinkler system; a 1.9 million dollar roof was due that year (CBC News, 10 June 2024).\n- Visiting: closed Mondays; open 10am to 5pm Tuesday to Sunday and until 9pm on Thursdays. Admission is 15 dollars, 13 dollars for seniors and youth 7 to 17, and free for Nova Scotia residents under 25, children under 7 and Indigenous Peoples (AGNS website).",
+  "after": "OVERVIEW\n- Provincial art museum at 1723 Hollis Street in downtown Halifax, which describes itself as the largest art museum in Atlantic Canada (AGNS website).\n- Founded in 1908 as the Nova Scotia Museum of Fine Arts to keep the Crown's 200-piece art collection; renamed in 1975 (AGNS website).\n- It opened its downtown home in 1988 and added two floors of the neighbouring Provincial Building in 1998, with room for the Maud Lewis House and Gallery (AGNS website). Wikipedia names the 1988 home as the Dominion Building of 1867, designed by David Stirling and William Hay.\n- The permanent collection holds over 19,000 works (AGNS website).\n- Sarah Moore Fillmore is chief executive and Grant Machum chairs the board (2025-26 annual report).\n- The main gallery closed from February to June 2024 for a new 600,000 dollar sprinkler system; the province planned a 1.9 million dollar roof that year (CBC News, 10 June 2024).\n- Visiting: 10am to 5pm, until 9pm on Thursdays, closed Mondays. Admission 15 dollars, 13 for seniors and youth 7 to 17; free for Nova Scotia residents under 25, children under 7 and Indigenous Peoples (AGNS website).",
+  "sources": [
+   "https://agns.ca/about/",
+   "https://en.wikipedia.org/wiki/Art_Gallery_of_Nova_Scotia",
+   "https://www.cbc.ca/lite/story/1.7228653"
+  ],
+  "reason": "The Dominion Building architects are on the cited Wikipedia page and now credited to it; the Maud Lewis and Leibovitz counts were cut to meet the word limit (the Leibovitz donation stays in the press item). 'Agency of the Province' repeated FUNDING; hours and admission rechecked on the visit page."
+ },
+ {
+  "id": "art-gallery-of-nova-scotia",
+  "section": "FUNDING",
+  "problems": [
+   "over length"
+  ],
+  "before": "FUNDING\nArt Gallery of Nova Scotia: mainly public: Province of Nova Scotia and federal grants, with bank and family foundation sponsors\n- Status: a provincial agency reporting through the Ministry of Communities, Culture, Tourism and Heritage; the Province lets it use its premises at a nominal cost, and works it acquires become provincial property (audited financial statements, 2024-25).\n- Revenue in 2024-25 was 5.41 million dollars: provincial grants 2.75 million, federal grants 435,800, endowment income 443,496, donations 412,214, admissions 212,518 and sponsorships 147,917 (financial statements, schedule 1).\n- The gallery states that it raises more than 55% of its operating funds from donors, private partners, admissions and memberships (Reports and Plans page).\n- Partners in 2025-26 include BMO Financial Group, Scotiabank, TD Bank Group, IG Wealth Management, Cabot Cape Breton, Benjamin Bridge, the Azrieli Foundation, the D.R. Sobey Foundation and The Sobey Foundation (2025-26 annual report).\n- BMO pays for Free Access Thursday Nights, which it says let more than 50,000 visitors in free since 2017 (2025-26 annual report).\n- TD Bank Group pays for a two-year TD Curatorial Fellowship begun in 2024 and sponsored the fellow's exhibitions (2025-26 annual report).",
+  "after": "FUNDING\nArt Gallery of Nova Scotia: mainly public: Province of Nova Scotia and federal grants, with bank and family foundation sponsors\n- A provincial agency reporting through the Ministry of Communities, Culture, Tourism and Heritage; the Province lets it use its premises at a nominal cost, and works it acquires become provincial property (financial statements, 2024-25).\n- Revenue in 2024-25 was 5.41 million dollars: provincial grants 2.75 million, federal grants 435,800, endowment income 443,496, donations 412,214, admissions 212,518 and sponsorships 147,917 (financial statements, schedule 1).\n- The gallery states that it raises more than 55% of its operating funds from donors, private partners, admissions and memberships (Reports and Plans page).\n- Partners in 2025-26 include BMO Financial Group, Scotiabank, TD Bank Group, IG Wealth Management, Cabot Cape Breton, Benjamin Bridge, the Azrieli Foundation, the D.R. Sobey Foundation and The Sobey Foundation (2025-26 annual report).\n- BMO pays for Free Access Thursday Nights, which has let more than 50,000 visitors in free since 2017 (2025-26 annual report).\n- TD Bank Group pays for a two-year TD Curatorial Fellowship begun in 2024 and sponsored the fellow's exhibitions (2025-26 annual report).",
+  "sources": [
+   "https://agns.ca/wp-content/uploads/2026/06/2024-25-Financial-Statements.pdf",
+   "https://agns.ca/wp-content/uploads/2026/11/2025_26-Annual-Report_updated.pdf"
+  ],
+  "reason": "Every figure confirmed in the 2024-25 statements and the 2025-26 annual report; wording trimmed."
+ },
+ {
+  "id": "art-gallery-of-nova-scotia",
+  "section": "Red flags: 2024 money-laundering plea by TD Bank, the fellowship's sponsor",
+  "problems": [
+   "heading does not name issue with year first",
+   "repetition"
+  ],
+  "before": "Red flags: TD Bank, sponsor of the curatorial fellowship, pleaded guilty to money laundering in 2024\n- On 10 October 2024 TD Bank pleaded guilty in federal court in Newark, New Jersey, to Bank Secrecy Act program failures and conspiracy to commit money laundering, paying 1.8 billion dollars to the Department of Justice, 1.3 billion to FinCEN and a Federal Reserve fine of over 124 million (NBC News, Dan Mangan of CNBC). The bank admitted failing to monitor 18.3 trillion dollars in customer activity over six years.\n- TD is listed under \"Current Supporters\" for the TD Assistant Curatorial Fellowship on the gallery's business-support page (checked 2026-11-20).",
+  "after": "Red flags: 2024 money-laundering plea by TD Bank, the fellowship's sponsor\n- On 10 October 2024 TD Bank pleaded guilty in federal court in Newark, New Jersey, to Bank Secrecy Act program failures and conspiracy to commit money laundering, paying 1.8 billion dollars to the Department of Justice, 1.3 billion to FinCEN and a Federal Reserve fine of over 124 million (NBC News, Dan Mangan of CNBC). The bank admitted failing to monitor 18.3 trillion dollars in customer activity over six years.",
+  "sources": [
+   "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912",
+   "https://agns.ca/support/support-through-business/"
+  ],
+  "reason": "Kept as a name to know per ruling; heading reworded to issue and year. The point that TD sponsors the fellowship repeated FUNDING and was cut."
+ },
+ {
+  "id": "art-gallery-of-nova-scotia",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wording"
+  ],
+  "before": "CRITICISM IN ART MEDIA\nOverall: Art press coverage is thin; the one piece concerns the tax ruling on a donated collection, not the gallery's funders.\n1. ArtsJournal: ArtsJournal2, \"Once Again, A Canadian Panel Finds That An Annie Leibovitz Collection Is Not Fully 'Significant'\" (2017)\nURL: https://www.artsjournal.org/?p=127358\n- A Canadian panel again found the Leibovitz collection donated to the gallery in 2013 not fully significant, with major tax implications for the donor.\n- The gallery said it disagreed. A short news item, not a critique of the gallery.",
+  "after": "CRITICISM IN ART MEDIA\nOverall: Art press coverage is thin; the one piece concerns a tax ruling on a donated collection, not the gallery's funders.\n1. ArtsJournal: ArtsJournal2, \"Once Again, A Canadian Panel Finds That An Annie Leibovitz Collection Is Not Fully 'Significant'\" (2017)\nURL: https://www.artsjournal.org/?p=127358\n- A Canadian panel again found the Leibovitz collection, donated to the gallery in 2013, not fully significant, with major tax implications for the donor.\n- A short news item, not a critique; the gallery said it disagreed.",
+  "sources": [
+   "https://www.artsjournal.org/?p=127358"
+  ],
+  "reason": "Item confirmed on the page; wording tightened."
+ },
+ {
+  "id": "art-gallery-of-nova-scotia",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA provincial agency living mainly on provincial and federal grants. The weak points are TD Bank's sponsorship of its curatorial fellowship, the shelved waterfront building and the unconsulted Yarmouth closure.",
+  "after": "BOTTOM LINE\nClean public and bank money. TD Bank is the name to know; the shelved building and the Yarmouth closure are the disputes to watch.",
+  "sources": [],
+  "reason": "Bottom line restated FUNDING facts; now gives the verdict only."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "Website",
+  "problems": [
+   "archive read not dated"
+  ],
+  "before": "HEADER\nWINNIPEG ART GALLERY-QAUMAJUQ: Winnipeg, Canada\nID: winnipeg-art-gallery-qaumajuq-winnipeg\nWebsite: https://www.wag.ca/ (checked 2026-11-20; refused the automated check with a 403 error; pages read through the Internet Archive)",
+  "after": "HEADER\nWINNIPEG ART GALLERY-QAUMAJUQ: Winnipeg, Canada\nID: winnipeg-art-gallery-qaumajuq-winnipeg\nWebsite: https://www.wag.ca/ (checked 2026-11-20; refused the automated check; pages read as Internet Archive copies)",
+  "sources": [
+   "https://www.wag.ca/"
+  ],
+  "reason": "wag.ca still refuses automated checks; the pages were read as Internet Archive copies, now said so and dated in SOURCES."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only figure",
+   "over length"
+  ],
+  "before": "OVERVIEW\n- Public art gallery on a triangular downtown site at Memorial Boulevard and St. Mary Avenue, made up of the 1971 main building and Qaumajuq, a building for Inuit art that opened in March 2021 (Wikipedia; The Art Newspaper).\n- Its roots go back to the Winnipeg Museum of Fine Arts, opened on 16 December 1912; the present Winnipeg Art Gallery was incorporated by the Manitoba legislature on 6 May 1963 (Wikipedia).\n- Qaumajuq is Inuktitut for \"it is bright, it is lit\" (The Art Newspaper).\n- The main building by Gustavo da Roza opened on 25 September 1971, clad in Tyndall stone and built for about C$4.5 million from federal, provincial and private money (Wikipedia).\n- Qaumajuq is a four-storey, 40,000 square foot building by Michael Maltzan with Cibinel Architecture, with an 8,000 square foot exhibition space, a 90-seat theatre, a cafe, art studios and a three-storey glass vault holding around 5,000 Inuit works (The Art Newspaper).\n- The gallery holds about 14,000 Inuit works by more than 2,000 artists (The Art Newspaper) and calls its collection of nearly 30,000 artworks the largest public collection of contemporary Inuit art (WAG, 3 December 2025).\n- Director and CEO Stephen Borys announced on 11 July 2025 that he would step down after 17 years; Deputy Director and CFO Bill Elliott leads on an interim basis while the board searches for a successor (WAG).\n- About 102,000 visitors came in 2025-26 (2025-26 annual report).\n- In June 2024 police confirmed that Astral Plain Scouts, a painting donated in 2000 as a Norval Morrisseau, came from the Thunder Bay forgery ring; it had not been shown since 2013 (CBC News, 26 June 2024).",
+  "after": "OVERVIEW\n- Public art gallery in downtown Winnipeg: the 1971 main building and Qaumajuq, a building for Inuit art opened in March 2021 (Wikipedia; The Art Newspaper).\n- Its roots go back to the Winnipeg Museum of Fine Arts, opened on 16 December 1912; the present Winnipeg Art Gallery was incorporated by the Manitoba legislature on 6 May 1963 (Wikipedia).\n- Qaumajuq is Inuktitut for \"it is bright, it is lit\" (The Art Newspaper).\n- The main building by Gustavo da Roza opened on 25 September 1971, clad in Tyndall stone (Wikipedia).\n- Qaumajuq, a four-storey building by Michael Maltzan with Cibinel Architecture, has an 8,000 square foot exhibition space, a 90-seat theatre and a glass vault holding around 5,000 Inuit works (The Art Newspaper).\n- The gallery holds about 14,000 Inuit works by more than 2,000 artists (The Art Newspaper) among nearly 30,000 artworks (WAG, 3 December 2025).\n- Director and CEO Stephen Borys announced on 11 July 2025 that he would step down after 17 years; Deputy Director and CFO Bill Elliott leads on an interim basis (WAG).\n- About 102,000 visitors came in 2025-26 (2025-26 annual report).\n- In June 2024 police confirmed that Astral Plain Scouts, donated in 2000 as a Norval Morrisseau painting, was a fake found in the Thunder Bay Morrisseau fraud investigation (CBC News, 26 June 2024).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Winnipeg_Art_Gallery",
+   "https://www.theartnewspaper.com/news/winnipeg-gallery-opens-new-centre-dedicated-to-inuit-art",
+   "https://www.cbc.ca/lite/story/1.7246764"
+  ],
+  "reason": "The 1971 cost (C$4.5 million) rests on Wikipedia alone and was cut. Qaumajuq and collection points trimmed for length; Morrisseau point reworded to what CBC states."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "FUNDING",
+  "problems": [
+   "wikipedia-only figure",
+   "unsupported detail"
+  ],
+  "before": "FUNDING\nWinnipeg Art Gallery-Qaumajuq: mixed public and private: federal, Manitoba, Winnipeg and Nunavut governments with bank and corporate sponsors\n- Government supporters listed for 2024: the Government of Canada, the Canada Council for the Arts, Prairies Economic Development Canada, the Province of Manitoba, the Manitoba Arts Council, the City of Winnipeg, the Winnipeg Arts Council and the Government of Nunavut (2024 and 2025-26 annual reports).\n- Largest 2024 private gifts: TD Bank Group and the Winnipeg Art Gallery Foundation (100,000 to 249,999 dollars each); Canada Life and Power Corporation of Canada (75,000 to 99,999 dollars each) (annual report).\n- Canada Life pays for free admission on the second Sunday of each month, and Power Corporation for free WAG Wednesday Nights from 2026; the Richardson Foundation presented the 2025 Abraham Anghik Ruben retrospective (2025-26 annual report).\n- The separate WAG Foundation has given nearly 2 million dollars over the years (2024 annual report).\n- Qaumajuq cost about C$65 million; federal, provincial and municipal governments gave C$35 million and donations the rest (The Art Newspaper; Wikipedia).\n- The Government of Nunavut lent about 8,000 works under a 2015 agreement with the Government of Manitoba (Wikipedia).\n- The City of Winnipeg gave 102,500 dollars in December 2025 towards the 945,000 dollar replacement of the 1971 building's elevators (WAG).\n- Manitoba Liquor & Lotteries Corporation, the provincial body that runs Club Regent Casino and McPhillips Station Casino, gave 5,000 to 9,999 dollars in 2024, partly in artwork (annual report; MLL website).",
+  "after": "FUNDING\nWinnipeg Art Gallery-Qaumajuq: mixed public and private: federal, Manitoba, Winnipeg and Nunavut governments with bank and corporate sponsors\n- Government supporters: the Government of Canada, the Canada Council for the Arts, Prairies Economic Development Canada, the Province of Manitoba, the Manitoba Arts Council, the City of Winnipeg, the Winnipeg Arts Council and the Government of Nunavut (annual reports 2024-25 and 2025-26).\n- Largest 2024 private gifts: TD Bank Group and the Winnipeg Art Gallery Foundation (100,000 to 249,999 dollars each); Canada Life and Power Corporation of Canada (75,000 to 99,999 dollars each) (annual report).\n- Canada Life pays for free admission on the second Sunday of each month, and Power Corporation for free WAG Wednesday Nights from 2026; the Richardson Foundation presented the 2025 Abraham Anghik Ruben retrospective (2025-26 annual report).\n- The separate WAG Foundation has given nearly 2 million dollars over the years (2024-25 annual report).\n- Qaumajuq cost about 65 million dollars; about half came from all levels of government and the rest from private donors and businesses (CBC News, 11 March 2021).\n- Under a 2025 agreement that stems from a 2015 Nunavut and Manitoba memorandum, the Government of Nunavut pays 715,000 dollars over five years for the gallery to keep more than 7,000 works from its collection until 2030 (Nunatsiaq News, 28 May 2025).\n- The City of Winnipeg gave 102,500 dollars in December 2025 towards the 945,000 dollar replacement of the 1971 building's elevators (WAG).",
+  "sources": [
+   "https://www.cbc.ca/lite/story/1.5946200",
+   "https://nunatsiaq.com/stories/article/nunavut-art-to-stay-at-winnipeg-gallery-until-2030/",
+   "http://web.archive.org/web/20260710135339/https://www.wag.ca/annual-report-24/"
+  ],
+  "reason": "Qaumajuq cost re-sourced to CBC (about C$65 million, half from all governments); the Wikipedia 8,000 Nunavut works replaced by Nunatsiaq News (more than 7,000 works, 715,000 dollars over five years to 2030). Manitoba Liquor & Lotteries moved to its own Red flags heading."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "Red flags: 2024 gift from casino operator Manitoba Liquor & Lotteries",
+  "problems": [
+   "missing red flag (editorial ruling)"
+  ],
+  "before": "",
+  "after": "Red flags: 2024 gift from casino operator Manitoba Liquor & Lotteries\n- Manitoba Liquor & Lotteries Corporation gave 5,000 to 9,999 dollars in 2024, partly in artwork (2024-25 annual report).\n- It is a Crown corporation of the Province of Manitoba that operates Club Regent Casino, McPhillips Station Casino and the gambling site PlayNow.com, and runs the province's VLT network (Manitoba Liquor & Lotteries).",
+  "sources": [
+   "http://web.archive.org/web/20260710135339/https://www.wag.ca/annual-report-24/",
+   "https://www.mbll.ca/content/about-us"
+  ],
+  "reason": "Ruling applied: a state-owned operator that runs casinos and sponsors directly counts as Gambling. Gift from the annual report; casinos from MLL's own About Us page."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "Red flags: 2024 money-laundering plea by TD Bank, a top 2024 donor",
+  "problems": [
+   "heading does not name issue with year first"
+  ],
+  "before": "Red flags: TD Bank, a top 2024 donor, pleaded guilty to money laundering in 2024\n- TD Bank Group gave 100,000 to 249,999 dollars in 2024 and pays for the TD Curatorial Fellowship (2024 annual report).\n- On 10 October 2024 TD Bank pleaded guilty in federal court in Newark, New Jersey, to Bank Secrecy Act program failures and conspiracy to commit money laundering, with penalties of about 3 billion dollars (NBC News, Dan Mangan of CNBC).",
+  "after": "Red flags: 2024 money-laundering plea by TD Bank, a top 2024 donor\n- TD Bank Group also pays for the TD Curatorial Fellowship, a two-year post (2024-25 annual report).\n- On 10 October 2024 TD Bank pleaded guilty in federal court in Newark, New Jersey, to Bank Secrecy Act program failures and conspiracy to commit money laundering, with penalties of about 3 billion dollars (NBC News, Dan Mangan of CNBC).",
+  "sources": [
+   "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912"
+  ],
+  "reason": "Kept per ruling; heading reworded; fellowship called a two-year post as the annual report states."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA public gallery resting on four governments, with banks and insurers as its largest corporate donors. TD Bank's guilty plea is the main weak point, and the Eckhardt provenance research is worth following.",
+  "after": "BOTTOM LINE\nMainly clean public and corporate money. The casino operator's small gift and TD Bank's plea are the weak points, and the Eckhardt provenance research is worth following.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "winnipeg-art-gallery-qaumajuq-winnipeg",
+  "section": "SOURCES",
+  "problems": [
+   "archive read not dated"
+  ],
+  "before": "SOURCES\n- http://web.archive.org/web/20260710135339/https://www.wag.ca/annual-report-24/\n- http://web.archive.org/web/20260717205554/https://www.wag.ca/annual-report-2025-26/\n- http://web.archive.org/web/20260313072646/https://www.wag.ca/media/the-winnipeg-art-gallery-and-stephen-borys-announcement/\n- http://web.archive.org/web/20260313083132/https://www.wag.ca/media/wag-qaumajuq-receives-100000-boost-from-the-city-of-winnipeg-for-elevator-project/\n- https://en.wikipedia.org/wiki/Winnipeg_Art_Gallery\n- https://www.theartnewspaper.com/news/winnipeg-gallery-opens-new-centre-dedicated-to-inuit-art\n- https://www.theartnewspaper.com/2024/01/11/winnipeg-art-gallery-removing-name-nazi-supporter-ferdinand-eckhardt\n- https://www.cbc.ca/lite/story/1.7246764\n- https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912\n- https://www.mbll.ca/",
+  "after": "SOURCES\n- http://web.archive.org/web/20260710135339/https://www.wag.ca/annual-report-24/ (archive copy, 10 July 2026)\n- http://web.archive.org/web/20260717205554/https://www.wag.ca/annual-report-2025-26/ (archive copy, 17 July 2026)\n- http://web.archive.org/web/20260313072646/https://www.wag.ca/media/the-winnipeg-art-gallery-and-stephen-borys-announcement/ (archive copy, 13 March 2026)\n- http://web.archive.org/web/20260313083132/https://www.wag.ca/media/wag-qaumajuq-receives-100000-boost-from-the-city-of-winnipeg-for-elevator-project/ (archive copy, 13 March 2026)\n- https://en.wikipedia.org/wiki/Winnipeg_Art_Gallery\n- https://www.theartnewspaper.com/news/winnipeg-gallery-opens-new-centre-dedicated-to-inuit-art\n- https://www.theartnewspaper.com/2024/01/11/winnipeg-art-gallery-removing-name-nazi-supporter-ferdinand-eckhardt\n- https://www.cbc.ca/lite/story/1.7246764\n- https://www.cbc.ca/lite/story/1.5946200\n- https://nunatsiaq.com/stories/article/nunavut-art-to-stay-at-winnipeg-gallery-until-2030/\n- https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912\n- https://www.mbll.ca/content/about-us",
+  "sources": [],
+  "reason": "Archive copies dated; CBC 2021, Nunatsiaq and the MLL About Us page added."
+ },
+ {
+  "id": "capital-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only figure",
+   "conflicting attribution"
+  ],
+  "before": "OVERVIEW\n- The Capital Museum (首都博物馆) describes itself as a large, comprehensive city museum of local history belonging to Beijing municipality, and a national first-grade museum (museum website, our translation of 北京市属大型地志类综合性城市博物馆).\n- It was founded in 1981 and first opened on 1 October 1981 in the Beijing Confucius Temple (museum website; Chinese Wikipedia).\n- Its present building at 16 Fuxingmenwai Dajie, Xicheng District (复兴门外大街16号), has 64,000 square metres of floor space and opened on 18 May 2006 on the former site of the First Ministry of Machine Building's automobile bureau (museum website; Chinese Wikipedia).\n- ArchDaily credits the building to the French firm AREP, and China Architecture Design Group lists it among its works; Chinese Wikipedia names the architect Cui Kai (崔恺). The oval bronze-clad hall carries patterns from Western Zhou bronzes found in Beijing (Chinese Wikipedia).\n- The collection covers Beijing history, bronzes, ceramics, calligraphy and painting, jade and Buddhist sculpture, with more than 200,000 objects (Chinese Wikipedia; World Museum Guide).\n- Since the start of the 14th Five-Year Plan (2021 to 2025) it has also run the Beijing Courtyard House Museum, the White Pagoda Temple, the Beijing Cultural Exchange Museum at Zhihua Temple and the Lao She Memorial as branches, and the Beijing Grand Canal Museum, its eastern branch, opened at the end of 2023 (museum website).\n- The director is Guo Jingning (郭京宁), who is also the museum's Communist Party secretary (museum website).\n- Visiting: open 9am to 5pm, last entry 4pm, closed on Tuesdays, with online booking; the permanent displays are free (museum website; Chinese Wikipedia).",
+  "after": "OVERVIEW\n- The Capital Museum (首都博物馆) describes itself as a large, comprehensive city museum of local history belonging to Beijing municipality, and a national first-grade museum (museum website, our translation of 北京市属大型地志类综合性城市博物馆).\n- Planned from 1953, it opened in 1981 in the Beijing Confucius Temple (Visit Beijing, the city's tourism site).\n- Its present building at 16 Fuxingmenwai Dajie, Xicheng District (复兴门外大街16号), has 64,000 square metres of floor space and opened on 18 May 2006 (museum website); Chinese Wikipedia places it on the former site of the First Ministry of Machine Building's automobile bureau.\n- China Architecture Design Group lists the building among its works, designed in 2001 in cooperation with the French firm AREP (CADG). Its long stone curtain wall symbolises ancient Chinese city walls (Visit Beijing).\n- The collection covers Beijing history, bronzes, ceramics, calligraphy and painting, jade and Buddhist sculpture, with more than 200,000 objects (Chinese Wikipedia).\n- Since the start of the 14th Five-Year Plan (2021 to 2025) it has also run the Beijing Courtyard House Museum, the White Pagoda Temple, the Beijing Cultural Exchange Museum at Zhihua Temple and the Lao She Memorial as branches, and the Beijing Grand Canal Museum, its eastern branch, opened at the end of 2023 (museum website).\n- The director is Guo Jingning (郭京宁), who is also the museum's Communist Party secretary (museum website).\n- Visiting: open 9am to 5pm, last entry 4pm, closed on Tuesdays, with online booking (museum website); standard admission is free (World Museum Guide).",
+  "sources": [
+   "https://www.capitalmuseum.org.cn/about",
+   "https://www.visitbeijing.com.cn/article/47QrftWIVVR",
+   "https://cadg.com.cn/en/works/558"
+  ],
+  "reason": "History re-sourced to Visit Beijing (planned from 1953, opened 1981 in the Confucius Temple). Architect: only CADG's own project page (designed 2001 with AREP) is kept; ArchDaily and Chinese Wikipedia's Cui Kai cut, and the record's 'Ren Qing' appears in no official source. The 200,000 object count is on Chinese Wikipedia only and is now credited to it alone; free admission credited to World Museum Guide."
+ },
+ {
+  "id": "capital-museum",
+  "section": "FUNDING",
+  "problems": [
+   "wikipedia-only claim"
+  ],
+  "before": "FUNDING\nCapital Museum: public: a Beijing city institution under the Beijing Municipal Cultural Heritage Bureau\n- The museum, with three of its branches, is one of 17 budget units of the Beijing Municipal Cultural Heritage Bureau (北京市文物局), a body directly under the city government (bureau's 2026 budget).\n- The bureau's 2026 budget across its 17 units is 1,946.06 million yuan, of which 1,009.74 million yuan is city general budget money and 237.98 million yuan is income from the units' own services; the bureau put the 5% fall from 2025 down to finished building projects including the Grand Canal Museum (bureau's 2026 budget).\n- The 2006 building was paid for with a special allocation from the Beijing city government after the plan was approved in 1999; it was a key cultural project of the city's tenth five-year plan (Chinese Wikipedia).\n- The museum buys services by public tender: its own site lists procurement and award notices through November 2026 (museum website).",
+  "after": "FUNDING\nCapital Museum: public: a Beijing city institution under the Beijing Municipal Cultural Heritage Bureau\n- The museum, with three of its branches, is one of 17 budget units of the Beijing Municipal Cultural Heritage Bureau (北京市文物局), a body directly under the city government (bureau's 2026 budget).\n- The bureau's 2026 budget across its 17 units is 1,946.06 million yuan, of which 1,009.74 million yuan is city general budget money and 237.98 million yuan is the units' own operating income; the bureau put the 5% fall from 2025 down to finished building projects including the Grand Canal Museum (bureau's 2026 budget).\n- The Beijing government approved the new building in 1999 as a key cultural project of the city's tenth five-year plan (Visit Beijing); Chinese Wikipedia states the city paid for it with a special allocation.\n- The museum buys services by public tender: its own site lists procurement and award notices through November 2026 (museum website).",
+  "sources": [
+   "https://wwj.beijing.gov.cn/bjww/362690/362734/743934219/2026071411140781573.pdf",
+   "https://www.visitbeijing.com.cn/article/47QrftWIVVR"
+  ],
+  "reason": "Budget figures confirmed in the bureau's 2026 budget; 1999 approval re-sourced to Visit Beijing; the city's special allocation credited to Chinese Wikipedia."
+ },
+ {
+  "id": "capital-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA city-run museum paid for from the Beijing budget, with no private, corporate or foreign funder named. Nothing in its money raises a flag.",
+  "after": "BOTTOM LINE\nClean public money: the Beijing city budget pays for it, and nothing in its funding raises a flag.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "capital-museum",
+  "section": "SOURCES",
+  "problems": [
+   "unused source"
+  ],
+  "before": "SOURCES\n- https://www.capitalmuseum.org.cn/\n- https://www.capitalmuseum.org.cn/about\n- https://www.capitalmuseum.org.cn/news/public\n- https://wwj.beijing.gov.cn/bjww/362690/362734/743934219/2026071411140781573.pdf\n- https://zh.wikipedia.org/wiki/首都博物馆\n- https://en.wikipedia.org/wiki/Capital_Museum\n- https://worldmuseumguide.org/museums/capital-museum/\n- https://www.archdaily.com/886782/beijing-capital-museum-arep\n- https://cadg.com.cn/en/works/558",
+  "after": "SOURCES\n- https://www.capitalmuseum.org.cn/\n- https://www.capitalmuseum.org.cn/about\n- https://www.capitalmuseum.org.cn/news/public\n- https://wwj.beijing.gov.cn/bjww/362690/362734/743934219/2026071411140781573.pdf\n- https://zh.wikipedia.org/wiki/首都博物馆\n- https://worldmuseumguide.org/museums/capital-museum/\n- https://cadg.com.cn/en/works/558\n- https://www.visitbeijing.com.cn/article/47QrftWIVVR (government tourism site)",
+  "sources": [],
+  "reason": "ArchDaily and English Wikipedia removed (no longer cited); Visit Beijing added."
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "FUNDING\nHe Art Museum: family-funded: the He family's Midea fortune, through a foundation, with tickets and merchandise\n- The museum describes itself as family established and private (e-flux) and receives support from a foundation, which The Art Newspaper does not name (The Art Newspaper, Lisa Movius, 6 November 2025).\n- Shao Shu said the funding structure is \"quite healthy\" and would not be easily influenced \"if the company made bad investments\"; tickets and merchandise cover exhibition costs, with a goal of full independence after a decade (The Art Newspaper, 2025).\n- The museum does not run gallery-funded selling shows (The Art Newspaper, 2025).\n- The family fortune comes from Midea Group. He Xiangjian set up the He Xiangjian Charity Foundation in December 2013 with 400 million yuan, renamed it He Charity Foundation in 2017, and pledged 100 million Midea shares and 2.4 billion yuan in cash to it (stated by Midea).",
+  "after": "FUNDING\nHe Art Museum: family-funded: the He family's Midea fortune, through a foundation, with tickets and merchandise\n- The museum describes itself as family established and private (e-flux) and receives support from a foundation (The Art Newspaper, Lisa Movius, 6 November 2025).\n- Shao Shu said the funding structure is \"quite healthy\" and would not be easily influenced \"if the company made bad investments\"; tickets and merchandise cover exhibition costs, with a goal of full independence after a decade (The Art Newspaper, 2025).\n- The museum does not run gallery-funded selling shows (The Art Newspaper, 2025).\n- The family fortune comes from Midea Group. He Xiangjian set up the He Xiangjian Charity Foundation in December 2013 with 400 million yuan, renamed it He Charity Foundation in 2017, and pledged 100 million Midea shares and 2.4 billion yuan in cash to it (stated by Midea).",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/11/06/china-private-museums-post-boom-era"
+  ],
+  "reason": "'which The Art Newspaper does not name' cut."
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "section": "Red flags: 2025 TBIJ report on Midea factories in the Uyghur labour-transfer scheme",
+  "problems": [
+   "repetition",
+   "wording (editorial ruling)"
+  ],
+  "before": "Red flags: 2025 report of Midea factories in the Uyghur labour-transfer scheme\n- The Bureau of Investigative Journalism reported on 29 May 2025 that factories directly owned by big brands, \"like those run by Midea and LG Electronics\", took part in the Chinese government programme that sends Uyghur, Kazakh and Kyrgyz workers from Xinjiang to eastern factories (TBIJ, Daniel Murphy).\n- A plastics factory filmed by one of the workers has supplied Midea (TBIJ).\n- Midea did not respond to several requests for comment (TBIJ).\n- The museum's founding money is the He family's Midea fortune.",
+  "after": "Red flags: 2025 TBIJ report on Midea factories in the Uyghur labour-transfer scheme\n- The Bureau of Investigative Journalism reported on 29 May 2025 that factories directly owned by big brands, \"like those run by Midea and LG Electronics\", took part in the Chinese government programme that sends Uyghur, Kazakh and Kyrgyz workers from Xinjiang to eastern factories (TBIJ, Daniel Murphy).\n- TBIJ also reported that a plastics factory where one of the filmed workers was employed has supplied Midea.\n- Midea did not respond to TBIJ's several requests for comment.",
+  "sources": [
+   "https://www.thebureauinvestigates.com/stories/2025-05-29/chinas-economy-runs-on-uyghur-forced-labour"
+  ],
+  "reason": "Ruling applied: worded as TBIJ's reporting. TBIJ records that Midea did not respond to several requests; no denial by Midea is on the page. The last point restated FUNDING and was cut."
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "CRITICISM IN ART MEDIA\nOverall: Coverage is admiring and centres on Ando's building, the collection and the museum's finances; no critic has made a case against it.\n1. The Art Newspaper: Lisa Movius, \"How China's private museums are navigating a post-boom era\" (2025)\nURL: https://www.theartnewspaper.com/2025/11/06/china-private-museums-post-boom-era\n- Not criticism: the curator Li Anqi names HEM among the private museums still operating with sound finances and reasonably paid professional staff.\n- Shao Shu says free admission at state museums cuts into private museums' visitor numbers.",
+  "after": "CRITICISM IN ART MEDIA\nOverall: Coverage is admiring and centres on Ando's building, the collection and the museum's finances.\n1. The Art Newspaper: Lisa Movius, \"How China's private museums are navigating a post-boom era\" (2025)\nURL: https://www.theartnewspaper.com/2025/11/06/china-private-museums-post-boom-era\n- Not criticism: the curator Li Anqi names HEM among the private museums still operating with sound finances and reasonably paid professional staff.\n- Shao Shu says free admission at state museums cuts into private museums' visitor numbers.",
+  "sources": [
+   "https://www.theartnewspaper.com/2025/11/06/china-private-museums-post-boom-era"
+  ],
+  "reason": "'no critic has made a case against it' cut."
+ },
+ {
+  "id": "he-art-museum-foshan",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA family museum paid for with a Midea fortune through a foundation. Midea's reported part in the Uyghur labour-transfer programme is the weak point; the name of the paying foundation is worth knowing.",
+  "after": "BOTTOM LINE\nPrivate family money with one weak point: the Midea fortune behind it, which TBIJ's forced-labour reporting reaches. Which foundation pays is worth watching.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "minsheng-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported count"
+  ],
+  "before": "OVERVIEW\n- Contemporary art museum on the fifth and sixth floors of the Minsheng Bank Building at 48 Weihai Road, Huangpu District, west of People's Square (museum website; Yicai, 23 May 2024).\n- China Minsheng Bank founded it in 2008; the museum calls itself the first art museum dedicated to public welfare founded by a Chinese financial institution (museum website).\n- It has moved four times: from the Red Town site on West Huaihai Road to the former French Pavilion of the Expo site, where a partner museum opened in 2014 and merged with it in 2017; to an old factory at 210 Wenshui Road, Jing'an, in May 2019; and to Weihai Road in May 2024 (museum website; The Paper; Yicai).\n- The museum left the French Pavilion at the end of 2018 because of city construction work, said its then director Gan Zhiyi (甘智漪) (The Paper, 28 December 2018).\n- On site: a 1,200 square metre exhibition hall on the sixth floor, a shop and cafe, a multimedia room and the Minsheng Art Archives, with nearly 8,000 volumes from art institutions, media, artists and critics (museum website).\n- Recent shows include Shanghai: Capital of Photography 1910s to 2020s and Tales of Now, Swiss comics from the Fumetto festival (museum website); the Weihai Road space opened with a history of Shanghai animation films (Yicai).\n- The museum says it has held more than a hundred exhibitions and reached about one million people (museum website).",
+  "after": "OVERVIEW\n- Contemporary art museum on the fifth and sixth floors of the Minsheng Bank Building at 48 Weihai Road, Huangpu District, west of People's Square (museum website; Yicai, 23 May 2024).\n- China Minsheng Bank founded it in 2008; the museum calls itself the first art museum dedicated to public welfare founded by a Chinese financial institution (museum website).\n- It began at the Red Town site on West Huaihai Road and moved to the former French Pavilion of the Expo site, where a partner museum opened in 2014 and merged with it in 2017; to an old factory at 210 Wenshui Road, Jing'an, in May 2019; and to Weihai Road in May 2024 (museum website; The Paper; Yicai).\n- The museum left the French Pavilion at the end of 2018 because of city construction work, said its then director Gan Zhiyi (甘智漪) (The Paper, 28 December 2018).\n- On site: a 1,200 square metre exhibition hall on the sixth floor, a shop and cafe, a multimedia room and the Minsheng Art Archives, with nearly 8,000 volumes from art institutions, media, artists and critics (museum website).\n- Recent shows include Shanghai: Capital of Photography 1910s to 2020s and Tales of Now, Swiss comics from the Fumetto festival (museum website); the Weihai Road space opened with a history of Shanghai animation films (Yicai).\n- The museum says it has held more than a hundred exhibitions and reached about one million people (museum website).",
+  "sources": [
+   "http://www.minshengart.com/en/index/about/about-museum",
+   "https://www.thepaper.cn/newsDetail_forward_5523823"
+  ],
+  "reason": "'moved four times' listed three moves; reworded as the sequence of sites."
+ },
+ {
+  "id": "minsheng-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "FUNDING\nMinsheng Art Museum: corporate: China Minsheng Bank, its founder, with district government support for its archive\n- China Minsheng Bank set up the museum as part of its corporate social responsibility platform and supports it; the museum gives no figures (museum website).\n- The museum now sits in the bank's own Minsheng Bank Building (Yicai, 2024).\n- The archive began in 2017 as a government project backed by the Pudong Expo administrative committee; the Jing'an district government gave money to buy books before the 2019 reopening, and the archive became the art branch of the Jing'an District Library (The Paper, 24 March 2020).",
+  "after": "FUNDING\nMinsheng Art Museum: corporate: China Minsheng Bank, its founder, with district government support for its archive\n- China Minsheng Bank set up the museum as part of its corporate responsibility platform and supports it (museum website).\n- The museum now sits in the bank's own Minsheng Bank Building (Yicai, 2024).\n- The archive began in 2017 as a government project backed by the Pudong Expo administrative committee; the Jing'an district government gave money to buy books before the 2019 reopening, and the archive became the art branch of the Jing'an District Library (The Paper, 24 March 2020).",
+  "sources": [
+   "http://www.minshengart.com/en/index/about/about-museum"
+  ],
+  "reason": "'the museum gives no figures' cut."
+ },
+ {
+  "id": "minsheng-art-museum",
+  "section": "Red flags: 2025 regulatory fines on China Minsheng Bank",
+  "problems": [
+   "unnamed outlet (editorial ruling)",
+   "unsupported detail"
+  ],
+  "before": "Red flags: 2025 regulatory fines on China Minsheng Bank\n- On 31 October 2025 the National Financial Regulatory Administration fined China Minsheng Bank 58.65 million yuan for imprudent management of loans, bills and interbank business and non-compliant regulatory data reporting; six managers were warned and fined a total of 360,000 yuan (Tencent News, 3 November 2025).\n- In January 2025 the People's Bank of China fined the bank 17.055 million yuan and confiscated 990,700 yuan for eight violations, including failures in customer identification and dealing with unidentified customers; in September 2025 the regulator fined it 5.9 million yuan over IT management (Tencent News).\n- In 2017 China's banking regulator fined the bank 27.5 million yuan for selling 1.65 billion yuan of fake wealth management products through its Hangtianqiao sub-branch in Beijing (Caixin Global, 1 December 2017).",
+  "after": "Red flags: 2025 regulatory fines on China Minsheng Bank\n- On 31 October 2025 the National Financial Regulatory Administration fined China Minsheng Bank 58.65 million yuan for imprudent management of loans, bills and interbank business and non-compliant regulatory data reporting, and warned and fined six managers a total of 360,000 yuan (NFRA penalty list).\n- On 12 September 2025 the same regulator fined the bank 5.9 million yuan over weak control of system use, base software versions and production operations (NFRA penalty list).\n- In January 2025 the People's Bank of China warned the bank, confiscated 990,000 yuan and fined it 17.055 million yuan for violations including breaches of account management, clearing and anti-counterfeit currency rules and holding up fiscal deposits (Jiemian, 18 September 2025).",
+  "sources": [
+   "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1231550&itemId=4113&generaltype=9",
+   "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1225670&itemId=4113&generaltype=9",
+   "https://m.jiemian.com/article/13369840.html"
+  ],
+  "reason": "Ruling applied: the October (58.65 million yuan, six managers 360,000) and September (5.9 million) fines now rest on the NFRA's own penalty lists; the January PBOC fine on Jiemian, which gives 990,000 yuan confiscated and 17.055 million fined and does not list customer-identification failures, so that detail went. The 2017 fine moved to its own heading."
+ },
+ {
+  "id": "minsheng-art-museum",
+  "section": "Red flags: 2017 record fine over fake wealth management products",
+  "problems": [
+   "two issues under one heading"
+  ],
+  "before": "",
+  "after": "Red flags: 2017 record fine over fake wealth management products\n- China's banking regulator fined the bank 27.5 million yuan, then the biggest fine imposed on a bank, for selling 1.65 billion yuan of fake wealth management products; 13 executives and employees were also penalised (Caixin Global, 1 December 2017).",
+  "sources": [
+   "https://www.caixinglobal.com/2017-12-01/minsheng-bank-fined-record-4-mln-for-wealth-management-fraud-101178564.html"
+  ],
+  "reason": "Separate issue given its own heading; wording checked against Caixin."
+ },
+ {
+  "id": "minsheng-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition",
+   "unsupported: anti-money-laundering"
+  ],
+  "before": "BOTTOM LINE\nA bank's own museum, paid for by China Minsheng Bank, which publishes no figures for it. The weak point is the bank's record of regulatory fines, including anti-money-laundering failures in 2025.",
+  "after": "BOTTOM LINE\nA bank's own museum, so the bank's record is the museum's weak point: repeated regulatory fines make China Minsheng Bank a name to know.",
+  "sources": [],
+  "reason": "Verdict only; the AML wording is not in the sources now cited."
+ },
+ {
+  "id": "minsheng-art-museum",
+  "section": "SOURCES",
+  "problems": [
+   "unnamed outlet"
+  ],
+  "before": "SOURCES\n- http://www.minshengart.com/en/index/about/about-museum\n- http://www.minshengart.com/en/index/visit/floor-plan-and-functions\n- http://www.minshengart.com/en/index/exhibitions-and-events/exhibition\n- https://www.yicai.com/news/102121707.html (state outlet)\n- https://www.thepaper.cn/newsDetail_forward_2780663 (state outlet)\n- https://www.thepaper.cn/newsDetail_forward_5523823 (state outlet)\n- https://news.qq.com/rain/a/20251103A056KL00\n- https://www.caixinglobal.com/2017-12-01/minsheng-bank-fined-record-4-mln-for-wealth-management-fraud-101178564.html",
+  "after": "SOURCES\n- http://www.minshengart.com/en/index/about/about-museum\n- http://www.minshengart.com/en/index/visit/floor-plan-and-functions\n- http://www.minshengart.com/en/index/exhibitions-and-events/exhibition\n- https://www.yicai.com/news/102121707.html (state outlet)\n- https://www.thepaper.cn/newsDetail_forward_2780663 (state outlet)\n- https://www.thepaper.cn/newsDetail_forward_5523823 (state outlet)\n- https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1231550&itemId=4113&generaltype=9\n- https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1225670&itemId=4113&generaltype=9\n- https://m.jiemian.com/article/13369840.html\n- https://www.caixinglobal.com/2017-12-01/minsheng-bank-fined-record-4-mln-for-wealth-management-fraud-101178564.html",
+  "sources": [
+   "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1231550&itemId=4113&generaltype=9",
+   "https://www.nfra.gov.cn/cn/view/pages/ItemDetail.html?docId=1225670&itemId=4113&generaltype=9"
+  ],
+  "reason": "Tencent News page replaced by the regulator's notices and Jiemian."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source (job site)"
+  ],
+  "before": "OVERVIEW\n- Private contemporary art museum in the No. 1 International Art District (一号地国际艺术区), Cuigezhuang, in north-east Chaoyang District, Beijing (Visit Beijing; Our China Story).\n- Founded by the collector and entrepreneur Yan Shijie (闫士杰, also written 阎士杰) and his wife Cao Mei; planning began in 2007 and the museum opened in May 2014 (Our China Story, Chinese edition). Its company profile gives the opening date as 23 May 2014 (Zhaopin).\n- Dezeen describes it as a folk-based, non-profit art museum showing Chinese and world art (Dezeen, 2017).\n- Architect: Dong Yugan, a professor at Peking University's Architecture Research Center, designed both building and garden (Our China Story; Dezeen).\n- The site covers about 20,000 square metres, with nearly 10,000 square metres of exhibition space; it uses grey bricks from local village houses and red bricks associated with factory buildings (Visit Beijing; Our China Story, English edition).\n- On site: nine exhibition spaces, two public leisure spaces, a children's room, a multipurpose hall and artist residency studios (Our China Story); a lecture hall, restaurant, cafe and members' club sit in the garden (Zhaopin).\n- Yan Shijie curates its shows: in October 2026 the museum opened Bingyi's solo exhibition \"象罔无形\" (Unseen Paintings), covering her work since 2008 (Beijing Daily, 18 October 2026).\n- Visiting: galleries open 10:00 to 17:30 from 1 October to 30 April and 10:00 to 18:00 from 1 May to 30 September; closed Mondays except on holidays (Our China Story).",
+  "after": "OVERVIEW\n- Private contemporary art museum in the No. 1 International Art District (一号地国际艺术区), Cuigezhuang, in north-east Chaoyang District, Beijing (Visit Beijing; Our China Story; Beijing municipal government).\n- Founded by the collector and entrepreneur Yan Shijie (闫士杰, also written 阎士杰) and his wife Cao Mei; planning began in 2007 and the museum opened in May 2014 (Our China Story, Chinese edition; Beijing municipal government).\n- Dezeen describes it as a folk-based, non-profit art museum showing Chinese and world art (Dezeen, 2017).\n- Architect: Dong Yugan, a professor at Peking University's Architecture Research Center, designed both building and garden (Our China Story; Dezeen).\n- The site covers about 20,000 square metres, with nearly 10,000 square metres of exhibition space; it uses grey bricks from local village houses and red bricks associated with factory buildings (Visit Beijing; Our China Story, English edition).\n- On site: nine exhibition spaces, two public leisure spaces, a children's room, a multipurpose hall and artist residency studios, with a cafe and Western restaurant in the courtyard (Our China Story).\n- In October 2026 the museum opened \"象罔无形\", a solo show of Bingyi's work since 2008 curated by Yan Shijie (Beijing Daily, 18 October 2026).\n- Visiting: galleries open 10:00 to 17:30 from 1 October to 30 April and 10:00 to 18:00 from 1 May to 30 September; closed Mondays except on holidays (Our China Story).",
+  "sources": [
+   "https://english.beijing.gov.cn/beijinginfo/culture/beijingtownscape/galleries/202401/t20240112_3534426.html",
+   "https://www.ourchinastory.com/cn/10523",
+   "https://news.bjd.com.cn/2026/10/18/11998993.shtml"
+  ],
+  "reason": "Zhaopin opening date (23 May 2014) and garden facilities cut; opening in 2014 confirmed by the Beijing government site; cafe and Western restaurant from Our China Story. 'Yan Shijie curates its shows' cut back to the one show Beijing Daily names; the unsourced English title 'Unseen Paintings' dropped."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "weak source (job site)"
+  ],
+  "before": "FUNDING\nRed Brick Art Museum: self-funded: the founding couple's private money, through their own company\n- The founders invested nearly 400 million yuan over eight years before the 2014 opening (Our China Story, Chinese edition: \"投资近4亿人民币，历时8年\", our translation).\n- The museum is run by Beijing Red Brick Contemporary Art Museum Co., Ltd. (北京红砖当代美术馆有限公司), registered as a limited liability company invested or controlled by natural persons, with 20 to 99 staff (Zhaopin company profile).",
+  "after": "FUNDING\nRed Brick Art Museum: self-funded: the founding couple's private money\n- The founders invested nearly 400 million yuan over eight years before the 2014 opening (Our China Story, Chinese edition: \"投资近4亿人民币，历时8年\", our translation).",
+  "sources": [
+   "https://m-pre.zhaopin.com/company/CZ499966020.htm"
+  ],
+  "reason": "Operating company appears only on a Zhaopin job-site profile; no better source found, so cut."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition"
+  ],
+  "before": "WIDER CONTEXT\n- 2017 protest at an opening: Liu Yukuan (刘彧宽), the museum's public relations manager, died suddenly on 30 December 2016. On 27 May 2017 his parents came to an exhibition opening holding his portrait and handing out leaflets; more than ten museum staff dragged them away and forced them into two cars (The Paper, Gu Yizhi, June 2017).\n- The family said the museum owed Liu his last month's wages and that he died of overwork. Unverified: the wage and overwork claims, made by the family; the museum called the wage claim false.\n- The museum's statement admitted that \"lack of experience\" (经验不足) in handling the day had hurt Liu's parents' feelings and apologised (The Paper, our translation).\n- The parents had bruises and abrasions on their hands and bodies; the dispute had not been settled when The Paper wrote.\n- The protest was aimed at the museum itself, by a former employee's family.",
+  "after": "WIDER CONTEXT\n- 2017 protest at an opening: Liu Yukuan (刘彧宽), the museum's public relations manager, died suddenly on 30 December 2016. On 27 May 2017 his parents came to an exhibition opening holding his portrait and handing out leaflets; more than ten museum staff dragged them away and forced them into two cars (The Paper, Gu Yizhi, June 2017).\n- Unverified: the family said the museum owed Liu his last month's wages and that he died of overwork; the museum called the wage claim false.\n- The museum's statement admitted that \"lack of experience\" (经验不足) in handling the day had hurt Liu's parents' feelings and apologised (The Paper, our translation).\n- The parents had bruises and abrasions on their hands and bodies; the dispute had not been settled when The Paper wrote.\n- The protest was aimed at the museum itself, by a former employee's family.",
+  "sources": [
+   "https://www.thepaper.cn/newsDetail_forward_1700081"
+  ],
+  "reason": "Ruling applied: the 2017 protest stays here. Two points stating the same family claim merged."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nThe museum runs on the founding couple's own money through their private company, with no outside funder named. The weak points are the undisclosed source of the founder's wealth and the 2017 treatment of a dead employee's parents.",
+  "after": "BOTTOM LINE\nPrivate founders' money with no flagged funder. The weak points are the undisclosed source of Yan Shijie's wealth and the 2017 treatment of a dead employee's parents.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "red-brick-art-museum",
+  "section": "SOURCES",
+  "problems": [
+   "weak source"
+  ],
+  "before": "SOURCES\n- http://www.redbrickartmuseum.org/about-us/?lang=en\n- https://www.ourchinastory.com/cn/10523\n- https://www.ourchinastory.com/en/amp/16755\n- https://www.visitbeijing.com.cn/article/47QoeJhVvxc?device=amp (government tourism site)\n- https://www.dezeen.com/2017/11/11/dong-yugan-sculptural-red-brick-art-museum-beijing-china-architecture/\n- https://m-pre.zhaopin.com/company/CZ499966020.htm\n- https://news.bjd.com.cn/2026/10/18/11998993.shtml (state outlet)\n- https://www.thepaper.cn/newsDetail_forward_1700081 (state outlet)",
+  "after": "SOURCES\n- http://www.redbrickartmuseum.org/about-us/?lang=en\n- https://www.ourchinastory.com/cn/10523\n- https://www.ourchinastory.com/en/amp/16755\n- https://www.visitbeijing.com.cn/article/47QoeJhVvxc?device=amp (government tourism site)\n- https://www.dezeen.com/2017/11/11/dong-yugan-sculptural-red-brick-art-museum-beijing-china-architecture/\n- https://english.beijing.gov.cn/beijinginfo/culture/beijingtownscape/galleries/202401/t20240112_3534426.html (government site)\n- https://news.bjd.com.cn/2026/10/18/11998993.shtml (state outlet)\n- https://www.thepaper.cn/newsDetail_forward_1700081 (state outlet)",
+  "sources": [],
+  "reason": "Zhaopin replaced by the Beijing government page."
+ },
+ {
+  "id": "suzhou-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only figure"
+  ],
+  "before": "OVERVIEW\n- The Suzhou Museum (苏州博物馆) describes itself as a local comprehensive museum and the centre for collecting, protecting, studying and showing Suzhou's cultural relics (museum website, our translation).\n- It was founded on New Year's Day 1960 in the former residence of the Taiping general Li Xiucheng, the Zhong Wang Fu (忠王府) (Chinese Wikipedia; English Wikipedia).\n- I.M. Pei took on the design of a new main building on 30 April 2002, at the age of 85; it stands west of the Humble Administrator's Garden at 204 Dongbei Street, has 19,000 square metres of floor space, and opened in 2006 (museum website).\n- A second site, the Suzhou Museum West at 399 Changjiang Road in the Suzhou New District, designed by gmp, began trial opening on 25 September 2021, with 48,365 square metres of floor space and 13,391 square metres of galleries (museum website; ArchDaily).\n- The collection has more than 40,000 objects, mostly finds from Suzhou, literati painting and calligraphy, and folk crafts of the Jiangnan region (Chinese Wikipedia).\n- The director is Xie Xiaoting (谢晓婷). The West site runs a \"World Civilisation\" exhibition series with the British Museum; its 2024 to 2025 Ashurbanipal show won a national award, and the main building marks its 20th year in 2026 (People's Daily Overseas Edition, 18 May 2026).\n- Opening on 25 November 2026: a show of relics transferred from the Suzhou Cultural Relics Store (museum website).\n- Visiting: the main building is free and open 9am to 5pm, last entry 4pm, Tuesday to Sunday, with real-name timed booking up to seven days ahead; the West site needs no booking (museum website; China for Travelers).",
+  "after": "OVERVIEW\n- The Suzhou Museum (苏州博物馆) describes itself as a local comprehensive museum and the centre for collecting, protecting, studying and showing Suzhou's cultural relics (museum website, our translation).\n- It was founded in 1960 (museum website; Ministry of Culture and Tourism); its old site is the Zhong Wang Fu (忠王府), former residence of the Taiping general Li Xiucheng (Chinese Wikipedia).\n- I.M. Pei took on the design of a new main building on 30 April 2002, at the age of 85; it stands west of the Humble Administrator's Garden at 204 Dongbei Street, has 19,000 square metres of floor space (museum website), and opened in 2006 (Chinese Wikipedia).\n- A second site, the Suzhou Museum West at 399 Changjiang Road in the Suzhou High-Tech Zone, designed by gmp, began trial opening on 25 September 2021, with 48,365 square metres of floor space and 13,391 square metres of galleries (museum website; ArchDaily).\n- The collection centres on finds from Suzhou, literati painting and calligraphy, and folk crafts of the Jiangnan region (Chinese Wikipedia).\n- The director, Xie Xiaoting (谢晓婷), writes that the West site runs a world civilisation exhibition series with the British Museum, that its 2024 to 2025 Ashurbanipal show won a national award, and that the main building marks its 20th year in 2026 (People's Daily Overseas Edition, 18 May 2026).\n- Opening on 25 November 2026: a show of relics transferred from the Suzhou Cultural Relics Store (museum website).\n- Visiting: the main building opens 9am to 5pm, last entry 4pm, Tuesday to Sunday, with real-name timed booking up to seven days ahead (museum website); the West site needs no booking (Chinese Wikipedia).",
+  "sources": [
+   "https://www.szmuseum.com/News/Details/jjxg",
+   "https://zhuanti.mct.gov.cn/szbwg2022.html",
+   "https://www.szmuseum.com/News/Index/OpenGuide"
+  ],
+  "reason": "Founding year 1960 confirmed on the museum's own site and the Ministry of Culture and Tourism page ('New Year's Day' dropped). The 40,000 object count is on Chinese Wikipedia only and conflicts with other counts, so cut. Director point credited as her own article; 'Suzhou New District' corrected to the High-Tech Zone the museum names."
+ },
+ {
+  "id": "suzhou-museum",
+  "section": "FUNDING",
+  "problems": [
+   "wikipedia-only claim"
+  ],
+  "before": "FUNDING\nSuzhou Museum: public: buildings commissioned by Suzhou city bodies, with free admission\n- The Pei building had a total investment of 339 million yuan; with the Zhong Wang Fu, the main site has 26,500 square metres of floor space (museum website).\n- The client for the West site was the Suzhou City Planning Bureau with the High-Tech Zone bureau (ArchDaily, gmp project data).\n- Admission is free at both sites (museum website; Chinese Wikipedia).\n- The British Museum is an exhibition partner for the West site's international gallery, not a funder (People's Daily Overseas Edition).",
+  "after": "FUNDING\nSuzhou Museum: public: buildings commissioned by Suzhou city bodies, with free admission\n- The Pei building had a total investment of 339 million yuan; with the Zhong Wang Fu, the main site has 26,500 square metres of floor space (museum website).\n- The client for the West site was the Suzhou City Planning Bureau with the High-Tech Zone bureau (ArchDaily, gmp project data).\n- Admission is free at both sites (Chinese Wikipedia; China for Travelers).\n- The British Museum is an exhibition partner for the West site's international gallery, not a funder (People's Daily Overseas Edition).",
+  "sources": [
+   "https://chinafortravelers.com/guides/suzhou-museum/"
+  ],
+  "reason": "Free entry is not on the museum pages opened; credited to Chinese Wikipedia and China for Travelers."
+ },
+ {
+  "id": "suzhou-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA public museum whose two buildings were commissioned by Suzhou city bodies, with free entry and no private or corporate funder named. Nothing in its money raises a flag.",
+  "after": "BOTTOM LINE\nClean public money from Suzhou city bodies; nothing in its funding raises a flag.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "suzhou-museum",
+  "section": "SOURCES",
+  "problems": [
+   "source update"
+  ],
+  "before": "SOURCES\n- https://www.szmuseum.com/\n- https://www.szmuseum.com/Other/MuseumIntro\n- https://www.szmuseum.com/News/Details/jjxg\n- https://www.szmuseum.com/News/Index/OpenGuide\n- https://www.archdaily.com/969938/suzhou-museum-west-gmp-architects\n- https://news.qq.com/rain/a/20260518A02EHX00 (People's Daily Overseas Edition, via Tencent News; state outlet)\n- https://zh.wikipedia.org/wiki/苏州博物馆\n- https://en.wikipedia.org/wiki/Suzhou_Museum\n- https://chinafortravelers.com/guides/suzhou-museum/",
+  "after": "SOURCES\n- https://www.szmuseum.com/\n- https://www.szmuseum.com/Other/MuseumIntro\n- https://www.szmuseum.com/News/Details/jjxg\n- https://www.szmuseum.com/News/Index/OpenGuide\n- https://www.archdaily.com/969938/suzhou-museum-west-gmp-architects\n- https://news.qq.com/rain/a/20260518A02EHX00 (People's Daily Overseas Edition, via Tencent News; state outlet)\n- https://zh.wikipedia.org/wiki/苏州博物馆\n- https://zhuanti.mct.gov.cn/szbwg2022.html\n- https://chinafortravelers.com/guides/suzhou-museum/",
+  "sources": [],
+  "reason": "English Wikipedia (not cited) replaced by the ministry page."
+ },
+ {
+  "id": "today-art-museum",
+  "section": "Website",
+  "problems": [
+   "website check"
+  ],
+  "before": "HEADER\nTODAY ART MUSEUM: Beijing, China\nID: today-art-museum\nWebsite: http://www.todayartmuseum.com/ (checked 2026-11-20)",
+  "after": "HEADER\nTODAY ART MUSEUM: Beijing, China\nID: today-art-museum\nWebsite: http://www.todayartmuseum.com/ (checked 2026-11-20; timed out)",
+  "sources": [],
+  "reason": "The museum site timed out (504) on 20 November; said so."
+ },
+ {
+  "id": "today-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "user channel source",
+   "unsupported figures"
+  ],
+  "before": "OVERVIEW\n- Contemporary art museum (今日美术馆) at Building 4, Pingguo (Pingod) Community, 32 Baiziwan Road, Chaoyang District, near the Beijing CBD (Visit Beijing; museum website).\n- The property developer Zhang Baoquan (张宝全) founded it in 2002 and was its first director; it calls itself the first non-profit, non-governmental art museum in China (Visit Beijing; Beijing Daily, 10 May 2012).\n- Architect Wang Hui led the design and rebuilding of the five-floor main building, which fuses industrial relics with new work, with 2,500 square metres of exhibition space and a 1,000 square metre main hall with 13.5 metre walls; Wang Jianwei's work \"Viewing the Exhibition\" sits on the roof (Visit Beijing).\n- By 2012 it held more than 5,000 works in two stores, one of about 600 square metres on site and one of 2,000 square metres in north-west Beijing (Beijing Daily, 2012).\n- Zhang Ran stepped down as director on 26 March 2025 at the end of a five-year term; deputy director Yan Yan (晏燕) became executive director, and the board, chaired by Zhang Baoquan, planned a worldwide search for a new director (The Paper, Paike user channel, March 2025).\n- Recent and current shows include the 13th International Fiber Art Biennale \"From Lausanne to Beijing\", a touring show of the Bologna illustration exhibition and an immersive Cezanne show (museum website).\n- Visiting: open 10:00 to 18:00, closed Mondays (museum website); free on the first Saturday of each month and on 18 May (Visit Beijing).",
+  "after": "OVERVIEW\n- Contemporary art museum (今日美术馆) at Building 4, Pingguo (Pingod) Community, 32 Baiziwan Road, Chaoyang District, near the Beijing CBD (Visit Beijing).\n- The property developer Zhang Baoquan (张宝全) founded it in 2002 (Beijing Daily, 10 May 2012); it calls itself the first non-profit, non-governmental art museum in China (Visit Beijing).\n- Architect Wang Hui led the design and rebuilding of the main building, which fuses industrial relics with new work; the complex covers 4,000 square metres and the main building 1,400, with Wang Jianwei's work \"Viewing the Exhibition\" on its roof (Visit Beijing).\n- By 2012 it held more than 5,000 works in two stores, one of about 600 square metres on site and one of 2,000 square metres in north-west Beijing (Beijing Daily, 2012).\n- Zhang Ran stepped down as director on 26 March 2025 at the end of a five-year term; deputy director Yan Yan (晏燕) became executive director, and the board, chaired by Zhang Baoquan, planned a worldwide search for a new director (Southern Metropolis Daily, 13 March 2025). Yan was still executive director in November 2026 (Beijing Daily, 5 November 2026).\n- From December 2025 to 1 March 2026 it hosted one of five sections of the 13th \"From Lausanne to Beijing\" International Fiber Art Biennale (China News Service, via Tsinghua University).\n- Visiting: open 10am to 6pm, closed during the Spring Festival; free on the first Saturday of each month and on 18 May (Visit Beijing).",
+  "sources": [
+   "https://m.163.com/dy/article/JQHNIJU505129QAF.html",
+   "https://english.visitbeijing.com.cn/article/47ONn3bReZY",
+   "https://www.tsinghua.edu.cn/info/1182/123236.htm"
+  ],
+  "reason": "Zhang Ran's departure confirmed by Southern Metropolis Daily (13 March 2025); Beijing Daily (Nov 2026) confirms Yan Yan still executive director. Five floors, 2,500 and 1,000 square metres and 13.5 metre walls are not on the Visit Beijing page; replaced with its 4,000 and 1,400 square metres. 'First director' cut. Current shows and Monday closure came from the unreachable museum site; the fiber biennale re-sourced, hours to Visit Beijing."
+ },
+ {
+  "id": "today-art-museum",
+  "section": "FUNDING",
+  "problems": [
+   "changed detail"
+  ],
+  "before": "FUNDING\nToday Art Museum: private non-profit: founded on a property developer's money, now run on sponsorship and earned income\n- For its first five years Zhang Baoquan kept the museum running with an average of about 10 million yuan a year of his own money (Beijing Daily, 2012).\n- In July 2006 it became the first private museum registered with the Beijing Civil Affairs Bureau as a private non-enterprise unit (民办非企业单位); if it closed, its collection would pass to the bureau, not back to its investors (Beijing Daily, 2012).\n- Sponsorship reached 30 million yuan in 2010, and sponsorship plus shop and other income reached 40 million yuan a year by 2012; most exhibitions had a sponsor, and joint-venture companies were the readiest sponsors (Beijing Daily, 2012).\n- An early sponsor was the German company Montblanc, whose chairman agreed to fund the museum after a 2006 Fang Lijun show (Beijing Daily, 2012).\n- The museum runs eight funds, among them building, exhibition, education and collection funds, and a friends' scheme; its site takes applications to hold exhibitions there (Beijing Daily, 2012; museum website).",
+  "after": "FUNDING\nToday Art Museum: private non-profit: founded on a property developer's money, now run on sponsorship and earned income\n- For its first five years Zhang Baoquan kept the museum running with an average of about 10 million yuan a year of his own money (Beijing Daily, 2012).\n- In July 2006 it became the first private museum registered with the Beijing Civil Affairs Bureau as a private non-enterprise unit (民办非企业单位); if it closed, its collection would pass to the bureau, not back to its investors (Beijing Daily, 2012).\n- Sponsorship reached 30 million yuan in 2010, and sponsorship plus shop and other income reached 40 million yuan a year by 2012; most exhibitions had a sponsor, and joint-venture companies were the readiest sponsors (Beijing Daily, 2012).\n- In 2006, after the artist Fang Lijun showed new work there, the then director Zhang Zikang won sponsorship from the chairman of the German company Montblanc (Beijing Daily, 2012).\n- By 2012 it ran eight funds, among them building, exhibition, education and collection funds, and sought money from members and donors (Beijing Daily, 2012).",
+  "sources": [
+   "https://web.archive.org/web/20150203130146/http://bjrb.bjd.com.cn/html/2012-05/10/content_82629.htm"
+  ],
+  "reason": "Montblanc point now says what Beijing Daily says (director Zhang Zikang won it through Fang Lijun); application-to-exhibit claim from the unreachable site cut."
+ },
+ {
+  "id": "today-art-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA private non-profit built on a developer's money and kept going by corporate sponsors, shows held on application and shop income. Current sponsors are named only as logos, so who pays now is the gap to watch.",
+  "after": "BOTTOM LINE\nPrivate money with no flagged funder on record. Who sponsors it now is the gap to watch.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "today-art-museum",
+  "section": "SOURCES",
+  "problems": [
+   "archive read not dated",
+   "user channel source"
+  ],
+  "before": "SOURCES\n- http://www.todayartmuseum.com/\n- http://www.todayartmuseum.com/cntemplateone.aspx?type=openinghours\n- https://english.visitbeijing.com.cn/article/47ONn3bReZY (government tourism site)\n- https://web.archive.org/web/20150203130146/http://bjrb.bjd.com.cn/html/2012-05/10/content_82629.htm (Beijing Daily, 10 May 2012)\n- https://www.thepaper.cn/newsDetail_forward_30393334 (state outlet)",
+  "after": "SOURCES\n- https://english.visitbeijing.com.cn/article/47ONn3bReZY (government tourism site)\n- https://web.archive.org/web/20150203130146/http://bjrb.bjd.com.cn/html/2012-05/10/content_82629.htm (Beijing Daily, 10 May 2012; archive copy of 3 February 2015)\n- https://m.163.com/dy/article/JQHNIJU505129QAF.html (Southern Metropolis Daily on NetEase)\n- https://news.bjd.com.cn/2026/11/04/12018301.shtml (state outlet)\n- https://www.tsinghua.edu.cn/info/1182/123236.htm",
+  "sources": [],
+  "reason": "Beijing Daily archive copy dated; Paike user channel replaced; museum pages removed as unreachable."
+ },
+ {
+  "id": "zhejiang-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only history"
+  ],
+  "before": "OVERVIEW\n- The Zhejiang Provincial Museum (浙江省博物馆) is one of China's earliest local comprehensive museums and the largest in Zhejiang, a national first-grade museum (The Paper, 2023; Chinese Wikipedia).\n- The Zhejiang provincial government set it up in November 1929, after the West Lake Expo closed, to keep the expo's objects; it was first called the Zhejiang West Lake Museum (Chinese Wikipedia).\n- It now has two main sites: the Gushan (Solitary Hill) site on the south side of Solitary Hill by West Lake, finished in 1993, and the Zhijiang site in the new Zhijiang Cultural Center, opened on 29 August 2023; a Wulin site on West Lake Cultural Square opened in 2009 (Chinese Wikipedia; The Paper, 2023; Travel China Guide).\n- The Zhijiang building has 100,000 square metres of floor space, 32,012 square metres of galleries on eight floors above ground, and opened with 13 exhibitions in 15 halls (The Paper; Hangzhou News, 2 September 2023).\n- The collection has more than 100,000 objects, including over 3,700 works by Huang Binhong and Huang Gongwang's Remaining Mountain section of \"Dwelling in the Fuchun Mountains\", shown for about a month a year (Travel China Guide; The Paper).\n- Chen Shuihua (陈水华), director at the 2023 opening, said the Gushan and Wulin sites together had only about 36,000 square metres, which led to the Zhijiang building (The Paper, 2023).\n- In summer 2026 the museum showed \"Recreating the Old Summer Palace\", with the original ox, tiger, monkey and pig zodiac heads; it apologised publicly on 6 August 2026 after crowding at the entrance, and on 13 August 2026 for errors in captions in a Long March print show (Tide News; Guangming Online, reporting The Paper and the museum's WeChat account).\n- Visiting: free; the Zhijiang site opens 9am to 5pm, last entry 4.30pm, closed Mondays, and regular visits need no booking (Tide News; Guangming Online).",
+  "after": "OVERVIEW\n- The Zhejiang Provincial Museum (浙江省博物馆) is the largest comprehensive museum in Zhejiang and one of the first national first-grade museums (The Paper, 2023).\n- Founded in 1929 as the Zhejiang Provincial West Lake Museum (The Paper, 2023; Travel China Guide); Chinese Wikipedia states the provincial government set it up to keep objects from the West Lake Expo.\n- It now has two main sites: the Gushan (Solitary Hill) site by West Lake, rebuilt in 1993 (Hangzhou News, 2019), and the Zhijiang site in the new Zhijiang Cultural Center, opened on 29 August 2023; a Wulin site on West Lake Cultural Square opened in 2009 (The Paper, 2023; Travel China Guide).\n- The Zhijiang building has 100,000 square metres of floor space and 32,012 square metres of galleries on eight floors above ground; it opened with 13 exhibitions in 15 halls (The Paper; Hangzhou News, 2 September 2023).\n- The collection has more than 100,000 objects, including over 3,700 works by Huang Binhong and Huang Gongwang's Remaining Mountain section of \"Dwelling in the Fuchun Mountains\", shown for about a month a year (Travel China Guide; The Paper).\n- Chen Shuihua (陈水华), director at the 2023 opening, said the Gushan and Wulin sites together had only about 36,000 square metres, which led to the Zhijiang building (The Paper, 2023).\n- In summer 2026 the museum showed \"Recreating the Old Summer Palace\", with the original ox, tiger, monkey and pig zodiac heads; it apologised publicly on 6 August 2026 after crowding at the entrance, and again that month for errors in the texts of a Long March print show (Tide News; Guangming Online, reporting The Paper and the museum's WeChat account).\n- Visiting: the Zhijiang site opens 9am to 5pm, last entry 4.30pm, closed Mondays, and regular visits need no booking (Tide News; Guangming Online).",
+  "sources": [
+   "https://www.thepaper.cn/newsDetail_forward_24405409",
+   "https://hznews.hangzhou.com.cn/wghz/content/2019-10/16/content_7285634.htm",
+   "https://m.gmw.cn/2026-08/13/content_1304547740.htm"
+  ],
+  "reason": "Founding (1929), first-batch first-grade status and the 1993 Gushan rebuild re-sourced to The Paper, Travel China Guide and Hangzhou News; 'one of China's earliest' cut; the West Lake Expo origin left credited to Chinese Wikipedia. The second apology date corrected (reported 13 August, made 'recently')."
+ },
+ {
+  "id": "zhejiang-museum",
+  "section": "FUNDING",
+  "problems": [
+   "wikipedia-only claim"
+  ],
+  "before": "FUNDING\nZhejiang Museum: public: Zhejiang provincial government, with central government co-funding\n- It became the first provincial museum in China to open free all year, from 1 January 2004 (Chinese Wikipedia).\n- In 2009 the National Cultural Heritage Administration and the Ministry of Finance named it a centrally and locally co-built national museum (Chinese Wikipedia; The Paper, 2023).\n- The Zhijiang site is part of the Zhijiang Cultural Center, a group of four provincial venues and one service centre that The Paper calls the largest provincial public culture cluster in China; building began on 28 February 2019 (The Paper, 2023).\n- The 1993 Gushan building cost 20 million yuan (Chinese Wikipedia).\n- Gifts of objects include more than 5,000 works and 10,000 relics from Huang Binhong's family, and 160 Song to Qing lacquer pieces from Cao Qiyong (曹其镛) and his wife in 2012; a museum board was set up in December 2018 (Chinese Wikipedia).",
+  "after": "FUNDING\nZhejiang Museum: public: Zhejiang provincial government, with central government co-funding\n- On 1 January 2004 it became the first provincial museum in China to open free to the public (People's Daily Overseas Edition, 28 November 2015).\n- In 2009 the Ministry of Finance and the National Cultural Heritage Administration named it a centrally and locally co-built national museum (People's Daily Overseas Edition; The Paper, 2023).\n- The Zhijiang site is part of the Zhijiang Cultural Center, a group of four provincial venues and one service centre that The Paper calls the largest provincial public culture cluster in China; building began on 28 February 2019 (The Paper, 2023).\n- The 1993 Gushan building cost 20 million yuan (Chinese Wikipedia).\n- Gifts of objects include more than 5,000 works and 10,000 relics from Huang Binhong's family, and 160 Song to Qing lacquer pieces from Cao Qiyong (曹其镛) and his wife in 2012; a museum board was set up in December 2018 (Chinese Wikipedia).",
+  "sources": [
+   "https://paper.people.com.cn/rmrbhwb/html/2015-11/28/content_1636746.htm"
+  ],
+  "reason": "Free entry from 1 January 2004 and the 2009 co-built status re-sourced to People's Daily Overseas Edition."
+ },
+ {
+  "id": "zhejiang-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nA provincial museum paid for by the Zhejiang government with central co-funding, free to enter and with no corporate funder named. Nothing in its money raises a flag.",
+  "after": "BOTTOM LINE\nClean public money from the province and the central state; nothing in its funding raises a flag.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "zhejiang-museum",
+  "section": "SOURCES",
+  "problems": [
+   "source update"
+  ],
+  "before": "SOURCES\n- https://www.thepaper.cn/newsDetail_forward_24405409 (state outlet)\n- https://hznews.hangzhou.com.cn/wenti/content/2023-09/02/content_8611690.htm (state outlet)\n- https://tidenews.com.cn/news.html?id=3520291 (state outlet)\n- https://m.gmw.cn/2026-08/07/content_1304544422.htm (state outlet)\n- https://m.gmw.cn/2026-08/13/content_1304547740.htm (state outlet)\n- https://zh.wikipedia.org/wiki/浙江省博物馆\n- https://www.travelchinaguide.com/attraction/zhejiang/hangzhou/provincial-museum.htm",
+  "after": "SOURCES\n- https://www.thepaper.cn/newsDetail_forward_24405409 (state outlet)\n- https://hznews.hangzhou.com.cn/wenti/content/2023-09/02/content_8611690.htm (state outlet)\n- https://tidenews.com.cn/news.html?id=3520291 (state outlet)\n- https://m.gmw.cn/2026-08/07/content_1304544422.htm (state outlet)\n- https://m.gmw.cn/2026-08/13/content_1304547740.htm (state outlet)\n- https://zh.wikipedia.org/wiki/浙江省博物馆\n- https://paper.people.com.cn/rmrbhwb/html/2015-11/28/content_1636746.htm (state outlet)\n- https://hznews.hangzhou.com.cn/wghz/content/2019-10/16/content_7285634.htm (state outlet)\n- https://www.travelchinaguide.com/attraction/zhejiang/hangzhou/provincial-museum.htm",
+  "sources": [],
+  "reason": "People's Daily Overseas Edition and Hangzhou News added."
+ },
+ {
+  "id": "whw-galerija-nova-zagreb",
+  "section": "FUNDING",
+  "problems": [
+   "wrong detail"
+  ],
+  "before": "FUNDING\nWHW / Galerija Nova: public and foundation grants: Croatian state and Zagreb city money, EU programmes and private arts foundations\n- WHW's support page lists the same funders for each year from 2023 to 2026: the Kultura Nova Foundation, the Ministry of Culture and Media, the City of Zagreb's Office for Culture, the Croatian Audiovisual Centre, the Government Office for Associations, the EU's Creative Europe and Erasmus+ programmes, ERSTE Foundation / Kontakt Collection, the Foundation for Arts Initiatives and the Trust for Mutual Understanding; the 2022 list adds the National Foundation for Civil Society Development (WHW).\n- The City of Zagreb's 2025 culture budget gave the association 85,500 euros across eight programmes in three lists, among them 25,000 euros for the exhibition \"Nadamo se (između redaka)\", 18,000 euros for WHW Akademija and 10,000 euros for the Akademija exhibition (City of Zagreb, approved programmes 2025).\n- The Ministry of Culture and Media gave 10,000 euros for the 2025 exhibition programme (ministry list of approved visual arts programmes, 2025).\n- Kultura Nova gave 25,000 euros in 2024 for the programme \"Sjeti se slobode\" (Remember Freedom), its top organisational development category, and lists it under multi-year institutional support in 2025 (Kultura Nova).\n- After the 2023 move the City Office for Culture continued to support WHW's programmes (WHW, May 2023).",
+  "after": "FUNDING\nWHW / Galerija Nova: public and foundation grants: Croatian state and Zagreb city money, EU programmes and private arts foundations\n- WHW's support page lists the same funders for 2025 and 2026: the Kultura Nova Foundation, the Ministry of Culture and Media, the City of Zagreb's Office for Culture, the Government Office for Associations, the EU's Creative Europe and Erasmus+ programmes, ERSTE Foundation / Kontakt Collection, the Foundation for Arts Initiatives and the Trust for Mutual Understanding. The 2022 to 2024 lists add the Croatian Audiovisual Centre, and 2022 the National Foundation for Civil Society Development (WHW).\n- The City of Zagreb's 2025 culture budget gave the association 85,500 euros across eight programmes in three lists, among them 25,000 euros for the exhibition \"Nadamo se (između redaka)\", 18,000 euros for WHW Akademija and 10,000 euros for the Akademija exhibition (City of Zagreb, approved programmes 2025).\n- The Ministry of Culture and Media gave 10,000 euros for the 2025 exhibition programme (ministry list of approved visual arts programmes, 2025).\n- Kultura Nova gave 25,000 euros in 2024 for the programme \"Sjeti se slobode\" (Remember Freedom), the first organisational development category (up to 25,000 euros), and lists it under multi-year institutional support in 2025 (Kultura Nova).\n- After the 2023 move the City Office for Culture continued to support WHW's programmes (WHW, May 2023).",
+  "sources": [
+   "https://www.whw.hr/o-nama/podrska/",
+   "https://kulturanova.hr/file/ckeDocument/files/financirani_PP2024_a1.pdf"
+  ],
+  "reason": "The support page lists the Croatian Audiovisual Centre for 2022 to 2024 only, not 2025 and 2026. Kultura Nova's category is the 'first category' up to 25,000 euros, not 'top'. Zagreb (85,500 euros) and ministry (10,000 euros) amounts confirmed."
+ },
+ {
+  "id": "whw-galerija-nova-zagreb",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition"
+  ],
+  "before": "WIDER CONTEXT\n- In December 2022 the City of Vienna's panel found all twenty applicants for the Kunsthalle Wien directorship wanting, including WHW, and readvertised the post, ending WHW's term in June 2024 (Artforum, 19 December 2022, citing Der Standard).\n- Kunsthalle Wien board member Boris Marte, board chair of the Erste Foundation, resigned in protest, saying the board had not been consulted (Artforum).\n- On 10 January 2023 the museum confederation L'Internationale published a letter calling the city's explanation inadequate and asking councillor Veronica Kaup-Hasler to reconsider (L'Internationale).\n- This concerns the Vienna institution three WHW members directed, not WHW's Zagreb funding; ERSTE Foundation, whose chair resigned from the Kunsthalle board, is also on WHW's own funder list.",
+  "after": "WIDER CONTEXT\n- In December 2022 the City of Vienna's panel found all twenty applicants for the Kunsthalle Wien directorship wanting, including WHW, and readvertised the post (Artforum, 19 December 2022, citing Der Standard).\n- Kunsthalle Wien board member Boris Marte, board chair of the Erste Foundation, resigned in protest, saying the board had not been consulted (Artforum).\n- On 10 January 2023 the museum confederation L'Internationale published a letter calling the city's explanation inadequate and asking councillor Veronica Kaup-Hasler to reconsider (L'Internationale).\n- This concerns the Vienna institution three WHW members directed, not WHW's Zagreb funding; ERSTE Foundation, whose chair resigned from the Kunsthalle board, is also on WHW's own funder list.",
+  "sources": [
+   "https://www.artforum.com/news/curatorial-collective-whw-ousted-from-kunsthalle-wien-leadership-89858"
+  ],
+  "reason": "'ending WHW's term in June 2024' repeated OVERVIEW. The earlier Hyperallergic points were not restored: the page did not open past its first lines."
+ },
+ {
+  "id": "whw-galerija-nova-zagreb",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "BOTTOM LINE\nFunded by Croatian state and city grants, EU programmes and a few private arts foundations, with nothing in that mix that raises a flag. The open question is a permanent home for Galerija Nova after the 2023 restitution.",
+  "after": "BOTTOM LINE\nClean public and foundation money; nothing in its funding raises a flag. A permanent home for Galerija Nova is the open question.",
+  "sources": [],
+  "reason": "Verdict only."
+ }
+]
