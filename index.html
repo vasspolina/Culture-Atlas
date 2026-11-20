@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=869"></script>
+  <script src="assets/load-image-data.js?v=870"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=869">
-  <link rel="stylesheet" href="assets/sheet.css?v=869">
-  <script src="assets/config.js?v=869"></script>
-  <script src="assets/analytics.js?v=869"></script>
-  <script src="assets/subtopic.js?v=869"></script>
-  <script src="assets/names.js?v=869"></script>
-  <script src="assets/grounding.js?v=869"></script>
-  <script src="assets/repeats.js?v=869"></script>
-  <script src="assets/intro-narration.js?v=869"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=870">
+  <link rel="stylesheet" href="assets/sheet.css?v=870">
+  <script src="assets/config.js?v=870"></script>
+  <script src="assets/analytics.js?v=870"></script>
+  <script src="assets/subtopic.js?v=870"></script>
+  <script src="assets/names.js?v=870"></script>
+  <script src="assets/grounding.js?v=870"></script>
+  <script src="assets/repeats.js?v=870"></script>
+  <script src="assets/intro-narration.js?v=870"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=869"></script>
+  <script src="assets/load-image.js?v=870"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=869"></script>
-  <script src="assets/money-ids.js?v=869"></script>
+  <script src="assets/institutions.js?v=870"></script>
+  <script src="assets/money-ids.js?v=870"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10887,11 +10887,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v869';
+    const ATLAS_RELEASE = 'culture-atlas-v870';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=869').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=870').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10982,6 +10982,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     let zoomAnchor = null;            // canvas point a wheel zoom keeps still, cleared when the zoom settles
     let lastPointer = null;           // where the mouse last was over the canvas, so hover follows a moving view
     let lastShownCityLabels = new Set(); // labels drawn last frame keep their place while the view moves
+    const lastCityPlace = new Map();      // where each city's name sat last frame (above or below its dot, slid how far), tried first
     let lastCityDisks = new Map();       // city -> box of its spread dot disk last frame: its own label sits above it, other labels keep off it
     let lastShownInstLabels = new Set();
     let lastShownCountryLabels = new Set();
@@ -11946,6 +11947,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             ctx.beginPath();
             if (below > y0 + h) { ctx.moveTo(tx - 6, y0 + h - 1); ctx.lineTo(tx + 6, y0 + h - 1); ctx.lineTo(tx, Math.min(below, y0 + h + 9)); ctx.closePath(); ctx.fill(); }
             else if (above < y0) { ctx.moveTo(tx - 6, y0 + 1); ctx.lineTo(tx + 6, y0 + 1); ctx.lineTo(tx, Math.max(above, y0 - 9)); ctx.closePath(); ctx.fill(); }
+            // A name set a row off its mark (mark.far, a city name clearing its neighbours' marks) carries on from the tail's
+            // point to the mark in a hairline of the bubble's ink.
+            const gap = below > y0 + h ? below - (y0 + h + 9) : above < y0 ? (y0 - 9) - above : 0;
+            if (mark.far && gap > 0) {
+              const from = below > y0 + h ? y0 + h + 9 : y0 - 9, to = below > y0 + h ? below : above;
+              ctx.beginPath(); ctx.moveTo(tx, from); ctx.lineTo(mark.x, to);
+              ctx.lineWidth = 1.2; ctx.strokeStyle = GLOBE_LIGHT ? G_TEXT : 'rgba(244, 244, 244, 0.7)'; ctx.stroke();
+            }
           }
           box(); ctx.fill();
           if (!GLOBE_LIGHT) { box(); ctx.strokeStyle = 'rgba(244, 244, 244, 0.45)'; ctx.lineWidth = 1; ctx.stroke(); }
@@ -12031,6 +12040,46 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // In the money map's mode (assets/layers.js, MONEY MODE) the map carries one space and its funders: no city marks.
         // Influence mode (assets/influence-mode.js) draws the funders instead of the spaces, so no city marks either.
         const moneyModeOn = !!(window.atlasMoneyMode && window.atlasMoneyMode(selectedInstitution)) || !!(window.isInfluenceModeActive && window.isInfluenceModeActive());
+
+        // THE MARKS A NAME MUST NOT COVER (user, 20 Nov 2026: "fix overlap", of city names laid over other cities' dots and
+        // under the "!" alert rings). The city names are placed before the spaces' dots are drawn, and used to avoid only
+        // each other, so a name sat on a neighbour's dot, its layer marks, or a space with an alert. Each mark that will be on
+        // the map this frame is boxed here: a space's dot (the same dots step 8 draws), widened for the right-wing and Epstein
+        // marks set beside it and lengthened for the propaganda mark under it, and each alert ring (assets/phone-maps.js, an
+        // HTML button over the canvas, 24px). A space's own city keeps its dots: they sit under its name's tail.
+        const markObstacles = [];
+        {
+          const Lr = window.atlasLayers || {};
+          const side = (Lr.right || Lr.epstein) ? 7 : 0, R = MARK_R + 1;
+          const cityN = {};
+          if (isClusterZoom) filteredList.forEach(i => { const k = (i.city || '').toLowerCase().trim(); cityN[k] = (cityN[k] || 0) + 1; });
+          filteredList.forEach(i => {
+            if (!i.city || typeof i.lon !== 'number' || typeof i.lat !== 'number' || isNaN(i.lon) || isNaN(i.lat) || (i.lat === 0 && i.lon === 0)) return;
+            const k = i.city.toLowerCase().trim();
+            if (isClusterZoom && cityN[k] >= 2) return;
+            const p = project(i.lon, i.lat, r, cx, cy);
+            if (!p.front || p.depth <= 0.05) return;
+            const bottom = p.y + (Lr.propaganda && i.propaganda && i.propaganda.length ? 19 : R);
+            markObstacles.push({ x: p.x - R - side, y: p.y - R, w: 2 * (R + side), h: bottom - p.y + R, city: k, name: i.name });
+          });
+          if (!isCityStreetViewActive) {
+            const seenAlert = new Set();
+            (Array.isArray(window.atlasReports) ? window.atlasReports : []).forEach(x => {
+              const i = x && x.alert && x.inst;
+              if (!i || typeof i.lon !== 'number' || typeof i.lat !== 'number') return;
+              const key = i.id || i.name;
+              if (seenAlert.has(key)) return;
+              seenAlert.add(key);
+              const p = project(i.lon, i.lat, r, cx, cy);
+              if (p.front) markObstacles.push({ x: p.x - 13, y: p.y - 13, w: 26, h: 26, city: (i.city || '').toLowerCase().trim(), name: i.name, alert: true });
+            });
+          }
+        }
+        // How many marks a box covers. A city's own dots are left out (its name's tail points at them); its alerts are not.
+        const marksUnder = (x, y, w, h, ownCity, ownName) => markObstacles.reduce((n, m) => n + (
+          (m.alert ? m.name !== ownName : (m.city !== ownCity && m.name !== ownName)) &&
+          !(x + w <= m.x || x >= m.x + m.w || y + h <= m.y || y >= m.y + m.h) ? 1 : 0), 0);
+
         sortedCities.forEach(city => {
           if (moneyModeOn) return;
           const isSelected = selectedCityFilter.toLowerCase() === city.name.toLowerCase();
@@ -12056,35 +12105,74 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               bw = tw + 28;
             }
 
-            const bx = pt.x - bw / 2;
             // The city whose place sheet is open (no space picked) is told as a picked city is: a larger bubble, a larger mark.
             const isOpenCity = !selectedInstitution && window.atlasPlacePin && matchC(window.atlasPlacePin.name || '', city.name);
             // A city's mark is a solid dot in the ink; its bubble stands a tail's length above it.
             const cityR = (isSelected || isOpenCity) ? 5.5 : isHovered ? 5 : isClustered ? 4 : 3;
-            let by = pt.y - cityR - ATLAS_TAIL - bh - (isSelected || isOpenCity ? 5 : 0);
-            // A city whose spaces fill a dot disk (Havana) puts its label above the disk, not on it.
+            const lift = cityR + ATLAS_TAIL + (isSelected || isOpenCity ? 5 : 0);
+            let yAbove = pt.y - lift - bh, yBelow = pt.y + lift;
+            // A city whose spaces fill a dot disk (Havana) puts its label above the disk, not on it, or below it.
             const ownDisk = isClustered ? null : lastCityDisks.get(city.name.toLowerCase().trim());
-            if (ownDisk && ownDisk.y < by + bh + 2) by = ownDisk.y - bh - 2;
+            if (ownDisk && ownDisk.y < yAbove + bh + 2) yAbove = ownDisk.y - bh - 2;
+            if (ownDisk && ownDisk.y + ownDisk.h + 2 > yBelow) yBelow = ownDisk.y + ownDisk.h + 2;
 
             // A label drawn last frame keeps its place unless it actually overlaps another; a new
             // label needs 8px of air. Without this, labels flickered on and off through a zoom as
             // widths and positions crossed the margin, measured as the count swinging by 40 a frame.
             const wasShown = lastShownCityLabels.has(city.name);
             const mx8 = wasShown ? 0 : 8, my6 = wasShown ? 0 : 6;
-            const collidesAt = (y) => drawnCityBoxes.some(box => {
-              return !(bx + bw + mx8 < box.x || bx > box.x + box.w + mx8 || y + bh + my6 < box.y || y > box.y + box.h + my6);
+            const collidesAt = (x, y) => drawnCityBoxes.some(box => {
+              return !(x + bw + mx8 < box.x || x > box.x + box.w + mx8 || y + bh + my6 < box.y || y > box.y + box.h + my6);
             }) || (!isClustered && [...lastCityDisks.values()].some(box => box !== ownDisk &&
-              !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h)));
-            // Taken above its dot disk, the label goes below it.
-            if (ownDisk && collidesAt(by) && !collidesAt(ownDisk.y + ownDisk.h + 2)) by = ownDisk.y + ownDisk.h + 2;
-            const collides = collidesAt(by);
-
-            // Selected city or hovered city always draws; other cities only draw if they do NOT collide
+              !(x + bw < box.x || x > box.x + box.w || y + bh < box.y || y > box.y + box.h)));
             // A label cut by the screen edge reads as broken text: draw it only when it fits.
             const edgeInset = window.innerWidth < 768 ? 16 : 2;   // phone: keep labels inside the 16pt margins
-            const clipped = bx < edgeInset || bx + bw > width - edgeInset;
-            if ((!collides && !clipped) || isSelected || isHovered || isOpenCity) {
+            const clippedAt = (x) => x < edgeInset || x + bw > width - edgeInset;
+            const ownKey = city.name.toLowerCase().trim();
+            const marksAt = (x, y) => marksUnder(x, y, bw, bh, ownKey, null);
+
+            // Where the name may sit: above its dot, then slid left or right along it (the tail still reaches the dot,
+            // so it slides at most half its width less the tail's reach), then the same below the dot. The place it
+            // had last frame is tried first, so a name does not hop while the view moves. The first place clear of other
+            // names, of the spaces' marks and of the screen's edge wins.
+            // A city whose dots are folded into its name may also stand a row or two farther off, its tail drawn out to the dot.
+            const slide = Math.max(0, bw / 2 - 18), far = bh + 6;
+            const spots = [];
+            [0, 1, 2].forEach(lvl => {
+              if (lvl && !isClustered) return;
+              [false, true].forEach(below => [0, -slide, slide].forEach(dx => {
+                spots.push({ dx, below, lvl, x: pt.x - bw / 2 + dx, y: below ? yBelow + lvl * far : yAbove - lvl * far });
+              }));
+            });
+            const same = (s, h) => s.dx === h.dx && s.below === h.below && s.lvl === h.lvl;
+            const had = wasShown && lastCityPlace.get(city.name);
+            if (had) spots.sort((a, b) => (same(b, had) ? 1 : 0) - (same(a, had) ? 1 : 0));
+            const tailOf = (s) => { const t0 = s.below ? pt.y : s.y + bh, t1 = s.below ? s.y : pt.y; return { x: pt.x - 4, y: t0, w: 8, h: Math.max(0, t1 - t0) }; };
+            const tailClear = (s) => !s.lvl || !drawnCityBoxes.some(b => { const t = tailOf(s); return !(t.x + t.w <= b.x || t.x >= b.x + b.w || t.y + t.h <= b.y || t.y >= b.y + b.h); });
+            const free = (s) => !collidesAt(s.x, s.y) && !clippedAt(s.x) && tailClear(s);
+            let spot = spots.find(s => free(s) && !marksAt(s.x, s.y));
+            // No place is clear of every mark. A city whose dots are folded into its name (a count of two or more at the
+            // world view) has no other mark on the map, so it still shows, where it covers fewest marks; a city of one
+            // space keeps its dot and gives way, as a space's own name does.
+            const mustShow = isSelected || isHovered || isOpenCity;
+            // A city whose own dot falls under a name already laid out would show a name pointing at nothing: it gives way.
+            const dotUnder = drawnCityBoxes.some(b => !(pt.x + cityR <= b.x || pt.x - cityR >= b.x + b.w || pt.y + cityR <= b.y || pt.y - cityR >= b.y + b.h));
+            if (dotUnder && !mustShow) spot = undefined;
+            else if (!spot && (isClustered || mustShow)) {
+              const ok = spots.filter(free);
+              if (ok.length) spot = ok.reduce((best, s) => marksAt(s.x, s.y) < marksAt(best.x, best.y) ? s : best, ok[0]);
+            }
+            if (!spot && mustShow) spot = spots[0].lvl === 0 && spots[0].dx === 0 && !spots[0].below ? spots[0] : spots.find(s => s.dx === 0 && !s.below && !s.lvl);
+            const bx = spot ? spot.x : pt.x - bw / 2, by = spot ? spot.y : yAbove;
+
+            // Selected city or hovered city always draws; other cities only draw if they find a place.
+            if (spot) {
+              lastCityPlace.set(city.name, { dx: spot.dx, below: spot.below, lvl: spot.lvl });
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
+              // The city's own dot is a mark too: a name laid out after this one keeps off it.
+              drawnCityBoxes.push({ x: pt.x - cityR - 1, y: pt.y - cityR - 1, w: 2 * cityR + 2, h: 2 * cityR + 2 });
+              // A drawn-out tail is kept clear too, so no later name sits across it.
+              if (spot.lvl) drawnCityBoxes.push(tailOf(spot));
               shownCityLabels.add(city.name);
               const limb = limbFade(pt.depth, 0.08);
               if (limb >= 0.5) cityBadgeHitboxes.push({
@@ -12109,7 +12197,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
 
-              deferredPills.push([isClustered ? city.name + ' ' + countTxt : txt, pt.x, by + bh / 2, !!(isSelected || isOpenCity), null, badgeAlpha, { x: pt.x, y: pt.y, r: cityR }]);
+              deferredPills.push([isClustered ? city.name + ' ' + countTxt : txt, bx + bw / 2, by + bh / 2, !!(isSelected || isOpenCity), null, badgeAlpha, { x: pt.x, y: pt.y, r: cityR, far: spot.lvl > 0 }]);
               // The city's mark: a solid dot in the ink with a hairline of the ground round it, where the hollow ring was.
               ctx.beginPath();
               ctx.arc(pt.x, pt.y, cityR, 0, Math.PI * 2);
@@ -12352,7 +12440,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             let by = yAbove;
             if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, yBelow)) by = yBelow;
             // Another space's dot under the label hides it; the label then tries clear above its own dot, then below.
-            const onDot = (y) => !isSel && instDotBoxes.some(box => box.inst !== d.inst && !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h));
+            // Alert rings and the layers' marks beside a dot count too (markObstacles, above the city names).
+            const onDot = (y) => !isSel && (instDotBoxes.some(box => box.inst !== d.inst && !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h))
+              || marksUnder(bx, y, bw, bh, null, d.inst.name) > 0);
             if (onDot(by)) by = [yAbove, yBelow].find(y => !onDot(y) && !clashes(drawnCityBoxes, y)) ?? by;
             const collidesWithOtherLabel = clashes(drawnInstLabelBoxes, by);
             const collidesWithCity = clashes(drawnCityBoxes, by);
@@ -22691,24 +22781,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=869"></script>
-<script src="assets/note-aids.js?v=869" defer></script>
-<script src="assets/place-list.js?v=869" defer></script>
-<script src="assets/chat-share.js?v=869" defer></script>
-<script src="assets/note-files.js?v=869" defer></script>
-<script src="assets/funding-views.js?v=869"></script>
-<script src="assets/layers.js?v=869"></script>
-<script src="assets/critique-gallery-data.js?v=869"></script>
-<script src="assets/critique-captions.js?v=869"></script>
-<script src="assets/critique-gallery.js?v=869"></script>
-<script src="assets/hq-detail.js?v=869"></script>
-<script src="assets/influence-mode.js?v=869"></script>
-<script src="assets/bubbles.js?v=869" defer></script>
-<script src="assets/phone-maps.js?v=869"></script>
-<script src="assets/desktop-maps.js?v=869"></script>
-<script src="assets/chat-resize.js?v=869"></script>
-<script src="assets/frame-refusers.js?v=869"></script>
-<script src="assets/link-pane.js?v=869"></script>
-<script src="assets/tab-suggest.js?v=869"></script>
+<script src="assets/typeset.js?v=870"></script>
+<script src="assets/note-aids.js?v=870" defer></script>
+<script src="assets/place-list.js?v=870" defer></script>
+<script src="assets/chat-share.js?v=870" defer></script>
+<script src="assets/note-files.js?v=870" defer></script>
+<script src="assets/funding-views.js?v=870"></script>
+<script src="assets/layers.js?v=870"></script>
+<script src="assets/critique-gallery-data.js?v=870"></script>
+<script src="assets/critique-captions.js?v=870"></script>
+<script src="assets/critique-gallery.js?v=870"></script>
+<script src="assets/hq-detail.js?v=870"></script>
+<script src="assets/influence-mode.js?v=870"></script>
+<script src="assets/bubbles.js?v=870" defer></script>
+<script src="assets/phone-maps.js?v=870"></script>
+<script src="assets/desktop-maps.js?v=870"></script>
+<script src="assets/chat-resize.js?v=870"></script>
+<script src="assets/frame-refusers.js?v=870"></script>
+<script src="assets/link-pane.js?v=870"></script>
+<script src="assets/tab-suggest.js?v=870"></script>
 </body>
 </html>
