@@ -77,6 +77,30 @@ def merge_key(label,cat,country,rid):
     if label.lower() in GENERIC_GOV: return k+'|'+rid
     if cat=='gov': return k+'|'+country
     return k
+# One spelling, two bodies: a line whose name means another body than the one the same key means elsewhere gets its own
+# key here, by record (funder profiles fp37 to fp40, 20 Nov 2026: 'Genesis' is Hyundai's car brand at Cheongju and a UK
+# charity at the Young Vic). {(record id, key): key}
+# A value of None drops the name from that record: it is not a funder there ('La Nación' at the Teatro Colón is the newspaper
+# its figures come from).
+RECORD_KEY={
+ ('cheongju-craft-biennale-cheongju','genesis'):'genesismotor',          # Hyundai's Genesis car brand, not the UK Genesis Foundation
+ ('sak-p-sabanc-museum','ikea'):'ikearetail',                           # the IKEA shop in Istanbul, not IKEA Stiftung
+ ('kunstsammlung-nordrhein-westfalen','linklaters'):'linklatersllp',    # the law firm, not Fondation Linklaters
+ ('teatro-regio-di-parma','crditagricole'):'crditagricoleitalia',       # Crédit Agricole Italia
+ ('teatro-colon','lanacin'):None,                                       # the newspaper La Nación, cited for figures
+ ('american-museum-of-natural-history-new-york','chase'):'jpmorganchase', # JPMorgan Chase, not Jamaica's CHASE Fund
+ ('gam-galleria-civica-d-arte-moderna-e-contemporanea-di-torino','cittmetropolitana'):'cittmetropolitanaditorino',  # not Florence's
+ ('cantor-arts-center','iris'):'iriscantor',                            # the donor Iris Cantor, not Moscow's IRIS Foundation
+ ('burchfield-penney-art-center','cullen'):'cullenbuffalo',             # a Buffalo Cullen foundation, not Houston's
+ ('colomboscope-colombo','alliancefranaise'):'alliancefranaisedecolombo',   # the local Alliance, a separate association
+ ('african-artists-foundation-lagos','alliancefranaise'):'alliancefranaisedelagos',
+ ('villa-cavrois','neuflizeobc'):'neuflizeobcbank',                     # the bank, not its foundation
+ # 'Fidelity' at US spaces is Fidelity Investments or Boston's Fidelity Foundation; at UK spaces, the Fidelity UK Foundation
+ ('amon-carter-museum','fidelity'):'fidelityinvestments',('dallas-museum-of-art-dallas','fidelity'):'fidelityinvestments',
+ ('frank-lloyd-wright-houses-at-the-currier-museum','fidelity'):'fidelityinvestments',('nasher-museum-of-art-at-duke-durham','fidelity'):'fidelityfoundation',
+ ('tarrawarra-museum-of-art','victoria'):'victoriandepartmentofeducation',  # 'Victoria' there is the state's education department
+}
+def record_key(rid,k): return RECORD_KEY.get((rid,k),k)
 # Funders the page can highlight as right-wing sponsors. The atlas records carry no political field, so this is a short
 # curated list: only funders that appear in the records AND have a published source for their partisan giving.
 # Ronald Lauder is left off (user, 17 Nov 2026: "remove Ronald Lauder from the money maps list too").
@@ -321,6 +345,7 @@ tr={'A':3,'B':2,'U':1}
 out=[]
 for x in d:
     ns=[dict(n) for n in nodes_by_inst[x['id']]]
+    ns=[n for n in ns if not (n['cat'] in ('gov','corp','found','priv') and not n.get('fin') and ((x['id'],merge_key(n['label'],n['cat'],x['country'],x['id'])) in RECORD_KEY) and RECORD_KEY[(x['id'],merge_key(n['label'],n['cat'],x['country'],x['id']))] is None)]
     # dedupe by label
     seen=set(); u=[]
     for n in ns:
@@ -330,7 +355,7 @@ for x in d:
     ns=u[:22]
     nodes=[];edges=[]
     for i,n in enumerate(ns):
-        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(n['key'] if n.get('fin') else ('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else merge_key(n['label'],n['cat'],x['country'],x['id'])) if n['cat'] in ('gov','corp','found','priv') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found','priv') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
+        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(record_key(x['id'],n['key']) if n.get('fin') else ('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else record_key(x['id'],merge_key(n['label'],n['cat'],x['country'],x['id']))) if n['cat'] in ('gov','corp','found','priv') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found','priv') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
     taken={x['id']}; added=0
     for i,n in enumerate(ns):
         if not n['key']: continue

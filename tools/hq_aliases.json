@@ -150,7 +150,10 @@
  ],
  "creativevictoria": [
   "creativevictoria",
-  "stategovernment|heide-museum-of-modern-art"
+  "stategovernment|heide-museum-of-modern-art",
+  "victoriangovernment|Australia",
+  "victoria",
+  "victoriangovernments"
  ],
  "culturenorway": [
   "artscouncilnorway|Norway"
@@ -302,7 +305,8 @@
   "dutchministryofeducation|Netherlands",
   "dutchministryofocw|Netherlands",
   "dutcheducationministry|Netherlands",
-  "almostwhollydutchstate|Netherlands"
+  "almostwhollydutchstate|Netherlands",
+  "dutchstate|Netherlands"
  ],
  "municipalityofmiddelburg|Netherlands": [
   "cityofmiddelburg|Netherlands"
@@ -316,7 +320,9 @@
  ],
  "nrwcultureministry|Germany": [
   "nrwcultureministry|Germany",
-  "stateofnorthrhinewestphalia|Germany"
+  "stateofnorthrhinewestphalia|Germany",
+  "landnorthrhinewestphalia|Germany",
+  "landnrw|Germany"
  ],
  "nycdepartmentofculturalaffairs": [
   "nycdepartmentofculturalaffairs",
@@ -326,7 +332,11 @@
   "newyorkcitydepartmentofculturalaffairs|United States",
   "newyorkcitydepartmentofculturalaffairs|USA",
   "dcla",
-  "newyorkcity|USA"
+  "newyorkcity|USA",
+  "cityofnewyork|USA",
+  "cityofnewyorkmunicipal|USA",
+  "mayorericadams",
+  "nyc"
  ],
  "pirellionly": [
   "pirelli"
@@ -809,7 +819,8 @@
   "horacewgoldsmith"
  ],
  "hyundai": [
-  "hyundaimotorcompany"
+  "hyundaimotorcompany",
+  "genesismotor"
  ],
  "federalinbal|Mexico": [
   "institutonacionaldebellasartesyliteratura"
@@ -1206,5 +1217,77 @@
  ],
  "americanfriendsofisraelmuseumraisedover": [
   "americanfriendsofisraelmuseum"
+ ],
+ "fidelityuk": [
+  "fidelity"
+ ],
+ "artsqueensland": [
+  "queenslandgovernmentstatutorybody|Australia",
+  "queenslandgovernment|Australia"
+ ],
+ "governmentofnorthkorea|North Korea": [
+  "northkorea",
+  "northkoreanstate|North Korea",
+  "northkoreanmoney"
+ ],
+ "freestateofbavaria|Germany": [
+  "freestateofbavariaat|Germany"
+ ],
+ "comunedimilano|Italy": [
+  "cityofmilan|Italy",
+  "municipalmuseumsofcomunedimilano|Italy"
+ ],
+ "swedishstate|Sweden": [
+  "sweden"
+ ],
+ "uniqa": [
+  "uniqasponsorexhibitions"
+ ],
+ "australiangovernmentappropriation|Australia": [
+  "australiangovernment|Sudan",
+  "commonwealthgovernment|Australia",
+  "commonwealthgranta"
+ ],
+ "canadianheritage": [
+  "heritagecanada"
+ ],
+ "governmentofitalianrepublic|Bosnia and Herzegovina": [
+  "governmentofitaly|Sudan",
+  "italiangovernment|Lebanon",
+  "italyequippeditslabs"
+ ],
+ "nationalendowmentforhumanities": [
+  "neh"
+ ],
+ "regionelombardia": [
+  "lombardyregion|Italy"
+ ],
+ "rgionledefrance": [
+  "ledefranceregion|France"
+ ],
+ "romacapitale": [
+  "romacapitalemunicipalculturalcouncil|Italy",
+  "romacapitalesdepartmentofculture|Italy"
+ ],
+ "ruth": [
+  "ruthforarts"
+ ],
+ "stadtwien|Austria": [
+  "cityofviennacorefunding|Austria"
+ ],
+ "abbara": [
+  "cultureresourcemawred",
+  "woncultureresourcesabbaraprogramgrant"
+ ],
+ "arab": [
+  "arabforeconomic"
+ ],
+ "cubanministryofculture|Cuba": [
+  "ministrysponsored15thhavanabiennial|Cuba",
+  "statemuseumsubordinatetocubasministryofculture|Cuba"
+ ],
+ "departmentofculturecommunicationsandsportcontributetocapitalfunding|Ireland": [
+  "departmentofculture|Ireland",
+  "departmentoftourismcultureartsgaeltachtsportandmedia|Ireland"
  ]
 }
