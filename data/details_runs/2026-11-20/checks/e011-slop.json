@@ -1,0 +1,484 @@
+[
+ {
+  "id": "festspillene-i-nord-norge-harstad",
+  "section": "Red flags",
+  "problems": [
+   "unsupported: Aker BP partnership rests only on a home-page logo"
+  ],
+  "before": "Red flags: Aker BP, an oil company, among the business partners in 2026 (two points: SNL description of Aker BP; logo on the home page)",
+  "after": "(section removed)",
+  "sources": [
+   "https://festspillnn.no",
+   "https://akerbp.com/search/festspillene/feed/rss2/",
+   "https://snl.no/Festspillene_i_Nord-Norge"
+  ],
+  "reason": "No page names Aker BP in text as partner or sponsor: the festival's about, history and partner news pages, Aker BP's own site search (festspillene, Harstad, festival) and web searches found only the logo under 'Partnere' and Aker BP's unrelated supplier day in Harstad. Per the run brief the flag is cut."
+ },
+ {
+  "id": "festspillene-i-nord-norge-harstad",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Aker BP funding mention"
+  ],
+  "before": "Festspillene i Nord-Norge: mainly public: the state, the three northern counties and Harstad, with Aker BP among its business partners / ... Quality Hotel Harstad, Aker BP and Ramsalt",
+  "after": "Festspillene i Nord-Norge: mainly public: the state, the three northern counties and Harstad, with business partners / ... Quality Hotel Harstad and Ramsalt",
+  "sources": [
+   "https://festspillnn.no"
+  ],
+  "reason": "Funding mention cut with the flag, as the brief requires when no text source exists."
+ },
+ {
+  "id": "festspillene-i-nord-norge-harstad",
+  "section": "OVERVIEW",
+  "problems": [
+   "wiki-only: founding meeting and Nilsen's role rested on Norwegian Wikipedia",
+   "unsupported: 'children's events since 1966'"
+  ],
+  "before": "The idea came from Jan Kristian Nilsen, a journalist at Harstad Tidende; a founding meeting on 22 June 1964 set its programme, and children's events have been part of it since 1966 (Norwegian Wikipedia).",
+  "after": "The journalist Jan Kr. Nilssen called a meeting at the Grand Hotel in Harstad on 8 April 1964, which chose an interim board; the first official meeting followed on 22 June 1964, and the first festival opened on 5 June 1965 (festival history page).",
+  "sources": [
+   "https://festspill-old.prod20.ovh.ramsalt.com/en/information/history/festspillene-i-nord-norge-blir-til",
+   "https://data.brreg.no/enhetsregisteret/api/enheter/958581645"
+  ],
+  "reason": "Re-sourced to the festival's own history page; the register gives the foundation date 22 June 1964. Harstad Tidende and the 1966 children's events rest on Wikipedia only and were cut; 'first held in 1965' dropped from point 1 as a repeat."
+ },
+ {
+  "id": "festspillene-i-nord-norge-harstad",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repeats facts",
+   "rests on cut flag"
+  ],
+  "before": "Mostly public money, with one current fossil fuel partner whose contribution is undisclosed. Worth watching: what the oil partnership pays for.",
+  "after": "Clean: public money carries the festival, and none of its named partners carries a funder flag.",
+  "sources": [
+   "https://festspillnn.no"
+  ],
+  "reason": "Verdict rewritten after the Aker BP flag was cut."
+ },
+ {
+  "id": "festspillene-i-nord-norge-harstad",
+  "section": "SOURCES",
+  "problems": [
+   "source no longer cited"
+  ],
+  "before": "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge ; https://snl.no/Aker_BP",
+  "after": "https://festspill-old.prod20.ovh.ramsalt.com/en/information/history/festspillene-i-nord-norge-blir-til",
+  "sources": [],
+  "reason": "Wikipedia and the Aker BP article are no longer cited."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "FUNDING",
+  "problems": [
+   "figures read only through a summariser",
+   "misleading: 2,110,940 euros is the museum's own share, not the building's cost"
+  ],
+  "before": "Prizma's Skopje 2014 database records 2,110,940 euros (129,822,831 denars) spent on the museum building, and 2,175,946 euros in all on projects with the museum as investor (Prizma).",
+  "after": "Prizma's database, last updated 5 January 2018, puts the building's cost at 16,992,208 euros (marked as incomplete data), with the Ministry of Culture and the museum as investors; the museum's own spending as investor was 2,175,946 euros: 2,110,940 on its building and 65,006 on the triumphal arch \"Macedonia\".",
+  "sources": [
+   "https://web.archive.org/web/20251210170542/https://skopje2014.prizma.mk/en/results/inv=23",
+   "https://web.archive.org/web/20260721140934/https://skopje2014.prizma.mk/en/Museum-of-the-Macedonian-Struggle"
+  ],
+  "reason": "Exact figures confirmed in the Wayback copies of the investor and building pages (live site fails curl on its certificate). Both archived URLs replace the live one in SOURCES."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: income from renting Porta Macedonia"
+  ],
+  "before": "Its own income comes from tickets and from renting Porta Macedonia (museum).",
+  "after": "(cut)",
+  "sources": [
+   "https://mmb.org.mk/en/porta-macedonia/"
+  ],
+  "reason": "The museum's page offers the space but says nothing about income; tickets are already in Visiting."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'subsidiary'"
+  ],
+  "before": "It runs a subsidiary, Porta Macedonia, which rents out space ...",
+  "after": "It offers Porta Macedonia, a multipurpose space on two levels, for conferences, concerts, receptions and weddings (museum).",
+  "sources": [
+   "https://mmb.org.mk/en/porta-macedonia/"
+  ],
+  "reason": "The page does not call it a subsidiary."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "OVERVIEW",
+  "problems": [
+   "citation: Prizma cited for location only"
+  ],
+  "before": "on the left bank of the Vardar in central Skopje (Prizma)",
+  "after": "on the left bank of the Vardar in central Skopje, built from 2008 to 2011 as part of the Skopje 2014 programme (Prizma)",
+  "sources": [
+   "https://web.archive.org/web/20260721140934/https://skopje2014.prizma.mk/en/Museum-of-the-Macedonian-Struggle"
+  ],
+  "reason": "Matches the archived Prizma building page."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "OVERVIEW",
+  "problems": [
+   "wording beyond source"
+  ],
+  "before": "Bieber wrote that most of the paintings were by artists from Russia and Ukraine.",
+  "after": "Bieber wrote that most of the 85 mass scenes were painted by artists from Russia and Ukraine.",
+  "sources": [
+   "https://florianbieber.org/2014/01/18/the-museum-with-the-longest-name/"
+  ],
+  "reason": "Bieber says this of the 85 mass scenes, not all paintings."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "Red flags",
+  "problems": [
+   "abstract-only source said more than the abstract"
+  ],
+  "before": "argues that this museum and the other Skopje 2014 museums were a deliberate effort to reshape ...",
+  "after": "studies this museum, the Museum of VMRO and the Museum of the Victims of the Communist Regime; its abstract argues that Skopje 2014 was a deliberate effort to reconfigure historical interpretation and collective memory ... (only the abstract was read)",
+  "sources": [
+   "https://journals.ukim.mk/index.php/eaz/article/view/4500"
+  ],
+  "reason": "Now states only what the abstract says, with the three museums it names, and keeps the abstract-only note."
+ },
+ {
+  "id": "museum-of-the-macedonian-struggle",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'prime minister from 2006'"
+  ],
+  "before": "initiated by Nikola Gruevski, prime minister from 2006, whose structures came to symbolise a decade",
+  "after": "initiated by the former prime minister Nikola Gruevski, whose structures came to symbolise his ten years in office,",
+  "sources": [
+   "https://foreignpolicy.com/2016/06/19/let-them-eat-alexander-the-great-statues-skopje-2014-macedonia-colorful-revolution/"
+  ],
+  "reason": "Foreign Policy gives no start year; it says his ten years in office."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "OVERVIEW",
+  "problems": [
+   "wiki-only"
+  ],
+  "before": "North Sámi name means 'small storm on the coast' (Norwegian Wikipedia); Gáivuona Sámenuorat started it in 1991 (Norwegian Wikipedia) ... almost all of Manndalen's Sámi majority considered themselves Norwegian (English Wikipedia)",
+  "after": "Young people in Kåfjord started it in 1991 to turn shame about their Sea Sámi background into pride through music and culture; in the early years Sámi road signs were shot at and families split over it (Riddu Riđđu, translated by the atlas).",
+  "sources": [
+   "https://riddu.no/fallu/riddu-riddu-festivala"
+  ],
+  "reason": "Re-sourced to the festival's own history page (North Sámi); the name meaning was cut."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "OVERVIEW",
+  "problems": [
+   "wiki-only: staff count"
+  ],
+  "before": "the company had 11 employees in November 2025 (Norwegian Wikipedia)",
+  "after": "Since 1 January 2010 ... (Brønnøysund Register), which has five permanent staff, a year-round crew of 100 and about 170 volunteers at festival time (Riddu Riđđu, translated by the atlas)",
+  "sources": [
+   "https://data.brreg.no/enhetsregisteret/api/enheter/995293994",
+   "https://riddu.no/fallu/riddu-riddu-festivala"
+  ],
+  "reason": "Register confirms the 2010 start; staff, crew and volunteers from the festival's own page."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "OVERVIEW",
+  "problems": [
+   "wiki-only: programme list and festival leader"
+  ],
+  "before": "programme mixes concerts, theatre ... (Norwegian Wikipedia); Erle Bårdsdatter Sæther holds the post for 2026 to 2030 (Norwegian Wikipedia)",
+  "after": "Beside concerts it runs a children's festival, Mánáidfestivála ...; In March 2026 the festival named Erle Bårdsdatter Sæther festival director for four years from 1 September 2026, after Sajje Solbakk's fourth and last festival (Riddu Riđđu).",
+  "sources": [
+   "https://riddu.no/nyheter/da-lea-riddu-ridu-odda-festivalajodiheaddji"
+  ],
+  "reason": "Festival's announcement of 18 March 2026."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "FUNDING",
+  "problems": [
+   "wiki-only: ownership"
+  ],
+  "before": "The company is owned by about 120 year-round crew members, who work alongside about 200 festival volunteers (Norwegian Wikipedia).",
+  "after": "The association Riddu Riđđu Searvi, whose members are mostly festival crew, owns the company outright; the company does not aim to make a profit, and its board includes representatives of Troms County, the Sámi Parliament and Kåfjord Municipality (Riddu Riđđu, translated by the atlas).",
+  "sources": [
+   "https://riddu.no/fallu/riddu-riddu-festivala",
+   "https://data.brreg.no/enhetsregisteret/api/enheter/995293994/roller"
+  ],
+  "reason": "The festival's page says the association owns 100 percent; the Wikipedia ownership claim was wrong as worded."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "FUNDING",
+  "problems": [
+   "wiki-only: grant amount"
+  ],
+  "before": "It became a national nodal festival in 2009 with a state grant of NOK 1.5M a year; after that scheme ended in 2015 it has applied for three-year support from Arts Council Norway (Norwegian Wikipedia).",
+  "after": "Nodal festival status in 2009 gave it a fixed line in the state budget, as one of 12 festivals in Norway (Riddu Riđđu, translated by the atlas).",
+  "sources": [
+   "https://riddu.no/fallu/riddu-riddu-festivala"
+  ],
+  "reason": "Amount and post-2015 claim rest on Wikipedia only and were cut."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "FUNDING",
+  "problems": [
+   "partner list does not match the page"
+  ],
+  "before": "... UiT The Arctic University of Norway, Coop Nord, Lásságámmi, the Centre for Northern Peoples, Visit Lyngenfjord, Noereh, Suoma Sámi Nuorat and Ramsalt",
+  "after": "... the Ministry of Foreign Affairs, Lásságámmi, Ramsalt and Coop Nord",
+  "sources": [
+   "https://riddu.no"
+  ],
+  "reason": "The home page partner logos on 20 Nov 2026 do not include UiT, the Centre for Northern Peoples, Visit Lyngenfjord, Noereh or Suoma Sámi Nuorat."
+ },
+ {
+  "id": "riddu-riddu-festival-manndalen",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence wording"
+  ],
+  "before": "with nothing in the sources read tying it to a flagged funder",
+  "after": "with no flagged funder",
+  "sources": [],
+  "reason": "Empty-search wording removed."
+ },
+ {
+  "id": "perspektivet-museum-tromso",
+  "section": "OVERVIEW",
+  "problems": [
+   "date conflict: register says 28 March 1995",
+   "wiki-only"
+  ],
+  "before": "Established in 1996, it took over the collections ... (Lokalhistoriewiki); it is part of the national museum network, and documentary photography is one of its main fields (Norwegian Wikipedia).",
+  "after": "The foundation was registered as established on 28 March 1995, to run museums and protect historic buildings in Tromsø, Balsfjord and Karlsøy (Brønnøysund Register); it took over the collections of Troms Folkemuseum and Tromsø Bymuseum and has been in the house since 2004 (Store norske leksikon).",
+  "sources": [
+   "https://data.brreg.no/enhetsregisteret/api/enheter/976296990",
+   "https://snl.no/Perspektivet_Museum"
+  ],
+  "reason": "Register date used as instructed; wiki-only network and photography claims cut."
+ },
+ {
+  "id": "perspektivet-museum-tromso",
+  "section": "OVERVIEW",
+  "problems": [
+   "wiki-only: collection numbers"
+  ],
+  "before": "it manages 25 historic buildings, about 500,000 photographs and about 16,000 objects (Lokalhistoriewiki)",
+  "after": "its photograph collection is estimated at 500,000 pictures of Tromsø from the 1800s to today (Perspektivet)",
+  "sources": [
+   "https://perspektivet.no"
+  ],
+  "reason": "500,000 is on the museum's home page; the building and object counts rest on Lokalhistoriewiki only and were cut."
+ },
+ {
+  "id": "perspektivet-museum-tromso",
+  "section": "FUNDING",
+  "problems": [
+   "wrong count: board"
+  ],
+  "before": "Tromsø Municipality appoints ten of its twelve board members ...; staff elect the other two",
+  "after": "Tromsø Municipality appoints five of the six board members, among them the chair, Rebekka Brox Liabø, and five of the six deputies; staff elect the rest",
+  "sources": [
+   "https://perspektivet.no/om-museet/styret/"
+  ],
+  "reason": "The board page lists six members and six deputies."
+ },
+ {
+  "id": "perspektivet-museum-tromso",
+  "section": "FUNDING",
+  "problems": [
+   "wiki-only: 2001 tenancy"
+  ],
+  "before": "When Storgata 95 was put up for sale in 2001, Tromsø Municipality stepped in as tenant; the foundation bought the property in 2005 (Norwegian Wikipedia).",
+  "after": "The foundation bought Storgata 95 in 2005 and owns Folkeparken and Straumen gård as well (Store norske leksikon).",
+  "sources": [
+   "https://snl.no/Perspektivet_Museum"
+  ],
+  "reason": "Re-sourced to SNL; the tenancy claim cut."
+ },
+ {
+  "id": "perspektivet-museum-tromso",
+  "section": "FUNDING",
+  "problems": [
+   "wiki-only: funder list"
+  ],
+  "before": "A foundation supported by Tromsø Municipality, Troms County and the Ministry of Culture (Lokalhistoriewiki).",
+  "after": "Lokalhistoriewiki names Tromsø Municipality, Troms County and the Ministry of Culture as the foundation's supporters.",
+  "sources": [
+   "https://lokalhistoriewiki.no/wiki/Perspektivet_Museum"
+  ],
+  "reason": "No primary source could be opened (state budget PDF refused, Kulturdirektoratet documents dead); kept with clear credit."
+ },
+ {
+  "id": "perspektivet-museum-tromso",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repeats a fact"
+  ],
+  "before": "Clean: local and state public money under municipal control, with almost no earned income.",
+  "after": "Clean: public money under municipal control.",
+  "sources": [],
+  "reason": "Sales figure already in FUNDING."
+ },
+ {
+  "id": "bodo2024-european-capital-of-culture",
+  "section": "FUNDING",
+  "problems": [
+   "credit: date"
+  ],
+  "before": "(News in English, citing Klassekampen, February 2024)",
+  "after": "(News in English, citing Klassekampen, 6 February 2024)",
+  "sources": [
+   "https://www.newsinenglish.no/2024/02/06/sparks-fly-around-bodos-opening-as-a-european-culture-capital/"
+  ],
+  "reason": "Credited to both outlets with the article date."
+ },
+ {
+  "id": "bodo2024-european-capital-of-culture",
+  "section": "Red flags",
+  "problems": [
+   "shortfall and quote shared one credit"
+  ],
+  "before": "In early February 2024 Bodø2024 lacked about NOK 13.6M ...; Wallann Larsen told Klassekampen ... (News in English).",
+  "after": "Shortfall: (News in English, 6 February 2024). Quote: (News in English, citing Klassekampen, February 2024).",
+  "sources": [
+   "https://www.newsinenglish.no/2024/02/06/sparks-fly-around-bodos-opening-as-a-european-culture-capital/"
+  ],
+  "reason": "The shortfall sentence is News in English's own; no other source for the figure was found, so it carries that outlet and year."
+ },
+ {
+  "id": "bodo2024-european-capital-of-culture",
+  "section": "Red flags",
+  "problems": [
+   "credit",
+   "paraphrase beyond source"
+  ],
+  "before": "Gerhardsen told NRK ... (News in English); Mayor asked residents to distance themselves from demeaning comments about Sámi",
+  "after": "(News in English, citing NRK); Mayor called on residents to \"calm and distance themselves\" from hateful comments spreading on social media",
+  "sources": [
+   "https://www.newsinenglish.no/2024/02/06/sparks-fly-around-bodos-opening-as-a-european-culture-capital/"
+  ],
+  "reason": "Credited to both outlets; mayor's words now as reported."
+ },
+ {
+  "id": "bodo2024-european-capital-of-culture",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence wording"
+  ],
+  "before": "with no flagged sponsor named in the sources read",
+  "after": "Clean: mainly public money and no flagged sponsor.",
+  "sources": [],
+  "reason": "Empty-search wording removed."
+ },
+ {
+  "id": "wereldmuseum-amsterdam-former-tropenmuseum",
+  "section": "FUNDING",
+  "problems": [
+   "credit and date"
+  ],
+  "before": "Until 2013 the museum was paid for from the foreign ministry's development budget, 20 million euros, which the ministry withdrew in aid cuts announced in 2011 (DutchNews, 2011).",
+  "after": "In October 2011 DutchNews reported that the museum then received 20 million euros from the foreign ministry's development budget, and that the ministry would stop this subsidy from 2013 because of aid cuts (DutchNews, 13 October 2011).",
+  "sources": [
+   "https://www.dutchnews.nl/2011/10/foreign_ministry_stops_funding/"
+  ],
+  "reason": "Credited and dated; 'until 2013 paid for' said more than the article."
+ },
+ {
+  "id": "wereldmuseum-amsterdam-former-tropenmuseum",
+  "section": "OVERVIEW",
+  "problems": [
+   "single secondary source for architect"
+  ],
+  "before": "The building, by the architect Johannes Jacobus van Nieukerken, is in Dutch neo-Renaissance style (Museums Journal).",
+  "after": "Around 1910 the Colonial Institute engaged the Van Nieukerken family of architects, a father and his sons, who drew on Dutch Renaissance castles of the 16th and 17th centuries (KIT, Witness in Stone).",
+  "sources": [
+   "https://witnessinstone.kit.nl/archictecture-and-ormanentation-of-a-remarkable-building/"
+  ],
+  "reason": "Re-sourced to the Royal Tropical Institute's own building history."
+ },
+ {
+  "id": "alta-museum-world-heritage-rock-art-centre",
+  "section": "OVERVIEW",
+  "problems": [
+   "wiki-only"
+  ],
+  "before": "It won the European Museum of the Year Award in 1993 (Wikipedia).",
+  "after": "It won the European Museum of the Year Award in May 1993, the first Norwegian museum to do so (Alta Museum).",
+  "sources": [
+   "https://altamuseum.no/en/exhibitions/monthly-artifact/manedens-gjenstand-european-museum-of-the-year-award-diplom"
+  ],
+  "reason": "Confirmed on the museum's own page; Wikipedia removed from SOURCES."
+ },
+ {
+  "id": "alta-museum-world-heritage-rock-art-centre",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "Nothing in the sources read links it to a flagged funder.",
+  "after": "(cut)",
+  "sources": [],
+  "reason": "Empty-search sentence."
+ },
+ {
+  "id": "kaviar-factory-henningsvaer",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence wording"
+  ],
+  "before": "Private collector money with no flagged source in the sources read. The weak point is how little is published about the owners' wider business.",
+  "after": "Clean: private collector money and the space's own sales, with no flagged source.",
+  "sources": [
+   "https://data.brreg.no/regnskapsregisteret/regnskap/912114074"
+  ],
+  "reason": "Empty-search and 'little is published' wording removed."
+ },
+ {
+  "id": "kaviar-factory-henningsvaer",
+  "section": "OVERVIEW",
+  "problems": [
+   "credit"
+  ],
+  "before": "for six weeks from 20 January 2018 (Arterritory)",
+  "after": "for six weeks from 20 January 2018 (Arterritory, Chart)",
+  "sources": [
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/21928-everything_is_about_quality_also_in_contemporary_art",
+   "https://chartartfair.com/journal/editorial/collecting-for-the-private-kunsthall-kaviar-factory"
+  ],
+  "reason": "Both state the six weeks."
+ },
+ {
+  "id": "pikene-pa-broen-kirkenes",
+  "section": "FUNDING",
+  "problems": [
+   "misleading: 'gaming funds' reads as gambling money"
+  ],
+  "before": "Terminal B was set up with gaming funds",
+  "after": "Terminal B was set up with public lottery money (spillemidler)",
+  "sources": [
+   "https://www.pikene.no/wp-content/uploads/aarsrapport-2019.pdf"
+  ],
+  "reason": "The report says spillemidler, the state's distribution of lottery profits, an ordinary public funder."
+ },
+ {
+  "id": "pikene-pa-broen-kirkenes",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence wording"
+  ],
+  "before": "with no flagged funder in the sources read",
+  "after": "Clean: public money, much of it short-term project grants, with no flagged funder.",
+  "sources": [],
+  "reason": "Empty-search wording removed."
+ }
+]

@@ -32,9 +32,14 @@ fields outside `details` (funding, watch, flags, tier, grade, website) and calls
   what they cover.
 - nanjing-massacre-memorial-hall: the Japanese government's 2007 objections were moved to WIDER
   CONTEXT (a state that neither funds nor controls the space; older than five years).
-- antarctic-biennale: researcher flagged the main sponsor's company (Kaspersky) as US-sanctioned in
-  2024; the checker was told to state exactly what the US did and to whom, and to move it to WIDER
-  CONTEXT if the sanctions and five-year rules are not met (the voyage was in 2017).
+- antarctic-biennale: settled. On 20 June 2024 Commerce barred Kaspersky products in the US and put
+  three Kaspersky companies on the Entity List (an export control list); on 21 June OFAC designated
+  12 executives and said it had not designated the company, its parent or its CEO. Eugene Kaspersky
+  is on no list and the 2017 funding is not current, so the point is under WIDER CONTEXT, no flag.
+- natural-history-museum-abu-dhabi: two Red flags outside the flag categories (secret acquisition
+  prices; Stan's record price) besides the Gulf state body flag.
+- new-orleans-museum-of-art-new-orleans: Helis Foundation money is current (free Wednesdays and teen
+  entry on NOMA's admission page, 20 Nov 2026).
 
 ## Record fields that are wrong
 
@@ -58,7 +63,53 @@ fields outside `details` (funding, watch, flags, tier, grade, website) and calls
 - defence-services-museum and national-museum-of-the-islamic-revolution-and-holy-defense: the first
   carries a US sanctions flag (commander-in-chief, 2019 and 2021); the second notes the IRGC co-launched
   the 2005 design competition, with no sanctions flag added.
-- festspillene-i-nord-norge-harstad: report adds Aker BP (oil) as a 2026 partner, from a logo on the
+- ilulissat-icefjord-centre: the record's Tobacco flag is confirmed (Augustinus Fonden owns Chr.
+  Augustinus Fabrikker, over 25% of Scandinavian Tobacco Group as of 1 May 2025); report adds
+  Nordea-fonden as exhibition funder, Nordea fined for money-laundering failures in 2024. icefjord.gl
+  did not resolve on 20 Nov 2026.
+- sarestoniemi-museum-kittila: report adds centenary partner Agnico Eagle Finland, fined in 2021 over
+  a death at its Kittilä mine. The record's website sarestoniemi.fi is an empty placeholder; the live
+  site is sarestoniemimuseo.com.
+- joseph-stalin-museum: stalinmuseum.ge serves German casino spam.
+- chiang-kai-shek-memorial-hall: the hall's site gives the opening as 4 April 1980; the record says
+  5 April.
+- ajtte-jokkmokk: the record's "state money about half the budget in 2009" rests on Wikipedia only.
+- russia-my-history-vdnkh: report carries Gazprom and Gazprom Neft money (2016 to 2021) as Fossil
+  fuels and a sanctions point (Gazprom Neft is on the UK list; the parent is not). Record flags may
+  need both.
+- victory-museum-central-museum-of-the-great-patriotic-war: its director Shkolnik is under UK and
+  Australian sanctions (2022), kept as a Red flag.
+- great-northern-arts-festival-inuvik: the record's Fossil fuels flag rests on Imperial Oil and
+  ConocoPhillips, which stopped funding in 2015 (CBC, July 2015). Outside the five-year rule and no
+  documented objection: the report carries it as former funding with no Red flag. The record's flag
+  and grade likely need lowering.
+- win-win-memorial: land donor Ly Yong Phat under US sanctions (2024, forced labour in scam centres),
+  kept as a Red flag if Treasury's page confirms.
+- festspillene-i-nord-norge-harstad: the Aker BP flag was cut (only a logo; no text names it), and the
+  2017 fraud loss moved to WIDER CONTEXT.
+- national-museum-of-the-history-of-ukraine-in-the-second-world-war: report adds a Fossil fuels Red
+  flag (Naftogaz and WOG among the 2023 shield donors) and a 2023 no-tender contract flag.
+- panorama-1453-history-museum: report adds the 2025 tender and bribery investigation reaching Kültür
+  AŞ, allegations marked Unverified.
+- an-tkabir-ataturk-mausoleum-and-museum: the museum under the mausoleum dates from 26 August 2002, not
+  1960; Law No. 2524 (1981) moved Anıtkabir to the General Staff.
+- cuartel-de-la-montana-4f-chavez-mausoleum: Aletheia gives 1906 as the build year and 2002 as the year
+  it became the Militia's seat (the record has 1904 to 1906 and 2008).
+- war-remnants-museum: the record says "funded from the city budget"; Báo Văn Hóa (2025) says it has
+  covered its running costs from its own income since 2014.
+- vietnam-military-history-museum: site area 38.66 ha (Nhân Dân, VietnamPlus); the record's 74 ha
+  matches VOV only.
+- museum-of-norilsk: report adds Nornickel as funder (new art museum and programmes), its 2020 diesel
+  spill and fine, and sanctions on Potanin. Record flags may need Mining disaster and Sanctions.
+- patriot-park: report adds embezzlement convictions (2025 to 2026) and a Canadian sanctions listing
+  (2024; a non-US/EU/UK/UN listing makes it a name to know, grade B, not a Sanctions flag).
+- svalbard-museum-longyearbyen: Store Norske (coal) as founder and board chair. The record says
+  mining ended in 2025; High North News dates the official closure of Mine 7 to 4 May 2026.
+- padrao-dos-descobrimentos: the record says the Portuguese Republic holds title; DN (2021) says
+  Lisbon city council owns it.
+- museum-of-the-second-world-war: the 2025 "Nasi chłopcy" exhibition was organised by the Museum of
+  Gdańsk, with this museum as collaborator.
+- festspillene-i-nord-norge-harstad (old note): report adds Aker BP (oil) as a 2026 partner, from a logo on the
   home page; the checker was told to confirm it from text or cut it. Fossil fuels on the record would
   follow if it holds.
 
