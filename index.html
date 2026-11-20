@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=857"></script>
+  <script src="assets/load-image-data.js?v=863"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=857">
-  <link rel="stylesheet" href="assets/sheet.css?v=857">
-  <script src="assets/config.js?v=857"></script>
-  <script src="assets/analytics.js?v=857"></script>
-  <script src="assets/subtopic.js?v=857"></script>
-  <script src="assets/names.js?v=857"></script>
-  <script src="assets/grounding.js?v=857"></script>
-  <script src="assets/repeats.js?v=857"></script>
-  <script src="assets/intro-narration.js?v=857"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=863">
+  <link rel="stylesheet" href="assets/sheet.css?v=863">
+  <script src="assets/config.js?v=863"></script>
+  <script src="assets/analytics.js?v=863"></script>
+  <script src="assets/subtopic.js?v=863"></script>
+  <script src="assets/names.js?v=863"></script>
+  <script src="assets/grounding.js?v=863"></script>
+  <script src="assets/repeats.js?v=863"></script>
+  <script src="assets/intro-narration.js?v=863"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=857"></script>
+  <script src="assets/load-image.js?v=863"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -595,12 +595,14 @@ return maplibregl$1;
             <summary>How grades work</summary>
             <p class="no-indent">Grades run from A to F. Press one to show only its spaces on the map.</p>
             <ul class="grade-list grade-scale">
-              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">Funders and amounts are public, and none is harmful.</span></li>
-              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">Funders are public, amounts are not, and none is harmful.</span></li>
-              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">No harmful funder, but a sponsor drew a protest or pulled out.</span></li>
-              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">One harmful funder, such as an oil, arms, tobacco or gambling firm.</span></li>
-              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">Two or more harmful funders, or one and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">Funders and amounts are public, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">Funders are public, amounts are not, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">No flagged funder, but a sponsor drew a protest or pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">One flagged funder, such as an oil, arms, tobacco or gambling firm.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">Two or more flagged funders, or one and a protest.</span></li>
             </ul>
+            <p class="no-indent" data-grade-flag-note></p>
+            <p class="no-indent" data-ungraded-note></p>
           </details>
           <div id="curatorDrawerLiveStream" class="space-y-3 pt-2"></div>
         </div>
@@ -959,12 +961,14 @@ return maplibregl$1;
               <summary>How grades work</summary>
             <p class="no-indent">Grades run from A to F. Press one to show only its spaces on the map.</p>
             <ul class="grade-list grade-scale">
-              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">Funders and amounts are public, and none is harmful.</span></li>
-              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">Funders are public, amounts are not, and none is harmful.</span></li>
-              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">No harmful funder, but a sponsor drew a protest or pulled out.</span></li>
-              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">One harmful funder, such as an oil, arms, tobacco or gambling firm.</span></li>
-              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">Two or more harmful funders, or one and a protest.</span></li>
+              <li><button type="button" class="grade-word grade-word-1 grade-filter" data-grade-filter="1" aria-pressed="false" title="Show only grade A spaces on the map; press again to show every space">Grade A</button><span class="grade-scale-text">Funders and amounts are public, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-2 grade-filter" data-grade-filter="2" aria-pressed="false" title="Show only grade B spaces on the map; press again to show every space">Grade B</button><span class="grade-scale-text">Funders are public, amounts are not, and none is flagged.</span></li>
+              <li><button type="button" class="grade-word grade-word-3 grade-filter" data-grade-filter="3" aria-pressed="false" title="Show only grade C spaces on the map; press again to show every space">Grade C</button><span class="grade-scale-text">No flagged funder, but a sponsor drew a protest or pulled out.</span></li>
+              <li><button type="button" class="grade-word grade-word-4 grade-filter" data-grade-filter="4" aria-pressed="false" title="Show only grade D spaces on the map; press again to show every space">Grade D</button><span class="grade-scale-text">One flagged funder, such as an oil, arms, tobacco or gambling firm.</span></li>
+              <li><button type="button" class="grade-word grade-word-5 grade-filter" data-grade-filter="5" aria-pressed="false" title="Show only grade F spaces on the map; press again to show every space">Grade F</button><span class="grade-scale-text">Two or more flagged funders, or one and a protest.</span></li>
             </ul>
+            <p class="no-indent" data-grade-flag-note></p>
+            <p class="no-indent" data-ungraded-note></p>
             </details>
 
             <!-- Hidden Preserved Elements for Test & Mode Compatibility -->
@@ -1178,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=857"></script>
-  <script src="assets/money-ids.js?v=857"></script>
+  <script src="assets/institutions.js?v=863"></script>
+  <script src="assets/money-ids.js?v=863"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10883,11 +10887,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v857';
+    const ATLAS_RELEASE = 'culture-atlas-v863';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=857').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=863').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11432,11 +11436,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
     const atlasSelFont = () => '400 20px ' + ATLAS_SERIF;
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
-    // THE NAME CLEARS THE PIN (user, 16 Nov 2026, a screenshot of "Palais de Lomé" with the pin's ball over the name: "overlap").
-    // The dropped pin (drawDroppedPin) stands on the place with its ball 16 to 34px above it, which is where a name above its dot
-    // sat (a picked space's box from 38 to 6px up, a city's from 28 to 6). The name of the place the pin is on is set above the
-    // ball instead: its box ends ATLAS_PIN_CLEAR px above the place, 2px over the top of the ball.
-    const ATLAS_PIN_CLEAR = 36;
     // Every name on the map is given whole (user, 16 Nov 2026: the layer names "get cut short"); the label boxes clash-test
     // at their real width, so a long name that has no room is left out rather than cut.
     const atlasLabelName = (name) => name;
@@ -11484,42 +11483,34 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // The fog over the globe (assets/atlas.css, FOG ON THE MAP) comes on once the page has painted, not with it.
       requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('fog-ready')));
     }
-    // ---- The dropped pin ----------------------------------------------------------------------------------------------
-    // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
-    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a red push pin, its needle on the place; before that a solid teardrop in the ink with a
-    // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
-    // changes; with reduced motion it is simply there.
-    let droppedPinKey = null, droppedPinT0 = 0;
-    const ATLAS_DROP_PATH = 'M0 0C-2.5 -7 -9 -12.5 -9 -21A9 9 0 1 1 9 -21C9 -12.5 2.5 -7 0 0Z';
-    function droppedPinTarget() {
-      if (selectedInstitution) {
-        const pin = atlasPinOf(selectedInstitution);
-        if (pin) return { key: 'i:' + (selectedInstitution.id || selectedInstitution.name), lon: pin.lon, lat: pin.lat };
-      }
-      const place = window.atlasPlacePin;
-      if (place && isFinite(place.lon) && isFinite(place.lat)) return { key: 'c:' + place.name, lon: place.lon, lat: place.lat };
-      return null;
+    // ---- THE GLOBE, SET AS THE STREET MAP IS (user, 20 Nov 2026: "restyle the rest of atlas map so it looks closer to
+    // zoomed in version", "delete those pins and put dots and triangles instead") ----------------------------------------
+    // The street map is the printed gallery map: stippled ground, ink bubbles with a tail, each space a solid mark in its
+    // grade's colour and its tier's shape. The globe now takes the same four things. The land is the same stipple (two
+    // dots to a 6px tile, in the map's line colour on its ground); every city's and space's name is an ink bubble with a
+    // tail to its mark; a space is a solid circle, square or triangle; and there is no dropped pin: the open place is told
+    // by its larger bubble and its ringed mark, as close in. The black drop of 17 Nov and the push pin before it are gone.
+    let globeStippleKey = '', globeStipplePat = null;
+    function globeStipple(ground, ink) {
+      const R = Math.max(1, Math.ceil(dpr || 1)), key = ground + ink + R;
+      if (key === globeStippleKey) return globeStipplePat;
+      globeStippleKey = key; globeStipplePat = null;
+      try {
+        const c = document.createElement('canvas'); c.width = c.height = 6 * R;
+        const g = c.getContext('2d'); g.scale(R, R);
+        g.fillStyle = ground; g.fillRect(0, 0, 6, 6);
+        g.fillStyle = ink; [[1.5, 1.5], [4.5, 4.5]].forEach(([x, y]) => { g.beginPath(); g.arc(x, y, 0.6, 0, Math.PI * 2); g.fill(); });
+        const pat = ctx.createPattern(c, 'repeat');
+        if (pat && pat.setTransform && typeof DOMMatrix === 'function') pat.setTransform(new DOMMatrix().scale(1 / R));
+        globeStipplePat = pat;
+      } catch (e) { /* no pattern: the land keeps its flat colour */ }
+      return globeStipplePat;
     }
-    function drawDroppedPin(c2, project, r, cx, cy, now, ink, ground) {
-      const t = droppedPinTarget();
-      if (!t || isCityStreetViewActive) { droppedPinKey = t ? t.key : null; return; }
-      if (t.key !== droppedPinKey) { droppedPinKey = t.key; droppedPinT0 = now; }
-      const p = project(t.lon, t.lat, r, cx, cy);
-      if (!p || !p.front || p.depth <= 0.05) return;
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
-      const lift = (1 - k * k) * 14;
-      if (k < 1) scheduleRender();
-      // A black drop (user, 17 Nov 2026: "make pins black drops on atlas"; before it a glossy ball-headed push pin): a teardrop
-      // in #000, its point on the place, with a 1px white edge so it still reads on the black ground of the dark theme.
-      // Drawn with the point at 0, 0; the street map's SVG (atlasPinSvg) has the same path.
-      c2.save();
-      c2.translate(p.x, p.y - lift);
-      const drop = new Path2D(ATLAS_DROP_PATH);
-      c2.fillStyle = '#000'; c2.fill(drop);
-      c2.strokeStyle = '#fff'; c2.lineWidth = 1; c2.stroke(drop);
-      c2.restore();
-    }
+    // A space's mark: 4px of radius with the whole world in view, 5.5 close in. The street map's marks are 9, but a country's
+    // spaces stand a few pixels apart on the globe, and at 9 a city's marks ran into one blot.
+    const atlasMarkR = (zoom) => Math.max(4, Math.min(5.5, 3.7 + zoom * 0.15));
+    // How far a name's bubble stands off its mark: the tail's length.
+    const ATLAS_TAIL = 6;
     window.atlasDropPinRefresh = () => scheduleRender();
 
     let renderFrameId = 0;
@@ -11544,9 +11535,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
       // THE SHEET: white water, grey land #cfcfba, a chosen country and a pressed label in the lime of the bars #e2f86c
       // (user, 11 Nov 2026: "use these colors for atlas instead of beige", swatches lime, white, grey), the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
-      const G_GROUND = GLOBE_LIGHT ? (isGossipModeActive ? '#ffeff1' : '#ffffff') : (GOSSIP_DARK ? '#000050' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#14146e' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#8c8fd0' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = '#808080';
+      const G_GROUND = GLOBE_LIGHT ? (isGossipModeActive ? '#ffeff1' : '#ffffff') : (GOSSIP_DARK ? '#000050' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#14146e' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#8c8fd0' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = GLOBE_LIGHT ? '#404040' : '#c0c0c0';
+      // The land: the street map's stipple, in the line colour on the ground (the stone fill stays under the funding views' shades).
+      const G_LAND_FILL = globeStipple(G_GROUND, G_LINE) || G_LAND;
+      const MARK_R = atlasMarkR(currentRadius / baseRadius);
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
-        const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
+        const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };   // as the street map's marks: circle clean, square flagged, triangle unverified
         const TIER_SHAPE_SIZE = { circle: 3 };
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
@@ -11727,7 +11721,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           }
 
           // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
-          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_LAND)) || G_LAND);
+          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_LAND)) || G_LAND_FILL);
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -11897,36 +11891,42 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         };
         // The type and outline colour of a city label, and of the card it opens into.
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2a6010' : '#cfcfba') : (tier && typeof tier === 'object' ? spaceInk(tier, GLOBE_LIGHT) : tierInk(tier, GLOBE_LIGHT));
-        // THE SHEET: no pill, no outline and no dot. A name is type in the colour of its grade on a strip of the
-        // sheet's paper (user, 10 Nov 2026: "just colored text ... and color spases as well"); the selected name is in ink
-        // on a stone band with the grey rule round it. The strip is the size the old pill was (the name's width + 28, or
-        // + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box holds.
-        const drawPillLabel = (text, cx0, cy0, active, tier) => {
+        // A NAME IS A BUBBLE, as on the street map (sheet.css, #cityMapContainer.street-poster .inst-pin-label): ink, the
+        // name in the ground's colour, corners of 7px, and a tail toward its mark. It replaces the city's outlined pill and
+        // the space's plain coloured name of 16 Nov; the grade's colour is now on the mark. The box measured is the size the
+        // old pill was (the name's width + 28, or + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box and clash
+        // test holds; the bubble is drawn 5px in from each end of it. `mark` is the mark the tail points at: its centre and
+        // radius. Ground on ink is 21:1 on the light theme and 14:1 or better on the dark.
+        const drawPillLabel = (text, cx0, cy0, active, tier, mark) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
           const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
           const x0 = Math.round(cx0 - w / 2), y0 = Math.round(cy0 - h / 2);
-          // NAMES (user, 16 Nov 2026: "fix all name design", "dont need background or frame around it"): every name on the
-          // map is plain type with no block, pill or rule round it. A halo of the map's ground round the letters keeps it
-          // readable over coastlines and borders, as the money map sets its names. The box above is still measured, so the
-          // hit boxes and the clash tests hold. A city and the picked space are in ink (the picked one larger); a space's
-          // name takes its grade's colour.
-          const cityPill = !tier && !active;
-          if (cityPill) {
-            // Except a city: its name is back in a pill with a 1px ink outline on the map's ground (user, 16 Nov 2026, a
-            // screenshot of "Melbourne (11)": "bring back city like this"). Same box as before, so the hit boxes hold.
-            const rr = (h - 1) / 2;
+          const inset = active ? 7 : 5, bx0 = x0 + inset, bw0 = w - 2 * inset, rr = active ? 9 : 7;
+          const box = () => {
             ctx.beginPath();
-            if (ctx.roundRect) ctx.roundRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1, rr);
-            else { ctx.moveTo(x0 + 0.5 + rr, y0 + 0.5); ctx.arcTo(x0 + w - 0.5, y0 + 0.5, x0 + w - 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + w - 0.5, y0 + h - 0.5, x0 + 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + h - 0.5, x0 + 0.5, y0 + 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + 0.5, x0 + w - 0.5, y0 + 0.5, rr); ctx.closePath(); }
-            ctx.fillStyle = G_GROUND; ctx.fill();
-            ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1; ctx.stroke();
+            if (ctx.roundRect) ctx.roundRect(bx0, y0, bw0, h, rr);
+            else { ctx.moveTo(bx0 + rr, y0); ctx.arcTo(bx0 + bw0, y0, bx0 + bw0, y0 + h, rr); ctx.arcTo(bx0 + bw0, y0 + h, bx0, y0 + h, rr); ctx.arcTo(bx0, y0 + h, bx0, y0, rr); ctx.arcTo(bx0, y0, bx0 + bw0, y0, rr); ctx.closePath(); }
+          };
+          // On the dark theme the bubble is dark too (user, 20 Nov 2026: "make button and map call outs dark color on dark
+          // mode"): black, the name in the light ink (19:1), with a thin pale edge so it keeps its shape on the dark ground.
+          // The light theme keeps the ink bubble with the name in the ground's colour.
+          const bubFill = GLOBE_LIGHT ? G_TEXT : '#000000', bubInk = GLOBE_LIGHT ? G_GROUND : '#f4f4f4';
+          // A hairline of the ground round the bubble parts it from a mark or another bubble under it.
+          box(); ctx.strokeStyle = G_GROUND; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = bubFill;
+          if (mark) {
+            const tx = Math.max(bx0 + rr + 6, Math.min(bx0 + bw0 - rr - 6, mark.x));
+            const below = mark.y - mark.r - 1, above = mark.y + mark.r + 1;
+            ctx.beginPath();
+            if (below > y0 + h) { ctx.moveTo(tx - 6, y0 + h - 1); ctx.lineTo(tx + 6, y0 + h - 1); ctx.lineTo(tx, Math.min(below, y0 + h + 9)); ctx.closePath(); ctx.fill(); }
+            else if (above < y0) { ctx.moveTo(tx - 6, y0 + 1); ctx.lineTo(tx + 6, y0 + 1); ctx.lineTo(tx, Math.max(above, y0 - 9)); ctx.closePath(); ctx.fill(); }
           }
-          ctx.lineJoin = 'round'; ctx.lineWidth = 4; ctx.strokeStyle = G_GROUND;
-          ctx.fillStyle = (active || !tier) ? G_TEXT : pillTextColor(tier);
+          box(); ctx.fill();
+          if (!GLOBE_LIGHT) { box(); ctx.strokeStyle = 'rgba(244, 244, 244, 0.45)'; ctx.lineWidth = 1; ctx.stroke(); }
+          ctx.fillStyle = bubInk;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          if (!cityPill) ctx.strokeText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.fillText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.restore();
         };
@@ -11955,7 +11955,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             const sn = atlasLabelName(selectedInstitution.name, true);
             const sw = ctx.measureText(sn).width + ATLAS_SEL_PAD;
             ctx.restore();
-            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - ATLAS_PIN_CLEAR, w: sw, h: ATLAS_SEL_H });
+            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - (MARK_R + 2) - ATLAS_TAIL - ATLAS_SEL_H, w: sw, h: ATLAS_SEL_H });
           }
         }
         try {
@@ -12026,10 +12026,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             }
 
             const bx = pt.x - bw / 2;
-            let by = pt.y - 28;
-            // The city whose place sheet is open has the pin on it (no space picked): its name goes above the pin's ball.
-            const pinOnCity = !selectedInstitution && window.atlasPlacePin && matchC(window.atlasPlacePin.name || '', city.name);
-            if (pinOnCity) by = pt.y - ATLAS_PIN_CLEAR - bh;
+            // The city whose place sheet is open (no space picked) is told as a picked city is: a larger bubble, a larger mark.
+            const isOpenCity = !selectedInstitution && window.atlasPlacePin && matchC(window.atlasPlacePin.name || '', city.name);
+            // A city's mark is a solid dot in the ink; its bubble stands a tail's length above it.
+            const cityR = (isSelected || isOpenCity) ? 5.5 : isHovered ? 5 : isClustered ? 4 : 3;
+            let by = pt.y - cityR - ATLAS_TAIL - bh - (isSelected || isOpenCity ? 5 : 0);
             // A city whose spaces fill a dot disk (Havana) puts its label above the disk, not on it.
             const ownDisk = isClustered ? null : lastCityDisks.get(city.name.toLowerCase().trim());
             if (ownDisk && ownDisk.y < by + bh + 2) by = ownDisk.y - bh - 2;
@@ -12051,7 +12052,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // A label cut by the screen edge reads as broken text: draw it only when it fits.
             const edgeInset = window.innerWidth < 768 ? 16 : 2;   // phone: keep labels inside the 16pt margins
             const clipped = bx < edgeInset || bx + bw > width - edgeInset;
-            if ((!collides && !clipped) || isSelected || isHovered) {
+            if ((!collides && !clipped) || isSelected || isHovered || isOpenCity) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               shownCityLabels.add(city.name);
               const limb = limbFade(pt.depth, 0.08);
@@ -12073,35 +12074,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                 });
               }
 
-              const badgeAlpha = (isSelected ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0)) * (isSelected || isHovered ? 1 : limb);
+              const badgeAlpha = (isSelected || isOpenCity ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0)) * (isSelected || isHovered || isOpenCity ? 1 : limb);
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
 
-              if (isClustered) {
-                ctx.font = atlasMonoFont();
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                deferredPills.push([city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, null, badgeAlpha]);
-
-                // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
-                ctx.beginPath();
-                ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = G_LINE;
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-              } else {
-                ctx.font = atlasMonoFont();
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                deferredPills.push([txt, pt.x, by + bh / 2, !!isSelected, null, badgeAlpha]);
-
-                ctx.beginPath();
-                ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
-                ctx.fillStyle = isSelected ? G_TEXT : G_GROUND; ctx.fill();
-                ctx.strokeStyle = G_LINE;
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-              }
+              deferredPills.push([isClustered ? city.name + ' ' + countTxt : txt, pt.x, by + bh / 2, !!(isSelected || isOpenCity), null, badgeAlpha, { x: pt.x, y: pt.y, r: cityR }]);
+              // The city's mark: a solid dot in the ink with a hairline of the ground round it, where the hollow ring was.
+              ctx.beginPath();
+              ctx.arc(pt.x, pt.y, cityR, 0, Math.PI * 2);
+              ctx.fillStyle = G_TEXT; ctx.fill();
+              ctx.strokeStyle = G_GROUND; ctx.lineWidth = 1; ctx.stroke();
 
               ctx.restore();
             }
@@ -12116,7 +12098,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = atlasMonoFont();
+          // Capitals at 14px, spaced, in 75% ink, as the street map sets the names of its squares and parks.
+          ctx.font = '400 14px ' + ATLAS_SERIF;
+          try { ctx.letterSpacing = '0.84px'; } catch (e) {}
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -12130,7 +12114,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             if (selectedCountryFilter === 'all' || isSel) {
               const pt = project(c.lon, c.lat, r, cx, cy);
               if (pt.front && pt.depth > 0.08) {
-                const ctw = ctx.measureText(c.name).width;
+                const cName = c.name.toUpperCase();
+                const ctw = ctx.measureText(cName).width;
                 const bw = ctw + 14;
                 const bh = 22;
                 const bx = pt.x - bw / 2;
@@ -12158,12 +12143,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                   ctx.strokeStyle = G_HALO;
                   ctx.lineWidth = 3.0;
                   ctx.lineJoin = 'round';
-                  ctx.strokeText(c.name, pt.x, pt.y + 0.5);
+                  ctx.strokeText(cName, pt.x, pt.y + 0.5);
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   // A country's name is in 50% grey, with the map's lines: only the spaces and their cities are in full ink.
                   ctx.fillStyle = (isSel || isHov) ? G_TEXT : G_QUIET;
-                  ctx.fillText(c.name, pt.x, pt.y + 0.5);
+                  ctx.fillText(cName, pt.x, pt.y + 0.5);
                 }
               }
             }
@@ -12254,13 +12239,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const had = lastCityDisks.get(k);
           if (!had || box.w * box.h > had.w * had.h) lastCityDisks.set(k, box);
         });
-        const instDotBoxes = visibleDots.map(d => ({ x: d.x - 5, y: d.y - 5, w: 10, h: 10, inst: d.inst }));
+        const instDotBoxes = visibleDots.map(d => ({ x: d.x - MARK_R, y: d.y - MARK_R, w: 2 * MARK_R, h: 2 * MARK_R, inst: d.inst }));
 
         let activeMicroDot = null;
         const drawnInstLabelBoxes = [];
         const shownInstLabels = new Set();
 
-        visibleDots.forEach(d => {
+        // The picked and the hovered space are drawn last, so their marks stand over their neighbours'.
+        const dotOrder = (d) => (selectedInstitution && selectedInstitution.name === d.inst.name) ? 2 : (hoveredInstitution && hoveredInstitution.name === d.inst.name) ? 1 : 0;
+        [...visibleDots].sort((a, b) => dotOrder(a) - dotOrder(b)).forEach(d => {
           const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
 
@@ -12268,37 +12255,30 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             activeMicroDot = d;
           }
 
-          if (isSel) {
-            ctx.save();
-            ctx.beginPath();
-            ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
-            ctx.strokeStyle = G_LINE;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-            ctx.restore();
-          }
-
           const hasVc = d.inst.visual_critiques && d.inst.visual_critiques.length > 0;
 
           const limbD = (isSel || isHov) ? 1 : limbFade(d.depth, 0.05);
           ctx.save();
           ctx.globalAlpha = limbD;
-          const pinR = isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5);
+          // A solid mark in the grade's colour and the tier's shape, as on the street map; the picked one is larger, with
+          // a ring of the ink round it where the pin stood, and the hovered one a little larger.
+          const pinR = MARK_R + (isSel ? 2 : isHov ? 1 : 0);
+          d.markR = pinR;
           const pinShape = TIER_SHAPE[d.inst.tier] || 'circle';
-          if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
-          ctx.strokeStyle = isHov 
-            ? G_LINE
-            : (isVisualCritiqueOnly && hasVc)
+          const shapeR = pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1);
+          const markPath = (grow) => { if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, shapeR + grow); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR + grow, 0, Math.PI * 2); } };
+          const markInk = (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
-            : isGossipModeActive 
+            : isGossipModeActive
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#cfcfba') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
             : spaceInk(d.inst, GLOBE_LIGHT);
-          // Hollow rings in the grade's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
-          ctx.lineWidth = 0.8;
-          // On the stone land a ring is filled with paper, so it reads as a ring.
-          ctx.fillStyle = (isSel || (isGossipModeActive && hasGossip(d.inst))) ? ctx.strokeStyle : G_GROUND; ctx.fill();
-          ctx.lineWidth = 1;
-          ctx.stroke();
+          ctx.lineJoin = 'round';
+          if (isSel) { markPath(3.5); ctx.fillStyle = G_GROUND; ctx.fill(); ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1.5; ctx.stroke(); }
+          markPath(0);
+          // In gossip mode a space with no gossip stays a hollow outline, so the ones with gossip stand out as before.
+          const hollow = isGossipModeActive && !hasGossip(d.inst) && !isSel;
+          ctx.fillStyle = hollow ? G_GROUND : markInk; ctx.fill();
+          ctx.strokeStyle = hollow ? markInk : G_GROUND; ctx.lineWidth = 1; ctx.stroke();
           ctx.restore();
 
           // Institution label on 3D globe
@@ -12337,11 +12317,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            let by = isSel ? d.y - ATLAS_SEL_H - ATLAS_PIN_CLEAR : d.y - 18;   // the picked space has the pin on it
-            if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
+            const off = d.markR * 1.12 + ATLAS_TAIL, yAbove = d.y - off - bh, yBelow = d.y + off;   // 1.12: a triangle stands taller than its radius
+            let by = yAbove;
+            if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, yBelow)) by = yBelow;
             // Another space's dot under the label hides it; the label then tries clear above its own dot, then below.
             const onDot = (y) => !isSel && instDotBoxes.some(box => box.inst !== d.inst && !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h));
-            if (onDot(by)) by = [d.y - bh - 5, d.y + 5].find(y => !onDot(y) && !clashes(drawnCityBoxes, y)) ?? by;
+            if (onDot(by)) by = [yAbove, yBelow].find(y => !onDot(y) && !clashes(drawnCityBoxes, y)) ?? by;
             const collidesWithOtherLabel = clashes(drawnInstLabelBoxes, by);
             const collidesWithCity = clashes(drawnCityBoxes, by);
             const collidesWithDot = onDot(by);
@@ -12351,7 +12332,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst);
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst, { x: d.x, y: d.y, r: d.markR * 1.12 });
             }
             ctx.restore();
           }
@@ -12363,7 +12344,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (window.atlasInfluenceDraw && !isCityStreetViewActive) window.atlasInfluenceDraw(ctx, project, r, cx, cy, G_GROUND, G_TEXT);   // assets/influence-mode.js: the funders, in place of the spaces
 
         // 8.4 City labels on top of the dots
-        deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
+        deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4], p[6]); ctx.restore(); });
         // The money map's mode: a wash over the map and the funders' names, over everything else (assets/layers.js, MONEY MODE).
         if (window.atlasLayersDrawLate) window.atlasLayersDrawLate(ctx, G_GROUND);
         // No hover cards on the map (user, 11 Nov 2026: "make it work similar to Google Maps ... the info shows in sheet not like
@@ -12374,11 +12355,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         isHoveringCityExploreLink = false;
         hoveredMicroCardHitbox = null;
         void activeMicroDot;
-
-        // The dropped pin: the place whose sheet is open gets a pin over its dot, as a maps app drops one on the place it
-        // shows. It is drawn on the card layer, over the fog, and falls into place over 220ms when the place changes.
-        drawDroppedPin(cardCtx, project, r, cx, cy, now, G_TEXT, G_GROUND);
-
 
 
       // Live Cartographic HUD (Scale Bar, Coordinates, Interactive Compass Rose)
@@ -13382,11 +13358,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // by letter on the page: A, B, C, D, F (no E, as in school marks).
     // A record without an independently sourced funder roster has no grade. The colour is the block the grade takes on the map and the record.
     const GRADE = {
-      1: { letter: 'A', label: 'Amounts published, no harmful funder', col: '#b8fbff' },
-      2: { letter: 'B', label: 'Funders named, no harmful funder', col: '#9466ff' },
-      3: { letter: 'C', label: 'No harmful funder, but a protest or a sponsor pulled out', col: '#ffff3c' },
-      4: { letter: 'D', label: 'One harmful funder', col: '#ff3b1f' },
-      5: { letter: 'F', label: 'Two or more harmful funders, or one and a protest', col: '#ff5eff', mark: '#ff5eff' },  // the mark is a lighter red, so black on it clears 7:1
+      1: { letter: 'A', label: 'Amounts published, no flagged funder', col: '#b8fbff' },
+      2: { letter: 'B', label: 'Funders named, no flagged funder', col: '#9466ff' },
+      3: { letter: 'C', label: 'No flagged funder, but a protest or a sponsor pulled out', col: '#ffff3c' },
+      4: { letter: 'D', label: 'One flagged funder', col: '#ff3b1f' },
+      5: { letter: 'F', label: 'Two or more flagged funders, or one and a protest', col: '#ff5eff', mark: '#ff5eff' },  // the mark is a lighter red, so black on it clears 7:1
     };
     window.atlasGrade = GRADE;
     // The letter a stored grade is named by, and the stored grade a letter (or an old number) names.
@@ -13395,7 +13371,20 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeLetter = gradeLetter;
     window.atlasGradeFromLetter = gradeFromLetter;
     const GRADE_INTRO = 'Grades run from A to F. Press one to show only its spaces on the map.';
-    const GRADE_ROWS = ['A: Funders and amounts are public, and none is harmful.', 'B: Funders are public, amounts are not, and none is harmful.', 'C: No harmful funder, but a sponsor drew a protest or pulled out.', 'D: One harmful funder, such as an oil, arms, tobacco or gambling firm.', 'F: Two or more harmful funders, or one and a protest.'];
+    // "Flagged", never "harmful" (user, 20 Nov 2026: "'Harmful funder' is a judgement. Grades D and F depend on it. do not name it
+    // like this"). The word says what the record ties a funder to and no more; the list is the one tools/grade_funding.py grades by.
+    const GRADE_FLAG_NOTE = 'A flagged funder is one the record ties to fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons or a mining disaster. Public money alone is never flagged.';
+    // Why a space has no grade, said wherever the ungraded ones are counted (user, 20 Nov 2026: "Say why ... so it reads as honesty,
+    // not a gap"). Most ungraded records carry the space's own funding line; what they lack is an outside source for it.
+    const UNGRADED_WHY = (window.AtlasGrounding && AtlasGrounding.UNGRADED_WHY) || 'no outside source lists their funders yet';
+    const ungradedWhy = (n) => n === 1 ? UNGRADED_WHY.replace('their', 'its') : UNGRADED_WHY;
+    const ungradedCountText = (list, one, many) => {
+      const n = list.filter(i => !i.grade).length;
+      return n ? `${n.toLocaleString('en-GB')} of ${list.length.toLocaleString('en-GB')} ${list.length === 1 ? one : many} ${n === 1 ? 'is' : 'are'} not graded, because ${ungradedWhy(n)}.` : '';
+    };
+    document.querySelectorAll('[data-grade-flag-note]').forEach(el => { el.textContent = GRADE_FLAG_NOTE; });
+    document.querySelectorAll('[data-ungraded-note]').forEach(el => { el.textContent = ungradedCountText(ALL_INSTITUTIONS, 'space', 'spaces'); });
+    const GRADE_ROWS = ['A: Funders and amounts are public, and none is flagged.', 'B: Funders are public, amounts are not, and none is flagged.', 'C: No flagged funder, but a sponsor drew a protest or pulled out.', 'D: One flagged funder, such as an oil, arms, tobacco or gambling firm.', 'F: Two or more flagged funders, or one and a protest.'];
     // One label per record status, used everywhere a status is named: the grade where there is one, else the tier.
     function tierName(inst) {
       if (inst.grade && GRADE[inst.grade]) return `Grade ${gradeLetter(inst.grade)}: ${GRADE[inst.grade].label.toLowerCase()}`;
@@ -13461,8 +13450,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const evidence = (n >= 4 && inst.why_flagged) || inst.grade_basis || '';
       const head = n
         ? (evidence ? `<p class="no-indent">${escapeHtml(proseEnd(evidence))}</p>` : '')
-        : `<p class="no-indent">${escapeHtml(inst.name || 'This museum')} is not graded: its funders are not yet confirmed by a source independent of the museum.</p>`;
-      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">Flagged means an oil, tobacco, gambling or arms funder. Public money alone never counts.</p><details class="grade-scale-more"><summary>All grades, A to F</summary>${gradeScaleHtml(n)}</details></div>`;
+        : `<p class="no-indent">${escapeHtml(inst.name || 'This museum')} is not graded, because ${ungradedWhy(1)}.</p>`;
+      const panel = `<div class="grade-info" id="${id}" role="region" aria-label="How funding grades work" data-repeat-ok hidden>${head}<p class="no-indent">${escapeHtml(GRADE_FLAG_NOTE)}</p><details class="grade-scale-more"><summary>All grades, A to F</summary>${gradeScaleHtml(n)}</details></div>`;
       const btn = `<button type="button" class="grade-info-btn" aria-expanded="false" aria-controls="${id}" aria-label="How funding grades work"><span aria-hidden="true">i</span></button>`;
       return { btn, panel };
     }
@@ -14735,6 +14724,105 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       return `${nameLink}${cityPart}${dossierPart}`;
     }
 
+    // The sources under a model answer (user, 20 Nov 2026: "make chat answers show source links"). The model writes none of its
+    // own: it made addresses up, so its "Sources:" lines are dropped (renderCuratorMarkdown). The page prints them from the
+    // records the answer is about: the space asked about first, then the spaces the answer names, three at most. One link per
+    // site, the sources the grade rests on before the report's; four for one space, two each for several. An answer about no
+    // record gets no line. The line is not read aloud, not sent back to the model as the conversation, and not checked for
+    // repeats (the same space asked about twice has the same sources).
+    // The space last asked about stays the chat's subject until another is named, so it counts only when this turn is about
+    // it: the answer or the question names it, or the question points at it ("it", "this", "there"). A general question asked
+    // after a space ("What is institutional critique?") is not about that space and does not get its sources.
+    // The spaces a model answer is about (html with its names already linked by linkifyInstNames), as above.
+    function answerInsts(html, target, query) {
+      const insts = [];
+      const add = (i) => { if (i && !insts.includes(i) && insts.length < 3) insts.push(i); };
+      const namesIn = (h) => [...new DOMParser().parseFromString('<body>' + String(h || '') + '</body>', 'text/html').querySelectorAll('a.inst-link[data-name]')].map(a => a.getAttribute('data-name'));
+      const named = namesIn(html);
+      if (target && (named.includes(target.name) || namesIn(linkifyInstNames(escapeHtml(query || ''))).includes(target.name) || /\b(this|here|there|it|its|that|they|their|them)\b/i.test(query || ''))) add(target);
+      named.forEach(n => add(ALL_INSTITUTIONS.find(i => i.name === n)));
+      return insts;
+    }
+    function answerSourcesHtml(html, target, query) {
+      const insts = answerInsts(html, target, query);
+      const per = insts.length > 1 ? 2 : 4, seen = new Set(), urls = [];
+      insts.forEach(inst => {
+        let k = 0;
+        [].concat(inst.sources || [], ((inst.details || {}).sources || []).map(s => (s && s.url) || s)).forEach(u => {
+          if (k >= per || typeof u !== 'string' || !/^https?:\/\//.test(u)) return;
+          const h = hostOf(u);
+          // A file kept on a storage host (an annual report on s3-eu-west-1.amazonaws.com) has no site name to print here;
+          // the record's own Sources section still lists it.
+          if (h && !seen.has(h) && !/(^|\.)(amazonaws\.com|cloudfront\.net|googleusercontent\.com|storage\.googleapis\.com|windows\.net|akamaihd\.net)$/.test(h)) { seen.add(h); urls.push(u); k++; }
+        });
+      });
+      const links = proseLinkList(urls, urls.length);
+      return links.length ? `<p class="no-indent source-note chat-sources" data-exclude-speech="true" data-repeat-ok>${links.length > 1 ? 'Sources' : 'Source'}: ${links.join(', ')}.</p>` : '';
+    }
+
+    // The outlets a model answer names, linked to the reports themselves. Gossip answers say where the talk was printed ("The Art
+    // Newspaper reported in December 2025 that ...") but Gossip mode prints only the gossip, with no line under it, so the
+    // outlet's name in the text becomes the link: the first time each outlet is named, to the gossip item of the spaces the
+    // answer is about that names it (gossip_data.gossip: where, urls). An item that cites several outlets ("Museums Journal; The
+    // Art Newspaper") gives each the address on its own site when one matches, else, with as many addresses as outlets, the one
+    // in the same place; an outlet that cannot be matched stays plain text. Names under five letters ("Ara", "444") are
+    // ordinary words too often to be linked. Text already in a link or button is left alone. Used on every model answer.
+    function linkOutletNames(html, insts) {
+      if (!html || !insts || !insts.length) return html;
+      const squash = (t) => String(t || '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '');
+      const byOutlet = new Map();
+      insts.forEach(inst => gossipItems(inst).forEach(g => {
+        const urls = (g.urls || []).filter(u => typeof u === 'string' && /^https?:\/\//.test(u));
+        const names = String(g.where || '').split(/\s*;\s*/).map(n => n.replace(/,\s.*$/, '').trim()).filter(Boolean);
+        names.forEach((name, n) => {
+          if (name.length < 5 || byOutlet.has(name.toLowerCase())) return;
+          const key = squash(name.replace(/^the\s+/i, ''));
+          const own = urls.find(u => key.length >= 4 && squash(hostOf(u)).includes(key));
+          const url = own || (names.length === 1 ? urls[0] : (urls.length === names.length ? urls[n] : ''));
+          if (url) byOutlet.set(name.toLowerCase(), { name, url });
+        });
+      }));
+      if (!byOutlet.size) return html;
+      // The model often puts a narrow no-break space between words ("Museums\u202fJournal"), which the typesetter
+      // (assets/typeset.js) turns into <span class="ts">; a name is matched across any kind of space, and those spans are read
+      // as the space they stand for (the typesetter runs again on the turn, so nothing is lost).
+      const SP = '[\\s\\u00a0\\u2009\\u202f]+';
+      const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, SP);
+      const key = (t) => t.replace(/[\s\u00a0\u2009\u202f]+/g, ' ').toLowerCase();
+      const re = new RegExp('(?<![\\p{L}\\p{N}])(?:' + [...byOutlet.values()].map(o => o.name).sort((a, b) => b.length - a.length).map(esc).join('|') + ')(?![\\p{L}\\p{N}])', 'giu');
+      const flat = String(html).replace(/<span class="ts">(?:&nbsp;|\u00a0|\s)<\/span>/g, '\u00a0');
+      const doc = new DOMParser().parseFromString('<body>' + flat + '</body>', 'text/html');
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) if (!n.parentElement.closest('a, button')) nodes.push(n);
+      const done = new Set();
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        re.lastIndex = 0;
+        let last = 0, hit = false;
+        const frag = doc.createDocumentFragment();
+        for (let m = re.exec(text); m; m = re.exec(text)) {
+          const o = byOutlet.get(key(m[0]));
+          if (!o || done.has(o.name)) continue;
+          done.add(o.name);
+          hit = true;
+          frag.appendChild(doc.createTextNode(text.slice(last, m.index)));
+          const a = doc.createElement('a');
+          a.href = o.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'outlet-link';
+          a.textContent = m[0];
+          frag.appendChild(a);
+          last = m.index + m[0].length;
+        }
+        if (!hit) return;
+        frag.appendChild(doc.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      return done.size ? doc.body.innerHTML : html;
+    }
+
     // A reply written by the model names spaces in plain text. Each name (or alias) that a record carries becomes the same
     // link a list answer has, so a click opens the record and flies the map there. Text already in a link or button is left alone.
     let instNameIndex = null;
@@ -15687,23 +15775,29 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // A question that asks which spaces fit a theme ("which museums took Sackler money", "fossil fuel funding in Berlin") cannot be answered
     // from the dozen records the name and city steps find. The theme words are looked up in every record's funding, watch, flags and grade
     // basis; a city or country in the question narrows the matches. The model is told how many records match, and gets them in short form.
-    const THEME_STOP = new Set(['which', 'what', 'where', 'when', 'who', 'whom', 'whose', 'does', 'have', 'has', 'had', 'taken', 'take', 'took', 'money', 'fund', 'funds', 'funded', 'funding', 'funder', 'funders', 'museum', 'museums', 'gallery', 'galleries', 'space', 'spaces', 'institution', 'institutions', 'place', 'places', 'list', 'show', 'tell', 'about', 'there', 'their', 'with', 'from', 'that', 'this', 'family', 'any', 'every', 'atlas', 'record', 'records', 'accept', 'accepted', 'receive', 'received', 'name', 'named', 'between', 'ever', 'still', 'many', 'the', 'and', 'are', 'was', 'were', 'for', 'in']);
+    const THEME_STOP = new Set(['which', 'what', 'where', 'when', 'who', 'whom', 'whose', 'does', 'have', 'has', 'had', 'taken', 'take', 'took', 'money', 'fund', 'funds', 'funded', 'funding', 'funder', 'funders', 'museum', 'museums', 'gallery', 'galleries', 'space', 'spaces', 'institution', 'institutions', 'place', 'places', 'list', 'show', 'tell', 'about', 'there', 'their', 'with', 'from', 'that', 'this', 'family', 'any', 'every', 'atlas', 'record', 'records', 'accept', 'accepted', 'receive', 'received', 'name', 'named', 'between', 'ever', 'still', 'many', 'the', 'and', 'are', 'was', 'were', 'for', 'in', 'return', 'returns', 'exchange', 'gets', 'give', 'gives', 'given', 'paid', 'pays', 'other', 'others', 'like', 'also', 'besides', 'same', 'takes', 'else']);
     const LIST_ASK = /\b(which|what|list|all|every|any|how many|who)\b[^?]*\b(museums?|spaces?|galleries|institutions?|places?|foundations?|biennials?|funders?|sponsors?|trustees?)\b/i;
-    function themeMatches(query, limit = 40) {
+    // A funder known by two or three letters (BP, UBS, BMW, JTI) is a theme word too, matched as a whole word; without it "which
+    // museums take BP money" matched on its leftover words alone. named is a museum the question names: its own name is not a theme.
+    let SHORT_FUNDERS = null;
+    function themeMatches(query, limit = 40, named = null) {
       const q = (query || '').toLowerCase();
       if (!LIST_ASK.test(q)) return null;
       const cities = new Set(), countries = new Set();
       for (const i of ALL_INSTITUTIONS) { if (i.city) cities.add(i.city.toLowerCase()); if (i.country && i.country.length > 3) countries.add(i.country.toLowerCase()); }
       const inQuery = [...cities].filter(c => new RegExp('\\b' + c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(q));
       const inCountry = [...countries].filter(c => new RegExp('\\b' + c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(q));
-      const words = [...new Set(q.split(/[^a-z0-9À-ɏ]+/).filter(w => w.length > 3 && !THEME_STOP.has(w) && !inQuery.some(c => c.includes(w)) && !inCountry.some(c => c.includes(w))).map(w => w.replace(/s$/, '')))];
+      if (!SHORT_FUNDERS) { SHORT_FUNDERS = new Set(); ALL_INSTITUTIONS.forEach(i => (i.funder_links || []).forEach(f => { const n = String((f && f.funder) || '').toLowerCase(); if (/^[a-z0-9]{2,3}$/.test(n)) SHORT_FUNDERS.add(n); })); }
+      const ownName = new Set(named && named.name ? named.name.toLowerCase().split(/[^a-z0-9À-ɏ]+/) : []);
+      const short = (w) => w.length <= 3;
+      const words = [...new Set(q.split(/[^a-z0-9À-ɏ]+/).filter(w => (w.length > 3 || SHORT_FUNDERS.has(w)) && !THEME_STOP.has(w) && !ownName.has(w) && !inQuery.some(c => c.includes(w)) && !inCountry.some(c => c.includes(w))).map(w => short(w) ? w : w.replace(/s$/, '')))];
       if (!words.length) return null;
       const scored = [];
       for (const i of ALL_INSTITUTIONS) {
         if (inQuery.length && !inQuery.includes((i.city || '').toLowerCase())) continue;
         if (!inQuery.length && inCountry.length && !inCountry.includes((i.country || '').toLowerCase())) continue;
         const text = `${i.name} ${i.funding || ''} ${i.watch || ''} ${i.why_flagged || ''} ${(i.flags || []).join(' ')} ${i.grade_basis || ''} ${i.affiliations_note || ''} ${i.records_note || ''}`.toLowerCase();
-        const hit = words.filter(w => text.includes(w)).length;
+        const hit = words.filter(w => short(w) ? new RegExp('(^|[^a-z0-9])' + w + '([^a-z0-9]|$)').test(text) : text.includes(w)).length;
         if (hit) scored.push({ i, hit });
       }
       if (!scored.length) return null;
@@ -15712,19 +15806,22 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (!best.length) return null;
       // The grade count is made here: a model asked to count 16 records and sum their grades gets both wrong.
       const tally = {};
-      best.forEach(x => { const k = x.i.grade && GRADE[x.i.grade] ? 'Grade ' + GRADE[x.i.grade].letter : 'ungraded'; tally[k] = (tally[k] || 0) + 1; });
-      const tallyText = Object.keys(tally).sort().map(k => `${tally[k]} ${k}`).join(', ');
+      best.forEach(x => { const k = x.i.grade && GRADE[x.i.grade] ? 'Grade ' + GRADE[x.i.grade].letter : 'not graded'; tally[k] = (tally[k] || 0) + 1; });
+      const tallyText = Object.keys(tally).sort().map(k => `${tally[k]} ${k}`).join(', ') + (tally['not graded'] ? ` (${ungradedWhy(tally['not graded'])})` : '');
       return { total: best.length, insts: best.slice(0, limit).map(x => x.i), words, tallyText };
     }
+    // The status the model is given: the letter alone. With the grade's label beside it ("two or more flagged funders, or one and a
+    // protest") a small model read the label back as the finding, "two flagged funders (BP)"; the Grade Basis line is the reason.
+    const statusForModel = (i) => i.grade && GRADE[i.grade] ? `Grade ${gradeLetter(i.grade)}` : tierName(i);
     function formatShortGrounding(i) {
       const cut = (t, n) => { t = String(t || '').replace(/\s+/g, ' ').trim(); return t.length > n ? t.slice(0, n - 1) + '…' : t; };
-      return `- ${i.name} (${i.city || i.location || 'no city'}, ${i.country || ''}) | ${tierName(i)} | Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none'} | Flags: ${(i.flags || []).join(', ') || 'none'} | Funding: ${cut(i.funding, 260) || 'not stated'} | Watch: ${cut(i.watch, 260) || 'none'}`;
+      return `- ${i.name} (${i.city || i.location || 'no city'}, ${i.country || ''}) | ${statusForModel(i)} | Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none'} | Flags: ${(i.flags || []).join(', ') || 'none'} | Funding: ${cut(i.funding, 260) || 'not stated'} | Watch: ${cut(i.watch, 260) || 'none'}`;
     }
 
     // The whole record, in labelled sections (assets/grounding.js); full is the record the question is about, the rest are shorter.
     function formatInstitutionGrounding(i, full) {
-      if (window.AtlasGrounding) return AtlasGrounding.formatRecord(i, { status: tierName(i), watchGossip: watchIsGossip(i.watch), full: !!full });
-      return `- INSTITUTION: ${i.name}\n  Location: ${i.city}, ${i.country}\n  Governance Classification: ${tierName(i)}\n  Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none recorded'}\n  Public Funding: ${i.funding || 'not stated'}\n  Watch Line: ${i.watch || 'none recorded'}\n  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
+      if (window.AtlasGrounding) return AtlasGrounding.formatRecord(i, { status: statusForModel(i), watchGossip: watchIsGossip(i.watch), full: !!full });
+      return `- INSTITUTION: ${i.name}\n  Location: ${i.city}, ${i.country}\n  Governance Classification: ${statusForModel(i)}\n  Grade Basis: ${i.grade && i.grade_basis ? i.grade_basis : 'none recorded'}\n  Public Funding: ${i.funding || 'not stated'}\n  Watch Line: ${i.watch || 'none recorded'}\n  Sources: ${(i.sources || []).slice(0, 3).join(', ')}`;
     }
 
     // =========================================================================
@@ -15751,8 +15848,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (/^(for\s+)?(more|further)\s+(information|details)[^.]*https?:\/\//i.test(t) || /^(see|visit|learn\s+more\s+at)\b[^.]*https?:\/\/\S+[.)]*$/i.test(t)) return false;
         return true;
       }).join('\n').replace(/\n{3,}/g, '\n\n').trim();
-      // A bare address left inside a sentence is dropped too, with any brackets that held it.
-      text = text.replace(/(?<!\])\s*[\(\[<]\s*https?:\/\/[^\s\)\]>]+\s*[\)\]>]/g, '').replace(/(^|\s)https?:\/\/\S+(?=[\s.,;)]|$)/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;])/g, '$1');
+      // A bare address left inside a sentence is dropped too, with any brackets that held it, full-width and lenticular ones
+      // included: the chat's model cites as 【https://…】 (seen 20 Nov 2026), which slipped past and printed the address.
+      text = text.replace(/(?<!\])\s*[\(\[<（［【〔〖]\s*https?:\/\/[^\s\)\]>）］】〕〗]+\s*[\)\]>）］】〕〗]/g, ' ').replace(/(^|[\s（［【〔〖])https?:\/\/[^\s）］】〕〗]+(?=[\s.,;)）］】〕〗]|$)/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;])/g, '$1');
 
       // 1. Helper to render clickable source citation pills
       const renderSourcePills = (str) => {
@@ -16017,6 +16115,64 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     const GOSSIP_ASK = /\b(gossip|rumor|rumour|rumors|rumours|whisper|whispers|reddit|twitter|backchannel|scandal|dirt)\b/i;
     // A question about who pays for a space or who runs it. In Gossip mode it is still answered as asked, with the talk after it.
     const MONEY_GOV_ASK = /\b(who funds|funding|funded|funders?|donors?|money|finance[ds]?|backers?|independen\w*|autonom\w*|governance|governed|curatorial|who runs|run by|board|structure|architecture)\b/i;
+    // "What do funders get in return?" (user, 20 Nov 2026: the chat "did not answer the second half of the question (what funders
+    // get in return), although the influence data holds it"). The answer is the influence ledger's own entries (assets/influence.json,
+    // read through assets/influence-mode.js): for a museum named or open, what each funder got there; for a funder named with no
+    // museum, what it got museum by museum; with neither, how many ties the ledger holds of each kind. The page prints them, so a
+    // small model neither skips the half nor words it from memory. Null when the question does not ask it or the ledger has nothing.
+    const RETURN_ASK = /\b(?:in return|in exchange|came with the money|quid pro quo)\b|\bwhat\b[^?.]{0,80}\b(?:funders?|sponsors?|donors?|backers?|patrons?|money)\b[^?.]{0,40}\b(?:get|gets|got|getting|buy|buys|bought|gain|gains|gained|receive|receives|received)\b|\bwhat (?:do|does|did)\b[^?.]{0,60}\b(?:get|got|gain|gained|receive|received) (?:from|out of|for)\b/i;
+    async function chatReturns(userPrompt, mentionedInst, openInst) {
+      if (!RETURN_ASK.test(userPrompt) || !window.AtlasGrounding || !AtlasGrounding.returnsFor || typeof window.atlasInfluenceLedger !== 'function') return null;
+      let ledger = null;
+      try { ledger = await window.atlasInfluenceLedger(); } catch (_) { ledger = null; }
+      if (!ledger || !Array.isArray(ledger.funders)) return null;
+      const labels = typeof window.atlasInfluenceLabels === 'function' ? window.atlasInfluenceLabels() : {};
+      const low = (t) => String(t || '').toLowerCase();
+      const q = low(userPrompt);
+      const word = (name) => name.length > 1 && new RegExp('(^|[^a-z0-9])' + name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^a-z0-9]|$)').test(q);
+      // A funder named in the question: its ledger name, or that name without "family", "Foundation" or a bracket.
+      const named = ledger.funders.filter(f => (f.ties || []).length).filter(f => {
+        const base = low(f.name).replace(/\s*\(.*$/, '').trim();
+        const short = base.replace(/\s+(family|foundation|philanthropies)$/, '');
+        return word(base) || (short !== base && short.length > 3 && word(short));
+      }).map(f => f.key);
+      const space = mentionedInst || (named.length ? (/\b(this|here|it|its|there)\b/i.test(userPrompt) ? openInst : null) : openInst) || null;
+      if (space) {
+        let items = AtlasGrounding.returnsFor(ledger, { space: space.id, funders: named, labels });
+        if (!items.length && named.length) items = AtlasGrounding.returnsFor(ledger, { space: space.id, labels });
+        if (items.length) return { count: items.length, space, lead: `${space.name}: what its funders got in return, as the records state it.`, md: AtlasGrounding.returnsMarkdown(items, { max: 12 }) };
+        if (mentionedInst) return null;
+      }
+      if (named.length) {
+        const items = AtlasGrounding.returnsFor(ledger, { funders: named, labels });
+        const names = [...new Set(items.map(x => x.funder))];
+        if (items.length) return { count: items.length, space: null, lead: `What ${names.length === 1 ? names[0] : 'these funders'} got in return, museum by museum, as the records state it:`, md: AtlasGrounding.returnsMarkdown(items, { max: 12, bySpace: true, withFunder: names.length > 1 }) };
+        return null;
+      }
+      if (mentionedInst || openInst) return null;
+      // No museum and no funder: the ledger as a whole, kind by kind.
+      const count = {};
+      let funders = 0;
+      ledger.funders.forEach(f => { let any = false; (f.ties || []).forEach(t => (t.kinds || []).forEach(k => { if (k !== 'money') { count[k] = (count[k] || 0) + 1; any = true; } })); if (any) funders++; });
+      const kinds = Object.keys(count).sort((a, b) => count[b] - count[a]);
+      if (!kinds.length) return null;
+      return { count: kinds.length, space: null, lead: `What funders got in return, across the ${funders} funders whose records state it:`, md: kinds.map(k => `- ${labels[k] || k}: ${count[k]} ${count[k] === 1 ? 'tie' : 'ties'}.`).join('\n') };
+    }
+    window.atlasChatReturns = chatReturns;
+    // When the page prints the ledger, the model's own lines on the subject go: a small model writes them anyway, and wrote "no
+    // additional 'returns' or conditions are documented" over a ledger of ten entries. A heading on it goes too.
+    const RETURNS_TALK = /\bin (?:return|exchange)\b|['‘’"“”]returns?['‘’"“”]|\bwhat (?:they|funders|sponsors|donors|the funders) (?:get|gets|got|receive|received|gain)\b|\bno (?:other|additional|further|specific)\b[^.]*\b(?:returns?|conditions?|benefits?|perks?)\b|\b(?:returns?|benefits?|perks?) (?:is|are|were) (?:not )?(?:documented|recorded|listed|stated|specified)\b|\b(?:receiv\w+|gets?|got|gain\w*|enjoy\w*|secur\w+|buys?|bought)\b[^.]{0,120}\b(?:branding|naming (?:rights?|privileges?)|privileges?|recognition|visibility|hospitality|perks?|benefits?)\b/i;
+    function dropReturnsTalk(text) {
+      if (!text || typeof text !== 'string') return text;
+      return text.split('\n').map((line) => {
+        if (!RETURNS_TALK.test(line)) return line;
+        if (/^\s*(?:#{1,6}\s|\*\*)/.test(line) || (line.trim().length < 80 && !/[.!?]["')\]]?\s*$/.test(line.trim()))) return '';   // a heading
+        const item = /^(\s*(?:[-*]|\d+\.)\s+)([\s\S]*)$/.exec(line);
+        if (item) return '';
+        return line.split(/(?<=[.!?]["'’”)\]]?)\s+(?=[A-Z0-9“"'‘(£$€])/).filter(p => !RETURNS_TALK.test(p)).join(' ').trim();
+      }).filter((line, i, arr) => line.trim() !== '' || (arr[i - 1] || '').trim() !== '').join('\n').trim();
+    }
+    window.dropReturnsTalk = dropReturnsTalk;
     async function queryAI(userPrompt, webIntel = null) {
       const activeKey = aiApiKey || _SYS_KEY;
       const useProxy = !activeKey && !!ATLAS_AI_PROXY_URL;
@@ -16053,7 +16209,19 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // A "yes" to a reply that named two or more spaces does not say which: neither the open space nor a guess answers it.
       const ambiguousFollowUp = isFollowUp && !resolvedFollowUp && namedInReply.length >= 2;
       const relevantInsts = unknownName ? (nearest && nearest.inst ? [nearest.inst] : []) : retrieveGroundingInstitutions(retrievalText, 12, { includeActive: !ambiguousFollowUp });
-      const themed = unknownName ? null : themeMatches(userPrompt);
+      // A question about one museum is not a list (user, 20 Nov 2026: asked who funds the British Museum, the chat opened "1 Grade
+      // A" and then described BP's deal; the record is Grade F). The tally counts whichever records hold the question's leftover
+      // words ("british", "return"), so it is made only when no museum is named or pointed at, or when the question asks for
+      // museums in the plural ("which other museums take BP money?").
+      const openInst = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && curatorContext && (curatorContext.activeFocusInst || curatorContext.lastInst)) || null;
+      const aboutOne = mentionedInst || (askingAboutOpen && openInst) || null;
+      const LIST_OF_SPACES = /\b(which|what|list|all|every|any|other|how many)\b[^?]*\b(museums|spaces|galleries|institutions|places|foundations|biennials)\b/i;
+      const themed = unknownName || (aboutOne && !LIST_OF_SPACES.test(userPrompt)) ? null : themeMatches(userPrompt, 40, mentionedInst);
+      // What funders got in return: printed by the page from the influence ledger, after the model's answer (chatReturns, below).
+      const returns = unknownName || ambiguousFollowUp ? null : await chatReturns(userPrompt, mentionedInst, openInst);
+      const returnsNote = returns
+        ? `<returns_printed>\nThe visitor asks what funders get in return. The page prints that part itself, straight after your answer, from the atlas's ledger of what came with the money (${returns.count} ${returns.count === 1 ? 'entry' : 'entries'}). Answer the rest of the question only${returns.space ? `, from the record of ${returns.space.name}` : ''}: who the funders are and, for a museum, its grade and the case behind it. Write nothing about what funders got, get or bought in return, no sentence saying the record lacks it, and no general-knowledge passage about it.\n</returns_printed>\n\n`
+        : '';
       const themedText = themed ? `\n\n<matching_records>\nThe Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} that match this question${themed.total > themed.insts.length ? `; the first ${themed.insts.length} are listed` : ''}. Words matched: ${themed.words.join(', ')}. Grades across all ${themed.total}: ${themed.tallyText}.\n${themed.insts.map(formatShortGrounding).join('\n')}\n</matching_records>` : '';
       const focusId = (mentionedInst || (typeof selectedInstitution !== 'undefined' && selectedInstitution) || (typeof curatorContext !== 'undefined' && (curatorContext.activeFocusInst || curatorContext.lastInst)) || {}).id;
       const groundedCatalogText = relevantInsts.map((i, n) => formatInstitutionGrounding(i, i.id === focusId || (n === 0 && !!mentionedInst))).join('\n\n') + themedText;
@@ -16105,7 +16273,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (currentTarget) {
         const budgetStr = currentTarget.funding || 'not stated';
         const holdingsStr = currentTarget.highlight || 'not stated';
-        currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${tierName(currentTarget)}\nFunding Profile: ${budgetStr}\nKey Collections & Archives: ${holdingsStr}\nAdmission Policy: ${currentTarget.admission_policy || 'not stated'}\n</current_target>\n\n`;
+        currentTargetXml = `<current_target>\nEntity: ${currentTarget.name}\nLocation: ${currentTarget.city || currentTarget.location || 'Global'}\nGovernance Status: ${statusForModel(currentTarget)}\nFunding Profile: ${budgetStr}\nKey Collections & Archives: ${holdingsStr}\nAdmission Policy: ${currentTarget.admission_policy || 'not stated'}\n</current_target>\n\n`;
       } else {
         currentTargetXml = `<current_target>\nEntity: None explicitly selected (Global Inquiry across Leaving it on the table)\n</current_target>\n\n`;
       }
@@ -16127,11 +16295,20 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const gossipOnNow = typeof isGossipModeActive !== 'undefined' && isGossipModeActive;
       const askedMoneyGov = MONEY_GOV_ASK.test(userPrompt) && !GOSSIP_ASK.test(userPrompt);
       const isGossipMode = (gossipOnNow && !askedMoneyGov) || GOSSIP_ASK.test(userPrompt);
+      // The grade of the one museum a money or grade question is about is settled by the page, not the model (user, 20 Nov 2026: "The
+      // chat mislabels grades ... This is the first thing a reviewer may try"): the answer opens with the record's own letter, a
+      // wrong letter in the model's opening sentence is put right, and a grade set beside a funder's name is taken out.
+      const GRADE_ASK = /\b(grade[sd]?|grading|rating|rated|flag(?:s|ged)?)\b/i;
+      const gradeFirst = !isGossipMode && !themed && aboutOne && aboutOne.grade && GRADE[aboutOne.grade] && (askedMoneyGov || GRADE_ASK.test(userPrompt) || !!returns)
+        ? `${aboutOne.name} is Grade ${gradeLetter(aboutOne.grade)}.` : '';
+      const gradeNote = gradeFirst
+        ? `<grade_printed>\nThe page prints "${gradeFirst}" as the first line of your answer. Do not write the museum's grade letter again, and never put a grade beside a funder's name: a grade belongs to a museum, not to a funder. Start with the case behind the grade, or with the funders.\n</grade_printed>\n\n`
+        : '';
       const gossipDirective = isGossipMode
         ? `\n\n<gossip_mode>\nThe visitor asked for gossip. Print only the gossip itself. First and foremost the GOSSIP section of the supplied record: talk collected from the internet by the atlas's rules, each item with its headline, what is said, who says it (the outlet, platform or document) and when, the response and the outcome. Lead with the newest item that is not stale and give every item in that section, in reported speech, naming who says it: never state an item marked talk, rumour or allegation as fact, never add a claim the items do not carry, and end any item about a named person with its response line (or "No reply found."). Items marked stale come last, in one sentence each. After the GOSSIP section, in this order, what the supplied records report about the museum: a funder or person in a watch line marked Watch Line Is Gossip: yes, a flag reason, a controversy, a penalty, a sanction, a protest, an allegation, a dispute or an employee account. A clean result is not gossip: a line saying no flagged funder, protest or censorship was found, or that a funder is not an arms maker or has no flag category, is information, so leave it out. A tie in the past is still gossip: state it with its date and with what the record says now, such as no current funding found. Give the funder, the controversy, the year and who reported it, in that order, one fact per sentence. Attribute each claim to its source, call unverified platform accounts unverified sentiment, and keep allegation apart from documented fact. Leave out everything else: no greeting, no summary, no description of the museum, no grade, hours or admission, no sentence about what the records do not contain, no advice to check a website, no URL, and no closing line. This overrides every other instruction about the first sentence, a missing detail or a web address. If the supplied records carry no gossip items and report nothing about the museum, answer with exactly NO_GOSSIP and nothing else. Do not infer wrongdoing or pad with generalities.\nVOICE: deliver it as a professional academic investigator and art-market analyst briefing a colleague, and push that register hard: the forensic cadence of a case file, the vocabulary of provenance research, due diligence and funding analysis (the paper trail, the board minutes, the filing, the follow-the-money line, the reputational exposure, the trustee's other holdings), short declarative sentences that land, and a sharp, knowing, dramatic edge. Heighten the delivery, never the facts: every claim is still one the items carry, still attributed to whoever says it, talk still stays talk, and no verdict word appears without its named event, date and actor. The case file is a manner of speaking: never cite the atlas's own item numbers or codes (G76, R31) and never call an item a row, an entry or a field. Never remark on the file itself: no line saying a trail is thin, a quote cuts off or the record goes quiet; end a cut-off quotation at its last full sentence.\n</gossip_mode>`
         : `\n\n<record_mode>\nLead with the neutral record: who funds the museum, what it is, its rating and the basis for it. Bring in reported controversies only when asked or when the record flags them.${gossipOnNow ? ' Gossip mode is on: answer the question first, from the record, then add at most one sentence with the newest item in the GOSSIP section, saying who says it and when, never as fact.' : ''}\n</record_mode>`;
 
-      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${unrecordedNote}${followUpNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Give no tourist advice (NO TOURIST ADVICE in the system instructions). Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. None is a visiting, travel or itinerary question. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring museum or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
+      const structuredUserPrompt = `${focusNotice}${currentTargetXml}${nameLookup}${unrecordedNote}${followUpNote}${gradeNote}${returnsNote}${gossipDirective}<response_format>\nAnswer the user's specific question in the first sentence. Keep the answer concise, neutral and evidence-based. If the record gives a price, grade or hour, state it once; do not also say that detail is missing. ${isGossipMode ? '' : 'A detail the visitor did not ask for and the record does not hold is left out: never write that the record does not list, name, state or mention something, never "no X is recorded" and never "not stated". A detail the visitor asked for that the record does not hold is answered from your own knowledge, in a sentence that opens "From general knowledge," so it is told from the record. Never end an answer with a web address, a link or a "Sources:" line.'}\nUse separate short paragraphs for separate topics. Give no tourist advice (NO TOURIST ADVICE in the system instructions). Write no headings unless the answer has three or more distinct parts, and no bold. Use standard Markdown, not raw HTML.\n</response_format>\n\n<next_questions>\nAfter the answer, on its own last line, write <next>question one | question two | question three</next>: three questions the visitor could ask next. None is a visiting, travel or itinerary question. Each names something specific from this answer or the supplied record: a funder, a trustee or director by name, a sponsor, a figure, a year, an exhibition, a controversy, a neighbouring museum or the city. Never a generic question ("Tell me more", "What else?", "Who funds it?" without a name). Each is answerable from the atlas records, under 14 words, ends with a question mark, and differs in kind from the other two (money, people, place, history, critics). None repeats the question just asked. ${isGossipMode ? 'In gossip mode all three are gossip questions about named people, outlets or reported episodes in the record.' : ''} Write nothing after the closing tag.\n</next_questions>\n\n<user_query>\n${userPrompt}\n</user_query>`;
 
       const activeInst = currentTarget;
       const activeInstContext = activeInst ? `\n\nACTIVE FOCUS INSTITUTION:\nThe user is currently viewing/asking about this specific museum:\n${formatInstitutionGrounding(activeInst, true)}\nIf the user asks "check it for me", "tell me about this place", "can you verify this", or asks a general question without naming a museum, answer about ${activeInst.name}, sticking to recorded funding, governance and what is reported about it. Do not expand into unrelated history or unsupported claims.\n` : '';
@@ -16223,6 +16400,12 @@ GENERAL KNOWLEDGE (the gap rule): The records come first, and what they hold is 
 NAMES THAT HAVE NO RECORD: When the visitor names a museum and no supplied record carries that name, say in one sentence that the atlas has no record of it ("The atlas has no record of …"), then answer about it from general knowledge as the rule above says. If a supplied record is clearly the same museum under another spelling, answer from that record instead and name it. Never answer about the museum open on the map in its place, and never ask the visitor to clarify. When the visitor answers one of your questions with "yes", "that one" or "the second", take it as the museum you last named and answer about that museum from its record; if you named no museum that has a record, say so in one sentence.
 
 GRADE REASONS: The reason for a grade is its Grade Basis line. State that reason and no other; never explain a grade by transparency, documentation or disclosure unless the Grade Basis line says so. Give the reason as the case behind it, from the Watch Line, Why flagged, the Epstein records and the reported cases: who, what and when. Never read the Grade Basis line back as a list of categories (a tie to Jeffrey Epstein, a campaign to remove a funder's name, a public protest) without the case each one stands for, never say "the basis is", and never repeat the grade's label after the letter: write "MoMA is Grade C" and go straight to the case. When the Watch Line says a tie with a funder has ended, say so in the same sentence as the grade. When a record's Governance Classification is Unverified, say once that the Atlas has not verified it.
+
+FLAGGED, NOT HARMFUL: The atlas's word for a funder that moves a grade to D or F is "flagged": the record ties it to fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons or a mining disaster. Say "flagged" and name what the record ties the funder to. Never call a funder, a sponsor or its money harmful, toxic, dirty, tainted, bad or unethical in your own voice; such a word appears only inside an attributed quotation.
+
+NOT GRADED: A record with no grade is one whose funders no outside source lists yet; most of them still carry the museum's own funding line. When you say a museum is not graded, or give a count of museums that are not graded, give that reason in the same sentence, once. Never present a missing grade as a good or a bad sign.
+
+WHAT FUNDERS GOT IN RETURN: When a <returns_printed> block is supplied, the page prints what each funder got in return after your answer, from the atlas's own ledger. Follow the block: answer the other part of the question and leave that part to the page.
 
 LIST QUESTIONS: When a <matching_records> block is supplied it holds the records the Atlas has for the question, and says how many there are. Name only museums listed there, give the count, and say when the list is cut off. The page prints the count and the grade tally as the first line of your answer, so write no number of museums and no sentence about how many museums hold a grade or how many did something; start with the groups or the names. A museum's own grade is the one on its own line. Never name a museum as carrying a flag unless its own Recorded Flags line or Grade Basis line carries it, and never infer a flag from a funder's industry. Use the verb a record uses (refused, returned, removed, dropped); do not say a museum accepted money when its line says it refused or returned it, and do not call a record ungraded when its Governance Classification shows a grade.
 
@@ -16356,6 +16539,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           // A gossip request answers with the gossip alone. NO_GOSSIP is the model's word for "the records report nothing", which the chat says in its own plain sentence.
           if (themed && !isGossipMode) rawText = rawText.replace(/^\s*The Atlas (?:holds|records|has)[^.]*\d[^.]*\.\s*(?:(?:Their|The) grades are[^.]*\.\s*)?/i, '');
           if (themed && !isGossipMode) rawText = `The Atlas holds ${themed.total} record${themed.total === 1 ? '' : 's'} for this question. Grades: ${themed.tallyText}.\n\n${rawText}`;
+          if (gradeFirst) {
+            const letter = gradeLetter(aboutOne.grade);
+            rawText = rawText.replace(/\s*\((?:a\s+|rated\s+)?Grade\s+[A-F]\)/g, '');
+            const lead = /^(\s*(?:The\s+)?[^.\n]{0,90}?\bis\s+(?:rated\s+|graded\s+)?Grade\s+)([A-F])\b/i.exec(rawText);
+            if (lead) rawText = lead[1] + letter + rawText.slice(lead[0].length);
+            else rawText = `${gradeFirst}\n\n${rawText.trim()}`;
+          }
+          if (returns && !isGossipMode) rawText = dropReturnsTalk(rawText);
           // An answer that is only an absence ("The record does not describe a logo for the museum.") is the answer to the question
           // asked: emptied, the chat fell back to printing the whole record again. Its first paragraph is kept instead.
           const beforeAbsence = rawText;
@@ -16363,6 +16554,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           if (!rawText.trim() && beforeAbsence.trim()) rawText = beforeAbsence.split(/\n\s*\n/)[0].trim();
           // The model does not say a thing twice: a sentence or list item it already gave is taken out (assets/repeats.js).
           if (window.AtlasRepeats) rawText = window.AtlasRepeats.dropRepeatedText(rawText);
+          // The second half of "who funds it and what do funders get in return": the ledger's own entries, added after the pass
+          // above so none of them is dropped or reworded.
+          if (returns && !isGossipMode) rawText = `${rawText.trim()}\n\n${returns.lead}\n\n${returns.md}`;
           if (isGossipMode && /^\W*NO_GOSSIP\W*$/.test(rawText)) return { html: '<p>Nothing has been reported about this museum.</p>', gossip: false, none: true };
           return isGossipMode ? { html: renderCuratorMarkdown(rawText), gossip: true } : renderCuratorMarkdown(rawText);
         }
@@ -17616,7 +17810,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None found.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
+                // The outlets the gossip names link to the reports (linkOutletNames); nothing is added under it.
+                const gossipHtml = aiRes.none ? aiHtml : linkOutletNames(aiHtml, answerInsts(linkifyInstNames(aiHtml), target, query));
+                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None found.</p>') : `<div class="space-y-3" data-gossip="ai">${gossipHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -17629,8 +17825,13 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              // Answers carry no note about what they were written from, in Gossip mode or out of it.
-              appendCuratorMessage(linkifyInstNames(aiHtml), modelChips(target, query), webIntel, thinkingData);
+              // Answers carry no note about what they were written from, in Gossip mode or out of it; the sources of the
+              // records they are about close them, as links (answerSourcesHtml).
+              const named = linkifyInstNames(aiHtml);
+              const linked = linkOutletNames(named, answerInsts(named, target, query));
+              const srcLine = answerSourcesHtml(named, target, query);
+              // In a <div>, so the renderer takes the turn as finished HTML and leaves the links' addresses alone.
+              appendCuratorMessage(srcLine || linked !== named ? `<div class="chat-answer-sourced">${linked}${srcLine}</div>` : linked, modelChips(target, query), webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -17759,7 +17960,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const here = ALL_INSTITUTIONS.filter(i => inScope(i, place));
         if (here.length) {
           const byGrade = [1, 2, 3, 4, 5].map(g => `${gradeLetter(g)} ${here.filter(i => i.grade === g).length}`).join(', ');
-          answer(`<p>${escapeHtml(place)}: ${plural(here.length, 'museum', 'museums')}. Grades: ${byGrade}; ${here.filter(i => !i.grade).length} not graded. ${here.filter(i => i.tier === 'B' && i.why_flagged).length} flagged, with the reason given.</p>`,
+          answer(`<p>${escapeHtml(place)}: ${plural(here.length, 'museum', 'museums')}. Grades: ${byGrade}. ${ungradedCountText(here, 'museum', 'museums')} ${here.filter(i => i.tier === 'B' && i.why_flagged).length} flagged, with the reason given.</p>`,
             [`Show grade A museums in ${place}`, `Show grade F museums in ${place}`, `Which museums in ${place} are flagged?`]);
           return;
         }
@@ -17832,7 +18033,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         // The spaces with no rating, in a place when one is named.
         if (asks(/\b(ungraded|unrated|not (?:graded|rated)|(?:no|without|missing)\s+(?:a\s+)?(?:grade|rating))\b/)) {
           const here = ALL_INSTITUTIONS.filter(i => !i.grade && inScope(i, place)).sort((a, b) => a.name.localeCompare(b.name));
-          listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} without a grade, because no outside source lists their funders yet${here.length > 12 ? '. The first 12' : ''}:`);
+          listOf(here, `${plural(here.length, 'museum', 'museums')}${pl ? ' in ' + escapeHtml(pl) : ''} without a grade, because ${ungradedWhy(here.length)}${here.length > 12 ? '. The first 12' : ''}:`);
           return;
         }
         let wanted = q.match(/\bgrade(?:\s+([a-f])|\s*([1-5]))\b/i);
@@ -17851,14 +18052,14 @@ FORMATTING & DOSSIER PRESENTATION RULES:
           focus(target);
           const gradeWhy = target.grade && GRADE[target.grade]
             ? `<p>${formatInstLink(target)} is Grade ${gradeLetter(target.grade)}: ${escapeHtml(GRADE[target.grade].label.toLowerCase())}.${target.grade_basis ? ' ' + escapeHtml(target.grade_basis) : ''}</p>${target.funding ? `<p>Funding on record: ${escapeHtml(target.funding)}</p>` : ''}`
-            : `<p>${formatInstLink(target)} has no grade yet.</p>`;
+            : `<p>${formatInstLink(target)} is not graded, because ${ungradedWhy(1)}.</p>`;
           answer(gradeWhy + sourcesHtml(target));
           return;
         }
         if (wanted && explicit) {
           const g = gradeFromLetter(wanted[1]);
           focus(explicit);
-          answer(`<p>${formatInstLink(explicit)}. ${explicit.grade ? (explicit.grade === g ? `Grade ${gradeLetter(g)}.` : `Grade ${gradeLetter(explicit.grade)}, not grade ${gradeLetter(g)}.`) : 'Not graded.'}</p>${sourcesHtml(explicit)}`);
+          answer(`<p>${formatInstLink(explicit)}. ${explicit.grade ? (explicit.grade === g ? `Grade ${gradeLetter(g)}.` : `Grade ${gradeLetter(explicit.grade)}, not grade ${gradeLetter(g)}.`) : `Not graded, because ${ungradedWhy(1)}.`}</p>${sourcesHtml(explicit)}`);
           return;
         }
         if (wanted) {
@@ -17887,7 +18088,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         }
         const n = {};
         ALL_INSTITUTIONS.forEach(i => { if (i.grade) n[i.grade] = (n[i.grade] || 0) + 1; });
-        answer(`<p>${GRADE_INTRO}</p>${gradeScaleHtml(0)}<p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}; ${ALL_INSTITUTIONS.filter(i => !i.grade).length} not graded. Ask for grade A museums in a city to see which are most open about their money.</p>`, ['Show grade A museums', 'Show grade F museums', 'How are museums assessed?']);
+        answer(`<p>${GRADE_INTRO}</p>${gradeScaleHtml(0)}<p>${escapeHtml(GRADE_FLAG_NOTE)}</p><p>${[1, 2, 3, 4, 5].map(g => `Grade ${gradeLetter(g)}: ${n[g] || 0}`).join(', ')}. ${ungradedCountText(ALL_INSTITUTIONS, 'museum', 'museums')} Ask for grade A museums in a city to see which are most open about their money.</p>`, ['Show grade A museums', 'Show grade F museums', 'How are museums assessed?']);
         return;
       }
       if (!explicit && asks(/epstein/)) {
@@ -22451,24 +22652,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=857"></script>
-<script src="assets/note-aids.js?v=857" defer></script>
-<script src="assets/place-list.js?v=857" defer></script>
-<script src="assets/chat-share.js?v=857" defer></script>
-<script src="assets/note-files.js?v=857" defer></script>
-<script src="assets/funding-views.js?v=857"></script>
-<script src="assets/layers.js?v=857"></script>
-<script src="assets/critique-gallery-data.js?v=857"></script>
-<script src="assets/critique-captions.js?v=857"></script>
-<script src="assets/critique-gallery.js?v=857"></script>
-<script src="assets/hq-detail.js?v=857"></script>
-<script src="assets/influence-mode.js?v=857"></script>
-<script src="assets/bubbles.js?v=857" defer></script>
-<script src="assets/phone-maps.js?v=857"></script>
-<script src="assets/desktop-maps.js?v=857"></script>
-<script src="assets/chat-resize.js?v=857"></script>
-<script src="assets/frame-refusers.js?v=857"></script>
-<script src="assets/link-pane.js?v=857"></script>
-<script src="assets/tab-suggest.js?v=857"></script>
+<script src="assets/typeset.js?v=863"></script>
+<script src="assets/note-aids.js?v=863" defer></script>
+<script src="assets/place-list.js?v=863" defer></script>
+<script src="assets/chat-share.js?v=863" defer></script>
+<script src="assets/note-files.js?v=863" defer></script>
+<script src="assets/funding-views.js?v=863"></script>
+<script src="assets/layers.js?v=863"></script>
+<script src="assets/critique-gallery-data.js?v=863"></script>
+<script src="assets/critique-captions.js?v=863"></script>
+<script src="assets/critique-gallery.js?v=863"></script>
+<script src="assets/hq-detail.js?v=863"></script>
+<script src="assets/influence-mode.js?v=863"></script>
+<script src="assets/bubbles.js?v=863" defer></script>
+<script src="assets/phone-maps.js?v=863"></script>
+<script src="assets/desktop-maps.js?v=863"></script>
+<script src="assets/chat-resize.js?v=863"></script>
+<script src="assets/frame-refusers.js?v=863"></script>
+<script src="assets/link-pane.js?v=863"></script>
+<script src="assets/tab-suggest.js?v=863"></script>
 </body>
 </html>
