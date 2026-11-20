@@ -67,6 +67,41 @@
   ],
   "batch": "fp15"
  },
+ "abbara": {
+  "name": "Culture Resource (Al-Mawred Al-Thaqafy)",
+  "short": "Culture Resource",
+  "kind": "found",
+  "what": "A regional non-profit founded in 2003 to support artists and cultural organisations in the Arab region, based in Beirut; Abbara is its programme for cultural organisations.",
+  "money": "Grants from its listed donors: the Ford Foundation, Open Society Foundations, Stichting DOEN, the Swedish Arts Council and the European Union.",
+  "site": "https://mawred.org",
+  "city": "Beirut",
+  "country": "Lebanon",
+  "address": "Ghazzawi building, ground floor, Bliss Street, Hamra, Beirut",
+  "status": "done",
+  "sources": [
+   "https://mawred.org/who-we-are/?lang=en",
+   "https://mawred.org/cultural-organizations-management/abbara/?lang=en",
+   "https://mawred.org/supporters-partners-2/?lang=en",
+   "https://mawred.org/contact-us/?lang=en"
+  ],
+  "batch": "fp37"
+ },
+ "abnamro": {
+  "name": "ABN AMRO Bank N.V.",
+  "short": "ABN AMRO",
+  "kind": "corp",
+  "what": "A Dutch bank in Amsterdam, formed in 1991 from ABN and AMRO Bank; the Dutch state nationalised its operations in 2008 and listed it again in 2015.",
+  "money": "Personal, corporate and private banking for about 5 million clients; operating income was €8.861 billion in 2024.",
+  "site": "https://www.abnamro.com",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://www.abnamro.com/en/about-abn-amro",
+   "https://en.wikipedia.org/wiki/ABN_AMRO"
+  ],
+  "batch": "fp38"
+ },
  "aboriginallandstrust": {
   "name": "Aboriginal Lands Trust",
   "kind": "gov",
@@ -231,6 +266,22 @@
    "https://en.wikipedia.org/wiki/Agence_fran%C3%A7aise_de_d%C3%A9veloppement"
   ],
   "batch": "fp6"
+ },
+ "afreximbank": {
+  "name": "African Export-Import Bank",
+  "short": "Afreximbank",
+  "kind": "corp",
+  "what": "A pan-African multilateral trade finance bank created in 1993 under the auspices of the African Development Bank, with its head office in Cairo.",
+  "money": "Shareholder funds of US$7.2 billion at the end of 2024 and earnings from trade finance in Africa; net income was US$973.5 million that year.",
+  "site": "https://www.afreximbank.com",
+  "city": "Cairo",
+  "country": "Egypt",
+  "address": "72B El Maahad El-Eshteraky Street, Heliopolis, Cairo",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/African_Export%E2%80%93Import_Bank"
+  ],
+  "batch": "fp38"
  },
  "ag2rlamondiale": {
   "name": "AG2R La Mondiale",
@@ -630,6 +681,24 @@
   ],
   "batch": "fp32"
  },
+ "alliancefranaise": {
+  "name": "Fondation des Alliances Françaises",
+  "short": "Alliance Française",
+  "kind": "found",
+  "what": "A French private foundation recognised as being of public utility, created as an association in Paris in 1883 and a foundation since 2007, that approves each new Alliance Française.",
+  "arts": "It coordinates 824 Alliances Françaises in 138 countries.",
+  "site": "https://www.fondation-alliancefr.org",
+  "city": "Paris",
+  "country": "France",
+  "wrong_match": "Both lines mean local Alliances in Lagos and Colombo, separate associations, not the Paris foundation.",
+  "status": "thin",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Fondation_des_Alliances_fran%C3%A7aises",
+   "https://www.fondation-alliancefr.org/",
+   "https://fr.wikipedia.org/wiki/Alliance_fran%C3%A7aise"
+  ],
+  "batch": "fp38"
+ },
  "alliances": {
   "name": "Fondation Alliances",
   "kind": "found",
@@ -699,6 +768,18 @@
    "https://en.wikipedia.org/wiki/Bernard_Ruiz-Picasso"
   ],
   "batch": "fp12"
+ },
+ "alqattancharitabletrust": {
+  "name": "Al-Qattan Charitable Trust",
+  "kind": "found",
+  "what": "A charitable trust that keeps the A. M. Qattan Foundation going, the Ramallah foundation set up in 1993 by the Palestinian businessman Abdel Mohsin Al-Qattan.",
+  "money": "A quarter of Abdel Mohsin Al-Qattan's wealth, left to it in his will, as he announced in March 2011.",
+  "status": "done",
+  "sources": [
+   "https://qattanfoundation.org/index.php/en/in-qattan/news/abdel-mohsin-al-qattan-allocates-25-his-wealth-philanthropy",
+   "https://en.wikipedia.org/wiki/Abdel_Mohsin_Al-Qattan"
+  ],
+  "batch": "fp38"
  },
  "altum": {
   "name": "JSC Development Finance Institution Altum",
@@ -1036,6 +1117,23 @@
   ],
   "batch": "fp6"
  },
+ "apeejaytrust": {
+  "name": "Apeejay Trust",
+  "kind": "found",
+  "what": "A charitable trust of the Paul family's Apeejay Surrendra Group, established in 1974 and run from the group's office in Kolkata.",
+  "money": "Gifts from Apeejay Surrendra Group companies and the group's internal accruals; the group's businesses include tea, hotels, shipping and real estate.",
+  "arts": "The group's trusts fund city and national cultural platforms and the preservation of Indian art, culture and architectural heritage.",
+  "site": "https://www.apeejaygroup.com",
+  "city": "Kolkata",
+  "country": "India",
+  "address": "15 Park Street, Kolkata 700016",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2025id_/https://apeejaygroup.com/charitabletrust.html",
+   "https://en.wikipedia.org/wiki/Apeejay_Surrendra_Group"
+  ],
+  "batch": "fp38"
+ },
  "appliedmaterialstaiwan": {
   "name": "Applied Materials Taiwan",
   "kind": "corp",
@@ -1066,6 +1164,21 @@
    "https://www.aqualand.com.au/news/aqualand-celebrates-10-years-in-transforming-sydneys-cityscape/"
   ],
   "batch": "fp6"
+ },
+ "arab": {
+  "name": "Arab Fund for Economic and Social Development",
+  "short": "AFESD",
+  "kind": "gov",
+  "what": "A pan-Arab development finance institution based in Kuwait, set up by an Arab League agreement of 16 May 1968; its first meeting was on 6 February 1972.",
+  "money": "Its member states, all of the Arab League's members; it held about US$7.3 billion in assets in 2003.",
+  "site": "https://www.arabfund.org",
+  "city": "Kuwait City",
+  "country": "Kuwait",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Arab_Fund_for_Economic_and_Social_Development"
+  ],
+  "batch": "fp37"
  },
  "arabforarts": {
   "name": "Arab Fund for Arts and Culture",
@@ -1162,6 +1275,23 @@
    "https://en.wikipedia.org/wiki/John_Abele"
   ],
   "batch": "fp30"
+ },
+ "arisonarts": {
+  "name": "Arison Arts Foundation",
+  "kind": "found",
+  "what": "A private foundation in Coral Gables, Florida, set up to keep YoungArts and the New World Symphony going; tax-exempt since 2005, with Sarah Arison as president.",
+  "money": "Dividends and asset sales on net assets of US$381.2 million in 2024; its president's grandfather Ted Arison founded Carnival Cruise Lines in 1972.",
+  "arts": "Its charitable disbursements were US$39.3 million in 2024.",
+  "city": "Coral Gables",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/137450689",
+   "https://www.artbasel.com/stories/sarah-arison-reimagines-what-cultural-leadership-can-be",
+   "https://en.wikipedia.org/wiki/YoungArts",
+   "https://en.wikipedia.org/wiki/Ted_Arison"
+  ],
+  "batch": "fp38"
  },
  "arizonacommissiononarts|USA": {
   "name": "Arizona Commission on the Arts",
@@ -1311,6 +1441,24 @@
   ],
   "batch": "fp3"
  },
+ "artmentorlucerne": {
+  "name": "Art Mentor Foundation Lucerne",
+  "kind": "found",
+  "what": "A charitable private foundation in Lucerne that funds professionally run projects in visual art, music and cultural education.",
+  "money": "Christof and Ursula Engelhorn, whose family owned the drug maker Boehringer Mannheim until its 1997 sale to Hoffmann-La Roche, gave it their art collection.",
+  "arts": "In 2016 it gave 58 works from the Engelhorn collection to the Bavarian State Paintings Collections.",
+  "site": "https://artmentor.ch",
+  "city": "Lucerne",
+  "country": "Switzerland",
+  "address": "Murbacherstrasse 3, 6003 Luzern",
+  "status": "done",
+  "sources": [
+   "https://artmentor.ch/impressum",
+   "https://www.artmentor.ch/",
+   "https://www.theartnewspaper.com/2016/08/10/bavarian-museums-receive-58-top-works-by-mondrian-delacroix-beuys"
+  ],
+  "batch": "fp38"
+ },
  "artotelspaviliunradensaleh": {
   "name": "ARTOTEL Group",
   "short": "Artotel",
@@ -1328,6 +1476,19 @@
    "https://www.nowjakarta.co.id/artotel-curated-opens-paviliun-raden-saleh-at-taman-ismail-marzuki-with-archival-exhibition/"
   ],
   "batch": "fp7"
+ },
+ "artscollaboratory": {
+  "name": "Arts Collaboratory",
+  "kind": "found",
+  "what": "A self-governing network of 25 organisations, mostly art spaces in Africa, Asia, Latin America and the Middle East, set up in 2007 by DOEN and Hivos as a funding programme.",
+  "money": "Funding from the DOEN Foundation, now one of its members; the Mondriaan Fund joined early to back exchange with the Dutch arts field.",
+  "site": "https://artscollaboratory.org",
+  "status": "done",
+  "sources": [
+   "https://artscollaboratory.org/history/",
+   "https://artscollaboratory.org/"
+  ],
+  "batch": "fp37"
  },
  "artscouncilanchomhairleealaon|Ireland": {
   "name": "The Arts Council / An Chomhairle Ealaíon",
@@ -1364,6 +1525,23 @@
    "https://en.wikipedia.org/wiki/Arts_Council_England"
   ],
   "batch": "fp1"
+ },
+ "artscouncilkorea|South Korea": {
+  "name": "한국문화예술위원회",
+  "short": "Arts Council Korea (ARKO)",
+  "kind": "gov",
+  "what": "Korea's national arts body under the Ministry of Culture, Sports and Tourism, established in 1973 and relaunched as Arts Council Korea in September 2005, with its head office in Naju.",
+  "money": "The Culture and Arts Promotion Fund, which it runs under the Culture and Arts Promotion Act.",
+  "site": "https://www.arko.or.kr",
+  "city": "Naju",
+  "country": "South Korea",
+  "address": "640 Bitgaram-ro, Naju",
+  "status": "done",
+  "sources": [
+   "https://www.arko.or.kr/eng/",
+   "https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B5%AD%EB%AC%B8%ED%99%94%EC%98%88%EC%88%A0%EC%9C%84%EC%9B%90%ED%9A%8C"
+  ],
+  "batch": "fp38"
  },
  "artscouncilni|UK": {
   "name": "Arts Council of Northern Ireland",
@@ -1762,6 +1940,37 @@
   ],
   "batch": "fp7"
  },
+ "australianantarcticdivision": {
+  "name": "Australian Antarctic Division",
+  "kind": "gov",
+  "what": "A division of Australia's Department of Climate Change, Energy, the Environment and Water, formed in 1948, that runs the Antarctic science programme and stations from Kingston, Tasmania.",
+  "money": "The Australian Government budget, through the Department of Climate Change, Energy, the Environment and Water.",
+  "site": "https://www.antarctica.gov.au",
+  "city": "Kingston",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Australian_Antarctic_Division"
+  ],
+  "batch": "fp38"
+ },
+ "australiangovernmentappropriation|Australia": {
+  "name": "Australian Government",
+  "short": "Commonwealth Government",
+  "kind": "gov",
+  "what": "The federal executive government of Australia, headquartered in the executive wing of Parliament House, Canberra.",
+  "money": "The Commonwealth budget: A$833.3 billion for 2026-27.",
+  "arts": "Its arts programmes sit in the Department of Infrastructure, Transport, Regional Development, Communications, Sport and the Arts.",
+  "site": "https://www.australia.gov.au",
+  "city": "Canberra",
+  "country": "Australia",
+  "address": "Parliament House, Canberra",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Australian_Government"
+  ],
+  "batch": "fp37"
+ },
  "auswrtigesamt": {
   "name": "Auswärtiges Amt",
   "short": "German Federal Foreign Office",
@@ -1979,6 +2188,24 @@
   ],
   "batch": "fp3"
  },
+ "bancodelarepblica": {
+  "name": "Banco de la República",
+  "short": "Bank of the Republic",
+  "kind": "gov",
+  "what": "Colombia's central bank, which issues the peso; Congress set out its modern functions in 1992, and its head office is in Bogotá.",
+  "money": "Its own resources as Colombia's central bank and currency issuer.",
+  "arts": "Its cultural branch runs the Gold Museum in Bogotá, five regional Gold Museums, the Luis Ángel Arango Library and a library network in 28 cities.",
+  "site": "https://www.banrep.gov.co",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "address": "Calle 11 No. 4-21, Bogotá",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bank_of_the_Republic_(Colombia)",
+   "https://es.wikipedia.org/wiki/Banco_de_la_Rep%C3%BAblica_(Colombia)"
+  ],
+  "batch": "fp38"
+ },
  "bancohipotecario": {
   "name": "Banco Hipotecario S.A.",
   "kind": "corp",
@@ -2124,6 +2351,23 @@
    "https://data.brreg.no/enhetsregisteret/api/enheter/980253740"
   ],
   "batch": "fp8"
+ },
+ "barclays": {
+  "name": "Barclays PLC",
+  "short": "Barclays",
+  "kind": "corp",
+  "what": "A British universal bank headquartered in London, tracing its origins to a goldsmith banking business founded in the City of London in 1690.",
+  "money": "Consumer, corporate, private and investment banking in the UK and the US; revenue was £29.14 billion in 2025.",
+  "site": "https://home.barclays",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "1 Churchill Place, Canary Wharf, London",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Barclays",
+   "https://home.barclays/who-we-are/"
+  ],
+  "batch": "fp38"
  },
  "bareeze": {
   "name": "Bareezé",
@@ -2612,6 +2856,21 @@
   ],
   "batch": "fp30"
  },
+ "bhp": {
+  "name": "BHP Group Limited",
+  "short": "BHP",
+  "kind": "corp",
+  "what": "An Australian mining company founded in Broken Hill in 1885 as the Broken Hill Proprietary Company, headquartered in Melbourne and listed only in Australia since 2022.",
+  "money": "Mining and selling iron ore, copper and coal; revenue was US$51.26 billion in the 2025 financial year.",
+  "site": "https://www.bhp.com",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/BHP"
+  ],
+  "batch": "fp38"
+ },
  "bigantstudios": {
   "name": "Big Ant Studios Pty Ltd",
   "short": "Big Ant Studios",
@@ -2787,6 +3046,22 @@
   ],
   "batch": "fp7"
  },
+ "bndes": {
+  "name": "Banco Nacional de Desenvolvimento Econômico e Social",
+  "short": "BNDES",
+  "kind": "gov",
+  "what": "Brazil's national development bank, a federal public company created by law in 1952 and owned by the Brazilian government, with its seat in Rio de Janeiro.",
+  "money": "Returns on its loans, Fundo de Amparo ao Trabalhador money and equity income: R$ 122.2 billion, R$ 23.3 billion and R$ 8.8 billion in 2023.",
+  "site": "https://www.bndes.gov.br",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Banco_Nacional_de_Desenvolvimento_Econ%C3%B4mico_e_Social",
+   "https://en.wikipedia.org/wiki/Brazilian_Development_Bank"
+  ],
+  "batch": "fp37"
+ },
  "bnkbusanbank": {
   "name": "BNK Busan Bank",
   "kind": "corp",
@@ -2938,6 +3213,22 @@
    "https://www.bpd-immobilienentwicklung.de/ueber-bpd/"
   ],
   "batch": "fp7"
+ },
+ "bradesco": {
+  "name": "Banco Bradesco S.A.",
+  "short": "Bradesco",
+  "kind": "corp",
+  "what": "A Brazilian bank founded by Amador Aguiar in Marília in 1943, headquartered at Cidade de Deus in Osasco, São Paulo state; Brazil's third largest bank by assets.",
+  "money": "Its commercial banking, insurance, pension, annuity and credit card business; revenue was US$35.3 billion in 2025.",
+  "site": "https://www.bradesco.com.br",
+  "city": "Osasco",
+  "country": "Brazil",
+  "address": "Cidade de Deus, Osasco",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Banco_Bradesco"
+  ],
+  "batch": "fp37"
  },
  "bramall": {
   "name": "The Liz and Terry Bramall Foundation",
@@ -3374,6 +3665,21 @@
   ],
   "batch": "fp9"
  },
+ "cambridgecitycouncil|UK": {
+  "name": "Cambridge City Council",
+  "kind": "gov",
+  "what": "The district council for the city of Cambridge in Cambridgeshire, England, which meets at Cambridge Guildhall; no party has held overall control since 2026.",
+  "money": "The municipal budget of Cambridge City Council.",
+  "site": "https://www.cambridge.gov.uk",
+  "city": "Cambridge",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cambridge_City_Council",
+   "https://www.cambridge.gov.uk/contact-us"
+  ],
+  "batch": "fp38"
+ },
  "camper": {
   "name": "Camper",
   "kind": "corp",
@@ -3404,6 +3710,20 @@
    "https://www.nutriasia.com/"
   ],
   "batch": "fp18"
+ },
+ "canada": {
+  "name": "Government of Canada",
+  "kind": "gov",
+  "what": "The federal executive of Canada, made up of the Cabinet under Prime Minister Mark Carney and over 103 departments and agencies.",
+  "money": "The Canadian federal budget.",
+  "site": "https://www.canada.ca",
+  "city": "Ottawa",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Canada"
+  ],
+  "batch": "fp38"
  },
  "canadacouncilforarts|Canada": {
   "name": "Canada Council for the Arts",
@@ -3441,6 +3761,22 @@
   ],
   "batch": "fp5"
  },
+ "canadianheritage": {
+  "name": "Canadian Heritage",
+  "short": "Department of Canadian Heritage",
+  "kind": "gov",
+  "what": "The Government of Canada's department for arts, culture, broadcasting, official languages and sport, created in 1993 and headquartered in the Jules Léger Building, Gatineau, Quebec.",
+  "money": "The federal budget of the Government of Canada: CA$3.89 billion for the department in 2020.",
+  "site": "https://www.canada.ca/en/canadian-heritage.html",
+  "city": "Gatineau",
+  "country": "Canada",
+  "address": "Jules Léger Building (South), Terrasses de la Chaudière, Gatineau, Quebec",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Canadian_Heritage"
+  ],
+  "batch": "fp37"
+ },
  "canica": {
   "name": "Canica AS",
   "short": "Canica",
@@ -3458,6 +3794,21 @@
    "https://www.orkla.com/media/press-releases/2026/orkla-asa-continued-ownership-by-the-hagen-family/"
   ],
   "batch": "fp32"
+ },
+ "canon": {
+  "name": "Canon Inc.",
+  "short": "Canon",
+  "kind": "corp",
+  "what": "A Japanese maker of cameras, printers, medical and semiconductor equipment, set up in 1937 as Precision Optical Instruments and headquartered in Shimomaruko, Ōta, Tokyo.",
+  "money": "Sales of optical, imaging, medical and industrial products worldwide; revenue was ¥4.03 trillion in 2022.",
+  "site": "https://global.canon",
+  "city": "Tokyo",
+  "country": "Japan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Canon_Inc."
+  ],
+  "batch": "fp38"
  },
  "cantonofgeneva": {
   "name": "République et canton de Genève",
@@ -3908,6 +4259,23 @@
   ],
   "batch": "fp30"
  },
+ "chase": {
+  "name": "Culture, Health, Arts, Sports and Education Fund",
+  "short": "CHASE Fund",
+  "kind": "gov",
+  "what": "A Jamaican company incorporated on 25 November 2002 under the Companies Act, based in Kingston, that funds culture, health, arts, sports and education.",
+  "money": "Monetary contributions from the lottery companies, which it receives, administers and distributes.",
+  "arts": "Its culture grants go to libraries, archives, historic sites, monuments, documentary film and cultural activities.",
+  "site": "https://chase.org.jm",
+  "city": "Kingston",
+  "country": "Jamaica",
+  "address": "8 Belmont Road, Kingston 5",
+  "status": "done",
+  "sources": [
+   "https://chase.org.jm/"
+  ],
+  "batch": "fp38"
+ },
  "cherylsaban": {
   "name": "The Saban Family Foundation",
   "short": "Saban Family Foundation",
@@ -4076,6 +4444,21 @@
   ],
   "batch": "fp9"
  },
+ "cittmetropolitana": {
+  "name": "Città metropolitana di Firenze",
+  "short": "Metropolitan City of Florence",
+  "kind": "gov",
+  "what": "The metropolitan city of Florence, a local authority of 41 municipalities in Tuscany that replaced the Province of Florence on 1 January 2015 under Law 56/2014.",
+  "money": "The budget of the Città metropolitana di Firenze.",
+  "site": "https://www.cittametropolitana.fi.it",
+  "city": "Florence",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Metropolitan_City_of_Florence"
+  ],
+  "batch": "fp38"
+ },
  "citybridge|UK": {
   "name": "Bridge House Estates",
   "short": "City Bridge Foundation",
@@ -4215,6 +4598,23 @@
   ],
   "batch": "fp9"
  },
+ "cityofavignon|France": {
+  "name": "Ville d'Avignon",
+  "short": "City of Avignon",
+  "kind": "gov",
+  "what": "The commune of Avignon, prefecture of the Vaucluse department in Provence-Alpes-Côte d'Azur, with 92,188 residents in 2023.",
+  "money": "The municipal budget of Avignon.",
+  "site": "https://www.avignon.fr",
+  "city": "Avignon",
+  "country": "France",
+  "address": "Hôtel de Ville, 84045 Avignon Cedex 9",
+  "status": "done",
+  "sources": [
+   "https://www.avignon.fr/",
+   "https://en.wikipedia.org/wiki/Avignon"
+  ],
+  "batch": "fp38"
+ },
  "cityofballarat|Australia": {
   "name": "City of Ballarat",
   "kind": "gov",
@@ -4302,6 +4702,22 @@
    "https://www.rtbf.be/article/la-ville-de-bruxelles-presente-un-budget-2025-rigoureux-mais-ambitieux-11562620"
   ],
   "batch": "fp35"
+ },
+ "cityofcologne|Germany": {
+  "name": "Stadt Köln",
+  "short": "City of Cologne",
+  "kind": "gov",
+  "what": "The city of Cologne, represented by Lord Mayor Torsten Burmester, with its seat at the Historisches Rathaus.",
+  "money": "The municipal budget of Cologne.",
+  "site": "https://www.stadt-koeln.de",
+  "city": "Cologne",
+  "country": "Germany",
+  "address": "Historisches Rathaus, 50667 Köln",
+  "status": "done",
+  "sources": [
+   "https://www.stadt-koeln.de/service/kontakt/impressum"
+  ],
+  "batch": "fp37"
  },
  "cityofcopenhagen|Denmark": {
   "name": "Københavns Kommune",
@@ -4473,6 +4889,20 @@
    "https://www.museum-folkwang.de/de/ueber-uns"
   ],
   "batch": "fp36"
+ },
+ "cityoffortworth|USA": {
+  "name": "City of Fort Worth",
+  "kind": "gov",
+  "what": "The city government of Fort Worth, Texas, the county seat of Tarrant County, founded as an army outpost in 1849, with an estimated 1,028,117 residents in 2025.",
+  "money": "The municipal budget of Fort Worth.",
+  "site": "https://www.fortworthtexas.gov",
+  "city": "Fort Worth",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Fort_Worth,_Texas"
+  ],
+  "batch": "fp38"
  },
  "cityoffrankfurtcultureoffice|Germany": {
   "name": "Kulturamt Frankfurt am Main",
@@ -4648,6 +5078,21 @@
   ],
   "batch": "fp9"
  },
+ "cityofjohannesburg|South Africa": {
+  "name": "City of Johannesburg Metropolitan Municipality",
+  "short": "City of Johannesburg",
+  "kind": "gov",
+  "what": "The metropolitan municipality that governs Johannesburg, South Africa's largest city.",
+  "money": "The municipal budget of the City of Johannesburg.",
+  "site": "https://www.joburg.org.za",
+  "city": "Johannesburg",
+  "country": "South Africa",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Johannesburg_Metropolitan_Municipality"
+  ],
+  "batch": "fp38"
+ },
  "cityofkarlsruhedepartmentofculturalaffairs|Germany": {
   "name": "Stadt Karlsruhe, Kulturamt",
   "short": "Karlsruhe Kulturamt",
@@ -4665,6 +5110,73 @@
    "https://de.wikipedia.org/wiki/Karlsruhe"
   ],
   "batch": "fp21"
+ },
+ "cityoflausanne|Switzerland": {
+  "name": "Ville de Lausanne",
+  "short": "City of Lausanne",
+  "kind": "gov",
+  "what": "The city of Lausanne, capital of the canton of Vaud on Lake Geneva, with 145,596 residents at the end of 2025.",
+  "money": "The municipal budget of Lausanne.",
+  "site": "https://www.lausanne.ch",
+  "city": "Lausanne",
+  "country": "Switzerland",
+  "address": "Place de la Palud 2, 1001 Lausanne",
+  "status": "done",
+  "sources": [
+   "https://www.lausanne.ch/",
+   "https://fr.wikipedia.org/wiki/Lausanne"
+  ],
+  "batch": "fp38"
+ },
+ "cityoflille|France": {
+  "name": "Ville de Lille",
+  "short": "City of Lille",
+  "kind": "gov",
+  "what": "The city of Lille, capital of the Hauts-de-France region and prefecture of the Nord department, with 238,246 residents in 2023.",
+  "money": "The municipal budget of Lille.",
+  "site": "https://www.lille.fr",
+  "city": "Lille",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lille",
+   "https://www.lille.fr/"
+  ],
+  "batch": "fp38"
+ },
+ "cityoflinz|Austria": {
+  "name": "Stadt Linz",
+  "short": "City of Linz",
+  "kind": "gov",
+  "what": "The statutory city of Linz, capital of Upper Austria and Austria's third-largest city, with 214,272 residents on 1 January 2026.",
+  "money": "The municipal budget of Linz.",
+  "site": "https://www.linz.at",
+  "city": "Linz",
+  "country": "Austria",
+  "address": "Hauptplatz 1, 4041 Linz",
+  "status": "done",
+  "sources": [
+   "https://www.linz.at/impressum.php",
+   "https://de.wikipedia.org/wiki/Linz"
+  ],
+  "batch": "fp38"
+ },
+ "cityofljubljana|Slovenia": {
+  "name": "Mestna občina Ljubljana",
+  "short": "City of Ljubljana",
+  "kind": "gov",
+  "what": "The City Municipality of Ljubljana, the local government of Slovenia's capital, led by Mayor Zoran Janković.",
+  "money": "The municipal budget of Ljubljana.",
+  "site": "https://www.ljubljana.si",
+  "city": "Ljubljana",
+  "country": "Slovenia",
+  "address": "Mestni trg 1, 1000 Ljubljana",
+  "status": "done",
+  "sources": [
+   "https://www.ljubljana.si/sl",
+   "https://en.wikipedia.org/wiki/Urban_Municipality_of_Ljubljana"
+  ],
+  "batch": "fp37"
  },
  "cityoflondonfunding|United Kingdom": {
   "name": "City of London Corporation",
@@ -4735,6 +5247,20 @@
   ],
   "batch": "fp27"
  },
+ "cityofmelbourne|Australia": {
+  "name": "City of Melbourne",
+  "kind": "gov",
+  "what": "The local government area for inner Melbourne, Victoria, governed by Melbourne City Council from Melbourne Town Hall, with Nicholas Reece as Lord Mayor since July 2024.",
+  "money": "The municipal budget of the City of Melbourne.",
+  "site": "https://www.melbourne.vic.gov.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Melbourne"
+  ],
+  "batch": "fp38"
+ },
  "cityofmiami|USA": {
   "name": "City of Miami",
   "kind": "gov",
@@ -4785,6 +5311,23 @@
    "https://www.montbeliard.fr/"
   ],
   "batch": "fp23"
+ },
+ "cityofnice|France": {
+  "name": "Ville de Nice",
+  "short": "City of Nice",
+  "kind": "gov",
+  "what": "The city of Nice on the French Riviera, prefecture of the Alpes-Maritimes department in the Provence-Alpes-Côte d'Azur region.",
+  "money": "The municipal budget of Nice.",
+  "site": "https://www.nice.fr",
+  "city": "Nice",
+  "country": "France",
+  "address": "5 rue de l'Hôtel de Ville, 06364 Nice",
+  "status": "done",
+  "sources": [
+   "https://www.nice.fr/",
+   "https://en.wikipedia.org/wiki/Nice"
+  ],
+  "batch": "fp38"
  },
  "cityofoaklandsubsidy|USA": {
   "name": "City of Oakland",
@@ -4976,6 +5519,20 @@
    "https://en.wikipedia.org/wiki/City_of_Sydney"
   ],
   "batch": "fp9"
+ },
+ "cityoftoronto|Canada": {
+  "name": "City of Toronto",
+  "kind": "gov",
+  "what": "The city government of Toronto, Canada's most populous city and capital of Ontario, with 2,794,356 residents in the 2021 census.",
+  "money": "The municipal budget of the City of Toronto.",
+  "site": "https://www.toronto.ca",
+  "city": "Toronto",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Toronto"
+  ],
+  "batch": "fp38"
  },
  "cityofturinculturaldepartment|Italy": {
   "name": "Città di Torino",
@@ -5185,6 +5742,59 @@
   ],
   "batch": "fp9"
  },
+ "cloreduffield": {
+  "name": "The Clore Duffield Foundation",
+  "short": "Clore Duffield Foundation",
+  "kind": "found",
+  "what": "A UK grant-making foundation set up in 1964 by Sir Charles Clore and chaired by his daughter, Dame Vivien Duffield.",
+  "money": "The fortune of Sir Charles Clore (1904 to 1979), a financier and retail and property owner whose businesses included Sears and Selfridges.",
+  "arts": "It funds Clore Learning Spaces and the Clore Leadership Programme, and gives school choir grants of £50,000 to £100,000 a year for three years.",
+  "site": "https://www.cloreduffield.org.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "Studio 3 Chelsea Manor Studios, Flood Street, London SW3 5SR",
+  "status": "done",
+  "sources": [
+   "https://www.cloreduffield.org.uk/about-the-foundation",
+   "https://www.cloreduffield.org.uk/",
+   "https://en.wikipedia.org/wiki/Charles_Clore"
+  ],
+  "batch": "fp37"
+ },
+ "cmn": {
+  "name": "Centre des monuments nationaux",
+  "short": "Les Monuments Nationaux",
+  "kind": "gov",
+  "what": "A French public body under the Ministry of Culture, created in 2000, that runs about 110 state-owned monuments; since 15 October 2026 it trades as Les Monuments Nationaux.",
+  "money": "Its own receipts from tickets, rentals, shops, publishing and patronage, plus a subsidy from the Ministry of Culture.",
+  "site": "https://www.monuments-nationaux.fr",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Les_Monuments_nationaux",
+   "https://www.monuments-nationaux.fr/",
+   "https://en.wikipedia.org/wiki/Centre_des_monuments_nationaux"
+  ],
+  "batch": "fp38"
+ },
+ "cnap": {
+  "name": "Consejo Nacional de las Artes Plásticas",
+  "short": "CNAP",
+  "kind": "gov",
+  "what": "A Cuban Ministry of Culture institution created on 11 March 1989 in place of the ministry's visual arts directorate, to develop, promote and sell Cuban visual art.",
+  "money": "The Cuban state budget, through the Ministry of Culture.",
+  "site": "http://www.cnap.cult.cu",
+  "city": "Havana",
+  "country": "Cuba",
+  "address": "Calle 3ra No. 1205 entre 12 y 14, Miramar, Playa, Havana",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2024id_/https://www.ecured.cu/Consejo_Nacional_de_las_Artes_Pl%C3%A1sticas",
+   "https://web.archive.org/web/2024id_/https://www.ecured.cu/Arte_cubano_contempor%C3%A1neo"
+  ],
+  "batch": "fp38"
+ },
  "cnc": {
   "name": "Centre national du cinéma et de l'image animée",
   "short": "CNC",
@@ -5271,6 +5881,24 @@
   ],
   "batch": "fp9"
  },
+ "comfama": {
+  "name": "Caja de Compensación Familiar de Antioquia",
+  "short": "Comfama",
+  "kind": "found",
+  "what": "Antioquia's family compensation fund, Colombia's first, founded in Medellín in 1954 after a call from the UTC trade union federation, with backing from the industrialists' association ANDI.",
+  "money": "Contributions from the 123,000 companies that chose it for their staff in 2024; its total income was COP 2.8 trillion that year.",
+  "site": "https://www.comfama.com",
+  "city": "Medellín",
+  "country": "Colombia",
+  "status": "done",
+  "sources": [
+   "https://www.elcolombiano.com/negocios/empresas/comfama-cumple-70-anos-historia-de-la-primera-caja-de-compensacion-familia-de-colombia-MI24860369",
+   "https://www.larepublica.co/empresas/comfama-alcanzo-unos-ingresos-totales-de-2-8-billones-al-cierre-del-ejercicio-de-2024-4102653",
+   "https://es.wikipedia.org/wiki/Comfama",
+   "https://www.comfama.com/"
+  ],
+  "batch": "fp38"
+ },
  "comfandi": {
   "name": "Caja de Compensación Familiar del Valle del Cauca",
   "short": "Comfandi",
@@ -5304,6 +5932,40 @@
    "https://en.wikipedia.org/wiki/Istituto_Bancario_San_Paolo_di_Torino"
   ],
   "batch": "fp2"
+ },
+ "comunedimilano|Italy": {
+  "name": "Comune di Milano",
+  "short": "City of Milan",
+  "kind": "gov",
+  "what": "The municipality of Milan, capital of Lombardy, whose administration has sat in Palazzo Marino since 1861.",
+  "money": "The municipal budget of Milan.",
+  "site": "https://www.comune.milano.it",
+  "city": "Milan",
+  "country": "Italy",
+  "address": "Piazza della Scala 2, 20121 Milano",
+  "status": "done",
+  "sources": [
+   "https://www.comune.milano.it/",
+   "https://it.wikipedia.org/wiki/Palazzo_Marino",
+   "https://it.wikipedia.org/wiki/Lombardia"
+  ],
+  "batch": "fp37"
+ },
+ "comunidaddemadrid": {
+  "name": "Comunidad de Madrid",
+  "short": "Community of Madrid",
+  "kind": "gov",
+  "what": "One of Spain's seventeen autonomous communities, created in 1983 around the capital, Madrid, with 7,113,886 inhabitants in 2025.",
+  "money": "The regional budget of the Comunidad de Madrid.",
+  "site": "https://www.comunidad.madrid",
+  "city": "Madrid",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Community_of_Madrid",
+   "https://www.comunidad.madrid/"
+  ],
+  "batch": "fp38"
  },
  "conedison": {
   "name": "Consolidated Edison, Inc.",
@@ -5367,6 +6029,21 @@
    "https://www.artsmontreal.org/en/contact-us/"
   ],
   "batch": "fp4"
+ },
+ "consejonacionaldelpatrimoniocultural": {
+  "name": "Consejo Nacional de Patrimonio Cultural",
+  "short": "National Council of Cultural Heritage (CNPC)",
+  "kind": "gov",
+  "what": "The Cuban Ministry of Culture body, founded in 1995 and seated in Havana, that defines and declares the goods forming the nation's cultural heritage under Law No. 1.",
+  "money": "The Cuban state budget, through the Ministry of Culture.",
+  "city": "Havana",
+  "country": "Cuba",
+  "address": "Calle 13 No. 810 esquina 4, Vedado, Plaza de la Revolución, Havana",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2024id_/https://www.ecured.cu/CNPC"
+  ],
+  "batch": "fp38"
  },
  "conselldemallorca": {
   "name": "Consell de Mallorca",
@@ -5567,6 +6244,23 @@
   ],
   "batch": "fp32"
  },
+ "crditagricole": {
+  "name": "Crédit Agricole Group",
+  "short": "Crédit Agricole",
+  "kind": "corp",
+  "what": "A French cooperative banking group, founded in 1894, of local banks, 39 regional banks and the listed central body Crédit Agricole S.A., headquartered in Montrouge.",
+  "money": "Retail banking, insurance, asset management through Amundi and corporate banking: revenue of €39.56 billion and net income of €8.75 billion in 2025.",
+  "site": "https://www.credit-agricole.com",
+  "city": "Montrouge",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.credit-agricole.com/en/group/history-of-the-credit-agricole-group",
+   "https://www.credit-agricole.com/en/group/discover-the-credit-agricole-group",
+   "https://en.wikipedia.org/wiki/Crédit_Agricole"
+  ],
+  "batch": "fp39"
+ },
  "crditdunord": {
   "name": "Crédit du Nord",
   "kind": "corp",
@@ -5734,6 +6428,23 @@
   ],
   "batch": "fp1"
  },
+ "croatiasministryofculture|Croatia": {
+  "name": "Ministarstvo kulture i medija Republike Hrvatske",
+  "short": "Croatian Ministry of Culture and Media",
+  "kind": "gov",
+  "what": "The Croatian government ministry for culture and media, in its present form since 1994, led by Minister Nina Obuljen Koržinek since 19 October 2016.",
+  "money": "The Croatian state budget: the ministry's budget was €642 million for 2025.",
+  "site": "https://min-kulture.gov.hr",
+  "city": "Zagreb",
+  "country": "Croatia",
+  "address": "Runjaninova 2, 10000 Zagreb",
+  "status": "done",
+  "sources": [
+   "https://min-kulture.gov.hr/",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_and_Media_(Croatia)"
+  ],
+  "batch": "fp39"
+ },
  "ctdecd": {
   "name": "Connecticut Department of Economic and Community Development",
   "short": "CT DECD",
@@ -5752,6 +6463,41 @@
   ],
   "batch": "fp9"
  },
+ "cubanministryofculture|Cuba": {
+  "name": "Ministerio de Cultura de Cuba",
+  "short": "Cuban Ministry of Culture",
+  "kind": "gov",
+  "what": "The Cuban government ministry in charge of cultural policy, founded in 1976 under the Council of Ministers; its minister is Alpidio Alonso Grau.",
+  "money": "The Cuban state budget.",
+  "site": "https://www.ministeriodecultura.gob.cu",
+  "city": "Havana",
+  "country": "Cuba",
+  "address": "Calle 2 No. 258, between 11 and 13, Plaza de la Revolución, La Habana",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ministerio_de_Cultura_(Cuba)"
+  ],
+  "batch": "fp37"
+ },
+ "cullen": {
+  "name": "The Cullen Foundation",
+  "short": "Cullen Foundation",
+  "kind": "found",
+  "what": "A private foundation in Houston set up in 1947 by the oilman Hugh Roy Cullen and his wife Lillie Cranz Cullen; family members still sit on its board.",
+  "money": "First oil and gas working interests from the Cullens, sold off by 2000; since then a portfolio of marketable securities and other investments.",
+  "arts": "It has given over $600 million since 1947 to arts, education, health care and public service, mostly in the Houston area.",
+  "site": "https://www.cullenfdn.org",
+  "city": "Houston",
+  "country": "United States",
+  "address": "2727 Allen Parkway, Suite 1050, Houston, TX 77019",
+  "status": "done",
+  "sources": [
+   "https://www.cullenfdn.org/about-us/",
+   "https://www.cullenfdn.org/about-us/the-founders/",
+   "https://www.cullenfdn.org/contact-us/"
+  ],
+  "batch": "fp37"
+ },
  "culturalendowmentofestonia": {
   "name": "Eesti Kultuurkapital",
   "short": "Cultural Endowment of Estonia",
@@ -5769,6 +6515,23 @@
    "https://en.wikipedia.org/wiki/Cultural_Endowment_of_Estonia"
   ],
   "batch": "fp29"
+ },
+ "cultureireland": {
+  "name": "Culture Ireland",
+  "kind": "gov",
+  "what": "The Irish state agency that promotes Irish arts abroad, set up in 2005 in Dublin.",
+  "money": "The Irish state budget through the Department of Culture, Communications and Sport: its budget was €6.6 million in 2023.",
+  "arts": "Its January 2025 grant round gave over €1.5 million to 192 projects in over 34 countries.",
+  "site": "https://www.cultureireland.ie",
+  "city": "Dublin",
+  "country": "Ireland",
+  "address": "23 Kildare Street, Dublin 2, D02 TD30",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Culture_Ireland",
+   "https://www.ifacca.org/news/2025/01/31/minister-patrick-odonovan-announces-15-million-in/"
+  ],
+  "batch": "fp39"
  },
  "cultureliverpool": {
   "name": "Culture Liverpool",
@@ -5864,6 +6627,23 @@
    "https://en.wikipedia.org/wiki/Het_Cultuurfonds"
   ],
   "batch": "fp10"
+ },
+ "cuyahogaarts": {
+  "name": "Cuyahoga Arts & Culture",
+  "short": "CAC",
+  "kind": "gov",
+  "what": "The public arts and culture funder of Cuyahoga County, Ohio, set up after county voters approved a dedicated arts tax in 2006.",
+  "money": "A county tax on cigarette sales, renewed by voters in 2015 and expanded in 2024; the levy runs to 2035.",
+  "arts": "Since 2007 it has made 4,600 grants worth $270 million to 500 nonprofit organizations.",
+  "site": "https://www.cacgrants.org",
+  "city": "Cleveland",
+  "country": "United States",
+  "address": "1422 Euclid Avenue, Suite 400-5, Cleveland, Ohio 44115",
+  "status": "done",
+  "sources": [
+   "https://www.cacgrants.org/about-us/"
+  ],
+  "batch": "fp39"
  },
  "czechtelevision": {
   "name": "Česká televize",
@@ -6012,6 +6792,19 @@
    "https://en.wikipedia.org/wiki/DARPA"
   ],
   "batch": "fp34"
+ },
+ "davidgeffen": {
+  "name": "David Geffen",
+  "kind": "person",
+  "what": "American record and film executive, born in 1943, who co-founded Asylum Records in 1971, founded Geffen Records in 1980 and co-founded DreamWorks SKG in 1994.",
+  "money": "The 1990 sale of Geffen Records to MCA for shares then worth $550 million; Forbes estimated his net worth at $9 billion in 2024.",
+  "arts": "In 2021 he gave $150 million to the Yale School of Drama, which made tuition free and took his name.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/David_Geffen"
+  ],
+  "batch": "fp39"
  },
  "davidzwirner": {
   "name": "David Zwirner",
@@ -6262,6 +7055,24 @@
   ],
   "batch": "fp31"
  },
+ "departmentofculturecommunicationsandsportcontributetocapitalfunding|Ireland": {
+  "name": "Department of Culture, Communications and Sport",
+  "kind": "gov",
+  "what": "The Irish government department for arts, culture, media, communications and sport, led by the Minister for Culture, Communications and Sport, at Leeson Lane, Dublin.",
+  "money": "The Irish state budget: Budget 2027 gives it €1.298 billion, of which €848 million is current spending.",
+  "arts": "Budget 2027 gives the Arts Council over €143.5 million and funds the Basic Income for the Arts scheme in full.",
+  "site": "https://www.gov.ie/en/department-of-culture-communications-and-sport/",
+  "city": "Dublin",
+  "country": "Ireland",
+  "address": "Leeson Lane, Dublin, D02 R5Y3",
+  "status": "done",
+  "sources": [
+   "https://www.gov.ie/en/department-of-culture-communications-and-sport/",
+   "https://www.gov.ie/en/department-of-culture-communications-and-sport/press-releases/ministers-odonovan-and-mcconalogue-announce-details-of-budget-2027-for-the-department-of-culture-communications-and-sport/",
+   "https://en.wikipedia.org/wiki/Department_of_Culture,_Communications_and_Sport"
+  ],
+  "batch": "fp37"
+ },
  "deroytestamentary": {
   "name": "DeRoy Testamentary Foundation",
   "kind": "found",
@@ -6275,6 +7086,22 @@
    "https://jwa.org/people/deroy-helen"
   ],
   "batch": "fp10"
+ },
+ "desjardins": {
+  "name": "Desjardins Group",
+  "short": "Desjardins",
+  "kind": "corp",
+  "what": "A Canadian financial services cooperative and the largest federation of credit unions in North America, founded on 6 December 1900 in Lévis, Quebec, by Alphonse Desjardins.",
+  "money": "Its cooperative banking business: surplus earnings of C$3,811 million in 2025, on assets of C$510.2 billion.",
+  "site": "https://www.desjardins.com",
+  "city": "Lévis",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://www.desjardins.com/ca/about-us/investor-relations/desjardins-group-annual-report/financial-highlights/index.jsp",
+   "https://en.wikipedia.org/wiki/Desjardins_Group"
+  ],
+  "batch": "fp39"
  },
  "destandaard": {
   "name": "De Standaard",
@@ -6292,6 +7119,24 @@
    "https://www.muhka.be/en/your-support-is-crucial/partners-of-m-hka/"
   ],
   "batch": "fp31"
+ },
+ "detobelskefamiliefond": {
+  "name": "Det Obelske Familiefond",
+  "short": "Obel Family Foundation",
+  "kind": "found",
+  "what": "A Danish family foundation set up in 1956 by Asta Obel of the Aalborg tobacco firm C.W. Obel; a descendant of hers chairs its board.",
+  "money": "Investments and property, held through C.W. Obel Holding and C.W. Obel Ejendomme, the other two units of the Obel group.",
+  "arts": "It gives DKK 135 million to 150 million a year to charity across contemporary art and classical music, social work and North Jutland.",
+  "site": "https://obel.com",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "address": "Vestergade 2c, 3. sal, 1456 København K",
+  "status": "done",
+  "sources": [
+   "https://obel.com/vores-historie/",
+   "https://obel.com/om-os/"
+  ],
+  "batch": "fp37"
  },
  "deutschebrsephotography": {
   "name": "Deutsche Börse Photography Foundation gGmbH",
@@ -6592,6 +7437,23 @@
   ],
   "batch": "fp4"
  },
+ "drac": {
+  "name": "Direction régionale des affaires culturelles d'Occitanie",
+  "short": "DRAC Occitanie",
+  "kind": "gov",
+  "what": "The French Ministry of Culture's regional office for Occitanie, a state service with its seat at the Hôtel de Grave in Montpellier and a second site in Toulouse.",
+  "money": "The French state budget, through the Ministry of Culture.",
+  "site": "https://www.culture.gouv.fr/regions/drac-occitanie",
+  "city": "Montpellier",
+  "country": "France",
+  "address": "Hôtel de Grave, 5 rue Salle-l'Évêque, 34000 Montpellier",
+  "status": "done",
+  "sources": [
+   "https://www.culture.gouv.fr/regions/drac-occitanie",
+   "https://fr.wikipedia.org/wiki/Direction_r%C3%A9gionale_des_affaires_culturelles"
+  ],
+  "batch": "fp37"
+ },
  "dracgrandest": {
   "name": "Direction régionale des affaires culturelles Grand Est",
   "short": "DRAC Grand Est",
@@ -6655,6 +7517,19 @@
    "https://fr.wikipedia.org/wiki/Direction_r%C3%A9gionale_des_Affaires_culturelles"
   ],
   "batch": "fp31"
+ },
+ "drarthurmsackler": {
+  "name": "Arthur M. Sackler",
+  "kind": "person",
+  "what": "American psychiatrist, medical advertising executive and art collector (1913 to 1987), one of the three Sackler brothers; he died before Purdue began selling OxyContin.",
+  "money": "Medical advertising through the McAdams agency, bought in 1947, and the Medical Tribune, which he started in 1960; his estate was estimated at $140 million.",
+  "arts": "He paid for galleries at the Metropolitan Museum of Art, including the wing that houses the Temple of Dendur; the Met removed the Sackler name in December 2021.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Arthur_M._Sackler"
+  ],
+  "batch": "fp39"
  },
  "dreweattsauctioneers": {
   "name": "Dreweatts 1759 Limited",
@@ -6950,6 +7825,41 @@
   ],
   "batch": "fp12"
  },
+ "eea": {
+  "name": "EEA and Norway Grants",
+  "kind": "gov",
+  "what": "The grants through which Iceland, Liechtenstein and Norway fund projects in 15 EU states to reduce social and economic disparities, managed by the Financial Mechanism Office in Brussels.",
+  "money": "Contributions from Iceland, Liechtenstein and Norway: €3.268 billion for 2021 to 2028, €1.805 billion EEA Grants and €1.463 billion Norway Grants.",
+  "site": "https://eeagrants.org",
+  "city": "Brussels",
+  "country": "Belgium",
+  "address": "EFTA House, Avenue des Arts 19H, 1000 Brussels",
+  "status": "done",
+  "sources": [
+   "https://eeagrants.org/en/fmo/about-us",
+   "https://eeagrants.org/en/fmo/contact-us",
+   "https://en.wikipedia.org/wiki/EEA_and_Norway_Grants"
+  ],
+  "batch": "fp37"
+ },
+ "eflstichting": {
+  "name": "Van Eesteren-Fluck & Van Lohuizen Stichting",
+  "short": "EFL Stichting",
+  "kind": "found",
+  "what": "A Dutch foundation set up in 1975 that manages the estate and archives of the urbanist Cornelis van Eesteren and the planner Theodoor van Lohuizen.",
+  "money": "Returns on the assets it invests as a Dutch charitable wealth fund (ANBI).",
+  "arts": "In 2024 it committed EUR 252,026 in grants and project contributions for urban design, planning and landscape architecture.",
+  "site": "https://efl-stichting.nl",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://efl-stichting.nl/en/over-efl-stichting/",
+   "https://efl-stichting.nl/en/anbi/",
+   "https://efl-stichting.nl/en/contact/"
+  ],
+  "batch": "fp39"
+ },
  "egdholding": {
   "name": "EGD Holding AS",
   "short": "EGD",
@@ -7037,6 +7947,25 @@
    "https://en.wikipedia.org/wiki/Walter_A._Haas"
   ],
   "batch": "fp24"
+ },
+ "elja": {
+  "name": "Stichting ELJA Foundation",
+  "short": "ELJA Foundation",
+  "kind": "found",
+  "what": "A Dutch philanthropic fund set up on 27 October 2021 by Els Blokker-Verwer in Laren, which runs music, dance and visual art programmes for children and young people.",
+  "money": "Gifts from its founder, whose late husband Jaap Blokker was general director of the Blokker Holding retail chains from 1976 to 2010.",
+  "site": "https://eljafoundation.nl",
+  "city": "Laren",
+  "country": "Netherlands",
+  "address": "Torenlaan 5, 1251 HE Laren",
+  "status": "done",
+  "sources": [
+   "https://eljafoundation.nl/anbi/",
+   "https://eljafoundation.nl/over-ons/",
+   "https://www.eljafoundation.nl/",
+   "https://en.wikipedia.org/wiki/Jaap_Blokker"
+  ],
+  "batch": "fp39"
  },
  "embru": {
   "name": "Embru-Werke AG",
@@ -7138,6 +8067,22 @@
   ],
   "batch": "fp11"
  },
+ "eni": {
+  "name": "Eni S.p.A.",
+  "short": "Eni",
+  "kind": "corp",
+  "what": "An Italian energy company founded by the state in 1953 and headquartered in Rome; the government holds 33.084 percent through the economy ministry and Cassa Depositi e Prestiti.",
+  "money": "Oil and gas production and sales of petroleum products and natural gas; revenue was €82.20 billion in 2025.",
+  "site": "https://www.eni.com",
+  "city": "Rome",
+  "country": "Italy",
+  "address": "Palazzo ENI, EUR, Rome",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Eni"
+  ],
+  "batch": "fp37"
+ },
  "eon": {
   "name": "E.ON Stiftung gGmbH",
   "short": "E.ON Foundation",
@@ -7225,6 +8170,39 @@
    "https://en.wikipedia.org/wiki/Empresas_P%C3%BAblicas_de_Medell%C3%ADn"
   ],
   "batch": "fp25"
+ },
+ "equinor": {
+  "name": "Equinor ASA",
+  "short": "Equinor",
+  "kind": "corp",
+  "what": "A Norwegian energy company founded by the state in 1972 as Statoil, renamed Equinor in 2018 and headquartered in Stavanger; the Norwegian state owns 67 percent.",
+  "money": "Oil and gas production in 36 countries, with renewable energy; revenue was US$102.5 billion in 2024.",
+  "site": "https://www.equinor.com",
+  "city": "Stavanger",
+  "country": "Norway",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Equinor"
+  ],
+  "batch": "fp37"
+ },
+ "ernstghner": {
+  "name": "Ernst Göhner Stiftung",
+  "short": "Ernst Göhner Foundation",
+  "kind": "found",
+  "what": "A Swiss foundation in Zug set up by the entrepreneur Ernst Göhner (1900 to 1971), with business, charitable and family-foundation purposes.",
+  "money": "Returns on its assets, invested mainly in companies and real estate through Seewarte Holding AG and EGS Beteiligungen AG.",
+  "arts": "It funds professional culture of every discipline across Switzerland, with project and infrastructure grants and a focus on young talent.",
+  "site": "https://www.ernst-goehner-stiftung.ch",
+  "city": "Zug",
+  "country": "Switzerland",
+  "address": "Artherstrasse 19, 6300 Zug",
+  "status": "done",
+  "sources": [
+   "https://www.ernst-goehner-stiftung.ch/stiftung/ernst-goehner-stiftung",
+   "https://www.ernst-goehner-stiftung.ch/"
+  ],
+  "batch": "fp37"
  },
  "ernstvonsiemenskunststiftung": {
   "name": "Ernst von Siemens Kunststiftung",
@@ -7740,6 +8718,25 @@
   ],
   "batch": "fp11"
  },
+ "federalofficeofculture|Switzerland": {
+  "name": "Bundesamt für Kultur",
+  "short": "Federal Office of Culture (BAK)",
+  "kind": "gov",
+  "what": "The Swiss federal office for culture policy, cultural funding and heritage, part of the Federal Department of Home Affairs in Bern, led by Carine Bachmann since 2022.",
+  "money": "The Swiss federal budget, through the Federal Department of Home Affairs.",
+  "arts": "Its total budget was close to CHF 170 million in 2014.",
+  "site": "https://www.bak.admin.ch",
+  "city": "Bern",
+  "country": "Switzerland",
+  "address": "Monbijoustrasse 74, 3003 Bern",
+  "status": "done",
+  "sources": [
+   "https://www.bak.admin.ch/bak/de/home.html",
+   "https://en.wikipedia.org/wiki/Federal_Office_of_Culture",
+   "https://de.wikipedia.org/wiki/Bundesamt_f%C3%BCr_Kultur"
+  ],
+  "batch": "fp38"
+ },
  "fentonartstrust": {
   "name": "The Fenton Arts Trust",
   "kind": "found",
@@ -8025,6 +9022,23 @@
    "https://fokal.org/"
   ],
   "batch": "fp33"
+ },
+ "fondart": {
+  "name": "Fondo Nacional de Desarrollo Cultural y las Artes",
+  "short": "Fondart",
+  "kind": "gov",
+  "what": "A competitive public arts fund of the Chilean government, created in 1992 and administered by the Undersecretariat of Cultures and Arts.",
+  "money": "The Chilean state budget through the Ministry of Cultures, Arts and Heritage.",
+  "site": "https://www.fondosdecultura.cl",
+  "city": "Valparaíso",
+  "country": "Chile",
+  "address": "Plaza Sotomayor 233, Valparaíso",
+  "status": "done",
+  "sources": [
+   "https://www.fondosdecultura.cl/fondart/",
+   "https://es.wikipedia.org/wiki/Fondo_Nacional_de_Desarrollo_Cultural_y_las_Artes"
+  ],
+  "batch": "fp39"
  },
  "fondazionebancadelmontedilombardia": {
   "name": "Fondazione Monte di Lombardia",
@@ -8377,6 +9391,40 @@
    "https://en.wikipedia.org/wiki/Elisabeth_Murdoch_(businesswoman)"
   ],
   "batch": "fp22"
+ },
+ "freestateofbavaria|Germany": {
+  "name": "Freistaat Bayern",
+  "short": "Free State of Bavaria",
+  "kind": "gov",
+  "what": "The German federal state of Bavaria, governed by the Bavarian State Government under Minister-President Markus Söder from the State Chancellery in Munich.",
+  "money": "The Bavarian state budget.",
+  "site": "https://www.bayern.de",
+  "city": "Munich",
+  "country": "Germany",
+  "address": "Franz-Josef-Strauß-Ring 1, 80539 München",
+  "status": "done",
+  "sources": [
+   "https://www.bayern.de/impressum/",
+   "https://de.wikipedia.org/wiki/Bayerische_Staatsregierung"
+  ],
+  "batch": "fp37"
+ },
+ "freestateofsaxony|Germany": {
+  "name": "Freistaat Sachsen",
+  "short": "Free State of Saxony",
+  "kind": "gov",
+  "what": "The German state of Saxony, represented by the Saxon State Chancellery in Dresden under Minister-President Michael Kretschmer.",
+  "money": "The state budget of Saxony: a double budget of about 50 billion euros for 2025 and 2026.",
+  "site": "https://www.sachsen.de",
+  "city": "Dresden",
+  "country": "Germany",
+  "address": "Archivstraße 1, 01097 Dresden",
+  "status": "done",
+  "sources": [
+   "https://www.sachsen.de/impressum.html",
+   "https://www.l-iz.de/politik/sachsen/2025/06/beschlussfahiger-doppelhaushalt-2025-2026-selbst-ministerprasident-dankt-linken-grunen-627891"
+  ],
+  "batch": "fp39"
  },
  "frenchembassy|Paraguay": {
   "name": "Ambassade de France au Paraguay",
@@ -8923,6 +9971,22 @@
   ],
   "batch": "fp7"
  },
+ "fundaorobertomarinho": {
+  "name": "Fundação Roberto Marinho",
+  "short": "Roberto Marinho Foundation",
+  "kind": "found",
+  "what": "A private non-profit foundation for education and heritage, set up in November 1977 in Rio de Janeiro by the journalist Roberto Marinho.",
+  "money": "It belongs to Grupo Globo, the Brazilian media group.",
+  "site": "https://www.frm.org.br",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Fundação_Roberto_Marinho",
+   "https://acervo.museudoamanha.org.br/en/references/organizations/1254/fundacao-roberto-marinho-frm"
+  ],
+  "batch": "fp39"
+ },
  "fundos": {
   "name": "Fundación Obra Social de Castilla y León",
   "short": "FUNDOS",
@@ -8958,6 +10022,21 @@
    "https://en.wikipedia.org/wiki/Furla"
   ],
   "batch": "fp33"
+ },
+ "futurescreensni": {
+  "name": "Future Screens NI",
+  "kind": "gov",
+  "what": "A Northern Ireland creative industries research partnership set up in 2018, led by Ulster University with Queen's University Belfast, one of nine AHRC Creative Industries Clusters.",
+  "money": "A UK Research and Innovation grant through the AHRC; the Department for Communities and the Arts Council of Northern Ireland now support its network.",
+  "city": "Belfast",
+  "country": "United Kingdom",
+  "address": "Ormeau Baths, 18 Ormeau Avenue, Belfast BT2 8HS",
+  "status": "done",
+  "sources": [
+   "https://www.humanities.org.uk/infrastructures/4919",
+   "https://www.ukri.org/what-we-do/browse-our-areas-of-investment-and-support/creative-industries-clusters-programme/"
+  ],
+  "batch": "fp39"
  },
  "gador": {
   "name": "Gador S.A.",
@@ -9224,6 +10303,24 @@
   ],
   "batch": "fp15"
  },
+ "genesis": {
+  "name": "Genesis Foundation",
+  "kind": "found",
+  "what": "A UK charity registered on 5 January 2001 by its founder and chairman John Studzinski, an investment banker at PIMCO, which backs emerging artists in theatre and music.",
+  "arts": "During the pandemic it launched the £1 million Genesis Kickstart Fund, which paid for 95 projects with 1,000 freelance creative professionals from 2021 to March 2023.",
+  "site": "https://genesisfoundation.org.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "130 Wood Street, London EC2V 6DL",
+  "status": "done",
+  "sources": [
+   "https://genesisfoundation.org.uk/news/25-years-of-the-genesis-foundation/",
+   "https://genesisfoundation.org.uk/contact/",
+   "https://archive.genesisfoundation.org.uk/about/",
+   "https://en.wikipedia.org/wiki/John_J._Studzinski"
+  ],
+  "batch": "fp39"
+ },
  "genevahisheirs": {
   "name": "Fondation Simón I. Patiño",
   "short": "Patiño Foundation",
@@ -9278,6 +10375,25 @@
   "batch": "fp24",
   "renamed": "The atlas name points at West Publishing, while the museum sentence means Gerard Cafesjian himself, a former executive of the company."
  },
+ "gerdahenkel": {
+  "name": "Gerda Henkel Stiftung",
+  "short": "Gerda Henkel Foundation",
+  "kind": "found",
+  "what": "A private foundation in Düsseldorf set up in June 1976 by Lisa Maskell in memory of her mother Gerda Henkel; it funds historical humanities research and heritage work.",
+  "money": "An endowment set up by Lisa Maskell, granddaughter of Fritz Henkel, who founded the Henkel company in 1876.",
+  "arts": "In its autumn 2026 round it awarded €10.9 million to 115 research projects.",
+  "site": "https://www.gerda-henkel-stiftung.de",
+  "city": "Düsseldorf",
+  "country": "Germany",
+  "address": "Malkastenstraße 15, 40211 Düsseldorf",
+  "status": "done",
+  "sources": [
+   "https://www.gerda-henkel-stiftung.de/impressum",
+   "https://de.wikipedia.org/wiki/Gerda_Henkel_Stiftung",
+   "https://www.gerda-henkel-stiftung.de/en/foundation"
+  ],
+  "batch": "fp38"
+ },
  "germanfederalforeignoffice|Germany": {
   "name": "Auswärtiges Amt",
   "short": "German Federal Foreign Office",
@@ -9311,6 +10427,22 @@
    "https://www.auswaertiges-amt.de/en/about-us/contact"
   ],
   "batch": "fp7"
+ },
+ "germanfederalgovernment|Germany": {
+  "name": "Bundesregierung",
+  "short": "Federal Government of Germany",
+  "kind": "gov",
+  "what": "The federal executive of Germany, made up of the Federal Chancellor and the federal ministers under the Basic Law, with its seat in Berlin.",
+  "money": "The German federal budget.",
+  "site": "https://www.bundesregierung.de",
+  "city": "Berlin",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Federal_Government_of_Germany",
+   "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)"
+  ],
+  "batch": "fp38"
  },
  "germanykfw": {
   "name": "KfW",
@@ -9627,6 +10759,38 @@
   ],
   "batch": "fp36"
  },
+ "governmentofindia|India": {
+  "name": "Government of India",
+  "kind": "gov",
+  "what": "The Union government of India, in its present form since the Constitution took effect on 26 January 1950, seated in New Delhi and led by Prime Minister Narendra Modi.",
+  "money": "The Union budget of India: total expenditure is estimated at Rs 50,65,345 crore for 2025-26.",
+  "site": "https://www.india.gov.in",
+  "city": "New Delhi",
+  "country": "India",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_India",
+   "https://prsindia.org/budgets/parliament/union-budget-2025-26-analysis"
+  ],
+  "batch": "fp39"
+ },
+ "governmentofitalianrepublic|Bosnia and Herzegovina": {
+  "name": "Governo della Repubblica Italiana",
+  "short": "Government of Italy",
+  "kind": "gov",
+  "what": "The national government of Italy, made up of the prime minister, Giorgia Meloni since October 2022, and the ministers, seated in Palazzo Chigi, Rome.",
+  "money": "The Italian state budget.",
+  "site": "https://www.governo.it",
+  "city": "Rome",
+  "country": "Italy",
+  "address": "Palazzo Chigi, Roma",
+  "status": "done",
+  "sources": [
+   "https://www.governo.it/it/il-governo",
+   "https://en.wikipedia.org/wiki/Government_of_Italy"
+  ],
+  "batch": "fp37"
+ },
  "governmentofkerala|India": {
   "name": "Government of Kerala",
   "kind": "gov",
@@ -9643,6 +10807,39 @@
    "https://www.onmanorama.com/news/kerala/2025/12/12/cm-pinarayi-vijayan-inaugurates-sixth-edition-kochi-muziris-biennale.html"
   ],
   "batch": "fp36"
+ },
+ "governmentofnorthkorea|North Korea": {
+  "name": "Government of the Democratic People's Republic of Korea",
+  "short": "North Korean government",
+  "kind": "gov",
+  "what": "The state government of North Korea, whose Cabinet was formed in 1948 in Pyongyang and which the Workers' Party of Korea rules.",
+  "money": "The North Korean state budget, which the Supreme People's Assembly sets; the Cabinet prepares it.",
+  "arts": "The state Mansudae Art Studio, founded in 1959, is the only body sanctioned to portray the Kim family; its Overseas Project Group has built monuments in Africa and Asia.",
+  "city": "Pyongyang",
+  "country": "North Korea",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cabinet_of_North_Korea",
+   "https://en.wikipedia.org/wiki/Supreme_People%27s_Assembly",
+   "https://en.wikipedia.org/wiki/Mansudae_Art_Studio",
+   "https://en.wikipedia.org/wiki/Workers%27_Party_of_Korea"
+  ],
+  "batch": "fp37"
+ },
+ "governmentofontario|Canada": {
+  "name": "Government of Ontario",
+  "kind": "gov",
+  "what": "The provincial government of Ontario, Canada, led by Premier Doug Ford since June 2018, with its legislature at Queen's Park in Toronto.",
+  "money": "The Ontario provincial budget: total expense is projected at C$232.5 billion for 2025-26.",
+  "site": "https://www.ontario.ca",
+  "city": "Toronto",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Ontario",
+   "https://budget.ontario.ca/2025/chapter-3.html"
+  ],
+  "batch": "fp39"
  },
  "governmentofsindhownspalace|Pakistan": {
   "name": "Government of Sindh",
@@ -9964,6 +11161,23 @@
    "https://habasit.com/en/About-us/Our-Locations/Global-Locations-List/Europe/Habasit-Head-Office-in-Switzerland"
   ],
   "batch": "fp13"
+ },
+ "habibbank": {
+  "name": "Habib Bank Limited",
+  "short": "HBL",
+  "kind": "corp",
+  "what": "A Pakistani commercial bank founded in 1941 in Bombay by the Habib family, headquartered at Habib Bank Plaza in Karachi and controlled by the Aga Khan Fund for Economic Development.",
+  "money": "Consumer, business and Islamic banking: revenue of Rs. 361.10 billion and net income of Rs. 66.76 billion in 2025.",
+  "site": "https://www.hbl.com",
+  "city": "Karachi",
+  "country": "Pakistan",
+  "address": "Habib Bank Plaza, I.I. Chundrigar Road, Karachi",
+  "status": "done",
+  "sources": [
+   "https://www.hbl.com/about-us",
+   "https://en.wikipedia.org/wiki/Habib_Bank_Limited"
+  ],
+  "batch": "fp39"
  },
  "haim": {
   "name": "Haim Saban",
@@ -10512,6 +11726,21 @@
   ],
   "batch": "fp30"
  },
+ "heroenterprisechairsunilkantmunjal": {
+  "name": "Sunil Kant Munjal",
+  "short": "Sunil Munjal",
+  "kind": "person",
+  "what": "Indian businessman, born in 1957, youngest son of Brijmohan Lall Munjal; he founded BML Munjal University in 2014 and chairs the Doon School's board of governors.",
+  "money": "Hero Enterprise, the business group he chairs.",
+  "city": "New Delhi",
+  "country": "India",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sunil_Kant_Munjal",
+   "https://www.herocorp.com/our-management/board-of-directors/"
+  ],
+  "batch": "fp39"
+ },
  "hessianministryforscience|Germany": {
   "name": "Hessisches Ministerium für Wissenschaft und Forschung, Kunst und Kultur",
   "short": "Hessian Ministry of Science and Research, Arts and Culture",
@@ -10597,6 +11826,22 @@
    "https://en.wikipedia.org/wiki/Hikma_Pharmaceuticals"
   ],
   "batch": "fp14"
+ },
+ "hillmanfamily": {
+  "name": "The Hillman Family Foundations",
+  "short": "Hillman Family Foundations",
+  "kind": "found",
+  "what": "A Pittsburgh grantmaking body that manages 18 named foundations of the Hillman family; the investor Henry L. Hillman (1918 to 2017) chaired its board of trustees.",
+  "money": "The Hillman fortune from J. Hartwell Hillman Jr.'s coal, coke, steel, utilities and banking holdings, invested by his son Henry; assets $1.90 billion in 2024.",
+  "site": "https://www.hillmanfo.com",
+  "city": "Pittsburgh",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/256065959",
+   "https://en.wikipedia.org/wiki/Henry_Hillman"
+  ],
+  "batch": "fp39"
  },
  "himalayanbank": {
   "name": "Himalayan Bank Limited",
@@ -10771,6 +12016,21 @@
   ],
   "batch": "fp31"
  },
+ "hongkongjockeyclubcharitiestrust": {
+  "name": "The Hong Kong Jockey Club Charities Trust",
+  "kind": "found",
+  "what": "The charitable arm of The Hong Kong Jockey Club, set up as a separate entity in 1993, which works with the Hong Kong government and NGOs.",
+  "money": "About 90 percent of the Jockey Club's annual operating surplus after tax, earned from horse racing, sports wagering, lottery and membership.",
+  "site": "https://charities.hkjc.com",
+  "city": "Hong Kong",
+  "country": "China",
+  "status": "done",
+  "sources": [
+   "https://charities.hkjc.com/charities/english/charities-trust/index.aspx",
+   "https://en.wikipedia.org/wiki/Hong_Kong_Jockey_Club"
+  ],
+  "batch": "fp39"
+ },
  "honolulubeerworks": {
   "name": "Honolulu Beerworks",
   "kind": "corp",
@@ -10933,6 +12193,22 @@
   ],
   "batch": "fp13"
  },
+ "hungarianstate|Hungary": {
+  "name": "Magyarország Kormánya",
+  "short": "Government of Hungary",
+  "kind": "gov",
+  "what": "The national government of Hungary, which holds executive power, led by Prime Minister Péter Magyar, sworn in on 9 May 2026.",
+  "money": "The state budget of Hungary.",
+  "site": "https://kormany.hu",
+  "city": "Budapest",
+  "country": "Hungary",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Hungary",
+   "https://en.wikipedia.org/wiki/Magyar_government"
+  ],
+  "batch": "fp39"
+ },
  "huntingtonbank": {
   "name": "Huntington Bancshares Incorporated",
   "short": "Huntington Bank",
@@ -11064,6 +12340,21 @@
   ],
   "batch": "fp34"
  },
+ "icelandicstate|Iceland": {
+  "name": "Ríkisstjórn Íslands",
+  "short": "Government of Iceland",
+  "kind": "gov",
+  "what": "The national government of Iceland, a parliamentary republic, seated in Reykjavík and led by Prime Minister Kristrún Frostadóttir since 21 December 2024.",
+  "money": "The state budget of Iceland.",
+  "site": "https://www.stjornarradid.is",
+  "city": "Reykjavík",
+  "country": "Iceland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Iceland"
+  ],
+  "batch": "fp39"
+ },
  "idahocommissiononarts|USA": {
   "name": "Idaho Commission on the Arts",
   "short": "Arts Idaho",
@@ -11080,6 +12371,19 @@
    "https://arts.idaho.gov/contact/"
   ],
   "batch": "fp14"
+ },
+ "idanofer": {
+  "name": "Idan Ofer",
+  "kind": "person",
+  "what": "Israeli businessman, born in Haifa in 1955, son of the shipping magnate Sammy Ofer; he founded Quantum Pacific Group and is majority shareholder of Israel Corporation.",
+  "money": "Shipping, energy and mining holdings and half of Sammy Ofer's fortune, inherited in 2011; Bloomberg put his net worth at US$31.1 billion.",
+  "arts": "In 2023 he and his wife Batia launched the Royal Academy of Arts' '25 & Under' half-price tickets, and they funded an Art Wing at the Bezalel Academy in Jerusalem.",
+  "country": "Guernsey",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Idan_Ofer"
+  ],
+  "batch": "fp39"
  },
  "igordergunov": {
   "name": "Igor Dergunov",
@@ -11110,6 +12414,42 @@
    "https://www.ikahocc.co.jp/"
   ],
   "batch": "fp14"
+ },
+ "ikea": {
+  "name": "IKEA Stiftung",
+  "kind": "found",
+  "what": "A German charitable foundation set up in 1981 by IKEA founder Ingvar Kamprad with the German IKEA companies, seated in Munich with its office in Hofheim-Wallau.",
+  "money": "Income on a EUR 20 million endowment plus earmarked gifts, about EUR 1.6 million a year; IKEA Deutschland pays its running costs.",
+  "arts": "Housing, architecture and design is one of its funding areas; it has funded over 1,000 charitable projects in the past ten years.",
+  "site": "https://ikeastiftung.de",
+  "city": "Munich",
+  "country": "Germany",
+  "address": "Wittelsbacherplatz 1, 80333 München",
+  "status": "done",
+  "sources": [
+   "https://ikeastiftung.de/die-ikea-stiftung",
+   "https://ikeastiftung.de/die-ikea-stiftung/unsere-geschichte",
+   "https://ikeastiftung.de/impressum/",
+   "https://ikeastiftung.de/"
+  ],
+  "batch": "fp39"
+ },
+ "illinoisartscouncil|USA": {
+  "name": "Illinois Arts Council",
+  "kind": "gov",
+  "what": "A state agency of Illinois, founded by the General Assembly in 1965, that gives grants and technical help to artists and arts organisations, with its office in Chicago.",
+  "money": "The State of Illinois budget, which set its fiscal 2025 funding at US$25.58 million, up from US$15.5 million.",
+  "arts": "It funded 50 local arts councils through its Local Arts Network in fiscal 2025.",
+  "site": "https://arts.illinois.gov",
+  "city": "Chicago",
+  "country": "United States",
+  "address": "115 S. LaSalle St., Suite 2202, Chicago, IL 60603",
+  "status": "done",
+  "sources": [
+   "https://arts.illinois.gov/",
+   "https://en.wikipedia.org/wiki/Illinois_Arts_Council"
+  ],
+  "batch": "fp38"
  },
  "ilmincultural": {
   "name": "Ilmin Cultural Foundation",
@@ -11429,6 +12769,21 @@
   ],
   "batch": "fp31"
  },
+ "iren": {
+  "name": "Iren S.p.A.",
+  "short": "Iren",
+  "kind": "corp",
+  "what": "An Italian multi-utility formed on 1 July 2010 by merging Enìa and Iride, headquartered in Reggio Emilia; the cities of Genoa, Turin, Reggio Emilia and Parma are major shareholders.",
+  "money": "Electricity, gas, water, district heating and waste services in northern Italy: revenue of €5,942 million and net income of €268 million in 2024.",
+  "site": "https://www.gruppoiren.it",
+  "city": "Reggio Emilia",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Iren_(company)"
+  ],
+  "batch": "fp39"
+ },
  "ireneludwig": {
   "name": "Peter und Irene Ludwig Stiftung",
   "short": "Ludwig Foundation",
@@ -11448,6 +12803,23 @@
   ],
   "batch": "fp3",
   "renamed": "The Cologne, Beijing and Havana sentences describe gifts by Peter and Irene Ludwig themselves; the 1976 Museum Ludwig gift came before the foundation existed."
+ },
+ "iris": {
+  "name": "IRIS Foundation",
+  "kind": "found",
+  "what": "A nonprofit foundation for contemporary culture set up by Dasha Zhukova in 2008; the Garage Museum in Moscow is its project and IRIS New Holland its arm since 2011.",
+  "money": "Dasha Zhukova and Roman Abramovich, who would keep paying about two-thirds of Garage's US$13 million to 15 million yearly budget, its director said in 2018.",
+  "city": "Moscow",
+  "country": "Russia",
+  "address": "Krymsky Val 9, building 32, Moscow",
+  "status": "done",
+  "sources": [
+   "https://www.newhollandsp.ru/en/information/about-the-project/iris-foundation/",
+   "https://garagemca.org/en/about",
+   "https://www.theartnewspaper.com/2018/07/11/moscows-garage-museum-still-going-strong-at-ten-despite-co-founders-split",
+   "https://tapki.com/company/535174431"
+  ],
+  "batch": "fp38"
  },
  "italianministryofculture|Italy": {
   "name": "Ministero della Cultura",
@@ -11731,6 +13103,42 @@
   ],
   "batch": "fp33"
  },
+ "jerwood": {
+  "name": "Jerwood Foundation",
+  "short": "Jerwood",
+  "kind": "found",
+  "what": "A UK foundation set up in 1977 by Alan Grieve for the businessman John Jerwood; registered as a charity in 2022, it merged with Jerwood Arts in 2024.",
+  "money": "The fortune John Jerwood (1918 to 1991) made dealing in cultured pearls in Japan.",
+  "arts": "Since 1991 Jerwood has given over £113.5 million to the arts and education in the UK; it owns the Jerwood Collection of modern and contemporary British art.",
+  "site": "https://jerwood.org",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://jerwood.org/jerwood-foundation/",
+   "https://jerwood.org/",
+   "https://en.wikipedia.org/wiki/John_Jerwood",
+   "https://en.wikipedia.org/wiki/Jerwood_Foundation"
+  ],
+  "batch": "fp37"
+ },
+ "jiangsuprovincialgovernment|China": {
+  "name": "江苏省人民政府",
+  "short": "Jiangsu Provincial People's Government",
+  "kind": "gov",
+  "what": "The provincial government of Jiangsu, a coastal province in East China with 84.75 million people, which reports each year to the provincial People's Congress in Nanjing.",
+  "money": "The provincial budget of Jiangsu.",
+  "site": "https://www.jiangsu.gov.cn",
+  "city": "Nanjing",
+  "country": "China",
+  "wrong_match": "The lines say the province supervises the museum and added a research institute; neither shows it paying.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jiangsu",
+   "https://www.chinadaily.com.cn/a/202501/20/WS678da69da310a2ab06ea7f63.html"
+  ],
+  "batch": "fp39"
+ },
  "johnellerman": {
   "name": "John Ellerman Foundation",
   "kind": "found",
@@ -11985,6 +13393,21 @@
   ],
   "batch": "fp15"
  },
+ "kanderses": {
+  "name": "Warren Kanders",
+  "kind": "person",
+  "what": "American businessman, chairman and CEO of Cadre Holdings since 2012, who resigned as vice chair of the Whitney Museum board on 25 July 2019 after protests.",
+  "money": "Armor Holdings, which he chaired until BAE Systems bought it in 2007, and Cadre Holdings, whose subsidiary Safariland sells law enforcement equipment including tear gas.",
+  "arts": "In 2016 he and his wife Allison endowed $2.5 million to the Aspen Music Festival and School.",
+  "city": "Jacksonville",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Warren_Kanders",
+   "https://www.sec.gov/Archives/edgar/data/1860543/000110465924054037/tm242836-1_def14a.htm"
+  ],
+  "batch": "fp39"
+ },
  "kantensprung": {
   "name": "Kantensprung Stiftung",
   "kind": "found",
@@ -12066,6 +13489,23 @@
    "https://en.wikipedia.org/wiki/KBC_Bank"
   ],
   "batch": "fp15"
+ },
+ "keithharing": {
+  "name": "The Keith Haring Foundation",
+  "short": "Keith Haring Foundation",
+  "kind": "found",
+  "what": "A New York foundation set up by Keith Haring in 1989 that funds nonprofits serving underprivileged children and AIDS and HIV education, prevention and care.",
+  "money": "Revenue of $16.4 million in the year to September 2025, from asset sales (38 percent), dividends (14 percent) and other income (48 percent).",
+  "arts": "It funds exhibitions, programmes and publications about Haring's work at arts and educational institutions.",
+  "site": "https://www.haring.com",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://haring.com/kh_foundation",
+   "https://projects.propublica.org/nonprofits/organizations/110249024"
+  ],
+  "batch": "fp39"
  },
  "kentcountycouncil|UK": {
   "name": "Kent County Council",
@@ -12268,6 +13708,23 @@
    "https://www.jkb.com/en/affiliates-partners"
   ],
   "batch": "fp15"
+ },
+ "kkr": {
+  "name": "Kravis family",
+  "short": "Henry and Marie-Josée Kravis",
+  "kind": "person",
+  "what": "Henry Kravis, who co-founded the investment firm KKR in 1976, and his wife Marie-Josée Kravis, a Canadian businesswoman elected chair of the MoMA board in July 2021.",
+  "money": "Henry Kravis's stake in KKR, from which most of his US$12.5 billion net worth derives, according to the Bloomberg Billionaires Index in 2026.",
+  "arts": "Marie-Josée Kravis was president of the MoMA board from 2005 to 2018; Henry Kravis sits on the board of the Metropolitan Museum of Art.",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Henry_Kravis",
+   "https://en.wikipedia.org/wiki/Marie-Jos%C3%A9e_Kravis",
+   "https://en.wikipedia.org/wiki/KKR_%26_Co."
+  ],
+  "batch": "fp38"
  },
  "klara": {
   "name": "Klara",
@@ -12711,6 +14168,21 @@
   ],
   "batch": "fp4"
  },
+ "lanacin": {
+  "name": "Gobierno de Colombia",
+  "short": "Colombian national government",
+  "kind": "gov",
+  "what": "The national government of Colombia, a unitary presidential republic with its capital in Bogotá.",
+  "money": "The national budget of Colombia.",
+  "site": "https://www.gov.co",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Colombia"
+  ],
+  "batch": "fp39"
+ },
  "landberlin|Germany": {
   "name": "Land Berlin",
   "short": "State of Berlin",
@@ -12977,6 +14449,18 @@
   ],
   "batch": "fp34"
  },
+ "leonblack": {
+  "name": "Leon Black",
+  "kind": "person",
+  "what": "An American private equity investor who co-founded Apollo Global Management in 1990 and was its CEO; he chaired the Museum of Modern Art from 2018 to 2021.",
+  "money": "His retained stake in Apollo Global Management; Bloomberg put his net worth at about US$13.8 billion in 2026.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Leon_Black"
+  ],
+  "batch": "fp37"
+ },
  "lesamisdesmusesdartetdhistoireluxembourg": {
   "name": "Les Amis des Musées d'art et d'histoire du Luxembourg a.s.b.l.",
   "short": "Amis des Musées",
@@ -13168,6 +14652,23 @@
    "https://en.wikipedia.org/wiki/Linda_Pace"
   ],
   "batch": "fp26"
+ },
+ "linklaters": {
+  "name": "Fondation d'entreprise Linklaters",
+  "short": "Linklaters Foundation",
+  "kind": "found",
+  "what": "The corporate foundation of the Paris office of the law firm Linklaters, created in 2015 and chaired by the competition partner Anne Wachsmann-Guigon.",
+  "money": "The law firm Linklaters LLP, headquartered in London, which reported revenues of £2.32 billion in the 2024-25 financial year.",
+  "arts": "It funds image-education programmes for young people at LE BAL in Paris; the Paris office has collected photography since 2010, beginning with Raymond Depardon.",
+  "site": "https://www.linklaters.com",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.artnewspaper.fr/2023/05/23/anne-wachsmann-guigon-cela-a-vraiment-du-sens-de-collectionner-des-artistes-francais-",
+   "https://en.wikipedia.org/wiki/Linklaters"
+  ],
+  "batch": "fp39"
  },
  "linzagascorepartners": {
   "name": "LINZ AG für Energie, Telekommunikation, Verkehr und Kommunale Dienste",
@@ -13417,6 +14918,23 @@
    "https://www.lotterywest.wa.gov.au/about-lotterywest"
   ],
   "batch": "fp16"
+ },
+ "lottothringen|Germany": {
+  "name": "Thüringer Staatslotterie AöR",
+  "short": "LOTTO Thüringen",
+  "kind": "gov",
+  "what": "The state lottery of Thuringia, a public-law institution (Anstalt des öffentlichen Rechts) of the Free State of Thuringia, seated in Suhl.",
+  "money": "Players' stakes in the lotteries it runs in Thuringia under the 2021 State Treaty on Gambling.",
+  "site": "https://www.lotto-thueringen.de",
+  "city": "Suhl",
+  "country": "Germany",
+  "address": "Fröhliche-Mann-Straße 3b, 98528 Suhl",
+  "status": "done",
+  "sources": [
+   "https://www.lobbyregister.bundestag.de/suche/R007675",
+   "https://www.lotto-thueringen.de/"
+  ],
+  "batch": "fp39"
  },
  "louisartmuseum": {
   "name": "St. Louis Art Museum Foundation",
@@ -13823,6 +15341,21 @@
   ],
   "batch": "fp19"
  },
+ "marinabaysands": {
+  "name": "Marina Bay Sands",
+  "kind": "corp",
+  "what": "A casino resort on Marina Bay in Singapore, owned by Las Vegas Sands and opened in 2010, with a casino, a 1,850-room hotel and a convention centre.",
+  "money": "Its casino, hotel, convention and retail business.",
+  "site": "https://www.marinabaysands.com",
+  "city": "Singapore",
+  "country": "Singapore",
+  "address": "10 Bayfront Avenue, Singapore 018956",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Marina_Bay_Sands"
+  ],
+  "batch": "fp39"
+ },
  "maritimeelectric": {
   "name": "Maritime Electric",
   "kind": "corp",
@@ -13932,6 +15465,40 @@
    "https://www.mcommemutuelle.com/"
   ],
   "batch": "fp16"
+ },
+ "meadows": {
+  "name": "The Meadows Foundation",
+  "short": "Meadows Foundation",
+  "kind": "found",
+  "what": "A Dallas foundation set up in 1948 by the oilman Algur H. Meadows and his wife Virginia to benefit the people of Texas.",
+  "money": "An endowment from Algur Meadows's fortune in General American Oil Company of Texas, sold to Phillips Petroleum in 1983; assets $694 million in 2023.",
+  "site": "https://www.mfi.org",
+  "city": "Dallas",
+  "country": "United States",
+  "address": "3003 Swiss Avenue, Dallas, TX 75204",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/The_Meadows_Foundation_(Dallas)",
+   "https://projects.propublica.org/nonprofits/organizations/756015322"
+  ],
+  "batch": "fp39"
+ },
+ "memoriav": {
+  "name": "Memoriav, Verein zur Erhaltung des audiovisuellen Kulturgutes der Schweiz",
+  "short": "Memoriav",
+  "kind": "found",
+  "what": "A Swiss non-profit association for preserving audiovisual heritage, founded in Bern on 1 December 1995 by institutions including the National Library and the Federal Archives.",
+  "money": "Federal money from the Federal Office of Culture under four-year performance agreements, on the basis of the Kulturförderungsgesetz since 2012.",
+  "arts": "It runs preservation projects with Swiss memory institutions and makes their holdings searchable on its Memobase portal.",
+  "site": "https://memoriav.ch",
+  "city": "Bern",
+  "country": "Switzerland",
+  "address": "Sulgenrain 20, Bern",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Memoriav"
+  ],
+  "batch": "fp39"
  },
  "mendeswooddm": {
   "name": "Mendes Wood DM",
@@ -14068,6 +15635,21 @@
    "https://en.wikipedia.org/wiki/Metrobank_(Philippines)"
   ],
   "batch": "fp17"
+ },
+ "miamidadecounty|USA": {
+  "name": "Miami-Dade County",
+  "kind": "gov",
+  "what": "A county in southeast Florida with its seat in Miami, led by Mayor Daniella Levine Cava and a 13-member Board of County Commissioners.",
+  "money": "The county budget: the adopted budget for FY 2025-26 is $13.233 billion.",
+  "site": "https://www.miamidade.gov",
+  "city": "Miami",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Miami-Dade_County,_Florida",
+   "https://www.miamidade.gov/resources/budget/adopted/fy2025-26/executive-summary.pdf"
+  ],
+  "batch": "fp39"
  },
  "miamidesigndistrict": {
   "name": "Miami Design District Associates",
@@ -14236,6 +15818,22 @@
    "https://www.senat.fr/rap/l25-139-37/l25-139-37_mono.html"
   ],
   "batch": "fp3"
+ },
+ "ministryforcultureandheritage|Antarctica": {
+  "name": "Manatū Taonga Ministry for Culture and Heritage",
+  "short": "Ministry for Culture and Heritage",
+  "kind": "gov",
+  "what": "The New Zealand government department for arts, culture, built heritage, sport and broadcasting, formed on 1 September 1999 and based in Wellington.",
+  "money": "The New Zealand state budget, from which it funds 17 agencies, among them Creative New Zealand and Te Papa.",
+  "site": "https://www.mch.govt.nz",
+  "city": "Wellington",
+  "country": "New Zealand",
+  "address": "Public Trust Building, Wellington",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_for_Culture_and_Heritage"
+  ],
+  "batch": "fp39"
  },
  "ministryofcultureczechrepublic|Czech Republic": {
   "name": "Ministerstvo kultury České republiky",
@@ -14452,6 +16050,24 @@
   ],
   "batch": "fp34"
  },
+ "mitsui": {
+  "name": "Mitsui & Co., Ltd.",
+  "short": "Mitsui & Co.",
+  "kind": "corp",
+  "what": "A Japanese general trading company (sogo shosha) of the Mitsui Group, established in its present form in 1947 and headquartered in Ōtemachi, Tokyo.",
+  "money": "Trading and investment in energy, metals, mobility, chemicals and food: profit attributable to owners of 833.97 billion yen in the year to March 2026.",
+  "site": "https://www.mitsui.com",
+  "city": "Tokyo",
+  "country": "Japan",
+  "address": "2-1, Otemachi 1-chome, Chiyoda-ku, Tokyo 100-8631",
+  "status": "done",
+  "sources": [
+   "https://www.mitsui.com/jp/en/company/outline/profile/index.html",
+   "https://en.wikipedia.org/wiki/Mitsui_%26_Co.",
+   "https://www.rttnews.com/3646182/mitsui-co-fy26-results-down-lifts-dividend-sees-higher-earnings-in-fy27-stock-down.aspx"
+  ],
+  "batch": "fp39"
+ },
  "mitsuifudosan": {
   "name": "Mitsui Fudosan Co., Ltd.",
   "short": "Mitsui Fudosan",
@@ -14556,6 +16172,19 @@
   ],
   "batch": "fp1"
  },
+ "moriprovan": {
+  "name": "Mori Provan Foundation",
+  "kind": "found",
+  "what": "An Australian private giving fund run by a trustee in Victoria, registered as a charity and a deductible gift recipient from 26 June 2021.",
+  "city": "Melbourne",
+  "country": "Australia",
+  "address": "VIC 3065",
+  "status": "done",
+  "sources": [
+   "https://abr.business.gov.au/ABN/View?id=19198920224"
+  ],
+  "batch": "fp39"
+ },
  "morrison": {
   "name": "Allies and Morrison LLP",
   "short": "Allies and Morrison",
@@ -14607,6 +16236,43 @@
   ],
   "batch": "fp32"
  },
+ "motiva": {
+  "name": "Motiva Infraestrutura de Mobilidade S.A.",
+  "short": "Motiva",
+  "kind": "corp",
+  "what": "A Brazilian transport infrastructure company running road and rail concessions, which announced in March 2025 that it would change its name from CCR to Motiva.",
+  "money": "Its road, rail and airport concessions: adjusted net revenue of R$ 15.3 billion and net income of R$ 3.27 billion in 2025.",
+  "site": "https://www.motiva.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "address": "Av. Dra. Ruth Cardoso, 8.501, 5º andar, Pinheiros, São Paulo, SP, 05425-070",
+  "status": "done",
+  "sources": [
+   "https://agenciainfra.com/blog/motiva-lucra-r-327-bi-em-2025-alta-de-1626-e-investe-r-87-bi/",
+   "https://istoedinheiro.com.br/ccr-decide-mudar-de-marca-e-passara-a-se-chamar-motiva",
+   "https://ri.motiva.com.br/"
+  ],
+  "batch": "fp39"
+ },
+ "mott": {
+  "name": "Charles Stewart Mott Foundation",
+  "short": "Mott Foundation",
+  "kind": "found",
+  "what": "A private foundation set up in 1926 by Charles Stewart Mott, a Flint industrialist, with its headquarters in the Mott Foundation Building in Flint, Michigan.",
+  "money": "An endowment from Mott's fortune as a General Motors director for six decades and its largest individual shareholder; assets $3.71 billion in 2023.",
+  "site": "https://www.mott.org",
+  "city": "Flint",
+  "country": "United States",
+  "address": "503 S. Saginaw Street, Suite 1200, Flint, MI 48502",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Charles_Stewart_Mott_Foundation",
+   "https://en.wikipedia.org/wiki/Charles_Stewart_Mott",
+   "https://projects.propublica.org/nonprofits/organizations/381211227",
+   "https://www.mott.org/contact/"
+  ],
+  "batch": "fp39"
+ },
  "mountallisonuniversity": {
   "name": "Mount Allison University",
   "kind": "found",
@@ -14637,6 +16303,37 @@
    "https://www.aman-alliance.org/Home/ContentDetail/103098"
   ],
   "batch": "fp17"
+ },
+ "mpb": {
+  "name": "MPB",
+  "kind": "corp",
+  "what": "A British online marketplace for used photo and video equipment, founded by Matt Barker, headquartered in Brighton and trading in the UK, Europe and the US.",
+  "money": "Buying and selling used camera kit: group net revenue of £63.6 million in the year to 31 March 2025.",
+  "site": "https://www.mpb.com",
+  "city": "Brighton",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://www.mpb.com/en-us/content/latest-from-mpb/financial-results-fy25"
+  ],
+  "batch": "fp39"
+ },
+ "mtropoledelyon": {
+  "name": "Métropole de Lyon",
+  "short": "Grand Lyon",
+  "kind": "gov",
+  "what": "A French territorial collectivity created on 1 January 2015 with the powers of a department and a metropolis over 58 communes including Lyon, home to 1,436,354 people in 2023.",
+  "money": "The budget of the Métropole de Lyon.",
+  "site": "https://www.grandlyon.com",
+  "city": "Lyon",
+  "country": "France",
+  "address": "20 rue du Lac, CS 33569, 69505 Lyon cedex 03",
+  "status": "done",
+  "sources": [
+   "https://www.grandlyon.com/mentions-legales",
+   "https://en.wikipedia.org/wiki/Metropolis_of_Lyon"
+  ],
+  "batch": "fp40"
  },
  "mtropoleeuropennedelille": {
   "name": "Métropole Européenne de Lille",
@@ -14874,6 +16571,37 @@
   ],
   "batch": "fp18"
  },
+ "namibiangovernment|Namibia": {
+  "name": "Government of the Republic of Namibia",
+  "short": "Namibian government",
+  "kind": "gov",
+  "what": "The national government of Namibia: the Cabinet led by the president, the National Assembly and National Council, and the courts headed by the Supreme Court.",
+  "money": "The state budget of Namibia.",
+  "site": "https://www.gov.na",
+  "city": "Windhoek",
+  "country": "Namibia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Namibia",
+   "https://en.wikipedia.org/wiki/Heroes%27_Acre_(Namibia)"
+  ],
+  "batch": "fp40"
+ },
+ "naomimilgrom": {
+  "name": "Naomi Milgrom",
+  "kind": "person",
+  "what": "An Australian businesswoman and philanthropist whose private company, ARJ Group Holdings, owns the women's clothing retailers Sportsgirl, Sussan and Suzanne Grae.",
+  "money": "Her fortune from the ARJ Group fashion chains, which the Australian Financial Review's 2025 Rich List valued at A$1.72 billion.",
+  "arts": "Her foundation, set up in 2014, commissions a new MPavilion in Melbourne's Queen Victoria Gardens each year; she was Australia's commissioner at the 2017 Venice Biennale.",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Naomi_Milgrom",
+   "https://en.wikipedia.org/wiki/Sussan"
+  ],
+  "batch": "fp40"
+ },
  "nataliaopaleva": {
   "name": "Natalia Opaleva",
   "kind": "person",
@@ -14969,6 +16697,23 @@
    "https://en.wikipedia.org/wiki/National_Endowment_for_the_Arts"
   ],
   "batch": "fp1"
+ },
+ "nationalendowmentforhumanities": {
+  "name": "National Endowment for the Humanities",
+  "short": "NEH",
+  "kind": "gov",
+  "what": "An independent federal agency of the United States, created with the National Endowment for the Arts by an act President Johnson signed on 29 September 1965.",
+  "money": "Annual appropriations from the US Congress: US$207 million in 2023.",
+  "site": "https://www.neh.gov",
+  "city": "Washington",
+  "country": "United States",
+  "address": "Constitution Center, 400 7th Street SW, Washington, DC",
+  "status": "done",
+  "sources": [
+   "https://www.neh.gov/about/history",
+   "https://en.wikipedia.org/wiki/National_Endowment_for_the_Humanities"
+  ],
+  "batch": "fp37"
  },
  "nationalgeographicsociety": {
   "name": "National Geographic Society",
@@ -15207,6 +16952,23 @@
   ],
   "batch": "fp18"
  },
+ "neuflizeobc": {
+  "name": "Fondation Neuflize OBC",
+  "kind": "found",
+  "what": "The corporate foundation of Banque Neuflize OBC, the private bank of the Dutch group ABN AMRO in France, which runs 11 branches in French cities.",
+  "money": "Banque Neuflize OBC, the French private banking arm of ABN AMRO.",
+  "arts": "It has backed the photography workshops of the Beaux-Arts de Paris since 2013; the bank's photo and video collection, begun in 1997, held nearly 800 works in 2015.",
+  "site": "https://www.neuflizeobc.fr",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.beauxartsparis.fr/sites/default/files/inline-files/Appel-projet-Neuflize-OBC-2023.pdf",
+   "https://www.abnamro.com/en/about-abn-amro/information/overview-of-our-network-and-collaborations",
+   "https://www.carenews.com/fr/news/3400-l-exemple-de-mecenat-culturel-prive-de-neuflize-obc-une-tradition-d-entreprise"
+  ],
+  "batch": "fp40"
+ },
  "newcarlsberg": {
   "name": "Ny Carlsbergfondet",
   "short": "New Carlsberg Foundation",
@@ -15260,6 +17022,22 @@
    "https://www.governor.ny.gov/news/governor-hochul-announces-63-million-arts-and-culture-grants-awarded-new-york-state-council"
   ],
   "batch": "fp1"
+ },
+ "newyorkstate|USA": {
+  "name": "State of New York",
+  "short": "New York State",
+  "kind": "gov",
+  "what": "The government of the US state of New York, headquartered at the New York State Capitol in Albany, with Governor Kathy Hochul at the head of the executive.",
+  "money": "The New York State budget.",
+  "site": "https://www.ny.gov",
+  "city": "Albany",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20260101011917/https://www.governor.ny.gov/",
+   "https://en.wikipedia.org/wiki/Government_of_New_York_(state)"
+  ],
+  "batch": "fp40"
  },
  "niedersachsen": {
   "name": "Stiftung Niedersachsen",
@@ -15445,6 +17223,21 @@
   ],
   "batch": "fp18"
  },
+ "norrbottenregion|Sweden": {
+  "name": "Region Norrbotten",
+  "kind": "gov",
+  "what": "The regional authority of Norrbotten County in Sweden, a county council that became a region on 1 January 2017, based in Luleå with about 7,400 staff.",
+  "money": "The budget of Region Norrbotten, which runs health and dental care and supports culture, public transport and small firms.",
+  "site": "https://www.norrbotten.se",
+  "city": "Luleå",
+  "country": "Sweden",
+  "status": "done",
+  "sources": [
+   "https://sv.wikipedia.org/wiki/Region_Norrbotten",
+   "https://www.norrbotten.se/sv/om-region-norrbotten/"
+  ],
+  "batch": "fp40"
+ },
  "norskekunstforeninger": {
   "name": "Norske Kunstforeninger",
   "kind": "priv",
@@ -15624,6 +17417,23 @@
   ],
   "batch": "fp34"
  },
+ "novonordiskfonden": {
+  "name": "Novo Nordisk Fonden",
+  "short": "Novo Nordisk Foundation",
+  "kind": "found",
+  "what": "A Danish enterprise foundation established in 1989, with roots in a 1922 insulin licence, seated in Hellerup and controlling Novo Nordisk and Novonesis through Novo Holdings.",
+  "money": "Income from its holdings in Novo Nordisk and Novonesis, managed by Novo Holdings, which managed assets of DKK 694 billion at the end of 2025.",
+  "site": "https://novonordiskfonden.dk",
+  "city": "Hellerup",
+  "country": "Denmark",
+  "address": "Tuborg Havnevej 19, 2900 Hellerup",
+  "status": "done",
+  "sources": [
+   "https://novonordiskfonden.dk/en/about-the-foundation/",
+   "https://en.wikipedia.org/wiki/Novo_Nordisk_Foundation"
+  ],
+  "batch": "fp40"
+ },
  "nrwcultureministry|Germany": {
   "name": "Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen",
   "short": "MKW NRW",
@@ -15708,6 +17518,20 @@
    "https://en.wikipedia.org/wiki/NTT_East"
   ],
   "batch": "fp18"
+ },
+ "nunavut": {
+  "name": "Government of Nunavut",
+  "kind": "gov",
+  "what": "The executive government of the Canadian territory of Nunavut, created on 1 April 1999 and run as a consensus government from its seat in Iqaluit.",
+  "money": "The territorial budget of Nunavut, about CA$3.1 billion a year.",
+  "site": "https://www.gov.nu.ca",
+  "city": "Iqaluit",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Nunavut"
+  ],
+  "batch": "fp40"
  },
  "nycarlsberg": {
   "name": "Ny Carlsbergfondet",
@@ -15915,6 +17739,21 @@
   ],
   "batch": "fp12"
  },
+ "officeofcityhistorianofhavana|Cuba": {
+  "name": "Oficina del Historiador de la Ciudad de La Habana",
+  "short": "Office of the City Historian of Havana",
+  "kind": "gov",
+  "what": "A Cuban public body created on 11 June 1938 as an autonomous municipal office, led by Eusebio Leal from 1968 to 2020, that runs museums and heritage conservation in Havana.",
+  "money": "Contributions from other state bodies and a 5 percent tax on historic centre activity, kept when its companies passed to the army-run GAE in 2016.",
+  "city": "Havana",
+  "country": "Cuba",
+  "status": "done",
+  "sources": [
+   "https://oncubanews.com/cultura/conservacion-del-patrimonio-documental-en-cuba-en-el-aniversario-86-de-la-oficina-del-historiador",
+   "https://14ymedio.com/english-edition/military-businesses-havana-historians-office_1_1060358.html"
+  ],
+  "batch": "fp40"
+ },
  "ogasawara": {
   "name": "Ogasawara Toshiaki Memorial Foundation",
   "short": "Ogasawara Foundation",
@@ -15934,6 +17773,24 @@
    "https://ja.wikipedia.org/wiki/%E5%B0%8F%E7%AC%A0%E5%8E%9F%E6%95%8F%E6%99%B6"
   ],
   "batch": "fp18"
+ },
+ "ohioartscouncil|USA": {
+  "name": "Ohio Arts Council",
+  "short": "OAC",
+  "kind": "gov",
+  "what": "A state agency of Ohio created in 1965 that funds artists and arts organisations and helps preserve Ohio's cultural heritage.",
+  "money": "Funds from the State of Ohio budget, set by the Ohio General Assembly, and from the National Endowment for the Arts.",
+  "site": "https://oac.ohio.gov",
+  "city": "Columbus",
+  "country": "USA",
+  "address": "Rhodes State Office Tower, 30 E. Broad Street, 33rd Floor, Columbus, Ohio 43215-3414",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2026/https://oac.ohio.gov/wps/portal/gov/art/about/about-the-agency/about-the-agency",
+   "https://web.archive.org/web/2026/https://oac.ohio.gov/wps/portal/gov/art/about/budget/budget",
+   "https://en.wikipedia.org/wiki/Ohio_Arts_Council"
+  ],
+  "batch": "fp40"
  },
  "ohiostateuniversity|USA": {
   "name": "The Ohio State University",
@@ -16252,6 +18109,21 @@
   ],
   "batch": "fp19"
  },
+ "orlen": {
+  "name": "ORLEN S.A.",
+  "short": "ORLEN",
+  "kind": "corp",
+  "what": "A Polish oil refiner and fuel retailer formed in 1999 by merging the state firms CPN and Petrochemia Płock, based in Płock; the State Treasury holds 49.9 percent.",
+  "money": "Oil refining, fuel retail and natural gas trading: sales revenue of PLN 267.8 billion in 2025.",
+  "site": "https://www.orlen.pl",
+  "city": "Płock",
+  "country": "Poland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Orlen"
+  ],
+  "batch": "fp40"
+ },
  "osgf": {
   "name": "Open Society Georgia Foundation",
   "short": "OSGF",
@@ -16400,6 +18272,21 @@
    "https://www.palma.es/en"
   ],
   "batch": "fp6"
+ },
+ "panasonic": {
+  "name": "Panasonic Holdings Corporation",
+  "short": "Panasonic",
+  "kind": "corp",
+  "what": "A Japanese electronics group founded in 1918 by Kōnosuke Matsushita, named Panasonic since 2008 and a holding company since 2022, headquartered in Kadoma, Osaka.",
+  "money": "Sales of consumer electronics, home appliances, batteries and automotive and industrial systems: revenue of about ¥8.05 trillion in 2026.",
+  "site": "https://holdings.panasonic/global/",
+  "city": "Kadoma",
+  "country": "Japan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Panasonic"
+  ],
+  "batch": "fp40"
  },
  "paribu": {
   "name": "Paribu Kripto Varlık Alım Satım Platformu A.Ş.",
@@ -16569,6 +18456,21 @@
   ],
   "batch": "fp19"
  },
+ "paulsonfamily": {
+  "name": "Paulson Family Foundation",
+  "kind": "found",
+  "what": "The private foundation of hedge fund manager John Paulson, its president, who founded the New York investment firm Paulson & Co. in 1994; tax exempt since 2009.",
+  "money": "John Paulson's fortune from Paulson & Co.; the foundation held USD 1.39 billion in assets and paid USD 6.6 million in grants in 2024.",
+  "city": "West Palm Beach",
+  "country": "USA",
+  "address": "180 Lakeview Ave, Suite 1810, West Palm Beach, FL 33401",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/263922995",
+   "https://en.wikipedia.org/wiki/John_Paulson"
+  ],
+  "batch": "fp40"
+ },
  "paypal": {
   "name": "PayPal Holdings, Inc.",
   "short": "PayPal",
@@ -16698,6 +18600,22 @@
    "https://en.wikipedia.org/wiki/The_Pew_Charitable_Trusts"
   ],
   "batch": "fp22"
+ },
+ "pge": {
+  "name": "PGE Polska Grupa Energetyczna S.A.",
+  "short": "PGE",
+  "kind": "corp",
+  "what": "A Polish energy group with its registered office in Warsaw, formed in its present shape by a merger on 9 May 2007; the State Treasury held 58.39 percent in 2014.",
+  "money": "Electricity generation, distribution and trading, mainly from hard coal and lignite plants such as Bełchatów: revenue of USD 16.2 billion in 2025.",
+  "site": "https://www.gkpge.pl",
+  "city": "Warsaw",
+  "country": "Poland",
+  "address": "ul. Mysia 2, Warsaw",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/PGE_Polska_Grupa_Energetyczna"
+  ],
+  "batch": "fp40"
  },
  "phillips": {
   "name": "Phillips",
@@ -16934,6 +18852,24 @@
    "https://en.wikipedia.org/wiki/Michael_Audain"
   ],
   "batch": "fp5"
+ },
+ "polytechnischegesellschaft": {
+  "name": "Stiftung Polytechnische Gesellschaft Frankfurt am Main",
+  "short": "Polytechnic Foundation of Frankfurt",
+  "kind": "found",
+  "what": "A charitable foundation under German civil law, set up in Frankfurt am Main in 2005 by the Polytechnische Gesellschaft e. V.",
+  "money": "Most of the proceeds of the Polytechnische Gesellschaft's 2005 sale of Frankfurter Sparkasse; its capital stood at 467 million euros on 31 December 2022.",
+  "arts": "Its culture programmes include a foundation choir and an opera studio.",
+  "site": "https://sptg.de",
+  "city": "Frankfurt am Main",
+  "country": "Germany",
+  "address": "Untermainanlage 5, 60329 Frankfurt am Main",
+  "status": "done",
+  "sources": [
+   "https://sptg.de/wer-wir-sind/about-us",
+   "https://sptg.de/impressum"
+  ],
+  "batch": "fp40"
  },
  "pon": {
   "name": "Pon Holdings B.V.",
@@ -17394,6 +19330,21 @@
   ],
   "batch": "fp19"
  },
+ "pwc": {
+  "name": "PricewaterhouseCoopers",
+  "short": "PwC",
+  "kind": "corp",
+  "what": "A professional services network formed in 1998 by merging Price Waterhouse and Coopers & Lybrand, overseen from London by PricewaterhouseCoopers International Limited, with member firms in 149 countries.",
+  "money": "Fees for audit, tax, legal and advisory work: network revenue of USD 55.4 billion in fiscal 2024.",
+  "site": "https://www.pwc.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/PwC"
+  ],
+  "batch": "fp40"
+ },
  "pyur": {
   "name": "Tele Columbus AG",
   "short": "PŸUR",
@@ -17516,6 +19467,22 @@
    "https://en.wikipedia.org/wiki/Quark_Expeditions"
   ],
   "batch": "fp19"
+ },
+ "quebeccultureministry|Canada": {
+  "name": "Ministère de la Culture, du Patrimoine, des Communications et de la Langue française",
+  "short": "Quebec Ministry of Culture",
+  "kind": "gov",
+  "what": "The Quebec government ministry for culture, heritage, communications and the French language, led by minister Pascal Bérubé; its culture and communications portfolio took its present form in 2012.",
+  "money": "The budget of the Government of Quebec.",
+  "site": "https://www.quebec.ca/gouvernement/ministere/culture-communications",
+  "city": "Québec City",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://www.quebec.ca/gouvernement/ministere/culture-communications",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_and_Communications_(Quebec)"
+  ],
+  "batch": "fp40"
  },
  "rabeesecurities": {
   "name": "Rabee Securities",
@@ -17658,6 +19625,23 @@
   ],
   "batch": "fp5"
  },
+ "regionelombardia": {
+  "name": "Regione Lombardia",
+  "short": "Lombardy Region",
+  "kind": "gov",
+  "what": "The regional government of Lombardy, Italy, led by president Attilio Fontana since 2018, with its seat in Milan.",
+  "money": "The regional budget of Lombardy.",
+  "site": "https://www.regione.lombardia.it",
+  "city": "Milan",
+  "country": "Italy",
+  "address": "Piazza Città di Lombardia 1, 20124 Milano",
+  "status": "done",
+  "sources": [
+   "https://www.regione.lombardia.it/",
+   "https://it.wikipedia.org/wiki/Lombardia"
+  ],
+  "batch": "fp37"
+ },
  "regionepiemonte": {
   "name": "Regione Piemonte",
   "short": "Piedmont Region",
@@ -17673,6 +19657,22 @@
    "https://www.regione.piemonte.it/web/temi/cultura-turismo-sport"
   ],
   "batch": "fp1"
+ },
+ "regionetoscana": {
+  "name": "Regione Toscana",
+  "short": "Tuscany Region",
+  "kind": "gov",
+  "what": "An Italian ordinary-statute region, set up in 1948 and working since 1970, with its seat in Florence and Eugenio Giani as president since 8 October 2020.",
+  "money": "The regional budget of Tuscany.",
+  "site": "https://www.regione.toscana.it",
+  "city": "Florence",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://it.wikipedia.org/wiki/Regione_Toscana",
+   "https://www.regione.toscana.it/"
+  ],
+  "batch": "fp40"
  },
  "regions": {
   "name": "Regions Financial Corporation",
@@ -17691,6 +19691,22 @@
   ],
   "batch": "fp19"
  },
+ "regionstockholm|Sweden": {
+  "name": "Region Stockholm",
+  "kind": "gov",
+  "what": "The regional public body for Stockholm County, set up on 1 January 2019 in place of Stockholm County Council, running healthcare, public transport and regional planning.",
+  "money": "The regional budget, about SEK 133 billion in 2024, when the regional income tax rate was 12.38 percent.",
+  "site": "https://www.regionstockholm.se",
+  "city": "Stockholm",
+  "country": "Sweden",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Region_Stockholm",
+   "https://sv.wikipedia.org/wiki/Region_Stockholm",
+   "https://www.regionstockholm.se/kontakt/"
+  ],
+  "batch": "fp38"
+ },
  "relianceindustriesunderbillionairemukeshambani": {
   "name": "Reliance Industries Limited",
   "short": "Reliance",
@@ -17705,6 +19721,23 @@
    "https://en.wikipedia.org/wiki/Reliance_Industries"
   ],
   "batch": "fp19"
+ },
+ "republicofaustria|Austria": {
+  "name": "Republik Österreich",
+  "short": "Republic of Austria",
+  "kind": "gov",
+  "what": "The Austrian federal state, a republic of nine states whose parliament, head of state, federal government and highest courts sit in Vienna, the federal capital.",
+  "money": "The federal budget of the Republic of Austria.",
+  "site": "https://www.oesterreich.gv.at",
+  "city": "Vienna",
+  "country": "Austria",
+  "status": "done",
+  "sources": [
+   "https://www.wien.gv.at/spezial/organisation-verwaltung/wien-als-teil-der-republik-osterreich/staatsrechtlicher-aufbau-der-republik-osterreich/",
+   "https://www.wien.gv.at/spezial/organisation-verwaltung/wien-als-gebietskorperschaft/wien-als-bundeshauptstadt/",
+   "https://en.wikipedia.org/wiki/Austria"
+  ],
+  "batch": "fp40"
  },
  "republicofkosovoministries|Kosovo": {
   "name": "Ministria e Kulturës, Rinisë dhe Sportit",
@@ -17805,6 +19838,24 @@
    "https://www.hautsdefrance.fr/budget/"
   ],
   "batch": "fp20"
+ },
+ "rgionledefrance": {
+  "name": "Région Île-de-France",
+  "short": "Île-de-France Region",
+  "kind": "gov",
+  "what": "The French region that contains Paris, run by a regional council of 209 councillors elected for six years, headquartered in Saint-Ouen-sur-Seine.",
+  "money": "The regional budget: €5.8 billion for 2026.",
+  "site": "https://www.iledefrance.fr",
+  "city": "Saint-Ouen-sur-Seine",
+  "country": "France",
+  "address": "2 rue Simone Veil, 93400 Saint-Ouen-sur-Seine",
+  "status": "done",
+  "sources": [
+   "https://www.iledefrance.fr/mentions-legales",
+   "https://www.iledefrance.fr/presse/la-region-ile-de-france-adopte-un-budget-2026-dengagements-et-de-responsabilite",
+   "https://en.wikipedia.org/wiki/Regional_Council_of_%C3%8Ele-de-France"
+  ],
+  "batch": "fp37"
  },
  "rgionpaysdelaloire": {
   "name": "Région Pays de la Loire",
@@ -18078,6 +20129,53 @@
   ],
   "batch": "fp23"
  },
+ "romacapitale": {
+  "name": "Roma Capitale",
+  "short": "City of Rome",
+  "kind": "gov",
+  "what": "The local government of Rome, set up in 2010 under the Italian constitution in place of the comune di Roma, with its seat on the Campidoglio.",
+  "money": "The municipal budget of Roma Capitale.",
+  "site": "https://www.comune.roma.it",
+  "city": "Rome",
+  "country": "Italy",
+  "address": "Piazza del Campidoglio 1, Roma",
+  "status": "done",
+  "sources": [
+   "https://www.comune.roma.it/web/it/note-legali.page",
+   "https://it.wikipedia.org/wiki/Roma_Capitale"
+  ],
+  "batch": "fp37"
+ },
+ "romanabramovich": {
+  "name": "Roman Abramovich",
+  "kind": "person",
+  "what": "A Russian businessman, governor of Chukotka from 2000 to 2008 and former owner of Chelsea football club, sanctioned after the 2022 Russian invasion of Ukraine.",
+  "money": "His Sibneft oil stake, sold to the Russian state for $13 billion in 2005, and his Millhouse holdings, which bought 41% of Evraz in 2006.",
+  "arts": "He co-founded the Garage Museum of Contemporary Art in Moscow with Dasha Zhukova in 2008.",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Roman_Abramovich",
+   "https://garagemca.org/en/about"
+  ],
+  "batch": "fp38"
+ },
+ "romanianministryofculture|Romania": {
+  "name": "Ministerul Culturii",
+  "short": "Romanian Ministry of Culture",
+  "kind": "gov",
+  "what": "The ministry of the Government of Romania for cultural policy and heritage, first set up on 22 January 1862 and named Ministry of Culture since 2019, seated in Bucharest.",
+  "money": "The Romanian state budget.",
+  "site": "https://www.cultura.ro",
+  "city": "Bucharest",
+  "country": "Romania",
+  "address": "Bulevardul Unirii nr. 22, sector 3, București",
+  "status": "done",
+  "sources": [
+   "https://ro.wikipedia.org/wiki/Ministerul_Culturii"
+  ],
+  "batch": "fp40"
+ },
  "romantrotsenko": {
   "name": "Roman Trotsenko",
   "kind": "person",
@@ -18123,6 +20221,21 @@
    "https://www.uwgc.org/generations-of-giving-the-rosenthals-commitment-to-cincinnati/"
   ],
   "batch": "fp20"
+ },
+ "rosneft": {
+  "name": "Rosneft Oil Company",
+  "short": "Rosneft",
+  "kind": "corp",
+  "what": "A Russian integrated oil and gas company in Moscow, founded as a state enterprise in 1993 and controlled by state-owned Rosneftegaz, with Igor Sechin as chief executive.",
+  "money": "Oil and gas production, refining and fuel sales: revenue of ₽8.16 trillion (USD 95.75 billion) in 2025.",
+  "site": "https://www.rosneft.com",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Rosneft"
+  ],
+  "batch": "fp40"
  },
  "rotasa": {
   "name": "Rotasa Foundation",
@@ -18319,6 +20432,23 @@
   ],
   "batch": "fp28"
  },
+ "ruth": {
+  "name": "Ruth Foundation for the Arts",
+  "short": "Ruth Arts",
+  "kind": "found",
+  "what": "A private arts foundation in Milwaukee, Wisconsin, that launched in 2022 and gives grants to artists and arts organisations across the United States.",
+  "money": "A US$440 million bequest from Ruth DeYoung Kohler II (died 2020), of the family that founded the Kohler bathroom-fixture company.",
+  "arts": "It planned to give US$17 million to US$20 million a year; in 2024 it gave US$950,000 to 10 Wisconsin arts groups.",
+  "site": "https://www.rutharts.org",
+  "city": "Milwaukee",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ruth_Foundation_for_the_Arts",
+   "https://artdaily.com/news/147736/With--440-million--a-new-arts-foundation-spreads-the-wealth"
+  ],
+  "batch": "fp37"
+ },
  "rweag": {
   "name": "RWE AG",
   "short": "RWE",
@@ -18369,6 +20499,21 @@
    "https://sabo.com/about-us/"
   ],
   "batch": "fp20"
+ },
+ "sacklerfamily": {
+  "name": "Sackler family",
+  "kind": "person",
+  "what": "An American family: the brothers Arthur, Mortimer and Raymond Sackler bought Purdue-Frederick in 1952, and Mortimer and Raymond later turned it into Purdue Pharma.",
+  "money": "Profits of Purdue Pharma, the Stamford, Connecticut maker of OxyContin that the family owned until its 2026 shutdown, and of Mundipharma, which it founded.",
+  "arts": "It gave to the Metropolitan Museum of Art, the American Museum of Natural History and the Guggenheim; in 2019 all three stopped taking gifts from Sacklers tied to Purdue.",
+  "city": "Stamford",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sackler_family",
+   "https://en.wikipedia.org/wiki/Purdue_Pharma"
+  ],
+  "batch": "fp37"
  },
  "sacklertrust": {
   "name": "The Sackler Trust",
@@ -18780,6 +20925,22 @@
   ],
   "batch": "fp17"
  },
+ "servicionacionaldelpatrimoniocultural": {
+  "name": "Servicio Nacional del Patrimonio Cultural",
+  "short": "Serpat",
+  "kind": "gov",
+  "what": "The Chilean public service for libraries, archives, museums and heritage under the Ministry of Cultures, Arts and Heritage, which replaced DIBAM (founded 1929) under Law 21.045 in 2018.",
+  "money": "The Chilean state budget, through the Ministry of Cultures, Arts and Heritage.",
+  "site": "https://www.patrimoniocultural.gob.cl",
+  "city": "Santiago",
+  "country": "Chile",
+  "address": "Avenida Libertador Bernardo O'Higgins 651, Santiago",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Servicio_Nacional_del_Patrimonio_Cultural"
+  ],
+  "batch": "fp40"
+ },
  "sesolicitors": {
   "name": "Spratt Endicott Limited",
   "short": "SE-Solicitors",
@@ -18964,6 +21125,21 @@
   ],
   "batch": "fp20"
  },
+ "sidneymyer": {
+  "name": "Sidney Myer Fund",
+  "kind": "found",
+  "what": "A perpetual charitable fund created under the will of Melbourne retailer Sidney Myer, who died in 1934, and run by the same team as The Myer Foundation.",
+  "money": "The invested share of Sidney Myer's estate, made in the Myer department store business; the income is distributed each year.",
+  "site": "https://www.myerfoundation.org.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://www.myerfoundation.org.au/about-us",
+   "https://www.myerfoundation.org.au/our-origins"
+  ],
+  "batch": "fp40"
+ },
  "siga": {
   "name": "Saskatchewan Indian Gaming Authority",
   "short": "SIGA",
@@ -19146,6 +21322,23 @@
    "https://en.wikipedia.org/wiki/Z._Smith_Reynolds_Foundation"
   ],
   "batch": "fp24"
+ },
+ "sobey": {
+  "name": "Sobey family",
+  "kind": "person",
+  "what": "A Nova Scotia business family whose business, begun in Stellarton in 1907, grew into Sobeys, Canada's second-largest food retailer, under Frank H. Sobey and his sons.",
+  "money": "Their holdings in Empire Company, the parent company of Sobeys, where the family's wealth is mainly concentrated.",
+  "arts": "Their foundations include the Sobey Art Foundation, set up in 1981, which manages the family art collection and created the Sobey Art Award in 2002, and the D.R. Sobey Foundation.",
+  "site": "https://sobeyphilanthropies.com/en/",
+  "city": "Stellarton",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sobey_family",
+   "https://sobeyphilanthropies.com/en/",
+   "https://sobeyfoundation.com/about/"
+  ],
+  "batch": "fp40"
  },
  "socitgnrale": {
   "name": "Société Générale S.A.",
@@ -19534,6 +21727,24 @@
   ],
   "batch": "fp32"
  },
+ "stadtwien|Austria": {
+  "name": "Stadt Wien",
+  "short": "City of Vienna",
+  "kind": "gov",
+  "what": "The city government of Vienna, run through the Magistrat under Mayor Michael Ludwig, in office since 2018; its culture department is MA 7.",
+  "money": "The city budget: the 2026 estimate has revenue of €19.51 billion and spending of €22.14 billion.",
+  "arts": "Its 2026 culture budget is €353.7 million, up from €348.8 million only because adult education centres were added; without them it is €322.3 million, a 7.6 percent cut.",
+  "site": "https://www.wien.gv.at",
+  "city": "Vienna",
+  "country": "Austria",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Magistrat_der_Stadt_Wien",
+   "https://www.vienna.at/das-ist-der-voranschlag-fuer-das-wiener-budget-2026/9804470",
+   "https://www.vienna.at/wien-kuerzt-auch-bei-kulturbudget/9847937"
+  ],
+  "batch": "fp37"
+ },
  "standardbankhasbeencollection": {
   "name": "Standard Bank Group Limited",
   "short": "Standard Bank",
@@ -19625,6 +21836,22 @@
   ],
   "batch": "fp16"
  },
+ "stateofflorida|USA": {
+  "name": "State of Florida",
+  "kind": "gov",
+  "what": "The government of the US state of Florida, seated in Tallahassee, the capital since 1823, with Governor Ron DeSantis at the head of the executive.",
+  "money": "The Florida state budget.",
+  "site": "https://www.myflorida.com",
+  "city": "Tallahassee",
+  "country": "USA",
+  "address": "400 S Monroe St, Tallahassee, FL 32399",
+  "status": "done",
+  "sources": [
+   "https://www.flgov.com/eog/",
+   "https://en.wikipedia.org/wiki/Government_of_Florida"
+  ],
+  "batch": "fp40"
+ },
  "stateoflowersaxony|Germany": {
   "name": "Niedersächsisches Ministerium für Wissenschaft und Kultur",
   "short": "Lower Saxony Ministry for Science and Culture",
@@ -19660,6 +21887,23 @@
    "https://www.cultura.sp.gov.br/sec_cultura"
   ],
   "batch": "fp25"
+ },
+ "stavangerkommune|Norway": {
+  "name": "Stavanger kommune",
+  "short": "Stavanger Municipality",
+  "kind": "gov",
+  "what": "The municipality of Stavanger, Norway's fourth most populous and the administrative centre of Rogaland county, which counts 1125 as its founding year.",
+  "money": "The municipal budget of Stavanger.",
+  "site": "https://www.stavanger.kommune.no",
+  "city": "Stavanger",
+  "country": "Norway",
+  "address": "Olav Kyrres gate 23, Stavanger",
+  "status": "done",
+  "sources": [
+   "https://www.stavanger.kommune.no/en/",
+   "https://en.wikipedia.org/wiki/Stavanger"
+  ],
+  "batch": "fp40"
  },
  "stavrosniarchos": {
   "name": "Stavros S. Niarchos Foundation for Charity",
@@ -19827,6 +22071,23 @@
   ],
   "batch": "fp21"
  },
+ "suffolkcounty|USA": {
+  "name": "Suffolk County",
+  "short": "Suffolk County, New York",
+  "kind": "gov",
+  "what": "The county government of Suffolk County, New York, the eastern two-thirds of Long Island, with its seat in Riverhead, main offices in Hauppauge and Edward P. Romaine as County Executive.",
+  "money": "The Suffolk County budget.",
+  "site": "https://www.suffolkcountyny.gov",
+  "city": "Hauppauge",
+  "country": "USA",
+  "address": "H. Lee Dennison Building, 100 Veterans Memorial Hwy, Hauppauge, NY 11788",
+  "status": "done",
+  "sources": [
+   "https://www.suffolkcountyny.gov/",
+   "https://en.wikipedia.org/wiki/Suffolk_County,_New_York"
+  ],
+  "batch": "fp40"
+ },
  "sulger": {
   "name": "Sulger-Stiftung",
   "kind": "found",
@@ -19893,6 +22154,22 @@
   ],
   "batch": "fp5"
  },
+ "swedishstate|Sweden": {
+  "name": "Sveriges regering",
+  "short": "Government of Sweden",
+  "kind": "gov",
+  "what": "The national cabinet of Sweden, made up of the prime minister and cabinet ministers, responsible to the Riksdag, with its seat at Rosenbad in Stockholm.",
+  "money": "The Swedish state budget.",
+  "site": "https://www.government.se",
+  "city": "Stockholm",
+  "country": "Sweden",
+  "address": "Rosenbad, Stockholm",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Sweden"
+  ],
+  "batch": "fp37"
+ },
  "swissagencyfordevelopment|Tanzania": {
   "name": "Swiss Agency for Development and Cooperation",
   "short": "SDC",
@@ -19908,6 +22185,21 @@
    "https://www.deza.eda.admin.ch/en"
   ],
   "batch": "fp22"
+ },
+ "swisslife": {
+  "name": "Swiss Life Holding AG",
+  "short": "Swiss Life",
+  "kind": "corp",
+  "what": "Switzerland's largest life insurance group, founded in Zurich in 1857 as the Schweizerische Lebensversicherungs und Rentenanstalt and named Swiss Life since 2002.",
+  "money": "Life insurance, pensions and asset management, with CHF 356.3 billion under management; net profit of CHF 1.26 billion in 2025.",
+  "site": "https://www.swisslife.com",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Swiss_Life"
+  ],
+  "batch": "fp40"
  },
  "swisssdc": {
   "name": "Swiss Agency for Development and Cooperation",
@@ -20119,6 +22411,22 @@
   ],
   "batch": "fp22"
  },
+ "teiger": {
+  "name": "Teiger Foundation",
+  "kind": "found",
+  "what": "A private foundation in New York, founded in 2008 by the contemporary art collector David Teiger (1929 to 2014), that funds curators' projects.",
+  "money": "An endowment from the auction of most of David Teiger's art collection, which he left to the foundation at his death in 2014.",
+  "arts": "It gave US$8.0 million in the year to June 2025, holding US$159.5 million in assets, and plans at least US$5 million a year for curatorial work.",
+  "site": "https://teigerfoundation.org",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://teigerfoundation.org/about-us/background",
+   "https://projects.propublica.org/nonprofits/organizations/263533921"
+  ],
+  "batch": "fp37"
+ },
  "teijin": {
   "name": "Teijin Limited",
   "short": "Teijin",
@@ -20136,6 +22444,22 @@
    "https://en.wikipedia.org/wiki/Teijin"
   ],
   "batch": "fp22"
+ },
+ "telstra": {
+  "name": "Telstra Group Limited",
+  "short": "Telstra",
+  "kind": "corp",
+  "what": "Australia's largest telecommunications company by market share, which began in the Postmaster-General's Department at federation in 1901 and was privatised in stages between 1997 and 2006, based in Melbourne.",
+  "money": "Fixed-line, mobile, internet and data services: revenue of A$23.25 billion in the year to June 2023.",
+  "arts": "It sponsors the National Aboriginal and Torres Strait Islander Art Award, known as the Telstra Award.",
+  "site": "https://www.telstra.com.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Telstra"
+  ],
+  "batch": "fp40"
  },
  "terraforamericanart": {
   "name": "Terra Foundation for American Art",
@@ -20288,6 +22612,21 @@
    "https://en.wikipedia.org/wiki/Thor_Industries"
   ],
   "batch": "fp22"
+ },
+ "thuringia": {
+  "name": "Freistaat Thüringen",
+  "short": "Free State of Thuringia",
+  "kind": "gov",
+  "what": "A German federal state re-established on 3 October 1990 from the GDR districts of Erfurt, Gera and Suhl, with its capital in Erfurt and Mario Voigt (CDU) as minister-president.",
+  "money": "The state budget of Thuringia.",
+  "site": "https://www.thueringen.de",
+  "city": "Erfurt",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Th%C3%BCringen"
+  ],
+  "batch": "fp40"
  },
  "thyssenbornemiszaartcontemporary": {
   "name": "Fundación TBA21",
@@ -20515,6 +22854,23 @@
   ],
   "batch": "fp23"
  },
+ "tromscounty|Norway": {
+  "name": "Troms fylkeskommune",
+  "short": "Troms County Municipality",
+  "kind": "gov",
+  "what": "The regional administration of Troms county in northern Norway, run from Tromsø with a 37-member county council; it was merged into Troms og Finnmark from 2020 to 2023.",
+  "money": "The county budget of Troms fylkeskommune.",
+  "site": "https://www.tromsfylke.no",
+  "city": "Tromsø",
+  "country": "Norway",
+  "address": "Strandvegen 13, 9007 Tromsø",
+  "status": "done",
+  "sources": [
+   "https://www.tromsfylke.no/",
+   "https://en.wikipedia.org/wiki/Troms_County_Municipality"
+  ],
+  "batch": "fp38"
+ },
  "tromsogfinnmarkcounty|Norway": {
   "name": "Troms og Finnmark fylkeskommune",
   "short": "Troms og Finnmark County Municipality",
@@ -20587,6 +22943,26 @@
   ],
   "batch": "fp21"
  },
+ "tucker": {
+  "name": "Albert & Barbara Tucker Foundation",
+  "short": "Tucker Foundation",
+  "kind": "found",
+  "what": "A Melbourne charitable trust set up under the will of Barbara Tucker, who died in May 2015, to realise a plan she shared with her husband, the painter Albert Tucker.",
+  "money": "The estate of Albert and Barbara Tucker; grants of up to A$25,000 a year go to registered charities.",
+  "arts": "Its first listed aim is the support and development of public art galleries and museums; it also administers the Tucker gift of art to Heide, formalised in 2005.",
+  "site": "https://www.tuckerfoundation.org.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://www.tuckerfoundation.org.au/about",
+   "https://tuckerfoundation.org.au/guidelines/",
+   "https://www.tuckerfoundation.org.au/",
+   "https://www.heide.com.au/donate/article_donor_tucker-gift/",
+   "https://en.wikipedia.org/wiki/Albert_Tucker_(artist)"
+  ],
+  "batch": "fp40"
+ },
  "tunisair": {
   "name": "Société Tunisienne de l'Air",
   "short": "Tunisair",
@@ -20657,6 +23033,21 @@
    "https://api.gleif.org/api/v1/lei-records/391200M0NTC3WBXV1G63"
   ],
   "batch": "fp23"
+ },
+ "ukgovernment|UK": {
+  "name": "His Majesty's Government",
+  "short": "UK Government",
+  "kind": "gov",
+  "what": "The central executive of the United Kingdom, led by Prime Minister Andy Burnham since 20 July 2026, whose ministers answer to Parliament.",
+  "money": "The UK state budget.",
+  "site": "https://www.gov.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_the_United_Kingdom"
+  ],
+  "batch": "fp38"
  },
  "ukresearch": {
   "name": "UK Research and Innovation",
@@ -20833,6 +23224,23 @@
   ],
   "batch": "fp23"
  },
+ "uniqa": {
+  "name": "UNIQA Insurance Group AG",
+  "short": "UNIQA",
+  "kind": "corp",
+  "what": "An Austrian insurance group set up in 1999, listed on the Vienna Stock Exchange, with about 40 companies in 14 countries and its head office in Vienna.",
+  "money": "Insurance premiums: €8,354.7 million written in 2025, with earnings before taxes of €516.4 million.",
+  "arts": "It supports Austrian museums including the Albertina, the Kunsthistorisches Museum and the Vienna Technical Museum.",
+  "site": "https://www.uniqagroup.com",
+  "city": "Vienna",
+  "country": "Austria",
+  "status": "done",
+  "sources": [
+   "https://uniqagroup.com/grp/about-us/companyportrait/key-figures.en.html",
+   "https://en.wikipedia.org/wiki/Uniqa_Insurance_Group"
+  ],
+  "batch": "fp37"
+ },
  "uniqlo": {
   "name": "Fast Retailing Co., Ltd.",
   "short": "Uniqlo",
@@ -20904,6 +23312,22 @@
    "https://uchile.cl/presentacion/rectoria/luis-riveros-cornejo/publicaciones/34-la-situacion-presupuestaria-interna"
   ],
   "batch": "fp31"
+ },
+ "universityofmanchester": {
+  "name": "The University of Manchester",
+  "short": "University of Manchester",
+  "kind": "gov",
+  "what": "A public research university created by Royal Charter on 1 October 2004 by merging the Victoria University of Manchester and UMIST, on Oxford Road, Manchester.",
+  "money": "Income of £1.365 billion in the year to July 2024: £714.3 million tuition fees, £287.9 million research grants, £151.0 million funding body grants.",
+  "site": "https://www.manchester.ac.uk",
+  "city": "Manchester",
+  "country": "United Kingdom",
+  "address": "Oxford Road, Manchester",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/University_of_Manchester"
+  ],
+  "batch": "fp40"
  },
  "universityofmelbourne": {
   "name": "The University of Melbourne",
@@ -21176,6 +23600,23 @@
   "batch": "fp15",
   "renamed": "The atlas name points at the Kimbell Art Foundation, but the museum sentence means Velma Kimbell's own gift of her share of the couple's property."
  },
+ "venetoregion|Italy": {
+  "name": "Regione del Veneto",
+  "short": "Veneto Region",
+  "kind": "gov",
+  "what": "An Italian ordinary-statute region, set up in 1948 and working since 1970, governed from Palazzo Balbi in Venice by president Alberto Stefani since 5 December 2025.",
+  "money": "The regional budget of Veneto.",
+  "site": "https://www.regione.veneto.it",
+  "city": "Venice",
+  "country": "Italy",
+  "address": "Palazzo Balbi, Venice",
+  "status": "done",
+  "sources": [
+   "https://www.regione.veneto.it/",
+   "https://it.wikipedia.org/wiki/Regione_del_Veneto"
+  ],
+  "batch": "fp40"
+ },
  "verbundhydro": {
   "name": "VERBUND AG",
   "short": "Verbund",
@@ -21330,6 +23771,23 @@
   ],
   "batch": "fp27"
  },
+ "villedelyon|France": {
+  "name": "Ville de Lyon",
+  "short": "City of Lyon",
+  "kind": "gov",
+  "what": "The commune of Lyon, France's third-largest city with 519,127 residents in 2023, led by mayor Grégory Doucet since 4 July 2020.",
+  "money": "The municipal budget of the city of Lyon.",
+  "site": "https://www.lyon.fr",
+  "city": "Lyon",
+  "country": "France",
+  "address": "1 place de la Comédie, 69205 Lyon Cedex 01",
+  "status": "done",
+  "sources": [
+   "https://www.lyon.fr/mentions-legales",
+   "https://en.wikipedia.org/wiki/Lyon"
+  ],
+  "batch": "fp40"
+ },
  "villedemarseille|France": {
   "name": "Ville de Marseille",
   "kind": "gov",
@@ -21443,6 +23901,21 @@
    "https://en.wikipedia.org/wiki/Viva_Energy"
   ],
   "batch": "fp34"
+ },
+ "vivo": {
+  "name": "Telefônica Brasil S.A.",
+  "short": "Vivo",
+  "kind": "corp",
+  "what": "A Brazilian telecommunications group trading as Vivo, a subsidiary of Spain's Telefónica, formed from the 1998 break-up and privatisation of the state monopoly Telebrás.",
+  "money": "Mobile, broadband, fixed-line and pay-TV services sold under the Vivo brand to more than 90 million customers in Brazil.",
+  "site": "https://www.telefonica.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Telef%C3%B4nica_Brasil"
+  ],
+  "batch": "fp38"
  },
  "vlaamseoverheid": {
   "name": "Vlaamse Regering",
@@ -21688,6 +24161,22 @@
   ],
   "batch": "fp24"
  },
+ "wakefieldcouncil|UK": {
+  "name": "Wakefield Council",
+  "short": "City of Wakefield Metropolitan District Council",
+  "kind": "gov",
+  "what": "The local authority for the City of Wakefield metropolitan district in West Yorkshire, created on 1 April 1974 and meeting at County Hall; Reform UK has held control since 2026.",
+  "money": "The budget of Wakefield Council.",
+  "site": "https://www.wakefield.gov.uk",
+  "city": "Wakefield",
+  "country": "United Kingdom",
+  "address": "County Hall, Bond Street, Wakefield, WF1 2QW",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Wakefield_Metropolitan_District_Council"
+  ],
+  "batch": "fp40"
+ },
  "walmart": {
   "name": "Walmart Inc.",
   "short": "Walmart",
@@ -21828,6 +24317,22 @@
   ],
   "batch": "fp19"
  },
+ "weimar": {
+  "name": "Stadt Weimar",
+  "short": "City of Weimar",
+  "kind": "gov",
+  "what": "An independent city (kreisfreie Stadt) in Thuringia with 65,566 residents at the end of 2025, led by the non-partisan mayor Peter Kleine.",
+  "money": "The municipal budget of Weimar.",
+  "site": "https://www.weimar.de",
+  "city": "Weimar",
+  "country": "Germany",
+  "address": "Schwanseestraße 17, 99423 Weimar",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Weimar"
+  ],
+  "batch": "fp40"
+ },
  "weitzerhotels": {
   "name": "Florian Weitzer Holding GmbH",
   "short": "Weitzer Hotels",
@@ -21882,6 +24387,22 @@
    "https://wellington.govt.nz/community-support-and-resources/community-support/funding/council-funds/arts-and-culture-multi-year-funding"
   ],
   "batch": "fp24"
+ },
+ "welshgovernment|UK": {
+  "name": "Welsh Government",
+  "short": "Llywodraeth Cymru",
+  "kind": "gov",
+  "what": "The devolved government of Wales, set up on 12 May 1999 as the National Assembly's executive and led since May 2026 by First Minister Rhun ap Iorwerth of Plaid Cymru.",
+  "money": "About 80 percent from a UK block grant set by the Barnett formula and 20 percent from devolved Welsh taxes; £26 billion in 2025/26.",
+  "site": "https://www.gov.wales",
+  "city": "Cardiff",
+  "country": "United Kingdom",
+  "address": "Crown Buildings, Cathays Park, Cardiff",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Welsh_Government"
+  ],
+  "batch": "fp40"
  },
  "wesfarmersarts": {
   "name": "Wesfarmers Limited",
@@ -22015,6 +24536,23 @@
   ],
   "batch": "fp5"
  },
+ "williamgrant": {
+  "name": "William Grant Foundation",
+  "kind": "found",
+  "what": "The charitable foundation of William Grant & Sons, the family-owned Scotch whisky distiller founded in 1887 and based at the Glenfiddich distillery in Dufftown.",
+  "money": "One percent of William Grant & Sons' pre-tax profits, set aside each year; it awarded £4,715,781 in 92 grants in 2023.",
+  "arts": "The arts and Scotland's culture and heritage are among its grant themes.",
+  "site": "https://williamgrantfoundation.org.uk",
+  "city": "Dufftown",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://www.williamgrant.com/williamgrant-foundation-info",
+   "https://williamgrantfoundation.org.uk/",
+   "https://en.wikipedia.org/wiki/William_Grant_%26_Sons"
+  ],
+  "batch": "fp40"
+ },
  "williampenn": {
   "name": "William Penn Foundation",
   "kind": "found",
@@ -22101,6 +24639,22 @@
    "https://en.wikipedia.org/wiki/Wolfson_Foundation"
   ],
   "batch": "fp1"
+ },
+ "workerspartyofkorea": {
+  "name": "Workers' Party of Korea",
+  "short": "WPK",
+  "kind": "gov",
+  "what": "The ruling party of North Korea, founded in 1949 from a merger of the Workers' Parties of North and South Korea, led by General Secretary Kim Jong Un.",
+  "money": "Its Central Committee Bureau 39 (Room 39) keeps a foreign currency fund for North Korea's leaders.",
+  "city": "Pyongyang",
+  "country": "North Korea",
+  "address": "Government Complex No. 1, Chung-guyok, Pyongyang",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Workers%27_Party_of_Korea",
+   "https://en.wikipedia.org/wiki/Room_39"
+  ],
+  "batch": "fp37"
  },
  "wrth": {
   "name": "Würth Group",
@@ -22343,6 +24897,22 @@
    "https://en.wikipedia.org/wiki/Zeitz_Museum_of_Contemporary_Art_Africa"
   ],
   "batch": "fp24"
+ },
+ "zellfamily": {
+  "name": "Zell Family Foundation",
+  "kind": "found",
+  "what": "The Chicago family foundation of real estate investor Sam Zell, founder of Equity Group Investments, who died in May 2023; his widow Helen Zell is its president.",
+  "money": "Sam Zell's real estate and investment fortune; the foundation held USD 119.6 million in assets and paid USD 63.5 million in grants in 2024.",
+  "city": "Chicago",
+  "country": "USA",
+  "address": "2 N Riverside Plaza, Suite 600, Chicago, IL 60606",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/363487811",
+   "https://www.kellogg.northwestern.edu/news/blog/2023/10/10/zell-fellow-gift-entrepreneurship/",
+   "https://en.wikipedia.org/wiki/Sam_Zell"
+  ],
+  "batch": "fp40"
  },
  "zentrumpaulkleemauricee": {
   "name": "Zentrum Paul Klee - Maurice E. and Martha Müller Foundation",

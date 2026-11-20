@@ -33,7 +33,7 @@ def norm(s):
 # Names that are not funders (the free text yields a few), and names that mean the same funder.
 JUNK={'created','frank','german','spanish','projectsponsors','friendsassociation','eur','usd','gbp','municipal','triennial','artistrun','foundationcontributing','corporate','founding','privatephilanthropic','publicculturalbody','botdeal','francophonie','cabinet','senate','family','france','poland','namibianlaw','partnerscommittee','departement','christie','sotheby','expenses','culture','members','arts','tourism','501nonprofit','nonprofit','nonprofitassociation','related','founderfunded','selffunded','sports','shne','members','it','brandlicensingpartners','brandlicensing','agnciabrasil','artnewspaper','jakobsondeclinedto','paypal','other','others','public','private','local','national','regional'}
 # Fiscal years, percentages, counts and amounts are figures from the funding text, not funders.
-JUNK_RE=re.compile(r"(registered charity|subsidiary of|part of |sat on |shows credit|residenc|\bno\. ?\d|\b(19|20)\d\d\b"
+JUNK_RE=re.compile(r"(\b(?:says|said|reports|reported|describes|described|wrote|writes)\b|registered charity|subsidiary of|part of |sat on |shows credit|residenc|\bno\. ?\d|\b(19|20)\d\d\b"
                    r"|\bFY\s?\d|\d\s?%|^\d[\d.,]*\+?\s+(?:works|members|individuals|families|for|non-?profit|edition|report|artists|donors|people|employees)\b"
                    r"|^\d|^(?:a|per)\s+year$|\b(?:report|expenses)$|^about\s+\d|\bof it\b|\b(?:EUR|USD|GBP|CHF|NIS|FCFA|JPY|DKK|SEK|NOK|EU)\s?\d"
                    r"|\bcost about$|^the \d+(?:st|nd|rd|th) edition|\b(?:donated|gave|funded its|co-funded|was)\b|^holds\b|\bis an?$|\b[A-Z]\.[A-Z]$|^main partner\b)",re.I)
@@ -46,7 +46,9 @@ TRAIL_SUM_RE=re.compile(r"\s+\d[\d.,]*\s?(?:[kKmMbB]|million|billion|thousand|mn
 ALIAS={'warhol':'andywarhol','andywarholforvisualarts':'andywarhol','nea':'nationalendowmentforarts','canadacouncil':'canadacouncilforarts','nycdcla':'nycdepartmentofculturalaffairs','artscouncilenglandnationalportfolio':'artscouncilengland',
        # Open Society's national and regional foundations and its old names are one network (George Soros).
        'opensocietyinstitute':'opensociety','soros':'opensociety','sorosfoundations':'opensociety','kosovaforopensociety':'opensociety','opensocietyinitiativeforwestafrica':'opensociety','osiwa':'opensociety','mongolianforanopensociety':'opensociety','openinstitute':'opensociety'}  # values are norm() forms
-GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state'}
+GENERIC_GOV={'city government','state government','regional government','government','ministry of culture','county government','local authority','federal government','regional state',
+  # unnamed levels of government stay with their record too: 'Municipal government' had joined every French commune into one funder
+  'municipal government','provincial government','canton','departmental government'}
 # A funding sentence's verb rides along with the last name in it ("Mondriaan Fund also give", "Ville de Marseille support it",
 # "Stadt Wien gives an annual subsidy", "Logos include the National Lottery"): the verb and what follows it are cut off, so the
 # name keys with the same funder named elsewhere instead of making a second funder called "...also give" (user, 19 Nov 2026:
@@ -56,7 +58,15 @@ VERB_LEAD_RE=re.compile(r"^(?:logos|(?:prize |corporate |main |other )?partners|
 def clean_label(nm):
     nm=VERB_LEAD_RE.sub('',VERB_TAIL_RE.sub('',nm)).strip(' .,;-')
     nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',ROLE_RE.sub('',SUFFIX_RE.sub('',nm)))).strip(' .,;-')
-    if len(nm)<3 or len(nm)>60 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
+    # A bare figure after a name of two words or more is an amount from a table ('Fondazione CRT 670', 'Regione Toscana 2');
+    # after one word it is part of the name ('Fonds 21', 'WDR 3').
+    # A year or a sum after a currency stays, so the figure test below drops the phrase ('Year to March 2024', 'EUR 224,500').
+    if len(nm.split())>=3 and not re.search(r"\b(?:No|Nr|Channel|Radio|Studio|Room|Gallery)\s+\d+$|\b(?:19|20)\d\d$",nm,re.I):
+        nm=re.sub(r"\s+\d[\d.,]*$","",nm)
+        # ... and the currency before the sum goes with it ('Egyptian Ministry of Finance of EGP 110').
+        nm=re.sub(r"\s+(?:of\s+)?(?:EUR|USD|GBP|CHF|NOK|SEK|DKK|ISK|JPY|CAD|AUD|NZD|BRL|RUB|CNY|RMB|INR|EGP|ZAR|MXN|PLN|CZK|HUF|TRY|KRW|ILS|NIS|CLP|COP|ARS|PEN|UAH|KZT|AED|SAR|QAR)$","",nm)
+    # An official name that holds a list (protect_names) may run past 60 letters: "State of Baden-Württemberg Ministry of Science, Research and the Arts".
+    if len(nm)<3 or len(nm)>(90 if re.search(r"\b(?:of|for)\b.*\band\b",nm) else 60) or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
     return nm
 def merge_key(label,cat,country,rid):
     """One key per funder across the whole atlas. Public bodies are told apart by country, and generic
@@ -67,6 +77,33 @@ def merge_key(label,cat,country,rid):
     if label.lower() in GENERIC_GOV: return k+'|'+rid
     if cat=='gov': return k+'|'+country
     return k
+# One spelling, two bodies: a line whose name means another body than the one the same key means elsewhere gets its own
+# key here, by record (funder profiles fp37 to fp40, 20 Nov 2026: 'Genesis' is Hyundai's car brand at Cheongju and a UK
+# charity at the Young Vic). {(record id, key): key}
+# A value of None drops the name from that record: it is not a funder there ('La Nación' at the Teatro Colón is the newspaper
+# its figures come from).
+RECORD_KEY={
+ ('cheongju-craft-biennale-cheongju','genesis'):'genesismotor',          # Hyundai's Genesis car brand, not the UK Genesis Foundation
+ ('sak-p-sabanc-museum','ikea'):'ikearetail',                           # the IKEA shop in Istanbul, not IKEA Stiftung
+ ('kunstsammlung-nordrhein-westfalen','linklaters'):'linklatersllp',    # the law firm, not Fondation Linklaters
+ ('teatro-regio-di-parma','crditagricole'):'crditagricoleitalia',       # Crédit Agricole Italia
+ ('teatro-colon','lanacin'):None,                                       # the newspaper La Nación, cited for figures
+ ('american-museum-of-natural-history-new-york','chase'):'jpmorganchase', # JPMorgan Chase, not Jamaica's CHASE Fund
+ ('gam-galleria-civica-d-arte-moderna-e-contemporanea-di-torino','cittmetropolitana'):'cittmetropolitanaditorino',  # not Florence's
+ ('cantor-arts-center','iris'):'iriscantor',                            # the donor Iris Cantor, not Moscow's IRIS Foundation
+ ('burchfield-penney-art-center','cullen'):'cullenbuffalo',             # a Buffalo Cullen foundation, not Houston's
+ ('colomboscope-colombo','alliancefranaise'):'alliancefranaisedecolombo',   # the local Alliance, a separate association
+ ('african-artists-foundation-lagos','alliancefranaise'):'alliancefranaisedelagos',
+ ('villa-cavrois','neuflizeobc'):'neuflizeobcbank',                     # the bank, not its foundation
+ # 'Fidelity' at US spaces is Fidelity Investments or Boston's Fidelity Foundation; at UK spaces, the Fidelity UK Foundation
+ ('amon-carter-museum','fidelity'):'fidelityinvestments',('dallas-museum-of-art-dallas','fidelity'):'fidelityinvestments',
+ ('frank-lloyd-wright-houses-at-the-currier-museum','fidelity'):'fidelityinvestments',('nasher-museum-of-art-at-duke-durham','fidelity'):'fidelityfoundation',
+ ('tarrawarra-museum-of-art','victoria'):'victoriandepartmentofeducation',  # 'Victoria' there is the state's education department
+ ('kigali-genocide-memorial','sweden'):'sida',                          # "Sweden (Sida)": the aid agency, on the map as Sida
+ ('new-holland-island-st-petersburg','romanabramovich'):None,           # named as Millhouse's founder; Millhouse paid
+ ('new-holland-island-st-petersburg','iris'):None,                      # a partner that produced a concept, not a payer
+}
+def record_key(rid,k): return RECORD_KEY.get((rid,k),k)
 # Funders the page can highlight as right-wing sponsors. The atlas records carry no political field, so this is a short
 # curated list: only funders that appear in the records AND have a published source for their partisan giving.
 # Ronald Lauder is left off (user, 17 Nov 2026: "remove Ronald Lauder from the money maps list too").
@@ -144,8 +181,13 @@ def clean(tok):
     # "The museum depends on the Banco de la República": the funder is what follows "depends on".
     m1=re.search(r"\b(?:depends|relies|depending|relying)\s+(?:\w+\s+)?on\s+(?:the\s+)?(?=[A-Z])",tok)
     if m1: tok=tok[m1.end():].strip(" .")
-    m2=re.search(r"\b(?:funded|financed|supported|run|owned|operated|backed|seeded|subsidi[sz]ed|paid for|co-funded)\s+(?:\w+\s+)?by\s+",tok,re.I)
+    m2=re.search(r"\b(?:funded|financed|supported|run|owned|operated|backed|seeded|subsidi[sz]ed|paid for|co-funded|founded)\s+(?:\w+\s+)?by\s+",tok,re.I)
     if m2: tok=tok[m2.end():].strip(" .")
+    # "Donate page lists the Horace W. Goldsmith Foundation": the funder is what is listed.
+    m2b=re.search(r"\b(?:lists|names|credits|thanks)\s+(?:the\s+)?(?=[A-Z])",tok)
+    if m2b: tok=tok[m2b.end():].strip(" .")
+    # "In October 2024 the Aso O. Tavitian Foundation gave ...": the date opening the phrase is not part of the name.
+    tok=re.sub(r"^(?:in|since|by)\s+(?:(?:early|late|mid)\s+)?(?:[A-Z][a-z]+\s+)?(?:19|20)\d\d,?\s+","",tok,flags=re.I)
     # "the Glass-House Trust": the article would fail the capital-letter test below, so it goes; keys never held it.
     tok=re.sub(r"^the\s+","",tok,flags=re.I).strip(" .")
     # "Statutory body under the Ministry of Cultural Affairs": the funder is what follows "under".
@@ -153,40 +195,112 @@ def clean(tok):
     if m3: tok=tok[m3.end():].strip(" .")
     # "Astana Motors pays running costs", "Pinault bought Palazzo Grassi": a lowercase verb ends the name. Case matters:
     # "Pays de Montbéliard" is a name.
-    m4=re.search(r"\s(?:owns|owned|bought|pays|paid|supervised|cites|co-funds|funds|funded|financed|runs|ran|run|set up|took over|gave|donated|holds|cost|covers|provides|provided|manages|operates|operated|backs|backed|sponsors|sponsored|supports|supported|produces|lists|contributing|contributed|is|are|was|were|comes|traces|relying|returns|oversees|publishes|owns|drew|pledged|overseeing|sits|who|which|whose|that)\b",tok)
+    m4=re.search(r"\s(?:owns|owned|bought|pays|paid|supervised|cites|co-funds|funds|funded|financed|runs|ran|run|set up|took over|gave|donated|holds|cost|covers|provides|provided|manages|operates|operated|backs|backed|sponsors|sponsored|supports|supported|produces|lists|contributing|contributed|is|are|was|were|comes|traces|relying|returns|oversees|publishes|owns|drew|pledged|overseeing|sits|co-financed|co-finances|finances|approves|approved|granted|grants|partly|has|have|had|committed|added|add|adds|organises|organizes|organised|organized|appoints|appointed|refused|budgeted|refunded|raises|raised|voted|received|receives|listed|appear|appears|form|forms|among|asks|lost|sells|sold|makes|moved|earns|keeps|hosts|hosted|signed|who|which|whose|that)\b",tok)
     if m4:
         head=tok[:m4.start()].strip(" .,")
         tok=head if re.search(r"[A-Z]",head) else ''
     tok=re.sub(r"'s$","",tok).strip(" .")
     # A description beginning with an article or a size word is not a name.
-    if re.match(r"^(?:an?|its|his|her|their|no|tiny|small|large|independent|about|us arm|mostly|mainly|public funders|site logos|partners listed|institutional funding|family money|joint shows|board leadership|self-funding)\b",tok,re.I): return ''
+    # The space describing itself ("State museum on ...", "Private nonprofit", "Commonwealth statutory body", "City-owned"): a
+    # status word followed by lowercase words, or a sentence opening with a pronoun, names no funder.
+    if re.match(r"^(?:state|private|public|municipal|city|commonwealth|federal|national|registered|non-?profit|not-for-profit|artist-run|artist-owned|artists'|administrative|public-law|university|government|state-run|state-owned|city-owned|university-funded|self-financed|self-funded)(?:\s+[a-z][\w'-]*)*$",tok,re.I) and not re.search(r"\s[A-Z]",tok) and (len(tok.split())==1 and '-' in tok or re.search(r"\b(?:museum|nonprofit|non-profit|company|body|authority|enterprise|association|corporation|establishment|institution|charity|gallery|library|foundation|circus|science|research|theatre|theater|agency|organi[sz]ation|venue|centre|center|cooperative)$",tok,re.I)):
+        return ''
+    if re.match(r"^(?:it|there|these|this|they|most|recent|later|past|ongoing|operating|current)\b",tok,re.I) and not re.match(r"^(?:it|there|these|this|they)\b[A-Z]",tok): return ''
+    if re.match(r"^(?:an?(?=\s)|its|his|her|their|no|tiny|small|large|independent|about|us arm|mostly|mainly|public funders|site logos|partners listed|institutional funding|family money|joint shows|board leadership|self-funding)\b",tok,re.I): return ''
     return tok
 GOVGEN={'the city':'City government','city':'City government','the state':'State government','state':'State government','the region':'Regional government','the government':'Government','government':'Government','the ministry':'Ministry of Culture','the county':'County government','local authority':'Local authority','the federal government':'Federal government'}
 GOVGEN.update({'canton':'Canton','the canton':'Canton','federal':'Federal government','the federal government':'Federal government','county':'County government','the county':'County government',
   'province':'Provincial government','the province':'Provincial government','provincial government':'Provincial government','municipality':'Municipal government','the municipality':'Municipal government',
-  'commune':'Municipal government','the commune':'Municipal government','regional government':'Regional government','the regional government':'Regional government','crown':'Crown','the crown':'Crown','eu':'European Union','the eu':'European Union'})
+  'commune':'Municipal government','the commune':'Municipal government','regional government':'Regional government','the regional government':'Regional government','crown':'Crown','the crown':'Crown','eu':'European Union','the eu':'European Union',
+  # 'the Land' (a German state), 'the Comune', 'the Département': the line names no body, so they stay with their record
+  'land':'State government','the land':'State government','comune':'Municipal government','the comune':'Municipal government','region':'Regional government',
+  'département':'Departmental government','the département':'Departmental government','departement':'Departmental government'})
 VISITOR_RE=re.compile(r"^\s*(?:\w+\s+){0,4}(?:tickets?|admission|entry|entrance)\s+(?:costs?|is|are|was|fees?|prices?)\b|^\s*(?:\w+\s+){0,2}(?:is|are)\s+free\b",re.I)
 # ...unless the phrase says who pays for it ("free general admission is paid for by the Rosenthal Family Foundation").
 PAYER_RE=re.compile(r"\b(?:paid for|funded|sponsored|supported|underwritten|made possible|covered)\s+by\b|\bthanks to\b|\bcourtesy of\b",re.I)
 # Days and months are never funders; a sentence the filter above misses must still not turn one into a sponsor.
+# Money words and outlets the reader took for funders (sorting pass, 20 Nov 2026).
+JUNK|={'grantinaid','boxoffice','individualdonations','individuals','publicgrantsof','corefunding','subsidy','subsidies','donor','gifts','renovation','restoration',
+       'restored','reopened','closed','listed','philanthropy','charity','transfers','programmes','acquisitions','contributions','tuition','tours','turnover','entry',
+       'ticketing','dividends','endowments','structural','thirdparty','founder','formed','known','backed','managed','works','space','gala','project','lotteries',
+       'adultticket','yearto','operationsearned','residentrentbroughtin','ofeur','dailymaverick','newarab','le360','nkinsider','jewishchronicle','theartnewspaper','sostenitori','frderkreise','genossenschafter','verein'}
 JUNK|={'monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondays','tuesdays','wednesdays','thursdays','fridays','saturdays','sundays','weekends',
        'january','february','march','april','may','june','july','august','september','october','november','december'}
+# Official names that hold a list ("Department for Culture, Media and Sport", "Ministry of Education, Culture and Science",
+# "Institute of Museum and Library Services", "Swiss Agency for Development and Cooperation") were split at their commas and
+# "and" into 'Media', 'Sport', 'Science', 'Library Services' as funders of their own (about 60 fragment keys in Nov 2026). After
+# a body word and "of"/"for", the items that follow are kept with the name while each is a portfolio word.
+BODY_HEAD=re.compile(r"\b(?:Ministry|Ministries|Department|Dept|Secretariat|Agency|Office|Commissioner|Directorate(?:-General)?|Institute|Authority|Corporation|Commission|Council)\s+(?:of|for)\s+(?:the\s+)?",re.I)
+PORTFOLIO={w.lower() for w in """Culture|Cultures|Cultural Affairs|Arts|Art|Media|Sport|Sports|Science|Sciences|Education|Higher Education|Research|
+Innovation|Equality|Youth|Tourism|Heritage|National Heritage|Gaeltacht|Monuments|Antiquities|Museums|Community|Communities|Communications|Social Cohesion|
+Cooperation|Development|Library Services|Libraries|Archives|Digital|Information|Merit|Economy|Environment|Family|Families|Integration|Women|
+Recreation|Leisure|Languages|Diversity|Technology|Religious Affairs|Islamic Affairs|Labour|Employment|Health|Welfare|Creative Industries|
+Cultural Resources|Natural Resources|Broadcasting|Sport and Youth|Science and Technology|Information Technology|Heritage and Culture|Tradition|
+Historic Preservation|Multiculturalism|Local Government|Rural Affairs|Foreign Affairs|Trade|Sustainability|Climate|Interior|Housing|Universities|
+University|Training|Skills|Visual Arts|Performing Arts|Fine Arts|Crafts|Fisheries|Agriculture|Ethnic Affairs|Minorities|Regional Development|
+Palaces|Handicrafts|Letters|Humanities|History|Industry|Industries|Regions|Jobs|Civil Service|Public Credit|National Development|Science and Arts|Collections""".replace('\n','').split('|')}
+ITEM=re.compile(r"(?:the\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)")
+SEP=re.compile(r"(,\s+|\s+and\s+|\s+&\s+)")
+def protect_names(text):
+    """Mark the commas and "and"s inside official names so the splitter keeps each name whole (see BODY_HEAD); also
+    "Republic and Canton of Geneva" and the "CHARLES & KEITH Foundation"."""
+    out=[];pos=0
+    for h in BODY_HEAD.finditer(text):
+        if h.start()<pos: continue
+        m=ITEM.match(text,h.end())
+        if not m: continue
+        end=m.end();items=[]
+        while True:
+            sp=SEP.match(text,end)
+            if not sp: break
+            m2=ITEM.match(text,sp.end())
+            if not m2 or m2.group(1).lower() not in PORTFOLIO: break
+            # "Culture, Media and Sport, the city ...": an item is the name's last only if a separator or the end follows it.
+            items.append((sp.start(),sp.end()));end=m2.end()
+        if not items: continue
+        out.append(text[pos:h.end()])
+        seg=text[h.end():end]
+        seg=seg.replace(',','\u0001').replace(' and ',' \u0002 ').replace(' & ',' \u0003 ')
+        out.append(seg);pos=end
+    out.append(text[pos:]);text=''.join(out)
+    text=re.sub(r"\bRepublic and Canton of\b","Republic \u0002 Canton of",text)
+    text=re.sub(r"\bCHARLES & KEITH\b","CHARLES \u0003 KEITH",text)
+    return text
+def unprotect(s): return s.replace('\u0001',',').replace('\u0002','and').replace('\u0003','&')
+# A list heading ("Partners:", "Named supporters:", "Main sponsors:", "Gold sponsors include") is not a funder; only the
+# names after it are. Single words that open a sentence about how a space is run ("Owned and run by", "Privately funded")
+# were split off at "and" and read as funders too.
+HEADING_RE=re.compile(r"^(?:(?:main|principal|major|top|gold|silver|platinum|diamond|bronze|corporate|private|public|institutional|named|other|prize|project|founding|strategic|annual|structural|core|key|lead|individual|international|local|regional|current|programme|program|exhibition|season|official|premium|associate|supporting)\s+){0,3}(?:partners?|sponsors?|supporters?|patrons?|funders?|benefactors?|donors?|named|trusts?|foundations|subsidies|friends|logos|circles?|members?|grants?|lenders?|contributors?|backers?)(?:\s+(?:listed|named|circles?|include|includes))?$",re.I)
+LONE_WORD={'owned','run','privately','established','managed','funded','paid','financed','supported','backed','operated','endowed','founded','built',
+  'created','named','main','principal','structural','annual','core','contributions','subsidies','restoration','project','box','governed','jointly','largely',
+  # a first name left over from a couple ('Jane and Aatos Erkko Foundation', 'Michael and Janet Buxton')
+  'jane','michael','charles','william','walter','liz','nancy','janet','emma','john','mary','anne','ann','batia','bjrn','björn','christine','colin','donald','doug',
+  'erivan','evelyn','eyal','hans','jack','josef','julia','karen','marc','nadia','peter','sibylla','sidney','spyros','thomas','trammell','yenn','wilhelmina','renate','frank','agnes'}
 def parse_funding(text):
     out=[];seen=set()
     if not text: return out
     text=re.sub(r"\d{1,3}(?:,\d{3})+\s*(?:visits|visitors)","",text)
     text=re.sub(r"\s*\([^)]*\)","",text)
     text=re.sub(r"\s+\.",".",text)
-    for sent in re.split(r"(?<=[A-Za-z0-9\)])\.\s+(?=[A-Z$£€0-9])",text):
+    text=protect_names(text)
+    # A sentence ends at a full stop, but not after an initial ("Andrew W. Mellon", "Arthur M. Sackler", "J. Paul Getty") or a
+    # title: 'Andrew W' and 'Arthur M' were funders of their own until 20 Nov 2026.
+    for sent in re.split(r"(?<=[A-Za-z0-9\)])(?<!\b[A-Z])(?<!\bDr)(?<!\bSt)(?<!\bMr)(?<!\bMrs)(?<!\bMs)(?<!\bJr)\.\s+(?=[A-Z$£€0-9])",text):
         s0=PREFIX.sub('',sent.strip())
+        # "Partners: LMD, Suez Canal Bank": what comes before a colon is a heading when it reads as one.
+        hm=re.match(r"^([^:]{1,48}):\s+",s0)
+        if hm and HEADING_RE.search(hm.group(1).strip()): s0=s0[hm.end():]
         for raw in SPLIT.split(s0):
+            raw=unprotect(raw)
+            if raw.strip(" .").lower() in LONE_WORD or HEADING_RE.match(raw.strip(" .")): continue
             # A phrase about what a visitor pays or when entry is free ("Sundays are free", "Entry costs 20 dinars")
             # names no funder: "Sundays" came out as a corporate sponsor of Museo del Oro. Only the phrase is skipped,
             # since the same sentence often names the funder too ("admission is free thanks to Walmart").
             if VISITOR_RE.search(raw) and not PAYER_RE.search(raw): continue
             m=MONEY.search(raw); tok=clean(raw)
             if tok.lower() in GOVGEN: tok=GOVGEN[tok.lower()]
-            if not tok or len(tok)<3 or len(tok.split())>9: continue
+            # An official name kept whole (protect_names) may run longer: "Senate Department for Culture and Community of the State of Berlin".
+            if not tok or len(tok)<3 or len(tok.split())>(12 if re.search(r"\b(?:of|for)\b.*\band\b",tok) else 9): continue
             if not (tok[0].isupper() or tok[0].isdigit()): continue
             if tok.lower() in GENERIC: continue
             if re.search(r"\b(museum|gallery|galleries|centre|center|house|building|institution|school|library|archive|collection|theatre|theater)$",tok,re.I) and not FOUND.search(tok): continue
@@ -234,6 +348,7 @@ tr={'A':3,'B':2,'U':1}
 out=[]
 for x in d:
     ns=[dict(n) for n in nodes_by_inst[x['id']]]
+    ns=[n for n in ns if not (n['cat'] in ('gov','corp','found','priv') and not n.get('fin') and ((x['id'],merge_key(n['label'],n['cat'],x['country'],x['id'])) in RECORD_KEY) and RECORD_KEY[(x['id'],merge_key(n['label'],n['cat'],x['country'],x['id']))] is None)]
     # dedupe by label
     seen=set(); u=[]
     for n in ns:
@@ -243,7 +358,7 @@ for x in d:
     ns=u[:22]
     nodes=[];edges=[]
     for i,n in enumerate(ns):
-        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(n['key'] if n.get('fin') else ('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else merge_key(n['label'],n['cat'],x['country'],x['id'])) if n['cat'] in ('gov','corp','found','priv') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found','priv') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
+        nodes.append([n['label'],n['cat'],n['tier'],n['note'],0,(record_key(x['id'],n['key']) if n.get('fin') else ('right:'+right_basis(n['label'])['id']) if right_basis(n['label']) else record_key(x['id'],merge_key(n['label'],n['cat'],x['country'],x['id']))) if n['cat'] in ('gov','corp','found','priv') else ''] + ([right_basis(n['label'])] if n['cat'] in ('gov','corp','found','priv') and right_basis(n['label']) else [])); edges.append([0,i+1,{'flag':'flag recorded','epstein':'documented tie','wikileaks':'cable'}.get(n['src'],'funding')])
     taken={x['id']}; added=0
     for i,n in enumerate(ns):
         if not n['key']: continue
