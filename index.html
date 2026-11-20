@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=855"></script>
+  <script src="assets/load-image-data.js?v=856"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=855">
-  <link rel="stylesheet" href="assets/sheet.css?v=855">
-  <script src="assets/config.js?v=855"></script>
-  <script src="assets/analytics.js?v=855"></script>
-  <script src="assets/subtopic.js?v=855"></script>
-  <script src="assets/names.js?v=855"></script>
-  <script src="assets/grounding.js?v=855"></script>
-  <script src="assets/repeats.js?v=855"></script>
-  <script src="assets/intro-narration.js?v=855"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=856">
+  <link rel="stylesheet" href="assets/sheet.css?v=856">
+  <script src="assets/config.js?v=856"></script>
+  <script src="assets/analytics.js?v=856"></script>
+  <script src="assets/subtopic.js?v=856"></script>
+  <script src="assets/names.js?v=856"></script>
+  <script src="assets/grounding.js?v=856"></script>
+  <script src="assets/repeats.js?v=856"></script>
+  <script src="assets/intro-narration.js?v=856"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=855"></script>
+  <script src="assets/load-image.js?v=856"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1178,8 +1178,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=855"></script>
-  <script src="assets/money-ids.js?v=855"></script>
+  <script src="assets/institutions.js?v=856"></script>
+  <script src="assets/money-ids.js?v=856"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10816,11 +10816,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v855';
+    const ATLAS_RELEASE = 'culture-atlas-v856';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=854').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=855').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13536,10 +13536,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // THE SPACE'S OWN GROUND (user, 15 Nov 2026, of Nafasi Art Space, whose pin stood on open ground among buildings: "i do
     // not see museum building here"). A space that is a compound and not one building has no building under its pin: the pin
     // is the middle of its yard. assets/sites.json (tools/site_outlines.py) holds the outline OpenStreetMap gives for the
-    // space itself, for the records that have one with the pin inside it. While such a space is open, its ground is filled in
-    // the sheet's lime and edged in ink, under the buildings, so the buildings that stand on it read as the space's own.
+    // space itself, for the records that have one with the pin inside it. While such a space is open, its ground is washed
+    // and edged in its grade's colour, under the buildings, so the buildings that stand on it read as the space's own
+    // (user, 20 Nov 2026: "make it colored in grade color when selected"; it was the sheet's lime, edged in ink, for every
+    // space). The wash is two fifths of the colour, so the space's mark, in the full colour, still shows on it.
     // Where the outline is one building's footprint the building covers the fill and only the edge at its foot shows.
-    // The layers are named xray- so applyCityMapGossip leaves their colours alone; streetSiteColours sets them by theme.
+    // The layers are named xray- so applyCityMapGossip leaves their colours alone; streetSiteColours sets them by the open
+    // space's grade and the theme, each time the open space changes.
     let atlasSites = null, atlasSitesAsked = false;
     function atlasSiteOf(inst) { return (inst && atlasSites && inst.id && atlasSites[inst.id]) || null; }
     function atlasSitesLoad() {
@@ -13556,9 +13559,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const map = cityVectorMap;
       if (!map || typeof map.getLayer !== 'function' || typeof map.setPaintProperty !== 'function') return;
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const hex = spaceInk(selectedInstitution, !dark);   // the grade's colour, as the space's mark and bubble have it
       try {
-        if (map.getLayer('xray-site-fill')) map.setPaintProperty('xray-site-fill', 'fill-color', dark ? '#3d4416' : '#e2f86c');
-        if (map.getLayer('xray-site-line')) map.setPaintProperty('xray-site-line', 'line-color', dark ? '#e6e1d7' : '#000000');
+        if (map.getLayer('xray-site-fill')) { map.setPaintProperty('xray-site-fill', 'fill-color', hex); map.setPaintProperty('xray-site-fill', 'fill-opacity', 0.4); }
+        if (map.getLayer('xray-site-line')) { map.setPaintProperty('xray-site-line', 'line-color', hex); map.setPaintProperty('xray-site-line', 'line-width', 1.5); }
       } catch (e) { /* the style is between two states */ }
     }
     function syncStreetSite() {
@@ -13569,12 +13573,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const data = { type: 'FeatureCollection', features: rings ? [{ type: 'Feature', properties: {}, geometry: { type: 'MultiPolygon', coordinates: rings.map(r => [r]) } }] : [] };
       try {
         const src = map.getSource('xray-site');
-        if (src) { src.setData(data); return; }
+        if (src) { src.setData(data); if (rings) streetSiteColours(); return; }
         if (!rings) return;
         const under = map.getLayer('building') ? 'building' : undefined;
         map.addSource('xray-site', { type: 'geojson', data });
-        map.addLayer({ id: 'xray-site-fill', type: 'fill', source: 'xray-site', paint: { 'fill-color': '#e2f86c', 'fill-antialias': false } }, under);
-        map.addLayer({ id: 'xray-site-line', type: 'line', source: 'xray-site', paint: { 'line-color': '#000000', 'line-width': 1 } }, under);
+        map.addLayer({ id: 'xray-site-fill', type: 'fill', source: 'xray-site', paint: { 'fill-color': '#6b6b6b', 'fill-opacity': 0.4, 'fill-antialias': false } }, under);
+        map.addLayer({ id: 'xray-site-line', type: 'line', source: 'xray-site', paint: { 'line-color': '#6b6b6b', 'line-width': 1.5 } }, under);
         streetSiteColours();
       } catch (e) {
         // The style is still loading: once, when the map is next at rest.
@@ -22377,24 +22381,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=855"></script>
-<script src="assets/note-aids.js?v=855" defer></script>
-<script src="assets/place-list.js?v=855" defer></script>
-<script src="assets/chat-share.js?v=855" defer></script>
-<script src="assets/note-files.js?v=855" defer></script>
-<script src="assets/funding-views.js?v=855"></script>
-<script src="assets/layers.js?v=855"></script>
-<script src="assets/critique-gallery-data.js?v=855"></script>
-<script src="assets/critique-captions.js?v=855"></script>
-<script src="assets/critique-gallery.js?v=855"></script>
-<script src="assets/hq-detail.js?v=855"></script>
-<script src="assets/influence-mode.js?v=855"></script>
-<script src="assets/bubbles.js?v=855" defer></script>
-<script src="assets/phone-maps.js?v=855"></script>
-<script src="assets/desktop-maps.js?v=855"></script>
-<script src="assets/chat-resize.js?v=855"></script>
-<script src="assets/frame-refusers.js?v=855"></script>
-<script src="assets/link-pane.js?v=855"></script>
-<script src="assets/tab-suggest.js?v=855"></script>
+<script src="assets/typeset.js?v=856"></script>
+<script src="assets/note-aids.js?v=856" defer></script>
+<script src="assets/place-list.js?v=856" defer></script>
+<script src="assets/chat-share.js?v=856" defer></script>
+<script src="assets/note-files.js?v=856" defer></script>
+<script src="assets/funding-views.js?v=856"></script>
+<script src="assets/layers.js?v=856"></script>
+<script src="assets/critique-gallery-data.js?v=856"></script>
+<script src="assets/critique-captions.js?v=856"></script>
+<script src="assets/critique-gallery.js?v=856"></script>
+<script src="assets/hq-detail.js?v=856"></script>
+<script src="assets/influence-mode.js?v=856"></script>
+<script src="assets/bubbles.js?v=856" defer></script>
+<script src="assets/phone-maps.js?v=856"></script>
+<script src="assets/desktop-maps.js?v=856"></script>
+<script src="assets/chat-resize.js?v=856"></script>
+<script src="assets/frame-refusers.js?v=856"></script>
+<script src="assets/link-pane.js?v=856"></script>
+<script src="assets/tab-suggest.js?v=856"></script>
 </body>
 </html>
