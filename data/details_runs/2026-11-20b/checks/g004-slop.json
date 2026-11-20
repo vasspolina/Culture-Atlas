@@ -1,0 +1,369 @@
+[
+ {
+  "id": "museo-nacional-de-la-musica",
+  "section": "OVERVIEW",
+  "problems": [
+   "thin source: Cubadecentel, an undated travel site, the only source for the 2007 move to Obrapía 509"
+  ],
+  "before": "Cubadecentel says the collection moved to Obrapía 509 in 2007 while the Capdevila building was restored; Timba.com found most of the museum closed for remodelling in 2015.",
+  "after": "Timba.com found most of the museum closed for remodelling in 2015.",
+  "sources": [
+   "https://www.timba.com/report_pages/museo-nacional-de-da-m-sica",
+   "https://cubadecentel.com/havanaENG/museo_nacional_de_la_musica/museo_nacional_de_la_musicaENG1.htm"
+  ],
+  "reason": "No dated source confirming the 2007 move could be opened (Cubanet's 40th-anniversary piece is behind a bot wall); the Cubadecentel point is cut and the source removed. Timba.com's 2015 report holds."
+ },
+ {
+  "id": "museo-nacional-de-la-musica",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only figure: anthem manuscript",
+   "figure mis-sourced"
+  ],
+  "before": "It holds the original manuscript of the national anthem by Pedro Figueredo (Spanish Wikipedia); Diario de Cuba counts about 500,000 objects, and Wikipedia and Diario de Cuba say UNESCO classed the holdings as heritage to be preserved.",
+  "after": "UNESCO's LACULT cultural directory names Pedro Figueredo's original manuscript of the national anthem as the flagship of the collection, counts more than 500,000 documents and objects, and says UNESCO classed the holdings as heritage to be preserved (archive copy of 22 June 2025); Diario de Cuba gives about 500,000 objects.",
+  "sources": [
+   "https://web.archive.org/web/20250622164113/https://www.lacult.unesco.org/institucion/showitem.php?uid_ext=&getipr=&lg=1&pais=&id=19",
+   "https://web.archive.org/web/20251204000000/https://diariodecuba.com/cultura/1753613980_62190.html",
+   "https://www.timba.com/report_pages/museo-nacional-de-da-m-sica"
+  ],
+  "reason": "The Wikipedia sentence cites the UNESCO LACULT directory, which states the manuscript, the 500,000 figure and the heritage classification; re-sourced to it. Timba.com (2015) also names the anthem score in the Urfé archive."
+ },
+ {
+  "id": "museo-nacional-de-la-musica",
+  "section": "SOURCES",
+  "problems": [
+   "archive-only read not dated"
+  ],
+  "before": "(state outlet; read from the archived copy)",
+  "after": "(state outlet; read from the archive copy of 2026-08-23) / (2026-06-13)",
+  "sources": [
+   "https://web.archive.org/web/20260823194655/https://www.prensa-latina.cu/2024/09/09/identidad-de-un-museo-cubano-reflejada-en-la-historia-de-la-musica/",
+   "https://web.archive.org/web/20260613222919/https://www.prensa-latina.cu/2024/04/01/afamado-musico-italiano-donara-su-guitarra-a-museo-de-cuba/"
+  ],
+  "reason": "Prensa Latina refuses direct fetches; both archive copies opened and dated. Osmani Ibarra, the ten rooms and the Lo Surdo donation and sponsors confirmed."
+ },
+ {
+  "id": "museo-romantico-de-trinidad",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only figure: opening hours from an unreferenced infobox"
+  ],
+  "before": "Visiting: Spanish Wikipedia gives opening hours of 8:30 to 17:45, Tuesday to Saturday.",
+  "after": "(cut)",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Museo_Rom%C3%A1ntico_de_Trinidad"
+  ],
+  "reason": "The hours sit only in the Wikipedia infobox with no reference; no official or press source gives them (search returned travel aggregators only)."
+ },
+ {
+  "id": "museo-romantico-de-trinidad",
+  "section": "OVERVIEW",
+  "problems": [
+   "mis-credited: Escambray does not say it was Trinidad's first museum building"
+  ],
+  "before": "the first building in Trinidad to become a museum (EcuRed; Escambray, 2024).",
+  "after": "the first building in Trinidad to become a museum (EcuRed).",
+  "sources": [
+   "https://web.archive.org/web/20200128233524/http://www.ecured.cu/Palacio_del_Conde_de_Brunet",
+   "https://www.escambray.cu/2024/museo-romantico-la-perla-de-trinidad-fotos/"
+  ],
+  "reason": "EcuRed states it; Escambray gives only the opening date of 26 May 1974."
+ },
+ {
+  "id": "museo-romantico-de-trinidad",
+  "section": "SOURCES",
+  "problems": [
+   "archive-only reads not dated"
+  ],
+  "before": "read from the archived copy (three sources)",
+  "after": "archive copies of 2026-08-22 (Prensa Latina), 2023-06-02 and 2025-04-17 (Cubanet)",
+  "sources": [
+   "https://web.archive.org/web/20230602015815/https://www.cubanet.org/actualidad-destacados/museo-cerrado-por-derrumbe-a-poco-tiempo-de-su-reparacion/",
+   "https://web.archive.org/web/20250417220455/https://www.cubanet.org/museo-romantico-una-de-las-mansiones-mas-antiguas-de-trinidad/",
+   "https://web.archive.org/web/20260822230821/https://www.prensa-latina.cu/2024/06/28/derroteros-culturales-por-26-de-julio-en-provincia-cubana/"
+  ],
+  "reason": "Dated the archive reads. The 2015 ceiling collapse (Cubanet, 7 November 2015) stays under FUNDING, plainly dated, as ruled; injury, 2014 repair, and Rueda's budget quote confirmed."
+ },
+ {
+  "id": "taller-experimental-de-grafica-de-la-habana",
+  "section": "OVERVIEW",
+  "problems": [
+   "says more than the source: the Sosabravo show was announced for July, not reported as held"
+  ],
+  "before": "and showed 30 works by the founder Alfredo Sosabravo at the Biblioteca Nacional (ACN; Prensa Latina).",
+  "after": "and announced 30 works by the founder Alfredo Sosabravo for the Biblioteca Nacional in July (ACN; Prensa Latina).",
+  "sources": [
+   "https://www.acn.cu/cultura/celebra-sus-63-anos-taller-experimental-de-grafica-de-la-habana",
+   "https://web.archive.org/web/20250723011640/https://www.prensa-latina.cu/2025/06/12/taller-de-grafica-de-la-habana-63-anos-de-arte-y-promocion-cultural/"
+  ],
+  "reason": "Both outlets use the future tense ('se exhibirán en julio')."
+ },
+ {
+  "id": "taller-experimental-de-grafica-de-la-habana",
+  "section": "FUNDING",
+  "problems": [
+   "Smithsonian-only claim (Che Guevara's 1962 mandate)",
+   "absence clause"
+  ],
+  "before": "The Smithsonian reports that in 1962 Che Guevara ... / ... institutions in Europe and the Americas, without naming them.",
+  "after": "Smithsonian magazine (2016) reports that in 1962 Che Guevara ... / ... institutions in Europe and the Americas.",
+  "sources": [
+   "https://web.archive.org/web/20231225184652/https://www.smithsonianmag.com/travel/cuban-lithography-printmaking-tradition-cultural-travel-180960612/"
+  ],
+  "reason": "The mandate sentence is on the Smithsonian page word for word in substance; no second source opened confirms it (OnCuba, EcuRed, ACN and Prensa Latina credit Suárez, Venturelli and Díaz Peláez), so it stays credited plainly to Smithsonian with its year. The 'without naming them' clause was an absence statement."
+ },
+ {
+  "id": "teatro-nacional-de-cuba",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only figures from an article tagged as needing references: seat counts, first-stone date, Radio City model, 1961 closure",
+   "wrong figure: Covarrubias seats"
+  ],
+  "before": "Construction was approved in 1951 under President Carlos Prío Socarrás and the first stone was laid on 29 July 1952 (Spanish Wikipedia) ... Seats: the Wikipedia data box gives 2,254 for Avellaneda and 805 for Covarrubias ... the Wikipedia text gives 3,500 combined.",
+  "after": "Re-sourced to EcuRed's Teatro Nacional page (archive copy of 16 September 2026) and Havana Times 2012: site approved February 1951, Conesa's design, Batista's first stone (EcuRed: 29 June 1952), Covarrubias opened 20 February 1960, finished 3 September 1979; Avellaneda 2,254 seats, Covarrubias 850.",
+  "sources": [
+   "https://web.archive.org/web/20260916012158/https://www.ecured.cu/Teatro_Nacional_de_Cuba",
+   "https://havanatimes.org/features/cubas-national-theater-completely-restored/",
+   "https://es.wikipedia.org/wiki/Teatro_Nacional_de_Cuba"
+  ],
+  "reason": "The Wikipedia article carries a 'needs references' tag and its history section is unreferenced. EcuRed gives 29 June (not July) 1952 and 850 (not 805) seats for the Covarrubias; the Radio City model, the 1961 closure and the 3,500 total have no other source and are cut."
+ },
+ {
+  "id": "teatro-nacional-de-cuba",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only contractors"
+  ],
+  "before": "Construction: two months after the first stone, contracts went to Purdy & Henderson as civil contractor and Arroyo y Menéndez as technical director of the works (Spanish Wikipedia).",
+  "after": "Construction: the Purdy and Henderson Company signed the building contract on 25 October 1952 for $2,275,000 and 18 months of work; the budget ran out and the opening set for October 1954 was postponed (EcuRed).",
+  "sources": [
+   "https://web.archive.org/web/20260916012158/https://www.ecured.cu/Teatro_Nacional_de_Cuba"
+  ],
+  "reason": "EcuRed confirms Purdy and Henderson with date, sum and term; Arroyo y Menéndez appears in no source beyond the unreferenced Wikipedia text and is cut."
+ },
+ {
+  "id": "teatro-nacional-de-cuba",
+  "section": "OVERVIEW",
+  "problems": [
+   "thin source: CiberCuba citing Cubadebate unopened",
+   "thin source: Directorio Cubano"
+  ],
+  "before": "On 19 June 2026 the Ballet Nacional cancelled two performances of Giselle ... (CiberCuba, citing Cubadebate). / The closing gala of Cubadisco 2026 ... moved to the Pabellón Cuba (Directorio Cubano).",
+  "after": "(both cut; BOTTOM LINE no longer cites the 2026 air conditioning)",
+  "sources": [
+   "https://en.cibercuba.com/noticias/2026-06-20-u1-e209395-s27061-nid332896-suspendidas-funciones-giselle-falta-climatizacion",
+   "https://www.directoriocubano.info/acontecer/clausura-cubadisco-2026-suspendida-la-habana/"
+  ],
+  "reason": "Cubadebate refused the connection and its archive copy returned 403; no other outlet confirming either event could be opened (search found only rewrites and aggregators)."
+ },
+ {
+  "id": "teatro-nacional-de-cuba",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "absence clause"
+  ],
+  "before": "he was ordered not to reveal the complaints on social media; the article does not say who gave the order.",
+  "after": "he was ordered not to reveal the complaints on social media.",
+  "sources": [
+   "https://havanatimes.org/features/electrocution-risk-from-leaks-at-havanas-national-theater/"
+  ],
+  "reason": "Rest of the 2023 and 2012 Havana Times items confirmed against the pages."
+ },
+ {
+  "id": "union-de-escritores-y-artistas-de-cuba-uneac",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting sources: UNEAC president (OnCuba January 2024 vs 14ymedio September 2024)",
+   "unsupported: associations credited to Prensa Latina",
+   "over length"
+  ],
+  "before": "... its associations cover writers, film, radio and television, performing arts, visual arts and music (Prensa Latina, 2024). / Bonet spoke as president at the union's 10th congress ... / La Gaceta de Cuba and Caracol line / ECOSOC line",
+  "after": "Bonet replaced Morlote on 11 January 2024 (OnCuba); Prensa Latina reported her speaking as president at the 10th congress on 2 November 2024. Associations clause, Gaceta/Caracol and ECOSOC lines cut.",
+  "sources": [
+   "https://oncubanews.com/cultura/la-musicologa-marta-bonet-es-la-nueva-presidenta-de-la-uneac",
+   "https://web.archive.org/web/20250512081857/https://www.prensa-latina.cu/2024/11/02/cuba-x-congreso-de-la-uneac-salvando-primero-la-cultura/",
+   "https://www.14ymedio.com/cuba/expulsan-alina-barbara-lopez-uneac_1_1106246.html"
+  ],
+  "reason": "Settled: OnCuba (11 January 2024, citing official sources and the Party proposal) and Prensa Latina (2 November 2024, Bonet speaking as president at the congress) both postdate the change; 14ymedio's 'presidida hoy por Luis Morlote' of 13 September 2024 is out of date, and the press item says so. Prensa Latina's congress piece does not list the associations. Peripheral Wikipedia and self-stated lines cut to bring the report under 800 words."
+ },
+ {
+  "id": "union-de-escritores-y-artistas-de-cuba-uneac",
+  "section": "Red flags: 2025 protest resignation of Laideliz Herrera Laza",
+  "problems": [
+   "ruling check: protest must be public and aimed at the union",
+   "untranslated-quote marking"
+  ],
+  "before": "Red flags: 2025 resignation of Laideliz Herrera Laza over the union's silence ... she spoke to Martí Noticias (Cubanet).",
+  "after": "Red flags: 2025 protest resignation of Laideliz Herrera Laza ... announced her resignation in a Facebook post ... In the post and to Martí Noticias she accused UNEAC ... (a state policy that censors, my translation) (Cubanet).",
+  "sources": [
+   "https://web.archive.org/web/20250826230816/https://www.cubanet.org/escritora-cubana-renuncia-a-la-uneac-por-su-silencio-ante-la-represion/"
+  ],
+  "reason": "Cubanet (18 August 2025) quotes her published Facebook statement ('se lee en la publicación') accusing UNEAC of serving a state policy that censors, and her interview with Martí Noticias: a public protest aimed at the union, so the heading stays under the ruling."
+ },
+ {
+  "id": "union-de-escritores-y-artistas-de-cuba-uneac",
+  "section": "Red flags / CRITICISM IN ART MEDIA / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "added detail: '11 July 2021 protests'",
+   "repetition: press items restated the Red flags points; PEN grounds stated twice",
+   "bottom line restated funding"
+  ],
+  "before": "solidarity with the 11 July 2021 protests ... / PEN International records the grounds as ... / Reports the expulsion and López's reply: the decision was verbal ... / Dues and a state contribution pay for the union ...",
+  "after": "solidarity with the 11 July movement ... / PEN grounds line cut / press items keep only López's article 56 argument, the Morlote error and Fernández Era's 'se limpió las manos' / verdict-only bottom line",
+  "sources": [
+   "https://www.14ymedio.com/cuba/expulsan-alina-barbara-lopez-uneac_1_1106246.html",
+   "https://www.14ymedio.com/cuba/jorge-fernandez-renuncia-uneac-solidaridad_1_1106327.html",
+   "https://www.pen-international.org/cases/alina-brbara-lpez-hernndez"
+  ],
+  "reason": "14ymedio says 'movimiento del 11 de julio' with no year. The 2024 López expulsion stays a Red flag as ruled; statutes articles 2, 8, 79, 81 and 83 to 85 confirmed in the archived PDF."
+ },
+ {
+  "id": "villa-rothmayer",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only figure: CZK 23 million restoration cost from an unreferenced sentence",
+   "absence statements"
+  ],
+  "before": "Restoration: Czech Wikipedia puts the cost of the three-year reconstruction and restoration at CZK 23 million. / The report does not split out the villa. / ... without saying which buildings they paid for.",
+  "after": "Restoration: the Gallery of the City of Prague, then in charge of the villa, put the reconstruction at CZK 23 million in August 2012 (ČTK via Archiweb); a ČTK report of April 2014 gives the same planned cost. / Hlídač státu counts 109 subsidies received by the museum from 2010 to 2025, worth CZK 104 million.",
+  "sources": [
+   "https://www.archiweb.cz/en/n/home/znama-rothmayerova-vila-bude-po-oprave-pristupna-verejnosti",
+   "https://archiweb.cz/en/n/home/praha-sverila-rothmayerovu-vilu-muzeu-otevre-se-pristi-rok",
+   "https://www.hlidacstatu.cz/subjekt/00064432"
+  ],
+  "reason": "Re-sourced the 23 million to two ČTK reports republished by Archiweb; worded as the planned cost, not a gift. Annual report 2024 figures (227,913.4 thousand, 23.1 million, 254,897 thousand, 3,558 visitors, Iconic Houses) confirmed in the PDF."
+ },
+ {
+  "id": "villa-rothmayer",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "conflicting dates: purchase year 2007 vs 2008"
+  ],
+  "before": "The family lived there until 2008; the architect's son ... sold it to the city ... (Novinky; Czech Wikipedia). The museum dates the purchase to 2007. / Owner and operator: the City of Prague owns the villa ...",
+  "after": "The museum and a 2007 ČTK report (Archiweb) date the purchase to 2007; Novinky and Czech Wikipedia say the family lived there until 2008 and give 2008 for the sale. / the Prague city council agreed in 2007 to pay CZK 12 million for the villa, its period furnishings and garden (ČTK via Archiweb); the city entrusted it to the Museum of Prague in 2014.",
+  "sources": [
+   "https://www.muzeumprahy.cz/en/visit-research-sdcn-rekonstrukce/",
+   "https://www.archiweb.cz/en/n/home/praha-kupuje-rothmayerovu-vilu-otevre-se-verejnosti",
+   "https://www.novinky.cz/clanek/cestovani-tipy-na-vylety-rothmayerova-vila-v-praze-se-otevira-verejnosti-327389"
+  ],
+  "reason": "Both years stated with their sources; the council decision and price come from ČTK. The 2014 hand-over moved from OVERVIEW to FUNDING so it is stated once."
+ },
+ {
+  "id": "museo-de-arte-moderno-de-santo-domingo",
+  "section": "Red flags: 2019 to 2021 protests over the delayed 29th Bienal -> WIDER CONTEXT",
+  "problems": [
+   "ruling: protests before November 2021 go to WIDER CONTEXT",
+   "repetition: press items restated the protest facts"
+  ],
+  "before": "Red flags: 2019 to 2021 protests over the delayed 29th Bienal (three points: December 2019 postponement and protest call, July 2020 letter, June 2021 letter)",
+  "after": "WIDER CONTEXT: the same three events, dated, with a closing point that the museum was the venue and its directors were named. Press items 1 and 2 now carry only the arguments (negligence and a Bienal independent of one building; the 'carecen de voluntad política' line).",
+  "sources": [
+   "https://diariolibre.com/revista/cultura/artistas-visuales-convocan-a-protesta-por-posposicion-de-la-bienal-nacional-AN15906262",
+   "https://elnuevodiario.com.do/artistas-califican-de-negligencia-la-no-celebracion-de-la-bienal-nacional-de-artes-visuales/",
+   "https://www.diariolibre.com/revista/cultura/mas-de-60-artistas-denuncian-deficiente-manejo-de-29-bienal-de-artes-visuales-ED27063986"
+  ],
+  "reason": "Applied the editor's ruling. The two 2025 headings stay as Red flags: Resolution 18-2025 (signed by Minister Salcedo as the commission's 'órgano superior jerárquico'), the jury letter, Batlle, the prize-winners and the 155-signature letter, and Ramón Peña's catalogue boycott, all confirmed."
+ },
+ {
+  "id": "museo-de-arte-moderno-de-santo-domingo",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "repetition: 2019 remodelling delay stated in FUNDING and the protest section",
+   "bottom line restated facts",
+   "over length",
+   "untranslated quotations not marked"
+  ],
+  "before": "Building: in December 2019 the ministry said its remodelling of the museum was unfinished (Diario Libre, 2019). / ... delays, missing catalogues and an overturned jury award.",
+  "after": "(FUNDING point cut; stated once in WIDER CONTEXT) / Its disputes concern the ministry's running of the Bienal held there.",
+  "sources": [
+   "https://inmobiliario.do/un-bano-de-cultura-visual-que-deleita-los-sentidos-asi-es-el-museo-de-arte-moderno/",
+   "https://presidencia.gob.do/noticias/ministro-roberto-angel-salcedo-inauguro-la-bienal-nacional-de-artes-visuales",
+   "https://cultura.gob.do/wp-content/uploads/2025/11/Resolucin-nm.-18-2025-que-conoce-el-recurso-jerrquico-interpuesto-por-el-colegio.pdf"
+  ],
+  "reason": "Overview and funding lines tightened to bring the report under 800 words; translations marked as mine; the 'potted' descriptor dropped (the resolution names the work and its perishable material only)."
+ },
+ {
+  "id": "6th-of-october-war-panorama",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only claim: run by the Military Museums Department (English Wikipedia unreferenced; Arabic Wikipedia's State Information Service citation is an empty archive copy)"
+  ],
+  "before": "Commissioned by President Mubarak (Egypt Independent) and run by the National Military Museums Department (English Wikipedia; Arabic Wikipedia, which says the department took charge on opening day).",
+  "after": "Commissioned by President Mubarak (Egypt Independent) and run by the armed forces: in October 2025 the armed forces' Military Research Authority held its 18th \"Memory of October\" exhibition there under the supervision of the Military Museums Department and others (Sada El Balad, 7 October 2025).",
+  "sources": [
+   "https://www.elbalad.news/6723105",
+   "https://www.egypttelegraph.com/article/186161/",
+   "https://web.archive.org/web/20160806185252/http://sis.gov.eg/En/Templates/Articles/tmpArticles.aspx?ArtID=1388"
+  ],
+  "reason": "Re-sourced to dated Egyptian press; no source opened states in so many words that the department runs it, so the text says what Sada El Balad and Egypt Telegraph report."
+ },
+ {
+  "id": "6th-of-october-war-panorama",
+  "section": "OVERVIEW / FUNDING / BOTTOM LINE",
+  "problems": [
+   "thin source: Shbabbek lifestyle site (halls, 2023 prices)",
+   "thin source: Egypt Telegraph 'no date'",
+   "area figure from Wikipedia whose cited page is an empty archive copy",
+   "overstated: 'built in collaboration with' Mansudae",
+   "hedge in source paraphrase ('likely connected')"
+  ],
+  "before": "Shbabbek listed five halls in 2023, among them the \"Army and People\" hall ... / Shbabbek gave 100 to 200 pounds ... / about 32,000 square metres (7.5 feddans) (English Wikipedia; Egypt Independent) / Public Delivery says it was built in collaboration with ... Mansudae / ... including recent politics.",
+  "after": "Shbabbek points cut / about 31,000 square metres (al-Dostor, 2025) / Public Delivery lists it among the works of Mansudae Overseas Projects / Egypt Telegraph dated 5 October 2025 / bottom line ends 'the army's version of the war'.",
+  "sources": [
+   "https://shbabbek.com/show/220246",
+   "https://www.dostor.org/5251048",
+   "https://publicdelivery.org/mansudae-overseas-project/"
+  ],
+  "reason": "No better source confirmed the 'Army and People' hall or 2023 prices, so they and the bottom line's 'recent politics' go. Egypt Telegraph carries a dateline of 5 October 2025, so the point stays with its date. Mansudae stays in WIDER CONTEXT as a 1980s builder, not a funder, as ruled."
+ },
+ {
+  "id": "contemporary-image-collective-cairo",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "tense: Ford grants (2009 to 2017) presented as current",
+   "bottom line restated funders"
+  ],
+  "before": "Contemporary Image Collective: grant-funded non-profit: the Ford Foundation, the Arab Fund for Arts and Culture and the British Council / CiC runs on foreign private and public grants, chiefly the Ford Foundation, with regional money from the Arab Fund for Arts and Culture, and no flagged funder.",
+  "after": "Contemporary Image Collective: grant-funded non-profit: Ford Foundation grants from 2009 to 2017, British Council money for its library, an Arab Fund for Arts and Culture grant in 2024 / CiC lives on project grants from foreign and regional funders, none of them flagged.",
+  "sources": [
+   "https://web.archive.org/web/20241106204451/https://www.fordfoundation.org/work/our-grants/awarded-grants/grants-database/contemporary-image-collective-cic-109441",
+   "https://web.archive.org/web/20250213220030/https://www.fordfoundation.org/work/our-grants/awarded-grants/grants-database/stiftelsen-contemporary-image-collective-125467",
+   "https://web.archive.org/web/20250219174022/https://www.arabculturefund.org/Projects/7437"
+  ],
+  "reason": "The four Ford grants (120,000, 215,000, 240,000, 200,000 dollars; total 775,000) ran from August 2009 to October 2017; the newest dated funder is AFAC (2024). Archive copies dated."
+ },
+ {
+  "id": "contemporary-image-collective-cairo",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "misread source: residencies",
+   "vague date: Jankowicz's departure",
+   "source said more narrowly: DutchCulture"
+  ],
+  "before": "It has no fixed residency programme and invites artists for occasional residencies within its programme (TransArtists). / Contemporary And later reported that Jankowicz had left. / DutchCulture reports that independent spaces in Cairo depend on grants from abroad and rarely mention public funding.",
+  "after": "It has no fixed residency programme but considers proposals (TransArtists). / Contemporary And reported in 2013 that Jankowicz had left. / DutchCulture reported in 2025 that artists in Egypt depend on grants from abroad.",
+  "sources": [
+   "https://www.transartists.org/en/air/contemporary-image-collective",
+   "https://contemporaryand.com/en/c-and-magazine/texts/inside-the-library-cic-cairo",
+   "https://dutchculture.nl/en/news/between-renewal-and-loss-cairos-alternative-art-scene"
+  ],
+  "reason": "Each point cut back to what the page states."
+ },
+ {
+  "id": "medrar-for-contemporary-art-cairo",
+  "section": "OVERVIEW / BOTTOM LINE",
+  "problems": [
+   "says more than the source: 10th festival 'held in 2021'",
+   "bottom line restated the funder list"
+  ],
+  "before": "the 10th was held in 2021, / Medrar lives on project grants from foreign governments, European cultural agencies, the European Union and Arab and international arts funds, with no flagged funder. The weak point is its dependence on renewing those grants.",
+  "after": "the 10th edition's page is dated 2021, / Medrar's money is project grants, none from a flagged funder. The weak point is its dependence on renewing them.",
+  "sources": [
+   "https://cvf.medrar.org/about-cvf10/",
+   "https://cvf.medrar.org/acknowledgements-2/",
+   "https://cvf.medrar.org/acknowledgments-11/"
+  ],
+  "reason": "The CVF10 page carries a 2021 copyright and dates the first edition sixteen years back but gives no festival dates. All funders, the staff list, the address and the AFAC 2019 grant (archive copy of 2024-06-20) confirmed."
+ }
+]

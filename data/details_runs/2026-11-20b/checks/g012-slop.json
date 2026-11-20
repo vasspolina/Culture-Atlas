@@ -1,0 +1,271 @@
+[
+ {
+  "id": "international-friendship-exhibition",
+  "section": "overview",
+  "problems": [
+   "archive-only source: Bloomberg 2007 (Bradley Martin) read only in a web.archive.org repost of nkeconwatch.com, which serves a challenge page to automated reads"
+  ],
+  "before": "Bloomberg reported in 2007 that Kim Jong Il's 20,000 square metre annex was completed in 1996 ... a guide told Bloomberg Kim Il Sung's gifts numbered 221,411 and Kim Jong Il's 55,423 (2007)",
+  "after": "Ministry of Unification (North Korea Knowledge Dictionary 2021): Kim Jong Il's gift hall, two storeys and 46,000 square metres, opened 31 March 1989; over 220,000 gifts to Kim Il Sung from over 180 countries and about 55,000 to Kim Jong Il on display in 2007. Reuters' 2006 count of more than 220,000 restored from the earlier report.",
+  "sources": [
+   "https://nkinfo.unikorea.go.kr/nkp/knwldg/view/knwldg.do?menuId=NK_KNWLDG_DICARY&knwldgNo=154",
+   "https://www.theage.com.au/lifestyle/north-korean-museum-shows-off-leaders-gifts-20061222-gdp3p6.html"
+  ],
+  "reason": "RUN.md archive rule and the batch ruling. Searches found no other readable source for Martin's annex size, 1996 date, guide counts, Ace Bed furniture, bronze doors or famine framing, so all Bloomberg points were cut; the ministry's dictionary carries the gift counts and the 1989 hall."
+ },
+ {
+  "id": "international-friendship-exhibition",
+  "section": "funding",
+  "problems": [
+   "archive-only source: Bloomberg (Ace Bed Co. furniture; 'Building cost' point on the 1996 annex during the famine, four-ton bronze doors, guide quote)"
+  ],
+  "before": "Bloomberg named Ace Bed Co. as the source of two roomfuls of gilded furniture. / Building cost: Bloomberg reported that the annex was completed in 1996, while famine was starving tens of thousands ...",
+  "after": "Cut. Reuters' named gifts (Hyundai sedan, Ted Turner clock, South Korean furniture maker's living-room set) kept.",
+  "sources": [
+   "https://www.nkeconwatch.com/2007/05/16/kim-jong-il-gets-the-gifts-and-all-north-korea-ends-up-paying/"
+  ],
+  "reason": "nkeconwatch.com returned 403 with a Cloudflare challenge; Bloomberg's own page refuses automated reads; no other source carries the facts."
+ },
+ {
+  "id": "international-friendship-exhibition",
+  "section": "press",
+  "problems": [
+   "archive-only press item: Bloomberg 2007 via archived nkeconwatch repost",
+   "dead URL for Time: archive copy used though the live time.com/archive page is readable"
+  ],
+  "before": "1. Bloomberg: Bradley Martin ... (2007) URL: https://web.archive.org/web/2016/http://www.nkeconwatch.com/... / TIME URL: web.archive.org copy",
+  "after": "Bloomberg item cut; Time item now cites https://time.com/archive/6947648/journey-to-north-korea-part-ii-the-pack-rat-dictatorship/ and its gift count is no longer repeated from OVERVIEW. NK News 2023 item marked 'Paywalled; only the opening paragraphs were read'.",
+  "sources": [
+   "https://time.com/archive/6947648/journey-to-north-korea-part-ii-the-pack-rat-dictatorship/",
+   "https://www.nknews.org/?p=924418"
+  ],
+  "reason": "Archive rule. Time's live page was read via WebFetch (curl got 406). NK News 2020 and 2023 opening paragraphs support the Xi bust and the 111-page book only."
+ },
+ {
+  "id": "international-friendship-exhibition",
+  "section": "overview",
+  "problems": [
+   "weak spot: conflicting province",
+   "repetition: shoes and bowing (Wikipedia, from The Independent) repeated the Independent press item",
+   "attribution: English Wikipedia names the province, not Hyangsan County"
+  ],
+  "before": "The ministry and English Wikipedia place the county in North Pyongan Province; Korean Wikipedia places it in Chagang Province. / Wikipedia says shoes are removed and visitors are asked to bow",
+  "after": "Province: the Ministry of Unification places it in Hyangsan County, North Pyongan, and English Wikipedia in North Pyongan; Korean Wikipedia places Hyangsan County in Chagang. Shoes and bowing now only in the Independent item.",
+  "sources": [
+   "https://nkinfo.unikorea.go.kr/nkp/knwldg/view/knwldg.do?menuId=NK_KNWLDG_DICARY&knwldgNo=154",
+   "https://ko.wikipedia.org/wiki/%EA%B5%AD%EC%A0%9C%EC%B9%9C%EC%84%A0%EC%A0%84%EB%9E%8C%EA%B4%80",
+   "https://en.wikipedia.org/wiki/International_Friendship_Exhibition"
+  ],
+  "reason": "Both provinces stated with their sources; Koryo Tours dated (23 December 2019); Yonhap date (31 January 2026) added; bottom line cut to the verdict. Report now 797 words (was 866)."
+ },
+ {
+  "id": "hoeryong-revolutionary-history-museum",
+  "section": "overview",
+  "problems": [
+   "ruling: researcher's match by name and shared director not stated as such",
+   "repetition: Native House in OVERVIEW and Not related",
+   "Koryo Tours undated"
+  ],
+  "before": "Korean Wikipedia's page on Hoeryong lists a Kim Jong Suk revolutionary museum (김정숙혁명사적관) that opened in October 1974 ... The museum is a short walk from that statue and, over a hill, from her Native House.",
+  "after": "Founding: Korean Wikipedia lists a Kim Jong Suk revolutionary museum in the city that opened in October 1974 ... The atlas links that museum to this one only by a match of names and a shared director in the Ministry of Unification's directory. Native House now only under Not related; Koryo Tours dated May 2020.",
+  "sources": [
+   "https://ko.wikipedia.org/wiki/%ED%9A%8C%EB%A0%B9%EC%8B%9C",
+   "https://nkinfo.unikorea.go.kr/nkp/pblictn/view.do?menuId=OC0002&pblictnNo=210",
+   "https://koryogroup.com/travel-guide/hoeryong-revolutionary-history-museum-north-korea-travel-guide"
+  ],
+  "reason": "Directory confirms Ri Sun Sil heads both 김정숙동지혁명사적관 and 회령혁명사적관, Jong Sin Hui section chief. Bottom line cut to the verdict."
+ },
+ {
+  "id": "north-hamgyong-provincial-revolutionary-history-museum",
+  "section": "overview",
+  "problems": [
+   "ruling: match by name not stated; 1969 founding unqualified",
+   "repetition: 'every province has one' and 'staff guide visits' in OVERVIEW and FUNDING; E-Library in OVERVIEW and Not related"
+  ],
+  "before": "Founding: ... Ri Hi Yong ... attended a meeting marking the 50th anniversary of the founding of the 함경북도혁명사적관 ... which dates it to 1969. / Network: Koryo Tours says every province has one and that museum staff guide the visits.",
+  "after": "The directory lists a 함경북도혁명사적관 separately from the province's Comrade Kim Il Sung Revolutionary Museum, and the atlas matches this museum to the first by name only. On that match, the ministry's 2022 personnel profiles record ... which dates it to 1969. Network point and the OVERVIEW E-Library line cut.",
+  "sources": [
+   "https://nkinfo.unikorea.go.kr/nkp/pblictn/view.do?menuId=OC0002&pblictnNo=210",
+   "https://nkinfo.unikorea.go.kr/nkp/pblictn/view.do?menuId=OC0002&pblictnNo=211",
+   "https://koryogroup.com/travel-guide/north-hamgyong-provincial-revolutionary-history-museum-north-korea-travel-guide"
+  ],
+  "reason": "Ri Hi Yong's profile has '2019.10 함경북도혁명사적관 창립 50주년 기념보고회 참석'; directory has Kim Un Hwa as section chief and Ri Chang Il at the Kim Il Sung museum."
+ },
+ {
+  "id": "kaesong-koryo-museum-kaesong",
+  "section": "funding",
+  "problems": [
+   "archive-only source: UNESCO page read from web.archive.org; whc.unesco.org serves a challenge page to curl and 403 to WebFetch"
+  ],
+  "before": "Kaesong Koryo Museum: state-run: managed by the Kaesong People's Committee / Management: UNESCO's listing says each component ... Cultural Preservation Department of the Kaesong People's Committee ...",
+  "after": "Kaesong Koryo Museum: state-run: a North Korean state museum. Management point cut. UNESCO component and 2013 inscription now from Wikipedia's Historic Monuments and Sites in Kaesong page.",
+  "sources": [
+   "https://web.archive.org/web/20161117190052/http://whc.unesco.org/en/list/1278",
+   "https://en.wikipedia.org/wiki/Historic_Monuments_and_Sites_in_Kaesong"
+  ],
+  "reason": "RUN.md archive rule; no other readable source names the managing body. The 23 June 2013 date rested on the archive copy and became 2013."
+ },
+ {
+  "id": "kaesong-koryo-museum-kaesong",
+  "section": "funding",
+  "problems": [
+   "missing finding: Na Kyung-won's account of the exhibition at the museum",
+   "directory entry name not given",
+   "bottom line restated a funding fact"
+  ],
+  "before": "lists Paek Sol (백솔) as director (my romanisation). / The money paid for the dig, not the museum. / bottom line: South Korean public money reached the site only through the joint excavation and its 2015 exhibition.",
+  "after": "lists Paek Sol (백솔) as director of the Koryo Museum (고려박물관). Added: she wrote that the Kaesong show was laid out in a makeshift tent hall on the museum grounds, with no control of humidity or sunlight. Bottom line is the verdict only.",
+  "sources": [
+   "https://m.seoul.co.kr/news/2015/11/04/20151104006010",
+   "https://www.ajunews.com/view/20151015192939246",
+   "https://nkinfo.unikorea.go.kr/nkp/pblictn/view.do?menuId=OC0002&pblictnNo=210"
+  ],
+  "reason": "Seoul Shinmun (Na, 4 November 2015) and Ajunews checked: 3.7 billion won incl. 2.2 billion from the Inter-Korean Cooperation Fund, about 100 finds, 15 October to 15 November. Koryo Tours dated 11 December 2018."
+ },
+ {
+  "id": "korean-art-gallery-pyongyang",
+  "section": "overview",
+  "problems": [
+   "weak spot: opening year 1948 or 1954",
+   "Koryo Tours date attached to a later point"
+  ],
+  "before": "Opening year: Koryo Tours says 1954; Wikipedia and Koryo Studio say 1948, Wikipedia giving 11 August 1948.",
+  "after": "Opening year: Koryo Tours (13 April 2020) says 1954; Koryo Studio (2024) and Wikipedia's text say 1948, Wikipedia giving 11 August 1948, though its categories file the gallery under 1954.",
+  "sources": [
+   "https://koryogroup.com/blog/travel-guide-korean-central-art-museum",
+   "https://koryostudio.com/blog/art-galleries-north-korea/",
+   "https://en.wikipedia.org/wiki/Korean_Art_Gallery"
+  ],
+  "reason": "Both years stated with their sources. Ministry points (2015 meeting, 2017 show, 2020 KCNA claim, 7 October 2026 exhibition, 2019 Yonhap website) and directory entries checked. Bottom line cut to the verdict."
+ },
+ {
+  "id": "korean-revolution-museum",
+  "section": "overview",
+  "problems": [
+   "archive-only source: North Korea Leadership Watch read from web.archive.org; nkleadershipwatch.org serves a challenge page",
+   "attribution: 'on Mansu Hill' credited to Wikipedia, which does not say it"
+  ],
+  "before": "State media reported on 28 March 2017 that Kim Jong Un toured the renovated museum, where he embraced its curator, Hwang Sun Hui (North Korea Leadership Watch). / State history museum on Mansu Hill ... (Wikipedia)",
+  "after": "South Korea's Ministry of Unification records that Kim Jong Un inspected the rebuilt museum in March 2017 and thanked ... / State history museum in central Pyongyang, next to the Mansudae Assembly Hall ... (Wikipedia); Mansu Hill stays in the RFA point.",
+  "sources": [
+   "https://nkinfo.unikorea.go.kr/nkp/pblictn/view.do?menuId=OC0002&pblictnNo=211",
+   "https://web.archive.org/web/2020/http://www.nkleadershipwatch.org/2017/03/31/kju-visits-korean-revolution-museum/",
+   "https://en.wikipedia.org/wiki/Korean_Revolution_Museum"
+  ],
+  "reason": "Archive rule. Kim Jong Un's profile lists '2017. 3 새로 개건된 조선혁명박물관 현지지도' and the 2019 to 2020 thanks; the embrace detail had no other readable source."
+ },
+ {
+  "id": "korean-revolution-museum",
+  "section": "press",
+  "problems": [
+   "archive-only press item: North Korea Leadership Watch 2017",
+   "untranslated title not marked as translation",
+   "repetition: second Red flags point and bottom line restated the KCNA Party tie"
+  ],
+  "before": "3. North Korea Leadership Watch: \"KJU Visits Korean Revolution Museum\" (2017) ... Read from an archived copy. / - The museum is a state institution, and KCNA ties it to the Party the order names.",
+  "after": "NKLW item cut; RFA item gives 남북한의 기념박물관 with 'my translation and romanisations'; the second Red flags point cut (the tie stays in FUNDING); bottom line is the verdict only.",
+  "sources": [
+   "https://www.rfa.org/korean/weekly_program/d1b5c77cbb38d654c0b0cc45/uniculture-11102016145608.html",
+   "https://www.koreaherald.com/view.php?ud=20220411000167",
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "The NKLW item was a summary of state claims, not criticism, and its live site refuses automated reads. Kim Jong Im's title now as the ministry's profile gives it (前 당 역사연구소장)."
+ },
+ {
+  "id": "mangyongdae-children-s-palace",
+  "section": "overview",
+  "problems": [
+   "unsupported: 'Wikipedia call it the largest'",
+   "Koryo Tours undated",
+   "bottom line restated the Kim Jong Un equipment point"
+  ],
+  "before": "Koryo Tours and Wikipedia call it the largest of North Korea's schoolchildren's palaces.",
+  "after": "Koryo Tours (January 2019) and the Ministry of Unification call it the largest of North Korea's schoolchildren's palaces.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mangyongdae_Children%27s_Palace",
+   "https://nkinfo.unikorea.go.kr/nkp/knwldg/view/knwldg.do?menuId=NK_KNWLDG_DICARY&knwldgNo=20",
+   "https://koryogroup.com/blog/north-korea-guide-mangyongdae-childrens-palace"
+  ],
+  "reason": "Wikipedia does not say largest; the ministry's dictionary says 최고, 최대. Yonhap 2015 refit, SPN 2025 Rodong Sinmun report, 2025 Primorsky tour, directory entries and NBC title checked."
+ },
+ {
+  "id": "mansudae-art-theatre",
+  "section": "funding",
+  "problems": [
+   "repetition: Party assemblies stated in OVERVIEW, FUNDING and Red flags; Party supervision in FUNDING and Red flags",
+   "bottom line restated a fact",
+   "English Wikipedia says completed, not opened"
+  ],
+  "before": "...and Party assemblies are held in the theatre. / - The theatre hosts Party assemblies and a troupe that works under the Party (Korean Wikipedia). / The Party's use of the building for its assemblies is the point to watch.",
+  "after": "Each fact once: assemblies in OVERVIEW, troupe supervision in FUNDING; second Red flags point cut; bottom line: the theatre is a state and Party institution, and the US blocking order on both is its one Red flag. Added that Korean Wikipedia's troupe page names the East Pyongyang Grand Theatre as its main venue now.",
+  "sources": [
+   "https://ko.wikipedia.org/wiki/%EB%A7%8C%EC%88%98%EB%8C%80%EC%98%88%EC%88%A0%EB%8B%A8",
+   "https://nkinfo.unikorea.go.kr/nkp/trend/view.do?menuId=MENU_494&trendMngNo=3300",
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Ministry items (1996 Central Committee letter, January 1977 completion, 2002, 2019, 2022 events) and directory (Kim Kwang Ho, Jong Kwan Sun) checked."
+ },
+ {
+  "id": "north-hamgyong-province-e-library",
+  "section": "press",
+  "problems": [
+   "repetition: 301 computers, Dell machines and browser icon in OVERVIEW and the DW item",
+   "bottom line restated the Dell computers",
+   "Koryo Tours undated"
+  ],
+  "before": "- Reports the 301-computer figure, the Dell machines and the desktop Internet Explorer icon; the guide said trying the browser was not possible and moved the group on. / ...who supplied the Dell computers DW saw in 2013 is worth watching.",
+  "after": "- The reporter asked whether the browser icon meant internet access; the guide said trying it was not possible and moved the group on. Bottom line is the verdict only. Koryo Tours dated December 2019.",
+  "sources": [
+   "https://www.dw.com/en/a-rare-glimpse-into-north-korea/a-16977796",
+   "https://koryogroup.com/travel-guide/chongjin-north-hamgyong-province-e-library-north-korea-travel-guide",
+   "https://nkinfo.unikorea.go.kr/nkp/pblictn/view.do?menuId=OC0002&pblictnNo=210"
+  ],
+  "reason": "DW (Benjamin Mack, 26 July 2013) and the directory (Jo Sung Gwang, Kim Un Chol) checked."
+ },
+ {
+  "id": "north-korea-peace-museum",
+  "section": "overview",
+  "problems": [
+   "weak spot and ruling: description rested on a Wikipedia page with a 'More citations needed' banner (Korean name, Panmun district, 1.2 km from the JSA, dove above the door, officers' names, northern half of the DMZ)",
+   "repetition: army checks and guide in OVERVIEW, FUNDING, Red flags and bottom line"
+  ],
+  "before": "Museum (조선민주주의인민공화국 평화박물관) in the building put up for the signing ... about 1.2 km northwest of the Joint Security Area (Wikipedia). ... Wikipedia adds that a dove symbol sits above the door.",
+  "after": "Only Koryo Tours (25 February 2020) and Jon Dunbar's Korea Times column (16 February 2021) remain, each credited: the armistice buildings at Panmunjom, the flags and agreement under glass, the Armistice Talks Hall and Signing Pavilion, the axe and club. The army's checks and guide are stated once, inside the sanctions Red flag.",
+  "sources": [
+   "https://koryogroup.com/travel-guide/dmz-panmunjom-north-korea-north-korea-travel-guide",
+   "https://www.koreatimes.co.kr/southkorea/globalcommunity/20210216/holiday-in-north-korea-touring-both-sides-of-koreas-dmz",
+   "https://en.wikipedia.org/wiki/North_Korea_Peace_Museum"
+  ],
+  "reason": "Batch ruling. Dunbar names two Americans killed, not the officers; Wikipedia dropped from SOURCES."
+ },
+ {
+  "id": "north-korea-peace-museum",
+  "section": "red_flags",
+  "problems": [
+   "ruling: army role not said plainly"
+  ],
+  "before": "The US Treasury added the Korean People's Army, whose guide introduces the site, to its sanctions list on 1 June 2017 (OFAC); the notice names the army, not the museum.",
+  "after": "The army checks and guides visitors: military personnel carry out checks in the car park and a Korean People's Army guide explains the site before the buses go on to the museum (Koryo Tours). The US Treasury added the Korean People's Army to its sanctions list on 1 June 2017 (OFAC); the notice names the army, not the museum.",
+  "sources": [
+   "https://ofac.treasury.gov/recent-actions/20170601",
+   "https://koryogroup.com/travel-guide/dmz-panmunjom-north-korea-north-korea-travel-guide",
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "OFAC's 1 June 2017 action lists 'KOREAN PEOPLE'S ARMY, Korea, North [DPRK3]'. Kept inside the government sanctions Red flag as ruled."
+ },
+ {
+  "id": "all ten",
+  "section": "press / bottom line",
+  "problems": [
+   "absence statement: 'Overall: No art criticism.'",
+   "bottom lines restated facts above them"
+  ],
+  "before": "Overall: No art criticism. One ... / The weak point is the US blocking order on that state ...",
+  "after": "Overall lines now say what the coverage is ('One news report, not art criticism: ...'); each bottom line is a one-sentence verdict.",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm",
+   "https://www.globalsecurity.org/wmd/library/news/dprk/2026/dprk-260324-kcna02.htm"
+  ],
+  "reason": "RUN.md wording rules. EO 13722 (sections 1 and 9) and the 24 March 2026 KCNA budget figures (100.5, 105.8, 15.8, 103.1, 106, 105.3 percent) checked against every report that uses them; the sanctions point stays in all ten."
+ }
+]

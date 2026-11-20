@@ -1,0 +1,367 @@
+[
+ {
+  "id": "rahmi-m-koc-museum",
+  "section": "red_flags",
+  "problems": [
+   "Wikipedia-only figure: 'makes up almost half of Koç Holding's revenue'",
+   "two issues in one heading (refining and defence)",
+   "heading has no year"
+  ],
+  "before": "Red flags: founder's fortune from Koç Holding, owner of the refiner Tüpraş and the defence maker Otokar; Tüpraş ... almost half of Koç Holding's revenue (Wikipedia); Otokar ... the group works in defence (Wikipedia)",
+  "after": "Red flags: founder's Koç Holding fortune, led by oil refining in 2024; energy segment (Tüpraş, Aygaz) 36 percent of combined revenues and 41 percent of combined operating profit in 2024, the largest segment (Koç Holding investor presentation, April 2025); Otokar moved to one plain FUNDING point",
+  "sources": [
+   "https://cdn.koc.com.tr/cmscontainer/kocholding/media/koc/03yatirimci-iliskileri/sunumlar-ve-bultenler/koc-holding-sunumlari-en/kocholdingirpres_apr25.pdf",
+   "https://www.hurriyetdailynews.com/probe-launched-into-businessman-koc-over-kurdish-woman-joke-222988"
+  ],
+  "reason": "CHECKER.md 26 October ruling (Pera Museum, Koç) keeps Fossil fuels; resourced to Koç Holding's own investor deck, p.50. Otokar's defence line is not the majority business, so no arms heading. Honorary-head and 2003 facts now credited to Hürriyet Daily News, not Wikipedia; 'board seat' cut."
+ },
+ {
+  "id": "rahmi-m-koc-museum",
+  "section": "overview",
+  "problems": [
+   "summariser-sourced hours and prices",
+   "'Golden Horn boat tours extra' vague"
+  ],
+  "before": "adults 550 lira, students 280 lira, Golden Horn boat tours extra (museum website)",
+  "after": "adults 550 lira, students 280 lira; boat tours 250 lira for adults (museum website)",
+  "sources": [
+   "https://www.rmk-museum.org.tr/istanbul/ziyaret-plani/saatler-ve-ucretler"
+  ],
+  "reason": "curl fails on the site's incomplete certificate chain (no -k used); a WebFetch asked for verbatim lines returned 'Salı-Cuma: 09:30 - 17:30', 'Cumartesi-Pazar: 09:30 - 18:00', 'Pazartesi: Kapalı', 'Yetişkin 550 TL', 'Öğrenci 280 TL', boat tour adult 250 TL. Kept only these."
+ },
+ {
+  "id": "rahmi-m-koc-museum",
+  "section": "funding",
+  "problems": [
+   "inferred 'Income' line"
+  ],
+  "before": "Income: admission tickets, boat tours and on-site cafes and restaurants",
+  "after": "Visitors pay for admission and boat tours; the site has cafes and a restaurant",
+  "sources": [
+   "https://www.koc.com.tr/sustainability/rahmi-koc-museum"
+  ],
+  "reason": "Pages show prices and cafes; neither states income."
+ },
+ {
+  "id": "rahmi-m-koc-museum",
+  "section": "bottom_line",
+  "problems": [
+   "restates the Red flag"
+  ],
+  "before": "Private family money from a conglomerate whose largest business is oil refining and which has a defence arm.",
+  "after": "Private family money that counts as a fossil-fuel fortune through the founder's conglomerate. The founder's June 2026 remarks are a reputational matter, not a funding one.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "dubai-opera",
+  "section": "red_flags",
+  "problems": [
+   "ruling: Emaar is a listed company, not a Gulf state body",
+   "Wikipedia-only: Dubai Holding as the ruler's portfolio"
+  ],
+  "before": "Red flags: run by Emaar, whose largest shareholders are Dubai state investors (Dubai Holding 29.73 percent; Wikipedia on Dubai Holding and ICD; Alabbar tribute quote)",
+  "after": "Moved to FUNDING: Emaar listed on the DFM; Dubai Holding bought ICD's 22.27 percent in May 2026 and holds 29.73 percent (Dubai Media Office; Khaleej Times; The National calls ICD Dubai's sovereign wealth fund); Dubai Holding is owned by Sheikh Mohammed bin Rashid (Entrepreneur Middle East). Tribute quote cut.",
+  "sources": [
+   "https://www.mediaoffice.ae/en/news/2026/may/12-05/dubai-holding-and-icd-announce-completion-of-strategic-transaction-in-emaar-properties",
+   "https://mena.entrepreneur.com/business-news/dubai-holding-becomes-largest-shareholder-in-emaar-properties",
+   "https://www.thenationalnews.com/business/2026/05/12/dubai-holding-becomes-largest-shareholder-in-emaar-after-buying-icds-stake/"
+  ],
+  "reason": "Ruling for this batch. Funding verdict changed from 'Gulf state body' to 'corporate'."
+ },
+ {
+  "id": "dubai-opera",
+  "section": "red_flags",
+  "problems": [
+   "heading names two facts"
+  ],
+  "before": "Red flags: HSBC, official partner since 2025, fined by the Bank of England in 2024",
+  "after": "Red flags: 2024 Bank of England fine on sponsor HSBC; point reworded to the PRA notice ('failures over many years to properly implement the Depositor Protection Rules', 57,417,500 pounds, 30 January 2024)",
+  "sources": [
+   "https://www.bankofengland.co.uk/news/2024/january/pra-fines-hsbc-for-failures-in-deposit-protection-identification-and-notifcation"
+  ],
+  "reason": "Kept as a name to know per ruling, sourced to the regulator."
+ },
+ {
+  "id": "dubai-opera",
+  "section": "overview, funding",
+  "problems": [
+   "miscredited: rooftop restaurant not in Gulf News or Emaar",
+   "unsupported: 'corporate events'; 'attractions arm'"
+  ],
+  "before": "a rooftop restaurant (Gulf News; Emaar); Emaar Entertainment, Emaar's attractions arm; tickets, gala dinners and corporate events",
+  "after": "Wikipedia adds a rooftop restaurant; Emaar Entertainment; ticketed performances, and events including gala dinners and Iftar (Emaar)",
+  "sources": [
+   "https://www.emaar.com/en/other-emaar-businesses/emaar-entertainment",
+   "https://gulfnews.com/going-out/society/2000-seat-opera-house-to-open-with-world-class-performances-this-year-1.1696192"
+  ],
+  "reason": "Cut to what the pages state."
+ },
+ {
+  "id": "dubai-opera",
+  "section": "bottom_line",
+  "problems": [
+   "restated funding facts"
+  ],
+  "before": "A developer's flagship venue whose money traces to the Dubai ruler's own investment company, with a sponsor bank that carries a recent regulatory fine. Worth watching: further bookings of sanctioned Russian artists.",
+  "after": "Corporate money with no flagged funder; the one name to know is the sponsor bank HSBC. Worth watching: further bookings of Russian artists who back the Kremlin.",
+  "sources": [
+   "https://operawire.com/jose-carreras-placido-domingo-to-perform-with-putin-allies-valery-gergiev-hibl-gerzmava-in-dubai/"
+  ],
+  "reason": "Verdict only; 'sanctioned' applied only to Gergiev (Canada), not Gerzmava."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "red_flags",
+  "problems": [
+   "boycott heading rested on an undated paraphrase",
+   "heading without year"
+  ],
+  "before": "Red flags: Gulf Labor Coalition boycott, unresolved in 2026 (Ross quote, Hyperallergic, 2026)",
+  "after": "Red flags: Gulf Labor Coalition artist boycott, still standing in July 2026: Hyperallergic of 31 July 2026 reports activists have called on artists to boycott the museum; Ross's quote dated",
+  "sources": [
+   "https://hyperallergic.com/long-contested-guggenheim-abu-dhabi-gets-opening-date/"
+  ],
+  "reason": "Ruling: boycott rests on a dated 2026 source. Page sits behind a registration wall; only the free opening was read, now marked in the press item and SOURCES."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "red_flags",
+  "problems": [
+   "lost point restored",
+   "credit and date"
+  ],
+  "before": "Red flags: migrant labour abuse on Saadiyat Island (HRW and PwC figures in one point; Hammadi quote)",
+  "after": "Red flags: migrant labour abuse on Saadiyat Island, documented by Human Rights Watch in 2015: HRW findings dated (research 2014, report 10 February 2015); restored the earlier report's point that no Guggenheim-site workers were interviewed and McGeehan's reason for keeping pressure on it; PwC figure its own point; Hammadi quote cut for length",
+  "sources": [
+   "https://www.architecturalrecord.com/articles/3321-human-rights-watch-report-documents-continued-migrant-abuse-on-saadiyat-island",
+   "https://www.artforum.com/news/guggenheim-abu-dhabi-to-open-december-11-2026-1234755868/"
+  ],
+  "reason": "Ruling: labour heading rests on the documented findings, each credited. The restored point keeps the finding honest about which sites HRW covered."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "red_flags",
+  "problems": [
+   "heading without year",
+   "restated FUNDING"
+  ],
+  "before": "Red flags: Abu Dhabi state ownership; Every owner and developer named in the sources is an arm of the Abu Dhabi government",
+  "after": "Red flags: Abu Dhabi government ownership, current in 2026; one point without repeating the funding lines",
+  "sources": [
+   "https://gulfnews.com/uae/guggenheim-abu-dhabi-opening-date-ticket-prices-artists-and-all-you-need-to-know-1.500681249"
+  ],
+  "reason": "Heading rule; no fact twice."
+ },
+ {
+  "id": "guggenheim-abu-dhabi",
+  "section": "overview, funding",
+  "problems": [
+   "over 800 words",
+   "'reported totals above 970 works' (Gulf News says figures vary, 600 to 970)",
+   "'11,600 square metres inside' not stated"
+  ],
+  "before": "891 words after the Red flag fixes",
+  "after": "779 words: cut the delay list, the October 2021 contractor line, the Artforum gallery count, the Rosenthal and Al Mubarak lines, the PwC hiring line and the National source; area worded as Khaleej Times gives it",
+  "sources": [
+   "https://www.khaleejtimes.com/uae/guggenheim-abu-dhabi-tickets-sale-ahead-december-11-opening"
+  ],
+  "reason": "Word limit; peripheral detail cut, no heading dropped."
+ },
+ {
+  "id": "chora-museum-kariye",
+  "section": "red_flags",
+  "problems": [
+   "ruling: the conversion is the state acting on its own building, no flag"
+  ],
+  "before": "Red flags: conversion to a mosque, decreed in 2020 and carried out in May 2024 (court ruling and decree; curtains; Mitsotakis and the Archdiocese)",
+  "after": "Section removed. Court ruling and decree, with the Religious Affairs handover, in OVERVIEW; curtains in the 2024 reopening point; Greek government and Archdiocese objections and the 2005 lawsuit (association now named) in WIDER CONTEXT",
+  "sources": [
+   "https://bianet.org/haber/chora-museum-in-istanbul-opened-to-worship-as-mosque-229399",
+   "https://www.theartnewspaper.com/2024/05/10/turkey-reopens-chora-museum-as-a-mosque-amid-muted-objections",
+   "https://www.theartnewspaper.com/2020/08/24/first-hagia-sophia-now-turkeys-sistine-chapel-of-byzantium-will-be-turned-back-into-mosque"
+  ],
+  "reason": "Ruling for this batch. BOTTOM LINE rewritten to say the funding is clean and the dispute concerns use, not money."
+ },
+ {
+  "id": "chora-museum-kariye",
+  "section": "funding",
+  "problems": [
+   "unsupported: 'a committee member to 2012'",
+   "absence line: 'No cost for Chora was published'",
+   "20 euros stated twice"
+  ],
+  "before": "The Art Newspaper dates the programme to 2013 and a committee member to 2012. No cost for Chora was published. Income: ticket sales to foreign tourists at 20 euros...",
+  "after": "Robert G. Ousterhout told The Art Newspaper in 2020 that it began in 2013. Income: foreign tourists' tickets, plus headphones at 5 euros...",
+  "sources": [
+   "https://www.theartnewspaper.com/2020/08/24/first-hagia-sophia-now-turkeys-sistine-chapel-of-byzantium-will-be-turned-back-into-mosque",
+   "https://www.haber7.com/guncel/haber/3452298-kariye-camiinde-yeni-donem-bugunden-itibaren-basliyor"
+  ],
+  "reason": "Only Ousterhout's 2013 date is on the page."
+ },
+ {
+  "id": "chora-museum-kariye",
+  "section": "overview",
+  "problems": [
+   "'rebuilt and decorated' beyond source"
+  ],
+  "before": "Theodore Metochites rebuilt and decorated it",
+  "after": "Theodore Metochites renovated and extended it",
+  "sources": [
+   "https://www.dailysabah.com/arts/kariye-mosque-triumph-of-restoration-heritage-preservation-unveiled-in-istanbul/news"
+  ],
+  "reason": "Daily Sabah: 'ordered extensive renovation ... adding many impressive extensions'."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only figure: 'nearly 65,000 square feet'",
+   "'of DBALP' not on the Tatler page"
+  ],
+  "before": "The brutalist complex of three connected buildings covers nearly 65,000 square feet (Wikipedia); Tatler Asia gives 8,000 square metres and credits the conversion to the architect Duangrit Bunnag of DBALP",
+  "after": "Three connected buildings (ArtAsiaPacific) form an 8,000-square-metre, 60-year-old structure that the architect Duangrit Bunnag converted (Tatler Asia, October 2026)",
+  "sources": [
+   "https://www.tatlerasia.com/homes/architecture-design/bangkok-kunsthalle",
+   "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown"
+  ],
+  "reason": "Press figure replaces the Wikipedia one."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "wider_context",
+  "problems": [
+   "Wikipedia-only: dismissal",
+   "unsupported: 'CP Foods said it owns no fishing vessels' (not on Taipei Times)"
+  ],
+  "before": "a US court dismissed the case (Wikipedia, citing Reuters of January 2017), and CP Foods said it owns no fishing vessels",
+  "after": "In January 2017 a San Francisco federal judge dismissed it, finding the buyers had not traced their prawns to Costco's suppliers (Bloomberg, via Carrier Management)",
+  "sources": [
+   "https://www.carriermanagement.com/news/2017/01/26/163569.htm",
+   "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826"
+  ],
+  "reason": "Press source for the dismissal; vessel claim cut. Case stays in WIDER CONTEXT per ruling."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "red_flags",
+  "problems": [
+   "'two members ... appeared' beyond source"
+  ],
+  "before": "two members of the Chiang Mai collective artn't appeared in the show",
+  "after": "two performers from the Chiang Mai art-activist group artn't staged a guerrilla performance in the show",
+  "sources": [
+   "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/"
+  ],
+  "reason": "ArtReview's wording. Protest stays a Red flag per ruling."
+ },
+ {
+  "id": "bangkok-kunsthalle",
+  "section": "bottom_line",
+  "problems": [
+   "absence: 'with no published accounts'"
+  ],
+  "before": "Private money from the founder's family fortune and a small donor circle, with no published accounts. The open question is the CP Group connection, which artn't targeted inside the space in 2024.",
+  "after": "Private money from the founder's family fortune and a small donor circle. The weak point is the CP Group connection, which artists have already challenged inside the space.",
+  "sources": [],
+  "reason": "No 'not found' lines; no fact repeated."
+ },
+ {
+  "id": "istanbul-archaeology-museums",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only visitor count"
+  ],
+  "before": "Visitors: 530,065 in 2022 (Wikipedia).",
+  "after": "Visitors: 530,065 in 2022, second among Istanbul's state museums after the Galata Tower (Governorship of Istanbul, 30 December 2022).",
+  "sources": [
+   "https://www.istanbul.gov.tr/istanbuldaki-devlet-muzeleri-2022de-75-milyona-yakin-ziyaretciyi-agirladi"
+  ],
+  "reason": "Official source opened: '530 bin 65'."
+ },
+ {
+  "id": "istanbul-archaeology-museums",
+  "section": "funding, overview",
+  "problems": [
+   "muze.gen.tr credited as if official"
+  ],
+  "before": "Income: admission fees at 15 euros for foreign visitors (muze.gen.tr).",
+  "after": "Income: admission fees; the Müze İstanbul guide site (muze.gen.tr) lists the ticket at 15 euros.",
+  "sources": [
+   "https://muze.gen.tr/AboutUs",
+   "https://muze.gov.tr/muze-detay?SectionId=IAR01&DistId=IAR"
+  ],
+  "reason": "muze.gen.tr calls itself 'Müze İstanbul', a guide; muze.gov.tr shows no price. Its credit dropped from the location point, which muze.gov.tr supports."
+ },
+ {
+  "id": "museum-of-anatolian-civilizations",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only, uncited visitor count (325,913 in 2019)"
+  ],
+  "before": "Visitors: 325,913 in 2019 (Wikipedia).",
+  "after": "Visitors: 128,231 in the first half of 2025, second in Ankara after the Republic Museum, on Ministry of Culture and Tourism and Ankara governorship figures (Yeni Ankara, July 2026).",
+  "sources": [
+   "https://www.yeniankara.com.tr/ankara/ankarada-en-cok-ziyaretci-agirlayan-muze-hangisi-iste-ilk-sira-175126"
+  ],
+  "reason": "Wikipedia infobox figure has no citation; press figure from official data replaces it."
+ },
+ {
+  "id": "museum-of-anatolian-civilizations",
+  "section": "bottom_line",
+  "problems": [
+   "absence: 'with no private sponsor named'"
+  ],
+  "before": "Clean: Turkish state money only, with no private sponsor named. Worth watching is whether the storage and inventory faults the auditors found have been fixed.",
+  "after": "Clean: Turkish state money only. Worth watching is whether the auditors' 2021 storage and inventory findings have been dealt with.",
+  "sources": [
+   "https://www.sozcu.com.tr/eserlerin-kodlari-muze-kayit-sistemi-ile-uyusmadi-wp6682776"
+  ],
+  "reason": "Absence wording cut."
+ },
+ {
+  "id": "zeugma-mosaic-museum",
+  "section": "funding, overview, bottom_line",
+  "problems": [
+   "2018 return stated twice",
+   "miscredit: Daily Sabah does not name Bowling Green",
+   "BOTTOM LINE restated the Packard grant"
+  ],
+  "before": "Repatriation: the ministry secured the 2018 return... ; (Turkish Museums; Daily Sabah); The only private money on record is the Packard Humanities Institute's 2000 grant...",
+  "after": "Return folded into the OVERVIEW point (Turkish Museums); BOTTOM LINE: 'Clean: a Turkish state museum with no flagged funder, past or present.'",
+  "sources": [
+   "https://muze.gov.tr/muze-detay?SectionId=GZN01&DistId=GZN",
+   "https://www.dailysabah.com/arts/zeugma-mosaic-museum-draws-over-35-million-visitors-since-2011/news"
+  ],
+  "reason": "No statement twice; credit to the page that states it."
+ },
+ {
+  "id": "dar-foto-festival",
+  "section": "funding",
+  "problems": [
+   "absence in verdict: 'no published budget or named sponsor'",
+   "overstated: 'work shown in Berlin sold'"
+  ],
+  "before": "founder-led, produced by Tanzania Foto Collective Company Limited; no published budget or named sponsor / Munuwa said work shown in Berlin sold and the artists reinvested the money",
+  "after": "founder-led and self-produced through Tanzania Foto Collective Company Limited / Munuwa said some of the artists' work shown in Berlin sold and the money went back into their practice",
+  "sources": [
+   "https://artafricamagazine.org/dar-foto-festival-2025-andrew-s-munuwa-on-celebrating-coexistence-through-photography/",
+   "http://web.archive.org/web/20250404062616/https://www.darfotofestival.com/about"
+  ],
+  "reason": "Interview says 'some of their work being sold'. Site still fails to connect on 20 November 2026, so the dated archive copy of the About page stands."
+ },
+ {
+  "id": "jim-thompson-art-center-bangkok",
+  "section": "bottom_line",
+  "problems": [
+   "restated funding",
+   "absence: 'Its accounts are not published'"
+  ],
+  "before": "Clean on the record: an estate-founded foundation that pays its own way, with Thai state, German cultural and private foundation grants on single shows. Its accounts are not published.",
+  "after": "Clean: an estate-founded foundation with no flagged funder. Worth watching: accounts showing how far house-museum admission pays for the art centre.",
+  "sources": [
+   "https://www.jameshwthompsonfoundation.org/the-foundation/"
+  ],
+  "reason": "Verdict only."
+ }
+]

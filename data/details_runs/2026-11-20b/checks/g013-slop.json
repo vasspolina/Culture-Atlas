@@ -1,0 +1,347 @@
+[
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "section": "red_flags",
+  "problems": [
+   "unsupported as stated: 'Fredriksen was fined for oil fraud in the United States in 2014' (Kunstkritikk only)"
+  ],
+  "before": "Kunstkritikk added that ... Fredriksen was fined for oil fraud in the United States in 2014, and that the art company is registered in Cyprus.",
+  "after": "Kunstkritikk's claim kept credited to it, then corrected: on 4 August 2014 a New York federal court ordered Fredriksen's oil trader Arcadia, its US unit Parnon and two traders to pay a $13 million civil penalty for manipulating crude oil futures in 2008, by consent and without admission of wrongdoing (CFTC; Reuters).",
+  "sources": [
+   "https://www.cftc.gov/PressRoom/PressReleases/6971-14",
+   "https://gulfnews.com/business/energy/arcadia-traders-settle-us-oil-rigging-suit-for-13m-1.1367356",
+   "https://kunstkritikk.com/the-national-museum-of-norway-linked-to-russia/"
+  ],
+  "reason": "CFTC confirms the penalty but names the companies and traders, not Fredriksen; Reuters (via Gulf News) states Arcadia is owned by John Fredriksen. The charge was manipulation, not fraud. Cyprus detail cut for length."
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "section": "funding",
+  "problems": [
+   "unsupported: 'four doctoral fellowships from 2023 to 2027'",
+   "descriptor: 'Kunstkritikk put the 2022 contribution'"
+  ],
+  "before": "funds four doctoral fellowships from 2023 to 2027 (museum site; annual report 2024) ... Kunstkritikk put the 2022 contribution at up to NOK 20 million. Dagbladet reported in 2019 that the first agreement was signed in June 2017.",
+  "after": "under an agreement confirmed in 2017 that runs initially for ten years, and funds four doctoral fellowships, the first two begun in 2024 (museum site; annual report 2024) ... The museum put the 2022 contribution at up to NOK 20 million (Kunstkritikk).",
+  "sources": [
+   "https://www.nasjonalmuseet.no/contentassets/98adac84980c4555ae99de8a5ed00e80/arsmelding-for-nasjonalmuseet-2024.pdf",
+   "https://www.nasjonalmuseet.no/en/about-the-national-museum/partnership/the-fredriksen-collaboration",
+   "https://kunstkritikk.com/money-problems"
+  ],
+  "reason": "Neither page gives 2023 to 2027; the annual report says four PhD posts, the first two started in 2024. Kunstkritikk attributes the NOK 20 million to the museum. The June 2017 signing moved to WIDER CONTEXT with Bernt, so it is stated once."
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "section": "wider_context",
+  "problems": [
+   "repetition: 2017 agreement stated in FUNDING and WIDER CONTEXT"
+  ],
+  "before": "In 2019 law professor Jan Frithjof Bernt criticised ... keeping the 2017 agreement from the public until a June 2019 addendum (Dagbladet, 26 August 2019).",
+  "after": "Dagbladet (NTB) reported on 26 August 2019 that the first Fredriksen agreement was signed in June 2017 and made public only with a June 2019 addendum; Bernt criticised the museum and the ministry in Klassekampen for the secrecy.",
+  "sources": [
+   "https://www.dagbladet.no/kultur/etter-kunstavtale---svaert-uheldig/71527231"
+  ],
+  "reason": "Merged; kept in WIDER CONTEXT per ruling (pre-2021). Unused Dagbladet source (far-innpass) removed."
+ },
+ {
+  "id": "nasjonalmuseet-national-museum-of-norway",
+  "section": "whole report",
+  "problems": [
+   "over length: 823 words"
+  ],
+  "before": "823 words above SOURCES",
+  "after": "797 words",
+  "sources": [],
+  "reason": "Cut the employee count, Bankplassen/Villa Stenersen, competition year, visitor share abroad, Cyprus detail and wording in the press Overall and BOTTOM LINE; no heading, flag point or press item dropped."
+ },
+ {
+  "id": "oman-across-ages-museum",
+  "section": "sources",
+  "problems": [
+   "unsupported label: 'state-owned newspaper' (from memory)"
+  ],
+  "before": "(state-owned newspaper)",
+  "after": "(state newspaper under the Ministry of Information)",
+  "sources": [
+   "https://statemediamonitor.com/2026/06/oman-establishment-for-press-publication-and-advertising-oeppa/"
+  ],
+  "reason": "No opened page says 'state-owned'. State Media Monitor calls the Oman Daily Observer the official English-language state newspaper, published under Ministry of Information supervision and classed State-Controlled; label changed and source added."
+ },
+ {
+  "id": "oman-across-ages-museum",
+  "section": "funding, red_flags",
+  "problems": [
+   "decree.om translation not marked unofficial"
+  ],
+  "before": "(decree.om, English translation)",
+  "after": "(decree.om, an unofficial English translation by a private website)",
+  "sources": [
+   "https://decree.om/2023/rd20230015/",
+   "https://decree.om/faq/"
+  ],
+  "reason": "decree.om's FAQ says it is a private non-governmental project and its translations are not official. Red flag kept per ruling; Al Kindi's chair of the board of trustees added from the opening report."
+ },
+ {
+  "id": "oman-across-ages-museum",
+  "section": "overview",
+  "problems": [
+   "overstated: 'a Shapoorji Pallonji joint venture built it'",
+   "overstated: 'Renaissance Gallery on the reign of Sultan Qaboos'",
+   "credit: opening report is an Oman News Agency item",
+   "descriptor: 'Museum Studio (Event)'"
+  ],
+  "before": "COX Architecture ... was lead consultant ... and a Shapoorji Pallonji joint venture built it (Oman Observer, November 2017) ... Museum Studio (Event) wrote the masterplan",
+  "after": "In November 2017 the Oman Observer reported COX ... as lead consultant, Aurecon as a key consultant, and Shapoorji Pallonji Middle East with Oman Shapoorji as builders ... Museum Studio says the Royal Court commissioned it ... Renaissance Gallery whose display covers the first five years of the \"blessed renaissance\"",
+  "sources": [
+   "https://www.omanobserver.om/article/68034/Front%20Stories/oman-museum-across-ages-to-be-iconic-landmark",
+   "https://www.omanobserver.om/article/1134078/oman/his-majesty/hm-patronizes-over-official-opening-of-oman-across-ages-museum",
+   "https://www.museumstudio.com/projects/oman-across-ages-museum"
+  ],
+  "reason": "Stated only what the pages say. Website line: 'did not load' replaced with the observed certificate error."
+ },
+ {
+  "id": "oman-across-ages-museum",
+  "section": "bottom_line",
+  "problems": [
+   "repetition: Renaissance Gallery restated"
+  ],
+  "before": "its galleries celebrate the reign of Sultan Qaboos",
+  "after": "in a museum the royal court runs",
+  "sources": [],
+  "reason": "BOTTOM LINE gives the verdict only."
+ },
+ {
+  "id": "royal-opera-house-muscat",
+  "section": "sources",
+  "problems": [
+   "unsupported label: 'state-owned newspaper'"
+  ],
+  "before": "(state-owned newspaper)",
+  "after": "(state newspaper under the Ministry of Information)",
+  "sources": [
+   "https://statemediamonitor.com/2026/06/oman-establishment-for-press-publication-and-advertising-oeppa/"
+  ],
+  "reason": "Same ruling as Oman Across Ages. The Oman Across Ages opening article, which does not mention the opera house, removed from SOURCES."
+ },
+ {
+  "id": "royal-opera-house-muscat",
+  "section": "red_flags",
+  "problems": [
+   "heading spans years ('2010 to now')",
+   "archive copy undated",
+   "wrong date: Al Kindi 'February and March 2023'",
+   "decree.om translation not marked unofficial"
+  ],
+  "before": "Red flags: Gulf state body: the Omani state and royal court, 2010 to now ... (archived copy, 2025) ... (Oman Observer, February and March 2023) ... (Teatro La Fenice, 2024)",
+  "after": "Red flags: Gulf state body: royal decree and state leadership, 2010; decree point moved here from OVERVIEW (decree.om, unofficial translation); archived copy of 13 August 2025, site now down; Al Kindi (Oman Observer, February 2023); Kamil Al Said (Teatro La Fenice; Times of Oman, 2025)",
+  "sources": [
+   "https://web.archive.org/web/20250813162320/https://www.rohmuscat.org.om/en/about-us/leadership",
+   "https://www.omanobserver.om/article/1133203/oman/tourism/egyptian-minister-of-culture-visits-rohm",
+   "https://decree.om/2010/rd20100105/"
+  ],
+  "reason": "Red flag kept per ruling. The March 2023 page concerns another institution. The La Fenice page carries no date; Times of Oman (24 September 2025) also names Kamil Al Said a board member."
+ },
+ {
+  "id": "royal-opera-house-muscat",
+  "section": "funding",
+  "problems": [
+   "client tie-in listed under funding",
+   "not funding: Order of Felicitation"
+  ],
+  "before": "Mandarin Oriental, Muscat has run a hotel tie-in with the house since the 2024 to 2025 season ... the hotel is a client, not a funder. / In 2024 the Minister of the Diwan ... presented Fanni with the Order of Felicitation",
+  "after": "Moved to OVERVIEW as plain facts: for the 2024 to 2025 season Mandarin Oriental sold room packages with premium tickets and its Royal Circle balcony (travellingforbusiness, a trade site, 3 October 2024); the January 2024 order joined Fanni's line.",
+  "sources": [
+   "https://travellingforbusiness.co.uk/bleisure/mandarin-oriental-muscat-announces-a-collaboration-with-the-royal-opera-house-muscat/",
+   "https://www.omanobserver.om/article/1148361/oman/his-majesty/hm-the-sultan-cnfers-order-of-felicitation-on-rohm-director-general"
+  ],
+  "reason": "A client tie-in is not funding; 'since' overstated a source that covers one season."
+ },
+ {
+  "id": "royal-opera-house-muscat",
+  "section": "overview",
+  "problems": [
+   "unsupported: 'seat-back screens for subtitles'",
+   "press release voice: Times of Oman Sindbad piece"
+  ],
+  "before": "seat-back screens for subtitles ... it opened a season with the world premiere of \"Sindbad: The Omani Sailor\" ... co-produced with MÜPA Budapest (Times of Oman)",
+  "after": "multimedia screens on the seat backs ... Times of Oman reported in September 2025, from the house's announcement, that it would open its new season with the world premiere of ... produced with MÜPA Budapest",
+  "sources": [
+   "https://www.arabnews.com/node/399580",
+   "https://timesofoman.com/article/163579-a-national-milestone-royal-opera-house-muscat-premieres-arabic-language-grand-opera-sindbad-the-omani-sailor"
+  ],
+  "reason": "Arab News mentions a multimedia seatback system, not subtitles. The Times of Oman item reads as the house's announcement and is credited as such."
+ },
+ {
+  "id": "pyongyang-grand-theatre",
+  "section": "funding",
+  "problems": [
+   "added descriptor: 'answers to the ruling party', 'the party's Propaganda and Agitation Department'",
+   "unsupported: 'citing Xinhua' for the troupe leader"
+  ],
+  "before": "The resident troupe answers to the ruling party: when the Sea of Blood Opera Troupe toured China ... led by Kwon Hyuk Bong, vice director of the party's Propaganda and Agitation Department (Daily NK, 25 October 2011, citing Xinhua).",
+  "after": "When the resident Sea of Blood Opera Troupe toured China in October 2011 at the invitation of China's Ministry of Culture, it was led by Kwon Hyuk Bong, Vice Director of the Propaganda and Agitation Department (Daily NK, 25 October 2011).",
+  "sources": [
+   "https://www.dailynk.com/english/north-korea-taking-liang-zhu-to-ch/"
+  ],
+  "reason": "Daily NK cites Xinhua only for the Changchun performance, and does not say 'party'."
+ },
+ {
+  "id": "pyongyang-grand-theatre",
+  "section": "funding, overview",
+  "problems": [
+   "repetition: home theatre of the Pibada troupe stated in OVERVIEW and FUNDING"
+  ],
+  "before": "Korean Art ... describes the theatre as the home theatre of the Phibada Opera Troupe since its opening in 1960 (archived copy).",
+  "after": "Folded into the overview point: 'It has been the home theatre of the Pibada (Sea of Blood) Opera Troupe since it opened'.",
+  "sources": [
+   "https://web.archive.org/web/20231229044420/http://www.korart.sca.kp/index.php/stage/theater_detail?id=580&language=english"
+  ],
+  "reason": "No statement twice."
+ },
+ {
+  "id": "pyongyang-grand-theatre",
+  "section": "overview",
+  "problems": [
+   "unsupported credit: 'citing a 2011 Korea Culture and Tourism Institute study'",
+   "'2,190 seats at opening'"
+  ],
+  "before": "(Korean Wikipedia, citing a 2011 Korea Culture and Tourism Institute study)",
+  "after": "2,190 seats (Korean Wikipedia).",
+  "sources": [
+   "https://ko.wikipedia.org/wiki/%ED%8F%89%EC%96%91%EB%8C%80%EA%B7%B9%EC%9E%A5"
+  ],
+  "reason": "The construction paragraph on Korean Wikipedia carries no footnote; the study backs other paragraphs."
+ },
+ {
+  "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only date: 1958 founding",
+   "KCNA visitor figure not credited as a claim"
+  ],
+  "before": "English Wikipedia gives 26 March 1958 as its founding date. ... KCNA said it receives 500,000 visitors a year (AFP, 2018).",
+  "after": "English Wikipedia's infobox gives 26 March 1958, with no source cited. ... KCNA claimed it receives 500,000 visitors a year (AFP, 2018).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sinchon_Museum_of_American_War_Atrocities",
+   "https://www.koreajoongangdaily.com/korea/kim-jongun-brushes-up-on-american-atrocities/10190434",
+   "https://www.dailynk.com/english/north-korea-increases-student-visi/"
+  ],
+  "reason": "Korea JoongAng Daily and Daily NK both give an opening on 25 June 1960; 1958 appears only in the uncited infobox, so it stays credited to it."
+ },
+ {
+  "id": "sinchon-museum-of-american-war-atrocities-sinchon",
+  "section": "wider_context, bottom_line",
+  "problems": [
+   "unsupported: IADL report 'prepared in Pyongyang'",
+   "overstated: 'compulsory', 'reject'"
+  ],
+  "before": "prepared in Pyongyang ... outside historians reject ... compulsory anti-US education",
+  "after": "published in Pyongyang and relying on North Korean oral testimony ... outside historians dispute ... the mobilised visits for anti-US education",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sinchon_Massacre",
+   "https://www.newsweekpakistan.com/lessons-in-loathing/"
+  ],
+  "reason": "Stated as the sources state. Daily NK 2017 point kept as Unverified; UPI and Hankyung Business both credited."
+ },
+ {
+  "id": "south-hamgyong-sci-tech-library",
+  "section": "funding, press",
+  "problems": [
+   "repetition: state-media announcement stated three times",
+   "added descriptor: 'party newspaper'",
+   "paywall marking"
+  ],
+  "before": "The opening was announced by state media, including the party newspaper Rodong Sinmun (NK News, 2018). ... Paywalled; only excerpts were read.",
+  "after": "Funding point cut; press item now names 'the state newspaper Rodong Sinmun' as NK News does; 'Paywalled; only the opening paragraphs were read' and SOURCES marked the same.",
+  "sources": [
+   "https://www.nknews.org/2018/12/new-north-korean-sci-tech-library-officially-opens-after-long-delay/"
+  ],
+  "reason": "NK News says 'state newspaper'. Only the opening paragraphs are open."
+ },
+ {
+  "id": "south-hamgyong-sci-tech-library",
+  "section": "funding",
+  "problems": [
+   "overstated: NDL 'the first provincial-level sci-tech library'"
+  ],
+  "before": "the library was confirmed as built by November 2016, the first provincial-level sci-tech library in a regional city after the Pyongyang complex opened",
+  "after": "the library was confirmed as built by November 2016 (Current Awareness Portal, 3 April 2018; own translation)",
+  "sources": [
+   "https://current.ndl.go.jp/car/35790"
+  ],
+  "reason": "NDL says only that the possibility was pointed out; the 'first' point already stands in OVERVIEW from NK News."
+ },
+ {
+  "id": "victorious-fatherland-liberation-war-museum",
+  "section": "overview",
+  "problems": [
+   "source conflict incomplete: Koryo Tours' 1963 date missing",
+   "KCNA visitor figure credited loosely"
+  ],
+  "before": "Korean Wikipedia says it moved ... on 11 April 1974; English Wikipedia's text says ... April 1963 ... A museum lecturer told KCNA ... (state claim).",
+  "after": "The sources give two dates for the move to the Sosong District: Koryo Tours and English Wikipedia's text say April 1963; Korean Wikipedia says ... 11 April 1974, and English Wikipedia's infobox gives April 1974 ... KCNA claimed in July 2014, citing a museum lecturer, that nearly 800,000 people had visited over the previous year.",
+  "sources": [
+   "https://koryogroup.com/travel-guide/north-korea-guide-victorious-fatherland-liberation-war-museum",
+   "https://ko.wikipedia.org/wiki/%EC%A1%B0%EA%B5%AD%ED%95%B4%EB%B0%A9%EC%A0%84%EC%9F%81%EC%8A%B9%EB%A6%AC%EA%B8%B0%EB%85%90%EA%B4%80",
+   "https://web.archive.org/web/20141011165052/http://www.kcna.co.jp/item/2014/201407/news27/20140727-22ee.html"
+  ],
+  "reason": "Both dates stated with their sources."
+ },
+ {
+  "id": "centro-cultural-de-la-republica-el-cabildo",
+  "section": "website",
+  "problems": [
+   "wrong: 'Website: none'"
+  ],
+  "before": "Website: none (checked 2026-11-20)",
+  "after": "Website: https://cabildoccr.gov.py (checked 2026-11-20)",
+  "sources": [
+   "https://cabildoccr.gov.py/",
+   "https://es.wikipedia.org/wiki/Cabildo_de_Asunci%C3%B3n"
+  ],
+  "reason": "The centre's own site is live and is linked from Spanish Wikipedia; added to SOURCES."
+ },
+ {
+  "id": "centro-cultural-de-la-republica-el-cabildo",
+  "section": "overview, press",
+  "problems": [
+   "wrong credit: Casas Bicentenario to 'La Nación, 2024'",
+   "overstated: Galaverna 'put forward' Saucedo",
+   "wrong author: item 2 'unsigned'"
+  ],
+  "before": "(La Nación, 2024) ... was put forward by former senator Juan Carlos Galaverna ... Última Hora: unsigned",
+  "after": "(Spanish Wikipedia) ... was accompanied into the post by former senator Juan Carlos Galaverna ... Última Hora: Redacción ÚH",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Cabildo_de_Asunci%C3%B3n",
+   "https://www.ultimahora.com/bachi-designa-como-director-del-cabildo-a-anibal-saucedo-rodas"
+  ],
+  "reason": "Neither La Nación 2024 page lists the houses; Última Hora says Saucedo 'fue acompañado por' Galaverna; the piece is bylined Redacción ÚH."
+ },
+ {
+  "id": "centro-cultural-de-la-republica-el-cabildo",
+  "section": "whole report",
+  "problems": [
+   "over length: 838 words",
+   "repetition: Saucedo appointment in OVERVIEW and press item"
+  ],
+  "before": "838 words",
+  "after": "797 words",
+  "sources": [],
+  "reason": "Cut descriptors, the English Wikipedia date, and repeated appointment detail; every heading and press item kept."
+ },
+ {
+  "id": "s-mi-center-for-contemporary-art-s-mi-d-iddaguovdd-karasjok",
+  "section": "overview, sources",
+  "problems": [
+   "residency reopening had no listed source",
+   "stale URL"
+  ],
+  "before": "artist-in-residence programme, reopened in June 2024 (no source in SOURCES); https://samidaiddaguovddas.no/en/about/",
+  "after": "Source added (https://samidaiddaguovddas.no/en/2024/05); About URL corrected to /en/about-sdg/; About page's acting director Monika Anti added to the leadership point.",
+  "sources": [
+   "https://samidaiddaguovddas.no/en/2024/05",
+   "https://samidaiddaguovddas.no/en/about-sdg/"
+  ],
+  "reason": "Confirmed on the centre's own pages."
+ }
+]

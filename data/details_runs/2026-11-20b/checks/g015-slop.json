@@ -1,0 +1,319 @@
+[
+ {
+  "id": "state-hermitage-museum-spb",
+  "section": "red_flags",
+  "problems": [
+   "missing red flag: sanctioned state bank sponsor (batch ruling, VTB precedent)"
+  ],
+  "before": "Sber listed only under FUNDING as general partner of a June 2026 show.",
+  "after": "New heading 'Red flags: 2026 sponsorship by sanctioned state bank Sber': US Treasury full blocking sanctions on Sberbank, 6 April 2022, majority-owned by the Russian government; UK Sanctions List designation 1 March 2022 with asset freeze, Government of Russia controlling share.",
+  "sources": [
+   "https://lenta.ru/news/2026/06/01/v-ermitazhe-otkroetsya-vystavka-sovremennogo-iskusstva-indii-s-ii-gidom-ot-sbera/",
+   "https://home.treasury.gov/news/press-releases/jy0705",
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
+  ],
+  "reason": "Lenta.ru (1 June 2026, citing Sber's press service) confirms Sber as general partner of the Indian art show opening 4 June 2026; Sberbank's own listing confirmed on two government pages (US Treasury press release jy0705; FCDO UK Sanctions List entry RUS0256). EU Official Journal not opened."
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "section": "red_flags",
+  "problems": [
+   "inaccurate detail: Miller 'opened' the gallery",
+   "heading wording"
+  ],
+  "before": "opened on 14 January 2022 by Gazprom's management board chairman Alexey Miller ... / Red flags: 2022 suspension of ties by foreign partners / the UK and Italian Hermitage foundations suspended support",
+  "after": "opened in January 2022 with its management board chairman Alexey Miller present ... / Red flags: 2022 boycott by foreign partners / the Hermitage Foundation UK suspended ties, the Hermitage's Italian foundation suspended operations",
+  "sources": [
+   "https://www.spb.kp.ru/daily/27351/4532773/",
+   "https://www.theartnewspaper.com/2022/04/04/russia-boycott-hermitage-museum"
+  ],
+  "reason": "KP says Miller attended; 14 January was the public opening. TAN calls the partners' moves cultural boycotts aimed at the museum, so the ruling keeps it."
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "section": "funding",
+  "problems": [
+   "credit: figures via Rambler reprinting News.ru",
+   "company press release not marked",
+   "detail beyond source"
+  ],
+  "before": "largest state subsidy of ten leading museums ... (News.ru via Rambler, 2018) / Magnit ... (Magnit release on Retail.ru)",
+  "after": "largest among the ten most visited museums of Moscow and Saint Petersburg (News.ru, 2018, reprinted by Rambler) / Stated by Magnit in a company press release (Retail.ru, 2025): ...",
+  "sources": [
+   "https://weekend.rambler.ru/places/40369892-dengi-iz-muzeev-tekut-rekoy",
+   "https://www.retail.ru/rbc/pressreleases/magnit-kosmetik-stal-generalnym-partnerom-vystavki-o-mode-ar-deko-v-gosudarstvennom-ermitazhe/"
+  ],
+  "reason": "News.ru studied the ten most visited museums of the two cities, not 'ten leading museums'; both outlets credited. Magnit facts rest on its own release, now marked."
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "section": "wider_context",
+  "problems": [
+   "unsourced outlet label: 'Ukrainian state outlet'",
+   "charge stated as allegation"
+  ],
+  "before": "Ukraine's charge is violations of the laws and customs of war (United24 Media). Unverified: ... (United24 Media, Ukrainian state outlet)",
+  "after": "In 2026 Ukrainian prosecutors changed the charge against him to violations of the laws and customs of war. Unverified: Ukraine's Defence Intelligence says 14 artefacts were taken during his Myrmekion expedition (United24 Media).",
+  "sources": [
+   "https://united24media.com/war-in-ukraine/ukraine-identifies-five-people-linked-to-illegal-crimea-excavations-and-14-removed-artifacts-23203"
+  ],
+  "reason": "No opened page states United24's ownership (same rule as the Le Soleil ruling); label removed from text and SOURCES. Butyagin stays in WIDER CONTEXT per ruling."
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "section": "overview",
+  "problems": [
+   "unsupported: 'modern art in the General Staff Building'",
+   "over 800 words",
+   "peripheral detail"
+  ],
+  "before": "six historic buildings on Palace Embankment ... with modern art in the General Staff Building; museum president line (Sobaka.ru); Potanin 2003 line",
+  "after": "six historic buildings along Palace Embankment, among them the Winter Palace; president and Potanin lines cut; decree folded into FUNDING; reappointment dated 10 September 2025",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hermitage_Museum",
+   "https://expert.ru/news/mikhail-piotrovskiy-perenaznachen-generalnym-direktorom-ermitazha"
+  ],
+  "reason": "Wikipedia does not say modern art is in the General Staff Building. Adding the Sber heading took the report to 997 words; trimmed to 796 by cutting peripheral overview and press detail, no heading dropped."
+ },
+ {
+  "id": "state-hermitage-museum-spb",
+  "section": "bottom_line",
+  "problems": [
+   "restates facts above"
+  ],
+  "before": "A state museum paid for mainly from the federal budget, with the state gas company among its sponsors. Its weak points are ...",
+  "after": "Not clean: state money sits beside sponsorship from Gazprom and a sanctioned state bank, under a director sanctioned for backing the war.",
+  "sources": [],
+  "reason": "Verdict only; 'state gas company' had no opened source."
+ },
+ {
+  "id": "victoria-gallery-samara",
+  "section": "red_flags",
+  "problems": [
+   "UK listing should be sourced to gov.uk (ruling)",
+   "unsupported: 'petrochemicals'"
+  ],
+  "before": "(UK Sanctions List, checked 20 November 2026) / the petrochemicals group Sibur (UK Sanctions List)",
+  "after": "(UK Sanctions List, FCDO, checked 20 November 2026); SOURCES marks the FCDO list as a government source / from Sibur; the UK Sanctions List says his interests in the Russian energy and chemicals sectors make him one of Russia's richest men",
+  "sources": [
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
+  ],
+  "reason": "FCDO entry RUS1126 confirms designation 6 April 2022, trust services sanctions 21 March 2023, director disqualification 9 April 2025, posts at Novatek and Sibur; it says chemicals, not petrochemicals."
+ },
+ {
+  "id": "victoria-gallery-samara",
+  "section": "bottom_line",
+  "problems": [
+   "restates facts",
+   "absence-style watch item"
+  ],
+  "before": "The money behind the gallery is one man's: a gas and petrochemicals fortune under UK sanctions. Worth watching: whether the gallery ever publishes accounts ...",
+  "after": "Not clean: the gallery rests on a single owner's fossil-fuel fortune, and that owner is under sanctions. Worth watching: who paid for the 2023 to 2026 rebuild.",
+  "sources": [],
+  "reason": "Verdict only. Campaigned-name ruling already applied: the Venice campaign sits in press and WIDER CONTEXT, not a Red flag; red flag heading now carries a year."
+ },
+ {
+  "id": "alula-arts-cultural-oasis",
+  "section": "overview",
+  "problems": [
+   "absence line",
+   "repetition with red flag"
+  ],
+  "before": "The name \"AlUla Arts & Cultural Oasis\" does not appear on the visitor site. / RCU chaired by Crown Prince; board line",
+  "after": "Cut; RCU governance moved into the Gulf state body Red flag, overview keeps founding and governor.",
+  "sources": [
+   "https://www.rcu.gov.sa/en/about-rcu/",
+   "https://www.arabnews.com/node/1850136/amp"
+  ],
+  "reason": "RUN.md bans not-found lines; the Red flag point no longer repeats FUNDING (PIF) and OVERVIEW."
+ },
+ {
+  "id": "alula-arts-cultural-oasis",
+  "section": "press",
+  "problems": [
+   "registration wall (ruling)",
+   "detail not in source: 'families'",
+   "credit"
+  ],
+  "before": "Registration-walled; only the summary line was read / RCU staff answer that the programme is \"genuine and not cynical\" and serves schools and families / MaddocksBrown had given about $13,000 since 2017",
+  "after": "both Hyperallergic items marked headline and standfirst only / Sumantro Ghose, the RCU's artistic programming director, calls the government's wish ... \"genuine and not cynical\" and points to art teaching in secondary schools / Citing the Los Angeles Times: ... about $13,000 since its founding",
+  "sources": [
+   "https://hyperallergic.com/523254/desert-x-funder-pulls-out-in-protest-of-saudi-collaboration/",
+   "https://www.theartnewspaper.com/2022/02/10/desert-x-alula-saudi-arabia-2022-who-is-it-for",
+   "https://www.artforum.com/news/desert-x-loses-donor-over-controversial-partnership-with-saudi-arabia-81046"
+  ],
+  "reason": "Hyperallergic standfirsts read live; donation detail and Brown quote kept only from Artforum. 'Families' came from a different speaker (Aldabal). Desert X protest stays in WIDER CONTEXT; trimmed to 797 words."
+ },
+ {
+  "id": "musee-boribana",
+  "section": "overview",
+  "problems": [
+   "archive copy no longer needed",
+   "overstated: 'took up her post'"
+  ],
+  "before": "(Senegalese culture ministry page, archive copy of 10 July 2026) / took up her post in March 2015",
+  "after": "live ministry page (opened 20 November 2026) / was due to take up her post in March 2015",
+  "sources": [
+   "https://www.culture.gouv.sn/index.php/musee-boribana/",
+   "https://www.enqueteplus.com/content/musee-boribana-la-conservatrice-prendra-fonctions-jeudi"
+  ],
+  "reason": "Live government page answered and matches the archive; Enquête+ announced the installation for the coming Thursday. Gift (ministry, Enquête+) vs buy-back (French Wikipedia, which also gives both 1990 and 1998) both stated with sources."
+ },
+ {
+  "id": "musee-boribana",
+  "section": "bottom_line",
+  "problems": [
+   "restates facts"
+  ],
+  "before": "The museum was built with the founders' own money and has been Senegalese state property since 2014, so none of its funding falls under a flag ...",
+  "after": "Clean money, private and then public, with nothing under a flag. Worth watching: ...",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "musée-des-civilisations-noires-dakar",
+  "section": "sources",
+  "problems": [
+   "unsourced outlet label (ruling)"
+  ],
+  "before": "le-musee-des-civilisations-noires-accelere-sa-transformation-institutionnelle/ (state-owned daily)",
+  "after": "label removed; Le Soleil dated 24 November 2025 in OVERVIEW",
+  "sources": [
+   "https://lesoleil.sn/actualites/arts-et-culture/le-musee-des-civilisations-noires-accelere-sa-transformation-institutionnelle/"
+  ],
+  "reason": "No opened page states Le Soleil's ownership."
+ },
+ {
+  "id": "musée-des-civilisations-noires-dakar",
+  "section": "press",
+  "problems": [
+   "paraphrase in quotation marks"
+  ],
+  "before": "Camara says a museum needs \"soft infrastructure: people, training, networks, alliances and, most importantly, vision\".",
+  "after": "Camara told Senegalese officials that a museum needs investment in people, training, networks, alliances and vision.",
+  "sources": [
+   "https://mg.co.za/friday/2018-12-20-senegalese-artistic-heritage-gets-a-home/"
+  ],
+  "reason": "The Mail & Guardian gives these words as the author's paraphrase, not a quotation."
+ },
+ {
+  "id": "musée-des-civilisations-noires-dakar",
+  "section": "overview",
+  "problems": [
+   "overstated: bill 'removed' the sabre"
+  ],
+  "before": "A French bill of 2020 removed that sabre from the French national collections for handover to Senegal",
+  "after": "A French bill of 2020 provided for that sabre to leave the French national collections",
+  "sources": [
+   "https://www.senat.fr/leg/pjl20-015.html"
+  ],
+  "reason": "A bill text does not remove anything; the text says the sabre ceases to belong to the collections when the law takes effect. Bottom line reduced to the verdict."
+ },
+ {
+  "id": "center-for-cultural-decontamination-czkd-belgrade",
+  "section": "press",
+  "problems": [
+   "Wikipedia-only press item (weak spot)"
+  ],
+  "before": "B92 television, \"Utisak nedelje\": Ranko Munitić (2005), as recorded by Wikipedia ... Unverified: Wikipedia ... quotes in English translation",
+  "after": "B92, \"Utisak nedelje\": Olja Bećković, interview with Ranko Munitić (2005), read in the B92 transcript (archive copy of 25 April 2014); Serbian quotes with our translations; notes that he speaks of decontamination centres in the plural and does not name CZKD.",
+  "sources": [
+   "https://web.archive.org/web/20140425143617/http://www.b92.net/info/emisije/utisak_nedelje.php?yyyy=2005&mm=10&nav_id=179537",
+   "https://en.wikipedia.org/wiki/Centre_for_Cultural_Decontamination"
+  ],
+  "reason": "Original found: the live B92 URL 301-redirects to a broken address ('https:/o/info/...'), so the page is gone and the archive copy stands in. Transcript of 30 October 2005 confirms the words; it names neither CZKD nor Pavićević."
+ },
+ {
+  "id": "center-for-cultural-decontamination-czkd-belgrade",
+  "section": "funding",
+  "problems": [
+   "unsupported: TEDEP 'supported by the European Parliament's communication programme (stated by the space)'",
+   "interpretation: 'partner groups'",
+   "detail beyond source: 'international project affairs'"
+  ],
+  "before": "Its TEDEP project ... (stated by the space) / alongside partner groups such as ... / handles legal, financial and international project affairs",
+  "after": "From February to June 2018 it was a partner in TEDEP, a Red House (Sofia) project carried out with the support of the European Parliament (Red House) / plain list of the Podrška page names / specialises in legal and financial affairs",
+  "sources": [
+   "https://en.redhouse-sofia.org/tedep",
+   "https://www.czkd.org/podrska/",
+   "https://www.czkd.org/en/member/slavica-vucetic-en/"
+  ],
+  "reason": "CZKD's pages carry no TEDEP funding statement; Red House's project page does. Bottom line reduced to the verdict; absence-style watch item cut."
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "section": "funding",
+  "problems": [
+   "RGE gas business belongs in WIDER CONTEXT (ruling)",
+   "absence phrase in verdict"
+  ],
+  "before": "FUNDING point: RGE's energy arm Pacific Energy ... / verdict '...; the foundation publishes no funders or accounts'",
+  "after": "Pacific Energy point moved to WIDER CONTEXT; verdict ends at 'the RGE group'.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Royal_Golden_Eagle"
+  ],
+  "reason": "Ruling: no documented link between RGE money and the foundation. Asian Agri 2012 ruling already in WIDER CONTEXT."
+ },
+ {
+  "id": "tanoto-art-foundation-singapore",
+  "section": "wider_context",
+  "problems": [
+   "archive copy undated",
+   "conflated counts",
+   "reordered denial",
+   "missing role"
+  ],
+  "before": "(OCCRP, archive copy) / seven of nine former employees said the Tanoto family controlled BHL ... and that Anderson Tanoto oversaw it / APRIL denied the claims and pledged in June 2015 / Tobias Berger, head of art at Tai Kwun",
+  "after": "OCCRP 8 February 2021, read in an archive copy of 15 November 2024 / nine former employees said Anderson oversaw it, seven said the family were its real owners / the RGE company APRIL, which has denied deforestation claims, pledged in June 2015 / strategic adviser Tobias Berger",
+  "sources": [
+   "https://web.archive.org/web/20241115105032/https://www.occrp.org/en/openlux/indonesian-paper-and-palm-oil-tycoon-secretly-bought-historic-munich-building-for-350-million-euros",
+   "https://www.icij.org/investigations/deforestation-inc/indonesian-billionaire-family-accused-of-controlling-shadow-company-group-linked-to-major-deforestation/",
+   "https://www.tanotoartfoundation.org/about"
+  ],
+  "reason": "Archive allowed by ruling and now dated; ICIJ gives nine and seven for different claims; Wikipedia's denial predates the Greenpeace report. Bottom line reduced to the verdict."
+ },
+ {
+  "id": "kapelica-gallery-kersnikova-institute-ljubljana",
+  "section": "funding",
+  "problems": [
+   "detail beyond source: 'company sponsors'",
+   "bottom line restates"
+  ],
+  "before": "Its sponsorship page invites company sponsors and offers them talks and meetings with artists / The gallery runs on public money, mostly EU project grants ...",
+  "after": "Its sponsorship page asks for sponsors and offers them meetings, talks and lectures with artists and art experts / Clean public money: nothing among its named funders falls under a flag.",
+  "sources": [
+   "https://kersnikova.org/wp-json/wp/v2/pages?slug=support-us",
+   "https://odprtiracuni-nvo.djnd.si/finance/44/leto/2025/"
+  ],
+  "reason": "Odprti računi 2025 figures, ministry 110,000 euros a year (JPR-PROG-2026-2029) and 5,720 euros (JCP-MED-VIZ-JES-2025), 21 supporters and 9 crew all confirmed."
+ },
+ {
+  "id": "origins-centre-johannesburg",
+  "section": "press",
+  "problems": [
+   "wrong workshop title",
+   "absence phrase"
+  ],
+  "before": "Reports on the workshop \"Histories: Commissioned, Authorised and Patrolled\" at the centre in November 2019 / Esterhuysen, the centre's chair / naming no funder",
+  "after": "Reports on a workshop of the same title at the centre on 18 and 19 November 2019 / Amanda Esterhuysen, chair of the centre and a workshop organiser / phrase cut",
+  "sources": [
+   "https://humanities.uct.ac.za/apc/articles/2019-12-17-conversations-about-art-objects-and-archives"
+  ],
+  "reason": "The UCT page says the workshop carried the article's title; 'Histories: Commissioned...' is a separate menu item on the site. Wits pages fail certificate verification for curl, so they were read through WebFetch with verbatim quotes: opening by Mbeki 2006, displays, NIHSS and IFAS renovation funding, 2019 wing and 'additional funding', hours and car park all confirmed word for word. Anglo American claim stays out."
+ },
+ {
+  "id": "amorepacific-museum-of-art-seoul",
+  "section": "overview",
+  "problems": [
+   "company press release credited as press",
+   "bottom line restates"
+  ],
+  "before": "(Hankyung, 21 May 2026; museum press release, December 2025) / The owner's weak points are two Fair Trade Commission fines",
+  "after": "(museum press releases of December 2025 and of 21 May 2026, the latter on Hankyung) / Clean money: a company museum paid for by a cosmetics business, with nothing under a flag.",
+  "sources": [
+   "https://www.hankyung.com/amp/202605210686P",
+   "https://apma.amorepacific.com/contents/exhibition/4128332/view.do"
+  ],
+  "reason": "Hankyung marks the piece as a corporate press release. 'Top sales agents' changed to 'high-performing sales staff' (JoongAng)."
+ }
+]
