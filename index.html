@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=883"></script>
+  <script src="assets/load-image-data.js?v=884"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=883">
-  <link rel="stylesheet" href="assets/sheet.css?v=883">
-  <script src="assets/config.js?v=883"></script>
-  <script src="assets/analytics.js?v=883"></script>
-  <script src="assets/subtopic.js?v=883"></script>
-  <script src="assets/names.js?v=883"></script>
-  <script src="assets/grounding.js?v=883"></script>
-  <script src="assets/repeats.js?v=883"></script>
-  <script src="assets/intro-narration.js?v=883"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=884">
+  <link rel="stylesheet" href="assets/sheet.css?v=884">
+  <script src="assets/config.js?v=884"></script>
+  <script src="assets/analytics.js?v=884"></script>
+  <script src="assets/subtopic.js?v=884"></script>
+  <script src="assets/names.js?v=884"></script>
+  <script src="assets/grounding.js?v=884"></script>
+  <script src="assets/repeats.js?v=884"></script>
+  <script src="assets/intro-narration.js?v=884"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=883"></script>
+  <script src="assets/load-image.js?v=884"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=883"></script>
-  <script src="assets/money-ids.js?v=883"></script>
+  <script src="assets/institutions.js?v=884"></script>
+  <script src="assets/money-ids.js?v=884"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10891,11 +10891,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v883';
+    const ATLAS_RELEASE = 'culture-atlas-v884';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=883').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=884').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12467,6 +12467,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         let activeMicroDot = null;
         const drawnInstLabelBoxes = [];
         const shownInstLabels = new Set();
+        let selMarkOnTop = null;   // set while the picked space is drawn; called again over the Influence map's funders
 
         // The picked and the hovered space are drawn last, so their marks stand over their neighbours'.
         const dotOrder = (d) => (selectedInstitution && selectedInstitution.name === d.inst.name) ? 2 : (hoveredInstitution && hoveredInstitution.name === d.inst.name) ? 1 : 0;
@@ -12495,14 +12496,27 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             : isGossipModeActive
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#cfcfba') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
             : spaceInk(d.inst, GLOBE_LIGHT);
-          ctx.lineJoin = 'round';
-          if (isSel) { markPath(3.5); ctx.fillStyle = G_GROUND; ctx.fill(); ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1.5; ctx.stroke(); }
-          markPath(0);
           // In gossip mode a space with no gossip stays a hollow outline, so the ones with gossip stand out as before.
           const hollow = isGossipModeActive && !hasGossip(d.inst) && !isSel;
-          ctx.fillStyle = hollow ? G_GROUND : markInk; ctx.fill();
-          ctx.strokeStyle = hollow ? markInk : G_GROUND; ctx.lineWidth = 1; ctx.stroke();
+          const paintMark = () => {
+            ctx.lineJoin = 'round';
+            // The picked mark's ring is the mark's own outline stroked wide, ink then ground, so it keeps one distance from
+            // every side. It used to be the shape scaled up round its box, which round a triangle left a wide gap over the
+            // apex and almost none under the base (user, 20 Nov 2026: "fix this triangle").
+            if (isSel) {
+              markPath(0);
+              ctx.strokeStyle = G_TEXT; ctx.lineWidth = 8.5; ctx.stroke();
+              ctx.strokeStyle = G_GROUND; ctx.lineWidth = 5.5; ctx.stroke();
+            }
+            markPath(0);
+            ctx.fillStyle = hollow ? G_GROUND : markInk; ctx.fill();
+            ctx.strokeStyle = hollow ? markInk : G_GROUND; ctx.lineWidth = 1; ctx.stroke();
+          };
+          paintMark();
           ctx.restore();
+          // The Influence map draws its funders after the spaces, and a funder whose office stands by the picked space put its
+          // dots on the picked mark (Kamehameha Schools on the Bishop Museum); the picked mark is drawn again over that layer.
+          if (isSel) selMarkOnTop = () => { ctx.save(); ctx.globalAlpha = limbD; paintMark(); ctx.restore(); };
 
           // Institution label on 3D globe
           // Only show labels when:
@@ -12566,7 +12580,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         if (window.atlasLayersDrawNodes) window.atlasLayersDrawNodes(ctx, visibleDots, r, baseRadius, selectedInstitution, hoveredInstitution, isGossipModeActive, project, cx, cy);
         if (window.atlasCritiqueDraw) window.atlasCritiqueDraw(ctx, visibleDots, selectedInstitution, hoveredInstitution, project, r, cx, cy);   // assets/critique-gallery.js
-        if (window.atlasInfluenceDraw && !isCityStreetViewActive) window.atlasInfluenceDraw(ctx, project, r, cx, cy, G_GROUND, G_TEXT);   // assets/influence-mode.js: the funders, in place of the spaces
+        if (window.atlasInfluenceDraw && !isCityStreetViewActive) {
+          window.atlasInfluenceDraw(ctx, project, r, cx, cy, G_GROUND, G_TEXT);   // assets/influence-mode.js: the funders, in place of the spaces
+          if (selMarkOnTop && window.isInfluenceModeActive && window.isInfluenceModeActive()) selMarkOnTop();
+        }
 
         // 8.4 City labels on top of the dots
         deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4], p[6]); ctx.restore(); });
@@ -22908,24 +22925,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=883"></script>
-<script src="assets/note-aids.js?v=883" defer></script>
-<script src="assets/place-list.js?v=883" defer></script>
-<script src="assets/chat-share.js?v=883" defer></script>
-<script src="assets/note-files.js?v=883" defer></script>
-<script src="assets/funding-views.js?v=883"></script>
-<script src="assets/layers.js?v=883"></script>
-<script src="assets/critique-gallery-data.js?v=883"></script>
-<script src="assets/critique-captions.js?v=883"></script>
-<script src="assets/critique-gallery.js?v=883"></script>
-<script src="assets/hq-detail.js?v=883"></script>
-<script src="assets/influence-mode.js?v=883"></script>
-<script src="assets/bubbles.js?v=883" defer></script>
-<script src="assets/phone-maps.js?v=883"></script>
-<script src="assets/desktop-maps.js?v=883"></script>
-<script src="assets/chat-resize.js?v=883"></script>
-<script src="assets/frame-refusers.js?v=883"></script>
-<script src="assets/link-pane.js?v=883"></script>
-<script src="assets/tab-suggest.js?v=883"></script>
+<script src="assets/typeset.js?v=884"></script>
+<script src="assets/note-aids.js?v=884" defer></script>
+<script src="assets/place-list.js?v=884" defer></script>
+<script src="assets/chat-share.js?v=884" defer></script>
+<script src="assets/note-files.js?v=884" defer></script>
+<script src="assets/funding-views.js?v=884"></script>
+<script src="assets/layers.js?v=884"></script>
+<script src="assets/critique-gallery-data.js?v=884"></script>
+<script src="assets/critique-captions.js?v=884"></script>
+<script src="assets/critique-gallery.js?v=884"></script>
+<script src="assets/hq-detail.js?v=884"></script>
+<script src="assets/influence-mode.js?v=884"></script>
+<script src="assets/bubbles.js?v=884" defer></script>
+<script src="assets/phone-maps.js?v=884"></script>
+<script src="assets/desktop-maps.js?v=884"></script>
+<script src="assets/chat-resize.js?v=884"></script>
+<script src="assets/frame-refusers.js?v=884"></script>
+<script src="assets/link-pane.js?v=884"></script>
+<script src="assets/tab-suggest.js?v=884"></script>
 </body>
 </html>
