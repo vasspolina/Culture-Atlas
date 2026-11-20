@@ -2767,7 +2767,10 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 /* The street map's name bubbles. --wc-ink fills the bubble and its tail, --wc-ground colours the name and the grade on it
    (the rules above), so they are set on the bubble itself. */
 :root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label{--wc-ink:#000;--wc-ground:#f4f4f4;
-  box-shadow:0 0 0 1px rgba(244,244,244,.45)!important}
+  box-shadow:none!important;
+  /* The 1px ring is drawn around the bubble and its tail as one shape (user, 20 Nov 2026: "fix badge"): a box-shadow
+     stopped at the tail and left it a bare black wedge cut into the ring. #7a7a79 is the old 45% white over the dark ground. */
+  filter:drop-shadow(1px 0 0 #7a7a79) drop-shadow(-1px 0 0 #7a7a79) drop-shadow(0 1px 0 #7a7a79) drop-shadow(0 -1px 0 #7a7a79)!important}
 /* The open space's bubble, in its grade's dark colour (the light theme's). */
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.inst-pin-label{--wc-mark:#6b6b6b}
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="1"] .inst-pin-label.inst-pin-label{--wc-mark:#007a80}
