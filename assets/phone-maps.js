@@ -564,8 +564,17 @@
       // The sheet's cross is the only one: on a funder's record (assets/hq-detail.js) it closes that record too.
       closeBtn?.addEventListener('click', () => { if (sheet.classList.contains('is-hq-sheet') && typeof window.atlasHqClose === 'function') window.atlasHqClose(); });
       const chrome = $('sheet-drag-handle');
-      const DETENTS = ['peek', 'half', 'full'];
+      // Two heights on a phone (user, 20 Nov 2026: "interaction between half sheet and then full sheet ... I like to be able to
+      // browse on the map"): a short card over the foot of the map, and the full page. A space or a city chosen on the map
+      // opens as the card, so the map stays in sight and the next space is one tap away; pulled up, or its grabber or a tab
+      // tapped, it is the full page of 19 Nov, with the chat's Chat and Details tabs. Opened from the chat it is that page at
+      // once. The third height, half, went: three stops a few dozen pixels apart were what made the sheet hard to place.
+      const DETENTS = ['peek', 'full'];
       let detent = 'peek';
+      // Opened from the chat (its Details tab, a link in an answer): the full page, never the card.
+      let viaChat = false;
+      // The page's look (the chat's head, no grabber) is the root class gm-from-chat; it is on whenever the sheet is full.
+      let pageLook = () => {};
 
       // The height is the custom property --gm-h, not style.height: an older phone rule pins the sheet's height with
       // !important, which an inline height cannot beat (atlas.css, "PHONE: MAPS APP").
@@ -610,11 +619,21 @@
         }
         // The iPhone's home strip covers the page's bottom edge (the page runs under it, viewport-fit=cover), so peek leaves
         // room for it, or the actions sat under it (user, 4 Nov 2026: text overlapped at the bottom when a space was opened).
-        end = end ? end + 20 + safeBottom() : 168;
-        return Math.max(168, Math.min(Math.round(end), Math.round(h * 0.7)));
+        // The card never takes more than 45% of the map, so the spaces around the chosen one stay in sight (it was 70%).
+        // Where the actions do not fit under that, the card ends under the description, whole, and not through the middle of
+        // the buttons: they are the first thing in the page when it is pulled up.
+        const cap = Math.round(h * 0.45), pad = 20 + safeBottom();
+        if (end && end + pad > cap && !sheet.classList.contains('is-hq-sheet')) {
+          const title = bottomOf(titleBlock);
+          if (title && title + 12 + safeBottom() <= cap) return Math.max(168, Math.round(title + 12 + safeBottom()));
+        }
+        end = end ? end + pad : 168;
+        return Math.max(168, Math.min(Math.round(end), cap));
       }
       function setDetent(d, animate) {
-        if (PHONE() || root.classList.contains('gm-from-chat')) d = 'full';   // on a phone the record is a full sheet, always (user, 19 Nov 2026)
+        if (viaChat) d = 'full';   // opened from the chat: a page of its own, always full
+        if (d === 'half') d = 'peek';
+        pageLook(d === 'full');    // before the height is read: the page is the whole screen, the card stops under the top row
         detent = d;
         sheet.dataset.detent = d;
         sheet.classList.toggle('is-large', d === 'full');
@@ -633,7 +652,7 @@
       // The ask holds until the sheet is closed and stays closed (opening a record can hide and show it in one go), or is
       // moved by hand or by the map to another height.
       let askedFull = false;
-      const openAt = () => (PHONE() || root.classList.contains('gm-from-chat') || askedFull ? 'full' : 'peek');
+      const openAt = () => (viaChat || askedFull ? 'full' : 'peek');
       window.atlasSetSheetDetent = (d) => { if (!DETENTS.includes(d)) return; askedFull = d === 'full'; setDetent(d); };
 
       // The grabber, tapped or pressed with Enter, steps up a height, and from full goes back to peek.
@@ -676,7 +695,7 @@
       const speed = dragSpeed();
       sheet.addEventListener('touchstart', (e) => {
         // Opened from the chat, the record is a page of its own at full height: it only scrolls, it is never dragged.
-        if (!PHONE() || e.touches.length !== 1 || root.classList.contains('gm-from-chat')) { y0 = null; return; }   // on a phone the sheet is never dragged
+        if (!PHONE() || e.touches.length !== 1 || viaChat) { y0 = null; return; }
         if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
         x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; h0 = sheet.offsetHeight; dragging = false; speed.start(y0, e.timeStamp);
       }, { passive: true });
@@ -691,6 +710,10 @@
           if (detent === 'full' && !inChrome && (d < 0 || sheet.scrollTop > 0)) { y0 = null; return; }
           dragging = true;
           sheet.classList.add('gm-still');
+          // The full page is pinned to the whole screen by its own rules, whatever --gm-h says: the pull down followed the
+          // finger in the variable only, and the release read the pinned height and went back to full. So the page's look
+          // comes off for the length of the pull, and the sheet under it moves; landing at full puts it back.
+          if (detent === 'full') pageLook(false);
         }
         if (e.cancelable) e.preventDefault();
         speed.move(y, e.timeStamp);
@@ -730,15 +753,21 @@
       let chatScrollTop = 0;
       function markFromChat() {
         if (!PHONE()) return;
+        viaChat = true;
         const sc = $('curatorScrollArea');
         chatScrollTop = sc ? sc.scrollTop : 0;
+        showPage();
+      }
+      function showPage() {
+        if (!PHONE() || root.classList.contains('gm-from-chat')) return;
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
         $('dossier-sheet-ask-btn')?.setAttribute('aria-pressed', 'true');
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
       }
-      function clearFromChat() {
+      function clearFromChat() { viaChat = false; hidePage(); }
+      function hidePage() {
         if (!root.classList.contains('gm-from-chat')) return;
         root.classList.remove('gm-from-chat');
         fromChatBar.hidden = true;
@@ -771,10 +800,10 @@
       // The record is the same full page wherever it is opened from (user, 19 Nov 2026: "make it full sheet mode always
       // covering full screen", "where is chat details button"): opened from the map it takes the chat's Chat and Details
       // tabs, the cross at the left and the whole screen, instead of a half sheet that jumped to full. Chat opens the chat.
-      new MutationObserver(() => {
-        if (sheet.classList.contains('hidden')) clearFromChat();
-        else if (PHONE() && !root.classList.contains('gm-from-chat')) markFromChat();
-      }).observe(sheet, { attributes: true, attributeFilter: ['class'] });
+      // Since 20 Nov 2026 that page is the sheet's full height only: from the map it opens as the card first (see DETENTS).
+      pageLook = (on) => { if (on) showPage(); else if (!viaChat) hidePage(); };
+      new MutationObserver(() => { if (sheet.classList.contains('hidden')) clearFromChat(); })
+        .observe(sheet, { attributes: true, attributeFilter: ['class'] });
       window.addEventListener('resize', () => { if (!PHONE()) clearFromChat(); });
 
       // ---- The record's actions as toggles (user, 7 Nov 2026: "make buttons toggles") ----
@@ -888,6 +917,8 @@
       const FLAG_EVENT = /governance|labou?r|staff|union|strike|layoff|job (?:cuts|losses)|dismiss|ouster|resign|director|curator|leadership|management|censor|punish|pressure|police|arrest|looted|holdings|provenance|restitution|return|antiquit|human remains|dispute|petition|open letter|campaign|cancel|withdr[ae]w|removal|removed|closure|closed|delay|audit|allegation|racism|racist|occupation|sit-in|encampment|vandal|threat|damage|theft|stolen|fire\b|earthquake|\bwar\b|misconduct|abuse|inquiry|criticism|rebrand|deaccession|sale of|missing|expansion|commission|debate|journalist|exhibit|ticket|performance|takeover/;
       const FLAG_LEAD = /\b(?:sponsor\w*|funder\w*|funded|funds|donor\w*|donat\w*|benefactor\w*|patrons?|supporters?|supports|supported|backers?|trustees?|board (?:member|chair|seat)\w*|gift\w*|gave|partners?|maintainer|owned by|owner|parent company)\b/i;
       const FLAG_FUNDER = /\b(?:sponsor\w*|funder\w*|donor\w*|benefactor\w*|(?:corporate|founding|main|lead|major|principal|official) (?:member|partner)\w*)\b/i;
+      const PROTEST_MONEY = /sponsor|donor|donat|benefactor|funder|\bfund(?:ing|ed|s)?\b|partnership|corporate ties|naming|patron|\bbanks?\b|fossil|\boil\b|\bgas\b|\bcoal\b|mining|tobacco|\barms\b|weapon|gambl|casino|opioid|sackler|\bkoch\b|invest|trustee|ownership|\bbp\b|money/;
+      const PROTEST_SPONSOR = /\b(?:sponsor(?:s|ed|ship|ships|ing)?|donors?|benefactors?|(?:corporate|founding|main|lead|major|principal|official) partners?)\b/i;
       const tabOf = (el) => {
         if (el.matches('figure')) return 'overview';
         // Titles are typeset too (a no-break space before the last word), so they are read with plain spaces.
@@ -910,7 +941,21 @@
         // 19 Nov 2026 every flag went there unless its title held one of seven words, so "2024 dispute over a Nan Goldin
         // slide", censorship, governance and labour disputes were all read under Funding (user: "this is funding but the
         // info it's not funding").
-        if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) {
+        // A protest or boycott over a sponsor, a donor, a trustee or the source of the money is about who funds the space
+        // (user, 20 Nov 2026: "put protest over sponsors under Funding"): its title says so ("Protest over BP",
+        // "Protests against Koç sponsorship"), or its opening lines name the sponsorship protested, or its text speaks of
+        // the sponsorships. A protest over a director, a work or a cancelled show stays in Record. Read against the 170
+        // protest and boycott sections in the records: 31 moved to Funding, the rest stay in Record.
+        if (el.classList.contains('is-flag') && /protest|boycott/.test(t)) {
+          const body = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(t.length);
+          const lead = body.slice(0, 260);
+          const denied = (x) => /\b(?:no|not|without)\b[^.]{0,40}\b(?:sponsor|funder|donor)/i.test(x);
+          if (PROTEST_MONEY.test(t.replace(/state-funded/g, ''))) return 'funding';
+          if (PROTEST_SPONSOR.test(lead) && !denied(lead)) return 'funding';
+          if (/\bsponsorships?\b/i.test(body) && !denied(body)) return 'funding';
+          return 'record';
+        }
+        if (el.classList.contains('is-flag') && !/case|account|gossip|talk|report/.test(t)) {
           // "Flagged" is the row that says why the space is flagged, and a space is flagged for who funds or owns it.
           if (t === 'flagged') return 'funding';
           // The West Bank is a place, not a bank.

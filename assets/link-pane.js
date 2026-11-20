@@ -202,7 +202,11 @@
   function open(url, from) {
     build();
     var wasOpen = !pane.hidden;
-    if (!wasOpen) opener = from || document.activeElement;
+    // Closing gives focus back to the link that was clicked last, so a second link opened while the pane is up takes over
+    // from the first. Focus inside the pane itself (its close button, after the first link) is never what to go back to.
+    var src = from || document.activeElement;
+    if (src && !pane.contains(src) && src !== document.body && src !== root) opener = src;
+    else if (!wasOpen) opener = null;
     // A new page drops whatever was ahead of the current one, as a browser does.
     if (stack[at] !== url) { stack = stack.slice(0, at + 1); stack.push(url); at = stack.length - 1; }
     if (!wasOpen) {
