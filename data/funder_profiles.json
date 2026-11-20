@@ -50,6 +50,24 @@
   ],
   "batch": "fp15"
  },
+ "accionculturalespaola": {
+  "name": "Acción Cultural Española (AC/E)",
+  "short": "AC/E",
+  "kind": "gov",
+  "what": "A Spanish state company that promotes Spanish culture at home and abroad, constituted on 21 December 2010 from three earlier state companies and based in Madrid.",
+  "money": "The Spanish state, which owns it 100 percent through the Dirección General del Patrimonio del Estado.",
+  "arts": "Its PICE programme supports the presence of Spain's creative and cultural sector abroad.",
+  "site": "https://www.accioncultural.es",
+  "city": "Madrid",
+  "country": "Spain",
+  "address": "José Abascal 4, 28003 Madrid",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Acci%C3%B3n_Cultural_Espa%C3%B1ola",
+   "https://www.accioncultural.es/es/presentacion"
+  ],
+  "batch": "fp31"
+ },
  "acenpo": {
   "name": "Arts Council England",
   "kind": "gov",
@@ -84,6 +102,23 @@
    "https://www.cbw.ge/business/founder-of-adjaragroup-temur-ugulava-passes-away-at-56"
   ],
   "batch": "fp6"
+ },
+ "aecid": {
+  "name": "Agencia Española de Cooperación Internacional para el Desarrollo",
+  "short": "AECID",
+  "kind": "gov",
+  "what": "Spain's state agency for international development cooperation, attached to the Ministry of Foreign Affairs, created on 11 November 1988 and based in Madrid.",
+  "money": "The Spanish state budget: EUR 707.2 million in 2023.",
+  "arts": "Its network abroad includes Cultural Centres in the countries where it works.",
+  "site": "https://www.aecid.es",
+  "city": "Madrid",
+  "country": "Spain",
+  "address": "Avenida de los Reyes Católicos 4, Madrid",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Agencia_Espa%C3%B1ola_de_Cooperaci%C3%B3n_Internacional_para_el_Desarrollo"
+  ],
+  "batch": "fp31"
  },
  "aerok": {
   "name": "Aero K",
@@ -246,6 +281,23 @@
   ],
   "batch": "fp1"
  },
+ "ajuntamentdelleida": {
+  "name": "Ajuntament de Lleida",
+  "short": "Paeria de Lleida",
+  "kind": "gov",
+  "what": "The municipal government of Lleida, in Catalonia, also called the Paeria, with a council of 27 members that sits in the Palau de la Paeria.",
+  "money": "The municipal budget of the city of Lleida.",
+  "site": "https://www.paeria.cat",
+  "city": "Lleida",
+  "country": "Spain",
+  "address": "Plaça Paeria 1, 25007 Lleida",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20261017110809/https://www.paeria.cat/",
+   "https://ca.wikipedia.org/wiki/Paeria_de_Lleida"
+  ],
+  "batch": "fp31"
+ },
  "ako": {
   "name": "AKO Foundation",
   "kind": "found",
@@ -262,6 +314,22 @@
    "https://en.wikipedia.org/wiki/Nicolai_Tangen"
   ],
   "batch": "fp2"
+ },
+ "akzonobelsadolin": {
+  "name": "Akzo Nobel N.V.",
+  "short": "AkzoNobel",
+  "kind": "corp",
+  "what": "A Dutch paints and coatings company formed in 1994 from Akzo and Nobel Industries, based in Amsterdam, which owns the Sadolin paint brand sold in Estonia.",
+  "money": "Sales of decorative paints and performance coatings: revenue of EUR 10.158 billion in 2025.",
+  "site": "https://www.akzonobel.com",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/AkzoNobel",
+   "https://www.sadolin.ee/et/meist"
+  ],
+  "batch": "fp31"
  },
  "alburycity|Australia": {
   "name": "Albury City Council",
@@ -679,6 +747,40 @@
    "https://en.wikipedia.org/wiki/Anschutz_Corporation"
   ],
   "batch": "fp3"
+ },
+ "aomorimichinokubank": {
+  "name": "The Aomori Michinoku Bank, Ltd.",
+  "short": "Aomori Michinoku Bank",
+  "kind": "corp",
+  "what": "A Japanese regional bank in Aomori, formed on 1 January 2025 by the merger of Aomori Bank and Michinoku Bank and wholly owned by Procrea Holdings.",
+  "money": "Deposits and lending in Aomori Prefecture, where it is the only locally based bank and holds an 80 percent share.",
+  "site": "https://www.am-bk.co.jp",
+  "city": "Aomori",
+  "country": "Japan",
+  "address": "1-9-30 Hashimoto, Aomori",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Aomori_Michinoku_Bank",
+   "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%A3%AE%E3%81%BF%E3%81%A1%E3%81%AE%E3%81%8F%E9%8A%80%E8%A1%8C"
+  ],
+  "batch": "fp31"
+ },
+ "aomoritelevision": {
+  "name": "Aomori Television Broadcasting Co., Ltd.",
+  "short": "ATV",
+  "kind": "corp",
+  "what": "A commercial television broadcaster for Aomori Prefecture, affiliated with the Japan News Network, established on 23 December 1968 and on air since 1 December 1969.",
+  "money": "Commercial television broadcasting: sales of JPY 3.53 billion in fiscal 2022.",
+  "site": "https://www.atv.jp",
+  "city": "Aomori",
+  "country": "Japan",
+  "address": "1-4-8 Matsumori, Aomori",
+  "status": "done",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/%E9%9D%92%E6%A3%AE%E3%83%86%E3%83%AC%E3%83%93",
+   "https://en.wikipedia.org/wiki/Aomori_Television"
+  ],
+  "batch": "fp31"
  },
  "aon": {
   "name": "Aon plc",
@@ -1491,6 +1593,22 @@
   ],
   "batch": "fp11"
  },
+ "bancagenerali": {
+  "name": "Banca Generali S.p.A.",
+  "short": "Banca Generali",
+  "kind": "corp",
+  "what": "An Italian private bank founded in 1998 by Assicurazioni Generali, listed on Borsa Italiana, based in Trieste and 50.17 percent owned by the Generali Group.",
+  "money": "Private banking and wealth management for high-net-worth individuals, with net income of EUR 431 million in 2024.",
+  "site": "https://www.bancagenerali.com",
+  "city": "Trieste",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Banca_Generali",
+   "https://it.wikipedia.org/wiki/Banca_Generali"
+  ],
+  "batch": "fp31"
+ },
  "bancatransilvania": {
   "name": "Banca Transilvania S.A.",
   "short": "Banca Transilvania",
@@ -1519,6 +1637,22 @@
    "https://en.wikipedia.org/wiki/Banco_Hipotecario"
   ],
   "batch": "fp7"
+ },
+ "bankaekonomike": {
+  "name": "Banka Ekonomike",
+  "kind": "corp",
+  "what": "A commercial bank in Kosovo owned by local companies, licensed in 2001, with its head office on Mother Teresa Square in Pristina and 34 banking units.",
+  "money": "Its banking business in Kosovo.",
+  "site": "https://www.bekonomike.com",
+  "city": "Pristina",
+  "country": "Kosovo",
+  "address": "Mother Teresa Square, 10000 Pristina",
+  "status": "done",
+  "sources": [
+   "https://www.bekonomike.com/en/about-us",
+   "https://sq.wikipedia.org/wiki/Banka_Ekonomike"
+  ],
+  "batch": "fp31"
  },
  "bankaustria": {
   "name": "UniCredit Bank Austria AG",
@@ -1776,6 +1910,24 @@
    "https://en.wikipedia.org/wiki/BC_Arts_Council"
   ],
   "batch": "fp1"
+ },
+ "beauftragtefrkulturundmedien": {
+  "name": "Der Beauftragte der Bundesregierung für Kultur und Medien",
+  "short": "BKM",
+  "kind": "gov",
+  "what": "The German federal government's office for culture and media policy, a supreme federal authority created in 1998 under Chancellor Gerhard Schröder and led by a minister of state.",
+  "money": "The federal budget of Germany: EUR 2.07 billion in the 2024 budget year.",
+  "arts": "It funds cultural institutions and projects of national importance and awards prizes such as the Deutscher Filmpreis.",
+  "site": "https://kulturstaatsminister.de",
+  "city": "Berlin",
+  "country": "Germany",
+  "address": "Potsdamer Platz 1, 10785 Berlin",
+  "status": "done",
+  "sources": [
+   "https://kulturstaatsminister.de/impressum",
+   "https://de.wikipedia.org/wiki/Beauftragter_der_Bundesregierung_f%C3%BCr_Kultur_und_Medien"
+  ],
+  "batch": "fp31"
  },
  "beisheimalsogive": {
   "name": "Prof. Otto Beisheim Stiftung",
@@ -2492,6 +2644,24 @@
   ],
   "batch": "fp3"
  },
+ "bundesministeriumfrkunstundkultur": {
+  "name": "Bundesministerium für Wohnen, Kunst, Kultur, Medien und Sport",
+  "short": "BMWKMS",
+  "kind": "gov",
+  "what": "Austria's federal ministry for housing, arts, culture, media and sport, in Vienna, known until March 2025 as the Bundesministerium für Kunst, Kultur, öffentlichen Dienst und Sport.",
+  "money": "The federal budget of Austria: EUR 1.01 billion in 2022.",
+  "arts": "Its portfolio covers the arts, the federal theatres, film funding and museums.",
+  "site": "https://www.bmwkms.gv.at",
+  "city": "Vienna",
+  "country": "Austria",
+  "address": "Radetzkystraße 2, 1030 Wien",
+  "status": "done",
+  "sources": [
+   "https://www.bmwkms.gv.at/impressum.html",
+   "https://de.wikipedia.org/wiki/Bundesministerium_f%C3%BCr_Wohnen,_Kunst,_Kultur,_Medien_und_Sport"
+  ],
+  "batch": "fp31"
+ },
  "burdockbrewery": {
   "name": "Burdock Brewery",
   "kind": "corp",
@@ -2822,6 +2992,23 @@
   ],
   "batch": "fp3"
  },
+ "cassaruralealtogarda": {
+  "name": "Cassa Rurale AltoGarda - Rovereto",
+  "short": "Cassa Rurale AltoGarda",
+  "kind": "corp",
+  "what": "A cooperative credit bank in Trentino, formed on 1 July 2021 from rural banks dating back to 1892, with over 15,600 members and offices in Arco and Rovereto.",
+  "money": "Its banking business with members and customers.",
+  "site": "https://www.cr-ager.it",
+  "city": "Arco",
+  "country": "Italy",
+  "address": "Viale delle Magnolie 1, 38062 Arco (TN)",
+  "status": "done",
+  "sources": [
+   "https://www.cr-ager.it/chi-siamo/",
+   "https://www.cr-ager.it/chi-siamo/storia/"
+  ],
+  "batch": "fp31"
+ },
  "caterpillarannounced": {
   "name": "Caterpillar Foundation",
   "kind": "found",
@@ -2866,6 +3053,22 @@
    "https://jdirving.com/en/our-business-division/agriculture/cavendish"
   ],
   "batch": "fp8"
+ },
+ "ccpar": {
+  "name": "Companhia Carioca de Parcerias e Investimentos",
+  "short": "CCPar",
+  "kind": "gov",
+  "what": "A Rio de Janeiro municipal company for concessions and public-private partnerships, created in June 2022 by Law 251/22, that took over Cdurp, which ran Porto Maravilha.",
+  "money": "The municipality of Rio de Janeiro, its owner.",
+  "site": "https://www.ccpar.rio",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "address": "Rua Sacadura Cabral 133, Saúde, Rio de Janeiro",
+  "status": "done",
+  "sources": [
+   "https://www.ccpar.rio/institucional/quem-somos/"
+  ],
+  "batch": "fp31"
  },
  "centurybank": {
   "name": "Century Bank",
@@ -4265,6 +4468,21 @@
   ],
   "batch": "fp9"
  },
+ "confindustriacomo": {
+  "name": "Confindustria Como",
+  "kind": "priv",
+  "what": "The association of industrial companies in the province of Como, active since 1919 and a member of Confindustria, the Italian industry confederation.",
+  "site": "https://www.confindustriacomo.it",
+  "city": "Como",
+  "country": "Italy",
+  "address": "Via Raimondi 1, 22100 Como",
+  "status": "done",
+  "sources": [
+   "https://www.confindustriacomo.it/menu/chi-siamo/",
+   "https://it.wikipedia.org/wiki/Confindustria"
+  ],
+  "batch": "fp31"
+ },
  "conseildesartsdemontral": {
   "name": "Conseil des arts de Montréal",
   "kind": "gov",
@@ -4299,6 +4517,22 @@
    "https://www.mallorcadiario.com/el-consell-de-mallorca-aprueba-definitivamente-sus-presupuestos-para-2026"
   ],
   "batch": "fp9"
+ },
+ "constructoracapital": {
+  "name": "Constructora Capital",
+  "kind": "corp",
+  "what": "A Colombian housing developer from Antioquia, led by the brothers Felipe and Pablo Echeverri, that has built homes in Bogotá and Medellín for more than 34 years.",
+  "money": "Housing sales: COP 2.07 trillion in 2025 through Constructora Capital Bogotá SAS and Constructora Capital Medellín SAS.",
+  "site": "https://www.constructoracapital.com",
+  "city": "Medellín",
+  "country": "Colombia",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20261010222136/https://www.constructoracapital.com/",
+   "https://www.las2orillas.co/estas-tres-grandes-constructoras-superaron-el-billon-de-pesos-vendiendo-proyectos-de-vivienda/",
+   "https://www.portafolio.co/negocios/empresas/el-desarrollo-de-su-gente-el-cimiento-de-constructora-capital-574580"
+  ],
+  "batch": "fp31"
  },
  "continentalbarum": {
   "name": "Continental Barum s.r.o.",
@@ -4791,6 +5025,22 @@
   ],
   "batch": "fp10"
  },
+ "dardaniainsurancecompany": {
+  "name": "Dardania Insurance Company J.S.C.",
+  "short": "Dardania",
+  "kind": "corp",
+  "what": "A Kosovo insurance company based in Pristina, bought in 2014 by the insurer Eurosig.",
+  "money": "Insurance premiums, including an EULEX Kosovo vehicle insurance contract worth up to EUR 800,000 a year, won with Eurosig in January 2015.",
+  "city": "Pristina",
+  "country": "Kosovo",
+  "address": "Str. Sylejman Vokshi No. 4, 10000 Pristina",
+  "status": "done",
+  "sources": [
+   "https://www.eulex-kosovo.eu/eul/repository/docs/T20140603_87AwardNotice.pdf",
+   "https://www.tiranatimes.com/albanian-insurance-companies-in-kosovo-head-bankruptcy/"
+  ],
+  "batch": "fp31"
+ },
  "darlingtonbuildingsociety": {
   "name": "Darlington Building Society",
   "kind": "corp",
@@ -4823,6 +5073,22 @@
    "https://en.wikipedia.org/wiki/David_Zwirner"
   ],
   "batch": "fp10"
+ },
+ "davivienda": {
+  "name": "Banco Davivienda S.A.",
+  "short": "Davivienda",
+  "kind": "corp",
+  "what": "A Colombian private bank founded in Bogotá on 1 September 1972, part of Grupo Bolívar and the second largest bank in the country.",
+  "money": "Financial services for individuals and companies, with assets of COP 224.5 trillion in 2025.",
+  "site": "https://www.davivienda.com",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "address": "Av. El Dorado No. 68C-61, Bogotá",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Davivienda"
+  ],
+  "batch": "fp31"
  },
  "dcmsstatutorygrantinaid|UK": {
   "name": "Department for Digital, Culture, Media and Sport",
@@ -4972,6 +5238,24 @@
   ],
   "batch": "fp10"
  },
+ "deolifant": {
+  "name": "De Olifant BV",
+  "short": "De Olifant",
+  "kind": "corp",
+  "what": "A family-run wholesaler of paints, facade insulation and industrial coatings in the Antwerp area, in business for more than 30 years, with branches in Wommelgem and Wilrijk.",
+  "money": "Wholesale of professional paint and coating brands such as Caparol and Sigma.",
+  "site": "https://deolifant.com",
+  "city": "Wommelgem",
+  "country": "Belgium",
+  "address": "Herentalsebaan 406, 2160 Wommelgem",
+  "status": "done",
+  "sources": [
+   "https://deolifant.com/over-ons/",
+   "https://deolifant.com/contact/",
+   "https://www.muhka.be/en/your-support-is-crucial/partners-of-m-hka/"
+  ],
+  "batch": "fp31"
+ },
  "deroytestamentary": {
   "name": "DeRoy Testamentary Foundation",
   "kind": "found",
@@ -4985,6 +5269,23 @@
    "https://jwa.org/people/deroy-helen"
   ],
   "batch": "fp10"
+ },
+ "destandaard": {
+  "name": "De Standaard",
+  "kind": "corp",
+  "what": "A Flemish daily newspaper published since 4 December 1918, with its newsroom on Kantersteen in central Brussels since late 2020.",
+  "money": "Its owner Mediahuis, a Belgian media company with revenue of EUR 1,236 million in 2024.",
+  "site": "https://www.standaard.be",
+  "city": "Brussels",
+  "country": "Belgium",
+  "wrong_match": "M HKA lists De Standaard as a media partner, not as a funder.",
+  "status": "done",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/De_Standaard",
+   "https://nl.wikipedia.org/wiki/Mediahuis",
+   "https://www.muhka.be/en/your-support-is-crucial/partners-of-m-hka/"
+  ],
+  "batch": "fp31"
  },
  "deutschebrsephotography": {
   "name": "Deutsche Börse Photography Foundation gGmbH",
@@ -5128,6 +5429,22 @@
    "https://observador.pt/2025/01/17/declaracao-anual-da-dgartes-mantem-inalterados-valores-dos-concursos-de-apoio-a-projetos/"
   ],
   "batch": "fp26"
+ },
+ "distritodebogot": {
+  "name": "Bogotá, Distrito Capital",
+  "short": "Alcaldía Mayor de Bogotá",
+  "kind": "gov",
+  "what": "The capital district of Colombia, a first-order territorial entity formed in 1954 and governed by the Alcaldía Mayor, which sits in the Palacio Liévano on the Plaza de Bolívar.",
+  "money": "The budget of the Bogotá capital district.",
+  "site": "https://bogota.gov.co",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Bogot%C3%A1",
+   "https://es.wikipedia.org/wiki/Palacio_Li%C3%A9vano"
+  ],
+  "batch": "fp31"
  },
  "dlgsc": {
   "name": "Department of Creative Industries, Tourism and Sport",
@@ -5315,6 +5632,23 @@
    "https://www.culture.gouv.fr/Regions/DRAC-Nouvelle-Aquitaine"
   ],
   "batch": "fp10"
+ },
+ "dracpaca": {
+  "name": "Direction régionale des affaires culturelles Provence-Alpes-Côte d'Azur",
+  "short": "DRAC PACA",
+  "kind": "gov",
+  "what": "The regional office of France's Ministry of Culture for Provence-Alpes-Côte d'Azur, a decentralised state service under the regional prefect, based in Aix-en-Provence.",
+  "money": "The French state budget.",
+  "site": "https://www.culture.gouv.fr/regions/drac-provence-alpes-cote-d-azur",
+  "city": "Aix-en-Provence",
+  "country": "France",
+  "address": "23 boulevard du Roi René, 13617 Aix-en-Provence Cedex 1",
+  "status": "done",
+  "sources": [
+   "https://www.culture.gouv.fr/regions/drac-provence-alpes-cote-d-azur",
+   "https://fr.wikipedia.org/wiki/Direction_r%C3%A9gionale_des_Affaires_culturelles"
+  ],
+  "batch": "fp31"
  },
  "dreweattsauctioneers": {
   "name": "Dreweatts 1759 Limited",
@@ -6852,6 +7186,23 @@
    "https://fultoncountyga.gov/Inside-Fulton-County/Fulton-County-Departments/Customer-Service/Facilities/Fulton-County-Government-Center"
   ],
   "batch": "fp12"
+ },
+ "funarte": {
+  "name": "Fundação Nacional de Artes",
+  "short": "Funarte",
+  "kind": "gov",
+  "what": "A public foundation of the Brazilian federal government, linked to the Ministry of Culture, created in 1975 and based in Rio de Janeiro.",
+  "money": "The Brazilian federal budget.",
+  "arts": "It gives grants and prizes and runs programmes for visual arts, music, dance, theatre and circus across Brazil.",
+  "site": "https://www.gov.br/funarte/pt-br",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Funda%C3%A7%C3%A3o_Nacional_de_Artes",
+   "https://www.gov.br/funarte/pt-br/acesso-a-informacao-lai/institucional"
+  ],
+  "batch": "fp31"
  },
  "fundacicatalunyalapedrera": {
   "name": "Fundació Catalunya La Pedrera",
@@ -8603,6 +8954,23 @@
   ],
   "batch": "fp14"
  },
+ "hongkongjockeyclub": {
+  "name": "The Hong Kong Jockey Club",
+  "short": "HKJC",
+  "kind": "corp",
+  "what": "A non-profit membership club founded in 1884, based at Happy Valley Racecourse, that holds Hong Kong's government-granted monopoly on horse race betting and the Mark Six lottery.",
+  "money": "Its surplus from racing, sports wagering and the lottery, about 90 percent of which after tax goes to its Charities Trust.",
+  "arts": "In 2022/23 it gave HK$7.3 billion in approved charity donations.",
+  "site": "https://www.hkjc.com",
+  "city": "Hong Kong",
+  "country": "China",
+  "address": "Happy Valley Racecourse, One Sports Road, Happy Valley, Hong Kong",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hong_Kong_Jockey_Club"
+  ],
+  "batch": "fp31"
+ },
  "honolulubeerworks": {
   "name": "Honolulu Beerworks",
   "kind": "corp",
@@ -8779,6 +9147,23 @@
    "https://hccpublicdocs.azurewebsites.net/api/download/1a23d110a9464998b5ea4c4af4439d17/_AnnualPlan2025-2026/d4cb77ed3557b64af5b39638457f797fa4"
   ],
   "batch": "fp14"
+ },
+ "hydrodolomitienergia": {
+  "name": "Hydro Dolomiti Energia S.r.l.",
+  "short": "HDE",
+  "kind": "corp",
+  "what": "A Trentino hydroelectric company set up in 2008 as Hydro Dolomiti Enel, a joint venture of Dolomiti Energia and Enel, renamed in 2016 when Enel sold its 49 percent stake.",
+  "money": "Sales of electricity from its hydro plants, mostly in Trentino, with about 1,280 MW installed in 2016.",
+  "site": "https://www.gruppodolomitienergia.it",
+  "city": "Trento",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://www.ladige.it/economia/chiuso-laffare-hde-enel-cede-agli-australiani-per-335-milioni-qn719dam",
+   "https://www.gruppodolomitienergia.it/it/gruppo/le-nostre-radici.html",
+   "https://it.wikipedia.org/wiki/Dolomiti_Energia"
+  ],
+  "batch": "fp31"
  },
  "hyundai": {
   "name": "Hyundai Motor Company",
@@ -9072,6 +9457,23 @@
    "https://en.wikipedia.org/wiki/Intuit"
   ],
   "batch": "fp14"
+ },
+ "ipac": {
+  "name": "Instituto do Patrimônio Artístico e Cultural da Bahia",
+  "short": "IPAC",
+  "kind": "gov",
+  "what": "A public agency (autarquia) of the State of Bahia for cultural heritage, linked to the state culture secretariat, created on 13 September 1967 and based in Salvador.",
+  "money": "The budget of the State of Bahia.",
+  "site": "https://www.ba.gov.br/ipac/",
+  "city": "Salvador",
+  "country": "Brazil",
+  "address": "Rua 28 de Setembro 15, Pelourinho, Salvador, CEP 41745-900",
+  "status": "done",
+  "sources": [
+   "https://www.ba.gov.br/ipac/institucional",
+   "https://pt.wikipedia.org/wiki/Instituto_do_Patrim%C3%B4nio_Art%C3%ADstico_e_Cultural_da_Bahia"
+  ],
+  "batch": "fp31"
  },
  "ireneludwig": {
   "name": "Peter und Irene Ludwig Stiftung",
@@ -9754,6 +10156,24 @@
   ],
   "batch": "fp15"
  },
+ "klara": {
+  "name": "Klara",
+  "kind": "gov",
+  "what": "A classical music radio station of VRT, the Flemish public broadcaster, launched on 2 December 2000 as the successor to Radio 3 and based in Brussels.",
+  "money": "VRT is funded by the Flemish government with tax money and by its own income.",
+  "site": "https://klara.be",
+  "city": "Brussels",
+  "country": "Belgium",
+  "address": "Auguste Reyerslaan 52, Schaarbeek, Brussels",
+  "wrong_match": "M HKA lists Klara as a media partner, not as a funder.",
+  "status": "done",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Klara",
+   "https://nl.wikipedia.org/wiki/Vlaamse_Radio-_en_Televisieomroeporganisatie",
+   "https://www.muhka.be/en/your-support-is-crucial/partners-of-m-hka/"
+  ],
+  "batch": "fp31"
+ },
  "knight": {
   "name": "John S. and James L. Knight Foundation",
   "short": "Knight Foundation",
@@ -9890,6 +10310,41 @@
    "https://www.kuka.com/en-ca/company/press/news/2022/11/squeeze-out-completed"
   ],
   "batch": "fp15"
+ },
+ "kulka": {
+  "name": "Eesti Kultuurkapital",
+  "short": "Cultural Endowment of Estonia (Kulka)",
+  "kind": "gov",
+  "what": "A legal person in public law that supports the arts, folk culture and sport in Estonia, established by law in 1925, re-established in 1994 and based in Tallinn.",
+  "money": "By law, 3.5 percent of Estonia's alcohol and tobacco excise and 47.8 percent of its gambling tax.",
+  "arts": "It gives grants, scholarships and awards through eight endowments, visual and applied arts among them.",
+  "site": "https://www.kulka.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Suur-Karja 23, 10148 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://www.kulka.ee/about-us/about-endowment",
+   "https://www.kulka.ee/about-us",
+   "https://en.wikipedia.org/wiki/Cultural_Endowment_of_Estonia",
+   "https://et.wikipedia.org/wiki/Eesti_Kultuurkapital"
+  ],
+  "batch": "fp31"
+ },
+ "kulturreferatoflandeshauptstadtmnchen": {
+  "name": "Kulturreferat der Landeshauptstadt München",
+  "short": "Kulturreferat München",
+  "kind": "gov",
+  "what": "The department of Munich's city administration for arts and culture funding, in charge of the municipal museums, theatres and libraries.",
+  "money": "The budget of the City of Munich: about EUR 154.7 million for the department in 2025.",
+  "site": "https://stadt.muenchen.de",
+  "city": "Munich",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Kulturreferat_(M%C3%BCnchen)"
+  ],
+  "batch": "fp31"
  },
  "kulturstiftungdesbundes": {
   "name": "Kulturstiftung des Bundes",
@@ -10507,6 +10962,20 @@
   ],
   "batch": "fp16"
  },
+ "liuyiqian": {
+  "name": "Liu Yiqian",
+  "kind": "person",
+  "what": "A Chinese investor and art collector born in Shanghai in 1963, chairman of the Shanghai investment company Sunline Group and co-founder of the Long Museum with his wife Wang Wei.",
+  "money": "Investments since the mid-1980s in listed shares, real estate and pharmaceuticals, giving a net worth Forbes put at USD 1.37 billion in July 2015.",
+  "city": "Shanghai",
+  "country": "China",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Liu_Yiqian",
+   "https://en.wikipedia.org/wiki/Long_Museum"
+  ],
+  "batch": "fp31"
+ },
  "liverpoolcitycouncil|UK": {
   "name": "Liverpool City Council",
   "kind": "gov",
@@ -10808,6 +11277,23 @@
   ],
   "batch": "fp16"
  },
+ "madriddestino": {
+  "name": "Madrid Destino Cultura Turismo y Negocio, S.A.",
+  "short": "Madrid Destino",
+  "kind": "gov",
+  "what": "A municipal public company that manages Madrid's cultural venues, tourism and events, created in 2013 by merging municipal companies and based at the Conde Duque cultural centre.",
+  "money": "Madrid City Council, its owner.",
+  "site": "https://www.madrid-destino.com",
+  "city": "Madrid",
+  "country": "Spain",
+  "address": "Calle Conde Duque 9-11, 28015 Madrid",
+  "status": "done",
+  "sources": [
+   "https://www.madrid-destino.com/aviso-legal",
+   "https://en.wikipedia.org/wiki/Madrid_Destino"
+  ],
+  "batch": "fp31"
+ },
  "mainzerstadtwerke": {
   "name": "Mainzer Stadtwerke AG",
   "kind": "corp",
@@ -10993,6 +11479,20 @@
   ],
   "batch": "fp17"
  },
+ "marwanassaf": {
+  "name": "Marwan T. Assaf",
+  "short": "Marwan Assaf",
+  "kind": "person",
+  "what": "A board member of the Beirut Art Center and a trustee of the Sursock Museum in Beirut.",
+  "city": "Beirut",
+  "country": "Lebanon",
+  "status": "thin",
+  "sources": [
+   "https://beirutartcenter.org/about",
+   "https://sursock.museum/node/80"
+  ],
+  "batch": "fp31"
+ },
  "massachusettsculturalcouncil|USA": {
   "name": "Mass Cultural Council",
   "kind": "gov",
@@ -11093,6 +11593,24 @@
    "https://media.merciervanlanschot.be/vanlanschot4698-pocxmcloudb3eb9-prod6714-35ec/media/mercier/pdf/documents/nl/client-order-execution-policy_nederlands_maart-2025_mc31032025.pdf"
   ],
   "batch": "fp17"
+ },
+ "mercisbv": {
+  "name": "Mercis bv",
+  "short": "Mercis",
+  "kind": "corp",
+  "what": "An Amsterdam company set up by the designer Pieter Brattinga for Dick Bruna, which since 1971 has managed the worldwide rights to his illustrations, Miffy (nijntje) among them.",
+  "money": "Licensing of Dick Bruna's illustrations for products, and his Dutch books through Mercis Publishing bv since 1995.",
+  "site": "https://www.nijntje.nl",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "address": "Johannes Vermeerplein 3, 1071 DV Amsterdam",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20260731114136/https://www.nijntje.nl/zakelijke-informatie",
+   "https://nl.wikipedia.org/wiki/Dick_Bruna",
+   "https://www.lambiek.net/artists/b/bruna_dick.htm"
+  ],
+  "batch": "fp31"
  },
  "merian": {
   "name": "Christoph Merian Stiftung",
@@ -13548,6 +14066,21 @@
   ],
   "batch": "fp26"
  },
+ "prefeituradorio": {
+  "name": "Prefeitura do Rio de Janeiro",
+  "short": "Prefeitura do Rio",
+  "kind": "gov",
+  "what": "The municipal government of Rio de Janeiro, led by the mayor and a cabinet of 26 secretariats, with its seat at the Palácio da Cidade.",
+  "money": "The municipal budget of Rio de Janeiro: BRL 45.7 billion in 2024.",
+  "site": "https://www.rio.rj.gov.br",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Administra%C3%A7%C3%A3o_P%C3%BAblica_do_munic%C3%ADpio_do_Rio_de_Janeiro"
+  ],
+  "batch": "fp31"
+ },
  "preservationleague": {
   "name": "Preservation League of New York State",
   "short": "Preservation League of NYS",
@@ -13970,6 +14503,24 @@
   ],
   "batch": "fp10",
   "renamed": "The atlas name points at the Danaher Corporation, while the museum sentence means a gift from the Rales family."
+ },
+ "rattispa": {
+  "name": "Ratti S.p.A. Società Benefit",
+  "short": "Ratti",
+  "kind": "corp",
+  "what": "An Italian textile company founded in Como in 1945 by Antonio Ratti as Tessitura Serica Antonio Ratti, based in Guanzate and part of the Marzotto Group since 2010.",
+  "money": "Sales of fabrics and accessories to fashion houses.",
+  "site": "https://www.ratti.it",
+  "city": "Guanzate",
+  "country": "Italy",
+  "address": "Via Madonna 30, 22070 Guanzate (CO)",
+  "status": "done",
+  "sources": [
+   "https://ratti.it/azienda/ratti/",
+   "https://www.ratti.it/en/company/",
+   "https://it.wikipedia.org/wiki/Antonio_Ratti"
+  ],
+  "batch": "fp31"
  },
  "realdania": {
   "name": "Realdania",
@@ -14808,6 +15359,23 @@
   ],
   "batch": "fp20"
  },
+ "secretaradeculturadelanacin": {
+  "name": "Secretaría de Cultura de la Nación",
+  "kind": "gov",
+  "what": "Argentina's national secretariat of culture, which reports to the Presidency and took the place of the Ministry of Culture in 2023, based in Buenos Aires.",
+  "money": "The national budget of Argentina.",
+  "arts": "It oversees national bodies such as the Museo Nacional de Bellas Artes.",
+  "site": "https://www.argentina.gob.ar/cultura",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "address": "Sarmiento 151, C1041 Buenos Aires",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Secretar%C3%ADa_de_Cultura_(Argentina)",
+   "https://www.argentina.gob.ar/cultura"
+  ],
+  "batch": "fp31"
+ },
  "segerstromrealestatefamily": {
   "name": "The Segerstrom family",
   "kind": "person",
@@ -14957,6 +15525,21 @@
    "https://en.wikipedia.org/wiki/Shikoku_Electric_Power"
   ],
   "batch": "fp20"
+ },
+ "siae": {
+  "name": "Società Italiana degli Autori ed Editori",
+  "short": "SIAE",
+  "kind": "gov",
+  "what": "Italy's authors' and publishers' collecting society, a non-profit public economic body with a membership base, founded in Milan on 23 April 1882 and based in Rome.",
+  "money": "Commissions, averaging 13.7 percent in 2025, on the copyright royalties it collects for more than 125,000 member authors and publishers.",
+  "site": "https://www.siae.it",
+  "city": "Rome",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://it.wikipedia.org/wiki/Societ%C3%A0_Italiana_degli_Autori_ed_Editori"
+  ],
+  "batch": "fp31"
  },
  "siampiwat": {
   "name": "Siam Piwat Company Limited",
@@ -15837,6 +16420,25 @@
   ],
   "batch": "fp22"
  },
+ "taike": {
+  "name": "Taiteen edistämiskeskus",
+  "short": "Taike",
+  "kind": "gov",
+  "what": "Finland's arts promotion agency under the Ministry of Education and Culture, which started work in 2013 and merged with KAVI into the Finnish Arts and Culture Agency in January 2026.",
+  "money": "The Finnish state budget.",
+  "arts": "It awarded grants to professional artists and subsidies to arts communities of about EUR 40 million a year (2022), work the new agency continues.",
+  "site": "https://www.taike.fi",
+  "city": "Helsinki",
+  "country": "Finland",
+  "address": "Kaikukatu 2 C, 00530 Helsinki",
+  "status": "done",
+  "sources": [
+   "https://kuvi.fi/en/taike-head-office-moves-to-sornainen/",
+   "https://web.archive.org/web/20221125170126/https://www.taike.fi/en/about-us",
+   "https://fi.wikipedia.org/wiki/Taiteen_edist%C3%A4miskeskus"
+  ],
+  "batch": "fp31"
+ },
  "tainancitysubsidynt|Taiwan": {
   "name": "Tainan City Government",
   "kind": "gov",
@@ -16318,6 +16920,23 @@
   ],
   "batch": "fp23"
  },
+ "tsugarukaikyoferry": {
+  "name": "Tsugarukaikyo Ferry Co., Ltd.",
+  "short": "Tsugaru Kaikyo Ferry",
+  "kind": "corp",
+  "what": "A ferry company based in Hakodate, Hokkaido, set up on 23 February 1972, that runs routes across the Tsugaru Strait between Hokkaido and Aomori Prefecture.",
+  "money": "Passenger and vehicle ferry services: sales of JPY 13.2 billion in the year to December 2025.",
+  "site": "https://www.tsugarukaikyo.co.jp",
+  "city": "Hakodate",
+  "country": "Japan",
+  "address": "3-19-2 Minatocho, Hakodate",
+  "status": "done",
+  "sources": [
+   "https://ja.wikipedia.org/wiki/%E6%B4%A5%E8%BB%BD%E6%B5%B7%E5%B3%A1%E3%83%95%E3%82%A7%E3%83%AA%E3%83%BC",
+   "https://en.wikipedia.org/wiki/Tsugaru_Kaiky%C5%8D_Ferry"
+  ],
+  "batch": "fp31"
+ },
  "tube": {
   "name": "Steel & Tube Holdings Limited",
   "short": "Steel & Tube",
@@ -16571,6 +17190,23 @@
   ],
   "batch": "fp23"
  },
+ "universityofchile": {
+  "name": "Universidad de Chile",
+  "short": "University of Chile",
+  "kind": "gov",
+  "what": "A public university in Santiago, founded by the Chilean state on 19 November 1842 under the government of Manuel Bulnes, with 40,494 students.",
+  "money": "State grants, student fees and its own sales of goods and services.",
+  "site": "https://uchile.cl",
+  "city": "Santiago",
+  "country": "Chile",
+  "address": "Avenida Libertador General Bernardo O'Higgins 1058, Santiago",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Universidad_de_Chile",
+   "https://uchile.cl/presentacion/rectoria/luis-riveros-cornejo/publicaciones/34-la-situacion-presupuestaria-interna"
+  ],
+  "batch": "fp31"
+ },
  "universityofmelbourne": {
   "name": "The University of Melbourne",
   "short": "University of Melbourne",
@@ -16791,6 +17427,22 @@
    "https://dutchculture.nl/nl/location/vandenende-foundation"
   ],
   "batch": "fp23"
+ },
+ "veinisober": {
+  "name": "Veinisõber",
+  "kind": "corp",
+  "what": "A wine shop and online wine store in Tallinn, owned by the company AbeStock AS.",
+  "money": "Retail sales of wine.",
+  "site": "https://veinisober.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Kalaranna 8/11, 10415 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://veinisober.ee/",
+   "https://veinisober.ee/content/16/mueuegitingimused"
+  ],
+  "batch": "fp31"
  },
  "velmakimbell": {
   "name": "Velma Fuller Kimbell",
@@ -17153,6 +17805,21 @@
    "https://en.wikipedia.org/wiki/Walmart"
   ],
   "batch": "fp5"
+ },
+ "wangwei": {
+  "name": "Wang Wei",
+  "kind": "person",
+  "what": "A Chinese collector and businesswoman born in Shanghai in 1963, co-founder and director of the Long Museum and wife of the investor Liu Yiqian.",
+  "money": "The fortune the couple made from share trading and other businesses after marrying in 1988.",
+  "arts": "She has collected oil painting since 2003 and opened the Long Museum Pudong in 2012 and its West Bund branch in 2014.",
+  "city": "Shanghai",
+  "country": "China",
+  "status": "done",
+  "sources": [
+   "https://zh.wikipedia.org/wiki/%E7%8E%8B%E8%96%87_(%E6%94%B6%E8%97%8F%E5%AE%B6)",
+   "https://en.wikipedia.org/wiki/Long_Museum"
+  ],
+  "batch": "fp31"
  },
  "warholfdn": {
   "name": "The Andy Warhol Foundation for the Visual Arts",
