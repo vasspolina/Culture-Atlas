@@ -498,8 +498,16 @@
         ],
         "basis": "OpenStreetMap, address lookup: Stedelijk Museum Amsterdam, 10, Museumplein, Museumkwartier, Oud-Zuid, Zuid, Amsterdam, Noord-Holland, Nederland, 1071 DJ, Nederland",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/44508819"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2024-10-23: Mo-Su 10:00-18:00",
+        "retrieved": "2026-11-20"
       }
-    }
+    },
+    "opening_hours": "Daily 10:00\u201318:00"
   },
   {
     "name": "Fondation Vincent van Gogh Arles",
@@ -2729,6 +2737,13 @@
         ],
         "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-04-04: We-Mo 11:00-19:00",
         "retrieved": "2026-11-04"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/way/1065864180"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
     },
     "details": {
@@ -2855,7 +2870,8 @@
           "retrieved_on": "2026-11-02"
         }
       ]
-    }
+    },
+    "admission_fee": "Free"
   },
   {
     "name": "KW Institute for Contemporary Art",
@@ -2898,6 +2914,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: KW Institute for Contemporary Art, 69, Auguststra\u00dfe, Spandauer Vorstadt, Mitte, Berlin, 10117, Deutschland",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/node/3641040703"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2024-06-11: Fr-Mo 12:00-19:00; Th 12:00-21:00; We 12:00-19:00",
+        "retrieved": "2026-11-20"
       }
     },
     "grade": 3,
@@ -3093,7 +3116,8 @@
           "retrieved_on": "2026-11-02"
         }
       ]
-    }
+    },
+    "opening_hours": "Mon, Wed, Fri\u2013Sun 12:00\u201319:00; Thu 12:00\u201321:00; closed Tue"
   },
   {
     "name": "Staatliche Museen zu Berlin",
@@ -15163,6 +15187,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: Whitechapel Gallery, 77-82, Whitechapel High Street, Spitalfields, Whitechapel, London Borough of Tower Hamlets, Greater London, England, E1 7QX, United Kingdom",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/way/264131965"
+        ],
+        "basis": "OpenStreetMap charge tag",
+        "retrieved": "2026-11-20"
       }
     },
     "grade": 3,
@@ -15281,7 +15312,8 @@
       "sources": [
         "https://register-of-charities.charitycommission.gov.uk/en/constituency-search/-/charity-details/312162/full-print"
       ]
-    }
+    },
+    "admission_fee": "15 GBP"
   },
   {
     "name": "Hammer Museum",
@@ -16229,8 +16261,16 @@
         ],
         "basis": "OpenStreetMap, name lookup: Museo del Prado, Paseo del Prado, Jer\u00f3nimos, Retiro, Madrid, Comunidad de Madrid, 28014, Espa\u00f1a",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/relation/7726080"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2024-03-09: Mo-Sa 10:00-20:00; Su 10:00-19:00",
+        "retrieved": "2026-11-20"
       }
-    }
+    },
+    "opening_hours": "Mon\u2013Sat 10:00\u201320:00; Sun 10:00\u201319:00"
   },
   {
     "name": "Museo Reina Sof\u00eda",
@@ -24503,6 +24543,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: MAXXI Museo nazionale delle arti del XXI secolo, 4 A, Via Guido Reni, Flaminio, Municipio Roma II, Roma, Roma Capitale, Lazio, 00196, Italia",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/relation/8748353"
+        ],
+        "basis": "OpenStreetMap charge tag",
+        "retrieved": "2026-11-20"
       }
     },
     "gossip_data": {
@@ -24541,7 +24588,8 @@
           "retrieved_on": "2026-11-02"
         }
       ]
-    }
+    },
+    "admission_fee": "10 EUR"
   },
   {
     "name": "Wattis Institute",
@@ -30086,6 +30134,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: Museum of New Zealand Te Papa Tongarewa, 55, Cable Street, Te Aro, Wellington, Wellington City, Wellington, 6011, New Zealand / Aotearoa",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/way/190557095"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
     },
     "study_notes": [
@@ -30135,7 +30190,8 @@
           "retrieved_on": "2026-11-14"
         }
       ]
-    }
+    },
+    "admission_fee": "Free"
   },
   {
     "name": "Audain Art Museum",
@@ -34614,6 +34670,13 @@
         ],
         "basis": "OpenStreetMap, name lookup: The Photographers' Gallery, 16-18, Ramillies Street, Soho, City of Westminster, Greater London, England, W1F 7LW, United Kingdom",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/65489529"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-07-03: Mo-We 10:00-18:00; Th-Fr 10:00-20:00; Sa 10:00-18:00; Su,PH 11:00-18:00",
+        "retrieved": "2026-11-20"
       }
     },
     "gossip_data": {
@@ -34635,7 +34698,8 @@
           "retrieved_on": "2026-11-14"
         }
       ]
-    }
+    },
+    "opening_hours": "Mon\u2013Wed, Sat 10:00\u201318:00; Thu, Fri 10:00\u201320:00; Sun 11:00\u201318:00"
   },
   {
     "name": "Instituto Inhotim",
@@ -35152,6 +35216,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: MUDAM, 3, Park Dr\u00e4i Eechelen, Quartier Europ\u00e9en Sud, Kirchberg, Luxembourg, Canton Luxembourg, 1499, L\u00ebtzebuerg",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/9042342"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-10-08: Tu, Th-Su 10:00-18:00; We 10:00-21:00",
+        "retrieved": "2026-11-20"
       }
     },
     "gossip_data": {
@@ -35174,7 +35245,8 @@
           "retrieved_on": "2026-11-14"
         }
       ]
-    }
+    },
+    "opening_hours": "Tue, Thu\u2013Sun 10:00\u201318:00; Wed 10:00\u201321:00; closed Mon"
   },
   {
     "name": "MACRO (Museo d'Arte Contemporanea di Roma)",
@@ -42245,6 +42317,13 @@
         ],
         "basis": "OpenStreetMap, name lookup: MeetFactory, Dob\u0159\u00ed\u0161sk\u00e1, Zl\u00edchov, Praha 5, obvod Praha 5, Praha, 150 05, \u010cesko",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/way/50215369"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
     },
     "details": {
@@ -42316,7 +42395,8 @@
       ],
       "level": 2,
       "level_basis": ""
-    }
+    },
+    "admission_fee": "Free"
   },
   {
     "id": "moderna-galerija-ljubljana",
@@ -44315,8 +44395,16 @@
         ],
         "basis": "OpenStreetMap, address lookup: Shedhalle, 395, Seestrasse, Wollishofen, Kreis 2, Z\u00fcrich, Bezirk Z\u00fcrich, Z\u00fcrich, 8038, Schweiz / Suisse / Svizzera / Svizra",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/node/596178918"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-08-15: Tu-Fr 14:00-18:00, Sa-Su 12:00-18:00",
+        "retrieved": "2026-11-20"
       }
-    }
+    },
+    "opening_hours": "Tue\u2013Fri 14:00\u201318:00; Sat, Sun 12:00\u201318:00; closed Mon"
   },
   {
     "id": "neuer-berliner-kunstverein",
@@ -44744,9 +44832,17 @@
         ],
         "basis": "OpenStreetMap fee=no",
         "retrieved": "2026-11-04"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/39383376"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-01-31: Tu-Su 11:00-18:00; We 11:00-20:00",
+        "retrieved": "2026-11-20"
       }
     },
-    "admission_fee": "Free"
+    "admission_fee": "Free",
+    "opening_hours": "Tue, Thu\u2013Sun 11:00\u201318:00; Wed 11:00\u201320:00; closed Mon"
   },
   {
     "id": "betonsalon-paris",
@@ -51262,6 +51358,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: Azkuna Zentroa, 4, Arriquibar plaza, Indautxu, Abando, Bilbao, Bizkaia, Euskadi, 48010, Espa\u00f1a",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/96337695"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2025-10-06: 09:00-21:00",
+        "retrieved": "2026-11-20"
       }
     },
     "gossip_data": {
@@ -51283,7 +51386,8 @@
           "retrieved_on": "2026-11-14"
         }
       ]
-    }
+    },
+    "opening_hours": "Daily 09:00\u201321:00"
   },
   {
     "id": "centre-dart-la-panera-lleida",
@@ -153004,6 +153108,13 @@
         ],
         "basis": "OpenStreetMap, address lookup: Crab Museum, 9, Broad Street, Margate Old Town, Cliftonville, Margate, Thanet, Kent, England, CT9 1EW, United Kingdom",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/node/10815463402"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
     },
     "address": "9 Broad Street, Margate, CT9 1EW",
@@ -153091,7 +153202,8 @@
         "doi": "10.7592/ejhr.2025.13.1.983",
         "text": "Interviews with the directors of the Crab Museum in Margate for a 2025 study gave three uses of its jokes: building community, telling distasteful truths, and disrupting habits of thought about hierarchies of knowledge."
       }
-    ]
+    ],
+    "admission_fee": "Free"
   },
   {
     "name": "Manchester Museum",
@@ -153787,9 +153899,25 @@
         ],
         "basis": "OpenStreetMap, pin object: American Folk Art Museum",
         "retrieved": "2026-11-04"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/node/3224793125"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2024-09-06: We-Su 11:30-18:00",
+        "retrieved": "2026-11-20"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/node/3224793125"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
     },
-    "address": "2 Columbus Avenue, New York, NY 10023, United States"
+    "address": "2 Columbus Avenue, New York, NY 10023, United States",
+    "opening_hours": "Wed\u2013Sun 11:30\u201318:00; closed Mon, Tue",
+    "admission_fee": "Free"
   },
   {
     "name": "Neue Nationalgalerie",
@@ -154040,9 +154168,17 @@
         ],
         "basis": "OpenStreetMap, pin object: Neue Nationalgalerie",
         "retrieved": "2026-11-04"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/25652321"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-07-11: Tu,We,Fr-Su 10:00-18:00; Th 10:00-20:00",
+        "retrieved": "2026-11-20"
       }
     },
-    "address": "Potsdamer Stra\u00dfe 50, 10785 Berlin, Germany"
+    "address": "Potsdamer Stra\u00dfe 50, 10785 Berlin, Germany",
+    "opening_hours": "Tue, Wed, Fri\u2013Sun 10:00\u201318:00; Thu 10:00\u201320:00; closed Mon"
   },
   {
     "name": "Hamburger Bahnhof \u2013 Nationalgalerie der Gegenwart",
@@ -155746,6 +155882,13 @@
         ],
         "basis": "OpenStreetMap, name lookup: Royal Academy of Arts, Piccadilly, St. James's, Westminster, Mayfair, City of Westminster, Greater London, England, W1J 0BD, United Kingdom",
         "retrieved": "2026-11-03"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/way/31510288"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
     },
     "case_notes": [
@@ -155757,7 +155900,8 @@
           "https://www.theyworkforyou.com/pwdata/scrapedxml/regmem/regmem2019-09-02.xml"
         ]
       }
-    ]
+    ],
+    "admission_fee": "Free"
   },
   {
     "name": "Institute of Contemporary Arts (ICA)",
@@ -156629,9 +156773,17 @@
         ],
         "basis": "OpenStreetMap, pin object: Berlinische Galerie",
         "retrieved": "2026-11-04"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/33743630"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-09-14: Mo,We-Su 10:00-18:00",
+        "retrieved": "2026-11-20"
       }
     },
-    "address": "Alte Jakobstra\u00dfe 124-128, 10969 Berlin, Germany"
+    "address": "Alte Jakobstra\u00dfe 124-128, 10969 Berlin, Germany",
+    "opening_hours": "Mon, Wed\u2013Sun 10:00\u201318:00; closed Tue"
   },
   {
     "name": "Museum f\u00fcr Naturkunde",
@@ -157264,6 +157416,20 @@
         ],
         "basis": "OpenStreetMap, name lookup: Humboldt Forum, Schlo\u00dfplatz, Friedrichswerder, Dorotheenstadt, Mitte, Berlin, 10178, Deutschland",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/node/8413352835"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-11-04: Mo,We-Su 10:30-18:30; Tu off",
+        "retrieved": "2026-11-20"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/node/8413352835"
+        ],
+        "basis": "OpenStreetMap charge tag",
+        "retrieved": "2026-11-20"
       }
     },
     "study_notes": [
@@ -157275,7 +157441,9 @@
         "doi": "10.1017/asr.2022.153",
         "text": "The paper examines the Mus\u00e9e du Quai Branly, the AfricaMuseum, the British Museum and the Humboldt Forum as one spectrum of changing strategies on the restitution of African cultural heritage. It finds biases in retentionist arguments on security, accessibility, law and ethics, and shortcomings in restitutionist discourse on provenance research and the use of heritage for economic gain or post-colonial rebranding. In its conclusion it sorts the four into retentionists, rhetorical restitutionists or reformed restitutionists."
       }
-    ]
+    ],
+    "opening_hours": "Mon, Wed\u2013Sun 10:30\u201318:30; closed Tue",
+    "admission_fee": "14 EUR"
   },
   {
     "name": "Deutsches Historisches Museum",
@@ -157498,9 +157666,17 @@
         ],
         "basis": "OpenStreetMap, pin object: German Historical Museum",
         "retrieved": "2026-11-04"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/node/3203167561"
+        ],
+        "basis": "OpenStreetMap charge tag",
+        "retrieved": "2026-11-20"
       }
     },
-    "address": "Unter den Linden 2, 10117 Berlin, Germany"
+    "address": "Unter den Linden 2, 10117 Berlin, Germany",
+    "admission_fee": "8 EUR"
   },
   {
     "name": "Grand Palais (Rmn\u2013Grand Palais)",
@@ -157659,8 +157835,16 @@
         ],
         "basis": "OpenStreetMap, name-short lookup: Grand Palais, Avenue de Selves, Quartier des Champs-\u00c9lys\u00e9es, Paris 8e Arrondissement, Paris, \u00cele-de-France, France m\u00e9tropolitaine, 75008, France",
         "retrieved": "2026-11-03"
+      },
+      "opening_hours": {
+        "urls": [
+          "https://www.openstreetmap.org/way/56185523"
+        ],
+        "basis": "OpenStreetMap opening_hours, checked by a mapper 2026-06-29: Tu-Th, Sa-Su 09:30-20:00; Fr 09:30-22:30",
+        "retrieved": "2026-11-20"
       }
-    }
+    },
+    "opening_hours": "Tue\u2013Thu, Sat, Sun 09:30\u201320:00; Fri 09:30\u201322:30; closed Mon"
   },
   {
     "name": "Deutsches Spionagemuseum",
@@ -236027,8 +236211,16 @@
         ],
         "basis": "OpenStreetMap, name search: Akureyri Art Museum",
         "retrieved": "2026-11-20"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/way/707030896"
+        ],
+        "basis": "OpenStreetMap charge tag",
+        "retrieved": "2026-11-20"
       }
-    }
+    },
+    "admission_fee": "2400 ISK"
   },
   {
     "id": "ilulissat-icefjord-centre",
@@ -236108,8 +236300,16 @@
         ],
         "basis": "OpenStreetMap, name search: I\u00f1upiat\u00a0Heritage Center",
         "retrieved": "2026-11-20"
+      },
+      "admission_fee": {
+        "urls": [
+          "https://www.openstreetmap.org/node/3681554525"
+        ],
+        "basis": "OpenStreetMap fee=no",
+        "retrieved": "2026-11-20"
       }
-    }
+    },
+    "admission_fee": "Free"
   },
   {
     "id": "great-northern-arts-festival-inuvik",
