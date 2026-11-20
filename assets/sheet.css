@@ -2684,3 +2684,49 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
   background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;color:var(--sh-paper)!important}
 :root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):focus-visible{outline:2px solid var(--sh-green)!important;outline-offset:2px!important}
 }
+
+/* ==== DARK THEME: DARK BUTTONS AND DARK CALLOUTS (user, 20 Nov 2026: "make button and map call outs dark color on dark
+   mode") ====
+   On the dark theme the filled share buttons and the map's name bubbles had become light fills with dark type: the share
+   buttons the pale green (#9fd0a6), the street map's bubbles the pale ink (#f4f4f4), the open space's bubble its pale grade
+   colour. They are dark now, with light type.
+   - The filled share buttons (the dock's Share information, the phone map's, the chat's "Share information about ...", the
+     chat-share Send button, the form's "Tell it in the chat" under the pointer, "Or fill in a form" under the pointer) are
+     the light theme's dark green, #3e6826, with #f4f4f4 on it (6:1), deepening a fifth toward black under the pointer.
+     The outlined buttons keep their pale green line and words on the dark ground.
+   - The street map's bubbles are black with the name in #f4f4f4 (19:1) and a thin pale edge so they keep their shape on
+     the dark ground; the tail is black. The globe's bubbles are drawn the same way (drawPillLabel in index.html).
+   - The open space's bubble takes its grade's colour from the light theme, the dark one, with #f4f4f4 on it: teal 4.7:1,
+     blue 7.9:1, olive 5.1:1, brick 8:1, magenta 5.3:1, grey 5:1. Its mark keeps the pale grade colour. */
+@layer sheet{
+:root[data-theme="dark"]{--sh-share-dark:#3e6826;--sh-share-dark-2:color-mix(in srgb,#3e6826 80%,#000)}
+/* The filled share buttons. */
+:root:root:root:root[data-theme="dark"] #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5),
+:root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):not(#gs3),
+:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn),
+:root:root[data-theme="dark"] #curatorMessages .chat-share-choices .chat-share-choice.chat-share-choice.is-primary{
+  background:var(--sh-share-dark)!important;border-color:var(--sh-share-dark)!important;color:#f4f4f4!important}
+:root:root:root:root[data-theme="dark"] #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) *,
+:root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):not(#gs3) *{color:#f4f4f4!important}
+:root:root:root:root[data-theme="dark"] #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5):is(:hover,:focus-visible),
+:root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):not(#gs3):is(:hover,:active,:focus-visible),
+:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn):is(:hover,:focus-visible),
+:root:root[data-theme="dark"] #curatorMessages .chat-share-choices .chat-share-choice.chat-share-choice.is-primary:is(:hover,:focus-visible){
+  background:var(--sh-share-dark-2)!important;border-color:var(--sh-share-dark-2)!important;color:#f4f4f4!important}
+/* Buttons that are outlined at rest and fill under the pointer fill dark green, not pale. */
+:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-form-btn:is(:hover,:focus-visible),
+:root:root:root[data-theme="dark"] body #workInputCard #noteFormIntro .nf-to-chat.nf-to-chat:is(:hover,:focus-visible){
+  background:var(--sh-share-dark)!important;border-color:var(--sh-share-dark)!important;color:#f4f4f4!important}
+
+/* The street map's name bubbles. --wc-ink fills the bubble and its tail, --wc-ground colours the name and the grade on it
+   (the rules above), so they are set on the bubble itself. */
+:root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label{--wc-ink:#000;--wc-ground:#f4f4f4;
+  box-shadow:0 0 0 1px rgba(244,244,244,.45)!important}
+/* The open space's bubble, in its grade's dark colour (the light theme's). */
+:root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.inst-pin-label{--wc-mark:#6b6b6b}
+:root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="1"] .inst-pin-label.inst-pin-label{--wc-mark:#007a80}
+:root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="2"] .inst-pin-label.inst-pin-label{--wc-mark:#0000ff}
+:root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="3"] .inst-pin-label.inst-pin-label{--wc-mark:#6e6a00}
+:root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="4"] .inst-pin-label.inst-pin-label{--wc-mark:#8a322e}
+:root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="5"] .inst-pin-label.inst-pin-label{--wc-mark:#b000b0}
+}
