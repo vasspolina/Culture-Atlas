@@ -86,6 +86,22 @@
   ],
   "batch": "fp37"
  },
+ "abnamro": {
+  "name": "ABN AMRO Bank N.V.",
+  "short": "ABN AMRO",
+  "kind": "corp",
+  "what": "A Dutch bank in Amsterdam, formed in 1991 from ABN and AMRO Bank; the Dutch state nationalised its operations in 2008 and listed it again in 2015.",
+  "money": "Personal, corporate and private banking for about 5 million clients; operating income was €8.861 billion in 2024.",
+  "site": "https://www.abnamro.com",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://www.abnamro.com/en/about-abn-amro",
+   "https://en.wikipedia.org/wiki/ABN_AMRO"
+  ],
+  "batch": "fp38"
+ },
  "aboriginallandstrust": {
   "name": "Aboriginal Lands Trust",
   "kind": "gov",
@@ -250,6 +266,22 @@
    "https://en.wikipedia.org/wiki/Agence_fran%C3%A7aise_de_d%C3%A9veloppement"
   ],
   "batch": "fp6"
+ },
+ "afreximbank": {
+  "name": "African Export-Import Bank",
+  "short": "Afreximbank",
+  "kind": "corp",
+  "what": "A pan-African multilateral trade finance bank created in 1993 under the auspices of the African Development Bank, with its head office in Cairo.",
+  "money": "Shareholder funds of US$7.2 billion at the end of 2024 and earnings from trade finance in Africa; net income was US$973.5 million that year.",
+  "site": "https://www.afreximbank.com",
+  "city": "Cairo",
+  "country": "Egypt",
+  "address": "72B El Maahad El-Eshteraky Street, Heliopolis, Cairo",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/African_Export%E2%80%93Import_Bank"
+  ],
+  "batch": "fp38"
  },
  "ag2rlamondiale": {
   "name": "AG2R La Mondiale",
@@ -649,6 +681,24 @@
   ],
   "batch": "fp32"
  },
+ "alliancefranaise": {
+  "name": "Fondation des Alliances Françaises",
+  "short": "Alliance Française",
+  "kind": "found",
+  "what": "A French private foundation recognised as being of public utility, created as an association in Paris in 1883 and a foundation since 2007, that approves each new Alliance Française.",
+  "arts": "It coordinates 824 Alliances Françaises in 138 countries.",
+  "site": "https://www.fondation-alliancefr.org",
+  "city": "Paris",
+  "country": "France",
+  "wrong_match": "Both lines mean local Alliances in Lagos and Colombo, separate associations, not the Paris foundation.",
+  "status": "thin",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Fondation_des_Alliances_fran%C3%A7aises",
+   "https://www.fondation-alliancefr.org/",
+   "https://fr.wikipedia.org/wiki/Alliance_fran%C3%A7aise"
+  ],
+  "batch": "fp38"
+ },
  "alliances": {
   "name": "Fondation Alliances",
   "kind": "found",
@@ -718,6 +768,18 @@
    "https://en.wikipedia.org/wiki/Bernard_Ruiz-Picasso"
   ],
   "batch": "fp12"
+ },
+ "alqattancharitabletrust": {
+  "name": "Al-Qattan Charitable Trust",
+  "kind": "found",
+  "what": "A charitable trust that keeps the A. M. Qattan Foundation going, the Ramallah foundation set up in 1993 by the Palestinian businessman Abdel Mohsin Al-Qattan.",
+  "money": "A quarter of Abdel Mohsin Al-Qattan's wealth, left to it in his will, as he announced in March 2011.",
+  "status": "done",
+  "sources": [
+   "https://qattanfoundation.org/index.php/en/in-qattan/news/abdel-mohsin-al-qattan-allocates-25-his-wealth-philanthropy",
+   "https://en.wikipedia.org/wiki/Abdel_Mohsin_Al-Qattan"
+  ],
+  "batch": "fp38"
  },
  "altum": {
   "name": "JSC Development Finance Institution Altum",
@@ -1055,6 +1117,23 @@
   ],
   "batch": "fp6"
  },
+ "apeejaytrust": {
+  "name": "Apeejay Trust",
+  "kind": "found",
+  "what": "A charitable trust of the Paul family's Apeejay Surrendra Group, established in 1974 and run from the group's office in Kolkata.",
+  "money": "Gifts from Apeejay Surrendra Group companies and the group's internal accruals; the group's businesses include tea, hotels, shipping and real estate.",
+  "arts": "The group's trusts fund city and national cultural platforms and the preservation of Indian art, culture and architectural heritage.",
+  "site": "https://www.apeejaygroup.com",
+  "city": "Kolkata",
+  "country": "India",
+  "address": "15 Park Street, Kolkata 700016",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2025id_/https://apeejaygroup.com/charitabletrust.html",
+   "https://en.wikipedia.org/wiki/Apeejay_Surrendra_Group"
+  ],
+  "batch": "fp38"
+ },
  "appliedmaterialstaiwan": {
   "name": "Applied Materials Taiwan",
   "kind": "corp",
@@ -1196,6 +1275,23 @@
    "https://en.wikipedia.org/wiki/John_Abele"
   ],
   "batch": "fp30"
+ },
+ "arisonarts": {
+  "name": "Arison Arts Foundation",
+  "kind": "found",
+  "what": "A private foundation in Coral Gables, Florida, set up to keep YoungArts and the New World Symphony going; tax-exempt since 2005, with Sarah Arison as president.",
+  "money": "Dividends and asset sales on net assets of US$381.2 million in 2024; its president's grandfather Ted Arison founded Carnival Cruise Lines in 1972.",
+  "arts": "Its charitable disbursements were US$39.3 million in 2024.",
+  "city": "Coral Gables",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/137450689",
+   "https://www.artbasel.com/stories/sarah-arison-reimagines-what-cultural-leadership-can-be",
+   "https://en.wikipedia.org/wiki/YoungArts",
+   "https://en.wikipedia.org/wiki/Ted_Arison"
+  ],
+  "batch": "fp38"
  },
  "arizonacommissiononarts|USA": {
   "name": "Arizona Commission on the Arts",
@@ -1345,6 +1441,24 @@
   ],
   "batch": "fp3"
  },
+ "artmentorlucerne": {
+  "name": "Art Mentor Foundation Lucerne",
+  "kind": "found",
+  "what": "A charitable private foundation in Lucerne that funds professionally run projects in visual art, music and cultural education.",
+  "money": "Christof and Ursula Engelhorn, whose family owned the drug maker Boehringer Mannheim until its 1997 sale to Hoffmann-La Roche, gave it their art collection.",
+  "arts": "In 2016 it gave 58 works from the Engelhorn collection to the Bavarian State Paintings Collections.",
+  "site": "https://artmentor.ch",
+  "city": "Lucerne",
+  "country": "Switzerland",
+  "address": "Murbacherstrasse 3, 6003 Luzern",
+  "status": "done",
+  "sources": [
+   "https://artmentor.ch/impressum",
+   "https://www.artmentor.ch/",
+   "https://www.theartnewspaper.com/2016/08/10/bavarian-museums-receive-58-top-works-by-mondrian-delacroix-beuys"
+  ],
+  "batch": "fp38"
+ },
  "artotelspaviliunradensaleh": {
   "name": "ARTOTEL Group",
   "short": "Artotel",
@@ -1411,6 +1525,23 @@
    "https://en.wikipedia.org/wiki/Arts_Council_England"
   ],
   "batch": "fp1"
+ },
+ "artscouncilkorea|South Korea": {
+  "name": "한국문화예술위원회",
+  "short": "Arts Council Korea (ARKO)",
+  "kind": "gov",
+  "what": "Korea's national arts body under the Ministry of Culture, Sports and Tourism, established in 1973 and relaunched as Arts Council Korea in September 2005, with its head office in Naju.",
+  "money": "The Culture and Arts Promotion Fund, which it runs under the Culture and Arts Promotion Act.",
+  "site": "https://www.arko.or.kr",
+  "city": "Naju",
+  "country": "South Korea",
+  "address": "640 Bitgaram-ro, Naju",
+  "status": "done",
+  "sources": [
+   "https://www.arko.or.kr/eng/",
+   "https://ko.wikipedia.org/wiki/%ED%95%9C%EA%B5%AD%EB%AC%B8%ED%99%94%EC%98%88%EC%88%A0%EC%9C%84%EC%9B%90%ED%9A%8C"
+  ],
+  "batch": "fp38"
  },
  "artscouncilni|UK": {
   "name": "Arts Council of Northern Ireland",
@@ -1809,6 +1940,20 @@
   ],
   "batch": "fp7"
  },
+ "australianantarcticdivision": {
+  "name": "Australian Antarctic Division",
+  "kind": "gov",
+  "what": "A division of Australia's Department of Climate Change, Energy, the Environment and Water, formed in 1948, that runs the Antarctic science programme and stations from Kingston, Tasmania.",
+  "money": "The Australian Government budget, through the Department of Climate Change, Energy, the Environment and Water.",
+  "site": "https://www.antarctica.gov.au",
+  "city": "Kingston",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Australian_Antarctic_Division"
+  ],
+  "batch": "fp38"
+ },
  "australiangovernmentappropriation|Australia": {
   "name": "Australian Government",
   "short": "Commonwealth Government",
@@ -2043,6 +2188,24 @@
   ],
   "batch": "fp3"
  },
+ "bancodelarepblica": {
+  "name": "Banco de la República",
+  "short": "Bank of the Republic",
+  "kind": "gov",
+  "what": "Colombia's central bank, which issues the peso; Congress set out its modern functions in 1992, and its head office is in Bogotá.",
+  "money": "Its own resources as Colombia's central bank and currency issuer.",
+  "arts": "Its cultural branch runs the Gold Museum in Bogotá, five regional Gold Museums, the Luis Ángel Arango Library and a library network in 28 cities.",
+  "site": "https://www.banrep.gov.co",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "address": "Calle 11 No. 4-21, Bogotá",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bank_of_the_Republic_(Colombia)",
+   "https://es.wikipedia.org/wiki/Banco_de_la_Rep%C3%BAblica_(Colombia)"
+  ],
+  "batch": "fp38"
+ },
  "bancohipotecario": {
   "name": "Banco Hipotecario S.A.",
   "kind": "corp",
@@ -2188,6 +2351,23 @@
    "https://data.brreg.no/enhetsregisteret/api/enheter/980253740"
   ],
   "batch": "fp8"
+ },
+ "barclays": {
+  "name": "Barclays PLC",
+  "short": "Barclays",
+  "kind": "corp",
+  "what": "A British universal bank headquartered in London, tracing its origins to a goldsmith banking business founded in the City of London in 1690.",
+  "money": "Consumer, corporate, private and investment banking in the UK and the US; revenue was £29.14 billion in 2025.",
+  "site": "https://home.barclays",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "1 Churchill Place, Canary Wharf, London",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Barclays",
+   "https://home.barclays/who-we-are/"
+  ],
+  "batch": "fp38"
  },
  "bareeze": {
   "name": "Bareezé",
@@ -2675,6 +2855,21 @@
    "https://www.berlin.de/ba-friedrichshain-kreuzberg/ueber-den-bezirk/"
   ],
   "batch": "fp30"
+ },
+ "bhp": {
+  "name": "BHP Group Limited",
+  "short": "BHP",
+  "kind": "corp",
+  "what": "An Australian mining company founded in Broken Hill in 1885 as the Broken Hill Proprietary Company, headquartered in Melbourne and listed only in Australia since 2022.",
+  "money": "Mining and selling iron ore, copper and coal; revenue was US$51.26 billion in the 2025 financial year.",
+  "site": "https://www.bhp.com",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/BHP"
+  ],
+  "batch": "fp38"
  },
  "bigantstudios": {
   "name": "Big Ant Studios Pty Ltd",
@@ -3470,6 +3665,21 @@
   ],
   "batch": "fp9"
  },
+ "cambridgecitycouncil|UK": {
+  "name": "Cambridge City Council",
+  "kind": "gov",
+  "what": "The district council for the city of Cambridge in Cambridgeshire, England, which meets at Cambridge Guildhall; no party has held overall control since 2026.",
+  "money": "The municipal budget of Cambridge City Council.",
+  "site": "https://www.cambridge.gov.uk",
+  "city": "Cambridge",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cambridge_City_Council",
+   "https://www.cambridge.gov.uk/contact-us"
+  ],
+  "batch": "fp38"
+ },
  "camper": {
   "name": "Camper",
   "kind": "corp",
@@ -3500,6 +3710,20 @@
    "https://www.nutriasia.com/"
   ],
   "batch": "fp18"
+ },
+ "canada": {
+  "name": "Government of Canada",
+  "kind": "gov",
+  "what": "The federal executive of Canada, made up of the Cabinet under Prime Minister Mark Carney and over 103 departments and agencies.",
+  "money": "The Canadian federal budget.",
+  "site": "https://www.canada.ca",
+  "city": "Ottawa",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Canada"
+  ],
+  "batch": "fp38"
  },
  "canadacouncilforarts|Canada": {
   "name": "Canada Council for the Arts",
@@ -3570,6 +3794,21 @@
    "https://www.orkla.com/media/press-releases/2026/orkla-asa-continued-ownership-by-the-hagen-family/"
   ],
   "batch": "fp32"
+ },
+ "canon": {
+  "name": "Canon Inc.",
+  "short": "Canon",
+  "kind": "corp",
+  "what": "A Japanese maker of cameras, printers, medical and semiconductor equipment, set up in 1937 as Precision Optical Instruments and headquartered in Shimomaruko, Ōta, Tokyo.",
+  "money": "Sales of optical, imaging, medical and industrial products worldwide; revenue was ¥4.03 trillion in 2022.",
+  "site": "https://global.canon",
+  "city": "Tokyo",
+  "country": "Japan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Canon_Inc."
+  ],
+  "batch": "fp38"
  },
  "cantonofgeneva": {
   "name": "République et canton de Genève",
@@ -4020,6 +4259,23 @@
   ],
   "batch": "fp30"
  },
+ "chase": {
+  "name": "Culture, Health, Arts, Sports and Education Fund",
+  "short": "CHASE Fund",
+  "kind": "gov",
+  "what": "A Jamaican company incorporated on 25 November 2002 under the Companies Act, based in Kingston, that funds culture, health, arts, sports and education.",
+  "money": "Monetary contributions from the lottery companies, which it receives, administers and distributes.",
+  "arts": "Its culture grants go to libraries, archives, historic sites, monuments, documentary film and cultural activities.",
+  "site": "https://chase.org.jm",
+  "city": "Kingston",
+  "country": "Jamaica",
+  "address": "8 Belmont Road, Kingston 5",
+  "status": "done",
+  "sources": [
+   "https://chase.org.jm/"
+  ],
+  "batch": "fp38"
+ },
  "cherylsaban": {
   "name": "The Saban Family Foundation",
   "short": "Saban Family Foundation",
@@ -4188,6 +4444,21 @@
   ],
   "batch": "fp9"
  },
+ "cittmetropolitana": {
+  "name": "Città metropolitana di Firenze",
+  "short": "Metropolitan City of Florence",
+  "kind": "gov",
+  "what": "The metropolitan city of Florence, a local authority of 41 municipalities in Tuscany that replaced the Province of Florence on 1 January 2015 under Law 56/2014.",
+  "money": "The budget of the Città metropolitana di Firenze.",
+  "site": "https://www.cittametropolitana.fi.it",
+  "city": "Florence",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Metropolitan_City_of_Florence"
+  ],
+  "batch": "fp38"
+ },
  "citybridge|UK": {
   "name": "Bridge House Estates",
   "short": "City Bridge Foundation",
@@ -4326,6 +4597,23 @@
    "https://www.ocaatlanta.com/about/"
   ],
   "batch": "fp9"
+ },
+ "cityofavignon|France": {
+  "name": "Ville d'Avignon",
+  "short": "City of Avignon",
+  "kind": "gov",
+  "what": "The commune of Avignon, prefecture of the Vaucluse department in Provence-Alpes-Côte d'Azur, with 92,188 residents in 2023.",
+  "money": "The municipal budget of Avignon.",
+  "site": "https://www.avignon.fr",
+  "city": "Avignon",
+  "country": "France",
+  "address": "Hôtel de Ville, 84045 Avignon Cedex 9",
+  "status": "done",
+  "sources": [
+   "https://www.avignon.fr/",
+   "https://en.wikipedia.org/wiki/Avignon"
+  ],
+  "batch": "fp38"
  },
  "cityofballarat|Australia": {
   "name": "City of Ballarat",
@@ -4602,6 +4890,20 @@
   ],
   "batch": "fp36"
  },
+ "cityoffortworth|USA": {
+  "name": "City of Fort Worth",
+  "kind": "gov",
+  "what": "The city government of Fort Worth, Texas, the county seat of Tarrant County, founded as an army outpost in 1849, with an estimated 1,028,117 residents in 2025.",
+  "money": "The municipal budget of Fort Worth.",
+  "site": "https://www.fortworthtexas.gov",
+  "city": "Fort Worth",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Fort_Worth,_Texas"
+  ],
+  "batch": "fp38"
+ },
  "cityoffrankfurtcultureoffice|Germany": {
   "name": "Kulturamt Frankfurt am Main",
   "kind": "gov",
@@ -4776,6 +5078,21 @@
   ],
   "batch": "fp9"
  },
+ "cityofjohannesburg|South Africa": {
+  "name": "City of Johannesburg Metropolitan Municipality",
+  "short": "City of Johannesburg",
+  "kind": "gov",
+  "what": "The metropolitan municipality that governs Johannesburg, South Africa's largest city.",
+  "money": "The municipal budget of the City of Johannesburg.",
+  "site": "https://www.joburg.org.za",
+  "city": "Johannesburg",
+  "country": "South Africa",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Johannesburg_Metropolitan_Municipality"
+  ],
+  "batch": "fp38"
+ },
  "cityofkarlsruhedepartmentofculturalaffairs|Germany": {
   "name": "Stadt Karlsruhe, Kulturamt",
   "short": "Karlsruhe Kulturamt",
@@ -4793,6 +5110,56 @@
    "https://de.wikipedia.org/wiki/Karlsruhe"
   ],
   "batch": "fp21"
+ },
+ "cityoflausanne|Switzerland": {
+  "name": "Ville de Lausanne",
+  "short": "City of Lausanne",
+  "kind": "gov",
+  "what": "The city of Lausanne, capital of the canton of Vaud on Lake Geneva, with 145,596 residents at the end of 2025.",
+  "money": "The municipal budget of Lausanne.",
+  "site": "https://www.lausanne.ch",
+  "city": "Lausanne",
+  "country": "Switzerland",
+  "address": "Place de la Palud 2, 1001 Lausanne",
+  "status": "done",
+  "sources": [
+   "https://www.lausanne.ch/",
+   "https://fr.wikipedia.org/wiki/Lausanne"
+  ],
+  "batch": "fp38"
+ },
+ "cityoflille|France": {
+  "name": "Ville de Lille",
+  "short": "City of Lille",
+  "kind": "gov",
+  "what": "The city of Lille, capital of the Hauts-de-France region and prefecture of the Nord department, with 238,246 residents in 2023.",
+  "money": "The municipal budget of Lille.",
+  "site": "https://www.lille.fr",
+  "city": "Lille",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lille",
+   "https://www.lille.fr/"
+  ],
+  "batch": "fp38"
+ },
+ "cityoflinz|Austria": {
+  "name": "Stadt Linz",
+  "short": "City of Linz",
+  "kind": "gov",
+  "what": "The statutory city of Linz, capital of Upper Austria and Austria's third-largest city, with 214,272 residents on 1 January 2026.",
+  "money": "The municipal budget of Linz.",
+  "site": "https://www.linz.at",
+  "city": "Linz",
+  "country": "Austria",
+  "address": "Hauptplatz 1, 4041 Linz",
+  "status": "done",
+  "sources": [
+   "https://www.linz.at/impressum.php",
+   "https://de.wikipedia.org/wiki/Linz"
+  ],
+  "batch": "fp38"
  },
  "cityofljubljana|Slovenia": {
   "name": "Mestna občina Ljubljana",
@@ -4880,6 +5247,20 @@
   ],
   "batch": "fp27"
  },
+ "cityofmelbourne|Australia": {
+  "name": "City of Melbourne",
+  "kind": "gov",
+  "what": "The local government area for inner Melbourne, Victoria, governed by Melbourne City Council from Melbourne Town Hall, with Nicholas Reece as Lord Mayor since July 2024.",
+  "money": "The municipal budget of the City of Melbourne.",
+  "site": "https://www.melbourne.vic.gov.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Melbourne"
+  ],
+  "batch": "fp38"
+ },
  "cityofmiami|USA": {
   "name": "City of Miami",
   "kind": "gov",
@@ -4930,6 +5311,23 @@
    "https://www.montbeliard.fr/"
   ],
   "batch": "fp23"
+ },
+ "cityofnice|France": {
+  "name": "Ville de Nice",
+  "short": "City of Nice",
+  "kind": "gov",
+  "what": "The city of Nice on the French Riviera, prefecture of the Alpes-Maritimes department in the Provence-Alpes-Côte d'Azur region.",
+  "money": "The municipal budget of Nice.",
+  "site": "https://www.nice.fr",
+  "city": "Nice",
+  "country": "France",
+  "address": "5 rue de l'Hôtel de Ville, 06364 Nice",
+  "status": "done",
+  "sources": [
+   "https://www.nice.fr/",
+   "https://en.wikipedia.org/wiki/Nice"
+  ],
+  "batch": "fp38"
  },
  "cityofoaklandsubsidy|USA": {
   "name": "City of Oakland",
@@ -5121,6 +5519,20 @@
    "https://en.wikipedia.org/wiki/City_of_Sydney"
   ],
   "batch": "fp9"
+ },
+ "cityoftoronto|Canada": {
+  "name": "City of Toronto",
+  "kind": "gov",
+  "what": "The city government of Toronto, Canada's most populous city and capital of Ontario, with 2,794,356 residents in the 2021 census.",
+  "money": "The municipal budget of the City of Toronto.",
+  "site": "https://www.toronto.ca",
+  "city": "Toronto",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Toronto"
+  ],
+  "batch": "fp38"
  },
  "cityofturinculturaldepartment|Italy": {
   "name": "Città di Torino",
@@ -5349,6 +5761,40 @@
   ],
   "batch": "fp37"
  },
+ "cmn": {
+  "name": "Centre des monuments nationaux",
+  "short": "Les Monuments Nationaux",
+  "kind": "gov",
+  "what": "A French public body under the Ministry of Culture, created in 2000, that runs about 110 state-owned monuments; since 15 October 2026 it trades as Les Monuments Nationaux.",
+  "money": "Its own receipts from tickets, rentals, shops, publishing and patronage, plus a subsidy from the Ministry of Culture.",
+  "site": "https://www.monuments-nationaux.fr",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Les_Monuments_nationaux",
+   "https://www.monuments-nationaux.fr/",
+   "https://en.wikipedia.org/wiki/Centre_des_monuments_nationaux"
+  ],
+  "batch": "fp38"
+ },
+ "cnap": {
+  "name": "Consejo Nacional de las Artes Plásticas",
+  "short": "CNAP",
+  "kind": "gov",
+  "what": "A Cuban Ministry of Culture institution created on 11 March 1989 in place of the ministry's visual arts directorate, to develop, promote and sell Cuban visual art.",
+  "money": "The Cuban state budget, through the Ministry of Culture.",
+  "site": "http://www.cnap.cult.cu",
+  "city": "Havana",
+  "country": "Cuba",
+  "address": "Calle 3ra No. 1205 entre 12 y 14, Miramar, Playa, Havana",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2024id_/https://www.ecured.cu/Consejo_Nacional_de_las_Artes_Pl%C3%A1sticas",
+   "https://web.archive.org/web/2024id_/https://www.ecured.cu/Arte_cubano_contempor%C3%A1neo"
+  ],
+  "batch": "fp38"
+ },
  "cnc": {
   "name": "Centre national du cinéma et de l'image animée",
   "short": "CNC",
@@ -5435,6 +5881,24 @@
   ],
   "batch": "fp9"
  },
+ "comfama": {
+  "name": "Caja de Compensación Familiar de Antioquia",
+  "short": "Comfama",
+  "kind": "found",
+  "what": "Antioquia's family compensation fund, Colombia's first, founded in Medellín in 1954 after a call from the UTC trade union federation, with backing from the industrialists' association ANDI.",
+  "money": "Contributions from the 123,000 companies that chose it for their staff in 2024; its total income was COP 2.8 trillion that year.",
+  "site": "https://www.comfama.com",
+  "city": "Medellín",
+  "country": "Colombia",
+  "status": "done",
+  "sources": [
+   "https://www.elcolombiano.com/negocios/empresas/comfama-cumple-70-anos-historia-de-la-primera-caja-de-compensacion-familia-de-colombia-MI24860369",
+   "https://www.larepublica.co/empresas/comfama-alcanzo-unos-ingresos-totales-de-2-8-billones-al-cierre-del-ejercicio-de-2024-4102653",
+   "https://es.wikipedia.org/wiki/Comfama",
+   "https://www.comfama.com/"
+  ],
+  "batch": "fp38"
+ },
  "comfandi": {
   "name": "Caja de Compensación Familiar del Valle del Cauca",
   "short": "Comfandi",
@@ -5486,6 +5950,22 @@
    "https://it.wikipedia.org/wiki/Lombardia"
   ],
   "batch": "fp37"
+ },
+ "comunidaddemadrid": {
+  "name": "Comunidad de Madrid",
+  "short": "Community of Madrid",
+  "kind": "gov",
+  "what": "One of Spain's seventeen autonomous communities, created in 1983 around the capital, Madrid, with 7,113,886 inhabitants in 2025.",
+  "money": "The regional budget of the Comunidad de Madrid.",
+  "site": "https://www.comunidad.madrid",
+  "city": "Madrid",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Community_of_Madrid",
+   "https://www.comunidad.madrid/"
+  ],
+  "batch": "fp38"
  },
  "conedison": {
   "name": "Consolidated Edison, Inc.",
@@ -5549,6 +6029,21 @@
    "https://www.artsmontreal.org/en/contact-us/"
   ],
   "batch": "fp4"
+ },
+ "consejonacionaldelpatrimoniocultural": {
+  "name": "Consejo Nacional de Patrimonio Cultural",
+  "short": "National Council of Cultural Heritage (CNPC)",
+  "kind": "gov",
+  "what": "The Cuban Ministry of Culture body, founded in 1995 and seated in Havana, that defines and declares the goods forming the nation's cultural heritage under Law No. 1.",
+  "money": "The Cuban state budget, through the Ministry of Culture.",
+  "city": "Havana",
+  "country": "Cuba",
+  "address": "Calle 13 No. 810 esquina 4, Vedado, Plaza de la Revolución, Havana",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/2024id_/https://www.ecured.cu/CNPC"
+  ],
+  "batch": "fp38"
  },
  "conselldemallorca": {
   "name": "Consell de Mallorca",
@@ -8076,6 +8571,25 @@
   ],
   "batch": "fp11"
  },
+ "federalofficeofculture|Switzerland": {
+  "name": "Bundesamt für Kultur",
+  "short": "Federal Office of Culture (BAK)",
+  "kind": "gov",
+  "what": "The Swiss federal office for culture policy, cultural funding and heritage, part of the Federal Department of Home Affairs in Bern, led by Carine Bachmann since 2022.",
+  "money": "The Swiss federal budget, through the Federal Department of Home Affairs.",
+  "arts": "Its total budget was close to CHF 170 million in 2014.",
+  "site": "https://www.bak.admin.ch",
+  "city": "Bern",
+  "country": "Switzerland",
+  "address": "Monbijoustrasse 74, 3003 Bern",
+  "status": "done",
+  "sources": [
+   "https://www.bak.admin.ch/bak/de/home.html",
+   "https://en.wikipedia.org/wiki/Federal_Office_of_Culture",
+   "https://de.wikipedia.org/wiki/Bundesamt_f%C3%BCr_Kultur"
+  ],
+  "batch": "fp38"
+ },
  "fentonartstrust": {
   "name": "The Fenton Arts Trust",
   "kind": "found",
@@ -9631,6 +10145,25 @@
   "batch": "fp24",
   "renamed": "The atlas name points at West Publishing, while the museum sentence means Gerard Cafesjian himself, a former executive of the company."
  },
+ "gerdahenkel": {
+  "name": "Gerda Henkel Stiftung",
+  "short": "Gerda Henkel Foundation",
+  "kind": "found",
+  "what": "A private foundation in Düsseldorf set up in June 1976 by Lisa Maskell in memory of her mother Gerda Henkel; it funds historical humanities research and heritage work.",
+  "money": "An endowment set up by Lisa Maskell, granddaughter of Fritz Henkel, who founded the Henkel company in 1876.",
+  "arts": "In its autumn 2026 round it awarded €10.9 million to 115 research projects.",
+  "site": "https://www.gerda-henkel-stiftung.de",
+  "city": "Düsseldorf",
+  "country": "Germany",
+  "address": "Malkastenstraße 15, 40211 Düsseldorf",
+  "status": "done",
+  "sources": [
+   "https://www.gerda-henkel-stiftung.de/impressum",
+   "https://de.wikipedia.org/wiki/Gerda_Henkel_Stiftung",
+   "https://www.gerda-henkel-stiftung.de/en/foundation"
+  ],
+  "batch": "fp38"
+ },
  "germanfederalforeignoffice|Germany": {
   "name": "Auswärtiges Amt",
   "short": "German Federal Foreign Office",
@@ -9664,6 +10197,22 @@
    "https://www.auswaertiges-amt.de/en/about-us/contact"
   ],
   "batch": "fp7"
+ },
+ "germanfederalgovernment|Germany": {
+  "name": "Bundesregierung",
+  "short": "Federal Government of Germany",
+  "kind": "gov",
+  "what": "The federal executive of Germany, made up of the Federal Chancellor and the federal ministers under the Basic Law, with its seat in Berlin.",
+  "money": "The German federal budget.",
+  "site": "https://www.bundesregierung.de",
+  "city": "Berlin",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Federal_Government_of_Germany",
+   "https://de.wikipedia.org/wiki/Bundesregierung_(Deutschland)"
+  ],
+  "batch": "fp38"
  },
  "germanykfw": {
   "name": "KfW",
@@ -11499,6 +12048,23 @@
   ],
   "batch": "fp14"
  },
+ "illinoisartscouncil|USA": {
+  "name": "Illinois Arts Council",
+  "kind": "gov",
+  "what": "A state agency of Illinois, founded by the General Assembly in 1965, that gives grants and technical help to artists and arts organisations, with its office in Chicago.",
+  "money": "The State of Illinois budget, which set its fiscal 2025 funding at US$25.58 million, up from US$15.5 million.",
+  "arts": "It funded 50 local arts councils through its Local Arts Network in fiscal 2025.",
+  "site": "https://arts.illinois.gov",
+  "city": "Chicago",
+  "country": "United States",
+  "address": "115 S. LaSalle St., Suite 2202, Chicago, IL 60603",
+  "status": "done",
+  "sources": [
+   "https://arts.illinois.gov/",
+   "https://en.wikipedia.org/wiki/Illinois_Arts_Council"
+  ],
+  "batch": "fp38"
+ },
  "ilmincultural": {
   "name": "Ilmin Cultural Foundation",
   "kind": "found",
@@ -11836,6 +12402,19 @@
   ],
   "batch": "fp3",
   "renamed": "The Cologne, Beijing and Havana sentences describe gifts by Peter and Irene Ludwig themselves; the 1976 Museum Ludwig gift came before the foundation existed."
+ },
+ "iris": {
+  "name": "IRIS Foundation",
+  "kind": "found",
+  "what": "A nonprofit foundation for contemporary culture set up by Dasha Zhukova in 2008; the Garage Museum in Moscow is its project and IRIS New Holland its arm since 2011.",
+  "money": "Dasha Zhukova and Roman Abramovich, who would keep paying about two-thirds of Garage's US$13 million to 15 million yearly budget, its director said in 2018.",
+  "status": "done",
+  "sources": [
+   "https://www.newhollandsp.ru/en/information/about-the-project/iris-foundation/",
+   "https://garagemca.org/en/about",
+   "https://www.theartnewspaper.com/2018/07/11/moscows-garage-museum-still-going-strong-at-ten-despite-co-founders-split"
+  ],
+  "batch": "fp38"
  },
  "italianministryofculture|Italy": {
   "name": "Ministero della Cultura",
@@ -12675,6 +13254,23 @@
    "https://www.jkb.com/en/affiliates-partners"
   ],
   "batch": "fp15"
+ },
+ "kkr": {
+  "name": "Kravis family",
+  "short": "Henry and Marie-Josée Kravis",
+  "kind": "person",
+  "what": "Henry Kravis, who co-founded the investment firm KKR in 1976, and his wife Marie-Josée Kravis, a Canadian businesswoman elected chair of the MoMA board in July 2021.",
+  "money": "Henry Kravis's stake in KKR, from which most of his US$12.5 billion net worth derives, according to the Bloomberg Billionaires Index in 2026.",
+  "arts": "Marie-Josée Kravis was president of the MoMA board from 2005 to 2018; Henry Kravis sits on the board of the Metropolitan Museum of Art.",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Henry_Kravis",
+   "https://en.wikipedia.org/wiki/Marie-Jos%C3%A9e_Kravis",
+   "https://en.wikipedia.org/wiki/KKR_%26_Co."
+  ],
+  "batch": "fp38"
  },
  "klara": {
   "name": "Klara",
@@ -18144,6 +18740,22 @@
   ],
   "batch": "fp19"
  },
+ "regionstockholm|Sweden": {
+  "name": "Region Stockholm",
+  "kind": "gov",
+  "what": "The regional public body for Stockholm County, set up on 1 January 2019 in place of Stockholm County Council, running healthcare, public transport and regional planning.",
+  "money": "The regional budget, about SEK 133 billion in 2024, when the regional income tax rate was 12.38 percent.",
+  "site": "https://www.regionstockholm.se",
+  "city": "Stockholm",
+  "country": "Sweden",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Region_Stockholm",
+   "https://sv.wikipedia.org/wiki/Region_Stockholm",
+   "https://www.regionstockholm.se/kontakt/"
+  ],
+  "batch": "fp38"
+ },
  "relianceindustriesunderbillionairemukeshambani": {
   "name": "Reliance Industries Limited",
   "short": "Reliance",
@@ -18565,6 +19177,20 @@
    "https://it.wikipedia.org/wiki/Roma_Capitale"
   ],
   "batch": "fp37"
+ },
+ "romanabramovich": {
+  "name": "Roman Abramovich",
+  "kind": "person",
+  "what": "A Russian businessman, governor of Chukotka from 2000 to 2008 and former owner of Chelsea football club, sanctioned after the 2022 Russian invasion of Ukraine.",
+  "money": "His Sibneft oil stake, sold to the Russian state for $13 billion in 2005, and his Millhouse holdings, which bought 41% of Evraz in 2006.",
+  "arts": "He co-founded the Garage Museum of Contemporary Art in Moscow with Dasha Zhukova in 2008.",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Roman_Abramovich",
+   "https://garagemca.org/en/about"
+  ],
+  "batch": "fp38"
  },
  "romantrotsenko": {
   "name": "Roman Trotsenko",
@@ -21085,6 +21711,23 @@
   ],
   "batch": "fp23"
  },
+ "tromscounty|Norway": {
+  "name": "Troms fylkeskommune",
+  "short": "Troms County Municipality",
+  "kind": "gov",
+  "what": "The regional administration of Troms county in northern Norway, run from Tromsø with a 37-member county council; it was merged into Troms og Finnmark from 2020 to 2023.",
+  "money": "The county budget of Troms fylkeskommune.",
+  "site": "https://www.tromsfylke.no",
+  "city": "Tromsø",
+  "country": "Norway",
+  "address": "Strandvegen 13, 9007 Tromsø",
+  "status": "done",
+  "sources": [
+   "https://www.tromsfylke.no/",
+   "https://en.wikipedia.org/wiki/Troms_County_Municipality"
+  ],
+  "batch": "fp38"
+ },
  "tromsogfinnmarkcounty|Norway": {
   "name": "Troms og Finnmark fylkeskommune",
   "short": "Troms og Finnmark County Municipality",
@@ -21227,6 +21870,21 @@
    "https://api.gleif.org/api/v1/lei-records/391200M0NTC3WBXV1G63"
   ],
   "batch": "fp23"
+ },
+ "ukgovernment|UK": {
+  "name": "His Majesty's Government",
+  "short": "UK Government",
+  "kind": "gov",
+  "what": "The central executive of the United Kingdom, led by Prime Minister Andy Burnham since 20 July 2026, whose ministers answer to Parliament.",
+  "money": "The UK state budget.",
+  "site": "https://www.gov.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_the_United_Kingdom"
+  ],
+  "batch": "fp38"
  },
  "ukresearch": {
   "name": "UK Research and Innovation",
@@ -22030,6 +22688,21 @@
    "https://en.wikipedia.org/wiki/Viva_Energy"
   ],
   "batch": "fp34"
+ },
+ "vivo": {
+  "name": "Telefônica Brasil S.A.",
+  "short": "Vivo",
+  "kind": "corp",
+  "what": "A Brazilian telecommunications group trading as Vivo, a subsidiary of Spain's Telefónica, formed from the 1998 break-up and privatisation of the state monopoly Telebrás.",
+  "money": "Mobile, broadband, fixed-line and pay-TV services sold under the Vivo brand to more than 90 million customers in Brazil.",
+  "site": "https://www.telefonica.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Telef%C3%B4nica_Brasil"
+  ],
+  "batch": "fp38"
  },
  "vlaamseoverheid": {
   "name": "Vlaamse Regering",
