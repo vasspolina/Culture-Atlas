@@ -1,0 +1,448 @@
+[
+ {
+  "id": "antarctic-biennale",
+  "section": "Red flags",
+  "problems": [
+   "flag does not meet the rule: no US, EU, UK or UN sanctions listing of the funder or a controlling party; funding from 2017, not current",
+   "inexact: Entity List credited to the Treasury"
+  ],
+  "before": "Red flags: main sponsor's company sanctioned by the United States, 2024 (OFAC designated twelve executives; Commerce put three Kaspersky entities on the Entity List)",
+  "after": "WIDER CONTEXT: Commerce Department's 20 June 2024 Final Determination barring Kaspersky Lab, Inc. and affiliates from selling anti-virus and cyber security products in the US, and Entity List entries for AO Kaspersky Lab, OOO Kaspersky Group and Kaspersky Labs Limited (BIS); OFAC's 21 June 2024 designation of twelve Kaspersky executives, stating it did not designate Kaspersky Lab, its parent or subsidiaries, or its CEO (Treasury); the measures came seven years after the voyage and do not name Eugene Kaspersky.",
+  "sources": [
+   "https://www.bis.gov/press-release/commerce-department-prohibits-russian-kaspersky-software-u.s.-customers",
+   "https://home.treasury.gov/news/press-releases/jy2420",
+   "https://www.theartnewspaper.com/2017/03/17/the-antarctic-biennale-a-crazy-idea-becomes-reality"
+  ],
+  "reason": "OFAC did not designate Kaspersky Lab or its CEO; the Entity List is an export control list, and the 2017 funding is not current, so the CHECKER Sanctions rule is not met."
+ },
+ {
+  "id": "antarctic-biennale",
+  "section": "FUNDING",
+  "problems": [
+   "source bias not stated: funding share rests on an article by the chair of the biennale's board",
+   "unsupported: 'Russian cyber security firm' (article says privately owned)"
+  ],
+  "before": "most of it came from Eugene Kaspersky, head of the Russian cyber security firm Kaspersky Lab ... Somers Cocks declared in her 2017 article that she chaired the biennale's board of trustees. (in the Oceanic Project Foundation point)",
+  "after": "most of it came from Eugene Kaspersky, head of the privately owned cyber security firm Kaspersky Lab ... The author of that account, Anna Somers Cocks, declared in the same article that she chaired the biennale's board of trustees.",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/03/17/the-antarctic-biennale-a-crazy-idea-becomes-reality"
+  ],
+  "reason": "The disclosure now sits with the claim it qualifies."
+ },
+ {
+  "id": "antarctic-biennale",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'former Soviet Navy submariner'",
+   "unsupported: 'Anna Shvets'",
+   "unsupported: '15 competition finalists showed in the Antarctic Pavilion at the 2017 Venice Biennale'"
+  ],
+  "before": "the Russian artist and former Soviet Navy submariner Alexander Ponomarev ... Organised by Ponomarev with the organiser Anna Shvets and the curator Nadim Samman ... The 15 competition finalists showed in the Antarctic Pavilion at the 2017 Venice Biennale (The Art Newspaper).",
+  "after": "the Russian artist Alexander Ponomarev ... whom The Art Newspaper called a former submariner ... The curator Nadim Samman co-organised it (The Art Newspaper, 2016). [finalists sentence cut]",
+  "sources": [
+   "https://www.theartnewspaper.com/2016/06/15/artists-set-sail-for-the-south-pole-via-venice",
+   "https://www.theartnewspaper.com/2016/04/12/art-among-the-penguins-inaugural-antarctic-biennale-to-launch-next-year",
+   "https://biennialfoundation.org/biennials/antarctic-biennale-antarctica/"
+  ],
+  "reason": "No opened source names Shvets, the Soviet Navy or the 15 finalists in Venice."
+ },
+ {
+  "id": "antarctic-biennale",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Girst 'presented the winners'"
+  ],
+  "before": "Thomas Girst ... presented the winners at Art Basel Miami Beach in December 2016",
+  "after": "Thomas Girst ... introduced the project to the press at Art Basel Miami Beach, where the winners were announced on 1 December 2016",
+  "sources": [
+   "https://biennialfoundation.org/2016/12/winners-antarctic-biennale-open-call-art-basel-miami-beach/"
+  ],
+  "reason": "Biennial Foundation says he introduced the project to the press."
+ },
+ {
+  "id": "antarctic-biennale",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restates Entity List, Art Newspaper and spam facts"
+  ],
+  "before": "A one-off 2017 voyage paid for mostly by Eugene Kaspersky, whose company the United States put on its Entity List in 2024 ... Its website now serves gambling spam.",
+  "after": "A one-off private voyage with no running funding to judge. Its weak points are that the account of who paid comes from inside the project, and that the main sponsor's company has since come under US trade restrictions.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "paywalled item confirmed by headline only",
+   "old point lost without reason"
+  ],
+  "before": "Paywalled on re-check; only the headline and subtitle were read this time.",
+  "after": "Unverified: that the decision was tied to Halaby's pro-Palestine advocacy, which the petition and emails Hyperallergic reviewed suggest. ... Paywalled on the live site; read in full from the Internet Archive copy of 15 January 2024.",
+  "sources": [
+   "http://web.archive.org/web/20240115070752/https://hyperallergic.com/865825/indiana-university-cancels-palestinian-artist-samia-halaby-exhibition/"
+  ],
+  "reason": "Full archived text read; the old report's Unverified point is restored."
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only: trustees' yearly budget line",
+   "Wikipedia-only: Mellon endowment challenge grant"
+  ],
+  "before": "the university's trustees began budgeting a small yearly amount for the museum ... (Wikipedia). Endowment: $500,000 Andrew W. Mellon Foundation endowment challenge grant in 2012 (Wikipedia).",
+  "after": "The museum states that most of its acquisitions came as gifts of art or purchase funds from individual donors (museum website). Mellon Foundation: $500,000 to Indiana University in 2012 \"to strengthen student and faculty engagement with the collections\" at the museum (Mellon Foundation).",
+  "sources": [
+   "https://artmuseum.indiana.edu/about/history.html",
+   "https://www.mellon.org/grant-details/indiana-university-9411"
+  ],
+  "reason": "Replaced with the museum's and the foundation's own pages; 'endowment challenge' is not on the Mellon page."
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "section": "Red flags",
+  "problems": [
+   "allegation without Unverified label",
+   "citation: IU statement credited to The Art Newspaper"
+  ],
+  "before": "Madison Gordon ... said the university told Halaby ... IU said \"... for its duration\" (The Art Newspaper).",
+  "after": "Unverified: Madison Gordon ... said the university told Halaby ... An IU spokesperson said \"... for its duration\" (Hyperallergic).",
+  "sources": [
+   "https://www.idsnews.com/article/2024/01/provost-addresses-controversy-suspension-palestinian-artist-bfc",
+   "https://www.theartnewspaper.com/2024/01/12/indiana-university-cancels-palestinian-artist-samia-halaby-retrospective"
+  ],
+  "reason": "The Art Newspaper quotes only part of the statement; the full wording is Hyperallergic's."
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'ancient jewellery to paintings by Picasso and Jackson Pollock' credited to IU Today"
+  ],
+  "before": "More than 45,000 works, from ancient jewellery to paintings by Picasso and Jackson Pollock (IU Today; Wikipedia).",
+  "after": "More than 45,000 works from ancient to contemporary (IU Today).",
+  "sources": [
+   "https://today.iu.edu/live/news/4931-brenneman-to-leave-iu-for-role-at-the-telfair"
+  ],
+  "reason": "IU Today names neither."
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "quote wrong: 'or to Halaby'; 'speak up' not The Art Newspaper's words"
+  ],
+  "before": "\"no evidence of threats to the artwork or the campus\", or to Halaby ... did not speak up",
+  "after": "\"no evidence of threats to the artwork or the campus\" ... did not object",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/01/12/indiana-university-cancels-palestinian-artist-samia-halaby-retrospective"
+  ],
+  "reason": "Matched to the article text."
+ },
+ {
+  "id": "eskenazi-museum-of-art",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... which drew a petition, faculty protest and artist withdrawals ...",
+  "after": "The money behind the museum is clean: a public university and a real estate couple's naming gift. The weak point is the university's control over what the museum shows, as the Halaby cancellation proved.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "two paywalled items confirmed by headline only"
+  ],
+  "before": "Paywalled on re-check; only the headline and subtitle were read this time. / only the headline was read this time.",
+  "after": "Paywalled on the live site; read in full from the Internet Archive copy of 13 October 2020 / 1 November 2020.",
+  "sources": [
+   "http://web.archive.org/web/20201013124631/https://hyperallergic.com/573241/new-orleans-museum-of-art-racism-homophobia/",
+   "http://web.archive.org/web/20201101093923/https://hyperallergic.com/594019/150-artists-amplify-demands-for-reform-at-new-orleans-museum-of-art/"
+  ],
+  "reason": "Both articles read in full from archive copies; every point checked against them."
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "section": "Red flags",
+  "problems": [
+   "allegations without Unverified label",
+   "unsupported: 'installed against the advice of Black staff'"
+  ],
+  "before": "In June 2020 five former workers published an open letter saying 30 employees resigned ... a plantation parlor installed against the advice of Black staff",
+  "after": "Unverified: claims in a June 2020 open letter by five former workers, including Jennifer Williams, that 30 employees resigned ... and that concerns of Black staff about a permanent plantation parlor installation were disregarded.",
+  "sources": [
+   "http://web.archive.org/web/20201013124631/https://hyperallergic.com/573241/new-orleans-museum-of-art-racism-homophobia/"
+  ],
+  "reason": "Matched to Hyperallergic's wording; non-disclosure agreements restored from the old report."
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "section": "Red flags",
+  "problems": [
+   "Helis money currency unconfirmed",
+   "Helis Oil & Gas business not stated",
+   "citation: Kerstein quote credited to the 2021 post"
+  ],
+  "before": "The foundation's post of 8 March 2021 calls William George Helis ... It describes its leader David Kerstein as ...",
+  "after": "A 2021 foundation post calls William George Helis, who died in 1950, an oil magnate; a 2025 post describes its leader David Kerstein as ... Helis Oil & Gas Company planned in 2014 to drill an oil well in St. Tammany Parish and to frack it if it found commercially viable oil (WWNO, 13 May 2014). [Funding point now cites the museum admission page, checked 20 Nov 2026]",
+  "sources": [
+   "https://noma.org/visit/visitor-information/",
+   "https://www.wwno.org/latest-news/2014-05-13/helis-oil-gas-agrees-to-a-phased-approach-to-fracking-in-st-tammany",
+   "https://www.thehelisfoundation.org/post/david-kerstein-selected-to-receive-the-times-picayune-loving-cup-for-2025-nola-com"
+  ],
+  "reason": "NOMA's admission page credits The Helis Foundation for free Wednesdays and free entry for ages 13 to 19 today."
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only expansion and founding figures",
+   "unsupported: 'nearly 50,000 works', '12-acre', 'grew by 6.5 acres'",
+   "date conflict: opening 11 December (Wikipedia) vs 16 December (museum)"
+  ],
+  "before": "opened on 11 December 1911 ... partly designed by ... Harrod; a $23 million expansion opened in 1993 (Wikipedia). ... nearly 50,000 works ... 12-acre ... grew by 6.5 acres in 2019; nearly 100 works",
+  "after": "Founded with $150,000 that the sugar broker Isaac Delgado gave in 1910; the Isaac Delgado Museum of Art opened on 16 December 1911 and took its present name in 1971 (museum timeline). More than 40,000 objects ... The Besthoff Sculpture Garden opened in 2003, doubled in size in 2019 and holds 100 sculptures. [FUNDING] a $23 million expansion opened in 1993 (museum timeline).",
+  "sources": [
+   "https://noma.org/about/museum-timeline/",
+   "https://noma.org/about/",
+   "https://noma.org/besthoff-sculpture-garden/"
+  ],
+  "reason": "Replaced with the museum's own timeline and pages."
+ },
+ {
+  "id": "new-orleans-museum-of-art-new-orleans",
+  "section": "Red flags",
+  "problems": [
+   "old point lost: town hall and Gambit defence"
+  ],
+  "before": "A spokesperson said the museum was \"listening closely to feedback\"",
+  "after": "NOMA promised a town hall and defended the choice to Gambit, citing Maples's academic background (The Art Newspaper).",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/07/03/new-orleans-museum-art-backlash-hiring-white-curator-african-art"
+  ],
+  "reason": "Restored from the earlier report; No White Saviors restored in the press item."
+ },
+ {
+  "id": "natural-history-museum-abu-dhabi",
+  "section": "FUNDING",
+  "problems": [
+   "figure miscredited: consultant's project value presented without context"
+  ],
+  "before": "The planning consultant TBH lists the project value as AED 1.3 billion (TBH Consultancy, project page).",
+  "after": "TBH, a planning and scheduling consultant hired by the main contractor ALEC, gives the project value as AED 1.3 billion on its project page; this is the consultant's figure, not an official cost (TBH Consultancy).",
+  "sources": [
+   "https://tbhconsultancy.com/mena/experience/natural-history-museum-abu-dhabi/"
+  ],
+  "reason": "TBH's client was ALEC; the field is labelled Value."
+ },
+ {
+  "id": "natural-history-museum-abu-dhabi",
+  "section": "Red flags",
+  "problems": [
+   "two issues in one heading: soft power quote under acquisition prices",
+   "heading without year",
+   "repetition: operator stated in overview, funding and red flag; Dh70 and Stan price twice"
+  ],
+  "before": "Red flags: run by a Gulf state body, Abu Dhabi's Department of Culture and Tourism / ... \"This was never done for the critics\" under acquisition prices",
+  "after": "Red flags: run by a Gulf state body, Abu Dhabi's culture department, since 2025; soft power quote moved to WIDER CONTEXT; duplicate operator, ticket and price points cut.",
+  "sources": [
+   "https://www.thenationalnews.com/arts-culture/2025/11/30/abu-dhabis-cultural-vision-enters-new-phase-with-two-landmark-museum-openings"
+  ],
+  "reason": "One issue per heading, no statement twice."
+ },
+ {
+  "id": "natural-history-museum-abu-dhabi",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... The only public figures are Stan's 2020 auction price and a consultant's AED 1.3 billion project value ...",
+  "after": "A Gulf state museum paid for and run by the Abu Dhabi government, with no official cost on record. The weak point is secrecy over what public money buys.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "kharkiv-municipal-gallery",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only: Shevchenko National Prize committee since December 2016, in present tense"
+  ],
+  "before": "has sat on the Shevchenko National Prize committee since December 2016 (Ukrainian Wikipedia)",
+  "after": "[cut]",
+  "sources": [
+   "https://mgallery.kharkiv.ua/en/about-2/"
+  ],
+  "reason": "The presidential decrees could not be opened (403, connection refused); the 2016 committee was replaced by later decrees, so the present tense is unsupported."
+ },
+ {
+  "id": "kharkiv-municipal-gallery",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "A city of Kharkiv gallery in a city building, repaired with city money after 2022 missile damage ...",
+  "after": "Clean public money: the gallery depends on the city for its premises and repairs. The weak point is that the same dependence lets the mayor's office take its space at will.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "national-history-museum",
+  "section": "Red flags",
+  "problems": [
+   "credit: cost estimates attributed as if official declarations"
+  ],
+  "before": "in 2018 Arta Dollani ... put a preliminary value of up to 13 million euros ... in March 2024 the former director Melsi Labi said the declared budget was 26 million euros",
+  "after": "Shqiptarja (31 Oct 2018), citing the agency ATA, reported that Arta Dollani ... put a preliminary value of up to 13 million euros on the project in a television interview. On Report TV in March 2024 the former museum director Melsi Labi said the budget would be at least 26 million euros, a figure he said had appeared in the media.",
+  "sources": [
+   "https://shqiptarja.com/lajm/projekti-13-milione-euro-qw-do-tw-rikonceptojw-muzeun-historik-kombetar",
+   "https://shqiptarja.com/lajm/ishdrejtori-i-muzeut-kombetar-26-mln-per-rikonstruksionin-shqetesuese-mungesa-e-informacionit-propozoj-ministri-te-muzeve"
+  ],
+  "reason": "Labi did not say who declared the 26 million figure."
+ },
+ {
+  "id": "national-history-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only mosaic details",
+   "unsupported: 'empty sack'",
+   "name wrong: 'Justin Droboniku'",
+   "Wikipedia-only: Communist Terror pavilion 2012"
+  ],
+  "before": "mosaic \"The Albanians\" by ... Justin Droboniku ...; in the early 1990s its gold stars were removed and the worker's red book was replaced by an empty sack (Wikipedia). ... opened in 2012 (Wikipedia).",
+  "after": "a 565 square metre socialist realist mosaic of 1981 by Vilson Kilica, Josif Droboniku, Agim Nebiu, Anastas Kostandini and Aleksandër Filipi (UNOPS). After a 1993 government decision ordering the removal of communist symbols, Nebiu retouched out the worker's red book and two stars (Shqiptarja, 23 May 2023). ... opened on 20 February 2012 (Top Channel).",
+  "sources": [
+   "https://www.unops.org/news-and-stories/stories/preserving-the-past-embracing-the-future",
+   "https://shqiptarja.com/lajm/mozaiku-shqiperia-ironia-me-retushimin-e-pd-ne-93-hoqi-librin-e-kuq-e-dy-yje-zien-rrjeti-ka-ende-ne-shaje-kapele-deri-edhe-te-xhubleta-4000vjecare",
+   "https://top-channel.tv/english/new-museum-pavilion-for-communist-terror/"
+  ],
+  "reason": "Replaced with UNOPS and press sources."
+ },
+ {
+  "id": "national-history-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "author wrong: Adam Reichardt",
+   "unsupported: 'in which the regime made its ideology visible'",
+   "Dark Tourism point says more than the page"
+  ],
+  "before": "Adam Reichardt in New Eastern Europe ... in which the regime made its ideology visible ... after 1991 the section on the Hoxha years was removed",
+  "after": "Kinga Anna Gajda in New Eastern Europe (2023) calls the museum \"a tool of memory appropriation and amnesia\" ... the section on the Hoxha years was gone by the author's 2011 visit",
+  "sources": [
+   "https://neweasterneurope.eu/2023/07/04/memory-sites-in-tirana-provide-a-deep-connection-to-albanias-recent-past/",
+   "https://dark-tourism.com/index.php/252-nationalhistorymuseum-tirana"
+  ],
+  "reason": "Matched to the pages."
+ },
+ {
+  "id": "national-history-museum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: minister 'now announces the reconstruction work'"
+  ],
+  "before": "Culture Minister Blendi Gonxhja now announces the reconstruction work (Balkanweb; Shqiptarja).",
+  "after": "Culture Minister Blendi Gonxhja announced the completion of the facade restoration (Balkanweb).",
+  "sources": [
+   "https://www.balkanweb.com/zbulohet-fasada-e-muzeut-historik-kombetar-pas-perfundimit-te-restaurimit-te-plote-te-saj/"
+  ],
+  "reason": "The Balkanweb page shows no date and is left undated."
+ },
+ {
+  "id": "national-history-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... shifting cost estimates, from 13 to 26 million euros ...",
+  "after": "Clean public money: the Albanian state and European public lenders and donors. The weak point is how openly that money is accounted for during the reconstruction.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "musee-national-du-moudjahid",
+  "section": "OVERVIEW and FUNDING",
+  "problems": [
+   "thin: no founding date or legal status"
+  ],
+  "before": "Operator: the Ministry of Moudjahidine and Beneficiaries runs the museum's programme",
+  "after": "A first museum opened in 1966 under Boumediene; the present museum was created by ordinance in December 1972 and opened to the public only in 1984. The Ministry of Moudjahidine holds supervisory authority over the museum; a 1999 law tasks it with keeping the history of popular resistance prominent (Les musées au Maghreb et leurs publics, La Documentation française). Wings listed from Radio Algérie, 22 Dec 2025.",
+  "sources": [
+   "https://www.vie-publique.fr/files/2020-11/9782110102256_LesMus%C3%A9esAuMaghreb_Extrait.pdf",
+   "https://news.radioalgerie.dz/ar/node/76404"
+  ],
+  "reason": "Added only what opened sources state; the museum site still refuses connections."
+ },
+ {
+  "id": "musee-national-du-moudjahid",
+  "section": "FUNDING",
+  "problems": [
+   "quotation marks around a translation not matching the source"
+  ],
+  "before": "\"to link the generation of the Revolution with the rising generations and preserve national cohesion, within the directives of the President of the Republic, Abdelmadjid Tebboune\"",
+  "after": "Maghdouri said the ministry commemorates the Revolution's figures to link its generation with younger ones and protect national unity, following the directives of President Abdelmadjid Tebboune (paraphrase)",
+  "sources": [
+   "https://news.radioalgerie.dz/ar/node/58543"
+  ],
+  "reason": "Paraphrased; ceremony date corrected to the night of 31 October to 1 November 2026 (APS). Lonely Planet confirmed via an Internet Archive copy."
+ },
+ {
+  "id": "esperanza-base-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "credit: visitor figure from a cruise operator",
+   "unsupported descriptor: Leal 'leader of the overland expedition to the South Pole'",
+   "repetition: items for sale twice"
+  ],
+  "before": "Oceanwide Expeditions puts visitors at upwards of 1,100 tourists a year ... later leader of the Argentine overland expedition to the South Pole",
+  "after": "The cruise operator Oceanwide Expeditions puts visitors at upwards of 1,100 tourists a year ... who later commanded Operation 90 and directed the National Antarctic Directorate",
+  "sources": [
+   "https://oceanwide-expeditions.com/to-do/experiences/esperanza-base",
+   "https://cancilleria.gob.ar/es/iniciativas/dna/antartida-argentina/bases/esperanza"
+  ],
+  "reason": "Matched to the pages; bottom line reduced to the verdict."
+ },
+ {
+  "id": "hillarys-tae-igy-hut-scott-base",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "Wikipedia-only: NZ$498 million, June 2019, 2023 pause"
+  ],
+  "before": "The government committed NZ$498 million in June 2019 to redevelop Scott Base; the work was paused in 2023 ... (Wikipedia).",
+  "after": "An earlier plan to rebuild Scott Base was paused because it could not be delivered within approved funding; Cabinet approved a reset programme in May 2026, and LT McGuinness signed the construction contract in July 2026 for completion in 2030 (Antarctica New Zealand, 30 Jul 2026).",
+  "sources": [
+   "https://www.antarcticanz.govt.nz/media/news/contract-signed-for-scott-base-redevelopment"
+  ],
+  "reason": "Figures not on the official page were cut."
+ },
+ {
+  "id": "hillarys-tae-igy-hut-scott-base",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: tractor route Piha to Aoraki/Mount Cook; '$180,000 short'"
+  ],
+  "before": "the Trust raised $784,000, including a tractor journey from Piha to Aoraki/Mount Cook, and was $180,000 short",
+  "after": "the Trust had raised $784,000 when ... Maggie Barry announced a $180,000 government grant in November 2016 so the work could go ahead",
+  "sources": [
+   "https://www.rnz.co.nz/news/national/319040/conservation-work-on-sir-ed's-hut-to-go-ahead"
+  ],
+  "reason": "The government release on Scoop could not be opened; RNZ supports the amounts. Bottom line reduced to the verdict."
+ },
+ {
+  "id": "australian-antarctic-arts-fellowship",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: $5,000 and Creative Australia restated",
+   "wording: 'exclusion' for 'intentional exclusion'"
+  ],
+  "before": "A small public residency paid for by the Australian government's Antarctic Division, with $5,000 per fellow from ANAT, itself backed by Creative Australia.",
+  "after": "Clean public money: a small government residency with a grant from a publicly assisted arts body.",
+  "sources": [
+   "https://www.canberratimes.com.au/story/8146780/australian-antarctic-division-review-finds-bullying-sexual-harassment/",
+   "https://www.antarctica.gov.au/about-us/strategy-and-plans/an-independent-review-of-workplace-culture-and-change-at-the-australian-antarctic-division/"
+  ],
+  "reason": "Verdict only; review figures confirmed."
+ }
+]

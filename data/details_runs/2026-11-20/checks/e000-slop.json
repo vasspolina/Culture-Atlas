@@ -1,0 +1,613 @@
+[
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'organ of about 8,000 pipes' (Spanish Wikipedia gives 3,500)",
+   "over length"
+  ],
+  "before": "the 1,950-seat Sala Sinfónica with a Klais organ of about 8,000 pipes, where the National Symphony Orchestra is resident, five other auditoriums and 40 gallery rooms, on 88,050 square metres",
+  "after": "the 1,950-seat Sala Sinfónica, home of the National Symphony Orchestra, five other auditoriums and 40 gallery rooms",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Libertad_Palace",
+   "https://es.wikipedia.org/wiki/Centro_Cultural_Domingo_Faustino_Sarmiento"
+  ],
+  "reason": "The two Wikipedias give different pipe counts; the figure is cut. Overview history condensed to get under 800 words."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "OVERVIEW",
+  "problems": [
+   "thin: 'Visiting: admission was free at the time of Wikipedia's sources'"
+  ],
+  "before": "Visiting: admission was free at the time of Wikipedia's sources.",
+  "after": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Libertad_Palace"
+  ],
+  "reason": "Dated 2015 claim with no current source; cut for length."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'the construction firm was Esuco' (Esuco built the first phase)",
+   "rounding: 'about US$700 million'"
+  ],
+  "before": "the works cost 3,811 million pesos, about US$700 million at the 2015 opening, and the construction firm was Esuco",
+  "after": "the works cost 3,811 million pesos, given as US$700 million at the 2015 opening; the first phase was built by Esuco",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Centro_Cultural_Domingo_Faustino_Sarmiento"
+  ],
+  "reason": "Spanish Wikipedia names Esuco for the works begun in 2010 and states the dollar figure as given."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "Red flags",
+  "problems": [
+   "repetition: press items restated the red flag points",
+   "over length"
+  ],
+  "before": "Tiempo Argentino press item; La Nación press item point 2; Izquierda Diario count of 190 pieces",
+  "after": "Tiempo Argentino item cut (its new point, that the organiser blamed second-tier officials not Cifelli, moved into the red flag); La Nación point moved into the red flag",
+  "sources": [
+   "https://www.tiempoar.com.ar/ta_article/bienal-arte-indigena-contemporaneo/",
+   "https://www.lanacion.com.ar/cultura/polemica-entre-fileteadores-portenos-y-el-palacio-libertad-por-obras-pro-educacion-publica-y-nid11092025/",
+   "https://www.izquierdadiario.es/Censura-al-arte-en-el-Palacio-Libertad"
+  ],
+  "reason": "No statement twice; every red flag point confirmed on the opened pages. The three press items of the old report stay."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "Red flags",
+  "problems": [
+   "wording: 'his team valued'"
+  ],
+  "before": "Hernán Lombardi ... said the previous government paid 620 million pesos for equipment his team valued at no more than 150 million. ... Lombardi served the government that replaced the one he accused.",
+  "after": "Unverified: Lombardi, head of the Macri government's public media system, said the previous government paid 620 million pesos for equipment worth no more than 150 million, citing a provisional audit he would take to the Oficina Anticorrupción (El Cronista, 21 May 2016).",
+  "sources": [
+   "https://www.cronista.com/economia-politica/una-auditoria-revelo-sobreprecios-por-mas-del-400-en-el-centro-cultural-kirchner-en-la-gestion-anterior"
+  ],
+  "reason": "Confirmed on El Cronista; the closing sentence restated the heading's context."
+ },
+ {
+  "id": "palacio-libertad-buenos-aires",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the funding line and both exhibition dates"
+  ],
+  "before": "The money behind Palacio Libertad is the Argentine federal government's, now joined by a friends' association and food concessions opened to private operators. The weak points are two exhibitions that organisers say officials forced out in September 2025 and February 2026, the first disputed by the Secretaría, under the same state body that runs the centre. Watch who gives through the friends' association and whether the Secretaría publishes programming criteria.",
+  "after": "The money is the Argentine federal government's, with a new friends' association and private concessions beside it. The weak point is that the state that pays also decides what is shown, and organisers accuse it of censorship. Watch who gives through the friends' association.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length",
+   "unchecked: collection of 2,300 works (Wikipedia only)"
+  ],
+  "before": "Shows the Monash University Collection, more than 2,300 works as of 2022 (Wikipedia), and commissions temporary works for the Ian Potter Sculpture Court (MUMA).",
+  "after": "",
+  "sources": [
+   "https://web.archive.org/web/2024/https://www.monash.edu/muma/about/history-and-architecture"
+  ],
+  "reason": "Cut to bring the report under 800 words; history points condensed, all confirmed on the archived MUMA history page."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'Helen Macpherson Smith Education Space' on the support page (it says 'Helen Macpherson Education Space')",
+   "unchecked: media partner logos",
+   "over length"
+  ],
+  "before": "names the Ian Potter Sculpture Court, the Merlyn Myer Gallery, the Helen Macpherson Smith Education Space ... Media partner: the support page carries the logos of The Saturday Paper, The Monthly and 7am. ... The 2020 list carried 24 entries",
+  "after": "naming the Ian Potter Sculpture Court, the Merlyn Myer Gallery, the Helen Macpherson Education Space and the Marc and Eva Besen Commission ... (media partner point and entry count cut)",
+  "sources": [
+   "http://web.archive.org/web/20241007125256/https://www.monash.edu/muma/support",
+   "http://web.archive.org/web/20200807061250/https://www.monash.edu/muma/support/muma-contemporaries"
+  ],
+  "reason": "Wording matched to the archived support page; logos could not be read as text."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "repetition: press items restated the red flag (Milani pressure quote, Monash statement, NAVA quotes, run dates)",
+   "unsupported: Hyperallergic 'Reports that the university dropped the show after Sabsabi lost the Venice pavilion' read only from the gated summary"
+  ],
+  "before": "four press items restating the red flag points",
+  "after": "each press item keeps only what it adds: ArtReview's 'mischaracterisation' quote, Hyperallergic's link to Venice (gated summary), NAVA's 'nothing inflammatory' and the student-protest point, Mojo's council meeting, reads and poetry reading",
+  "sources": [
+   "https://artreview.com/khaled-sabsabi-exhibition-cancelled-following-venice-biennale-sacking-monash-university",
+   "https://hyperallergic.com/australian-university-scraps-show-featuring-work-of-lebanese-born-artist",
+   "https://www.mojonews.com.au/buckling-under-pressure-what-happened-to-monash-universitys-flat-earth-exhibition"
+  ],
+  "reason": "All quotes confirmed on the opened pages (Eltham quote on the NAVA release, Coates quote and 600 signatures on Mojo News). The old report's three press items stay."
+ },
+ {
+  "id": "monash-university-museum-of-art-melbourne",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated ownership, the postponement and the protesters"
+  ],
+  "before": "MUMA is owned and run by Monash University, with named private gifts behind its building, commissions and donor circle. The documented issue is the university's postponement of the Sabsabi exhibition in March 2025 against the museum's recommendation, reversed after protest from NAVA, the staff union and students. Watch how far the university's leadership steers the museum's programme.",
+  "after": "The money behind MUMA is clean: a university budget and named private gifts. The weak point is the university's power over the programme, which it used against the museum's own advice in 2025 and reversed only under protest. Watch how far Monash's leadership steers what MUMA shows.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "y-gallery-minsk",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'all of the owners' homes' (the post says 'all of our homes', written by staff)",
+   "repetition: closing point restated the section"
+  ],
+  "before": "The MoMA post says the gallery office and all of the owners' homes were searched in late August 2020. ... The gallery was an independent, privately owned space; the state's part in its story is the prosecution of its co-owner during its last months.",
+  "after": "The MoMA post, co-written by the gallery's Anna Chistoserdova, says the gallery office and \"all of our homes\" were searched in late August 2020.",
+  "sources": [
+   "https://post.moma.org/?p=4070",
+   "https://en.wikipedia.org/wiki/Aliaksandr_Vasilievi%C4%8D"
+  ],
+  "reason": "Quoted the post's own words; detention, sentence and political-prisoner points confirmed on Wikipedia, which cites Radio Svaboda and Viasna."
+ },
+ {
+  "id": "y-gallery-minsk",
+  "section": "FUNDING",
+  "problems": [
+   "wording: 'The 2009 concept' (Russian Wikipedia says the gallery opened combining these)"
+  ],
+  "before": "The 2009 concept put an exhibition hall, a bookshop, a café and an art library under one roof (Russian Wikipedia).",
+  "after": "It opened with an exhibition hall, a bookshop, a café and an art library under one roof (Russian Wikipedia).",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Ў_(галерея)"
+  ],
+  "reason": "Matched to the source."
+ },
+ {
+  "id": "y-gallery-minsk",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated funding, closure and the brands"
+  ],
+  "before": "The gallery ran on private money: a co-owner with an agency and online media, plus art sales, a bar and a shop. It closed in autumn 2020 after that co-owner was jailed in a case human rights organisations call political, and its art directors left Belarus. The former owners still hold the Ў brands.",
+  "after": "The money behind the gallery was private and clean of state or flagged funders. Its weak point was dependence on one co-owner, and the gallery did not survive the state's prosecution of him. Watch whether the art directors revive the Ў name abroad.",
+  "sources": [
+   "https://cimam.org/news-archive/nothing-is-there/"
+  ],
+  "reason": "Bottom line gives the verdict only; CIMAM states the plan to continue in Poland and Germany."
+ },
+ {
+  "id": "espacio-cultural-patino",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "absence-style sourcing note: 'That page does not name the mine owner'"
+  ],
+  "before": "Families lived in company huts without running water or toilets. That page does not name the mine owner; the Catavi mine page names Patiño (Wikipedia, Catavi massacre).",
+  "after": "Families lived in company huts without running water or toilets (Wikipedia, Catavi massacre). The Catavi mine page calls it \"Patiño's Catavi mine\".",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Catavi_mine",
+   "https://en.wikipedia.org/wiki/Catavi_massacre"
+  ],
+  "reason": "States what the source says instead of what another page leaves out."
+ },
+ {
+  "id": "espacio-cultural-patino",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the two foundations and their roles"
+  ],
+  "before": "Two family foundations pay for the centre, one in Bolivia that owns it and one in Geneva that manages the funds. The weak point is disclosure: the foundation publishes activity reports and its board, while the fortune behind it comes from tin mines with a documented history at Catavi, kept here as background. Worth watching are the new building under construction and any financial detail from Geneva.",
+  "after": "The money is family foundation money with no corporate, state or flagged funder today. The weak point is history: the Geneva endowment traces back to Patiño's tin mines, with their record of segregation and the 1942 Catavi massacre. Watch what the Geneva foundation discloses about its funds.",
+  "sources": [
+   "https://fundacionpatino.org/quienes-somos/"
+  ],
+  "reason": "Bottom line gives the verdict only. Board, Doña Albina theatre, 45,000 visitors, 50 exhibitions, 140 events and 44 scholars confirmed in the 2025 report (page 26 and pages 5 to 12)."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: 1946 decree from Wikipedia alone"
+  ],
+  "before": "Sesc was created on 13 September 1946 by Decree-Law 9,853, under which President Eurico Gaspar Dutra authorised the Confederação Nacional do Comércio to set it up ... (Portuguese Wikipedia).",
+  "after": "Decree-Law 9,853 of 13 September 1946, signed by President Eurico G. Dutra, gave the Confederação Nacional do Comércio the task of creating Sesc (Câmara dos Deputados text) ...",
+  "sources": [
+   "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-9853-13-setembro-1946-450067-normaatualizada-pe.html"
+  ],
+  "reason": "Confirmed on the decree-law's text at the Câmara dos Deputados, which carries the date and Dutra's signature."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "FUNDING",
+  "problems": [
+   "weak source: 'rates from 0.2% to 2.5%' from Wikipedia alone, not in the law"
+  ],
+  "before": "The levy is a tax on companies at rates from 0.2% to 2.5% (English Wikipedia).",
+  "after": "The 1946 decree-law obliges commerce employers to pay Sesc a monthly contribution of 2% of their employees' pay (Câmara dos Deputados text).",
+  "sources": [
+   "https://www2.camara.leg.br/legin/fed/declei/1940-1949/decreto-lei-9853-13-setembro-1946-450067-normaatualizada-pe.html"
+  ],
+  "reason": "The Wikipedia range appears in no official text; the decree-law's updated text gives 2% of payroll."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'A federal Ministry of Tourism agreement funded R$32.7 million'"
+  ],
+  "before": "A federal Ministry of Tourism agreement funded R$32.7 million of the 2024 education spending (2024 management report).",
+  "after": "",
+  "sources": [
+   "https://transparencia-sp.sesc.com.br/uploads/documento/avaliacao_arquivos/27/relatorio-de-gestao/relatorio-de-gestao-pdf-2024.pdf"
+  ],
+  "reason": "The report lists R$32,724,247.83 as 'Acordo MTur (valor aplicado pelo DR/DN)', money Sesc itself applied, with zero reimbursement; it does not show the ministry paying. Cut. Every other 2024 figure (R$3.78bn total, R$2.996bn contributions, R$512m property income, R$240m services, R$35m other, R$2.993bn gross, R$59.9m Receita Federal, R$88.0m Fecomércio, R$2.845bn net, R$948m PCG, R$777.6m capital) matches the report's tables on pages 86 to 91."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "Red flags",
+  "problems": [
+   "single partisan source (Vermelho) for both flags"
+  ],
+  "before": "Sesc appealed (Vermelho, 16 September 2017, a left-wing outlet). ... Sesc representatives declined to comment, and Vermelho does not report a cancellation (Vermelho).",
+  "after": "Sesc appealed (Vermelho, 16 September 2017, a partisan left-wing outlet). Jornal Opção confirmed the injunction and the cancellation the same day. ... By 7 November the CitizenGO petition had more than 366,000 signatures, and about 50 protesters with a witch doll bearing Butler's face faced about 100 counter-protesters outside Sesc Pompeia during the colloquium (Exame, from AFP, 7 November 2017).",
+  "sources": [
+   "https://www.jornalopcao.com.br/ultimas-noticias/apos-decisao-da-justica-peca-com-transexual-no-papel-de-jesus-e-cancelada-105406/",
+   "https://exame.com/brasil/sao-paulo-tem-protestos-a-favor-e-contra-a-filosofa-judith-butler",
+   "https://vermelho.org.br/2017/09/16/justica-proibe-exibicao-de-peca-que-apresenta-jesus-como-mulher-trans/"
+  ],
+  "reason": "Both flags confirmed by a second, non-partisan source; Vermelho marked '(partisan: openly left-wing outlet)' in SOURCES. The judge's words and the R$1,000 fine confirmed on the Vermelho page; the absence clause about cancellation removed."
+ },
+ {
+  "id": "sesc-são-paulo-são-paulo",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the funding line and both flags"
+  ],
+  "before": "Sesc São Paulo runs on a compulsory levy on Brazilian companies, collected by the federal tax service, plus its own service and property income. The weak points are political: proposals to cut the levy, a 2017 court ban on a play and an online campaign against a speaker. Worth watching: the levy's legal status.",
+  "after": "The money is clean of private sponsors and flagged industries: a levy set by federal law and Sesc's own income. The weak point is political exposure, both of the levy and of a programme that drew a court ban and a mass petition. Watch the levy's legal status.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only. Overview and capital-spending detail trimmed to stay under 800 words."
+ },
+ {
+  "id": "dazibao-montreal",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: CALQ figures read from PDF by text extraction"
+  ],
+  "before": "CALQ granted \"Dazibao images, expositions, éditions\" C$142,150 in mission support and a further C$14,865 in activities support in 2024-2025",
+  "after": "(unchanged)",
+  "sources": [
+   "https://www.calq.gouv.qc.ca/fileadmin/fichiers/A_propos/RAG/CALQ_Appendices-2024-2025.pdf"
+  ],
+  "reason": "Re-checked in the 2024-2025 appendices: 142 150 sits in the 'Soutien à la mission' table (page 18) and 14 865 in the 'Soutien aux activités' table, both under DAZIBAO IMAGES, EXPOSITIONS, ÉDITIONS, Arts visuels, Montréal."
+ },
+ {
+  "id": "dazibao-montreal",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the funders, member support, venue hire and free entry",
+   "new fact in bottom line (PACBI funding rule)"
+  ],
+  "before": "Dazibao is a not-for-profit image centre run on public arts council and government money from Quebec, Canada and Montreal, with member support and venue hire on the side; entry is free. The money behind it is clean. Under PACBI, committed organisations do not accept funding from the Israeli government or related bodies (The Link).",
+  "after": "The money behind Dazibao is clean: public arts money with no corporate sponsor. Its dependence on arts councils is the one weak point, since a cut at CALQ would hit its mission funding directly.",
+  "sources": [
+   "https://thelinknewspaper.ca/article/montreal-cultural-organizations-reaffirm-their-support-for-palestinian-liberation"
+  ],
+  "reason": "Bottom line gives the verdict only; the PACBI funding rule moved to the overview point with The Link's author and date."
+ },
+ {
+  "id": "crac-valparaiso",
+  "section": "OVERVIEW",
+  "problems": [
+   "source is listing text: not marked as stated by the space"
+  ],
+  "before": "Collaborative non-profit platform ... (TransArtists). Founded in 2007 as an independent project with a flexible, autonomous management model (TransArtists; Dutch Art Institute). ... (TransArtists)",
+  "after": "each overview point ends '(stated by the space)'; the first names its TransArtists listing",
+  "sources": [
+   "https://www.transartists.org/en/air/crac-valpara%C3%ADso",
+   "https://dutchartinstitute.eu/id/3504"
+  ],
+  "reason": "Both pages carry unattributed listing text describing the space in its own terms; the TransArtists page also gives two different residency lengths (1-3 and 2 or 3 months). The 'rethink public art' line now quotes the listing."
+ },
+ {
+  "id": "crac-valparaiso",
+  "section": "FUNDING",
+  "problems": [
+   "'self-sustained' not marked as the space's own claim"
+  ],
+  "before": "TransArtists and the Dutch Art Institute both describe CRAC as \"self-sustained since 2007\".",
+  "after": "Its listings on TransArtists and the Dutch Art Institute say it \"has been self-sustained since 2007\" (stated by the space).",
+  "sources": [
+   "https://www.transartists.org/en/air/crac-valpara%C3%ADso",
+   "https://dutchartinstitute.eu/id/3504"
+  ],
+  "reason": "Verdict line and point now say 'as stated by the space'."
+ },
+ {
+  "id": "crac-valparaiso",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated self-sustained, the Mondriaan residency and the website line"
+  ],
+  "before": "CRAC Valparaíso describes itself as a self-sustained residency platform; its one named outside funder is the Mondriaan Fund, which paid for a resident's stay. Nothing in its money is flagged. Its website was down on 20 November 2026 and its old domain carries gambling advertising.",
+  "after": "Nothing in CRAC's money is flagged, but the only account of it is the platform's own. The Mondriaan Fund is its one outside funder on record. With its website down and its old domain taken over by gambling spam, the space's current activity is open to question.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict. Website status re-checked: cracvalparaiso.cl failed to connect and cracvalparaiso.org serves casino and essay-writing spam."
+ },
+ {
+  "id": "guangdong-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: director, collection size and rankings from Chinese Wikipedia alone",
+   "unsupported years: first-grade '2008' and co-built 'April 2024'"
+  ],
+  "before": "the collection numbers more than 320,000 items and the director is Xiao Haiming (Chinese Wikipedia). It was named one of China's first national first-grade museums in 2008 and selected as a centrally and locally co-built national key museum in April 2024 (Chinese Wikipedia).",
+  "after": "The collection numbers more than 320,000 items or sets; the museum is in the first batch of national first-grade museums and is a centrally and locally co-built national key museum (museum website). Xiao Haiming is director (Dayoo, Guangzhou Daily, 23 August 2026).",
+  "sources": [
+   "https://www.gdmuseum.org.cn/col6/index",
+   "https://news.dayoo.com/guangzhou/202608/23/139995_54993917.htm"
+  ],
+  "reason": "The museum's own introduction gives the collection and both rankings but no years, so the years are cut; Guangzhou Daily's Dayoo names Xiao Haiming director in August 2026."
+ },
+ {
+  "id": "guangdong-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting figure: building area"
+  ],
+  "before": "The 67,000 square metre building has four sections ... (China Daily)",
+  "after": "The building has four sections ... (China Daily), and 77,000 square metres of floor space (museum website; China Daily gives 67,000)",
+  "sources": [
+   "https://www.gdmuseum.org.cn/col6/index",
+   "https://regional.chinadaily.com.cn/guangzhou/tianhe/2021-04/15/c_611343.htm"
+  ],
+  "reason": "The museum's introduction gives 77,000 square metres; both figures stated with their sources."
+ },
+ {
+  "id": "guangdong-museum",
+  "section": "FUNDING",
+  "problems": [
+   "weak source: owner and manager from Chinese Wikipedia alone"
+  ],
+  "before": "Owner and manager: the Guangdong Provincial People's Government owns the museum and the provincial Department of Culture and Tourism manages it (Chinese Wikipedia).",
+  "after": "Operator: the museum is a public institution and one of the 16 subordinate budget units of the Guangdong Department of Culture and Tourism (museum website; 2020 departmental final accounts).",
+  "sources": [
+   "https://whly.gd.gov.cn/attachment/0/502/502231/3493359.pdf",
+   "https://www.gdmuseum.org.cn/col6/index"
+  ],
+  "reason": "The accounts list 广东省博物馆 among the department's 16 budget units; the museum site labels it a 事业单位. The repeated '16 budget units' clause removed from the running-costs point."
+ },
+ {
+  "id": "guangdong-museum",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: 2020 accounts read by text extraction"
+  ],
+  "before": "2020 income of 1.497 billion yuan included 1.396 billion ...; service income fell by 6.13 million yuan, or 48.25% ...; operating income, 1.463 million yuan, fell by 565,100 yuan",
+  "after": "(figures unchanged)",
+  "sources": [
+   "https://whly.gd.gov.cn/attachment/0/502/502231/3493359.pdf"
+  ],
+  "reason": "Re-checked on pages 34 and 35: 本年收入 149,686.11 万元, 一般公共预算 139,645.44 万元, 广东省博物馆 事业收入 down 613.04 万元 (48.25%), 经营收入 146.3 万元 down 56.51 万元 because the museum cancelled exhibitions."
+ },
+ {
+  "id": "guangdong-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated who built and pays for it"
+  ],
+  "before": "The Guangdong Museum is a provincial state museum: the provincial government built it and pays for it through its culture department, with exhibition and service income on the side. Its money is clean. Worth watching: the culture department's annual accounts.",
+  "after": "The money behind the Guangdong Museum is clean: provincial public money, with no sponsor or flagged funder. Its spending is reported only inside the culture department's accounts. Worth watching: the department's annual accounts.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: area and halls from Wikipedia alone; area conflicts across sources (70,000 vs about 130,000 square metres)"
+  ],
+  "before": "Provincial public museum of Jiangsu in Nanjing, covering 70,000 square metres, with history, art, Republic of China, intangible heritage, digital and special exhibition halls (Wikipedia).",
+  "after": "Provincial museum of Jiangsu in Nanjing (Sixth Tone).",
+  "sources": [
+   "https://www.sixthtone.com/news/1018198"
+  ],
+  "reason": "No official or press page gave the area or halls (the museum site serves only a script shell); the figure and list are cut."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "FUNDING",
+  "problems": [
+   "weak source: owner from Wikipedia alone",
+   "repetition: two points on the same supervisors"
+  ],
+  "before": "The museum is owned by the Jiangsu Provincial People's Government and operated by the Jiangsu Provincial Department of Culture and Tourism (Wikipedia). / The Department of Culture and Tourism and the Jiangsu Provincial Cultural Heritage Bureau supervise it; ...",
+  "after": "The Jiangsu Provincial Department of Culture and Tourism and the Jiangsu Provincial Cultural Heritage Bureau oversee the museum as a subordinate unit; the 2026 probe found that they failed to supervise their subordinate units effectively (China Daily, 10 February 2026).",
+  "sources": [
+   "https://www.chinadaily.com.cn/a/202602/10/WS698a0ebba310d6866eb38527.html"
+  ],
+  "reason": "China Daily states the supervisory relationship; the Wikipedia ownership line is cut."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "Red flags",
+  "problems": [
+   "donor name conflict: report gave Pang Laichen and credited it to China Daily 10 February 2026, which says Pang Zenghe"
+  ],
+  "before": "In 1959 the family of the collector Pang Laichen donated 137 paintings; 132 remain in the collection (China Daily, 10 February 2026).",
+  "after": "In 1959 the Pang family donated 137 paintings; 132 remain in the collection (China Daily, 10 February 2026). Sources name the collector differently: Pang Laichen, 1864 to 1949 (China Daily, 23 December 2025; Sixth Tone; ArtReview), or Pang Zenghe, called the donor and Pang Shuling's father (China Daily, 18 December 2025) and dated 1864 to 1949 (China Daily, 10 February 2026).",
+  "sources": [
+   "https://www.chinadaily.com.cn/a/202512/23/WS694ab696a310d6866eb301d3.html",
+   "https://www.chinadaily.com.cn/a/202512/18/WS6943e234a310d6866eb2f5b0.html",
+   "https://www.chinadaily.com.cn/a/202602/10/WS698a0ebba310d6866eb38527.html"
+  ],
+  "reason": "Unresolved: China Daily itself uses both names, so both are stated with their sources."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "Red flags",
+  "problems": [
+   "unsupported year: 'in July 2025' (China Daily gives July without a year)",
+   "wording: 'appeared at China Guardian'"
+  ],
+  "before": "the museum told them in July 2025 ... appeared at China Guardian in Beijing in May 2025",
+  "after": "the museum told them in July ... was due for sale at China Guardian in Beijing in May 2025 and was withdrawn after Pang Shuling, the collector's great-granddaughter, reported it",
+  "sources": [
+   "https://www.chinadaily.com.cn/a/202512/20/WS6945ef39a310d6866eb2f9b0.html",
+   "https://artreview.com/mismanagement-and-corruption-alleged-at-nanjing-museum/"
+  ],
+  "reason": "Matched to the sources: ArtReview names China Guardian and the May sale."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "Red flags",
+  "problems": [
+   "conviction without date or announcing authority",
+   "party expulsion placed under a different heading"
+  ],
+  "before": "Xu, executive deputy director and later director, was sentenced to three years in prison and fined 200,000 yuan ... (Science and Technology Daily; Global Times, 16 September 2026).",
+  "after": "In results announced by Jiangsu authorities on 16 September 2026, Xu, executive deputy director and later director, was expelled from the Communist Party, stripped of retirement benefits, and sentenced to three years in prison and a 200,000 yuan fine for accepting bribes ... (Science and Technology Daily, from CCTV; Global Times, from Xinhua).",
+  "sources": [
+   "https://www.stdaily.com/web/gdxw/2026-09/16/content_582225.html",
+   "https://www.globaltimes.cn/page/202609/1370672.shtml"
+  ],
+  "reason": "CCTV and Xinhua give the sentence and the 16 September 2026 announcement by Jiangsu authorities; neither, nor any other report found (Beijing Daily, Guangming, The Paper reprints), names the court or the verdict date, so the court is not stated."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "Red flags",
+  "problems": [
+   "Unverified claim: identity of the claimant not confirmed by the outlet"
+  ],
+  "before": "Unverified: on 21 December 2025 an 80-year-old man who said he was the retired employee Guo Lidian accused Xu",
+  "after": "Unverified: on 21 December 2025 an 80-year-old man who said he was the retired museum employee Guo Lidian, an identity The Standard did not confirm, accused Xu",
+  "sources": [
+   "https://www.thestandard.com.hk/china/article/319936/Ming-dynasty-painting-auction-sparks-smuggling-claims-against-former-museum-director"
+  ],
+  "reason": "Keeps the 'Unverified:' label and names who makes the claim, with The Standard's own caveat."
+ },
+ {
+  "id": "nanjing-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the sale, the conviction and the claims"
+  ],
+  "before": "The museum is a Jiangsu state institution run by the provincial culture department. Its record is marked by the 1990s sale of donated paintings through a state shop its own deputy head managed, a 2026 bribery conviction of that former director, and unproven claims of wider theft. Watch the province-wide collections campaign and the search for the missing painting.",
+  "after": "The museum is a Jiangsu state museum with no sponsor or flagged funder on record. Its weak point is governance: the probe and the conviction show its leadership and its supervisors failed to protect donated works. Watch the province-wide collections campaign and the search for the missing painting.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: history from Chinese Wikipedia alone",
+   "unsupported: '1996 Communist Party resolution', 'Politburo Standing Committee chose'"
+  ],
+  "before": "Approved in 1958 and shelved, it was revived by a 1996 Communist Party resolution; the Politburo Standing Committee chose Paul Andreu's design on 22 July 1999 (Chinese Wikipedia). Building began on 13 December 2001 and the centre opened on 22 December 2007 (Chinese Wikipedia).",
+  "after": "Approved in 1958 and shelved, it was revived when the party centre decided to build it in October 1997 (Steven Pai-hsing Hsiao, Journal of Building and Planning, National Taiwan University, 2015). Paul Andreu's design, developed with Tsinghua University, won the competition announced on 22 July 1999 (CCTV, 15 December 2008). Building formally began on 13 December 2001 (Hsiao) and the centre opened on 22 December 2007 (People's Daily, 1 January 2024).",
+  "sources": [
+   "https://bp.ntu.edu.tw/001/Upload/1352/ckfile/16931c5d-fc95-4269-9c01-d2609087c25e.pdf",
+   "https://big5.cctv.com/gate/big5/www.cctv.cn/program/e_documentary/20081215/105342.shtml",
+   "https://paper.people.com.cn/rmrbwap/html/2024-01/01/nw.D110000renmrb_20240101_1-05.htm"
+  ],
+  "reason": "Hsiao gives the 1958 approval, the October 1997 central decision (after 1996 to 1997 petitions) and the 13 December 2001 start; CCTV gives the 22 July 1999 result; People's Daily the opening date."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak source: directors from Chinese Wikipedia alone"
+  ],
+  "before": "Directors: Chen Ping from 2007 to 2018, Wang Ning since 2018 (Chinese Wikipedia).",
+  "after": "Wang Ning heads the centre (Xinhua, 23 December 2025).",
+  "sources": [
+   "https://www.news.cn/ent/20251223/af4475972d764cf78ce0a85f405fcc94/c.html"
+  ],
+  "reason": "Xinhua names Wang Ning 院长; Chen Ping's dates rest only on Wikipedia and an opposition outlet's reprint, so they are cut."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "Red flags",
+  "problems": [
+   "weak source: 2.688 billion yuan total cost from Chinese Wikipedia alone"
+  ],
+  "before": "Total investment reached 2.688 billion yuan (Chinese Wikipedia).",
+  "after": "",
+  "sources": [
+   "https://building.co.uk/buildings/hes-cracked-it/3096069.article"
+  ],
+  "reason": "The only press trace of 26.88 亿 yuan (2.688 billion) is a lawsuit's budget figure reprinted by an opposition site; cut. The Building points (brief doubled, cost trebled, 20 months, 25% cut) confirmed."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "Red flags",
+  "problems": [
+   "date stated wrongly: signing year left open",
+   "weak source: ENN described from Wikipedia",
+   "unsupported: foundation 'set up by the centre'"
+  ],
+  "before": "ENN Group signed a strategic cooperation agreement with the NCPA on 29 April ... the NCPA Art Development Foundation, set up by the centre, ... The Xinhua page carries a 2023 date, while its text places the signing after December 2023 (Xinhua). / ENN Group is a Chinese energy company that started in natural gas, runs a 17,000 km natural gas pipeline network and buys liquefied natural gas from Cheniere Energy (Wikipedia).",
+  "after": "On 29 April 2024 ENN Group signed a strategic cooperation agreement with the NCPA ... (Xinhua). The page is stamped 21 April 2023, but its text calls 2024 the current year and reports the Beijing Art Center's opening in December 2023. / ENN began in urban gas and works across the natural gas industry, from distribution and trading to storage and transmission (ENN Group website).",
+  "sources": [
+   "https://www.news.cn/energy/20230421/7d68f9d873214929b1f92a2703105c3e/c.html",
+   "https://www.enn.cn/"
+  ],
+  "reason": "The Xinhua text says 2024 is the tenth year of the Beijing-Tianjin-Hebei strategy and reports the December 2023 opening, so the signing was 29 April 2024. ENN's own site describes its gas business; the pipeline and Cheniere details rested on Wikipedia and are cut."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "Red flags",
+  "problems": [
+   "source author not named: 'National Taiwan University paper'"
+  ],
+  "before": "(National Taiwan University paper)",
+  "after": "(Steven Pai-hsing Hsiao, Journal of Building and Planning, National Taiwan University, 2015; then 'Hsiao')",
+  "sources": [
+   "https://bp.ntu.edu.tw/001/Upload/1352/ckfile/16931c5d-fc95-4269-9c01-d2609087c25e.pdf"
+  ],
+  "reason": "The paper's first page names the author, Steven Pai-hsing Hsiao (蕭百興) of Huafan University, Journal of Building and Planning No. 21, April 2015. Petition details (10 June 2000, 49 academicians incl. He Zuoxiu and Wu Liangyong, 114 professionals nine days later, July 2000 halt, 15 March 2001 approval) confirmed in it."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: Beijing budget figures read by text extraction",
+   "wrong citation: development and cooperation department is in the 2025 final accounts, not the 2026 budget"
+  ],
+  "before": "income of 1.179 billion yuan, of which 737.3 million (62.55%) ... (NCPA 2025 final accounts) ... development and cooperation department (China Daily; NCPA 2026 budget)",
+  "after": "(figures unchanged) ... development and cooperation department (China Daily; NCPA 2025 final accounts)",
+  "sources": [
+   "https://www.beijing.gov.cn/gongkai/caizheng/czzt/2025js/202608/W020260901371299031156.pdf",
+   "https://www.beijing.gov.cn/gongkai/caizheng/czzt/2026ys/202602/W020260228570411309066.pdf"
+  ],
+  "reason": "Re-checked on page 5: 本年收入合计 117,875.04 万元, 一般公共预算 73,727.85 万元 (62.55%), 事业收入 43,533.14 万元 (36.93%), other 614.05 万元, spending 119,729.77 万元; 2026 budget 73,346.18 and 41,209.50 万元; 发展合作部 is listed among the 26 departments in the 2025 accounts."
+ },
+ {
+  "id": "national-centre-for-the-performing-arts-ncpa",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the budget share, ENN and the building disputes"
+  ],
+  "before": "The NCPA is a Beijing city institution funded mostly by the municipal budget, with its own service income covering about 37%. The weak points are a partnership with the natural gas group ENN through the centre's foundation, and the building's history of petitions and cost rises.",
+  "after": "The NCPA's running money is clean public and box-office money. The weak point is its tie to a gas company through its foundation, on top of a building that scientists and architects fought over cost and safety. Watch what ENN's fund pays for.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "guangdong-museum",
+  "section": "FUNDING",
+  "problems": [
+   "verdict rested on the cut Wikipedia ownership line"
+  ],
+  "before": "Guangdong Museum: public: owned and paid for by the Guangdong provincial government",
+  "after": "Guangdong Museum: public: the Guangdong provincial budget, through the provincial culture department",
+  "sources": [
+   "https://whly.gd.gov.cn/attachment/0/502/502231/3493359.pdf"
+  ],
+  "reason": "Verdict matched to the departmental accounts."
+ }
+]

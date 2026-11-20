@@ -1,0 +1,268 @@
+[
+ {
+  "id": "transmediale-berlin",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: bpb and Medienboard withdrawal restated from FUNDING"
+  ],
+  "before": "The weak points are its dependence on a few public funders, shown when the bpb and Medienboard withdrew, and the 2025 dispute over year-by-year curators.",
+  "after": "The weak points are its dependence on a few public funders and the 2025 dispute over single-edition curators.",
+  "sources": [
+   "https://transmediale.de/en/news/bpb-halts-support-for-transmediale",
+   "https://nettime.org/Lists-Archives/nettime-l-2502/msg00004.html",
+   "https://www.spikeartmagazine.com/articles/essay-the-highs-and-lows-of-transmediale-2024"
+  ],
+  "reason": "Funding cut (17 September 2026, about 120,000 euros), open letter quotes, Spike quotes and the 2028 curator call all confirmed on the pages; only the restated funding fact was cut."
+ },
+ {
+  "id": "acropolis-museum",
+  "section": "Red flags -> WIDER CONTEXT",
+  "problems": [
+   "flag about a different institution: the Parthenon sculptures are held by the British Museum"
+  ],
+  "before": "Red flags: Parthenon sculptures held by the British Museum, talks stalled in 2026 (four points)",
+  "after": "WIDER CONTEXT: three points on the stalled 2026 talks, plus 'The connection: Greece says the sculptures must be reunified at the Acropolis Museum, where the pieces in London are shown as plaster copies (iefimerida; Greek National Tourism Organisation).'",
+  "sources": [
+   "https://www.iefimerida.gr/english/parthenon-marbles-talks-collapse-no-plan-resume-telegraph-reports"
+  ],
+  "reason": "The dispute is between the Greek state and the British Museum; moved with the connection stated, not dropped."
+ },
+ {
+  "id": "acropolis-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "weak spot: press title taken from URL slug"
+  ],
+  "before": "1. The Art Newspaper: William Summerfield, \"Archaeologists appeal to Greek prime minister to halt restructuring of five big antiquities museums\" (2021)",
+  "after": "unchanged",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/03/04/archaeologists-appeal-to-greek-prime-minister-to-halt-restructuring-of-five-big-antiquities-museums"
+  ],
+  "reason": "Headline and author confirmed from the page's title and author metadata; the Koutsoumba quote, the 119-signature letter of 23 February and 'archaeocapitalism' are on the page; Overall line lost 'found'."
+ },
+ {
+  "id": "acropolis-museum",
+  "section": "OVERVIEW / WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "over length: 813 words"
+  ],
+  "before": "Pandermalis clause in the director point; Mitsotakis UNESCO clause; bottom line on the sculptures and the film",
+  "after": "Director point reduced to Stampolidis; Mitsotakis clause cut; bottom line keeps the museum's own 2009 dispute and the watch item",
+  "sources": [
+   "https://www.skai.gr/news/culture/to-mouseio-akropolis-parousiase-ton-etisio-apologismo-tou"
+  ],
+  "reason": "Trimmed peripheral detail to get under 800 words; the Pandermalis obituary source was removed with its point."
+ },
+ {
+  "id": "national-gallery-of-modern-art-ngma",
+  "section": "FUNDING / Red flags",
+  "problems": [
+   "repetition: the 2019 ministry statement about the committees sat in FUNDING and in the 2019 flag",
+   "dead source: Latestly returned 502 twice"
+  ],
+  "before": "FUNDING: 'The Ministry told the press in 2019 that the gallery's advisory committees ... had not been dissolved ...' and flag: 'Director General Adwaita Gadanayak said the committees' earlier recommendations would be honoured (Latestly, 11 February 2019).'",
+  "after": "One flag point: 'Director General Adwaita Gadanayak and the Ministry said the committees in Mumbai, Bengaluru and Delhi had not been dissolved, their terms had ended, and their earlier recommendations would be honoured (IANS via Darpan, 11 February 2019; Tribune).'",
+  "sources": [
+   "https://tribuneindia.com/news/archive/nation/snubbed-palekar-slams-ngma-726962",
+   "https://www.darpanmagazine.com/news/india/advisory-bodies-not-dissolved-art-gallery-on-amol-palekars-allegations/"
+  ],
+  "reason": "Latestly was down (CloudFront 502); the same IANS report, with the Gadanayak quotes, was read on Darpan and replaces it in SOURCES."
+ },
+ {
+  "id": "national-gallery-of-modern-art-ngma",
+  "section": "Red flags (split into 2000, 2019, 2023)",
+  "problems": [
+   "weak spot: check each split flag has its own source",
+   "quoted hedge 'reportedly pro-government' relayed as the description"
+  ],
+  "before": "2023 point: South First called it \"reportedly pro-government\" (South First, 13 July 2023).",
+  "after": "South First reported that the artists who took part \"were widely criticised for joining hands with what many viewed as a political stunt\" (South First, 13 July 2023).",
+  "sources": [
+   "https://webarchives.rhizome.org/thefileroom/im_/http:/www.thefileroom.org/documents/dyn/DisplayCase.cfm/id/1352",
+   "https://tribuneindia.com/news/archive/nation/snubbed-palekar-slams-ngma-726962",
+   "https://thesouthfirst.com/kerala/art-world-stands-in-solidarity-with-museum-employee-fired-for-criticising-artists-who-collaborated-with-pro-modi-show/"
+  ],
+  "reason": "Each flag has its own source: 2000 File Room (Ayyar order, Samnotra, all artists withdrew) plus ArtsJournal; 2019 Tribune plus IANS; 2023 South First. The hedge quote was replaced by South First's plain statement."
+ },
+ {
+  "id": "national-gallery-of-modern-art-ngma",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "repetition: ArtsJournal item restated the 2000 flag and does not name NGMA"
+  ],
+  "before": "3. ArtsJournal: Douglas McLennan, post citing the BBC (2000) ... Reports that a painting of a small nude figure was removed ... Does not name NGMA.",
+  "after": "(item cut; ArtsJournal stays as a source of the 2000 flag)",
+  "sources": [
+   "https://www.artsjournal.org/?p=171538"
+  ],
+  "reason": "The item said nothing the 2000 flag does not already state."
+ },
+ {
+  "id": "national-gallery-of-modern-art-ngma",
+  "section": "OVERVIEW / BOTTOM LINE / Overall",
+  "problems": [
+   "unsupported date: 'notification of 7 August 2026'",
+   "bottom line mischaracterised the 2019 row",
+   "'found' wording"
+  ],
+  "before": "confirmed by a government notification of 7 August 2026; complaints about a state-friendly programme in 2019 and 2023; The objections found are",
+  "after": "confirmed by a government notification reported on 8 August 2026; the 2019 row over ministry control of the branch programmes, and a 2023 show built on the prime minister's broadcast; The objections are",
+  "sources": [
+   "https://indianmasterminds.com/news/centre-appoints-nidhi-choudhari-ngma-director-akshay-tripathi-jual-oram-222589/",
+   "https://dailyo.in/politics/amol-palekar-ngma-mumbai-bjp-rss-censorship-hindutva-29398"
+  ],
+  "reason": "Indian Masterminds is dated 8 August 2026 and gives no notification date; the 2019 dispute was about committees, not programme content."
+ },
+ {
+  "id": "tower-of-david-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak spot: Jewish Chronicle points not re-opened; JC blocked automated reads (Vercel checkpoint, then 429)",
+   "unsupported: minaret dates 1635 to 1655 not in the Wikipedia article"
+  ],
+  "before": "Kollek initiation (JC); minaret built 1635 to 1655; reopened in the week of 1 June 2023 (JC); Illes model found in a Geneva University Library attic in 1984, Hasmonean towers and Crusader tunnel (JC); Cedric Norman Johns diary (JC)",
+  "after": "Opened in 1989 by the Jerusalem Foundation (Wikipedia); reopened in May 2023 after a three-year renewal with excavations, minaret restoration and new exhibits (AP); a scale model made for the 1873 Vienna World's Fair (AP); director Eilat Lieber (Times of Israel)",
+  "sources": [
+   "https://www.news4jax.com/news/world/2023/05/29/jerusalems-redesigned-tower-of-david-museum-opens-after-3-year-renovation/",
+   "https://en.wikipedia.org/wiki/Tower_of_David",
+   "https://www.timesofisrael.com/jerusalems-cursed-antiquity-museum-reopens-its-doors-amid-rumors-it-may-become-a-hotel/"
+  ],
+  "reason": "New JC-only details that could not be re-read were cut or re-sourced to AP and Wikipedia. A BAR account found by search places the Illes model in a different Geneva attic, so that detail was cut."
+ },
+ {
+  "id": "tower-of-david-museum",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: '84 per cent self-funded' carried from JC without re-opening",
+   "verdict overstated city and state 'money'"
+  ],
+  "before": "mixed: its own income, philanthropy led by the Clore Israel Foundation, and city and state money for the renewal",
+  "after": "mixed: its own income and philanthropy led by the Clore Israel Foundation, with the city and two ministries as partners in the renewal",
+  "sources": [
+   "https://blooloop.com/museum/news/tower-of-david-museum-groundbreaking-renovation/",
+   "https://www.jpost.com/archaeology/article-790733",
+   "https://www.thejc.com/life/how-has-a-40-million-investment-transformed-jerusalems-tower-of-david-il5y4641"
+  ],
+  "reason": "Blooloop says the foundation works 'alongside' the city and ministries, not that they paid. The 84 per cent figure and the 1989 Duffield support (old report point) are kept on JC: the search engine's text of the JC page reads 'over 84 per cent self-funded', but the page itself could not be opened."
+ },
+ {
+  "id": "tower-of-david-museum",
+  "section": "WIDER CONTEXT / BOTTOM LINE",
+  "problems": [
+   "old Rockefeller flag moved to WIDER CONTEXT: confirm",
+   "repetition: AP verdict restated in bottom line"
+  ],
+  "before": "The weak point is the account of Jerusalem it gives from a site in the annexed Old City, which the Associated Press describes as leaning to the Israeli side.",
+  "after": "The weak point is the account of Jerusalem it gives from a site in the annexed Old City.",
+  "sources": [
+   "https://www.timesofisrael.com/jerusalems-cursed-antiquity-museum-reopens-its-doors-amid-rumors-it-may-become-a-hotel/"
+  ],
+  "reason": "The Rockefeller sale or lease row concerns another museum; Times of Israel confirms the December 2023 document, Gurevich's hotel quote and Lieber's statement that the Tower of David is not involved, so the move to WIDER CONTEXT stands."
+ },
+ {
+  "id": "museo-nivola",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak spot: two presidents named",
+   "outdated: director Luca Cheri left in 2025"
+  ],
+  "before": "Its website names Giuseppe Matteo Pirisi as president; Artribune reported on 19 August 2025 that Roberto Concas had succeeded Giuliana Altea ... The director is Luca Cheri (Artribune).",
+  "after": "Artribune reported on 19 August 2025 that Roberto Concas had succeeded Giuliana Altea, president from 2015 to 2025; the foundation's page, last updated on 9 February 2026, names Giuseppe Matteo Pirisi as president. / The director is Chiara Gatti, appointed in February 2026 after Luca Cheri, director until 2025 (Artribune, 10 February 2026; museum website).",
+  "sources": [
+   "https://museonivola.it/fondazione/",
+   "https://www.artribune.com/?p=1176274",
+   "https://www.artribune.com/?p=1211474"
+  ],
+  "reason": "The foundation page's modified date (9 February 2026) postdates Artribune's August 2025 report, so Pirisi is the later name; no source dates the handover, so both stay with their dates. Artribune (10 February 2026) and the staff page name Chiara Gatti as director."
+ },
+ {
+  "id": "museo-nivola",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: yearly accounts restated from FUNDING"
+  ],
+  "before": "The foundation publishes yearly accounts. Worth watching: the change of president in 2025 and the new display opening on 28 November 2026.",
+  "after": "Worth watching: the changes of president and director since 2025 and the new display opening on 28 November 2026.",
+  "sources": [
+   "https://museonivola.it/amministrazione-trasparente/bilanci/bilanci-consuntivi/"
+  ],
+  "reason": "Accounts are stated once, in FUNDING."
+ },
+ {
+  "id": "adachi-museum-of-art",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: founder's trades and 600,000 visitors restated",
+   "empty point: the director 'carries the founder's surname'"
+  ],
+  "before": "The museum is a private foundation that rests on the fortune of its founder, a textile wholesaler and property dealer, and on ticket sales to the more than 600,000 visitors a year it reports. Its director, Adachi Takanori, carries the founder's surname.",
+  "after": "The money behind the museum is private: a foundation built on its founder's business fortune, and its own admission income.",
+  "sources": [
+   "https://www.adachi-museum.or.jp/en/about",
+   "https://www.nippon.com/en/japan-data/h01535",
+   "https://ja.wikipedia.org/wiki/足立美術館"
+  ],
+  "reason": "The body of the report confirmed (charcoal, textile wholesale, real estate, 165,000 square metres, 2003 ranking, 640,000 in 2017, 1995 award); the bottom line had restated it."
+ },
+ {
+  "id": "mitsubishi-ichigokan-museum",
+  "section": "Red flags",
+  "problems": [
+   "weak spot: company business sourced to Wikipedia",
+   "heading without a year",
+   "repetition: membership restated from FUNDING",
+   "unsupported superlative: 'largest defence contractor based in Japan' on Wikipedia only"
+  ],
+  "before": "Red flags: Arms and defence: Mitsubishi Heavy Industries among the top-tier corporate members / Red flags: Fossil fuels: Mitsubishi Corporation and ENEOS Holdings among the corporate members (Wikipedia points on fighter jets, BMA coal, Aethon 7.53 billion, ENEOS 'petroleum and metals conglomerate')",
+  "after": "Red flags: Arms maker Mitsubishi Heavy Industries as a premium corporate member, 2026 (MHI website: fighter jets, missile systems, destroyers, submarines, torpedoes, battle tanks) / Red flags: Oil and gas companies among the corporate members, 2026 (Mitsubishi Corporation completed the Haynesville shale gas purchase from Aethon in July 2026, a 7.5 billion US dollar deal and its largest acquisition, per Latham & Watkins; ENEOS Holdings lists petroleum products and oil and natural gas E&P segments, per its website)",
+  "sources": [
+   "https://mimt.jp/support/",
+   "https://www.mhi.com/products/defense",
+   "https://www.lw.com/en/news/2026/07/latham-advises-aethon-in-completed-sale-of-haynesville-business-to-mitsubishi"
+  ],
+  "reason": "The members page (checked 20 November 2026) lists MUFG Bank, Mitsubishi Corporation, Mitsubishi Heavy Industries and Mitsubishi UFJ NICOS under Premium Support Members and ENEOS Holdings under Support Members. The BMA coal and crude/LNG trading claims were cut: mitsubishicorp.com and bhp.com refused automated reads. Bottom line 'Japan's largest defence contractor ... oil, gas and coal' became 'an arms maker and two companies in oil and gas'. Wikipedia company pages were removed from SOURCES."
+ },
+ {
+  "id": "national-visual-arts-gallery",
+  "section": "Red flags",
+  "problems": [
+   "unsourced wording: 'rejected a plan to restore only three works'",
+   "unattributed source claim: The Edge's reinstatement claim rests on an unnamed source",
+   "hedge-like verb 'alleged'"
+  ],
+  "before": "The Edge described it as a painting that depicts nudity and said the artist rejected a plan to restore only three works. / Osman's statement alleged the gallery acted ... / The Edge reported that the directive to reinstate came from the ministry and Deputy Prime Minister Wan Azizah Wan Ismail, not the gallery.",
+  "after": "The Edge described it as a painting that features nudity and said the artist refused anything less than a full reinstatement. / Osman's statement said the gallery acted ... / The Edge, citing an unnamed source, reported that the directive ...",
+  "sources": [
+   "http://theedgemalaysia.com/article/censored-art-exhibition-reinstated-full",
+   "https://artsequator.com/?p=49821"
+  ],
+  "reason": "Wording matched to The Edge's text; the 396 signatures, the Amerruddin quotes and the 4 February date are confirmed."
+ },
+ {
+  "id": "national-visual-arts-gallery",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the flag's outcome"
+  ],
+  "before": "The weak point is editorial control: in February 2020 it removed four works and reversed only after artists, collectors and a deputy minister objected.",
+  "after": "The weak point is editorial control, shown by the 2020 removal and its reversal under outside pressure.",
+  "sources": [],
+  "reason": "The bottom line gives the verdict without repeating the flag."
+ },
+ {
+  "id": "institute-of-contemporary-art-indian-ocean-icaio",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "weak spot: Lonely Planet points not re-opened",
+   "repetition: founder, year and description restated in the bottom line; domain redirect restated from the Website line"
+  ],
+  "before": "Founder: Currimjee established the institute in 2015 ... / The institute is a nonprofit foundation founded in 2015 by the painter, architect and collector Salim Currimjee, and what is published about it comes from partner museums and travel listings. Its former domain now redirects elsewhere.",
+  "after": "Founder: Currimjee established the institute in May 2015 (Lonely Planet France; Boston College news). / The institute is its founder's foundation, and the public record of it comes from partner museums and travel listings.",
+  "sources": [
+   "https://www.lonelyplanet.fr/poi/ile-maurice-et-rodrigues-portlouisetsesenviromauricecg-icaio",
+   "https://www.bc.edu/bc-web/bcnews/art-and-culture/fine-arts/indian-ocean-current-at-mcmullen.html",
+   "https://www.lemauricien.com/?p=4062"
+  ],
+  "reason": "Lonely Planet re-opened: address, historic stone building, aim quote, quarterly shows of Mauritian, Indian and South African artists, Monday to Friday 8:30 to 17:00, and founding in May 2015 all confirmed."
+ }
+]

@@ -1928,29 +1928,75 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 :root:root:root[data-theme="dark"] .gm-alert-mark:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:var(--sh-pill)!important;color:var(--sh-hover)!important}
 }
 
-/* ---- The "N places here" picker over a crowded spot (assets/hq-detail.js, openChooser; user, 16 Nov 2026: "this looks
-   like a slop"). It had no rule of its own in the sheet, so the sheet's blanket rules took it over: the page's 21px text
-   on its 28px name size, no padding at the box's edge, the title's rule doubled by the first row's, and buttons that
-   kept a stray edge. It is set as the map's own names are, 15 on 19, a name over its kind and city, one 1px rule between
-   rows, 12px of air inside the box. The small lines stay in ink: the grey rule colour measures
-   under 4.5:1 as text. ---- */
+/* ---- The "N places here" picker over a crowded spot (assets/hq-detail.js, openChooser). 16 Nov 2026 it was set as a
+   plain white list ("this looks like a slop"); 20 Nov 2026 the user sent it again ("design this": a white box over the spot
+   and the city names, a stone row with a blue ring picked before anything was chosen). It is now a callout, said in the
+   map's own words (index.html, drawPillLabel): an ink bubble with the names in the ground's colour, corners of 9px as on the
+   picked name, a 2px halo of the ground round it, and a tail that points at the clicked spot from the side the box stands
+   on (data-side; --hq-tail is where along that edge). The heading is set apart from the rows: italic, over a hairline,
+   with the close button beside it. A pointer over a row greys its ground; a keyboard focus turns the row over (the ground's
+   colour with ink type, the map's own picked name) and rings it, so the two never read alike and neither is the old
+   stone-and-blue. Measured in the browser, 20 Nov 2026: the names, heading and focus ring on the bubble 21:1 light,
+   19.1:1 dark; the kind and city line and the group heads (72% of the type colour) 10.5:1 light, 9.7:1 dark; a turned-over
+   row 21:1 and 11.7:1 (its small line) light, 19.1:1 and 11.0:1 dark; the dark bubble's pale edge 3.6:1 on the ground.
+   Rows stay 44px or more, and the close button is 44px square. ---- */
 @layer sheet{
-  #hqChooser#hqChooser{width:260px!important;max-width:calc(100% - 16px)!important;max-height:min(60%,420px)!important;overflow:auto!important;
-    padding:0!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;border:1px solid var(--sh-rule)!important;border-radius:0!important;box-shadow:none!important;
-    font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;letter-spacing:0!important}
-  #hqChooser#hqChooser .hq-chooser-title{margin:0!important;padding:10px 12px 9px!important;border:0!important;border-bottom:1px solid var(--sh-rule)!important;
-    font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;color:var(--sh-ink)!important;text-transform:none!important}
+  #hqChooser#hqChooser{--hq-fill:#000;--hq-text:var(--sh-paper);--hq-edge:#000;--hq-r:9px;--hq-tail:24px;
+    --hq-soft:color-mix(in srgb,var(--hq-text) 72%,var(--hq-fill));--hq-line:color-mix(in srgb,var(--hq-text) 32%,var(--hq-fill));
+    --hq-over:color-mix(in srgb,var(--hq-text) 17%,var(--hq-fill));
+    display:flex!important;flex-direction:column!important;width:280px!important;max-width:calc(100% - 16px)!important;max-height:min(62%,440px)!important;
+    overflow:visible!important;padding:0!important;margin:0!important;background:var(--hq-fill)!important;color:var(--hq-text)!important;
+    border:1px solid var(--hq-edge)!important;border-radius:var(--hq-r)!important;box-shadow:0 0 0 2px var(--sh-paper)!important;
+    font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;letter-spacing:0!important;text-align:left!important}
+  :root[data-theme="dark"] #hqChooser#hqChooser{--hq-fill:#000;--hq-text:#f4f4f4;--hq-edge:rgba(244,244,244,.45)}
+  #hqChooser#hqChooser:focus{outline:none!important}
+  /* The tail: a 9px wedge of the bubble's ink, 12px across at its base, on the edge that faces the spot. */
+  #hqChooser#hqChooser::before{content:""!important;position:absolute!important;display:block!important;background:var(--hq-fill)!important;pointer-events:none!important}
+  #hqChooser#hqChooser[data-side="right"]::before,#hqChooser#hqChooser[data-side="left"]::before{width:10px!important;height:12px!important;top:calc(var(--hq-tail) - 7px)!important}
+  #hqChooser#hqChooser[data-side="right"]::before{left:-10px!important;clip-path:polygon(100% 0,10% 50%,100% 100%)!important}
+  #hqChooser#hqChooser[data-side="left"]::before{right:-10px!important;clip-path:polygon(0 0,90% 50%,0 100%)!important}
+  #hqChooser#hqChooser[data-side="above"]::before,#hqChooser#hqChooser[data-side="below"]::before{width:12px!important;height:10px!important;left:calc(var(--hq-tail) - 7px)!important}
+  #hqChooser#hqChooser[data-side="above"]::before{bottom:-10px!important;clip-path:polygon(0 0,100% 0,50% 90%)!important}
+  #hqChooser#hqChooser[data-side="below"]::before{top:-10px!important;clip-path:polygon(50% 10%,100% 100%,0 100%)!important}
+  /* The heading: how many and of what, in italic over a hairline, with the close button on its line. */
+  #hqChooser#hqChooser .hq-head{display:flex!important;align-items:center!important;gap:0!important;margin:0!important;padding:0 0 0 14px!important;
+    border-bottom:1px solid var(--hq-line)!important;flex:0 0 auto!important}
+  #hqChooser#hqChooser .hq-chooser-title{flex:1 1 auto!important;margin:0!important;padding:10px 0 9px!important;border:0!important;background:none!important;
+    font:italic 400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;color:var(--hq-text)!important;text-transform:none!important;letter-spacing:0!important}
+  #hqChooser#hqChooser .hq-close{flex:0 0 44px!important;display:flex!important;align-items:center!important;justify-content:center!important;width:44px!important;height:44px!important;
+    min-height:44px!important;margin:0 2px 0 0!important;padding:0!important;border:0!important;border-radius:var(--hq-r)!important;background:transparent!important;
+    color:var(--hq-text)!important;font:400 24px/1 var(--sh-serif)!important;box-shadow:none!important;cursor:pointer!important}
+  #hqChooser#hqChooser .hq-close span{display:block!important;transform:translateY(-1px)!important}
+  /* Read by a screen reader with the heading; not shown. */
+  #hqChooser#hqChooser .hq-hint{position:absolute!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;
+    clip:rect(0 0 0 0)!important;white-space:nowrap!important;border:0!important}
+  #hqChooser#hqChooser .hq-body{flex:1 1 auto!important;min-height:0!important;overflow:auto!important;padding:4px 0 6px!important;overscroll-behavior:contain!important;
+    scrollbar-color:var(--hq-line) transparent!important;scrollbar-width:thin!important;border-radius:0 0 var(--hq-r) var(--hq-r)!important}
+  /* Funders and museums under their own small heads, when both share the spot. */
+  #hqChooser#hqChooser .hq-group{margin:8px 14px 2px!important;padding:0 0 3px!important;border:0!important;border-bottom:1px solid var(--hq-line)!important;background:none!important;
+    font:400 13px/17px var(--sh-serif)!important;color:var(--hq-soft)!important;text-transform:none!important;letter-spacing:0!important}
   #hqChooser#hqChooser ul{margin:0!important;padding:0!important;list-style:none!important}
   #hqChooser#hqChooser li{margin:0!important;padding:0!important;border:0!important}
-  #hqChooser#hqChooser li+li{border-top:1px solid var(--sh-rule)!important}
+  #hqChooser#hqChooser li+li{border:0!important}
   #hqChooser#hqChooser li::before{content:none!important}
-  #hqChooser#hqChooser button{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:1px!important;width:100%!important;min-height:44px!important;
-    margin:0!important;padding:8px 12px!important;border:0!important;border-radius:0!important;background:transparent!important;color:var(--sh-ink)!important;text-align:left!important;
-    font:inherit!important;letter-spacing:0!important;box-shadow:none!important}
-  #hqChooser#hqChooser button .hq-l{font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;color:inherit!important}
-  #hqChooser#hqChooser button .hq-s{font:400 13px/17px var(--sh-serif)!important;color:inherit!important}
-  #hqChooser#hqChooser button:hover,#hqChooser#hqChooser button:focus-visible{background:var(--sh-stone-2)!important;color:var(--sh-ink)!important}
-  #hqChooser#hqChooser button:focus-visible{outline:2px solid var(--sh-outline)!important;outline-offset:-2px!important}
+  #hqChooser#hqChooser .hq-row{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:1px!important;
+    width:calc(100% - 8px)!important;min-height:44px!important;margin:0 4px!important;padding:7px 10px 8px!important;border:0!important;border-radius:calc(var(--hq-r) - 3px)!important;
+    background:transparent!important;color:var(--hq-text)!important;text-align:left!important;font:inherit!important;letter-spacing:0!important;box-shadow:none!important;cursor:pointer!important}
+  /* No fade: the page's blanket colour transition left a turned-over row white on white for a fifth of a second. */
+  #hqChooser#hqChooser :is(.hq-row,.hq-close),#hqChooser#hqChooser :is(.hq-row,.hq-close) *{transition:none!important}
+  #hqChooser#hqChooser .hq-row .hq-l{font:400 var(--sh-map)/var(--sh-map-lh) var(--sh-serif)!important;color:inherit!important}
+  #hqChooser#hqChooser .hq-row .hq-s{font:400 13px/17px var(--sh-serif)!important;color:var(--hq-soft)!important}
+  /* A pointer greys the row's ground; a keyboard focus turns the row over and rings it in the type colour. */
+  #hqChooser#hqChooser :is(.hq-row,.hq-close):hover{background:var(--hq-over)!important;color:var(--hq-text)!important}
+  #hqChooser#hqChooser :is(.hq-row,.hq-close):focus-visible{background:var(--hq-text)!important;color:var(--hq-fill)!important;
+    outline:2px solid var(--hq-text)!important;outline-offset:2px!important}
+  #hqChooser#hqChooser .hq-row:focus-visible .hq-s{color:color-mix(in srgb,var(--hq-fill) 78%,var(--hq-text))!important}
+  #hqChooser#hqChooser .hq-row:focus:not(:focus-visible),#hqChooser#hqChooser .hq-close:focus:not(:focus-visible){outline:none!important}
+  @media (forced-colors:active){
+    #hqChooser#hqChooser{border:1px solid CanvasText!important}
+    #hqChooser#hqChooser::before{background:CanvasText!important}
+    #hqChooser#hqChooser :is(.hq-row,.hq-close):focus-visible{outline:2px solid Highlight!important;outline-offset:-2px!important}
+  }
 }
 
 /* ---- The globe drops below the name (user, 16 Nov 2026: "drop the map a bit so it doesnt cross with the title", a
