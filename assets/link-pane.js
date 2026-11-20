@@ -94,7 +94,7 @@
     backB.addEventListener('click', function () { if (at > 0) show(--at); });
     fwdB.addEventListener('click', function () { if (at < stack.length - 1) show(++at); });
     reloadB.addEventListener('click', function () { if (at >= 0) show(at); });
-    closeB.addEventListener('click', close);
+    closeB.addEventListener('click', function () { close(); });
     pane.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); close(); return; }
       // Keep Tab inside the pane while it covers the phone screen.
@@ -218,7 +218,8 @@
     closeB.focus();
   }
 
-  function close() {
+  // keepFocus: the pane closes because another control was pressed, which keeps the focus.
+  function close(keepFocus) {
     if (!pane || pane.hidden) return;
     clearTimeout(timer);
     if (frame) { frame.remove(); frame = null; }
@@ -226,7 +227,7 @@
     pane.hidden = true;
     root.classList.remove('sh-web-open');
     var back = opener; opener = null;
-    if (back && document.contains(back) && typeof back.focus === 'function') back.focus();
+    if (!keepFocus && back && document.contains(back) && typeof back.focus === 'function') back.focus();
   }
 
   function plainClick(e) { return !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) && (e.button === 0 || e.button == null); }
@@ -257,6 +258,14 @@
     }
     return nativeOpen.apply(window, arguments);
   };
+
+  // The top bar's map controls close the pane, since it covers the map they change (user, 20 Nov 2026: "if i press top
+  // menu button switch to influence map"): Influence map, and the title that goes back to the map.
+  var MAP_CONTROLS = '#topInfluenceBtn, #mobileInfluenceBtn, #topBrandLogoBtn, #mobileTopBrandBtn';
+  document.addEventListener('click', function (e) {
+    if (!pane || pane.hidden || !e.target || !e.target.closest) return;
+    if (e.target.closest(MAP_CONTROLS)) close(true);
+  }, true);
 
   // Escape closes the pane while focus is in it (its own keydown above) or nowhere in particular.
   document.addEventListener('keydown', function (e) {
