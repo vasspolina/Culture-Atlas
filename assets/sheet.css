@@ -2670,3 +2670,19 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
     #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name:not(#sh-x):not(#sh-y){max-width:min(24ch,62vw)!important;overflow:hidden!important;text-overflow:ellipsis!important}
   }
 }
+
+/* The filter pills while a record card is open on a phone (user, 20 Nov 2026: "collapse the filter pills to one row when a card
+   is open"). Wrapped, the pills took three rows, 98px, and with the city's title under them and the card over the foot
+   only about 180px of map was left to pick the next space in. With a card up (gm-sheet, assets/phone-maps.js) they are one
+   row that scrolls sideways, cut by a short fade at the right edge to show there is more; closed, they wrap again so all
+   show at once (the 8 Nov rule, "fit all on screen"). The city's title, the Layers button and the colour key hang under the
+   row by --gmChips-h, which is measured again when the row changes height, so they move up with it. */
+@layer sheet{
+  @media (max-width:767px){
+    :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z){flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;
+      overscroll-behavior-x:contain;scrollbar-width:none!important;-webkit-overflow-scrolling:touch;
+      -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
+    :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z)::-webkit-scrollbar{display:none}
+    :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z) > *{flex:none!important}
+  }
+}
