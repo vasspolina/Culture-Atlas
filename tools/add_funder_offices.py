@@ -47,16 +47,20 @@ taken = set(hq) | set(extra) | {k for ks in aliases.values() for k in ks}
 def city_point(city, country):
     key = f'{city}, {country}'
     if key not in coords:
-        url = 'https://nominatim.openstreetmap.org/search?' + urllib.parse.urlencode(
-            {'city': city, 'country': country, 'format': 'jsonv2', 'limit': 1})
-        try:
-            req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'en'})
-            with urllib.request.urlopen(req, timeout=60) as r:
-                hits = json.load(r)
-        except Exception as e:
-            print('  no answer for', key, e, file=sys.stderr)
-            return None
-        time.sleep(1.2)
+        # The structured search first; a country OpenStreetMap names otherwise (Palestine) is searched as free text.
+        hits = []
+        for params in ({'city': city, 'country': country}, {'q': key}):
+            url = 'https://nominatim.openstreetmap.org/search?' + urllib.parse.urlencode(dict(params, format='jsonv2', limit=1))
+            try:
+                req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Language': 'en'})
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    hits = json.load(r)
+            except Exception as e:
+                print('  no answer for', key, e, file=sys.stderr)
+                return None
+            time.sleep(1.2)
+            if hits:
+                break
         coords[key] = {'lat': round(float(hits[0]['lat']), 4), 'lon': round(float(hits[0]['lon']), 4),
                        'osm': f"{hits[0].get('osm_type')}/{hits[0].get('osm_id')}"} if hits else None
     return coords[key]

@@ -50,6 +50,24 @@
   ],
   "batch": "fp15"
  },
+ "aboriginallandstrust": {
+  "name": "Aboriginal Lands Trust",
+  "kind": "gov",
+  "what": "A South Australian statutory body created by the Aboriginal Lands Trust Act 1966, which holds former missions and reserves for Aboriginal South Australians; the Governor appoints its board.",
+  "money": "Its 65 properties, some 5,420 square kilometres, which the Act lets it lease, mortgage, develop and add to by purchase.",
+  "site": "https://alt.sa.gov.au",
+  "city": "Adelaide",
+  "country": "Australia",
+  "address": "25 North Street, Adelaide SA 5000",
+  "wrong_match": "The Tandanya sentence names the trust as owner of the building, not as a body that pays or gives money.",
+  "status": "done",
+  "sources": [
+   "https://alt.sa.gov.au/about-us/",
+   "https://alt.sa.gov.au/contact-us/",
+   "https://alt.sa.gov.au/"
+  ],
+  "batch": "fp29"
+ },
  "accionculturalespaola": {
   "name": "Acción Cultural Española (AC/E)",
   "short": "AC/E",
@@ -230,6 +248,25 @@
    "https://www.canadahelps.org/en/charities/art-gallery-of-greater-victoria-foundation/"
   ],
   "batch": "fp26"
+ },
+ "ahlersproarte": {
+  "name": "Stiftung Ahlers Pro Arte gGmbH",
+  "short": "Ahlers Pro Arte Foundation",
+  "kind": "found",
+  "what": "A non-profit company founded in Herford in 1995 by the textile manufacturer Jan A. Ahlers and his daughter Stella A. Ahlers; it sat in Hanover from 2005 to 2016.",
+  "money": "Its founders' wealth from Ahlers AG, the Herford menswear group the father took public in 1987 and led until 2002.",
+  "arts": "It supports fine art, literature and music, researches German Expressionism and shows its own Ahlers Collection.",
+  "site": "https://www.ahlers-proarte.com",
+  "city": "Herford",
+  "country": "Germany",
+  "address": "Goebenstraße 2, 32052 Herford",
+  "status": "done",
+  "sources": [
+   "https://www.ahlers-proarte.com/foundation",
+   "https://www.ahlers-proarte.com/legal-info",
+   "https://en.wikipedia.org/wiki/Jan_A._Ahlers"
+  ],
+  "batch": "fp29"
  },
  "ahlstrmkiinteisttoy": {
   "name": "A. Ahlström Kiinteistöt Oy",
@@ -420,6 +457,40 @@
    "https://en.wikipedia.org/wiki/Raven_Row"
   ],
   "batch": "fp13"
+ },
+ "alfabank": {
+  "name": "Alfa-Bank JSC",
+  "short": "Alfa-Bank",
+  "kind": "corp",
+  "what": "Russia's largest private bank, founded in Moscow in 1990 by Mikhail Fridman, its controlling owner; the US and UK sanctioned it in 2022 and the EU in 2023.",
+  "money": "Banking for corporate and retail clients in Russia and six other countries; it reported net income of US$1.35 billion in 2020.",
+  "site": "https://alfabank.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Alfa-Bank"
+  ],
+  "batch": "fp29"
+ },
+ "alfriedkruppvonbohlenundhalbach": {
+  "name": "Alfried Krupp von Bohlen und Halbach-Stiftung",
+  "short": "Krupp Foundation",
+  "kind": "found",
+  "what": "A non-profit foundation in Essen that began work in 1968, set up by Alfried Krupp von Bohlen und Halbach, last sole owner of Fried. Krupp, whose fortune passed to it.",
+  "money": "Returns on its holding as the largest shareholder of thyssenkrupp, the steel and industrial group.",
+  "arts": "Art and culture is one of its five statutory fields; it has spent EUR 696.2 million on all fields since 1968.",
+  "site": "https://www.krupp-stiftung.de",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Hügel 15, 45133 Essen",
+  "status": "done",
+  "sources": [
+   "https://www.krupp-stiftung.de/ueber-uns/",
+   "https://www.krupp-stiftung.de/impressum/",
+   "https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach_Foundation"
+  ],
+  "batch": "fp29"
  },
  "aliph": {
   "name": "ALIPH Foundation",
@@ -735,6 +806,26 @@
    "https://en.wikipedia.org/wiki/Andy_Warhol_Foundation_for_the_Visual_Arts"
   ],
   "batch": "fp2"
+ },
+ "angelamasri": {
+  "name": "Munib & Angela Masri Foundation",
+  "short": "Masri Foundation",
+  "kind": "found",
+  "what": "A non-profit foundation set up in 1970 by Munib R. Masri and his wife Angela K. Masri, based on Mount Gerizim in Nablus; it works in Palestine, Jordan and Lebanon.",
+  "money": "It is the social responsibility arm of Edgo, the Amman-based group of oilfield services and energy companies its founders started in 1956.",
+  "arts": "Arts and culture is one of its programme fields, beside education, healthcare, community development and community engagement.",
+  "site": "https://masrifoundation.org",
+  "city": "Nablus",
+  "country": "Palestine",
+  "address": "Munib Rashid Masri Street, Mount Gerizim, Nablus",
+  "status": "done",
+  "sources": [
+   "https://masrifoundation.org/our-story/",
+   "https://masrifoundation.org/",
+   "https://www.edgo.com/",
+   "https://en.wikipedia.org/wiki/Munib_al-Masri"
+  ],
+  "batch": "fp29"
  },
  "annemarion": {
   "name": "Burnett Foundation",
@@ -3289,6 +3380,21 @@
   ],
   "batch": "fp8"
  },
+ "chadwickloher": {
+  "name": "Chadwick-Loher Foundation",
+  "kind": "found",
+  "what": "A private foundation in Minneapolis, Minnesota, tax-exempt since 2003, with John W. Dayton as president and Chadwick L. Dayton as secretary.",
+  "money": "Returns on its investments, chiefly asset sales, on net assets of USD 3.85 million at the end of 2024; it gave USD 950,237 that year.",
+  "city": "Minneapolis",
+  "country": "United States",
+  "address": "80 South 8th Street, Suite 4200, Minneapolis, MN 55402",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/522390635",
+   "https://projects.propublica.org/nonprofits/organizations/522390635/202523169349103257/full"
+  ],
+  "batch": "fp29"
+ },
  "chairedbymiucciaprada": {
   "name": "Prada S.p.A.",
   "short": "Prada",
@@ -3945,6 +4051,25 @@
   ],
   "batch": "fp5"
  },
+ "cityofghent|Belgium": {
+  "name": "Stad Gent",
+  "short": "City of Ghent",
+  "kind": "gov",
+  "what": "The municipal government of Ghent, capital of East Flanders and Belgium's second-largest municipality, with 270,473 inhabitants at the end of 2024; Mathias De Clercq is mayor.",
+  "money": "The Flemish Municipal Fund and the city's surcharges on personal income tax and property tax, which it names as its main income.",
+  "site": "https://stad.gent",
+  "city": "Ghent",
+  "country": "Belgium",
+  "address": "Botermarkt 1, 9000 Gent",
+  "status": "done",
+  "sources": [
+   "https://persruimte.stad.gent/216091-stad-gent-bespaart-54-miljoen-euro-op-eigen-werking-en-voert-sociale-taxshift-door/",
+   "https://stad.gent/nl/openingsuren-adressen/stadhuis",
+   "https://stad.gent/nl/reglementen/opcentiemen-op-de-onroerende-voorheffing-0",
+   "https://en.wikipedia.org/wiki/Ghent"
+  ],
+  "batch": "fp29"
+ },
  "cityofgraz|Austria": {
   "name": "Stadt Graz",
   "short": "City of Graz",
@@ -4533,6 +4658,24 @@
   ],
   "batch": "fp9"
  },
+ "cnc": {
+  "name": "Centre national du cinéma et de l'image animée",
+  "short": "CNC",
+  "kind": "gov",
+  "what": "The French state agency for cinema, television and video games, created by law on 25 October 1946 and overseen by the Ministry of Culture.",
+  "money": "Four taxes earmarked to it, chiefly on cinema tickets and on television broadcasters and distributors, forecast at EUR 746.3 million for 2024.",
+  "site": "https://www.cnc.fr",
+  "city": "Paris",
+  "country": "France",
+  "address": "291 boulevard Raspail, 75675 Paris Cedex 14",
+  "status": "done",
+  "sources": [
+   "https://www.cnc.fr/a-propos-du-cnc/missions",
+   "https://www.senat.fr/rap/a23-133-43/a23-133-432.html",
+   "https://en.wikipedia.org/wiki/Centre_national_du_cin%C3%A9ma_et_de_l%27image_anim%C3%A9e"
+  ],
+  "batch": "fp29"
+ },
  "cocof": {
   "name": "Commission communautaire française",
   "short": "COCOF",
@@ -5033,6 +5176,24 @@
   ],
   "batch": "fp9"
  },
+ "culturalendowmentofestonia": {
+  "name": "Eesti Kultuurkapital",
+  "short": "Cultural Endowment of Estonia",
+  "kind": "gov",
+  "what": "An Estonian legal person in public law, set up in 1925 and re-established in 1994, that funds the arts, folk culture, sport and cultural buildings.",
+  "money": "Fixed shares of state taxes: 3.5 percent of alcohol and tobacco excise duty and 47.8 percent of gambling tax.",
+  "site": "https://www.kulka.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Suur-Karja 23, 10148 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://www.kulka.ee/about-us/about-endowment",
+   "https://www.kulka.ee/about-us/contact-us",
+   "https://en.wikipedia.org/wiki/Cultural_Endowment_of_Estonia"
+  ],
+  "batch": "fp29"
+ },
  "cultureliverpool": {
   "name": "Culture Liverpool",
   "kind": "gov",
@@ -5144,6 +5305,24 @@
    "https://www.ceskatelevize.cz/vse-o-ct/kontakty/"
   ],
   "batch": "fp24"
+ },
+ "daewoo": {
+  "name": "Daewoo Foundation",
+  "kind": "found",
+  "what": "A Seoul foundation for public welfare that began with medical aid on remote islands and was reborn as an independent foundation in the 2000s.",
+  "money": "A fund given from 1978 by Kim Woo-choong (1936 to 2019), founder and chairman of the Daewoo Group until its collapse in 1999.",
+  "arts": "Culture and the arts are one of its programme fields, beside health care, social welfare, scholarship and education.",
+  "site": "https://www.daewoofound.com",
+  "city": "Seoul",
+  "country": "South Korea",
+  "address": "30 Jahamun-ro 10-gil, Jongno-gu, Seoul",
+  "status": "done",
+  "sources": [
+   "https://artsonje.org/about/foundation/",
+   "https://artsonje.org/about/about/",
+   "https://en.wikipedia.org/wiki/Kim_Woo-choong"
+  ],
+  "batch": "fp29"
  },
  "dalhousie": {
   "name": "Dalhousie University",
@@ -5408,6 +5587,23 @@
    "https://www.delmontepacific.com/about-us/at-a-glance"
   ],
   "batch": "fp10"
+ },
+ "deloitte": {
+  "name": "Deloitte Touche Tohmatsu Limited",
+  "short": "Deloitte",
+  "kind": "corp",
+  "what": "A network of audit, consulting, tax and advisory firms that William Welch Deloitte founded in London in 1845; its coordinating company was incorporated in England in 2010.",
+  "money": "Fees its member firms earn from audit, consulting, tax and advisory work: aggregate revenue of US$67.2 billion in fiscal 2024.",
+  "site": "https://www.deloitte.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "1 New Street Square, London EC4A 3HQ",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Deloitte",
+   "https://find-and-update.company-information.service.gov.uk/company/07271800"
+  ],
+  "batch": "fp29"
  },
  "denederlandschebank": {
   "name": "De Nederlandsche Bank N.V.",
@@ -6766,6 +6962,23 @@
   ],
   "batch": "fp22"
  },
+ "ferozegujral": {
+  "name": "The Gujral Foundation",
+  "kind": "found",
+  "what": "A non-profit trust in New Delhi set up in 2008 by Feroze Gujral, a founding patron and trustee of the Kochi-Muziris Biennale, and her husband.",
+  "money": "The founders' wealth; the husband, Mohit Gujral, son of the painter Satish Gujral, is an architect and real estate developer.",
+  "arts": "It has supported more than 150 artists and 50 exhibitions in India and abroad.",
+  "site": "https://gujralfoundation.org",
+  "city": "New Delhi",
+  "country": "India",
+  "address": "16 Feroze Gandhi Road, Lajpat Nagar III, New Delhi 110024",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Feroze_Gujral",
+   "https://www.e-flux.com/directory/66836/the-gujral-foundation"
+  ],
+  "batch": "fp29"
+ },
  "ferragamo": {
   "name": "Salvatore Ferragamo S.p.A.",
   "short": "Ferragamo",
@@ -6947,6 +7160,23 @@
    "https://en.wikipedia.org/wiki/William_and_Flora_Hewlett_Foundation"
   ],
   "batch": "fp5"
+ },
+ "fondazionebancadelmontedilombardia": {
+  "name": "Fondazione Monte di Lombardia",
+  "short": "Fondazione Banca del Monte di Lombardia",
+  "kind": "found",
+  "what": "An Italian banking foundation in Pavia, formed in July 1992 under the Amato law when its banking business passed to Banca del Monte di Lombardia S.p.A.",
+  "money": "Returns on its endowment and shareholdings; the bank it spun off merged with Cassa di Risparmio di Cuneo into Banca Regionale Europea in 1995.",
+  "site": "https://www.fbml.it",
+  "city": "Pavia",
+  "country": "Italy",
+  "address": "Corso Strada Nuova 61, 27100 Pavia",
+  "status": "done",
+  "sources": [
+   "https://www.fbml.it/",
+   "https://en.wikipedia.org/wiki/Banca_del_Monte_di_Lombardia"
+  ],
+  "batch": "fp29"
  },
  "fondazionecariplo": {
   "name": "Fondazione Cariplo",
@@ -7189,6 +7419,26 @@
   ],
   "batch": "fp22",
   "renamed": "The atlas name points at The United Company, but the museum sentence means James W. and Frances Gibson McGlothlin, who gave as individuals."
+ },
+ "francisbaconmbart": {
+  "name": "Francis Bacon MB Art Foundation",
+  "kind": "found",
+  "what": "A Monaco non-profit opened on 28 October 2014 to study Francis Bacon; it houses the MB Art Collection of over 3,500 items.",
+  "money": "Its founder and director, the collector Majid Boustany, who owns that collection and adds to it through regular acquisitions.",
+  "arts": "It funds scholarships and prizes with the École du Louvre, the University of Oxford and the Musée du Louvre, and is the main funder of books and documentaries on Bacon.",
+  "site": "https://www.mbartfoundation.com",
+  "city": "Monaco",
+  "country": "Monaco",
+  "address": "21 boulevard d'Italie, 98000 Monaco",
+  "status": "done",
+  "sources": [
+   "https://www.mbartfoundation.com/the-foundation/inspiration/",
+   "https://www.mbartfoundation.com/the-foundation/mission/",
+   "https://www.mbartfoundation.com/collection/artworks-and-archives/",
+   "https://www.mbartfoundation.com/activities/scholarships-and-prizes/",
+   "https://www.mbartfoundation.com/"
+  ],
+  "batch": "fp29"
  },
  "frankenthaler": {
   "name": "Helen Frankenthaler Foundation, Inc.",
@@ -7556,6 +7806,26 @@
   ],
   "batch": "fp12"
  },
+ "fundacinbat": {
+  "name": "Fundación BAT Colombia",
+  "short": "Fundación BAT",
+  "kind": "found",
+  "what": "A foundation in Bogotá whose privacy notice lets it pass personal data to companies of the British American Tobacco group.",
+  "money": "BAT, the London-based cigarette and nicotine maker: a 2025 article BAT paid for calls the foundation key to BAT Group's sustainability strategy.",
+  "arts": "With support from Colombia's Ministry of Culture it runs the Gran Salón BAT de Arte Popular, a folk art competition with prizes.",
+  "site": "https://www.fundacionbat.com.co",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "address": "Avenida Carrera 72 No. 80-94, Piso 9, Titán Plaza, Bogotá",
+  "status": "done",
+  "sources": [
+   "https://www.fundacionbat.com.co/dist/AVISO_DE_PRIVACIDAD_FUNDACION_BAT.pdf",
+   "https://www.larepublica.co/empresas/bat-colombia-un-negocio-en-constante-transformacion-4172614",
+   "https://www.fundacionbat.com.co/",
+   "https://en.wikipedia.org/wiki/British_American_Tobacco"
+  ],
+  "batch": "fp29"
+ },
  "fundacinbbva": {
   "name": "Fundación BBVA",
   "short": "BBVA Foundation",
@@ -7606,6 +7876,26 @@
    "https://carlosslim.com/35_ing.html"
   ],
   "batch": "fp12"
+ },
+ "fundacinmontemadrid": {
+  "name": "Fundación Obra Social y Monte de Piedad de Madrid",
+  "short": "Fundación Montemadrid",
+  "kind": "found",
+  "what": "A private non-profit foundation in Madrid, entered in the state register of foundations in July 2022, that runs educational, social, cultural and environmental centres and programmes.",
+  "money": "Mainly the proceeds of El Monte, its financial-inclusion business of more than 300 years; group companies include Monteoro, a gold and jewellery dealer.",
+  "arts": "It owns an art collection and gives the Carmen Alborch short story prize and, with RNE, a young poetry prize.",
+  "site": "https://www.fundacionmontemadrid.es",
+  "city": "Madrid",
+  "country": "Spain",
+  "address": "Ronda de Valencia 2, 28012 Madrid",
+  "status": "done",
+  "sources": [
+   "https://www.fundacionmontemadrid.es/sobre-nosotros",
+   "https://www.fundacionmontemadrid.es/transparencia",
+   "https://www.fundacionmontemadrid.es/",
+   "https://www.monteoro.es/"
+  ],
+  "batch": "fp29"
  },
  "fundacinmutuamadrilea": {
   "name": "Fundación Mutua Madrileña",
@@ -8245,6 +8535,22 @@
   ],
   "batch": "fp1"
  },
+ "goetheinstitute": {
+  "name": "Goethe-Institut e.V.",
+  "short": "Goethe-Institut",
+  "kind": "gov",
+  "what": "Germany's cultural institute abroad, a registered association founded in 1951 with its head office in Munich and over 150 centres in 99 countries.",
+  "money": "Mainly the German federal government, through annual grants from the Federal Foreign Office, plus its own income and sponsors.",
+  "arts": "It promotes German film, music, theatre and literature abroad on an overall budget of about EUR 366 million.",
+  "site": "https://www.goethe.de",
+  "city": "Munich",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Goethe-Institut"
+  ],
+  "batch": "fp29"
+ },
  "goldenharvestssponsorshipofsummit": {
   "name": "Golden Harvest Group",
   "short": "Golden Harvest",
@@ -8778,6 +9084,25 @@
   ],
   "batch": "fp13"
  },
+ "hapaglloyd": {
+  "name": "Hapag-Lloyd Stiftung",
+  "short": "Hapag-Lloyd Foundation",
+  "kind": "found",
+  "what": "A civil-law foundation in Hamburg, set up on 17 December 1997 for the 150th anniversary of its founder, the container shipping line Hapag-Lloyd.",
+  "money": "Its endowment, managed by its board, and donations, on which it says it increasingly depends.",
+  "arts": "It gives about EUR 1.5 million a year to about 30 Hamburg institutions and projects in science, health, art and culture, and welfare.",
+  "site": "https://www.hapag-lloyd-stiftung.de",
+  "city": "Hamburg",
+  "country": "Germany",
+  "address": "Ballindamm 25, 20095 Hamburg",
+  "status": "done",
+  "sources": [
+   "https://hapag-lloyd-stiftung.de/about",
+   "https://hapag-lloyd-stiftung.de/impressum",
+   "https://hapag-lloyd-stiftung.de/projects"
+  ],
+  "batch": "fp29"
+ },
  "harbourviewequity": {
   "name": "HarbourView Equity Partners",
   "short": "HarbourView",
@@ -8844,6 +9169,23 @@
    "https://en.wikipedia.org/wiki/Hauser_%26_Wirth"
   ],
   "batch": "fp4"
+ },
+ "hautsdefranceregion|France": {
+  "name": "Région Hauts-de-France",
+  "short": "Hauts-de-France region",
+  "kind": "gov",
+  "what": "The regional government of Hauts-de-France, France's northernmost region, formed on 1 January 2016 from Nord-Pas-de-Calais and Picardy, with its seat in Lille.",
+  "money": "The regional budget, adopted at EUR 5.2 billion for 2026.",
+  "site": "https://www.hautsdefrance.fr",
+  "city": "Lille",
+  "country": "France",
+  "address": "151 avenue du Président Hoover, 59555 Lille Cedex",
+  "status": "done",
+  "sources": [
+   "https://www.hautsdefrance.fr/budget-2026/",
+   "https://en.wikipedia.org/wiki/Hauts-de-France"
+  ],
+  "batch": "fp29"
  },
  "hawaiisuchaskamehamehaschools": {
   "name": "Kamehameha Schools",
@@ -9198,6 +9540,22 @@
    "https://en.wikipedia.org/wiki/Hivos"
   ],
   "batch": "fp14"
+ },
+ "holler": {
+  "name": "Holler-Stiftung",
+  "short": "Holler Foundation",
+  "kind": "found",
+  "what": "A civil-law grant-making foundation set up in Munich in 1990, first planned in the 1963 joint will of the insurance broker Christian C. Holler and his wife.",
+  "money": "The estate of Asta Holler, heir to the Holler group, whose firms included the car insurance broker Volkswagen Versicherungsdienst; her 1987 will shaped the foundation.",
+  "arts": "It paid for building the Kunstmuseum Wolfsburg; its other named beneficiaries include the German SOS Children's Villages associations.",
+  "city": "Munich",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Holler-Stiftung",
+   "https://www.kunstmuseum.de/en/about-us/"
+  ],
+  "batch": "fp29"
  },
  "holtrenfrew": {
   "name": "Holt, Renfrew & Co., Limited",
@@ -9559,6 +9917,23 @@
    "https://www.ikahocc.co.jp/"
   ],
   "batch": "fp14"
+ },
+ "ilmincultural": {
+  "name": "Ilmin Cultural Foundation",
+  "kind": "found",
+  "what": "A Seoul non-profit set up in 1994 in memory of Kim Sang-man of the Dong-A Ilbo newspaper; it runs the Ilmin Museum of Art and the Ilmin Culture Award.",
+  "arts": "It holds about 2,000 works, including Kim Sang-man's collection of Goryeo and Joseon ceramics and paintings and artworks published by the Dong-A Ilbo.",
+  "site": "https://ilmin.org",
+  "city": "Seoul",
+  "country": "South Korea",
+  "address": "152 Sejong-daero, Jongno-gu, Seoul",
+  "status": "done",
+  "sources": [
+   "https://ilmin.org/about/ilmin-cultural-foundation/",
+   "https://ilmin.org/",
+   "https://en.wikipedia.org/wiki/Ilmin_Museum_of_Art"
+  ],
+  "batch": "fp29"
  },
  "imls": {
   "name": "Institute of Museum and Library Services",
@@ -10023,6 +10398,25 @@
   ],
   "batch": "fp20"
  },
+ "japanmanila": {
+  "name": "The Japan Foundation, Manila",
+  "kind": "gov",
+  "what": "The Manila office, opened in 1996, of the Japan Foundation, set up in 1972 and since 2003 an independent administrative institution under Japan's Ministry of Foreign Affairs.",
+  "money": "Japanese government money: the Japan Foundation received operating grants of JPY 12.5 billion from the Ministry of Foreign Affairs in fiscal 2013.",
+  "arts": "It works in arts and cultural exchange, Japanese-language teaching and Japanese studies, and has run a Japanese film festival in the Philippines since 1997.",
+  "site": "https://jfmo.org.ph",
+  "city": "Makati",
+  "country": "Philippines",
+  "address": "23/F Pacific Star Building, Sen. Gil Puyat Avenue corner Makati Avenue, Makati City 1226",
+  "status": "done",
+  "sources": [
+   "https://www.jfmo.org.ph/about-us/",
+   "https://jfmo.org.ph/contact-us/",
+   "https://ja.wikipedia.org/wiki/%E5%9B%BD%E9%9A%9B%E4%BA%A4%E6%B5%81%E5%9F%BA%E9%87%91",
+   "https://en.wikipedia.org/wiki/Japan_Foundation"
+  ],
+  "batch": "fp29"
+ },
  "japansagencyforculturalaffairs|Japan": {
   "name": "Agency for Cultural Affairs, Government of Japan",
   "short": "Bunkachō",
@@ -10228,6 +10622,25 @@
    "https://en.wikipedia.org/wiki/J%26T"
   ],
   "batch": "fp14"
+ },
+ "juliarausingtrust": {
+  "name": "The Julia Rausing Trust",
+  "kind": "found",
+  "what": "A grant-making charity registered in England and Wales (no. 1213572), named for Julia Rausing (1961 to 2024); Sir Hans Rausing gives through it and its predecessor trusts.",
+  "money": "The Rausing family's proceeds from selling its interests in Tetra Pak, the food packaging group.",
+  "arts": "Arts and heritage is one of its three giving themes, beside education and health and welfare; it aims to give £100m a year to UK charities.",
+  "site": "https://www.juliarausingtrust.org",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "250 King's Road, London SW3 5UE",
+  "status": "done",
+  "sources": [
+   "https://www.juliarausingtrust.org/about/",
+   "https://www.juliarausingtrust.org/",
+   "https://www.juliarausingtrust.org/contact/",
+   "https://en.wikipedia.org/wiki/Julia_Rausing"
+  ],
+  "batch": "fp29"
  },
  "kai": {
   "name": "Ulli und Uwe Kai-Stiftung",
@@ -10582,6 +10995,23 @@
    "https://sermersooq.gl/en/"
   ],
   "batch": "fp15"
+ },
+ "koreahana": {
+  "name": "Korea Hana Foundation",
+  "kind": "gov",
+  "what": "A South Korean public body set up by the Ministry of Unification in September 2010 under the act on settlement support for North Korean defectors; it helps them resettle.",
+  "money": "The South Korean government, as a quasi-government organisation of the Ministry of Unification since January 2011, plus public donations.",
+  "site": "https://www.koreahana.or.kr",
+  "city": "Seoul",
+  "country": "South Korea",
+  "address": "4F, 7 Saechang-ro, Mapo-gu, Seoul 04168",
+  "status": "done",
+  "sources": [
+   "https://www.koreahana.or.kr/home/eng/contents.do?menuPos=2",
+   "https://www.koreahana.or.kr/home/eng/contents.do?menuPos=3",
+   "https://www.koreahana.or.kr/home/eng/contents.do?menuPos=5"
+  ],
+  "batch": "fp29"
  },
  "koret": {
   "name": "Koret Foundation",
@@ -12709,6 +13139,24 @@
   ],
   "batch": "fp18"
  },
+ "nationalcultural": {
+  "name": "Nemzeti Kulturális Alap",
+  "short": "National Cultural Fund of Hungary",
+  "kind": "gov",
+  "what": "A Hungarian state fund created by Act XXIII of 1993 that awards grants for the arts, events, publishing and heritage; the Nemzeti Kulturális Támogatáskezelő handles its contracts and payments.",
+  "money": "Since 1 January 2010, 90 percent of the gaming tax on the Ötöslottó lottery, which replaced an earlier cultural levy.",
+  "site": "https://nka.hu",
+  "city": "Budapest",
+  "country": "Hungary",
+  "address": "Gyulai Pál utca 13, 1085 Budapest",
+  "status": "done",
+  "sources": [
+   "https://nka.hu/kategoria/kiemelt-kategoriak/szervezet/rolunk/",
+   "https://hu.wikipedia.org/wiki/Nemzeti_Kultur%C3%A1lis_Alap",
+   "https://nka.hu/impresszum/"
+  ],
+  "batch": "fp29"
+ },
  "nationalendowmentforarts": {
   "name": "National Endowment for the Arts",
   "short": "NEA",
@@ -12742,6 +13190,24 @@
    "https://en.wikipedia.org/wiki/National_Geographic_Society"
   ],
   "batch": "fp18"
+ },
+ "nationallotterycommunity": {
+  "name": "The National Lottery Community Fund",
+  "kind": "gov",
+  "what": "A UK executive non-departmental public body, legally named the Big Lottery Fund and sponsored by the Department for Culture, Media and Sport, that funds community projects.",
+  "money": "Money raised by National Lottery players for good causes; it plans to distribute at least £4 billion by 2030.",
+  "site": "https://www.tnlcommunityfund.org.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "Society Building, Regents Wharf, 8 All Saints Street, London N1 9RL",
+  "status": "done",
+  "sources": [
+   "https://www.gov.uk/government/organisations/the-national-lottery-community-fund",
+   "https://www.tnlcommunityfund.org.uk/about",
+   "https://www.tnlcommunityfund.org.uk/contact",
+   "https://en.wikipedia.org/wiki/National_Lottery_Community_Fund"
+  ],
+  "batch": "fp29"
  },
  "nationallotteryheritage": {
   "name": "The National Lottery Heritage Fund",
@@ -13143,6 +13609,22 @@
    "https://www.foundationnorth.org.nz/contact-us"
   ],
   "batch": "fp12"
+ },
+ "northropgrumman": {
+  "name": "Northrop Grumman Foundation",
+  "kind": "found",
+  "what": "The charitable foundation of Northrop Grumman, the US aerospace and defence contractor, based in Falls Church, Virginia, and tax-exempt since 1956.",
+  "money": "Contributions of USD 15 million in each of 2022 and 2023; Northrop Grumman drew 87 percent of its 2024 revenue from the US government.",
+  "site": "https://www.northropgrumman.com",
+  "city": "Falls Church",
+  "country": "United States",
+  "address": "2980 Fairview Park Drive, Falls Church, VA 22042",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/956095343",
+   "https://en.wikipedia.org/wiki/Northrop_Grumman"
+  ],
+  "batch": "fp29"
  },
  "northwestelhelp": {
   "name": "Northwestel Inc.",
@@ -14833,6 +15315,25 @@
   ],
   "batch": "fp26"
  },
+ "pudilfamily": {
+  "name": "The Pudil Family Foundation",
+  "kind": "found",
+  "what": "A Czech family foundation in Prague set up by Pavlína Pudil, its board chair, and Petr Pudil; its art collection is on long-term loan to Kunsthalle Praha.",
+  "money": "Its co-founder's fortune from a stake in the coal group Czech Coal, sold in 2010, and bpd partners, the family office he co-founded in 2008.",
+  "arts": "It supports visual art, research and education and sits on boards and acquisition committees at Tate, KW Berlin and Palais de Tokyo.",
+  "site": "https://www.pudilfamilyfoundation.org",
+  "city": "Prague",
+  "country": "Czechia",
+  "address": "Klárov 132/5, Malá Strana, 118 00 Praha 1",
+  "status": "done",
+  "sources": [
+   "https://www.pudilfamilyfoundation.org/o-nas",
+   "https://www.pudilfamilyfoundation.org/",
+   "https://cs.wikipedia.org/wiki/Petr_Pudil",
+   "https://en.wikipedia.org/wiki/Kunsthalle_Praha"
+  ],
+  "batch": "fp29"
+ },
  "puig": {
   "name": "Puig Brands, S.A.",
   "short": "Puig",
@@ -15589,6 +16090,25 @@
   ],
   "batch": "fp20"
  },
+ "sacklertrust": {
+  "name": "The Sackler Trust",
+  "kind": "found",
+  "what": "A UK charity (no. 1132097) and company incorporated in 2009, chaired in 2019 by Theresa Sackler, that has given to research, education and arts charities since 2010.",
+  "money": "The Sackler family, whose fortune derives in part from sales of the opioid OxyContin by Purdue Pharma.",
+  "arts": "It has committed over £60 million across science, education, arts and heritage; in March 2019 it paused all new giving.",
+  "site": "https://www.sacklertrust.org",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "83 Cambridge Street, Pimlico, London SW1V 4PS",
+  "status": "done",
+  "sources": [
+   "https://www.sacklertrust.org/",
+   "https://www.theartnewspaper.com/2019/03/25/sackler-trust-charity-in-uk-suspends-all-new-gifts",
+   "https://find-and-update.company-information.service.gov.uk/company/07022224",
+   "https://en.wikipedia.org/wiki/Sackler_family"
+  ],
+  "batch": "fp29"
+ },
  "safraeach": {
   "name": "Edmond J. Safra Philanthropic Foundation",
   "short": "Edmond J. Safra Foundation",
@@ -15704,6 +16224,22 @@
    "https://d26jxt5097u8sr.cloudfront.net/2024-03/DAM%20Annual%20Report%202022-2023.pdf"
   ],
   "batch": "fp20"
+ },
+ "sarofim": {
+  "name": "The Sarofim Foundation",
+  "kind": "found",
+  "what": "A private foundation in Houston, Texas, tax-exempt since 1971; in 2023 its assets moved to a successor of the same name, with Christopher B. Sarofim a director.",
+  "money": "Gifts, with the investor Fayez Sarofim its named substantial contributor: USD 360.5 million in the year to June 2025; net assets USD 3.14 billion.",
+  "city": "Houston",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/372090276",
+   "https://projects.propublica.org/nonprofits/organizations/237065248",
+   "https://projects.propublica.org/nonprofits/organizations/237065248/202500319349100015/full",
+   "https://en.wikipedia.org/wiki/Fayez_Sarofim"
+  ],
+  "batch": "fp29"
  },
  "sasktel": {
   "name": "Saskatchewan Telecommunications Holding Corporation",
@@ -16031,6 +16567,23 @@
    "https://en.wikipedia.org/wiki/Shikoku_Electric_Power"
   ],
   "batch": "fp20"
+ },
+ "shivnadar": {
+  "name": "Shiv Nadar Foundation",
+  "kind": "found",
+  "what": "A foundation set up in 1994 by Shiv Nadar, founder of the HCL technology group, that runs universities, schools and the Kiran Nadar Museum of Art.",
+  "money": "Shiv Nadar's fortune from HCL, a US$14.7 billion technology group by the foundation's account; the foundation has invested over US$1.85 billion.",
+  "site": "https://www.shivnadarfoundation.org",
+  "city": "Noida",
+  "country": "India",
+  "address": "A-9, Sector 3, Noida 201301, Uttar Pradesh",
+  "status": "done",
+  "sources": [
+   "https://www.shivnadarfoundation.org/who-we-are/overview",
+   "https://www.shivnadarfoundation.org/who-we-are/fact-file",
+   "https://www.shivnadarfoundation.org/contact-us"
+  ],
+  "batch": "fp29"
  },
  "siae": {
   "name": "Società Italiana degli Autori ed Editori",
@@ -16633,6 +17186,25 @@
    "https://www.standardbank.com/sbg/standard-bank-group/who-we-are/our-history"
   ],
   "batch": "fp21"
+ },
+ "stanleythomasjohnson": {
+  "name": "Stanley Thomas Johnson Stiftung",
+  "short": "Stanley Thomas Johnson Foundation",
+  "kind": "found",
+  "what": "A Bern foundation set up in 1969 under the will of June Mary Johnson, who left it the whole estate of her late husband, the British industrialist Stanley Thomas Johnson.",
+  "money": "Its endowment, invested in shares, Swiss property and bonds: CHF 192.1 million in 2025.",
+  "arts": "It funds performing and visual arts, humanitarian aid, medical research and education in the canton of Bern; grants totalled CHF 4.38 million in 2025.",
+  "site": "https://www.johnsonstiftung.ch",
+  "city": "Bern",
+  "country": "Switzerland",
+  "address": "Schwanengasse 6, 3001 Bern",
+  "status": "done",
+  "sources": [
+   "https://www.johnsonstiftung.ch/de/stiftung/geschichte-hintergrund",
+   "https://www.johnsonstiftung.ch/de/stiftung/finanzkennzahlen",
+   "https://www.johnsonstiftung.ch/"
+  ],
+  "batch": "fp29"
  },
  "statenskunstfond": {
   "name": "Statens Kunstfond",
@@ -17517,6 +18089,26 @@
   ],
   "batch": "fp23"
  },
+ "trustformutualunderstanding": {
+  "name": "Trust for Mutual Understanding",
+  "short": "TMU",
+  "kind": "found",
+  "what": "A private grant-making foundation in New York set up in 1985 by Sandra Ferry Rockefeller to build ties between the United States, the Soviet Union and Central and Eastern Europe.",
+  "money": "Investment returns, chiefly from asset sales and dividends, on net assets of USD 25.7 million at the end of 2024.",
+  "arts": "It funds arts and environmental collaboration between the US and 29 countries; charitable disbursements came to USD 3.95 million in 2024.",
+  "site": "https://tmuny.org",
+  "city": "New York",
+  "country": "United States",
+  "address": "28 Hubert Street, New York, NY 10013",
+  "status": "done",
+  "sources": [
+   "https://tmuny.org/legacy/",
+   "https://tmuny.org/about/",
+   "https://tmuny.org/contact/",
+   "https://projects.propublica.org/nonprofits/organizations/133212724"
+  ],
+  "batch": "fp29"
+ },
  "tsugarukaikyoferry": {
   "name": "Tsugarukaikyo Ferry Co., Ltd.",
   "short": "Tsugaru Kaikyo Ferry",
@@ -17670,6 +18262,24 @@
    "https://www.umicore.com/en/about/"
   ],
   "batch": "fp23"
+ },
+ "unam": {
+  "name": "Universidad Nacional Autónoma de México",
+  "short": "UNAM",
+  "kind": "gov",
+  "what": "Mexico's national public research university, founded in its modern form on 22 September 1910 by Justo Sierra, with its main campus at Ciudad Universitaria in Mexico City.",
+  "money": "Federal subsidy: MXN 53,749 million of its MXN 59,878 million budget for 2026, with own income making up the rest.",
+  "arts": "It runs 26 museums and 18 historic sites.",
+  "site": "https://www.unam.mx",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "address": "Ciudad Universitaria, Coyoacán, Mexico City",
+  "status": "done",
+  "sources": [
+   "https://www.gaceta.unam.mx/el-consejo-universitario-revisara-hoy-su-presupuesto-para-2026/",
+   "https://en.wikipedia.org/wiki/National_Autonomous_University_of_Mexico"
+  ],
+  "batch": "fp29"
  },
  "undernonprofitmill6": {
   "name": "MILL6 Foundation",
@@ -18425,6 +19035,21 @@
   ],
   "batch": "fp24"
  },
+ "vriendenvannw": {
+  "name": "Fonds Vrienden van NW",
+  "kind": "found",
+  "what": "A friends' fund for NW, the Aalst art centre and cinema, set up in December 2021 at the King Baudouin Foundation on the initiative of three local figures.",
+  "money": "Gifts and memberships from local art lovers, business owners and supporters, paid through the King Baudouin Foundation.",
+  "site": "https://nw-aalst.be/vrienden/",
+  "city": "Aalst",
+  "country": "Belgium",
+  "status": "done",
+  "sources": [
+   "https://www.made-in.be/oost-vlaanderen/netwerk-aalst-start-vriendenwerking-met-steun-van-koning-boudewijnstichting/",
+   "https://nw-aalst.be/vrienden/"
+  ],
+  "batch": "fp29"
+ },
  "vsbfonds": {
   "name": "VSBfonds",
   "kind": "found",
@@ -18440,6 +19065,40 @@
    "https://www.vsbfonds.nl/contact"
   ],
   "batch": "fp2"
+ },
+ "vtb": {
+  "name": "VTB Bank (PJSC)",
+  "short": "VTB",
+  "kind": "corp",
+  "what": "A majority state-owned Russian bank founded as Vneshtorgbank in 1990, with its legal address in St Petersburg; it has been under US, EU and UK sanctions since 2014.",
+  "money": "Corporate and retail banking; three state bodies held over 90 percent of its capital in 2022, and it reported 2025 net income of US$5.89 billion.",
+  "site": "https://www.vtb.ru",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "address": "Degtyarny Pereulok 11a, Saint Petersburg 191144",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/VTB_Bank",
+   "https://web.archive.org/web/20261114024906/https://www.vtb.com/"
+  ],
+  "batch": "fp29"
+ },
+ "vtbbank": {
+  "name": "VTB Bank (PJSC)",
+  "short": "VTB",
+  "kind": "corp",
+  "what": "A majority state-owned Russian bank founded as Vneshtorgbank in 1990, with its legal address in St Petersburg; it has been under US, EU and UK sanctions since 2014.",
+  "money": "Corporate and retail banking; three state bodies held over 90 percent of its capital in 2022, and it reported 2025 net income of US$5.89 billion.",
+  "site": "https://www.vtb.ru",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "address": "Degtyarny Pereulok 11a, Saint Petersburg 191144",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/VTB_Bank",
+   "https://web.archive.org/web/20261114024906/https://www.vtb.com/"
+  ],
+  "batch": "fp29"
  },
  "wacom": {
   "name": "Wacom Co., Ltd.",
@@ -18687,6 +19346,39 @@
   ],
   "batch": "fp24",
   "renamed": "This is the body that holds and operates Fallingwater, not an outside donor."
+ },
+ "wexnercenter": {
+  "name": "Wexner Center Foundation",
+  "kind": "found",
+  "what": "A nonprofit in Columbus, Ohio, tax-exempt since 1990, that supports Ohio State University's Wexner Center for the Arts; Leslie H. Wexner, founder of Limited Brands, chairs its trustees.",
+  "money": "Donations: all of its USD 1.32 million revenue in the year to June 2025 came from contributions; net assets were USD 14.0 million.",
+  "city": "Columbus",
+  "country": "United States",
+  "address": "1234 East Broad Street, Columbus, OH 43205",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/311306419",
+   "https://en.wikipedia.org/wiki/Wexner_Center_for_the_Arts"
+  ],
+  "batch": "fp29"
+ },
+ "whanki": {
+  "name": "Whanki Foundation",
+  "kind": "found",
+  "what": "A foundation that Kim Hyang-an, the painter Kim Whanki's widow, founded in New York in 1979 and moved to Seoul in 1989; it opened the Whanki Museum in 1992.",
+  "money": "It owns the works, papers and belongings of Kim Whanki and Kim Hyang-an and manages the copyright and trademark rights to his art.",
+  "arts": "It researches, shows and publishes Kim Whanki's work and supports Korean and foreign artists.",
+  "site": "http://whankimuseum.org",
+  "city": "Seoul",
+  "country": "South Korea",
+  "address": "63 Jahamun-ro 40-gil, Jongno-gu, Seoul 03020",
+  "status": "done",
+  "sources": [
+   "http://whankimuseum.org/foundation/info/",
+   "http://whankimuseum.org/museum/operation/visit/",
+   "https://en.wikipedia.org/wiki/Whanki_Kim"
+  ],
+  "batch": "fp29"
  },
  "whitecube": {
   "name": "White Cube",
@@ -18942,6 +19634,22 @@
    "https://www.city.yokohama.lg.jp/lang/overseas/yport/access.html"
   ],
   "batch": "fp26"
+ },
+ "zabludowiczarttrust": {
+  "name": "Zabludowicz Art Trust",
+  "kind": "found",
+  "what": "The trust that principally owns the Zabludowicz Collection, the contemporary art collection Anita and Poju Zabludowicz began in 1994; the collection's UK charity is Zabludowicz Art Projects (no. 1120067).",
+  "money": "Poju Zabludowicz's fortune through Tamares Group, the family holding company he chairs, built by his father Shlomo around the Israeli defence contractor Soltam.",
+  "site": "https://www.zabludowiczcollection.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://www.zabludowiczcollection.com/about",
+   "https://www.zabludowiczcollection.com/about/founders",
+   "https://en.wikipedia.org/wiki/Poju_Zabludowicz"
+  ],
+  "batch": "fp29"
  },
  "zain": {
   "name": "Mobile Telecommunications Company K.S.C.P.",
