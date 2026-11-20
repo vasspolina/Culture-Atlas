@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=857"></script>
+  <script src="assets/load-image-data.js?v=858"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=857">
-  <link rel="stylesheet" href="assets/sheet.css?v=857">
-  <script src="assets/config.js?v=857"></script>
-  <script src="assets/analytics.js?v=857"></script>
-  <script src="assets/subtopic.js?v=857"></script>
-  <script src="assets/names.js?v=857"></script>
-  <script src="assets/grounding.js?v=857"></script>
-  <script src="assets/repeats.js?v=857"></script>
-  <script src="assets/intro-narration.js?v=857"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=858">
+  <link rel="stylesheet" href="assets/sheet.css?v=858">
+  <script src="assets/config.js?v=858"></script>
+  <script src="assets/analytics.js?v=858"></script>
+  <script src="assets/subtopic.js?v=858"></script>
+  <script src="assets/names.js?v=858"></script>
+  <script src="assets/grounding.js?v=858"></script>
+  <script src="assets/repeats.js?v=858"></script>
+  <script src="assets/intro-narration.js?v=858"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=857"></script>
+  <script src="assets/load-image.js?v=858"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1178,8 +1178,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=857"></script>
-  <script src="assets/money-ids.js?v=857"></script>
+  <script src="assets/institutions.js?v=858"></script>
+  <script src="assets/money-ids.js?v=858"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10883,11 +10883,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v857';
+    const ATLAS_RELEASE = 'culture-atlas-v858';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=857').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=858').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11432,11 +11432,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The selected space's label is set larger than the rest, with its whole name (user, 4 Nov 2026: "make selected bigger").
     const atlasSelFont = () => '400 20px ' + ATLAS_SERIF;
     const ATLAS_SEL_H = 32, ATLAS_SEL_PAD = 36;
-    // THE NAME CLEARS THE PIN (user, 16 Nov 2026, a screenshot of "Palais de Lomé" with the pin's ball over the name: "overlap").
-    // The dropped pin (drawDroppedPin) stands on the place with its ball 16 to 34px above it, which is where a name above its dot
-    // sat (a picked space's box from 38 to 6px up, a city's from 28 to 6). The name of the place the pin is on is set above the
-    // ball instead: its box ends ATLAS_PIN_CLEAR px above the place, 2px over the top of the ball.
-    const ATLAS_PIN_CLEAR = 36;
     // Every name on the map is given whole (user, 16 Nov 2026: the layer names "get cut short"); the label boxes clash-test
     // at their real width, so a long name that has no room is left out rather than cut.
     const atlasLabelName = (name) => name;
@@ -11484,42 +11479,34 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // The fog over the globe (assets/atlas.css, FOG ON THE MAP) comes on once the page has painted, not with it.
       requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('fog-ready')));
     }
-    // ---- The dropped pin ----------------------------------------------------------------------------------------------
-    // One pin, on the place whose sheet is open: the selected space, or else the city whose place sheet is open
-    // (window.atlasPlacePin, set by assets/place-sheet.js). Since 15 Nov 2026 a red push pin, its needle on the place; before that a solid teardrop in the ink with a
-    // 1px ground edge, so it reads on the hairlines and the land in both themes. It falls 14px into place when the place
-    // changes; with reduced motion it is simply there.
-    let droppedPinKey = null, droppedPinT0 = 0;
-    const ATLAS_DROP_PATH = 'M0 0C-2.5 -7 -9 -12.5 -9 -21A9 9 0 1 1 9 -21C9 -12.5 2.5 -7 0 0Z';
-    function droppedPinTarget() {
-      if (selectedInstitution) {
-        const pin = atlasPinOf(selectedInstitution);
-        if (pin) return { key: 'i:' + (selectedInstitution.id || selectedInstitution.name), lon: pin.lon, lat: pin.lat };
-      }
-      const place = window.atlasPlacePin;
-      if (place && isFinite(place.lon) && isFinite(place.lat)) return { key: 'c:' + place.name, lon: place.lon, lat: place.lat };
-      return null;
+    // ---- THE GLOBE, SET AS THE STREET MAP IS (user, 20 Nov 2026: "restyle the rest of atlas map so it looks closer to
+    // zoomed in version", "delete those pins and put dots and triangles instead") ----------------------------------------
+    // The street map is the printed gallery map: stippled ground, ink bubbles with a tail, each space a solid mark in its
+    // grade's colour and its tier's shape. The globe now takes the same four things. The land is the same stipple (two
+    // dots to a 6px tile, in the map's line colour on its ground); every city's and space's name is an ink bubble with a
+    // tail to its mark; a space is a solid circle, square or triangle; and there is no dropped pin: the open place is told
+    // by its larger bubble and its ringed mark, as close in. The black drop of 17 Nov and the push pin before it are gone.
+    let globeStippleKey = '', globeStipplePat = null;
+    function globeStipple(ground, ink) {
+      const R = Math.max(1, Math.ceil(dpr || 1)), key = ground + ink + R;
+      if (key === globeStippleKey) return globeStipplePat;
+      globeStippleKey = key; globeStipplePat = null;
+      try {
+        const c = document.createElement('canvas'); c.width = c.height = 6 * R;
+        const g = c.getContext('2d'); g.scale(R, R);
+        g.fillStyle = ground; g.fillRect(0, 0, 6, 6);
+        g.fillStyle = ink; [[1.5, 1.5], [4.5, 4.5]].forEach(([x, y]) => { g.beginPath(); g.arc(x, y, 0.6, 0, Math.PI * 2); g.fill(); });
+        const pat = ctx.createPattern(c, 'repeat');
+        if (pat && pat.setTransform && typeof DOMMatrix === 'function') pat.setTransform(new DOMMatrix().scale(1 / R));
+        globeStipplePat = pat;
+      } catch (e) { /* no pattern: the land keeps its flat colour */ }
+      return globeStipplePat;
     }
-    function drawDroppedPin(c2, project, r, cx, cy, now, ink, ground) {
-      const t = droppedPinTarget();
-      if (!t || isCityStreetViewActive) { droppedPinKey = t ? t.key : null; return; }
-      if (t.key !== droppedPinKey) { droppedPinKey = t.key; droppedPinT0 = now; }
-      const p = project(t.lon, t.lat, r, cx, cy);
-      if (!p || !p.front || p.depth <= 0.05) return;
-      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const k = reduce ? 1 : Math.min(1, (now - droppedPinT0) / 220);
-      const lift = (1 - k * k) * 14;
-      if (k < 1) scheduleRender();
-      // A black drop (user, 17 Nov 2026: "make pins black drops on atlas"; before it a glossy ball-headed push pin): a teardrop
-      // in #000, its point on the place, with a 1px white edge so it still reads on the black ground of the dark theme.
-      // Drawn with the point at 0, 0; the street map's SVG (atlasPinSvg) has the same path.
-      c2.save();
-      c2.translate(p.x, p.y - lift);
-      const drop = new Path2D(ATLAS_DROP_PATH);
-      c2.fillStyle = '#000'; c2.fill(drop);
-      c2.strokeStyle = '#fff'; c2.lineWidth = 1; c2.stroke(drop);
-      c2.restore();
-    }
+    // A space's mark: 4px of radius with the whole world in view, 5.5 close in. The street map's marks are 9, but a country's
+    // spaces stand a few pixels apart on the globe, and at 9 a city's marks ran into one blot.
+    const atlasMarkR = (zoom) => Math.max(4, Math.min(5.5, 3.7 + zoom * 0.15));
+    // How far a name's bubble stands off its mark: the tail's length.
+    const ATLAS_TAIL = 6;
     window.atlasDropPinRefresh = () => scheduleRender();
 
     let renderFrameId = 0;
@@ -11544,9 +11531,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const GOSSIP_DARK = isGossipModeActive && !GLOBE_LIGHT;
       // THE SHEET: white water, grey land #cfcfba, a chosen country and a pressed label in the lime of the bars #e2f86c
       // (user, 11 Nov 2026: "use these colors for atlas instead of beige", swatches lime, white, grey), the sheet's grey rule for every line, black names. The dark sheet is the same stone turned over.
-      const G_GROUND = GLOBE_LIGHT ? (isGossipModeActive ? '#ffeff1' : '#ffffff') : (GOSSIP_DARK ? '#000050' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#14146e' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#8c8fd0' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = '#808080';
+      const G_GROUND = GLOBE_LIGHT ? (isGossipModeActive ? '#ffeff1' : '#ffffff') : (GOSSIP_DARK ? '#000050' : '#151412'), G_LAND = GLOBE_LIGHT ? '#cfcfba' : (GOSSIP_DARK ? '#14146e' : '#2b2925'), G_LINE = GLOBE_LIGHT ? '#787878' : (GOSSIP_DARK ? '#8c8fd0' : '#787878'), G_HALO = 'rgba(0, 0, 0, 0)', G_TEXT = GLOBE_LIGHT ? '#000000' : '#e6e1d7', G_ACTIVE = GLOBE_LIGHT ? '#e2f86c' : '#6f695d', G_STONE = GLOBE_LIGHT ? '#e2f86c' : '#2b2925', G_QUIET = GLOBE_LIGHT ? '#404040' : '#c0c0c0';
+      // The land: the street map's stipple, in the line colour on the ground (the stone fill stays under the funding views' shades).
+      const G_LAND_FILL = globeStipple(G_GROUND, G_LINE) || G_LAND;
+      const MARK_R = atlasMarkR(currentRadius / baseRadius);
         // Second cue for the tier colour (WCAG 1.4.1): one outline per tier, on the pins and on the blocks.
-        const TIER_SHAPE = { A: 'circle', B: 'circle', U: 'circle' };
+        const TIER_SHAPE = { A: 'circle', B: 'square', U: 'triangle' };   // as the street map's marks: circle clean, square flagged, triangle unverified
         const TIER_SHAPE_SIZE = { circle: 3 };
       const dt = lastRenderTs ? Math.min(0.1, Math.max(0, (now - lastRenderTs) / 1000)) : 1 / 60;
       lastRenderTs = now;
@@ -11727,7 +11717,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           }
 
           // Countries shaded by the funding views (assets/funding-views.js) take their fill from there.
-          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_LAND)) || G_LAND);
+          ctx.fillStyle = isCActive ? G_ACTIVE : ((window.atlasCountryFill && window.atlasCountryFill(country.n, G_LAND)) || G_LAND_FILL);
 
           for (let j = 0; j < country.r.length; j++) {
             const ring = country.r[j];
@@ -11897,36 +11887,37 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         };
         // The type and outline colour of a city label, and of the card it opens into.
         const pillTextColor = (tier) => isGossipModeActive ? (GLOBE_LIGHT ? '#2a6010' : '#cfcfba') : (tier && typeof tier === 'object' ? spaceInk(tier, GLOBE_LIGHT) : tierInk(tier, GLOBE_LIGHT));
-        // THE SHEET: no pill, no outline and no dot. A name is type in the colour of its grade on a strip of the
-        // sheet's paper (user, 10 Nov 2026: "just colored text ... and color spases as well"); the selected name is in ink
-        // on a stone band with the grey rule round it. The strip is the size the old pill was (the name's width + 28, or
-        // + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box holds.
-        const drawPillLabel = (text, cx0, cy0, active, tier) => {
+        // A NAME IS A BUBBLE, as on the street map (sheet.css, #cityMapContainer.street-poster .inst-pin-label): ink, the
+        // name in the ground's colour, corners of 7px, and a tail toward its mark. It replaces the city's outlined pill and
+        // the space's plain coloured name of 16 Nov; the grade's colour is now on the mark. The box measured is the size the
+        // old pill was (the name's width + 28, or + ATLAS_SEL_PAD; 22 or ATLAS_SEL_H high), so every hit box and clash
+        // test holds; the bubble is drawn 5px in from each end of it. `mark` is the mark the tail points at: its centre and
+        // radius. Ground on ink is 21:1 on the light theme and 14:1 or better on the dark.
+        const drawPillLabel = (text, cx0, cy0, active, tier, mark) => {
           ctx.save();
           ctx.font = active ? atlasSelFont() : atlasMonoFont();
           const w = ctx.measureText(text).width + (active ? ATLAS_SEL_PAD : 28), h = active ? ATLAS_SEL_H : 22;
           const x0 = Math.round(cx0 - w / 2), y0 = Math.round(cy0 - h / 2);
-          // NAMES (user, 16 Nov 2026: "fix all name design", "dont need background or frame around it"): every name on the
-          // map is plain type with no block, pill or rule round it. A halo of the map's ground round the letters keeps it
-          // readable over coastlines and borders, as the money map sets its names. The box above is still measured, so the
-          // hit boxes and the clash tests hold. A city and the picked space are in ink (the picked one larger); a space's
-          // name takes its grade's colour.
-          const cityPill = !tier && !active;
-          if (cityPill) {
-            // Except a city: its name is back in a pill with a 1px ink outline on the map's ground (user, 16 Nov 2026, a
-            // screenshot of "Melbourne (11)": "bring back city like this"). Same box as before, so the hit boxes hold.
-            const rr = (h - 1) / 2;
+          const inset = active ? 7 : 5, bx0 = x0 + inset, bw0 = w - 2 * inset, rr = active ? 9 : 7;
+          const box = () => {
             ctx.beginPath();
-            if (ctx.roundRect) ctx.roundRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1, rr);
-            else { ctx.moveTo(x0 + 0.5 + rr, y0 + 0.5); ctx.arcTo(x0 + w - 0.5, y0 + 0.5, x0 + w - 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + w - 0.5, y0 + h - 0.5, x0 + 0.5, y0 + h - 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + h - 0.5, x0 + 0.5, y0 + 0.5, rr); ctx.arcTo(x0 + 0.5, y0 + 0.5, x0 + w - 0.5, y0 + 0.5, rr); ctx.closePath(); }
-            ctx.fillStyle = G_GROUND; ctx.fill();
-            ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1; ctx.stroke();
+            if (ctx.roundRect) ctx.roundRect(bx0, y0, bw0, h, rr);
+            else { ctx.moveTo(bx0 + rr, y0); ctx.arcTo(bx0 + bw0, y0, bx0 + bw0, y0 + h, rr); ctx.arcTo(bx0 + bw0, y0 + h, bx0, y0 + h, rr); ctx.arcTo(bx0, y0 + h, bx0, y0, rr); ctx.arcTo(bx0, y0, bx0 + bw0, y0, rr); ctx.closePath(); }
+          };
+          // A hairline of the ground round the bubble parts it from a mark or another bubble under it.
+          box(); ctx.strokeStyle = G_GROUND; ctx.lineWidth = 2; ctx.stroke();
+          ctx.fillStyle = G_TEXT;
+          if (mark) {
+            const tx = Math.max(bx0 + rr + 6, Math.min(bx0 + bw0 - rr - 6, mark.x));
+            const below = mark.y - mark.r - 1, above = mark.y + mark.r + 1;
+            ctx.beginPath();
+            if (below > y0 + h) { ctx.moveTo(tx - 6, y0 + h - 1); ctx.lineTo(tx + 6, y0 + h - 1); ctx.lineTo(tx, Math.min(below, y0 + h + 9)); ctx.closePath(); ctx.fill(); }
+            else if (above < y0) { ctx.moveTo(tx - 6, y0 + 1); ctx.lineTo(tx + 6, y0 + 1); ctx.lineTo(tx, Math.max(above, y0 - 9)); ctx.closePath(); ctx.fill(); }
           }
-          ctx.lineJoin = 'round'; ctx.lineWidth = 4; ctx.strokeStyle = G_GROUND;
-          ctx.fillStyle = (active || !tier) ? G_TEXT : pillTextColor(tier);
+          box(); ctx.fill();
+          ctx.fillStyle = G_GROUND;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
-          if (!cityPill) ctx.strokeText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.fillText(text, x0 + w / 2, y0 + h / 2 + 0.5);
           ctx.restore();
         };
@@ -11955,7 +11946,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             const sn = atlasLabelName(selectedInstitution.name, true);
             const sw = ctx.measureText(sn).width + ATLAS_SEL_PAD;
             ctx.restore();
-            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - ATLAS_SEL_H - ATLAS_PIN_CLEAR, w: sw, h: ATLAS_SEL_H });
+            drawnCityBoxes.push({ x: sp.x - sw / 2, y: sp.y - (MARK_R + 2) - ATLAS_TAIL - ATLAS_SEL_H, w: sw, h: ATLAS_SEL_H });
           }
         }
         try {
@@ -12026,10 +12017,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             }
 
             const bx = pt.x - bw / 2;
-            let by = pt.y - 28;
-            // The city whose place sheet is open has the pin on it (no space picked): its name goes above the pin's ball.
-            const pinOnCity = !selectedInstitution && window.atlasPlacePin && matchC(window.atlasPlacePin.name || '', city.name);
-            if (pinOnCity) by = pt.y - ATLAS_PIN_CLEAR - bh;
+            // The city whose place sheet is open (no space picked) is told as a picked city is: a larger bubble, a larger mark.
+            const isOpenCity = !selectedInstitution && window.atlasPlacePin && matchC(window.atlasPlacePin.name || '', city.name);
+            // A city's mark is a solid dot in the ink; its bubble stands a tail's length above it.
+            const cityR = (isSelected || isOpenCity) ? 5.5 : isHovered ? 5 : isClustered ? 4 : 3;
+            let by = pt.y - cityR - ATLAS_TAIL - bh - (isSelected || isOpenCity ? 5 : 0);
             // A city whose spaces fill a dot disk (Havana) puts its label above the disk, not on it.
             const ownDisk = isClustered ? null : lastCityDisks.get(city.name.toLowerCase().trim());
             if (ownDisk && ownDisk.y < by + bh + 2) by = ownDisk.y - bh - 2;
@@ -12051,7 +12043,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // A label cut by the screen edge reads as broken text: draw it only when it fits.
             const edgeInset = window.innerWidth < 768 ? 16 : 2;   // phone: keep labels inside the 16pt margins
             const clipped = bx < edgeInset || bx + bw > width - edgeInset;
-            if ((!collides && !clipped) || isSelected || isHovered) {
+            if ((!collides && !clipped) || isSelected || isHovered || isOpenCity) {
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               shownCityLabels.add(city.name);
               const limb = limbFade(pt.depth, 0.08);
@@ -12073,35 +12065,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                 });
               }
 
-              const badgeAlpha = (isSelected ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0)) * (isSelected || isHovered ? 1 : limb);
+              const badgeAlpha = (isSelected || isOpenCity ? 1.0 : (r > baseRadius * 10.0 ? Math.max(0, 1 - (r - baseRadius * 10.0) / (baseRadius * 4.0)) : 1.0)) * (isSelected || isHovered || isOpenCity ? 1 : limb);
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
 
-              if (isClustered) {
-                ctx.font = atlasMonoFont();
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                deferredPills.push([city.name + ' ' + countTxt, pt.x, by + bh / 2, !!isSelected, null, badgeAlpha]);
-
-                // Emerald Pin Anchor at (pt.x, pt.y) with subtle stem
-                ctx.beginPath();
-                ctx.arc(pt.x, pt.y, isHovered ? 5 : 4, 0, Math.PI * 2);
-                ctx.strokeStyle = G_LINE;
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-              } else {
-                ctx.font = atlasMonoFont();
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                deferredPills.push([txt, pt.x, by + bh / 2, !!isSelected, null, badgeAlpha]);
-
-                ctx.beginPath();
-                ctx.arc(pt.x, pt.y, isSelected || isHovered ? 4.5 : 3.5, 0, Math.PI * 2);
-                ctx.fillStyle = isSelected ? G_TEXT : G_GROUND; ctx.fill();
-                ctx.strokeStyle = G_LINE;
-                ctx.lineWidth = 0.8;
-                ctx.stroke();
-              }
+              deferredPills.push([isClustered ? city.name + ' ' + countTxt : txt, pt.x, by + bh / 2, !!(isSelected || isOpenCity), null, badgeAlpha, { x: pt.x, y: pt.y, r: cityR }]);
+              // The city's mark: a solid dot in the ink with a hairline of the ground round it, where the hollow ring was.
+              ctx.beginPath();
+              ctx.arc(pt.x, pt.y, cityR, 0, Math.PI * 2);
+              ctx.fillStyle = G_TEXT; ctx.fill();
+              ctx.strokeStyle = G_GROUND; ctx.lineWidth = 1; ctx.stroke();
 
               ctx.restore();
             }
@@ -12116,7 +12089,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             : (r < baseRadius * 0.85 ? Math.max(0, (r - baseRadius * 0.65) / (baseRadius * 0.2)) : 1.0);
           ctx.save();
           ctx.globalAlpha = fadeAlpha;
-          ctx.font = atlasMonoFont();
+          // Capitals at 14px, spaced, in 75% ink, as the street map sets the names of its squares and parks.
+          ctx.font = '400 14px ' + ATLAS_SERIF;
+          try { ctx.letterSpacing = '0.84px'; } catch (e) {}
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
 
@@ -12130,7 +12105,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             if (selectedCountryFilter === 'all' || isSel) {
               const pt = project(c.lon, c.lat, r, cx, cy);
               if (pt.front && pt.depth > 0.08) {
-                const ctw = ctx.measureText(c.name).width;
+                const cName = c.name.toUpperCase();
+                const ctw = ctx.measureText(cName).width;
                 const bw = ctw + 14;
                 const bh = 22;
                 const bx = pt.x - bw / 2;
@@ -12158,12 +12134,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
                   ctx.strokeStyle = G_HALO;
                   ctx.lineWidth = 3.0;
                   ctx.lineJoin = 'round';
-                  ctx.strokeText(c.name, pt.x, pt.y + 0.5);
+                  ctx.strokeText(cName, pt.x, pt.y + 0.5);
 
                   // Brilliant high-contrast text fill (pure white or vibrant yellow/cyan)
                   // A country's name is in 50% grey, with the map's lines: only the spaces and their cities are in full ink.
                   ctx.fillStyle = (isSel || isHov) ? G_TEXT : G_QUIET;
-                  ctx.fillText(c.name, pt.x, pt.y + 0.5);
+                  ctx.fillText(cName, pt.x, pt.y + 0.5);
                 }
               }
             }
@@ -12254,13 +12230,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const had = lastCityDisks.get(k);
           if (!had || box.w * box.h > had.w * had.h) lastCityDisks.set(k, box);
         });
-        const instDotBoxes = visibleDots.map(d => ({ x: d.x - 5, y: d.y - 5, w: 10, h: 10, inst: d.inst }));
+        const instDotBoxes = visibleDots.map(d => ({ x: d.x - MARK_R, y: d.y - MARK_R, w: 2 * MARK_R, h: 2 * MARK_R, inst: d.inst }));
 
         let activeMicroDot = null;
         const drawnInstLabelBoxes = [];
         const shownInstLabels = new Set();
 
-        visibleDots.forEach(d => {
+        // The picked and the hovered space are drawn last, so their marks stand over their neighbours'.
+        const dotOrder = (d) => (selectedInstitution && selectedInstitution.name === d.inst.name) ? 2 : (hoveredInstitution && hoveredInstitution.name === d.inst.name) ? 1 : 0;
+        [...visibleDots].sort((a, b) => dotOrder(a) - dotOrder(b)).forEach(d => {
           const isSel = selectedInstitution && selectedInstitution.name === d.inst.name;
           const isHov = hoveredInstitution && hoveredInstitution.name === d.inst.name;
 
@@ -12268,37 +12246,30 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             activeMicroDot = d;
           }
 
-          if (isSel) {
-            ctx.save();
-            ctx.beginPath();
-            ctx.arc(d.x, d.y, 6.5, 0, Math.PI * 2);
-            ctx.strokeStyle = G_LINE;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-            ctx.restore();
-          }
-
           const hasVc = d.inst.visual_critiques && d.inst.visual_critiques.length > 0;
 
           const limbD = (isSel || isHov) ? 1 : limbFade(d.depth, 0.05);
           ctx.save();
           ctx.globalAlpha = limbD;
-          const pinR = isSel ? 5 : isHov ? 4.5 : (isVisualCritiqueOnly && hasVc ? 4.5 : 3.5);
+          // A solid mark in the grade's colour and the tier's shape, as on the street map; the picked one is larger, with
+          // a ring of the ink round it where the pin stood, and the hovered one a little larger.
+          const pinR = MARK_R + (isSel ? 2 : isHov ? 1 : 0);
+          d.markR = pinR;
           const pinShape = TIER_SHAPE[d.inst.tier] || 'circle';
-          if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1)); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR, 0, Math.PI * 2); }
-          ctx.strokeStyle = isHov 
-            ? G_LINE
-            : (isVisualCritiqueOnly && hasVc)
+          const shapeR = pinR * (pinShape === 'square' ? 0.9 : pinShape === 'triangle' ? 1.12 : 1);
+          const markPath = (grow) => { if (window.atlasShapePath) window.atlasShapePath(ctx, pinShape, d.x, d.y, shapeR + grow); else { ctx.beginPath(); ctx.arc(d.x, d.y, pinR + grow, 0, Math.PI * 2); } };
+          const markInk = (isVisualCritiqueOnly && hasVc)
             ? (GLOBE_LIGHT ? '#cc8308' : '#f59e0b')
-            : isGossipModeActive 
+            : isGossipModeActive
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#cfcfba') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
             : spaceInk(d.inst, GLOBE_LIGHT);
-          // Hollow rings in the grade's colour, the same as the name above it; the selected one is filled. In gossip mode a space with gossip is a filled green dot (lime on the dark theme).
-          ctx.lineWidth = 0.8;
-          // On the stone land a ring is filled with paper, so it reads as a ring.
-          ctx.fillStyle = (isSel || (isGossipModeActive && hasGossip(d.inst))) ? ctx.strokeStyle : G_GROUND; ctx.fill();
-          ctx.lineWidth = 1;
-          ctx.stroke();
+          ctx.lineJoin = 'round';
+          if (isSel) { markPath(3.5); ctx.fillStyle = G_GROUND; ctx.fill(); ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1.5; ctx.stroke(); }
+          markPath(0);
+          // In gossip mode a space with no gossip stays a hollow outline, so the ones with gossip stand out as before.
+          const hollow = isGossipModeActive && !hasGossip(d.inst) && !isSel;
+          ctx.fillStyle = hollow ? G_GROUND : markInk; ctx.fill();
+          ctx.strokeStyle = hollow ? markInk : G_GROUND; ctx.lineWidth = 1; ctx.stroke();
           ctx.restore();
 
           // Institution label on 3D globe
@@ -12337,11 +12308,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            let by = isSel ? d.y - ATLAS_SEL_H - ATLAS_PIN_CLEAR : d.y - 18;   // the picked space has the pin on it
-            if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, d.y + 8)) by = d.y + 8;
+            const off = d.markR * 1.12 + ATLAS_TAIL, yAbove = d.y - off - bh, yBelow = d.y + off;   // 1.12: a triangle stands taller than its radius
+            let by = yAbove;
+            if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, yBelow)) by = yBelow;
             // Another space's dot under the label hides it; the label then tries clear above its own dot, then below.
             const onDot = (y) => !isSel && instDotBoxes.some(box => box.inst !== d.inst && !(bx + bw < box.x || bx > box.x + box.w || y + bh < box.y || y > box.y + box.h));
-            if (onDot(by)) by = [d.y - bh - 5, d.y + 5].find(y => !onDot(y) && !clashes(drawnCityBoxes, y)) ?? by;
+            if (onDot(by)) by = [yAbove, yBelow].find(y => !onDot(y) && !clashes(drawnCityBoxes, y)) ?? by;
             const collidesWithOtherLabel = clashes(drawnInstLabelBoxes, by);
             const collidesWithCity = clashes(drawnCityBoxes, by);
             const collidesWithDot = onDot(by);
@@ -12351,7 +12323,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst);
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst, { x: d.x, y: d.y, r: d.markR * 1.12 });
             }
             ctx.restore();
           }
@@ -12363,7 +12335,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (window.atlasInfluenceDraw && !isCityStreetViewActive) window.atlasInfluenceDraw(ctx, project, r, cx, cy, G_GROUND, G_TEXT);   // assets/influence-mode.js: the funders, in place of the spaces
 
         // 8.4 City labels on top of the dots
-        deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4]); ctx.restore(); });
+        deferredPills.forEach(p => { ctx.save(); ctx.globalAlpha = p[5]; drawPillLabel(p[0], p[1], p[2], p[3], p[4], p[6]); ctx.restore(); });
         // The money map's mode: a wash over the map and the funders' names, over everything else (assets/layers.js, MONEY MODE).
         if (window.atlasLayersDrawLate) window.atlasLayersDrawLate(ctx, G_GROUND);
         // No hover cards on the map (user, 11 Nov 2026: "make it work similar to Google Maps ... the info shows in sheet not like
@@ -12374,11 +12346,6 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         isHoveringCityExploreLink = false;
         hoveredMicroCardHitbox = null;
         void activeMicroDot;
-
-        // The dropped pin: the place whose sheet is open gets a pin over its dot, as a maps app drops one on the place it
-        // shows. It is drawn on the card layer, over the fog, and falls into place over 220ms when the place changes.
-        drawDroppedPin(cardCtx, project, r, cx, cy, now, G_TEXT, G_GROUND);
-
 
 
       // Live Cartographic HUD (Scale Bar, Coordinates, Interactive Compass Rose)
@@ -22451,24 +22418,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=857"></script>
-<script src="assets/note-aids.js?v=857" defer></script>
-<script src="assets/place-list.js?v=857" defer></script>
-<script src="assets/chat-share.js?v=857" defer></script>
-<script src="assets/note-files.js?v=857" defer></script>
-<script src="assets/funding-views.js?v=857"></script>
-<script src="assets/layers.js?v=857"></script>
-<script src="assets/critique-gallery-data.js?v=857"></script>
-<script src="assets/critique-captions.js?v=857"></script>
-<script src="assets/critique-gallery.js?v=857"></script>
-<script src="assets/hq-detail.js?v=857"></script>
-<script src="assets/influence-mode.js?v=857"></script>
-<script src="assets/bubbles.js?v=857" defer></script>
-<script src="assets/phone-maps.js?v=857"></script>
-<script src="assets/desktop-maps.js?v=857"></script>
-<script src="assets/chat-resize.js?v=857"></script>
-<script src="assets/frame-refusers.js?v=857"></script>
-<script src="assets/link-pane.js?v=857"></script>
-<script src="assets/tab-suggest.js?v=857"></script>
+<script src="assets/typeset.js?v=858"></script>
+<script src="assets/note-aids.js?v=858" defer></script>
+<script src="assets/place-list.js?v=858" defer></script>
+<script src="assets/chat-share.js?v=858" defer></script>
+<script src="assets/note-files.js?v=858" defer></script>
+<script src="assets/funding-views.js?v=858"></script>
+<script src="assets/layers.js?v=858"></script>
+<script src="assets/critique-gallery-data.js?v=858"></script>
+<script src="assets/critique-captions.js?v=858"></script>
+<script src="assets/critique-gallery.js?v=858"></script>
+<script src="assets/hq-detail.js?v=858"></script>
+<script src="assets/influence-mode.js?v=858"></script>
+<script src="assets/bubbles.js?v=858" defer></script>
+<script src="assets/phone-maps.js?v=858"></script>
+<script src="assets/desktop-maps.js?v=858"></script>
+<script src="assets/chat-resize.js?v=858"></script>
+<script src="assets/frame-refusers.js?v=858"></script>
+<script src="assets/link-pane.js?v=858"></script>
+<script src="assets/tab-suggest.js?v=858"></script>
 </body>
 </html>

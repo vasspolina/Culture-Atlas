@@ -5089,7 +5089,8 @@ body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="B"] .inst-pin-dot{width:16px!important;height:16px!important;border-radius:0!important}
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="U"] .inst-pin-dot{width:22px!important;height:19px!important;border-radius:0!important;clip-path:polygon(50% 0,100% 100%,0 100%)}
 /* No dropped pin close in (user, 18 Nov 2026: "dont do pins"): the open space is told by its bubble, which carries its grade.
-   The globe keeps its pin. */
+   The globe has none either since 20 Nov 2026 ("delete those pins and put dots and triangles instead"): its marks are the
+   same solid circle, square and triangle, drawn on the canvas in index.html. */
 #cityMapContainer.street-poster .atlas-drop-pin{display:none!important}
 
 /* The scale bar, set as the print's: an ink rule with its ticks, the figure in 14px. Close in only. */
