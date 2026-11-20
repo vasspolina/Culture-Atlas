@@ -7,7 +7,7 @@
 //
 // This Worker takes no notes and no reviews. Whistleblower reviews go to the report API (server/).
 //
-// Bindings (see worker/wrangler.toml and the README):
+// Bindings (see worker/wrangler.toml and docs/api.md):
 //   AI               Workers AI binding
 //   SUBMISSIONS      KV namespace (holds only the hourly rate counters)
 //   ALLOWED_ORIGINS  comma-separated origins allowed to call the API

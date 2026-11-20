@@ -37,7 +37,7 @@
   // The sentences of a space's funding line (else its note) that name this funder: what the space's own record says it gave.
   function giftLines(rec, names) {
     const low = names.map(n => n.toLowerCase()).filter(n => n.length > 2);
-    for (const text of [rec.f, rec.w]) {
+    for (const text of [rec.f, rec.w, rec.why]) {
       const hit = String(text || '').split(/(?<=[.!?])\s+(?=[A-Z0-9"\u201c$\u00a3\u20ac])/).filter(x => { const l = x.toLowerCase(); return low.some(n => l.includes(n)); });
       if (hit.length) return hit.slice(0, 2).join(' ');
     }
@@ -240,7 +240,8 @@
     if (ready) {
       // The other spellings only: the funder's own name is the title above, and the sentence that explained the list is gone
       // (user, 9 Nov 2026: "Slop"). No row when every funding line spells it as the title does.
-      const names = hq().names(e), others = names.filter(n => n !== e.n);
+      // `sn` is the profile's short name (tools/build_hq.py): one more spelling the records can use for this funder.
+      const names = hq().names(e).concat(e.sn && !hq().names(e).some(n => n.toLowerCase() === e.sn.toLowerCase()) ? [e.sn] : []), others = names.filter(n => n !== e.n);
       // The profile: what the funder is, where its money comes from, what it gives to culture, each a sentence from a
       // source opened for it, with those sources under them; then the dated facts the influence study read.
       if (pf) {

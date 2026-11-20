@@ -56023,9 +56023,10 @@
     "lon": 18.078149,
     "tier": "U",
     "size": "S",
-    "funding": "Bonnier family (media) founder money.",
+    "funding": "Region Stockholm gives SEK 300,000 a year for 2025 and 2026, after SEK 250,000 in 2024. The City of Stockholm and the Swedish Arts Council also fund it.",
     "sources": [
-      "https://www.bonnierskonsthall.se"
+      "https://regionstockholm.se/4afbdf/siteassets/kultur/villkor-stod/beslutsdokument-stod/beslut-verksamhetsstod-2025-.pdf",
+      "https://www.konsthallc.se/"
     ],
     "website": "https://konsthallc.se",
     "year_founded": 2004,
@@ -68930,9 +68931,10 @@
     "name": "Nezu Museum",
     "location": "Tokyo, Japan",
     "tier": "U",
-    "funding": "Chairman Koichi Nezu is honorary chairman of Tobu Department Store; councillor Yoshizumi Nezu chairs Tobu Railway.",
+    "funding": "A foundation set up in 1940 by Nezu Kaichir\u014d Jr. to keep the art collection of his father, a president of T\u014dbu Railway; it opened the museum in 1941.",
     "sources": [
-      "https://www.nezu-muse.or.jp/jp/foundation/index.html"
+      "https://www.nezu-muse.or.jp/jp/foundation/index.html",
+      "https://www.nezu-muse.or.jp/en/about/index.html"
     ],
     "lat": 35.662,
     "lon": 139.717,
@@ -69034,7 +69036,8 @@
       ],
       "level": 2,
       "level_basis": ""
-    }
+    },
+    "watch": "Chairman Koichi Nezu is honorary chairman of Tobu Department Store; councillor Yoshizumi Nezu chairs Tobu Railway."
   },
   {
     "name": "Watari-um",
@@ -101277,7 +101280,7 @@
     "location": "Moscow, Russia",
     "tier": "U",
     "size": "L",
-    "funding": "Funded through the V-A-C Foundation, endowed by Leonid Mikhelson, CEO and key shareholder of Novatek, Russia's major natural gas producer.",
+    "funding": "The V-A-C Foundation funds it. Leonid Mikhelson, chief executive and key shareholder of the gas producer Novatek, endowed the foundation.",
     "watch": "Opened Dec 2021 as Russia's largest private art centre. Francesco Manacorda resigned as artistic director Mar 2022. Alisa Prudnikova became director in 2023.",
     "sources": [
       "https://www.forbes.com/profile/leonid-mikhelson/",
@@ -128112,7 +128115,9 @@
     "tier": "B",
     "sources": [
       "https://www.afar.com/places/centro-leon-santiago-de-los-caballeros",
-      "https://fundacionleon.org.do/en/nuestrosproyectos/eduardo-leon-jimenes-cultural-center/"
+      "https://fundacionleon.org.do/en/nuestrosproyectos/eduardo-leon-jimenes-cultural-center/",
+      "https://es.wikipedia.org/wiki/Grupo_Le%C3%B3n_Jimenes",
+      "https://es.wikipedia.org/wiki/Centro_Cultural_Eduardo_Le%C3%B3n_Jimenes"
     ],
     "lat": 19.4632769,
     "lon": -70.6706827,
@@ -128124,7 +128129,7 @@
     "flags": [
       "Tobacco"
     ],
-    "why_flagged": "Eduardo Le\u00f3n Jimenes, founder of the Aurora tobacco company, endowed the museum.",
+    "why_flagged": "The foundation behind the museum belongs to Grupo Le\u00f3n Jimenes, the Le\u00f3n family's group, built on the La Aurora cigar factory and, from 1963 to 2006, a cigarette business with Philip Morris.",
     "grade": 4,
     "grade_basis": "A funder tied to tobacco.",
     "visual_critiques": [
@@ -128237,7 +128242,7 @@
       "website": "https://centroleon.org.do",
       "retrieved": "2026-10-20"
     },
-    "funding": "The Eduardo Le\u00f3n Jimenes Foundation, Inc. runs Centro Le\u00f3n. Its founder, the Aurora tobacco company founder Eduardo Le\u00f3n Jimenes, endowed it.",
+    "funding": "Run by the Eduardo Le\u00f3n Jimenes Foundation, which opened it in 2003. Grupo Le\u00f3n Jimenes, the Le\u00f3n family's group built on the La Aurora cigar factory, stands behind the foundation.",
     "bureaucracy": {
       "legal_form": "private foundation",
       "parent": "Fundaci\u00f3n Eduardo Le\u00f3n Jimenes, Inc.",
@@ -138163,11 +138168,12 @@
     "country": "Norway",
     "location": "Karasjok, Norway",
     "tier": "U",
-    "funding": "2025 revenue NOK 7.9M; S\u00e1mi Parliament direct grant NOK 6.09M (2025), plus Troms og Finnmark county.",
+    "funding": "2025 revenue NOK 7.9M; S\u00e1mi Parliament direct grant NOK 6.09M (2025). Finnmark county, Troms county and Arts Council Norway are shown as funders on its site.",
     "watch": "S\u00e1mi contemporary art centre, founded 1986, a foundation since 2013. The director and several board members changed over 2025-26.",
     "sources": [
       "https://sametinget.no/_f/p1/i92db92c6-bc83-4f9c-b79b-428e58c4c2c3/sametingets-budsjett-2025-vedtatt-051224.pdf",
-      "https://www.proff.no/roller/stiftelsen-s%C3%A0mi-d%C3%A0iddaguovdd%C3%A0s/-/-/912625281/"
+      "https://www.proff.no/roller/stiftelsen-s%C3%A0mi-d%C3%A0iddaguovdd%C3%A0s/-/-/912625281/",
+      "https://samidaiddaguovddas.no/en/about/"
     ],
     "lat": 69.469917,
     "lon": 25.511226,
@@ -192218,12 +192224,12 @@
     "lat": 39.012,
     "lon": 125.752,
     "id": "sek-studio",
-    "funding": "Owned by the Government of North Korea. It earns foreign currency subcontracting animation for overseas clients; Italy's Mondo TV paid it about $538,000 between 2019 and 2021, per OFAC.",
+    "funding": "Owned by the Government of North Korea. It earns foreign currency subcontracting animation for overseas clients.",
     "flags": [
       "Sanctions"
     ],
-    "why_flagged": "Owned by the Government of North Korea. It earns foreign currency subcontracting animation for overseas clients; Italy's Mondo TV paid it about $538,000 between 2019 and 2021, per OFAC.",
-    "watch": "OFAC listed it on 10 December 2021, together with three Chinese front companies and a Chinese national who facilitated its wire transfers.",
+    "why_flagged": "Owned by the Government of North Korea. It earns foreign currency subcontracting animation for overseas clients.",
+    "watch": "OFAC listed it on 10 December 2021, together with three Chinese front companies and a Chinese national who facilitated its wire transfers. Its client Mondo TV of Italy paid it about $538,000 between 2019 and 2021, per OFAC.",
     "details": {
       "overview": [
         "State-owned animation studio in Ot'an-dong, Central District, Pyongyang, also called the Korean April 26 Animation Studio (Wikipedia).",
