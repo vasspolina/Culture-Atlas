@@ -184,7 +184,7 @@
     if (!placeName || !insts || !insts.length) return '';
     var tally = {}, flagged = [], funders = {}, figs = [];
     insts.forEach(function (i) {
-      var k = i.grade ? 'Grade ' + letter(i, GRADE) : 'ungraded';
+      var k = i.grade ? 'Grade ' + letter(i, GRADE) : 'not graded';
       tally[k] = (tally[k] || 0) + 1;
       if (i.why_flagged || (i.flags || []).length) flagged.push(i);
       (i.funder_links || []).forEach(function (x) { if (x && x.funder) funders[x.funder] = (funders[x.funder] || 0) + 1; });
@@ -193,7 +193,7 @@
     var lines = [
       'Place: ' + placeName,
       'Museums on the atlas: ' + insts.length,
-      'Grades: ' + Object.keys(tally).sort().map(function (k) { return tally[k] + ' ' + k; }).join(', '),
+      'Grades: ' + Object.keys(tally).sort().map(function (k) { return tally[k] + ' ' + k; }).join(', ') + (tally['not graded'] ? ' (not graded because ' + UNGRADED_WHY + ')' : ''),
       'All museums (grade): ' + insts.slice().sort(function (a, b) { return (a.grade || 9) - (b.grade || 9) || a.name.localeCompare(b.name); }).map(function (i) { return i.name + (i.grade ? ' (' + letter(i, GRADE) + ')' : ''); }).slice(0, 80).join('; ') + (insts.length > 80 ? ' …' : '')
     ];
     if (flagged.length) lines.push('Flagged, with the reason on record: ' + flagged.slice(0, 25).map(function (i) { return i.name + ' — ' + cut(i.why_flagged || (i.flags || []).join(', '), 160); }).join(' | '));
@@ -204,7 +204,60 @@
     return '<place_summary>\n' + lines.join('\n') + '\n</place_summary>';
   }
 
-  var api = { formatRecord: formatRecord, placeSummary: placeSummary, FULL: FULL, SHORT: SHORT };
+  // Why a record carries no grade, in the words every count of ungraded records is followed by (user, 20 Nov 2026: "713 of
+  // 2,091 spaces are ungraded. Say why ... so it reads as honesty, not a gap"). tools/grade_funding.py leaves a record
+  // ungraded when no source outside the museum lists its funders; most of them still carry the museum's own funding line.
+  var UNGRADED_WHY = 'no outside source lists their funders yet';
+
+  // What funders got in return at one museum, or what one funder got across museums, from the influence ledger
+  // (assets/influence.json: each tie is a sentence of a record, with the kinds of thing that came with the money). A tie the
+  // ledger marks "money only" states nothing in return, and a tie with no kind is a protest or a resignation, so neither is
+  // listed. opts.space is a record id, opts.funders the ledger keys to keep (all when empty), opts.labels the page's words
+  // for each kind. Items come funder by funder, the funder with the most first, and newest first within a funder.
+  function returnsFor(ledger, opts) {
+    opts = opts || {};
+    var keep = opts.funders && opts.funders.length ? opts.funders : null;
+    var labels = opts.labels || {};
+    var groups = [];
+    ((ledger && ledger.funders) || []).forEach(function (f) {
+      if (keep && keep.indexOf(f.key) < 0) return;
+      var ties = (f.ties || []).filter(function (t) {
+        return (!opts.space || t.space === opts.space) && (t.kinds || []).some(function (k) { return k !== 'money'; });
+      });
+      if (!ties.length) return;
+      ties.sort(function (a, b) { return String(b.date || '0').localeCompare(String(a.date || '0')); });
+      groups.push({ funder: f.name, key: f.key, ties: ties });
+    });
+    groups.sort(function (a, b) { return b.ties.length - a.ties.length || a.funder.localeCompare(b.funder); });
+    var items = [];
+    groups.forEach(function (g) {
+      g.ties.forEach(function (t) {
+        var what = t.kinds.filter(function (k) { return k !== 'money'; }).map(function (k) { return labels[k] || k; });
+        items.push({ funder: g.funder, key: g.key, space: t.space, space_name: t.space_name, what: what, summary: clean(t.summary), ended: !!t.ended });
+      });
+    });
+    return items;
+  }
+
+  // The same items as the lines the chat prints: "BP: a building or endowment. £50M over ten years …". opts.bySpace names the
+  // museum in each line (a funder's ledger across museums), with the funder before it when opts.withFunder; opts.max cuts the
+  // list and the last line says how many more.
+  function returnsMarkdown(items, opts) {
+    opts = opts || {};
+    if (!items || !items.length) return '';
+    var max = opts.max || 12;
+    var low = function (s) { s = String(s || ''); return s.charAt(0).toLowerCase() + s.slice(1); };
+    var end = function (s) { return /[.!?]$/.test(s) ? s : s + '.'; };
+    var lines = items.slice(0, max).map(function (x) {
+      var who = opts.bySpace ? (opts.withFunder ? x.funder + ' at ' : '') + (x.space_name || x.space) : x.funder;
+      var closed = x.ended && !/\b(ended|until|removed|dropped|withdr[ae]w\w*|left|returned|refused|cut)\b/i.test(x.summary) ? ' The tie has ended.' : '';
+      return '- ' + who + ': ' + x.what.map(low).join(' and ') + '. ' + end(x.summary) + closed;
+    });
+    if (items.length > max) lines.push('- ' + (items.length - max) + ' more on the record.');
+    return lines.join('\n');
+  }
+
+  var api = { formatRecord: formatRecord, placeSummary: placeSummary, returnsFor: returnsFor, returnsMarkdown: returnsMarkdown, UNGRADED_WHY: UNGRADED_WHY, FULL: FULL, SHORT: SHORT };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.AtlasGrounding = api;
 })(typeof window !== 'undefined' ? window : globalThis);
