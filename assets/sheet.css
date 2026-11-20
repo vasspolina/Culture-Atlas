@@ -2615,6 +2615,8 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 .sh-web .sh-web-hint:not([hidden]){flex:0 0 auto!important;margin:0!important;padding:calc(var(--sh-pad) / 3) var(--sh-pad)!important;border-bottom:1px solid var(--sh-rule)!important;background:var(--sh-paper)!important;text-indent:0!important;text-align:center!important}
 .sh-web .sh-web-hint a{color:var(--sh-fold)!important;text-decoration:underline!important;text-underline-offset:.2em!important}
 .sh-web .sh-web-hint a:is(:hover,:focus-visible){color:var(--sh-hover)!important}
+}
+
 /* ==== THE CHAT'S TWO SHARE LINES ARE BUTTONS (user, 20 Nov 2026: "make share information or fill in the form buttons") ====
    "Share information about ..." and "Or fill in a form" under each answer were two lines of the chat's dashed suggestion
    list, set in green. They are buttons in a row, as the choices under Clio's questions are: round ends, a thin green
