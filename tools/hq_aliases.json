@@ -77,7 +77,8 @@
  "cityoffrankfurtcultureoffice|Germany": [
   "cityoffrankfurtcultureoffice|Germany",
   "frankfurtsculture",
-  "cityoffrankfurtculturaloffice|Germany"
+  "cityoffrankfurtculturaloffice|Germany",
+  "cityoffrankfurt|Germany"
  ],
  "cityoffribourg|Switzerland": [
   "citygovernment|friart-kunsthalle-fribourg"
@@ -92,12 +93,14 @@
  "cityofoslo|Norway": [
   "cityofosloscultureagency|Norway",
   "oslocityalsosupportit|Norway",
-  "oslomunicipality|Norway"
+  "oslomunicipality|Norway",
+  "oslocity|Norway"
  ],
  "cityofstuttgart|Germany": [
   "cityofstuttgart|Germany",
   "stuttgartcouncil|Germany",
-  "cityofstuttgartculturaloffice|Germany"
+  "cityofstuttgartculturaloffice|Germany",
+  "stuttgartscultureoffice"
  ],
  "cityofturinculturaldepartment|Italy": [
   "comuneditorino|Italy",
@@ -136,7 +139,8 @@
   "creativeeuropeprogrammeofeuropeanunion|Netherlands",
   "creativeeuropeprogrammeofeu|Spain",
   "creativeeurope|Hungary",
-  "creativeeurope|Belgium"
+  "creativeeurope|Belgium",
+  "euscreativeeurope|Germany"
  ],
  "creativeindustriesnl": [
   "stimuleringsfondscreatieveindustrie",
@@ -182,7 +186,9 @@
   "bmks",
   "bundesministeriumfrkunstundkultur",
   "austrianfederalgovernment|Austria",
-  "federalministryforartsculture|Austria"
+  "federalministryforartsculture|Austria",
+  "federalministrysubsidy|Austria",
+  "federalministryforartsculturecivilserviceandsport|Austria"
  ],
  "flemishgovernment|Belgium": [
   "flemishgovernment|Belgium",
@@ -204,15 +210,19 @@
   "gemeenterotterdameur|Netherlands",
   "gemeenterotterdamgiveannual|Netherlands",
   "cityofrotterdam|Netherlands",
-  "rotterdam"
+  "rotterdam",
+  "rotterdammunicipalitysubsidy|Netherlands"
  ],
  "generalitatdecatalunyadepartmentofculture|Spain": [
   "generalitatdecatalunyadepartmentofculture|Spain",
   "generalitat|Spain",
-  "generalitatdecatalunya"
+  "generalitatdecatalunya",
+  "generalitatdecatalunya|Spain",
+  "consortiumcomprisinggeneralitatdecatalunya|Spain"
  ],
  "glasgowcitycouncil|United Kingdom": [
-  "glasgowcitycouncil|UK"
+  "glasgowcitycouncil|UK",
+  "managedbyglasgowlifeforglasgowcitycouncil|UK"
  ],
  "glasgowliferun": [
   "glasgowlife",
@@ -224,13 +234,15 @@
  "hamburgministryofculture|Germany": [
   "hamburgsbehrdefrkulturundmedien",
   "ministryofculture|kunstverein-in-hamburg",
-  "hanseaticcityofhamburg|Germany"
+  "hanseaticcityofhamburg|Germany",
+  "hamburgeach"
  ],
  "hessianministryforscience|Germany": [
   "hessianscience",
   "hessensscience",
   "hessenartsministry|Germany",
-  "stateofhesse|Germany"
+  "stateofhesse|Germany",
+  "hessianministryofscienceandart|Germany"
  ],
  "italianministryofculture|Italy": [
   "ministryofculture|uffizi",
@@ -238,7 +250,13 @@
   "ministryofculture|quadriennale-di-roma",
   "ministryofcultureeur|Italy",
   "ministryofculture|maxxi",
-  "italiancouncil|Italy"
+  "italiancouncil|Italy",
+  "ministryinvestmenttransfersof|Italy",
+  "ministryofcultureassignedit|Italy",
+  "ministryofculture|reggia-di-venaria",
+  "ministryspianoolivettiperlacultura|Italy",
+  "ministrytransfers|Italy",
+  "stateinstituteofministryofculture|Italy"
  ],
  "lacountydepartmentofarts|United States": [
   "losangelescountyartscommission|United States",
@@ -283,7 +301,8 @@
   "ocwit",
   "dutchministryofeducation|Netherlands",
   "dutchministryofocw|Netherlands",
-  "dutcheducationministry|Netherlands"
+  "dutcheducationministry|Netherlands",
+  "almostwhollydutchstate|Netherlands"
  ],
  "municipalityofmiddelburg|Netherlands": [
   "cityofmiddelburg|Netherlands"
@@ -306,7 +325,8 @@
   "nycculturalaffairs|USA",
   "newyorkcitydepartmentofculturalaffairs|United States",
   "newyorkcitydepartmentofculturalaffairs|USA",
-  "dcla"
+  "dcla",
+  "newyorkcity|USA"
  ],
  "pirellionly": [
   "pirelli"
@@ -320,7 +340,8 @@
   "polishcultureministry|UK",
   "ministryofculture|msn-warsaw",
   "polishministryofcultureandnationalheritage|Poland",
-  "polandsministryofcultureandnationalheritage|Poland"
+  "polandsministryofcultureandnationalheritage|Poland",
+  "ministryofcultureandnationalheritage|Poland"
  ],
  "praguecityhall|Czech Republic": [
   "cityofprague|Czechia",
@@ -338,10 +359,12 @@
  ],
  "provinceofstyriaculturaldepartment|Austria": [
   "landsteiermarkculturedepartment|Austria",
-  "landsteiermark|Austria"
+  "landsteiermark|Austria",
+  "provinceofstyria|Austria"
  ],
  "provincialcouncilofbiscay|Spain": [
-  "diputacinforaldebizkaia|Spain"
+  "diputacinforaldebizkaia|Spain",
+  "provincialcouncilofbizkaia|Spain"
  ],
  "provinciefrysln": [
   "provinsjefryslngivesafixedsubsidy"
@@ -368,7 +391,8 @@
  "senatedepartmentforculture|Germany": [
   "berlinsenatedepartmentforculture|Germany",
   "berlinsenatedepartmentforcultureandsocialcohesion|Germany",
-  "senatedepartmentforcultureandcommunityofstateofberlin|Germany"
+  "senatedepartmentforcultureandcommunityofstateofberlin|Germany",
+  "berlinssenatedepartmentforcultureandsocialcohesion|Germany"
  ],
  "sida": [
   "sida",
@@ -408,7 +432,8 @@
   "niederschsischesministeriumfrwissenschaftundkultur"
  ],
  "stateofsopaulo|Brazil": [
-  "sopaulostate|Brazil"
+  "sopaulostate|Brazil",
+  "sopaulostateculturesecretariat|Brazil"
  ],
  "sura": [
   "sura",
@@ -527,7 +552,8 @@
  ],
  "federalgovernmentcommissionerforculture|Germany": [
   "beauftragtefrkulturundmedien",
-  "federalgovernmentcommissionerforcultureandmedia|Germany"
+  "federalgovernmentcommissionerforcultureandmedia|Germany",
+  "federalgovernmentcommissionerforculturalaffairsandmedia|Germany"
  ],
  "alkenmaes": [
   "maes"
@@ -542,7 +568,9 @@
   "ferozegujral"
  ],
  "goetheinstitut": [
-  "goetheinstitute"
+  "goetheinstitute",
+  "goetheinstitutdhaka",
+  "goetheinstitutnewdelhi"
  ],
  "municipalmuseumofcityofkrakw|Poland": [
   "cityofkrakow|Poland"
@@ -557,7 +585,8 @@
   "enbw"
  ],
  "cityofsanfrancisco|USA": [
-  "grantsforarts"
+  "grantsforarts",
+  "sanfranciscograntsforarts"
  ],
  "unam": [
   "patronatouniversitariounam"
@@ -565,16 +594,23 @@
  "frenchstate|France": [
   "stategovernment|louvre-paris",
   "stategovernment|pictanovo-tourcoing",
-  "frenchstate|New Caledonia"
+  "frenchstate|New Caledonia",
+  "stateoperatingsubsidyneareur|France",
+  "state|France",
+  "stateoperatingsubsidynear|France"
  ],
  "dcmsstatutorygrantinaid|UK": [
   "government|national-gallery-london",
-  "dcms|UK"
+  "dcms|UK",
+  "departmentforculturemediaandsport|UK",
+  "dcmsgrantinaid|UK",
+  "dcmspublicbodiesinfrastructure"
  ],
  "russianfederalstate|Russia": [
   "russianstate|Russia",
   "russianministryofculture|Russia",
-  "russianstate|Italy"
+  "russianstate|Italy",
+  "russiasministryofculture|Russia"
  ],
  "cityofkarlsruhedepartmentofculturalaffairs|Germany": [
   "cityofkarlsruhe|Germany"
@@ -617,7 +653,16 @@
   "europeanunion|Georgia",
   "europeanunion|Ghana",
   "europeanunion|Norway",
-  "europeanunion|Uganda"
+  "europeanunion|Uganda",
+  "erasmus",
+  "euacpcultures|Senegal",
+  "eufinancedunescotransculturasuppliedequipment|Cuba",
+  "eufundednationalrecoveryplan|Czechia",
+  "euprogrammes|Slovenia",
+  "europeancommission|Italy",
+  "eusocialentrepreneurshipfinancing|Latvia",
+  "nextgenerationeu",
+  "euproject|Netherlands"
  ],
  "frittordprojects": [
   "frittord"
@@ -626,7 +671,9 @@
   "institutoculturalvale"
  ],
  "landberlin|Germany": [
-  "stateofberlin|Germany"
+  "stateofberlin|Germany",
+  "berlin",
+  "berlincut"
  ],
  "augustinusfonden": [
   "augustinus"
@@ -635,13 +682,15 @@
   "barcelonacitycouncil|Spain"
  ],
  "losangelescounty|USA": [
-  "countyoflosangeles|USA"
+  "countyoflosangeles|USA",
+  "losangelescountyartscommission|USA"
  ],
  "paulgettytrust": [
   "jpaulgettytrust"
  ],
  "lvmhlouisvuitton": [
-  "lvmh"
+  "lvmh",
+  "lvmhcompanies"
  ],
  "provinceofbc|Canada": [
   "provinceofbritishcolumbia|Canada"
@@ -684,17 +733,20 @@
   "christiandiorcouture"
  ],
  "lacity|USA": [
-  "cityoflosangelesdepartmentofculturalaffairs|USA"
+  "cityoflosangelesdepartmentofculturalaffairs|USA",
+  "cityoflosangeles|USA"
  ],
  "portomunicipality|Portugal": [
-  "cmaramunicipaldoporto|Portugal"
+  "cmaramunicipaldoporto|Portugal",
+  "municipalityofporto|Portugal"
  ],
  "calq": [
   "conseildesartsetdeslettresduqubec"
  ],
  "norwegianministryofculture|Norway": [
   "cultureministry|Norway",
-  "norwegianministryofcultureandequality|Norway"
+  "norwegianministryofcultureandequality|Norway",
+  "ministryofcultureandequality|Norway"
  ],
  "estrelladamm": [
   "damm"
@@ -709,17 +761,21 @@
   "epson"
  ],
  "europeanregionaldevelopment": [
-  "erdf"
+  "erdf",
+  "euserdf|Czechia"
  ],
  "finnishministryofeducation|Finland": [
   "finnishministryofeducationandculture|Finland",
-  "finlandsministryofeducationandculture|Finland"
+  "finlandsministryofeducationandculture|Finland",
+  "finnishstate|Finland",
+  "ministryofeducationandculture|Finland"
  ],
  "fondazionebancadelmontedilombardia": [
   "fondazionemontedilombardia"
  ],
  "fundacilacaixa": [
-  "fundacinlacaixa"
+  "fundacinlacaixa",
+  "fundaobpilacaixa"
  ],
  "galleriessuchasgagosian": [
   "gagosian"
@@ -740,7 +796,8 @@
   "governmentofsouthaustralia|Australia"
  ],
  "greekministryofculture|Greece": [
-  "hellenicministryofculture|Greece"
+  "hellenicministryofculture|Greece",
+  "hellenicministryofcultureandsports|Greece"
  ],
  "lucefdn": [
   "henryluce"
@@ -804,7 +861,8 @@
   "samdaniart"
  ],
  "sloveniasministryofculture|Slovenia": [
-  "slovenianministryofculture|Slovenia"
+  "slovenianministryofculture|Slovenia",
+  "ministryofculture|plecnik-house"
  ],
  "louisartmuseum": [
   "stlouisartmuseum"
@@ -841,9 +899,312 @@
   "asootavitian"
  ],
  "mellon": [
-  "andrewwmellon"
+  "andrewwmellon",
+  "mellonunrestrictedgrantof"
  ],
  "bloomberg": [
   "michaelrbloomberg"
+ ],
+ "vac": [
+  "leonidmikhelsonvac"
+ ],
+ "federalgovernment|smithsonian-air-and-space-washington": [
+  "congress|USA",
+  "federalappropriationsof|USA",
+  "usgovernment|Cuba"
+ ],
+ "corporateartcollectionoffemsa": [
+  "femsa"
+ ],
+ "agencyforculturalaffairsjac|Japan": [
+  "agencyforculturalaffairs|Japan"
+ ],
+ "artscouncilengland|UK": [
+  "artscouncilenglandnationalportfolioorganisation|UK",
+  "artscouncilenglandawarded|UK",
+  "artscouncilenglandayear|UK",
+  "artscouncilenglandcorefunding|UK",
+  "artscouncilenglandcore|UK",
+  "artscouncilenglandnationalportfoliofunding|UK",
+  "artscouncilenglandnationalportfolioorganization|UK",
+  "artscouncilenglandnpo|UK",
+  "artscouncilengland|UK",
+  "artscouncilfundingof|UK",
+  "artslottery|UK",
+  "corefundersace"
+ ],
+ "nationallottery|Belgium": [
+  "loterienationale"
+ ],
+ "ocw": [
+  "ministryofeducationcultureandscience|Netherlands"
+ ],
+ "stavrosniarchos": [
+  "niarchos"
+ ],
+ "grupoultra": [
+  "ultra"
+ ],
+ "ukresearch": [
+  "ahrc"
+ ],
+ "amsterdamsvoordekunst": [
+  "amsterdamsvoordekunsteur",
+  "amsterdamsvoordekunstsponsorit"
+ ],
+ "warholfdn": [
+  "andywarhol",
+  "firstwarholgrant"
+ ],
+ "argentinenationalgovernment|Argentina": [
+  "argentinestate|Antarctica"
+ ],
+ "artbridges": [
+  "artbridges"
+ ],
+ "artscouncilwales|UK": [
+  "artscouncilofwalescoregrant|UK",
+  "artscouncilofwales|UK"
+ ],
+ "madridcitycouncil|Spain": [
+  "ayuntamientodemadrid|Spain",
+  "madridcity|Spain"
+ ],
+ "stateofbadenwrttemberg|Germany": [
+  "badenwrttemberg"
+ ],
+ "belfius": [
+  "belfiusprivate"
+ ],
+ "cityofstockholm|Sweden": [
+  "belongstocityofstockholm|Sweden"
+ ],
+ "fundacinbbva": [
+  "benefactorsfundacinbbva"
+ ],
+ "bmw": [
+  "bmwsownpagesplaceitinsidebmwclassic"
+ ],
+ "britishcouncil|UK": [
+  "britishcouncilcpf|Palestine",
+  "britishcouncilscotland|UK",
+  "tatestivessupportersincludingbritishcouncil|UK"
+ ],
+ "britishcouncil|Ghana": [
+  "britishcouncildigitalcollaboration"
+ ],
+ "municipalityofbudapest|Hungary": [
+  "budapestcitygovernment|Hungary",
+  "budapestfvrosnkormnyzata"
+ ],
+ "bulgari": [
+  "bvlgari"
+ ],
+ "canadalife": [
+  "canadalifeprogrammes"
+ ],
+ "cantonofzurich": [
+  "cantonzrichsubsidies|Switzerland",
+  "gemeinntzigerofcantonofzurich",
+  "cantonofzurich|Switzerland",
+  "regierungsratofkantonzrich|Switzerland"
+ ],
+ "camper": [
+  "casacamper"
+ ],
+ "aecid": [
+  "centroculturaldeespaa",
+  "spainsaecid"
+ ],
+ "chartwelltrust": [
+  "chartwell"
+ ],
+ "citybridge|UK": [
+  "citybridgetrust|UK"
+ ],
+ "cityofdsseldorf|Germany": [
+  "cityofdsseldorfdecidedon|Germany"
+ ],
+ "stpetersburgcommitteeforculture": [
+  "committeeforculture"
+ ],
+ "compagniadisanpaolo": [
+  "compagniadisanpaolo",
+  "fondazionecompagniadisanpaolo"
+ ],
+ "rundirectlybyrgionoccitanie": [
+  "conseilrgional",
+  "occitanieregionalcouncil|France",
+  "rgionoccitanie"
+ ],
+ "crditmutuelnordeurope": [
+  "crditmutuel"
+ ],
+ "creativenewzealand": [
+  "creativenewzealandartscounciltoiaotearoa|New Zealand"
+ ],
+ "creativescotland": [
+  "creativescotlandincreaseditsfunding"
+ ],
+ "ctdecd": [
+  "ctofficeofarts"
+ ],
+ "cultuurfonds": [
+  "cultuurfonds",
+  "cultuurfondseur"
+ ],
+ "cultureministry|Denmark": [
+  "danishministryofcultureappropriation|Denmark"
+ ],
+ "cityofespoo|Finland": [
+  "espoo"
+ ],
+ "germanfederalforeignoffice|Germany": [
+  "federalforeignoffice|Germany"
+ ],
+ "finnmarkcounty|Norway": [
+  "finnmarkcounties"
+ ],
+ "fondazionecrfirenze": [
+  "fondazionecrfirenze"
+ ],
+ "fondazionecrt": [
+  "fondazionecrt",
+  "turinbanking"
+ ],
+ "forartsinitiatives": [
+  "forartinitiative"
+ ],
+ "norwegianmfa": [
+  "foreignministry|Norway",
+  "norwegianministryofforeignaffairs|Lebanon"
+ ],
+ "frenchministryofculture|France": [
+  "francesministryofculture|France"
+ ],
+ "fdrationwalloniebruxelles": [
+  "frenchcommunity"
+ ],
+ "ministredelaculture|France": [
+  "frenchcultureministries",
+  "ministryofcultureoperatingsubsidy|France",
+  "ministryofculturesoperatinggrant|France"
+ ],
+ "deutschebank": [
+  "friezexdeutschebank"
+ ],
+ "gulbenkian": [
+  "gulbenkianfrance",
+  "gulbenkiansfrenchdelegation",
+  "gulbenkianukbranch"
+ ],
+ "cityofhelsinki|Finland": [
+  "helsinki"
+ ],
+ "institutfranais": [
+  "institutfranaisdeparis",
+  "institutfranaisproduces"
+ ],
+ "intesasanpaolo": [
+  "intesasanpaolo"
+ ],
+ "japantobacco": [
+  "japantobaccosheatedtobaccobrand"
+ ],
+ "jpmorgan": [
+  "jpmorganprivatebank"
+ ],
+ "wrth": [
+  "kunsthallebelongstowrth"
+ ],
+ "dracledefrance": [
+  "ledefranceregionalboardofculturalaffairs"
+ ],
+ "loterieromande": [
+  "loro"
+ ],
+ "nationallotterycommunity": [
+  "lotterycommunity"
+ ],
+ "luma": [
+  "lumacreatedlumaarles"
+ ],
+ "provinceofmanitoba|Canada": [
+  "manitoba"
+ ],
+ "scfdsalestax": [
+  "metroscfdartstax"
+ ],
+ "nationalgeographicsociety": [
+  "nationalgeographic"
+ ],
+ "nswgovernment|Australia": [
+  "nsw",
+  "nswgovernmentrecurrent|Australia"
+ ],
+ "nysca": [
+  "nyscaatto",
+  "nyscouncilonarts|USA"
+ ],
+ "oak": [
+  "oak"
+ ],
+ "oct": [
+  "octcutfundingsharply"
+ ],
+ "pnc": [
+  "pncbank"
+ ],
+ "rbc": [
+  "rbcctoc"
+ ],
+ "regionepiemonte": [
+  "regionepiemonte"
+ ],
+ "rolex": [
+  "rolex"
+ ],
+ "sber": [
+  "sberbank"
+ ],
+ "smiparliamentdirectgrant|Norway": [
+  "smiparliament|Norway"
+ ],
+ "newyorkstatecouncilonarts|USA": [
+  "statecouncilonarts|USA"
+ ],
+ "berlinsenate|Germany": [
+  "stateofberlinberlinerknstlerprogramm|Germany"
+ ],
+ "tdbank": [
+  "tdreadycommitment"
+ ],
+ "texascommissiononarts|United States": [
+  "texascommissiononarts|USA"
+ ],
+ "shell": [
+  "todayshell"
+ ],
+ "aucklandcouncil|New Zealand": [
+  "ttakiaucklandunlimitedforaucklandcouncil|New Zealand",
+  "waitkererangeslocalboard"
+ ],
+ "unesco": [
+  "unescosponsorforeverisnow"
+ ],
+ "cityofparis|France": [
+  "villedeparissubsidy|France"
+ ],
+ "wolfson": [
+  "wolfsoncapital"
+ ],
+ "christchurchartgalleryraisesacquisition": [
+  "christchurchartgallery"
+ ],
+ "engiehaspartnered": [
+  "engie"
+ ],
+ "americanfriendsofisraelmuseumraisedover": [
+  "americanfriendsofisraelmuseum"
  ]
 }
