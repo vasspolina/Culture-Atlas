@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=860"></script>
+  <script src="assets/load-image-data.js?v=863"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=860">
-  <link rel="stylesheet" href="assets/sheet.css?v=860">
-  <script src="assets/config.js?v=860"></script>
-  <script src="assets/analytics.js?v=860"></script>
-  <script src="assets/subtopic.js?v=860"></script>
-  <script src="assets/names.js?v=860"></script>
-  <script src="assets/grounding.js?v=860"></script>
-  <script src="assets/repeats.js?v=860"></script>
-  <script src="assets/intro-narration.js?v=860"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=863">
+  <link rel="stylesheet" href="assets/sheet.css?v=863">
+  <script src="assets/config.js?v=863"></script>
+  <script src="assets/analytics.js?v=863"></script>
+  <script src="assets/subtopic.js?v=863"></script>
+  <script src="assets/names.js?v=863"></script>
+  <script src="assets/grounding.js?v=863"></script>
+  <script src="assets/repeats.js?v=863"></script>
+  <script src="assets/intro-narration.js?v=863"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=860"></script>
+  <script src="assets/load-image.js?v=863"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=860"></script>
-  <script src="assets/money-ids.js?v=860"></script>
+  <script src="assets/institutions.js?v=863"></script>
+  <script src="assets/money-ids.js?v=863"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10887,11 +10887,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v860';
+    const ATLAS_RELEASE = 'culture-atlas-v863';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=860').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=863').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14728,13 +14728,18 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // The space last asked about stays the chat's subject until another is named, so it counts only when this turn is about
     // it: the answer or the question names it, or the question points at it ("it", "this", "there"). A general question asked
     // after a space ("What is institutional critique?") is not about that space and does not get its sources.
-    function answerSourcesHtml(html, target, query) {
+    // The spaces a model answer is about (html with its names already linked by linkifyInstNames), as above.
+    function answerInsts(html, target, query) {
       const insts = [];
       const add = (i) => { if (i && !insts.includes(i) && insts.length < 3) insts.push(i); };
       const namesIn = (h) => [...new DOMParser().parseFromString('<body>' + String(h || '') + '</body>', 'text/html').querySelectorAll('a.inst-link[data-name]')].map(a => a.getAttribute('data-name'));
       const named = namesIn(html);
       if (target && (named.includes(target.name) || namesIn(linkifyInstNames(escapeHtml(query || ''))).includes(target.name) || /\b(this|here|there|it|its|that|they|their|them)\b/i.test(query || ''))) add(target);
       named.forEach(n => add(ALL_INSTITUTIONS.find(i => i.name === n)));
+      return insts;
+    }
+    function answerSourcesHtml(html, target, query) {
+      const insts = answerInsts(html, target, query);
       const per = insts.length > 1 ? 2 : 4, seen = new Set(), urls = [];
       insts.forEach(inst => {
         let k = 0;
@@ -14748,6 +14753,69 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       });
       const links = proseLinkList(urls, urls.length);
       return links.length ? `<p class="no-indent source-note chat-sources" data-exclude-speech="true" data-repeat-ok>${links.length > 1 ? 'Sources' : 'Source'}: ${links.join(', ')}.</p>` : '';
+    }
+
+    // The outlets a model answer names, linked to the reports themselves. Gossip answers say where the talk was printed ("The Art
+    // Newspaper reported in December 2025 that ...") but Gossip mode prints only the gossip, with no line under it, so the
+    // outlet's name in the text becomes the link: the first time each outlet is named, to the gossip item of the spaces the
+    // answer is about that names it (gossip_data.gossip: where, urls). An item that cites several outlets ("Museums Journal; The
+    // Art Newspaper") gives each the address on its own site when one matches, else, with as many addresses as outlets, the one
+    // in the same place; an outlet that cannot be matched stays plain text. Names under five letters ("Ara", "444") are
+    // ordinary words too often to be linked. Text already in a link or button is left alone. Used on every model answer.
+    function linkOutletNames(html, insts) {
+      if (!html || !insts || !insts.length) return html;
+      const squash = (t) => String(t || '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]/g, '');
+      const byOutlet = new Map();
+      insts.forEach(inst => gossipItems(inst).forEach(g => {
+        const urls = (g.urls || []).filter(u => typeof u === 'string' && /^https?:\/\//.test(u));
+        const names = String(g.where || '').split(/\s*;\s*/).map(n => n.replace(/,\s.*$/, '').trim()).filter(Boolean);
+        names.forEach((name, n) => {
+          if (name.length < 5 || byOutlet.has(name.toLowerCase())) return;
+          const key = squash(name.replace(/^the\s+/i, ''));
+          const own = urls.find(u => key.length >= 4 && squash(hostOf(u)).includes(key));
+          const url = own || (names.length === 1 ? urls[0] : (urls.length === names.length ? urls[n] : ''));
+          if (url) byOutlet.set(name.toLowerCase(), { name, url });
+        });
+      }));
+      if (!byOutlet.size) return html;
+      // The model often puts a narrow no-break space between words ("Museums\u202fJournal"), which the typesetter
+      // (assets/typeset.js) turns into <span class="ts">; a name is matched across any kind of space, and those spans are read
+      // as the space they stand for (the typesetter runs again on the turn, so nothing is lost).
+      const SP = '[\\s\\u00a0\\u2009\\u202f]+';
+      const esc = (n) => n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, SP);
+      const key = (t) => t.replace(/[\s\u00a0\u2009\u202f]+/g, ' ').toLowerCase();
+      const re = new RegExp('(?<![\\p{L}\\p{N}])(?:' + [...byOutlet.values()].map(o => o.name).sort((a, b) => b.length - a.length).map(esc).join('|') + ')(?![\\p{L}\\p{N}])', 'giu');
+      const flat = String(html).replace(/<span class="ts">(?:&nbsp;|\u00a0|\s)<\/span>/g, '\u00a0');
+      const doc = new DOMParser().parseFromString('<body>' + flat + '</body>', 'text/html');
+      const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) if (!n.parentElement.closest('a, button')) nodes.push(n);
+      const done = new Set();
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        re.lastIndex = 0;
+        let last = 0, hit = false;
+        const frag = doc.createDocumentFragment();
+        for (let m = re.exec(text); m; m = re.exec(text)) {
+          const o = byOutlet.get(key(m[0]));
+          if (!o || done.has(o.name)) continue;
+          done.add(o.name);
+          hit = true;
+          frag.appendChild(doc.createTextNode(text.slice(last, m.index)));
+          const a = doc.createElement('a');
+          a.href = o.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.className = 'outlet-link';
+          a.textContent = m[0];
+          frag.appendChild(a);
+          last = m.index + m[0].length;
+        }
+        if (!hit) return;
+        frag.appendChild(doc.createTextNode(text.slice(last)));
+        node.parentNode.replaceChild(frag, node);
+      });
+      return done.size ? doc.body.innerHTML : html;
     }
 
     // A reply written by the model names spaces in plain text. Each name (or alias) that a record carries becomes the same
@@ -15775,8 +15843,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (/^(for\s+)?(more|further)\s+(information|details)[^.]*https?:\/\//i.test(t) || /^(see|visit|learn\s+more\s+at)\b[^.]*https?:\/\/\S+[.)]*$/i.test(t)) return false;
         return true;
       }).join('\n').replace(/\n{3,}/g, '\n\n').trim();
-      // A bare address left inside a sentence is dropped too, with any brackets that held it.
-      text = text.replace(/(?<!\])\s*[\(\[<]\s*https?:\/\/[^\s\)\]>]+\s*[\)\]>]/g, '').replace(/(^|\s)https?:\/\/\S+(?=[\s.,;)]|$)/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;])/g, '$1');
+      // A bare address left inside a sentence is dropped too, with any brackets that held it, full-width and lenticular ones
+      // included: the chat's model cites as 【https://…】 (seen 20 Nov 2026), which slipped past and printed the address.
+      text = text.replace(/(?<!\])\s*[\(\[<（［【〔〖]\s*https?:\/\/[^\s\)\]>）］】〕〗]+\s*[\)\]>）］】〕〗]/g, ' ').replace(/(^|[\s（［【〔〖])https?:\/\/[^\s）］】〕〗]+(?=[\s.,;)）］】〕〗]|$)/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;])/g, '$1');
 
       // 1. Helper to render clickable source citation pills
       const renderSourcePills = (str) => {
@@ -17736,7 +17805,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               const aiHtml = typeof aiRes === 'string' ? aiRes : aiRes.html;
               if (aiRes.gossip || aiRes.none) {
                 // Only the gossip prints: no reasoning panel, no scraped-source card, no follow-up chips. The balloon (assets/bubbles.js) goes round a turn marked data-gossip.
-                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None found.</p>') : `<div class="space-y-3" data-gossip="ai">${aiHtml}</div>`, modelChips(target, query));
+                // The outlets the gossip names link to the reports (linkOutletNames); nothing is added under it.
+                const gossipHtml = aiRes.none ? aiHtml : linkOutletNames(aiHtml, answerInsts(linkifyInstNames(aiHtml), target, query));
+                appendCuratorMessage(aiRes.none ? (target ? aiHtml : '<p>None found.</p>') : `<div class="space-y-3" data-gossip="ai">${gossipHtml}</div>`, modelChips(target, query));
                 return true;
               }
               let thinkingData = null;
@@ -17751,10 +17822,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
               }
               // Answers carry no note about what they were written from, in Gossip mode or out of it; the sources of the
               // records they are about close them, as links (answerSourcesHtml).
-              const linked = linkifyInstNames(aiHtml);
-              const srcLine = answerSourcesHtml(linked, target, query);
+              const named = linkifyInstNames(aiHtml);
+              const linked = linkOutletNames(named, answerInsts(named, target, query));
+              const srcLine = answerSourcesHtml(named, target, query);
               // In a <div>, so the renderer takes the turn as finished HTML and leaves the links' addresses alone.
-              appendCuratorMessage(srcLine ? `<div class="chat-answer-sourced">${linked}${srcLine}</div>` : linked, modelChips(target, query), webIntel, thinkingData);
+              appendCuratorMessage(srcLine || linked !== named ? `<div class="chat-answer-sourced">${linked}${srcLine}</div>` : linked, modelChips(target, query), webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -22575,24 +22647,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=860"></script>
-<script src="assets/note-aids.js?v=860" defer></script>
-<script src="assets/place-list.js?v=860" defer></script>
-<script src="assets/chat-share.js?v=860" defer></script>
-<script src="assets/note-files.js?v=860" defer></script>
-<script src="assets/funding-views.js?v=860"></script>
-<script src="assets/layers.js?v=860"></script>
-<script src="assets/critique-gallery-data.js?v=860"></script>
-<script src="assets/critique-captions.js?v=860"></script>
-<script src="assets/critique-gallery.js?v=860"></script>
-<script src="assets/hq-detail.js?v=860"></script>
-<script src="assets/influence-mode.js?v=860"></script>
-<script src="assets/bubbles.js?v=860" defer></script>
-<script src="assets/phone-maps.js?v=860"></script>
-<script src="assets/desktop-maps.js?v=860"></script>
-<script src="assets/chat-resize.js?v=860"></script>
-<script src="assets/frame-refusers.js?v=860"></script>
-<script src="assets/link-pane.js?v=860"></script>
-<script src="assets/tab-suggest.js?v=860"></script>
+<script src="assets/typeset.js?v=863"></script>
+<script src="assets/note-aids.js?v=863" defer></script>
+<script src="assets/place-list.js?v=863" defer></script>
+<script src="assets/chat-share.js?v=863" defer></script>
+<script src="assets/note-files.js?v=863" defer></script>
+<script src="assets/funding-views.js?v=863"></script>
+<script src="assets/layers.js?v=863"></script>
+<script src="assets/critique-gallery-data.js?v=863"></script>
+<script src="assets/critique-captions.js?v=863"></script>
+<script src="assets/critique-gallery.js?v=863"></script>
+<script src="assets/hq-detail.js?v=863"></script>
+<script src="assets/influence-mode.js?v=863"></script>
+<script src="assets/bubbles.js?v=863" defer></script>
+<script src="assets/phone-maps.js?v=863"></script>
+<script src="assets/desktop-maps.js?v=863"></script>
+<script src="assets/chat-resize.js?v=863"></script>
+<script src="assets/frame-refusers.js?v=863"></script>
+<script src="assets/link-pane.js?v=863"></script>
+<script src="assets/tab-suggest.js?v=863"></script>
 </body>
 </html>
