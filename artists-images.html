@@ -164,7 +164,7 @@
 
 <script src="assets/critique-gallery-data.js?v=698"></script>
 <script src="assets/critique-collection-data.js?v=698"></script>
-<script src="assets/critique-additions-data.js?v=700"></script>
+<script src="assets/critique-additions-data.js?v=867"></script>
 <script src="assets/critique-captions.js?v=698"></script>
 <script src="assets/critique-stories.js?v=702"></script>
 <script>
@@ -172,7 +172,9 @@
   const D = window.CRITIQUE_GALLERY, C = window.CRITIQUE_COLLECTION;
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const plural = n => `${n} ${n === 1 ? 'image' : 'images'}`;
-  const spaceNames = n => (C.on_spaces[n] || []).map(id => D.spaces[id].name);
+  // The works added later name their spaces too (assets/critique-additions-data.js: spaces and on_spaces, by atlas id).
+  const spaceNames = n => (C.on_spaces[n] || []).map(id => D.spaces[id].name)
+    .concat(((ADD.on_spaces || {})[n] || []).map(id => ADD.spaces[id].name));
   // A caption names the work, the people, what the picture is and where (assets/critique-captions.js, written by hand
   // for each work and, where pictures differ, each image), then the photographer when the credit names one.
   const CAP = window.CRITIQUE_CAPTIONS || {};
@@ -190,12 +192,18 @@
   byWork.sort((a, b) => a.from - b.from || a.title.localeCompare(b.title));
   byWork.forEach((g, i) => { g.id = 'w' + i; g.toc = Math.floor(g.from / 10) * 10 + 's'; });
   // By space: one group per set of images, so two spaces carrying the same work (Tate Modern and the Rijksakademie) share one.
-  const bySpace = [];
-  Object.entries(D.spaces).forEach(([id, sp]) => {
+  // A space the collection and the later works both name (MoMA, Tate Modern) is one group holding both sets.
+  const bySpace = [], SP = {};
+  Object.entries(D.spaces).forEach(([id, sp]) => { SP[id] = { name: sp.name, ties: [sp.tie], images: sp.images.slice() }; });
+  Object.entries(ADD.spaces || {}).forEach(([id, sp]) => {
+    const t = SP[id] || (SP[id] = { name: sp.name, ties: [], images: [] });
+    t.ties.push(...sp.ties); t.images.push(...sp.images);
+  });
+  Object.entries(SP).forEach(([id, sp]) => {
     const key = sp.images.map(i => i.n).join(',');
     const g = bySpace.find(x => x.key === key);
-    if (g) { g.names.push(sp.name); g.ties.push(sp.tie); }
-    else bySpace.push({ key, id, names: [sp.name], ties: [sp.tie], images: sp.images });
+    if (g) { g.names.push(sp.name); sp.ties.forEach(t => { if (!g.ties.includes(t)) g.ties.push(t); }); }
+    else bySpace.push({ key, id, names: [sp.name], ties: sp.ties.slice(), images: sp.images });
   });
   // A tie that another tie of the same group starts with (Tate's, inside the Rijksakademie's) says nothing the longer one does not.
   bySpace.forEach(g => { g.title = g.names.join(' · '); g.sub = g.ties.filter(t => !g.ties.some(u => u !== t && u.startsWith(t))).join('. ') + '.'; g.toc = g.title; g.space = true; });
