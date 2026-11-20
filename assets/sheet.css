@@ -2001,13 +2001,13 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 
 /* ---- The globe drops below the name (user, 16 Nov 2026: "drop the map a bit so it doesnt cross with the title", a
    screenshot of "Leaving it on the table" drawn over the globe's top rim and the Pyongyang label). The name stands
-   var(--sh-pad) * .6 under the map's top edge on a var(--sh-l-lh) line; the globe's two canvases start one pad below
-   that, and resizeCanvas() (index.html) takes their own height, so the globe is centred and sized in the room left.
-   The pointer maths reads the canvas's box, so hover and click follow. With the chat wide there is no name and no map. ---- */
+   var(--sh-pad) * .6 under the map's top edge on a var(--sh-l-lh) line; the globe is centred and sized in the room from
+   one pad below that. The canvases fill the map to its top (user, 20 Nov 2026: "do not add background here": dropped
+   canvases left a blank band across a zoomed map behind the name); the room is passed to resizeCanvas() (index.html) as
+   the canvas's scroll-padding-top, which does nothing else on a canvas. With the chat wide there is no name and no map. ---- */
 @layer sheet{
   @media (min-width:768px){
-    :root.gmd.gmd:not(.chat-wide) :is(#globeCanvas,#globeCardCanvas){
-      top:calc(var(--sh-pad) * 1.6 + var(--sh-l-lh))!important;bottom:auto!important;height:calc(100% - var(--sh-pad) * 1.6 - var(--sh-l-lh))!important}
+    :root.gmd.gmd:not(.chat-wide) #globeCanvas{scroll-padding-top:calc(var(--sh-pad) * 1.6 + var(--sh-l-lh))!important}
   }
 }
 
@@ -2768,6 +2768,14 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    (the rules above), so they are set on the bubble itself. */
 :root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label{--wc-ink:#000;--wc-ground:#f4f4f4;
   box-shadow:0 0 0 1px rgba(244,244,244,.45)!important}
+/* The tail is an outline, not a black wedge (user, 20 Nov 2026: "make places on map back to what it was, just outline the
+   tail"; the drop-shadow ring of r871 is undone): its two sides in the ring's own 45% white, open over the ground, starting
+   where the ring stops so the ring and the tail read as one line with no brighter overlap at the join. */
+:root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label::after{top:100%!important;width:14px!important;height:8px!important;margin-left:-7px!important;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1 7 7.5 13 1' fill='none' stroke='%23f4f4f4' stroke-opacity='.45' stroke-width='1'/%3E%3C/svg%3E") no-repeat!important;clip-path:none!important}
+:root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label.label-pos-bottom::after{top:auto!important;bottom:100%!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 7 7 .5 13 7' fill='none' stroke='%23f4f4f4' stroke-opacity='.45' stroke-width='1'/%3E%3C/svg%3E") no-repeat!important}
+:root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label.label-pos-right::after{top:50%!important;right:100%!important;left:auto!important;width:8px!important;height:14px!important;margin:-7px 0 0!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='14' viewBox='0 0 8 14'%3E%3Cpath d='M7 1 .5 7 7 13' fill='none' stroke='%23f4f4f4' stroke-opacity='.45' stroke-width='1'/%3E%3C/svg%3E") no-repeat!important}
+:root[data-theme="dark"] #cityMapContainer.street-poster .inst-pin-label.inst-pin-label.label-pos-left::after{top:50%!important;left:100%!important;width:8px!important;height:14px!important;margin:-7px 0 0!important;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='14' viewBox='0 0 8 14'%3E%3Cpath d='M1 1 7.5 7 1 13' fill='none' stroke='%23f4f4f4' stroke-opacity='.45' stroke-width='1'/%3E%3C/svg%3E") no-repeat!important}
 /* The open space's bubble, in its grade's dark colour (the light theme's). */
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.inst-pin-label{--wc-mark:#6b6b6b}
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="1"] .inst-pin-label.inst-pin-label{--wc-mark:#007a80}
@@ -2775,4 +2783,20 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="3"] .inst-pin-label.inst-pin-label{--wc-mark:#6e6a00}
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="4"] .inst-pin-label.inst-pin-label{--wc-mark:#8a322e}
 :root[data-theme="dark"] #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-grade="5"] .inst-pin-label.inst-pin-label{--wc-mark:#b000b0}
+}
+
+/* The filter pills while a record card is open on a phone (user, 20 Nov 2026: "collapse the filter pills to one row when a card
+   is open"). Wrapped, the pills took three rows, 98px, and with the city's title under them and the card over the foot
+   only about 180px of map was left to pick the next space in. With a card up (gm-sheet, assets/phone-maps.js) they are one
+   row that scrolls sideways, cut by a short fade at the right edge to show there is more; closed, they wrap again so all
+   show at once (the 8 Nov rule, "fit all on screen"). The city's title, the Layers button and the colour key hang under the
+   row by --gmChips-h, which is measured again when the row changes height, so they move up with it. */
+@layer sheet{
+  @media (max-width:767px){
+    :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z){flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;
+      overscroll-behavior-x:contain;scrollbar-width:none!important;-webkit-overflow-scrolling:touch;
+      -webkit-mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 28px),transparent)}
+    :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z)::-webkit-scrollbar{display:none}
+    :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z) > *{flex:none!important}
+  }
 }

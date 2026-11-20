@@ -247,9 +247,11 @@
   function refilter() {
     if (typeof applyFilters === 'function') { try { applyFilters(); } catch (e) { /* the page's own filter state is not ready yet */ } }
     // The street map's pins are built once per city, so a filter changed while a city is open shows or hides them in place.
+    // index.html's atlasStreetPinsShow does it there, keeping the open space's pin under any filter.
     const keep = window.atlasLayerKeep();
     const pins = document.querySelectorAll('.custom-inst-pin[data-entity-id]');
-    if (pins.length && typeof ALL_INSTITUTIONS !== 'undefined') {
+    if (typeof window.atlasStreetPinsShow === 'function') window.atlasStreetPinsShow();
+    else if (pins.length && typeof ALL_INSTITUTIONS !== 'undefined') {
       if (!pinIndex) { pinIndex = new Map(); ALL_INSTITUTIONS.forEach(i => pinIndex.set(i.id || i.name, i)); }
       pins.forEach(el => { const i = pinIndex.get(el.dataset.entityId); el.style.display = !keep || !i || keep(i) ? '' : 'none'; });
     }
