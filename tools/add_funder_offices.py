@@ -10,7 +10,9 @@ needs the office too, and this adds it from the same researched row:
   - a row with `wrong_match` (the name is not a funder of the museums that name it), marked thin, with no seat city,
     or that the profile lint stops, gets no office;
   - a row whose official name is the name of an office already on the map gives its key to that office
-    (tools/hq_aliases.json), so 'VTB' and 'VTB Bank' are one office;
+    (tools/hq_aliases.json), so 'VTB' and 'VTB Bank' are one office; so does a row whose `same_as` names an office
+    key, for a body the map has under another name (a brand, an older name, a translation: 'Maes' and 'Alken-Maes'),
+    and that office keeps its profile;
   - every other row becomes an office in tools/hq_extra.json: official name, kind, seat city and country, the
     street address where the row has one, its first source, and the city's coordinates from OpenStreetMap
     (Nominatim, one request a second, kept in data/web_research/funder_city_coords.json).
@@ -71,6 +73,15 @@ for p in paths:
     for r in json.load(open(p, encoding='utf-8')):
         k, name = r.get('key'), (r.get('name') or '').strip()
         if not k or k in taken:
+            continue
+        same = r.get('same_as')
+        if same:
+            if same not in hq and same not in extra:
+                left.append(f'{k}: same_as names no office ({same})')
+                continue
+            aliases.setdefault(same, []).append(k)
+            taken.add(k)
+            joined.append(f'{k} -> {same} (same body as {(hq.get(same) or extra.get(same))["n"]})')
             continue
         if r.get('wrong_match'):
             left.append(f'{k}: not a funder as named ({r["wrong_match"][:90]})')
