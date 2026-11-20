@@ -1296,11 +1296,11 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 /* A grade named in the chat is set like the rating in the record (user's instruction, 20 Oct 2026): bold, in the grade's own
    colour. On white that colour is darkened until it clears 4.5:1 (gradeInk in index.html); on the dark theme it is the colour itself. */
 .grade-word{color:var(--grade-ink);font-weight:400;padding:0;border:0;background:transparent}
-.grade-word-1{--grade-ink:#1f7f5c;--grade-col:#34d399}
-.grade-word-2{--grade-ink:#1b7f73;--grade-col:#2dd4bf}
-.grade-word-3{--grade-ink:#8c720c;--grade-col:#facc15}
-.grade-word-4{--grade-ink:#975824;--grade-col:#fb923c}
-.grade-word-5{--grade-ink:#8f2929;--grade-col:#ef4444}
+.grade-word-1{--grade-ink:#007a80;--grade-col:#b8fbff}
+.grade-word-2{--grade-ink:#0000ff;--grade-col:#9466ff}
+.grade-word-3{--grade-ink:#6e6a00;--grade-col:#ffff3c}
+.grade-word-4{--grade-ink:#8a322e;--grade-col:#ff3b1f}
+.grade-word-5{--grade-ink:#b000b0;--grade-col:#ff5eff}
 :root[data-theme="dark"] .grade-word{color:var(--grade-col)}
 /* A grade is named in capitals, GRADE D (user's instruction, 20 Oct 2026), set like every capital in running text: one step
    smaller and spaced 1pt apart, normal weight (user's instruction, 24 Oct 2026; Hochuli p.39-40), the trailing space pulled in so the word space after it stays even. */
@@ -5073,17 +5073,17 @@ body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc
 /* The grade colours, A to E, as the record and the open space's label set them (sheet.css); a space with no grade is the map's
    grey. Each is 4.5:1 or better on the light ground and the dark one, where marks need 3:1. */
 #cityMapContainer .custom-inst-pin{--wc-mark:#6b6b6b}
-#cityMapContainer .custom-inst-pin[data-grade="1"]{--wc-mark:#1f7f5c}
-#cityMapContainer .custom-inst-pin[data-grade="2"]{--wc-mark:#1b7f73}
-#cityMapContainer .custom-inst-pin[data-grade="3"]{--wc-mark:#8c720c}
-#cityMapContainer .custom-inst-pin[data-grade="4"]{--wc-mark:#975824}
-#cityMapContainer .custom-inst-pin[data-grade="5"]{--wc-mark:#8f2929}
+#cityMapContainer .custom-inst-pin[data-grade="1"]{--wc-mark:#007a80}
+#cityMapContainer .custom-inst-pin[data-grade="2"]{--wc-mark:#0000ff}
+#cityMapContainer .custom-inst-pin[data-grade="3"]{--wc-mark:#6e6a00}
+#cityMapContainer .custom-inst-pin[data-grade="4"]{--wc-mark:#8a322e}
+#cityMapContainer .custom-inst-pin[data-grade="5"]{--wc-mark:#b000b0}
 :root[data-theme="dark"] #cityMapContainer .custom-inst-pin{--wc-mark:#9a9a9a}
-:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="1"]{--wc-mark:#34d399}
-:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="2"]{--wc-mark:#2dd4bf}
-:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="3"]{--wc-mark:#facc15}
-:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="4"]{--wc-mark:#fb923c}
-:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="5"]{--wc-mark:#ef4444}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="1"]{--wc-mark:#b8fbff}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="2"]{--wc-mark:#9466ff}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="3"]{--wc-mark:#ffff3c}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="4"]{--wc-mark:#ff3b1f}
+:root[data-theme="dark"] #cityMapContainer .custom-inst-pin[data-grade="5"]{--wc-mark:#ff5eff}
 
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin .inst-pin-dot{width:18px!important;height:18px!important;border:0!important;border-radius:50%!important;background:var(--wc-mark)!important;box-shadow:none!important}
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="B"] .inst-pin-dot{width:16px!important;height:16px!important;border-radius:0!important}
@@ -5099,12 +5099,7 @@ body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc
 @media (max-width:767px){#cityMapContainer.street-poster .maplibregl-ctrl-scale{display:none!important}}
 #cityMapContainer.street-poster .maplibregl-ctrl-scale{display:block;background:transparent!important;border:1px solid var(--wc-rule)!important;border-top:0!important;color:var(--wc-ink)!important;font:400 14px/1.2 var(--sans)!important;padding:0 6px!important;box-shadow:none!important}
 
-/* SHARE INFORMATION UNDERTONE (user, 18 Nov 2026): the note screen's intro is two paragraphs, the lost-history undertone
-   first, then the invitation and the editor's terms. They inherit #noteFormIntro's type; only the space between them is set. */
-#noteFormIntro .nf-undertone{display:block}
-#noteFormIntro .nf-undertone + .nf-undertone{margin-top:0.8em}
-
 /* A NEW PLACE ON THE NOTE FORM (user, 18 Nov 2026): the City field and the line under Place show only while the Place box
    names something the atlas does not have. The field rules above set display with !important, so hidden needs this weight. */
-:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #noteFormFields :is(#noteCityField,#notePlaceHint)[hidden]{display:none!important}
+:is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #noteFormFields :is(#noteCityField,#noteAddressField,#notePlaceHint)[hidden]{display:none!important}
 #notePlaceHint{margin:0 0 12px;font:400 var(--fs-s)/1.3 var(--sans)}

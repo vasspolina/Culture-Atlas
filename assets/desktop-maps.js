@@ -307,12 +307,13 @@
       insts.forEach((i) => { if (!i || !i.name) return; const k = low(i.city); if (!byCity.has(k)) byCity.set(k, []); byCity.get(k).push(i); });
       return byCity;
     }
-    const idxRow = (name, right, tier, current, fn) => {
+    // g0 is the space's grade, 0 to 5 (0: none), which colours the row (user, 19 Nov 2026; assets/sheet.css).
+    const idxRow = (name, right, tier, current, fn, g0) => {
       const li = document.createElement('li');
       const b = document.createElement('button');
       b.type = 'button';
       b.className = 'sh-index-row';
-      if (tier) { b.dataset.tier = tier; const d = document.createElement('i'); d.className = 'sh-index-dot'; d.setAttribute('aria-hidden', 'true'); b.appendChild(d); }
+      if (tier) { b.dataset.tier = tier; if (g0 != null) b.dataset.g = String(g0); const d = document.createElement('i'); d.className = 'sh-index-dot'; d.setAttribute('aria-hidden', 'true'); b.appendChild(d); }
       const n = document.createElement('span'); n.className = 'sh-index-name'; n.textContent = name; b.appendChild(n);
       if (right !== '') { const c = document.createElement('span'); c.className = 'sh-index-count'; c.textContent = right; b.appendChild(c); }
       if (current) b.setAttribute('aria-current', 'true');
@@ -340,7 +341,7 @@
       // and one in Massachusetts, and the list showed both under one name.
       const near = (name, place) => { const own = map.get(low(name)) || []; return typeof window.atlasCityInsts === 'function' ? window.atlasCityInsts(name, place).filter((i) => own.includes(i)) : own; };
       const picked = city && city !== 'all' && typeof window.atlasCityPlace === 'function' ? window.atlasCityPlace(city) : null;
-      const k = [country, city, picked ? picked.lat + ',' + picked.lon : '', sel && sel.name, filter, grade, keep ? 1 : 0, typeof window.atlasLayerKeep, idxQuery].join('|');
+      const k = [country, city, picked ? picked.lat + ',' + picked.lon : '', sel && sel.name, filter, grade, typeof window.atlasLetterGrade === 'function' ? window.atlasLetterGrade() : '', keep ? 1 : 0, typeof window.atlasLayerKeep, idxQuery].join('|');
       if (!force && k === idxKey) return;
       idxKey = k;
       const q = norm(idxQuery).trim();
@@ -356,7 +357,7 @@
         if (!q) frag.appendChild(back());
         list.forEach((i) => frag.appendChild(idxRow(i.name, '', i.tier === 'A' || i.tier === 'B' ? i.tier : 'U', !!sel && sel.name === i.name, () => {
           const pick = g('selectInstitution'); if (typeof pick === 'function') pick(i, false);
-        })));
+        }, typeof window.atlasGradeKey === 'function' ? window.atlasGradeKey(i) : 0)));
       } else {
         const match = g('matchC');
         const same = (a, b) => typeof match === 'function' ? match(a, b) : low(a) === low(b);
@@ -376,6 +377,7 @@
       else idxList.scrollTop = 0;
     }
     document.addEventListener('atlas:filter', () => renderIndex(true));
+    document.addEventListener('atlas:letter-grade', () => renderIndex(true));
     window.addEventListener('resize', () => renderIndex(false));
     // The map's state (country, city, the open space) lives in the page's script and has no event: look twice a second.
     setInterval(() => renderIndex(false), 500);
@@ -573,24 +575,29 @@
     // "add clean flagged verified filter to the top to other filters and delete color key"). They drive the same grade
     // filter the key's rows did (assets/layers.js atlasSetGradeFilter). Rebuilt if the row is ever redrawn.
     // Unverified is not a filter (user, 15 Nov 2026: "delete images filter and unverified").
-    const GRADES = [['A', 'Clean'], ['B', 'Flagged']];
+    // The five funding grades, A to F, in place of Clean and Flagged (user, 19 Nov 2026: "color code all text and map dots
+    // for each grade"): the map's colours are now the grades', so its filters are too. Each chip drives the same grade filter
+    // as the list of grades (assets/layers.js atlasSetLetterGrade); one at a time, pressed again for every space. The data-grade
+    // values are 1 to 5, as a record stores them; assets/layers.js leaves any chip with data-grade alone when it repaints.
+    const GRADES = [[1, 'A'], [2, 'B'], [3, 'C'], [4, 'D'], [5, 'F']];
     function gradePills() {
-      if (typeof window.atlasSetGradeFilter !== 'function' || !chips.querySelector('button')) return;
+      if (typeof window.atlasSetLetterGrade !== 'function' || !chips.querySelector('button')) return;
       if (!chips.querySelector('button[data-grade]')) {
-        GRADES.forEach(([g, name]) => {
+        GRADES.forEach(([n, l]) => {
           const b = document.createElement('button');
           b.type = 'button';
-          b.className = 'gmd-chip sh-grade-chip';
-          b.dataset.grade = g;
-          b.textContent = name;
-          b.title = `Show only ${name.toLowerCase()} museums; press again to show every museum`;
-          b.addEventListener('click', () => { window.atlasSetGradeFilter(window.atlasGradeFilter() === g ? null : g); gradePills(); });
+          b.className = 'gmd-chip sh-grade-chip sh-letter-chip';
+          b.dataset.grade = String(n);
+          b.textContent = 'Grade ' + l;
+          b.title = `Show only grade ${l} spaces; press again to show every space`;
+          b.addEventListener('click', () => { window.atlasSetLetterGrade(window.atlasLetterGrade() === n ? null : n); gradePills(); });
           chips.appendChild(b);
         });
       }
-      const on = typeof window.atlasGradeFilter === 'function' ? window.atlasGradeFilter() : null;
-      chips.querySelectorAll('button[data-grade]').forEach((b) => { const v = String(b.dataset.grade === on); if (b.getAttribute('aria-pressed') !== v) b.setAttribute('aria-pressed', v); });
+      const on = typeof window.atlasLetterGrade === 'function' ? window.atlasLetterGrade() : null;
+      chips.querySelectorAll('button[data-grade]').forEach((b) => { const v = String(Number(b.dataset.grade) === on); if (b.getAttribute('aria-pressed') !== v) b.setAttribute('aria-pressed', v); });
     }
+    document.addEventListener('atlas:letter-grade', () => gradePills());
     function placeChips() {
       gradePills();
       growInput();
@@ -603,12 +610,19 @@
       if (!v.width) return;
       const pad = parseFloat(getComputedStyle(root).getPropertyValue('--sh-pad')) || 22;
       const t = tag && tag.getClientRects().length ? tag.getBoundingClientRect() : null;
-      const widest = Math.max(0, ...[...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width));
+      const widths = [...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width).filter((w) => w > 0);
+      const widest = Math.max(0, ...widths);
       // The name stands centred at the map's top (sheet.css, end): the pills keep to its left as they keep to the tagline's.
       const nb = $('gmdTitle') && $('gmdTitle').querySelector('button');
       const n = nb && nb.getClientRects().length ? nb.getBoundingClientRect() : null;
       const room = Math.min(t ? t.left : v.right, n && n.top < v.top + v.height / 2 ? n.left : v.right) - v.left - 2 * pad;
-      const top = room >= widest;
+      // Room for the widest pill is not enough (19 Nov 2026): beside the name in an 807px map there was room for one pill a
+      // row, and the nine stood six rows deep over the city's line and the street map. They stay at the top only while they
+      // fit there in three rows, the depth of the name and the city's line; otherwise the foot of the map, at its full width.
+      const gap = parseFloat(getComputedStyle(chips).columnGap) || 0;
+      let rows = widths.length ? 1 : 0, run = 0;
+      widths.forEach((w) => { if (run && run + gap + w > room) { rows += 1; run = w; } else run += (run ? gap : 0) + w; });
+      const top = room >= widest && rows <= 3;
       const set = (k, val) => { if (root.style.getPropertyValue(k) !== val) root.style.setProperty(k, val); };
       set('--sh-chips-l', `${Math.round(v.left + pad)}px`);
       set('--sh-chips-t', top ? `${Math.round(v.top + pad * 0.6)}px` : 'auto');
