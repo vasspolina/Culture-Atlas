@@ -1,0 +1,429 @@
+[
+ {
+  "id": "mus-e-national-des-beaux-arts-d-alger-algiers",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'paid from public credits' (source says credits 'generously granted', not public)"
+  ],
+  "before": "the building works begun in 1928 were paid from public credits, and credits for the 1930 centenary exhibition bought 498 works",
+  "after": "the building works begun in 1928 were finished quickly on credits that were \"generously granted\", and the funds for the 1930 centenary exhibition bought 498 works",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Museum_of_Fine_Arts_of_Algiers",
+   "https://fr.wikipedia.org/wiki/Musée_national_des_Beaux-Arts_d'Alger"
+  ],
+  "reason": "Wikipedia says the works were finished on generously granted credits; it does not call them public."
+ },
+ {
+  "id": "mus-e-national-des-beaux-arts-d-alger-algiers",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only point re-sourced to press"
+  ],
+  "before": "in 2012 Sonatrach, the national oil company, handed over 174 canvases by Juanita Guccione that it had bought from her son in 2004, and BNP Paribas, through its Algerian subsidiary, gave two Étienne Dinet paintings (French Wikipedia).",
+  "after": "in May 2012 Sonatrach, the national hydrocarbons company, handed over 174 works painted by Juanita Guccione in Bou Saâda, which it had bought from her son Djelloul in 2004 for about 200,000 dollars (APS). / In April 2012 the director general of BNP Paribas El Djazaïr gave the museum two Étienne Dinet paintings, \"L'aveugle\" and \"L'embuscade\" (Echorouk, 7 April 2012).",
+  "sources": [
+   "https://www.vitaminedz.com/fr/Algerie/174-oeuvres-de-juanita-guccione-remises-438168-Articles-0-18300-1.html",
+   "https://www.echoroukonline.com/premieres-donations-de-particuliers-aux-collections-des-musees-nationaux"
+  ],
+  "reason": "Both gifts confirmed by press: the APS dispatch of 9 May 2012 (republished on vitaminedz) and Echorouk of 7 April 2012; split into two points."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "OVERVIEW",
+  "problems": [
+   "founding year credited to Wikipedia, which gives none",
+   "year conflict stated with one source"
+  ],
+  "before": "formed the foundation in 2006 (The Art Newspaper, 2017; Wikipedia); Ver Angola gave 2003 as the founding year.",
+  "after": "formed the foundation in 2006 (The Art Newspaper, 2017); Ver Angola (2016) and Observador (2018) give 2003.",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/06/08/documenta-14-to-collaborate-on-show-in-luanda",
+   "https://observador.pt/2018/06/07/angola-recupera-pecas-de-arte-historicas-desaparecidas-durante-guerra-civil/"
+  ],
+  "reason": "The Wikipedia page states no year; the 2006/2003 conflict is now credited to three sources."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'later the foundation's vice-president'"
+  ],
+  "before": "Fernando Alvim, later the foundation's vice-president",
+  "after": "Alvim was its vice-president (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sindika_Dokolo_Foundation"
+  ],
+  "reason": "Wikipedia names him vice-president but gives no timing."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "OVERVIEW",
+  "problems": [
+   "inferred date: 'late October 2020'"
+  ],
+  "before": "he died free-diving off Dubai in late October 2020, aged 48",
+  "after": "He died in Dubai on 29 October 2020, aged 48 (family statement in The Art Newspaper); Dubai Police said he died free-diving",
+  "sources": [
+   "https://www.theartnewspaper.com/news/congolese-collector-sindika-dokolo-reportedly-dies-in-dubai-diving-accident",
+   "https://www.aljazeera.com/news/2020/11/2/dubai-foul-play-not-suspected-in-dos-santos-husband-death"
+  ],
+  "reason": "The Art Newspaper quotes the family's statement giving 29 October 2020."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "OVERVIEW/FUNDING",
+  "problems": [
+   "Wikipedia-only: Bogatzke purchase and Venice project"
+  ],
+  "before": "The collection began with the purchase of Hans Bogatzke's collection (Wikipedia) ... Check List Luanda Pop at the 2007 Venice Biennale (Wikipedia)",
+  "after": "The collection ... grew from that of the German businessman Hans Bogatzke, bought from his widow after his death in 2005 (Observador, 2020; Dokolo to ArtDependence) ... \"Check List\", the African section of the 2007 Venice Biennale, drawn from the collection (ARTE.it). New FUNDING point: Dokolo bought the Bogatzke collection for 330,000 euros, in a sale Alvim brokered with the widow (Observador, 2020).",
+  "sources": [
+   "https://observador.pt/especiais/a-historia-de-um-misterio-chamado-sindika-dokolo/",
+   "https://artdependence.com/articles/collecting-culture-sindika-dokolo-interview",
+   "https://arte.it/notizie/italia/check-list-l-arte-contemporanea-africana-alla-biennale-di-venezia-6301"
+  ],
+  "reason": "Both points re-sourced from press; the name 'Luanda Pop' is only on Wikipedia and was dropped."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "Red flags",
+  "problems": [
+   "one heading named two issues",
+   "investigation without conviction as a Red flag",
+   "US designation worded as sanctions in the source URL only"
+  ],
+  "before": "Red flags: 2020 Luanda Leaks investigation and asset freezes (Luanda Leaks, Sonangol appointment, freezes) ... Red flags: 2021 US corruption designation of Isabel dos Santos",
+  "after": "Red flags: 2019 and 2020 asset freezes in Angola and Portugal (court orders only); Luanda Leaks reporting and the Sonangol appointment moved to WIDER CONTEXT; Red flags: 2021 US State Department designation of Isabel dos Santos for corruption, stated as a designation and entry ban",
+  "sources": [
+   "https://www.icij.org/investigations/luanda-leaks/court-ties-dos-santos-to-fraudulent-diamond-deal-as-portugal-further-freezes-out-billionaire/",
+   "https://www.icij.org/investigations/luanda-leaks/us-sanctions-angolan-billionaire-isabel-dos-santos-for-corruption/",
+   "https://www.theartnewspaper.com/2020/03/18/portuguese-judge-orders-seizure-of-all-assets-owned-by-african-art-collector-isabel-dos-santos-in-the-country"
+  ],
+  "reason": "Court freezes stay flags; the journalistic investigation is context under the no-conviction ruling. The 2023 London freezing order stays a Red flag as ruled. Report trimmed from 892 to 798 counted words, restitution point merged out of OVERVIEW to remove repetition."
+ },
+ {
+  "id": "fundação-sindika-dokolo-luanda",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong detail: 'the bank of Dokolo's father' unnamed; date of first publication"
+  ],
+  "before": "it says the bank of Dokolo's father defrauded ... An opinion piece; its allegations rest on press and NGO sources it links.",
+  "after": "it says the Banco de Kinshasa, founded by Dokolo's father, defrauded ... An opinion piece (March 2009) resting on press and NGO sources it links.",
+  "sources": [
+   "https://esferapublica.org/alfredo-jaar-muxima-y-los-dokolo-de-angola-resucitados/"
+  ],
+  "reason": "The page names the bank and says it is a revised extract of a text first published on 22 March 2009."
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "section": "FUNDING",
+  "problems": [
+   "inferred date: undated Kronen Zeitung article given as 2021"
+  ],
+  "before": "Running costs: at the 2021 relaunch the Land raised its budget for the house by 142,000 euros to 500,000 euros, the federal government contributed 140,000 euros (40 percent more) and the City of Graz kept its 102,000 euros; admission was made free at the time (Kronen Zeitung, Christoph Hartner, republished on the house's site).",
+  "after": "Running costs: at the April 2021 relaunch the Land paid 500,000 euros a year and the federal government 140,000 euros, and admission was free (ORF.at, 22 April 2021). An undated Kronen Zeitung article by Christoph Hartner on the relaunch, republished on the house's site, puts the Land's rise at 142,000 euros and the federal rise at 40 percent, with the City of Graz steady at 102,000 euros.",
+  "sources": [
+   "https://orf.at/stories/3210055/",
+   "https://halle-fuer-kunst.at/site/assets/files/2479/krone_at.pdf"
+  ],
+  "reason": "ORF.at dates the relaunch and confirms the 500,000 and 140,000 euro figures; the Krone PDF carries no date, so it is called undated."
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "section": "FUNDING",
+  "problems": [
+   "single-outlet figure: credit plainly"
+  ],
+  "before": "5min.at reported in November 2026 that the house's annual operation is put at about 440,000 euros ...",
+  "after": "The house's annual operation costs about 440,000 euros, against a steirischer herbst budget of about 4.5 million euros in 2025 (5min.at, November 2026).",
+  "sources": [
+   "https://www.5min.at/graz/5202611140712/ab-2028-ist-in-graz-das-ganze-jahr-steirischer-herbst/"
+  ],
+  "reason": "Figure confirmed on the 5min.at page and credited to it plainly; no second outlet gives it."
+ },
+ {
+  "id": "halle-fuer-kunst-steiermark-graz",
+  "section": "OVERVIEW/WIDER CONTEXT",
+  "problems": [
+   "German Wikipedia-only points re-sourced where possible"
+  ],
+  "before": "reopened ... in 2021 ... (German Wikipedia, Kronen Zeitung); Trigon (German Wikipedia); 2018 protest (German Wikipedia, citing ORF Steiermark)",
+  "after": "reopened ... in April 2021 ... (German Wikipedia, ORF.at); Trigon (German Wikipedia, website); 2018 protest (ORF Steiermark, December 2018)",
+  "sources": [
+   "https://orf.at/stories/3210055/",
+   "https://steiermark.orf.at/v2/news/stories/2951876/",
+   "https://steiermark.orf.at/v2/radio/stories/2953679/"
+  ],
+  "reason": "ORF stories opened and credited directly. The 1903 to 1952 building history stays credited to German Wikipedia (figures are on that page); the house's site confirms only the 1952 building."
+ },
+ {
+  "id": "haus-wittgenstein-bulgarian-cultural-institute",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'Named for Ludwig Wittgenstein'"
+  ],
+  "before": "Named for Ludwig Wittgenstein; English Wikipedia also calls it Stonborough House.",
+  "after": "Also known as the Stonborough House and the Wittgenstein House (English Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Haus_Wittgenstein",
+   "http://www.haus-wittgenstein.at/das-haus.html"
+  ],
+  "reason": "No opened source says whom the name honours; Wikipedia gives the alternative names."
+ },
+ {
+  "id": "haus-wittgenstein-bulgarian-cultural-institute",
+  "section": "OVERVIEW",
+  "problems": [
+   "changed detail: 'cut down the garden'"
+  ],
+  "before": "cut down the garden",
+  "after": "cut down the garden's trees",
+  "sources": [
+   "https://www.geschichtewiki.wien.gv.at/Haus_Wittgenstein"
+  ],
+  "reason": "Wien Geschichte Wiki says Katlein felled the garden's trees (den Baumbestand des Gartens abholzte)."
+ },
+ {
+  "id": "margarete-schutte-lihotzky-zentrum",
+  "section": "Red flags",
+  "problems": [
+   "investigation without conviction as a Red flag (ruling)",
+   "planning dispute as a Red flag (ruling)"
+  ],
+  "before": "Red flags: 2017 to 2026 UNESCO Red List over Wertinvest's Heumarkt tower / Red flags: 2019 fraud investigation of Michael Tojner over Burgenland housing companies",
+  "after": "Both moved to WIDER CONTEXT, closing with the connection: Wertinvest owns the centre's building and backed its 2021 restoration. Wertinvest's 2021 backing stays stated under FUNDING (ORF Wien, May 2021).",
+  "sources": [
+   "https://www.trend.at/unternehmen/causa-tojner-ermittlungen-gegen-neun-personen-eingestellt",
+   "https://www.vienna.at/unesco-streicht-wien-von-roter-liste-heumarkt-bleibt-umstritten/10350734",
+   "https://wien.orf.at/stories/3106143/"
+  ],
+  "reason": "Editorial ruling: the Tojner investigation (partly dropped May 2026, no conviction) and the Heumarkt/UNESCO dispute are notes, not flags."
+ },
+ {
+  "id": "margarete-schutte-lihotzky-zentrum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the fraud investigation"
+  ],
+  "before": "The public money is clean. The weak point is the 2021 backing from the building's owner, whose proprietor is under a fraud investigation he denies.",
+  "after": "Clean public money. The one private backer on record, the building's owner, is the link to watch.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "margarete-schutte-lihotzky-zentrum",
+  "section": "FUNDING",
+  "problems": [
+   "text says more than source"
+  ],
+  "before": "it now depends on private donations; it offers sponsorship packages for 2026",
+  "after": "it is now particularly dependent on private support; it offers sponsorship options for 2026",
+  "sources": [
+   "https://www.schuette-lihotzky.at/de/zentrum/spenden-sponsoring/"
+  ],
+  "reason": "The page says 'besonders auf private Unterstützung angewiesen' and offers sponsoring information, not named packages."
+ },
+ {
+  "id": "margarete-schutte-lihotzky-zentrum",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "The centre's funders page does not list Wertinvest.",
+  "after": "(cut)",
+  "sources": [
+   "https://www.schuette-lihotzky.at/de/zentrum/kooperationen/"
+  ],
+  "reason": "A sentence whose only point is that something is not published; the Wertinvest backing itself stays."
+ },
+ {
+  "id": "baku-museum-of-modern-art-baku",
+  "section": "OVERVIEW",
+  "problems": [
+   "family tie resting on Wikipedia only"
+  ],
+  "before": "Wikipedia says Aida Mahmudova, founder of YARAT and a niece of Mehriban Aliyeva, has been director since 2012",
+  "after": "Wikipedia names Aida Mahmudova, founder of the Baku art space YARAT, as director since 2012; Hyperallergic calls her a niece of President Ilham Aliyev (2020, 2021).",
+  "sources": [
+   "https://web.archive.org/web/20260618110038/https://hyperallergic.com/yarat-contemporary-art-space-propaganda-tool/",
+   "https://web.archive.org/web/20261108161756/https://hyperallergic.com/artwashing-a-dictatorship/",
+   "https://en.wikipedia.org/wiki/Aida_Mahmudova"
+  ],
+  "reason": "The family tie is kept only in the non-Wikipedia form (Hyperallergic: niece of Ilham Aliyev); Wikipedia's 'niece of Mehriban Aliyeva' is dropped. The director-since-2012 point has no non-Wikipedia source and stays credited to Wikipedia."
+ },
+ {
+  "id": "baku-museum-of-modern-art-baku",
+  "section": "FUNDING/Red flags",
+  "problems": [
+   "repetition: bp sponsorship stated in FUNDING and Red flags",
+   "single source for the flag"
+  ],
+  "before": "FUNDING: \"Geyzer\" ... supported by the Heydar Aliyev Foundation, sponsored by bp ... (Trend). Red flags: bp sponsored the ... festival whose flagship exhibition, \"Geyzer\", opened at the museum on 17 January 2026 (Trend).",
+  "after": "FUNDING names the foundation's support and the show's dates (Trend; Report.az). Red flag: bp sponsored the festival, according to Trend, an Azerbaijani news agency, and Report.az, citing bp Azerbaijan; bp's Caspian vice-president Bakhtiyar Aslanbayli spoke for bp at the opening (Trend).",
+  "sources": [
+   "https://www.trend.az/azerbaijan/4142851.html",
+   "https://report.az/en/business/bp-sponsors-cultural-festival-marking-90th-anniversary-of-magsud-ibrahimbayov",
+   "https://azertag.az/en/xeber/bp_commemorates_magsud_ibrahimbayovs_birth_anniversary-4001431"
+  ],
+  "reason": "Ruling applied: the bp flag stays, credited to Trend as an Azerbaijani agency, with Report.az (citing bp Azerbaijan) and AZERTAG as second sources. Both give the show's run as 17 January to 28 February 2026."
+ },
+ {
+  "id": "baku-museum-of-modern-art-baku",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "press point dropped behind a registration wall"
+  ],
+  "before": "the body is behind a registration wall, and only the headline, standfirst and caption were read this time.",
+  "after": "argues that the Aliyev family uses art institutions to clean its image. The author writes that YARAT is \"almost certainly funded by the state\", his own inference, and that Mahmudova claimed an unnamed bank backs it. The article names Mahmudova and YARAT, not the museum (read in an Internet Archive copy).",
+  "sources": [
+   "https://web.archive.org/web/20261108161756/https://hyperallergic.com/artwashing-a-dictatorship/"
+  ],
+  "reason": "Restored from the archive copy of 8 November 2026, as the earlier report had it."
+ },
+ {
+  "id": "rak-art-foundation-ras-al-khaimah",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only: founder's retirement and council role"
+  ],
+  "before": "Wikipedia says he retired in 2021 and now chairs the new National Council for Arts.",
+  "after": "In November 2021 a royal decree named him chairman of the new National Council for Arts, a body attached to the Cabinet (Daily Tribune, 16 November 2021).",
+  "sources": [
+   "https://www.newsofbahrain.com/bahrain/76750.html"
+  ],
+  "reason": "Council role confirmed by the Daily Tribune report on Royal Decree 111 of 2021; the retirement rests on Wikipedia alone and was cut."
+ },
+ {
+  "id": "rak-art-foundation-ras-al-khaimah",
+  "section": "OVERVIEW/FUNDING",
+  "problems": [
+   "wrong date: Monocle piece"
+  ],
+  "before": "Monocle reported in June 2025 ... (Monocle, June 2025)",
+  "after": "Monocle reported in May 2025 ... (Monocle, May 2025)",
+  "sources": [
+   "https://monocle.com/culture/bahrain-art-design-community-growth/"
+  ],
+  "reason": "The page's publication date is 22 May 2025."
+ },
+ {
+  "id": "bengal-foundation",
+  "section": "Red flags",
+  "problems": [
+   "charge without conviction as a Red flag (ruling)",
+   "detention without conviction as a Red flag (ruling)"
+  ],
+  "before": "Red flags: 2024 corruption charge sheet against the founder / Red flags: 2007 detention of the founder",
+  "after": "Both moved to WIDER CONTEXT, closing with the connection: Litu founded and chairs the foundation, and his company pays for it.",
+  "sources": [
+   "https://today.thefinancialexpress.com.bd/print/acc-endorses-charge-sheet-against-litu-1720721026",
+   "https://archive.thedailystar.net/2007/06/09/d7060901096.htm"
+  ],
+  "reason": "Editorial ruling: the 2024 charge sheet and the 2007 detention go to WIDER CONTEXT. Facts re-checked on both pages."
+ },
+ {
+  "id": "bengal-foundation",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restated the charge sheet"
+  ],
+  "before": "One family company pays for the foundation, so its money is only as clean as its founder's, and he faces an anti-corruption charge sheet.",
+  "after": "Private money from one family company, with no flagged funder; the founder's corruption case is the point to watch.",
+  "sources": [],
+  "reason": "Bottom line gives the verdict only."
+ },
+ {
+  "id": "bengal-foundation",
+  "section": "Not related",
+  "problems": [
+   "unsupported: 'founded in 1969 by Morshed Alam'",
+   "absence statement"
+  ],
+  "before": "The Dhaka conglomerate behind Bengal Plastic was founded in 1969 by Morshed Alam, who chairs it; its Wikipedia page does not mention Litu or the foundation, whose funder is Bengal Group Ltd.",
+  "after": "Bengal Group of Industries, the Dhaka conglomerate behind Bengal Plastic, established in 1969 and chaired by Morshed Alam (Wikipedia). The foundation's funder is Bengal Group Ltd., chaired by Litu.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bengal_Group_of_Industries"
+  ],
+  "reason": "Wikipedia says the group was established in 1969 and that Morshed Alam chairs it, not that he founded it."
+ },
+ {
+  "id": "bengal-foundation",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak spot: founding year from Wikipedia"
+  ],
+  "before": "Founded in 1986 ... (Wikipedia, Bengal Institute)",
+  "after": "unchanged",
+  "sources": [
+   "https://bengal.institute/team/abul-khair/"
+  ],
+  "reason": "The Bengal Institute page states that Litu set up the foundation in 1986, so the year has a non-Wikipedia source; no change needed."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only founder"
+  ],
+  "before": "..., Kalektar lists Belavus as founder with Zmitser Afanasenka and Franak Viachorka as co-founders, and Wikipedia also names Stas Babaytsau.",
+  "after": "..., and Kalektar lists Belavus as founder with Zmitser Afanasenka and Franak Viachorka as co-founders.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Art-Siadziba",
+   "https://kalektar.org/in/terms/3zQqWmcTp6OokhSm7Hov"
+  ],
+  "reason": "Stas Babaytsau appears only on Wikipedia and its mirrors; cut."
+ },
+ {
+  "id": "art-siadziba-minsk",
+  "section": "FUNDING",
+  "problems": [
+   "funding points lost without reason"
+  ],
+  "before": "(the earlier report's Charter97 points on the Dom campaign and the Instrumentalny Lane landlord were dropped)",
+  "after": "At 6 Instrumentalny Lane the landlord, the Belarusian Society of Hunters and Fishermen, gave notice in early 2014 and then let Art-Siadziba stay until 1 May 2014 (Charter97, 6 March 2014). / In 2014 the \"Dom\" (House) campaign for a building of its own raised a little over 4,000 dollars in 10 days towards a goal of 200,000 dollars, sold as 40,000 virtual bricks at 5 dollars each (Charter97, 6 March 2014).",
+  "sources": [
+   "https://web.archive.org/web/20231110120934/https://charter97.org/be/news/2014/3/6/89398/"
+  ],
+  "reason": "Restored from an Internet Archive copy (the live site serves a bot challenge); Charter97 marked as an opposition outlet in SOURCES. The July 2021 liquidation stays in WIDER CONTEXT as ruled."
+ },
+ {
+  "id": "haus-wittgenstein-bulgarian-cultural-institute",
+  "section": "FUNDING",
+  "problems": [
+   "repetition: 1975 purchase already in OVERVIEW"
+  ],
+  "before": "Owner: the Bulgarian state bought the building and courtyard in 1975 (institute website).",
+  "after": "Owner: the Bulgarian state, which bought the building and courtyard (institute website).",
+  "sources": [
+   "http://www.haus-wittgenstein.at/über-uns.html"
+  ],
+  "reason": "No fact twice; the year stays in OVERVIEW."
+ },
+ {
+  "id": "baku-museum-of-modern-art-baku",
+  "section": "OVERVIEW",
+  "problems": [
+   "repetition: foundation's support stated again under FUNDING"
+  ],
+  "before": "Opened on 20 March 2009 at the initiative of First Lady Mehriban Aliyeva and with the support of the Heydar Aliyev Foundation (museum website).",
+  "after": "Opened on 20 March 2009 at the initiative of First Lady Mehriban Aliyeva (museum website).",
+  "sources": [
+   "http://www.moma.az/en/about/history"
+  ],
+  "reason": "The foundation's role is the first FUNDING point."
+ },
+ {
+  "id": "rak-art-foundation-ras-al-khaimah",
+  "section": "FUNDING",
+  "problems": [
+   "repetition: the 2014 acquisition already in OVERVIEW"
+  ],
+  "before": "The foundation calls itself a non-profit; it occupies the founder's family home, which he acquired from his family in 2014 (foundation website, Identity).",
+  "after": "The foundation calls itself a non-profit and occupies a house the founder owns (foundation website, Identity).",
+  "sources": [
+   "https://www.rakartfoundation.com/about",
+   "https://identity.ae/bahraini-artist-rashid-al-khalifa-transforms-childhood-home-into-art-museum/"
+  ],
+  "reason": "No fact twice."
+ }
+]

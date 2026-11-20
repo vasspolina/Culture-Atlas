@@ -1,0 +1,454 @@
+[
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "red_flags",
+  "problems": [
+   "hedge: 'were said to portray'"
+  ],
+  "before": "five of the works were said to portray former president Joko Widodo (ArtAsiaPacific)",
+  "after": "after Yos refused to remove paintings depicting former president Joko Widodo: he had covered two and refused to conceal three more (ArtAsiaPacific)",
+  "sources": [
+   "https://www.artasiapacific.com/news/indonesian-artist-s-exhibition-canceled-over-political-paintings/"
+  ],
+  "reason": "ArtAsiaPacific's first paragraph states plainly the paintings depicted Joko Widodo; the hedge is gone."
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "red_flags",
+  "problems": [
+   "quotation marks around an outlet's paraphrase"
+  ],
+  "before": "saying \"ekspresi seni itu harus dihormati\" (artistic expression must be respected, our translation)",
+  "after": "Megawati Soekarnoputri, chair of PDI Perjuangan, criticised the cancellation and said artistic expression must be respected (CNN Indonesia)",
+  "sources": [
+   "https://www.cnnindonesia.com/nasional/20250124165039-20-1191194/megawati-kritik-pembatalan-pameran-lukisan-yos-seni-harus-dihormati"
+  ],
+  "reason": "The quoted words are CNN Indonesia's paraphrase, not Megawati's words; now plain paraphrase."
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "funding",
+  "problems": [
+   "wrong tense against source",
+   "Wikipedia-only ownership"
+  ],
+  "before": "the Indonesian Heritage Agency became a public service agency (BLU) ... (Fortune Indonesia, April 2024); Owner: the Ministry of Culture through the Indonesian Heritage Agency (Wikipedia)",
+  "after": "in April 2024 the Indonesian Heritage Agency was set to become a public service agency (BLU) ... (Fortune Indonesia, 3 April 2024); Owner: the Ministry of Culture ... (The Jakarta Post, 3 January 2025)",
+  "sources": [
+   "https://www.fortuneidn.com/news/peran-blu-dalam-pengelolaan-nilai-tambah-museum-dan-cagar-budaya-00-xkln4-vf0w9z",
+   "https://www.thejakartapost.com/opinion/2025/01/03/authoritarian-alarm",
+   "https://rri.co.id/nasional/2361414/esti-nurjadin-dorong-museum-nasional-jadi-blu-mandiri"
+  ],
+  "reason": "Fortune wrote in the future tense ('akan bertransformasi'); RRI (2026) confirms the shared BLU. Ownership re-sourced to The Jakarta Post. RRI date is 25 April 2026 (event 24 April)."
+ },
+ {
+  "id": "galeri-nasional-indonesia",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only points",
+   "over 800 words (852)"
+  ],
+  "before": "Building, collection and founding date credited to Wikipedia; 852 words",
+  "after": "Address re-credited to Popmama and iNews; building, 1,770 works and 1999 dedication confirmed on the Wikipedia page and kept credited to it; trimmed press points, BOTTOM LINE restated facts cut; 786 words",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Gallery_of_Indonesia",
+   "https://www.rctiplus.com/news/detail/inews/5491313/galeri-nasional-indonesia-tutup-mulai-12-oktober-2026--ini-penyebabnya-",
+   "https://www.popmama.com/life/health/daftar-museum-di-jakarta-00-wxc6h-t783y4"
+  ],
+  "reason": "The gallery site is down and the ministry's PDF guide did not load; no press source for the 1817 building or the 1,770 figure could be opened, so they stay credited to Wikipedia, where both appear. BOTTOM LINE now gives the verdict only."
+ },
+ {
+  "id": "jakarta-biennale",
+  "section": "funding",
+  "problems": [
+   "absence statement: 'no budget published'",
+   "absence statement: 'No amount was stated'"
+  ],
+  "before": "collective-run under the Jakarta Arts Council, with national ministry support; no budget published ... No amount was stated (Ministry of Creative Economy, 31 August 2026).",
+  "after": "collective-run under the Jakarta Arts Council, with national ministry support ... (Ministry of Creative Economy, 31 August 2026).",
+  "sources": [
+   "https://ekraf.go.id/news-en/ministry-of-creative-economy-strengthens-visual-arts-ecosystem-through-jakarta-biennale"
+  ],
+  "reason": "Not-found lines cut. Irene Umar, Berto Tukan, venue offer, Oktober Kreasi and nine locations all confirmed on the ministry page."
+ },
+ {
+  "id": "jakarta-biennale",
+  "section": "funding",
+  "problems": [
+   "overlaps press item; paraphrase tightened to the source"
+  ],
+  "before": "Art and Australia (2024) writes that publicly funded biennials depend on political will and government funding, and that expected government grant rounds failed to open in mid-2024.",
+  "after": "Expected government grant funding rounds failed to open in mid-2024; Art and Australia (2024) calls publicly funded biennials vulnerable to the waxing and waning of political will.",
+  "sources": [
+   "https://artandaustralia.com/59_2/contemporary-jakarta-a-tale-of-two-art-events.html"
+  ],
+  "reason": "Wording now follows Elly Kent's sentence; the key-figures argument stays only in the press item."
+ },
+ {
+  "id": "museum-nasional-indonesia",
+  "section": "red_flags",
+  "problems": [
+   "ruling: 2023 fire is not a flag"
+  ],
+  "before": "Red flags: 2023 fire in Gedung A (three points)",
+  "after": "Moved to OVERVIEW as two points: the fire, its damage and cause (The Star, Kompas), and the October 2024 reopening with the companion show (The Art Newspaper)",
+  "sources": [
+   "https://www.thestar.com.my/aseanplus/aseanplus-news/2023/09/19/mostly-replicas-burned-in-indonesian-national-museum-fire-official",
+   "https://www.kompas.com/edu/read/2023/09/19/125205571/kemendikbud-sumber-kebakaran-museum-nasional-bukan-dari-dalam-gedung",
+   "https://www.theartnewspaper.com/2024/10/15/indonesias-national-museum-reopens-after-devastating-fire"
+  ],
+  "reason": "Editor's ruling for this batch. All three points confirmed and kept, reworded to avoid repeating the reopening date."
+ },
+ {
+  "id": "museum-nasional-indonesia",
+  "section": "red_flags",
+  "problems": [
+   "ruling: colonial-loot heading needs a source beyond Wikipedia",
+   "heading lacks a year"
+  ],
+  "before": "Red flags: colonial-era loot in the collection (Wikipedia point; returns point)",
+  "after": "Red flags: colonial-era loot in the collection, returns up to 2024; first point now The Art Newspaper, which calls the 2,500 returned objects looted heritage and the Lombok treasure looted",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/10/15/indonesias-national-museum-reopens-after-devastating-fire",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Indonesia",
+   "https://megapolitan.antaranews.com/berita/479659/pengelola-jelaskan-alasan-kenaikan-harga-tiket-masuk-museum-nasional-jakarta"
+  ],
+  "reason": "The Art Newspaper (press, on returns) supports the heading, so it stays; the regalia point stays credited to Wikipedia, where it appears. The 2,500-object show moved here from OVERVIEW."
+ },
+ {
+  "id": "museum-nasional-indonesia",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only founding dates and object count",
+   "wrong figure: 141,000 objects"
+  ],
+  "before": "It grew from ... a private Dutch learned society founded on 24 April 1778 ... (Wikipedia); It holds about 141,000 objects ... (Wikipedia)",
+  "after": "Founding 1778, building 1862 and 1868, elephant 1871, handover 1962 and 1979 decree re-sourced to the museum's own profile; object count corrected to about 190,000 in seven collections (Museum Nasional)",
+  "sources": [
+   "https://www.museumnasional.or.id/tentang-kami/profil/",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Indonesia"
+  ],
+  "reason": "The museum's profile gives every date and says it holds about 190,000 objects; Wikipedia's 141,000 is outdated. The museum calls the 1778 society independent and set up at the Dutch government's prompting, so 'private Dutch' became 'independent'."
+ },
+ {
+  "id": "museum-nasional-indonesia",
+  "section": "funding",
+  "problems": [
+   "missing funding fact on the cited site",
+   "wrong tense against source"
+  ],
+  "before": "Operator: the Indonesian Heritage Agency, a public service agency (BLU) running 18 museums ... (Fortune Indonesia, April 2024).",
+  "after": "Added: a Finance Minister's decree of 22 March 2021 made the museum a BLU (Museum Nasional). Fortune point now in its own tense: in April 2024 the agency was set to run 18 museums and 34 sites as one BLU.",
+  "sources": [
+   "https://www.museumnasional.or.id/tentang-kami/profil/",
+   "https://www.fortuneidn.com/news/peran-blu-dalam-pengelolaan-nilai-tambah-museum-dan-cagar-budaya-00-xkln4-vf0w9z"
+  ],
+  "reason": "Decree number 117/KMK.05/2021 is on the museum profile. BOTTOM LINE no longer repeats the fire."
+ },
+ {
+  "id": "ruang-mes-56-yogyakarta",
+  "section": "overview",
+  "problems": [
+   "unsupported: 'its programmes include residencies, workshops and multidisciplinary projects (ArtAsiaPacific, 2017)'"
+  ],
+  "before": "its programmes include residencies, workshops and multidisciplinary projects (ArtAsiaPacific, 2017).",
+  "after": "the house also hosts workshops and exhibitions (Balairung, 2018).",
+  "sources": [
+   "https://www.artasiapacific.com/shows/the-history-of-boys-the-mes-56-and-beyond/",
+   "https://balairungpress.com/2018/03/kisah-ruang-gelap-mes56/"
+  ],
+  "reason": "The ArtAsiaPacific review names no programmes; the earlier source (Jurnal Imajinasi) now returns 404. Balairung states the house hosts workshops, exhibitions and screenings."
+ },
+ {
+  "id": "ruang-mes-56-yogyakarta",
+  "section": "funding",
+  "problems": [
+   "repetition: front-room gallery already in OVERVIEW"
+  ],
+  "before": "Its early gallery was the front room of a house the members rented together (Balairung, 2018).",
+  "after": "(cut)",
+  "sources": [
+   "https://balairungpress.com/2018/03/kisah-ruang-gelap-mes56/"
+  ],
+  "reason": "OVERVIEW already states the rented house's front room became the gallery. 'Remains an active member' dated to the 2018 sources."
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "section": "overview",
+  "problems": [
+   "unsupported: 'closed on national holidays (museum website)'",
+   "credited to a page whose text does not render"
+  ],
+  "before": "Visiting: Tuesday to Sunday, 10:00 to 17:00, closed on national holidays (museum website) ... It has run a public programme for disabled visitors with recent shows (Manual).; address and Ruang Sayap credited to the museum website",
+  "after": "Visiting: Tuesday to Sunday, 10:00 to 17:00; ticket Rp35,000 (detikJabar, 2024). Arin Sunaryo said it launched a public programme for disabled visitors with two 2023 shows (Manual). Address credited to CNN Indonesia and detikJabar; Ruang Sayap to Manual.",
+  "sources": [
+   "https://www.detik.com/jabar/wisata/d-7257290/menyesap-kesejukan-bandung-ditemani-karya-seni-di-selasar-sunaryo/amp",
+   "https://www.cnnindonesia.com/inspirasi/20170615123929-454-221924/menengok-seni-di-bukit-pakar",
+   "https://manual.co.id/article/unpacking-25-years-of-selasar-sunaryo-art-space-through-seperempat-abad/"
+  ],
+  "reason": "The museum's pages serve translation keys, not text, to a plain fetch; the holiday closing rests on nothing opened. The other points are on detikJabar, CNN Indonesia (Jalan Bukit Pakar Timur No 100) and Manual."
+ },
+ {
+  "id": "selasar-sunaryo-art-space-bandung",
+  "section": "funding",
+  "problems": [
+   "support page read from its meta description only, not credited so",
+   "unsupported: 'run by his family through a foundation'"
+  ],
+  "before": "the site asks for support \"melalui donasi dan kemitraan\" (museum website, our translation); verdict: run by his family through a foundation; BOTTOM LINE: a family foundation",
+  "after": "the support page's description asks for support ... (page description only, our translation); verdict: with his foundation's support, run by his family; BOTTOM LINE: his foundation",
+  "sources": [
+   "https://selasarsunaryo.org/join/support",
+   "https://culture360.org/resources/selasar-sunaryo-arts-space-ssas/",
+   "https://selasarsunaryo.org/about/team"
+  ],
+  "reason": "culture360 says the Selasar Sunaryo Foundation gave direction and support; no source calls it a family foundation or says the family runs the space through it. The team page (staff names) does render and was confirmed."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "red_flags",
+  "problems": [
+   "ruling: sanctions flag needs the ministry itself listed",
+   "heading lacks a year",
+   "'has been on the list since' asserts a current status not checked"
+  ],
+  "before": "Red flags: owner on the US sanctions list / The Ministry ... has been on the US Specially Designated Nationals list since 8 November 2012 under the IRAN-TRA programme (OFAC)",
+  "after": "Red flags: 2012 US sanctions listing of the owning ministry / OFAC added the Ministry of Culture and Islamic Guidance ... to the SDN list on 8 November 2012 as an entity under the IRAN-TRA programme (OFAC)",
+  "sources": [
+   "https://ofac.treasury.gov/recent-actions/20121108",
+   "https://www.govinfo.gov/content/pkg/FR-2012-11-16/html/2012-27938.htm"
+  ],
+  "reason": "The Treasury page lists 'MINISTRY OF CULTURE AND ISLAMIC GUIDANCE, Bahrestan Square ... [IRAN-TRA]' as an entity, so the flag stays. The current SDN file timed out, so the text states the 2012 designation, not current status."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "red_flags",
+  "problems": [
+   "ruling: overrun dated before November 2021",
+   "unsupported: 'stated final cost'; 'reopened in February 2021, 30 months later'"
+  ],
+  "before": "Red flags: 2018 to 2021 renovation delays and cost (two points; reopening February 2021; stated final cost 16.5 billion toman)",
+  "after": "WIDER CONTEXT: Renovation overrun, 2018 to 2021 ... in January 2021, still shut, it had cost 16.5 billion toman (Etemad Online). OVERVIEW: closed in spring 2018; on 27 January 2021 Tehran Times reported it would reopen the next day.",
+  "sources": [
+   "https://www.etemadonline.com/%D8%A8%D8%AE%D8%B4-%D9%81%D8%B1%D9%87%D9%86%DA%AF-%D9%87%D9%86%D8%B1-16/460399-%D8%A2%DB%8C%D8%A7-%D8%A8%D8%A7%D8%B2%DA%AF%D8%B4%D8%A7%DB%8C%DB%8C-%D9%85%D9%88%D8%B2%D9%87-%D9%87%D9%86%D8%B1%D9%87%D8%A7%DB%8C-%D9%85%D8%B9%D8%A7%D8%B5%D8%B1",
+   "https://www.tehrantimes.com/news/457431/Tehran-museum-to-reopen-with-works-by-artists-who-protested-Vietnam"
+  ],
+  "reason": "Every overrun figure dates from 2018 to January 2021, so per the ruling it is context. Etemad says 16.5bn toman 'had been spent', not a final cost. The reopening date (Persian Wikipedia: mid-Bahman 1399) is replaced by the dated Tehran Times report (28 January 2021)."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "press",
+  "problems": [
+   "ruling: Hyperallergic behind a registration wall"
+  ],
+  "before": "Says critics saw the May 2023 vegetable garden, since removed, as a symbol of the museum's \"decades-long decline\".",
+  "after": "Standfirst: for critics, the vegetable garden planted in May 2023, since removed, symbolised the museum's \"decades-long decline\". Marked: only the headline, standfirst and photo caption were read; SOURCES marked too.",
+  "sources": [
+   "https://hyperallergic.com/why-on-earth-did-tehran-contemporary-art-museum-plant-vegetables-in-its-yard/"
+  ],
+  "reason": "Standfirst and caption (May 2023) confirmed verbatim; nothing beyond them is used."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "funding",
+  "problems": [
+   "Persian Wikipedia-only ministry status",
+   "Persian Wikipedia-only closure and reopening dates"
+  ],
+  "before": "Owner: the museum is a unit of the Deputy for Arts Affairs of the Ministry of Culture and Islamic Guidance (Persian Wikipedia).",
+  "after": "Owner: the museum operates under the Ministry of Culture and Islamic Guidance; its site names the ministry, its arts deputy and the Institute for the Development of Visual Arts (museum website). Added hours (daily 10:00 to 18:00) from the same site.",
+  "sources": [
+   "https://tmoca.com/about-us/organizational-structure/",
+   "https://tmoca.com/"
+  ],
+  "reason": "The museum's organisational page states it works under the ministry. The Plan and Budget Organization founding money and Dabirinezhad's April-May 2025 start stay credited to Persian Wikipedia, where both appear; The Art Newspaper (May 2026) confirms him as director; no press report of the appointment could be opened."
+ },
+ {
+  "id": "tehran-museum-of-contemporary-art-tmoca",
+  "section": "overview",
+  "problems": [
+   "absence statement: 'the museum gave no comment on the firing'",
+   "over 800 words (864)",
+   "BOTTOM LINE restated facts"
+  ],
+  "before": "...and the museum gave no comment on the firing (Artforum)",
+  "after": "Ehsan Aghaei was dismissed on 14 March 2022 ...; Ebadorreza Eslami-Kulai replaced him (Artforum). Trimmed elsewhere; BOTTOM LINE gives the verdict only.",
+  "sources": [
+   "https://www.artforum.com/news/tehran-museum-of-contemporary-art-names-new-director-251708/"
+  ],
+  "reason": "The dismissal followed an accident, not a censorship act, so it stays in OVERVIEW. The Berlin context's last point now states the link correctly: the minister who halted the loan heads the owning ministry (the Berlin side's termination was not a ministry act)."
+ },
+ {
+  "id": "habima-theatre",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only point: '1918 under the Moscow Art Theatre' is on neither Wikipedia page",
+   "Hebrew Wikipedia-only director"
+  ],
+  "before": "from 1918 it worked under the Moscow Art Theatre, premiered \"The Dybbuk\" in Moscow on 31 January 1922 ... (Wikipedia); Dani Weiss has been general director since 1 September 2023 (Hebrew Wikipedia)",
+  "after": "Its tradition began in Moscow in 1918 (N12); there Stanislavsky made it a studio of the Moscow Art Theatre, and it premiered \"The Dybbuk\" on 31 January 1922 (Hebrew Wikipedia). Dani Weiss is general director (Ice, June 2025), in post since 1 September 2023 (Hebrew Wikipedia)",
+  "sources": [
+   "https://www.mako.co.il/news-entertainment/2022_q1/Article-483a533f48cbf71026.htm",
+   "https://he.wikipedia.org/wiki/תיאטרון_הבימה",
+   "https://www.ice.co.il/culture/news/article/1069783"
+  ],
+  "reason": "English Wikipedia gives neither 1918 nor the Dybbuk date; N12 gives 1918 and Hebrew Wikipedia the studio and premiere. Ice quotes Weiss as general director; only the start date rests on Hebrew Wikipedia."
+ },
+ {
+  "id": "habima-theatre",
+  "section": "funding",
+  "problems": [
+   "Hebrew Wikipedia-only trustees and rebuild funders",
+   "unsupported: 'over debts of tens of millions of shekels' (not in the sentence's source)"
+  ],
+  "before": "the district court suspended the general director and board on 25 November 2019 and appointed temporary trustees over debts of tens of millions of shekels ... (Hebrew Wikipedia); the 2007 to 2011 rebuild cost about NIS 100 million ... (Hebrew Wikipedia)",
+  "after": "... appointed temporary trustees ... (Hebrew Wikipedia); the trustees ran the theatre until the city took it over (Maariv). More than NIS 100 million went into the rebuild (Wikipedia), paid mainly by the municipality with the Culture Ministry (Hebrew Wikipedia).",
+  "sources": [
+   "https://www.maariv.co.il/culture/theater-art/article-834438",
+   "https://en.wikipedia.org/wiki/Habima_Theatre",
+   "https://he.wikipedia.org/wiki/תיאטרון_הבימה"
+  ],
+  "reason": "Maariv confirms the court-appointed trustees; the deficit (over NIS 100m) is already in the Maariv rescue point, so the vaguer debt phrase was cut. The late-1960s state-budget history stays credited to Hebrew Wikipedia, where it appears; no press source could be opened."
+ },
+ {
+  "id": "habima-theatre",
+  "section": "wider_context",
+  "problems": [
+   "ruling: mark partisan and advocacy sources in the text"
+  ],
+  "before": "(Arutz Sheva); (letter reprinted by Mondoweiss)",
+  "after": "(Arutz Sheva, a partisan outlet, 2 September 2010); (letter reprinted by Mondoweiss, an advocacy outlet)",
+  "sources": [
+   "https://www.israelnationalnews.com/news/139467",
+   "https://mondoweiss.net/2012/03/emma-thompson-among-group-of-prominent-british-actors-calling-on-globe-theatre-to-withdraw-invite-to-israeli-national-theatre/",
+   "https://stljewishlight.org/world-news/israels-national-theater-performs-in-west-bank-settlement/"
+  ],
+  "reason": "Settlement performances (2010, 2016) and the 2012 Globe letter stay in WIDER CONTEXT per the ruling; quotes and the JTA funding-rule point confirmed verbatim. SOURCES were already marked."
+ },
+ {
+  "id": "gallerie-d-italia",
+  "section": "red_flags",
+  "problems": [
+   "ruling: a bank's fossil lending is not a flag category"
+  ],
+  "before": "Red flags: owner's fossil fuel finance (two ReCommon points)",
+  "after": "WIDER CONTEXT: one point crediting ReCommon (29 April 2025 statement, via L'Indipendente) with the lending figures and the Mozambique LNG question, and a last point linking it to the Turin protest",
+  "sources": [
+   "https://www.lindipendente.online/2025/05/10/intesa-sanpaolo-si-conferma-la-prima-banca-italiana-per-investimenti-nelle-fossili/"
+  ],
+  "reason": "Editor's ruling. Figures (18% to $11bn, 16% to $10bn), the 29 April date and the UniCredit line confirmed on the page."
+ },
+ {
+  "id": "gallerie-d-italia",
+  "section": "red_flags",
+  "problems": [
+   "ruling: privacy fines need the authority and date"
+  ],
+  "before": "Italy's data protection authority fined ... (QuiFinanza, 31 March 2026); In March 2026 the same authority fined it 17.6 million euros ... (Il Post)",
+  "after": "In March 2026 Italy's data protection authority, the Garante per la protezione dei dati personali, fined ... 17.6 million euros ... (Il Post, 13 March 2026); The Garante also fined it 31.8 million euros ... (QuiFinanza, 31 March 2026)",
+  "sources": [
+   "https://www.ilpost.it/2026/03/13/garante-privacy-sanziona-intesa-sanpaolo-isybank/",
+   "https://quifinanza.it/attualita/intesa-sanpaolo-multa-privacy-fuga-dati/964365/"
+  ],
+  "reason": "Both fines confirmed with their figures. The XR occupation stays a Red flag: LaPresse quotes the activists protesting the investments of 'Intesa Sanpaolo, banca proprietaria del museo'."
+ },
+ {
+  "id": "gallerie-d-italia",
+  "section": "funding",
+  "problems": [
+   "summarising-fetcher figures: 2025 visitors and 510 events",
+   "unsupported: 'paid for their architectural restoration'"
+  ],
+  "before": "about 750,000 again in 2025, with about 510 events (Intesa Sanpaolo); the bank converted palaces it owned and paid for their architectural restoration",
+  "after": "2025 figures cut; added from Finestre sull'Arte: Progetto Cultura produced twelve major shows and sixty side talks in 2024. Buildings: the museums were made from historic palaces the bank owned and once used as offices, converted with major architectural restoration.",
+  "sources": [
+   "https://www.finestresullarte.info/musei/nel-2024-gallerie-d-italia-di-intesa-sanpaolo-hanno-accolto-750mila-visitatori",
+   "https://web.archive.org/web/20250716203212/https://group.intesasanpaolo.com/it/sezione-editoriale/un-anno-di-sostenibilita/temi-materiali/comunita-e-cultura/impegno-per-la-cultura"
+  ],
+  "reason": "Intesa's site fails TLS verification for a plain fetch and its archived page (July 2025) carries no 2025 totals, so the 2025 figures rested on the fetcher's paraphrase. The palaces sentence also appeared in OVERVIEW; it now appears once."
+ },
+ {
+  "id": "gallerie-d-italia",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only Palazzo Beltrami line",
+   "summarising-fetcher hours and prices"
+  ],
+  "before": "Milan joins Palazzo Anguissola Antona Traversi, Palazzo Brentani and Palazzo Beltrami ... (Italian Wikipedia); hours and prices (museum website)",
+  "after": "Milan joins Palazzo Brentani, Palazzo Anguissola Antona Traversi and the former Banca Commerciale Italiana headquarters ... (museum website); hours (Tuesday to Sunday 9:30 to 19:00), 6 and 3 euro tickets and free categories confirmed verbatim on the archived visit page (15 November 2026)",
+  "sources": [
+   "https://web.archive.org/web/20261115014322/https://gallerieditalia.com/it/milano/",
+   "https://web.archive.org/web/20261115014322/https://gallerieditalia.com/it/milano/pianifica-la-tua-visita/"
+  ],
+  "reason": "The live site fails TLS certificate verification (curl error 60; not bypassed); the archive copy from five days ago stands in. Coppola's title re-credited to Finestre sull'Arte."
+ },
+ {
+  "id": "museo-archeologico-nazionale-di-napoli",
+  "section": "red_flags",
+  "problems": [
+   "ruling: 2025 appointment has no documented protest or legal challenge"
+  ],
+  "before": "Red flags: 2025 director appointment over a disputed shortlist (two points)",
+  "after": "Merged into the OVERVIEW director point: Sirano, one of five first-tier directors Giuli announced overnight in July 2025 after months of interim heads; Giuli had told an unpublished Corriere interview he was not satisfied with the shortlists (Finestre sull'Arte, 17 July 2025)",
+  "sources": [
+   "https://www.finestresullarte.info/musei/il-ministro-giuli-sceglie-i-nuovi-cinque-superdirettori-ecco-chi-sono",
+   "https://www.artribune.com/professioni-e-professionisti/2025/07/ministero-cultura-annuncia-direttori-cinque-mega-musei/"
+  ],
+  "reason": "Neither article reports a protest, appeal or court challenge, so per the ruling it is OVERVIEW. BOTTOM LINE adjusted to verdict only."
+ },
+ {
+  "id": "museo-archeologico-nazionale-di-napoli",
+  "section": "overview",
+  "problems": [
+   "unsupported: 'dies'"
+  ],
+  "before": "more than 6,000 coins, medals and dies (Finestre sull'Arte)",
+  "after": "more than 6,000 coins, medals and archaeological pieces, and 130 gold jewels back on view (Finestre sull'Arte)",
+  "sources": [
+   "https://www.finestresullarte.info/musei/riapre-sezione-numismatica-del-mann-con-oltre-6000-monete-nuovi-reperti-aurei"
+  ],
+  "reason": "The article lists coins, medals and archaeological materials, not dies."
+ },
+ {
+  "id": "museo-archeologico-nazionale-di-napoli",
+  "section": "press",
+  "problems": [
+   "changed detail: 'Tokyo National Museum'"
+  ],
+  "before": "to send the mosaic to the Tokyo National Museum and the Hermitage",
+  "after": "to send the mosaic to a Tokyo museum and the Hermitage",
+  "sources": [
+   "https://www.finestresullarte.info/attualita/polemica-mosaico-alessandro-mostra-giappone-mann"
+  ],
+  "reason": "Corrado's post, quoted by Finestre sull'Arte (22 March 2021), says 'Museo di Tokio', not the Tokyo National Museum."
+ },
+ {
+  "id": "museo-archeologico-nazionale-di-reggio-calabria-marrc",
+  "section": "red_flags",
+  "problems": [
+   "ruling: 2009 to 2016 cost rise older than five years",
+   "repetition: 2016 reopening already in OVERVIEW; costs repeated in press item"
+  ],
+  "before": "Red flags: 2009 to 2016 renovation delays and cost rise (two points); press item: 'that costs spiralled'",
+  "after": "WIDER CONTEXT: Renovation overrun, 2009 to 2016 (March 2011 target, December 2013 return, 11 to 30 million euros; The Art Newspaper, February 2014), with the connection in the last point; the 2016 point cut as a repeat; cost dropped from the press item",
+  "sources": [
+   "https://www.theartnewspaper.com/2014/02/01/the-riace-bronze-warriors-back-on-their-feet-at-last",
+   "https://museoarcheologicoreggiocalabria.cultura.gov.it/museo/"
+  ],
+  "reason": "Editor's ruling. Figures confirmed in The Art Newspaper's text. BOTTOM LINE no longer names the overrun as the weak point."
+ },
+ {
+  "id": "museo-archeologico-nazionale-di-reggio-calabria-marrc",
+  "section": "funding",
+  "problems": [
+   "undated Panorama amounts (2012)",
+   "added descriptor: 'Matteo'"
+  ],
+  "before": "about 18 million euros from the Presidency ..., 6 million from the CIPE ... and 5 million from the Calabria Region ... (Panorama, September 2012); backed by Mayor Matteo Renzi",
+  "after": "by September 2012 the Presidency ... had made available almost 18 million euros and the CIPE 6 million, and the Calabria Region had just allocated 5 million for fit-out and systems (Panorama, 5 September 2012); backed by Mayor Renzi",
+  "sources": [
+   "https://www.panorama.it/lifestyle/reggio-calabria-i-bronzi-contesi-e-un-museo-nuovo-di-zecca-da-inaugurare"
+  ],
+  "reason": "Amounts dated to the article (published 5 September 2012) and worded as Panorama states them ('quasi diciotto milioni'). The two Ministry of Culture pages returned 500 on first try; one loaded on retry and the other from a June 2025 archive copy, confirming Reggio Lido station and the ICR and University of Genoa check-up."
+ }
+]
