@@ -56,7 +56,8 @@ VERB_LEAD_RE=re.compile(r"^(?:logos|(?:prize |corporate |main |other )?partners|
 def clean_label(nm):
     nm=VERB_LEAD_RE.sub('',VERB_TAIL_RE.sub('',nm)).strip(' .,;-')
     nm=TRAIL_SUM_RE.sub('',LEAD_RE.sub('',ROLE_RE.sub('',SUFFIX_RE.sub('',nm)))).strip(' .,;-')
-    if len(nm)<3 or len(nm)>60 or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
+    # An official name that holds a list (protect_names) may run past 60 letters: "State of Baden-Württemberg Ministry of Science, Research and the Arts".
+    if len(nm)<3 or len(nm)>(90 if re.search(r"\b(?:of|for)\b.*\band\b",nm) else 60) or JUNK_RE.search(nm) or norm(nm) in JUNK: return None
     return nm
 def merge_key(label,cat,country,rid):
     """One key per funder across the whole atlas. Public bodies are told apart by country, and generic
@@ -144,8 +145,13 @@ def clean(tok):
     # "The museum depends on the Banco de la República": the funder is what follows "depends on".
     m1=re.search(r"\b(?:depends|relies|depending|relying)\s+(?:\w+\s+)?on\s+(?:the\s+)?(?=[A-Z])",tok)
     if m1: tok=tok[m1.end():].strip(" .")
-    m2=re.search(r"\b(?:funded|financed|supported|run|owned|operated|backed|seeded|subsidi[sz]ed|paid for|co-funded)\s+(?:\w+\s+)?by\s+",tok,re.I)
+    m2=re.search(r"\b(?:funded|financed|supported|run|owned|operated|backed|seeded|subsidi[sz]ed|paid for|co-funded|founded)\s+(?:\w+\s+)?by\s+",tok,re.I)
     if m2: tok=tok[m2.end():].strip(" .")
+    # "Donate page lists the Horace W. Goldsmith Foundation": the funder is what is listed.
+    m2b=re.search(r"\b(?:lists|names|credits|thanks)\s+(?:the\s+)?(?=[A-Z])",tok)
+    if m2b: tok=tok[m2b.end():].strip(" .")
+    # "In October 2024 the Aso O. Tavitian Foundation gave ...": the date opening the phrase is not part of the name.
+    tok=re.sub(r"^(?:in|since|by)\s+(?:(?:early|late|mid)\s+)?(?:[A-Z][a-z]+\s+)?(?:19|20)\d\d,?\s+","",tok,flags=re.I)
     # "the Glass-House Trust": the article would fail the capital-letter test below, so it goes; keys never held it.
     tok=re.sub(r"^the\s+","",tok,flags=re.I).strip(" .")
     # "Statutory body under the Ministry of Cultural Affairs": the funder is what follows "under".
@@ -153,13 +159,13 @@ def clean(tok):
     if m3: tok=tok[m3.end():].strip(" .")
     # "Astana Motors pays running costs", "Pinault bought Palazzo Grassi": a lowercase verb ends the name. Case matters:
     # "Pays de Montbéliard" is a name.
-    m4=re.search(r"\s(?:owns|owned|bought|pays|paid|supervised|cites|co-funds|funds|funded|financed|runs|ran|run|set up|took over|gave|donated|holds|cost|covers|provides|provided|manages|operates|operated|backs|backed|sponsors|sponsored|supports|supported|produces|lists|contributing|contributed|is|are|was|were|comes|traces|relying|returns|oversees|publishes|owns|drew|pledged|overseeing|sits|who|which|whose|that)\b",tok)
+    m4=re.search(r"\s(?:owns|owned|bought|pays|paid|supervised|cites|co-funds|funds|funded|financed|runs|ran|run|set up|took over|gave|donated|holds|cost|covers|provides|provided|manages|operates|operated|backs|backed|sponsors|sponsored|supports|supported|produces|lists|contributing|contributed|is|are|was|were|comes|traces|relying|returns|oversees|publishes|owns|drew|pledged|overseeing|sits|co-financed|co-finances|finances|approves|approved|partly|who|which|whose|that)\b",tok)
     if m4:
         head=tok[:m4.start()].strip(" .,")
         tok=head if re.search(r"[A-Z]",head) else ''
     tok=re.sub(r"'s$","",tok).strip(" .")
     # A description beginning with an article or a size word is not a name.
-    if re.match(r"^(?:an?|its|his|her|their|no|tiny|small|large|independent|about|us arm|mostly|mainly|public funders|site logos|partners listed|institutional funding|family money|joint shows|board leadership|self-funding)\b",tok,re.I): return ''
+    if re.match(r"^(?:an?(?=\s)|its|his|her|their|no|tiny|small|large|independent|about|us arm|mostly|mainly|public funders|site logos|partners listed|institutional funding|family money|joint shows|board leadership|self-funding)\b",tok,re.I): return ''
     return tok
 GOVGEN={'the city':'City government','city':'City government','the state':'State government','state':'State government','the region':'Regional government','the government':'Government','government':'Government','the ministry':'Ministry of Culture','the county':'County government','local authority':'Local authority','the federal government':'Federal government'}
 GOVGEN.update({'canton':'Canton','the canton':'Canton','federal':'Federal government','the federal government':'Federal government','county':'County government','the county':'County government',
@@ -171,22 +177,79 @@ PAYER_RE=re.compile(r"\b(?:paid for|funded|sponsored|supported|underwritten|made
 # Days and months are never funders; a sentence the filter above misses must still not turn one into a sponsor.
 JUNK|={'monday','tuesday','wednesday','thursday','friday','saturday','sunday','mondays','tuesdays','wednesdays','thursdays','fridays','saturdays','sundays','weekends',
        'january','february','march','april','may','june','july','august','september','october','november','december'}
+# Official names that hold a list ("Department for Culture, Media and Sport", "Ministry of Education, Culture and Science",
+# "Institute of Museum and Library Services", "Swiss Agency for Development and Cooperation") were split at their commas and
+# "and" into 'Media', 'Sport', 'Science', 'Library Services' as funders of their own (about 60 fragment keys in Nov 2026). After
+# a body word and "of"/"for", the items that follow are kept with the name while each is a portfolio word.
+BODY_HEAD=re.compile(r"\b(?:Ministry|Ministries|Department|Dept|Secretariat|Agency|Office|Commissioner|Directorate(?:-General)?|Institute|Authority|Corporation|Commission|Council)\s+(?:of|for)\s+(?:the\s+)?",re.I)
+PORTFOLIO={w.lower() for w in """Culture|Cultures|Cultural Affairs|Arts|Art|Media|Sport|Sports|Science|Sciences|Education|Higher Education|Research|
+Innovation|Equality|Youth|Tourism|Heritage|National Heritage|Gaeltacht|Monuments|Antiquities|Museums|Community|Communities|Communications|Social Cohesion|
+Cooperation|Development|Library Services|Libraries|Archives|Digital|Information|Merit|Economy|Environment|Family|Families|Integration|Women|
+Recreation|Leisure|Languages|Diversity|Technology|Religious Affairs|Islamic Affairs|Labour|Employment|Health|Welfare|Creative Industries|
+Cultural Resources|Natural Resources|Broadcasting|Sport and Youth|Science and Technology|Information Technology|Heritage and Culture|Tradition|
+Historic Preservation|Multiculturalism|Local Government|Rural Affairs|Foreign Affairs|Trade|Sustainability|Climate|Interior|Housing|Universities|
+University|Training|Skills|Visual Arts|Performing Arts|Fine Arts|Crafts|Fisheries|Agriculture|Ethnic Affairs|Minorities|Regional Development""".replace('\n','').split('|')}
+ITEM=re.compile(r"(?:the\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)")
+SEP=re.compile(r"(,\s+|\s+and\s+|\s+&\s+)")
+def protect_names(text):
+    """Mark the commas and "and"s inside official names so the splitter keeps each name whole (see BODY_HEAD); also
+    "Republic and Canton of Geneva" and the "CHARLES & KEITH Foundation"."""
+    out=[];pos=0
+    for h in BODY_HEAD.finditer(text):
+        if h.start()<pos: continue
+        m=ITEM.match(text,h.end())
+        if not m: continue
+        end=m.end();items=[]
+        while True:
+            sp=SEP.match(text,end)
+            if not sp: break
+            m2=ITEM.match(text,sp.end())
+            if not m2 or m2.group(1).lower() not in PORTFOLIO: break
+            # "Culture, Media and Sport, the city ...": an item is the name's last only if a separator or the end follows it.
+            items.append((sp.start(),sp.end()));end=m2.end()
+        if not items: continue
+        out.append(text[pos:h.end()])
+        seg=text[h.end():end]
+        seg=seg.replace(',','\u0001').replace(' and ',' \u0002 ').replace(' & ',' \u0003 ')
+        out.append(seg);pos=end
+    out.append(text[pos:]);text=''.join(out)
+    text=re.sub(r"\bRepublic and Canton of\b","Republic \u0002 Canton of",text)
+    text=re.sub(r"\bCHARLES & KEITH\b","CHARLES \u0003 KEITH",text)
+    return text
+def unprotect(s): return s.replace('\u0001',',').replace('\u0002','and').replace('\u0003','&')
+# A list heading ("Partners:", "Named supporters:", "Main sponsors:", "Gold sponsors include") is not a funder; only the
+# names after it are. Single words that open a sentence about how a space is run ("Owned and run by", "Privately funded")
+# were split off at "and" and read as funders too.
+HEADING_RE=re.compile(r"^(?:(?:main|principal|major|top|gold|silver|platinum|diamond|bronze|corporate|private|public|institutional|named|other|prize|project|founding|strategic|annual|structural|core|key|lead|individual|international|local|regional|current|programme|program|exhibition|season|official|premium|associate|supporting)\s+){0,3}(?:partners?|sponsors?|supporters?|patrons?|funders?|benefactors?|donors?|named|trusts?|foundations|subsidies|friends|logos|circles?|members?|grants?|lenders?|contributors?|backers?)(?:\s+(?:listed|named|circles?|include|includes))?$",re.I)
+LONE_WORD={'owned','run','privately','established','managed','funded','paid','financed','supported','backed','operated','endowed','founded','built',
+  'created','named','main','principal','structural','annual','core','contributions','subsidies','restoration','project','box','governed','jointly','largely',
+  # a first name left over from a couple ('Jane and Aatos Erkko Foundation', 'Michael and Janet Buxton')
+  'jane','michael','charles','william','walter','liz','nancy','janet','emma','john','mary'}
 def parse_funding(text):
     out=[];seen=set()
     if not text: return out
     text=re.sub(r"\d{1,3}(?:,\d{3})+\s*(?:visits|visitors)","",text)
     text=re.sub(r"\s*\([^)]*\)","",text)
     text=re.sub(r"\s+\.",".",text)
-    for sent in re.split(r"(?<=[A-Za-z0-9\)])\.\s+(?=[A-Z$£€0-9])",text):
+    text=protect_names(text)
+    # A sentence ends at a full stop, but not after an initial ("Andrew W. Mellon", "Arthur M. Sackler", "J. Paul Getty") or a
+    # title: 'Andrew W' and 'Arthur M' were funders of their own until 20 Nov 2026.
+    for sent in re.split(r"(?<=[A-Za-z0-9\)])(?<!\b[A-Z])(?<!\bDr)(?<!\bSt)(?<!\bMr)(?<!\bMrs)(?<!\bMs)(?<!\bJr)\.\s+(?=[A-Z$£€0-9])",text):
         s0=PREFIX.sub('',sent.strip())
+        # "Partners: LMD, Suez Canal Bank": what comes before a colon is a heading when it reads as one.
+        hm=re.match(r"^([^:]{1,48}):\s+",s0)
+        if hm and HEADING_RE.search(hm.group(1).strip()): s0=s0[hm.end():]
         for raw in SPLIT.split(s0):
+            raw=unprotect(raw)
+            if raw.strip(" .").lower() in LONE_WORD or HEADING_RE.match(raw.strip(" .")): continue
             # A phrase about what a visitor pays or when entry is free ("Sundays are free", "Entry costs 20 dinars")
             # names no funder: "Sundays" came out as a corporate sponsor of Museo del Oro. Only the phrase is skipped,
             # since the same sentence often names the funder too ("admission is free thanks to Walmart").
             if VISITOR_RE.search(raw) and not PAYER_RE.search(raw): continue
             m=MONEY.search(raw); tok=clean(raw)
             if tok.lower() in GOVGEN: tok=GOVGEN[tok.lower()]
-            if not tok or len(tok)<3 or len(tok.split())>9: continue
+            # An official name kept whole (protect_names) may run longer: "Senate Department for Culture and Community of the State of Berlin".
+            if not tok or len(tok)<3 or len(tok.split())>(12 if re.search(r"\b(?:of|for)\b.*\band\b",tok) else 9): continue
             if not (tok[0].isupper() or tok[0].isdigit()): continue
             if tok.lower() in GENERIC: continue
             if re.search(r"\b(museum|gallery|galleries|centre|center|house|building|institution|school|library|archive|collection|theatre|theater)$",tok,re.I) and not FOUND.search(tok): continue
