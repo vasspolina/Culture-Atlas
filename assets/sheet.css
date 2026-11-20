@@ -2800,3 +2800,9 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
     :root.gm-map.gm-sheet #gmChips:not(#sh-x):not(#sh-y):not(#sh-z) > *{flex:none!important}
   }
 }
+
+/* Air between the record's tabs and its name (user, 20 Nov 2026: "add a space after tabs and before titles like 20 px"). The
+   name sat right on the tabs' rule. The tabs stay sticky; the 20px is the title block's own top margin, so it scrolls away with it. */
+@layer sheet{
+  #dossier-bottom-sheet .gm-tabs + .sheet-title-block:not(#sh-x):not(#sh-y):not(#sh-z){margin-top:20px!important}
+}
