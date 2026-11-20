@@ -439,11 +439,28 @@
         // atlas.css (.has-color + --layer-color): a pale wash off, the full fill on. Black text on every fill measures 10.9:1 or better.
         b.style.setProperty('--layer-color', MEASURE_COLOURS[k]); b.classList.add('has-color');
         b.title = k === 'culture' ? `Label each funder with ${M.what}` : k === 'self' ? `Show ${M.what}` : `${M.label} at a museum`;
-        b.addEventListener('click', () => setMeasure(k));
+        // A chip leaves one-space mode (user, 20 Nov 2026: "when i click filter map need to show spaces back and get out of
+        // one space mode"): the space opened by its Money map button, or a funder picked, lets go, so the measure is read
+        // across every space on the map rather than round the one.
+        b.addEventListener('click', () => { leaveFocus(); setMeasure(k); });
         host.appendChild(b);
       });
       paintMeasureButtons();
     });
+  }
+  function leaveFocus() {
+    hover = null; hoverSpace = null;
+    if (picked) pick(null);
+    const sel = g('selectedInstitution');
+    if (sel && typeof window.deselectInstitution === 'function') { try { window.deselectInstitution(); } catch (e) {} }
+    // The Money map button closed in on the space; the map opens back out over it to the whole world, so every space shows.
+    const base = window.getBaseRadius ? window.getBaseRadius() : null;
+    if (sel && base && typeof window.flyTo === 'function' && (g('targetRadius') || 0) > base * 1.05) {
+      const pin = typeof window.atlasPinOf === 'function' ? window.atlasPinOf(sel) : sel;
+      if (typeof window.setTargetRadius === 'function') window.setTargetRadius(base);
+      if (pin && typeof pin.lat === 'number') window.flyTo(pin.lon, pin.lat, base);
+    }
+    if (typeof window.atlasRefilter === 'function') window.atlasRefilter();
   }
   function paintMeasureButtons() { document.querySelectorAll('[data-influence-measure]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.influenceMeasure === MEASURE))); }
   window.atlasInfluenceMeasure = () => MEASURE;
