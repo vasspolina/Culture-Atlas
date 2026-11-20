@@ -49,3 +49,43 @@ test('a place summary counts and tallies the place itself', () => {
   assert.match(p, /Flagged, with the reason on record/);
   assert.equal(placeSummary('Nowhere', [], GRADE), '');
 });
+
+// What funders got in return (user, 20 Nov 2026: the chat "did not answer the second half of the question (what funders get in
+// return), although the influence data holds it"). The ledger here is the test's own, so the rule is tested and not the research.
+const { returnsFor, returnsMarkdown, UNGRADED_WHY } = ctx.AtlasGrounding;
+const ledger = { funders: [
+  { key: 'oilco', name: 'OilCo', ties: [
+    { space: 'm1', space_name: 'Museum One', kinds: ['building'], summary: 'Paid for the new wing, announced in 2023', date: '2023-12', ended: false },
+    { space: 'm1', space_name: 'Museum One', kinds: ['access'], summary: 'Held its annual reception at the museum.', date: '2015-11', ended: false },
+    { space: 'm1', space_name: 'Museum One', kinds: [], summary: 'A trustee resigned over the deal.', date: '2019', ended: false },
+    { space: 'm2', space_name: 'Museum Two', kinds: ['name'], summary: 'Its name on the portrait prize.', date: '2020', ended: true }
+  ] },
+  { key: 'trust', name: 'Quiet Trust', ties: [{ space: 'm1', space_name: 'Museum One', kinds: ['money'], summary: 'Is named as a funder.', date: '2021', ended: false }] }
+] };
+const labels = { building: 'A building or endowment', access: 'Galas and perks', name: 'Its name on a building, room or prize' };
+
+test('what funders got in return at a museum leaves out money-only ties and protests', () => {
+  const got = returnsFor(ledger, { space: 'm1', labels });
+  assert.equal(got.length, 2);
+  assert.deepEqual(Array.from(got, x => x.funder), ['OilCo', 'OilCo']);
+  assert.match(got[0].summary, /new wing/);   // newest first
+  const md = returnsMarkdown(got);
+  assert.match(md, /^- OilCo: a building or endowment\. Paid for the new wing, announced in 2023\.$/m);
+  assert.doesNotMatch(md, /Quiet Trust|resigned/);
+});
+
+test('a funder named with no museum gets its ties museum by museum, and an ended tie says so', () => {
+  const got = returnsFor(ledger, { funders: ['oilco'], labels });
+  assert.equal(got.length, 3);
+  const md = returnsMarkdown(got, { bySpace: true, max: 2 });
+  assert.match(md, /^- Museum One: /m);
+  assert.match(md, /^- 1 more on the record\.$/m);
+  assert.match(returnsMarkdown(got, { bySpace: true }), /Museum Two: its name on a building, room or prize\. Its name on the portrait prize\. The tie has ended\./);
+  assert.equal(returnsMarkdown([]), '');
+});
+
+test('a place summary says why its ungraded museums have no grade', () => {
+  const p = placeSummary('Testville', [{ name: 'Graded', grade: 5 }, { name: 'Ungraded' }], GRADE);
+  assert.match(p, /Grades: 1 Grade F, 1 not graded \(not graded because /);
+  assert.ok(p.includes(UNGRADED_WHY));
+});
