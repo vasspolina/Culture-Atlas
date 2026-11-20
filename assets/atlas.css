@@ -4933,7 +4933,7 @@ body:not(.chat-input-mode-active) #workInputCard #noteFormBackBtn{display:none!i
    out of it), and the pair sat 12px left of the button, so the button read as an empty 44px rounded square with the mark
    hanging off its edge; the word Layers, invisible but 45px wide, pushed them there. On a phone the word is set at 0px (it
    stays the button's accessible name), the desktop icon is dropped, the phone's is centred at 20px, and the button is a 40px
-   circle, as docs/GUIDE.md has it ("a round button at the top right") and as the Claude app draws its round controls. */
+   circle, as the README has it ("a round button at the top right") and as the Claude app draws its round controls. */
 @media (max-width:767px){
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn{display:flex!important;align-items:center!important;justify-content:center!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;padding:0!important;gap:0!important;border-radius:50%!important;font-size:0!important;line-height:0!important;letter-spacing:0!important}
   :is(#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude#claude,html) #layersControl #layersBtn .gmd-layers-icon{display:none!important}
@@ -5103,3 +5103,11 @@ body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc
    names something the atlas does not have. The field rules above set display with !important, so hidden needs this weight. */
 :is(#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote#dpnote,html) #noteFormFields :is(#noteCityField,#noteAddressField,#notePlaceHint)[hidden]{display:none!important}
 #notePlaceHint{margin:0 0 12px;font:400 var(--fs-s)/1.3 var(--sans)}
+
+/* The city map on a phone, 18 Nov 2026 ("the map on mobile looks very overlapping"): a mark that sits on another mark is
+   drawn as a small dot (set in resolveCityMarkerCollisions in index.html), so a dense centre reads as a cluster and the
+   marks that stand alone keep their shape. Its name is already hidden by the collision pass; a tap or hover still shows it. */
+@media (max-width:767px){
+  :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin.pin-crowded .inst-pin-dot{width:9px!important;height:9px!important;clip-path:none!important;border-radius:50%!important}
+  :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer .custom-inst-pin.pin-crowded:not(.popup-active):not(:hover) .inst-pin-label{opacity:0;pointer-events:none}
+}

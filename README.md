@@ -1,64 +1,48 @@
 # Leaving it on the table
 
-A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from.
+A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
 
-**Live:** https://vasspolina.github.io/Culture-Atlas/
+## Run it locally
 
-The full guide (what every feature does, the design rules, the data pipeline, the record schema, grading and methodology) is in [`docs/GUIDE.md`](docs/GUIDE.md).
-
-## Quick start
-
-The site is static: no build step and no dependencies. From the repository root:
+No build step and no dependencies. From the repository root:
 
 ```bash
 python3 -m http.server 8080
 ```
 
-Then open http://localhost:8080.
+Then open [http://localhost:8080](http://localhost:8080).
 
-## Tests
+To try the Share information form against a local backend, run the report API (see [docs/api.md](docs/api.md)) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
 
-```bash
-npm install
-npx prisma generate
-npm test
-```
-
-`npm test` runs the site and data tests in `tests/` and the report API tests in `server/test/`. The chat proxy has its own tests: `node --test worker/test/*.test.mjs`. The same checks run on every pull request (`.github/workflows/test.yml`).
-
-## Deploying
-
-`main` is the source of truth. Every push to `main`, and a daily scheduled run, triggers `.github/workflows/deploy.yml`: it checks the records for repetition, rebuilds the latest-reports feed and publishes the site to the `gh-pages` branch that GitHub Pages serves. Never push to `gh-pages` by hand.
-
-The report API (`server/`, `prisma/`) is deployed separately as a container (`Dockerfile`, `fly.toml`). The chat proxy (`worker/`) is a Cloudflare Worker (`worker/wrangler.toml`). See `docs/GUIDE.md` for both.
-
-## Repository layout
+## Project Structure
 
 ```
-.
-├── index.html             The atlas: globe, map, chat and records (edited in place)
-├── artists-images.html    Artists' images of cultural institutions
-├── moma-money-map.html    The MoMA money map study
-├── studies.html           Studies index
-├── reports-admin.html     Moderation page for whistleblower reviews
-├── sw.js, manifest.json   Service worker and app manifest
-├── institutions.json      The dataset: one record per space
-├── assets/                Styles, scripts, generated data and images the pages load
-├── fonts/                 Typefaces the pages load
-├── data/                  Research sources, research runs and inputs behind the dataset
-├── tools/                 Data pipeline: importers, graders, builders and checks (Python and Node)
-├── editor/                Local data editor for institutions.json (run tools/editor.py; not deployed)
-├── server/, prisma/       Report API for whistleblower reviews (Express, Prisma, SQLite)
-├── admin/                 React moderation component
-├── worker/                Chat proxy (Cloudflare Worker)
-├── tests/                 Site and data tests (node --test)
-├── notes/                 Editorial rules and the daily-reports log
-├── docs/                  The full guide
-└── .github/workflows/     Deploy to GitHub Pages; tests on pull requests
+Culture-Atlas/
+├── index.html          # The whole app, edited in place. The only copy of the atlas page.
+├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
+├── reports-admin.html # Moderation page for whistleblower reviews
+├── worker/           # The chat proxy (Cloudflare Worker) and its tests
+├── server/            # Express API for whistleblower reviews
+├── prisma/            # Prisma schema and SQLite database (database file is ignored)
+├── editor/            # The data editor for institutions.json (run tools/editor.py; not deployed)
+├── sw.js               # Service worker (network-first for the page, same-origin cache only)
+├── manifest.json       # PWA manifest
+├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
+├── institutions.json   # Dataset
+├── docs/               # Feature, design, API, data and deploy documentation
+├── data/               # Research sources, papers, corrections and the inputs behind the dataset (see data/README.md for what every file is)
+├── tools/              # Data pipeline: clean_data (which calls grade_funding), embed_data, build_money_maps, the importers and verify_claims
+└── .github/workflows/  # Deploy to gh-pages on push to main
 ```
 
-The pages load files by these paths, and so do the service worker, the deploy workflow and the tools, so moving a top-level file means updating all of them.
+## Documentation
 
-## Configuration
-
-Copy `.env.example` to `.env` to run the report API locally. `.env` is ignored by git; never commit it.
+| Doc | Covers |
+|---|---|
+| [docs/features.md](docs/features.md) | What the atlas does: chat, globe and map, money maps, studies, influence and gossip modes |
+| [docs/design.md](docs/design.md) | The design sheet, layout rules, and how to edit the page |
+| [docs/api.md](docs/api.md) | Whistleblower reviews, the report API, the Claude chat proxy |
+| [docs/data.md](docs/data.md) | Dataset schema, what the page may show, ratings, verification, the data editor |
+| [docs/deploying.md](docs/deploying.md) | Deploying to GitHub Pages |
+| [data/README.md](data/README.md) | Every research file behind the dataset |
+| [tools/README.md](tools/README.md) | The data pipeline scripts |

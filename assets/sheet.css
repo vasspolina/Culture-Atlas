@@ -1859,6 +1859,10 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
        initCityMapIfNeeded); before it is measured, the name's line and one row of this one. */
     :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #cityMapContainer:not(#sh-x){
       top:var(--street-top,calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-head) * .8))!important;bottom:0!important;height:auto!important}
+    /* The globe is not drawn behind an open street map (19 Nov 2026). The street map used to cover it whole; starting
+       under the city's line, it left the globe's canvases showing in that row, a strip of the globe's land behind
+       "‹ World ‹ Germany Berlin". Hidden, they take no pointer there either. */
+    :root.gmd.gmd #globeViewport:has(#cityMapContainer:not(.hidden)) :is(#globeCanvas,#globeCardCanvas){visibility:hidden!important}
   }
 }
 
@@ -2481,6 +2485,11 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4) *{color:var(--sh-paper)!important}
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important}
 :root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn{color:var(--sh-green)!important}
+/* The form's Send for review button (#workSendBtn while the form is open) takes the same dark green (user, 20 Nov 2026:
+   "make the form send button green too"), deepening under the pointer like Share information. */
+:root:root:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workSendBtn#workSendBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workSendBtn#workSendBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4) *{color:var(--sh-paper)!important;stroke:currentColor!important}
+:root:root:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workSendBtn#workSendBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important}
 /* The form's description starts on the left edge with the labels and fields (user, 19 Nov 2026: "allign description to
    the left"); it had the sheet's indent. */
 :root:root #noteFormIntro{padding-left:0!important;margin-left:0!important;text-indent:0!important}

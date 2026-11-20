@@ -1,6 +1,6 @@
-# Leaving it on the table
+# Features
 
-A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
+What the atlas does and how each part behaves. Back to the [README](../README.md).
 
 ## What it does
 
@@ -17,144 +17,15 @@ A globe and a chat for looking up who funds museums and cultural spaces. Each re
 - **Tab suggestions in the chat box** (`assets/tab-suggest.js`, 17 Nov 2026). While a question is typed, the rest of a likely question, or of a space's or city's name, shows in grey after the caret. Tab or the right arrow takes it, Escape puts it away, and on a phone a tap on the grey words takes it. Nothing is sent anywhere to make a suggestion; Tab moves focus as usual when none is shown.
 - **Offline.** Installable as an app; the service worker caches the page.
 
-Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. The map carries a colour key (`#mapColourKey`, top right on a desktop, top left on a phone) that names the three colours, with a round i button by its title that opens the rules behind them, the same control as a record's funding grade; a city takes the tier most of its spaces have. See "What the page may show" below. Funding transparency ratings, A to F, summarize what each record shows about funding; see "Funding transparency ratings".
+Tiers describe how well a record is sourced, not a verdict on the museum: Clean (source cited), Flagged (a recorded reason), Unverified. The map carries a colour key (`#mapColourKey`, top right on a desktop, top left on a phone) that names the three colours, with a round i button by its title that opens the rules behind them, the same control as a record's funding grade; a city takes the tier most of its spaces have. See [What the page may show](data.md#what-the-page-may-show). Funding transparency ratings, A to F, summarize what each record shows about funding; see [Funding transparency ratings](data.md#funding-transparency-ratings).
 
 A row of filters sits over the map, on the desktop beside the search box and on a phone at the top of the screen: **All spaces**, then **Funding connections**, **Epstein connections**, **Propaganda**, **Independent**, **Open books**, **Artist-run** and **Images** (the spaces with artists' images). One is on at a time: pick one and the map shows only the spaces it is about; pick it again, or All spaces, and every space is back. The same seven are the Filters boxes of the Layers panel, which follow the same rule. The panel's **Funding connections** (one box for the lines between spaces that share a funder, flagged and right-wing funders, the funders around a space in focus and their head offices), **Epstein connections** (spaces whose funders or people appear in the files, and those people's offices), **Propaganda**, **Independent** and **Artist-run**. The records carry no field for the last two, so `assets/layers.js` reads each record's own words (summary, watch note, funding note, focus, name): "independent art space", "remains independent", "artist-run", "founded by artists" and the like. "Independently verified" or "independent audit" does not count.
-
-## Design
-
-**The design is `assets/sheet.css`, and only that** (the sheet, user, 10 Nov 2026; "delete the other design version so there is no confusion and all changes done to new design", 13 Nov 2026). The atlas is set as one sheet: Times New Roman ("Atlas Serif", from the reader's machine, with Liberation Serif, Tinos and EB Garamond behind it) in two sizes, black on white, a lime stone bar at the head and the foot (#e2f86c), 1px grey rules between the columns, lists and actions that open with an en dash, no boxes, corners, shadows or bold. Under the pointer a word turns blue (#59a0f1); what is chosen (the open tab, a pressed toggle) is in italic and in that blue. Every rule in it is inside `@layer sheet` and `!important`, so it wins over `assets/atlas.css` whatever the selector. The head bar takes a new colour on every load (user, 16 Nov 2026): a pale ground from displaay.net/typefaces on the light sheet, a dark one on the dark sheet, picked by a short script after the theme script in `index.html` and drawn by the "COLOUR ON LOAD" block at the end of `sheet.css`. The filter pills have no ground and no dot: ink words inside an outline in each filter's own colour (user, 16 Nov 2026). Every name on the map (cities, spaces, the picked space, layer, funder and office names) is plain type with no block, pill or frame, on a halo of the map's ground, and is never cut short (user, 16 Nov 2026). No map dot glows (user, 16 Nov 2026): the halos under flagged, Epstein, right-wing, propaganda, independent and open-books marks are gone.
-
-`assets/atlas.css` is the layout underneath: the panes, the map, the sheets on a phone, the order of things. Its own look (Jokker, the Displaay buttons and corners, Serrif in the record, colour blocks) is the earlier design and is not what anyone sees: do not add look to it or describe it as the design. **Every change to how the page looks goes in `sheet.css`.** New pieces are drawn there alone (the artists' images, the Images link and the load image have no rule in `atlas.css`). `index.html`, `studies.html`, `reports-admin.html` and `artists-images.html` all load `sheet.css`. `assets/maplibre-gl.css` styles the street map. No CSS or script comes from a CDN.
-
-Contrast is measured, not assumed (WCAG 2.2: 4.5:1 for text under 24px, 3:1 for large text, UI components, focus rings and the marks that carry data). A mark is never told only by colour: a space's tier is a circle (clean), square (flagged) or triangle (unverified) on its pin and on its city and museum label; a funding grade is its letter inside the dot; funders on the money map are squares (public funding), hexagons (companies) and triangles (foundations); right-wing and Epstein-file marks are a shield and a star, the key shows each. On the white ground of light mode the pale layer colours are drawn as a deeper step of the same hue (`LINE_LIGHT` in `assets/layers.js`), and the pale originals stay as the fills of the name blocks, where the text on them is black. Around a space, each funder's name is a pill in the form of displaay.net/typefaces (fully rounded, a 1px edge, 10px of air either side): the name filled in its kind's colour, and the kind (Public funding, Company, Foundation) in an outlined pill beside it, on the outer side so the name stays next to its mark. The tip under the pointer is a stack of the same pills: the name in the mark's colour, what it is in outlined pills, and what a click does in a solid ink pill. The focus ring is `--focus` (cobalt on light, a lighter blue on dark).
-
-Behaviour that holds whatever the look: titles stay on one line and are never cut (`fitTitles` in `assets/typeset.js` sets a long one smaller); only the top and bottom edges of the map are fogged; the selected space's label on the globe carries its whole name; there are no hover cards on the map (11 Nov 2026) except the Artists' images layer's, which shows only while that layer is on; the desktop chat column can be dragged wider by its left edge, up to full screen (double-click the edge to toggle; `assets/chat-resize.js`).
-
-The Details panel is the full record, with no separate record page on desktop; Share information sits in the chat composer and opens the form for a whistleblower review; the approved reviews of a place are listed at the foot of its record (see "Whistleblower reviews" below). On a desktop everything about a selected space, including what the building x-ray finds, is in the right column, not on the map.
-
----
-
-## Run it locally
-
-No build step and no dependencies. From the repository root:
-
-```bash
-python3 -m http.server 8080
-```
-
-Then open [http://localhost:8080](http://localhost:8080).
-
-To try the Share information form against a local backend, run the report API (see "Prisma-backed whistleblower reports" below) and set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to its local address; add the page's local origin to `ALLOWED_ORIGINS`.
-
----
 
 ## Using the chat
 
 Open the chat, or press `Cmd+K` / `Ctrl+K`, and ask about a space, a city or a funder, for example "Which spaces in Tokyo are Clean?" or "What does the record for Te Papa say about funding?". An optional API key can be added under settings.
 
 The chat is called Clio or Iris, picked again on every load (user, 17 Nov 2026): the tab reads "Chat with Clio", the heading "Ask Clio". The pick is the first script in `index.html` (`window.ATLAS_CHAT_NAME`, the CSS variable `--chat-name`, and `data-chat-name` in the markup), and the model is told the same name.
-
----
-
-## Deploying
-
-`main` is the source of truth. Every push to `main` runs
-`.github/workflows/deploy.yml`, which copies `index.html`,
-`reports-admin.html`, `sw.js`, `manifest.json`, `assets/` and `fonts/` to the `gh-pages` branch that GitHub
-Pages serves. Do not push to `gh-pages` by hand. If the live site looks stale,
-check the **Actions** tab for a failed "Deploy to GitHub Pages" run.
-
-## Whistleblower reviews
-
-The only notes the atlas holds are whistleblower reviews. They are written on one screen and read in one place.
-
-**Writing:** Share information (in the chat composer, on the map's control bar, and as a button under every chat answer, named after the place in focus, with one sentence on how much of history was never written down; user, 18 Nov 2026) opens the note screen, which is a form of filled blocks: the place (the open record's, chosen from the list of every space on the atlas, or a place the atlas is missing: a name it does not have shows a City or town field and a line saying it goes to the editor as a new place), an optional name to show (blank shows "Whistleblower"), the note (10 to 2000 characters), and a box confirming that the sender has left out their name and anything that identifies them. Send for review is grey until the form could be sent and blue after; it posts to the report API. Enter inside the note starts a new line. If it cannot be sent, everything stays in the form and nothing is kept in the reader's browser. The page has no other way to add a note. There are no star ratings.
-
-**Writing aids** (`assets/note-aids.js`, under the note box): the browser's own spell check underlines mistakes, and phone keyboards correct as usual. "Correct spelling as I type" (on by default for an English browser, remembered in that browser) fixes common misspellings and missing apostrophes when a word is finished (teh, recieved, musuem, thats, dont), writes a lone "i" as "I", and starts a sentence with a capital. It leaves links, addresses, abbreviations such as "e.g." and words with capitals of their own alone. Backspace straight after a correction puts the reader's spelling back, and that word is not corrected again. "Dictate" (in browsers with speech recognition) types what the reader says into the note at the cursor; it never sends the note. The first press says where the audio goes: Chrome, Edge and Safari send it to Google, Microsoft or Apple to turn it into text, unless the browser can do it on the device (Chrome 139 and later, when the language pack is installed), which is then used and said. No note text is sent anywhere to be checked.
-
-**Attached files** (`assets/note-files.js`): Attach, a drop onto the note card, or a paste of an image into the note adds photos, screenshots or PDFs, up to 4 files of at most 5 MB each and 12 MB together. Each shows as a chip above the note box with a button to take it off. Photos are drawn again in the browser before they are sent (at most 2560 pixels on the long side; a screenshot stays PNG while it is small enough, anything else becomes a JPEG), which leaves only the picture: the camera, time and GPS position a phone writes into a photo do not survive, and the line under the chips says so. A photo the browser cannot read, such as a HEIC photo in Chrome, is refused with a reason. A PDF is sent as it is, and the form warns that its document properties can hold the name of whoever made it. No file name is sent. If the note cannot be sent, its files stay attached.
-
-**Reading:** under the record of the space they are about, approved reviews are laid out like the reviews of a place on Google Maps: the count, then one entry per review with the name, date and text, newest first, and under the text the files the editor approved with it: photos as square thumbnails, a PDF as a "Document" link, each opening the file in a new tab. The record only lists reviews; it has no form. Nothing is shown before they arrive or when there are none: no heading, no note on who writes them and no loading line (4 Nov 2026).
-
-A review is sent to the report API below, held as waiting, and shows on the record only after the editor approves it on `reports-admin.html`. The map pin's hover card is drawn on the canvas and has no room for a list, so reviews appear on the record only. Reviews are not posted to Google Maps.
-
-The Cloudflare Worker in `worker/` serves only the chat proxy (`/chat`). It takes no notes and no reviews; its setup is kept below.
-
-### The report API (Express, SQLite and Prisma)
-
-A review is stored as `PENDING` and is invisible to the public until it is approved. A review written before places had ids is matched to its place by name, so approved reviews already stored still show. A note that named only a city, which the old form allowed, no longer shows anywhere; its row stays in the database until the editor deletes it.
-
-From the repository root:
-
-```bash
-npm install
-cp .env.example .env
-```
-
-Set `DATABASE_URL`, a long random `ADMIN_SECRET_KEY` (for example, generate one with `openssl rand -hex 32`), and `ALLOWED_ORIGINS` in `.env`. The API refuses to start if the admin secret is missing. Then initialize the database and start the API:
-
-```bash
-npm run db:push
-npm start
-```
-
-Set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to the API origin, for example `http://localhost:4000`. The API reads `institutions.json` at start, so a review can be filed only under a record's id; keep it in the repository root where the API runs, or set `INSTITUTIONS_FILE` to its path. The API allows browser requests only from origins listed in `ALLOWED_ORIGINS`. The repository's GitHub Pages deployment serves static files only, so host this Node API separately and configure its public origin in `assets/config.js` before enabling submissions.
-
-**Checks before anything is saved** (`server/validate.js`): the place comes from the address, `/api/places/<record id>/reviews`, and must be the id of a record in `institutions.json`; anything the body says about the place is ignored. The text is trimmed, HTML tags and control characters are removed, and it must be 10 to 2000 characters once cleaned. A rating sent by a client is ignored. The name to show, if sent, is plain text of at most 40 characters. Client-sent status, id and coordinates are ignored. Each sender may submit 5 reviews an hour (`REPORTS_PER_HOUR`); behind a proxy set `TRUST_PROXY=1` so the limit sees the sender and not the proxy. The limit is counted in memory under a salted hash of the address that is never written to the database or a log and disappears on restart. A database failure logs only its kind and code, never the request, so a review's text cannot reach the logs.
-
-**Checks on files** (`server/files.js`): the review route alone takes a body of up to 18 MB, since files arrive as base64 inside the JSON (`files: [{ data }]`); every other route keeps a 16 KB limit. At most 4 files, each at most 5 MB and 12 MB together. The type is read from the file's first bytes, and only JPEG, PNG, WebP and PDF pass; a name or type the client sends is ignored. Photos go through a second metadata pass on the server: EXIF, XMP, comments and every other metadata block are removed from JPEGs (the JFIF header, an ICC colour profile and Adobe's colour block stay), text, EXIF and time chunks from PNGs, and EXIF and XMP from WebP. A PDF must end with `%%EOF` and is stored as sent. A review with a file that fails any check is refused whole and nothing is stored.
-
-**New places** (user, 18 Nov 2026): `POST /api/new-places` takes `placeName` (2 to 120 characters), `city` (up to 80), an optional `address` (up to 200; added 19 Nov 2026), the note and files under the same checks and rate limit as a review. A name the atlas already has (compared without case, accents or punctuation) is refused with 409 and that record's id. It is stored as `kind: "new-place"` with no `placeId`, is never shown as a review, and is marked on `reports-admin.html`, where approving it means the editor accepts it and adds the place to the atlas data by hand. Reviews are `kind: "review"`.
-
-**What is stored:** the text, the place's id, name and city, the name to show if given, the status, two timestamps, and any files (their bytes after the metadata pass, type, size and order, in the `ReportFile` table of the same SQLite file; no file name). No IP address, user agent, account or any other identifying data. The form tells the reader to leave out their name and anything that identifies them, because the connection itself is not a secure channel, and the editor checks the name to show before approving. The `latitude`, `longitude` and `rating` columns are never written; they remain only so an existing database needs no destructive change.
-
-**Endpoints**
-
-| Route | Who | What |
-| --- | --- | --- |
-| `POST /api/places/:placeId/reviews` | anyone | Validates and stores a `PENDING` review of that place |
-| `GET /api/places/:placeId/reviews` | anyone | That place's approved reviews only (`id`, `authorLabel`, `content`, `createdAt`, `files: [{ id, type, size }]`), newest first, at most 200; never cached |
-| `GET /api/files/:fileId` | anyone | One file, only while its review is `APPROVED` (404 otherwise); sent with `nosniff`, and an image with a sandboxing `Content-Security-Policy` |
-| `GET /api/admin/reports?status=PENDING\|APPROVED\|REJECTED` | admin | Reviews in one state (`/api/admin/reports/pending` is kept) |
-| `PATCH /api/admin/reports/:id/status` | admin | Set `APPROVED`, `REJECTED` or `PENDING` (takes a review off the atlas) |
-| `DELETE /api/admin/reports/:id` | admin | Removes the review and its files entirely |
-| `GET /api/admin/files/:fileId` | admin | One file, whatever the state of its review |
-| `DELETE /api/admin/files/:fileId` | admin | Removes one file and keeps the review |
-
-Admin routes need `Authorization: Bearer <ADMIN_SECRET_KEY>`. The moderation page `reports-admin.html` asks for the token, keeps it in session storage only, and lists reviews, with the name each sender chose, under Waiting, On the atlas and Rejected, each with Approve, Reject or Take off the atlas, and Delete. The files of each note are shown under its text, loaded with the token, each with Remove file, so the editor can approve the text and keep a file that identifies someone off the atlas. `admin/AdminModerator.jsx` is the same page as a React component for a React host.
-
-Tests: `npm test` (the API runs in-process against a throwaway SQLite file, so no port is opened; it covers validation, per-place listing, files and their metadata pass, moderation, the rate limit and the logging rule). The Worker's tests are `node --test worker/test/*.test.mjs`.
-
-#### Hosting the report API on Fly.io
-
-The repository carries a `Dockerfile` and `fly.toml` for the API. The database is one SQLite file on a 1 GB Fly volume, so the app runs on a single machine. Attached files are stored in that file too; when it fills, grow the volume with `fly volumes extend <volume id> --size <GB>`. Once, from the repository root (install flyctl first: `brew install flyctl`, or see https://fly.io/docs/flyctl/install/):
-
-```bash
-fly auth signup            # or: fly auth login
-fly launch --no-deploy --copy-config --name <a-free-app-name>
-fly volumes create reports_data --size 1 --region ams
-fly secrets set ADMIN_SECRET_KEY="$(openssl rand -hex 32)"
-fly deploy --ha=false
-```
-
-`--ha=false` keeps the app on one machine, which SQLite needs. If the build stops at "Waiting for depot builder", stop it and run `fly deploy --ha=false --depot=false`. The live API is `https://culture-atlas-reports.fly.dev` (app `culture-atlas-reports`, region `ams`); its admin secret was generated into `~/culture-atlas-admin-secret.txt` on the editor's Mac. Later deploys after changing `server/`: `fly deploy` from the repository root.
-
-Keep the secret: it is the password for `reports-admin.html`, and `fly secrets set` is the only place it is stored (print it once with `openssl rand -hex 32` before setting it if you want to keep a copy elsewhere). The API is then at `https://<app-name>.fly.dev`; `https://<app-name>.fly.dev/healthz` answers `{"ok":true}`. `fly.toml` already sets `ALLOWED_ORIGINS=https://vasspolina.github.io`, `TRUST_PROXY=1` (so the rate limit sees each sender, not Fly's proxy) and the database path on the volume. If you rename the app, update `app` in `fly.toml` to match.
-
-Last step: set `window.ATLAS_REPORT_API_URL` in `assets/config.js` to `https://<app-name>.fly.dev` (no trailing slash), bump the release as usual, and merge through a PR. Then moderate at https://vasspolina.github.io/Culture-Atlas/reports-admin.html with the secret as the bearer token. Back up the database with `fly ssh sftp get /data/reports.db`.
-
-### Live model answers
-
-With a model connected the chat holds a conversation: every question that is not a plain list of spaces goes to the model, with the earlier turns of the chat and the records on the page as grounding. Without one, it answers from the records alone.
-
-What the model is given is written by `assets/grounding.js`. The record the question is about goes in full, in labelled sections (status, funding and audited figures, governance, overview, every reported case with its date and sources, employee and visitor accounts, critics and studies, visiting, sources), within a 14,000-character budget; the other records found for the question go in a 3,200-character form. A question about a city or country as a whole also gets a `<place_summary>`: the count, the grade tally, each flagged space with its reason, the funders named most and the largest audited incomes, counted on the page so the model does not count. Comparisons of places, a place asked about as a whole, employee accounts, critics and the reason for a grade go to the model first and fall back to the record answers when it is off or fails; plain lists and counts are always answered on the page. Tests: `node --test tests/grounding.test.mjs`.
-
-The Cloudflare Worker in `worker/` serves it at `POST /chat` and answers with a small open model on Workers AI: IBM Granite 4.0 H Micro (`@cf/ibm-granite/granite-4.0-h-micro`, 3B parameters, 131,000-token context), since 18 Nov 2026. There is no API key: the Worker reaches the model through its `AI` binding and Workers AI bills the Cloudflare account: 10,000 Neurons a day are free (about 250 questions at the size of the page's grounding), and more than that needs the Workers Paid plan, at $0.017 per million input tokens and $0.112 per million output tokens. The Worker also needs one KV namespace, bound as `SUBMISSIONS`, that holds only the hourly rate counters, and the variable `ALLOWED_ORIGINS` (`https://vasspolina.github.io`). From a terminal, in `worker/`: `npx wrangler kv namespace create SUBMISSIONS`, paste the id into `wrangler.toml`, then `npx wrangler deploy` (the `[ai]` block in `wrangler.toml` adds the binding). In the dashboard: the Worker's **Settings → Bindings → Add → Workers AI**, variable name `AI`. Tests: `node --test worker/test/*.test.mjs`.
-
-Put the Worker's address plus `/chat` in `assets/config.js`: `window.ATLAS_AI_PROXY_URL = 'https://culture-atlas-submissions.<you>.workers.dev/chat';` and push to `main`.
-
-The Worker uses its one model whatever the page names (`queryAI` in `index.html` still sends a Claude model id, which only a visitor's own key uses). It caps a reply at 2,000 tokens and a conversation at 16 turns and 150,000 characters, refuses other origins than `ALLOWED_ORIGINS`, and gives each address 30 answers an hour. Change the model or these limits at the top of `worker/index.js`; Llama 3.1 8B and Llama 3.2 3B were passed over because Workers AI retires them on 20 Nov 2026.
 
 ## Visit counting
 
@@ -256,71 +127,6 @@ It writes `assets/funder-logos.png` (one sheet of one-colour masks, 48 px high) 
 
 Controls: one finger or a mouse drag turns the map; two fingers or the scroll wheel fly forward and back; two-finger drag or Shift-drag slides; arrow keys turn it and W and S fly. Fit returns to the start. The page respects the device's reduced-motion setting.
 
-## Editing the page
-
-`index.html` is edited directly. No script regenerates it. The records are not
-in it: they live in `assets/institutions.js`, which `tools/clean_data.py` then
-`tools/embed_data.py` rewrite from `institutions.json` (bump the `?v=` on its
-script tag in `index.html` after a rewrite). Keeping them in their own file means a
-new release of the page does not make every phone download the 10 MB of records
-again, and the service worker caches them on their own. Everything else is
-changed in the file itself.
-
-A release is three numbers kept equal: `CACHE_NAME` in `sw.js`, `ATLAS_RELEASE`
-in `index.html` and the `?v=` on the `sw.js` registration. If they drift apart,
-every first visit reloads the page once before it draws.
-
-The design tool's generator, patch and test scripts that used to sit in the
-repository root were removed on 13 October 2026: the page had been edited
-directly for a long time, and the generators would have overwritten it with
-older text and fonts. The research they ingested is kept under `data/inputs/`
-(the Consensus library export, the user research tables and the incoming
-research notes). One of the removed scripts carried a working Anthropic API
-key in base64 pieces; it is still in the git history and must be revoked.
-
-The Academic Research Library window was removed on 14 October 2026. Its 183
-studies and eight case studies are kept in `data/library/`, the Gossip Mode
-research and the visual critique reference list stay in `data/`, and none of
-them is shipped in the page. What belongs to one institution now sits on that
-institution's own record. `tools/attach_research.py` writes four fields, and
-re-running it replaces them:
-
-- `study_notes`: a line from a study's abstract that states something specific
-  about that institution (9 lines from 7 studies). Each was checked three times
-  and keeps the quote it rests on in `data/research_attach/study_findings.json`.
-  The other 176 studies name no institution on the map, or only as a passing
-  example, and are not shown.
-- `case_notes`: case study table rows that the record did not already state,
-  copied word for word (74 rows, 88 record entries because a few museums have
-  two pins). Rows the record already states are listed with the quote that
-  shows it in `data/research_attach/case_decisions.json`.
-- `case_study`: the MoMA and Whitney case studies, whole.
-
-Three **critical frames** on cultural institutions sit beside the artists' critiques on the records they speak to: the museum as archive turned stage, philanthropy as the gift that follows the taking, and art the powerful should fear. They are paraphrases of published theory and, by the editor's decision, the page names no author and shows no citation; the works each frame rests on are listed in `data/research_attach/institutional_critiques.json` under `rests_on`. `tools/attach_critiques.py` writes them (as `visual_critiques` entries of kind `theory`) by rules in that file: by name or focus and size, by funding transparency rating, or by host city; re-running replaces them. The chat answers "What do critics say?" and "What critics say about this space?".
-
-The chat also answers "What do employees report?" with a summary of the 127 paraphrased accounts the records carry from Glassdoor, Kununu and Reddit (57 institutions, six countries): what they praise, what they report against, what a few allege, and how to read them. It is the constant `EMPLOYEE_REPORT` in `index.html`, dated 17 October 2026; rewrite it when the accounts change.
-- `funder_links`: funders and trustees the map names at three or more
-  institutions, only where the record's own text names them (230 links; 55
-  where it does not are left out).
-
-Notes saved in this browser are read back inside the chat ("Notes saved in this
-browser" in the chat reply opens nothing).
-
-## Editing the records: the data editor
-
-`institutions.json` is one 15 MB file of nested JSON, and read raw a record is a wall of quotes and brackets in which a list of findings joined by bars, a staff account stored as label and text pairs or a dossier of paragraphs loses its shape. The data editor sets each record out as it reads:
-
-    python3 tools/editor.py        # then open http://127.0.0.1:8790/
-
-- **The list** on the left finds a record by name, city, country, id or other name, and narrows to the records with wording to check or the ones changed in this window.
-- **The record** is in groups (Identity, Place and visit, Funding, Records and accounts, Dossier, Reports and critique, Sources, then any other field), each field under a plain label with its stored key beside it. Prose is set in a reading face with a word count (out of 30 for the funding text and 25 for the description), lists are numbered rows that can be moved, added and removed, nested entries (case notes, Epstein files, propaganda, studies, staff accounts) are cards with their own fields, addresses have an Open link, and short fields suggest the values already used across the file (tier, size, flags, status, kind). `other_findings` is shown as one finding per line and stored joined by ` | ` as before. JSON shows the whole record as stored, for an edit the fields do not cover.
-- **Sentences.** A long note crammed into one block loses its structure, so prose of two sentences or more is shown one sentence per line (Enter splits a sentence at the cursor, Backspace at its start joins it to the one before), and a critique note, which runs several cited works together, is shown as one block per work: the citation (author, title, publication and year) on its own line and what it says under it. Both are views only: `editor/structure.js` joins the parts back to the stored text character for character, so a field that is only looked at saves unchanged (`tests/editor-structure.test.mjs` checks every text in the file and all 29 critique notes). A full stop after an initial (T. J. Demos), an abbreviation (e.g., St.) or U.S. does not end a sentence. A sentence holding a flagged word is marked. "One paragraph" under a field gives back the plain box, and the choice is remembered in that browser.
-- **Wording** is checked as it is typed with the rules of `tools/lint_text.py`: each point is shown under its field with what the rule asks (a dash, a hedge, filler, a verdict, an unnamed funder, too many words), and a dash can be replaced the way `lint_text.py --fix` does. The check advises and never stops a save.
-- **What a tool writes** is shown and not edited, with where to change it instead: the funding grade and its sentence (`tools/grade_funding.py`), the press reports (`data/gossip_items.json`), the case files, the shared funders and the critical frames (`tools/attach_critiques.py`). The record id is not changed either, since other files point to it.
-- **Save** (or Ctrl/Cmd+S) writes that record back to `institutions.json` as `tools/clean_data.py` writes it, through a temporary file, so the diff holds only the lines edited. It refuses a record with no name, numbers that are not coordinates or a changed id, and refuses to overwrite a record that changed on disk after the page loaded it, offering the version on disk instead. **Rebuild page data** then runs `tools/clean_data.py` and `tools/embed_data.py`; bump the `?v=` on the `assets/institutions.js` tag and the release as usual before deploying.
-
-The server listens on 127.0.0.1 only and refuses requests from other sites. `editor/` is not deployed. Opened without the server (from any static server, at `/editor/`), the page still reads and edits, and Save downloads a whole `institutions.json` to put in the repository root.
-
 ## Gossip mode
 
 Gossip mode shows what people are actually saying about a space on the internet: in the arts press, on Reddit, on accounts that collect staff complaints, in open letters, union statements and court filings, and in the comments under them. The rules for what counts, what never goes in, which sources are trusted and how an item is written are in `notes/gossip-criteria.md`; read them before adding anything.
@@ -328,86 +134,3 @@ Gossip mode shows what people are actually saying about a space on the internet:
 The items live in `data/gossip_items.json`, one object each (schema in the rules, §4). `tools/attach_gossip.py` checks every item against the mechanical rules, marks `talk` items older than 36 months `stale`, drops rumours older than a year that no outlet picked up, and writes the rest onto the records as `gossip_data.gossip`, newest first; then `clean_data.py` and `embed_data.py` as usual. Re-running replaces the field. Items are reopened at least once a year; `retrieved_on` is the proof.
 
 In Gossip mode the record page leads with the items (desktop: the Gossip row; phone: the cards at the top of the record), the globe marks a space with at least one item that is not stale, and the chat answers from the items first, naming who says each one and ending any item about a named person with the response line. The model gets them as the GOSSIP section of the grounding (`assets/grounding.js`) with the same instruction. Outside Gossip mode the items are not volunteered; asked directly, the chat answers from them with the same rules. Every gossip answer carries the line "Talk collected from the internet, with its sources. Unverified unless marked confirmed or resolved."
-
-## What the page may show
-
-The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
-
-- A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
-- Visitor fields (hours, admission, transit, accessibility, amenities, curatorial focus, neighbourhood) are shown only with a source entry in `field_sources`; a highlight only when the record's own research backs it. The 14 Nov 2026 sweep removed 1,691 values that had neither, on 407 records, and cut unsourced budget figures, virtue claims, verdicts and working notes out of 44 funding and watch lines (user, 14 Nov 2026: "remove all the slop you found"). Every change is in `data/slop_runs/2026-11-14/changes.json`. A line-by-line pass the same day read all 2,674 highlight, funding and watch lines against each record's research and removed 123 lines and trimmed 114 more (category labels standing in for a finding, praise, virtue claims, verdicts, working notes, and unbacked figures in the first-generation lines); it is in `changes-b.json` beside it. Lines that came from the sourced Sponsor Atlas study were not cut for being absent from the dossier. Those 562 disputed lines were then checked against the text of their own cited sources (3,447 of 3,851 pages could be read): 307 are backed, and 63 lines lost the names or figures that none of their sources contains (`changes-c.json`; every verdict is in `source-check.json`). A name was cut only where other names in the same list were found, since a list that is missing whole is usually a logo wall the fetch cannot read. The 47 museums of research batch 3 were checked the same day and hold no made-up text (195 of 214 figures matched their sources directly; the rest were number formats). Their funding and watch lines ran to about 70 words, so each was cut to the 30 and 25 word limits, using the corrected figures of the Details cards those records were given in batch 4; the "pages read did not state" narration was taken out of the lines; and the 29 opening hours now carry their visit page in `field_sources` (`batch3-changes.json`). The 7 Nov absence sweep had left five "What it publishes" notes saying only that a site blocked our reads (Guggenheim Abu Dhabi kept "Its site blocks automated reads" after the clause with the finding was cut; user, 15 Nov 2026: "this is a slop fix"). Those clauses are gone by hand, the Guggenheim Abu Dhabi and Dowse notes with them since nothing else in them was about what the institution publishes, and `tools/absence.py` now treats "blocks automated" and "site is blocked" as notes on the research. The tool was not re-run: across all notes it would also cut findings such as Qatar Museums' eight listed trustees.
-- **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
-- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links.
-- Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the generated 3D building interiors are not shown: they had no source, or were invented or generated. The building view draws only the outline OpenStreetMap holds for the building, through the map tiles, with the record's own material stacked inside it. Wikidata supplies only the building's photograph, with its credit, and the links to Wikidata and Wikipedia; its facts are not shown.
-
-Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.
-
-## Project Structure
-
-```
-Culture-Atlas/
-├── index.html          # The whole app, edited in place. The only copy of the atlas page.
-├── money-maps.html     # The money maps page (assets/money-maps.*, built by tools/build_money_maps.py)
-├── reports-admin.html # Moderation page for whistleblower reviews
-├── worker/           # The chat proxy (Cloudflare Worker) and its tests
-├── server/            # Express API for whistleblower reviews
-├── prisma/            # Prisma schema and SQLite database (database file is ignored)
-├── admin/             # Reusable React AdminModerator component
-├── editor/            # The data editor for institutions.json (run tools/editor.py; not deployed)
-├── sw.js               # Service worker (network-first for the page, same-origin cache only)
-├── manifest.json       # PWA manifest
-├── assets/ fonts/      # atlas.css, maplibre-gl.css, images and the typefaces the page loads
-├── institutions.json   # Dataset
-├── data/               # Research sources, papers, corrections and the inputs behind the dataset
-├── tools/              # Data pipeline: clean_data (which calls grade_funding), embed_data, build_money_maps, the importers and verify_claims
-└── .github/workflows/  # Deploy to gh-pages on push to main
-```
-
----
-
-## Dataset Schema
-
-Each entry in `institutions.json` has the following fields:
-
-```json
-{
-  "name": "ARoS",
-  "location": "Aarhus, Denmark",
-  "tier": "A",
-  "grade": 1,
-  "grade_basis": "No flagged funder or objection on record, and figures are shown.",
-  "size": "L",
-  "funding": "DKK 125M budget, 600k visitors. Aarhus Municipal Council, Danish Ministry of Culture, ticket sales, and Salling Foundations.",
-  "watch": "Major Danish art museum topped by Olafur Eliasson's 'Your rainbow panorama'. Financed primarily by municipal funds and the philanthropic Salling Fondene; clean ethical sponsorship policy.",
-  "sources": [
-    "https://www.aros.dk/en/about-aros/",
-    "https://sallingfondene.dk"
-  ],
-  "lat": 56.153,
-  "lon": 10.2
-}
-```
-
----
-
-## Funding transparency ratings
-
-Each record with an independently sourced funder roster carries a rating from A to F, with no E (stored as 1 to 5), computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. A record whose funder roster is not independently sourced is unrated.
-
-| Rating | Summary | Rule |
-|---|---|---|
-| A | Amounts published, no flagged funder | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
-| B | Funders named, no flagged funder | The same, names only |
-| C | No flagged funder, but a contested sponsor or a protest | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
-| D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
-| F | Two or more flagged funders, or one and a protest | More than one flagged funder category, or a flagged funder plus a documented objection |
-
-Countries and flags have one spelling each (USA, UK, UAE, Czechia; the fifteen flag names in the table above): `COUNTRY_NAMES` and `FLAG_NAMES` in `tools/clean_data.py` rewrite any other spelling on every run, since the grade and the filters match the names exactly. Until 15 Nov 2026 five records flagged in lower case ('fossil fuels', 'gambling', 'arms') were rated C where the rule gives D.
-
-Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating at its head as the letter in a dot of the grade's colour (green A, teal B, yellow C, orange D, red F; black letters, a 1px ink edge), and the Funding section opens with the same mark, the grade's meaning and the sentence that decided it (`grade_basis`). Every space, rated or not, has an i button beside its grade that opens the A to F scale with this space's step marked (6 Nov 2026); the phone sheet's rating line has it too. The map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
-
-## Verification & Methodology
-
-- **Clean Status (Tier A)**: Institutions with no current fossil fuel, weapons/defense, opioid, tobacco, gambling, or sanctioned state sponsorship.
-- **Data Cutoff**: Verified against annual reports, partner listings, and public disclosures up to late September 2026.
-
-**Lobbying by the spaces themselves** (user, 17 Nov 2026: "find only info that tracks cultural spaces involved in lobbying"). `data/space_lobbying.json` lists lobbying filed by or for the atlas's spaces as the client, from public registers, built with `tools/space_lobbying/`. All 1,727 spaces were matched against the US Lobbying Disclosure Act database (lda.gov, every filing since 1999) and the EU Transparency Register export of 16 November 2026, and each match was checked by hand. 41 US spaces reported $21.0M in total, ten of them still active in 2025 or 2026; three EU registrations match (Stiftung Bauhaus Dessau, Fondazione Arena di Verona, and the Wellcome Trust for Wellcome Collection). State and city registers, the UK, Ireland, Scotland and Canada are not yet covered. Each of those 44 spaces has a Lobbying row in its record, after Scale and money: the years and reported total, the latest full year, what the latest reports say it lobbied on, who lobbied for it, and the latest report as the source (`tools/attach_space_lobbying.py` copies it into `institutions.json` as `lobbying`; then run `tools/embed_data.py`). A space with no filing found has no row, since state and city registers are not read.

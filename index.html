@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=852"></script>
+  <script src="assets/load-image-data.js?v=853"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=852">
-  <link rel="stylesheet" href="assets/sheet.css?v=852">
-  <script src="assets/config.js?v=852"></script>
-  <script src="assets/analytics.js?v=852"></script>
-  <script src="assets/subtopic.js?v=852"></script>
-  <script src="assets/names.js?v=852"></script>
-  <script src="assets/grounding.js?v=852"></script>
-  <script src="assets/repeats.js?v=852"></script>
-  <script src="assets/intro-narration.js?v=852"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=853">
+  <link rel="stylesheet" href="assets/sheet.css?v=853">
+  <script src="assets/config.js?v=853"></script>
+  <script src="assets/analytics.js?v=853"></script>
+  <script src="assets/subtopic.js?v=853"></script>
+  <script src="assets/names.js?v=853"></script>
+  <script src="assets/grounding.js?v=853"></script>
+  <script src="assets/repeats.js?v=853"></script>
+  <script src="assets/intro-narration.js?v=853"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=852"></script>
+  <script src="assets/load-image.js?v=853"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -383,7 +383,7 @@ return maplibregl$1;
       <!-- The colour key, always on the map (user, 6 Nov 2026): what the colour of a space's or a city's name says about how
            its record is graded. The same three colours as the labels (--tier-a, --tier-b, --tier-u in assets/atlas.css,
            TIER_INK below), drawn as the labels are: the word in its colour, outlined, on the map's ground. The rules are
-           those of "What the page may show" in docs/GUIDE.md; a city's colour is the tier most of its spaces have (cityTier).
+           those of "What the page may show" in docs/data.md; a city's colour is the tier most of its spaces have (cityTier).
            The rules open from the round i button by the title, the same control and panel as the funding grade in a
            record (.grade-info-btn / .grade-info, one click handler for both, near gradeInfoParts below). -->
       <section id="mapColourKey" aria-labelledby="mapColourKeyTitle">
@@ -1178,8 +1178,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=852"></script>
-  <script src="assets/money-ids.js?v=852"></script>
+  <script src="assets/institutions.js?v=853"></script>
+  <script src="assets/money-ids.js?v=853"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7357,7 +7357,20 @@ return maplibregl$1;
         const BUFFER = 6;
         // A tag that would run off the map is cut by its edge, so that side is not free.
         const edge = box ? box.getBoundingClientRect() : null;
-        const offMap = r => !!edge && edge.width > 0 && (r.left + BUFFER < edge.left || r.right - BUFFER > edge.right || r.top + BUFFER < edge.top || r.bottom - BUFFER > edge.bottom);
+        // On a phone (user, 18 Nov 2026: "the map on mobile looks very overlapping") the part of the map in sight is smaller: the
+        // title and chips lie over the top, and the open record sheet over the bottom. A name there is cut or sits under them.
+        let view = edge;
+        if (edge && edge.width > 0 && window.innerWidth < 768) {
+          const sheetEl = document.getElementById('dossier-bottom-sheet');
+          const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) || 0 : 0;
+          const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : edge;
+          const cover = sheetH > 0 ? Math.max(0, edge.bottom - (hostBox.bottom - sheetH)) : 0;
+          // A sheet over nearly the whole map (a phone's record is a full sheet) leaves no room to place in: then only the top
+          // is held back, so the tags are already in place when the sheet is closed.
+          const room = edge.bottom - cover - (edge.top + 56);
+          view = { left: edge.left, right: edge.right, top: edge.top + 56, bottom: room >= 160 ? edge.bottom - cover : edge.bottom };
+        }
+        const offMap = r => !!view && view.right - view.left > 0 && (r.left + BUFFER < view.left || r.right - BUFFER > view.right || r.top + BUFFER < view.top || r.bottom - BUFFER > view.bottom);
 
         // Read everything first: the marks, every shown pin's box and its tag's four positions.
         const pinMarks = [];
@@ -7374,6 +7387,17 @@ return maplibregl$1;
           items.push({ lbl, pin, pr, was, placed: !!was && !lbl.classList.contains('collision-occluded'), active: !!currentActiveId && idOf(lbl) === currentActiveId });
         });
         items.forEach(it => { if (!it.hidden) it.offs = tagOffsets(it.lbl, it.pin, it.pr, poster); });
+
+        // A mark that lands on another mark is drawn small on a phone (assets/atlas.css), so a cluster reads as a cluster.
+        if (window.innerWidth < 768) {
+          const seen = [];
+          pinMarks.forEach(m => {
+            const cx = (m.left + m.right) / 2, cy = (m.top + m.bottom) / 2;
+            const crowded = seen.some(q => Math.hypot(q.x - cx, q.y - cy) < 16);
+            if (m.pin.classList.contains('pin-crowded') !== crowded) m.pin.classList.toggle('pin-crowded', crowded);
+            if (!crowded) seen.push({ x: cx, y: cy });
+          });
+        }
 
         // The selected space first, then the tags that already have a place (so they hold it), then the rest in their order.
         const rank = it => it.hidden ? 3 : it.active ? 0 : it.placed ? 1 : 2;
@@ -8967,15 +8991,27 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) : 0;
         const mapBox = mapEl.getBoundingClientRect();
         const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : mapBox;
-        const cover = sheetH > 0 ? Math.max(0, mapBox.bottom - (hostBox.bottom - sheetH)) : 0;
-        // Never so much padding that less than 120px of map is left to fit into.
-        if (cover > 0 && mapBox.height - 130 - cover - 30 >= 120) {
+        let cover = sheetH > 0 ? Math.max(0, mapBox.bottom - (hostBox.bottom - sheetH)) : 0;
+        // Never so much padding that less than 120px of map is left to fit into. A phone's record is a full sheet over the whole
+        // map: the city is then fitted to the whole map, so it is already spread out when the sheet is closed.
+        const fullSheet = cover > 0 && mapBox.height - 130 - cover - 30 < 120;
+        if (fullSheet) cover = 0;
+        if (cover > 0 || fullSheet) {
           const phoneBounds = new maplibregl.LngLatBounds();
           const shown = cityPinKeep ? cityInsts.filter(i => cityPinKeep(i)) : cityInsts;
-          (shown.length ? shown : cityInsts).forEach(i => phoneBounds.extend([i.lon, i.lat]));
+          // Fit the dense core, not every outlier: one museum 15 km out shrank the downtown cluster to a few dozen pixels
+          // (user, 18 Nov 2026: the phone map overlapped). Marks farther than 2.5 times the median distance from the median
+          // centre stay on the map, off to the side, and can be panned to.
+          const pool = shown.length ? shown : cityInsts;
+          const med = a => { const b = a.slice().sort((x, y) => x - y); return b[Math.floor(b.length / 2)]; };
+          const mLat = med(pool.map(i => i.lat)), mLon = med(pool.map(i => i.lon));
+          const dist = i => Math.hypot(i.lat - mLat, (i.lon - mLon) * Math.cos(mLat * Math.PI / 180));
+          const cut = Math.max(med(pool.map(dist)) * 2.5, 0.004);
+          const core = pool.filter(i => dist(i) <= cut);
+          (core.length >= 3 ? core : pool).forEach(i => phoneBounds.extend([i.lon, i.lat]));
           cityVectorMap.fitBounds(phoneBounds, {
             padding: { top: 130, bottom: cover + 30, left: 40, right: 40 },
-            maxZoom: 14.5,
+            maxZoom: 16,
             duration: 850,
             essential: true
           });
@@ -10780,11 +10816,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v852';
+    const ATLAS_RELEASE = 'culture-atlas-v853';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=852').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=853').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -22341,22 +22377,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=852"></script>
-<script src="assets/note-aids.js?v=852" defer></script>
-<script src="assets/place-list.js?v=852" defer></script>
-<script src="assets/chat-share.js?v=852" defer></script>
-<script src="assets/note-files.js?v=852" defer></script>
-<script src="assets/funding-views.js?v=852"></script>
-<script src="assets/layers.js?v=852"></script>
-<script src="assets/critique-gallery-data.js?v=852"></script>
-<script src="assets/critique-captions.js?v=852"></script>
-<script src="assets/critique-gallery.js?v=852"></script>
-<script src="assets/hq-detail.js?v=852"></script>
-<script src="assets/influence-mode.js?v=852"></script>
-<script src="assets/bubbles.js?v=852" defer></script>
-<script src="assets/phone-maps.js?v=852"></script>
-<script src="assets/desktop-maps.js?v=852"></script>
-<script src="assets/chat-resize.js?v=852"></script>
-<script src="assets/tab-suggest.js?v=852"></script>
+<script src="assets/typeset.js?v=853"></script>
+<script src="assets/note-aids.js?v=853" defer></script>
+<script src="assets/place-list.js?v=853" defer></script>
+<script src="assets/chat-share.js?v=853" defer></script>
+<script src="assets/note-files.js?v=853" defer></script>
+<script src="assets/funding-views.js?v=853"></script>
+<script src="assets/layers.js?v=853"></script>
+<script src="assets/critique-gallery-data.js?v=853"></script>
+<script src="assets/critique-captions.js?v=853"></script>
+<script src="assets/critique-gallery.js?v=853"></script>
+<script src="assets/hq-detail.js?v=853"></script>
+<script src="assets/influence-mode.js?v=853"></script>
+<script src="assets/bubbles.js?v=853" defer></script>
+<script src="assets/phone-maps.js?v=853"></script>
+<script src="assets/desktop-maps.js?v=853"></script>
+<script src="assets/chat-resize.js?v=853"></script>
+<script src="assets/tab-suggest.js?v=853"></script>
 </body>
 </html>
