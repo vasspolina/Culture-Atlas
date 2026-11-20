@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=887"></script>
+  <script src="assets/load-image-data.js?v=889"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=887">
-  <link rel="stylesheet" href="assets/sheet.css?v=887">
-  <script src="assets/config.js?v=887"></script>
-  <script src="assets/analytics.js?v=887"></script>
-  <script src="assets/subtopic.js?v=887"></script>
-  <script src="assets/names.js?v=887"></script>
-  <script src="assets/grounding.js?v=887"></script>
-  <script src="assets/repeats.js?v=887"></script>
-  <script src="assets/intro-narration.js?v=887"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=889">
+  <link rel="stylesheet" href="assets/sheet.css?v=889">
+  <script src="assets/config.js?v=889"></script>
+  <script src="assets/analytics.js?v=889"></script>
+  <script src="assets/subtopic.js?v=889"></script>
+  <script src="assets/names.js?v=889"></script>
+  <script src="assets/grounding.js?v=889"></script>
+  <script src="assets/repeats.js?v=889"></script>
+  <script src="assets/intro-narration.js?v=889"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=887"></script>
+  <script src="assets/load-image.js?v=889"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=887"></script>
-  <script src="assets/money-ids.js?v=887"></script>
+  <script src="assets/institutions.js?v=889"></script>
+  <script src="assets/money-ids.js?v=889"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10891,11 +10891,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v887';
+    const ATLAS_RELEASE = 'culture-atlas-v889';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=887').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=889').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -10987,7 +10987,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     let lastPointer = null;           // where the mouse last was over the canvas, so hover follows a moving view
     let lastShownCityLabels = new Set(); // labels drawn last frame keep their place while the view moves
     const lastCityPlace = new Map();      // where each city's name sat last frame (above or below its dot, slid how far), tried first
-    let lastCityDisks = new Map();       // city -> box of its spread dot disk last frame: its own label sits above it, other labels keep off it
+    let lastCityDisks = new Map();       // city -> box of its knot of dots in this frame's view: its own label sits above it, other labels keep off it
     let lastShownInstLabels = new Set();
     let lastShownCountryLabels = new Set();
     let countryLabelHitboxes = [];      // the country names as drawn last frame, for hover and click
@@ -12143,6 +12143,41 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             });
           }
         }
+        // WHERE EACH CITY'S KNOT OF DOTS SITS, measured on this frame's view, before any name is placed. It used to be measured
+        // after the names, from the dots as drawn, and read on the next frame, so through a zoom or a drag every knot stood a
+        // frame behind its dots: a name beside Tokyo was refused by the place Tokyo's dots had just left, shown the frame after,
+        // refused again, and blinked on and off at every frame (user, 20 Nov 2026: "the map titles badly flickering"; measured
+        // as Mito toggling 16 times in one zoom). A city folded into its name at the world view has no dots on the map, so no knot.
+        lastCityDisks = new Map();
+        {
+          const byCity = new Map();
+          filteredList.forEach(inst => {
+            if (!inst.city || typeof inst.lon !== 'number' || typeof inst.lat !== 'number' || isNaN(inst.lon) || isNaN(inst.lat) || (inst.lat === 0 && inst.lon === 0)) return;
+            const k = inst.city.toLowerCase().trim();
+            if (foldedByCity.has(k)) return;
+            const pt = project(inst.lon, inst.lat, r, cx, cy);
+            if (!pt.front || pt.depth <= 0.05) return;
+            if (!byCity.has(k)) byCity.set(k, []);
+            byCity.get(k).push(pt);
+          });
+          // The same groups step 8.1 finds: dots of one city within 26px of the group's first dot; a group of seven or more is a knot.
+          byCity.forEach((dots, k) => {
+            const used = new Set();
+            for (let i = 0; i < dots.length; i++) {
+              if (used.has(i)) continue;
+              used.add(i);
+              const grp = [dots[i]];
+              for (let j = i + 1; j < dots.length; j++) {
+                if (!used.has(j) && Math.hypot(dots[i].x - dots[j].x, dots[i].y - dots[j].y) < 26) { grp.push(dots[j]); used.add(j); }
+              }
+              if (grp.length <= 6) continue;
+              const xs = grp.map(d => d.x), ys = grp.map(d => d.y);
+              const box = { x: Math.min(...xs) - 6, y: Math.min(...ys) - 6, w: Math.max(...xs) - Math.min(...xs) + 12, h: Math.max(...ys) - Math.min(...ys) + 12 };
+              const had = lastCityDisks.get(k);
+              if (!had || box.w * box.h > had.w * had.h) lastCityDisks.set(k, box);
+            }
+          });
+        }
         // How many marks a box covers. A city's own dots are left out (its name's tail points at them); its alerts are not.
         const marksUnder = (x, y, w, h, ownCity, ownName) => markObstacles.reduce((n, m) => n + (
           (m.alert ? m.name !== ownName : (m.city !== ownCity && m.name !== ownName)) &&
@@ -12253,18 +12288,34 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // nothing is covered and nothing is hidden (user, 20 Nov 2026: "fix berlin too"). Its name is back as soon as
             // the view gives it room. Names laid out after it keep off those dots.
             // It unfolds only where its dots fall clear of the names already laid out; otherwise the name stays where it covers least.
-            if (!spot && isClustered && !mustShow && foldedByCity.has(ownKey)) {
-              const ms = foldedByCity.get(ownKey).map(markOf).filter(Boolean);
-              const clear = ms.every(m => !drawnCityBoxes.some(b => !(m.x + m.w <= b.x || m.x >= b.x + b.w || m.y + m.h <= b.y || m.y >= b.y + b.h)));
-              if (clear) { unfoldedCities.add(ownKey); ms.forEach(m => markObstacles.push(m)); }
-            }
+            const unfold = () => {
+              if (!spot && isClustered && !mustShow && foldedByCity.has(ownKey)) {
+                const ms = foldedByCity.get(ownKey).map(markOf).filter(Boolean);
+                const clear = ms.every(m => !drawnCityBoxes.some(b => !(m.x + m.w <= b.x || m.x >= b.x + b.w || m.y + m.h <= b.y || m.y >= b.y + b.h)));
+                if (clear) { unfoldedCities.add(ownKey); ms.forEach(m => markObstacles.push(m)); }
+              }
+            };
             // Past the world view a city's dots are on the map already, so only a city of ten spaces or more keeps its name
             // over a neighbour's mark; a smaller one gives way, its dots still there.
-            const mayCover = isClustered ? !unfoldedCities.has(ownKey) : (city.count || 0) >= 10;
-            if (!spot && (!dotUnder || mustShow || (city.count || 0) >= 10) && (mustShow || mayCover)) {
-              // Only the places at its dot, so a name that has to cover something at least stays at its city.
-              const near = spots.filter(s => free(s) && !s.lvl && !s.side), ok = near.length ? near : spots.filter(free);
-              if (ok.length) spot = ok.reduce((best, s) => marksAt(s.x, s.y) < marksAt(best.x, best.y) ? s : best, ok[0]);
+            const cover = () => {
+              const mayCover = isClustered ? !unfoldedCities.has(ownKey) : (city.count || 0) >= 10;
+              if (!spot && (!dotUnder || mustShow || (city.count || 0) >= 10) && (mustShow || mayCover)) {
+                // Only the places at its dot, so a name that has to cover something at least stays at its city.
+                const near = spots.filter(s => free(s) && !s.lvl && !s.side), ok = near.length ? near : spots.filter(free);
+                if (ok.length) spot = ok.reduce((best, s) => marksAt(s.x, s.y) < marksAt(best.x, best.y) ? s : best, ok[0]);
+              }
+            };
+            // A counted city keeps the form it had last frame while that form still fits: a name shown last frame stays a name
+            // where it covers fewest marks, and a city shown as dots stays dots while they are clear. Tried the other way round,
+            // the choice swung every frame: a name on screen is laid out early, before its neighbours, so its dots were clear and
+            // it unfolded; as dots it was laid out late, its dots were no longer clear and its name came back. London and Dublin
+            // swapped name and dots at every frame (user, 20 Nov 2026: "the map titles badly flickering").
+            if (wasShown) { cover(); unfold(); } else { unfold(); cover(); }
+            // A counted city with no place for its name and dots that would touch a name shows its dots all the same, under the
+            // names. Left out, it had neither name nor dots, so Milan and Venice vanished for a frame or three and came back.
+            if (!spot && isClustered && !mustShow && foldedByCity.has(ownKey) && !unfoldedCities.has(ownKey)) {
+              unfoldedCities.add(ownKey);
+              foldedByCity.get(ownKey).map(markOf).filter(Boolean).forEach(m => markObstacles.push(m));
             }
             if (!spot && mustShow) spot = spots.find(s => s.dx === 0 && !s.below && !s.lvl && !s.side);
             const bx = spot ? spot.x : pt.x - bw / 2, by = spot ? spot.y : yAbove;
@@ -12432,36 +12483,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // circle of 16 to 24px (the "Spatial Blossom", a wreath of marks around Pyongyang with the propaganda halos under it),
         // a bigger one on a sunflower disk (Havana's 33 spaces; Pyongyang has 32, so no count told them apart). Every dot now
         // stays where its space is; close ones overlap until the view is near enough to part them, as on any map, and the city
-        // badge already carries the count. The groups are still found, so a city whose spaces knot together keeps its label
-        // off that knot (lastCityDisks below, now the box of the dots at their true places).
-        const proximityGroups = [];
-        const visitedDots = new Set();
-        for (let i = 0; i < visibleDots.length; i++) {
-          if (visitedDots.has(i)) continue;
-          const group = [visibleDots[i]];
-          visitedDots.add(i);
-          for (let j = i + 1; j < visibleDots.length; j++) {
-            if (visitedDots.has(j)) continue;
-            const sameCity = visibleDots[i].inst && visibleDots[j].inst && matchC(visibleDots[i].inst.city, visibleDots[j].inst.city);
-            if (sameCity && Math.hypot(visibleDots[i].origX - visibleDots[j].origX, visibleDots[i].origY - visibleDots[j].origY) < 26) {
-              group.push(visibleDots[j]);
-              visitedDots.add(j);
-            }
-          }
-          if (group.length >= 2) {
-            proximityGroups.push(group);
-          }
-        }
-        // Where a big group's dots sit, so the city's label clears them and a space's label is not laid over another space's dot.
-        lastCityDisks = new Map();
-        proximityGroups.forEach(grp => {
-          if (grp.length <= 6) return;
-          const k = (grp[0].inst.city || '').toLowerCase().trim();
-          const xs = grp.map(d => d.x), ys = grp.map(d => d.y);
-          const box = { x: Math.min(...xs) - 6, y: Math.min(...ys) - 6, w: Math.max(...xs) - Math.min(...xs) + 12, h: Math.max(...ys) - Math.min(...ys) + 12 };
-          const had = lastCityDisks.get(k);
-          if (!had || box.w * box.h > had.w * had.h) lastCityDisks.set(k, box);
-        });
+        // badge already carries the count. A city whose spaces knot together still keeps its label off that knot: the knots are
+        // found before the city names are placed (lastCityDisks, above), on this frame's view.
         const instDotBoxes = visibleDots.map(d => ({ x: d.x - MARK_R, y: d.y - MARK_R, w: 2 * MARK_R, h: 2 * MARK_R, inst: d.inst }));
 
         let activeMicroDot = null;
@@ -22925,24 +22948,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=887"></script>
-<script src="assets/note-aids.js?v=887" defer></script>
-<script src="assets/place-list.js?v=887" defer></script>
-<script src="assets/chat-share.js?v=887" defer></script>
-<script src="assets/note-files.js?v=887" defer></script>
-<script src="assets/funding-views.js?v=887"></script>
-<script src="assets/layers.js?v=887"></script>
-<script src="assets/critique-gallery-data.js?v=887"></script>
-<script src="assets/critique-captions.js?v=887"></script>
-<script src="assets/critique-gallery.js?v=887"></script>
-<script src="assets/hq-detail.js?v=887"></script>
-<script src="assets/influence-mode.js?v=887"></script>
-<script src="assets/bubbles.js?v=887" defer></script>
-<script src="assets/phone-maps.js?v=887"></script>
-<script src="assets/desktop-maps.js?v=887"></script>
-<script src="assets/chat-resize.js?v=887"></script>
-<script src="assets/frame-refusers.js?v=887"></script>
-<script src="assets/link-pane.js?v=887"></script>
-<script src="assets/tab-suggest.js?v=887"></script>
+<script src="assets/typeset.js?v=889"></script>
+<script src="assets/note-aids.js?v=889" defer></script>
+<script src="assets/place-list.js?v=889" defer></script>
+<script src="assets/chat-share.js?v=889" defer></script>
+<script src="assets/note-files.js?v=889" defer></script>
+<script src="assets/funding-views.js?v=889"></script>
+<script src="assets/layers.js?v=889"></script>
+<script src="assets/critique-gallery-data.js?v=889"></script>
+<script src="assets/critique-captions.js?v=889"></script>
+<script src="assets/critique-gallery.js?v=889"></script>
+<script src="assets/hq-detail.js?v=889"></script>
+<script src="assets/influence-mode.js?v=889"></script>
+<script src="assets/bubbles.js?v=889" defer></script>
+<script src="assets/phone-maps.js?v=889"></script>
+<script src="assets/desktop-maps.js?v=889"></script>
+<script src="assets/chat-resize.js?v=889"></script>
+<script src="assets/frame-refusers.js?v=889"></script>
+<script src="assets/link-pane.js?v=889"></script>
+<script src="assets/tab-suggest.js?v=889"></script>
 </body>
 </html>
