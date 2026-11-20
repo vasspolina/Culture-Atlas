@@ -12148,8 +12148,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // widths and positions crossed the margin, measured as the count swinging by 40 a frame.
             const wasShown = lastShownCityLabels.has(city.name);
             const mx8 = wasShown ? 0 : 8, my6 = wasShown ? 0 : 6;
-            const collidesAt = (x, y) => drawnCityBoxes.some(box => {
-              return !(x + bw + mx8 < box.x || x > box.x + box.w + mx8 || y + bh + my6 < box.y || y > box.y + box.h + my6);
+            const collidesAt = (x, y, tight) => drawnCityBoxes.some(box => {
+              const ax = tight ? 0 : mx8, ay = tight ? 0 : my6;
+              return !(x + bw + ax < box.x || x > box.x + box.w + ax || y + bh + ay < box.y || y > box.y + box.h + ay);
             }) || (!isClustered && [...lastCityDisks.values()].some(box => box !== ownDisk &&
               !(x + bw < box.x || x > box.x + box.w || y + bh < box.y || y > box.y + box.h)));
             // A label cut by the screen edge reads as broken text: draw it only when it fits.
@@ -12186,6 +12187,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             const dotUnder = drawnCityBoxes.some(b => !(pt.x + cityR <= b.x || pt.x - cityR >= b.x + b.w || pt.y + cityR <= b.y || pt.y - cityR >= b.y + b.h));
             if (dotUnder && !mustShow) spot = undefined;
             else if (!spot && (isClustered || mustShow)) {
+              // First a place clear of every mark that only gives up the air a new name is usually given.
+              spot = spots.find(s => !collidesAt(s.x, s.y, true) && !clippedAt(s.x) && tailClear(s) && !marksAt(s.x, s.y));
+            }
+            if (!spot && (!dotUnder || mustShow) && (isClustered || mustShow)) {
               const ok = spots.filter(free);
               if (ok.length) spot = ok.reduce((best, s) => marksAt(s.x, s.y) < marksAt(best.x, best.y) ? s : best, ok[0]);
             }
