@@ -919,6 +919,53 @@
       const FLAG_FUNDER = /\b(?:sponsor\w*|funder\w*|donor\w*|benefactor\w*|(?:corporate|founding|main|lead|major|principal|official) (?:member|partner)\w*)\b/i;
       const PROTEST_MONEY = /sponsor|donor|donat|benefactor|funder|\bfund(?:ing|ed|s)?\b|partnership|corporate ties|naming|patron|\bbanks?\b|fossil|\boil\b|\bgas\b|\bcoal\b|mining|tobacco|\barms\b|weapon|gambl|casino|opioid|sackler|\bkoch\b|invest|trustee|ownership|\bbp\b|money/;
       const PROTEST_SPONSOR = /\b(?:sponsor(?:s|ed|ship|ships|ing)?|donors?|benefactors?|(?:corporate|founding|main|lead|major|principal|official) partners?)\b/i;
+      // Flags about a sponsor, a donor, a founder's company or the source of the money whose titles name an event, not the
+      // money ("BHP and the 2015 Samarco dam collapse", "Vingroup's 2025 defamation suits", "Petition to drop Hennessy, Soho
+      // House and BNP Paribas"), so the word rules below read them as Record. Each was read in full on 20 Nov 2026 (user:
+      // "put the remaining sponsor flags under Funding too") and is listed by space id and title, since several titles are
+      // as plain as "Protest or boycott" and the same title elsewhere is about something else. A flag that only mentions a
+      // funder in passing (the Goldin slide, the Walker's Scaffold, the Haub collection's pictures) is not listed.
+      const FLAG_FUNDING_BY_SPACE = new Set([
+        "a4-arts-foundation-cape-town|2018 boycott call over the kirsh family's israel ties",
+        "art-belarus-gallery-belgazprombank-corporate-collection-minsk|2020 state seizure of the collection and the babaryka case",
+        "art-gallery-of-south-australia-adelaide|bhp and the 2015 samarco dam collapse",
+        "art-institute-of-chicago-chicago|gaza encampment and arrests, 2024",
+        "bangkok-kunsthalle|protest by artn't at the opening show",
+        "biennale-of-sydney-sydney|2026 opening night and pwc's withdrawal",
+        "cheongju-craft-biennale-cheongju|hyundai motor subsidiary named in a us child labour complaint",
+        "dhaka-art-summit-dhaka|reported closeness to the hasina family",
+        "fondation-cartier|cartier's gold and the yanomami (2023)",
+        "fondation-louis-vuitton-paris|labour exploitation at an lvmh unit",
+        "frist-art-museum-nashville|nurses' protests at the frist gala",
+        "fundação-sindika-dokolo-luanda|us corruption designation",
+        "galleria-nazionale-d-arte-moderna-e-contemporanea|autostrade per l'italia and the morandi bridge",
+        "gwangju-biennale-gwangju|park seo-bo art prize dropped after protest (2023)",
+        "hamburger-bahnhof-berlin|protest over the flick collection",
+        "hasty-pudding-theatricals-cambridge|petitions against the chair",
+        "hay-festival-hay-on-wye|baillie gifford suspended under campaign pressure",
+        "he-art-museum-foshan|midea factories in the uyghur labour-transfer scheme",
+        "heidi-horten-collection|protest: the christie's jewellery sale",
+        "ica-london|protests and staff dispute over palestine",
+        "imma-dublin|petition to drop hennessy, soho house and bnp paribas",
+        "kiasma-museum-of-contemporary-art|protest or boycott (kiasma strike, 2022 to 2023)",
+        "kunsthalle-bielefeld-bielefeld|protest over the kaselowsky name",
+        "kunsthalle-praha-prague|opening-day protest over artwashing",
+        "maat-lisbon|edp leadership case",
+        "maxxi|boycott over eni, leonardo and gaza",
+        "nam-june-paik-art-center-yongin|hyundai and child labour at a subsidiary",
+        "pérez-art-museum-miami-miami|campaigned name, the 2011 renaming",
+        "riga-international-biennial-of-contemporary-art-riboca|boycott and campaign against the biennial",
+        "science-museum-london|campaigns",
+        "the-broad|eli broad's move from the grand avenue committee to a museum site on public land",
+        "the-national-museum-of-western-art|protest or boycott",
+        "tselinny-center-of-contemporary-culture-almaty|founder's conviction and asset handover",
+        "villa-des-arts-de-casablanca-casablanca|al mada transparency",
+        "vincom-center-for-contemporary-art-hanoi|vingroup's 2025 defamation suits",
+        "vizcaya-museum-and-gardens|ken griffin, protested at another museum",
+        "yarat-contemporary-art-space-baku|ties to the aliyev family and state",
+        "zabludowicz-collection-london|boycott and protest over the founders' ties to israel"
+      ]);
+      let tabSpace = '';
       const tabOf = (el) => {
         if (el.matches('figure')) return 'overview';
         // Titles are typeset too (a no-break space before the last word), so they are read with plain spaces.
@@ -946,6 +993,7 @@
         // "Protests against Koç sponsorship"), or its opening lines name the sponsorship protested, or its text speaks of
         // the sponsorships. A protest over a director, a work or a cancelled show stays in Record. Read against the 170
         // protest and boycott sections in the records: 31 moved to Funding, the rest stay in Record.
+        if (el.classList.contains('is-flag') && FLAG_FUNDING_BY_SPACE.has(tabSpace + '|' + t)) return 'funding';
         if (el.classList.contains('is-flag') && /protest|boycott/.test(t)) {
           const body = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(t.length);
           const lead = body.slice(0, 260);
@@ -969,6 +1017,7 @@
         return 'record';
       };
       function buildFull(inst) {
+        tabSpace = inst.id || '';
         const key = (inst.id || inst.name) + '|' + (window.isGossipModeActive ? 1 : 0) + '|' + (window.dossierVcIndex || 0);
         if (full.dataset.key === key) return full.childElementCount > 0;
         full.dataset.key = key;
