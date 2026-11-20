@@ -1,0 +1,382 @@
+[
+ {
+  "id": "stadel-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong date: '1984'"
+  ],
+  "before": "a wing by Gustav Peichl (1984)",
+  "after": "a wing by Gustav Peichl (completed 1990)",
+  "sources": [
+   "https://www.staedelmuseum.de/en/the-staedel"
+  ],
+  "reason": "The museum's history page dates the Museumsufer project to 1984 and says the Peichl extension was completed in 1990."
+ },
+ {
+  "id": "stadel-museum",
+  "section": "FUNDING",
+  "problems": [
+   "flag heading against the map's rules: a project funder is a note, not a Tobacco flag"
+  ],
+  "before": "- Project funders listed include the federal culture commissioner (BKM), Kulturstiftung der Länder, Hessische Kulturstiftung, Kulturfonds Frankfurt RheinMain, Ernst von Siemens Kunststiftung, Art Mentor Foundation Lucerne, Bank of America Art Conservation Project, Commerzbank-Stiftung, Dagmar-Westberg-Stiftung, Stiftung Polytechnische Gesellschaft and the Hermann Reemtsma Stiftung.",
+  "after": "- Project funders listed include the federal culture commissioner (BKM), Kulturstiftung der Länder, Hessische Kulturstiftung, Kulturfonds Frankfurt RheinMain, Ernst von Siemens Kunststiftung, Art Mentor Foundation Lucerne, Bank of America Art Conservation Project, Commerzbank-Stiftung, Dagmar-Westberg-Stiftung, Stiftung Polytechnische Gesellschaft and the Hermann Reemtsma Stiftung.\n- The Hermann Reemtsma Stiftung is tobacco-family money: Hermann-Hinrich Reemtsma (1935 to 2020) set it up in 1988 in memory of his father, Hermann F. Reemtsma (the foundation's own page). He worked in the management of the family's cigarette business, was a shareholder and sat on the supervisory board of the Reemtsma group from 1996 until 2002 (German Wikipedia).",
+  "sources": [
+   "https://www.staedelmuseum.de/en/support/sponsors-patrons",
+   "https://www.hermann-reemtsma-stiftung.de/stiftung/",
+   "https://de.wikipedia.org/wiki/Hermann-Hinrich_Reemtsma"
+  ],
+  "reason": "The museum lists the foundation once, among 43 institutional project funders, with no year or amount. The facts stay, under FUNDING, where the money's origin belongs."
+ },
+ {
+  "id": "stadel-museum",
+  "section": "Red flags",
+  "problems": [
+   "flag heading against the map's rules",
+   "repetition once the points sit under FUNDING"
+  ],
+  "before": "Red flags: tobacco family money among the project funders\n- The Hermann Reemtsma Stiftung is on the museum's current list of institutional project funders.\n- Hermann-Hinrich Reemtsma (1935 to 2020) set the foundation up in 1988 in memory of his father, Hermann F. Reemtsma (the foundation's own page).\n- He worked in the management of the family's cigarette business, was a shareholder and sat on the supervisory board of the Reemtsma group from 1996 until 2002 (German Wikipedia).",
+  "after": "",
+  "sources": [
+   "https://www.staedelmuseum.de/en/support/sponsors-patrons"
+  ],
+  "reason": "Heading removed; its three points are now one FUNDING point."
+ },
+ {
+  "id": "stadel-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "overstates a project funder as a weak point equal to a corporate partner"
+  ],
+  "before": "The weak points are two names on the supporter lists: a foundation built by a cigarette family, and a bank penalised in 2020 over a convicted sex offender's accounts.",
+  "after": "The weak point is a corporate partner, a bank penalised in 2020 over a convicted sex offender's accounts, and a cigarette family's foundation sits among the project funders.",
+  "sources": [
+   "https://www.staedelmuseum.de/en/support/sponsors-patrons",
+   "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071"
+  ],
+  "reason": "Brought in line with the sections above."
+ },
+ {
+  "id": "musee-de-cluny",
+  "section": "Website",
+  "problems": [
+   "gap statement: 'its pages were not read'",
+   "speaks about the research, not the space"
+  ],
+  "before": "(checked 2026-11-20; the site answers automated readers with a JavaScript and cookie check, so its pages were not read)",
+  "after": "(checked 2026-11-20)",
+  "sources": [
+   "https://www.musee-moyenage.fr"
+  ],
+  "reason": "The site is up; it answers with a script and cookie check. The layout allows only 'down', 'parked' or 'serves spam' here."
+ },
+ {
+  "id": "musee-de-cluny",
+  "section": "OVERVIEW",
+  "problems": [
+   "point credited to the wrong page"
+  ],
+  "before": "in the Latin Quarter in the 5th arrondissement of Paris (Ministry of Culture).",
+  "after": "in the Latin Quarter in the 5th arrondissement of Paris (Ministry of Culture, Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mus%C3%A9e_de_Cluny",
+   "https://www.culture.gouv.fr/rechercher-une-publication-du-ministere-de-la-culture/repertoire-des-informations-publiques/Musees-des-Beaux-arts/musee-national-du-moyen-age-thermes-et-hotel-de-cluny"
+  ],
+  "reason": "The ministry page gives the postcode 75005; the Latin Quarter is from Wikipedia."
+ },
+ {
+  "id": "musee-de-cluny",
+  "section": "Red flags",
+  "problems": [
+   "flag rested on one source"
+  ],
+  "before": "- About half of the entrance works was paid with money France received from Abu Dhabi for the Louvre Abu Dhabi (Carenews, 2019).",
+  "after": "- About half of the entrance works was paid with money France received from Abu Dhabi for the Louvre Abu Dhabi (Carenews, 2019).\n- The museum put EUR 4 million of its Abu Dhabi fee into a EUR 7.4 million expansion, and its director, Elisabeth Taburet-Delahaye, said the work \"would certainly have been slower and more difficult\" without Abu Dhabi (The Art Newspaper, 2016).\n- The Emirati government financed the Louvre Abu Dhabi, and 12 French institutions besides the Louvre agreed to lend works to it for a fee of EUR 265 million over 15 years (The Art Newspaper, 2016).",
+  "sources": [
+   "https://www.theartnewspaper.com/2016/11/01/the-lesser-known-beneficiaries-of-the-louvre-abu-dhabi-deal"
+  ],
+  "reason": "A second, independent report names Cluny as a beneficiary of the Louvre Abu Dhabi fees and quotes its director."
+ },
+ {
+  "id": "musee-de-cluny",
+  "section": "SOURCES",
+  "problems": [
+   "source for the new points"
+  ],
+  "before": "- https://www.culture.gouv.fr/actualites/Les-metamorphoses-du-musee-de-Cluny",
+  "after": "- https://www.theartnewspaper.com/2016/11/01/the-lesser-known-beneficiaries-of-the-louvre-abu-dhabi-deal\n- https://www.culture.gouv.fr/actualites/Les-metamorphoses-du-musee-de-Cluny",
+  "sources": [
+   "https://www.theartnewspaper.com/2016/11/01/the-lesser-known-beneficiaries-of-the-louvre-abu-dhabi-deal"
+  ],
+  "reason": "Source added for the two Art Newspaper points."
+ },
+ {
+  "id": "national-archaeological-museum-athens",
+  "section": "FUNDING",
+  "problems": [
+   "state funding stated by no source outside the museum's site"
+  ],
+  "before": "- The museum is a state body: two directors of the Hellenic Ministry of Culture, Konstantinos Frisiras and Irene Komninou, sit on its board (museum administration page).",
+  "after": "- The museum is a state body: two directors of the Hellenic Ministry of Culture, Konstantinos Frisiras and Irene Komninou, sit on its board (museum administration page).\n- Under law 5021/2023, passed in February 2023, the museum keeps receiving state funds and is responsible for its own fundraising (Pagenews, 14 April 2023).",
+  "sources": [
+   "https://www.pagenews.gr/2023/04/14/english-edition/culture-min-announces-board-directors-for-greek-museums-recently-turned-private/"
+  ],
+  "reason": "Pagenews states that the five museums covered by the law keep receiving state funds."
+ },
+ {
+  "id": "national-archaeological-museum-athens",
+  "section": "Red flags",
+  "problems": [
+   "documented protest missing from the report"
+  ],
+  "before": "Red flags: refinery holdings behind the extension's donor",
+  "after": "Red flags: protest closure over the 2023 museums law\n- On 13 February 2023 the museum and four other large state museums were shut as Greek archaeologists protested against the law that put them under a ministry-appointed general director and board (The Greek Herald, 14 February 2023).\n- The employees of all five museums wrote to Prime Minister Kyriakos Mitsotakis against the plan, and in December 2020 the Association of Greek Archaeologists declared its \"absolute opposition\" to the draft law (The Art Newspaper, 4 March 2021).\n\nRed flags: refinery holdings behind the extension's donor",
+  "sources": [
+   "https://greekherald.com.au/news/five-of-greeces-largest-museums-shut-down-in-protest-against-new-law/",
+   "https://www.theartnewspaper.com/2021/03/04/archaeologists-appeal-to-greek-prime-minister-to-halt-restructuring-of-five-big-antiquities-museums"
+  ],
+  "reason": "Both reports name the National Archaeological Museum among the five museums; the 2023 closure is inside five years."
+ },
+ {
+  "id": "national-archaeological-museum-athens",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "art-press item missing",
+   "bottom line did not name the protest"
+  ],
+  "before": "BOTTOM LINE\nThe state runs and pays for the museum, and that money is not a flag. The one private name is the Latsis family, whose holding company is the largest shareholder of Greece's main refiner.",
+  "after": "CRITICISM IN ART MEDIA\nOverall: One art-press report covers the archaeologists' opposition to the restructuring of the museum. It criticises the ministry's law, not the museum's programme.\n1. The Art Newspaper: William Summerfield, \"Archaeologists appeal to Greek prime minister to halt restructuring of five big antiquities museums\" (2021)\nURL: https://www.theartnewspaper.com/2021/03/04/archaeologists-appeal-to-greek-prime-minister-to-halt-restructuring-of-five-big-antiquities-museums\n- Reports that 119 former employees of the archaeological service signed an appeal that denounces \"archaeocapitalism\".\n- Says the conversion would reduce state support and make the museums raise more of their own income from donations, sponsorship, ticketing and events.\n- Names the National Archaeological Museum as one of the five museums the bill covers.\n\nBOTTOM LINE\nThe state runs and pays for the museum, and that money is not a flag. The weak points are the 2023 protest closure and the Latsis family, the one private name, whose holding company is the largest shareholder of Greece's main refiner.",
+  "sources": [
+   "https://www.theartnewspaper.com/2021/03/04/archaeologists-appeal-to-greek-prime-minister-to-halt-restructuring-of-five-big-antiquities-museums"
+  ],
+  "reason": "The piece was opened and read; author, title and year are from the page."
+ },
+ {
+  "id": "national-archaeological-museum-athens",
+  "section": "SOURCES",
+  "problems": [
+   "sources for the new points"
+  ],
+  "before": "- https://www.namuseum.gr/en/to-moyseio/administration/",
+  "after": "- https://www.namuseum.gr/en/to-moyseio/administration/\n- https://www.pagenews.gr/2023/04/14/english-edition/culture-min-announces-board-directors-for-greek-museums-recently-turned-private/\n- https://greekherald.com.au/news/five-of-greeces-largest-museums-shut-down-in-protest-against-new-law/\n- https://www.theartnewspaper.com/2021/03/04/archaeologists-appeal-to-greek-prime-minister-to-halt-restructuring-of-five-big-antiquities-museums",
+  "sources": [
+   "https://greekherald.com.au/news/five-of-greeces-largest-museums-shut-down-in-protest-against-new-law/"
+  ],
+  "reason": "Sources added for the new points."
+ },
+ {
+  "id": "museum-of-cycladic-art",
+  "section": "Red flags",
+  "problems": [
+   "detail credited to a source that does not state it: '1968'"
+  ],
+  "before": "- Professor Christos Doumas, who published the Goulandris collection in 1968, wrote to the ministry and the museum asking for a committee to verify the Stern objects (Archaeology Wiki).",
+  "after": "- Professor Christos Doumas, who first published the Goulandris collection's Cycladic objects in 1968 (stated by the space), wrote to the ministry and the museum asking for a committee to check the authenticity of the Stern objects (Archaeology Wiki).",
+  "sources": [
+   "https://cycladic.gr/en/dorites/",
+   "https://www.archaeology.wiki/blog/2022/12/23/the-agreement-on-the-stern-collection-antiquities-should-be-cancelled/"
+  ],
+  "reason": "Archaeology Wiki reports the letter; the 1968 catalogue is on the museum's donors page."
+ },
+ {
+  "id": "museum-of-cycladic-art",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "says more than the source: unions 'protested at its door'"
+  ],
+  "before": "The weak point is the museum's part in the Stern arrangement, which Greek archaeologists' unions protested at its door in 2022.",
+  "after": "The weak point is the museum's part in the Stern arrangement: protesters stood at its door in 2022 and five unions called the agreement a scandal.",
+  "sources": [
+   "https://cyprus-mail.com/2022/11/03/ancient-greek-artifacts-go-on-display-for-first-time-amid-protests"
+  ],
+  "reason": "Reuters reports a small group of protesters outside the museum and, separately, a statement by five unions."
+ },
+ {
+  "id": "groeningemuseum",
+  "section": "FUNDING",
+  "problems": [
+   "says more than the source: 'gave'"
+  ],
+  "before": "- The Flemish government gave EUR 27.2 million for BRUSK,",
+  "after": "- The Flemish government pledged EUR 27.2 million for BRUSK,",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2021/01/25/brusk/"
+  ],
+  "reason": "VRT wrote in January 2021 that the government promised the subsidy ('zegde toe')."
+ },
+ {
+  "id": "teylers-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "gap statement: 'on the pages read'",
+   "absence statement: 'no corporate sponsor of note'",
+   "says more than the source: 'fortune'"
+  ],
+  "before": "The money is clean on the pages read: a ministry subsidy, a public lottery, friends and Dutch cultural funds, with no corporate sponsor of note. The point to know is historical: the museum itself states that part of its founder's fortune was tied to slavery.",
+  "after": "The money is a ministry subsidy, a public lottery, friends and Dutch cultural funds. The point to know is historical: the museum itself states that part of its founder's investments was tied to slavery.",
+  "sources": [
+   "https://catalogus.boekman.nl/pub/teylersmuseumjaarverslag2024.pdf"
+  ],
+  "reason": "The annual report says part of Teyler's investments was related to slavery."
+ },
+ {
+  "id": "musee-d-art-et-d-histoire-geneva",
+  "section": "Red flags",
+  "problems": [
+   "flag heading against the map's rules: the donor left in 2016",
+   "repetition: the foundation's place on the thanks list and the rejected project were each stated twice"
+  ],
+  "before": "Red flags: an oil fortune behind the extension that voters rejected\n- Jean Claude Gandur founded the Addax and Oryx Group in 1987, focused on oil production in Africa, and led Addax Petroleum until Sinopec took it over in August 2009 for USD 7.3 billion (Wikipedia).\n- In March 2010 he committed CHF 20 million to the City of Geneva for the renovation and enlargement of the museum (Wikipedia).\n- Jean Nouvel's enlargement project was rejected in a referendum and Gandur withdrew from it (Wikipedia). Radio Lac reported in 2022 that the population had refused the project six years earlier.\n- The Fondation Gandur pour l'art remains on the museum's list of thanked supporters.",
+  "after": "- Jean Claude Gandur founded the Addax and Oryx Group in 1987, focused on oil production in Africa, and led Addax Petroleum until Sinopec took it over in August 2009 for USD 7.3 billion (Wikipedia).\n- In March 2010 he committed CHF 20 million to the City of Geneva for the renovation and enlargement of the museum. Jean Nouvel's enlargement project was rejected in a referendum in February 2016 and Gandur withdrew from it (Wikipedia).\n- In May 2024 his foundation announced that it had chosen Caen for a museum of his collection (Wikipedia).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jean_Claude_Gandur",
+   "https://www.mahmah.ch/remerciements"
+  ],
+  "reason": "A fuel-money heading needs a current funder. Gandur withdrew ten years ago and the foundation is only on a list of supporters 'over the years', so the points moved under FUNDING as history."
+ },
+ {
+  "id": "musee-d-art-et-d-histoire-geneva",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "names a past donor as a current name to know"
+  ],
+  "before": "The name to know is Jean Claude Gandur, whose oil money was to co-finance an extension that Geneva voters turned down.",
+  "after": "Jean Claude Gandur's oil money was to co-finance an extension, but Geneva voters turned the project down in 2016 and he withdrew.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jean_Claude_Gandur"
+  ],
+  "reason": "Brought in line with the FUNDING section."
+ },
+ {
+  "id": "kunstmuseum-liechtenstein",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "Nothing on the pages read points to a contested funder.",
+  "after": "",
+  "sources": [
+   "https://www.kunstmuseum.li/fileadmin/user_upload/documents/museum/das-museum/stiftungsrat/Kunstmuseum_Liechtenstein_Jahresbericht_2025_Final_.pdf"
+  ],
+  "reason": "A sentence whose only point is that nothing was found; two sentences remain."
+ },
+ {
+  "id": "national-museum-of-denmark",
+  "section": "OVERVIEW",
+  "problems": [
+   "founding date rested on Wikipedia alone"
+  ],
+  "before": "- Wikipedia dates its establishment to 22 May 1807 and names Christian Jürgensen Thomsen as founder.",
+  "after": "- The museum counts 22 May 1807, the day the royal commission for the keeping of antiquities was set up, as its birthday (stated by the space). Wikipedia names Christian Jürgensen Thomsen as founder.",
+  "sources": [
+   "https://natmus.dk/historisk-viden/temaer/nationalmuseets-historie/oldsagskommissionen/",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Denmark"
+  ],
+  "reason": "The museum's own history page gives the date and the reason for it."
+ },
+ {
+  "id": "national-museum-of-denmark",
+  "section": "SOURCES",
+  "problems": [
+   "source for the corrected point"
+  ],
+  "before": "- https://nationalmuseet.dk/en/page/about-us",
+  "after": "- https://nationalmuseet.dk/en/page/about-us\n- https://natmus.dk/historisk-viden/temaer/nationalmuseets-historie/oldsagskommissionen/",
+  "sources": [
+   "https://natmus.dk/historisk-viden/temaer/nationalmuseets-historie/oldsagskommissionen/"
+  ],
+  "reason": "Source added."
+ },
+ {
+  "id": "national-museum-prague",
+  "section": "OVERVIEW",
+  "problems": [
+   "founding date rested on Wikipedia alone"
+  ],
+  "before": "with the historian František Palacký closely involved (Wikipedia).",
+  "after": "with the historian František Palacký closely involved (Wikipedia). The journal Živa also dates the founding to 1818.",
+  "sources": [
+   "https://www.ziva.avcr.cz/2018-6/200-let-prirodovedy-v-narodnim-muzeu.html"
+  ],
+  "reason": "Živa, the Czech Academy of Sciences journal, wrote that the museum marked 200 years since its founding in 2018."
+ },
+ {
+  "id": "national-museum-prague",
+  "section": "FUNDING",
+  "problems": [
+   "wrong name: 'Korres'",
+   "vague name: 'Škoda'"
+  ],
+  "before": "- Partner logos on the museum's site are Škoda and Mattoni, with Korres for accompanying programmes and Czech Television and Czech Radio as media partners.",
+  "after": "- The museum's site shows Škoda Auto and Mattoni as partners of the National Museum, Kores as partner of the accompanying programmes and Czech Television and Czech Radio as media partners.",
+  "sources": [
+   "https://www.nm.cz/en"
+  ],
+  "reason": "The logos link to kores.com and skoda-auto.cz, and each carries a title that states the partner's role."
+ },
+ {
+  "id": "national-museum-prague",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence statement",
+   "vague name: 'Škoda'"
+  ],
+  "before": "The commercial partners shown are Škoda and Mattoni. Nothing on the pages read points to a contested funder.",
+  "after": "The commercial partners shown are Škoda Auto and Mattoni.",
+  "sources": [
+   "https://www.nm.cz/en"
+  ],
+  "reason": "A sentence whose only point is that nothing was found; two sentences remain."
+ },
+ {
+  "id": "national-museum-prague",
+  "section": "SOURCES",
+  "problems": [
+   "source for the added point"
+  ],
+  "before": "- https://en.wikipedia.org/wiki/National_Museum_(Prague)",
+  "after": "- https://en.wikipedia.org/wiki/National_Museum_(Prague)\n- https://www.ziva.avcr.cz/2018-6/200-let-prirodovedy-v-narodnim-muzeu.html",
+  "sources": [
+   "https://www.ziva.avcr.cz/2018-6/200-let-prirodovedy-v-narodnim-muzeu.html"
+  ],
+  "reason": "Source added."
+ },
+ {
+  "id": "national-museum-in-krakow",
+  "section": "FUNDING",
+  "problems": [
+   "no year where the source has one"
+  ],
+  "before": "Under minister Piotr Gliński it raised the subsidy by PLN 1.2 million for staff pay, and the Solidarność union withdrew a collective dispute (Radio Kraków).",
+  "after": "In June 2016, under minister Piotr Gliński, it raised the subsidy by PLN 1.2 million for staff pay, and the Solidarność union withdrew a collective dispute (Radio Kraków, 15 July 2016).",
+  "sources": [
+   "https://www.radiokrakow.pl/aktualnosci/krakow/beda-wyzsze-place-dla-pracownikow-muzeum-narodowego-w-krakowie-dotacja-podmiotowa-zostala-zwiekszona"
+  ],
+  "reason": "The report is from July 2016 and says the ministry decided on the increase in June."
+ },
+ {
+  "id": "national-museum-in-krakow",
+  "section": "Red flags",
+  "problems": [
+   "flag rested on an undated Wikipedia line"
+  ],
+  "before": "- Its power stations are fuelled mainly by hard coal and lignite, it runs two large lignite mines, and its Bełchatów plant is described as the fifth-largest coal-fired power station in the world (Wikipedia).",
+  "after": "- Its power stations are fuelled mainly by hard coal and lignite, it runs two large lignite mines, and its Bełchatów plant is described as the fifth-largest coal-fired power station in the world (Wikipedia).\n- In 2025 PGE generated 55.20 TWh of electricity, 28.50 TWh of it from lignite and 14.19 TWh from hard coal (Enerad, 16 April 2026).",
+  "sources": [
+   "https://enerad.pl/pge-prezentuje-wyniki-finansowe-i-operacyjne-za-2025-rok-wzrost-ebitda-i-spadek-zadluzenia/"
+  ],
+  "reason": "Enerad's report of PGE's 2025 results gives the generation by fuel."
+ },
+ {
+  "id": "national-museum-in-krakow",
+  "section": "SOURCES",
+  "problems": [
+   "source for the added point"
+  ],
+  "before": "- https://en.wikipedia.org/wiki/Polska_Grupa_Energetyczna",
+  "after": "- https://en.wikipedia.org/wiki/Polska_Grupa_Energetyczna\n- https://enerad.pl/pge-prezentuje-wyniki-finansowe-i-operacyjne-za-2025-rok-wzrost-ebitda-i-spadek-zadluzenia/",
+  "sources": [
+   "https://enerad.pl/pge-prezentuje-wyniki-finansowe-i-operacyjne-za-2025-rok-wzrost-ebitda-i-spadek-zadluzenia/"
+  ],
+  "reason": "Source added."
+ }
+]

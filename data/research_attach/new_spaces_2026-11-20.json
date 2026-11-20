@@ -1,0 +1,2212 @@
+[
+ {
+  "id": "stadel-museum",
+  "name": "Städel Museum",
+  "location": "Frankfurt am Main, Germany",
+  "city": "Frankfurt am Main",
+  "country": "Germany",
+  "tier": "B",
+  "flags": [],
+  "why_flagged": "New York's financial regulator fined corporate partner Deutsche Bank $150M in July 2020 over its handling of Jeffrey Epstein's accounts.",
+  "size": "",
+  "funding": "Städelsches Kunstinstitut, a private foundation, raises 85% of its budget itself (2026). City of Frankfurt, State of Hesse, Städelscher Museums-Verein, Deutsche Bank and DZ Bank add funds.",
+  "watch": "Hermann Reemtsma Stiftung, a cigarette family's foundation, is on the museum's list of project funders.",
+  "sources": [
+   "https://www.staedelmuseum.de/en/endowment",
+   "https://staedelmuseum.de/en/support/sponsors-patrons",
+   "https://newsroom.staedelmuseum.de/en/topics/stadel-museum-launches-endowment-campaign",
+   "https://www.hermann-reemtsma-stiftung.de/stiftung/",
+   "https://de.wikipedia.org/wiki/Hermann-Hinrich_Reemtsma",
+   "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071"
+  ],
+  "lat": 50.1032949,
+  "lon": 8.6738582,
+  "website": "https://www.staedelmuseum.de",
+  "visit_url": "https://www.staedelmuseum.de/en/visit",
+  "address": "Schaumainkai 63, 60596 Frankfurt am Main",
+  "year_founded": 1815,
+  "opening_hours": "Tue, Wed, Fri, Sat, Sun 10 am to 6 pm; Thu 10 am to 9 pm; closed Mon",
+  "admission_fee": "EUR 19; reduced EUR 17; families EUR 30; under 12 free; EUR 10 on Tuesdays from 3 to 6 pm",
+  "aliases": [
+   "Städelsches Kunstinstitut",
+   "Städel",
+   "Staedel Museum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=St%C3%A4del%20Museum%2C%20Frankfurt%20am%20Main"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.staedelmuseum.de/en/visit"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://staedelmuseum.de/en/the-staedel"
+    ],
+    "basis": "established in 1815 as a civic foundation under Johann Friedrich Städel's will (museum page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.staedelmuseum.de/en/visit"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Städelsches Kunstinstitut",
+   "Stadt Frankfurt am Main",
+   "Land Hessen",
+   "Städelscher Museums-Verein",
+   "Deutsche Bank AG",
+   "DZ Bank",
+   "Hermann Reemtsma Stiftung",
+   "Beauftragte der Bundesregierung für Kultur und Medien",
+   "Kulturstiftung der Länder",
+   "Hessische Kulturstiftung",
+   "Kulturfonds Frankfurt RheinMain",
+   "Ernst von Siemens Kunststiftung",
+   "Bloomberg L.P.",
+   "BMW AG",
+   "Fraport AG"
+  ],
+  "verification": "Opened the museum's endowment, supporters, foundations, history and visit pages, the Reemtsma foundation's own pages, German Wikipedia and the New York regulator's 2020 release; funding share, funder lists, address, hours and prices confirmed.",
+  "holds": false,
+  "check_sources": [
+   "https://www.staedelmuseum.de/en/support/sponsors-patrons",
+   "https://www.staedelmuseum.de/en/endowment",
+   "https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202007071"
+  ],
+  "problems": [
+   "Tobacco flag removed: Hermann Reemtsma Stiftung is one of 43 names on an undated 'Institutional Project Funding' list, with no year, project or amount; a project grant is a note, so it moved to the watch line",
+   "funding line no longer names Hermann Reemtsma Stiftung beside the main funders; the source lists it only as a project funder",
+   "why_flagged emptied because flags is empty; tier stays B on Deutsche Bank, a current corporate partner fined in 2020",
+   "report: Peichl wing date corrected to 1990 (the museum page gives 1984 for the Museumsufer and 1990 for the wing); tobacco points moved from Red flags to FUNDING",
+   "after the check: a B needs its reason recorded: the bank fine moves from watch to why_flagged"
+  ],
+  "question": "Georg Kolbe Museum (B) and Kunsthalle Bremen carry Tobacco for the same foundation's project money: keep them, or bring them in line with this ruling?",
+  "reason": "Confirmed the 85% own-resources share, the city and state top-up, Deutsche Bank and DZ Bank as corporate partners and the 2020 DFS penalty. The Reemtsma foundation is a listed project funder only, which is a note, so B rests on Deutsche Bank.",
+  "batch": "np1"
+ },
+ {
+  "id": "musee-de-cluny",
+  "name": "Musée de Cluny",
+  "location": "Paris, France",
+  "city": "Paris",
+  "country": "France",
+  "tier": "B",
+  "flags": [
+   "Gulf state body"
+  ],
+  "why_flagged": "Fees from the Louvre Abu Dhabi, a museum the Emirati government financed and of which Cluny is a partner, paid about half of the entrance works (Carenews, 2019; The Art Newspaper, 2016).",
+  "size": "",
+  "funding": "French Ministry of Culture runs and funds it as a national service. Louvre Abu Dhabi contract money paid about half of the entrance works of over EUR 7.6M (Carenews, 2019).",
+  "watch": "Lafarge gave EUR 200,000 in 2015 for a concrete footbridge. The ministry repaid it in 2018, after Lafarge executives were charged over Syria payments.",
+  "sources": [
+   "https://www.carenews.com/fr/news/13497-mecenat-culturel-comment-le-musee-de-cluny-a-rendu-ses-200-000-eu-a-lafarge",
+   "https://www.theartnewspaper.com/2016/11/01/the-lesser-known-beneficiaries-of-the-louvre-abu-dhabi-deal",
+   "https://www.culture.gouv.fr/actualites/Les-metamorphoses-du-musee-de-Cluny",
+   "https://www.culture.gouv.fr/rechercher-une-publication-du-ministere-de-la-culture/repertoire-des-informations-publiques/Musees-des-Beaux-arts/musee-national-du-moyen-age-thermes-et-hotel-de-cluny",
+   "https://en.wikipedia.org/wiki/Mus%C3%A9e_de_Cluny"
+  ],
+  "lat": 48.8506495,
+  "lon": 2.3435643,
+  "website": "https://www.musee-moyenage.fr",
+  "visit_url": "",
+  "address": "28 rue Du Sommerard, 75005 Paris",
+  "year_founded": 1843,
+  "opening_hours": "",
+  "admission_fee": "",
+  "aliases": [
+   "Musée de Cluny - musée national du Moyen Âge",
+   "Musée national du Moyen Âge - Thermes et hôtel de Cluny",
+   "Cluny Museum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Mus%C3%A9e%20de%20Cluny%2C%20Paris"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://en.wikipedia.org/wiki/Mus%C3%A9e_de_Cluny",
+     "https://www.culture.gouv.fr/rechercher-une-publication-du-ministere-de-la-culture/repertoire-des-informations-publiques/Musees-des-Beaux-arts/musee-national-du-moyen-age-thermes-et-hotel-de-cluny"
+    ],
+    "basis": "street from the Wikipedia infobox, postcode from the Ministry of Culture directory",
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.culture.gouv.fr/actualites/Les-metamorphoses-du-musee-de-Cluny"
+    ],
+    "basis": "'Créé en 1843' (Ministry of Culture page)",
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ministère de la Culture",
+   "Louvre Abu Dhabi",
+   "Lafarge",
+   "Société des Amis du musée de Cluny"
+  ],
+  "verification": "Opened the Carenews investigation, The Art Newspaper's 2016 report on the Louvre Abu Dhabi fees, two Ministry of Culture pages and Wikipedia; the museum's own site answers with a JavaScript and cookie check, so hours and admission stay empty.",
+  "holds": false,
+  "check_sources": [
+   "https://www.carenews.com/fr/news/13497-mecenat-culturel-comment-le-musee-de-cluny-a-rendu-ses-200-000-eu-a-lafarge",
+   "https://www.theartnewspaper.com/2016/11/01/the-lesser-known-beneficiaries-of-the-louvre-abu-dhabi-deal",
+   "https://www.culture.gouv.fr/presse/archives-presse/archives-discours-2014-2018/annee-2017/Discours-de-Francoise-Nyssen-a-l-occasion-de-l-ouverture-du-Louvre-Abu-Dhabi"
+  ],
+  "problems": [
+   "'Sponsor dropped under pressure' removed: Carenews says the ministry cancelled the Lafarge agreement under its own patronage charter in 2018 and that nobody noticed; no campaign, petition or protest was aimed at the museum, and the event is eight years old. It is kept as the watch line",
+   "Gulf state body kept and now rests on two sources: The Art Newspaper (1 November 2016) reports the museum put EUR 4M of its Abu Dhabi fee into a EUR 7.4M expansion and quotes its director; the minister's 2017 speech lists Cluny among the Louvre Abu Dhabi partner museums",
+   "watch rewritten: it tripped the hedge check on the month 'May', and the Lafarge fact moved here from why_flagged",
+   "address kept on Wikipedia's street line; the Ministry of Culture directory and the Paris Region tourist board still print the former entrance, 6 place Paul Painlevé, 23 m away; hours, admission and visit_url stay empty",
+   "report: Website line trimmed, The Art Newspaper points added under the Gulf heading and to SOURCES"
+  ],
+  "question": "Musée du quai Branly (graded A) and Musée Guimet are Louvre Abu Dhabi partner museums as well: should they take Gulf state body like Cluny?",
+  "reason": "Two press sources show Louvre Abu Dhabi fee money in the entrance works and Cluny as a partner museum, so Gulf state body holds. The Lafarge refund was a ministry decision with no pressure aimed at the museum, so that flag does not.",
+  "batch": "np1"
+ },
+ {
+  "id": "national-archaeological-museum-athens",
+  "name": "National Archaeological Museum",
+  "location": "Athens, Greece",
+  "city": "Athens",
+  "country": "Greece",
+  "tier": "B",
+  "flags": [],
+  "why_flagged": "Spyros and Dorothy Latsis gave EUR 40M for the extension studies in 2024; Latsis-linked Paneuropean Oil holds 40.41% of HELLENiQ ENERGY, which runs three Greek refineries.",
+  "size": "L",
+  "funding": "Hellenic Ministry of Culture funds it as a state museum under law 5021/2023. Spyros and Dorothy Latsis gave EUR 40M for the extension studies (ratified April 2024).",
+  "watch": "The museum had 665,414 visitors in 2025.",
+  "sources": [
+   "https://www.tovima.com/culture/natl-archaeological-museum-expansion-advances-with-final-studies-approval/",
+   "https://www.pagenews.gr/2023/04/14/english-edition/culture-min-announces-board-directors-for-greek-museums-recently-turned-private/",
+   "https://greekherald.com.au/news/five-of-greeces-largest-museums-shut-down-in-protest-against-new-law/",
+   "https://www.helleniqenergy.com/en/investor-relations/corporate-profile",
+   "https://www.naftemporiki.gr/english/1490956/helleniq-energy-plan-for-disposal-of-shares-by-latsis-group-and-taiped",
+   "https://greektriplanner.me/insights/greece-archaeological-sites-museums-statistics"
+  ],
+  "lat": 37.9890123,
+  "lon": 23.7329577,
+  "website": "https://www.namuseum.gr/en/",
+  "visit_url": "https://www.namuseum.gr/en/episkepsi/",
+  "address": "44, 28th of October (Patission) str., Athens 106 82",
+  "year_founded": 1829,
+  "opening_hours": "16 Nov 2026 to 30 Apr 2027: Wed to Mon 08:30 to 15:30; Tue 13:00 to 20:00",
+  "admission_fee": "EUR 20; EU visitors up to 25 free; free on the first and third Sunday from November to March",
+  "aliases": [
+   "Εθνικό Αρχαιολογικό Μουσείο",
+   "National Archaeological Museum of Athens",
+   "NAM"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=National%20Archaeological%20Museum%2C%20Athens"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.namuseum.gr/en/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.namuseum.gr/en/to-moyseio/istoria-toy-moyseioy/"
+    ],
+    "basis": "founded 1829, the first museum founded in the Greek state (museum history page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.namuseum.gr/en/episkepsi/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Hellenic Ministry of Culture",
+   "Spyros and Dorothy Latsis"
+  ],
+  "verification": "Opened the museum's visit, history and administration pages, To Vima on the extension, Pagenews on law 5021/2023, The Greek Herald and The Art Newspaper on the staff protests, the HELLENiQ ENERGY shareholder page and Naftemporiki; state funding, board, Latsis gift, address, hours and price confirmed.",
+  "holds": false,
+  "check_sources": [
+   "https://www.tovima.com/culture/natl-archaeological-museum-expansion-advances-with-final-studies-approval/",
+   "https://www.pagenews.gr/2023/04/14/english-edition/culture-min-announces-board-directors-for-greek-museums-recently-turned-private/",
+   "https://greekherald.com.au/news/five-of-greeces-largest-museums-shut-down-in-protest-against-new-law/"
+  ],
+  "problems": [
+   "Protest or boycott added: the museum was shut on 13 February 2023 as archaeologists protested the law restructuring it (The Greek Herald); staff of the five museums had written to the prime minister in 2021 (The Art Newspaper, 4 March 2021). A staff protest aimed at the funder within five years counts",
+   "funding line now states the state funder from an outside source (Pagenews, 14 April 2023: the five museums keep receiving state funds under law 5021/2023); the researcher's line gave only the board seats",
+   "B kept without a fuel flag: the Latsis gift is current (2024) and the HELLENiQ ENERGY stake stays in the watch line, as the 17 October conglomerate ruling asks when the fuel share of the group is not shown",
+   "report: state-funding point and a protest heading added with their sources",
+   "after the check: the checker added Protest or boycott on its own call (a 2023 protest against the museums law) and asked for a ruling: not flagged until the editor rules; B stands on the Latsis stake, as the conglomerate rule has it"
+  ],
+  "question": "Two calls for the editor: does the 2023 protest closure against the ministry's museums law count as Protest or boycott for this museum, and is the Latsis gift Fossil fuels given the 40.41% HELLENiQ ENERGY stake?",
+  "reason": "State funding, the Latsis EUR 40M gift and the refinery stake are confirmed. The researcher missed the February 2023 protest closure, which I read as a flag, so the flags differ.",
+  "batch": "np1"
+ },
+ {
+  "id": "museum-of-cycladic-art",
+  "name": "Museum of Cycladic Art",
+  "location": "Athens, Greece",
+  "city": "Athens",
+  "country": "Greece",
+  "tier": "B",
+  "flags": [
+   "Protest or boycott"
+  ],
+  "why_flagged": "Protesters stood outside the museum on 2 November 2022 against the Stern collection agreement, and the Association of Greek Archaeologists called for its cancellation on 23 December 2022 (Reuters, Archaeology Wiki).",
+  "size": "",
+  "funding": "Goulandris Foundation runs it on private money. Stavros Niarchos Foundation, Latsis Foundation, Leventis Foundation, Aegean, Blue Star and Eurolife support it.",
+  "watch": "Protesters held a 'They're stolen' banner at the November 2022 opening of the Leonard Stern display. Five unions called the deal a scandal.",
+  "sources": [
+   "https://cycladic.gr/en/shetika-me-emas/",
+   "https://cycladic.gr/en/ypostiriktes/",
+   "https://cycladic.gr/en/idrytes/",
+   "https://cyprus-mail.com/2022/11/03/ancient-greek-artifacts-go-on-display-for-first-time-amid-protests",
+   "https://www.archaeology.wiki/blog/2022/12/23/the-agreement-on-the-stern-collection-antiquities-should-be-cancelled/",
+   "https://cycladic.gr/en/episkeftheite-to-mouseio/"
+  ],
+  "lat": 37.975697,
+  "lon": 23.7423066,
+  "website": "https://cycladic.gr/en/",
+  "visit_url": "https://cycladic.gr/en/episkeftheite-to-mouseio/",
+  "address": "Vasilissis Sofias Ave. & 1 Irodotou St, Athens",
+  "year_founded": 1986,
+  "opening_hours": "Mon, Wed, Fri, Sat 10:00 to 17:00; Thu 10:00 to 20:00; Sun 11:00 to 17:00; closed Tue",
+  "admission_fee": "EUR 12; reduced EUR 9; under 18 free",
+  "aliases": [
+   "Μουσείο Κυκλαδικής Τέχνης",
+   "Nicholas P. Goulandris Foundation - Museum of Cycladic Art",
+   "Cycladic"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Museum%20of%20Cycladic%20Art%2C%20Athens"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://cycladic.gr/en/episkeftheite-to-mouseio/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://cycladic.gr/en/idrytes/"
+    ],
+    "basis": "founded in 1986, inaugurated on 26 January 1986 (museum founders page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://cycladic.gr/en/episkeftheite-to-mouseio/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "N.P. Goulandris Foundation",
+   "Stavros Niarchos Foundation",
+   "Latsis Foundation",
+   "Leventis Foundation",
+   "Aegean",
+   "Blue Star",
+   "Eurolife",
+   "European Union (ESPA 2021-2027)"
+  ],
+  "verification": "Opened the museum's about, founders, donors, supporters, finance and visit pages, the Reuters report and the archaeologists' statement; no state funding, supporter logos, the 2022 protest, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://cycladic.gr/en/ypostiriktes/",
+   "https://cyprus-mail.com/2022/11/03/ancient-greek-artifacts-go-on-display-for-first-time-amid-protests",
+   "https://www.snf.org/en/work/grants/grants-database/nicholas-dolly-goulandris-foundation-museum-of-cycladic-art-program-2018/"
+  ],
+  "problems": [
+   "funding line reworded: 'without state funding' would be cut whole by the cleanup step ('without'), and the parser read 'N.P.' as a sentence end",
+   "supporters kept: the live Supporters page labels each group (official air carrier sponsor, charitable foundations, Museum Kits supporters, exclusive sponsor of maritime transport) and the logos were uploaded in 2023 to 2025",
+   "report: the 1968 catalogue is credited to the museum's page, and the bottom line no longer says the unions protested at the door (Reuters: a small group of protesters outside, five unions in a statement)"
+  ],
+  "question": "The Supporters page also carries a Mytilineos logo (gas-fired power and metals) among Museum Kits supporters: note or Fossil fuels?",
+  "reason": "Reuters documents the protest outside the museum on 2 November 2022 and the unions' statement, inside five years, so Protest or boycott and B hold. The Stavros Niarchos Foundation's grant database confirms one supporter from outside the museum's site.",
+  "batch": "np1"
+ },
+ {
+  "id": "groeningemuseum",
+  "name": "Groeningemuseum",
+  "location": "Bruges, Belgium",
+  "city": "Bruges",
+  "country": "Belgium",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "City of Bruges runs it through Musea Brugge. Flemish government pledged EUR 27.2M, 60% of the neighbouring BRUSK hall (VRT, 2021). Belfius Private is BRUSK's main sponsor.",
+  "watch": "The museum closes on 11 January 2027 for a four-year renovation and reopens in 2031. Its core collection moves to BRUSK meanwhile.",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2021/01/25/brusk/",
+   "https://cdn.uc.assets.prezly.com/c21695b5-ecef-4315-9218-8d7fbc2c513c/2026_BRUSK-NL-low.pdf",
+   "https://www.museabrugge.be/en/about-us/partners",
+   "https://www.museabrugge.be/en/visit/locations/groeningemuseum",
+   "https://en.wikipedia.org/wiki/Groeningemuseum"
+  ],
+  "lat": 51.2058726,
+  "lon": 3.2257874,
+  "website": "https://www.museabrugge.be/en/visit/locations/groeningemuseum",
+  "visit_url": "https://www.museabrugge.be/en/visit/locations/groeningemuseum",
+  "address": "Dijver 12, 8000 Brugge",
+  "year_founded": null,
+  "opening_hours": "1 April to 2 November: Tue to Sun 10:00 to 18:00; 3 November to 31 March: Tue to Sun 9:30 to 17:00; closed Mon",
+  "admission_fee": "EUR 15; under 26 EUR 13; under 18 EUR 7; under 13 free",
+  "aliases": [
+   "Groeninge Museum",
+   "Musea Brugge - Groeningemuseum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Groeningemuseum%2C%20Brugge"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.museabrugge.be/en/visit/locations/groeningemuseum"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.museabrugge.be/en/visit/locations/groeningemuseum"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Stad Brugge",
+   "Vlaamse overheid",
+   "Belfius Private",
+   "Provincie West-Vlaanderen",
+   "Vrienden van Musea Brugge"
+  ],
+  "verification": "Opened the museum's own page, the Musea Brugge partner page, the 2026 BRUSK brochure and VRT; city operation, the Flemish grant, the 2027 closure, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://www.vrt.be/vrtnws/nl/2021/01/25/brusk/",
+   "https://www.museabrugge.be/en/visit/locations/groeningemuseum",
+   "https://cdn.uc.assets.prezly.com/c21695b5-ecef-4315-9218-8d7fbc2c513c/2026_BRUSK-NL-low.pdf"
+  ],
+  "problems": [
+   "funding: 'gave' changed to 'pledged', as VRT wrote in 2021 ('zegde toe'); the same word fixed in the report"
+  ],
+  "question": "",
+  "reason": "VRT confirms the city pays the rest of BRUSK and the Flemish EUR 27.2M; the museum page confirms address, hours, prices and the closure from 11 January 2027. A holds.",
+  "batch": "np1"
+ },
+ {
+  "id": "teylers-museum",
+  "name": "Teylers Museum",
+  "location": "Haarlem, Netherlands",
+  "city": "Haarlem",
+  "country": "Netherlands",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "M",
+  "funding": "Ministry of OCW gave EUR 3.86M of EUR 11.2M income in 2024. VriendenLoterij, Teylers Stichting, Gemeente Haarlem and Mondriaan Fonds also fund it.",
+  "watch": "The museum states that part of founder Pieter Teyler's investments was tied to slavery. It had 171,630 visitors in 2024.",
+  "sources": [
+   "https://catalogus.boekman.nl/pub/teylersmuseumjaarverslag2024.pdf",
+   "https://teylersmuseum.nl/en/plan-your-visit",
+   "https://teylersmuseum.nl/en"
+  ],
+  "lat": 52.3803526,
+  "lon": 4.6403433,
+  "website": "https://teylersmuseum.nl/en",
+  "visit_url": "https://teylersmuseum.nl/en/plan-your-visit",
+  "address": "Spaarne 16, 2011 CH Haarlem",
+  "year_founded": 1784,
+  "opening_hours": "Tue to Sun 10:00 to 17:00; closed Mon",
+  "admission_fee": "EUR 18.50; ages 18 to 24 EUR 9.25",
+  "aliases": [
+   "Teylers",
+   "Teyler's Museum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Teylers%20Museum%2C%20Haarlem"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://teylersmuseum.nl/en/plan-your-visit"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://catalogus.boekman.nl/pub/teylersmuseumjaarverslag2024.pdf"
+    ],
+    "basis": "the Oval Room opened in 1784 (annual report 2024)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://teylersmuseum.nl/en/plan-your-visit"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ministerie van Onderwijs, Cultuur en Wetenschap",
+   "Rijksdienst voor het Cultureel Erfgoed",
+   "VriendenLoterij",
+   "Teylers Stichting",
+   "Teylers Museum Vrienden Fonds",
+   "Netherlands America Foundation",
+   "Gemeente Haarlem",
+   "Mondriaan Fonds",
+   "Het Cultuurfonds",
+   "Fonds 21",
+   "Zabawas",
+   "Provincie Noord-Holland"
+  ],
+  "verification": "Read the 2024 annual report (accounts, funder list, visitor figure) and the museum's visit page; subsidy, funders, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://catalogus.boekman.nl/pub/teylersmuseumjaarverslag2024.pdf",
+   "https://zoek.officielebekendmakingen.nl/stcrt-2024-13878.html",
+   "https://teylersmuseum.nl/en/plan-your-visit"
+  ],
+  "problems": [
+   "report: bottom line trimmed of a gap phrase ('on the pages read', 'no corporate sponsor of note') and 'fortune' corrected to 'investments', the report's word"
+  ],
+  "question": "",
+  "reason": "The 2024 accounts give EUR 3,860,901 of EUR 11,242,646 from the ministry, and the Staatscourant of 2024 lists the ministry's subsidy to the Teylers foundation. VriendenLoterij is a public lottery distributor, so A holds.",
+  "batch": "np1"
+ },
+ {
+  "id": "musee-d-art-et-d-histoire-geneva",
+  "name": "Musée d'Art et d'Histoire (MAH)",
+  "location": "Geneva, Switzerland",
+  "city": "Geneva",
+  "country": "Switzerland",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "City of Geneva runs it as a municipal museum. Fondation Leenaards, Fondation Gandur pour l'art, Lombard Odier, UBS and Vacheron Constantin are thanked for support over the years.",
+  "watch": "Jean Claude Gandur, founder of the oil group Addax, pledged CHF 20M in 2010 and withdrew after voters rejected the Jean Nouvel extension in 2016.",
+  "sources": [
+   "https://www.mahmah.ch/remerciements",
+   "https://www.mahmah.ch/propos/mah",
+   "https://www.radiolac.ch/actualite/geneve/un-cout-de-200-millions-pour-le-nouveau-projet-du-mah/",
+   "https://en.wikipedia.org/wiki/Jean_Claude_Gandur",
+   "https://www.geneve.ch/themes/amenagement-construction-energie/construction-entretien-renovation-batiments/futurs-projets/musee-art-histoire-geneve-mah",
+   "https://www.mahmah.ch/preparez-votre-visite/horaires-acces"
+  ],
+  "lat": 46.1992351,
+  "lon": 6.151634,
+  "website": "https://www.mahmah.ch",
+  "visit_url": "https://www.mahmah.ch/preparez-votre-visite/horaires-acces",
+  "address": "Rue Charles-Galland 2, 1206 Genève",
+  "year_founded": 1910,
+  "opening_hours": "Tue to Sun 11:00 to 18:00; Thu 12:00 to 21:00",
+  "admission_fee": "Pay what you wish",
+  "aliases": [
+   "Musée d'art et d'histoire de Genève",
+   "MAH",
+   "Museum of Art and History Geneva"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Mus%C3%A9e%20d%27art%20et%20d%27histoire%2C%20Gen%C3%A8ve"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.mahmah.ch/preparez-votre-visite/horaires-acces"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.mahmah.ch/propos/mah"
+    ],
+    "basis": "'Fondé en 1910' (museum about page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.mahmah.ch/preparez-votre-visite/horaires-acces"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ville de Genève",
+   "Fondation Gandur pour l'art",
+   "Fondation Leenaards",
+   "Fondation Ernst Göhner",
+   "Fondation BNP Paribas Suisse",
+   "Lombard Odier",
+   "UBS",
+   "Credit Suisse",
+   "Vacheron Constantin",
+   "Migros Pour-Cent Culturel"
+  ],
+  "verification": "Opened the museum's about, thanks, hours and ticket pages, the City of Geneva project page, Radio Lac and Wikipedia on Gandur; city operation, supporter list, address, hours and pricing confirmed.",
+  "holds": false,
+  "check_sources": [
+   "https://www.mahmah.ch/remerciements",
+   "https://www.radiolac.ch/actualite/geneve/un-cout-de-200-millions-pour-le-nouveau-projet-du-mah/",
+   "https://en.wikipedia.org/wiki/Jean_Claude_Gandur"
+  ],
+  "problems": [
+   "tier B to A: Gandur is not a current funder. He withdrew in 2016 and his foundation chose Caen in May 2024 (Wikipedia); Fondation Gandur pour l'art appears only on an undated list of supporters 'over the years', which is an old thanks list",
+   "funding line reworded so the thanks-list names read as support over the years, not current funding",
+   "watch: year of the vote added",
+   "report: the Gandur points moved from a Red flags heading into FUNDING and the bottom line reworded"
+  ],
+  "question": "",
+  "reason": "The City of Geneva as owner and payer is confirmed by the city's project page and Radio Lac. The only name behind the B is a donor who left ten years ago, so the row is A with the history in the watch line.",
+  "batch": "np1"
+ },
+ {
+  "id": "kunstmuseum-liechtenstein",
+  "name": "Kunstmuseum Liechtenstein",
+  "location": "Vaduz, Liechtenstein",
+  "city": "Vaduz",
+  "country": "Liechtenstein",
+  "tier": "U",
+  "flags": [],
+  "why_flagged": "",
+  "size": "S",
+  "funding": "State of Liechtenstein gave CHF 4.385M of CHF 5.45M income in 2025. Hilti Art Foundation paid CHF 0.4M for guards, education and technical support.",
+  "watch": "The building was handed to the state in August 2000. The museum had 28,210 visitors in 2025.",
+  "sources": [
+   "https://www.kunstmuseum.li/fileadmin/user_upload/documents/museum/das-museum/stiftungsrat/Kunstmuseum_Liechtenstein_Jahresbericht_2025_Final_.pdf",
+   "https://www.kunstmuseum.li/museum/das-museum",
+   "https://www.kunstmuseum.li/ihr-besuch/besuch-planen"
+  ],
+  "lat": 47.1394961,
+  "lon": 9.5221112,
+  "website": "https://www.kunstmuseum.li",
+  "visit_url": "https://www.kunstmuseum.li/ihr-besuch/besuch-planen",
+  "address": "Städtle 32, 9490 Vaduz",
+  "year_founded": 2000,
+  "opening_hours": "Tue to Sun 10:00 to 17:00; Thu 10:00 to 20:00; closed Mon",
+  "admission_fee": "CHF 15; reduced CHF 10; up to age 16 free; free every Wednesday",
+  "aliases": [
+   "Kunstmuseum Liechtenstein mit Hilti Art Foundation",
+   "Stiftung Kunstmuseum Liechtenstein",
+   "Liechtenstein Museum of Fine Arts"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Kunstmuseum%20Liechtenstein%2C%20Vaduz"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.kunstmuseum.li/ihr-besuch/besuch-planen"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.kunstmuseum.li/museum/das-museum"
+    ],
+    "basis": "opened on 11 November 2000 (museum page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.kunstmuseum.li/ihr-besuch/besuch-planen"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Land Liechtenstein",
+   "Hilti Art Foundation",
+   "Stiftung Freunde des Kunstmuseum Liechtenstein",
+   "Ars Rhenia"
+  ],
+  "verification": "Read the 2025 annual report (accounts and visitor figure) and the museum's about and visit pages; state contribution, foundation payments, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://www.kunstmuseum.li/fileadmin/user_upload/documents/museum/das-museum/stiftungsrat/Kunstmuseum_Liechtenstein_Jahresbericht_2025_Final_.pdf",
+   "https://www.kunstmuseum.li/museum/das-museum",
+   "https://de.wikipedia.org/wiki/Kunstmuseum_Liechtenstein"
+  ],
+  "problems": [
+   "funding: 'CHF 400,000' written as 'CHF 0.4M', because the funder parser read the comma figure as CHF 400",
+   "report: absence sentence cut from the bottom line",
+   "after the check: the watch line named \"private donors\" by type; the report names who paid for the building. Kept unverified: its funders are confirmed only on its own pages and Wikipedia, the bar used for the funding-line regrades"
+  ],
+  "question": "",
+  "reason": "The 2025 accounts give CHF 4,385,000 of CHF 5,454,326 from the state and CHF 400,000 from the Hilti Art Foundation; the museum page and German Wikipedia state it is the state's public-law foundation. A holds.",
+  "batch": "np1"
+ },
+ {
+  "id": "national-museum-of-denmark",
+  "name": "National Museum of Denmark",
+  "location": "Copenhagen, Denmark",
+  "city": "Copenhagen",
+  "country": "Denmark",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "L",
+  "funding": "Danish Ministry of Culture appropriation was DKK 265.4M of DKK 533.3M operating income in 2025; sales brought DKK 184.4M and external grants DKK 83.4M.",
+  "watch": "In November 2026 the museum said falling visitor numbers force DKK 11 to 13M of job cuts, after 21 posts went in January.",
+  "sources": [
+   "https://natmus.dk/fileadmin/user_upload/Editor/NM_aarsrapport_2025.pdf",
+   "https://via.ritzau.dk/pressemeddelelse/15266426/nationalmuseet-justerer-forventningerne-til-antallet-af-besogende?publisherId=13560498",
+   "https://nationalmuseet.dk/en/page/about-us",
+   "https://nationalmuseet.dk/en/page/opening-hours",
+   "https://nationalmuseet.dk/en/tickets/admission-ticket",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Denmark"
+  ],
+  "lat": 55.6747103,
+  "lon": 12.5743545,
+  "website": "https://nationalmuseet.dk/en",
+  "visit_url": "https://nationalmuseet.dk/en/page/opening-hours",
+  "address": "Ny Vestergade 10, Copenhagen 1471",
+  "year_founded": 1807,
+  "opening_hours": "Tue to Sun 10:00 to 17:00; closed Mon (except in week 7 and at Easter)",
+  "admission_fee": "DKK 150; DKK 135 online; under 18 free",
+  "aliases": [
+   "Nationalmuseet",
+   "Prinsens Palæ",
+   "Danmarks Nationalmuseum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Nationalmuseet%2C%20K%C3%B8benhavn"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://nationalmuseet.dk/en/page/opening-hours"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://natmus.dk/historisk-viden/temaer/nationalmuseets-historie/oldsagskommissionen/",
+     "https://en.wikipedia.org/wiki/National_Museum_of_Denmark"
+    ],
+    "basis": "22 May 1807, when the royal antiquities commission was set up, is counted as the museum's birthday (museum history page); Wikipedia agrees",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://nationalmuseet.dk/en/page/opening-hours"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Kulturministeriet"
+  ],
+  "verification": "Read the 2025 annual report (key figures, visitor count), the museum's 3 November 2026 press release and its about, hours and ticket pages; appropriation, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://natmus.dk/fileadmin/user_upload/Editor/NM_aarsrapport_2025.pdf",
+   "https://kum.dk/ministeriet/organisation-og-institutioner/statsinstitutioner",
+   "https://natmus.dk/historisk-viden/temaer/nationalmuseets-historie/oldsagskommissionen/"
+  ],
+  "problems": [
+   "funding: full stop changed to a semicolon so the funder parser stops reading 'Sales brought' as a funder; figures unchanged",
+   "year_founded 1807 kept: the museum's own history page gives 22 May 1807, so it no longer rests on Wikipedia alone; that page added to field_sources and to the report"
+  ],
+  "question": "",
+  "reason": "The 2025 annual report gives DKK 265.4M of DKK 533.3M from the appropriation, DKK 184.4M sales and DKK 83.4M grants; the Ministry of Culture lists Nationalmuseet among its state institutions. A holds.",
+  "batch": "np1"
+ },
+ {
+  "id": "national-museum-of-finland",
+  "name": "National Museum of Finland",
+  "location": "Helsinki, Finland",
+  "city": "Helsinki",
+  "country": "Finland",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Finnish Heritage Agency runs it for the Ministry of Education and Culture. Senate Properties is building the EUR 55M extension. Finnish Cultural Foundation gave EUR 800,000 in 2026.",
+  "watch": "Closed for rebuilding until April 2027. In October 2024 the Heritage Agency announced temporary layoffs of about 150 staff and museum closures.",
+  "sources": [
+   "https://suomenkansallismuseo.fi/en/national-museum-of-finland/organization/",
+   "https://www.senaatti.fi/en/current-topics/news/foundation-stone-of-extension-to-national-museum-of-finland-laid-with-finnish-presidents-greeting-to-the-future",
+   "https://skr.fi/en/news/the-finnish-cultural-foundation-awards-e29-million-to-science-research-and-the-arts-a-major-grant-to-the-national-museum-of-finland/",
+   "https://www.museovirasto.fi/en/articles/yt-uutinen",
+   "https://suomenkansallismuseo.fi/en/museums/the-national-museum/",
+   "https://suomenkansallismuseo.fi/en/national-museum-of-finland/history-of-the-national-museum-of-finland/"
+  ],
+  "lat": 60.1749674,
+  "lon": 24.9317749,
+  "website": "https://suomenkansallismuseo.fi/en",
+  "visit_url": "https://suomenkansallismuseo.fi/en/museums/the-national-museum/",
+  "address": "Mannerheimintie 34, Helsinki",
+  "year_founded": 1916,
+  "opening_hours": "Closed for renovation and extension; reopens in April 2027",
+  "admission_fee": "",
+  "aliases": [
+   "Kansallismuseo",
+   "Suomen kansallismuseo",
+   "Finlands nationalmuseum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Kansallismuseo%2C%20Helsinki"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://suomenkansallismuseo.fi/en/museums/the-national-museum/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://suomenkansallismuseo.fi/en/national-museum-of-finland/history-of-the-national-museum-of-finland/"
+    ],
+    "basis": "exhibitions opened in January 1916 and the institution became the National Museum of Finland that year (museum history page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://suomenkansallismuseo.fi/en/museums/the-national-museum/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Museovirasto (Finnish Heritage Agency)",
+   "Ministry of Education and Culture",
+   "Senate Properties",
+   "Suomen Kulttuurirahasto (Finnish Cultural Foundation)"
+  ],
+  "verification": "Opened the museum's organisation, history, site and partnership pages, Senate Properties, the Finnish Cultural Foundation and the Heritage Agency's 2024 notice; state operation, project costs, the grant, the closure and address confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://www.senaatti.fi/en/current-topics/news/foundation-stone-of-extension-to-national-museum-of-finland-laid-with-finnish-presidents-greeting-to-the-future",
+   "https://skr.fi/en/news/the-finnish-cultural-foundation-awards-e29-million-to-science-research-and-the-arts-a-major-grant-to-the-national-museum-of-finland/",
+   "https://www.museovirasto.fi/en/articles/yt-uutinen"
+  ],
+  "problems": [
+   "funding: 'builds the' changed to 'is building the' so the funder parser reads 'Senate Properties' cleanly; facts unchanged"
+  ],
+  "question": "",
+  "reason": "Senate Properties confirms the state as developer and the EUR 55M extension, the Finnish Cultural Foundation its EUR 800,000 grant of 12 February 2026, and the Heritage Agency the 2024 layoffs. A holds.",
+  "batch": "np1"
+ },
+ {
+  "id": "hungarian-national-museum",
+  "name": "Hungarian National Museum",
+  "location": "Budapest, Hungary",
+  "city": "Budapest",
+  "country": "Hungary",
+  "tier": "B",
+  "flags": [
+   "State censorship or punishment"
+  ],
+  "why_flagged": "Culture minister János Csák dismissed director general László L. Simon on 6 November 2023 over LGBTQ+ photographs in the World Press Photo exhibition, citing the law on under-18s (Telex, The Art Newspaper).",
+  "size": "",
+  "funding": "Hungarian state funds it. Ministry of Culture and Innovation was its maintaining authority in 2023, with the minister as the director general's employer (Telex).",
+  "watch": "Mi Hazánk MP Dóra Dúró's complaint about World Press Photo pictures of a Manila home for older LGBTQ+ people led to the director's removal.",
+  "sources": [
+   "https://telex.hu/english/2023/11/06/director-of-hungarian-national-museum-fired-over-lgbtqi-content-in-world-press-photo-exhibition",
+   "https://www.theartnewspaper.com/2023/11/07/world-press-photo-shocked-at-ousting-of-hungarian-national-museum-director-in-lgbtq+-exhibition-row",
+   "https://mnm.hu/en/availability",
+   "https://mnm.hu/en/tickets",
+   "https://mnm.hu/en/mission"
+  ],
+  "lat": 47.4911841,
+  "lon": 19.0628837,
+  "website": "https://mnm.hu/en",
+  "visit_url": "https://mnm.hu/en/availability",
+  "address": "1088 Budapest, Múzeum krt. 14-16.",
+  "year_founded": null,
+  "opening_hours": "Tue to Sun 10:00 to 18:00; closed Mon",
+  "admission_fee": "HUF 3,500; discounted adult and youth tickets HUF 1,750; family HUF 7,200",
+  "aliases": [
+   "Magyar Nemzeti Múzeum",
+   "MNM"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Magyar%20Nemzeti%20M%C3%BAzeum%2C%20Budapest"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://mnm.hu/en/availability"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://mnm.hu/en/availability"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Government of Hungary",
+   "Ministry of Culture and Innovation"
+  ],
+  "verification": "Opened Telex and The Art Newspaper on the 2023 dismissal and the museum's availability, ticket and mission pages; the ministry's role, the dismissal, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://telex.hu/english/2023/11/06/director-of-hungarian-national-museum-fired-over-lgbtqi-content-in-world-press-photo-exhibition",
+   "https://www.theartnewspaper.com/2023/11/07/world-press-photo-shocked-at-ousting-of-hungarian-national-museum-director-in-lgbtq+-exhibition-row",
+   "https://mnm.hu/en/availability"
+  ],
+  "problems": [],
+  "question": "",
+  "reason": "Telex and The Art Newspaper both report that the culture minister, who holds the employer's powers over the director general, dismissed him on 6 November 2023 over the exhibition. The state that maintains the museum punished it inside five years, so the flag and B hold.",
+  "batch": "np1"
+ },
+ {
+  "id": "national-museum-prague",
+  "name": "National Museum",
+  "location": "Prague, Czechia",
+  "city": "Prague",
+  "country": "Czechia",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "L",
+  "funding": "Czech Ministry of Culture, its founder, gave a CZK 553.6M operating contribution in 2025; admissions brought CZK 266.5M. Mattoni and Škoda Auto are partners.",
+  "watch": "Its sites had 1.34M visitors in 2025, over 1.07M of them at the Museum Complex, helped by the fossils Lucy and Selam.",
+  "sources": [
+   "https://www.nm.cz/povinne-zverejnovane-informace/vyrocni-zpravy/vyrocni-zprava-za-rok-2025/zprava-o-financnim-hospodareni",
+   "https://www.nm.cz/povinne-zverejnovane-informace/vyrocni-zpravy/vyrocni-zprava-za-rok-2025/komunikace-narodniho-muzea",
+   "https://www.nm.cz/en/visit-us/buildings/museum-complex-of-the-national-museum",
+   "https://www.nm.cz/en",
+   "https://en.wikipedia.org/wiki/National_Museum_(Prague)"
+  ],
+  "lat": 50.078919,
+  "lon": 14.4309678,
+  "website": "https://www.nm.cz/en",
+  "visit_url": "https://www.nm.cz/en/visit-us/buildings/museum-complex-of-the-national-museum",
+  "address": "Václavské náměstí 68, Praha 1",
+  "year_founded": 1818,
+  "opening_hours": "Daily 10:00 to 18:00",
+  "admission_fee": "CZK 360; reduced CZK 260",
+  "aliases": [
+   "Národní muzeum",
+   "National Museum in Prague",
+   "National Museum of the Czech Republic"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=N%C3%A1rodn%C3%AD%20muzeum%2C%20V%C3%A1clavsk%C3%A9%20n%C3%A1m%C4%9Bst%C3%AD%2C%20Praha"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.nm.cz/en/visit-us/buildings/museum-complex-of-the-national-museum"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://en.wikipedia.org/wiki/National_Museum_(Prague)",
+     "https://www.ziva.avcr.cz/2018-6/200-let-prirodovedy-v-narodnim-muzeu.html"
+    ],
+    "basis": "founded on 15 April 1818 (Wikipedia); the Academy of Sciences journal Živa wrote that the museum marked 200 years since its founding in 2018",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.nm.cz/en/visit-us/buildings/museum-complex-of-the-national-museum"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ministerstvo kultury České republiky",
+   "Škoda Auto",
+   "Mattoni",
+   "Kores",
+   "Česká televize",
+   "Český rozhlas"
+  ],
+  "verification": "Read the finance and communication chapters of the 2025 annual report and the Museum Complex page; ministry contribution, ticket income, visitor figures, partner logos, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://www.nm.cz/povinne-zverejnovane-informace/vyrocni-zpravy/vyrocni-zprava-za-rok-2025/zprava-o-financnim-hospodareni",
+   "https://www.mk.gov.cz/rezortni-instituce-cs-76",
+   "https://www.ziva.avcr.cz/2018-6/200-let-prirodovedy-v-narodnim-muzeu.html"
+  ],
+  "problems": [
+   "year_founded 1818 kept: a second page (Živa, the Academy of Sciences journal) agrees with Wikipedia; added to field_sources",
+   "Škoda and Mattoni kept: the home page footer shows both logos with the title 'Partner Národního muzea' and links to skoda-auto.cz and mattoni.cz",
+   "funding: last sentence reordered and 'Škoda' written as 'Škoda Auto', so the funder parser reads both partners and no longer reads 'Admissions brought' as a funder",
+   "funders list: 'Korres' corrected to 'Kores' (the logo links to kores.com, the stationery maker) and 'Škoda' to 'Škoda Auto'; same fix in the report",
+   "report: absence sentence cut from the bottom line"
+  ],
+  "question": "",
+  "reason": "The 2025 finance chapter gives the CZK 553,578,393 operating contribution and CZK 266,481,441 admissions, and the ministry's own site lists the museum among the organisations it founds. A holds.",
+  "batch": "np1"
+ },
+ {
+  "id": "national-museum-in-krakow",
+  "name": "National Museum in Kraków",
+  "location": "Kraków, Poland",
+  "city": "Kraków",
+  "country": "Poland",
+  "tier": "B",
+  "flags": [
+   "Fossil fuels"
+  ],
+  "why_flagged": "PGE is shown as Patron MNK on the museum's site (November 2026). In 2025 it generated 28.50 TWh from lignite and 14.19 TWh from hard coal out of 55.20 TWh (Enerad, 16 April 2026).",
+  "size": "L",
+  "funding": "Ministry of Culture and National Heritage pays its operating subsidy. PGE is shown as patron on the museum's site, and PZU as strategic partner.",
+  "watch": "Over 2.2 million people visited its branches in 2025, up from 1.8 million in 2024. Permanent exhibitions are free on Tuesdays.",
+  "sources": [
+   "https://www.radiokrakow.pl/aktualnosci/krakow/beda-wyzsze-place-dla-pracownikow-muzeum-narodowego-w-krakowie-dotacja-podmiotowa-zostala-zwiekszona",
+   "https://mnk.pl/en/",
+   "https://enerad.pl/pge-prezentuje-wyniki-finansowe-i-operacyjne-za-2025-rok-wzrost-ebitda-i-spadek-zadluzenia/",
+   "https://en.wikipedia.org/wiki/Polska_Grupa_Energetyczna",
+   "https://www.radiokrakow.pl/aktualnosci/krakow/grubo-ponad-dwa-miliony-muzeum-narodowe-w-krakowie-z-rekordem-frekwencji",
+   "https://mnk.pl/en/practical-information/opening-hours/"
+  ],
+  "lat": 50.0604369,
+  "lon": 19.9236105,
+  "website": "https://mnk.pl/en/",
+  "visit_url": "https://mnk.pl/en/practical-information/opening-hours/",
+  "address": "al. 3 Maja 1, 30-062 Kraków",
+  "year_founded": 1879,
+  "opening_hours": "Main Building: Tue to Sun 10:00 to 18:00; closed Mon",
+  "admission_fee": "PLN 45; reduced PLN 35; family PLN 90; pupils and students PLN 1; permanent exhibitions free on Tuesdays",
+  "aliases": [
+   "Muzeum Narodowe w Krakowie",
+   "MNK",
+   "National Museum in Krakow"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Muzeum%20Narodowe%20w%20Krakowie%2C%20Krak%C3%B3w"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://mnk.pl/en/contact/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://mnk.pl/en/about-us/history/"
+    ],
+    "basis": "established by a resolution of the Krakow City Council on 7 October 1879 (museum history page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://mnk.pl/en/practical-information/opening-hours/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ministerstwo Kultury i Dziedzictwa Narodowego",
+   "PGE Polska Grupa Energetyczna",
+   "PZU"
+  ],
+  "verification": "Opened the museum's home, history, hours, price and contact pages, two Radio Kraków reports, Wikipedia on PGE and Enerad on PGE's 2025 generation; the ministry subsidy, patron and partner logos, visitor figures, address, hours and prices confirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://mnk.pl/en/",
+   "https://enerad.pl/pge-prezentuje-wyniki-finansowe-i-operacyjne-za-2025-rok-wzrost-ebitda-i-spadek-zadluzenia/",
+   "https://www.radiokrakow.pl/aktualnosci/krakow/beda-wyzsze-place-dla-pracownikow-muzeum-narodowego-w-krakowie-dotacja-podmiotowa-zostala-zwiekszona"
+  ],
+  "problems": [
+   "Fossil fuels kept: the footer of the live site shows the PGE logo under 'Patron MNK' (file uploaded May 2026), and PGE's 2025 generation was 77% lignite and hard coal (28.50 and 14.19 of 55.20 TWh, Enerad), so the utility test is met with a current funder",
+   "why_flagged now cites the 2025 generation figures in place of the undated Wikipedia line; funding says 'shown', since the patron is a logo, not a named line",
+   "the ministry subsidy rests on a Radio Kraków report of 15 July 2016 plus the ministry logo in the 2026 footer; the report now dates that point",
+   "report: 2016 date and the 2025 generation figures added"
+  ],
+  "question": "National Museum in Warsaw (graded A) names PGE and ORLEN as patrons: by this rule it takes Fossil fuels too. The second strategic-partner logo file is named 'TS' and is not identified.",
+  "reason": "PGE is a current patron and three quarters of its electricity came from coal in 2025, so Fossil fuels and B hold. The A at Warsaw with the same patron is the inconsistent row, not this one.",
+  "batch": "np1"
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "name": "Odesa National Fine Arts Museum",
+  "location": "Odesa, Ukraine",
+  "city": "Odesa",
+  "country": "Ukraine",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "State of Ukraine took over ownership in December 2021, UNESCO and ALIPH were ready to cover most of the UAH 10.5M repair after the November 2023 missile strike.",
+  "watch": "Museum for Change, an Odesa NGO co-created in 2017 by deputy director Oleksandra Kovalchuk, passes foreign heritage grants to Ukrainian museums.",
+  "sources": [
+   "https://www.rbc.ua/ukr/news/odesskiy-hudozhestvennyy-muzey-peredali-gossobstvennost-1639742153.html",
+   "https://www.pravda.com.ua/eng/news/2023/12/18/7433528/",
+   "https://www.houseofeurope.org.ua/en/stories/museum-for-change-how-one-organisation-helps-40-museums-survive-in-wartime",
+   "https://www.ukrinform.ua/rubric-culture/3681494-odeskomu-hudoznomu-muzeu-priznacili-novogo-direktora.html",
+   "https://www.ofam.ua/en/about",
+   "https://uk.wikipedia.org/wiki/Одеський_національний_художній_музей"
+  ],
+  "lat": 46.4933482,
+  "lon": 30.728684,
+  "website": "https://www.ofam.ua",
+  "visit_url": "https://www.ofam.ua/en/visit",
+  "address": "5a Sofiivska Street, Odesa",
+  "year_founded": 1899,
+  "opening_hours": "Wed and Thu 11:00 AM to 5:00 PM; Fri to Sun 11:00 AM to 6:00 PM; closed Mon and Tue",
+  "admission_fee": "UAH 200 (temporary exhibitions); children under 7 free",
+  "aliases": [
+   "Одеський національний художній музей",
+   "Odesa Fine Arts Museum",
+   "OFAM"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Odesa+Fine+Arts+Museum"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.ofam.ua/en/visit"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.ofam.ua/en/about"
+    ],
+    "basis": "opened on 24 October (5 November) 1899 (museum About page); Wikipedia gives 6 November 1899",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.ofam.ua/en/visit"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "State of Ukraine",
+   "UNESCO",
+   "ALIPH",
+   "Museum for Change"
+  ],
+  "verification": "Opened RBC-Ukraine (state ownership, December 2021), Ukrainska Pravda (repair cost, UNESCO and ALIPH), House of Europe, Ukrinform and the museum's own site at ofam.ua (address, 1899, hours, ticket).",
+  "holds": true,
+  "check_sources": [
+   "https://www.rbc.ua/ukr/news/odesskiy-hudozhestvennyy-muzey-peredali-gossobstvennost-1639742153.html",
+   "https://www.ofam.ua/en/about",
+   "https://www.pravda.com.ua/eng/news/2023/12/18/7433528/"
+  ],
+  "problems": [
+   "website changed from ofam.org.ua (HTTP 522) to ofam.ua, the museum's working site",
+   "state ownership now rests on RBC-Ukraine, opened, not on Wikipedia alone",
+   "founding year 1899 and address now sourced to the museum's own pages",
+   "opening hours and ticket price added from the museum's visit page; its footer gives later closing times (18:00 and 19:00)",
+   "visit_url added",
+   "funding reworded so the atlas parser reads the funder names (it read: 'State of Ukraine has', UNESCO; ALIPH lost)"
+  ],
+  "question": "",
+  "reason": "RBC-Ukraine confirms the transfer to state ownership in December 2021 and Ukrainska Pravda the UNESCO and ALIPH repair offer; A holds. The museum's site was reachable at ofam.ua and confirms 1899 and the address.",
+  "batch": "np2"
+ },
+ {
+  "id": "national-museum-of-bosnia-and-herzegovina",
+  "name": "National Museum of Bosnia and Herzegovina",
+  "location": "Sarajevo, Bosnia and Herzegovina",
+  "city": "Sarajevo",
+  "country": "Bosnia and Herzegovina",
+  "tier": "B",
+  "flags": [
+   "Protest or boycott"
+  ],
+  "why_flagged": "The Jewish Community of Mostar wrote to the museum calling its plan to give Sarajevo Haggadah proceeds to Palestinians political and antisemitic, and B'nai B'rith International condemned the plan (RFE/RL, 6 August 2025).",
+  "size": "S",
+  "funding": "University of Sarajevo pays about KM 1.085M a year in salaries, Federal Ministry of Education and Science and Novi Grad Municipality gave KM 274,950 in 2025.",
+  "watch": "Parliament of Bosnia and Herzegovina has left its state status unconfirmed since the 1995 Dayton agreement; 58 of 105 posts were filled in 2025.",
+  "sources": [
+   "https://zemaljskimuzej.ba/app/uploads/2025/10/Rezultati-poslovanja-Zemaljskog-muzeja-BiH-u-2025.pdf",
+   "https://www.slobodnaevropa.org/a/bih-institucije-kulture-budzet-republika-srpska/33421221.html",
+   "https://www.slobodnaevropa.org/a/zemaljski-muzej-hagada-izrael-gaza-palestinci-pomoc/33496022.html",
+   "https://unsa.ba/en/node/6641",
+   "https://zemaljskimuzej.ba/en/about-the-national-museum-of-bosnia-and-herzegovina-2/",
+   "https://zemaljskimuzej.ba/en/"
+  ],
+  "lat": 43.8544557,
+  "lon": 18.4026968,
+  "website": "https://zemaljskimuzej.ba/en/",
+  "visit_url": "https://zemaljskimuzej.ba/en/information-for-visitors/",
+  "address": "Zmaja od Bosne 3, 71000 Sarajevo",
+  "year_founded": 1888,
+  "opening_hours": "Tue to Fri 10:00 to 19:00; Sat and Sun 10:00 to 18:00; closed Mon",
+  "admission_fee": "BAM 20 (citizens of Bosnia and Herzegovina BAM 10); international students BAM 10; ages 6 to 18 BAM 2; preschool children free",
+  "aliases": [
+   "Zemaljski muzej Bosne i Hercegovine",
+   "Zemaljski muzej"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Zemaljski+muzej+Bosne+i+Hercegovine%2C+Sarajevo"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://zemaljskimuzej.ba/en/information-for-visitors/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://zemaljskimuzej.ba/en/about-the-national-museum-of-bosnia-and-herzegovina-2/"
+    ],
+    "basis": "founded on 1 February 1888 (museum history page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://zemaljskimuzej.ba/en/information-for-visitors/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "University of Sarajevo",
+   "Federal Ministry of Education and Science",
+   "Novi Grad Municipality",
+   "Government of Japan",
+   "JICA"
+  ],
+  "verification": "Opened the museum's 2025 results PDF (income, staff, tickets), its home and history pages, two RFE/RL reports and the University of Sarajevo notice.",
+  "holds": true,
+  "check_sources": [
+   "https://zemaljskimuzej.ba/app/uploads/2025/10/Rezultati-poslovanja-Zemaljskog-muzeja-BiH-u-2025.pdf",
+   "https://www.slobodnaevropa.org/a/zemaljski-muzej-hagada-izrael-gaza-palestinci-pomoc/33496022.html",
+   "https://zemaljskimuzej.ba/en/information-for-visitors/"
+  ],
+  "problems": [
+   "watch reworded: it used 'no', which the cleanup step cuts",
+   "why_flagged: 'In August 2025' and the ADL 'condemned' said more than RFE/RL does (the ADL said it was appalled)",
+   "weekend hours corrected to 10:00 to 18:00 from the visitors' page (the home page widget says 19:00)",
+   "admission now gives the citizens' price and marks BAM 10 as the international student price"
+  ],
+  "question": "Protest or boycott rests on a protest letter to the museum and public condemnations, with no petition or boycott call: confirm that counts.",
+  "reason": "The 2025 results PDF supports every funding figure and RFE/RL documents the Mostar letter and the condemnations of August 2025, aimed at the museum; B and the flag hold. Founded 1 February 1888 on the museum's own history page.",
+  "batch": "np2"
+ },
+ {
+  "id": "national-museum-of-women-in-the-arts",
+  "name": "National Museum of Women in the Arts",
+  "location": "Washington, USA",
+  "city": "Washington",
+  "country": "USA",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "M",
+  "funding": "Wilhelmina and Wallace Holladay, Jacqueline Badger Mars and Revada Foundation gave the largest renovation gifts; members and donors gave $6.3M of $14.2M revenue in fiscal 2025.",
+  "watch": "Cuts at the National Endowment for the Humanities caused a major funding loss in fiscal 2025; 58,702 people visited that year.",
+  "sources": [
+   "https://nmwa.org/wp-content/uploads/2025/12/year-in-review-2025-1.pdf",
+   "https://nmwa.org/press/national-museum-of-women-in-the-arts-to-reopen-october-21-2023-after-transformative-renovation/",
+   "https://nmwa.org/about/",
+   "https://nmwa.org/visit/plan-your-visit/",
+   "https://nmwa.org/about/annual-reports/year-in-review-2025/",
+   "https://projects.propublica.org/nonprofits/organizations/521238810"
+  ],
+  "lat": 38.9000261,
+  "lon": -77.0292709,
+  "website": "https://nmwa.org",
+  "visit_url": "https://nmwa.org/visit/plan-your-visit/",
+  "address": "1250 New York Ave. NW, Washington, DC 20005",
+  "year_founded": 1981,
+  "opening_hours": "Tue to Sun 10 am to 5 pm; last entry 4:30 pm; closed Mon",
+  "admission_fee": "USD 16; 65 and over, DC residents and students USD 13; 21 and under free; free first Sunday and second Wednesday of each month",
+  "aliases": [
+   "NMWA"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=National+Museum+of+Women+in+the+Arts%2C+Washington"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://nmwa.org/visit/plan-your-visit/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://nmwa.org/about/"
+    ],
+    "basis": "incorporated in November 1981; opened in April 1987 (museum About page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://nmwa.org/visit/plan-your-visit/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Wilhelmina C. and Wallace F. Holladay",
+   "Jacqueline Badger Mars",
+   "Revada Foundation",
+   "Events DC",
+   "DC Commission on the Arts and Humanities",
+   "Institute of Museum and Library Services"
+  ],
+  "verification": "Opened the Year in Review 2025 PDF (financial statements, campaign donor list, visitors), the 2023 reopening release, the About and visit pages, and ProPublica's Form 990 summary.",
+  "holds": true,
+  "check_sources": [
+   "https://nmwa.org/wp-content/uploads/2025/12/year-in-review-2025-1.pdf",
+   "https://projects.propublica.org/nonprofits/organizations/521238810",
+   "https://nmwa.org/visit/plan-your-visit/"
+  ],
+  "problems": [
+   "watch: 'cost it a grant' changed to the source's 'major funding loss'",
+   "ProPublica added: every source was the museum's own site, and an A needs one that is not",
+   "funding reworded so the atlas parser reads the funder names (it read: 'Wilhelmina C', 'Wallace F', and the $67.5M renovation cost as Revada Foundation's amount)"
+  ],
+  "question": "",
+  "reason": "The Year in Review gives the revenue split, visitors and campaign donors as written; ProPublica's Form 990 data confirm contributions as the largest revenue line. A holds.",
+  "batch": "np2"
+ },
+ {
+  "id": "pennsylvania-academy-of-the-fine-arts",
+  "name": "Pennsylvania Academy of the Fine Arts",
+  "location": "Philadelphia, USA",
+  "city": "Philadelphia",
+  "country": "USA",
+  "tier": "B",
+  "flags": [
+   "Protest or boycott"
+  ],
+  "why_flagged": "A January 2024 petition with 611 signatures demanded that the administration and board answer for ending the BFA and MFA degrees, a decision the board took on 9 January 2024.",
+  "size": "M",
+  "funding": "Mellon Foundation gave $1M in 2024 to reinstall the collection; donors gave $9.7M of $17.8M revenue in fiscal 2025, programme fees $3.3M, investments $2.4M.",
+  "watch": "Its 1876 building needed a $10M HVAC replacement; PAFA had $5.5M in hand in July 2024 and asked Pennsylvania's capital programme for $5M.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/231352256",
+   "https://www.mellon.org/grant-details/pennsylvania-academy-of-the-fine-arts-20457483",
+   "https://www.change.org/p/justice-for-pafa-faculty-staff-and-students",
+   "https://whyy.org/articles/pafa-cutting-degree-programs/",
+   "https://hyperallergic.com/866079/pafa-historic-philadelphia-art-school-axes-degree-programs/",
+   "https://www.pafa.org/news/philadelphia-inquirer-pennsylvania-academy-fine-arts-new-hvac-project-just-start-work-if"
+  ],
+  "lat": 39.9552373,
+  "lon": -75.1636673,
+  "website": "https://www.pafa.org",
+  "visit_url": "https://www.pafa.org/visit",
+  "address": "118-128 North Broad Street, Philadelphia, PA 19102",
+  "year_founded": 1805,
+  "opening_hours": "Thu, Sat, Sun and Mon 10:00 AM to 5:00 PM; Fri 10:00 AM to 8:00 PM; closed Tue and Wed",
+  "admission_fee": "USD 25; seniors USD 23; students USD 10; youth 13 to 17 USD 5; 12 and under free; Fridays 5 to 8 PM adults USD 15",
+  "aliases": [
+   "PAFA"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Pennsylvania+Academy+of+the+Fine+Arts%2C+Philadelphia"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.pafa.org/visit"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.pafa.org/about/history-pafa"
+    ],
+    "basis": "founded 1805, charter dated 26 December 1805 (PAFA history page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.pafa.org/visit"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Mellon Foundation"
+  ],
+  "verification": "Opened the ProPublica summary of the fiscal 2025 Form 990, the Mellon grant record, the Change.org petition, WHYY, Hyperallergic, and PAFA's visit, history and news pages.",
+  "holds": true,
+  "check_sources": [
+   "https://projects.propublica.org/nonprofits/organizations/231352256",
+   "https://www.change.org/p/justice-for-pafa-faculty-staff-and-students",
+   "https://whyy.org/articles/pafa-cutting-degree-programs/"
+  ],
+  "problems": [
+   "funding reworded so the atlas parser reads the funder names (it read: 'Mellon Foundation granted')"
+  ],
+  "question": "",
+  "reason": "ProPublica, the Mellon grant record and the Inquirer item match the figures; the Change.org petition of 11 January 2024 has 611 signatures and targets the administration and board. B and the flag hold.",
+  "batch": "np2"
+ },
+ {
+  "id": "aga-khan-museum",
+  "name": "Aga Khan Museum",
+  "location": "Toronto, Canada",
+  "city": "Toronto",
+  "country": "Canada",
+  "tier": "B",
+  "flags": [
+   "Gulf state body"
+  ],
+  "why_flagged": "The United Arab Emirates Ministry of Culture signed a memorandum of understanding with the museum, in force from 19 December 2023 to 18 December 2026; the 2023 annual report lists the ministry and Louvre Abu Dhabi as institutional partners.",
+  "size": "M",
+  "funding": "BMO, TD Bank Group, Sun Life and Weston Family Foundation are programme sponsors, Canada Council for the Arts is a government partner; donations and sponsorships were 70% of 2023 revenue.",
+  "watch": "FinCEN fined TD Bank USD 1.3 billion on 10 October 2024 for wilful anti-money-laundering failures; Prince Amyn Aga Khan chairs the museum board.",
+  "sources": [
+   "https://aga-khan-museum-assets.s3.amazonaws.com/uploads/2024/11/Aga-Khan-Museum_2023-Annual-Report.pdf",
+   "https://the.akdn/en/resources-media/whats-new/news-release/uae-ministry-of-culture-enters-memorandum-of-understanding-with-the-aga-khan-museum",
+   "https://www.fincen.gov/news/news-releases/fincen-assesses-record-13-billion-penalty-against-td-bank",
+   "https://agakhanmuseum.org/about",
+   "https://agakhanmuseum.org/visit"
+  ],
+  "lat": 43.7253016,
+  "lon": -79.3319921,
+  "website": "https://agakhanmuseum.org",
+  "visit_url": "https://agakhanmuseum.org/visit",
+  "address": "77 Wynford Drive, Toronto, Ontario, M3C 1K1",
+  "year_founded": 2014,
+  "opening_hours": "Tue 10 am to 5:30 pm; Wed 10 am to 8 pm; Thu to Sun 10 am to 5:30 pm; closed Mon",
+  "admission_fee": "Free on Wednesdays 4 to 8 pm (BMO Free Wednesdays)",
+  "aliases": [
+   "AKM"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Aga+Khan+Museum%2C+Toronto"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://agakhanmuseum.org/visit"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://agakhanmuseum.org/about"
+    ],
+    "basis": "founded in 2014 (museum About page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://agakhanmuseum.org/visit"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "BMO",
+   "TD Bank Group",
+   "Sun Life",
+   "Weston Family Foundation",
+   "The Hilary and Galen Weston Foundation",
+   "Canada Council for the Arts",
+   "City of Toronto",
+   "Department of Canadian Heritage",
+   "Ontario Arts Council",
+   "Nanji Family Foundation"
+  ],
+  "verification": "Opened the 2023 annual report PDF (revenue chart, sponsors, government and institutional partners, board), the AKDN release on the UAE memorandum, the FinCEN release on TD Bank, and the About and visit pages.",
+  "holds": true,
+  "check_sources": [
+   "https://aga-khan-museum-assets.s3.amazonaws.com/uploads/2024/11/Aga-Khan-Museum_2023-Annual-Report.pdf",
+   "https://the.akdn/en/resources-media/whats-new/news-release/uae-ministry-of-culture-enters-memorandum-of-understanding-with-the-aga-khan-museum",
+   "https://www.fincen.gov/news/news-releases/fincen-assesses-record-13-billion-penalty-against-td-bank"
+  ],
+  "problems": [
+   "why_flagged now rests on the memorandum of understanding with the UAE Ministry of Culture (AKDN, 10 January 2024), not on the partner listing alone",
+   "funding: 'gives grants' changed to 'is a government partner', which is what the report shows"
+  ],
+  "question": "",
+  "reason": "Gulf state body holds on firmer ground than the listing: an AKDN release documents a three-year agreement with the UAE Ministry of Culture and a 2025 exhibition under it, though no sum is stated. Sponsors, revenue shares and the FinCEN penalty check out.",
+  "batch": "np2"
+ },
+ {
+  "id": "salvador-dali-museum",
+  "name": "Salvador Dalí Museum",
+  "location": "St. Petersburg, USA",
+  "city": "St. Petersburg",
+  "country": "USA",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "M",
+  "funding": "Visit St Pete-Clearwater funds much of the planned expansion from tourist tax; ticket and programme income was $9.8M of $22.4M revenue in fiscal 2025, donors gave $3.0M.",
+  "watch": "Reynolds and Eleanor Morse's collection moved from Beachwood, Ohio to St. Petersburg in 1982; Yann Weymouth's building opened on 11 January 2011.",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/592015192",
+   "https://www.wusf.org/arts-culture/2026-03-05/dali-museum-announces-65-million-dollar-expansion",
+   "https://stpetecatalyst.com/dali-museum-announces-65m-expansion/",
+   "https://thedali.org/about-the-museum/",
+   "https://thedali.org/visit/buy-tickets/",
+   "https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD_Museum"
+  ],
+  "lat": 27.7659874,
+  "lon": -82.6314611,
+  "website": "https://thedali.org",
+  "visit_url": "https://thedali.org/visit/",
+  "address": "One Dali Blvd, St. Petersburg, FL 33701",
+  "year_founded": 1982,
+  "opening_hours": "Daily 10:00am to 6:00pm; Thursdays 10:00am to 8:00pm",
+  "admission_fee": "USD 32; seniors, educators, fire, police and military USD 29; students USD 22; ages 6 to 12 USD 12; 5 and younger free",
+  "aliases": [
+   "The Dalí Museum",
+   "The Dalí"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Salvador+Dal%C3%AD+Museum%2C+St.+Petersburg%2C+Florida"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://thedali.org/visit/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://thedali.org/about-the-museum/"
+    ],
+    "basis": "'Since 1982' (museum About page); opened 7 March 1982 (Wikipedia)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://thedali.org/visit/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Visit St. Pete-Clearwater"
+  ],
+  "verification": "Opened the ProPublica summary of the fiscal 2025 Form 990, WUSF and St. Pete Catalyst on the expansion money, and the museum's About, visit and ticket pages.",
+  "holds": true,
+  "check_sources": [
+   "https://projects.propublica.org/nonprofits/organizations/592015192",
+   "https://www.wusf.org/arts-culture/2026-03-05/dali-museum-announces-65-million-dollar-expansion",
+   "https://thedali.org/visit/buy-tickets/"
+  ],
+  "problems": [
+   "funding reworded so the atlas parser reads the funder names (it read: 'Visit St', and the $65M project total as the tourist body's amount)"
+  ],
+  "question": "",
+  "reason": "ProPublica's Form 990 summary and WUSF confirm the revenue split and the tourist tax money for the expansion; hours, prices, address and 1982 match the museum's pages. A holds.",
+  "batch": "np2"
+ },
+ {
+  "id": "azerbaijan-national-museum-of-art",
+  "name": "Azerbaijan National Museum of Art",
+  "location": "Baku, Azerbaijan",
+  "city": "Baku",
+  "country": "Azerbaijan",
+  "tier": "U",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Azerbaijan's Cabinet of Ministers made the State Art Museum a national museum in June 2011, by its Decision 94.",
+  "watch": "It holds over 18,000 exhibits in two 19th-century buildings joined in 2013 by a glass and steel passage; Shirin Melikova is director.",
+  "sources": [
+   "https://www.nationalartmuseum.az/museum/museum-history/",
+   "https://www.nationalartmuseum.az/tickets/",
+   "https://en.wikipedia.org/wiki/National_Art_Museum_of_Azerbaijan",
+   "https://www.azernews.az/culture/214902.html"
+  ],
+  "lat": 40.3632725,
+  "lon": 49.8318442,
+  "website": "https://www.nationalartmuseum.az",
+  "visit_url": "https://www.nationalartmuseum.az/tickets/",
+  "address": "Niyazi street 11/9, Baku, Azerbaijan AZ1000",
+  "year_founded": null,
+  "opening_hours": "Tue, Thu and Fri 10:00 to 18:00; Wed 12:00 to 21:00; Sat and Sun 11:00 to 19:00; closed Mon",
+  "admission_fee": "AZN 10 foreign citizens; AZN 7 Azerbaijani citizens; students AZN 3",
+  "aliases": [
+   "Azərbaycan Milli İncəsənət Muzeyi",
+   "National Art Museum of Azerbaijan"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Azerbaijan+National+Museum+of+Art%2C+Baku"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.nationalartmuseum.az/tickets/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.nationalartmuseum.az/tickets/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [],
+  "verification": "Opened the museum's history and ticket pages, Wikipedia and AzerNews; none states which ministry or budget pays for it, so the funders stay unconfirmed.",
+  "holds": true,
+  "check_sources": [
+   "https://www.nationalartmuseum.az/museum/museum-history/",
+   "https://www.nationalartmuseum.az/tickets/",
+   "https://www.azernews.az/culture/214902.html"
+  ],
+  "problems": [
+   "year_founded emptied: Wikipedia alone gives 1936 and AzerNews gives 1937",
+   "watch: collection corrected from 15,000 (Wikipedia) to over 18,000, the figure on the museum's history page",
+   "funding: 'Decision No. 94' written as 'Decision 94' so the cleanup step's word list does not read 'No'",
+   "after the check: the line copied the report's only funding point word for word, and the build cut the copy out of the card"
+  ],
+  "question": "Founding year: 1936 (Wikipedia, decision to create it) or 1937 (AzerNews, first exhibition year on Wikipedia)?",
+  "reason": "The museum's pages confirm the 2011 national status, hours, prices and address; two searches found no page naming the body that pays for it, so U holds.",
+  "batch": "np2"
+ },
+ {
+  "id": "national-museum-of-ethiopia",
+  "name": "National Museum of Ethiopia",
+  "location": "Addis Ababa, Ethiopia",
+  "city": "Addis Ababa",
+  "country": "Ethiopia",
+  "tier": "U",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Ministry of Finance of Ethiopia provided 50 million birr in 2024 for designs of a new National Museum, a project of the Ethiopian Heritage Authority.",
+  "watch": "Heritage Authority head Abebaw Ayalew called the current museum small and inadequate in 2024; its concrete building dates from 1976.",
+  "sources": [
+   "https://www.thereporterethiopia.com/40042/",
+   "https://www.capitalethiopia.com/?p=45708",
+   "https://www.ena.et/web/eng/w/eng_6629419",
+   "https://capitalethiopia.com/2025/11/16/national-museum-of-ethiopia-a-brutalist-landmark-houses-the-nations-history/",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Ethiopia"
+  ],
+  "lat": 9.0379782,
+  "lon": 38.7618606,
+  "website": "",
+  "visit_url": "",
+  "address": "",
+  "year_founded": null,
+  "opening_hours": "",
+  "admission_fee": "",
+  "aliases": [
+   "የኢትዮጵያ ብሔራዊ ሙዚየም"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=National+Museum+of+Ethiopia%2C+Addis+Ababa"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ministry of Finance of Ethiopia",
+   "Ethiopian Heritage Authority"
+  ],
+  "verification": "Opened The Reporter, two Capital pieces, ENA and Wikipedia; none states who runs or pays for the present museum, and it has no site of its own for visitor facts.",
+  "holds": true,
+  "check_sources": [
+   "https://www.thereporterethiopia.com/40042/",
+   "https://capitalethiopia.com/2022/10/03/ethio-france-125-year-bond-cemented-through-archaeological-exhibition/",
+   "https://www.ena.et/web/eng/w/eng_6629419"
+  ],
+  "problems": [
+   "funding reworded so the atlas parser reads the funder names (it read: 'Ministry of Finance of Ethiopia allocated')"
+  ],
+  "question": "",
+  "reason": "The Reporter confirms the 50 million birr allocation and the quote; one further search found no page stating who runs or pays for the present museum, so U holds. Founding year stays empty: Wikipedia gives 1958 for the parent institute, Wikidata 1944.",
+  "batch": "np2"
+ },
+ {
+  "id": "national-museum-of-ghana-accra",
+  "name": "National Museum of Ghana",
+  "location": "Accra, Ghana",
+  "city": "Accra",
+  "country": "Ghana",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Ghana Museums and Monuments Board owns and operates it and charges entry fees; President Nana Akufo-Addo commissioned the renovated building in June 2022.",
+  "watch": "Historian Jon Olav Hove wrote in The Conversation in 2022 that the renovated displays omit the transatlantic slave trade and colonial rule.",
+  "sources": [
+   "https://gmmb.gov.gh/national-museum-of-ghana/",
+   "https://citinewsroom.com/?p=858817",
+   "https://theconversation.com/ghanas-national-museum-superb-restoration-but-painful-stories-remain-untold-185145"
+  ],
+  "lat": 5.5607448,
+  "lon": -0.2064154,
+  "website": "https://gmmb.gov.gh/national-museum-of-ghana/",
+  "visit_url": "https://gmmb.gov.gh/national-museum-of-ghana/",
+  "address": "2 Barnes Road, Adabraka, Accra",
+  "year_founded": 1957,
+  "opening_hours": "9:00 am to 4:30 pm daily",
+  "admission_fee": "GHS 20 Ghanaian adults; GHS 80 non-Ghanaian adults; students GHS 5 to 10 (non-Ghanaian GHS 20 to 60)",
+  "aliases": [
+   "Ghana National Museum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=National+Museum%2C+Accra%2C+Ghana"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://gmmb.gov.gh/national-museum-of-ghana/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://gmmb.gov.gh/national-museum-of-ghana/"
+    ],
+    "basis": "established on 5 March 1957 (Ghana Museums and Monuments Board page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://gmmb.gov.gh/national-museum-of-ghana/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Ghana Museums and Monuments Board",
+   "Government of Ghana"
+  ],
+  "verification": "Opened the Ghana Museums and Monuments Board page (owner, hours, fees, 1957), Citi Newsroom on the June 2022 reopening and The Conversation review.",
+  "holds": true,
+  "check_sources": [
+   "https://gmmb.gov.gh/national-museum-of-ghana/",
+   "https://www.citinewsroom.com/2022/06/govt-sets-aside-us10m-to-refurbish-kwame-nkrumah-park-cape-coast-castle-others/",
+   "https://theconversation.com/ghanas-national-museum-superb-restoration-but-painful-stories-remain-untold-185145"
+  ],
+  "problems": [
+   "funding: the US$10M pledge removed; Citi Newsroom shows it was for other sites (Kwame Nkrumah Memorial Park, Cape Coast and Elmina Castles, three palace museums), not this museum",
+   "coordinates kept: the Nominatim hit is the OpenStreetMap building tagged with the museum's Wikidata id; the point 440 m south is the Museum of Science and Technology"
+  ],
+  "question": "",
+  "reason": "The board's page states it owns and operates the museum and the president commissioned the renovation in June 2022; A holds. Hours, fees, address and 1957 match the board's page.",
+  "batch": "np2"
+ },
+ {
+  "id": "national-museum-of-pakistan-karachi",
+  "name": "National Museum of Pakistan",
+  "location": "Karachi, Pakistan",
+  "city": "Karachi",
+  "country": "Pakistan",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Government of Pakistan runs it, after the Supreme Court ruled for the federal culture ministry against Sindh and control returned on 17 April 2019.",
+  "watch": "Sindh culture minister Zulfiqar Ali Shah called the building dilapidated in June 2024 and asked the Centre to hand it over.",
+  "sources": [
+   "https://www.dawn.com/news/1739020",
+   "https://tribune.com.pk/story/2473719/sindh-wants-control-of-national-museum",
+   "https://pakistanpressfoundation.org/67519",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Pakistan"
+  ],
+  "lat": 24.8528564,
+  "lon": 67.0176726,
+  "website": "",
+  "visit_url": "",
+  "address": "Burns Garden, Dr. Ziauddin Ahmed Road, Karachi",
+  "year_founded": null,
+  "opening_hours": "",
+  "admission_fee": "",
+  "aliases": [],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=National+Museum+of+Pakistan%2C+Karachi"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://en.wikipedia.org/wiki/National_Museum_of_Pakistan"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Government of Pakistan"
+  ],
+  "verification": "Opened Dawn (2023), Express Tribune (2024), The News via Pakistan Press Foundation (2013) and Wikipedia; federal control is confirmed, the budget and the founding year (1950, 1951 or 1969 by source) are not.",
+  "holds": true,
+  "check_sources": [
+   "https://www.dawn.com/news/1739020",
+   "https://tribune.com.pk/story/2473719/sindh-wants-control-of-national-museum",
+   "https://pakistanpressfoundation.org/67519"
+  ],
+  "problems": [
+   "funding reworded so the atlas parser reads the funder names (it read: nothing)"
+  ],
+  "question": "Founding year left empty: Wikipedia gives 1950 and 1951, Dawn 1969. Which should stand?",
+  "reason": "Dawn (25 February 2023) reports federal control since 17 April 2019 and the Express Tribune (25 June 2024) shows it still federal; A holds on state ownership. The address is Wikipedia's and OpenStreetMap places the museum in the same block.",
+  "batch": "np2"
+ },
+ {
+  "id": "bangladesh-national-museum",
+  "name": "Bangladesh National Museum",
+  "location": "Dhaka, Bangladesh",
+  "city": "Dhaka",
+  "country": "Bangladesh",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Government of Bangladesh funds it, Ministry of Cultural Affairs oversees the autonomous museum; tickets and auditorium rentals add income.",
+  "watch": "A government-appointed Board of Trustees runs it; the 2025 to 2026 budget plan promised to modernise its galleries.",
+  "sources": [
+   "https://en.banglapedia.org/index.php/Bangladesh_National_Museum",
+   "https://unb.com.bd/category/Entertainment/fy-202526-budget-tk-824-crore-proposed-for-cultural-sector/161175",
+   "https://en.wikipedia.org/wiki/Bangladesh_National_Museum"
+  ],
+  "lat": 23.7374837,
+  "lon": 90.3944812,
+  "website": "",
+  "visit_url": "",
+  "address": "Shahbag, Dhaka",
+  "year_founded": 1913,
+  "opening_hours": "",
+  "admission_fee": "",
+  "aliases": [
+   "বাংলাদেশ জাতীয় জাদুঘর",
+   "Bangladesh Jatiya Jadughar",
+   "Dhaka Museum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Bangladesh+National+Museum%2C+Dhaka"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://en.banglapedia.org/index.php/Bangladesh_National_Museum"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://en.banglapedia.org/index.php/Bangladesh_National_Museum"
+    ],
+    "basis": "Dacca Museum formally opened on 7 August 1913 (Banglapedia)",
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Government of Bangladesh",
+   "Ministry of Cultural Affairs"
+  ],
+  "verification": "Opened Banglapedia (state finance, ministry, trustees, 1913), UNB on the 2025 to 2026 culture budget and Wikipedia; bangladeshmuseum.gov.bd did not load.",
+  "holds": true,
+  "check_sources": [
+   "https://en.banglapedia.org/index.php/Bangladesh_National_Museum",
+   "https://unb.com.bd/category/Entertainment/fy-202526-budget-tk-824-crore-proposed-for-cultural-sector/161175",
+   "https://en.wikipedia.org/wiki/Bangladesh_National_Museum"
+  ],
+  "problems": [
+   "funding reworded so the atlas parser reads the funder names (it read: the ministry only; Government of Bangladesh lost)",
+   "after the check: the site failed its certificate check on 20 Nov 2026, so no link is given"
+  ],
+  "question": "bangladeshmuseum.gov.bd failed its certificate check on 20 November 2026: keep the website link?",
+  "reason": "Banglapedia states the museum is financed by the state under the Ministry of Cultural Affairs and UNB reports the 2025 to 2026 budget plan; A holds. Shahbag and 1913 are confirmed by Banglapedia, Wikipedia and OpenStreetMap.",
+  "batch": "np2"
+ },
+ {
+  "id": "national-museum-of-singapore",
+  "name": "National Museum of Singapore",
+  "location": "Singapore, Singapore",
+  "city": "Singapore",
+  "country": "Singapore",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "National Heritage Board operates it, MCCY (Singapore's culture ministry) is the board's parent ministry; the museum is raising a capital campaign for its revamp.",
+  "watch": "Galleries have closed in stages since September 2023 for upgrading; the Singapore History Gallery shut in November 2025.",
+  "sources": [
+   "https://www.nhb.gov.sg/who-we-are/about-us",
+   "https://www.nationalmuseum.nhb.gov.sg/about-us/about-us",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Singapore",
+   "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit",
+   "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/admissions",
+   "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/upgrading"
+  ],
+  "lat": 1.2965476,
+  "lon": 103.8483167,
+  "website": "https://www.nationalmuseum.nhb.gov.sg",
+  "visit_url": "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit",
+  "address": "93 Stamford Road, Singapore 178897",
+  "year_founded": 1887,
+  "opening_hours": "Daily 10am to 7pm; last ticket sales 6pm",
+  "admission_fee": "Free for Singapore citizens and permanent residents; tourists and foreign residents SGD 18, concessions SGD 13; children aged 6 and below free",
+  "aliases": [
+   "NMS",
+   "Raffles Library and Museum"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=National+Museum+of+Singapore"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.nationalmuseum.nhb.gov.sg/about-us/about-us"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.nationalmuseum.nhb.gov.sg/about-us/about-us"
+    ],
+    "basis": "'since opening in 1887' (museum About page); Wikipedia dates its origin to 1849 as the Raffles Library and Museum",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/admissions"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "National Heritage Board",
+   "Ministry of Culture, Community and Youth"
+  ],
+  "verification": "Opened the National Heritage Board's About page (statutory board under MCCY, operates the museums), the museum's About, admissions and upgrading pages, and Wikipedia.",
+  "holds": true,
+  "check_sources": [
+   "https://www.nhb.gov.sg/who-we-are/about-us",
+   "https://www.nationalmuseum.nhb.gov.sg/about-us/about-us",
+   "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/admissions"
+  ],
+  "problems": [
+   "funding reworded: the board's status now comes from the National Heritage Board's own page, not the museum's site alone",
+   "year_founded changed from 1849 (Wikipedia alone) to 1887, the year on the museum's About page",
+   "address now sourced to the museum's site, which prints 93 Stamford Road, Singapore 178897",
+   "opening hours and admission added from the museum's admissions page"
+  ],
+  "question": "Founding year set to 1887 (museum's page: 'since opening in 1887'); Wikipedia's 1849 is the Raffles Library and Museum. Keep 1887?",
+  "reason": "The National Heritage Board's page says it is a statutory board under MCCY and operates the museums, and the museum's site names both; A holds on state ownership.",
+  "batch": "np2"
+ },
+ {
+  "id": "nara-national-museum",
+  "name": "Nara National Museum",
+  "location": "Nara, Japan",
+  "city": "Nara",
+  "country": "Japan",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "National Institutes for Cultural Heritage runs it, Government of Japan covers JPY 9.9 billion of the institute's JPY 15.8 billion budget for fiscal 2026.",
+  "watch": "It held its first exhibition in 1895 as the Imperial Nara Museum; the original building by Katayama Tokuma is an Important Cultural Property.",
+  "sources": [
+   "https://www.nich.go.jp/wp-content/uploads/2026/10/26-27_Reference-Materials_gaiyo2026.pdf",
+   "https://www.nich.go.jp/en/",
+   "https://www.nich.go.jp/wp-content/uploads/2026/10/30_Addresses_gaiyo2026.pdf",
+   "https://en.wikipedia.org/wiki/Nara_National_Museum",
+   "https://www.narahaku.go.jp/english/about/history/",
+   "https://www.narahaku.go.jp/english/info/fee-2/"
+  ],
+  "lat": 34.6830955,
+  "lon": 135.8383105,
+  "website": "https://www.narahaku.go.jp/english/",
+  "visit_url": "https://www.narahaku.go.jp/english/info/fee-2/",
+  "address": "50 Noborioji-cho, Nara City, Nara 630-8213",
+  "year_founded": 1889,
+  "opening_hours": "9:30 A.M. to 5:00 P.M.; closed Mon and 28 Dec to 1 Jan",
+  "admission_fee": "JPY 700; college students JPY 350; 18 and under and 70 and over free",
+  "aliases": [
+   "奈良国立博物館",
+   "Narahaku"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Nara+National+Museum"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.nich.go.jp/wp-content/uploads/2026/10/30_Addresses_gaiyo2026.pdf"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.narahaku.go.jp/english/about/history/"
+    ],
+    "basis": "Meiji 22 (1889): established as the Imperial Museum of Nara; opened to the public 29 April 1895 (museum history page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.narahaku.go.jp/english/info/fee-2/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "National Institutes for Cultural Heritage",
+   "Government of Japan"
+  ],
+  "verification": "Opened the National Institutes for Cultural Heritage site and its fiscal 2026 booklet pages (budget table, addresses), the museum's own history and hours pages, and Wikipedia.",
+  "holds": true,
+  "check_sources": [
+   "https://www.nich.go.jp/wp-content/uploads/2026/10/26-27_Reference-Materials_gaiyo2026.pdf",
+   "https://www.narahaku.go.jp/english/about/history/",
+   "https://www.narahaku.go.jp/english/info/fee-2/"
+  ],
+  "problems": [
+   "year_founded 1889 now sourced to the museum's history page, not Wikipedia alone",
+   "opening hours, admission and visit_url added: narahaku.go.jp answered on 2026-11-20"
+  ],
+  "question": "",
+  "reason": "The institute's fiscal 2026 table shows JPY 9,920,162 thousand of government funding in a JPY 15,752,311 thousand budget, and its address page gives 50 Noborioji-cho; A holds.",
+  "batch": "np2"
+ },
+ {
+  "id": "design-museum-holon",
+  "name": "Design Museum Holon",
+  "location": "Holon, Israel",
+  "city": "Holon",
+  "country": "Israel",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "Holon Municipality paid USD 17M to establish the museum, which opened in March 2010.",
+  "watch": "Curator Mia Dvash resigned amid disputes between Holon's cultural institutions and the municipality; some foreign designers declined to join the exhibition The Circle (Ynet).",
+  "sources": [
+   "https://www.dmh.org.il/en/about-us/",
+   "https://www.ynetnews.com/culture/article/rjf5ffrugx",
+   "https://www.dmh.org.il/en/visitor-information/",
+   "https://www.dmh.org.il/en/admission-fees/"
+  ],
+  "lat": 32.0109043,
+  "lon": 34.7777856,
+  "website": "https://www.dmh.org.il/en/",
+  "visit_url": "https://www.dmh.org.il/en/visitor-information/",
+  "address": "Pinchas Ayalon 8, Holon, 5845400",
+  "year_founded": 2010,
+  "opening_hours": "Mon and Wed 10:00 to 16:00; Tue 10:00 to 20:00; Thu and Sat 10:00 to 18:00; Fri 10:00 to 14:00; closed Sun",
+  "admission_fee": "ILS 45; youth 11 to 17 ILS 35; children 5 to 10 ILS 25; Holon residents ILS 32; under 5 free",
+  "aliases": [
+   "מוזיאון העיצוב חולון",
+   "DMH"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Design+Museum+Holon"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://www.dmh.org.il/en/visitor-information/"
+    ],
+    "retrieved": "2026-11-20"
+   },
+   "year_founded": {
+    "urls": [
+     "https://www.dmh.org.il/en/about-us/"
+    ],
+    "basis": "opened in March 2010 (museum About page)",
+    "retrieved": "2026-11-20"
+   },
+   "opening_hours": {
+    "urls": [
+     "https://www.dmh.org.il/en/visitor-information/"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "Holon Municipality"
+  ],
+  "verification": "Opened the museum's About, visitor and admission pages and the Ynet report on the curator's resignation and the exhibition The Circle.",
+  "holds": true,
+  "check_sources": [
+   "https://www.dmh.org.il/en/about-us/",
+   "https://www.ynetnews.com/culture/article/rjf5ffrugx",
+   "https://www.dmh.org.il/en/admission-fees/"
+  ],
+  "problems": [
+   "funding reworded so the atlas parser reads the funder names (it read: nothing)"
+  ],
+  "question": "The curator's resignation and the city's cuts to sister institutions stay in watch (A). Should Holon Municipality count as a name to know (B)?",
+  "reason": "The museum's About page states the municipality's USD 17 million and Ynet ties the museum's budgets to the municipality; designers declining to take part is reported by the museum's own curator, not a documented boycott. A holds.",
+  "batch": "np2"
+ },
+ {
+  "id": "sudan-national-museum",
+  "name": "Sudan National Museum",
+  "location": "Khartoum, Sudan",
+  "city": "Khartoum",
+  "country": "Sudan",
+  "tier": "A",
+  "flags": [],
+  "why_flagged": "",
+  "size": "",
+  "funding": "National Corporation for Antiquities and Museums runs it, Government of Italy through its development agency AICS has backed a UNESCO rehabilitation project since 2018.",
+  "watch": "Closed, wrecked and looted in the war: Rapid Support Forces fighters held it, all gold artefacts were taken, and authorities have recovered 570 stolen objects.",
+  "sources": [
+   "https://allafrica.com/stories/202607070504.html",
+   "https://www.ksat.com/news/world/2025/04/14/home-to-centuries-of-heritage-sudans-biggest-museum-is-looted-and-wrecked-by-a-2-year-war/",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Sudan",
+   "https://sudannationalmuseum.com"
+  ],
+  "lat": 15.6061345,
+  "lon": 32.5083479,
+  "website": "https://sudannationalmuseum.com",
+  "visit_url": "",
+  "address": "El Neel Avenue, al-Mugran, Khartoum",
+  "year_founded": null,
+  "opening_hours": "",
+  "admission_fee": "",
+  "aliases": [
+   "National Museum of Sudan",
+   "متحف السودان القومي"
+  ],
+  "field_sources": {
+   "coordinates": {
+    "urls": [
+     "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=Sudan+National+Museum%2C+Khartoum"
+    ],
+    "basis": "OpenStreetMap, name lookup",
+    "retrieved": "2026-11-20"
+   },
+   "address": {
+    "urls": [
+     "https://en.wikipedia.org/wiki/National_Museum_of_Sudan"
+    ],
+    "retrieved": "2026-11-20"
+   }
+  },
+  "funders": [
+   "National Corporation for Antiquities and Museums",
+   "Government of Italy",
+   "Italian Agency for Development Cooperation (AICS)",
+   "UNESCO"
+  ],
+  "verification": "Opened the UN Sudan release of 6 July 2026 (Italy, UNESCO, 570 objects, rehabilitation awaiting funding), the AP report of April 2025, an RFI report of January 2026 and Wikipedia; the museum is war-damaged and looted.",
+  "holds": true,
+  "check_sources": [
+   "https://allafrica.com/stories/202607070504.html",
+   "https://www.ksat.com/news/world/2025/04/14/home-to-centuries-of-heritage-sudans-biggest-museum-is-looted-and-wrecked-by-a-2-year-war/",
+   "https://allafrica.com/stories/202601250069.html"
+  ],
+  "problems": [
+   "watch now opens with 'Closed, wrecked and looted in the war'",
+   "year_founded emptied: 1971 is on Wikipedia alone among the pages opened"
+  ],
+  "question": "Wanderlust (August 2026, HTTP 403, not opened) is reported to say the museum reopened on 28 July 2026; the pages opened show it wrecked, with rehabilitation awaiting funding on 6 July 2026. Is it still closed?",
+  "reason": "The UN release confirms the Italian-funded UNESCO project with NCAM and the culture ministry, and AP the looting; A holds. The site answers only on its 2007 home page.",
+  "batch": "np2"
+ }
+]
