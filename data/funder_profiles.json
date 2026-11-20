@@ -7090,6 +7090,41 @@
   ],
   "batch": "fp37"
  },
+ "culturalaffairsbureau|China": {
+  "name": "Direcção dos Serviços de Cultura e Desporto",
+  "short": "Macao Cultural and Sports Bureau",
+  "kind": "gov",
+  "what": "A Macao SAR government bureau formed on 1 November 2026 by merging the Cultural Affairs Bureau, set up in 1982, with the Cultural Development Fund and the Sports Bureau.",
+  "money": "The budget of the Macao SAR government.",
+  "arts": "It runs the Macao Museum of Art, the Macao Museum, the Macao Public Library, the Archives of Macao and the Macao Cultural Centre.",
+  "site": "https://www.dscd.gov.mo",
+  "city": "Macau",
+  "country": "China",
+  "address": "Cultural and Sports Bureau Building, Tap Seac Square, Macao",
+  "status": "done",
+  "sources": [
+   "https://zh.wikipedia.org/wiki/%E6%96%87%E5%8C%96%E5%B1%80_(%E6%BE%B3%E9%96%80)",
+   "https://www.dscd.gov.mo/en",
+   "https://www.icm.gov.mo/en"
+  ],
+  "batch": "fp43"
+ },
+ "culturalarmofparaguaysnationalcongress|Paraguay": {
+  "name": "Congreso Nacional de la República del Paraguay",
+  "short": "National Congress of Paraguay",
+  "kind": "gov",
+  "what": "Paraguay's bicameral legislature under the 1992 constitution: a Senate of 45 members and a Chamber of Deputies of 80, seated in the Palacio Legislativo in Asunción.",
+  "money": "The national budget of Paraguay.",
+  "site": "https://www.congreso.gov.py",
+  "city": "Asunción",
+  "country": "Paraguay",
+  "address": "Calle 14 de Mayo y Avenida República, Asunción",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Congreso_Nacional_de_Paraguay"
+  ],
+  "batch": "fp43"
+ },
  "culturalendowmentofestonia": {
   "name": "Eesti Kultuurkapital",
   "short": "Cultural Endowment of Estonia",
@@ -7107,6 +7142,40 @@
    "https://en.wikipedia.org/wiki/Cultural_Endowment_of_Estonia"
   ],
   "batch": "fp29"
+ },
+ "culturalservicesdepartmentofhongkonggovernment|Hong Kong": {
+  "name": "Leisure and Cultural Services Department",
+  "short": "LCSD",
+  "kind": "gov",
+  "what": "A department of the Hong Kong SAR government under the Culture, Sports and Tourism Bureau; it runs public museums, performing arts venues, libraries, parks and sports grounds.",
+  "money": "The Hong Kong SAR government budget.",
+  "arts": "It manages fifteen museums, among them the Hong Kong Museum of Art, and fifteen performing arts venues, including the Hong Kong Cultural Centre.",
+  "site": "https://www.lcsd.gov.hk",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "address": "Leisure and Cultural Services Headquarters, 1-3 Pai Tau Street, Sha Tin, New Territories",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Leisure_and_Cultural_Services_Department",
+   "https://tel.directory.gov.hk/LCSD_ENG.html"
+  ],
+  "batch": "fp43"
+ },
+ "culturalvillage": {
+  "name": "Cultural Village Foundation",
+  "short": "Katara",
+  "kind": "gov",
+  "what": "A Qatari state foundation set up by Amiri Decision No. 38 of 2010 to run Katara Cultural Village in Doha, which soft-opened in October 2010.",
+  "arts": "It organises festivals such as the Qatar International Falcons and Hunting Festival (Marmi) and the Katara International Arabian Horse Festival, and awards the Katara Prize for Arabic Novel.",
+  "city": "Doha",
+  "country": "Qatar",
+  "wrong_match": "The Katara line names the foundation as the body that runs the complex, which the government funds; it does not show the foundation paying.",
+  "status": "done",
+  "sources": [
+   "https://www.qna.org.qa/en/News-Area/News/2022-11/05/0036-qatar-2022-katara-cultural-village,-innovation-and-cultures-forum-on-land-of-qatar",
+   "https://en.wikipedia.org/wiki/Katara_Cultural_Village"
+  ],
+  "batch": "fp43"
  },
  "cultureireland": {
   "name": "Culture Ireland",
@@ -7142,6 +7211,24 @@
    "https://jobs.liverpool.gov.uk/jobs/job/City-Events-Manager/1530"
   ],
   "batch": "fp16"
+ },
+ "cultureministryfunding|Israel": {
+  "name": "משרד התרבות והספורט",
+  "short": "Israeli Ministry of Culture and Sport",
+  "kind": "gov",
+  "what": "The culture and sport ministry of the Israeli government, a separate ministry since 2009; Miki Zohar (Likud) has been minister since 29 December 2022.",
+  "money": "The Israeli state budget.",
+  "arts": "Its Culture Administration oversees film, theatre, music and dance; in January 2026 Zohar cancelled about 60 annual state prizes in literature, music, dance and visual art.",
+  "site": "https://www.gov.il/he/departments/ministry_of_culture_and_sport",
+  "city": "Tel Aviv-Yafo",
+  "country": "Israel",
+  "address": "HaMasger Street 14, Tel Aviv-Yafo",
+  "status": "done",
+  "sources": [
+   "https://he.wikipedia.org/wiki/%D7%9E%D7%A9%D7%A8%D7%93_%D7%94%D7%AA%D7%A8%D7%91%D7%95%D7%AA_%D7%95%D7%94%D7%A1%D7%A4%D7%95%D7%A8%D7%98",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_and_Sport_(Israel)"
+  ],
+  "batch": "fp43"
  },
  "cultureministry|Denmark": {
   "name": "Kulturministeriet",
@@ -7398,6 +7485,37 @@
   ],
   "batch": "fp39"
  },
+ "davidlloydkreeger": {
+  "name": "David Lloyd Kreeger Foundation, Inc.",
+  "short": "Kreeger Foundation",
+  "kind": "found",
+  "what": "A private operating foundation set up by David and Carmen Kreeger to run the Kreeger Museum, their former Philip Johnson house in Washington, after their deaths.",
+  "money": "The fortune of David Lloyd Kreeger, former president, chairman and CEO of the insurer GEICO; total assets were $104,105,216 at the end of 2023.",
+  "arts": "It pays toward the museum, and Kreeger family members sit on its board.",
+  "site": "https://www.kreegermuseum.org",
+  "city": "Washington",
+  "country": "United States",
+  "address": "2401 Foxhall Road NW, Washington, DC",
+  "status": "done",
+  "sources": [
+   "https://www.guidestar.org/profile/52-6037451",
+   "https://projects.propublica.org/nonprofits/organizations/526037451",
+   "https://en.wikipedia.org/wiki/David_Lloyd_Kreeger",
+   "https://www.kreegermuseum.org/about-us/history"
+  ],
+  "batch": "fp43"
+ },
+ "davidobedinmatchroofgiftsupto": {
+  "name": "David Obedin",
+  "kind": "person",
+  "what": "A private donor who, with Clare Davis, gave the matching grant for the 2025 cedar shingle roof restoration of the Frank Lloyd Wright House in Ebsworth Park, Kirkwood, Missouri.",
+  "country": "United States",
+  "status": "thin",
+  "sources": [
+   "https://ebsworthpark.org/support/roof-restoration"
+  ],
+  "batch": "fp43"
+ },
  "davidzwirner": {
   "name": "David Zwirner",
   "kind": "corp",
@@ -7428,6 +7546,23 @@
    "https://es.wikipedia.org/wiki/Davivienda"
   ],
   "batch": "fp31"
+ },
+ "dbss": {
+  "name": "DBS Bank Ltd",
+  "short": "DBS",
+  "kind": "corp",
+  "what": "A Singapore bank incorporated by the Government of Singapore on 16 July 1968 as The Development Bank of Singapore; Temasek Holdings owned 29% of its shares in 2023.",
+  "money": "Banking in 19 markets: DBS Group earned total income of SGD 22.9 billion and net profit of SGD 11.0 billion in 2025.",
+  "site": "https://www.dbs.com",
+  "city": "Singapore",
+  "country": "Singapore",
+  "address": "Marina Bay Financial Centre, Singapore",
+  "status": "done",
+  "sources": [
+   "https://www.dbs.com/newsroom/Full_year_profit_before_tax_at_record_SGD_13_1_billion_net_profit_at_SGD_11_0_billion_with_ROE_at_16_2pct",
+   "https://en.wikipedia.org/wiki/DBS_Bank"
+  ],
+  "batch": "fp43"
  },
  "dcmsstatutorygrantinaid|UK": {
   "name": "Department for Digital, Culture, Media and Sport",
@@ -7478,6 +7613,37 @@
    "https://www.ambassadorloeb.gwirf.org/heritage/growing-up/"
   ],
   "batch": "fp10"
+ },
+ "debrablack": {
+  "name": "Debra Black",
+  "kind": "person",
+  "what": "An American Broadway producer, née Ressler, who won two Tony Awards for Best Play; she is married to Leon Black, co-founder of the private equity firm Apollo Global Management.",
+  "money": "Leon Black's fortune, about $13.8 billion in 2026 by the Bloomberg Billionaires Index, mainly from his stake in Apollo.",
+  "arts": "She was elected a trustee of the Metropolitan Museum of Art in 2015; in 2018 she and Leon Black gave to the Museum of Modern Art's renovation and expansion.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Debra_Black",
+   "https://en.wikipedia.org/wiki/Leon_Black"
+  ],
+  "batch": "fp43"
+ },
+ "defenceministrysolicitedpublicdonations|Cambodia": {
+  "name": "Ministry of National Defence",
+  "short": "Cambodian Ministry of National Defence",
+  "kind": "gov",
+  "what": "Cambodia's defence ministry, which supervises the Royal Cambodian Armed Forces; Tea Seiha is minister. Its new Phnom Penh headquarters opened in December 2021.",
+  "money": "Cambodia's state budget.",
+  "city": "Phnom Penh",
+  "country": "Cambodia",
+  "address": "Russian Federation Boulevard, Phnom Penh",
+  "wrong_match": "The Win-Win Memorial line shows the ministry collecting public donations for the memorial, which is not paying for it.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_National_Defence_(Cambodia)",
+   "https://www.lokmattimes.com/international/cambodia-inaugurates-new-defence-ministry-office-building/amp"
+  ],
+  "batch": "fp43"
  },
  "defrance": {
   "name": "Fondation de France",
@@ -7665,6 +7831,24 @@
   ],
   "batch": "fp37"
  },
+ "departmentofnationalmuseumandmonuments|Botswana": {
+  "name": "Department of National Museum and Monuments",
+  "short": "DNMM",
+  "kind": "gov",
+  "what": "A Government of Botswana department with the mandate of conserving, protecting and promoting the country's heritage; it runs the Botswana National Museum in Gaborone.",
+  "money": "The budget of the Government of Botswana.",
+  "site": "https://www.national-museum.gov.bw",
+  "city": "Gaborone",
+  "country": "Botswana",
+  "address": "Plot 331 Independence Avenue, Gaborone",
+  "status": "done",
+  "sources": [
+   "https://www.rims.gov.bw/converis/portal/detail/Organisation/6081680?lang=en_GB",
+   "https://dailynews.gov.bw/news-detail/28821",
+   "https://en.wikipedia.org/wiki/Botswana_National_Museum"
+  ],
+  "batch": "fp43"
+ },
  "deroytestamentary": {
   "name": "DeRoy Testamentary Foundation",
   "kind": "found",
@@ -7802,6 +7986,20 @@
   ],
   "batch": "fp25"
  },
+ "dickeyfamily": {
+  "name": "Dickey family",
+  "kind": "person",
+  "what": "The family of Alice J. Fleet Dickey, who died in Phoenix in 2019; a Heard Museum docent and lifetime trustee, she created its Dickey Family Director/CEO endowment.",
+  "arts": "The Heard Museum's audited statements for fiscal 2021 list the Dickey Family Director Endowment at $2,400,000.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.whitneymurphyfuneralhome.com/obituaries/dickey-alice-j-fleet",
+   "https://heard.org/wp-content/uploads/2023/09/FY21-Heard-Museum-Audited-Financial-Statements.pdf",
+   "https://heard.org/wp-content/uploads/2024/02/New-BOT-Chair-FINAL.pdf"
+  ],
+  "batch": "fp43"
+ },
  "didrichsenart": {
   "name": "Didrichsens konstmuseum sr",
   "short": "Didrichsen Art Foundation",
@@ -7872,6 +8070,21 @@
    "https://observador.pt/2025/01/17/declaracao-anual-da-dgartes-mantem-inalterados-valores-dos-concursos-de-apoio-a-projetos/"
   ],
   "batch": "fp26"
+ },
+ "directorategeneralofantiquitiesandmuseums": {
+  "name": "المديرية العامة للآثار والمتاحف",
+  "short": "Directorate-General of Antiquities and Museums (DGAM)",
+  "kind": "gov",
+  "what": "A Syrian government agency set up after independence in 1946 under the Ministry of Culture; it runs the country's museums and excavations and protects its heritage sites.",
+  "money": "The Syrian state budget through the Ministry of Culture.",
+  "arts": "Since 1966 it has published Les Annales Archéologiques Arabes Syriennes, successor to a journal begun in 1951.",
+  "city": "Damascus",
+  "country": "Syria",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Directorate-General_of_Antiquities_and_Museums"
+  ],
+  "batch": "fp43"
  },
  "distritodebogot": {
   "name": "Bogotá, Distrito Capital",
@@ -7979,6 +8192,20 @@
    "https://www.doen.nl/en/support/contact/"
   ],
   "batch": "fp4"
+ },
+ "donopdemonchy": {
+  "name": "Donop de Monchy family",
+  "kind": "person",
+  "what": "The family of Victorine Donop de Monchy, née de Bellio, daughter of the Romanian doctor and early Impressionist collector Georges de Bellio, who lived in Paris from 1851.",
+  "money": "The fortune of Georges de Bellio, born in 1828 into Romanian high nobility, and the Impressionist collection he bought from 1874.",
+  "arts": "In 1957 Victorine Donop de Monchy gave the Musée Marmottan the eleven Impressionist paintings left from her father's collection, among them Monet's Impression, soleil levant.",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Mus%C3%A9e_Marmottan_Monet",
+   "https://fr.wikipedia.org/wiki/Georges_de_Bellio"
+  ],
+  "batch": "fp43"
  },
  "dorotheum": {
   "name": "Dorotheum",
@@ -8281,6 +8508,41 @@
   ],
   "batch": "fp10"
  },
+ "duisburgshare": {
+  "name": "Stadt Duisburg",
+  "short": "City of Duisburg",
+  "kind": "gov",
+  "what": "A district-free city of about half a million people where the Ruhr meets the Rhine, the fifth-largest city in North Rhine-Westphalia.",
+  "money": "The municipal budget of the City of Duisburg.",
+  "site": "https://www.duisburg.de",
+  "city": "Duisburg",
+  "country": "Germany",
+  "address": "Burgplatz 19, 47051 Duisburg",
+  "status": "done",
+  "sources": [
+   "https://www.duisburg.de/impressum.php",
+   "https://de.wikipedia.org/wiki/Duisburg"
+  ],
+  "batch": "fp43"
+ },
+ "dupatrimoineit": {
+  "name": "Fondation du patrimoine",
+  "kind": "found",
+  "what": "A private non-profit foundation created by the French law of 2 July 1996 to save local heritage that is not listed; Guillaume Poitrinal has chaired it since 2017.",
+  "money": "Corporate patronage and bequests, public appeals, the Loto du patrimoine and heirless estates: EUR 117.7 million in 2021.",
+  "arts": "In 2021 it supported 3,189 restoration projects and granted 1,806 labels that give owners tax deductions on restoration work.",
+  "site": "https://www.fondation-patrimoine.org",
+  "city": "Neuilly-sur-Seine",
+  "country": "France",
+  "address": "153B avenue Charles de Gaulle, 92200 Neuilly-sur-Seine",
+  "wrong_match": "The Villa Majorelle line shows the foundation opening a public appeal with the City of Nancy, which collects donors' money; it does not show the foundation paying.",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Fondation_du_patrimoine",
+   "https://api-avis-situation-sirene.insee.fr/identification/pdf/41381282700587"
+  ],
+  "batch": "fp43"
+ },
  "durhamcountycouncil|UK": {
   "name": "Durham County Council",
   "kind": "gov",
@@ -8294,6 +8556,21 @@
    "https://durham.gov.uk/article/32465/News-Councillors-to-agree-budget-for-next-four-years"
   ],
   "batch": "fp10"
+ },
+ "dutchforeignministry|France": {
+  "name": "Ministerie van Buitenlandse Zaken",
+  "short": "Dutch Ministry of Foreign Affairs",
+  "kind": "gov",
+  "what": "The Netherlands' foreign ministry, also responsible for European affairs and development cooperation; about 6,200 people work for it in The Hague. Tom Berendsen (CDA) is minister.",
+  "money": "The Dutch state budget.",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "address": "Rijnstraat 8, The Hague",
+  "status": "done",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Ministerie_van_Buitenlandse_Zaken_(Nederland)"
+  ],
+  "batch": "fp43"
  },
  "dutchministryofeducation|Netherlands": {
   "name": "Ministerie van Onderwijs, Cultuur en Wetenschap",
@@ -8348,6 +8625,21 @@
    "https://en.wikipedia.org/wiki/EBSCO_Industries"
   ],
   "batch": "fp11"
+ },
+ "ecuadorscultureviceministry|Ecuador": {
+  "name": "Viceministerio de Cultura y Patrimonio",
+  "short": "Ecuador's Culture Vice-Ministry",
+  "kind": "gov",
+  "what": "The culture arm of Ecuador's Ministry of Education, Sport and Culture since Decree 60 of 24 July 2025 merged the culture ministry into it; Pamela Cortés leads it.",
+  "money": "Ecuador's state budget through the Ministry of Education, Sport and Culture.",
+  "city": "Quito",
+  "country": "Ecuador",
+  "status": "done",
+  "sources": [
+   "https://www.elcomercio.com/actualidad/politica/pamela-cortes-asume-viceministra-cultura-patrimonio-ecuador/",
+   "https://www.primicias.ec/politica/fusion-ministerios-ecuador-ivonne-nunez-primera-reunion-educacion-102266/"
+  ],
+  "batch": "fp43"
  },
  "edf": {
   "name": "Électricité de France",
@@ -8643,6 +8935,20 @@
   "batch": "fp11",
   "renamed": "The atlas name points at the German utility EnBW AG, but the museum line lists Borusan group units, which means the joint venture Borusan EnBW Enerji."
  },
+ "endowedbystanleypicker": {
+  "name": "Stanley Picker",
+  "kind": "person",
+  "what": "A businessman born in New York in 1913 who ran his father's cosmetics business in England, maker of the Gala, Miners, Mary Quant and Outdoor Girl brands; died 1982.",
+  "money": "His fortune from the cosmetics business of his father Myram Picker, based in Surbiton.",
+  "arts": "In 1977 he set up the Stanley Picker Trust to support the education and careers of young arts practitioners.",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://www.stanleypickergallery.org/?p=62",
+   "https://www.gracesguide.co.uk/Myram_Picker"
+  ],
+  "batch": "fp43"
+ },
  "engiehaspartnered": {
   "name": "ENGIE SA",
   "short": "ENGIE",
@@ -8815,6 +9121,19 @@
   ],
   "batch": "fp11"
  },
+ "ernstwagner": {
+  "name": "Ernst Wagner",
+  "kind": "person",
+  "what": "He owned the Modulightor lighting company in New York, founded by the architect Paul Rudolph in 1976, and founded the Paul Rudolph Institute; he died in December 2024.",
+  "money": "The Modulightor company, which makes modular light fixtures to Rudolph's designs in the Modulightor Building in New York.",
+  "arts": "After his death the Paul Rudolph Institute for Modern Architecture also received the Modulightor company, announced on 17 January 2025.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.paulrudolph.institute/news/modulightor-is-gifted-to-the-paul-rudolph-institute"
+  ],
+  "batch": "fp43"
+ },
  "erste": {
   "name": "DIE ERSTE österreichische Spar-Casse Privatstiftung",
   "short": "ERSTE Foundation",
@@ -8831,6 +9150,19 @@
    "https://www.erstestiftung.org/en/"
   ],
   "batch": "fp4"
+ },
+ "erwinbronerswidow": {
+  "name": "Gisela Broner",
+  "kind": "person",
+  "what": "The widow of the German painter and architect Erwin Broner, who died in 1971; the couple settled in Ibiza in 1959, and she died in June 2005 aged 93.",
+  "arts": "By her will she left two more houses in sa Penya to the Ajuntament d'Eivissa and Erwin Broner's architectural studies, models and photographs to the architects' college.",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://www.periodicodeibiza.es/noticias/cultura/2005/08/19/586717/gisela-broner-reparte-bienes-entre-dos-instituciones-cati-verdera-maria-boca.html",
+   "https://www.periodicodeibiza.es/noticias/cultura/2008/10/19/408147/via-libre-para-fundacion-broner.html"
+  ],
+  "batch": "fp43"
  },
  "eskerasmcneofficiel": {
   "name": "Esker",
@@ -8881,6 +9213,19 @@
   ],
   "batch": "fp11"
  },
+ "estateofdavidrockefeller": {
+  "name": "Estate of David Rockefeller",
+  "kind": "priv",
+  "what": "The estate of David Rockefeller, who died in 2017 aged 101, former chairman and chief executive of Chase Manhattan and grandson of Standard Oil co-founder John D. Rockefeller.",
+  "money": "His fortune, first held mainly through family trusts in Standard Oil successor companies, plus real estate.",
+  "arts": "His will directs gifts from his estate to non-profits including Harvard, the Museum of Modern Art and Rockefeller University; his art collection was auctioned in spring 2018 for them.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/David_Rockefeller"
+  ],
+  "batch": "fp43"
+ },
  "estoniangovernment|Estonia": {
   "name": "Vabariigi Valitsus",
   "short": "Government of Estonia",
@@ -8930,6 +9275,53 @@
    "https://en.wikipedia.org/wiki/S.A._Damm"
   ],
   "batch": "fp5"
+ },
+ "estudiobruguera": {
+  "name": "Estudio Bruguera",
+  "kind": "corp",
+  "what": "The studio of the Cuban artist Tania Bruguera, who founded INSTAR in Havana in 2015 and works as head of media and performance at Harvard University.",
+  "arts": "In 2024 it also paid INSTAR's Adobe, Zoom, Mailchimp and web hosting costs.",
+  "site": "https://taniabruguera.com",
+  "status": "done",
+  "sources": [
+   "https://instar.org/pag/instituto/PDF/anuario%20pdf%20web%202024%20finanzas%20ok.pdf",
+   "https://taniabruguera.com/contact/",
+   "https://en.wikipedia.org/wiki/Tania_Bruguera"
+  ],
+  "batch": "fp43"
+ },
+ "esun": {
+  "name": "玉山文教基金會",
+  "short": "E.SUN Foundation",
+  "kind": "found",
+  "what": "The cultural and educational foundation of E.SUN Bank, the Taiwanese bank founded in 1992 by Yung-Jen Huang and headquartered in Taipei.",
+  "money": "E.SUN Bank and its parent E.SUN Financial Holding; the bank's profit after tax was NT$16.465 billion in 2020.",
+  "arts": "It runs the E.SUN Golden Seed arts education programme with the Weiwuying arts centre and won the 18th Wenxin Award given by the Ministry of Culture.",
+  "city": "Taipei",
+  "country": "Taiwan",
+  "status": "done",
+  "sources": [
+   "https://money.udn.com/money/story/5613/9887607",
+   "https://en.wikipedia.org/wiki/E.SUN_Commercial_Bank"
+  ],
+  "batch": "fp43"
+ },
+ "euartpowerbelarusproject|Poland": {
+  "name": "ArtPower Belarus",
+  "kind": "found",
+  "what": "A grant programme for Belarusian culture, run by the Belarusian Council for Culture with the Danish Cultural Institute and paid for by the EU; this edition runs 2025 to 2027.",
+  "money": "European Union funds; the partners' launch release put the EU's support for the project at EUR 2 million.",
+  "site": "https://byculture.org",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Aru tn 21-8, 10318 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://byculture.org/artpower_belarus/",
+   "https://by.byculture.org/en/press_release.html",
+   "https://byculture.org/en/contacts/"
+  ],
+  "batch": "fp43"
  },
  "eucalyptus": {
   "name": "Eucalyptus Foundation",
@@ -8989,6 +9381,20 @@
    "https://projects.propublica.org/nonprofits/organizations/237237919"
   ],
   "batch": "fp11"
+ },
+ "eugeniataubmanaftertheirlead": {
+  "name": "Eugenia Taubman",
+  "short": "Jenny Taubman",
+  "kind": "person",
+  "what": "The wife of Nicholas F. Taubman, president and CEO of Advance Auto Parts from 1969 to 2005 and US ambassador to Romania from 2005 to 2008.",
+  "money": "The Taubman fortune from Advance Auto Parts, the auto parts chain founded by Nicholas Taubman's father Arthur Taubman.",
+  "arts": "She and her husband pledged money to the Art Museum of Western Virginia and funded a gallery at the Smithsonian's National Museum of American History.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Nicholas_F._Taubman"
+  ],
+  "batch": "fp43"
  },
  "europeancultural": {
   "name": "European Cultural Foundation",
@@ -9126,6 +9532,22 @@
    "https://en.wikipedia.org/wiki/MillerKnoll"
   ],
   "batch": "fp17"
+ },
+ "exorownedlingottoinvestmentmanagement": {
+  "name": "Lingotto Investment Management LLP",
+  "short": "Lingotto",
+  "kind": "corp",
+  "what": "An investment management company headquartered in London, established in May 2023, wholly owned by Exor N.V. and regulated by the Financial Conduct Authority.",
+  "money": "Fees and returns on about $10.8 billion of assets under management at 30 June 2026, including commitments.",
+  "site": "https://www.lingotto.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://exor.com/pages/lingotto",
+   "https://www.lingotto.com/who-we-are"
+  ],
+  "batch": "fp43"
  },
  "expertisefrance": {
   "name": "Expertise France",
@@ -9310,6 +9732,22 @@
   ],
   "batch": "fp11"
  },
+ "federalministryofeducationandscience|Bosnia and Herzegovina": {
+  "name": "Federalno ministarstvo obrazovanja i nauke",
+  "short": "FBiH Ministry of Education and Science",
+  "kind": "gov",
+  "what": "The education and science ministry of the government of the Federation of Bosnia and Herzegovina, one of the country's two entities; Jasna Duraković is minister.",
+  "money": "The budget of the Federation of Bosnia and Herzegovina.",
+  "site": "https://fmon.gov.ba",
+  "city": "Mostar",
+  "country": "Bosnia and Herzegovina",
+  "address": "Krpića 3A, Mostar",
+  "status": "done",
+  "sources": [
+   "https://fmon.gov.ba/"
+  ],
+  "batch": "fp43"
+ },
  "federalofficeofculture|Switzerland": {
   "name": "Bundesamt für Kultur",
   "short": "Federal Office of Culture (BAK)",
@@ -9411,6 +9849,20 @@
    "https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/327899/contact-information"
   ],
   "batch": "fp22"
+ },
+ "financeministry|China": {
+  "name": "中华人民共和国财政部",
+  "short": "Ministry of Finance of the People's Republic of China",
+  "kind": "gov",
+  "what": "A constituent department of China's State Council, set up in 1949, that administers the annual budget, fiscal policy and government expenditure.",
+  "money": "The central state budget of the People's Republic of China.",
+  "city": "Beijing",
+  "country": "China",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Finance_of_the_People%27s_Republic_of_China"
+  ],
+  "batch": "fp43"
  },
  "finlandsministryofeducation|Finland": {
   "name": "Opetus- ja kulttuuriministeriö",
@@ -9663,6 +10115,23 @@
   ],
   "batch": "fp4"
  },
+ "fondazionecostantinonivola": {
+  "name": "Fondazione Costantino Nivola",
+  "kind": "found",
+  "what": "A foundation set up in Orani in 1990 by the Sardinia Region, the Comune di Orani and the sculptor Costantino Nivola's family; it runs the Museo Nivola and park.",
+  "money": "Its assets are the museum buildings and works by Costantino Nivola.",
+  "site": "https://www.museonivola.it",
+  "city": "Orani",
+  "country": "Italy",
+  "address": "Via Gonare 2, 08026 Orani (NU)",
+  "wrong_match": "The Museo Nivola line shows the foundation running the museum on money from the Sardinia Region and the Comune di Orani, not paying for it.",
+  "status": "done",
+  "sources": [
+   "https://www.museonivola.it/fondazione/",
+   "https://www.museonivola.it/"
+  ],
+  "batch": "fp43"
+ },
  "fondazionecrfirenze": {
   "name": "Fondazione Cassa di Risparmio di Firenze",
   "short": "Fondazione CR Firenze",
@@ -9823,6 +10292,18 @@
   ],
   "batch": "fp12"
  },
+ "fosterfamily": {
+  "name": "Foster Family Foundation",
+  "kind": "found",
+  "what": "A family foundation that Interlochen Center for the Arts credits for its Foster Family Costume and Set Production Fund; several unrelated US private foundations carry this name.",
+  "country": "United States",
+  "status": "thin",
+  "sources": [
+   "https://online.flippingbook.com/view/486516587/14-15/",
+   "https://projects.propublica.org/nonprofits/search?q=%22Foster+Family+Foundation%22"
+  ],
+  "batch": "fp43"
+ },
  "foundingsponsoreczacba": {
   "name": "Eczacıbaşı Holding A.Ş.",
   "short": "Eczacıbaşı Group",
@@ -9928,6 +10409,25 @@
    "https://en.wikipedia.org/wiki/Helen_Frankenthaler"
   ],
   "batch": "fp1"
+ },
+ "frderkreisofgalleryat": {
+  "name": "Förderkreis der Leipziger Galerie für Zeitgenössische Kunst e.V.",
+  "short": "Förderkreis der GfZK",
+  "kind": "found",
+  "what": "A registered association founded in Leipzig in November 1990 by the art historian Klaus Werner and Arend Oetker, with the backing of the BDI's Kulturkreis der deutschen Wirtschaft.",
+  "money": "Its members.",
+  "arts": "Its purchases have added to the gallery's own collection.",
+  "site": "https://gfzk.de",
+  "city": "Leipzig",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://gfzk.de/geschichte/",
+   "https://de.wikipedia.org/wiki/Galerie_f%C3%BCr_Zeitgen%C3%B6ssische_Kunst",
+   "https://gfzk.de/gfzk/foerderkreise/",
+   "https://gfzk.de/impressum/"
+  ],
+  "batch": "fp43"
  },
  "frderstiftungderhamburgerkunsthalle": {
   "name": "Förderstiftung Hamburger Kunsthalle",
@@ -10036,6 +10536,20 @@
   ],
   "batch": "fp11"
  },
+ "frenchgovernment|Namibia": {
+  "name": "Gouvernement de la République française",
+  "short": "Government of France",
+  "kind": "gov",
+  "what": "The executive of the French Republic: the prime minister and the ministers, all appointed by the president and responsible to the National Assembly.",
+  "money": "The French state budget.",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_France"
+  ],
+  "batch": "fp43"
+ },
  "frenchministryofculturesubventions|France": {
   "name": "Ministère de la Culture",
   "short": "French Ministry of Culture",
@@ -10052,6 +10566,22 @@
    "https://en.wikipedia.org/wiki/Ministry_of_Culture_(France)"
   ],
   "batch": "fp17"
+ },
+ "frenchministryofhighereducationandresearch|France": {
+  "name": "Ministère de l'Enseignement supérieur, de la Recherche et de l'Espace",
+  "short": "French Ministry of Higher Education and Research",
+  "kind": "gov",
+  "what": "The French government ministry for universities and research, first created as a full ministry in 1993; Philippe Baptiste has led it since 12 October 2025.",
+  "money": "The French state budget.",
+  "site": "https://www.enseignementsup-recherche.gouv.fr",
+  "city": "Paris",
+  "country": "France",
+  "address": "21 rue Descartes, Paris",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Minist%C3%A8re_de_l%27Enseignement_sup%C3%A9rieur_et_de_la_Recherche_(France)"
+  ],
+  "batch": "fp43"
  },
  "frenchstate|France": {
   "name": "Ministère de la Culture",
@@ -10070,6 +10600,57 @@
   ],
   "batch": "fp3",
   "renamed": "Same body as the atlas entry ministredelaculture; the DRAC named in two sentences are the ministry's regional offices."
+ },
+ "freunde": {
+  "name": "PIN. Freunde der Pinakothek der Moderne e.V.",
+  "short": "PIN.",
+  "kind": "found",
+  "what": "A Munich friends association founded in 1965 as the Galerie-Verein; it supports the Pinakothek der Moderne collections and, since 2012, Die Neue Sammlung.",
+  "money": "Its more than 850 members and the annual PIN. Party benefit auction.",
+  "arts": "It has bought over 1,200 artworks for the Pinakothek der Moderne collections, among them Francis Bacon's Crucifixion.",
+  "site": "https://www.pin-freunde.de",
+  "city": "Munich",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://kunstareal.de/en/associations-of-friends",
+   "https://www.pinakothek.de/en/the-museums/friends-and-partners"
+  ],
+  "batch": "fp43"
+ },
+ "freundeskreiscoverwhatbasefundingdoesnot": {
+  "name": "Gesellschaft der Freunde des Gewandhauses zu Leipzig e.V.",
+  "short": "Freunde des Gewandhauses",
+  "kind": "found",
+  "what": "A registered association founded in Leipzig in 1993 by 17 members to support the music of the Gewandhaus; Prof. Hanns-Martin Schreiber chairs its board.",
+  "money": "Its members' contributions and donations.",
+  "arts": "It buys instruments for the Gewandhausorchester and supports composition commissions and cultural outreach.",
+  "site": "https://www.freunde-gewandhaus.de",
+  "city": "Leipzig",
+  "country": "Germany",
+  "address": "Augustusplatz 8, 04109 Leipzig",
+  "status": "done",
+  "sources": [
+   "https://www.freunde-gewandhaus.de/impressum/",
+   "https://www.freunde-gewandhaus.de/"
+  ],
+  "batch": "fp43"
+ },
+ "friendsof78derngate": {
+  "name": "Friends of 78 Derngate",
+  "kind": "found",
+  "what": "A friends group set up in 1997 to raise money and awareness for the 78 Derngate Trust, keeper of the Northampton house Charles Rennie Mackintosh remodelled in 1916 and 1917.",
+  "money": "Members' annual subscriptions of £18 to £30, or £300 for life membership.",
+  "site": "https://www.78derngate.org.uk",
+  "city": "Northampton",
+  "country": "United Kingdom",
+  "address": "82 Derngate, Northampton NN1 1UH",
+  "status": "done",
+  "sources": [
+   "https://www.78derngate.org.uk/join-us",
+   "https://en.wikipedia.org/wiki/78_Derngate"
+  ],
+  "batch": "fp43"
  },
  "friendsofbdt": {
   "name": "Фонд поддержки Большого драматического театра имени Г. А. Товстоногова «Друзья БДТ»",
@@ -10105,6 +10686,39 @@
   ],
   "batch": "fp16"
  },
+ "friendsofcultuurhuis": {
+  "name": "Stichting Vrienden Cultuurhuis Bergeijk",
+  "kind": "found",
+  "what": "A foundation set up in Bergeijk on 4 December 1995 to secure the future of the Eicha Museum, which keeps the archaeological finds of the Kempen region in the Cultuurhuis.",
+  "money": "Its friends' annual contributions of EUR 50 each.",
+  "arts": "Its board also manages the Wil van Ham Boekenfonds, which pays for publications on Bergeijk's cultural history.",
+  "site": "https://vriendencultuurhuisbergeijk.nl",
+  "city": "Bergeijk",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://vriendencultuurhuisbergeijk.nl/",
+   "https://vriendencultuurhuisbergeijk.nl/vrijwilligers-en-donateurs/"
+  ],
+  "batch": "fp43"
+ },
+ "friendsoffolkartraisemoney": {
+  "name": "Friends of Folk Art",
+  "short": "FOFA",
+  "kind": "found",
+  "what": "A membership group of the Museum of New Mexico Foundation in Santa Fe that supports the Museum of International Folk Art.",
+  "money": "Members' dues of $100 per person or $150 for two, on top of Foundation membership, and the annual Folk Art Flea.",
+  "arts": "Over the Flea's first 13 years it raised over $1,000,000 for the museum's exhibitions, education, acquisitions and other needs.",
+  "site": "https://www.museumfoundation.org/friends/friends-of-folk-art/",
+  "city": "Santa Fe",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.museumfoundation.org/friends/friends-of-folk-art/",
+   "https://www.museumfoundation.org/friends-of-folk-art-present-the-14th-annual-folk-art-flea/"
+  ],
+  "batch": "fp43"
+ },
  "friendsofweissenhofestate": {
   "name": "Freunde der Weissenhofsiedlung e.V.",
   "short": "Friends of the Weissenhof Estate",
@@ -10123,6 +10737,22 @@
    "https://weissenhofmuseum.de/en/datenschutzerklaerung/"
   ],
   "batch": "fp12"
+ },
+ "frist": {
+  "name": "The Frist Foundation",
+  "kind": "found",
+  "what": "A Nashville private foundation set up in 1982 by HCA Healthcare, later made independent and renamed for its founding directors, Dr. Thomas F. Frist Jr. and Sr.",
+  "money": "Its endowment: total assets of $195,569,602 at the end of 2024.",
+  "arts": "It helped found the Frist Art Museum; its grants support Nashville agencies working on housing, food insecurity and childcare.",
+  "site": "https://www.fristfoundation.org",
+  "city": "Nashville",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.fristfoundation.org/about",
+   "https://projects.propublica.org/nonprofits/organizations/621134070"
+  ],
+  "batch": "fp43"
  },
  "fristartmuseum": {
   "name": "Frist Art Museum Foundation",
