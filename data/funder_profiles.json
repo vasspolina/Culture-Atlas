@@ -15,6 +15,23 @@
   ],
   "batch": "fp2"
  },
+ "aalborgmunicipality|Denmark": {
+  "name": "Aalborg Kommune",
+  "short": "Aalborg Municipality",
+  "kind": "gov",
+  "what": "A Danish municipality in the North Denmark Region, formed in the 2007 reform when Hals, Nibe and Sejlflod merged with the old Aalborg Kommune; 226,033 residents in 2026.",
+  "money": "The municipal budget of Aalborg Kommune.",
+  "site": "https://www.aalborg.dk",
+  "city": "Aalborg",
+  "country": "Denmark",
+  "address": "Boulevarden 13, 9000 Aalborg",
+  "status": "done",
+  "sources": [
+   "https://da.wikipedia.org/wiki/Aalborg_Kommune",
+   "https://www.aalborg.dk/"
+  ],
+  "batch": "fp36"
+ },
  "aatoserkko": {
   "name": "Jane and Aatos Erkko Foundation",
   "kind": "found",
@@ -104,6 +121,21 @@
    "https://opencharities.uk/ew/1036733/files/2023-03-31-accounts.md"
   ],
   "batch": "fp7"
+ },
+ "adanigreenenergy": {
+  "name": "Adani Green Energy Limited",
+  "short": "Adani Green Energy",
+  "kind": "corp",
+  "what": "An Indian renewable energy company in Ahmedabad, incorporated in 2016 by Gautam Adani; the Adani Group holds 55 percent and TotalEnergies 20 percent.",
+  "money": "Sales of power from its solar and wind plants: INR 10,460 crore revenue in 2024.",
+  "site": "https://www.adanigreenenergy.com",
+  "city": "Ahmedabad",
+  "country": "India",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Adani_Green_Energy"
+  ],
+  "batch": "fp32"
  },
  "adjarastamba": {
   "name": "Adjara Group",
@@ -492,6 +524,51 @@
   ],
   "batch": "fp29"
  },
+ "algerianstate|Algeria": {
+  "name": "Ministère de la Culture et des Arts",
+  "short": "Algerian Ministry of Culture and Arts",
+  "kind": "gov",
+  "what": "Algeria’s ministry of culture and arts, whose functions are set by executive decree 05-79 of 2005; Malika Bendouda has been minister since September 2025.",
+  "money": "The Algerian state budget.",
+  "site": "https://www.m-culture.gov.dz",
+  "city": "Algiers",
+  "country": "Algeria",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Ministère_de_la_Culture_et_des_Arts_(Algérie)",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Fine_Arts_of_Algiers",
+   "https://web.archive.org/web/20240831092606/https://m-culture.gov.dz/images/pdf/annuaire_culture_2010_fr.pdf"
+  ],
+  "batch": "fp36"
+ },
+ "aliaksandrvasilievi": {
+  "name": "Aliaksandr Vasilievič",
+  "short": "Aliaksandr Vasilevich",
+  "kind": "person",
+  "what": "A Belarusian businessman and publisher born in 1974, co-founder of the media outlets kyky.org and The Village Belarus, owner of the Vondel/Hepta agency and a former political prisoner.",
+  "money": "His advertising agency Vondel/Hepta and his media businesses.",
+  "country": "Belarus",
+  "wrong_match": "The Ў Gallery line names him as its co-owner, who ran the gallery as a business, not as a body that funded it.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Aliaksandr_Vasilievi%C4%8D"
+  ],
+  "batch": "fp33"
+ },
+ "alineforieldestezet": {
+  "name": "Aline Foriel-Destezet",
+  "kind": "person",
+  "what": "An arts patron, widow of Philippe Foriel-Destezet, who founded the temp agency Ecco in 1964, merged it with Adia into Adecco in 1996 and died in June 2021.",
+  "money": "The fortune of her late husband, who owned 18% of the staffing group Adecco.",
+  "arts": "In 2021 she and a founders' committee endowed the Fondation des Amis de l'Opéra Royal de Versailles with EUR 850,000, and she became vice-president of its board.",
+  "status": "done",
+  "sources": [
+   "https://www.hec.edu/en/news-room/philippe-foriel-deste-zet-committed-visionary-and-entrepreneur",
+   "https://www.culture.gouv.fr/Thematiques/mecenat/ARTICLES-A-LA-UNE/Une-fondation-pour-l-Opera-Royal-de-Versailles",
+   "https://en.wikipedia.org/wiki/Philippe_Foriel-Destezet"
+  ],
+  "batch": "fp35"
+ },
  "aliph": {
   "name": "ALIPH Foundation",
   "short": "International Alliance for the Protection of Heritage (ALIPH)",
@@ -537,6 +614,21 @@
    "https://en.wikipedia.org/wiki/Allagash_Brewing_Company"
   ],
   "batch": "fp6"
+ },
+ "allegrini": {
+  "name": "Allegrini",
+  "kind": "corp",
+  "what": "A family wine company in Fumane, Valpolicella, founded by Giovanni Allegrini in 1854; since December 2023 the family's seventh generation runs it.",
+  "money": "Sales of its wines, among them Amarone, Valpolicella Classico, Lugana and Soave.",
+  "site": "https://allegrini.it",
+  "city": "Fumane",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/allegrini/",
+   "https://allegrini.it/en/allegrini-family-and-identity/"
+  ],
+  "batch": "fp32"
  },
  "alliances": {
   "name": "Fondation Alliances",
@@ -894,6 +986,24 @@
   ],
   "batch": "fp31"
  },
+ "aomoriprefecture|Japan": {
+  "name": "青森県",
+  "short": "Aomori Prefecture",
+  "kind": "gov",
+  "what": "The prefectural government of Aomori, the northernmost prefecture on Honshu, with 1,141,747 inhabitants on 1 January 2026 and its seat in Aomori city.",
+  "money": "The prefectural budget: a JPY 709.5 billion general account for fiscal 2025, with prefectural taxes making up 22.0% of revenue.",
+  "site": "https://www.pref.aomori.lg.jp",
+  "city": "Aomori",
+  "country": "Japan",
+  "address": "1-1-1 Nagashima, Aomori 030-8570",
+  "status": "done",
+  "sources": [
+   "https://www.pref.aomori.lg.jp/",
+   "https://www.pref.aomori.lg.jp/soshiki/zaimu/zaisei/files/R7tousyo_gaiyou.pdf",
+   "https://en.wikipedia.org/wiki/Aomori_Prefecture"
+  ],
+  "batch": "fp35"
+ },
  "aomoritelevision": {
   "name": "Aomori Television Broadcasting Co., Ltd.",
   "short": "ATV",
@@ -1020,6 +1130,22 @@
   ],
   "batch": "fp7"
  },
+ "argentinenationalgovernment|Argentina": {
+  "name": "Poder Ejecutivo Nacional",
+  "short": "Argentine national government",
+  "kind": "gov",
+  "what": "The executive branch of Argentina's federal state, headed by the president, Javier Milei since 10 December 2023, with its seat in Buenos Aires.",
+  "money": "The national budget of Argentina; the executive branch holds the largest budget of any part of the Argentine state.",
+  "site": "https://www.argentina.gob.ar",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Poder_Ejecutivo_Nacional_(Argentina)",
+   "https://es.wikipedia.org/wiki/Gobierno_de_Argentina"
+  ],
+  "batch": "fp35"
+ },
  "argosy": {
   "name": "Argosy Foundation",
   "kind": "found",
@@ -1036,6 +1162,23 @@
    "https://en.wikipedia.org/wiki/John_Abele"
   ],
   "batch": "fp30"
+ },
+ "arizonacommissiononarts|USA": {
+  "name": "Arizona Commission on the Arts",
+  "kind": "gov",
+  "what": "The arts agency of the State of Arizona, in Phoenix, established in 1967 as the Arizona Commission on the Arts and Humanities.",
+  "money": "The Arts Trust Fund, USD 15 from each Corporation Commission filing fee, plus a one-time USD 2 million appropriation for fiscal 2026 and NEA funds.",
+  "arts": "It budgeted over USD 3 million for grants in fiscal 2026, 61.4% of its budget.",
+  "site": "https://azarts.gov",
+  "city": "Phoenix",
+  "country": "United States",
+  "address": "417 West Roosevelt Street, Phoenix, Arizona 85003-1326",
+  "status": "done",
+  "sources": [
+   "https://azarts.gov/nextAZ/first-50/",
+   "https://azarts.gov/about-us/who-we-are/budget"
+  ],
+  "batch": "fp35"
  },
  "arnoldblochleibler": {
   "name": "Arnold Bloch Leibler",
@@ -1636,6 +1779,24 @@
   ],
   "batch": "fp7"
  },
+ "autonomousregionoftrentinoaltoadigesdtirol|Italy": {
+  "name": "Regione autonoma Trentino-Alto Adige/Südtirol",
+  "short": "Trentino-South Tyrol Region",
+  "kind": "gov",
+  "what": "An Italian autonomous region with a special statute since 1948, made up of the provinces of Trento and Bolzano, to which most of its powers passed after the 1972 statute.",
+  "money": "The regional budget of Trentino-Alto Adige/Südtirol.",
+  "site": "https://www.regione.taa.it",
+  "city": "Trento",
+  "country": "Italy",
+  "address": "Via Gazzoletti 2, 38122 Trento",
+  "status": "done",
+  "sources": [
+   "https://www.regione.taa.it/",
+   "https://it.wikipedia.org/wiki/Trentino-Alto_Adige",
+   "https://en.wikipedia.org/wiki/Trentino-Alto_Adige/S%C3%BCdtirol"
+  ],
+  "batch": "fp35"
+ },
  "axaforexhibitions": {
   "name": "AXA",
   "kind": "corp",
@@ -1690,6 +1851,23 @@
   ],
   "batch": "fp26"
  },
+ "babcockinternational": {
+  "name": "Babcock International Group PLC",
+  "short": "Babcock",
+  "kind": "corp",
+  "what": "A British aerospace, defence and nuclear engineering services company listed in London, with roots in the British arm of the boilermaker Babcock & Wilcox set up in 1891.",
+  "money": "Contracts with public bodies, chiefly the UK Ministry of Defence and Network Rail: revenue of GBP 5,177.7 million in the year to March 2026.",
+  "site": "https://www.babcockinternational.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "33 Wigmore Street, London W1U 1QX",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Babcock_International",
+   "https://find-and-update.company-information.service.gov.uk/company/02342138"
+  ],
+  "batch": "fp33"
+ },
  "backstagetrust": {
   "name": "Backstage Trust",
   "kind": "found",
@@ -1705,6 +1883,21 @@
    "https://opencharities.uk/ew/1145887/files/2024-04-05-accounts.md"
   ],
   "batch": "fp30"
+ },
+ "bahiastategovernment|Brazil": {
+  "name": "Governo do Estado da Bahia",
+  "short": "Bahia state government",
+  "kind": "gov",
+  "what": "The executive of the Brazilian state of Bahia, headed by Governor Jerônimo Rodrigues, with its seat at the Centro Administrativo da Bahia in Salvador.",
+  "money": "The state budget of Bahia.",
+  "site": "https://www.ba.gov.br",
+  "city": "Salvador",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Governo_da_Bahia"
+  ],
+  "batch": "fp35"
  },
  "bahr": {
   "name": "Advokatfirmaet BAHR AS",
@@ -1799,6 +1992,21 @@
    "https://en.wikipedia.org/wiki/Banco_Hipotecario"
   ],
   "batch": "fp7"
+ },
+ "bangkokbank": {
+  "name": "Bangkok Bank Public Company Limited",
+  "short": "Bangkok Bank",
+  "kind": "corp",
+  "what": "A Thai commercial bank founded in Bangkok in 1944 by Chin Sophonpanich, whose grandson Chartsiri Sophonpanich is its president.",
+  "money": "Banking profits: revenue of THB 154.26 billion and net income of THB 35.32 billion in 2018.",
+  "site": "https://www.bangkokbank.com",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bangkok_Bank"
+  ],
+  "batch": "fp34"
  },
  "bankaekonomike": {
   "name": "Banka Ekonomike",
@@ -2055,6 +2263,22 @@
   ],
   "batch": "fp8"
  },
+ "bbbank": {
+  "name": "BBBank eG",
+  "short": "BBBank",
+  "kind": "corp",
+  "what": "A German cooperative bank founded in Karlsruhe in 1921 as the Badische Beamten-Genossenschaftsbank, since 2021 the largest cooperative retail bank in Germany.",
+  "money": "Retail banking for its 492,814 member owners: a balance sheet total of EUR 22.3 billion in 2025.",
+  "site": "https://www.bbbank.de",
+  "city": "Karlsruhe",
+  "country": "Germany",
+  "address": "Herrenstraße 2-10, 76133 Karlsruhe",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/BBBank"
+  ],
+  "batch": "fp34"
+ },
  "bcartscouncil|Canada": {
   "name": "British Columbia Arts Council",
   "short": "BC Arts Council",
@@ -2072,6 +2296,21 @@
    "https://en.wikipedia.org/wiki/BC_Arts_Council"
   ],
   "batch": "fp1"
+ },
+ "beamsuntory": {
+  "name": "Suntory Global Spirits Inc.",
+  "short": "Beam Suntory",
+  "kind": "corp",
+  "what": "A US spirits company based in New York, formerly Beam Suntory, and a subsidiary of the Japanese drinks group Suntory Holdings since Suntory bought Beam Inc. in 2014.",
+  "money": "Sales of spirits such as Jim Beam and Maker's Mark bourbon and the Japanese whiskies Yamazaki and Hibiki.",
+  "site": "https://www.suntoryglobalspirits.com",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Suntory_Global_Spirits"
+  ],
+  "batch": "fp33"
  },
  "beauftragtefrkulturundmedien": {
   "name": "Der Beauftragte der Bundesregierung für Kultur und Medien",
@@ -2107,6 +2346,21 @@
    "https://en.wikipedia.org/wiki/Otto_Beisheim"
   ],
   "batch": "fp19"
+ },
+ "belarussministryofculture|Belarus": {
+  "name": "Министерство культуры Республики Беларусь",
+  "short": "Belarus Ministry of Culture",
+  "kind": "gov",
+  "what": "The Belarusian state body for culture policy, set up in 1991 and answerable to the Council of Ministers; Marat Markov has been minister since 9 April 2026.",
+  "money": "The state budget of Belarus.",
+  "site": "https://kultura.gov.by",
+  "city": "Minsk",
+  "country": "Belarus",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Министерство_культуры_Республики_Беларусь"
+  ],
+  "batch": "fp36"
  },
  "belfastcitycouncil|UK": {
   "name": "Belfast City Council",
@@ -2249,6 +2503,24 @@
    "https://cdn.jamstockex.com/pd/2026/04/Berger-Paints-Jamaica-BRG-Annual-Report-2025.pdf"
   ],
   "batch": "fp8"
+ },
+ "bergesenstiftelsen": {
+  "name": "Bergesenstiftelsen",
+  "short": "Bergesen Foundation",
+  "kind": "found",
+  "what": "A Norwegian charitable foundation in Oslo, named after the shipowner Sigval Bergesen d.y. and his wife Nanki and set up by his deed of gift of 12 November 1975.",
+  "money": "An endowment from the founding gift, with managed capital of about NOK 1.185 billion in 2021.",
+  "arts": "It gives priority to cultural and humanitarian projects in Norway and awards the yearly Bergesen Prize, worth NOK 2 million in 2026.",
+  "site": "https://bergesenstiftelsen.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "address": "Sannergata 2, 0557 Oslo",
+  "status": "done",
+  "sources": [
+   "https://bergesenstiftelsen.no/",
+   "https://no.wikipedia.org/wiki/Bergesenstiftelsen"
+  ],
+  "batch": "fp33"
  },
  "berlinerfestspiele": {
   "name": "Berliner Festspiele",
@@ -2579,6 +2851,23 @@
   ],
   "batch": "fp16"
  },
+ "boeing": {
+  "name": "The Boeing Company",
+  "short": "Boeing",
+  "kind": "corp",
+  "what": "A US aerospace manufacturer founded in Seattle in 1916 by William E. Boeing, making airliners, military aircraft, rockets, satellites and missiles, with headquarters in Arlington, Virginia.",
+  "money": "Sales of commercial airplanes and of defence, space and security products and services: revenue of USD 89.5 billion in 2025.",
+  "site": "https://www.boeing.com",
+  "city": "Arlington",
+  "country": "United States",
+  "address": "929 Long Bridge Drive, Arlington, VA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Boeing",
+   "https://data.sec.gov/submissions/CIK0000012927.json"
+  ],
+  "batch": "fp33"
+ },
  "boghossian": {
   "name": "Boghossian Foundation",
   "kind": "found",
@@ -2665,6 +2954,40 @@
    "https://en.wikipedia.org/wiki/Terry_Bramall"
   ],
   "batch": "fp27"
+ },
+ "brazilianforeignministry|Brazil": {
+  "name": "Ministério das Relações Exteriores",
+  "short": "Itamaraty",
+  "kind": "gov",
+  "what": "Brazil's foreign ministry, called Itamaraty after the palace that houses it in Brasília, which advises the president on foreign relations; Mauro Vieira has been minister since January 2023.",
+  "money": "The federal budget of Brazil.",
+  "arts": "Its remit includes the cultural side of Brazil's foreign relations.",
+  "site": "https://www.gov.br/mre",
+  "city": "Brasília",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Foreign_Affairs_(Brazil)",
+   "https://pt.wikipedia.org/wiki/Minist%C3%A9rio_das_Rela%C3%A7%C3%B5es_Exteriores_(Brasil)"
+  ],
+  "batch": "fp35"
+ },
+ "brazilsministryofculture|Brazil": {
+  "name": "Ministério da Cultura",
+  "short": "MinC",
+  "kind": "gov",
+  "what": "Brazil's federal culture ministry, created in March 1985 under President José Sarney, abolished three times, most recently in 2019, and re-created on 1 January 2023 under Margareth Menezes.",
+  "money": "The federal budget of Brazil.",
+  "arts": "Its main instrument is the Lei Rouanet of 1991, which lets companies and individuals sponsor culture against up to 4% and 6% of their income tax.",
+  "site": "https://www.gov.br/cultura",
+  "city": "Brasília",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Minist%C3%A9rio_da_Cultura_(Brasil)",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Brazil)"
+  ],
+  "batch": "fp35"
  },
  "brdgroupesocitgnrale": {
   "name": "BRD - Groupe Société Générale S.A.",
@@ -2799,6 +3122,23 @@
    "https://en.wikipedia.org/wiki/George_R._Brown"
   ],
   "batch": "fp5"
+ },
+ "brownforman": {
+  "name": "Brown-Forman Corporation",
+  "short": "Brown-Forman",
+  "kind": "corp",
+  "what": "A family-controlled, publicly traded US spirits and wine company, maker of Jack Daniel's and Woodford Reserve, founded in Louisville, Kentucky, in 1870 by George Garvin Brown.",
+  "money": "Sales of its spirits and wines: revenue of USD 5.37 billion and net income of USD 783 million in the year to April 2025.",
+  "site": "https://www.brown-forman.com",
+  "city": "Louisville",
+  "country": "United States",
+  "address": "850 Dixie Highway, Louisville, KY 40210",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Brown-Forman",
+   "https://data.sec.gov/submissions/CIK0000014693.json"
+  ],
+  "batch": "fp33"
  },
  "brusselscapital": {
   "name": "Brussels-Capital Region",
@@ -3101,6 +3441,24 @@
   ],
   "batch": "fp5"
  },
+ "canica": {
+  "name": "Canica AS",
+  "short": "Canica",
+  "kind": "corp",
+  "what": "The Hagen family's investment company in Oslo, set up in 1985 by Stein Erik Hagen, who died in 2026; Caroline Marie Hagen Kjos has controlled it since May 2026.",
+  "money": "Returns on its financial, industrial and real estate investments, including 196,351,000 shares in Orkla, of which it is the largest shareholder.",
+  "arts": "It owns a collection of mainly Nordic 19th and 20th century art, including Asger Jorn and Edvard Munch, and lends works to exhibitions.",
+  "site": "https://canica.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "address": "Tjuvholmen Allé 3, 0252 Oslo",
+  "status": "done",
+  "sources": [
+   "https://canica.no/our-culture-and-history",
+   "https://www.orkla.com/media/press-releases/2026/orkla-asa-continued-ownership-by-the-hagen-family/"
+  ],
+  "batch": "fp32"
+ },
  "cantonofgeneva": {
   "name": "République et canton de Genève",
   "short": "Canton of Geneva",
@@ -3173,6 +3531,24 @@
   ],
   "batch": "fp26"
  },
+ "carlowcountycouncil|Ireland": {
+  "name": "Carlow County Council",
+  "short": "Comhairle Chontae Cheatharlach",
+  "kind": "gov",
+  "what": "The local authority of County Carlow, Ireland, governed by the Local Government Act 2001, with 18 elected members and a chief executive, Coilín O'Reilly.",
+  "money": "Its draft 2026 budget set EUR 83.3 million of spending; the Department of Housing allocated it EUR 9.214 million of local property tax.",
+  "site": "https://www.carlow.ie",
+  "city": "Carlow",
+  "country": "Ireland",
+  "address": "Athy Road, Carlow, R93 E7R7",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Carlow_County_Council",
+   "https://www.carlow.ie/",
+   "https://www.carlow-nationalist.ie/news/housing-takes-up-largest-chunk-of-draft-2026-budget_arid-80705.html"
+  ],
+  "batch": "fp35"
+ },
  "carlowleo": {
   "name": "Local Enterprise Office Carlow",
   "short": "Carlow LEO",
@@ -3190,6 +3566,21 @@
    "https://en.wikipedia.org/wiki/Local_Enterprise_Office"
   ],
   "batch": "fp30"
+ },
+ "carolynclarkpowers": {
+  "name": "Carolyn Clark Powers",
+  "kind": "person",
+  "what": "A Los Angeles philanthropist raised in Tulsa, Oklahoma, who joined the MOCA board in 2009, was its president for seven years and now chairs it.",
+  "arts": "She co-chaired the Los Angeles Philharmonic's opening night gala from 2007 to 2012 and co-chairs the Dockery Farms Foundation in Mississippi.",
+  "site": "https://www.carolynclarkpowers.com",
+  "city": "Los Angeles",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.carolynclarkpowers.com/about",
+   "https://en.wikipedia.org/wiki/Carolyn_Clark_Powers"
+  ],
+  "batch": "fp33"
  },
  "carter": {
   "name": "Amon G. Carter Foundation",
@@ -3325,6 +3716,22 @@
    "https://www.ccpar.rio/institucional/quem-somos/"
   ],
   "batch": "fp31"
+ },
+ "cemex": {
+  "name": "CEMEX, S.A.B. de C.V.",
+  "short": "CEMEX",
+  "kind": "corp",
+  "what": "A Mexican building materials company that began in 1920 as Cementos Portland Monterrey, seated in San Pedro Garza García, Nuevo León.",
+  "money": "Sales of cement, ready-mix concrete and aggregates: about USD 13 billion revenue in 2020.",
+  "arts": "It gives the Premio CEMEX, an annual award for works in sustainability, accessibility, construction and architecture.",
+  "site": "https://www.cemex.com",
+  "city": "San Pedro Garza García",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cemex"
+  ],
+  "batch": "fp32"
  },
  "centurybank": {
   "name": "Century Bank",
@@ -3603,6 +4010,23 @@
   ],
   "batch": "fp5"
  },
+ "churchilldownsincorporated": {
+  "name": "Churchill Downs Incorporated",
+  "short": "CDI",
+  "kind": "corp",
+  "what": "A US racing, casino and online wagering company based in Louisville, Kentucky, which grew from the Churchill Downs racetrack, opened in 1875 as home of the Kentucky Derby.",
+  "money": "Its racetracks, casinos and the online wagering service TwinSpires: revenue of USD 2.93 billion in 2025.",
+  "site": "https://www.churchilldownsincorporated.com",
+  "city": "Louisville",
+  "country": "United States",
+  "address": "600 N. Hurstbourne Parkway, Suite 400, Louisville, KY 40222",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Churchill_Downs_Incorporated",
+   "https://data.sec.gov/submissions/CIK0000020212.json"
+  ],
+  "batch": "fp33"
+ },
  "cincinnatimuseumassociation": {
   "name": "Cincinnati Museum Association",
   "kind": "found",
@@ -3827,6 +4251,23 @@
   ],
   "batch": "fp9"
  },
+ "cityofbielefeld|Germany": {
+  "name": "Stadt Bielefeld",
+  "short": "City of Bielefeld",
+  "kind": "gov",
+  "what": "The city of Bielefeld, a public-law corporation in North Rhine-Westphalia and the largest city of Ostwestfalen-Lippe, with 331,419 residents at the end of 2025.",
+  "money": "The municipal budget of the city of Bielefeld.",
+  "site": "https://www.bielefeld.de",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "address": "Niederwall 23, 33602 Bielefeld",
+  "status": "done",
+  "sources": [
+   "https://www.bielefeld.de/impressum",
+   "https://de.wikipedia.org/wiki/Bielefeld"
+  ],
+  "batch": "fp36"
+ },
  "cityofbilbao|Spain": {
   "name": "Ayuntamiento de Bilbao",
   "short": "Bilbao City Council",
@@ -3845,6 +4286,22 @@
    "https://en.wikipedia.org/wiki/Bilbao_City_Council"
   ],
   "batch": "fp25"
+ },
+ "cityofbrussels|Belgium": {
+  "name": "Ville de Bruxelles / Stad Brussel",
+  "short": "City of Brussels",
+  "kind": "gov",
+  "what": "The municipal government of the City of Brussels, capital of Belgium and the largest municipality of the Brussels-Capital Region, with 196,828 inhabitants in January 2024.",
+  "money": "The city budget: more than EUR 1.1 billion of ordinary spending in 2025, with tax revenue of EUR 455.9 million as its largest source.",
+  "site": "https://www.brussels.be",
+  "city": "Brussels",
+  "country": "Belgium",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Brussels",
+   "https://www.rtbf.be/article/la-ville-de-bruxelles-presente-un-budget-2025-rigoureux-mais-ambitieux-11562620"
+  ],
+  "batch": "fp35"
  },
  "cityofcopenhagen|Denmark": {
   "name": "Københavns Kommune",
@@ -3998,6 +4455,24 @@
    "https://en.wikipedia.org/wiki/Espoo"
   ],
   "batch": "fp9"
+ },
+ "cityofessen|Germany": {
+  "name": "Stadt Essen",
+  "short": "City of Essen",
+  "kind": "gov",
+  "what": "Essen, a city in North Rhine-Westphalia, Germany, with 573,618 residents at the end of 2025, led by Lord Mayor Thomas Kufen since 21 October 2015.",
+  "money": "The municipal budget of the city of Essen.",
+  "arts": "In 1922 the city and Essen citizens jointly bought the Folkwang collection, the founding collection of the Museum Folkwang.",
+  "site": "https://www.essen.de",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Porscheplatz 1, 45127 Essen",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Essen",
+   "https://www.museum-folkwang.de/de/ueber-uns"
+  ],
+  "batch": "fp36"
  },
  "cityoffrankfurtcultureoffice|Germany": {
   "name": "Kulturamt Frankfurt am Main",
@@ -4260,6 +4735,41 @@
   ],
   "batch": "fp27"
  },
+ "cityofmiami|USA": {
+  "name": "City of Miami",
+  "kind": "gov",
+  "what": "The city of Miami in Florida, incorporated on 28 July 1896, with a mayor and city commission and its City Hall at Dinner Key; 442,241 residents in 2020.",
+  "money": "The municipal budget of the City of Miami.",
+  "arts": "It dedicated the land and funding for Museum Park, a 30-acre waterfront site planned around the city’s art and science museums.",
+  "site": "https://www.miami.gov",
+  "city": "Miami",
+  "country": "United States",
+  "wrong_match": "PAMM's line credits the City of Miami only with the land; Miami-Dade County paid for the building, and the city's funding went to Museum Park, not the museum.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Miami",
+   "https://www.pamm.org/?p=16198",
+   "https://en.wikipedia.org/wiki/P%C3%A9rez_Art_Museum_Miami"
+  ],
+  "batch": "fp36"
+ },
+ "cityofmnchengladbach|Germany": {
+  "name": "Stadt Mönchengladbach",
+  "short": "City of Mönchengladbach",
+  "kind": "gov",
+  "what": "Mönchengladbach's city government: an independent city (kreisfreie Stadt) in North Rhine-Westphalia with 267,176 inhabitants at the end of 2025, led by Lord Mayor Felix Heinrichs.",
+  "money": "The city budget of Mönchengladbach.",
+  "site": "https://www.moenchengladbach.de",
+  "city": "Mönchengladbach",
+  "country": "Germany",
+  "address": "Rathausplatz 1, 41061 Mönchengladbach",
+  "status": "done",
+  "sources": [
+   "https://museum-abteiberg.de/impressum/",
+   "https://de.wikipedia.org/wiki/M%C3%B6nchengladbach"
+  ],
+  "batch": "fp35"
+ },
  "cityofmontbliard|France": {
   "name": "Ville de Montbéliard",
   "kind": "gov",
@@ -4346,6 +4856,23 @@
    "https://en.wikipedia.org/wiki/City_of_Perth"
   ],
   "batch": "fp9"
+ },
+ "cityofpoitiers|France": {
+  "name": "Ville de Poitiers",
+  "short": "City of Poitiers",
+  "kind": "gov",
+  "what": "Poitiers's city government; the city is the prefecture of the Vienne department in Nouvelle-Aquitaine and a university city of 90,899 inhabitants in 2025.",
+  "money": "The municipal budget of Poitiers.",
+  "site": "https://www.poitiers.fr",
+  "city": "Poitiers",
+  "country": "France",
+  "address": "Hôtel de Ville, CS 10569, 86021 Poitiers Cedex",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Poitiers",
+   "https://www.poitiers.fr/"
+  ],
+  "batch": "fp35"
  },
  "cityofreykjavk|Iceland": {
   "name": "Reykjavíkurborg",
@@ -4809,6 +5336,20 @@
   ],
   "batch": "fp31"
  },
+ "conocophillips": {
+  "name": "ConocoPhillips",
+  "kind": "corp",
+  "what": "A US oil and gas exploration and production company in Houston, formed in 2002 when Conoco Inc. and Phillips Petroleum merged.",
+  "money": "Sales of crude oil, bitumen, natural gas and LNG: USD 56.95 billion revenue in 2024; it holds 3.125 percent of Qatar's North Field East venture.",
+  "site": "https://www.conocophillips.com",
+  "city": "Houston",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/ConocoPhillips"
+  ],
+  "batch": "fp32"
+ },
  "conseildesartsdemontral": {
   "name": "Conseil des arts de Montréal",
   "kind": "gov",
@@ -5010,6 +5551,22 @@
   ],
   "batch": "fp9"
  },
+ "crankstart": {
+  "name": "Crankstart Foundation",
+  "short": "Crankstart",
+  "kind": "found",
+  "what": "A US private foundation of Sir Michael Moritz and his wife Harriet Heyman, its chief executive and chief financial officer, tax exempt since June 2002.",
+  "money": "Contributions of USD 247.5 million in 2024, when its total assets were USD 4.39 billion.",
+  "arts": "It became the main sponsor of the Booker Prize in June 2019, for an initial five years.",
+  "city": "San Jose",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/943377099",
+   "https://publishingperspectives.com/2019/02/uk-booker-prize-announces-crankstart-new-anchor-sponsor-literary-awards/"
+  ],
+  "batch": "fp32"
+ },
  "crditdunord": {
   "name": "Crédit du Nord",
   "kind": "corp",
@@ -5023,6 +5580,25 @@
    "https://banque.meilleurtaux.com/ouvrir-un-compte-bancaire/actualites/2023-janvier/fusion-societe-generale-credit-nord-change-clients.html"
   ],
   "batch": "fp10"
+ },
+ "crditmutuelnordeurope": {
+  "name": "Crédit Mutuel Nord Europe",
+  "short": "CMNE",
+  "kind": "corp",
+  "what": "A mutual bank of the Crédit Mutuel group with its seat in Lille, 129 local caisses and 239 branches; part of Crédit Mutuel Alliance Fédérale since 1 January 2022.",
+  "money": "Banking and insurance for 982,066 clients, 657,073 of them member-owners (sociétaires), at the end of 2024; it also owns Beobank in Belgium.",
+  "arts": "Its Fondation Crédit Mutuel Nord Europe, set up in 2013, funds culture, training, solidarity and environment projects and has paid out more than EUR 13 million.",
+  "site": "https://www.creditmutuel.fr/cmne/fr/",
+  "city": "Lille",
+  "country": "France",
+  "address": "4 place Richebé, 59000 Lille",
+  "status": "done",
+  "sources": [
+   "https://www.creditmutuel.fr/fr/alliancefederale/banque-mutualiste/implantations/federation-nord-europe.html",
+   "https://www.creditmutuel.fr/fr/alliancefederale/fondation/la-fondation-Credit-Mutuel-Nord-Europe.html",
+   "https://fr.wikipedia.org/wiki/Cr%C3%A9dit_mutuel_Nord_Europe"
+  ],
+  "batch": "fp35"
  },
  "creatensw": {
   "name": "Create NSW",
@@ -5421,6 +5997,22 @@
   ],
   "batch": "fp10"
  },
+ "darpa": {
+  "name": "Defense Advanced Research Projects Agency",
+  "short": "DARPA",
+  "kind": "gov",
+  "what": "The research agency of the US Department of Defense, founded in February 1958 as ARPA after the Soviet launch of Sputnik 1, in Arlington, Virginia.",
+  "money": "The US defence budget: USD 4.322 billion in fiscal 2026.",
+  "site": "https://www.darpa.mil",
+  "city": "Arlington, Virginia",
+  "country": "USA",
+  "address": "675 North Randolph Street, Arlington, Virginia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/DARPA"
+  ],
+  "batch": "fp34"
+ },
  "davidzwirner": {
   "name": "David Zwirner",
   "kind": "corp",
@@ -5620,6 +6212,22 @@
    "https://www.accountant.nl/nieuws/2026/3/dnb-voorziet-ook-voor-komende-jaren-nog-verliezen/"
   ],
   "batch": "fp10"
+ },
+ "dentons": {
+  "name": "Dentons",
+  "kind": "corp",
+  "what": "A multinational law firm formed in March 2013 by merging SNR Denton, Fraser Milner Casgrain and Salans; a Swiss verein whose largest offices are in London and New York.",
+  "money": "Legal fees: revenue of USD 2.899 billion in 2019.",
+  "site": "https://www.dentons.com",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Dentons",
+   "https://www.kunsthallepraha.org/en/about-us",
+   "https://www.zefix.ch/en/search/entity/list/firm/1013178"
+  ],
+  "batch": "fp33"
  },
  "denza": {
   "name": "Shenzhen Denza New Energy Automotive Co., Ltd.",
@@ -6274,6 +6882,23 @@
   ],
   "batch": "fp11"
  },
+ "edf": {
+  "name": "Électricité de France",
+  "short": "EDF",
+  "kind": "corp",
+  "what": "France's state electricity company, created by a nationalisation law on 8 April 1946 and wholly owned by the French state again since June 2023.",
+  "money": "Sales of electricity, mostly from nuclear plants, and energy trading: EUR 139.7 billion revenue in 2023.",
+  "site": "https://www.edf.fr",
+  "city": "Paris",
+  "country": "France",
+  "address": "22-30 avenue de Wagram, 75008 Paris",
+  "status": "done",
+  "sources": [
+   "https://www.edf.fr/mentions-legales",
+   "https://en.wikipedia.org/wiki/%C3%89lectricit%C3%A9_de_France"
+  ],
+  "batch": "fp32"
+ },
  "edostategovernment|Nigeria": {
   "name": "Edo State Government",
   "kind": "gov",
@@ -6290,6 +6915,21 @@
    "https://www.thisdaylive.com/2026/08/22/mowaa-panel-submits-probe-report-on-ownership-funding-indicts-past-govt/"
   ],
   "batch": "fp11"
+ },
+ "edp": {
+  "name": "EDP, S.A.",
+  "short": "EDP",
+  "kind": "corp",
+  "what": "A Portuguese electricity company in Lisbon, set up as Electricidade de Portugal by decree in 1976 from 14 nationalised firms; China Three Gorges holds 22.2 percent.",
+  "money": "Electricity generation and distribution and gas distribution: EUR 16.2 billion revenue in 2023.",
+  "site": "https://www.edp.com",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/EDP_Group"
+  ],
+  "batch": "fp32"
  },
  "eduardolenjimenes": {
   "name": "Fundación Eduardo León Jimenes, Inc.",
@@ -6347,6 +6987,21 @@
    "https://data.brreg.no/enhetsregisteret/api/enheter/911259931"
   ],
   "batch": "fp11"
+ },
+ "elainewynn": {
+  "name": "Elaine Wynn",
+  "kind": "person",
+  "what": "An American businesswoman and art collector who co-founded Mirage Resorts in 1976 and Wynn Resorts in 2000 with Steve Wynn; she died in Los Angeles on 14 April 2025.",
+  "money": "Her stake in the casino company Wynn Resorts, of which she still held nearly 9 percent at her death.",
+  "arts": "Barack Obama made her a Kennedy Center trustee in 2011, and in 2013 she bought Francis Bacon's Three Studies of Lucian Freud for USD 142.4 million.",
+  "city": "Las Vegas",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Elaine_Wynn",
+   "https://en.wikipedia.org/wiki/Wynn_Resorts"
+  ],
+  "batch": "fp33"
  },
  "elephanttrust": {
   "name": "The Elephant Trust",
@@ -6434,6 +7089,23 @@
   ],
   "batch": "fp4"
  },
+ "enbw": {
+  "name": "EnBW Energie Baden-Württemberg AG",
+  "short": "EnBW",
+  "kind": "corp",
+  "what": "A German energy company formed in 1997 by merging Badenwerk and Energie-Versorgung Schwaben, seated in Karlsruhe.",
+  "money": "Electricity generation, grids and energy sales, EUR 56.0 billion revenue in 2022; Baden-Württemberg and the OEW municipal group each own 46.75 percent.",
+  "site": "https://www.enbw.com",
+  "city": "Karlsruhe",
+  "country": "Germany",
+  "address": "Durlacher Allee 93, 76131 Karlsruhe",
+  "status": "done",
+  "sources": [
+   "https://www.enbw.com/impressum",
+   "https://en.wikipedia.org/wiki/EnBW"
+  ],
+  "batch": "fp34"
+ },
  "enbwwindpower": {
   "name": "Borusan EnBW Enerji A.Ş.",
   "short": "Borusan EnBW Enerji",
@@ -6518,6 +7190,23 @@
    "https://www.gramwzielone.pl/?p=106333"
   ],
   "batch": "fp10"
+ },
+ "eonse": {
+  "name": "E.ON SE",
+  "short": "E.ON",
+  "kind": "corp",
+  "what": "An energy company in Essen, formed in 2000 by the merger of VEBA and VIAG, which moved its conventional power generation and energy trading into Uniper in 2016.",
+  "money": "Energy distribution networks and retail energy sales: EUR 78.4 billion revenue in 2025.",
+  "site": "https://www.eon.com",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Brüsseler Platz 1, 45131 Essen",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/E.ON",
+   "https://www.lobbyregister.bundestag.de/media/15/2b/690472/Lobbyregister-Registereintraege-Detailansicht-R002309-2026-02-05_15-52-10.pdf"
+  ],
+  "batch": "fp32"
  },
  "epmmunicipalutility|Colombia": {
   "name": "Empresas Públicas de Medellín",
@@ -6621,6 +7310,41 @@
    "https://www.essexcommunityfoundation.org.uk/"
   ],
   "batch": "fp11"
+ },
+ "estoniangovernment|Estonia": {
+  "name": "Vabariigi Valitsus",
+  "short": "Government of Estonia",
+  "kind": "gov",
+  "what": "The cabinet of the Republic of Estonia, headed by the prime minister, which holds executive power and directs the work of government agencies.",
+  "money": "The Estonian state budget, which the government drafts and the Riigikogu adopts; for 2026 it set a deficit of 4.5% of GDP.",
+  "site": "https://valitsus.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Stenbock House, Rahukohtu 3, 15161 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Estonia",
+   "https://valitsus.ee/en/news/prime-minister-michal-agreement-reached-budget-prioritising-defence-economic-and-income-growth"
+  ],
+  "batch": "fp35"
+ },
+ "estonianministryofculture|Estonia": {
+  "name": "Kultuuriministeerium",
+  "short": "Estonian Ministry of Culture",
+  "kind": "gov",
+  "what": "Estonia's government ministry for the arts, cultural heritage, sport and integration policy, in Tallinn, led by Minister of Culture Heidy Purga.",
+  "money": "The Estonian state budget: EUR 391 million for the ministry in 2025, including EUR 40 million carried over from the previous year.",
+  "site": "https://www.kul.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Suur-Karja 23, 15076 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://www.kul.ee/en",
+   "https://news.err.ee/1609815069/ministry-of-culture-funding-set-to-fall-over-the-next-several-years",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Estonia)"
+  ],
+  "batch": "fp35"
  },
  "estrelladamm": {
   "name": "Sociedad Anónima Damm",
@@ -6782,6 +7506,23 @@
   ],
   "batch": "fp8"
  },
+ "evonikindustriesag": {
+  "name": "Evonik Industries AG",
+  "short": "Evonik",
+  "kind": "corp",
+  "what": "A specialty chemicals company in Essen, founded on 12 September 2007 and owned mainly by the RAG Foundation (RAG-Stiftung).",
+  "money": "Sales of specialty chemicals: EUR 14.1 billion revenue in 2025.",
+  "site": "https://www.evonik.com",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Opernplatz 1, 45128 Essen",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Evonik_Industries",
+   "https://history.evonik.com/en/footer-en/company-information/company-information-143589.html"
+  ],
+  "batch": "fp32"
+ },
  "evraz": {
   "name": "EVRAZ plc",
   "short": "Evraz",
@@ -6830,6 +7571,22 @@
   ],
   "batch": "fp11"
  },
+ "exxonmobilqatar": {
+  "name": "ExxonMobil Qatar Limited",
+  "short": "ExxonMobil Qatar",
+  "kind": "corp",
+  "what": "The Qatar affiliate of the US oil company Exxon Mobil, a partner of QatarEnergy in gas and LNG joint ventures since the 1980s.",
+  "money": "Its shares in nine LNG trains and 27 LNG ships run with QatarEnergy.",
+  "site": "https://corporate.exxonmobil.com/locations/qatar",
+  "city": "Doha",
+  "country": "Qatar",
+  "address": "Al Fardan Commercial Tower, Al Funduq Street, Building 12, Doha",
+  "status": "done",
+  "sources": [
+   "https://corporate.exxonmobil.com/locations/qatar"
+  ],
+  "batch": "fp32"
+ },
  "fairfieldcountybank|USA": {
   "name": "Fairfield County Bank",
   "kind": "corp",
@@ -6844,6 +7601,25 @@
    "https://en.wikipedia.org/wiki/Fairfield_County_Bank"
   ],
   "batch": "fp11"
+ },
+ "faroesegovernment|Faroe Islands": {
+  "name": "Føroya landsstýri",
+  "short": "Government of the Faroe Islands",
+  "kind": "gov",
+  "what": "The self-governing cabinet of the Faroe Islands, appointed and led by the løgmaður, a post Beinir Johannesen has held since 13 April 2026.",
+  "money": "The Faroese public budget, which includes a block grant from Denmark.",
+  "arts": "In 2023 it pledged money, with three Danish foundations, to expand the National Gallery of the Faroe Islands; the Løgting later passed a supporting act.",
+  "city": "Tórshavn",
+  "country": "Faroe Islands",
+  "wrong_match": "The gallery's line names the Faroese government only as holder of a board seat, not as a payer.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_the_Faroe_Islands",
+   "https://da.wikipedia.org/wiki/Færøernes_landsstyre",
+   "https://art.fo/news/404/future-proofing-and-expanding-the-national-gallery-of-the-faroe-islands",
+   "https://art.fo/news/620/the-national-gallery-of-the-faroe-islands-and-landsverk-sign-contract-with-sp-f-busetur-for-the-expansion-and-renovation-of-the-museum"
+  ],
+  "batch": "fp36"
  },
  "farrow": {
   "name": "Farrow & Ball Ltd",
@@ -6911,6 +7687,24 @@
    "https://en.wikipedia.org/wiki/Federal_Government_Commissioner_for_Culture_and_the_Media"
   ],
   "batch": "fp2"
+ },
+ "federalgovernment|smithsonian-air-and-space-washington": {
+  "name": "Federal Government of the United States",
+  "short": "US federal government",
+  "kind": "gov",
+  "what": "The national government of the United States, with legislative, executive and judicial branches under the Constitution in force since 1789, seated in Washington, D.C.",
+  "money": "Federal taxes: individual income taxes gave 51 percent and payroll taxes 35 percent of federal receipts in fiscal 2018.",
+  "arts": "Yearly federal appropriations from Congress pay about two-thirds of the Smithsonian Institution’s budget of about USD 1.25 billion.",
+  "site": "https://www.usa.gov",
+  "city": "Washington",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Federal_government_of_the_United_States",
+   "https://en.wikipedia.org/wiki/United_States_federal_budget",
+   "https://en.wikipedia.org/wiki/Smithsonian_Institution"
+  ],
+  "batch": "fp36"
  },
  "federalinbal|Mexico": {
   "name": "Instituto Nacional de Bellas Artes y Literatura",
@@ -7045,6 +7839,25 @@
   ],
   "batch": "fp17"
  },
+ "finnishheritageagency|Finland": {
+  "name": "Museovirasto",
+  "short": "Finnish Heritage Agency",
+  "kind": "gov",
+  "what": "A Finnish government agency under the Ministry of Education and Culture that preserves the country's material cultural heritage and protects archaeological sites and built heritage.",
+  "money": "The Finnish state budget.",
+  "arts": "In spring 2023 it paid EUR 668,000 in grants toward the exhibition fees of 440 visual artists in 167 exhibitions.",
+  "site": "https://www.museovirasto.fi",
+  "city": "Helsinki",
+  "country": "Finland",
+  "address": "Mannerheimintie 34, Helsinki",
+  "status": "done",
+  "sources": [
+   "https://www.museovirasto.fi/en/about-us",
+   "https://en.wikipedia.org/wiki/Finnish_Heritage_Agency",
+   "https://www.sttinfo.fi/tiedote/70004232/avustukset-kuvataiteilijoiden-nayttelypalkkioihin-jalleen-haettavissa?publisherId=69817951"
+  ],
+  "batch": "fp35"
+ },
  "finnishministryofeducation|Finland": {
   "name": "Opetus- ja kulttuuriministeriö",
   "short": "Finnish Ministry of Education and Culture",
@@ -7093,6 +7906,20 @@
    "https://www.firsthorizon.com/About-Us"
   ],
   "batch": "fp11"
+ },
+ "firstpeoplesstaterelations|Australia": {
+  "name": "First Peoples State Relations",
+  "kind": "gov",
+  "what": "A group in the Victorian Department of Premier and Cabinet, in Melbourne, that took over the former Aboriginal Victoria; it works on cultural rights, self-determination, treaty and truth.",
+  "money": "The budget of the State of Victoria, through the Department of Premier and Cabinet.",
+  "site": "https://www.firstpeoplesrelations.vic.gov.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://www.firstpeoplesrelations.vic.gov.au/about-first-peoples-state-relations"
+  ],
+  "batch": "fp36"
  },
  "flagart": {
   "name": "The FLAG Art Foundation",
@@ -7160,6 +7987,44 @@
    "https://en.wikipedia.org/wiki/William_and_Flora_Hewlett_Foundation"
   ],
   "batch": "fp5"
+ },
+ "florim": {
+  "name": "Florim S.p.A. SB",
+  "short": "Florim",
+  "kind": "corp",
+  "what": "A ceramic tile maker in Fiorano Modenese, founded by Giovanni Lucchese in 1962 as Floor Gres, run by his son Claudio Lucchese, and a Società Benefit since 2020.",
+  "money": "Sales of porcelain surfaces for architecture and design: EUR 416 million revenue in 2024.",
+  "arts": "Its Fondazione Ing. Giovanni Lucchese, set up in 2013, promotes social and cultural projects around Modena.",
+  "site": "https://www.florim.com",
+  "city": "Fiorano Modenese",
+  "country": "Italy",
+  "address": "Via Canaletto 24, 41042 Fiorano Modenese",
+  "status": "done",
+  "sources": [
+   "https://www.florim.com/en/",
+   "https://forbes.it/2025/08/28/florim-dalla-ceramica-al-modello-dimpresa-sostenibile",
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/florim/",
+   "https://www.florim.com/en/company/about-us"
+  ],
+  "batch": "fp32"
+ },
+ "fokal": {
+  "name": "Fondasyon Konesans Ak Libète",
+  "short": "FOKAL",
+  "kind": "found",
+  "what": "Fondation Connaissance et Liberté, a Haitian national foundation created in 1995 and recognised as of public utility in 2000, working in education, development, arts and civil society.",
+  "money": "Mainly the Open Society Foundations, with grants from the Kellogg and Ford foundations, the European Union and the Agence Française de Développement.",
+  "arts": "It has run a cultural centre in central Port-au-Prince since 2003.",
+  "site": "https://fokal.org",
+  "city": "Port-au-Prince",
+  "country": "Haiti",
+  "address": "143 Avenue Christophe, Port-au-Prince",
+  "status": "done",
+  "sources": [
+   "https://fokal.org/index.php/fokal/",
+   "https://fokal.org/"
+  ],
+  "batch": "fp33"
  },
  "fondazionebancadelmontedilombardia": {
   "name": "Fondazione Monte di Lombardia",
@@ -7949,6 +8814,53 @@
   ],
   "batch": "fp12"
  },
+ "fundacionalfredoharphelu": {
+  "name": "Fundación Alfredo Harp Helú",
+  "kind": "found",
+  "what": "A Mexican foundation funded by the banker Alfredo Harp Helú, former owner of Banamex, giving to education, culture, sport, health and the environment.",
+  "money": "Harp Helú's fortune, from Citigroup's 2001 purchase of Banamex; the foundation's assets stood at MXN 14.532 billion in 2018.",
+  "arts": "Of MXN 6.83 billion it had given to projects by 2018, MXN 1.58 billion, 23 percent, went to culture.",
+  "site": "https://www.alfredoharphelu.com",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://www.alfredoharphelu.com/cms/assets/images/uploads/comunicados/patrimonio-fahh-2018.pdf",
+   "https://en.wikipedia.org/wiki/Alfredo_Harp_Hel%C3%BA"
+  ],
+  "batch": "fp32"
+ },
+ "fundacionaxamexico": {
+  "name": "Fundación AXA México",
+  "kind": "found",
+  "what": "The foundation of AXA México, working on health, emergency aid, road safety, art and climate change; it has given over MXN 60 million to newborn care since 2018.",
+  "arts": "Since 2008 it has made grants in art and culture, among them to the art school SOMA, the Patronato de Arte Contemporáneo and MUAC's Arkheia archive.",
+  "site": "https://fundacionaxa.org.mx",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://fundacionaxa.org.mx/",
+   "https://axa.mx/documents/51602/1230716/Hacer-para-Nacer.pdf",
+   "https://fundacionaxa.org.mx/arte/"
+  ],
+  "batch": "fp32"
+ },
+ "fundaciontelevisa": {
+  "name": "Fundación Televisa",
+  "kind": "found",
+  "what": "The philanthropic arm of the Mexican broadcaster Grupo Televisa, known earlier as Fundación Cultural Televisa.",
+  "arts": "Its photographic collection and archive, begun in 1974, holds hundreds of thousands of images; it organised the Gabriel Figueroa exhibition shown at LACMA.",
+  "site": "https://www.fundaciontelevisa.org",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://www.ejecentral.com.mx/perdido-para-que-sirve-una-fundacion",
+   "https://artsandculture.google.com/partner/fundacion-televisa",
+   "https://www.lacma.org/fundaci%C3%B3n-televisa"
+  ],
+  "batch": "fp32"
+ },
  "fundaodeserralvesendowment": {
   "name": "Fundação de Serralves",
   "short": "Serralves Foundation",
@@ -7963,6 +8875,23 @@
    "https://en.wikipedia.org/wiki/Serralves"
   ],
   "batch": "fp26"
+ },
+ "fundaoedp": {
+  "name": "Fundação EDP",
+  "short": "EDP Foundation",
+  "kind": "found",
+  "what": "The corporate foundation of the Portuguese electricity company EDP, S.A., which set it up in December 2004; it is seated at the Central Tejo in Lisbon.",
+  "money": "EDP, S.A., the electricity company that owns it.",
+  "arts": "It keeps an art collection, gives the New Artists Award and the Art Grand Prize, and publishes Electra magazine.",
+  "site": "https://www.fundacaoedp.pt",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "address": "Avenida Brasília, Central Tejo, 1300-598 Lisboa",
+  "status": "done",
+  "sources": [
+   "https://www.fundacaoedp.pt/en/about-us"
+  ],
+  "batch": "fp32"
  },
  "fundaomanuelantniodamota": {
   "name": "Fundação Manuel António da Mota",
@@ -8013,6 +8942,22 @@
    "https://www.fundos.es/"
   ],
   "batch": "fp12"
+ },
+ "furla": {
+  "name": "Furla",
+  "kind": "corp",
+  "what": "An Italian leather goods company founded in Bologna in 1927 by Aldo and Margherita Furlanetto, based in San Lazzaro di Savena and controlled by two branches of the Furlanetto family.",
+  "money": "Sales of handbags and accessories: revenue of EUR 513 million in 2018.",
+  "arts": "Giovanna Furlanetto set up the Fondazione Furla in Bologna in 2008 to help young talent in creative work from art to fashion.",
+  "site": "https://www.furla.com",
+  "city": "San Lazzaro di Savena",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://it.wikipedia.org/wiki/Furla",
+   "https://en.wikipedia.org/wiki/Furla"
+  ],
+  "batch": "fp33"
  },
  "gador": {
   "name": "Gador S.A.",
@@ -8076,6 +9021,22 @@
   ],
   "batch": "fp12"
  },
+ "galpenergia": {
+  "name": "Galp Energia, SGPS, S.A.",
+  "short": "Galp",
+  "kind": "corp",
+  "what": "A Portuguese energy company formed in 1999 by merging Petrogal, Gás de Portugal and Transgás, seated in Lisbon; Amorim Energia holds 35.8 percent.",
+  "money": "Oil and gas exploration and production, refining, fuel marketing, and gas and power sales: EUR 961 million profit in 2024.",
+  "site": "https://www.galp.com",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Galp_Energia",
+   "https://www.dn.pt/economia/lucro-da-galp-caiu-4-no-ano-passado-para-961-milhões-de-euros"
+  ],
+  "batch": "fp34"
+ },
  "garantibbvainternational": {
   "name": "Garanti BBVA International N.V.",
   "kind": "corp",
@@ -8124,6 +9085,22 @@
   ],
   "batch": "fp26"
  },
+ "gazprombank": {
+  "name": "Gazprombank (JSC)",
+  "short": "Gazprombank",
+  "kind": "corp",
+  "what": "Russia's third largest bank by assets, founded in 1990 in Moscow, under UK sanctions since March 2022 and US blocking sanctions since November 2024; Gazfond is its largest shareholder.",
+  "money": "Banking profits; the Russian state has held 36.44 percent since a 2022 capital increase.",
+  "site": "https://www.gazprombank.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "wrong_match": "The OK16 line names Gazprombank only as a shareholder of Belgazprombank, the building owner and sponsor; it does not show Gazprombank paying.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Gazprombank"
+  ],
+  "batch": "fp34"
+ },
  "gazpromfinancedparks": {
   "name": "PJSC Gazprom",
   "short": "Gazprom",
@@ -8139,6 +9116,22 @@
    "https://en.wikipedia.org/wiki/Gazprom"
   ],
   "batch": "fp12"
+ },
+ "gazpromneft": {
+  "name": "PJSC Gazprom Neft",
+  "short": "Gazprom Neft",
+  "kind": "corp",
+  "what": "Russia's third largest oil producer, founded in 1995 as Sibneft and seated in St Petersburg, under EU sanctions since March 2022; Gazprom holds 95.68 percent.",
+  "money": "Oil and gas production and refining: RUB 3.61 trillion revenue in 2025.",
+  "site": "https://www.gazprom-neft.com",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Gazprom_Neft",
+   "https://www.wikidata.org/wiki/Q1461799"
+  ],
+  "batch": "fp34"
  },
  "gemeenteleiden|Netherlands": {
   "name": "Gemeente Leiden",
@@ -8602,6 +9595,55 @@
   ],
   "batch": "fp2"
  },
+ "goodstorage": {
+  "name": "GoodStorage",
+  "kind": "corp",
+  "what": "A Brazilian urban storage company in São Paulo, founded by its chief executive Thiago Cordeiro, which marked ten years in 2023.",
+  "money": "Rent from self storage units and city warehouses in São Paulo: more than BRL 300 million revenue in 2025, 40 percent above 2024.",
+  "site": "https://goodstorage.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://forbes.com.br/forbes-money/2026/01/goodstorage-fecha-2025-com-crescimento-de-40-na-receita-e-ultrapassa-a-marca-de-300-milhoes-anual/",
+   "https://forbes.com.br/forbes-money/2023/11/infomercial-goodstorage-completa-dez-anos-e-chega-a-35-unidades-na-capital-paulista/",
+   "https://forbes.com.br/forbes-money/2024/11/goodstorage-se-consolida-lider-no-mercado-de-armazenagem-e-impulsiona-a-mobilidade-urbana-de-sao-paulo/"
+  ],
+  "batch": "fp34"
+ },
+ "governmentofabudhabi|UAE": {
+  "name": "Government of Abu Dhabi",
+  "kind": "gov",
+  "what": "Abu Dhabi's emirate government in the UAE: a hereditary monarchy under Sheikh Mohamed bin Zayed Al Nahyan since 14 May 2022, with the Executive Council as its cabinet.",
+  "money": "Oil, the primary source of government funding; the Abu Dhabi Investment Authority, Mubadala and Abu Dhabi Holding Company invest surplus reserves.",
+  "arts": "A 2017 French Senate report put its payments under the Louvre Abu Dhabi agreement at EUR 974.5 million for 2007 to 2037, with EUR 477 million paid by 2017.",
+  "site": "https://www.abudhabi.gov.ae",
+  "city": "Abu Dhabi",
+  "country": "United Arab Emirates",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Emirate_of_Abu_Dhabi",
+   "https://en.wikipedia.org/wiki/Louvre_Abu_Dhabi"
+  ],
+  "batch": "fp36"
+ },
+ "governmentofkerala|India": {
+  "name": "Government of Kerala",
+  "kind": "gov",
+  "what": "The government of the Indian state of Kerala, led by Chief Minister V. D. Satheesan since 18 May 2026, with its headquarters at the Secretariat in Thiruvananthapuram.",
+  "money": "Its own taxes and other revenue plus transfers from the Government of India: ₹1,24,861.06 crore in 2024-25, ₹31,732.25 crore of it from the centre.",
+  "arts": "The state allocated ₹7.5 crore to the Kochi-Muziris Biennale, whose sixth edition then Chief Minister Pinarayi Vijayan opened on 12 December 2025.",
+  "site": "https://www.kerala.gov.in",
+  "city": "Thiruvananthapuram",
+  "country": "India",
+  "address": "Government Secretariat, Thiruvananthapuram",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Kerala",
+   "https://www.onmanorama.com/news/kerala/2025/12/12/cm-pinarayi-vijayan-inaugurates-sixth-edition-kochi-muziris-biennale.html"
+  ],
+  "batch": "fp36"
+ },
  "governmentofsindhownspalace|Pakistan": {
   "name": "Government of Sindh",
   "kind": "gov",
@@ -8804,6 +9846,24 @@
   ],
   "batch": "fp13"
  },
+ "grupoultra": {
+  "name": "Ultrapar Participações S.A.",
+  "short": "Grupo Ultra",
+  "kind": "corp",
+  "what": "A Brazilian holding company founded in 1937 by Ernesto Igel as a home gas distributor, seated in São Paulo.",
+  "money": "Fuel distribution through Ipiranga, LPG sales through Ultragaz and liquid bulk storage through Ultracargo: net revenue of BRL 147 billion in 2022.",
+  "site": "https://www.ultra.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "address": "Avenida Brigadeiro Luís Antônio 1343, 9th floor, São Paulo, SP 01317-910",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ultrapar",
+   "https://web.archive.org/web/20250505083845/https://www.sec.gov/Archives/edgar/data/1094972/000155485523000169/MainDocument.htm",
+   "https://timesbrasil.com.br/empresas-e-negocios/ultrapar-balanco-quarto-trimestre/"
+  ],
+  "batch": "fp34"
+ },
  "gstaserlachiusfinearts": {
   "name": "Gösta Serlachius Fine Arts Foundation",
   "short": "Serlachius",
@@ -8922,6 +9982,21 @@
   ],
   "batch": "fp20",
   "renamed": "The Academy Museum gift came from Cheryl and Haim Saban as a couple, and the atlas name points at his investment firm."
+ },
+ "halabja": {
+  "name": "Halabja Group",
+  "kind": "corp",
+  "what": "An Iraqi business group based in Sulaymaniyah and chaired by Aso Bamoki, which grew from the Halabja Group for Trading set up in the late 1980s.",
+  "money": "Construction, petroleum, trading, real estate, telecommunications and education businesses in Iraq, China, the United Arab Emirates and Turkey, with over 1,750 employees.",
+  "site": "https://halabjagroup.com",
+  "city": "Sulaymaniyah",
+  "country": "Iraq",
+  "status": "done",
+  "sources": [
+   "https://www.halabjagroup.com/about-us",
+   "https://halabjagroup.com/"
+  ],
+  "batch": "fp33"
  },
  "halifaxni": {
   "name": "The Halifax Foundation for Northern Ireland",
@@ -9137,6 +10212,38 @@
   ],
   "batch": "fp13"
  },
+ "harvard": {
+  "name": "Harvard University",
+  "short": "Harvard",
+  "kind": "priv",
+  "what": "A private research university in Cambridge, Massachusetts, founded in 1636 and a member of the Ivy League.",
+  "money": "An endowment of USD 68.0 billion in 2026.",
+  "site": "https://www.harvard.edu",
+  "city": "Cambridge, Massachusetts",
+  "country": "USA",
+  "wrong_match": "The Poetry in America line says Harvard gave office space, which is in-kind help, not money.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Harvard_University"
+  ],
+  "batch": "fp34"
+ },
+ "haryantoadikoesoemo": {
+  "name": "Haryanto Adikoesoemo",
+  "kind": "person",
+  "what": "An Indonesian businessman who heads the chemicals and energy group AKR Corporindo, where he succeeded his father, its founder Soegiarto Adikoesoemo, as president in 1992.",
+  "money": "His fortune from AKR Corporindo.",
+  "arts": "His collection numbered about 800 works in 2019, half of them Indonesian; he joined the board of trustees of the Hirshhorn Museum in Washington in 2018.",
+  "city": "Jakarta",
+  "country": "Indonesia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Haryanto_Adikoesoemo",
+   "https://www.theartnewspaper.com/2019/03/28/collectors-eye-an-interview-with-haryanto-adikoesoemo",
+   "https://stockanalysis.com/quote/idx/AKRA/company"
+  ],
+  "batch": "fp32"
+ },
  "hassoplattner": {
   "name": "Hasso Plattner Foundation",
   "kind": "found",
@@ -9200,6 +10307,21 @@
    "https://en.wikipedia.org/wiki/Kamehameha_Schools"
   ],
   "batch": "fp15"
+ },
+ "heavenhill": {
+  "name": "Heaven Hill Distilleries, Inc.",
+  "short": "Heaven Hill",
+  "kind": "corp",
+  "what": "A private, family-owned distiller founded in 1935 and based in Bardstown, Kentucky, run by the Shapira family, whose five brothers bought out the other founding investors.",
+  "money": "Sales of bourbon and other spirits, led by its Evan Williams and Elijah Craig labels.",
+  "site": "https://heavenhilldistillery.com",
+  "city": "Bardstown",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Heaven_Hill"
+  ],
+  "batch": "fp33"
  },
  "heddy": {
   "name": "Stiftelsen Thomas Fearnley, Heddy og Nils Astrup",
@@ -9541,6 +10663,17 @@
   ],
   "batch": "fp14"
  },
+ "hiwa": {
+  "name": "Hiwa Foundation",
+  "kind": "found",
+  "what": "A foundation with the motto 'Enable creativity and perfection', shown by name and logo among the organisations the Ruya Foundation thanks for support.",
+  "country": "Iraq",
+  "status": "thin",
+  "sources": [
+   "https://ruyafoundation.org/en/about/"
+  ],
+  "batch": "fp33"
+ },
  "holler": {
   "name": "Holler-Stiftung",
   "short": "Holler Foundation",
@@ -9602,6 +10735,24 @@
    "https://en.wikipedia.org/wiki/Honeywell"
   ],
   "batch": "fp14"
+ },
+ "hongkonggovernment|China": {
+  "name": "Government of the Hong Kong Special Administrative Region",
+  "short": "Hong Kong Government",
+  "kind": "gov",
+  "what": "The executive branch of the Hong Kong Special Administrative Region of China, set up on 1 July 1997 at the handover and led by the Chief Executive, John Lee.",
+  "money": "The Hong Kong public budget: total government expenditure is estimated at HK$843.4 billion for 2026-27.",
+  "site": "https://www.gov.hk",
+  "city": "Hong Kong",
+  "country": "China",
+  "wrong_match": "Tai Kwun's line names the government only as the Jockey Club's partner in the project; the Jockey Club paid for the revitalisation.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Hong_Kong",
+   "https://www.budget.gov.hk/2026/eng/budget54.html",
+   "https://en.wikipedia.org/wiki/Tai_Kwun"
+  ],
+  "batch": "fp36"
  },
  "hongkongjockeyclub": {
   "name": "The Hong Kong Jockey Club",
@@ -9668,6 +10819,21 @@
    "https://es.wikipedia.org/wiki/Hospital_Alem%C3%A1n"
   ],
   "batch": "fp14"
+ },
+ "hp": {
+  "name": "HP Inc.",
+  "short": "HP",
+  "kind": "corp",
+  "what": "An American computer and printer maker in Palo Alto, California, formed in 2015 when Hewlett-Packard, founded in 1939 by Bill Hewlett and David Packard, split in two.",
+  "money": "Sales of personal computers, printers and printing supplies: USD 55.29 billion revenue in fiscal 2025.",
+  "site": "https://www.hp.com",
+  "city": "Palo Alto",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/HP_Inc."
+  ],
+  "batch": "fp34"
  },
  "hrmann": {
   "name": "Hörmann KG Verkaufsgesellschaft",
@@ -9883,6 +11049,21 @@
   ],
   "batch": "fp14"
  },
+ "ibrahimmahama": {
+  "name": "Ibrahim Mahama",
+  "kind": "person",
+  "what": "A Ghanaian artist born in 1987 in Tamale, known for installations of stitched jute sacks, who founded SCCA Tamale in 2019 and Red Clay Studio in 2020.",
+  "money": "Sales of his own art, handled by galleries including White Cube; proceeds from his Saatchi Gallery exhibition bought a 40,000 square metre plot near Tamale.",
+  "city": "Tamale",
+  "country": "Ghana",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ibrahim_Mahama_(artist)",
+   "https://www.whitecube.com/news/ibrahim-mahama-opens-the-savannah-centre-for-contemporary-art-scca-tamale-ghana",
+   "https://artafricamagazine.org/?p=27762"
+  ],
+  "batch": "fp34"
+ },
  "idahocommissiononarts|USA": {
   "name": "Idaho Commission on the Arts",
   "short": "Arts Idaho",
@@ -9899,6 +11080,18 @@
    "https://arts.idaho.gov/contact/"
   ],
   "batch": "fp14"
+ },
+ "igordergunov": {
+  "name": "Igor Dergunov",
+  "kind": "person",
+  "what": "A private donor listed with Olga Dergunova among the patrons of the Zotov Centre for Constructivism in Moscow.",
+  "country": "Russia",
+  "status": "thin",
+  "sources": [
+   "https://centrezotov.ru/partners/",
+   "https://www.bfm.ru/news/143125"
+  ],
+  "batch": "fp34"
  },
  "ikahocountryclub": {
   "name": "伊香保カントリークラブ (Ikaho Country Club)",
@@ -10037,6 +11230,39 @@
   ],
   "batch": "fp30"
  },
+ "inpexidemitsupetroleumnorge": {
+  "name": "INPEX Idemitsu Norge AS",
+  "kind": "corp",
+  "what": "An oil and gas producer on the Norwegian shelf, wholly owned by INPEX Norway, of which the Japanese company INPEX agreed in 2021 to buy 50.5 percent.",
+  "money": "Sales of oil and gas from its stakes in Norwegian fields, the largest Snorre, where it holds 9.6 percent.",
+  "site": "https://www.inpex.com",
+  "city": "Lysaker",
+  "country": "Norway",
+  "address": "Lysaker torg 25, 1366 Lysaker (Bærum)",
+  "status": "done",
+  "sources": [
+   "https://www.inpex.com/english/business/project/snorre.html",
+   "https://www.oilandgasadvancement.com/news/inpex-idemitsu-partner-on-norway-upstream-projects/",
+   "https://data.brreg.no/enhetsregisteret/api/enheter/953133210"
+  ],
+  "batch": "fp32"
+ },
+ "insightinvestment": {
+  "name": "Insight Investment",
+  "kind": "corp",
+  "what": "A British asset manager in London, formed in 2002 by the banking group HBOS and owned since 2009 by BNY, the US financial services group.",
+  "money": "Investment management of USD 839.3 billion of client assets (30 September 2026) in fixed income, liability-driven investment, cash and multi-asset strategies.",
+  "site": "https://www.insightinvestment.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "160 Queen Victoria Street, London EC4V 4LA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Insight_Investment",
+   "https://www.insightinvestment.com/"
+  ],
+  "batch": "fp35"
+ },
  "institutfranais": {
   "name": "Institut français",
   "kind": "gov",
@@ -10106,6 +11332,17 @@
    "https://intach.org/partners-funding-agencies.php"
   ],
   "batch": "fp14"
+ },
+ "internationalorganisations": {
+  "name": "International organisations",
+  "kind": "priv",
+  "what": "A collective term in Sàn Art's 2014 auction text for the foreign institutions and individuals that backed it after its founding in October 2007, not one body.",
+  "wrong_match": "The Sàn Art line names no body; 'international organisations' covers several unnamed foreign backers.",
+  "status": "done",
+  "sources": [
+   "https://www.e-flux.com/announcements/30250/benefit-art-auction-thresholds-of-motion"
+  ],
+  "batch": "fp33"
  },
  "internationalrenaissance": {
   "name": "International Renaissance Foundation",
@@ -10467,6 +11704,33 @@
   ],
   "batch": "fp14"
  },
+ "jeanlouishaguenauer": {
+  "name": "Jean-Louis Haguenauer",
+  "kind": "person",
+  "what": "A French art collector and patron with business ties to Moscow since 1981, who bought the land near Marrakesh in 2002 and opened Jardin Rouge there in 2009.",
+  "arts": "The Montresso Art Foundation he set up runs the Jardin Rouge residency and opened a 1,300 square metre exhibition space on the site in 2016.",
+  "city": "Marrakesh",
+  "country": "Morocco",
+  "status": "done",
+  "sources": [
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones"
+  ],
+  "batch": "fp34"
+ },
+ "jeffbezos": {
+  "name": "Jeff Bezos",
+  "kind": "person",
+  "what": "An American businessman, founder and executive chairman of the online retail and cloud computing company Amazon, founder of the space company Blue Origin and owner of The Washington Post.",
+  "money": "His shares in Amazon; Bloomberg and Forbes put his net worth at about USD 284 billion in 2026.",
+  "city": "Seattle",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jeff_Bezos",
+   "https://en.wikipedia.org/wiki/Amazon_(company)"
+  ],
+  "batch": "fp33"
+ },
  "johnellerman": {
   "name": "John Ellerman Foundation",
   "kind": "found",
@@ -10550,6 +11814,21 @@
    "https://en.wikipedia.org/wiki/Jordan_Petroleum_Refinery_Company"
   ],
   "batch": "fp15"
+ },
+ "jorgeprez": {
+  "name": "Jorge M. Pérez",
+  "short": "Jorge Pérez",
+  "kind": "person",
+  "what": "An Argentine-American property developer born in Buenos Aires in 1949, who founded the Miami real estate company The Related Group in 1979 and is its chairman and CEO.",
+  "money": "His apartment and condominium developments; Forbes put his net worth at USD 2.6 billion in August 2025.",
+  "arts": "He opened the art space El Espacio 23 in Miami's Allapattah district in 2019 and in 2020 gave works by Latin American artists to the Museo Reina Sofía.",
+  "city": "Miami",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Jorge_M._P%C3%A9rez"
+  ],
+  "batch": "fp33"
  },
  "josephinehector": {
   "name": "H.W. & J. Hector Stiftung zu Weinheim",
@@ -10673,6 +11952,20 @@
   ],
   "batch": "fp15"
  },
+ "kairatboranbayev": {
+  "name": "Kairat Boranbayev",
+  "kind": "person",
+  "what": "A Kazakh businessman born in 1966, a former KazRosGas manager and chairman of FC Kairat's supervisory board, sentenced in September 2023 to six years for embezzlement under a plea agreement.",
+  "money": "A fortune made in oil and gas, real estate and retail; in September 2023 he handed assets worth 90 billion tenge to the state.",
+  "city": "Almaty",
+  "country": "Kazakhstan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Qairat_Boranbaev",
+   "https://en.orda.kz/kairat-boranbayev-returned-oil-field-to-state-3107/"
+  ],
+  "batch": "fp34"
+ },
  "kaiserfriedrichmuseumsverein": {
   "name": "Kaiser Friedrich Museumsverein",
   "short": "KFMV",
@@ -10739,6 +12032,24 @@
   ],
   "batch": "fp15"
  },
+ "kazakhstansministryofculture|Kazakhstan": {
+  "name": "Министерство культуры и информации Республики Казахстан",
+  "short": "Ministry of Culture and Information of Kazakhstan",
+  "kind": "gov",
+  "what": "Kazakhstan’s ministry for culture and information, re-established under this name on 1 September 2023 and seated in the House of Ministries in Astana.",
+  "money": "The national budget of Kazakhstan.",
+  "arts": "Its Committee of Culture runs the Kasteyev museum as a republican state enterprise, given national status by a presidential decree reported on 30 January 2025.",
+  "site": "https://www.gov.kz/memleket/entities/mam",
+  "city": "Astana",
+  "country": "Kazakhstan",
+  "address": "Mangilik El Avenue 10, House of Ministries, 010000 Astana",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Министерство_культуры_и_информации_Республики_Казахстан",
+   "https://www.gov.kz/memleket/entities/mam/press/news/details/928138?lang=ru"
+  ],
+  "batch": "fp36"
+ },
  "kbcbank": {
   "name": "KBC Group NV",
   "short": "KBC",
@@ -10755,6 +12066,23 @@
    "https://en.wikipedia.org/wiki/KBC_Bank"
   ],
   "batch": "fp15"
+ },
+ "kentcountycouncil|UK": {
+  "name": "Kent County Council",
+  "short": "KCC",
+  "kind": "gov",
+  "what": "The county council for the non-metropolitan county of Kent in England, set up on 1 April 1889, with 81 councillors and its seat at County Hall, Maidstone.",
+  "money": "Council tax and government grants: the draft net revenue budget for 2025-26 was GBP 1,529.7 million, 65 percent of it from council tax.",
+  "site": "https://www.kent.gov.uk",
+  "city": "Maidstone",
+  "country": "United Kingdom",
+  "address": "County Hall, County Road, Maidstone ME14 1XQ",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kent_County_Council",
+   "https://democracy.kent.gov.uk/documents/s128751/Draft%20Revenue%20Budget%202025-26%20and%202025-28%20MTFP%20and%20Draft%20Capital%20Programme%202025-35.pdf"
+  ],
+  "batch": "fp36"
  },
  "kenthomson": {
   "name": "Kenneth Thomson, 2nd Baron Thomson of Fleet",
@@ -10807,6 +12135,21 @@
    "https://www.kfw-stiftung.de/en/"
   ],
   "batch": "fp15"
+ },
+ "khalidkhoshnaw": {
+  "name": "Khalid Khoshnaw",
+  "kind": "person",
+  "what": "A Kurdish businessman, owner of Hemn Group, a construction and engineering company founded in 1986 that built Erbil's ring roads; Masoud Barzani gave him the Immortal Barzani medal in 2025.",
+  "money": "Hemn Group's infrastructure contracts, among them the Erbil emergency water project with a budget of about USD 480 million.",
+  "city": "Erbil",
+  "country": "Iraq",
+  "status": "done",
+  "sources": [
+   "https://www.kurdistan24.net/en/story/858162",
+   "https://ruyafoundation.org/en/about/",
+   "https://www.mofa.gov.ae/en/Missions/Erbil/Media-hub/Consulate-General-News/Mission-News-Article-436"
+  ],
+  "batch": "fp33"
  },
  "khalidshoman": {
   "name": "The Khalid Shoman Foundation",
@@ -10963,6 +12306,39 @@
   ],
   "batch": "fp15"
  },
+ "kohler": {
+  "name": "Kohler Co.",
+  "short": "Kohler",
+  "kind": "corp",
+  "what": "An American manufacturer founded in 1873 by John Michael Kohler in Kohler, Wisconsin, privately owned by the Kohler family.",
+  "money": "Sales of plumbing fixtures, tile, furniture and cabinetry, and its Destination Kohler hotels.",
+  "site": "https://www.kohler.com",
+  "city": "Kohler, Wisconsin",
+  "country": "USA",
+  "address": "444 Highland Drive, Kohler, Wisconsin",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kohler_Co."
+  ],
+  "batch": "fp34"
+ },
+ "koldingkommune|Denmark": {
+  "name": "Kolding Kommune",
+  "short": "Kolding Municipality",
+  "kind": "gov",
+  "what": "The municipality of Kolding in the Region of Southern Denmark, formed by merger in the 2007 municipal reform, with 96,214 residents in 2026 and its town hall on Akseltorv.",
+  "money": "The municipal budget of Kolding Kommune.",
+  "site": "https://www.kolding.dk",
+  "city": "Kolding",
+  "country": "Denmark",
+  "address": "Akseltorv 1, 6000 Kolding",
+  "status": "done",
+  "sources": [
+   "https://da.wikipedia.org/wiki/Kolding_Kommune",
+   "https://www.kolding.dk/"
+  ],
+  "batch": "fp36"
+ },
  "kolmont": {
   "name": "Kolmont",
   "kind": "corp",
@@ -11065,6 +12441,22 @@
   ],
   "batch": "fp28"
  },
+ "kpn": {
+  "name": "Koninklijke KPN N.V.",
+  "short": "KPN",
+  "kind": "corp",
+  "what": "The Dutch telecom company, corporatised from the state postal and telephone service PTT in 1989 and privatised from 1994; América Móvil holds 16.08 percent.",
+  "money": "Telephone, internet, TV and IT services, mostly in the Netherlands: EUR 5.829 billion adjusted revenue in 2025.",
+  "site": "https://www.kpn.com",
+  "city": "Rotterdam",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/KPN",
+   "https://www.rttnews.com/3614064/kpn-full-year-net-profit-edges-up-announces-250-mln-share-buyback-in-2026.aspx"
+  ],
+  "batch": "fp32"
+ },
  "krber": {
   "name": "Körber-Stiftung",
   "short": "Körber Foundation",
@@ -11151,6 +12543,22 @@
   ],
   "batch": "fp4"
  },
+ "kulturstiftungkunsthallebielefeld": {
+  "name": "Kulturstiftung Kunsthalle Bielefeld",
+  "kind": "found",
+  "what": "A charitable foundation in Bielefeld, set up in 1997 as Kulturstiftung Pro Bielefeld on the initiative of Wolfgang Böllhoff and recognised by the state on 7 May 1997.",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "address": "Adenauerplatz 1, 33602 Bielefeld",
+  "status": "done",
+  "sources": [
+   "https://www.im.nrw/kulturstiftung-kunsthalle-bielefeld",
+   "https://www.westfalen-blatt.de/owl/bielefeld/den-stolz-der-bielefelder-ansprechen-3692598",
+   "https://www.bielefeld.de/sites/default/files/datei/2026/Beteiligungsbericht-2024-1.pdf",
+   "https://kunsthalle-bielefeld.de/museum/traegerschaft/"
+  ],
+  "batch": "fp32"
+ },
  "kunsthallebern": {
   "name": "Stiftung Kunsthalle Bern",
   "short": "Kunsthalle Bern Foundation",
@@ -11184,6 +12592,23 @@
    "https://de.wikipedia.org/wiki/Kunststiftung_NRW"
   ],
   "batch": "fp3"
+ },
+ "kunststiftungvolkswagen": {
+  "name": "Kunststiftung Volkswagen",
+  "kind": "found",
+  "what": "A charitable foundation under civil law in Wolfsburg that operates the Kunstmuseum Wolfsburg.",
+  "money": "Most of its money comes from the Holler-Stiftung, set up in 1990 from the estate of Asta and Christian Holler, former owners of Volkswagen Versicherungsdienst.",
+  "site": "https://www.kunstmuseum.de",
+  "city": "Wolfsburg",
+  "country": "Germany",
+  "address": "Hollerplatz 1, 38440 Wolfsburg",
+  "status": "done",
+  "sources": [
+   "https://www.kunstmuseum.de/en/imprint/",
+   "https://de.wikipedia.org/wiki/Kunstmuseum_Wolfsburg",
+   "https://www.volkswagen-group.com/en/press-releases/kunstmuseum-wolfsburg-celebrates-30th-anniversary-world-class-art-at-the-home-of-volkswagens-headquarters-18402"
+  ],
+  "batch": "fp32"
  },
  "kurabo": {
   "name": "Kurabo Industries Ltd.",
@@ -11337,6 +12762,23 @@
    "https://www.tips.at/nachrichten/ooe/wirtschaft-politik/703757-grosse-brocken-kinderbetreuung-und-gesundheit-land-ooe-legt-stabilitaetsbudget-fuer-2026-vor"
   ],
   "batch": "fp16"
+ },
+ "landofsalzburg|Austria": {
+  "name": "Land Salzburg",
+  "short": "State of Salzburg",
+  "kind": "gov",
+  "what": "A federal state (Land) of Austria with 561,714 inhabitants (2021 census), governed from the city of Salzburg; Governor Karoline Edtstadler heads its government.",
+  "money": "The state budget: about EUR 4.5 billion for 2026, approved in the Salzburg Landtag on 26 November 2025.",
+  "arts": "The 2026 budget gives EUR 105 million to art, culture and religious affairs (Kunst, Kultur und Kultus).",
+  "site": "https://www.salzburg.gv.at",
+  "city": "Salzburg",
+  "country": "Austria",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Salzburg_(state)",
+   "https://www.salzburg24.at/news/salzburg/politik-der-giesskanne-beenden-land-beschliesst-budget-2026-art-309553"
+  ],
+  "batch": "fp35"
  },
  "landvorarlberg|Austria": {
   "name": "Amt der Vorarlberger Landesregierung",
@@ -11520,6 +12962,21 @@
   ],
   "batch": "fp16"
  },
+ "lendlease": {
+  "name": "Lendlease Corporation Limited",
+  "short": "Lendlease",
+  "kind": "corp",
+  "what": "An Australian property and construction group founded in Sydney in 1958 by Dick Dusseldorp, with its head office in the International Towers at Barangaroo.",
+  "money": "Property investment, development, construction and asset management: AUD 8.82 billion revenue in 2022.",
+  "site": "https://www.lendlease.com",
+  "city": "Sydney",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lendlease"
+  ],
+  "batch": "fp34"
+ },
  "lesamisdesmusesdartetdhistoireluxembourg": {
   "name": "Les Amis des Musées d'art et d'histoire du Luxembourg a.s.b.l.",
   "short": "Amis des Musées",
@@ -11607,6 +13064,23 @@
   ],
   "batch": "fp16",
   "renamed": "The atlas name points at Libbey Glass, the company; the museum sentence means the funds the Libbeys themselves left to the museum."
+ },
+ "libertyinnorthkorea": {
+  "name": "Liberty in North Korea",
+  "short": "LiNK",
+  "kind": "priv",
+  "what": "A US nonprofit that rescues North Korean refugees hiding in China and resettles them, founded at Yale University on 27 March 2004 and registered in Long Beach, California.",
+  "money": "Donations, including money raised by school, college and church Rescue Teams: USD 4,214,232 in 2025.",
+  "site": "https://www.libertyinnorthkorea.org",
+  "city": "Long Beach",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Liberty_in_North_Korea",
+   "https://libertyinnorthkorea.org/blog/helping-north-korean-people-win-their-freedom-liberty-in-north-koreas-2025-annual-report",
+   "https://libertyinnorthkorea.org/blog/adam-sjoberg-interview"
+  ],
+  "batch": "fp33"
  },
  "liljestrand": {
   "name": "Liljestrand Foundation",
@@ -11826,6 +13300,23 @@
   ],
   "batch": "fp20"
  },
+ "lockheedmartin": {
+  "name": "Lockheed Martin Corporation",
+  "short": "Lockheed Martin",
+  "kind": "corp",
+  "what": "A US defence and aerospace manufacturer based in Bethesda, Maryland, formed on 15 March 1995 by the merger of the Lockheed Corporation with Martin Marietta.",
+  "money": "US government contracts: 73 percent of its 2024 revenue came from the federal government, 65 percent from the Department of Defense.",
+  "site": "https://www.lockheedmartin.com",
+  "city": "Bethesda",
+  "country": "United States",
+  "address": "6801 Rockledge Drive, Bethesda, MD 20817",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lockheed_Martin",
+   "https://data.sec.gov/submissions/CIK0000936468.json"
+  ],
+  "batch": "fp33"
+ },
  "lombardodier": {
   "name": "Bank Lombard Odier & Co Ltd",
   "short": "Lombard Odier",
@@ -11875,6 +13366,22 @@
    "https://www.mawer.com/contact-us"
   ],
   "batch": "fp17"
+ },
+ "losangelescounty|USA": {
+  "name": "County of Los Angeles",
+  "short": "Los Angeles County",
+  "kind": "gov",
+  "what": "A California county formed on 18 February 1850 and governed by an elected five-member Board of Supervisors, with an estimated 9,694,934 residents in 2025.",
+  "money": "The county budget: USD 52.5 billion for 2025-26, as adopted by the Board of Supervisors on 30 September 2025.",
+  "site": "https://lacounty.gov",
+  "city": "Los Angeles",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Los_Angeles_County,_California",
+   "https://ceo.lacounty.gov/2025-2026-budget/"
+  ],
+  "batch": "fp36"
  },
  "loterieromande": {
   "name": "Société de la loterie de la Suisse romande",
@@ -12097,6 +13604,22 @@
   ],
   "batch": "fp16"
  },
+ "madridcitycouncil|Spain": {
+  "name": "Ayuntamiento de Madrid",
+  "short": "Madrid City Council",
+  "kind": "gov",
+  "what": "Madrid's city council, led by Mayor José Luis Martínez-Almeida of the Partido Popular, with its main seat in the Palacio de Cibeles since November 2007.",
+  "money": "The city budget: EUR 6,578 million for 2026, approved by the council plenary on 22 December 2025.",
+  "site": "https://www.madrid.es",
+  "city": "Madrid",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ayuntamiento_de_Madrid",
+   "https://www.vozpopuli.com/espana/madrid/el-ayuntamiento-de-madrid-aprueba-sus-presupuestos-tras-incorporar-52-enmiendas-de-todos-los-grupos-municipales.html"
+  ],
+  "batch": "fp35"
+ },
  "madriddestino": {
   "name": "Madrid Destino Cultura Turismo y Negocio, S.A.",
   "short": "Madrid Destino",
@@ -12248,6 +13771,22 @@
    "https://www.mbll.ca/content/structure-and-governance"
   ],
   "batch": "fp17"
+ },
+ "mapei": {
+  "name": "Mapei S.p.A.",
+  "short": "Mapei",
+  "kind": "corp",
+  "what": "A maker of adhesives, sealants and chemical products for building, founded in Milan in 1937 by Rodolfo Squinzi; the Squinzi family holds 93.95 percent through Emme Esse Vi.",
+  "money": "Sales of building chemicals: EUR 4.4 billion revenue in 2025.",
+  "site": "https://www.mapei.com",
+  "city": "Milan",
+  "country": "Italy",
+  "address": "Via Cafiero 22, Milan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mapei"
+  ],
+  "batch": "fp32"
  },
  "mare": {
   "name": "Fundația MARe",
@@ -12617,6 +14156,54 @@
   ],
   "batch": "fp25"
  },
+ "millhouse": {
+  "name": "Millhouse LLC",
+  "short": "Millhouse",
+  "kind": "corp",
+  "what": "A Moscow company formed in 2006 to manage the assets of Roman Abramovich and his partners; in August 2024 it passed to Centrotrust, a Moscow company.",
+  "money": "The capital of Abramovich, under EU and UK sanctions since 2022, and his partners, who held Sibneft, Rusal and Aeroflot stakes through Millhouse Capital.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Millhouse_Capital",
+   "https://www.dp.ru/a/2024/08/23/jurlico-novoj-gollandii-pereshlo",
+   "https://en.wikipedia.org/wiki/Roman_Abramovich"
+  ],
+  "batch": "fp34"
+ },
+ "miltonkeynescouncil|UK": {
+  "name": "Milton Keynes City Council",
+  "kind": "gov",
+  "what": "The unitary authority for Milton Keynes, England, created on 1 April 1974 as a borough council and renamed after the borough won city status on 15 August 2022.",
+  "money": "A net budget of GBP 705.666 million in 2025/26, including GBP 407.174 million of Dedicated Schools Grant and GBP 188.333 million of council tax.",
+  "site": "https://www.milton-keynes.gov.uk",
+  "city": "Milton Keynes",
+  "country": "United Kingdom",
+  "address": "Civic Offices, 1 Saxon Gate East, Milton Keynes",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Milton_Keynes_City_Council",
+   "https://www.milton-keynes.gov.uk/sites/default/files/2025-03/Your%20Guide%20to%20Council%20Tax%20in%202025.pdf"
+  ],
+  "batch": "fp36"
+ },
+ "minalbajaj": {
+  "name": "Minal Bajaj",
+  "kind": "person",
+  "what": "A philanthropist, trustee and honorary director of the Jamnalal Bajaj Foundation since 2009, who founded the Mumbai NGO Hamaara Sapna in 2012.",
+  "money": "Her support for the biennale runs through Bajaj Beyond, an initiative of the Jamnalal Bajaj Foundation.",
+  "arts": "She worked on the restoration of the Dr Bhau Daji Lad Museum in Mumbai and sits on the drama committee of the National Centre for Performing Arts.",
+  "city": "Mumbai",
+  "country": "India",
+  "status": "done",
+  "sources": [
+   "https://kochimuzirisbiennale.org/news/minal-bajaj-supports-kochi-muziris-biennale---copy",
+   "https://www.theartnewspaper.com/2025/12/09/kochi-biennale-whats-on-show-and-who-is-funding",
+   "https://www.bajajgroup.company/core-companies/jamnalal-bajaj-foundation/"
+  ],
+  "batch": "fp32"
+ },
  "ministerofheritage": {
   "name": "Ministry of Heritage and Tourism",
   "kind": "gov",
@@ -12767,6 +14354,39 @@
   ],
   "batch": "fp17"
  },
+ "ministryofinterior|Italy": {
+  "name": "Ministero dell'Interno",
+  "short": "Italian Ministry of the Interior",
+  "kind": "gov",
+  "what": "Italy's interior ministry, the national authority for public order and security, based at the Viminale in Rome and led by Matteo Piantedosi since 22 October 2022.",
+  "money": "The Italian state budget.",
+  "site": "https://www.interno.gov.it",
+  "city": "Rome",
+  "country": "Italy",
+  "address": "Piazza del Viminale 1, 00184 Roma",
+  "status": "done",
+  "sources": [
+   "https://it.wikipedia.org/wiki/Ministero_dell%27interno",
+   "https://www.interno.gov.it/it"
+  ],
+  "batch": "fp35"
+ },
+ "ministryofnationalresources|Hungary": {
+  "name": "Nemzeti Erőforrás Minisztérium",
+  "short": "Ministry of National Resources",
+  "kind": "gov",
+  "what": "Hungary's ministry for health, social affairs, education, culture and sport, formed in 2010, renamed Ministry of Human Capacities in 2012 and dissolved in 2022.",
+  "money": "The state budget of Hungary.",
+  "arts": "Géza Szőcs was its state secretary for culture.",
+  "city": "Budapest",
+  "country": "Hungary",
+  "status": "done",
+  "sources": [
+   "https://hu.wikipedia.org/wiki/Nemzeti_Er%C5%91forr%C3%A1s_Miniszt%C3%A9rium",
+   "https://hu.wikipedia.org/wiki/Emberi_Er%C5%91forr%C3%A1sok_Miniszt%C3%A9riuma"
+  ],
+  "batch": "fp35"
+ },
  "ministryofocw|Netherlands": {
   "name": "Ministerie van Onderwijs, Cultuur en Wetenschap",
   "short": "Dutch Ministry of Education, Culture and Science (OCW)",
@@ -12783,6 +14403,54 @@
    "https://en.wikipedia.org/wiki/Ministry_of_Education,_Culture_and_Science_(Netherlands)"
   ],
   "batch": "fp2"
+ },
+ "miran": {
+  "name": "Miran Group",
+  "kind": "corp",
+  "what": "A construction and trading group in Sulaymaniyah, chaired by Ahmed Haji Ali, which began in 1991 as an import and export company.",
+  "money": "Government construction contracts, trading and investment.",
+  "site": "https://www.mirangroup.com",
+  "city": "Sulaymaniyah",
+  "country": "Iraq",
+  "address": "Salim Street, Miran Group Building, Sulaymaniyah",
+  "status": "done",
+  "sources": [
+   "https://www.mirangroup.com/about.html",
+   "https://www.mirangroup.com/"
+  ],
+  "batch": "fp33"
+ },
+ "mit": {
+  "name": "Massachusetts Institute of Technology",
+  "short": "MIT",
+  "kind": "priv",
+  "what": "A private research university in Cambridge, Massachusetts, chartered in 1861 and founded by William Barton Rogers.",
+  "money": "USD 5.37 billion operating revenue in FY2025: 45 percent sponsored research, 29 percent investment return, 9 percent gifts, 8 percent net tuition.",
+  "site": "https://www.mit.edu",
+  "city": "Cambridge, Massachusetts",
+  "country": "USA",
+  "address": "77 Massachusetts Avenue, Cambridge, MA",
+  "status": "done",
+  "sources": [
+   "https://facts.mit.edu/operating-financials/",
+   "https://en.wikipedia.org/wiki/Massachusetts_Institute_of_Technology"
+  ],
+  "batch": "fp34"
+ },
+ "mitre": {
+  "name": "The MITRE Corporation",
+  "short": "MITRE",
+  "kind": "priv",
+  "what": "An American nonprofit corporation spun out of MIT Lincoln Laboratory in 1958, with headquarters in Bedford, Massachusetts, and McLean, Virginia.",
+  "money": "Contracts to run federally funded research and development centres for US government agencies in aviation, defence, healthcare and cybersecurity: USD 2.37 billion revenue in 2023.",
+  "site": "https://www.mitre.org",
+  "city": "Bedford, Massachusetts",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mitre_Corporation"
+  ],
+  "batch": "fp34"
  },
  "mitsuifudosan": {
   "name": "Mitsui Fudosan Co., Ltd.",
@@ -12906,6 +14574,39 @@
   ],
   "batch": "fp6"
  },
+ "moscowdepartmentofculture|Russia": {
+  "name": "Департамент культуры города Москвы",
+  "short": "Moscow Department of Culture",
+  "kind": "gov",
+  "what": "The culture department of the Moscow city government, headed since September 2023 by Alexey Fursin, a minister of the Moscow government.",
+  "money": "The Moscow city budget, from which it pays subsidies to the city’s theatres and museums and sets their performance targets.",
+  "site": "https://www.mos.ru/kultura/",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://vedomosti.ru/gorod/moscow2030/articles/aleksei-fursin-kreativnie-industrii--eto-kak-pravilo-vsegda-venchur"
+  ],
+  "batch": "fp36"
+ },
+ "mothennessy": {
+  "name": "Moët Hennessy",
+  "kind": "corp",
+  "what": "The wine and spirits division of the LVMH luxury group, formed in 1971 when Moët & Chandon merged with Hennessy; Diageo holds a 34 percent stake.",
+  "money": "Sales of champagne, cognac, wines and spirits: LVMH's Wines & Spirits sector had EUR 5,358 million revenue in 2025.",
+  "site": "https://www.lvmh.com/en/our-maisons/wines-spirits/",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.lvmh.com/en/our-maisons/wines-spirits/",
+   "https://en.wikipedia.org/wiki/LVMH",
+   "https://www.vinetur.com/en/20260804105244/diageos-profit-from-moet-hennessy-ties-fell-by-more-than-half-by-2025.html",
+   "https://www.ii.co.uk/analysis-commentary/ii-view-could-zero-be-hero-drinks-giant-diageo-ii536363",
+   "https://metropolismag.com/projects/moet-hennessy-paris-headquarters/"
+  ],
+  "batch": "fp32"
+ },
  "mountallisonuniversity": {
   "name": "Mount Allison University",
   "kind": "found",
@@ -12986,6 +14687,24 @@
   ],
   "batch": "fp26"
  },
+ "municipalityofdro|Italy": {
+  "name": "Comune di Dro",
+  "short": "Municipality of Dro",
+  "kind": "gov",
+  "what": "The municipality of Dro, a town of 5,093 inhabitants in the Sarca valley in the autonomous province of Trento, part of the Alto Garda e Ledro valley community.",
+  "money": "The municipal budget of Dro.",
+  "site": "https://www.comune.dro.tn.it",
+  "city": "Dro",
+  "country": "Italy",
+  "address": "Via Torre 1, 38074 Dro (TN)",
+  "status": "done",
+  "sources": [
+   "https://www.comune.dro.tn.it/",
+   "https://it.wikipedia.org/wiki/Dro",
+   "https://en.wikipedia.org/wiki/Dro,_Trentino"
+  ],
+  "batch": "fp35"
+ },
  "municipalityofhagueculturalallocation|Netherlands": {
   "name": "Gemeente Den Haag",
   "short": "City of The Hague",
@@ -13023,6 +14742,39 @@
    "https://nl.wikipedia.org/wiki/Gemeentefonds_(Nederland)"
   ],
   "batch": "fp26"
+ },
+ "municipalityofprishtina|Kosovo": {
+  "name": "Komuna e Prishtinës",
+  "short": "Municipality of Prishtina",
+  "kind": "gov",
+  "what": "The municipal government of Pristina, the capital and largest city of Kosovo.",
+  "money": "The municipal budget of Pristina.",
+  "site": "https://prishtina.rks-gov.net",
+  "city": "Pristina",
+  "country": "Kosovo",
+  "address": "Rr. UÇK nr. 2, 10000 Prishtinë",
+  "status": "done",
+  "sources": [
+   "https://prishtina.rks-gov.net/",
+   "https://en.wikipedia.org/wiki/Pristina"
+  ],
+  "batch": "fp35"
+ },
+ "municipalityoftrshavn|Faroe Islands": {
+  "name": "Tórshavnar kommuna",
+  "short": "Municipality of Tórshavn",
+  "kind": "gov",
+  "what": "The largest municipality of the Faroe Islands, covering the capital Tórshavn and the islands of Nólsoy, Hestur and Koltur, with 23,242 residents in January 2024.",
+  "money": "The municipal budget of Tórshavn.",
+  "site": "https://www.torshavn.fo",
+  "city": "Tórshavn",
+  "country": "Faroe Islands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/T%C3%B3rshavn_Municipality",
+   "https://art.fo/news/620/the-national-gallery-of-the-faroe-islands-and-landsverk-sign-contract-with-sp-f-busetur-for-the-expansion-and-renovation-of-the-museum"
+  ],
+  "batch": "fp36"
  },
  "municipalmuseumofcityofkrakw|Poland": {
   "name": "Gmina Miejska Kraków",
@@ -13086,6 +14838,24 @@
   ],
   "batch": "fp30"
  },
+ "myclinic": {
+  "name": "MyClinic s.r.o.",
+  "short": "MY CLINIC",
+  "kind": "corp",
+  "what": "A private family-style clinic in Prague 6 Dejvice, run by MyClinic s.r.o. (company ID 01490575), caring for patients of all ages from newborns to grandparents.",
+  "money": "Its private medical services: general practice, paediatrics, specialist care, day surgery and health programmes for adults, children and companies.",
+  "site": "https://www.myclinic.cz",
+  "city": "Prague",
+  "country": "Czechia",
+  "address": "Generála Píky 430/26, 160 00 Praha 6",
+  "status": "done",
+  "sources": [
+   "https://www.myclinic.cz/en/kontakt",
+   "https://www.myclinic.cz/en/o-nas",
+   "https://www.kunsthallepraha.org/en/about-us"
+  ],
+  "batch": "fp33"
+ },
  "nacsingapore": {
   "name": "National Arts Council",
   "short": "NAC Singapore",
@@ -13103,6 +14873,31 @@
    "https://www.mccy.gov.sg/about-us/news-and-resources/parliamentary-matters/2021/may/government-funding-for-the-arts-sector"
   ],
   "batch": "fp18"
+ },
+ "nataliaopaleva": {
+  "name": "Natalia Opaleva",
+  "kind": "person",
+  "what": "A Russian collector and general director of the AZ Museum of Anatoly Zverev in Moscow, which she created in 2015; she opened the AZ/ART centre in 2024.",
+  "money": "A fortune from 20.36 percent of the gold miner GV Gold, built with her Lanta-Bank partners; Forbes put it at USD 260 million in 2018.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://finance.rambler.ru/other/41266910-zolotye-ruki-kak-nataliya-opaleva-sovmeschaet-mnozhestvo-professiy/",
+   "https://snob.ru/ya-snob/ia-snob-generalnyi-direktor-i-sozdatel-muzeia-az-natalia-opaleva/"
+  ],
+  "batch": "fp34"
+ },
+ "natashabelaya": {
+  "name": "Natasha Belaya",
+  "kind": "person",
+  "what": "A private donor listed among the patrons of the Zotov Centre for Constructivism in Moscow.",
+  "country": "Russia",
+  "status": "thin",
+  "sources": [
+   "https://centrezotov.ru/partners/"
+  ],
+  "batch": "fp34"
  },
  "nationalartscouncil|Singapore": {
   "name": "National Arts Council",
@@ -13333,6 +15128,20 @@
   ],
   "batch": "fp18"
  },
+ "nechirvanbarzani": {
+  "name": "Nechirvan Barzani",
+  "kind": "person",
+  "what": "A Kurdish politician born in Barzan in 1966, President of the Kurdistan Region of Iraq since 10 June 2019 and earlier its prime minister, grandson of KDP founder Mustafa Barzani.",
+  "city": "Erbil",
+  "country": "Iraq",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Nechirvan_Barzani",
+   "https://ruyafoundation.org/en/about/",
+   "https://en.wikipedia.org/wiki/Kurdistan_Region"
+  ],
+  "batch": "fp33"
+ },
  "nepalacademyoffinearts": {
   "name": "Nepal Academy of Fine Arts",
   "short": "NAFA",
@@ -13469,6 +15278,32 @@
   ],
   "batch": "fp21"
  },
+ "nih": {
+  "name": "National Institutes of Health",
+  "short": "NIH",
+  "kind": "gov",
+  "what": "The medical research agency of the US Department of Health and Human Services, in Bethesda, Maryland, which began in 1887 as the Hygienic Laboratory.",
+  "money": "The US federal budget: USD 48.86 billion in 2024.",
+  "site": "https://www.nih.gov",
+  "city": "Bethesda, Maryland",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Institutes_of_Health"
+  ],
+  "batch": "fp34"
+ },
+ "nikolaimoroz": {
+  "name": "Nikolai Moroz",
+  "kind": "person",
+  "what": "A patron who founded the Typography centre for contemporary art in Krasnodar with the art group ZIP, opening on 26 July 2012 in the Sovetskaya Kuban printing works.",
+  "country": "Russia",
+  "status": "thin",
+  "sources": [
+   "https://russianartarchive.net/en/catalogue/organization/OGCB"
+  ],
+  "batch": "fp33"
+ },
  "nilsastrup": {
   "name": "Stiftelsen Thomas Fearnley, Heddy og Nils Astrup",
   "short": "Thomas Fearnley, Heddy and Nils Astrup Foundation",
@@ -13501,6 +15336,22 @@
    "https://nishatmillsltd.com/"
   ],
   "batch": "fp18"
+ },
+ "nn": {
+  "name": "NN Group N.V.",
+  "short": "NN Group",
+  "kind": "corp",
+  "what": "A Dutch insurance and asset management group in The Hague, parent of Nationale-Nederlanden, formed in 2013 from ING's insurance business and listed in 2014.",
+  "money": "Premiums and fees from life and non-life insurance, asset management and mortgages.",
+  "site": "https://www.nn-group.com",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/NN_Group",
+   "https://nn-group.com/sustainability-society/partnerships/mauritshuis"
+  ],
+  "batch": "fp32"
  },
  "nonprofitserendipityarts": {
   "name": "Serendipity Arts Foundation",
@@ -13593,6 +15444,23 @@
    "https://nornickel.com/"
   ],
   "batch": "fp18"
+ },
+ "norskekunstforeninger": {
+  "name": "Norske Kunstforeninger",
+  "kind": "priv",
+  "what": "The Norwegian umbrella organisation for public art societies, first founded in 1934 and set up again in 1978, with 170 member societies in 2014 and an office in Oslo.",
+  "money": "State operating support through Arts Council Norway (Norsk kulturråd).",
+  "arts": "It grants member societies money for art transport, projects and equipment, sends out touring exhibitions and gives a debut prize at the Autumn Exhibition.",
+  "site": "https://www.kunstforeninger.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "address": "Øvre Slottsgate 2b, 0157 Oslo",
+  "status": "done",
+  "sources": [
+   "https://www.kunstforeninger.no/",
+   "https://no.wikipedia.org/wiki/Norske_Kunstforeninger"
+  ],
+  "batch": "fp33"
  },
  "north": {
   "name": "Foundation North",
@@ -13740,6 +15608,22 @@
   ],
   "batch": "fp18"
  },
+ "novatek": {
+  "name": "PJSC Novatek",
+  "short": "Novatek",
+  "kind": "corp",
+  "what": "A Russian gas producer founded in 1994, with its head office in Moscow, on the US sectoral sanctions list since 2014; founder Leonid Mikhelson holds 28 percent.",
+  "money": "Natural gas and petroleum production, including Yamal LNG and Arctic LNG 2: RUB 1.45 trillion revenue in 2025.",
+  "site": "https://www.novatek.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Novatek",
+   "https://www.wikidata.org/wiki/Q251546"
+  ],
+  "batch": "fp34"
+ },
  "nrwcultureministry|Germany": {
   "name": "Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen",
   "short": "MKW NRW",
@@ -13757,6 +15641,22 @@
    "https://www.mkw.nrw/system/files/media/document/file/mkw_2026-06-25_pm_foerderbescheid_kultur_ruhr.pdf"
   ],
   "batch": "fp4"
+ },
+ "nsf": {
+  "name": "U.S. National Science Foundation",
+  "short": "NSF",
+  "kind": "gov",
+  "what": "An independent US federal agency for science and engineering research, set up by the National Science Foundation Act signed by President Truman on 10 May 1950.",
+  "money": "The US federal budget: USD 8.75 billion for fiscal 2026.",
+  "site": "https://www.nsf.gov",
+  "city": "Alexandria, Virginia",
+  "country": "USA",
+  "address": "401 Dulany Street, Alexandria, Virginia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Science_Foundation"
+  ],
+  "batch": "fp34"
  },
  "nswgovernment|Australia": {
   "name": "NSW Government",
@@ -13916,6 +15816,21 @@
   ],
   "batch": "fp1"
  },
+ "nyu": {
+  "name": "New York University",
+  "short": "NYU",
+  "kind": "priv",
+  "what": "A private research university in New York City, chartered in 1831 by the New York State Legislature and founded in 1832 by Albert Gallatin, based in Greenwich Village.",
+  "money": "An operating budget of USD 4.3 billion in 2025, excluding NYU Langone, and an endowment of USD 7.28 billion (2025).",
+  "site": "https://www.nyu.edu",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/New_York_University"
+  ],
+  "batch": "fp35"
+ },
  "oak": {
   "name": "Oak Foundation",
   "kind": "found",
@@ -14020,6 +15935,22 @@
   ],
   "batch": "fp18"
  },
+ "ohiostateuniversity|USA": {
+  "name": "The Ohio State University",
+  "short": "Ohio State",
+  "kind": "gov",
+  "what": "A public land-grant research university in Columbus, Ohio, founded on 22 March 1870 as the Ohio Agricultural and Mechanical College, with 65,405 students.",
+  "money": "Its USD 10.4 billion FY2025 plan drew 56 percent from its health system; university funds came 30 percent from tuition, 11 percent from government appropriations.",
+  "site": "https://www.osu.edu",
+  "city": "Columbus",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ohio_State_University",
+   "https://busfin.osu.edu/sites/default/files/money_matters_osu_budget_model_fy2025.pdf"
+  ],
+  "batch": "fp36"
+ },
  "ohra": {
   "name": "OHRA",
   "kind": "corp",
@@ -14087,6 +16018,39 @@
    "https://ja.wikipedia.org/wiki/岡山ガス"
   ],
   "batch": "fp5"
+ },
+ "oloffsonhotel": {
+  "name": "Hotel Oloffson",
+  "short": "Oloffson Hotel",
+  "kind": "corp",
+  "what": "A hotel in a 19th century gingerbread mansion in Port-au-Prince, managed by Richard A. Morse from 1987, which gang arson destroyed on 6 July 2025.",
+  "city": "Port-au-Prince",
+  "country": "Haiti",
+  "wrong_match": "The Ghetto Biennale calls the Oloffson its host since 2009, which is in-kind help, not money.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Hotel_Oloffson",
+   "https://ghettobiennale.org/6th-ghetto-biennale-2019/sponsors/",
+   "https://ghettobiennale.org/"
+  ],
+  "batch": "fp33"
+ },
+ "omk": {
+  "name": "АО «Объединённая металлургическая компания»",
+  "short": "OMK (United Metallurgical Company)",
+  "kind": "corp",
+  "what": "A Moscow steel pipe maker with five plants between Moscow and the Urals, including the Vyksa Steel Works; under UK sanctions since May 2023 and US sanctions since September 2023.",
+  "money": "Sales of steel pipes, pipeline valves and fittings, railway wheels and automotive springs.",
+  "site": "https://omk.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "address": "Ozerkovskaya nab. 28, building 2, Moscow 115184",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20251116160643/https://www.offshore-technology.com/contractors/pipes/united-metallurgical-company-omk/",
+   "https://www.opensanctions.org/entities/NK-mqaXfnVQ299ouiB5v63vzt"
+  ],
+  "batch": "fp34"
  },
  "omkuchastie": {
   "name": "Благотворительный фонд поддержки семьи, защиты детства, материнства и отцовства «ОМК-Участие»",
@@ -14354,6 +16318,21 @@
    "https://www.outset.art/mission"
   ],
   "batch": "fp19"
+ },
+ "owsleybrowniii": {
+  "name": "Owsley Brown III",
+  "kind": "person",
+  "what": "A documentary film director and producer from Louisville, Kentucky, founder of Magnanimus Wine Group in 2005 and son of Owsley Brown II, Brown-Forman's chief executive from 1993 to 2005.",
+  "money": "His wine business and the family wealth of the Browns, who have run the spirits company Brown-Forman since 1870.",
+  "arts": "His films include Night Waltz, on Paul Bowles, which won an Independent Spirit Award in 2000, and Music Makes a City, on the Louisville Orchestra.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://twobirdsfilm.com/owsley-brown",
+   "https://rumtalk.blogspot.com/2011/09/owsley-brown-ii-dies-at-69.html",
+   "https://www.wuky.org/local-regional-news/2011-09-27/former-brown-forman-ceo-dies-at-age-of-69"
+  ],
+  "batch": "fp33"
  },
  "oxfaminternacional": {
   "name": "Stichting Oxfam International",
@@ -14668,6 +16647,24 @@
   ],
   "batch": "fp19"
  },
+ "perarte": {
+  "name": "PerArte Stiftung",
+  "short": "PerArte",
+  "kind": "found",
+  "what": "A Swiss foundation initiated in 2025 by Marianne and Martin Haefner and entered in the Zurich commercial register in May 2026 to fund major exhibitions at the Kunsthaus Zürich.",
+  "money": "A start capital of CHF 30 million from the Haefner family.",
+  "site": "https://perarte.ch",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "address": "c/o Homburger AG, Hardstrasse 201, 8005 Zürich",
+  "status": "done",
+  "sources": [
+   "https://perarte.ch",
+   "https://www.zefix.ch/ZefixREST/api/v1/firm/1748498.json",
+   "https://kunsthaus.ch/en/museum/engagement/"
+  ],
+  "batch": "fp32"
+ },
  "petronor": {
   "name": "Petróleos del Norte, S.A.",
   "short": "Petronor",
@@ -14855,6 +16852,23 @@
    "https://www.eni.com/it-IT/media/comunicati-stampa/2026/05/plenitude-pubblica-bilancio-esercizio-2025-suo-nuovo-report-sostenibilita-relazione.html"
   ],
   "batch": "fp11"
+ },
+ "plymouthcitycouncil|UK": {
+  "name": "Plymouth City Council",
+  "kind": "gov",
+  "what": "Plymouth's city council in Devon, England, a unitary authority since 1 April 1998, with 57 councillors meeting at the Council House on Armada Way.",
+  "money": "A revenue budget of GBP 253.4 million for 2025/26: other grants 39 percent, council tax 24 percent, core government grants 16 percent.",
+  "site": "https://www.plymouth.gov.uk",
+  "city": "Plymouth",
+  "country": "United Kingdom",
+  "address": "Ballard House, West Hoe Road, Plymouth",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Plymouth_City_Council",
+   "https://www.plymouth.gov.uk/counciltax/howwespendyourcounciltax",
+   "https://www.plymouth.gov.uk/news/council-agrees-extra-funding-vital-care-services-202526-budget"
+  ],
+  "batch": "fp36"
  },
  "pnc": {
   "name": "The PNC Financial Services Group, Inc.",
@@ -15142,6 +17156,20 @@
   ],
   "batch": "fp1"
  },
+ "promatrepaulista": {
+  "name": "Pro Matre Paulista",
+  "kind": "corp",
+  "what": "A private maternity hospital in São Paulo, owned since January 2000 by Grupo Santa Joana, which also runs the Santa Joana and Santa Maria maternity hospitals there.",
+  "money": "Its maternity hospital business within Grupo Santa Joana.",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://healthcare-digital.com/company/santa-joana-group",
+   "https://medicinasa.com.br/grupo-santa-joana-inaugura-escola/"
+  ],
+  "batch": "fp33"
+ },
  "protective": {
   "name": "Protective Life Corporation",
   "short": "Protective",
@@ -15297,6 +17325,22 @@
   ],
   "batch": "fp27"
  },
+ "psb": {
+  "name": "PJSC Promsvyazbank",
+  "short": "PSB",
+  "kind": "corp",
+  "what": "A Moscow bank founded in 1995, nationalised in 2018, made the supporting bank for Russia's defence industry by a 2019 law and under US and UK sanctions since February 2022.",
+  "money": "Lending to the defence industry and retail banking: a net loss of RUB 19.2 billion in 2025.",
+  "site": "https://www.psbank.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Promsvyazbank",
+   "https://www.themoscowtimes.com/2026/03/11/russian-military-bank-posts-2025-loss-amid-rising-defaults-a92197"
+  ],
+  "batch": "fp34"
+ },
  "publiccentrefundedbygipuzkoacouncil|Spain": {
   "name": "Gipuzkoako Foru Aldundia / Diputación Foral de Gipuzkoa",
   "short": "Provincial Council of Gipuzkoa",
@@ -15385,6 +17429,23 @@
   ],
   "batch": "fp1"
  },
+ "qatarshell": {
+  "name": "Qatar Shell",
+  "kind": "corp",
+  "what": "Shell's group of companies in Qatar, one of the first international companies to begin oil production there; Richard Tallant chaired it in 2022.",
+  "money": "Shell's gas business in Qatar, including the Pearl GTL plant at Ras Laffan, run under a production sharing agreement with QatarEnergy.",
+  "arts": "In November 2018 it agreed to sponsor Company House, the oil history house of Msheireb Museums in Doha.",
+  "site": "https://www.shell.com.qa",
+  "city": "Doha",
+  "country": "Qatar",
+  "status": "done",
+  "sources": [
+   "https://gulf-times.com/story/613477/qatar-shell-inks-pact-to-sponsor-company-house",
+   "https://www.gulf-times.com/story/714742/dadu-signs-on-qatar-shell-as-founding-family-member",
+   "https://en.wikipedia.org/wiki/Pearl_GTL"
+  ],
+  "batch": "fp32"
+ },
  "qattan": {
   "name": "A. M. Qattan Foundation",
   "short": "Qattan Foundation",
@@ -15455,6 +17516,22 @@
    "https://en.wikipedia.org/wiki/Quark_Expeditions"
   ],
   "batch": "fp19"
+ },
+ "rabeesecurities": {
+  "name": "Rabee Securities",
+  "short": "RS",
+  "kind": "corp",
+  "what": "An Iraqi securities brokerage established on 7 January 1995, licensed by the Iraqi Securities Commission and headquartered in Baghdad, chaired by Shwan Ibrahim Taha.",
+  "money": "Brokerage on the Iraq Stock Exchange, investment banking, custody and advisory work; its capital is IQD 3 billion.",
+  "site": "https://rs.iq",
+  "city": "Baghdad",
+  "country": "Iraq",
+  "status": "done",
+  "sources": [
+   "https://rs.iq/rabee-securities-in-brief/",
+   "https://gulfnews.com/business/corporate-news/access-to-iraqi-stock-market-now-made-easier-1.1698818381233"
+  ],
+  "batch": "fp33"
  },
  "rajeebsamdani": {
   "name": "Samdani Art Foundation",
@@ -15629,6 +17706,22 @@
   ],
   "batch": "fp19"
  },
+ "republicofkosovoministries|Kosovo": {
+  "name": "Ministria e Kulturës, Rinisë dhe Sportit",
+  "short": "Kosovo Ministry of Culture, Youth and Sport",
+  "kind": "gov",
+  "what": "The government ministry of the Republic of Kosovo for culture, youth and sport.",
+  "money": "The Kosovo state budget: EUR 86.4 million planned for the ministry in 2025, down from EUR 88.1 million in 2024.",
+  "site": "https://www.mkrs-ks.org",
+  "city": "Pristina",
+  "country": "Kosovo",
+  "status": "done",
+  "sources": [
+   "https://stacion.org/en/Open-Call-AoT-2023",
+   "https://www.institutigap.org/documents/7624_projektbuxheti_2025.pdf"
+  ],
+  "batch": "fp35"
+ },
  "resoluteav": {
   "name": "Resolute Audio Visual Limited",
   "short": "Resolute AV",
@@ -15799,6 +17892,17 @@
   ],
   "batch": "fp28"
  },
+ "rinatmardanov": {
+  "name": "Rinat Mardanov",
+  "kind": "person",
+  "what": "A person the atlas names as a backer of the launch of Smena, a contemporary culture centre at Burkhana Shakhidi 7 in Kazan.",
+  "country": "Russia",
+  "status": "thin",
+  "sources": [
+   "https://www.business-gazeta.ru/article/307956"
+  ],
+  "batch": "fp33"
+ },
  "ringier": {
   "name": "Ringier AG",
   "short": "Ringier",
@@ -15817,6 +17921,23 @@
    "https://www.ringier.com/art/"
   ],
   "batch": "fp19"
+ },
+ "riodejaneirostate|Brazil": {
+  "name": "Governo do Estado do Rio de Janeiro",
+  "short": "Rio de Janeiro State Government",
+  "kind": "gov",
+  "what": "The executive branch of the Brazilian state of Rio de Janeiro, led by the governor, with its seat at the Palácio Guanabara in the state capital since 1975.",
+  "money": "The state budget of Rio de Janeiro.",
+  "arts": "Its culture and creative economy secretariat runs the state culture incentive law, under which ICMS-paying companies put about R$ 230 million into 138 projects in 2024.",
+  "site": "https://www.rj.gov.br",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Governo_do_Estado_do_Rio_de_Janeiro",
+   "https://www.correiodamanha.com.br/estado-do-rio/2025/01/176049-governo-investiu-rs-230-milhoes-por-meio-da-lei-de-incentivo-a-cultura.html"
+  ],
+  "batch": "fp36"
  },
  "rnne": {
   "name": "Rönne-Stiftung",
@@ -15909,6 +18030,22 @@
   ],
   "batch": "fp20"
  },
+ "rockwellautomation": {
+  "name": "Rockwell Automation, Inc.",
+  "short": "Rockwell Automation",
+  "kind": "corp",
+  "what": "A US industrial automation company in Milwaukee, Wisconsin; it began in 1903, founded by Stanton Allen and Lynde Bradley, and took the name Allen-Bradley Company in 1909.",
+  "money": "Sales of industrial automation hardware, software and services under brands such as Allen-Bradley and FactoryTalk: USD 8,342 million in fiscal 2025.",
+  "site": "https://www.rockwellautomation.com",
+  "city": "Milwaukee",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.sec.gov/Archives/edgar/data/1024478/000102447825000112/fy2025ex99.htm",
+   "https://en.wikipedia.org/wiki/Rockwell_Automation"
+  ],
+  "batch": "fp35"
+ },
  "rolex": {
   "name": "Rolex SA",
   "short": "Rolex",
@@ -15940,6 +18077,35 @@
    "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/21928-everything_is_about_quality_also_in_contemporary_art"
   ],
   "batch": "fp23"
+ },
+ "romantrotsenko": {
+  "name": "Roman Trotsenko",
+  "kind": "person",
+  "what": "A Russian businessman born in 1970, owner of the investment company Aeon Corporation and president of United Shipbuilding Corporation from 2009 to 2012.",
+  "money": "70 percent of Russkaya Energia, which agreed in 2021 to buy the coal miner Vorkutaugol; Forbes put his fortune at USD 1.6 billion in 2019.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Roman_Trotsenko",
+   "https://hh.ru/employer/156617"
+  ],
+  "batch": "fp34"
+ },
+ "rosatommashinostroenie": {
+  "name": "ООО «Росатом Машиностроение»",
+  "short": "Rosatom Mashinostroenie",
+  "kind": "corp",
+  "what": "The machine building division of Rosatom, the Russian state nuclear corporation, whose factories make reactor equipment for power plants and nuclear icebreakers.",
+  "money": "Sales of equipment for nuclear and thermal power plants, made in Moscow, St Petersburg, Karelia and the Moscow, Rostov, Nizhny Novgorod and Yekaterinburg regions.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://www.dp.ru/a/2025/08/16/putin-podpisal-ukaz-o-restrukturizacii",
+   "https://hh.kz/employer/65665"
+  ],
+  "batch": "fp34"
  },
  "rosenthalfamily": {
   "name": "Rosenthal Family Foundation",
@@ -16022,6 +18188,58 @@
   ],
   "batch": "fp20"
  },
+ "rtx": {
+  "name": "RTX Corporation",
+  "short": "RTX",
+  "kind": "corp",
+  "what": "A US aerospace and defence group formed in 2020 by merging Raytheon with the aerospace businesses of United Technologies; its units are Collins Aerospace, Pratt & Whitney and Raytheon.",
+  "money": "Aircraft engines, avionics, guided missiles and air defence systems: revenue of USD 88.6 billion in 2025, 38 percent of it from the US government.",
+  "site": "https://www.rtx.com",
+  "city": "Arlington",
+  "country": "United States",
+  "address": "1000 Wilson Boulevard, Arlington, VA 22209",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/RTX_Corporation",
+   "https://www.sec.gov/Archives/edgar/data/101829/000010182926000006/rtx-20251231.htm",
+   "https://data.sec.gov/submissions/CIK0000101829.json"
+  ],
+  "batch": "fp33"
+ },
+ "rubelli": {
+  "name": "Rubelli S.p.A.",
+  "short": "Rubelli",
+  "kind": "corp",
+  "what": "A Venetian silk and furnishing textile company dating to Lorenzo Rubelli's purchase of the G.B. Trapolin weaving mill in 1889; Alessandro Favaretto Rubelli is its president.",
+  "money": "Sales of silk fabrics and furnishing textiles worldwide.",
+  "arts": "It set up the Rubelli Foundation in 2018 to safeguard its textile heritage, and has given to the Fondazione Giorgio Cini, Venetian Heritage and Save Venice.",
+  "site": "https://www.rubelli.com",
+  "city": "Venice",
+  "country": "Italy",
+  "address": "San Marco 3395, Venezia",
+  "status": "done",
+  "sources": [
+   "https://www.rubelli.com/en/history",
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/rubelli/"
+  ],
+  "batch": "fp32"
+ },
+ "rubismcnat": {
+  "name": "Rubis Mécénat",
+  "kind": "found",
+  "what": "The endowment fund of the French energy group Rubis, running artistic and social projects since 2011.",
+  "money": "The Rubis group, founded in 1990 by Gilles Gobin in Paris, which stores and distributes petroleum products and LPG.",
+  "arts": "It funds the Prix Rubis Mécénat with the Beaux-Arts de Paris and youth programmes in South Africa, Madagascar and Jamaica.",
+  "site": "https://www.rubismecenat.fr",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.rubismecenat.fr/",
+   "https://en.wikipedia.org/wiki/Rubis_(company)"
+  ],
+  "batch": "fp34"
+ },
  "rundirectlybyrgionoccitanie": {
   "name": "Région Occitanie / Pyrénées-Méditerranée",
   "short": "Région Occitanie",
@@ -16039,6 +18257,53 @@
   ],
   "batch": "fp27"
  },
+ "russianfederalstate|Russia": {
+  "name": "Министерство культуры Российской Федерации",
+  "short": "Russian Ministry of Culture",
+  "kind": "gov",
+  "what": "The Russian federal ministry for culture policy, formed on 2 May 2008 and led by Olga Lyubimova since 21 January 2020; the Hermitage is in its charge.",
+  "money": "The federal budget of Russia, which pays federal museums such as the Hermitage subsidies for their state assignments.",
+  "site": "https://culture.gov.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Russia)",
+   "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/"
+  ],
+  "batch": "fp36"
+ },
+ "russianstate|Italy": {
+  "name": "Российская Федерация",
+  "short": "Russian Federation",
+  "kind": "gov",
+  "what": "The Russian federal state, whose government owns Russia’s national pavilion in the Giardini of the Venice Biennale, as each national pavilion there belongs to its government.",
+  "money": "The federal budget of Russia.",
+  "city": "Moscow",
+  "country": "Russia",
+  "wrong_match": "The pavilion’s line names the Russian state only as owner of the building, and Novatek, not the state, paid for the 2021 renovation.",
+  "status": "done",
+  "sources": [
+   "https://meduza.io/en/feature/2026/03/11/russia-s-return-to-the-venice-biennale-has-triggered-backlash-and-a-threat-to-pull-e-u-funding-meduza-explains-how-the-forum-was-designed-for-soft-power-from-the-start"
+  ],
+  "batch": "fp36"
+ },
+ "russianstate|Russia": {
+  "name": "Министерство культуры Российской Федерации",
+  "short": "Russian Ministry of Culture",
+  "kind": "gov",
+  "what": "The Russian federal ministry for culture policy, formed on 2 May 2008 and led by Olga Lyubimova since 21 January 2020; the State Russian Museum is in its charge.",
+  "money": "The federal budget of the Russian Federation.",
+  "site": "https://culture.gov.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Russia)",
+   "https://rusmuseum.ru/upload/medialibrary/f91/d2c70zwq3l272mks7mv5dff8sz8d19qf/nomer%201228.pdf"
+  ],
+  "batch": "fp36"
+ },
  "russiasmajornaturalgasproducer": {
   "name": "Leonid Mikhelson",
   "kind": "person",
@@ -16053,6 +18318,21 @@
    "https://en.wikipedia.org/wiki/V-A-C_Foundation"
   ],
   "batch": "fp28"
+ },
+ "rweag": {
+  "name": "RWE AG",
+  "short": "RWE",
+  "kind": "corp",
+  "what": "An electricity company in Essen, founded in 1898 as Rheinisch-Westfälisches Elektrizitätswerk, that generates and trades power in Europe, the United States and Asia-Pacific.",
+  "money": "Sales of power from wind, solar, hydro, biomass, gas and coal plants, and energy trading: EUR 17.63 billion revenue in 2025.",
+  "site": "https://www.rwe.com",
+  "city": "Essen",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/RWE"
+  ],
+  "batch": "fp32"
  },
  "saastamoinen": {
   "name": "Saastamoisen säätiö sr",
@@ -16257,6 +18537,22 @@
    "https://en.wikipedia.org/wiki/SaskTel"
   ],
   "batch": "fp5"
+ },
+ "sber": {
+  "name": "PJSC Sberbank",
+  "short": "Sber",
+  "kind": "corp",
+  "what": "A Russian bank branded Sber since 2020, seated in Moscow, under US and EU sanctions since 2014; the National Wealth Fund holds 50 percent plus one share.",
+  "money": "Banking profits: net income of RUB 1.71 trillion in 2025.",
+  "site": "https://www.sberbank.com",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sberbank",
+   "https://www.wikidata.org/wiki/Q205012"
+  ],
+  "batch": "fp34"
  },
  "scfdsalestax": {
   "name": "Scientific and Cultural Facilities District",
@@ -16758,6 +19054,24 @@
   ],
   "batch": "fp13"
  },
+ "sligocountycouncil|Ireland": {
+  "name": "Sligo County Council",
+  "short": "Comhairle Chontae Shligigh",
+  "kind": "gov",
+  "what": "County Sligo's local authority in Ireland: 18 councillors elected for five-year terms by single transferable vote, and a chief executive, Martin Lydon.",
+  "money": "Its 2025 budget of EUR 80.8 million: EUR 52.6 million grants and other income, EUR 15.8 million rates, EUR 12.4 million property tax.",
+  "site": "https://www.sligococo.ie",
+  "city": "Sligo",
+  "country": "Ireland",
+  "address": "County Hall, Riverside, Sligo, F91 Y763",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sligo_County_Council",
+   "https://www.sligococo.ie/",
+   "https://www.sligococo.ie/YourCouncil/Finance/Budgets/Adopted%20Budget%202025.pdf"
+  ],
+  "batch": "fp35"
+ },
  "sloan": {
   "name": "Alfred P. Sloan Foundation",
   "short": "Sloan Foundation",
@@ -16969,6 +19283,24 @@
   ],
   "batch": "fp21"
  },
+ "southaustraliangovernment|Australia": {
+  "name": "Government of South Australia",
+  "short": "South Australian Government",
+  "kind": "gov",
+  "what": "South Australia's state government, led by Premier Peter Malinauskas from the State Administration Centre in Adelaide, set up as a responsible colonial government on 22 April 1857.",
+  "money": "The state budget of South Australia: AUD 27.5 billion in 2023-24.",
+  "arts": "In July 2024 it committed AUD 780,000 to repair the Tandanya building in Adelaide, home of the National Aboriginal Cultural Institute.",
+  "site": "https://www.sa.gov.au",
+  "city": "Adelaide",
+  "country": "Australia",
+  "address": "State Administration Centre, 200 Victoria Square, Adelaide",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_South_Australia",
+   "https://www.indailysa.com.au/news/archive/2024/07/12/visibly-tired-and-closed-tandanya-to-reopen-after-repairs"
+  ],
+  "batch": "fp36"
+ },
  "southbankcentretrust": {
   "name": "Southbank Centre",
   "kind": "found",
@@ -17121,6 +19453,23 @@
   ],
   "batch": "fp10"
  },
+ "sparkasseessen": {
+  "name": "Sparkasse Essen",
+  "kind": "corp",
+  "what": "A public-law savings bank (Anstalt des öffentlichen Rechts) founded in 1841, whose business area is the city of Essen.",
+  "money": "Lending, deposits and banking fees; its balance sheet total was EUR 10.339 billion in 2025.",
+  "arts": "Among its five foundations is a Philharmonie-Stiftung, set up in 2004.",
+  "site": "https://www.sparkasse-essen.de",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "III. Hagen 43, 45127 Essen",
+  "status": "done",
+  "sources": [
+   "https://www.sparkasse-essen.de/de/home/toolbar/impressum.html",
+   "https://de.wikipedia.org/wiki/Sparkasse_Essen"
+  ],
+  "batch": "fp32"
+ },
  "srp": {
   "name": "Salt River Project",
   "short": "SRP",
@@ -17168,6 +19517,22 @@
    "https://de.wikipedia.org/wiki/Stadtwerke_D%C3%BCsseldorf"
   ],
   "batch": "fp25"
+ },
+ "stadtwerkeessen": {
+  "name": "Stadtwerke Essen AG",
+  "short": "Stadtwerke Essen",
+  "kind": "corp",
+  "what": "Essen's municipal utility, formed in 1867 from the city's gas and water works; the city holding EVV owns 51 percent, Westenergie 29 percent and Thüga 20 percent.",
+  "money": "Sales of gas, heat, power, drinking water and wastewater services in Essen: EUR 553.94 million revenue in 2023.",
+  "site": "https://www.stadtwerke-essen.de",
+  "city": "Essen",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Stadtwerke_Essen",
+   "https://www.lobbyregister.bundestag.de/media/66/c4/753178/Essener-Versorgungs-und-Verkehrsgesellschaft-JAP-31-12-2024.pdf"
+  ],
+  "batch": "fp32"
  },
  "standardbankhasbeencollection": {
   "name": "Standard Bank Group Limited",
@@ -17316,6 +19681,20 @@
   ],
   "batch": "fp1"
  },
+ "stevetisch": {
+  "name": "Steve Tisch",
+  "kind": "person",
+  "what": "An American film producer born in 1949, partner in the production company Escape Artists and chairman of the New York Giants, which he co-owned from 2005 to March 2026.",
+  "money": "His film production work and the Tisch family's co-ownership of the New York Giants football team.",
+  "city": "Culver City",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Steve_Tisch",
+   "https://en.wikipedia.org/wiki/Escape_Artists"
+  ],
+  "batch": "fp33"
+ },
  "stichtingdoen": {
   "name": "Stichting DOEN",
   "short": "DOEN Foundation",
@@ -17333,6 +19712,19 @@
    "https://en.wikipedia.org/wiki/DOEN_Foundation"
   ],
   "batch": "fp5"
+ },
+ "stichtingjohanmauritsvannassau": {
+  "name": "Stichting Johan Maurits van Nassau",
+  "kind": "found",
+  "what": "A foundation set up in 1957 to support the Mauritshuis in The Hague; it has bought paintings and lent them to the museum long term.",
+  "money": "It merged in 1986 with the Stichting Vrienden van het Mauritshuis, a fundraising foundation set up in 1982.",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Mauritshuis"
+  ],
+  "batch": "fp32"
  },
  "stillwater": {
   "name": "Still Water Foundation",
@@ -17383,6 +19775,40 @@
    "https://www.jerseyfinance.com/news/corient-completes-acquisitions-of-stonehage-fleming-and-stanhope-capital-group/"
   ],
   "batch": "fp21"
+ },
+ "stpetersburgcommitteeforculture": {
+  "name": "Комитет по культуре Санкт-Петербурга",
+  "short": "St Petersburg Committee for Culture",
+  "kind": "gov",
+  "what": "The executive body of the St Petersburg city government for cultural policy, covering art, cinema and art and music education, chaired by Fyodor Boltin since December 2021.",
+  "money": "The budget of the city of St Petersburg.",
+  "site": "https://www.gov.spb.ru/gov/otrasl/c_culture",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "address": "Nevsky Prospekt 40, St Petersburg 191186",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Комитет_по_культуре_Санкт-Петербурга",
+   "https://web.archive.org/web/20240912222630/https://www.gov.spb.ru/gov/otrasl/c_culture/"
+  ],
+  "batch": "fp34"
+ },
+ "stpetersburgcommitteeforsocialpolicy": {
+  "name": "Комитет по социальной политике Санкт-Петербурга",
+  "short": "St Petersburg Committee for Social Policy",
+  "kind": "gov",
+  "what": "The executive body of the St Petersburg city government for social support and social services; in 2021 it served 3 million residents in 85 categories.",
+  "money": "The budget of the city of St Petersburg.",
+  "site": "https://www.gov.spb.ru/gov/otrasl/trud/",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "address": "Novgorodskaya ulitsa 20, lit. A, St Petersburg 191144",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20260517175645/https://www.gov.spb.ru/gov/otrasl/trud/",
+   "https://peterburg2.ru/news/nazvana-glavnaya-zadacha-komiteta-po-socialnoy-politike-peterburga-97304.html"
+  ],
+  "batch": "fp34"
  },
  "strabagmainsponsorofneststage": {
   "name": "STRABAG SE",
@@ -17775,6 +20201,22 @@
    "https://myartguides.com/artspaces/non-profit/mexico-city/biquini-wax-eps/"
   ],
   "batch": "fp30"
+ },
+ "thanetdistrictcouncil|UK": {
+  "name": "Thanet District Council",
+  "kind": "gov",
+  "what": "The district council for Thanet in Kent, England, created on 1 April 1974, with 56 councillors and offices on Cecil Street in Margate.",
+  "money": "A net budget of GBP 26.343 million for 2025/26, about half from the government’s settlement funding and half from council tax.",
+  "site": "https://www.thanet.gov.uk",
+  "city": "Margate",
+  "country": "United Kingdom",
+  "address": "Council Offices, Cecil Street, Margate CT9 1XZ",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Thanet_District_Council",
+   "https://www.thanet.gov.uk/info-pages/cost-of-council-services"
+  ],
+  "batch": "fp36"
  },
  "thief": {
   "name": "THE THIEF",
@@ -18329,6 +20771,21 @@
   ],
   "batch": "fp5"
  },
+ "unicredit": {
+  "name": "UniCredit S.p.A.",
+  "short": "UniCredit",
+  "kind": "corp",
+  "what": "An Italian banking group formed in 1998 by the merger of Credito Italiano and Unicredito, with its headquarters in the UniCredit Tower in Milan.",
+  "money": "Its banking business: revenue of EUR 24.844 billion in 2024.",
+  "site": "https://www.unicreditgroup.eu",
+  "city": "Milan",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/UniCredit"
+  ],
+  "batch": "fp33"
+ },
  "unicreditbank": {
   "name": "UniCredit Bank S.A.",
   "short": "UniCredit Bank Romania",
@@ -18343,6 +20800,23 @@
    "https://en.wikipedia.org/wiki/UniCredit_Bank_Romania"
   ],
   "batch": "fp23"
+ },
+ "unipar": {
+  "name": "Unipar Carbocloro S.A.",
+  "short": "Unipar",
+  "kind": "corp",
+  "what": "A Brazilian chemical company founded in 1969 as a petrochemical holding, seated in São Paulo, whose controlling shareholder is Frank Geyer Abubakir.",
+  "money": "Sales of chlorine, caustic soda and PVC from plants in Cubatão and Santo André in Brazil and Bahía Blanca in Argentina.",
+  "site": "https://www.unipar.com",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Unipar_Carbocloro",
+   "https://www.infomoney.com.br/?p=2559386",
+   "https://en.wikipedia.org/wiki/Unipar_Carbocloro"
+  ],
+  "batch": "fp34"
  },
  "unipol": {
   "name": "Unipol Assicurazioni S.p.A.",
@@ -18496,6 +20970,24 @@
    "https://en.wikipedia.org/wiki/University_of_the_Witwatersrand"
   ],
   "batch": "fp27"
+ },
+ "uruguaysministryofeducation|Uruguay": {
+  "name": "Ministerio de Educación y Cultura",
+  "short": "MEC",
+  "kind": "gov",
+  "what": "Uruguay's government ministry for education policy, cultural development, heritage, science and human rights, in Montevideo.",
+  "money": "The national budget of Uruguay.",
+  "site": "https://www.gub.uy/ministerio-educacion-cultura",
+  "city": "Montevideo",
+  "country": "Uruguay",
+  "address": "Reconquista 535, Montevideo",
+  "status": "done",
+  "sources": [
+   "https://www.gub.uy/ministerio-educacion-cultura/",
+   "https://es.wikipedia.org/wiki/Ministerio_de_Educaci%C3%B3n_y_Cultura_de_Uruguay",
+   "https://en.wikipedia.org/wiki/Ministry_of_Education_and_Culture_(Uruguay)"
+  ],
+  "batch": "fp35"
  },
  "usbank": {
   "name": "U.S. Bancorp",
@@ -18772,6 +21264,38 @@
   ],
   "batch": "fp23"
  },
+ "vikingcruises": {
+  "name": "Viking Holdings Ltd",
+  "short": "Viking",
+  "kind": "corp",
+  "what": "A cruise company founded by Torstein Hagen in 1997 as Viking River Cruises, headquartered in Hamilton, Bermuda, run from Basel, and listed in New York since May 2024.",
+  "money": "River, ocean and expedition cruises: USD 5.3 billion revenue in 2024.",
+  "site": "https://www.viking.com",
+  "city": "Basel",
+  "country": "Switzerland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Viking_(cruise_line)"
+  ],
+  "batch": "fp32"
+ },
+ "villasandi": {
+  "name": "Villa Sandi",
+  "kind": "corp",
+  "what": "A Prosecco wine company in Crocetta del Montello, Treviso, owned by the Moretti Polegato family and run by Giancarlo Moretti Polegato with his children Diva and Leonardo.",
+  "money": "Sales of Prosecco DOCG and DOC wines: group turnover of over EUR 131 million in 2023.",
+  "site": "https://www.villasandi.it",
+  "city": "Crocetta del Montello",
+  "country": "Italy",
+  "address": "Via Erizzo 113/A, 31035 Crocetta del Montello",
+  "status": "done",
+  "sources": [
+   "https://www.villasandi.it/en/",
+   "https://en.ilsole24ore.com/art/wine-and-art-villa-sandi-joins-guggenheim-on-40th-anniversary-of-public-opening-AGbQZHx",
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/villa-sandi/"
+  ],
+  "batch": "fp32"
+ },
  "villedebordeaux|France": {
   "name": "Ville de Bordeaux",
   "kind": "gov",
@@ -18905,6 +21429,21 @@
   ],
   "batch": "fp23"
  },
+ "vivaenergyaustralia": {
+  "name": "Viva Energy Australia",
+  "short": "Viva Energy",
+  "kind": "corp",
+  "what": "An Australian fuel company set up in August 2014 when Vitol bought Shell's Australian downstream business, seated in Melbourne and listed on the ASX since 2018.",
+  "money": "Refining at its Geelong refinery and fuel sales: AUD 26.7 billion revenue in 2023; Vitol keeps 29.9 percent.",
+  "site": "https://www.vivaenergy.com.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Viva_Energy"
+  ],
+  "batch": "fp34"
+ },
  "vlaamseoverheid": {
   "name": "Vlaamse Regering",
   "short": "Flemish Government",
@@ -18940,6 +21479,23 @@
    "https://en.wikipedia.org/wiki/Vladimir_Potanin"
   ],
   "batch": "fp30"
+ },
+ "vodafone": {
+  "name": "Vodafone Group Public Limited Company",
+  "short": "Vodafone",
+  "kind": "corp",
+  "what": "A British telecommunications group founded on 17 July 1984 as a subsidiary of Racal Electronics, demerged in 1991, with its registered office in Newbury, Berkshire.",
+  "money": "Telecommunications services: revenue of EUR 40,461 million in the year to 31 March 2026.",
+  "site": "https://www.vodafone.com",
+  "city": "Newbury",
+  "country": "United Kingdom",
+  "address": "Vodafone House, The Connection, Newbury, Berkshire RG14 2FN",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Vodafone",
+   "https://find-and-update.company-information.service.gov.uk/company/01833679"
+  ],
+  "batch": "fp33"
  },
  "volkart": {
   "name": "Volkart Stiftung",
@@ -19100,6 +21656,21 @@
   ],
   "batch": "fp29"
  },
+ "vyksacityadministration|Russia": {
+  "name": "Администрация городского округа город Выкса",
+  "short": "Vyksa administration",
+  "kind": "gov",
+  "what": "The administration of the Vyksa urban district in Nizhny Novgorod Oblast, Russia, formed from the Vyksunsky district in 2011, with 72,351 residents in 2025.",
+  "money": "The budget of the Vyksa urban district, where OMK's Vyksa Metallurgical Plant is the town's main taxpayer.",
+  "city": "Vyksa",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Городской_округ_город_Выкса",
+   "https://ru.wikipedia.org/wiki/Выкса"
+  ],
+  "batch": "fp36"
+ },
  "wacom": {
   "name": "Wacom Co., Ltd.",
   "short": "Wacom",
@@ -19165,6 +21736,22 @@
    "https://en.wikipedia.org/wiki/Andy_Warhol_Foundation_for_the_Visual_Arts"
   ],
   "batch": "fp5"
+ },
+ "warnermusic": {
+  "name": "Warner Music Group Corp.",
+  "short": "Warner Music Group",
+  "kind": "corp",
+  "what": "A US record and music publishing company founded in 1958, 72 percent owned by Len Blavatnik's Access Industries, which holds 98 percent of the votes.",
+  "money": "Recorded music and publishing through Warner Chappell Music: USD 6.71 billion revenue in 2025.",
+  "site": "https://www.wmg.com",
+  "city": "New York",
+  "country": "United States",
+  "address": "1633 Broadway, New York",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Warner_Music_Group"
+  ],
+  "batch": "fp32"
  },
  "wates": {
   "name": "The Wates Foundation",
@@ -19601,6 +22188,35 @@
   ],
   "batch": "fp24"
  },
+ "yakovmargulis": {
+  "name": "Yakov Margulis",
+  "kind": "person",
+  "what": "A Kazan businessman, paediatrician by training and former head of Tattekhmedfarm, who owns the building at Burkhana Shakhidi 7 that houses the Smena centre.",
+  "city": "Kazan",
+  "country": "Russia",
+  "wrong_match": "He is Smena's landlord: the line and Business Online (16 April 2016) show low rent in his building, not money given.",
+  "status": "done",
+  "sources": [
+   "https://www.business-gazeta.ru/article/307956"
+  ],
+  "batch": "fp33"
+ },
+ "yandexeda": {
+  "name": "Yandex.Eda LLC",
+  "short": "Yandex Eda",
+  "kind": "corp",
+  "what": "The food delivery service of the Russian technology group Yandex, launched in 2018 after Yandex.Taxi bought the Moscow service Foodfox in December 2017.",
+  "money": "Food delivery: RUB 144.6 billion revenue in 2025, within the Yandex group, owned since July 2024 by investors including Lukoil.",
+  "site": "https://eda.yandex.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Yandex_Eats",
+   "https://en.wikipedia.org/wiki/Yandex"
+  ],
+  "batch": "fp34"
+ },
  "yayasanilham": {
   "name": "Yayasan ILHAM",
   "kind": "found",
@@ -19635,6 +22251,21 @@
   ],
   "batch": "fp26"
  },
+ "yoosungyeon": {
+  "name": "Yoo Sung-yeon",
+  "kind": "person",
+  "what": "The late Korean businessman, born in 1917, who co-founded the Samchully coal briquette business in 1955 and the coal miner Samcheok Tanjwa Gaebal, now ST International, in 1962.",
+  "money": "His family's coal business; the Yoo family's SongEun foundation holds 6.86 percent of ST International.",
+  "city": "Seoul",
+  "country": "South Korea",
+  "status": "done",
+  "sources": [
+   "https://m.seoul.co.kr/news/2005/12/26/20051226014001",
+   "https://dealsite.co.kr/articles/137201",
+   "http://bizhankook.com/articles/29186.html"
+  ],
+  "batch": "fp32"
+ },
  "zabludowiczarttrust": {
   "name": "Zabludowicz Art Trust",
   "kind": "found",
@@ -19665,6 +22296,36 @@
    "https://en.wikipedia.org/wiki/Zain_Group"
   ],
   "batch": "fp24"
+ },
+ "zanotta": {
+  "name": "Zanotta",
+  "kind": "corp",
+  "what": "An Italian furniture maker founded in 1954 in Nova Milanese by Aurelio Zanotta, part of the Haworth Lifestyle group since Cassina acquired it in 2023.",
+  "money": "Sales of furniture: revenue of EUR 18.57 million in 2023.",
+  "site": "https://www.zanotta.com",
+  "city": "Nova Milanese",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://it.wikipedia.org/wiki/Zanotta_(azienda)"
+  ],
+  "batch": "fp33"
+ },
+ "zapopancitycouncil|Mexico": {
+  "name": "Ayuntamiento de Zapopan",
+  "short": "Zapopan City Council",
+  "kind": "gov",
+  "what": "Zapopan's city council, which governs Jalisco's second most populous city, part of metropolitan Guadalajara; Juan José Frangie Saade is municipal president.",
+  "money": "The municipal budget: MXN 13,147.9 million approved for 2026 on 16 December 2025.",
+  "site": "https://www.zapopan.gob.mx",
+  "city": "Zapopan",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://www.cronica.com.mx/jalisco/guadalajara/2025/12/16/ayuntamiento-de-zapopan-aprueba-presupuesto-de-egresos-2026-con-aumento-de-61/",
+   "https://es.wikipedia.org/wiki/Zapopan"
+  ],
+  "batch": "fp35"
  },
  "zeitzmocaa": {
   "name": "Zeitz Museum of Contemporary Art Africa",
