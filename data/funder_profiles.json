@@ -3476,6 +3476,7 @@
   "what": "A Los Angeles philanthropist raised in Tulsa, Oklahoma, who joined the MOCA board in 2009, was its president for seven years and now chairs it.",
   "arts": "She co-chaired the Los Angeles Philharmonic's opening night gala from 2007 to 2012 and co-chairs the Dockery Farms Foundation in Mississippi.",
   "site": "https://www.carolynclarkpowers.com",
+  "city": "Los Angeles",
   "country": "United States",
   "status": "done",
   "sources": [
@@ -6022,10 +6023,13 @@
   "what": "A multinational law firm formed in March 2013 by merging SNR Denton, Fraser Milner Casgrain and Salans; a Swiss verein whose largest offices are in London and New York.",
   "money": "Legal fees: revenue of USD 2.899 billion in 2019.",
   "site": "https://www.dentons.com",
+  "city": "Zurich",
+  "country": "Switzerland",
   "status": "done",
   "sources": [
    "https://en.wikipedia.org/wiki/Dentons",
-   "https://www.kunsthallepraha.org/en/about-us"
+   "https://www.kunsthallepraha.org/en/about-us",
+   "https://www.zefix.ch/en/search/entity/list/firm/1013178"
   ],
   "batch": "fp33"
  },
@@ -6762,10 +6766,12 @@
   "what": "An American businesswoman and art collector who co-founded Mirage Resorts in 1976 and Wynn Resorts in 2000 with Steve Wynn; she died in Los Angeles on 14 April 2025.",
   "money": "Her stake in the casino company Wynn Resorts, of which she still held nearly 9 percent at her death.",
   "arts": "Barack Obama made her a Kennedy Center trustee in 2011, and in 2013 she bought Francis Bacon's Three Studies of Lucian Freud for USD 142.4 million.",
+  "city": "Las Vegas",
   "country": "United States",
   "status": "done",
   "sources": [
-   "https://en.wikipedia.org/wiki/Elaine_Wynn"
+   "https://en.wikipedia.org/wiki/Elaine_Wynn",
+   "https://en.wikipedia.org/wiki/Wynn_Resorts"
   ],
   "batch": "fp33"
  },
@@ -10568,11 +10574,13 @@
   "kind": "person",
   "what": "A Ghanaian artist born in 1987 in Tamale, known for installations of stitched jute sacks, who founded SCCA Tamale in 2019 and Red Clay Studio in 2020.",
   "money": "Sales of his own art, handled by galleries including White Cube; proceeds from his Saatchi Gallery exhibition bought a 40,000 square metre plot near Tamale.",
+  "city": "Tamale",
   "country": "Ghana",
   "status": "done",
   "sources": [
    "https://en.wikipedia.org/wiki/Ibrahim_Mahama_(artist)",
-   "https://www.whitecube.com/news/ibrahim-mahama-opens-the-savannah-centre-for-contemporary-art-scca-tamale-ghana"
+   "https://www.whitecube.com/news/ibrahim-mahama-opens-the-savannah-centre-for-contemporary-art-scca-tamale-ghana",
+   "https://artafricamagazine.org/?p=27762"
   ],
   "batch": "fp34"
  },
@@ -11204,7 +11212,8 @@
   "kind": "person",
   "what": "A French art collector and patron with business ties to Moscow since 1981, who bought the land near Marrakesh in 2002 and opened Jardin Rouge there in 2009.",
   "arts": "The Montresso Art Foundation he set up runs the Jardin Rouge residency and opened a 1,300 square metre exhibition space on the site in 2016.",
-  "country": "France",
+  "city": "Marrakesh",
+  "country": "Morocco",
   "status": "done",
   "sources": [
    "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones"
@@ -11216,10 +11225,12 @@
   "kind": "person",
   "what": "An American businessman, founder and executive chairman of the online retail and cloud computing company Amazon, founder of the space company Blue Origin and owner of The Washington Post.",
   "money": "His shares in Amazon; Bloomberg and Forbes put his net worth at about USD 284 billion in 2026.",
+  "city": "Seattle",
   "country": "United States",
   "status": "done",
   "sources": [
-   "https://en.wikipedia.org/wiki/Jeff_Bezos"
+   "https://en.wikipedia.org/wiki/Jeff_Bezos",
+   "https://en.wikipedia.org/wiki/Amazon_(company)"
   ],
   "batch": "fp33"
  },
@@ -11449,6 +11460,7 @@
   "kind": "person",
   "what": "A Kazakh businessman born in 1966, a former KazRosGas manager and chairman of FC Kairat's supervisory board, sentenced in September 2023 to six years for embezzlement under a plea agreement.",
   "money": "A fortune made in oil and gas, real estate and retail; in September 2023 he handed assets worth 90 billion tenge to the state.",
+  "city": "Almaty",
   "country": "Kazakhstan",
   "status": "done",
   "sources": [
@@ -11597,11 +11609,13 @@
   "kind": "person",
   "what": "A Kurdish businessman, owner of Hemn Group, a construction and engineering company founded in 1986 that built Erbil's ring roads; Masoud Barzani gave him the Immortal Barzani medal in 2025.",
   "money": "Hemn Group's infrastructure contracts, among them the Erbil emergency water project with a budget of about USD 480 million.",
+  "city": "Erbil",
   "country": "Iraq",
   "status": "done",
   "sources": [
    "https://www.kurdistan24.net/en/story/858162",
-   "https://ruyafoundation.org/en/about/"
+   "https://ruyafoundation.org/en/about/",
+   "https://www.mofa.gov.ae/en/Missions/Erbil/Media-hub/Consulate-General-News/Mission-News-Article-436"
   ],
   "batch": "fp33"
  },
@@ -14407,11 +14421,13 @@
   "name": "Nechirvan Barzani",
   "kind": "person",
   "what": "A Kurdish politician born in Barzan in 1966, President of the Kurdistan Region of Iraq since 10 June 2019 and earlier its prime minister, grandson of KDP founder Mustafa Barzani.",
+  "city": "Erbil",
   "country": "Iraq",
   "status": "done",
   "sources": [
    "https://en.wikipedia.org/wiki/Nechirvan_Barzani",
-   "https://ruyafoundation.org/en/about/"
+   "https://ruyafoundation.org/en/about/",
+   "https://en.wikipedia.org/wiki/Kurdistan_Region"
   ],
   "batch": "fp33"
  },
@@ -17255,10 +17271,12 @@
   "kind": "person",
   "what": "A Russian businessman born in 1970, owner of the investment company Aeon Corporation and president of United Shipbuilding Corporation from 2009 to 2012.",
   "money": "70 percent of Russkaya Energia, which agreed in 2021 to buy the coal miner Vorkutaugol; Forbes put his fortune at USD 1.6 billion in 2019.",
+  "city": "Moscow",
   "country": "Russia",
   "status": "done",
   "sources": [
-   "https://en.wikipedia.org/wiki/Roman_Trotsenko"
+   "https://en.wikipedia.org/wiki/Roman_Trotsenko",
+   "https://hh.ru/employer/156617"
   ],
   "batch": "fp34"
  },
@@ -18725,10 +18743,12 @@
   "kind": "person",
   "what": "An American film producer born in 1949, partner in the production company Escape Artists and chairman of the New York Giants, which he co-owned from 2005 to March 2026.",
   "money": "His film production work and the Tisch family's co-ownership of the New York Giants football team.",
+  "city": "Culver City",
   "country": "United States",
   "status": "done",
   "sources": [
-   "https://en.wikipedia.org/wiki/Steve_Tisch"
+   "https://en.wikipedia.org/wiki/Steve_Tisch",
+   "https://en.wikipedia.org/wiki/Escape_Artists"
   ],
   "batch": "fp33"
  },
