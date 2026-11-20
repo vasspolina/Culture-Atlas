@@ -2549,3 +2549,40 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 :root:root body.chat-share-active #workBottomDock #workInputCard #chatShareBtn:not(#cs-a):not(#cs-b):not(#cs-c):not(#cs-d),
 :root:root body.chat-share-active :is(#mobileStickyShareBtn,#gmMapShareBtn):not(#cs-a):not(#cs-b):not(#cs-c):not(#cs-d):not(#cs-e):not(#cs-f){display:none!important}
 }
+
+/* ==== THE CHAT'S TWO SHARE LINES ARE BUTTONS (user, 20 Nov 2026: "make share information or fill in the form buttons") ====
+   "Share information about ..." and "Or fill in a form" under each answer were two lines of the chat's dashed suggestion
+   list, set in green. They are buttons in a row, as the choices under Clio's questions are: round ends, a thin green
+   outline. The first is filled dark green with the paper's colour on it, as the dock's Share information button is, and
+   deepens a fifth toward the ink under the pointer; the second is outlined and fills green under the pointer. A long name
+   wraps inside its button. White on #3e6826 6.5:1; dark theme #151412 on #9fd0a6 10:1. */
+@layer sheet{
+:root:root:root:root #curatorMessages .chat-share-invite .curator-followups{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;
+  gap:calc(8px * var(--sh-k))!important;margin:calc(8px * var(--sh-k)) 0 var(--sh-s-lh)!important;padding:0!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn{display:inline-flex!important;align-items:center!important;width:auto!important;max-width:100%!important;
+  min-height:0!important;height:auto!important;margin:0!important;padding:calc(5px * var(--sh-k)) calc(14px * var(--sh-k))!important;text-indent:0!important;white-space:normal!important;text-align:left!important;
+  border:1px solid var(--sh-green)!important;border-radius:999px!important;background:transparent!important;color:var(--sh-green)!important;cursor:pointer!important;
+  font:inherit!important;line-height:var(--sh-lead)!important;text-decoration:none!important;box-shadow:none!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn::before{content:none!important;display:none!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn){background:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn):is(:hover,:focus-visible){
+  background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;color:var(--sh-paper)!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-form-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:focus-visible{outline:2px solid var(--sh-green)!important;outline-offset:2px!important}
+}
+
+/* ==== THE OPEN SPACE ON THE STREET MAP IS IN ITS GRADE'S COLOUR (user, 20 Nov 2026, a picture of Neue Nationalgalerie open:
+   a lime block, an olive square and an empty black bar under it; "the place selected on map now looks weird, make it
+   colored in grade color when selected") ====
+   The black bar was the name's bubble. A bubble the placer had set under its mark (label-pos-bottom, top:100% + 7px) also
+   took the open space's bottom:100% + 7px, so it was held from both ends, 9px of padding tall, and the name ran out of it in
+   the paper's colour, unseen on the map. An open bubble under its mark stays under it, as tall as its two lines.
+   The open space's bubble and its tail are filled in the grade's colour (--wc-mark, the mark's own), the name and the grade
+   on it in the map's ground colour: white on teal 5.1:1, blue 8.6:1, olive 5.7:1, brick 8.6:1, magenta 6.4:1, grey 5.3:1;
+   on the dark theme the ground #151412 on the light grade colours, 6:1 or better. The other bubbles stay ink. The space's
+   own ground (assets/sites.json) is washed and edged in the same colour by streetSiteColours in index.html. */
+@layer sheet{
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.inst-pin-label{background:var(--wc-mark)!important}
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.inst-pin-label::after{background:var(--wc-mark)!important}
+#cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.label-pos-bottom{bottom:auto!important}
+}
