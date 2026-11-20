@@ -234750,7 +234750,17 @@
       }
     ],
     "grade": 5,
-    "grade_basis": "A funder tied to fossil fuels. The record also holds a public protest."
+    "grade_basis": "A funder tied to fossil fuels. The record also holds a public protest.",
+    "address": "5 Sloane Terrace, London SW1X 9DQ, UK",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/way/95437784"
+        ],
+        "basis": "OpenStreetMap, name search: Cadogan Hall",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "name": "Griffin Museum of Science and Industry",
@@ -234835,7 +234845,17 @@
       "retrieved": "2026-11-17"
     },
     "grade": 4,
-    "grade_basis": "A funder tied to fossil fuels."
+    "grade_basis": "A funder tied to fossil fuels.",
+    "address": "5700 South Lake Shore Drive, Chicago, IL 60637, USA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/way/24826230"
+        ],
+        "basis": "OpenStreetMap, name search: Griffin Museum of Science and Industry",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "name": "Meridian Hall",
@@ -234910,7 +234930,17 @@
       }
     ],
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "address": "1 Front Street East, Toronto, ON M5E 1B2, Canada",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/way/42334918"
+        ],
+        "basis": "OpenStreetMap, name search: Meridian Hall",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "name": "The Joyce Theater",
@@ -234990,7 +235020,17 @@
       "retrieved": "2026-11-17"
     },
     "grade": 4,
-    "grade_basis": "A funder tied to tobacco."
+    "grade_basis": "A funder tied to tobacco.",
+    "address": "175 8th Avenue, New York, NY 10011, USA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/way/264629134"
+        ],
+        "basis": "OpenStreetMap, name search: The Joyce Theater",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "name": "Alvin Ailey American Dance Theater",
@@ -235073,7 +235113,17 @@
       "retrieved": "2026-11-17"
     },
     "grade": 4,
-    "grade_basis": "A funder tied to tobacco."
+    "grade_basis": "A funder tied to tobacco.",
+    "address": "405 West 55th Street, New York, NY 10019, USA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/node/8402020621"
+        ],
+        "basis": "OpenStreetMap, name search: Alvin Ailey American Dance Theater",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "name": "Perth Festival",
@@ -235874,7 +235924,17 @@
     "watch": "The Jenny and Antti Wihuri Foundation still adds about 60 works a year to the collection the city shows.",
     "records_note": "Figures are in the Finnish Heritage Agency's museum statistics; the museum names the donor of its collection.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "address": "Lapink\u00e4vij\u00e4ntie 4, 96100 Rovaniemi, Finland",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/node/8068151423"
+        ],
+        "basis": "OpenStreetMap, name search: Rovaniemi Art Museum",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "id": "arktikum-rovaniemi",
@@ -235895,7 +235955,17 @@
     "watch": "The museum counted 172,661 visits in 2025, most of them paid; the building is shared with a university research centre.",
     "records_note": "Figures are in the Finnish Heritage Agency's museum statistics; the building's owner was not found.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "address": "Pohjoisranta 4, 96200 Rovaniemi, Finland",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/node/13626402703"
+        ],
+        "basis": "OpenStreetMap, name search: Arktikum",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "id": "sarestoniemi-museum-kittila",
@@ -235915,7 +235985,17 @@
     "watch": "The statistics do not name the sponsors behind EUR 70,800 in 2025.",
     "records_note": "Figures are in the Finnish Heritage Agency's museum statistics; no sponsor list was found.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "address": "S\u00e4rest\u00f6ntie 880, 99110 Kittil\u00e4, Finland",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/node/4116158945"
+        ],
+        "basis": "OpenStreetMap, name search: S\u00e4rest\u00f6niemi museum",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "id": "akureyri-art-museum",
@@ -235938,7 +236018,17 @@
     "watch": "Just south of the Arctic Circle, at about 65.7\u00b0N; it has hosted the Icelandic Visual Arts Awards since 2006.",
     "records_note": "Publishes its programme and opening hours; the museum's own budget line was not found.",
     "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given."
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "address": "Kaupvangsstr\u00e6ti 8, 600 Akureyri, Iceland",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/way/707030896"
+        ],
+        "basis": "OpenStreetMap, name search: Akureyri Art Museum",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "id": "ilulissat-icefjord-centre",
@@ -236009,7 +236099,17 @@
     "watch": "Public money, but the borough's revenue rests on Prudhoe Bay and other North Slope oil fields.",
     "records_note": "The borough publishes its budget books; no line for the centre was read.",
     "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "address": "541 North Star Street, Utqia\u0121vik, AK 99723, USA",
+    "field_sources": {
+      "address": {
+        "urls": [
+          "https://www.openstreetmap.org/node/3681554525"
+        ],
+        "basis": "OpenStreetMap, name search: I\u00f1upiat\u00a0Heritage Center",
+        "retrieved": "2026-11-20"
+      }
+    }
   },
   {
     "id": "great-northern-arts-festival-inuvik",

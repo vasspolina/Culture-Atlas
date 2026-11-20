@@ -1,0 +1,61 @@
+{
+ "written": [
+  {
+   "id": "cadogan-hall-london",
+   "address": "5 Sloane Terrace, London SW1X 9DQ, UK",
+   "osm": "https://www.openstreetmap.org/way/95437784"
+  },
+  {
+   "id": "griffin-museum-of-science-and-industry-chicago",
+   "address": "5700 South Lake Shore Drive, Chicago, IL 60637, USA",
+   "osm": "https://www.openstreetmap.org/way/24826230"
+  },
+  {
+   "id": "meridian-hall-toronto",
+   "address": "1 Front Street East, Toronto, ON M5E 1B2, Canada",
+   "osm": "https://www.openstreetmap.org/way/42334918"
+  },
+  {
+   "id": "joyce-theater-new-york",
+   "address": "175 8th Avenue, New York, NY 10011, USA",
+   "osm": "https://www.openstreetmap.org/way/264629134"
+  },
+  {
+   "id": "alvin-ailey-american-dance-theater-new-york",
+   "address": "405 West 55th Street, New York, NY 10019, USA",
+   "osm": "https://www.openstreetmap.org/node/8402020621"
+  },
+  {
+   "id": "rovaniemi-art-museum-korundi",
+   "address": "Lapinkävijäntie 4, 96100 Rovaniemi, Finland",
+   "osm": "https://www.openstreetmap.org/node/8068151423"
+  },
+  {
+   "id": "arktikum-rovaniemi",
+   "address": "Pohjoisranta 4, 96200 Rovaniemi, Finland",
+   "osm": "https://www.openstreetmap.org/node/13626402703"
+  },
+  {
+   "id": "sarestoniemi-museum-kittila",
+   "address": "Särestöntie 880, 99110 Kittilä, Finland",
+   "osm": "https://www.openstreetmap.org/node/4116158945"
+  },
+  {
+   "id": "akureyri-art-museum",
+   "address": "Kaupvangsstræti 8, 600 Akureyri, Iceland",
+   "osm": "https://www.openstreetmap.org/way/707030896"
+  },
+  {
+   "id": "inupiat-heritage-center-utqiagvik",
+   "address": "541 North Star Street, Utqiaġvik, AK 99723, USA",
+   "osm": "https://www.openstreetmap.org/node/3681554525"
+  }
+ ],
+ "moved": [],
+ "review": [],
+ "skipped": {
+  "no house number or street": 322,
+  "not found": 414,
+  "name match not a venue, or checked and wrong": 10
+ }
+}
