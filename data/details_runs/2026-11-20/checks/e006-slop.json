@@ -1,0 +1,642 @@
+[
+ {
+  "id": "mawsons-huts-cape-denison",
+  "section": "FUNDING",
+  "problems": [
+   "conflicting dates: founding year"
+  ],
+  "before": "The Foundation dates itself to 1996; the Division's 2006 release says 1995 and the Foundation's 2017-18 pre-budget submission 1997.",
+  "after": "Sources differ on its founding year: the Foundation's own site and its 2021 release say 1996, the Division's 2006 release says 1995, and the Foundation's 2017-18 pre-budget submission and its chair's biography say 1997.",
+  "sources": [
+   "https://www.mawsons-huts.org.au/about/",
+   "https://www.antarctica.gov.au/news/2006/boost-to-restore-historic-mawsons-huts-in-antarctica/",
+   "https://treasury.gov.au/sites/default/files/2019-03/C2016-052_Mawsons-Huts-Foundation.pdf"
+  ],
+  "reason": "Opened all three: 1996 (Foundation site, 2021 release), 1995 (AAD 2006), 1997 (Treasury submission; Holland bio says director since establishment in 1997). No primary record settles it, so the conflict is stated with each source."
+ },
+ {
+  "id": "mawsons-huts-cape-denison",
+  "section": "FUNDING",
+  "problems": [
+   "repetition: 1997 given twice"
+  ],
+  "before": "chair Greg Holland, a director since 1997,",
+  "after": "chair Greg Holland, a director since the Foundation's establishment apart from a break in 2020,",
+  "sources": [
+   "https://www.mawsons-huts.org.au/our-people/"
+  ],
+  "reason": "The year now appears once, in the founding-date point; the people page states the break in 2020."
+ },
+ {
+  "id": "mawsons-huts-cape-denison",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "The money behind Mawson's Huts is clean: federal heritage grants, replica museum takings, donors ... Worth watching: the on-site heritage assessment the 2025 plan promises within two years.",
+  "after": "The money behind Mawson's Huts is clean. The weak points are a small charity's dependence on grants for costly expeditions and board ties to the alcohol and cruise trades. Worth watching: whether federal grants keep pace with the work the site needs.",
+  "sources": [
+   "https://www.legislation.gov.au/F2025L01596/asmade/2025-12-16/text/original/epub/OEBPS/document_1/document_1.html"
+  ],
+  "reason": "Verdict only. The heritage-assessment fact, which only the bottom line held, moved to the Overview conservation point."
+ },
+ {
+  "id": "nsf-antarctic-artists-and-writers-program",
+  "section": "OVERVIEW",
+  "problems": [
+   "misquote"
+  ],
+  "before": "Applicants must show that working in Antarctica is \"necessary, not simply desirable\" (Pacific Standard).",
+  "after": "Applicants must show that their project has to be done in Antarctica: \"not desirable, not advantageous, but necessary\", in the words of NSF's Peter West (Pacific Standard, 2015).",
+  "sources": [
+   "https://psmag.com/?p=30033"
+  ],
+  "reason": "The quoted words were not in the article; corrected to its actual quote and speaker."
+ },
+ {
+  "id": "nsf-antarctic-artists-and-writers-program",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported detail: 'sleep', 'cold-weather clothing'"
+  ],
+  "before": "fly on the scientists' planes, sleep on the same bases and get the same food and cold-weather clothing",
+  "after": "fly in the planes that bring the scientists, are housed on the same bases and get the same food and protective clothing",
+  "sources": [
+   "https://psmag.com/?p=30033"
+  ],
+  "reason": "Cut back to the article's wording."
+ },
+ {
+  "id": "nsf-antarctic-artists-and-writers-program",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title"
+  ],
+  "before": "\"National Science Foundation Spends $31.5 Million for Antarctic 'Artists and Writers' Program\"",
+  "after": "\"Taxpayers Pay for Poets to Travel to Antarctica\" (the US$31.5 million line is its subtitle)",
+  "sources": [
+   "https://freebeacon.com/issues/taxpayers-pay-for-poets-to-travel-to-antarctica/"
+  ],
+  "reason": "The headline is 'Taxpayers Pay for Poets to Travel to Antarctica'; the cited text is the subtitle."
+ },
+ {
+  "id": "nsf-antarctic-artists-and-writers-program",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "overstated sources",
+   "repetition: agreement end date"
+  ],
+  "before": "NSF said it planned to keep running its three land stations ... NSF funded no new projects ... The programme runs entirely on the same NSF logistics and budget, and its current agreement ends on 31 August 2028.",
+  "after": "for now NSF planned to try to keep its land stations, McMurdo among them, operating ... NSF announced in 2024 that it would fund no new projects ... and the Trump administration cancelled the construction budget for McMurdo ... The programme depends on the same NSF logistics, stations and polar budget.",
+  "sources": [
+   "https://www.scientificamerican.com/article/u-s-cuts-antarcticas-only-research-icebreaker-ship-under-trump-budget/",
+   "https://explorersweb.com/new-funding-cuts-forcing-u-s-researchers-out-of-antarctica/"
+  ],
+  "reason": "Scientific American says NSF plans 'to try to keep operating' the stations; ExplorersWeb says NSF announced it would not fund new projects. The 2028 end date was already in the Overview."
+ },
+ {
+  "id": "nsf-antarctic-artists-and-writers-program",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "The money is clean and wholly public: US federal logistics and a US$4 million NSF award to a state university. The weak point is dependence on one agreement ending in 2028 inside a polar budget the administration wants to cut by 70 per cent. ...",
+  "after": "The money is clean and wholly public. The weak point is that the programme rests on a single federal agreement inside a shrinking polar budget. Worth watching: whether NSF renews Polar STEAM.",
+  "sources": [],
+  "reason": "Verdict only, no figures repeated."
+ },
+ {
+  "id": "port-lockroy-bransfield-house",
+  "section": "FUNDING",
+  "problems": [
+   "arithmetic: missing income line"
+  ],
+  "before": "The £715,974 breaks down as ... bequests £29,006, event income £46,626, sponsorship £5,000 and gifts in kind £13,790",
+  "after": "... legacies £29,006, event income £46,626, gift aid £6,851, sponsorship £5,000 and gifts in kind £13,790",
+  "sources": [
+   "https://opencharities.uk/ew/1160847/files/2025-04-30-accounts.md"
+  ],
+  "reason": "Note 2 of the accounts adds £6,851 gift aid, which the list left out; without it the lines did not sum to £715,974."
+ },
+ {
+  "id": "port-lockroy-bransfield-house",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported descriptor: 'cruise operators'",
+   "ambiguous name: Noble Caledonia"
+  ],
+  "before": "Supporters named in the same report include cruise operators HX Hurtigruten Expeditions, Hapag Lloyd, Noble Caledonia, Polar Latitudes, Polar Routes and Quark Expeditions",
+  "after": "Conservation and project supporters named in the same report include HX Hurtigruten Expeditions, Hapag Lloyd, Polar Latitudes, Polar Routes and Quark Expeditions",
+  "sources": [
+   "https://opencharities.uk/ew/1160847/files/2025-04-30-accounts.md"
+  ],
+  "reason": "The accounts list them under 'Conservation and project supporters' with no descriptor; the line reads 'Noble Caledonia Charitable Trust', which cannot be split with confidence, so it was cut."
+ },
+ {
+  "id": "port-lockroy-bransfield-house",
+  "section": "FUNDING",
+  "problems": [
+   "overstated: 'sponsored'"
+  ],
+  "before": "HX also sponsored series 3 of the Trust's podcast",
+  "after": "HX says it supports series 3 of the Trust's podcast",
+  "sources": [
+   "https://www.travelhx.com/en-gb/campaigns/partnerships-uk-antarctic-heritage-trust"
+  ],
+  "reason": "HX's page says 'proud to support', not sponsor."
+ },
+ {
+  "id": "port-lockroy-bransfield-house",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia replaced by primary source",
+   "repetition"
+  ],
+  "before": "The 1996 renovation was paid for by the Government of the British Antarctic Territory (its own site; Wikipedia).",
+  "after": "The Government of the British Antarctic Territory paid for that 1996 restoration (Government of the British Antarctic Territory).",
+  "sources": [
+   "https://www.britishantarcticterritory.org.uk/tourism/port-lockroy/"
+  ],
+  "reason": "The territory's government page says 'we funded a team from the British Antarctic Survey'. The BAS team was already named in the Overview."
+ },
+ {
+  "id": "port-lockroy-bransfield-house",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia replaced where operator states it"
+  ],
+  "before": "Half the island is open to visitors and half is kept for the gentoo colony, which the Trust counts for the British Antarctic Survey (Wikipedia); the 2025-26 count was 445 breeding pairs and 876 chicks (UKAHT).",
+  "after": "The team monitors the island's wildlife for the British Antarctic Survey (UKAHT); half the island is open to visitors and half is kept for the gentoo colony (Wikipedia). The 2025-26 count was 445 gentoo couples and 876 chicks (UKAHT).",
+  "sources": [
+   "https://ukaht.org/places/port-lockroy/",
+   "https://ukaht.org/latest-news/port-lockroy-2026-vital-statistics/",
+   "https://en.wikipedia.org/wiki/Port_Lockroy"
+  ],
+  "reason": "The monitoring is on the operator's page; 'half the island' is on the Wikipedia page only and is kept there; the count says 'couples'."
+ },
+ {
+  "id": "port-lockroy-bransfield-house",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "The money behind Port Lockroy is clean by the atlas's measures: cruise passengers pay for it through the shop and post office, and UK public bodies ... rests on an appeal.",
+  "after": "The money behind Port Lockroy is clean by the atlas's measures. The weak point is its reliance on cruise tourism, both for sales and for sponsors. Worth watching: whether the appeal covers the structural repair.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "scotts-discovery-hut-hut-point",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'ANZ bank'"
+  ],
+  "before": "Core funders on its partners page: the Ministry of Foreign Affairs and Trade, the Ministry for Culture and Heritage and ANZ bank. Key supporters: ...",
+  "after": "Key supporters linked on its partners page: Christchurch Airport, the New Zealand Defence Force, The Shackleton Whisky, Staples VR and the Tait Foundation (Antarctic Heritage Trust). [Core funders now given once, from the September 2026 launch text.]",
+  "sources": [
+   "https://nzaht.org/sustain/ways-to-give/support-and-partners/",
+   "https://nzaht.org/launching-conservation-management-plans/"
+  ],
+  "reason": "The 'ANZ' logo file on the partners page has alt text 'ANTNZ' and links to antarcticanz.govt.nz: it is Antarctica New Zealand, the government agency, not ANZ bank. No page names ANZ bank in text. The Trust's launch page names MFAT and Antarctica New Zealand as government partners and MCH as core funder; that point now carries the funders once."
+ },
+ {
+  "id": "scotts-discovery-hut-hut-point",
+  "section": "OVERVIEW",
+  "problems": [
+   "misattribution: blubber stove",
+   "Wikipedia-only design point"
+  ],
+  "before": "Designed by Professor Gregory and prefabricated by James Moore of Sydney ... (Wikipedia) ... Shackleton's stranded Ross Sea Party, whose seal-blubber stove coated the interior in soot",
+  "after": "Prefabricated in Sydney of Douglas fir and Scots pine ... (Antarctic Heritage Trust); designed by Professor Gregory and made by James Moore for £870 14s 5d (Wikipedia) ... Ross Sea Party in 1915-16 (Wikipedia). Burning seal blubber on a stove built by Scott's 1910 expedition coated the interior in greasy soot (Antarctic Heritage Trust).",
+  "sources": [
+   "https://nzaht.org/conserve/explorer-bases/scotts-hut-hut-point/",
+   "https://en.wikipedia.org/wiki/Discovery_Hut"
+  ],
+  "reason": "The operator says the stove was built by Scott's 1910 expedition. Gregory, Moore, the cost, the 300 m distance and HSM 18 are all on the Wikipedia page, so they stay, credited to it."
+ },
+ {
+  "id": "scotts-discovery-hut-hut-point",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts",
+   "new derived figure in bottom line"
+  ],
+  "before": "... the New Zealand state pays close to half ... a bank sponsor ... after donations fell by two thirds from the year before.",
+  "after": "The money behind the hut is clean. The weak point is its operator's reliance on state grants while private giving swings from year to year. Worth watching: whether government support holds.",
+  "sources": [
+   "https://www.odata.charities.govt.nz/AnnualReturn?$filter=OrganisationId%20eq%2041088&$format=json&$orderby=YearEnded%20desc&$top=3"
+  ],
+  "reason": "Verdict only; the 'bank sponsor' rested on the ANZ misreading."
+ },
+ {
+  "id": "scotts-terra-nova-hut-cape-evans",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'ANZ bank'"
+  ],
+  "before": "Its core funders are the Ministry of Foreign Affairs and Trade, the Ministry for Culture and Heritage and ANZ bank (Antarctic Heritage Trust partners page).",
+  "after": "The Trust names the Ministry of Foreign Affairs and Trade and Antarctica New Zealand as its government partners and the Ministry for Culture and Heritage as its core funder (Antarctic Heritage Trust, September 2026).",
+  "sources": [
+   "https://nzaht.org/sustain/ways-to-give/support-and-partners/",
+   "https://nzaht.org/launching-conservation-management-plans/"
+  ],
+  "reason": "ANZ logo is Antarctica New Zealand (alt 'ANTNZ', link antarcticanz.govt.nz)."
+ },
+ {
+  "id": "scotts-terra-nova-hut-cape-evans",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'listed as a key programme partner'",
+   "year"
+  ],
+  "before": "Heritage Expeditions, listed as a key programme partner, donated a portion of each fare on its 2025 voyage with the Trust (Heritage Expeditions; Antarctic Heritage Trust partners page).",
+  "after": "Heritage Expeditions, the Trust's Inspiring Explorers expedition partner, gives a portion of each fare on its Ross Sea partnership voyage to the Trust's conservation work (Heritage Expeditions).",
+  "sources": [
+   "https://heritage-expeditions.com/aht",
+   "https://nzaht.org/sustain/ways-to-give/support-and-partners/"
+  ],
+  "reason": "The partners page does not list Heritage Expeditions (its key programme partner is MetService). Heritage Expeditions calls itself the Inspiring Explorers expedition partner; its page mixes 2025 and 2027 voyage dates, so no year is given."
+ },
+ {
+  "id": "scotts-terra-nova-hut-cape-evans",
+  "section": "FUNDING",
+  "problems": [
+   "overstated: 'gave'",
+   "currency added"
+  ],
+  "before": "In February 2007 the British Government gave £250,000 (NZ$703,000) ... The Trust then needed about NZ$9 million for Cape Evans",
+  "after": "In February 2007 the British Government pledged £250,000 ($703,000) ... Paul East, said it would let work start on Scott's hut, for which the Trust needed about $9 million",
+  "sources": [
+   "https://www.nzherald.co.nz/nz/british-cough-up-for-antarctic-huts/XJX7KF3PUEWYN57UU42DLWIACE/"
+  ],
+  "reason": "NZPA: the government 'is to give'; the article does not name the dollar; East said the grant would let work start on Scott's hut."
+ },
+ {
+  "id": "scotts-terra-nova-hut-cape-evans",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong date",
+   "unsupported: 'executive summaries'"
+  ],
+  "before": "The Art Newspaper reported the hut's conservation complete in May 2016 ... after executive summaries were launched at Government House in September 2026",
+  "after": "... complete in April 2016 (Emily Sharpe) ... The Trust launched second-edition conservation management plans for the Ross Sea huts at Government House in September 2026; the full plans for the four Ross Island huts are due in November 2026",
+  "sources": [
+   "https://www.theartnewspaper.com/2016/05/01/scotts-antarctic-hut-saved-as-part-of-polar-project",
+   "https://nzaht.org/launching-conservation-management-plans/"
+  ],
+  "reason": "Article dated 30 April 2016. The launch page does not mention executive summaries."
+ },
+ {
+  "id": "scotts-terra-nova-hut-cape-evans",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "... the New Zealand and British governments, private donors and a bank sponsor paid ... The Getty Foundation grant dates from the project's launch around 2002 and is not current. ...",
+  "after": "The money behind the hut is clean, and mostly public. The weak point is the Trust's tie to a cruise operator that sells trips to the huts. Worth watching: how the new conservation plan is paid for.",
+  "sources": [],
+  "reason": "Verdict only; Getty dating moved into the funding point ('around its 2002 launch')."
+ },
+ {
+  "id": "shackletons-nimrod-hut-cape-royds",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting dates: whisky find"
+  ],
+  "before": "In January 2010 the Trust's conservators found five crates frozen under the hut ...",
+  "after": "Sources differ on when the whisky was found. The Trust says its conservators found five crates frozen under the hut in January 2010 ... Wikipedia, citing the BBC, dates the find of the crates to 2006.",
+  "sources": [
+   "https://nzaht.org/shackletons-whisky/",
+   "https://en.wikipedia.org/wiki/Shackleton%27s_Hut",
+   "https://www.irishtimes.com/news/ancient-crates-of-spirits-found-in-ice-under-hut-of-irish-antarctic-explorer-1.618309"
+  ],
+  "reason": "The BBC article Wikipedia cites would not load and the Irish Times (6 Feb 2010) gives no year for the find, so the conflict is stated with each source."
+ },
+ {
+  "id": "shackletons-nimrod-hut-cape-royds",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'ANZ bank'"
+  ],
+  "before": "Its core funders are the Ministry of Foreign Affairs and Trade, the Ministry for Culture and Heritage and ANZ bank (Antarctic Heritage Trust partners page).",
+  "after": "The Trust names the Ministry of Foreign Affairs and Trade and Antarctica New Zealand as its government partners and the Ministry for Culture and Heritage as its core funder (Antarctic Heritage Trust, September 2026).",
+  "sources": [
+   "https://nzaht.org/sustain/ways-to-give/support-and-partners/",
+   "https://nzaht.org/launching-conservation-management-plans/"
+  ],
+  "reason": "ANZ logo is Antarctica New Zealand."
+ },
+ {
+  "id": "shackletons-nimrod-hut-cape-royds",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: executive summary",
+   "mislabelled Visiting point"
+  ],
+  "before": "Visiting: the Trust sells the hut's conservation plan by email request; an executive summary of its second edition is available to read",
+  "after": "The Trust sells the hut's conservation plan by email request",
+  "sources": [
+   "https://nzaht.org/conserve/explorer-bases/shackletons-hut/"
+  ],
+  "reason": "The hut page mentions no executive summary."
+ },
+ {
+  "id": "shackletons-nimrod-hut-cape-royds",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "... Whyte & Mackay turned a find under the hut into a product, and The Shackleton Whisky brand sponsors the Trust. ...",
+  "after": "The money behind the hut is clean. The one commercial tie worth knowing is to the Scotch whisky trade, which has profited from the hut's story and pays toward its care. Worth watching: how the planned roof and wall work is funded.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "trinity-church-bellingshausen",
+  "section": "FUNDING",
+  "problems": [
+   "translation not marked properly",
+   "single-source claim"
+  ],
+  "before": "Lukin said he told his friend Pyotr Zadirov ... (Parlamentskaya Gazeta, 19 February 2016, my translation). The paper is the official weekly ...; the account is Lukin's own.",
+  "after": "In the same article Lukin said he told his friend Pyotr Zadirov ... This is Lukin's account alone, in a paper that is the official weekly of Russia's Federal Assembly (Parlamentskaya Gazeta; translated from Russian). In his 2014 note for his own institute's journal Lukin calls Zadirov a Moscow businessman whose plan with Lukin Alexius II backed in 2000, and names him as the financier of the church's tenth-anniversary album (Russian Polar Research; translated from Russian).",
+  "sources": [
+   "https://www.pnp.ru/social/2016/02/19/antarkticheskiy-khram-postroen-nachastnye-dengi.html",
+   "https://data.aari.ru/publicat/rpr/sources/15/RPI-15-2014-01-56-56.pdf"
+  ],
+  "reason": "Read the Russian original: Lukin's quoted words are 'Я посвятил в замысел своего друга Петра Задирова, и он вызвался профинансировать наш проект'. Marked as his account and a translation. The AARI journal note, also by Lukin, confirms Zadirov as co-initiator but not as financier of the church."
+ },
+ {
+  "id": "trinity-church-bellingshausen",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only construction and consecration",
+   "conflicting date"
+  ],
+  "before": "Consecrated on 15 February 2004 by Bishop Theognost ... (Wikipedia). ... built it of Siberian pine ...",
+  "after": "Bishop Theognost ... performed a small consecration on 14 February 2004 and Bishop Iakov of Naryan-Mar, sent by Patriarch Kirill, the great consecration on 14 February 2014 (Russian Polar Research, 2014; Wikipedia dates the 2004 consecration to 15 February). ... first raised in Siberian cedar and larch in the Altai mountains ... assembled on site between December 2003 and January 2004 (Lukin in Russian Polar Research, 2014).",
+  "sources": [
+   "https://data.aari.ru/publicat/rpr/sources/15/RPI-15-2014-01-56-56.pdf",
+   "https://en.wikipedia.org/wiki/Trinity_Church_(Antarctica)"
+  ],
+  "reason": "The Arctic and Antarctic Research Institute's journal gives a better source for construction and consecration; its date differs from Wikipedia's by a day, so both are shown. Other overview details (15 m, 30 worshippers, architects, Palekh, bells, 2007 wedding) are on the Wikipedia page and stay."
+ },
+ {
+  "id": "trinity-church-bellingshausen",
+  "section": "FUNDING",
+  "problems": [
+   "new funding point a source supports"
+  ],
+  "before": "",
+  "after": "The Russian Geographical Society and RusHydro gave organisational support to the 2014 consecration mission (Russian Polar Research).",
+  "sources": [
+   "https://data.aari.ru/publicat/rpr/sources/15/RPI-15-2014-01-56-56.pdf"
+  ],
+  "reason": "Stated in the AARI note."
+ },
+ {
+  "id": "trinity-church-bellingshausen",
+  "section": "Red flags",
+  "problems": [
+   "overstated: service held",
+   "paraphrased quote",
+   "repetition"
+  ],
+  "before": "Kirill flew ... and held a service in the church; his spokesman ... called the trip proof that the church works on all continents ... The church belongs to the Russian Orthodox Church, which Kirill heads (Wikipedia).",
+  "after": "Kirill flew to Bellingshausen from Punta Arenas on 17 February 2016 to hold a service in the church; his spokesman Aleksandr Volkov called the trip \"a proof that the Russian Orthodox Church exercises its office on all continents\" (RFE/RL; The Moscow Times).",
+  "sources": [
+   "https://www.rferl.org/a/russian-patriarch-kirill-antarctica/27557911.html",
+   "https://www.themoscowtimes.com/2016/02/18/russias-patriarch-kirill-meets-penguins-holds-service-in-antarctica-a51883",
+   "https://www.gov.uk/government/news/uk-sanctions-russian-linked-to-forced-transfers-and-adoptions"
+  ],
+  "reason": "RFE/RL reports the planned service and Volkov's exact words; the third point restated the first. UK listing confirmed on gov.uk: published 16 June 2022, Kirill sanctioned 'for his support and endorsement of Putin's war'."
+ },
+ {
+  "id": "trinity-church-bellingshausen",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "... the only named financier, Pyotr Zadirov, rests on one man's account in a parliamentary newspaper ... under UK sanctions since 2022 ...",
+  "after": "The building money is private but thinly documented. The red flag is leadership, not money: the church answers to a sanctioned head. Worth watching: further visits by the church's leadership.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "wordie-house-winter-island",
+  "section": "FUNDING",
+  "problems": [
+   "conflicting dates: management start",
+   "unopened source"
+  ],
+  "before": "Its site page dates its management from 2014 and a 2020 history post from 2009 (UKAHT); Wikipedia gives October 2009, under a memorandum of understanding with the British Antarctic Survey.",
+  "after": "The Trust's own pages differ on the start date: its page for the hut says it has managed Wordie House since 2014, its 2020 history of the hut says the hut has been its responsibility since 2009 (UKAHT).",
+  "sources": [
+   "https://ukaht.org/places/wordie-house/",
+   "https://www.ukaht.org/latest-news/2020/the-history-of-wordie-house",
+   "https://assets.publishing.service.gov.uk/media/5a7f1e3140f0b62305b852e7/BAT_Heritage_Strategy_-_Nov_2016.pdf"
+  ],
+  "reason": "Both UKAHT pages confirmed. The Wikipedia claim of an October 2009 MoU appears on no Wikipedia page that opened (Wordie House would not load; Winter Island and Vernadsky do not say it); the 2016 BAT strategy mentions UKAHT's MoU with BAS but gives no date for Wordie. Cut."
+ },
+ {
+  "id": "wordie-house-winter-island",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: visiting point"
+  ],
+  "before": "Visiting: reached by Zodiac from ships, or over the glacier with a mountaineer; the Trust's least visited site, with up to 2,000-plus visitors a year (UKAHT).",
+  "after": "",
+  "sources": [
+   "https://ukaht.org/places/wordie-house/",
+   "https://ukaht.org/places/"
+  ],
+  "reason": "None of this is on the current UKAHT pages; a search found no other source. Cut."
+ },
+ {
+  "id": "wordie-house-winter-island",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "... it comes from the Trust's shop sales, members, charitable grants and UK government partners ... what the first full survey in 2026-27 finds ...",
+  "after": "The money behind Wordie House is clean. The weak point is that the hut earns nothing itself and depends on what the Trust raises elsewhere. Worth watching: the repair bill that follows the survey.",
+  "sources": [],
+  "reason": "Verdict only; climate-record repeat in FUNDING also trimmed."
+ },
+ {
+  "id": "military-trophy-park",
+  "section": "Red flags",
+  "problems": [
+   "Wikipedia-only",
+   "overstated: 'condemning the park as a glorification of violence'"
+  ],
+  "before": "On 20 May 2021 the European Parliament adopted a resolution condemning the park as a glorification of violence and urging that it be closed without delay (Wikipedia).",
+  "after": "On 20 May 2021 the European Parliament, in a resolution on prisoners of war, deplored the opening of the \"so-called Trophy Park in Baku\", said it \"may be perceived as a glorification of violence\" and urged that it be closed without delay (resolution P9_TA(2021)0251, as reproduced by the Armenian National Institute).",
+  "sources": [
+   "https://www.armenian-genocide.org/Karabakh.146/current_category.418/nagorno-karabakh_detail.html",
+   "https://oeil.europarl.europa.eu/oeil/en/procedure-document-summary/pdf?id=1663539"
+  ],
+  "reason": "europarl.europa.eu and EUR-Lex returned empty pages to automated reads; the Parliament's Legislative Observatory confirms the resolution and date but its summary omits the park. The full text, as reproduced by the Armenian National Institute, says 'may be perceived as', recital P, and 'urges ... that it be closed without delay', para 19."
+ },
+ {
+  "id": "military-trophy-park",
+  "section": "OVERVIEW",
+  "problems": [
+   "paywall not marked",
+   "conflicting dates"
+  ],
+  "before": "where building of the park and of a Victory Museum began in February 2021 (Turan). Work began in January 2021 (Report.az) on President Ilham Aliyev's order (OC Media).",
+  "after": "beside a planned Victory Museum (Turan, 9 April 2021; paywalled, only the opening paragraph was read). Sources differ on when work began: January 2021 according to Report.az, February 2021 according to Turan.",
+  "sources": [
+   "https://turan.az/en/social/who-is-in-charge-of-the-armenian-trophy-equipment-park-in-baku",
+   "https://report.az/multimedia/herbi-qenimetler-parkindan-fotoreportaj"
+  ],
+  "reason": "Turan's page shows only a teaser paragraph. Report.az says work began in January and Turan says February; the report gave both without noting the conflict."
+ },
+ {
+  "id": "military-trophy-park",
+  "section": "FUNDING",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Built on the president's order and opened by him ... The park has its own director, whose letters of 6 and 13 October 2021 ... (ICJ order).",
+  "after": "Aliyev ordered its construction in January 2021 (OC Media, 15 October 2021). Its exhibits are hardware the Azerbaijani Armed Forces took as trophies (president.az).",
+  "sources": [
+   "https://oc-media.org/azerbaijan-removes-mannequins-and-helmets-from-military-trophy-park",
+   "https://president.az/en/articles/view/51067"
+  ],
+  "reason": "The director's letters were already in the Overview, and the opening appeared twice."
+ },
+ {
+  "id": "military-trophy-park",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "missing title",
+   "overstated paraphrase"
+  ],
+  "before": "RFE/RL: Neil Hauer, on the Baku park's mannequins (2021) ... sees it as the culmination of more than a decade of rhetoric",
+  "after": "RFE/RL: Neil Hauer, \"Azerbaijan's 'Ethnic Hatred' Theme Park Draws Ire, Imperils Reconciliation\" (2021) ... sees it as the product of years of rhetoric against Armenians, which he says became more salient in the late 2000s, before the return of Ramil Safarov, whom Aliyev pardoned in 2012",
+  "sources": [
+   "https://www.rferl.org/a/azerbaijan-karabakh-theme-park-armenia-ethnic-hatred-aliyev/31217971.html"
+  ],
+  "reason": "Added the real headline. Broers speaks of years of rhetoric; the 2012 pardon is the article's own context, not his words."
+ },
+ {
+  "id": "military-trophy-park",
+  "section": "Red flags",
+  "problems": [
+   "attribution"
+  ],
+  "before": "The sculptors of the mannequins said they had \"tried to create the most freakish depictions\" ... (RFE/RL).",
+  "after": "RFE/RL reported that the mannequins had exaggerated features such as hooked noses and that their sculptors said they had \"tried to create the most freakish depictions\" of Armenians.",
+  "sources": [
+   "https://www.rferl.org/a/azerbaijan-karabakh-theme-park-armenia-ethnic-hatred-aliyev/31217971.html"
+  ],
+  "reason": "Credited to the outlet that reports it."
+ },
+ {
+  "id": "military-trophy-park",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts"
+  ],
+  "before": "The park is paid for and run by the Azerbaijani state ... condemned by the Council of Europe's rights commissioner and the European Parliament and withdrawn during an ICJ case. ...",
+  "after": "The money is purely state money; the problem is the message the state chose to display, not who paid. Worth watching: whether Azerbaijan keeps its assurance to the court.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "Red flags",
+  "problems": [
+   "documented act labelled Unverified",
+   "unsourced stance claim"
+  ],
+  "before": "Unverified: in a case filed on 3 September 2026 the Anti-Corruption Commission accuses ... The commission acts under the interim government that replaced Hasina.",
+  "after": "On 3 September 2026 Anti-Corruption Commission Assistant Director Md Ismail Hossain filed a case at the commission's Integrated District Office, Dhaka-1, against Hasina, Rehana and Md Nazrul Islam Mazumder ... Unverified: the commission alleges that the three collected and embezzled Tk 2.76 billion ... (case documents, as reported by Financial Express and bdnews24).",
+  "sources": [
+   "https://thefinancialexpress.com.bd/national/hasina-rehana-prosecuted-over-embezzlement-of-tk-276b-in-csr-funds-from-41-banks",
+   "https://bdnews24.com/bangladesh/270ed0595726"
+  ],
+  "reason": "The filing is a documented act and is stated plainly; only the allegations keep 'Unverified:'. Neither article ties the commission to the interim government, so that sentence was cut."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "Red flags",
+  "problems": [
+   "missing date and authority"
+  ],
+  "before": "In March 2025 a Dhaka court froze 124 accounts on an Anti-Corruption Commission petition",
+  "after": "On 11 March 2025 Dhaka Metropolitan Senior Special Judge Md Zakir Hossain Galib froze 124 accounts of the family and linked bodies on an Anti-Corruption Commission petition",
+  "sources": [
+   "https://bdnews24.com/bangladesh/4815ff2b9ec6"
+  ],
+  "reason": "bdnews24 (12 March 2025) names the judge and dates the order 'Tuesday'."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "FUNDING",
+  "problems": [
+   "wrong actor"
+  ],
+  "before": "the interim government revoked it in January 2025 (bdnews24)",
+  "after": "after the change of government the National Board of Revenue revoked it in January 2025 (bdnews24)",
+  "sources": [
+   "https://bdnews24.com/economy/8530ae2f4bd4"
+  ],
+  "reason": "The NBR announced the revocation."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "figure not on Wikipedia page",
+   "Wikipedia replaced by press"
+  ],
+  "before": "kept the original house; RAJUK listed it as a national heritage site in 2009 (Wikipedia). It showed the family's rooms, Sheikh Russel's toys and historical documents, with a library, auditorium and photo gallery in the extension (Wikipedia).",
+  "after": "kept the original structure of the house (Wikipedia). It showed the family's rooms, with bullet marks in the bedroom, Sheikh Russel's bicycles and toys, letters and manuscripts; a library and research centre opened on the extension's fifth floor in 2011 (UNB, 2020).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bangabandhu_Memorial_Museum",
+   "https://unb.com.bd/category/Lifestyle/bangabandhu-memorial-museum-witness-to-history-and-tragedy/56035"
+  ],
+  "reason": "RAJUK 2009, the auditorium and the photo gallery are not on the Wikipedia page: cut. The exhibits now come from UNB. The other history dates (1981, 14 Aug 1994, 6 Sep 1994, 20 Aug 2011, architects) are on the Wikipedia page."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "overstated: 'burned it and razed it'"
+  ],
+  "before": "burned it and razed it with excavators and a crane",
+  "after": "set parts of it on fire and demolished it with two excavators and a crane",
+  "sources": [
+   "https://www.benarnews.org/english/news/bengali/copy5_of_angry-protesters-demolish-mujibur-museum-over-hasina-speech-02052025163613.html"
+  ],
+  "reason": "BenarNews wording."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported clause"
+  ],
+  "before": "Mujib, once venerated for leading the break from Pakistan in 1971, fell out of favour",
+  "after": "Mujib had fallen out of favour since Hasina made it a crime to speak against him",
+  "sources": [
+   "https://www.benarnews.org/english/news/bengali/copy5_of_angry-protesters-demolish-mujibur-museum-over-hasina-speech-02052025163613.html"
+  ],
+  "reason": "Cut to what the article states."
+ },
+ {
+  "id": "bangabandhu-memorial-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts",
+   "unsourced stance"
+  ],
+  "before": "... a trust that Hasina chaired and that banks filled with donations handed to her ... brought by her political successors ...",
+  "after": "The museum's money was tied to Hasina's office, which is the weak point whatever the court decides. The embezzlement charge itself is unproven. Worth watching: the outcome of the case.",
+  "sources": [],
+  "reason": "Verdict only."
+ }
+]

@@ -1,0 +1,597 @@
+[
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'gave about one million dollars'"
+  ],
+  "before": "in October 2015 the foundation's authorities gave about one million dollars (La Prensa).",
+  "after": "in October 2015 the foundation's officials put it at about one million dollars (La Prensa).",
+  "sources": [
+   "https://web.archive.org/web/2016/https://www.laprensani.com/2015/10/30/departamentales/1927862-unidos-por-la-casa-de-los-tres-mundos"
+  ],
+  "reason": "La Prensa of 30 October 2015 gives one million dollars as the cost of the restoration, not a sum the foundation's officials gave."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: salary point"
+  ],
+  "before": "After the closure Pan y Arte kept paying the salaries of its project staff in Nicaragua until the end of 2024 (Pan y Arte annual report 2024).",
+  "after": "(cut)",
+  "sources": [
+   "https://www.panyarte.de/fileadmin/Downloads/Jahresbericht_2024.pdf"
+  ],
+  "reason": "The text of the 2024 annual report that could be read does not carry the claim; cut rather than kept unchecked. Source removed from SOURCES."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "FUNDING",
+  "problems": [
+   "clients, not funders"
+  ],
+  "before": "Own income: the foundation rented out a seminar hall for 45 people, an auditorium for up to 250 and the whole house for events (stated by the space).",
+  "after": "(cut)",
+  "sources": [
+   "https://c3mundos.org/en/about/renting/"
+  ],
+  "reason": "Venue hirers are clients, not funders (RUN.md); the renting page was dropped from SOURCES."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "FUNDING",
+  "problems": [
+   "trim for length"
+  ],
+  "before": "Pan y Arte e.V. of Münster, a registered association since 1994, founded by Schönherr ... income ... 415,481 euros of donations, 61,517 euros of bequests and 4,525 euros of grants ... set up in Bremen on 30 May 2006",
+  "after": "Pan y Arte e.V. of Münster, founded by Schönherr in 1994 ... of which 415,481 euros came from donations and 61,517 euros from bequests ... set up in Bremen in 2006",
+  "sources": [
+   "https://www.panyarte.de/fileadmin/Downloads/Jahresbericht_2023_Web.pdf"
+  ],
+  "reason": "All figures confirmed in the 2023 annual report (pages 3, 12, 13, 18); wording shortened to bring the report under 800 words."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "Red flags",
+  "problems": [
+   "wording",
+   "year checked"
+  ],
+  "before": "A lawsuit to divide the property began in 2004. ... The judge set 30 October 2015 for handing over the eighth.",
+  "after": "She began a suit to end the joint ownership in 2004. ... The judge ordered the eighth handed over on 30 October 2015.",
+  "sources": [
+   "https://web.archive.org/web/2016/https://www.laprensani.com/2015/03/05/departamentales/1793192-casa-de-los-tres-mundos-en-litigio",
+   "https://web.archive.org/web/2016/https://www.laprensani.com/2015/10/29/departamentales/1927198-juez-entrega-parte-de-la-casa-de-los-tres-mundos",
+   "https://web.archive.org/web/2016/https://www.laprensani.com/2015/10/30/departamentales/1927862-unidos-por-la-casa-de-los-tres-mundos"
+  ],
+  "reason": "La Prensa of 29 October 2015 names the suit a 'juicio de cesación de comunidad' begun in 2004 by Beatriz Cardenal; all other points confirmed."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length: 923 words"
+  ],
+  "before": "1924 rebuild, 1992 restoration, programme list, 2023 staff and pupil points at full length",
+  "after": "shortened; courthouse annex, studio list and Infantilarte pupil count cut",
+  "sources": [
+   "https://c3mundos.org/en/about/history-building/",
+   "https://www.panyarte.de/fileadmin/Downloads/Jahresbericht_2023_Web.pdf"
+  ],
+  "reason": "Peripheral detail trimmed; every heading kept. Report now 797 words."
+ },
+ {
+  "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... The Nicaraguan state dissolved the foundation and holds the building; worth watching is who runs the house now.",
+  "after": "... Worth watching: who runs the seized house now.",
+  "sources": [
+   "https://confidencial.digital/en/nation/ortega-murillo-regime-declares-confiscated-cultural-center-in-granada-national-heritage-site/"
+  ],
+  "reason": "The dissolution and seizure are already stated in WIDER CONTEXT."
+ },
+ {
+  "id": "hamhung-grand-theatre",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "korean-folklore-museum",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "mangyongdae-revolutionary-museum",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "party-founding-museum",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "pyongyang-circus",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "sinuiju-history-museum",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "three-revolutions-exhibition",
+  "section": "Website",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "Website: none found (checked 2026-11-20)",
+  "after": "Website: none (checked 2026-11-20)",
+  "sources": [],
+  "reason": "RUN.md bans lines that report an empty search."
+ },
+ {
+  "id": "hamhung-grand-theatre",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions, state body",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions on the state",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "korean-folklore-museum",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions on the state",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "mangyongdae-revolutionary-museum",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions on the state",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions, state body",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "party-founding-museum",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions on the state and the Workers' Party",
+  "after": "US sanctions on the North Korean government and the Workers' Party, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "pyongyang-circus",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions, state circus",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "sinuiju-history-museum",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions, state body",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "three-revolutions-exhibition",
+  "section": "Red flags heading",
+  "problems": [
+   "heading not plain words / no year"
+  ],
+  "before": "Sanctions on the state",
+  "after": "US sanctions on the North Korean government, 2016",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Each heading names one issue in plain words with its year; Executive Order 13722 was signed on 15 March 2016."
+ },
+ {
+  "id": "hamhung-grand-theatre",
+  "section": "Red flags",
+  "problems": [
+   "not-found line: 'the order does not name it'"
+  ],
+  "before": "... (Federal Register, 18 March 2016). The theatre is a state body, and the order does not name it.",
+  "after": "...; section 9 defines the Government as the DPRK government and its agencies, instrumentalities and controlled entities (Federal Register, 18 March 2016).",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "A sentence about what the order does not state was replaced by what section 9(d) does state."
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "section": "Red flags",
+  "problems": [
+   "not-found line: 'the order does not name it'"
+  ],
+  "before": "... (Federal Register, 18 March 2016). The museum is a state body, and the order does not name it.",
+  "after": "...; section 9 defines the Government as the DPRK government and its agencies, instrumentalities and controlled entities (Federal Register, 18 March 2016).",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "A sentence about what the order does not state was replaced by what section 9(d) does state."
+ },
+ {
+  "id": "sinuiju-history-museum",
+  "section": "Red flags",
+  "problems": [
+   "not-found line: 'the order does not name it'"
+  ],
+  "before": "... (Federal Register, 18 March 2016). The museum is a state body, and the order does not name it.",
+  "after": "...; section 9 defines the Government as the DPRK government and its agencies, instrumentalities and controlled entities (Federal Register, 18 March 2016).",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "A sentence about what the order does not state was replaced by what section 9(d) does state."
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "section": "Red flags",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "The order does not name the museum.",
+  "after": "(cut)",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Sentence reported only what the order does not say."
+ },
+ {
+  "id": "pyongyang-circus",
+  "section": "Red flags",
+  "problems": [
+   "not-found line"
+  ],
+  "before": "The order does not name the circus.",
+  "after": "(cut)",
+  "sources": [
+   "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm"
+  ],
+  "reason": "Sentence reported only what the order does not say."
+ },
+ {
+  "id": "hamhung-grand-theatre",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The theatre is built, run and used by the North Korean state and its art troupes. The Sanctions basis is the weak point: the Government of North Korea is blocked under Executive Order 13722. Worth watching: visits by foreign troupes, such as the Russian opera troupe in 2010.",
+  "after": "The theatre is built, run and used by the North Korean state and its art troupes, so its money is the state's. The weak point is the US blocking order on that state. Worth watching: foreign troupes booked to perform there.",
+  "sources": [],
+  "reason": "Restated the Red flags point and the 2010 Russian opera visit from OVERVIEW. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The museum is a state institution that leads North Korea's network of history museums, and its figures for objects and visitors come from state media and differ between sources. ...",
+  "after": "The museum is a state institution at the head of North Korea's history museums, and its money is the state's. The weak points are the US blocking order on that state and the political teaching built into the displays. ...",
+  "sources": [],
+  "reason": "Restated the object counts given in OVERVIEW. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "korean-folklore-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... the Workers' Party treats it as a base for ideological education. The weak point is the sanctions basis under Executive Order 13722. The two published item counts come from different sources, a reference book and a friendship association's site.",
+  "after": "The money behind the museum is the North Korean state's. The weak point is the US blocking order on that state.",
+  "sources": [],
+  "reason": "Restated the FUNDING party point and the two item counts in OVERVIEW. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "mangyongdae-revolutionary-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... the site belongs to a party programme of Revolutionary Sites. The weak point is the sanctions basis under Executive Order 13722. The state's birthplace claim for the site differs from what Kim Il Sung wrote in his memoirs, as Wikipedia reports.",
+  "after": "The money behind the museum is the North Korean state's. The weak point is the US blocking order on that state.",
+  "sources": [],
+  "reason": "Restated the FUNDING Revolutionary Sites point and the birthplace point in OVERVIEW. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... The Sanctions basis is the weak point: the Government of North Korea is blocked under Executive Order 13722.",
+  "after": "... The weak point is the US blocking order on that state.",
+  "sources": [],
+  "reason": "Shortened the restatement of the Red flags point. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "party-founding-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... The weak point is the sanctions basis: the order names both the Government and the Party whose founding the museum presents. Worth watching: the leadership visits timed to the Party's October anniversary, which KCNA reported in 2009 and Reuters in 2025.",
+  "after": "The money behind the museum is the North Korean state's, and the Party uses it as a shrine to its own founding. The weak point is that the US blocking order covers both that state and that Party.",
+  "sources": [],
+  "reason": "Restated the 2009 and 2025 visits already in OVERVIEW. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "pyongyang-circus",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The circus is a state company under the Ministry of Culture in a theatre the state built. The points to watch are the euro ticket fees collected from foreign visitors and the troupe's tours abroad. The animal acts drew criticism from a campaign group in 2019.",
+  "after": "The circus is a state company in a state-built theatre, so its money is the North Korean state's. The weak point is the US blocking order on that state. Worth watching: the euro ticket sales to foreign visitors and the animal acts.",
+  "sources": [],
+  "reason": "Restated FUNDING and press item 2; report also needed to come under 800 words (was 801). A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "sinuiju-history-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The museum is one of the provincial history museums of the North Korean state, which pays for it, and its history displays end with the Kim family. The Sanctions basis is the weak point: ...",
+  "after": "The museum is a provincial history museum paid for by the North Korean state. The weak point is the US blocking order on that state.",
+  "sources": [],
+  "reason": "Restated OVERVIEW and FUNDING. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "three-revolutions-exhibition",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... the party addresses it as a tool of mass education. The weak points are the sanctions basis under Executive Order 13722 and the use of the halls in 2021 to show the state's missiles. Worth watching: which fairs and weapons shows the site hosts next.",
+  "after": "The money behind the exhibition is the North Korean state's. The weak points are the US blocking order on that state and the use of the site as a stage for the state's missiles. Worth watching: which fairs and weapons shows it hosts next.",
+  "sources": [],
+  "reason": "Restated the FUNDING party message. A bottom line adds the verdict; it does not restate."
+ },
+ {
+  "id": "hamhung-grand-theatre",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported attribution"
+  ],
+  "before": "Korean Wikipedia cites Ahn Chang-mo ... who names the theatre as a representative case of North Korea's turn from the 1970s to modernising traditional building elements without tiled roofs.",
+  "after": "Korean Wikipedia, citing a 2009 Seoul National University conference volume, names the theatre as a representative case of North Korea's turn in the 1970s to modernising traditional building elements, which the Kyonggi University architecture professor Ahn Chang-mo describes as building without tiled roofs.",
+  "sources": [
+   "https://ko.wikipedia.org/wiki/%ED%95%A8%ED%9D%A5%EB%8C%80%EA%B7%B9%EC%9E%A5"
+  ],
+  "reason": "Korean Wikipedia credits the 'representative case' line to the 2009 conference volume and the tiled-roof point to Ahn; seat, area, storey and column figures confirmed there and on the Unification Ministry portal."
+ },
+ {
+  "id": "korean-central-history-museum-pyongyang",
+  "section": "FUNDING",
+  "problems": [
+   "repetition",
+   "not funding"
+  ],
+  "before": "- Wikipedia names Kim Il Sung as founder, citing Voice of Korea, which quoted the museum's curator O Hae Ryong.\n- The North Korea Information Portal says the museum holds exhibitions and runs exchanges ...",
+  "after": "founder citation folded into the OVERVIEW founding point; the exchanges point moved to OVERVIEW",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Korean_Central_History_Museum",
+   "https://nkinfo.unikorea.go.kr/nkp/search/search.do?query=%EC%A1%B0%EC%84%A0%EC%A4%91%EC%95%99%EB%A0%A5%EC%82%AC%EB%B0%95%EB%AC%BC%EA%B4%80"
+  ],
+  "reason": "Kim Il Sung as founder was stated twice; the old funding point is kept as a citation on the founding line, not lost."
+ },
+ {
+  "id": "mangyongdae-revolutionary-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Lonely Planet places it near Kim Il Sung's birthplace and says it continues the theme of his childhood.",
+  "after": "(cut)",
+  "sources": [
+   "https://www.lonelyplanet.com/points-of-interest/mangyongdae-revolutionary-museum/435014"
+  ],
+  "reason": "Location already given by the portal point (150 m from the family home); Lonely Planet's view of the museum stays as press item 1."
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "padding: not about the museum"
+  ],
+  "before": "Kwanmun-dong also holds the Kwanmun and Amnokgang inns, a children's library, a room for preserving revolutionary relics and Sinuiju Chongnyon station ... (cybernk.net ...)",
+  "after": "(cut)",
+  "sources": [],
+  "reason": "Describes the neighbourhood, not the museum; cybernk.net dropped from SOURCES."
+ },
+ {
+  "id": "north-pyongan-provincial-revolutionary-history-museum",
+  "section": "FUNDING",
+  "problems": [
+   "padding: not about the museum"
+  ],
+  "before": "...; it says industrial establishments met their 2025 plans for regional budget revenue at 106.5 percent.",
+  "after": "The same KCNA report divides state revenue between the central budget, put at 72.2 percent for 2026, and regional budgets.",
+  "sources": [
+   "https://www.globalsecurity.org/wmd/library/news/dprk/2026/dprk-260324-kcna02.htm"
+  ],
+  "reason": "72.2 percent confirmed in the KCNA text; the plan-fulfilment figure says nothing about the museum."
+ },
+ {
+  "id": "pyongyang-circus",
+  "section": "Red flags",
+  "problems": [
+   "point not about sanctions",
+   "old point kept"
+  ],
+  "before": "Red flags: Sanctions, state circus\n- The Korean Art website lists the troupe under performing arts creative organs and says it holds the Order of Kim Il Sung.",
+  "after": "Operator point in FUNDING: '... uses the theatre as its own house and received the Order of Kim Il Sung in 1977 (North Korea Information Portal, May 2000).'",
+  "sources": [
+   "https://nkinfo.unikorea.go.kr/nkp/trend/view.do?menuId=MENU_494&trendMngNo=5933",
+   "https://web.archive.org/web/20231229044419/http://www.korart.sca.kp/index.php/stage/org_detail?id=708&language=english"
+  ],
+  "reason": "The old point shows state ownership, not a sanction; its fact (the Order of Kim Il Sung) now sits in FUNDING, dated from the portal's May 2000 digest."
+ },
+ {
+  "id": "pyongyang-circus",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "not-found phrasing"
+  ],
+  "before": "The page says it was adapted from another source, which it does not name.",
+  "after": "The page says it was adapted from another source.",
+  "sources": [
+   "https://www.albawaba.net/editors-choice/what-should-we-make-n-korea-dancing-bears-1280621"
+  ],
+  "reason": "Al Bawaba piece (17 April 2019, no visible byline) confirmed; Woodman and Jan Creamer quotes match."
+ },
+ {
+  "id": "three-revolutions-exhibition",
+  "section": "FUNDING",
+  "problems": [
+   "repetition",
+   "internal-rule voice"
+  ],
+  "before": "- The same KCNA report says the exhibition hosted science and technology festivals and \"many national and international exhibitions and fairs\". Exhibitors at such fairs are clients of the venue, not funders.",
+  "after": "(cut)",
+  "sources": [
+   "https://www.globalsecurity.org/wmd/library/news/dprk/2006/dprk-060825-kcna03.htm"
+  ],
+  "reason": "The fairs are already in OVERVIEW (2013 trade fair, 2018 IT exhibition) and fair exhibitors are not funders."
+ },
+ {
+  "id": "three-revolutions-exhibition",
+  "section": "Red flags heading",
+  "problems": [
+   "heading wording"
+  ],
+  "before": "Self-Defence 2021 weapons exhibition held at the site",
+  "after": "2021 weapons exhibition held at the site",
+  "sources": [
+   "https://v.daum.net/v/20211013173612481"
+  ],
+  "reason": "Hankyoreh (13 October 2021) confirms the 11 October show, the weapons listed and the Ministry of National Defense briefing of 12 October."
+ }
+]

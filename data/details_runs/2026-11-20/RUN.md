@@ -41,6 +41,10 @@ and say so in your reply.
 - Propaganda-layer and Antarctic pins carry `propaganda`, `operator` or `claim` fields. Treat them
   as leads to verify, not as text to copy. FUNDING names the operator and who pays.
 - Hard-to-source places (North Korea, closed or exiled spaces): use what exists and stop there.
+- A point that rests only on a search engine's snippet or cached copy of a page nobody could open
+  is not sourced. Leave it out, and take out any verdict wording that leaned on it.
+- BOTTOM LINE gives the verdict only and repeats no fact stated above it. Write "Website: none",
+  never "none found".
 
 ## Tools
 
@@ -48,6 +52,8 @@ and say so in your reply.
 - Never the browser tools (`mcp__Claude_Browser__*`, `mcp__claude-in-chrome__*`,
   `mcp__computer-use__*`).
 - If `curl` fails on a certificate, do not pass `-k`; use another source.
+- Never disguise `curl` as a browser (no browser User-Agent strings). If a site refuses
+  automated reads, use another source.
 - Scratch files go in `$TMPDIR`, never in the repository.
 - Write only `data/details_runs/2026-11-20/reports/<record id>.txt` (research) or edit those files
   and write `checks/<batch>-slop.json` (checking). Touch no other file, and never
