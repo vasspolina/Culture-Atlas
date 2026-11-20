@@ -105,6 +105,21 @@
   ],
   "batch": "fp7"
  },
+ "adanigreenenergy": {
+  "name": "Adani Green Energy Limited",
+  "short": "Adani Green Energy",
+  "kind": "corp",
+  "what": "An Indian renewable energy company in Ahmedabad, incorporated in 2016 by Gautam Adani; the Adani Group holds 55 percent and TotalEnergies 20 percent.",
+  "money": "Sales of power from its solar and wind plants: INR 10,460 crore revenue in 2024.",
+  "site": "https://www.adanigreenenergy.com",
+  "city": "Ahmedabad",
+  "country": "India",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Adani_Green_Energy"
+  ],
+  "batch": "fp32"
+ },
  "adjarastamba": {
   "name": "Adjara Group",
   "kind": "corp",
@@ -565,6 +580,21 @@
    "https://en.wikipedia.org/wiki/Allagash_Brewing_Company"
   ],
   "batch": "fp6"
+ },
+ "allegrini": {
+  "name": "Allegrini",
+  "kind": "corp",
+  "what": "A family wine company in Fumane, Valpolicella, founded by Giovanni Allegrini in 1854; since December 2023 the family's seventh generation runs it.",
+  "money": "Sales of its wines, among them Amarone, Valpolicella Classico, Lugana and Soave.",
+  "site": "https://allegrini.it",
+  "city": "Fumane",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/allegrini/",
+   "https://allegrini.it/en/allegrini-family-and-identity/"
+  ],
+  "batch": "fp32"
  },
  "alliances": {
   "name": "Fondation Alliances",
@@ -3362,6 +3392,24 @@
   ],
   "batch": "fp5"
  },
+ "canica": {
+  "name": "Canica AS",
+  "short": "Canica",
+  "kind": "corp",
+  "what": "The Hagen family's investment company in Oslo, set up in 1985 by Stein Erik Hagen, who died in 2026; Caroline Marie Hagen Kjos has controlled it since May 2026.",
+  "money": "Returns on its financial, industrial and real estate investments, including 196,351,000 shares in Orkla, of which it is the largest shareholder.",
+  "arts": "It owns a collection of mainly Nordic 19th and 20th century art, including Asger Jorn and Edvard Munch, and lends works to exhibitions.",
+  "site": "https://canica.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "address": "Tjuvholmen Allé 3, 0252 Oslo",
+  "status": "done",
+  "sources": [
+   "https://canica.no/our-culture-and-history",
+   "https://www.orkla.com/media/press-releases/2026/orkla-asa-continued-ownership-by-the-hagen-family/"
+  ],
+  "batch": "fp32"
+ },
  "cantonofgeneva": {
   "name": "République et canton de Genève",
   "short": "Canton of Geneva",
@@ -3619,6 +3667,22 @@
    "https://www.ccpar.rio/institucional/quem-somos/"
   ],
   "batch": "fp31"
+ },
+ "cemex": {
+  "name": "CEMEX, S.A.B. de C.V.",
+  "short": "CEMEX",
+  "kind": "corp",
+  "what": "A Mexican building materials company that began in 1920 as Cementos Portland Monterrey, seated in San Pedro Garza García, Nuevo León.",
+  "money": "Sales of cement, ready-mix concrete and aggregates: about USD 13 billion revenue in 2020.",
+  "arts": "It gives the Premio CEMEX, an annual award for works in sustainability, accessibility, construction and architecture.",
+  "site": "https://www.cemex.com",
+  "city": "San Pedro Garza García",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Cemex"
+  ],
+  "batch": "fp32"
  },
  "centurybank": {
   "name": "Century Bank",
@@ -5170,6 +5234,20 @@
   ],
   "batch": "fp31"
  },
+ "conocophillips": {
+  "name": "ConocoPhillips",
+  "kind": "corp",
+  "what": "A US oil and gas exploration and production company in Houston, formed in 2002 when Conoco Inc. and Phillips Petroleum merged.",
+  "money": "Sales of crude oil, bitumen, natural gas and LNG: USD 56.95 billion revenue in 2024; it holds 3.125 percent of Qatar's North Field East venture.",
+  "site": "https://www.conocophillips.com",
+  "city": "Houston",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/ConocoPhillips"
+  ],
+  "batch": "fp32"
+ },
  "conseildesartsdemontral": {
   "name": "Conseil des arts de Montréal",
   "kind": "gov",
@@ -5370,6 +5448,22 @@
    "https://www.eghn.org/en/waldfrieden-sculpture-park/"
   ],
   "batch": "fp9"
+ },
+ "crankstart": {
+  "name": "Crankstart Foundation",
+  "short": "Crankstart",
+  "kind": "found",
+  "what": "A US private foundation of Sir Michael Moritz and his wife Harriet Heyman, its chief executive and chief financial officer, tax exempt since June 2002.",
+  "money": "Contributions of USD 247.5 million in 2024, when its total assets were USD 4.39 billion.",
+  "arts": "It became the main sponsor of the Booker Prize in June 2019, for an initial five years.",
+  "city": "San Jose",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/943377099",
+   "https://publishingperspectives.com/2019/02/uk-booker-prize-announces-crankstart-new-anchor-sponsor-literary-awards/"
+  ],
+  "batch": "fp32"
  },
  "crditdunord": {
   "name": "Crédit du Nord",
@@ -6686,6 +6780,23 @@
   ],
   "batch": "fp11"
  },
+ "edf": {
+  "name": "Électricité de France",
+  "short": "EDF",
+  "kind": "corp",
+  "what": "France's state electricity company, created by a nationalisation law on 8 April 1946 and wholly owned by the French state again since June 2023.",
+  "money": "Sales of electricity, mostly from nuclear plants, and energy trading: EUR 139.7 billion revenue in 2023.",
+  "site": "https://www.edf.fr",
+  "city": "Paris",
+  "country": "France",
+  "address": "22-30 avenue de Wagram, 75008 Paris",
+  "status": "done",
+  "sources": [
+   "https://www.edf.fr/mentions-legales",
+   "https://en.wikipedia.org/wiki/%C3%89lectricit%C3%A9_de_France"
+  ],
+  "batch": "fp32"
+ },
  "edostategovernment|Nigeria": {
   "name": "Edo State Government",
   "kind": "gov",
@@ -6702,6 +6813,21 @@
    "https://www.thisdaylive.com/2026/08/22/mowaa-panel-submits-probe-report-on-ownership-funding-indicts-past-govt/"
   ],
   "batch": "fp11"
+ },
+ "edp": {
+  "name": "EDP, S.A.",
+  "short": "EDP",
+  "kind": "corp",
+  "what": "A Portuguese electricity company in Lisbon, set up as Electricidade de Portugal by decree in 1976 from 14 nationalised firms; China Three Gorges holds 22.2 percent.",
+  "money": "Electricity generation and distribution and gas distribution: EUR 16.2 billion revenue in 2023.",
+  "site": "https://www.edp.com",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/EDP_Group"
+  ],
+  "batch": "fp32"
  },
  "eduardolenjimenes": {
   "name": "Fundación Eduardo León Jimenes, Inc.",
@@ -6962,6 +7088,23 @@
    "https://www.gramwzielone.pl/?p=106333"
   ],
   "batch": "fp10"
+ },
+ "eonse": {
+  "name": "E.ON SE",
+  "short": "E.ON",
+  "kind": "corp",
+  "what": "An energy company in Essen, formed in 2000 by the merger of VEBA and VIAG, which moved its conventional power generation and energy trading into Uniper in 2016.",
+  "money": "Energy distribution networks and retail energy sales: EUR 78.4 billion revenue in 2025.",
+  "site": "https://www.eon.com",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Brüsseler Platz 1, 45131 Essen",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/E.ON",
+   "https://www.lobbyregister.bundestag.de/media/15/2b/690472/Lobbyregister-Registereintraege-Detailansicht-R002309-2026-02-05_15-52-10.pdf"
+  ],
+  "batch": "fp32"
  },
  "epmmunicipalutility|Colombia": {
   "name": "Empresas Públicas de Medellín",
@@ -7261,6 +7404,23 @@
   ],
   "batch": "fp8"
  },
+ "evonikindustriesag": {
+  "name": "Evonik Industries AG",
+  "short": "Evonik",
+  "kind": "corp",
+  "what": "A specialty chemicals company in Essen, founded on 12 September 2007 and owned mainly by the RAG Foundation (RAG-Stiftung).",
+  "money": "Sales of specialty chemicals: EUR 14.1 billion revenue in 2025.",
+  "site": "https://www.evonik.com",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Opernplatz 1, 45128 Essen",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Evonik_Industries",
+   "https://history.evonik.com/en/footer-en/company-information/company-information-143589.html"
+  ],
+  "batch": "fp32"
+ },
  "evraz": {
   "name": "EVRAZ plc",
   "short": "Evraz",
@@ -7308,6 +7468,22 @@
    "https://fr.wikipedia.org/wiki/Expertise_France"
   ],
   "batch": "fp11"
+ },
+ "exxonmobilqatar": {
+  "name": "ExxonMobil Qatar Limited",
+  "short": "ExxonMobil Qatar",
+  "kind": "corp",
+  "what": "The Qatar affiliate of the US oil company Exxon Mobil, a partner of QatarEnergy in gas and LNG joint ventures since the 1980s.",
+  "money": "Its shares in nine LNG trains and 27 LNG ships run with QatarEnergy.",
+  "site": "https://corporate.exxonmobil.com/locations/qatar",
+  "city": "Doha",
+  "country": "Qatar",
+  "address": "Al Fardan Commercial Tower, Al Funduq Street, Building 12, Doha",
+  "status": "done",
+  "sources": [
+   "https://corporate.exxonmobil.com/locations/qatar"
+  ],
+  "batch": "fp32"
  },
  "fairfieldcountybank|USA": {
   "name": "Fairfield County Bank",
@@ -7658,6 +7834,26 @@
    "https://en.wikipedia.org/wiki/William_and_Flora_Hewlett_Foundation"
   ],
   "batch": "fp5"
+ },
+ "florim": {
+  "name": "Florim S.p.A. SB",
+  "short": "Florim",
+  "kind": "corp",
+  "what": "A ceramic tile maker in Fiorano Modenese, founded by Giovanni Lucchese in 1962 as Floor Gres, run by his son Claudio Lucchese, and a Società Benefit since 2020.",
+  "money": "Sales of porcelain surfaces for architecture and design: EUR 416 million revenue in 2024.",
+  "arts": "Its Fondazione Ing. Giovanni Lucchese, set up in 2013, promotes social and cultural projects around Modena.",
+  "site": "https://www.florim.com",
+  "city": "Fiorano Modenese",
+  "country": "Italy",
+  "address": "Via Canaletto 24, 41042 Fiorano Modenese",
+  "status": "done",
+  "sources": [
+   "https://www.florim.com/en/",
+   "https://forbes.it/2025/08/28/florim-dalla-ceramica-al-modello-dimpresa-sostenibile",
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/florim/",
+   "https://www.florim.com/en/company/about-us"
+  ],
+  "batch": "fp32"
  },
  "fokal": {
   "name": "Fondasyon Konesans Ak Libète",
@@ -8465,6 +8661,53 @@
   ],
   "batch": "fp12"
  },
+ "fundacionalfredoharphelu": {
+  "name": "Fundación Alfredo Harp Helú",
+  "kind": "found",
+  "what": "A Mexican foundation funded by the banker Alfredo Harp Helú, former owner of Banamex, giving to education, culture, sport, health and the environment.",
+  "money": "Harp Helú's fortune, from Citigroup's 2001 purchase of Banamex; the foundation's assets stood at MXN 14.532 billion in 2018.",
+  "arts": "Of MXN 6.83 billion it had given to projects by 2018, MXN 1.58 billion, 23 percent, went to culture.",
+  "site": "https://www.alfredoharphelu.com",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://www.alfredoharphelu.com/cms/assets/images/uploads/comunicados/patrimonio-fahh-2018.pdf",
+   "https://en.wikipedia.org/wiki/Alfredo_Harp_Hel%C3%BA"
+  ],
+  "batch": "fp32"
+ },
+ "fundacionaxamexico": {
+  "name": "Fundación AXA México",
+  "kind": "found",
+  "what": "The foundation of AXA México, working on health, emergency aid, road safety, art and climate change; it has given over MXN 60 million to newborn care since 2018.",
+  "arts": "Since 2008 it has made grants in art and culture, among them to the art school SOMA, the Patronato de Arte Contemporáneo and MUAC's Arkheia archive.",
+  "site": "https://fundacionaxa.org.mx",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://fundacionaxa.org.mx/",
+   "https://axa.mx/documents/51602/1230716/Hacer-para-Nacer.pdf",
+   "https://fundacionaxa.org.mx/arte/"
+  ],
+  "batch": "fp32"
+ },
+ "fundaciontelevisa": {
+  "name": "Fundación Televisa",
+  "kind": "found",
+  "what": "The philanthropic arm of the Mexican broadcaster Grupo Televisa, known earlier as Fundación Cultural Televisa.",
+  "arts": "Its photographic collection and archive, begun in 1974, holds hundreds of thousands of images; it organised the Gabriel Figueroa exhibition shown at LACMA.",
+  "site": "https://www.fundaciontelevisa.org",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://www.ejecentral.com.mx/perdido-para-que-sirve-una-fundacion",
+   "https://artsandculture.google.com/partner/fundacion-televisa",
+   "https://www.lacma.org/fundaci%C3%B3n-televisa"
+  ],
+  "batch": "fp32"
+ },
  "fundaodeserralvesendowment": {
   "name": "Fundação de Serralves",
   "short": "Serralves Foundation",
@@ -8479,6 +8722,23 @@
    "https://en.wikipedia.org/wiki/Serralves"
   ],
   "batch": "fp26"
+ },
+ "fundaoedp": {
+  "name": "Fundação EDP",
+  "short": "EDP Foundation",
+  "kind": "found",
+  "what": "The corporate foundation of the Portuguese electricity company EDP, S.A., which set it up in December 2004; it is seated at the Central Tejo in Lisbon.",
+  "money": "EDP, S.A., the electricity company that owns it.",
+  "arts": "It keeps an art collection, gives the New Artists Award and the Art Grand Prize, and publishes Electra magazine.",
+  "site": "https://www.fundacaoedp.pt",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "address": "Avenida Brasília, Central Tejo, 1300-598 Lisboa",
+  "status": "done",
+  "sources": [
+   "https://www.fundacaoedp.pt/en/about-us"
+  ],
+  "batch": "fp32"
  },
  "fundaomanuelantniodamota": {
   "name": "Fundação Manuel António da Mota",
@@ -9782,6 +10042,22 @@
   ],
   "batch": "fp34"
  },
+ "haryantoadikoesoemo": {
+  "name": "Haryanto Adikoesoemo",
+  "kind": "person",
+  "what": "An Indonesian businessman who heads the chemicals and energy group AKR Corporindo, where he succeeded his father, its founder Soegiarto Adikoesoemo, as president in 1992.",
+  "money": "His fortune from AKR Corporindo.",
+  "arts": "His collection numbered about 800 works in 2019, half of them Indonesian; he joined the board of trustees of the Hirshhorn Museum in Washington in 2018.",
+  "city": "Jakarta",
+  "country": "Indonesia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Haryanto_Adikoesoemo",
+   "https://www.theartnewspaper.com/2019/03/28/collectors-eye-an-interview-with-haryanto-adikoesoemo",
+   "https://stockanalysis.com/quote/idx/AKRA/company"
+  ],
+  "batch": "fp32"
+ },
  "hassoplattner": {
   "name": "Hasso Plattner Foundation",
   "kind": "found",
@@ -10749,6 +11025,23 @@
    "https://www.innoviris.brussels/legislation-csp"
   ],
   "batch": "fp30"
+ },
+ "inpexidemitsupetroleumnorge": {
+  "name": "INPEX Idemitsu Norge AS",
+  "kind": "corp",
+  "what": "An oil and gas producer on the Norwegian shelf, wholly owned by INPEX Norway, of which the Japanese company INPEX agreed in 2021 to buy 50.5 percent.",
+  "money": "Sales of oil and gas from its stakes in Norwegian fields, the largest Snorre, where it holds 9.6 percent.",
+  "site": "https://www.inpex.com",
+  "city": "Lysaker",
+  "country": "Norway",
+  "address": "Lysaker torg 25, 1366 Lysaker (Bærum)",
+  "status": "done",
+  "sources": [
+   "https://www.inpex.com/english/business/project/snorre.html",
+   "https://www.oilandgasadvancement.com/news/inpex-idemitsu-partner-on-norway-upstream-projects/",
+   "https://data.brreg.no/enhetsregisteret/api/enheter/953133210"
+  ],
+  "batch": "fp32"
  },
  "insightinvestment": {
   "name": "Insight Investment",
@@ -11892,6 +12185,22 @@
   ],
   "batch": "fp28"
  },
+ "kpn": {
+  "name": "Koninklijke KPN N.V.",
+  "short": "KPN",
+  "kind": "corp",
+  "what": "The Dutch telecom company, corporatised from the state postal and telephone service PTT in 1989 and privatised from 1994; América Móvil holds 16.08 percent.",
+  "money": "Telephone, internet, TV and IT services, mostly in the Netherlands: EUR 5.829 billion adjusted revenue in 2025.",
+  "site": "https://www.kpn.com",
+  "city": "Rotterdam",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/KPN",
+   "https://www.rttnews.com/3614064/kpn-full-year-net-profit-edges-up-announces-250-mln-share-buyback-in-2026.aspx"
+  ],
+  "batch": "fp32"
+ },
  "krber": {
   "name": "Körber-Stiftung",
   "short": "Körber Foundation",
@@ -11978,6 +12287,22 @@
   ],
   "batch": "fp4"
  },
+ "kulturstiftungkunsthallebielefeld": {
+  "name": "Kulturstiftung Kunsthalle Bielefeld",
+  "kind": "found",
+  "what": "A charitable foundation in Bielefeld, set up in 1997 as Kulturstiftung Pro Bielefeld on the initiative of Wolfgang Böllhoff and recognised by the state on 7 May 1997.",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "address": "Adenauerplatz 1, 33602 Bielefeld",
+  "status": "done",
+  "sources": [
+   "https://www.im.nrw/kulturstiftung-kunsthalle-bielefeld",
+   "https://www.westfalen-blatt.de/owl/bielefeld/den-stolz-der-bielefelder-ansprechen-3692598",
+   "https://www.bielefeld.de/sites/default/files/datei/2026/Beteiligungsbericht-2024-1.pdf",
+   "https://kunsthalle-bielefeld.de/museum/traegerschaft/"
+  ],
+  "batch": "fp32"
+ },
  "kunsthallebern": {
   "name": "Stiftung Kunsthalle Bern",
   "short": "Kunsthalle Bern Foundation",
@@ -12011,6 +12336,23 @@
    "https://de.wikipedia.org/wiki/Kunststiftung_NRW"
   ],
   "batch": "fp3"
+ },
+ "kunststiftungvolkswagen": {
+  "name": "Kunststiftung Volkswagen",
+  "kind": "found",
+  "what": "A charitable foundation under civil law in Wolfsburg that operates the Kunstmuseum Wolfsburg.",
+  "money": "Most of its money comes from the Holler-Stiftung, set up in 1990 from the estate of Asta and Christian Holler, former owners of Volkswagen Versicherungsdienst.",
+  "site": "https://www.kunstmuseum.de",
+  "city": "Wolfsburg",
+  "country": "Germany",
+  "address": "Hollerplatz 1, 38440 Wolfsburg",
+  "status": "done",
+  "sources": [
+   "https://www.kunstmuseum.de/en/imprint/",
+   "https://de.wikipedia.org/wiki/Kunstmuseum_Wolfsburg",
+   "https://www.volkswagen-group.com/en/press-releases/kunstmuseum-wolfsburg-celebrates-30th-anniversary-world-class-art-at-the-home-of-volkswagens-headquarters-18402"
+  ],
+  "batch": "fp32"
  },
  "kurabo": {
   "name": "Kurabo Industries Ltd.",
@@ -13158,6 +13500,22 @@
   ],
   "batch": "fp17"
  },
+ "mapei": {
+  "name": "Mapei S.p.A.",
+  "short": "Mapei",
+  "kind": "corp",
+  "what": "A maker of adhesives, sealants and chemical products for building, founded in Milan in 1937 by Rodolfo Squinzi; the Squinzi family holds 93.95 percent through Emme Esse Vi.",
+  "money": "Sales of building chemicals: EUR 4.4 billion revenue in 2025.",
+  "site": "https://www.mapei.com",
+  "city": "Milan",
+  "country": "Italy",
+  "address": "Via Cafiero 22, Milan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mapei"
+  ],
+  "batch": "fp32"
+ },
  "mare": {
   "name": "Fundația MARe",
   "short": "MARe Foundation",
@@ -13542,6 +13900,22 @@
   ],
   "batch": "fp34"
  },
+ "minalbajaj": {
+  "name": "Minal Bajaj",
+  "kind": "person",
+  "what": "A philanthropist, trustee and honorary director of the Jamnalal Bajaj Foundation since 2009, who founded the Mumbai NGO Hamaara Sapna in 2012.",
+  "money": "Her support for the biennale runs through Bajaj Beyond, an initiative of the Jamnalal Bajaj Foundation.",
+  "arts": "She worked on the restoration of the Dr Bhau Daji Lad Museum in Mumbai and sits on the drama committee of the National Centre for Performing Arts.",
+  "city": "Mumbai",
+  "country": "India",
+  "status": "done",
+  "sources": [
+   "https://kochimuzirisbiennale.org/news/minal-bajaj-supports-kochi-muziris-biennale---copy",
+   "https://www.theartnewspaper.com/2025/12/09/kochi-biennale-whats-on-show-and-who-is-funding",
+   "https://www.bajajgroup.company/core-companies/jamnalal-bajaj-foundation/"
+  ],
+  "batch": "fp32"
+ },
  "ministerofheritage": {
   "name": "Ministry of Heritage and Tourism",
   "kind": "gov",
@@ -13911,6 +14285,24 @@
    "https://en.wikipedia.org/wiki/Allies_and_Morrison"
   ],
   "batch": "fp6"
+ },
+ "mothennessy": {
+  "name": "Moët Hennessy",
+  "kind": "corp",
+  "what": "The wine and spirits division of the LVMH luxury group, formed in 1971 when Moët & Chandon merged with Hennessy; Diageo holds a 34 percent stake.",
+  "money": "Sales of champagne, cognac, wines and spirits: LVMH's Wines & Spirits sector had EUR 5,358 million revenue in 2025.",
+  "site": "https://www.lvmh.com/en/our-maisons/wines-spirits/",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.lvmh.com/en/our-maisons/wines-spirits/",
+   "https://en.wikipedia.org/wiki/LVMH",
+   "https://www.vinetur.com/en/20260804105244/diageos-profit-from-moet-hennessy-ties-fell-by-more-than-half-by-2025.html",
+   "https://www.ii.co.uk/analysis-commentary/ii-view-could-zero-be-hero-drinks-giant-diageo-ii536363",
+   "https://metropolismag.com/projects/moet-hennessy-paris-headquarters/"
+  ],
+  "batch": "fp32"
  },
  "mountallisonuniversity": {
   "name": "Mount Allison University",
@@ -14625,6 +15017,22 @@
    "https://nishatmillsltd.com/"
   ],
   "batch": "fp18"
+ },
+ "nn": {
+  "name": "NN Group N.V.",
+  "short": "NN Group",
+  "kind": "corp",
+  "what": "A Dutch insurance and asset management group in The Hague, parent of Nationale-Nederlanden, formed in 2013 from ING's insurance business and listed in 2014.",
+  "money": "Premiums and fees from life and non-life insurance, asset management and mortgages.",
+  "site": "https://www.nn-group.com",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/NN_Group",
+   "https://nn-group.com/sustainability-society/partnerships/mauritshuis"
+  ],
+  "batch": "fp32"
  },
  "nonprofitserendipityarts": {
   "name": "Serendipity Arts Foundation",
@@ -15904,6 +16312,24 @@
   ],
   "batch": "fp19"
  },
+ "perarte": {
+  "name": "PerArte Stiftung",
+  "short": "PerArte",
+  "kind": "found",
+  "what": "A Swiss foundation initiated in 2025 by Marianne and Martin Haefner and entered in the Zurich commercial register in May 2026 to fund major exhibitions at the Kunsthaus Zürich.",
+  "money": "A start capital of CHF 30 million from the Haefner family.",
+  "site": "https://perarte.ch",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "address": "c/o Homburger AG, Hardstrasse 201, 8005 Zürich",
+  "status": "done",
+  "sources": [
+   "https://perarte.ch",
+   "https://www.zefix.ch/ZefixREST/api/v1/firm/1748498.json",
+   "https://kunsthaus.ch/en/museum/engagement/"
+  ],
+  "batch": "fp32"
+ },
  "petronor": {
   "name": "Petróleos del Norte, S.A.",
   "short": "Petronor",
@@ -16651,6 +17077,23 @@
   ],
   "batch": "fp1"
  },
+ "qatarshell": {
+  "name": "Qatar Shell",
+  "kind": "corp",
+  "what": "Shell's group of companies in Qatar, one of the first international companies to begin oil production there; Richard Tallant chaired it in 2022.",
+  "money": "Shell's gas business in Qatar, including the Pearl GTL plant at Ras Laffan, run under a production sharing agreement with QatarEnergy.",
+  "arts": "In November 2018 it agreed to sponsor Company House, the oil history house of Msheireb Museums in Doha.",
+  "site": "https://www.shell.com.qa",
+  "city": "Doha",
+  "country": "Qatar",
+  "status": "done",
+  "sources": [
+   "https://gulf-times.com/story/613477/qatar-shell-inks-pact-to-sponsor-company-house",
+   "https://www.gulf-times.com/story/714742/dadu-signs-on-qatar-shell-as-founding-family-member",
+   "https://en.wikipedia.org/wiki/Pearl_GTL"
+  ],
+  "batch": "fp32"
+ },
  "qattan": {
   "name": "A. M. Qattan Foundation",
   "short": "Qattan Foundation",
@@ -17394,6 +17837,24 @@
   ],
   "batch": "fp33"
  },
+ "rubelli": {
+  "name": "Rubelli S.p.A.",
+  "short": "Rubelli",
+  "kind": "corp",
+  "what": "A Venetian silk and furnishing textile company dating to Lorenzo Rubelli's purchase of the G.B. Trapolin weaving mill in 1889; Alessandro Favaretto Rubelli is its president.",
+  "money": "Sales of silk fabrics and furnishing textiles worldwide.",
+  "arts": "It set up the Rubelli Foundation in 2018 to safeguard its textile heritage, and has given to the Fondazione Giorgio Cini, Venetian Heritage and Save Venice.",
+  "site": "https://www.rubelli.com",
+  "city": "Venice",
+  "country": "Italy",
+  "address": "San Marco 3395, Venezia",
+  "status": "done",
+  "sources": [
+   "https://www.rubelli.com/en/history",
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/rubelli/"
+  ],
+  "batch": "fp32"
+ },
  "rubismcnat": {
   "name": "Rubis Mécénat",
   "kind": "found",
@@ -17441,6 +17902,21 @@
    "https://en.wikipedia.org/wiki/V-A-C_Foundation"
   ],
   "batch": "fp28"
+ },
+ "rweag": {
+  "name": "RWE AG",
+  "short": "RWE",
+  "kind": "corp",
+  "what": "An electricity company in Essen, founded in 1898 as Rheinisch-Westfälisches Elektrizitätswerk, that generates and trades power in Europe, the United States and Asia-Pacific.",
+  "money": "Sales of power from wind, solar, hydro, biomass, gas and coal plants, and energy trading: EUR 17.63 billion revenue in 2025.",
+  "site": "https://www.rwe.com",
+  "city": "Essen",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/RWE"
+  ],
+  "batch": "fp32"
  },
  "saastamoinen": {
   "name": "Saastamoisen säätiö sr",
@@ -18543,6 +19019,23 @@
   ],
   "batch": "fp10"
  },
+ "sparkasseessen": {
+  "name": "Sparkasse Essen",
+  "kind": "corp",
+  "what": "A public-law savings bank (Anstalt des öffentlichen Rechts) founded in 1841, whose business area is the city of Essen.",
+  "money": "Lending, deposits and banking fees; its balance sheet total was EUR 10.339 billion in 2025.",
+  "arts": "Among its five foundations is a Philharmonie-Stiftung, set up in 2004.",
+  "site": "https://www.sparkasse-essen.de",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "III. Hagen 43, 45127 Essen",
+  "status": "done",
+  "sources": [
+   "https://www.sparkasse-essen.de/de/home/toolbar/impressum.html",
+   "https://de.wikipedia.org/wiki/Sparkasse_Essen"
+  ],
+  "batch": "fp32"
+ },
  "srp": {
   "name": "Salt River Project",
   "short": "SRP",
@@ -18590,6 +19083,22 @@
    "https://de.wikipedia.org/wiki/Stadtwerke_D%C3%BCsseldorf"
   ],
   "batch": "fp25"
+ },
+ "stadtwerkeessen": {
+  "name": "Stadtwerke Essen AG",
+  "short": "Stadtwerke Essen",
+  "kind": "corp",
+  "what": "Essen's municipal utility, formed in 1867 from the city's gas and water works; the city holding EVV owns 51 percent, Westenergie 29 percent and Thüga 20 percent.",
+  "money": "Sales of gas, heat, power, drinking water and wastewater services in Essen: EUR 553.94 million revenue in 2023.",
+  "site": "https://www.stadtwerke-essen.de",
+  "city": "Essen",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Stadtwerke_Essen",
+   "https://www.lobbyregister.bundestag.de/media/66/c4/753178/Essener-Versorgungs-und-Verkehrsgesellschaft-JAP-31-12-2024.pdf"
+  ],
+  "batch": "fp32"
  },
  "standardbankhasbeencollection": {
   "name": "Standard Bank Group Limited",
@@ -18769,6 +19278,19 @@
    "https://en.wikipedia.org/wiki/DOEN_Foundation"
   ],
   "batch": "fp5"
+ },
+ "stichtingjohanmauritsvannassau": {
+  "name": "Stichting Johan Maurits van Nassau",
+  "kind": "found",
+  "what": "A foundation set up in 1957 to support the Mauritshuis in The Hague; it has bought paintings and lent them to the museum long term.",
+  "money": "It merged in 1986 with the Stichting Vrienden van het Mauritshuis, a fundraising foundation set up in 1982.",
+  "city": "The Hague",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://nl.wikipedia.org/wiki/Mauritshuis"
+  ],
+  "batch": "fp32"
  },
  "stillwater": {
   "name": "Still Water Foundation",
@@ -20292,6 +20814,38 @@
   ],
   "batch": "fp23"
  },
+ "vikingcruises": {
+  "name": "Viking Holdings Ltd",
+  "short": "Viking",
+  "kind": "corp",
+  "what": "A cruise company founded by Torstein Hagen in 1997 as Viking River Cruises, headquartered in Hamilton, Bermuda, run from Basel, and listed in New York since May 2024.",
+  "money": "River, ocean and expedition cruises: USD 5.3 billion revenue in 2024.",
+  "site": "https://www.viking.com",
+  "city": "Basel",
+  "country": "Switzerland",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Viking_(cruise_line)"
+  ],
+  "batch": "fp32"
+ },
+ "villasandi": {
+  "name": "Villa Sandi",
+  "kind": "corp",
+  "what": "A Prosecco wine company in Crocetta del Montello, Treviso, owned by the Moretti Polegato family and run by Giancarlo Moretti Polegato with his children Diva and Leonardo.",
+  "money": "Sales of Prosecco DOCG and DOC wines: group turnover of over EUR 131 million in 2023.",
+  "site": "https://www.villasandi.it",
+  "city": "Crocetta del Montello",
+  "country": "Italy",
+  "address": "Via Erizzo 113/A, 31035 Crocetta del Montello",
+  "status": "done",
+  "sources": [
+   "https://www.villasandi.it/en/",
+   "https://en.ilsole24ore.com/art/wine-and-art-villa-sandi-joins-guggenheim-on-40th-anniversary-of-public-opening-AGbQZHx",
+   "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/villa-sandi/"
+  ],
+  "batch": "fp32"
+ },
  "villedebordeaux|France": {
   "name": "Ville de Bordeaux",
   "kind": "gov",
@@ -20717,6 +21271,22 @@
    "https://en.wikipedia.org/wiki/Andy_Warhol_Foundation_for_the_Visual_Arts"
   ],
   "batch": "fp5"
+ },
+ "warnermusic": {
+  "name": "Warner Music Group Corp.",
+  "short": "Warner Music Group",
+  "kind": "corp",
+  "what": "A US record and music publishing company founded in 1958, 72 percent owned by Len Blavatnik's Access Industries, which holds 98 percent of the votes.",
+  "money": "Recorded music and publishing through Warner Chappell Music: USD 6.71 billion revenue in 2025.",
+  "site": "https://www.wmg.com",
+  "city": "New York",
+  "country": "United States",
+  "address": "1633 Broadway, New York",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Warner_Music_Group"
+  ],
+  "batch": "fp32"
  },
  "wates": {
   "name": "The Wates Foundation",
@@ -21215,6 +21785,21 @@
    "https://www.city.yokohama.lg.jp/lang/overseas/yport/access.html"
   ],
   "batch": "fp26"
+ },
+ "yoosungyeon": {
+  "name": "Yoo Sung-yeon",
+  "kind": "person",
+  "what": "The late Korean businessman, born in 1917, who co-founded the Samchully coal briquette business in 1955 and the coal miner Samcheok Tanjwa Gaebal, now ST International, in 1962.",
+  "money": "His family's coal business; the Yoo family's SongEun foundation holds 6.86 percent of ST International.",
+  "city": "Seoul",
+  "country": "South Korea",
+  "status": "done",
+  "sources": [
+   "https://m.seoul.co.kr/news/2005/12/26/20051226014001",
+   "https://dealsite.co.kr/articles/137201",
+   "http://bizhankook.com/articles/29186.html"
+  ],
+  "batch": "fp32"
  },
  "zabludowiczarttrust": {
   "name": "Zabludowicz Art Trust",
