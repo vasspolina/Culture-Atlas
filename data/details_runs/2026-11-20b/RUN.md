@@ -30,7 +30,7 @@ existing Red flags section or press item unless a source shows it is wrong; say 
 ## Rulings (from CHECKER.md, as the first part's checkers applied them)
 
 - Protests, open letters, censorship cases and staff disputes before November 2021 go to WIDER
-  CONTEXT, not Red flags, unless a newer one of the same kind exists.
+  CONTEXT, not Red flags, even where a newer case exists; the newer case stays a Red flag.
 - Pressure from a state that neither funds nor controls the space is WIDER CONTEXT.
 - A government funder (a ministry, city, region or army) never takes a sanctions flag because its
   officials are sanctioned: that is WIDER CONTEXT. Sanctions on the space's own director, or on a
@@ -39,6 +39,10 @@ existing Red flags section or press item unless a source shows it is wrong; say 
 - Funder flags (fossil fuels, gambling, tobacco, arms, opioids) need the funding to be current
   (within about five years) or a documented objection. Older funding is history under FUNDING.
 - A dispute about a different institution goes under WIDER CONTEXT with the connection stated.
+- An investigation or charge that has not ended in a conviction is a note (WIDER CONTEXT), not a Red
+  flag; a court order or conviction is stated plainly and can be a Red flag.
+- A budget cut is a funding fact: a dated point under FUNDING, not a Red flag. A cost overrun or an
+  audit's criticism of public money is a Red flag.
 - Buyers of a space's services (paid announcements, venue hire, tickets) are clients, not funders.
 
 ## Wording rules
