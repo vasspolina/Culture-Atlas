@@ -1,0 +1,76 @@
+# Data, records and methodology
+
+Dataset schema, what the page may show, ratings, verification and the data editor. Source research lives in `data/` (see `data/README.md`). Back to the [README](../README.md).
+
+## Editing the records: the data editor
+
+`institutions.json` is one 15 MB file of nested JSON, and read raw a record is a wall of quotes and brackets in which a list of findings joined by bars, a staff account stored as label and text pairs or a dossier of paragraphs loses its shape. The data editor sets each record out as it reads:
+
+    python3 tools/editor.py        # then open http://127.0.0.1:8790/
+
+- **The list** on the left finds a record by name, city, country, id or other name, and narrows to the records with wording to check or the ones changed in this window.
+- **The record** is in groups (Identity, Place and visit, Funding, Records and accounts, Dossier, Reports and critique, Sources, then any other field), each field under a plain label with its stored key beside it. Prose is set in a reading face with a word count (out of 30 for the funding text and 25 for the description), lists are numbered rows that can be moved, added and removed, nested entries (case notes, Epstein files, propaganda, studies, staff accounts) are cards with their own fields, addresses have an Open link, and short fields suggest the values already used across the file (tier, size, flags, status, kind). `other_findings` is shown as one finding per line and stored joined by ` | ` as before. JSON shows the whole record as stored, for an edit the fields do not cover.
+- **Sentences.** A long note crammed into one block loses its structure, so prose of two sentences or more is shown one sentence per line (Enter splits a sentence at the cursor, Backspace at its start joins it to the one before), and a critique note, which runs several cited works together, is shown as one block per work: the citation (author, title, publication and year) on its own line and what it says under it. Both are views only: `editor/structure.js` joins the parts back to the stored text character for character, so a field that is only looked at saves unchanged (`tests/editor-structure.test.mjs` checks every text in the file and all 29 critique notes). A full stop after an initial (T. J. Demos), an abbreviation (e.g., St.) or U.S. does not end a sentence. A sentence holding a flagged word is marked. "One paragraph" under a field gives back the plain box, and the choice is remembered in that browser.
+- **Wording** is checked as it is typed with the rules of `tools/lint_text.py`: each point is shown under its field with what the rule asks (a dash, a hedge, filler, a verdict, an unnamed funder, too many words), and a dash can be replaced the way `lint_text.py --fix` does. The check advises and never stops a save.
+- **What a tool writes** is shown and not edited, with where to change it instead: the funding grade and its sentence (`tools/grade_funding.py`), the press reports (`data/gossip_items.json`), the case files, the shared funders and the critical frames (`tools/attach_critiques.py`). The record id is not changed either, since other files point to it.
+- **Save** (or Ctrl/Cmd+S) writes that record back to `institutions.json` as `tools/clean_data.py` writes it, through a temporary file, so the diff holds only the lines edited. It refuses a record with no name, numbers that are not coordinates or a changed id, and refuses to overwrite a record that changed on disk after the page loaded it, offering the version on disk instead. **Rebuild page data** then runs `tools/clean_data.py` and `tools/embed_data.py`; bump the `?v=` on the `assets/institutions.js` tag and the release as usual before deploying.
+
+The server listens on 127.0.0.1 only and refuses requests from other sites. `editor/` is not deployed. Opened without the server (from any static server, at `/editor/`), the page still reads and edits, and Save downloads a whole `institutions.json` to put in the repository root.
+
+## What the page may show
+
+The page shows what a record states and where it comes from, and says plainly that none of it has been independently verified.
+
+- A field appears only if a record states it. Figures, hours, prices, exhibitions, architects and "chatter" are not generated to fill a gap. A text value shared by five or more records (after masking the name and city) is filler and is left out. Sentences that assert the absence of ties ("zero fossil fuel", "strict ethical charter") are left out.
+- Visitor fields (hours, admission, transit, accessibility, amenities, curatorial focus, neighbourhood) are shown only with a source entry in `field_sources`; a highlight only when the record's own research backs it. The 14 Nov 2026 sweep removed 1,691 values that had neither, on 407 records, and cut unsourced budget figures, virtue claims, verdicts and working notes out of 44 funding and watch lines (user, 14 Nov 2026: "remove all the slop you found"). Every change is in `data/slop_runs/2026-11-14/changes.json`. A line-by-line pass the same day read all 2,674 highlight, funding and watch lines against each record's research and removed 123 lines and trimmed 114 more (category labels standing in for a finding, praise, virtue claims, verdicts, working notes, and unbacked figures in the first-generation lines); it is in `changes-b.json` beside it. Lines that came from the sourced Sponsor Atlas study were not cut for being absent from the dossier. Those 562 disputed lines were then checked against the text of their own cited sources (3,447 of 3,851 pages could be read): 307 are backed, and 63 lines lost the names or figures that none of their sources contains (`changes-c.json`; every verdict is in `source-check.json`). A name was cut only where other names in the same list were found, since a list that is missing whole is usually a logo wall the fetch cannot read. The 47 museums of research batch 3 were checked the same day and hold no made-up text (195 of 214 figures matched their sources directly; the rest were number formats). Their funding and watch lines ran to about 70 words, so each was cut to the 30 and 25 word limits, using the corrected figures of the Details cards those records were given in batch 4; the "pages read did not state" narration was taken out of the lines; and the 29 opening hours now carry their visit page in `field_sources` (`batch3-changes.json`). The 7 Nov absence sweep had left five "What it publishes" notes saying only that a site blocked our reads (Guggenheim Abu Dhabi kept "Its site blocks automated reads" after the clause with the finding was cut; user, 15 Nov 2026: "this is a slop fix"). Those clauses are gone by hand, the Guggenheim Abu Dhabi and Dowse notes with them since nothing else in them was about what the institution publishes, and `tools/absence.py` now treats "blocks automated" and "site is blocked" as notes on the research. The tool was not re-run: across all notes it would also cut findings such as Qatar Museums' eight listed trustees.
+- **Clean, source cited** needs at least one source outside the museum's own site. **Flagged** needs a recorded reason. Otherwise a space is **Unverified**.
+- Anything reported about a space, such as a sponsor tie, an Epstein-related item, a WikiLeaks cable or a case file, is shown with its own source links.
+- Anonymous staff reviews, the board network, the timeline, the filings registry, the itineraries and the generated 3D building interiors are not shown: they had no source, or were invented or generated. The building view draws only the outline OpenStreetMap holds for the building, through the map tiles, with the record's own material stacked inside it. Wikidata supplies only the building's photograph, with its credit, and the links to Wikidata and Wikipedia; its facts are not shown.
+
+Rules live in `tools/clean_data.py`. To check records against their sources, run `tools/verify_claims.py` somewhere with network access, then `tools/apply_verification.py` and `tools/embed_data.py`. Wording corrected after checking is in `data/corrections.json`; the pilot of the three-check protocol is in `data/verification_pilot.json`.
+
+## Dataset Schema
+
+Each entry in `institutions.json` has the following fields:
+
+```json
+{
+  "name": "ARoS",
+  "location": "Aarhus, Denmark",
+  "tier": "A",
+  "grade": 1,
+  "grade_basis": "No flagged funder or objection on record, and figures are shown.",
+  "size": "L",
+  "funding": "DKK 125M budget, 600k visitors. Aarhus Municipal Council, Danish Ministry of Culture, ticket sales, and Salling Foundations.",
+  "watch": "Major Danish art museum topped by Olafur Eliasson's 'Your rainbow panorama'. Financed primarily by municipal funds and the philanthropic Salling Fondene; clean ethical sponsorship policy.",
+  "sources": [
+    "https://www.aros.dk/en/about-aros/",
+    "https://sallingfondene.dk"
+  ],
+  "lat": 56.153,
+  "lon": 10.2
+}
+```
+
+## Funding transparency ratings
+
+Each record with an independently sourced funder roster carries a rating from A to F, with no E (stored as 1 to 5), computed by `tools/grade_funding.py` at the end of `tools/clean_data.py`, from what the record proves and nothing else. A record whose funder roster is not independently sourced is unrated.
+
+| Rating | Summary | Rule |
+|---|---|---|
+| A | Amounts published, no flagged funder | No flag-category funder and no documented objection, and the record shows figures (amounts or shares in the funding text) or links accounts or a public registry filing |
+| B | Funders named, no flagged funder | The same, names only |
+| C | No flagged funder, but a contested sponsor or a protest | A funder worth noting outside the flag categories, or a tie or objection with no flagged funder: Gulf state body, Epstein-linked, a campaigned name, a protest, a sponsor dropped, censorship |
+| D | One flagged funder | One funder from a flag category: fossil fuels, tobacco, gambling, arms, opioids, sanctions, forced labour, prisons, a mining disaster |
+| F | Two or more flagged funders, or one and a protest | More than one flagged funder category, or a flagged funder plus a documented objection |
+
+Countries and flags have one spelling each (USA, UK, UAE, Czechia; the fifteen flag names in the table above): `COUNTRY_NAMES` and `FLAG_NAMES` in `tools/clean_data.py` rewrite any other spelling on every run, since the grade and the filters match the names exactly. Until 15 Nov 2026 five records flagged in lower case ('fossil fuels', 'gambling', 'arms') were rated C where the rule gives D.
+
+Public money alone is never a flag, so a wholly public museum sits at A or B. Disclosure only moves a record up, from B to A. The record shows the rating at its head as the letter in a dot of the grade's colour (green A, teal B, yellow C, orange D, red F; black letters, a 1px ink edge), and the Funding section opens with the same mark, the grade's meaning and the sentence that decided it (`grade_basis`). Every space, rated or not, has an i button beside its grade that opens the A to F scale with this space's step marked (6 Nov 2026); the phone sheet's rating line has it too. The map has no layer for the rating (removed 2 Nov 2026); the chat answers "What is its funding rating?", "Show grade A spaces in Berlin" and "How are spaces rated?".
+
+## Verification & Methodology
+
+- **Clean Status (Tier A)**: Institutions with no current fossil fuel, weapons/defense, opioid, tobacco, gambling, or sanctioned state sponsorship.
+- **Data Cutoff**: Verified against annual reports, partner listings, and public disclosures up to late September 2026.
+
+**Lobbying by the spaces themselves** (user, 17 Nov 2026: "find only info that tracks cultural spaces involved in lobbying"). `data/space_lobbying.json` lists lobbying filed by or for the atlas's spaces as the client, from public registers, built with `tools/space_lobbying/`. All 1,727 spaces were matched against the US Lobbying Disclosure Act database (lda.gov, every filing since 1999) and the EU Transparency Register export of 16 November 2026, and each match was checked by hand. 41 US spaces reported $21.0M in total, ten of them still active in 2025 or 2026; three EU registrations match (Stiftung Bauhaus Dessau, Fondazione Arena di Verona, and the Wellcome Trust for Wellcome Collection). State and city registers, the UK, Ireland, Scotland and Canada are not yet covered. Each of those 44 spaces has a Lobbying row in its record, after Scale and money: the years and reported total, the latest full year, what the latest reports say it lobbied on, who lobbied for it, and the latest report as the source (`tools/attach_space_lobbying.py` copies it into `institutions.json` as `lobbying`; then run `tools/embed_data.py`). A space with no filing found has no row, since state and city registers are not read.
