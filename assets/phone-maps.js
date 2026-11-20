@@ -966,6 +966,33 @@
         "yarat-contemporary-art-space-baku|ties to the aliyev family and state",
         "zabludowicz-collection-london|boycott and protest over the founders' ties to israel"
       ]);
+      // "Also reported" is the line the record's watch note becomes when it is printed as a flag, and on the 106 spaces with
+      // one it is nearly always about the money: a sponsor, a donor, an owner, a founder's fortune or the funding itself (BP at
+      // the British Museum, Getty Oil's endowment, Casinos Austria at the Burgtheater). Each was read on 20 Nov 2026 (user:
+      // "put the remaining sponsor flags under Funding too"); it goes under Funding except on these spaces, where it is about a
+      // director, a protest over a work, a theft or a contractor. The word rules were no help here: they missed most of the
+      // money and caught job-cut protests on the word "supporters".
+      const ALSO_REPORTED_IN_RECORD = new Set([
+        "art-gallery-of-new-south-wales",
+        "field-museum",
+        "ges-2-house-of-culture-moscow",
+        "grand-people-s-study-house-pyongyang",
+        "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+        "museo-nacional-de-colombia",
+        "national-gallery-of-ireland",
+        "new-orleans-museum-of-art-new-orleans",
+        "palacio-de-bellas-artes",
+        "palacio-libertad-buenos-aires",
+        "penn-museum",
+        "royal-ontario-museum",
+        "state-russian-museum-st-petersburg",
+        "sydney-opera-house",
+        "trinity-church-bellingshausen",
+        "victoria-gallery-samara",
+        "victorious-fatherland-liberation-war-museum",
+        "victory-museum-central-museum-of-the-great-patriotic-war",
+        "whanki-museum-seoul"
+      ]);
       let tabSpace = '';
       const tabOf = (el) => {
         if (el.matches('figure')) return 'overview';
@@ -995,6 +1022,7 @@
         // the sponsorships. A protest over a director, a work or a cancelled show stays in Record. Read against the 170
         // protest and boycott sections in the records: 31 moved to Funding, the rest stay in Record.
         if (el.classList.contains('is-flag') && FLAG_FUNDING_BY_SPACE.has(tabSpace + '|' + t)) return 'funding';
+        if (el.classList.contains('is-flag') && t === 'also reported') return ALSO_REPORTED_IN_RECORD.has(tabSpace) ? 'record' : 'funding';
         if (el.classList.contains('is-flag') && /protest|boycott/.test(t)) {
           const body = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(t.length);
           const lead = body.slice(0, 260);

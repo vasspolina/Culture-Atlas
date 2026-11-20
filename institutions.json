@@ -47534,7 +47534,6 @@
     "sources": [
       "https://www.transartists.org/en/air/crac-valpara\u00edso"
     ],
-    "website": "http://www.cracvalparaiso.org",
     "year_founded": 2007,
     "aliases": [
       "CRAC Valpara\u00edso",
@@ -179627,7 +179626,7 @@
     "location": "Munich, Germany",
     "city": "Munich",
     "country": "Germany",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
     "sources": [
       "https://www.hausderkunst.de/en/about-us/support",
@@ -179639,8 +179638,8 @@
     "id": "haus-der-kunst",
     "funding": "The Free State of Bavaria and the Friends of Haus der Kunst are shareholders. The Alexander Tutsek Foundation is the major supporter. The Kai and Beisheim foundations also give.",
     "watch": "A Bavarian ministry official chairs its supervisory board. 2024 attendance was nearly 440,000.",
-    "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "bureaucracy": {
       "legal_form": "private nonprofit",
       "controls": [],
@@ -179790,7 +179789,8 @@
       ],
       "website": "https://www.hausderkunst.de",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Supporter Beisheim Stiftung bears the name of Otto Beisheim, whom Bavaria's Culture Ministry named in 2005 as a former stormtrooper and SS member (JTA)."
   },
   {
     "name": "Museum f\u00fcr Deutsche Geschichte",
@@ -180083,7 +180083,7 @@
     "location": "Moscow, Russia",
     "city": "Moscow",
     "country": "Russia",
-    "tier": "X",
+    "tier": "B",
     "size": "L",
     "sources": [
       "https://www.rferl.org/a/russian-orthodox-church-gazprom-history-parks/30214143.html",
@@ -180095,12 +180095,9 @@
     "id": "russia-my-history-vdnkh",
     "funding": "The Humanitarian Projects Foundation runs it and gets most of its money from Gazprom, per RFE/RL in 2019. Gazprom co-financed parks from 2016. Federal and Moscow bodies are partners.",
     "watch": "Archimandrite Tikhon Shevkunov heads the foundation's expert council. The Education Ministry recommended the parks as teaching material in 2017.",
-    "flags": [
-      "Fossil fuels"
-    ],
-    "why_flagged": "The Humanitarian Projects Foundation runs it and gets most of its money from Gazprom, per RFE/RL in 2019. Gazprom co-financed parks from 2016. Federal and Moscow bodies are partners.",
-    "grade": 4,
-    "grade_basis": "A funder tied to fossil fuels.",
+    "why_flagged": "Gazprom Neft, the oil arm of its funder Gazprom, has been under UK and US sanctions since January 2025.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "propaganda": [
       {
         "kind": "today",
@@ -201355,7 +201352,7 @@
     "location": "Moscow, Russia",
     "city": "Moscow",
     "country": "Russia",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
     "sources": [
       "https://victorymuseum.ru/about/",
@@ -201365,9 +201362,8 @@
     "lat": 55.731,
     "lon": 37.504762,
     "id": "victory-museum-central-museum-of-the-great-patriotic-war",
-    "funding": "Federal museum under Russia's Ministry of Culture. Its director Alexander Shkolnik was honoured by Putin in 2021 for patriotic education and sanctioned by the UK and Australia in 2022.",
-    "watch": "Opened on Poklonnaya Hill on 9 May 1995 in Anatoly Polyansky's building; the 2022 exhibition Ordinary Nazism drew 150,000 visitors in its first month.",
-    "tier_note": "No reason for the flag is recorded.",
+    "funding": "Federal museum under Russia's Ministry of Culture. Putin honoured its director Alexander Shkolnik in 2021 for patriotic education.",
+    "watch": "Opened on Poklonnaya Hill on 9 May 1995; the 2022 exhibition Ordinary Nazism drew 150,000 visitors in its first month.",
     "propaganda": [
       {
         "kind": "today",
@@ -201490,14 +201486,17 @@
       ],
       "website": "https://victorymuseum.ru",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Its director Alexander Shkolnik has been under UK and Australian sanctions since 2022.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories."
   },
   {
     "name": "Patriot Park",
     "location": "Kubinka, Russia",
     "city": "Kubinka",
     "country": "Russia",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
     "sources": [
       "https://themoscowtimes.com/2015/06/04/russian-defense-ministrys-patriot-park-to-cost-363-million-a47129",
@@ -201509,7 +201508,6 @@
     "id": "patriot-park",
     "funding": "Built and funded by Russia's Defence Ministry, which allocated over 20 billion rubles in 2015. Its head Vyacheslav Akhmedov was arrested for fraud in August 2024 with a ministry general.",
     "watch": "A 5,414 hectare site with a 3,530 hectare military base, hosting the ministry's Army forum; conceived by Sergei Shoigu and opened from 2015 to 2016.",
-    "tier_note": "No reason for the flag is recorded.",
     "propaganda": [
       {
         "kind": "today",
@@ -201610,7 +201608,10 @@
       ],
       "website": "https://patriotp.ru",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Canada put the park on its Russia sanctions list in February 2024 (SOR/2024-32).",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories."
   },
   {
     "name": "House of Terror (Terror H\u00e1za)",
@@ -201812,8 +201813,7 @@
     "lon": 18.661121,
     "id": "museum-of-the-second-world-war",
     "funding": "A state institution financed by Poland's Ministry of Culture and National Heritage, which appoints its director. In March 2024 the minister replaced PiS appointee Grzegorz Berendt with Rafa\u0142 Wnuk.",
-    "watch": "Opened 23 March 2017 in a 23,000 square metre building with a 40 metre leaning tower by the Kwadrat studio; 601,000 visitors in 2024.",
-    "tier_note": "No reason for the flag is recorded.",
+    "watch": "Opened 23 March 2017 in Gda\u0144sk; 533,455 visitors by 28 November 2024 (museum).",
     "propaganda": [
       {
         "kind": "historical",
@@ -202018,9 +202018,8 @@
     "lat": 10.779365,
     "lon": 106.692281,
     "id": "war-remnants-museum",
-    "funding": "A public institution of the Ho Chi Minh City government under its Department of Culture and Sports, funded from the city budget and ticket income.",
+    "funding": "A public institution of the Ho Chi Minh City government, which has covered its running costs from its own income since 2014 (B\u00e1o V\u0103n H\u00f3a, 2025).",
     "watch": "Opened 4 September 1975 at 28 V\u00f5 V\u0103n T\u1ea7n; about 500,000 visitors a year, two thirds of them foreigners.",
-    "tier_note": "No reason for the flag is recorded.",
     "propaganda": [
       {
         "kind": "today",
@@ -202476,7 +202475,7 @@
     "lat": 41.899526,
     "lon": 12.490193,
     "id": "palazzo-delle-esposizioni",
-    "funding": "Owned by Roma Capitale and run under a city service contract by Azienda Speciale Palaexpo, a 1998 municipal body that also runs the Scuderie del Quirinale and Casa del Jazz.",
+    "funding": "Owned by Roma Capitale and run under a city service contract by Azienda Speciale Palaexpo, a 1998 municipal body that also runs MACRO and the Museo delle Periferie.",
     "watch": "Opened 1883 on Via Nazionale to a design by Pio Piacentini; reopened in 2007 after restoration.",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
@@ -202604,8 +202603,7 @@
     "lon": 121.521781,
     "id": "chiang-kai-shek-memorial-hall",
     "funding": "Run and funded from the central budget by an agency of Taiwan's Ministry of Culture, which directs its transformation and negotiated the 2024 honour guard change with the defence ministry.",
-    "watch": "Built from 31 October 1976 and opened 5 April 1980 with a 6.3 metre bronze statue of Chiang; the changing of the guard draws tourists.",
-    "tier_note": "No reason for the flag is recorded.",
+    "watch": "Built from 31 October 1976 and opened 4 April 1980 with a 6.3 metre bronze statue of Chiang; the changing of the guard draws tourists.",
     "propaganda": [
       {
         "kind": "historical",
@@ -202782,9 +202780,8 @@
     "lat": 10.50722,
     "lon": -66.92667,
     "id": "cuartel-de-la-montana-4f-chavez-mausoleum",
-    "funding": "State-owned, controlled by the Ministry of Defense and the Bolivarian National Militia, based there since 2008. The state organises visits and an honour guard watches the sarcophagus.",
-    "watch": "Built 1904 to 1906 in 23 de Enero. Acting president Delcy Rodr\u00edguez renewed her oath at the tomb on 6 January 2026 after Maduro's capture.",
-    "tier_note": "No reason for the flag is recorded.",
+    "funding": "State-owned, controlled by the Ministry of Defense and the Bolivarian National Militia, based there since 2002. The state organises visits and an honour guard watches the sarcophagus.",
+    "watch": "Built in 1906 in 23 de Enero. Acting president Delcy Rodr\u00edguez reaffirmed her loyalty at the tomb on 6 January 2026 after Maduro's capture.",
     "propaganda": [
       {
         "kind": "today",
@@ -202865,7 +202862,7 @@
     "location": "Kyiv, Ukraine",
     "city": "Kyiv",
     "country": "Ukraine",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
     "sources": [
       "https://warmuseum.kyiv.ua/en/about-us",
@@ -202877,7 +202874,6 @@
     "id": "national-museum-of-the-history-of-ukraine-in-the-second-world-war",
     "funding": "A state museum financed from the state budget under the Ministry of Culture, which renamed it in July 2015 under the decommunisation laws. Its director general is Yurii Savchuk.",
     "watch": "The 102 metre Motherland Monument houses the main exhibition; in 2023 the Soviet emblem on its shield gave way to the Ukrainian trident.",
-    "tier_note": "No reason for the flag is recorded.",
     "propaganda": [
       {
         "kind": "historical",
@@ -202999,14 +202995,20 @@
       ],
       "website": "https://warmuseum.kyiv.ua",
       "retrieved": "2026-11-20"
-    }
+    },
+    "flags": [
+      "Fossil fuels"
+    ],
+    "why_flagged": "Naftogaz, the oil and gas company, and the fuel station chain WOG were among the donors who paid for the new shield (Forbes Ukraine, 2023).",
+    "grade": 4,
+    "grade_basis": "A funder tied to fossil fuels."
   },
   {
     "name": "Deutsches Hygiene-Museum",
     "location": "Dresden, Germany",
     "city": "Dresden",
     "country": "Germany",
-    "tier": "A",
+    "tier": "B",
     "size": "M",
     "sources": [
       "https://www.dhmd.de/en/the-museum/the-foundation",
@@ -203018,8 +203020,8 @@
     "id": "deutsches-hygiene-museum",
     "funding": "Run by the Stiftung Deutsches Hygiene-Museum, a non-profit foundation funded by matching annual contributions from Saxony and the City of Dresden, with further grants from federal bodies, businesses and foundations.",
     "watch": "Founded 1912 by Odol manufacturer Karl August Lingner. Dresden mayor Annekatrin Klepsch chairs its trustees and Iris Edenheiser has directed it since 2022.",
-    "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "propaganda": [
       {
         "kind": "historical",
@@ -203118,7 +203120,8 @@
       ],
       "website": "https://www.dhmd.de",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Exhibition backer Beisheim Stiftung bears the name of Otto Beisheim, whom Bavaria's Culture Ministry named in 2005 as a former stormtrooper and SS member (JTA)."
   },
   {
     "name": "Museum of Contemporary History of Russia",
@@ -203260,9 +203263,8 @@
     "lat": 41.9866,
     "lon": 44.1127,
     "id": "joseph-stalin-museum",
-    "funding": "A Georgian state museum, funded by the Ministry of Culture and Monuments and listed as a heritage monument; restoration tenders run through the State Procurement Agency. Lia Okroperidze is director.",
-    "watch": "The 1957 complex by Archil Kurdiani holds about 40,000 items; Gori counted roughly 162,000 visitors in 2018. A room on repressions was added in 2010.",
-    "tier_note": "No reason for the flag is recorded.",
+    "funding": "A Georgian state museum, funded by the Ministry of Culture and Monuments and listed as a heritage monument; restoration tenders run through the State Procurement Agency.",
+    "watch": "The 1957 complex holds about 40,000 items. A room on repressions was added in 2010.",
     "propaganda": [
       {
         "kind": "historical",
@@ -203757,7 +203759,7 @@
     "location": "Phnom Penh, Cambodia",
     "city": "Phnom Penh",
     "country": "Cambodia",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
     "sources": [
       "https://phnompenhpost.com/national/win-win-monument-cost-12m-build",
@@ -203768,8 +203770,7 @@
     "lon": 104.885258,
     "id": "win-win-memorial",
     "funding": "The 12 million dollar memorial was paid mostly by Phnom Penh Municipal Hall, the rest by tycoon Ly Yong Phat, who gave the land. The Defence Ministry solicited public donations.",
-    "watch": "Inaugurated by Hun Sen on 29 December 2018 in Chroy Changvar; General Nem Sowath's construction committee runs the site and its museum.",
-    "tier_note": "No reason for the flag is recorded.",
+    "watch": "Inaugurated by Hun Sen on 29 December 2018 in Chroy Changvar.",
     "propaganda": [
       {
         "kind": "today",
@@ -203863,7 +203864,13 @@
         }
       ],
       "retrieved": "2026-11-20"
-    }
+    },
+    "flags": [
+      "Sanctions"
+    ],
+    "why_flagged": "Land donor Ly Yong Phat, who paid the rest of its cost, was sanctioned by the US in September 2024 over forced labour in scam centres.",
+    "grade": 4,
+    "grade_basis": "A funder tied to a sanctioned person or company."
   },
   {
     "name": "Chairman Mao Memorial Hall",
@@ -204244,9 +204251,8 @@
     "lat": 41.895719,
     "lon": 12.427846,
     "id": "quadriennale-di-roma",
-    "funding": "Fondazione La Quadriennale di Roma is funded by its partners: the Ministry of Culture, Roma Capitale's Department of Culture, the Lazio Region and the Rome Chamber of Commerce.",
+    "funding": "Fondazione La Quadriennale di Roma is funded by its partners: the Ministry of Culture, Roma Capitale's Department of Culture and the Lazio Region.",
     "watch": "Founded by Rome's Governorate in 1927, first held in 1931 at the Palazzo delle Esposizioni, an autonomous body since 1937; based at Villa Carpegna.",
-    "tier_note": "No reason for the flag is recorded.",
     "propaganda": [
       {
         "kind": "historical",
@@ -205205,9 +205211,8 @@
     "lat": 23.751711,
     "lon": 90.376447,
     "id": "bangabandhu-memorial-museum",
-    "funding": "The Bangabandhu Memorial Trust ran it from 1994; banks gave it 1,360 million taka in 2017 and Standard Bank 100 million in 2020. The Yunus government revoked its tax exemption.",
+    "funding": "The Bangabandhu Memorial Trust ran it from 1994; in 2017, 37 banks gave over Tk 136 crore to it and two other bodies. The National Board of Revenue revoked its tax exemption.",
     "watch": "The house where Mujib was killed in 1975, with a six-storey extension from 2011; burned on 5 August 2024 and demolished in February 2025.",
-    "tier_note": "No reason for the flag is recorded.",
     "propaganda": [
       {
         "kind": "historical",
@@ -206689,7 +206694,7 @@
     "lat": 38.69361,
     "lon": -9.20572,
     "id": "padrao-dos-descobrimentos",
-    "funding": "Managed since April 2003 by EGEAC, the Lisbon city company that runs the municipal cultural venues. The Portuguese Republic holds title to the monument.",
+    "funding": "Managed since 2003 by EGEAC, the Lisbon city company that runs the municipal cultural venues.",
     "watch": "The 56 metre slab was remodelled in 1985 with exhibition halls and a rooftop viewpoint; EGEAC's 2025 programme centres on empire and colonial memories.",
     "propaganda": [
       {
@@ -207305,7 +207310,7 @@
     "location": "Moscow, Russia",
     "city": "Moscow",
     "country": "Russia",
-    "tier": "A",
+    "tier": "B",
     "size": "L",
     "sources": [
       "https://www.mos.ru/en/mayor/themes/13195050/",
@@ -207330,8 +207335,8 @@
         ]
       }
     ],
-    "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "details": {
       "overview": [
         "Exhibition grounds, park and museum complex of about 237 hectares in the north of Moscow (Calvert Journal, 2015).",
@@ -207415,7 +207420,8 @@
       ],
       "website": "https://vdnh.ru",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Companies of Gennady Timchenko, under UK sanctions since February 2022, invested in its 2019 reconstruction (Snob, citing Vedomosti)."
   },
   {
     "name": "National History Museum of Romania",
@@ -207611,7 +207617,7 @@
     "lon": 21.433187,
     "id": "museum-of-the-macedonian-struggle",
     "funding": "A National Institution established on 31 July 2008. The Skopje 2014 accounts record 2,110,940 euros of public money spent on its building. The Ministry of Culture heads its partner list.",
-    "watch": "The government counted over 200,000 visitors in its first five years; visits are by compulsory guided tour past 109 wax figures and 85 history paintings.",
+    "watch": "The government counted over 200,000 visitors in its first five years; it shows 109 wax figures and 85 history paintings, now with individual visits as well as guided tours.",
     "propaganda": [
       {
         "kind": "historical",
@@ -207625,7 +207631,6 @@
         ]
       }
     ],
-    "tier_note": "No reason for the flag is recorded.",
     "field_sources": {
       "coordinates": {
         "urls": [
@@ -240783,8 +240788,8 @@
     "lon": 166.641697,
     "website": "https://nzaht.org/conserve/explorer-bases/scotts-hut-hut-point/",
     "year_founded": 1902,
-    "funding": "Antarctic Heritage Trust (NZ charity CC24071) took NZ$3.43M in the year to June 2025, NZ$1.54M of it government grants; its partners page names MFAT, the Ministry for Culture and Heritage and ANZ as core funders.",
-    "watch": "The hut stands 300m from the US McMurdo station; visitors arriving there or at Scott Base are likely to encounter it.",
+    "funding": "Antarctic Heritage Trust (NZ charity CC24071) took NZ$3.43M in the year to June 2025, NZ$1.54M of it government grants; the Ministry for Culture and Heritage is its core funder.",
+    "watch": "The hut stands 300m from the US McMurdo station.",
     "records_note": "The Trust files audited annual returns with New Zealand's Charities Register; its partners page shows funders as logos, with no amounts.",
     "operator": "Antarctic Heritage Trust (New Zealand)",
     "claim": "Ross Dependency (New Zealand)",
@@ -240959,7 +240964,7 @@
     "lon": 166.168286,
     "website": "https://nzaht.org/conserve/explorer-bases/shackletons-hut/",
     "year_founded": 1908,
-    "funding": "Antarctic Heritage Trust (NZ charity CC24071) took NZ$3.43M in the year to June 2025, NZ$1.54M of it government grants; its partners page names MFAT, the Ministry for Culture and Heritage and ANZ as core funders.",
+    "funding": "Antarctic Heritage Trust (NZ charity CC24071) took NZ$3.43M in the year to June 2025, NZ$1.54M of it government grants; the Ministry for Culture and Heritage is its core funder.",
     "watch": "The Shackleton whisky brand is a listed key supporter of the Trust, which conserved the hut and its 6,000 artefacts.",
     "records_note": "The Trust files audited annual returns with New Zealand's Charities Register and sells the hut's conservation plan on request.",
     "operator": "Antarctic Heritage Trust (New Zealand)",
@@ -241399,15 +241404,12 @@
     "lon": -62.633,
     "year_founded": 2017,
     "funding": "One voyage, March 2017, costing well over US$1M. Most of the money came from Eugene Kaspersky; Qiao Zhibing and Lihsin Tsai also paid, and BMW Group partnered the open call.",
-    "watch": "In June 2024 the US put Kaspersky Lab on its Entity List and sanctioned twelve of its leaders; no second edition has been found.",
-    "records_note": "No accounts found. Main backer named as the Oceanic Project Foundation, chaired by Anna Somers Cocks of The Art Newspaper; its old web address now serves gambling spam.",
+    "watch": "Kaspersky Lab said it sponsored the voyage, and Eugene Kaspersky sailed with it (Kaspersky blog, 2017).",
+    "records_note": "Main backer named as the Oceanic Project Foundation, chaired by Anna Somers Cocks of The Art Newspaper; its old web address now serves gambling spam.",
     "operator": "Alexander Ponomarev (commissioner); Oceanic Project Foundation",
-    "flags": [
-      "Sanctions"
-    ],
-    "why_flagged": "Its main sponsor's company, Kaspersky Lab, was placed on the US Entity List and its leadership sanctioned by OFAC in June 2024, after the 2017 voyage.",
-    "grade": 4,
-    "grade_basis": "A funder tied to a sanctioned person or company.",
+    "why_flagged": "Main sponsor Eugene Kaspersky heads Kaspersky Lab, whose US sales were barred in June 2024; neither he nor the firm is on a sanctions list.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "details": {
       "overview": [
         "A shipborne art expedition to the Antarctic Peninsula: the research vessel Akademik Sergey Vavilov sailed from Ushuaia on 17 March 2017 for a 12-day voyage, with talks, performances and screenings on board and works installed at landings (The Art Newspaper, 17 Mar 2017).",
@@ -241683,7 +241685,7 @@
     "year_founded": 2013,
     "funding": "Privately owned and paid for by the Oslo collectors Venke and Rolf Hoff, who bought the closed cannery and opened it in 2013. Rolf Hoff's business makes signage and produces artworks.",
     "watch": "Rolf Hoff once chaired the Lofoten International Art Festival's board; the couple say a private kunsthall buys without a committee.",
-    "records_note": "No accounts, board or funding page found. On 17 Nov 2026 kaviarfactory.com served casino spam beside the venue's name.",
+    "records_note": "KaviarFactory Drift AS files accounts in Norway's register; Venke Hoff chairs its board. On 17 Nov 2026 kaviarfactory.com served casino spam beside the venue's name.",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "details": {
@@ -241752,7 +241754,7 @@
     "lat": 69.947393,
     "lon": 23.186298,
     "website": "https://altamuseum.no",
-    "year_founded": 1991,
+    "year_founded": 1978,
     "funding": "An intercommunal company owned 50/50 by Alta Municipality and Finnmark County. FY2023 income NOK 34.3M against costs of NOK 33.9M (Regnskapsregisteret), with no split between grants and earned income.",
     "watch": "Runs the UNESCO rock art site at Hjemmeluft with delegated heritage powers; European Museum of the Year in 1993.",
     "records_note": "States its ownership and mission; accounts are filed in Norway's register. No sponsor list found.",
@@ -241828,10 +241830,6 @@
     "country": "Norway",
     "tier": "B",
     "size": "M",
-    "flags": [
-      "Fossil fuels"
-    ],
-    "tier_note": "The state coal miner Store Norske is one of the foundation's five founders and sits on its board.",
     "sources": [
       "https://no.wikipedia.org/wiki/Svalbard_museum",
       "https://data.brreg.no/regnskapsregisteret/regnskap/989469266",
@@ -241842,10 +241840,10 @@
     "website": "https://svalbardmuseum.no",
     "year_founded": 1979,
     "funding": "A foundation set up by Longyearbyen's council, the coal company Store Norske, UNIS, the Polar Institute and the Governor. The Svalbard budget pays for running costs and the building. FY2023 income NOK 34.9M.",
-    "watch": "Store Norske, which ended coal mining on Svalbard in 2025, holds a board seat; the museum keeps 10,000 of its photographs.",
+    "watch": "Store Norske, which closed its last coal mine on 4 May 2026, holds a board seat; the museum keeps 10,000 of its photographs.",
     "records_note": "Its 2018 to 2028 strategy names the founders and board seats; accounts are filed in Norway's register.",
-    "grade": 4,
-    "grade_basis": "A funder tied to fossil fuels.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "details": {
       "overview": [
         "Culture and natural history museum for Svalbard and the Arctic, in the Svalbard Forskningspark (research park) in Longyearbyen (svalbardmuseum.no).",
@@ -241922,7 +241920,8 @@
       ],
       "website": "https://svalbardmuseum.no",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "The coal company Store Norske is one of the foundation's five founders, who appoint the board; the chair sits for Store Norske (museum, 2025)."
   },
   {
     "id": "perspektivet-museum-tromso",
@@ -242274,12 +242273,8 @@
     "location": "Harstad, Norway",
     "city": "Harstad",
     "country": "Norway",
-    "tier": "B",
+    "tier": "A",
     "size": "M",
-    "flags": [
-      "Fossil fuels"
-    ],
-    "tier_note": "The oil producer Aker BP is on its partner list.",
     "sources": [
       "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
       "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
@@ -242289,11 +242284,11 @@
     "lon": 16.544032,
     "website": "https://www.festspillnn.no",
     "year_founded": 1964,
-    "funding": "A foundation backed by the Ministry of Culture, three northern counties, Harstad Municipality and SpareBank 1 Nord-Norge, with Aker BP, UiT and local firms as partners. FY2023 income NOK 28.2M.",
-    "watch": "An annual festival in Harstad since 1964; Aker BP's logo sits among its business partners, with no amount given.",
+    "funding": "A foundation backed by the Ministry of Culture, three northern counties, Harstad Municipality and SpareBank 1 Nord-Norge, with UiT and local firms as partners. FY2023 income NOK 28.2M.",
+    "watch": "An annual festival in Harstad since 1965, held over eight days around the summer solstice.",
     "records_note": "Shows partner logos without amounts; accounts are filed in Norway's register.",
-    "grade": 4,
-    "grade_basis": "A funder tied to fossil fuels.",
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
     "details": {
       "overview": [
         "An eight-day international festival of music, theatre, dance and visual art held in Harstad each June around the summer solstice (festival). The 2026 edition ran from 20 to 27 June; the next runs from 19 to 26 June 2027 (festival).",
@@ -242529,9 +242524,8 @@
     "lon": 19.841299,
     "website": "https://www.ajtte.com",
     "year_founded": 1983,
-    "funding": "Owned by a foundation of the Swedish state, Norrbotten Region, Jokkmokk Municipality and two S\u00e1mi organisations. State money, from a court ruling on hydropower compensation, covered about half its budget in 2009.",
-    "watch": "The state names the chair and three board members; opened in June 1989 as Sweden's main museum and archive of S\u00e1mi culture.",
-    "records_note": "No budget figures or board list read on its own site.",
+    "funding": "Owned by a foundation of the Swedish state, Norrbotten Region, Jokkmokk Municipality and two S\u00e1mi organisations.",
+    "watch": "Opened in June 1989 as Sweden's main museum and archive of S\u00e1mi culture.",
     "grade": 2,
     "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not.",
     "details": {
@@ -242869,19 +242863,19 @@
     "location": "Kittil\u00e4, Finland",
     "city": "Kittil\u00e4",
     "country": "Finland",
-    "tier": "A",
+    "tier": "B",
     "size": "S",
     "sources": [
       "https://www.museotilasto.fi/tiedostot/museovirasto/files/2025/taulukot/Museoiden%20toiminta%202025_p%C3%A4ivitetty28082026.csv"
     ],
     "lat": 67.525189,
     "lon": 24.980641,
-    "website": "https://www.sarestoniemi.fi",
+    "website": "https://www.sarestoniemimuseo.com",
     "funding": "A foundation-owned museum. Of EUR 660,917 income in 2025, admissions gave EUR 295,853, sales EUR 166,929, state museum funding EUR 127,335 and sponsors EUR 70,800.",
-    "watch": "The statistics do not name the sponsors behind EUR 70,800 in 2025.",
-    "records_note": "Figures are in the Finnish Heritage Agency's museum statistics; no sponsor list was found.",
-    "grade": 1,
-    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
+    "watch": "Main partners of the 2025 centenary year: Kittil\u00e4 Municipality, Agnico Eagle Finland and the art organisation Taideorganisaatio Hiljaisuus.",
+    "records_note": "Figures are in the Finnish Heritage Agency's museum statistics.",
+    "grade": 3,
+    "grade_basis": "A funder worth knowing about, outside the flagged categories.",
     "details": {
       "overview": [
         "Home and art museum of the painter Reidar S\u00e4rest\u00f6niemi (1925 to 1981) on his family farm by the Ounasjoki river in Kaukonen village, Kittil\u00e4, reached by a narrow gravel forest road (sarestoniemimuseo.com).",
@@ -242936,7 +242930,8 @@
       ],
       "website": "https://www.sarestoniemimuseo.com",
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Its 2025 centenary partner Agnico Eagle Finland was fined EUR 130,000 in 2021 over a worker's death at its Kittil\u00e4 mine (Kaleva)."
   },
   {
     "id": "akureyri-art-museum",
@@ -243273,12 +243268,8 @@
     "location": "Inuvik, Northwest Territories, Canada",
     "city": "Inuvik",
     "country": "Canada",
-    "tier": "B",
+    "tier": "A",
     "size": "S",
-    "flags": [
-      "Fossil fuels"
-    ],
-    "tier_note": "Imperial Oil and ConocoPhillips funded it until 2015.",
     "sources": [
       "https://www.cbc.ca/news/canada/north/imperial-oil-conocophillips-stop-funding-inuvik-arts-festival-1.3135387",
       "https://cabinradio.ca/286235/news/arts/great-northern-arts-festival-hit-by-surprising-funding-rejection/",
@@ -243292,8 +243283,8 @@
     "funding": "Canadian Heritage granted CAD 160,000 for 2025 to 2027; the Town of Inuvik gives the venue and over CAD 30,000 in kind. Indigenous bodies, Air North and Northwestel help; Canada Council refused about CAD 90,000 in 2026.",
     "watch": "Imperial Oil and ConocoPhillips stopped funding it in 2015 when they shelved Arctic exploration, and programming was cut.",
     "records_note": "Names its sponsors and what each gives, without amounts.",
-    "grade": 4,
-    "grade_basis": "A funder tied to fossil fuels.",
+    "grade": 1,
+    "grade_basis": "No flagged funder or funding protest on record, and the amounts are given.",
     "details": {
       "overview": [
         "Annual summer arts festival in Inuvik, a town of 2,500 or more people in the Beaufort Delta, on Inuvialuit and Gwich'in lands; its office is at Unit 301, 125 Mackenzie Road (festival website).",
@@ -243451,7 +243442,8 @@
     "tier": "B",
     "size": "M",
     "flags": [
-      "Mining disaster"
+      "Mining disaster",
+      "Sanctions"
     ],
     "tier_note": "Nornickel, which pays for its new museum building, was ordered to pay 146 billion rubles for the 2020 Norilsk diesel spill.",
     "sources": [
@@ -243464,9 +243456,9 @@
     "lon": 88.20852,
     "funding": "The city museum runs the PolArt residency and holds about 80,000 objects. Nornickel funds its new Arctic Museum of Modern Art in full, RUB 3B of RUB 150B it put into Norilsk.",
     "watch": "Nornickel also backs its exhibitions and courses; AMMA, in a former shopping centre, was due to open in 2026.",
-    "records_note": "No accounts or budget of the museum were found; AMMA's cost is from The Art Newspaper (2021).",
-    "grade": 4,
-    "grade_basis": "A funder tied to a mining disaster.",
+    "records_note": "AMMA's cost is from The Art Newspaper (2021).",
+    "grade": 5,
+    "grade_basis": "Funders tied to a mining disaster and a sanctioned person or company.",
     "details": {
       "overview": [
         "Norilsk's municipal museums have been joined since 2016 in the museum and exhibition complex \"Muzei Norilska\" (Lenta.ru, from a Nornickel press release); Snob counts it among the most important of the city's 13 cultural bodies (Snob, 2026).",
@@ -243534,7 +243526,8 @@
         }
       ],
       "retrieved": "2026-11-20"
-    }
+    },
+    "why_flagged": "Nornickel's president and biggest shareholder Vladimir Potanin has been under UK sanctions since June 2022 and US sanctions since December 2022."
   },
   {
     "name": "Altes Museum",
@@ -245511,8 +245504,8 @@
     "location": "Nanjing, China",
     "tier": "A",
     "size": "L",
-    "funding": "The pages read did not state who funds the museum. The Jiangsu provincial government and its culture bodies supervise it, per the 2026 probe reporting.",
-    "watch": "In February 2026 a probe into the 1959 donation of 137 paintings by the Pang family found works sold off in the 1990s; the museum apologised, 29 people were implicated and the National Cultural Heritage Administration ordered a nationwide museum audit.",
+    "funding": "The Jiangsu provincial government and its culture bodies supervise it (China Daily).",
+    "watch": "In February 2026 a probe into the 1959 donation of 137 paintings by the Pang family found works sold off in the 1990s; the museum apologised and 29 people were implicated.",
     "sources": [
       "https://www.sixthtone.com/news/1018198",
       "https://www.chinadaily.com.cn/a/202602/10/WS698a0ebba310d6866eb38527.html"
@@ -245521,7 +245514,7 @@
     "lon": 118.81989,
     "country": "China",
     "city": "Nanjing",
-    "website": "https://www.chinadaily.com.cn/a/202602/10/WS698a0ebba310d6866eb38527.html",
+    "website": "https://www.njmuseum.com",
     "id": "nanjing-museum",
     "aliases": [
       "\u5357\u4eac\u535a\u7269\u9662",
@@ -245530,7 +245523,6 @@
     "visit_url": "https://www.chinadaily.com.cn/a/202602/10/WS698a0ebba310d6866eb38527.html",
     "address": "321 Zhongshan East Road, Xuanwu District, Nanjing, China",
     "flags": null,
-    "records_note": "The pages read did not show published accounts.",
     "research_retrieved": "2026-11-18",
     "field_sources": {
       "coordinates": {
@@ -245794,9 +245786,9 @@
   {
     "name": "National Centre for the Performing Arts (NCPA)",
     "location": "Beijing, China",
-    "tier": "U",
+    "tier": "B",
     "size": "L",
-    "funding": "The page read did not state funding.",
+    "funding": "Beijing's budget and its own service income: 62.55% of its 1,178.75m yuan income in 2025 came from the city budget (final accounts).",
     "watch": "Beijing's national performing arts complex, designed by the French architect Paul Andreu, opened at the end of 2007 with its own chorus, orchestra and opera singers.",
     "sources": [
       "https://govt.chinadaily.com.cn/a/201909/05/WS5d7075f8498ebcb19057921f.html"
@@ -245805,7 +245797,7 @@
     "lon": 116.38352,
     "country": "China",
     "city": "Beijing",
-    "website": "https://govt.chinadaily.com.cn/a/201909/05/WS5d7075f8498ebcb19057921f.html",
+    "website": "https://www.chncpa.org",
     "id": "national-centre-for-the-performing-arts-ncpa",
     "aliases": [
       "NCPA",
@@ -245815,8 +245807,9 @@
     "visit_url": "https://govt.chinadaily.com.cn/a/201909/05/WS5d7075f8498ebcb19057921f.html",
     "year_founded": 2007,
     "address": "2 West Chang'an Avenue, Xicheng District, Beijing, China",
-    "flags": null,
-    "records_note": "The page read showed no published accounts.",
+    "flags": [
+      "Fossil fuels"
+    ],
     "research_retrieved": "2026-11-18",
     "field_sources": {
       "coordinates": {
@@ -245940,7 +245933,9 @@
       "website": "https://www.chncpa.org",
       "retrieved": "2026-11-20"
     },
-    "tier_note": "No source outside the museum is recorded."
+    "why_flagged": "Its foundation set up a joint culture fund with the natural gas group ENN under an April 2024 cooperation agreement (Xinhua).",
+    "grade": 4,
+    "grade_basis": "A funder tied to fossil fuels."
   },
   {
     "name": "Mus\u00e9e Carnavalet",
@@ -264637,9 +264632,9 @@
   {
     "name": "Mitsubishi Ichigokan Museum",
     "location": "Tokyo, Japan",
-    "tier": "A",
+    "tier": "B",
     "size": "M",
-    "funding": "The pages read did not state who funds the museum or name an operator.",
+    "funding": "Run by Mitsubishi Estate as a corporate museum; Mitsubishi group companies lead its corporate members, among them MUFG Bank and Mitsubishi Corporation.",
     "watch": "A museum in a reconstruction of the red brick Mitsubishi Ichigokan, designed by Josiah Conder and first built in 1894, opened in 2010 with a focus on late 19th-century Western art.",
     "sources": [
       "https://www.tokyoartbeat.com/en/venues/-/C5C855D6"
@@ -264648,7 +264643,7 @@
     "lon": 139.76339,
     "country": "Japan",
     "city": "Tokyo",
-    "website": "https://mitsubishi-museum.jp/en/",
+    "website": "https://mimt.jp/",
     "id": "mitsubishi-ichigokan-museum",
     "aliases": [
       "Mitsubishi Ichigokan",
@@ -264657,8 +264652,10 @@
     "visit_url": "https://www.tokyoartbeat.com/en/venues/-/C5C855D6",
     "year_founded": 2010,
     "address": "2-6-2 Marunouchi, Chiyoda-ku, Tokyo 100-0005",
-    "flags": null,
-    "records_note": "The pages read did not show published accounts.",
+    "flags": [
+      "Arms and defence",
+      "Fossil fuels"
+    ],
     "opening_hours": "10:00 to 18:00, until 20:00 on Fridays, the second Wednesday of each month and weekdays in the last week of an exhibition; closed Mondays (open on a Monday holiday and closed the next day), 1 January and between exhibitions (Tokyo Art Beat).",
     "research_retrieved": "2026-11-18",
     "field_sources": {
@@ -264746,8 +264743,9 @@
       "website": "https://mimt.jp/",
       "retrieved": "2026-11-20"
     },
-    "grade": 2,
-    "grade_basis": "No flagged funder or funding protest on record. Funders are named; amounts are not."
+    "grade": 5,
+    "grade_basis": "Funders tied to arms and fossil fuels.",
+    "why_flagged": "Its corporate members include the arms maker Mitsubishi Heavy Industries and the oil and gas group ENEOS Holdings (members page, 2026)."
   },
   {
     "name": "Teshima Art Museum",
