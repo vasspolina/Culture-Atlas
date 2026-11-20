@@ -11138,8 +11138,35 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // and every drawing and hit test goes through projectWinkel / winkelScreenToView / wtOutlinePath, which add it.
     let wtPhoneHalfH = 0;   // half the free height, in CSS px; 0 = not measured, or not a phone
     let wtOffsetY = 0;      // the free band's middle less the canvas's middle, in CSS px
+    let wtOffsetX = 0;      // the window's middle less the canvas's middle, in CSS px (wide screens; see measureWtWindowX)
     let wtChipsWatched = null;
     function measureWtPhoneRoom() {
+      measureWtBand();
+      measureWtWindowX();
+    }
+    // Centred on the window (user, 20 Nov 2026: "still not centered horizontally", then "Whole window"): when the window's
+    // middle falls inside the map pane (the chat narrow or closed), the map and the name above it stand on the window's
+    // middle line, not the pane's, as far as the map can move and still keep 12px clear of the pane's sides. With the chat
+    // open past the middle the map stays in its pane's middle, since the window's middle is behind the chat.
+    function measureWtWindowX() {
+      wtOffsetX = 0;
+      const head = document.getElementById('gmdTitle'), title = head && head.querySelector('button');
+      if (head) head.style.removeProperty('translate');
+      if (window.innerWidth < 768) return;
+      const cRect = canvas.getBoundingClientRect();
+      const mid = window.innerWidth / 2;
+      if (!cRect.width || mid <= cRect.left || mid >= cRect.right) return;
+      const ovalW = WT_W * wtScale(baseRadius) * wtSX;   // wtScale first: it sets the squeeze
+      const room = Math.max(0, (cRect.width - ovalW) / 2 - 12);
+      wtOffsetX = Math.max(-room, Math.min(room, mid - (cRect.left + cRect.width / 2)));
+      // The name moves with the map, by the same amount, so the two stay on one line.
+      if (title && title.offsetParent) {
+        const box = head.getBoundingClientRect();
+        const dx = (cRect.left + cRect.width / 2 + wtOffsetX) - (box.left + box.width / 2);
+        if (Math.abs(dx) >= 0.5) head.style.setProperty('translate', dx.toFixed(1) + 'px 0');
+      }
+    }
+    function measureWtBand() {
       wtPhoneHalfH = 0; wtOffsetY = 0;
       const cRect = canvas.getBoundingClientRect();
       if (window.innerWidth >= 768) {
@@ -11208,7 +11235,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function wtOutlinePath(r, cx, cy) {
       const k = wtScale(r);
       ctx.beginPath();
-      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * wtSX * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      WT_OUTLINE.forEach((q, i) => { const x = cx + wtOffsetX + q[0] * wtSX * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
       ctx.closePath();
     }
     // The view matrix, cached: project() runs for every coastline point of every frame.
@@ -11229,12 +11256,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = wtScale(r), q = wtRaw(lam, phi);   // the scale first: it sets the squeeze wtRaw uses
       // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
       // which the coastline drawing uses to break a line where it crosses the seam.
-      return { x: cx + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam, phi };
+      return { x: cx + wtOffsetX + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam, phi };
     }
     // A canvas point to the oblique view vector under it (x right, y up, z toward the viewer), or null off the map.
     function winkelScreenToView(px, py, r, cx, cy) {
       const k = wtScale(r);
-      const inv = wtInverse((px - cx) / k, -(py - cy - wtOffsetY) / k);
+      const inv = wtInverse((px - cx - wtOffsetX) / k, -(py - cy - wtOffsetY) / k);
       if (!inv) return null;
       const cp = Math.cos(inv[1]);
       return [cp * Math.sin(inv[0]), Math.sin(inv[1]), cp * Math.cos(inv[0])];
@@ -11784,7 +11811,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               const turn = run[nP - 1] + wrapD(proj[0].lam - proj[nP - 1].lam) - run[0];
               const put = (lam, phi, first) => {
                 const q = wtRaw(Math.max(-Math.PI, Math.min(Math.PI, lam)), phi);
-                if (first) ctx.moveTo(cx + q[0] * kS, cy + wtOffsetY - q[1] * kS); else ctx.lineTo(cx + q[0] * kS, cy + wtOffsetY - q[1] * kS);
+                if (first) ctx.moveTo(cx + wtOffsetX + q[0] * kS, cy + wtOffsetY - q[1] * kS); else ctx.lineTo(cx + wtOffsetX + q[0] * kS, cy + wtOffsetY - q[1] * kS);
               };
               if (Math.abs(turn) < 1) {
                 for (let sft = -1; sft <= 1; sft++) {
@@ -12542,7 +12569,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ctx.textAlign = 'center';
 
         // Coordinates HUD
-        const centerCoord = unproject(cx, cy + (WINKEL ? wtOffsetY : 0), r, cx, cy) || { lat: rotLat, lon: rotLon };
+        const centerCoord = unproject(cx + (WINKEL ? wtOffsetX : 0), cy + (WINKEL ? wtOffsetY : 0), r, cx, cy) || { lat: rotLat, lon: rotLon };
         const latTxt = `${Math.abs(centerCoord.lat).toFixed(4)}° ${centerCoord.lat >= 0 ? 'N' : 'S'}`;
         const lonTxt = `${Math.abs(centerCoord.lon).toFixed(4)}° ${centerCoord.lon >= 0 ? 'E' : 'W'}`;
         const coordTxt = `${latTxt}  ${lonTxt}`;
