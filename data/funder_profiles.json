@@ -1315,14 +1315,13 @@
   "site": "https://eleonjimenes.com",
   "city": "Santo Domingo",
   "country": "Dominican Republic",
-  "wrong_match": "The museum sentence says Eduardo León Jimenes endowed the Centro León, but he died in 1937; the family's foundation opened it in 2003.",
   "status": "done",
   "sources": [
    "https://eleonjimenes.com/",
    "https://es.wikipedia.org/wiki/Grupo_Le%C3%B3n_Jimenes",
    "https://es.wikipedia.org/wiki/Centro_Cultural_Eduardo_Le%C3%B3n_Jimenes"
   ],
-  "batch": "fp13"
+  "batch": "fp28"
  },
  "aurubisbulgaria": {
   "name": "Aurubis Bulgaria AD",
@@ -1855,15 +1854,13 @@
   "arts": "The Bengal Foundation, a private trust funded by the Bengal Group, has run international art camps since 1999.",
   "city": "Dhaka",
   "country": "Bangladesh",
-  "wrong_match": "Britto Arts Trust names the Bengal Foundation, not the company; Litu's Bengal Group is a different firm from Morshed Alam's Bengal Group of Industries.",
   "status": "done",
   "sources": [
    "https://en.wikipedia.org/wiki/Abul_Khair_Litu",
    "https://en.wikipedia.org/wiki/Bengal_Foundation",
-   "https://bengalfoundation.org/about-us/",
-   "https://en.wikipedia.org/wiki/Bengal_Group_of_Industries"
+   "https://bengalfoundation.org/about-us/"
   ],
-  "batch": "fp3"
+  "batch": "fp28"
  },
  "benjaminmoore": {
   "name": "Benjamin Moore & Co.",
@@ -2274,15 +2271,13 @@
   "city": "Stockholm",
   "country": "Sweden",
   "address": "Torsgatan 21, Stockholm",
-  "wrong_match": "Konsthall C, a separate gallery in a former laundromat in Hökarängen, carries the Bonniers Konsthall sentence word for word.",
   "status": "done",
   "sources": [
    "https://en.wikipedia.org/wiki/Bonnier_Group",
    "https://www.bonnier.com/en/",
-   "https://www.bonnier.com/en/contact/bonnier-group/",
-   "https://monoskop.org/Konsthall_C"
+   "https://www.bonnier.com/en/contact/bonnier-group/"
   ],
-  "batch": "fp3"
+  "batch": "fp28"
  },
  "bpd": {
   "name": "BPD | Bouwfonds Gebiedsontwikkeling",
@@ -9847,21 +9842,21 @@
   "batch": "fp15"
  },
  "kpmg": {
-  "name": "KPMG Argentina",
+  "name": "KPMG International Limited",
+  "short": "KPMG",
   "kind": "corp",
-  "what": "The Argentine member firm of KPMG, the London-based Big Four network of audit, tax and advisory firms, with its Buenos Aires office at Bouchard 710.",
-  "money": "Fees for audit, tax and advisory work paid by its clients.",
-  "site": "https://kpmg.com/ar/es",
-  "city": "Buenos Aires",
-  "country": "Argentina",
-  "address": "Bouchard 710, piso 1, Buenos Aires",
-  "wrong_match": "The Kunstmuseum Basel and Kunstsammlung Nordrhein-Westfalen sentences mean KPMG's Swiss and German member firms, which are separate firms in the same network.",
+  "what": "A network of audit, tax and advisory member firms, formed in 1987 by the merger of Peat Marwick International and Klynveld Main Goerdeler; its coordinating company is in London.",
+  "money": "Fees its member firms earn for audit, tax and advisory work: combined revenue of US$38.4 billion in 2024.",
+  "site": "https://kpmg.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "15 Canada Square, London",
   "status": "done",
   "sources": [
-   "https://kpmg.com/ar/es/about/oficinas/buenos-aires.html",
-   "https://en.wikipedia.org/wiki/KPMG"
+   "https://en.wikipedia.org/wiki/KPMG",
+   "https://kpmg.com/xx/en/media/press-releases/2024/12/robust-growth-for-kpmg-as-global-revenues-rise-5-percent-to-us-dollar-38-point-4-billion.html"
   ],
-  "batch": "fp2"
+  "batch": "fp28"
  },
  "krber": {
   "name": "Körber-Stiftung",
@@ -14249,7 +14244,7 @@
  },
  "right:cohen": {
   "name": "Steven A. Cohen",
-  "short": "Steve Cohen",
+  "short": "Steven & Alexandra Cohen Foundation",
   "kind": "person",
   "what": "An American hedge fund manager, founder of Point72 Asset Management (2014, Stamford, Connecticut) and owner of the New York Mets.",
   "money": "His hedge fund fortune: S.A.C. Capital Advisors from 1992, which pleaded guilty to insider trading in 2013, then Point72.",
@@ -14257,14 +14252,13 @@
   "site": "https://www.steveandalex.org",
   "city": "Stamford",
   "country": "United States",
-  "wrong_match": "The Aldrich and NYU Tisch sentences do not name Cohen or Point72; the MOCA sentence records that he left its board.",
   "status": "done",
   "sources": [
    "https://en.wikipedia.org/wiki/Steven_A._Cohen",
    "https://en.wikipedia.org/wiki/Point72_Asset_Management",
    "https://www.steveandalex.org/about/"
   ],
-  "batch": "fp3"
+  "batch": "fp28"
  },
  "ringier": {
   "name": "Ringier AG",
@@ -14507,22 +14501,19 @@
   "batch": "fp27"
  },
  "russiasmajornaturalgasproducer": {
-  "name": "PJSC Novatek",
-  "short": "Novatek",
-  "kind": "corp",
-  "what": "Russia's second-largest natural gas producer after Gazprom, founded in August 1994 by Leonid Mikhelson, who chairs its management board; headquartered in Tarko-Sale with a head office in Moscow.",
-  "money": "Sales of natural gas and petroleum products from fields in the Yamalo-Nenets region of West Siberia: revenue $17 billion in 2025.",
-  "arts": "Mikhelson co-founded the V-A-C Foundation for contemporary art in 2009 with Teresa Iarocci Mavica.",
-  "site": "https://www.novatek.ru/en/",
-  "city": "Tarko-Sale",
+  "name": "Leonid Mikhelson",
+  "kind": "person",
+  "what": "A Russian businessman, born in 1955, who is chairman, chief executive and major shareholder of the gas company Novatek; he set up the V-A-C Foundation in 2009.",
+  "money": "His stake in Novatek, Russia's second-largest natural gas producer after Gazprom, which had revenue of $17 billion in 2025.",
+  "city": "Moscow",
   "country": "Russia",
-  "wrong_match": "The museum sentence names Novatek only to describe Leonid Mikhelson; the money reaches GES-2 through his V-A-C Foundation, not from the company.",
   "status": "done",
   "sources": [
+   "https://en.wikipedia.org/wiki/Leonid_Mikhelson",
    "https://en.wikipedia.org/wiki/Novatek",
    "https://en.wikipedia.org/wiki/V-A-C_Foundation"
   ],
-  "batch": "fp18"
+  "batch": "fp28"
  },
  "saastamoinen": {
   "name": "Saastamoisen säätiö sr",
@@ -14818,21 +14809,19 @@
   "batch": "fp20"
  },
  "segerstromrealestatefamily": {
-  "name": "The Segerstrom Foundation",
-  "kind": "found",
-  "what": "A private foundation in Costa Mesa, California, tax-exempt since 1988, whose officers have included Henry T. Segerstrom and other members of the Segerstrom family.",
-  "money": "The Segerstrom family's real estate firm C. J. Segerstrom & Sons, developer of South Coast Plaza, with foundation assets of $14.3 million in 2023.",
+  "name": "The Segerstrom family",
+  "kind": "person",
+  "what": "A California family descended from Carl Segerstrom, a Swedish immigrant who bought a lima bean farm in 1900; its Costa Mesa firm is C. J. Segerstrom & Sons.",
+  "money": "The family's real estate firm C. J. Segerstrom & Sons, developer of South Coast Plaza.",
   "city": "Costa Mesa",
   "country": "United States",
-  "address": "3315 Fairview Road, Costa Mesa, CA 92626",
-  "wrong_match": "The museum sentence credits the Segerstrom family, not this foundation by name.",
   "status": "done",
   "sources": [
-   "https://projects.propublica.org/nonprofits/organizations/330269599",
    "https://en.wikipedia.org/wiki/C._J._Segerstrom_%26_Sons",
-   "https://en.wikipedia.org/wiki/South_Coast_Plaza"
+   "https://en.wikipedia.org/wiki/South_Coast_Plaza",
+   "https://projects.propublica.org/nonprofits/organizations/330269599"
   ],
-  "batch": "fp22"
+  "batch": "fp28"
  },
  "selasarsunaryo": {
   "name": "Selasar Sunaryo Foundation",
