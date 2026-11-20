@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=858"></script>
+  <script src="assets/load-image-data.js?v=859"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=858">
-  <link rel="stylesheet" href="assets/sheet.css?v=858">
-  <script src="assets/config.js?v=858"></script>
-  <script src="assets/analytics.js?v=858"></script>
-  <script src="assets/subtopic.js?v=858"></script>
-  <script src="assets/names.js?v=858"></script>
-  <script src="assets/grounding.js?v=858"></script>
-  <script src="assets/repeats.js?v=858"></script>
-  <script src="assets/intro-narration.js?v=858"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=859">
+  <link rel="stylesheet" href="assets/sheet.css?v=859">
+  <script src="assets/config.js?v=859"></script>
+  <script src="assets/analytics.js?v=859"></script>
+  <script src="assets/subtopic.js?v=859"></script>
+  <script src="assets/names.js?v=859"></script>
+  <script src="assets/grounding.js?v=859"></script>
+  <script src="assets/repeats.js?v=859"></script>
+  <script src="assets/intro-narration.js?v=859"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=858"></script>
+  <script src="assets/load-image.js?v=859"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1178,8 +1178,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=858"></script>
-  <script src="assets/money-ids.js?v=858"></script>
+  <script src="assets/institutions.js?v=859"></script>
+  <script src="assets/money-ids.js?v=859"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10883,11 +10883,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v858';
+    const ATLAS_RELEASE = 'culture-atlas-v859';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=858').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=859').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14702,6 +14702,37 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       return `${nameLink}${cityPart}${dossierPart}`;
     }
 
+    // The sources under a model answer (user, 20 Nov 2026: "make chat answers show source links"). The model writes none of its
+    // own: it made addresses up, so its "Sources:" lines are dropped (renderCuratorMarkdown). The page prints them from the
+    // records the answer is about: the space asked about first, then the spaces the answer names, three at most. One link per
+    // site, the sources the grade rests on before the report's; four for one space, two each for several. An answer about no
+    // record gets no line. The line is not read aloud, not sent back to the model as the conversation, and not checked for
+    // repeats (the same space asked about twice has the same sources).
+    // The space last asked about stays the chat's subject until another is named, so it counts only when this turn is about
+    // it: the answer or the question names it, or the question points at it ("it", "this", "there"). A general question asked
+    // after a space ("What is institutional critique?") is not about that space and does not get its sources.
+    function answerSourcesHtml(html, target, query) {
+      const insts = [];
+      const add = (i) => { if (i && !insts.includes(i) && insts.length < 3) insts.push(i); };
+      const namesIn = (h) => [...new DOMParser().parseFromString('<body>' + String(h || '') + '</body>', 'text/html').querySelectorAll('a.inst-link[data-name]')].map(a => a.getAttribute('data-name'));
+      const named = namesIn(html);
+      if (target && (named.includes(target.name) || namesIn(linkifyInstNames(escapeHtml(query || ''))).includes(target.name) || /\b(this|here|there|it|its|that|they|their|them)\b/i.test(query || ''))) add(target);
+      named.forEach(n => add(ALL_INSTITUTIONS.find(i => i.name === n)));
+      const per = insts.length > 1 ? 2 : 4, seen = new Set(), urls = [];
+      insts.forEach(inst => {
+        let k = 0;
+        [].concat(inst.sources || [], ((inst.details || {}).sources || []).map(s => (s && s.url) || s)).forEach(u => {
+          if (k >= per || typeof u !== 'string' || !/^https?:\/\//.test(u)) return;
+          const h = hostOf(u);
+          // A file kept on a storage host (an annual report on s3-eu-west-1.amazonaws.com) has no site name to print here;
+          // the record's own Sources section still lists it.
+          if (h && !seen.has(h) && !/(^|\.)(amazonaws\.com|cloudfront\.net|googleusercontent\.com|storage\.googleapis\.com|windows\.net|akamaihd\.net)$/.test(h)) { seen.add(h); urls.push(u); k++; }
+        });
+      });
+      const links = proseLinkList(urls, urls.length);
+      return links.length ? `<p class="no-indent source-note chat-sources" data-exclude-speech="true" data-repeat-ok>${links.length > 1 ? 'Sources' : 'Source'}: ${links.join(', ')}.</p>` : '';
+    }
+
     // A reply written by the model names spaces in plain text. Each name (or alias) that a record carries becomes the same
     // link a list answer has, so a click opens the record and flies the map there. Text already in a link or button is left alone.
     let instNameIndex = null;
@@ -17596,8 +17627,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
                   step: 'Live AI Reasoning'
                 };
               }
-              // Answers carry no note about what they were written from, in Gossip mode or out of it.
-              appendCuratorMessage(linkifyInstNames(aiHtml), modelChips(target, query), webIntel, thinkingData);
+              // Answers carry no note about what they were written from, in Gossip mode or out of it; the sources of the
+              // records they are about close them, as links (answerSourcesHtml).
+              const linked = linkifyInstNames(aiHtml);
+              const srcLine = answerSourcesHtml(linked, target, query);
+              // In a <div>, so the renderer takes the turn as finished HTML and leaves the links' addresses alone.
+              appendCuratorMessage(srcLine ? `<div class="chat-answer-sourced">${linked}${srcLine}</div>` : linked, modelChips(target, query), webIntel, thinkingData);
               return true;
             }
           } catch (aiErr) {
@@ -22418,24 +22453,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=858"></script>
-<script src="assets/note-aids.js?v=858" defer></script>
-<script src="assets/place-list.js?v=858" defer></script>
-<script src="assets/chat-share.js?v=858" defer></script>
-<script src="assets/note-files.js?v=858" defer></script>
-<script src="assets/funding-views.js?v=858"></script>
-<script src="assets/layers.js?v=858"></script>
-<script src="assets/critique-gallery-data.js?v=858"></script>
-<script src="assets/critique-captions.js?v=858"></script>
-<script src="assets/critique-gallery.js?v=858"></script>
-<script src="assets/hq-detail.js?v=858"></script>
-<script src="assets/influence-mode.js?v=858"></script>
-<script src="assets/bubbles.js?v=858" defer></script>
-<script src="assets/phone-maps.js?v=858"></script>
-<script src="assets/desktop-maps.js?v=858"></script>
-<script src="assets/chat-resize.js?v=858"></script>
-<script src="assets/frame-refusers.js?v=858"></script>
-<script src="assets/link-pane.js?v=858"></script>
-<script src="assets/tab-suggest.js?v=858"></script>
+<script src="assets/typeset.js?v=859"></script>
+<script src="assets/note-aids.js?v=859" defer></script>
+<script src="assets/place-list.js?v=859" defer></script>
+<script src="assets/chat-share.js?v=859" defer></script>
+<script src="assets/note-files.js?v=859" defer></script>
+<script src="assets/funding-views.js?v=859"></script>
+<script src="assets/layers.js?v=859"></script>
+<script src="assets/critique-gallery-data.js?v=859"></script>
+<script src="assets/critique-captions.js?v=859"></script>
+<script src="assets/critique-gallery.js?v=859"></script>
+<script src="assets/hq-detail.js?v=859"></script>
+<script src="assets/influence-mode.js?v=859"></script>
+<script src="assets/bubbles.js?v=859" defer></script>
+<script src="assets/phone-maps.js?v=859"></script>
+<script src="assets/desktop-maps.js?v=859"></script>
+<script src="assets/chat-resize.js?v=859"></script>
+<script src="assets/frame-refusers.js?v=859"></script>
+<script src="assets/link-pane.js?v=859"></script>
+<script src="assets/tab-suggest.js?v=859"></script>
 </body>
 </html>
