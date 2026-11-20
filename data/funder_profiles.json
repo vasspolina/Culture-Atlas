@@ -15,6 +15,23 @@
   ],
   "batch": "fp2"
  },
+ "aalborgmunicipality|Denmark": {
+  "name": "Aalborg Kommune",
+  "short": "Aalborg Municipality",
+  "kind": "gov",
+  "what": "A Danish municipality in the North Denmark Region, formed in the 2007 reform when Hals, Nibe and Sejlflod merged with the old Aalborg Kommune; 226,033 residents in 2026.",
+  "money": "The municipal budget of Aalborg Kommune.",
+  "site": "https://www.aalborg.dk",
+  "city": "Aalborg",
+  "country": "Denmark",
+  "address": "Boulevarden 13, 9000 Aalborg",
+  "status": "done",
+  "sources": [
+   "https://da.wikipedia.org/wiki/Aalborg_Kommune",
+   "https://www.aalborg.dk/"
+  ],
+  "batch": "fp36"
+ },
  "aatoserkko": {
   "name": "Jane and Aatos Erkko Foundation",
   "kind": "found",
@@ -506,6 +523,23 @@
    "https://en.wikipedia.org/wiki/Alfried_Krupp_von_Bohlen_und_Halbach_Foundation"
   ],
   "batch": "fp29"
+ },
+ "algerianstate|Algeria": {
+  "name": "Ministère de la Culture et des Arts",
+  "short": "Algerian Ministry of Culture and Arts",
+  "kind": "gov",
+  "what": "Algeria’s ministry of culture and arts, whose functions are set by executive decree 05-79 of 2005; Malika Bendouda has been minister since September 2025.",
+  "money": "The Algerian state budget.",
+  "site": "https://www.m-culture.gov.dz",
+  "city": "Algiers",
+  "country": "Algeria",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Ministère_de_la_Culture_et_des_Arts_(Algérie)",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Fine_Arts_of_Algiers",
+   "https://web.archive.org/web/20240831092606/https://m-culture.gov.dz/images/pdf/annuaire_culture_2010_fr.pdf"
+  ],
+  "batch": "fp36"
  },
  "aliaksandrvasilievi": {
   "name": "Aliaksandr Vasilievič",
@@ -2312,6 +2346,21 @@
    "https://en.wikipedia.org/wiki/Otto_Beisheim"
   ],
   "batch": "fp19"
+ },
+ "belarussministryofculture|Belarus": {
+  "name": "Министерство культуры Республики Беларусь",
+  "short": "Belarus Ministry of Culture",
+  "kind": "gov",
+  "what": "The Belarusian state body for culture policy, set up in 1991 and answerable to the Council of Ministers; Marat Markov has been minister since 9 April 2026.",
+  "money": "The state budget of Belarus.",
+  "site": "https://kultura.gov.by",
+  "city": "Minsk",
+  "country": "Belarus",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Министерство_культуры_Республики_Беларусь"
+  ],
+  "batch": "fp36"
  },
  "belfastcitycouncil|UK": {
   "name": "Belfast City Council",
@@ -4202,6 +4251,23 @@
   ],
   "batch": "fp9"
  },
+ "cityofbielefeld|Germany": {
+  "name": "Stadt Bielefeld",
+  "short": "City of Bielefeld",
+  "kind": "gov",
+  "what": "The city of Bielefeld, a public-law corporation in North Rhine-Westphalia and the largest city of Ostwestfalen-Lippe, with 331,419 residents at the end of 2025.",
+  "money": "The municipal budget of the city of Bielefeld.",
+  "site": "https://www.bielefeld.de",
+  "city": "Bielefeld",
+  "country": "Germany",
+  "address": "Niederwall 23, 33602 Bielefeld",
+  "status": "done",
+  "sources": [
+   "https://www.bielefeld.de/impressum",
+   "https://de.wikipedia.org/wiki/Bielefeld"
+  ],
+  "batch": "fp36"
+ },
  "cityofbilbao|Spain": {
   "name": "Ayuntamiento de Bilbao",
   "short": "Bilbao City Council",
@@ -4389,6 +4455,24 @@
    "https://en.wikipedia.org/wiki/Espoo"
   ],
   "batch": "fp9"
+ },
+ "cityofessen|Germany": {
+  "name": "Stadt Essen",
+  "short": "City of Essen",
+  "kind": "gov",
+  "what": "Essen, a city in North Rhine-Westphalia, Germany, with 573,618 residents at the end of 2025, led by Lord Mayor Thomas Kufen since 21 October 2015.",
+  "money": "The municipal budget of the city of Essen.",
+  "arts": "In 1922 the city and Essen citizens jointly bought the Folkwang collection, the founding collection of the Museum Folkwang.",
+  "site": "https://www.essen.de",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Porscheplatz 1, 45127 Essen",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Essen",
+   "https://www.museum-folkwang.de/de/ueber-uns"
+  ],
+  "batch": "fp36"
  },
  "cityoffrankfurtcultureoffice|Germany": {
   "name": "Kulturamt Frankfurt am Main",
@@ -4650,6 +4734,24 @@
    "https://nl.wikipedia.org/wiki/Mechelen_(stad)"
   ],
   "batch": "fp27"
+ },
+ "cityofmiami|USA": {
+  "name": "City of Miami",
+  "kind": "gov",
+  "what": "The city of Miami in Florida, incorporated on 28 July 1896, with a mayor and city commission and its City Hall at Dinner Key; 442,241 residents in 2020.",
+  "money": "The municipal budget of the City of Miami.",
+  "arts": "It dedicated the land and funding for Museum Park, a 30-acre waterfront site planned around the city’s art and science museums.",
+  "site": "https://www.miami.gov",
+  "city": "Miami",
+  "country": "United States",
+  "wrong_match": "PAMM's line credits the City of Miami only with the land; Miami-Dade County paid for the building, and the city's funding went to Museum Park, not the museum.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Miami",
+   "https://www.pamm.org/?p=16198",
+   "https://en.wikipedia.org/wiki/P%C3%A9rez_Art_Museum_Miami"
+  ],
+  "batch": "fp36"
  },
  "cityofmnchengladbach|Germany": {
   "name": "Stadt Mönchengladbach",
@@ -7500,6 +7602,25 @@
   ],
   "batch": "fp11"
  },
+ "faroesegovernment|Faroe Islands": {
+  "name": "Føroya landsstýri",
+  "short": "Government of the Faroe Islands",
+  "kind": "gov",
+  "what": "The self-governing cabinet of the Faroe Islands, appointed and led by the løgmaður, a post Beinir Johannesen has held since 13 April 2026.",
+  "money": "The Faroese public budget, which includes a block grant from Denmark.",
+  "arts": "In 2023 it pledged money, with three Danish foundations, to expand the National Gallery of the Faroe Islands; the Løgting later passed a supporting act.",
+  "city": "Tórshavn",
+  "country": "Faroe Islands",
+  "wrong_match": "The gallery's line names the Faroese government only as holder of a board seat, not as a payer.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_the_Faroe_Islands",
+   "https://da.wikipedia.org/wiki/Færøernes_landsstyre",
+   "https://art.fo/news/404/future-proofing-and-expanding-the-national-gallery-of-the-faroe-islands",
+   "https://art.fo/news/620/the-national-gallery-of-the-faroe-islands-and-landsverk-sign-contract-with-sp-f-busetur-for-the-expansion-and-renovation-of-the-museum"
+  ],
+  "batch": "fp36"
+ },
  "farrow": {
   "name": "Farrow & Ball Ltd",
   "short": "Farrow & Ball",
@@ -7566,6 +7687,24 @@
    "https://en.wikipedia.org/wiki/Federal_Government_Commissioner_for_Culture_and_the_Media"
   ],
   "batch": "fp2"
+ },
+ "federalgovernment|smithsonian-air-and-space-washington": {
+  "name": "Federal Government of the United States",
+  "short": "US federal government",
+  "kind": "gov",
+  "what": "The national government of the United States, with legislative, executive and judicial branches under the Constitution in force since 1789, seated in Washington, D.C.",
+  "money": "Federal taxes: individual income taxes gave 51 percent and payroll taxes 35 percent of federal receipts in fiscal 2018.",
+  "arts": "Yearly federal appropriations from Congress pay about two-thirds of the Smithsonian Institution’s budget of about USD 1.25 billion.",
+  "site": "https://www.usa.gov",
+  "city": "Washington",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Federal_government_of_the_United_States",
+   "https://en.wikipedia.org/wiki/United_States_federal_budget",
+   "https://en.wikipedia.org/wiki/Smithsonian_Institution"
+  ],
+  "batch": "fp36"
  },
  "federalinbal|Mexico": {
   "name": "Instituto Nacional de Bellas Artes y Literatura",
@@ -7767,6 +7906,20 @@
    "https://www.firsthorizon.com/About-Us"
   ],
   "batch": "fp11"
+ },
+ "firstpeoplesstaterelations|Australia": {
+  "name": "First Peoples State Relations",
+  "kind": "gov",
+  "what": "A group in the Victorian Department of Premier and Cabinet, in Melbourne, that took over the former Aboriginal Victoria; it works on cultural rights, self-determination, treaty and truth.",
+  "money": "The budget of the State of Victoria, through the Department of Premier and Cabinet.",
+  "site": "https://www.firstpeoplesrelations.vic.gov.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://www.firstpeoplesrelations.vic.gov.au/about-first-peoples-state-relations"
+  ],
+  "batch": "fp36"
  },
  "flagart": {
   "name": "The FLAG Art Foundation",
@@ -9458,6 +9611,39 @@
   ],
   "batch": "fp34"
  },
+ "governmentofabudhabi|UAE": {
+  "name": "Government of Abu Dhabi",
+  "kind": "gov",
+  "what": "Abu Dhabi's emirate government in the UAE: a hereditary monarchy under Sheikh Mohamed bin Zayed Al Nahyan since 14 May 2022, with the Executive Council as its cabinet.",
+  "money": "Oil, the primary source of government funding; the Abu Dhabi Investment Authority, Mubadala and Abu Dhabi Holding Company invest surplus reserves.",
+  "arts": "A 2017 French Senate report put its payments under the Louvre Abu Dhabi agreement at EUR 974.5 million for 2007 to 2037, with EUR 477 million paid by 2017.",
+  "site": "https://www.abudhabi.gov.ae",
+  "city": "Abu Dhabi",
+  "country": "United Arab Emirates",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Emirate_of_Abu_Dhabi",
+   "https://en.wikipedia.org/wiki/Louvre_Abu_Dhabi"
+  ],
+  "batch": "fp36"
+ },
+ "governmentofkerala|India": {
+  "name": "Government of Kerala",
+  "kind": "gov",
+  "what": "The government of the Indian state of Kerala, led by Chief Minister V. D. Satheesan since 18 May 2026, with its headquarters at the Secretariat in Thiruvananthapuram.",
+  "money": "Its own taxes and other revenue plus transfers from the Government of India: ₹1,24,861.06 crore in 2024-25, ₹31,732.25 crore of it from the centre.",
+  "arts": "The state allocated ₹7.5 crore to the Kochi-Muziris Biennale, whose sixth edition then Chief Minister Pinarayi Vijayan opened on 12 December 2025.",
+  "site": "https://www.kerala.gov.in",
+  "city": "Thiruvananthapuram",
+  "country": "India",
+  "address": "Government Secretariat, Thiruvananthapuram",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Kerala",
+   "https://www.onmanorama.com/news/kerala/2025/12/12/cm-pinarayi-vijayan-inaugurates-sixth-edition-kochi-muziris-biennale.html"
+  ],
+  "batch": "fp36"
+ },
  "governmentofsindhownspalace|Pakistan": {
   "name": "Government of Sindh",
   "kind": "gov",
@@ -10549,6 +10735,24 @@
    "https://en.wikipedia.org/wiki/Honeywell"
   ],
   "batch": "fp14"
+ },
+ "hongkonggovernment|China": {
+  "name": "Government of the Hong Kong Special Administrative Region",
+  "short": "Hong Kong Government",
+  "kind": "gov",
+  "what": "The executive branch of the Hong Kong Special Administrative Region of China, set up on 1 July 1997 at the handover and led by the Chief Executive, John Lee.",
+  "money": "The Hong Kong public budget: total government expenditure is estimated at HK$843.4 billion for 2026-27.",
+  "site": "https://www.gov.hk",
+  "city": "Hong Kong",
+  "country": "China",
+  "wrong_match": "Tai Kwun's line names the government only as the Jockey Club's partner in the project; the Jockey Club paid for the revitalisation.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Hong_Kong",
+   "https://www.budget.gov.hk/2026/eng/budget54.html",
+   "https://en.wikipedia.org/wiki/Tai_Kwun"
+  ],
+  "batch": "fp36"
  },
  "hongkongjockeyclub": {
   "name": "The Hong Kong Jockey Club",
@@ -11828,6 +12032,24 @@
   ],
   "batch": "fp15"
  },
+ "kazakhstansministryofculture|Kazakhstan": {
+  "name": "Министерство культуры и информации Республики Казахстан",
+  "short": "Ministry of Culture and Information of Kazakhstan",
+  "kind": "gov",
+  "what": "Kazakhstan’s ministry for culture and information, re-established under this name on 1 September 2023 and seated in the House of Ministries in Astana.",
+  "money": "The national budget of Kazakhstan.",
+  "arts": "Its Committee of Culture runs the Kasteyev museum as a republican state enterprise, given national status by a presidential decree reported on 30 January 2025.",
+  "site": "https://www.gov.kz/memleket/entities/mam",
+  "city": "Astana",
+  "country": "Kazakhstan",
+  "address": "Mangilik El Avenue 10, House of Ministries, 010000 Astana",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Министерство_культуры_и_информации_Республики_Казахстан",
+   "https://www.gov.kz/memleket/entities/mam/press/news/details/928138?lang=ru"
+  ],
+  "batch": "fp36"
+ },
  "kbcbank": {
   "name": "KBC Group NV",
   "short": "KBC",
@@ -11844,6 +12066,23 @@
    "https://en.wikipedia.org/wiki/KBC_Bank"
   ],
   "batch": "fp15"
+ },
+ "kentcountycouncil|UK": {
+  "name": "Kent County Council",
+  "short": "KCC",
+  "kind": "gov",
+  "what": "The county council for the non-metropolitan county of Kent in England, set up on 1 April 1889, with 81 councillors and its seat at County Hall, Maidstone.",
+  "money": "Council tax and government grants: the draft net revenue budget for 2025-26 was GBP 1,529.7 million, 65 percent of it from council tax.",
+  "site": "https://www.kent.gov.uk",
+  "city": "Maidstone",
+  "country": "United Kingdom",
+  "address": "County Hall, County Road, Maidstone ME14 1XQ",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kent_County_Council",
+   "https://democracy.kent.gov.uk/documents/s128751/Draft%20Revenue%20Budget%202025-26%20and%202025-28%20MTFP%20and%20Draft%20Capital%20Programme%202025-35.pdf"
+  ],
+  "batch": "fp36"
  },
  "kenthomson": {
   "name": "Kenneth Thomson, 2nd Baron Thomson of Fleet",
@@ -12082,6 +12321,23 @@
    "https://en.wikipedia.org/wiki/Kohler_Co."
   ],
   "batch": "fp34"
+ },
+ "koldingkommune|Denmark": {
+  "name": "Kolding Kommune",
+  "short": "Kolding Municipality",
+  "kind": "gov",
+  "what": "The municipality of Kolding in the Region of Southern Denmark, formed by merger in the 2007 municipal reform, with 96,214 residents in 2026 and its town hall on Akseltorv.",
+  "money": "The municipal budget of Kolding Kommune.",
+  "site": "https://www.kolding.dk",
+  "city": "Kolding",
+  "country": "Denmark",
+  "address": "Akseltorv 1, 6000 Kolding",
+  "status": "done",
+  "sources": [
+   "https://da.wikipedia.org/wiki/Kolding_Kommune",
+   "https://www.kolding.dk/"
+  ],
+  "batch": "fp36"
  },
  "kolmont": {
   "name": "Kolmont",
@@ -13111,6 +13367,22 @@
   ],
   "batch": "fp17"
  },
+ "losangelescounty|USA": {
+  "name": "County of Los Angeles",
+  "short": "Los Angeles County",
+  "kind": "gov",
+  "what": "A California county formed on 18 February 1850 and governed by an elected five-member Board of Supervisors, with an estimated 9,694,934 residents in 2025.",
+  "money": "The county budget: USD 52.5 billion for 2025-26, as adopted by the Board of Supervisors on 30 September 2025.",
+  "site": "https://lacounty.gov",
+  "city": "Los Angeles",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Los_Angeles_County,_California",
+   "https://ceo.lacounty.gov/2025-2026-budget/"
+  ],
+  "batch": "fp36"
+ },
  "loterieromande": {
   "name": "Société de la loterie de la Suisse romande",
   "short": "Loterie Romande",
@@ -13900,6 +14172,22 @@
   ],
   "batch": "fp34"
  },
+ "miltonkeynescouncil|UK": {
+  "name": "Milton Keynes City Council",
+  "kind": "gov",
+  "what": "The unitary authority for Milton Keynes, England, created on 1 April 1974 as a borough council and renamed after the borough won city status on 15 August 2022.",
+  "money": "A net budget of GBP 705.666 million in 2025/26, including GBP 407.174 million of Dedicated Schools Grant and GBP 188.333 million of council tax.",
+  "site": "https://www.milton-keynes.gov.uk",
+  "city": "Milton Keynes",
+  "country": "United Kingdom",
+  "address": "Civic Offices, 1 Saxon Gate East, Milton Keynes",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Milton_Keynes_City_Council",
+   "https://www.milton-keynes.gov.uk/sites/default/files/2025-03/Your%20Guide%20to%20Council%20Tax%20in%202025.pdf"
+  ],
+  "batch": "fp36"
+ },
  "minalbajaj": {
   "name": "Minal Bajaj",
   "kind": "person",
@@ -14286,6 +14574,21 @@
   ],
   "batch": "fp6"
  },
+ "moscowdepartmentofculture|Russia": {
+  "name": "Департамент культуры города Москвы",
+  "short": "Moscow Department of Culture",
+  "kind": "gov",
+  "what": "The culture department of the Moscow city government, headed since September 2023 by Alexey Fursin, a minister of the Moscow government.",
+  "money": "The Moscow city budget, from which it pays subsidies to the city’s theatres and museums and sets their performance targets.",
+  "site": "https://www.mos.ru/kultura/",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://vedomosti.ru/gorod/moscow2030/articles/aleksei-fursin-kreativnie-industrii--eto-kak-pravilo-vsegda-venchur"
+  ],
+  "batch": "fp36"
+ },
  "mothennessy": {
   "name": "Moët Hennessy",
   "kind": "corp",
@@ -14456,6 +14759,22 @@
    "https://en.wikipedia.org/wiki/Pristina"
   ],
   "batch": "fp35"
+ },
+ "municipalityoftrshavn|Faroe Islands": {
+  "name": "Tórshavnar kommuna",
+  "short": "Municipality of Tórshavn",
+  "kind": "gov",
+  "what": "The largest municipality of the Faroe Islands, covering the capital Tórshavn and the islands of Nólsoy, Hestur and Koltur, with 23,242 residents in January 2024.",
+  "money": "The municipal budget of Tórshavn.",
+  "site": "https://www.torshavn.fo",
+  "city": "Tórshavn",
+  "country": "Faroe Islands",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/T%C3%B3rshavn_Municipality",
+   "https://art.fo/news/620/the-national-gallery-of-the-faroe-islands-and-landsverk-sign-contract-with-sp-f-busetur-for-the-expansion-and-renovation-of-the-museum"
+  ],
+  "batch": "fp36"
  },
  "municipalmuseumofcityofkrakw|Poland": {
   "name": "Gmina Miejska Kraków",
@@ -15616,6 +15935,22 @@
   ],
   "batch": "fp18"
  },
+ "ohiostateuniversity|USA": {
+  "name": "The Ohio State University",
+  "short": "Ohio State",
+  "kind": "gov",
+  "what": "A public land-grant research university in Columbus, Ohio, founded on 22 March 1870 as the Ohio Agricultural and Mechanical College, with 65,405 students.",
+  "money": "Its USD 10.4 billion FY2025 plan drew 56 percent from its health system; university funds came 30 percent from tuition, 11 percent from government appropriations.",
+  "site": "https://www.osu.edu",
+  "city": "Columbus",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ohio_State_University",
+   "https://busfin.osu.edu/sites/default/files/money_matters_osu_budget_model_fy2025.pdf"
+  ],
+  "batch": "fp36"
+ },
  "ohra": {
   "name": "OHRA",
   "kind": "corp",
@@ -16517,6 +16852,23 @@
    "https://www.eni.com/it-IT/media/comunicati-stampa/2026/05/plenitude-pubblica-bilancio-esercizio-2025-suo-nuovo-report-sostenibilita-relazione.html"
   ],
   "batch": "fp11"
+ },
+ "plymouthcitycouncil|UK": {
+  "name": "Plymouth City Council",
+  "kind": "gov",
+  "what": "Plymouth's city council in Devon, England, a unitary authority since 1 April 1998, with 57 councillors meeting at the Council House on Armada Way.",
+  "money": "A revenue budget of GBP 253.4 million for 2025/26: other grants 39 percent, council tax 24 percent, core government grants 16 percent.",
+  "site": "https://www.plymouth.gov.uk",
+  "city": "Plymouth",
+  "country": "United Kingdom",
+  "address": "Ballard House, West Hoe Road, Plymouth",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Plymouth_City_Council",
+   "https://www.plymouth.gov.uk/counciltax/howwespendyourcounciltax",
+   "https://www.plymouth.gov.uk/news/council-agrees-extra-funding-vital-care-services-202526-budget"
+  ],
+  "batch": "fp36"
  },
  "pnc": {
   "name": "The PNC Financial Services Group, Inc.",
@@ -17570,6 +17922,23 @@
   ],
   "batch": "fp19"
  },
+ "riodejaneirostate|Brazil": {
+  "name": "Governo do Estado do Rio de Janeiro",
+  "short": "Rio de Janeiro State Government",
+  "kind": "gov",
+  "what": "The executive branch of the Brazilian state of Rio de Janeiro, led by the governor, with its seat at the Palácio Guanabara in the state capital since 1975.",
+  "money": "The state budget of Rio de Janeiro.",
+  "arts": "Its culture and creative economy secretariat runs the state culture incentive law, under which ICMS-paying companies put about R$ 230 million into 138 projects in 2024.",
+  "site": "https://www.rj.gov.br",
+  "city": "Rio de Janeiro",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Governo_do_Estado_do_Rio_de_Janeiro",
+   "https://www.correiodamanha.com.br/estado-do-rio/2025/01/176049-governo-investiu-rs-230-milhoes-por-meio-da-lei-de-incentivo-a-cultura.html"
+  ],
+  "batch": "fp36"
+ },
  "rnne": {
   "name": "Rönne-Stiftung",
   "kind": "found",
@@ -17887,6 +18256,53 @@
    "https://fr.wikipedia.org/wiki/Conseil_régional_d'Occitanie"
   ],
   "batch": "fp27"
+ },
+ "russianfederalstate|Russia": {
+  "name": "Министерство культуры Российской Федерации",
+  "short": "Russian Ministry of Culture",
+  "kind": "gov",
+  "what": "The Russian federal ministry for culture policy, formed on 2 May 2008 and led by Olga Lyubimova since 21 January 2020; the Hermitage is in its charge.",
+  "money": "The federal budget of Russia, which pays federal museums such as the Hermitage subsidies for their state assignments.",
+  "site": "https://culture.gov.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Russia)",
+   "https://rulaws.ru/amp/goverment/Postanovlenie-Pravitelstva-RF-ot-29.11.2011-N-984/"
+  ],
+  "batch": "fp36"
+ },
+ "russianstate|Italy": {
+  "name": "Российская Федерация",
+  "short": "Russian Federation",
+  "kind": "gov",
+  "what": "The Russian federal state, whose government owns Russia’s national pavilion in the Giardini of the Venice Biennale, as each national pavilion there belongs to its government.",
+  "money": "The federal budget of Russia.",
+  "city": "Moscow",
+  "country": "Russia",
+  "wrong_match": "The pavilion’s line names the Russian state only as owner of the building, and Novatek, not the state, paid for the 2021 renovation.",
+  "status": "done",
+  "sources": [
+   "https://meduza.io/en/feature/2026/03/11/russia-s-return-to-the-venice-biennale-has-triggered-backlash-and-a-threat-to-pull-e-u-funding-meduza-explains-how-the-forum-was-designed-for-soft-power-from-the-start"
+  ],
+  "batch": "fp36"
+ },
+ "russianstate|Russia": {
+  "name": "Министерство культуры Российской Федерации",
+  "short": "Russian Ministry of Culture",
+  "kind": "gov",
+  "what": "The Russian federal ministry for culture policy, formed on 2 May 2008 and led by Olga Lyubimova since 21 January 2020; the State Russian Museum is in its charge.",
+  "money": "The federal budget of the Russian Federation.",
+  "site": "https://culture.gov.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Russia)",
+   "https://rusmuseum.ru/upload/medialibrary/f91/d2c70zwq3l272mks7mv5dff8sz8d19qf/nomer%201228.pdf"
+  ],
+  "batch": "fp36"
  },
  "russiasmajornaturalgasproducer": {
   "name": "Leonid Mikhelson",
@@ -18867,6 +19283,24 @@
   ],
   "batch": "fp21"
  },
+ "southaustraliangovernment|Australia": {
+  "name": "Government of South Australia",
+  "short": "South Australian Government",
+  "kind": "gov",
+  "what": "South Australia's state government, led by Premier Peter Malinauskas from the State Administration Centre in Adelaide, set up as a responsible colonial government on 22 April 1857.",
+  "money": "The state budget of South Australia: AUD 27.5 billion in 2023-24.",
+  "arts": "In July 2024 it committed AUD 780,000 to repair the Tandanya building in Adelaide, home of the National Aboriginal Cultural Institute.",
+  "site": "https://www.sa.gov.au",
+  "city": "Adelaide",
+  "country": "Australia",
+  "address": "State Administration Centre, 200 Victoria Square, Adelaide",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_South_Australia",
+   "https://www.indailysa.com.au/news/archive/2024/07/12/visibly-tired-and-closed-tandanya-to-reopen-after-repairs"
+  ],
+  "batch": "fp36"
+ },
  "southbankcentretrust": {
   "name": "Southbank Centre",
   "kind": "found",
@@ -19767,6 +20201,22 @@
    "https://myartguides.com/artspaces/non-profit/mexico-city/biquini-wax-eps/"
   ],
   "batch": "fp30"
+ },
+ "thanetdistrictcouncil|UK": {
+  "name": "Thanet District Council",
+  "kind": "gov",
+  "what": "The district council for Thanet in Kent, England, created on 1 April 1974, with 56 councillors and offices on Cecil Street in Margate.",
+  "money": "A net budget of GBP 26.343 million for 2025/26, about half from the government’s settlement funding and half from council tax.",
+  "site": "https://www.thanet.gov.uk",
+  "city": "Margate",
+  "country": "United Kingdom",
+  "address": "Council Offices, Cecil Street, Margate CT9 1XZ",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Thanet_District_Council",
+   "https://www.thanet.gov.uk/info-pages/cost-of-council-services"
+  ],
+  "batch": "fp36"
  },
  "thief": {
   "name": "THE THIEF",
@@ -21205,6 +21655,21 @@
    "https://web.archive.org/web/20261114024906/https://www.vtb.com/"
   ],
   "batch": "fp29"
+ },
+ "vyksacityadministration|Russia": {
+  "name": "Администрация городского округа город Выкса",
+  "short": "Vyksa administration",
+  "kind": "gov",
+  "what": "The administration of the Vyksa urban district in Nizhny Novgorod Oblast, Russia, formed from the Vyksunsky district in 2011, with 72,351 residents in 2025.",
+  "money": "The budget of the Vyksa urban district, where OMK's Vyksa Metallurgical Plant is the town's main taxpayer.",
+  "city": "Vyksa",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Городской_округ_город_Выкса",
+   "https://ru.wikipedia.org/wiki/Выкса"
+  ],
+  "batch": "fp36"
  },
  "wacom": {
   "name": "Wacom Co., Ltd.",
