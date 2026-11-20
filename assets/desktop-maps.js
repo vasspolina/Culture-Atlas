@@ -610,12 +610,19 @@
       if (!v.width) return;
       const pad = parseFloat(getComputedStyle(root).getPropertyValue('--sh-pad')) || 22;
       const t = tag && tag.getClientRects().length ? tag.getBoundingClientRect() : null;
-      const widest = Math.max(0, ...[...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width));
+      const widths = [...chips.querySelectorAll('button')].map((b) => b.getBoundingClientRect().width).filter((w) => w > 0);
+      const widest = Math.max(0, ...widths);
       // The name stands centred at the map's top (sheet.css, end): the pills keep to its left as they keep to the tagline's.
       const nb = $('gmdTitle') && $('gmdTitle').querySelector('button');
       const n = nb && nb.getClientRects().length ? nb.getBoundingClientRect() : null;
       const room = Math.min(t ? t.left : v.right, n && n.top < v.top + v.height / 2 ? n.left : v.right) - v.left - 2 * pad;
-      const top = room >= widest;
+      // Room for the widest pill is not enough (19 Nov 2026): beside the name in an 807px map there was room for one pill a
+      // row, and the nine stood six rows deep over the city's line and the street map. They stay at the top only while they
+      // fit there in three rows, the depth of the name and the city's line; otherwise the foot of the map, at its full width.
+      const gap = parseFloat(getComputedStyle(chips).columnGap) || 0;
+      let rows = widths.length ? 1 : 0, run = 0;
+      widths.forEach((w) => { if (run && run + gap + w > room) { rows += 1; run = w; } else run += (run ? gap : 0) + w; });
+      const top = room >= widest && rows <= 3;
       const set = (k, val) => { if (root.style.getPropertyValue(k) !== val) root.style.setProperty(k, val); };
       set('--sh-chips-l', `${Math.round(v.left + pad)}px`);
       set('--sh-chips-t', top ? `${Math.round(v.top + pad * 0.6)}px` : 'auto');

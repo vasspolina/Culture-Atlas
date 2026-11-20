@@ -1859,6 +1859,10 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
        initCityMapIfNeeded); before it is measured, the name's line and one row of this one. */
     :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #cityMapContainer:not(#sh-x){
       top:var(--street-top,calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-head) * .8))!important;bottom:0!important;height:auto!important}
+    /* The globe is not drawn behind an open street map (19 Nov 2026). The street map used to cover it whole; starting
+       under the city's line, it left the globe's canvases showing in that row, a strip of the globe's land behind
+       "‹ World ‹ Germany Berlin". Hidden, they take no pointer there either. */
+    :root.gmd.gmd #globeViewport:has(#cityMapContainer:not(.hidden)) :is(#globeCanvas,#globeCardCanvas){visibility:hidden!important}
   }
 }
 
@@ -2414,11 +2418,10 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
    is the form's dark green (--sh-green), bold, tracked 0.2em. */
 @layer sheet{
 :root #curatorMessages .chat-share-invite-line{color:var(--sh-green)!important}
-/* The chat's line is set plain, the serif's regular weight with no tracking (user, 19 Nov 2026: "make the green line not
-   bold or spaced out"). The Share information form's undertone stays bold, tracked 5% (user, 19 Nov 2026: "make this in
-   bold and 5%letter spacing"). */
-:root:root #curatorMessages .chat-share-invite-line{font-family:var(--sh-serif)!important;font-weight:400!important;letter-spacing:normal!important}
-:root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:"Atlas Serif Bold",var(--sh-serif)!important;font-weight:700!important;letter-spacing:.05em!important}
+/* The chat's line and the Share information form's undertone are set plain, the serif's regular weight with no tracking
+   (user, 19 Nov 2026: "make the green line not bold or spaced out", then of the form's undertone: "plain too"). */
+:root:root #curatorMessages .chat-share-invite-line,
+:root:root body.chat-input-mode-active #workInputCard #noteFormIntro,:root:root body.chat-input-mode-active #workInputCard #noteFormIntro *{font-family:var(--sh-serif)!important;font-weight:400!important;letter-spacing:normal!important}
 }
 
 /* ==== A NAME BUBBLE TO THE LEFT OF ITS MARK KEEPS ITS WIDTH (user, 19 Nov 2026, a screenshot of Galeria Foksal close in:
@@ -2473,6 +2476,20 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible) *,
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible) *{color:var(--sh-paper)!important}
+/* The share buttons are dark green at rest too (user, 20 Nov 2026: "make the share buttons green too"): the dock's Share
+   information button (and Back to chat) fills --sh-green with the paper's colour on it, and under the pointer it deepens
+   a fifth toward the ink; the chat's "Share information about ..." and "Or fill in a form" are set in --sh-green and fill
+   with it under the pointer, as above. White on #3e6826 6.5:1; dark theme #151412 on #9fd0a6 10:1. The four :not(#dkN) outrank the dark
+   theme's pill rule for these buttons. */
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4) *{color:var(--sh-paper)!important}
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important}
+:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn{color:var(--sh-green)!important}
+/* The form's Send for review button (#workSendBtn while the form is open) takes the same dark green (user, 20 Nov 2026:
+   "make the form send button green too"), deepening under the pointer like Share information. */
+:root:root:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workSendBtn#workSendBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workSendBtn#workSendBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4) *{color:var(--sh-paper)!important;stroke:currentColor!important}
+:root:root:root:root body.chat-input-mode-active #workBottomDock #workInputCard #workSendBtn#workSendBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important}
 /* The form's description starts on the left edge with the labels and fields (user, 19 Nov 2026: "allign description to
    the left"); it had the sheet's indent. */
 :root:root #noteFormIntro{padding-left:0!important;margin-left:0!important;text-indent:0!important}
