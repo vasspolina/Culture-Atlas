@@ -1,0 +1,40 @@
+# Runs the test suites on every pull request and push to main, so a change is checked before it is merged.
+# deploy.yml publishes the site; this workflow only checks it and changes nothing.
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # No lockfile is committed, so this is a plain install rather than npm ci.
+      - name: Install the report API's packages
+        run: |
+          npm install --no-package-lock
+          npx prisma generate
+
+      - name: Site, data and report API tests
+        run: npm test
+
+      - name: Chat proxy tests
+        run: node --test worker/test/*.test.mjs
+
+      - name: Records have no repeated statement
+        run: python3 tools/check_repetition.py --max 0
