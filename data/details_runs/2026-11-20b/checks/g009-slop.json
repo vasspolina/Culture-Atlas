@@ -1,0 +1,431 @@
+[
+ {
+  "id": "pinacoteca-agnelli",
+  "section": "red_flags",
+  "problems": [
+   "ruling: re-source plea to US government",
+   "unsupported detail"
+  ],
+  "before": "FCA US LLC ... pleaded guilty in June 2022 ... (Rappler) ... sentenced to a 96.1 million dollar fine, forfeiture of 203.6 million dollars ... (Rappler).",
+  "after": "Plea month from Rappler/Reuters; conviction, vehicles, fine of 96,145,784 dollars, forfeiture of 203,572,892 dollars and three years' probation from the EPA's release of 31 July 2022, which quotes the Justice Department.",
+  "sources": [
+   "https://www.epa.gov/newsreleases/fca-us-llc-sentenced-connection-conspiracy-cheat-us-emissions-tests",
+   "https://www.rappler.com/business/fiat-chrysler-automobiles-sentenced-united-states-diesel-emissions-probe-august-2022/"
+  ],
+  "reason": "justice.gov serves a bot challenge to curl and WebFetch; the EPA copy is the same joint DOJ/EPA release on a US government site."
+ },
+ {
+  "id": "pinacoteca-agnelli",
+  "section": "red_flags -> wider_context",
+  "problems": [
+   "ruling: pending case is not a Red flag"
+  ],
+  "before": "Red flags: 2024 to 2026 Turin tax case over Marella Caracciolo's estate (board members)",
+  "after": "WIDER CONTEXT with the same three points, plus the connection: Elkann and Ferrero are the board member and secretary named under FUNDING; no court has ruled.",
+  "sources": [
+   "https://it.euronews.com/2025/12/16/eredita-agnelli-il-gip-ordina-limputazione-coatta-di-john-elkann",
+   "https://www.calcioefinanza.it/2026/09/11/john-elkann-udienza-eredita-agnelli/"
+  ],
+  "reason": "A charge not yet decided is a note."
+ },
+ {
+  "id": "pinacoteca-agnelli",
+  "section": "overview",
+  "problems": [
+   "source conflict: director's start"
+  ],
+  "before": "Sarah Cosulich became director with the programme that opened on 27 May 2022",
+  "after": "Cosulich director since 2021 (Social Report 2024); her first programme opened 27 May 2022 (Artribune).",
+  "sources": [
+   "https://www.pinacoteca-agnelli.it/wp-content/uploads/2026/01/PA_BilancioSociale_2024_Digitale.pdf"
+  ],
+  "reason": "Social Report says the direction was entrusted to her in 2021."
+ },
+ {
+  "id": "pinacoteca-agnelli",
+  "section": "funding",
+  "problems": [
+   "misread figures",
+   "wrong attribution"
+  ],
+  "before": "After 0.754 million of running costs, 3.455 million went to programmes. Net assets are 4.2 million euros ... the director's letter thanks FIAT",
+  "after": "0.754 million is structural costs; 0.068 million set aside; 0.109 million tax; 'patrimonio' of 4.2 million; the unsigned letter to stakeholders thanks FIAT. Statute income line cut for length.",
+  "sources": [
+   "https://www.pinacoteca-agnelli.it/wp-content/uploads/2026/01/PA_BilancioSociale_2024_Digitale.pdf"
+  ],
+  "reason": "Figures as printed in the Social Report table."
+ },
+ {
+  "id": "pinacoteca-agnelli",
+  "section": "bottom_line",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Private family money: an Agnelli foundation carried by its founders, Stellantis and an Exor company. The weak points are ...",
+  "after": "Private family money with no flagged funder. The main sponsor's US criminal conviction is the name to know; the board's tax case is one to watch until a court decides it.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "museo-revoltella",
+  "section": "red_flags",
+  "problems": [
+   "ruling: staff protest test",
+   "two issues under one heading"
+  ],
+  "before": "Red flags: 2023 to 2026 disputes over pay and conditions of museum attendants",
+  "after": "Split: '2023 strikes by contract attendants over 5 euros an hour' (il manifesto names scioperi) and '2026 union protest against the museum contractor Cristoforo' (24 March 2026 protest in front of the town hall, with workers present).",
+  "sources": [
+   "https://ilmanifesto.it/il-triste-destino-del-revoltella",
+   "https://www.ildolomiti.it/cronaca/2026/diritti-negati-agli-operatori-museali-il-sindacato-in-piazza-conto-la-cooperativa-il-comune-e-complice-lassessore-non-soddisfatto-ma-serve-dialogo"
+  ],
+  "reason": "Both meet the ruling: strikes in 2023 and a public protest in 2026; they stay Red flags."
+ },
+ {
+  "id": "museo-revoltella",
+  "section": "red_flags",
+  "problems": [
+   "source conflict: Cristoforo start date"
+  ],
+  "before": "(none)",
+  "after": "il Dolomiti's December 2025 report puts Cristoforo in Trieste since 2024; its March 2026 report gives the museum contract from February 2025.",
+  "sources": [
+   "https://www.ildolomiti.it/cronaca/2025/gestione-musei-i-sindacati-portano-in-tribunale-la-coop-che-reprime-con-angherie-i-lavoratori-lassessore-in-questo-modo-non-possiamo-andare-avanti"
+  ],
+  "reason": "Both dates stated with their sources."
+ },
+ {
+  "id": "museo-revoltella",
+  "section": "press",
+  "problems": [
+   "wrong 'Does not name'",
+   "paywall mark"
+  ],
+  "before": "Does not name the Revoltella. ... English version listed (paywalled)",
+  "after": "Names the Revoltella only in a photo caption. English duplicate dropped from SOURCES.",
+  "sources": [
+   "https://www.finestresullarte.info/opinioni/caso-musei-trieste-problema-abitudini-amministrazioni-locali"
+  ],
+  "reason": "The Italian original opened in full."
+ },
+ {
+  "id": "museo-revoltella",
+  "section": "overview",
+  "problems": [
+   "changed detail"
+  ],
+  "before": "a year's card ... costs 15 euros until 6 January 2027",
+  "after": "a discounted 15 euros from 1 December 2026 to 6 January 2027",
+  "sources": [
+   "https://museorevoltella.it/a-natale-regalati-un-anno-di-musei-3/"
+  ],
+  "reason": "As on the page."
+ },
+ {
+  "id": "museo-revoltella",
+  "section": "bottom_line",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... no director, a dormant board, and contractors in open dispute with museum staff.",
+  "after": "Clean public money. The weak points lie in how the city governs the museum and treats the contract staff who run it, not in who pays.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "reggia-di-caserta",
+  "section": "red_flags -> wider_context",
+  "problems": [
+   "ruling: fits no flag",
+   "unsupported: 'Santonastaso said the post is unpaid'",
+   "spelling conflict"
+  ],
+  "before": "Red flags: 2026 dispute over a party official's seat on the board ... Santonastaso said the post is unpaid",
+  "after": "WIDER CONTEXT; 'unpaid' cut (not on the Il Fatto page); spelling: Il Fatto writes both Santonastasio and Santonastaso, Il Foglio and Domani Santonastaso; Domani gives Nicla Virgilio for Il Fatto's Nicolina; M5S question added.",
+  "sources": [
+   "https://www.ilfattoquotidiano.it/2026/02/06/reggia-caserta-nomina-fratelli-italia-polemiche-news/8282459/",
+   "https://www.ilfoglio.it/politica/2025/04/10/news/cosi-fdi-in-campania-si-congela--114190",
+   "https://www.editorialedomani.it/politica/italia/reggia-di-caserta-lottizzata-furia-fi-rompe-coi-meloniani-gh82m8yd"
+  ],
+  "reason": "Per ruling."
+ },
+ {
+  "id": "reggia-di-caserta",
+  "section": "red_flags",
+  "problems": [
+   "thin point"
+  ],
+  "before": "(two points)",
+  "after": "Added: Benecon found 6.9 percent of the oaks in advanced decay; environmental groups' agronomists found no more than 10 percent irreversibly ill; the ministry committee suggested spreading the work over 18 months.",
+  "sources": [
+   "https://www.finestresullarte.info/attualita/reggia-di-caserta-scontro-abbattimento-750-lecci-parco"
+  ],
+  "reason": "The article opened in full; '(paywalled)' removed."
+ },
+ {
+  "id": "reggia-di-caserta",
+  "section": "wider_context",
+  "problems": [
+   "wrong paywall mark"
+  ],
+  "before": "(Finestre sull'Arte, 6 March 2016; paywalled, only excerpts were read)",
+  "after": "Opened in full: Federico Giannini called the story a 'finto caso' (fake case, own translation).",
+  "sources": [
+   "https://www.finestresullarte.info/focus/reggia-di-caserta-felicori-lavora-troppo-finte-accuse-strumentalizzazioni"
+  ],
+  "reason": "Full text read."
+ },
+ {
+  "id": "reggia-di-caserta",
+  "section": "overview/funding",
+  "problems": [
+   "over length"
+  ],
+  "before": "Archive line; November 2026 sponsor search line",
+  "after": "Cut",
+  "sources": [],
+  "reason": "Peripheral detail cut to stay under 800 words."
+ },
+ {
+  "id": "reggia-di-caserta",
+  "section": "bottom_line",
+  "problems": [
+   "repetition"
+  ],
+  "before": "... The weak points are the oak felling under PNRR deadlines and the political appointment to the board.",
+  "after": "Clean state money, earned mostly at the gate. The one live dispute is over how the park is managed, not who pays; the board appointment is worth watching.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "21st-century-museum-of-contemporary-art",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only points"
+  ],
+  "before": "former Kanazawa University school site; 112.5 metres; four entrances; April 2002 to August 2004; closure (Japanese Wikipedia); director dates (Wikipedia)",
+  "after": "Opening 9 October 2004 and April 2002 groundbreaking from the museum history page; 113 metres and two storeys up, two down from the museum's architectural data; site and entrances cut; closure from Tokyo Art Beat (26 Feb 2025); directors from Bijutsu Techo (25 March 2025); Swimming Pool from Bijutsu Techo; added FY2023 visitors (1.97 million) and the last show before closure.",
+  "sources": [
+   "https://www.kanazawa21.jp/data_list.php?g=50&lng=e",
+   "https://bijutsutecho.com/magazine/news/headline/30493",
+   "https://www.tokyoartbeat.com/articles/-/21st-century-museum-of-contemporary-art-kanazawa-news-202502"
+  ],
+  "reason": "Official diameter is 113 m, not 112.5."
+ },
+ {
+  "id": "21st-century-museum-of-contemporary-art",
+  "section": "red_flags",
+  "problems": [
+   "ruling: source to Kanazawa Energy profile",
+   "heading without year",
+   "directory claim beyond the page"
+  ],
+  "before": "Red flags: gas utility and LP gas retailer among sustaining members ... sells LP gas in Ishikawa, Toyama and Fukui (Be Connect; enepi.jp)",
+  "after": "Red flags: gas utility Kanazawa Energy among Gold sustaining members (2026 list); shareholdings and business from the company profile (2025); Iwatani Central Hokuriku as an LP gas retailer in Nonoichi (Be Connect only).",
+  "sources": [
+   "https://kanazawa-ge.co.jp/wp/wp-content/themes/kanazawa-energy/assets/docs/outline-company15.pdf",
+   "https://www.kanazawa21.jp/sustain/",
+   "https://beconnect.club/company/5804/"
+  ],
+  "reason": "enepi.jp returned 403; the three-prefecture claim was cut."
+ },
+ {
+  "id": "21st-century-museum-of-contemporary-art",
+  "section": "funding/bottom_line",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "The page does not say how many units each member holds or give a date for the list ... the amounts are not published.",
+  "after": "Cut; bottom line: Mainly clean city money, with one current fossil-fuel tie in the top tier of sustaining members.",
+  "sources": [],
+  "reason": "No 'not found' lines."
+ },
+ {
+  "id": "gotoh-museum",
+  "section": "funding",
+  "problems": [
+   "misread figure"
+  ],
+  "before": "... paid from the facilities reserve, which totalled 111,963,500 yen in FY2025",
+  "after": "works paid from the facilities repair reserve came to 111,963,500 yen in FY2025",
+  "sources": [
+   "https://www.gotoh-museum.or.jp/wp-content/uploads/pdf/2026_houkoku.pdf"
+  ],
+  "reason": "The figure is total works paid from the reserve, not the reserve balance."
+ },
+ {
+  "id": "gotoh-museum",
+  "section": "bottom_line",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Clean money, but from one source: the founder's company still carries the museum. Worth watching is that dependence on a single railway and property group.",
+  "after": "Clean money with no flagged funder. The weak point is dependence: one company carries almost the whole budget.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "new-national-theatre-tokyo-nntt",
+  "section": "red_flags",
+  "problems": [
+   "ruling: arms test met",
+   "missed funder"
+  ],
+  "before": "MHI Machinery Systems listed only among children's ballet sponsors",
+  "after": "Red flags: 2024 support from defence contractor Mitsubishi Heavy Industries: MHI itself is one of 14 Guarantors (特別維持会員) among 132 corporate members; MHIMS co-sponsored 'Story of a Little Mermaid' (Annual Report 2024); MHIMS's own page places it in the MHI Group ('as one with MHI'); MHI's Space & Defense page lists fighter jets, missile systems, destroyers and submarines.",
+  "sources": [
+   "https://www.nntt.jac.go.jp/about/report/annual/pdf/annual_report_R6-2024.pdf",
+   "https://www.mhi.com/group/mhims/company",
+   "https://www.mhi.com/business/products-services/space-defense"
+  ],
+  "reason": "All three conditions of the ruling met from text sources; MHI's own Guarantor membership was in the report but missing from the draft."
+ },
+ {
+  "id": "new-national-theatre-tokyo-nntt",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only points",
+   "wrong figure"
+  ],
+  "before": "runs it on commission (Japanese Wikipedia) ... Opera Palace (1,814 seats, Japanese Wikipedia)",
+  "after": "Commission from the foundation's own page (Japan Arts Council founder since 1989); Opera Palace 1,806 seats plus up to eight wheelchair spaces (theatre website).",
+  "sources": [
+   "https://www.nntt.jac.go.jp/about/foundation/index.html",
+   "https://www.nntt.jac.go.jp/guide/operapalace/"
+  ],
+  "reason": "1,814 is 1,806 seats plus 8 wheelchair spaces."
+ },
+ {
+  "id": "new-national-theatre-tokyo-nntt",
+  "section": "bottom_line",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Clean: mostly state money ... Worth watching are the single-show sponsors, which change each season.",
+  "after": "Mostly state money with ticket income. The one flagged name is an arms maker among the top corporate supporters; the rest of the sponsors carry no flag.",
+  "sources": [],
+  "reason": "Verdict follows the new Red flag."
+ },
+ {
+  "id": "okayama-art-summit-okayama",
+  "section": "red_flags",
+  "problems": [
+   "ruling: text source for JT",
+   "Wikipedia attribution"
+  ],
+  "before": "The 2025 about page shows a sponsor logo named 'JT' that links to jti.co.jp ... which English Wikipedia gives as the website of Japan Tobacco.",
+  "after": "The executive committee's 2025 event report (March 2026) lists 日本たばこ産業株式会社 (Japan Tobacco Inc.) among the sponsors (協賛); the logo kept as a second point.",
+  "sources": [
+   "https://okayamaartsummit.jp/2025/wp/wp-content/uploads/2026/03/岡山芸術交流2025開催報告書①.pdf"
+  ],
+  "reason": "Text source found, so Tobacco stays a Red flag. The city's JT agreement moved to WIDER CONTEXT."
+ },
+ {
+  "id": "okayama-art-summit-okayama",
+  "section": "red_flags",
+  "problems": [
+   "ruling: petition date test",
+   "heading"
+  ],
+  "before": "Red flags: 2021 to 2022 citizen petitions over executive producer Yasuharu Ishikawa",
+  "after": "Red flags: citizen petitions of 2021 and 2022 over executive producer Yasuharu Ishikawa (first petition 19 November 2021; July 2022 request with 400 signatures).",
+  "sources": [
+   "https://www.tokyoartbeat.com/articles/-/okayamaartsummit2022_news_1119",
+   "https://www.tokyoartbeat.com/en/articles/-/controversy-brews-over-rirkrit-tiravanijas-okayama-art-summit"
+  ],
+  "reason": "Dated on or after November 2021, so it stays."
+ },
+ {
+  "id": "okayama-art-summit-okayama",
+  "section": "funding",
+  "problems": [
+   "wrong tier",
+   "missing funding point"
+  ],
+  "before": "Sponsors on the 2025 about page ... Merco Group; Ishikawa Holdings ...",
+  "after": "Merco Group special co-organiser; special sponsors and sponsors as in the 2025 event report; CAMPFIRE crowdfunding raised 7,538,000 yen against a 5,000,000 yen target.",
+  "sources": [
+   "https://okayamaartsummit.jp/2025/wp/wp-content/uploads/2026/03/岡山芸術交流2025開催報告書②_.pdf"
+  ],
+  "reason": "Tiers and figures as printed."
+ },
+ {
+  "id": "okayama-art-summit-okayama",
+  "section": "bottom_line",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Mostly local public and corporate money. The weak points are a tobacco company among the 2025 sponsors and an executive producer whose role drew citizen petitions that the organisers declined to address.",
+  "after": "Mostly local public and corporate money, with one current tobacco sponsor. The organisers' silence towards the petitioners remains the governance weak point.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "overview",
+  "problems": [
+   "Wikipedia-only points",
+   "superlative"
+  ],
+  "before": "in Fuji-Hakone-Izu National Park (Japanese Wikipedia); Impressionist holdings among the largest in Japan; designed by Nikken Sekkei and built by Takenaka (Japanese Wikipedia); director since July 2023 (Japanese Wikipedia)",
+  "after": "Park and superlative and designers cut; forest of 300-year-old beeches (e-flux); director re-sourced to Bijutsu Techo (30 June 2023): Noguchi Hiroko from 1 July 2023, a former hotel general manager, after Kijima Shunsuke (from July 2014).",
+  "sources": [
+   "https://bijutsutecho.com/magazine/news/headline/27446",
+   "https://www.e-flux.com/directory/562838/pola-museum-of-art"
+  ],
+  "reason": "No official or press source found for the architects."
+ },
+ {
+  "id": "pola-museum-of-art-hakone",
+  "section": "bottom_line",
+  "problems": [
+   "absence framing",
+   "repetition"
+  ],
+  "before": "... Worth watching is the lack of named outside funders ...",
+  "after": "Clean: a cosmetics family's foundation carries the museum. The weak point is dependence on that one family fortune.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "tokyo-metropolitan-art-museum",
+  "section": "overview/bottom_line",
+  "problems": [
+   "missing visitor figure",
+   "repetition"
+  ],
+  "before": "(no visitor figure); bottom line restating operator and sponsors",
+  "after": "Added about 2 million visitors a year (museum history exhibition page); bottom line: Clean public money with no flagged sponsor. The 1926 coal gift is history, not current funding.",
+  "sources": [
+   "https://www.tobikan.jp/2026_archives/"
+  ],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "the-jordan-museum",
+  "section": "funding/overview",
+  "problems": [
+   "ruling: snippet identification",
+   "Wikipedia-only points"
+  ],
+  "before": "Funding verdict 'a building planned under a Japanese aid loan'; Wikipedia: committee headed by Queen Rania, construction 2009, official opening 2014",
+  "after": "Identification now rests on opened pages: Jordan News (13 April 2021) names the Jordan Museum and the 1999 Japanese loan for the Tourism Sector Development Project, the 25 million dollar cost and JICA; Queen Rania's office (3 October 2005) records the Ras El Ein cornerstone with JBIC and JICA present and work begun in 2005; the JICA study lists Queen Rania as head of the National Museum Steering Committee. Wikipedia's 2009 and 2014 dates cut.",
+  "sources": [
+   "https://www.jordannews.jo/Section-123/Property/The-storyteller-of-Jordan-1332",
+   "https://www.queenrania.jo/en/node/777",
+   "https://openjicareport.jica.go.jp/pdf/11605466_01.PDF"
+  ],
+  "reason": "Per ruling, identification only from opened sources; they now exist."
+ },
+ {
+  "id": "the-jordan-museum",
+  "section": "bottom_line",
+  "problems": [
+   "absence framing"
+  ],
+  "before": "Worth watching is how little the museum publishes about its running budget and board while its website is offline.",
+  "after": "Clean: state money and Japanese development finance. No funder carries a flag, and no dispute touches the museum.",
+  "sources": [],
+  "reason": "Verdict only."
+ }
+]

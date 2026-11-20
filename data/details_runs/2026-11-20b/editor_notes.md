@@ -6,6 +6,24 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 
 ## Grade or flag questions
 
+- qasr-al-hosn and sharjah-museum-of-islamic-civilization: Gulf state body; records have no flags.
+- sharjah-art-foundation-sharjah: Gulf state body; Crescent Enterprises (Crescent Group, Crescent
+  Petroleum) 2025 Biennial sponsor, Fossil fuels if oil is the group's main business.
+- wellcome-collection: why_flagged (fossil divestment) is WIDER CONTEXT only.
+- modern-art-museum-of-fort-worth-fort-worth: Fossil fuels (Sid W. Richardson Foundation) and State
+  censorship (2025 police seizure; the city funds it; no indictment).
+- moma-the-museum-of-modern-art: Epstein-linked (Black, Dubin), Protest (2024, incl. the Kravis/KKR
+  campaign); Crown and General Dynamics only if a non-partisan source confirms.
+- barbican-centre-london: Protest (2024 Gaza lecture; 2026 open letter); tier_note says no reason.
+
+- rahmi-m-koc-museum: Fossil fuels on the Koç Holding founder fortune (CHECKER.md's Koç/Pera ruling);
+  Otokar's defence line is not the majority business. Record has no flags.
+- dubai-opera: Emaar (listed; Dubai Holding 29.73%) is not a state body; HSBC's January 2024 fine as a
+  name to know. Record has no flags.
+- guggenheim-abu-dhabi: Gulf state body, Forced or exploited labour, Protest (boycott continuing in 2026).
+- chora-museum-kariye: conversion is not a flag.
+- bangkok-kunsthalle: Protest (2024 artn't); CP Foods case is WIDER CONTEXT.
+
 - arko-art-center-seoul and nam-june-paik-art-center-yongin: Hyundai (2026 Venice pavilion partner;
   exhibition money) and documented child labour at Alabama suppliers: Forced or exploited labour.
   Arko's record has no flag.
@@ -18,10 +36,11 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 - new-york-academy-of-art-new-york: Epstein board seat 1987 to 1994 and money after his 2008 plea
   (Epstein-linked).
 - noguchi-museum: 2024 keffiyeh ban and firings, 2024 protests (Protest); record carries no flag.
-- queens-museum: Protest rests on 2023 staff and artist disputes, if readable sources confirm them;
-  tier_note says no reason is recorded.
-- pinchukartcentre: Kryvorizhstal (2004 to 2005) and the 2019 to 2020 union dispute are WIDER CONTEXT;
-  check why_flagged and tier.
+- queens-museum: the 2023 staff letter and strike have no readable source (walled Hyperallergic,
+  Wikipedia), so they are WIDER CONTEXT; the only Red flag left is the 2023 Xaviera Simmons dispute
+  (Artforum), not a flag category. The record's Protest flag needs review; tier_note says no reason.
+- pinchukartcentre: no Red flag left (Kryvorizhstal 2004 to 2005, the 2019 to 2020 guides dispute and
+  the Trump Foundation payment are WIDER CONTEXT); why_flagged and watch rest on them.
 - kuindzhi-art-museum: Sanctions on the DNR entity; its control rests on a 2022 sign (Bellingcat).
 
 - african-artists-foundation-lagos: no text source names Deutsche Bank; watch and why_flagged rest on a
@@ -42,8 +61,9 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 - tanoto-art-foundation-singapore: RGE's gas business and Asian Agri's 2012 tax ruling are WIDER
   CONTEXT (no documented money link; old).
 
-- serralves-foundation-porto: Galp (to 2024) and REN Portgás (2025, gas distributor) as current Fossil
-  fuels; Tabaqueira (2021 to 2022) as Tobacco. Record carries only Fossil fuels.
+- serralves-foundation-porto: Galp (to 2024) and REN Portgás (2021 to 2025, gas distributor) as current
+  Fossil fuels; Tabaqueira (2021 to 2022, plus a July 2025 conference with the Foundation) as Tobacco.
+  Record carries only Fossil fuels. Galp is absent from the 2025 founders list.
 - mac-lima-lima: 2022 Getty grant is a note (Getty ruling), no flag.
 - katara-cultural-village and msheireb-museums: Gulf state body (government foundation; Msheireb
   Properties 51% Qatar Foundation, 49% QIA). Records have no flags.
@@ -73,7 +93,8 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   by Royal Decree 15/2023; Royal Decree 105/2010 and a Higher Committee under the Deputy Prime
   Minister). Records have no flags.
 - nasjonalmuseet-national-museum-of-norway: Protest flag fits (June 2022 artists' appeal against the
-  Fredriksen agreement). Fredriksen's 2014 US oil-fraud fine (Kunstkritikk) could be a name to know.
+  Fredriksen agreement). The 2014 US penalty (CFTC, $13M) fell on Fredriksen's Arcadia and Parnon
+  under a consent order without admission, not on Fredriksen himself.
 
 - tehran-museum-of-contemporary-art-tmoca: owner ministry itself on the US SDN list: Sanctions stays.
 - gallerie-d-italia: owner Intesa Sanpaolo's fossil lending is not a flag; 2025 Extinction Rebellion
@@ -144,6 +165,32 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   under the five-year rule; no red flag remains.
 
 ## Record fields that are wrong
+
+- moma-the-museum-of-modern-art: ProPublica source URL (EIN 131628410) returns 404; EIN is 13-1624100.
+  Funding's "Admissions, board donations, UNIQLO" vs FY2025 990 (asset sales 41%, contributions 27%).
+- folger-shakespeare-library: records_note says no Form 990; it is covered under the Trustees of Amherst
+  College.
+- wellcome-collection: website is wellcome.org (museum: wellcomecollection.org); £29bn (2021) stale,
+  £39.9bn on 30 September 2025.
+- sharjah-art-foundation-sharjah: a public body established by Emiri Decree, not under the Department
+  of Culture and Information.
+
+- chora-museum-kariye: website is a Bianet article; no official site.
+- istanbul-archaeology-museums: watch's 2020 reopening is stale (Classical building 2021, Ancient Orient
+  6 July 2026, Tiled Kiosk 2023 to 2026); website should be the muze.gov.tr page.
+- dubai-opera: Jasper Hope is no longer chief executive (Lara Ewing head in 2026); funding's "owner not
+  stated" is answered (Emaar Entertainment).
+- guggenheim-abu-dhabi: funding and why_flagged name TDIC (2008); now the Department of Culture and
+  Tourism develops it.
+- dar-foto-festival: watch's "launched 2023" vs 2021 (festival) and 2020 (Humboldt Forum).
+- bangkok-kunsthalle: why_flagged says no sponsors named; its Team page names six donors.
+- jim-thompson-art-center-bangkok: year_founded 2003 unconfirmed.
+- chora-museum-kariye, istanbul-archaeology-museums, rahmi-m-koc-museum, zeugma-mosaic-museum: funding
+  fields carry "pages read" lines.
+
+- centro-cultural-de-la-republica-el-cabildo: no website field; site is https://cabildoccr.gov.py.
+- victorious-fatherland-liberation-war-museum: "rebuilt 1974 per Korean Wikipedia" is wrong; it moved
+  and reopened in 1974.
 
 - casa-de-la-arquitectura-madrid: website should be https://lacasadelaarquitectura.es; board chair is
   the Housing Minister (BOE).
@@ -342,6 +389,16 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   Nacional de Cuba; unconfirmed.
 
 ## Thin sourcing to know about
+
+- Archive sweep done (RUN.md archive rule): points read only in archive copies of sites that refuse
+  automated reads or sit behind a registration wall were removed. winnipeg-art-gallery-qaumajuq-winnipeg
+  lost its annual-report points (wag.ca returns 403), and with them its Manitoba Liquor & Lotteries
+  (Gambling) and TD Bank Red flags: both rest on WAG's own annual reports, worth reading by hand.
+  museo-para-la-identidad-nacional-min-tegucigalpa lost its Hyperallergic essay; foreign-languages-
+  publishing-house its North Korea Leadership Watch point; national-art-gallery-of-namibia-windhoek its
+  2014 Bozzi point (ARTICLE 19 and Censorpedia both return 403). Archive copies of sites that are down,
+  moved or fail their certificate (EcuRed, Cuban and North Korean state sites, Westdeutsche Zeitung,
+  Gallerie d'Italia, La Panera, ROHM, Dar Foto, CiC) stay, dated.
 
 - villa-arson-nice: French Wikipedia cites a Libération piece (8 July 2022) on a Ministry of Culture
   inquiry finding a "climat délétère" and sexist and racist remarks; Libération refuses automated

@@ -1,0 +1,307 @@
+[
+ {
+  "id": "arko-art-center-seoul",
+  "section": "red_flags",
+  "problems": [
+   "rests on Wikipedia, not the documented reporting the ruling names",
+   "heading two issues and a year range, not one issue with its year",
+   "'has not ended in a ruling' framed as absence"
+  ],
+  "before": "Red flags: Hyundai Motor, partner of the 2026 Korean Pavilion, and child labour in its Alabama supply chain (2022 to 2024) / points credited to Wikipedia",
+  "after": "Red flags: 2022 child labour at Hyundai Motor's Alabama suppliers; July 2022 Reuters investigation (via CNBC), October 2022 SL Alabama fines and court order (Reuters via Al Jazeera), February 2023 divestment (The Drive), May 2024 Labor Department suit, stated as open (CBS News)",
+  "sources": [
+   "https://www.cnbc.com/2022/07/22/hyundai-subsidiary-has-used-child-labor-at-alabama-factory.html",
+   "https://www.aljazeera.com/economy/2022/10/11/hyundai-kia-parts-supplier-in-alabama-fined-for-child-labor",
+   "https://www.cbsnews.com/news/hyundai-alabama-child-labor-act-labor-deparment"
+  ],
+  "reason": "Ruling applied: the flag stays on Reuters' reporting, the supplier's fines and the Labor Department's suit as reported. dol.gov refused automated reads (403), so its releases are cited through the news reports that quote them."
+ },
+ {
+  "id": "arko-art-center-seoul",
+  "section": "overview, funding",
+  "problems": [
+   "over 800 words (851)",
+   "peripheral detail"
+  ],
+  "before": "Director's post advertised at 77 million won (Korea Policy Briefing); Insa Art Space closed after a final show in 2025",
+  "after": "Cut",
+  "sources": [
+   "https://www.korea.kr/archive/recruitInfoView.do?dataId=396096",
+   "https://arko.or.kr/insa/board/view/895?cid=716084"
+  ],
+  "reason": "Both are supported but are not funding facts; cut to bring the report under 800 words."
+ },
+ {
+  "id": "arko-art-center-seoul",
+  "section": "funding",
+  "problems": [
+   "weak credit"
+  ],
+  "before": "(NewDaily, 17 December 2025, citing the council)",
+  "after": "(NewDaily, 17 December 2025, citing Arts Council Korea)",
+  "sources": [
+   "https://www.newdaily.co.kr/site/data/html/2025/12/17/2025121700098.amp.html"
+  ],
+  "reason": "Weak spot settled: NewDaily relays the council's own figures (31 million won in 1973, 433.9 billion won in 2025); both now credited."
+ },
+ {
+  "id": "arko-art-center-seoul",
+  "section": "wider_context, bottom_line",
+  "problems": [
+   "absence line",
+   "bottom line restates facts"
+  ],
+  "before": "The report does not name the council or the centre. / BOTTOM LINE: A public museum paid for by Arts Council Korea's shrinking fund. The weak points are ...",
+  "after": "Absence sentence cut; BOTTOM LINE: Public money through Arts Council Korea; Hyundai Motor's partnership on the Venice pavilion the centre runs is its one Red flag.",
+  "sources": [
+   "https://www.koreatimes.co.kr/amp/southkorea/law-crime/20180123/ex-culture-minister-presidential-chief-of-staff-get-jail-term-for-artist-blacklist-in-appeal-ruling"
+  ],
+  "reason": "No not-found lines; bottom line gives the verdict only."
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "section": "red_flags",
+  "problems": [
+   "rests on Wikipedia",
+   "heading lacks a single year",
+   "'has not ended in a ruling' framed as absence"
+  ],
+  "before": "Red flags: Hyundai Motor and child labour in its Alabama supply chain (2022 to 2024) / Wikipedia points",
+  "after": "Red flags: 2022 child labour at Hyundai Motor's Alabama suppliers; Reuters via CNBC, Reuters via Al Jazeera, The Drive, CBS News; suit stated as open",
+  "sources": [
+   "https://www.cnbc.com/2022/07/22/hyundai-subsidiary-has-used-child-labor-at-alabama-factory.html",
+   "https://www.aljazeera.com/economy/2022/10/11/hyundai-kia-parts-supplier-in-alabama-fined-for-child-labor",
+   "https://www.cbsnews.com/news/hyundai-alabama-child-labor-act-labor-deparment"
+  ],
+  "reason": "Ruling applied as for Arko."
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "section": "funding, press",
+  "problems": [
+   "absence line: 'Amounts are not published'",
+   "editorial not credited as editorial",
+   "press point says more than the source ('partners')",
+   "Overall line opens with an absence"
+  ],
+  "before": "Amounts are not published. / (Kyeonggi Ilbo, own translation) / Suggests opening the centre to private ideas and partners. / Overall: No art-press criticism of the centre; one regional ...",
+  "after": "Absence cut; credited 'Kyeonggi Ilbo editorial, 23 June 2025'; 'Suggests the province open a way for private creativity.'; Overall: One regional newspaper editorial criticises the province for underfunding the centre.",
+  "sources": [
+   "https://www.kyeonggi.com/article/20250622580269",
+   "https://www.hyundaimotorgroup.com/en/news/hyundai-motor-announces-new-partner-institutions-for-hyundai-translocal-series"
+  ],
+  "reason": "Weak spot settled: all budget figures (13 and 39 billion won, 510 million, 300 million, zero acquisitions) are in the 23 June 2025 editorial and are credited to it as an editorial."
+ },
+ {
+  "id": "nam-june-paik-art-center-yongin",
+  "section": "overview, bottom_line",
+  "problems": [
+   "Hangul missing",
+   "bottom line restates facts"
+  ],
+  "before": "\"Waiting for UFO\" / BOTTOM LINE two sentences naming the open case",
+  "after": "\"백남준의 행성 (Waiting for UFO)\" / Mainly public provincial money; Hyundai Motor's exhibition sponsorship is its one Red flag.",
+  "sources": [
+   "https://www.newsis.com/view/NISX20260716_0003712249"
+  ],
+  "reason": "Hangul from Newsis; verdict only."
+ },
+ {
+  "id": "national-museum-of-modern-and-contemporary-art-mmca",
+  "section": "red_flags",
+  "problems": [
+   "audit year: the ministry audited in 2022 and reported in April 2023"
+  ],
+  "before": "Red flags: 2023 ministry audit of acquisitions and workplace bullying / An audit ..., reported in April 2023, listed 16 ...",
+  "after": "Red flags: 2023 ministry audit finding 16 irregular practices / In April 2023 the ministry reported that an audit it carried out in 2022 found 16 ... (ArtReview, 21 April 2023)",
+  "sources": [
+   "https://artreview.com/director-of-south-koreas-mmca-museums-steps-down-amid-alleged-political-pressure/"
+  ],
+  "reason": "Ruling applied: the audit stays a Red flag; ArtReview says the audit was conducted 'last year'."
+ },
+ {
+  "id": "national-museum-of-modern-and-contemporary-art-mmca",
+  "section": "funding",
+  "problems": [
+   "unsupported: 'ten-year partnership from 2013 (Hyundai ArtLab)'"
+  ],
+  "before": "Hyundai Motor: a ten-year partnership from 2013 (Hyundai ArtLab) paid for the MMCA Hyundai Motor Series ...",
+  "after": "Hyundai Motor: sponsored the MMCA Hyundai Motor Series, a 10-year programme of one commissioned solo show a year from 2014 (Korea JoongAng Daily, 2014) ...",
+  "sources": [
+   "https://www.koreajoongangdaily.com/lifestyle/contemporary-art-drives-hyundai-motor/10424207",
+   "https://www.hyundaimotorgroup.com/en/news/CONT0000000000109249"
+  ],
+  "reason": "The 2013 start and ArtLab page were not confirmed. The earlier report's 12 billion won figure (Hankyung Magazine) could not be restored: magazine.hankyung.com refused the read (403)."
+ },
+ {
+  "id": "national-museum-of-modern-and-contemporary-art-mmca",
+  "section": "wider_context, press, bottom_line",
+  "problems": [
+   "Hyundai point rested on Wikipedia",
+   "press item 2 restated the WIDER CONTEXT petitions",
+   "press item 3 ambiguous subject (the board, not the ministry, asked prosecutors)",
+   "over 800 words (801)",
+   "bottom line restates facts"
+  ],
+  "before": "Two Hyundai points (Wikipedia; CBS) / 'Reports petitions by petition4art ...' / '... and asked prosecutors' / BOTTOM LINE two sentences",
+  "after": "One Hyundai point (Reuters via CNBC; CBS News) with the connection stated / press item keeps only Mari's Macba cancellation and reply / 'the board asked prosecutors' / Mainly public money with corporate series sponsors; the 2023 ministry audit is its one Red flag.",
+  "sources": [
+   "https://www.theartnewspaper.com/2015/12/08/korean-artists-protest-appointment-of-former-barcelona-museum-director-due-to-censorship-concerns",
+   "https://www.koreajoongangdaily.com/lifestyle/mmca-chief-dismissed-in-recruitment-controversy/10799417",
+   "https://www.cnbc.com/2022/07/22/hyundai-subsidiary-has-used-child-labor-at-alabama-factory.html"
+  ],
+  "reason": "Ruling applied: 2015 petitions and the 2013 'Unverified:' blog item stay in WIDER CONTEXT."
+ },
+ {
+  "id": "the-war-memorial-of-korea",
+  "section": "red_flags -> wider_context",
+  "problems": [
+   "China-narrative item under its own Red flag",
+   "source hedged ('reportedly excluded') but text stated it plainly",
+   "'No result has been published' absence line"
+  ],
+  "before": "Red flags: 2026 use of China's account of the Korean War in education programmes (two points)",
+  "after": "WIDER CONTEXT: poster removed 9 June 2026; Dandong hall put on the itinerary, called 'a grave error' by spokesperson Chung Binna (정빛나), investigation ordered and internal inspection opened",
+  "sources": [
+   "https://www.koreatimes.co.kr/southkorea/defense/20260609/controversy-erupts-over-war-memorial-agencys-use-of-chinas-korean-war-propaganda",
+   "https://www.koreajoongangdaily.com/korea/defense-ministry-probes-how-chinese-propaganda-site-landed-on-teacher-program/12724205",
+   "https://www.munhwa.com/article/11595633"
+  ],
+  "reason": "Ruling applied: fits no flag; inspection result unpublished."
+ },
+ {
+  "id": "the-war-memorial-of-korea",
+  "section": "funding",
+  "problems": [
+   "Act credited without saying it was read on a mirror",
+   "board-chair claim credited to the Act, which has the board elect its chair",
+   "debt and salary figures credited as fact, not as the lawmaker's",
+   "company response paraphrased beyond the source"
+  ],
+  "before": "(the Act; Korea Times) / the chairman, who also chairs the board ... (the Act; CBS Nocut News) / Debt rose ... according to ... Bu Seung-chan / The organisation said its chairman was paid less than heads of similar bodies.",
+  "after": "(the Act, read on the taxcanvas.kr mirror) / 'The chairman also chairs the board (CBS Nocut News).' / 'Democratic Party lawmaker Bu Seung-chan (부승찬) said ... (The Fact, 4 October 2024)' / 'The organisation cited the pay gap with heads of similar public bodies and with its own staff.'",
+  "sources": [
+   "https://www.taxcanvas.kr/core/law/0009422023030419228/history/2023-06-05",
+   "https://news.tf.co.kr/read/ogmeta/2138693.htm",
+   "https://www.nocutnews.co.kr/news/6459266"
+  ],
+  "reason": "Weak spots settled as instructed; Act articles 6, 12 to 14, 16, 17 and 19 checked on the mirror."
+ },
+ {
+  "id": "the-war-memorial-of-korea",
+  "section": "red_flags, bottom_line, website",
+  "problems": [
+   "'airport' narrower than source",
+   "organisation's reply missing",
+   "Hangul missing",
+   "bottom line restates facts"
+  ],
+  "before": "take him to the airport ... / BOTTOM LINE two sentences",
+  "after": "take him to and from overseas trips ...; 'The organisation told the auditors he never explicitly asked for the endowment.'; Baek Seung-joo (백승주); verdict-only bottom line; Website line shortened",
+  "sources": [
+   "https://www.khan.co.kr/article/202601081200011/"
+  ],
+  "reason": "Ruling applied: the January 2026 Board of Audit finding stays a Red flag."
+ },
+ {
+  "id": "art-sonje-center",
+  "section": "funding, press, bottom_line",
+  "problems": [
+   "hotels misdescribed (Gyeongju hotel is a Hilton)",
+   "absence lines ('names no current corporate partner', 'no piece criticises the institution')",
+   "Hangul missing",
+   "bottom line restates facts"
+  ],
+  "before": "set up or ran Daewoo hotels in Gyeongju, Yanbian and Hanoi / it names no current corporate partner / Overall: ...; no piece criticises the institution.",
+  "after": "set up the Seoul-Gyeongju Hilton and the Daewoo hotels in Yanbian and Hanoi / cut / Overall: One review praises a show at the centre, with one reservation. / Hangul for 이용우, 최하늘, 김우중 / Private family money resting on the Daewoo fortune, with no flagged sponsor and no Red flag.",
+  "sources": [
+   "https://artsonje.org/en/asjasjc-enc/founder/",
+   "https://mobile.newsis.com/view/NISX20260102_0003462622",
+   "https://www.fnnews.com/news/202610270532338216"
+  ],
+  "reason": "Ruling applied: Kim Woo-choong's 2006 conviction stays in WIDER CONTEXT (checked on AP via NBC News)."
+ },
+ {
+  "id": "busan-museum-of-contemporary-art-busan",
+  "section": "overview, funding, press, bottom_line",
+  "problems": [
+   "slop word 'ecosystems' outside quotation",
+   "funding point repeated the opening already in OVERVIEW",
+   "Hangul missing",
+   "bottom line named a non-money weak point"
+  ],
+  "before": "questions of nature and ecosystems / separate 'The city announced the museum's opening in 2018' point / BOTTOM LINE two sentences",
+  "after": "names \"nature and ecosystem\" among its priorities (quoting the museum) / merged into the operator point / Hangul for 황보람, 박상현, 송상조 / Clean public money from the Busan city budget, with no private funder and no Red flag.",
+  "sources": [
+   "https://www.busan.go.kr/moca_en/about01",
+   "https://news.knn.co.kr/news/article/162684",
+   "https://www.newsis.com/view/NISX20180527_0000319295"
+  ],
+  "reason": "All figures checked on the city, museum, personnel committee, KNN, Newsis and e-flux pages."
+ },
+ {
+  "id": "bulegoa-zb-bilbao",
+  "section": "overview, bottom_line",
+  "problems": [
+   "unsupported: '85 square metre ... four shop windows ... pedestrian street', 'Independent'",
+   "bottom line"
+  ],
+  "before": "Independent \"office for art and knowledge\" in an 85 square metre street-level office with four shop windows ... on a pedestrian street ...",
+  "after": "An \"office for art and knowledge\" at Solokoetxe 8 bajo, in the Solokoetxe district of Bilbao (stated by the space). / verdict-only bottom line",
+  "sources": [
+   "https://bulegoa.org/en/about-us/",
+   "https://bulegoa.org/en/bulegoa-in/"
+  ],
+  "reason": "The size, windows and street were on no page opened on the space's site or in search."
+ },
+ {
+  "id": "casa-bloc-museum-apartment",
+  "section": "overview, funding, bottom_line",
+  "problems": [
+   "unsupported: sideboard and both bedrooms' furniture made to A.C. instructions",
+   "unsupported: INCASOL 'commissioned' the rehabilitation",
+   "1997 agreement stated twice",
+   "bottom line unsupported ('how little of it the public can reach')"
+  ],
+  "before": "the sideboard, wardrobes, bed and bedside tables were made to instructions published in ... A.C. / INCASOL ... commissioned the complex's rehabilitation under the 1997 agreement",
+  "after": "the double bedroom's wardrobe, bed and side table were made to instructions published in ... A.C. / INCASOL owns it (Docomomo Journal) and in 1997 signed an agreement ... to rehabilitate the complex (Catalan Wikipedia); overview copy cut / Clean public money from Barcelona City Council and the Generalitat, with no private sponsor and no Red flag.",
+  "sources": [
+   "https://docomomojournal.com/index.php/journal/article/download/153/330/335",
+   "https://ca.wikipedia.org/wiki/Casa_Bloc",
+   "https://www.dissenyhub.barcelona/en/activity/guided-tour-museum-apartment-casa-bloc-dwelling-111"
+  ],
+  "reason": "Docomomo captions tie only the double bedroom's pieces to A.C.; Wikipedia names the signatories, not who commissioned."
+ },
+ {
+  "id": "casa-de-la-arquitectura-madrid",
+  "section": "red_flags, funding, bottom_line",
+  "problems": [
+   "union credit format",
+   "closing sentence restated the credit",
+   "bottom line"
+  ],
+  "before": "(SUT union) ... The account comes only from the union that led the strike.",
+  "after": "(SUT, the union that led the strike) on first use, (SUT) after; closing sentence cut; Public money from the Housing Ministry with no private funder; the 2026 contractor strike is its one Red flag.",
+  "sources": [
+   "https://www.sindicatosut.org/index.php/luchas/715-huelga-indefinida-en-casa-de-la-arquitectura",
+   "https://sindicatosut.org/index.php/luchas/716-conseguidas-las-reivindicaciones-en-la-casa-de-la-arquitectura"
+  ],
+  "reason": "Ruling applied: the strike rests only on SUT and is credited so."
+ },
+ {
+  "id": "centre-dart-la-panera-lleida",
+  "section": "red_flags, press, bottom_line",
+  "problems": [
+   "year in heading",
+   "press item restated the Red flag",
+   "bottom line"
+  ],
+  "before": "Red flags: 2025 protest over directors' freelance contracts and the missing public call / two press points / BOTTOM LINE two sentences",
+  "after": "Red flags: arts bodies' protest over the missing public call for the director's post / first point credited '(Bonart, page dated 07/05/25)' / one press point / verdict-only bottom line",
+  "sources": [
+   "https://www.bonart.cat/en/n/45305/la-panera-opacity-and-violation-of-good-practices",
+   "https://www.bonart.cat/en/n/43311/christian-alonso-new-director-of-the-la-panera-art-center"
+  ],
+  "reason": "Ruling applied: no year in the heading. The English Bonart page does show a dateline, 'lleida - 07/05/25' (its other article reads 06/07/22 for July 2022, so dd/mm/yy: 7 May 2025), so the report does not call it undated; no second source dates the protest. Left for the editor."
+ }
+]

@@ -1,6 +1,6 @@
 # Details reports (dry run, nothing written)
 
-206 read, 0 applied, 0 skipped.
+208 read, 0 applied, 0 skipped.
 
 
 ## 21st Century Museum of Contemporary Art (`21st-century-museum-of-contemporary-art`)
@@ -32,7 +32,7 @@ Overview 8 points; funding: Altes Museum: public: the German federal government 
 
 ## AlUla Arts & Cultural Oasis (`alula-arts-cultural-oasis`)
 
-Overview 6 points; funding: AlUla Arts & Cultural Oasis: state-funded: the Saudi government through the Royal Commission for AlUla, with a budget secured by the Public Investment Fund; red flags: Gulf state body; press items: 7; sources: 12
+Overview 5 points; funding: AlUla Arts & Cultural Oasis: state-funded: the Saudi government through the Royal Commission for AlUla; red flags: Gulf state body in charge since 2017; press items: 7; sources: 12
 
 
 ## Amorepacific Museum of Art (`amorepacific-museum-of-art-seoul`)
@@ -60,7 +60,7 @@ Overview 7 points; funding: Argos: mainly public: the Flemish Community and the 
 
 ## Arko Art Center (`arko-art-center-seoul`)
 
-Overview 8 points; funding: ARKO Art Center: public: Arts Council Korea, with corporate and foundation sponsors at the Korean Pavilion it runs; red flags: Hyundai Motor, partner of the 2026 Korean Pavilion, and child labour in its Alabama supply chain (2022 to 2024); press items: 1; sources: 15
+Overview 7 points; funding: ARKO Art Center: public: Arts Council Korea, with corporate and foundation sponsors at the Korean Pavilion it runs; red flags: 2022 child labour at Hyundai Motor's Alabama suppliers; press items: 1; sources: 15
 
 
 ## Art Gallery of Nova Scotia (`art-gallery-of-nova-scotia`)
@@ -166,12 +166,12 @@ Overview 7 points; funding: Casa de la Arquitectura: public: Spain's Ministry of
 
 ## Center for Cultural Decontamination (CZKD) (`center-for-cultural-decontamination-czkd-belgrade`)
 
-Overview 8 points; funding: CZKD: grant-funded: foreign foundations, notably the Mott Foundation and the Sigrid Rausing Trust; red flags: none; press items: 1; sources: 11
+Overview 8 points; funding: CZKD: grant-funded: foreign foundations, notably the Mott Foundation and the Sigrid Rausing Trust; red flags: none; press items: 1; sources: 13
 
 
 ## Centre d'Art la Panera (`centre-dart-la-panera-lleida`)
 
-Overview 6 points; funding: Centre d'Art La Panera: public: Lleida City Council (the Paeria), with the Generalitat de Catalunya; red flags: 2025 protest over directors' freelance contracts and the missing public call; press items: 2; sources: 8
+Overview 6 points; funding: Centre d'Art La Panera: public: Lleida City Council (the Paeria), with the Generalitat de Catalunya; red flags: 2025 arts bodies' protest over the missing public call for the director's post; press items: 2; sources: 8
 
 
 ## Centro Cultural de la República El Cabildo (`centro-cultural-de-la-republica-el-cabildo`)
@@ -186,7 +186,7 @@ Overview 6 points; funding: Wifredo Lam Centre: mainly public: Ministry of Cultu
 
 ## Chora Museum (Kariye) (`chora-museum-kariye`)
 
-Overview 6 points; funding: Chora (Kariye): state: owned by the Ministry of Culture and Tourism's General Directorate of Foundations, used for worship under the Presidency of Religious Affairs; red flags: Conversion to a mosque, decreed in 2020 and carried out in May 2024; press items: 3; sources: 8
+Overview 7 points; funding: Chora (Kariye): state: owned by the Ministry of Culture and Tourism's General Directorate of Foundations, used for worship under the Presidency of Religious Affairs; red flags: none; press items: 3; sources: 7
 
 
 ## Cinemateca de Cuba (`cinemateca-de-cuba`)
@@ -227,7 +227,7 @@ Overview 8 points; funding: daadgalerie: public: the German Federal Foreign Offi
 
 ## Dar Foto Festival (`dar-foto-festival`)
 
-Overview 7 points; funding: Dar Foto Festival: founder-led, produced by Tanzania Foto Collective Company Limited; no published budget or named sponsor; red flags: none; press items: 0; sources: 7
+Overview 7 points; funding: Dar Foto Festival: founder-led and self-produced through Tanzania Foto Collective Company Limited; red flags: none; press items: 0; sources: 7
 
 - no CRITICISM IN ART MEDIA
 
@@ -243,7 +243,7 @@ Overview 8 points; funding: Deutsches Historisches Museum: public: the German fe
 
 ## Dubai Opera (`dubai-opera`)
 
-Overview 7 points; funding: Dubai Opera: Gulf state body: built and run by Emaar, whose largest shareholder is the Dubai ruler's Dubai Holding; corporate sponsors HSBC and American Express; red flags: Run by Emaar, whose largest shareholders are Dubai state investors, HSBC, official partner since 2025, fined by the Bank of England in 2024; press items: 1; sources: 16
+Overview 7 points; funding: Dubai Opera: corporate: built and run by the listed developer Emaar, with sponsors HSBC and American Express; red flags: 2024 Bank of England fine on sponsor HSBC; press items: 1; sources: 17
 
 
 ## Espacio de Arte Contemporáneo (EAC) (`espacio-de-arte-contemporaneo-eac-montevideo`)
@@ -267,7 +267,6 @@ Overview 7 points; funding: Festival Internacional Jazz Plaza: mainly public: Mi
 Overview 7 points; funding: Folger Shakespeare Library: endowed: the Folgers' bequest, managed by Amherst College's trustees, with private gifts; red flags: none; press items: 0; sources: 5
 
 - no CRITICISM IN ART MEDIA
-- promo: "and more" in "Reopened on 21 June 2024 after a four-year renovation that added a new public wi"
 
 ## Fondation Ifitry (`fondation-ifitry-essaouira`)
 
@@ -277,13 +276,13 @@ Overview 7 points; funding: Fondation Ifitry: private: founded by the artist and
 
 ## Fondation Pierre Gianadda (`fondation-pierre-gianadda`)
 
-Overview 9 points; funding: Fondation Pierre Gianadda: founder-built private foundation, run on its own income with public bodies on its board; red flags: none; press items: 0; sources: 13
+Overview 9 points; funding: Fondation Pierre Gianadda: founder-built foundation, run on its own income and sponsors, with public officials on its board; red flags: none; press items: 0; sources: 14
 
 - no CRITICISM IN ART MEDIA
 
 ## Foreign Languages Publishing House (`foreign-languages-publishing-house`)
 
-Overview 6 points; funding: Foreign Languages Publishing House: party-controlled: the Workers' Party of Korea's Propaganda and Agitation Department, plus the state; red flags: US sanctions on the Workers' Party that controls the house (2016); press items: 0; sources: 9
+Overview 6 points; funding: Foreign Languages Publishing House: state-run: North Korea's state publisher of foreign-language material; red flags: US sanctions on the North Korean government and Workers' Party (2016); press items: 0; sources: 6
 
 - no CRITICISM IN ART MEDIA
 
@@ -344,7 +343,7 @@ Overview 9 points; funding: Gran Teatro de La Habana Alicia Alonso: state-funded
 
 ## Guggenheim Abu Dhabi (`guggenheim-abu-dhabi`)
 
-Overview 6 points; funding: Guggenheim Abu Dhabi: Gulf state body: the Abu Dhabi government, through its culture department and development company; red flags: Abu Dhabi state ownership, Migrant labour abuse on Saadiyat Island, Gulf Labor Coalition boycott, unresolved in 2026; press items: 3; sources: 12
+Overview 6 points; funding: Guggenheim Abu Dhabi: Gulf state body: the Abu Dhabi government, through its culture department and development company; red flags: Abu Dhabi government ownership, current in 2026, Migrant labour abuse on Saadiyat Island, documented by Human Rights Watch in 2015, Gulf Labor Coalition artist boycott, still standing in July 2026; press items: 3; sources: 11
 
 
 ## Habima Theatre (`habima-theatre`)
@@ -444,7 +443,7 @@ Overview 8 points; funding: Kapelica Gallery (Kersnikova Institute): mainly publ
 
 ## Katara Cultural Village (`katara-cultural-village`)
 
-Overview 6 points; funding: Katara Cultural Village: state-funded: a Qatari government foundation, with private partners on commercial projects; red flags: Gulf state body: run by a Qatari government foundation; press items: 0; sources: 8
+Overview 6 points; funding: Katara Cultural Village: state-funded: a Qatari government foundation, with private partners on commercial projects; red flags: Gulf state body: Qatari government foundation set up in 2010; press items: 0; sources: 8
 
 - no CRITICISM IN ART MEDIA
 
@@ -473,7 +472,7 @@ Overview 9 points; funding: Korean Revolution Museum: state-funded: the Governme
 
 ## Kuindzhi Art Museum (`kuindzhi-art-museum`)
 
-Overview 6 points; funding: Kuindzhi Art Museum: state-run: a city museum branch until 2022, since then claimed by the occupation's culture ministry; red flags: Sanctions on the Donetsk People's Republic, which claims the museum, 2022 removal of the paintings to Donetsk; press items: 3; sources: 8
+Overview 6 points; funding: Kuindzhi Art Museum: state-run: a city museum branch until 2022, since then claimed by the occupation's culture ministry; red flags: Sanctions since 2014 on the Donetsk People's Republic, which claims the museum, 2022 removal of the paintings to Donetsk; press items: 3; sources: 8
 
 
 ## Kunstraum Dornbirn (`kunstraum-dornbirn-dornbirn`)
@@ -507,7 +506,7 @@ Overview 6 points; funding: Ludwig Museum Budapest: public: a central government
 
 ## Lunds Konsthall (`lunds-konsthall-lund`)
 
-Overview 7 points; funding: Lunds Konsthall: municipal: Lund municipality; red flags: none; press items: 3; sources: 11
+Overview 7 points; funding: Lunds Konsthall: municipal: Lund municipality; red flags: none; press items: 3; sources: 12
 
 
 ## MAC Lima (`mac-lima-lima`)
@@ -557,9 +556,19 @@ Overview 7 points; funding: Minsheng Art Museum: corporate: China Minsheng Bank,
 
 - no CRITICISM IN ART MEDIA
 
+## Modern Art Museum of Fort Worth (`modern-art-museum-of-fort-worth-fort-worth`)
+
+Overview 6 points; funding: Modern Art Museum of Fort Worth: private: donations and its own endowment, with Texas foundations, bank charities and city and state arts money; red flags: 2025 operating grant from the Sid W. Richardson Foundation, an oil fortune, 2025 police seizure of Sally Mann photographs; press items: 1; sources: 11
+
+
+## MoMA (The Museum of Modern Art) (`moma-the-museum-of-modern-art`)
+
+Overview 4 points; funding: MoMA: private: gifts, sales of assets, investment returns and admissions; red flags: Leon Black, trustee who paid Jeffrey Epstein from 2012 to 2017, Glenn Dubin, trustee subpoenaed over Epstein transactions in 2020, 2024 Gaza sit-in naming trustees, 2024 climate protest against board chair Marie-Josée Kravis; press items: 4; sources: 15
+
+
 ## Montresso Art Foundation (Jardin Rouge) (`montresso-art-foundation-jardin-rouge-marrakech`)
 
-Overview 8 points; funding: Montresso Art Foundation (Jardin Rouge): private: the collector Jean-Louis Haguenauer's money, plus sales to a friends' circle; red flags: none; press items: 0; sources: 7
+Overview 8 points; funding: Montresso Art Foundation (Jardin Rouge): private: the collector Jean-Louis Haguenauer's money, plus sales to a friends' circle; red flags: none; press items: 0; sources: 8
 
 - no CRITICISM IN ART MEDIA
 
@@ -598,7 +607,7 @@ Overview 7 points; funding: Museo Archeologico Nazionale di Napoli: public: the 
 
 ## Museo Archeologico Nazionale di Reggio Calabria (MArRC) (`museo-archeologico-nazionale-di-reggio-calabria-marrc`)
 
-Overview 7 points; funding: Museo Archeologico Nazionale di Reggio Calabria: public: the Italian Ministry of Culture, with EU recovery funds; red flags: 2009 to 2016 renovation delays and cost rise; press items: 2; sources: 13
+Overview 7 points; funding: Museo Archeologico Nazionale di Reggio Calabria: public: the Italian Ministry of Culture, with EU recovery funds; red flags: none; press items: 2; sources: 13
 
 
 ## Museo Castillo del Morro San Pedro de la Roca (`museo-castillo-del-morro-san-pedro-de-la-roca`)
@@ -617,6 +626,7 @@ Overview 7 points; funding: Museo de Arte Colonial: mainly public: Office of the
 
 Overview 7 points; funding: Museo de Arte de Puerto Rico: private non-profit: donations, foundation and federal grants, and earned income; red flags: 2023 protest over the Cecilia Orta Allende gallery; press items: 0; sources: 13
 
+- no CRITICISM IN ART MEDIA
 
 ## Museo de Arte Moderno de Santo Domingo (`museo-de-arte-moderno-de-santo-domingo`)
 
@@ -660,8 +670,9 @@ Overview 12 points; funding: Museo Nacional de la Música: mainly public: the Cu
 
 ## Museo para la Identidad Nacional (MIN) (`museo-para-la-identidad-nacional-min-tegucigalpa`)
 
-Overview 7 points; funding: Museo para la Identidad Nacional: private non-profit foundation with an endowment and corporate patrons, set up under a state project; red flags: none; press items: 1; sources: 13
+Overview 7 points; funding: Museo para la Identidad Nacional: private non-profit foundation with an endowment and corporate patrons, set up under a state project; red flags: none; press items: 0; sources: 11
 
+- no CRITICISM IN ART MEDIA
 
 ## Museo Revoltella (`museo-revoltella`)
 
@@ -676,7 +687,7 @@ Overview 9 points; funding: Museo Romántico de Trinidad: mainly public: the Min
 
 ## Museo Universitario del Chopo (`museo-universitario-del-chopo-mexico-city`)
 
-Overview 9 points; funding: Museo Universitario del Chopo: mainly public: UNAM, itself funded by the federal government; red flags: none; press items: 0; sources: 7
+Overview 9 points; funding: Museo Universitario del Chopo: mainly public: UNAM, itself funded by the federal government; red flags: none; press items: 0; sources: 8
 
 - no CRITICISM IN ART MEDIA
 
@@ -698,7 +709,7 @@ Overview 9 points; funding: Museum Nasional Indonesia: public: Indonesia's Minis
 
 ## Museum of Anatolian Civilizations (`museum-of-anatolian-civilizations`)
 
-Overview 8 points; funding: Museum of Anatolian Civilizations: state: Turkey's Ministry of Culture and Tourism; red flags: none; press items: 0; sources: 5
+Overview 8 points; funding: Museum of Anatolian Civilizations: state: Turkey's Ministry of Culture and Tourism; red flags: none; press items: 0; sources: 6
 
 - no CRITICISM IN ART MEDIA
 
@@ -725,7 +736,7 @@ Overview 6 points; funding: Nairobi National Museum: mainly public: Kenya's stat
 
 ## Nam June Paik Art Center (`nam-june-paik-art-center-yongin`)
 
-Overview 7 points; funding: Nam June Paik Art Center: public: Gyeonggi Province through the Gyeonggi Cultural Foundation, with Hyundai Motor money for exhibitions; red flags: Hyundai Motor and child labour in its Alabama supply chain (2022 to 2024); press items: 1; sources: 15
+Overview 7 points; funding: Nam June Paik Art Center: public: Gyeonggi Province through the Gyeonggi Cultural Foundation, with Hyundai Motor money for exhibitions; red flags: 2022 child labour at Hyundai Motor's Alabama suppliers; press items: 1; sources: 16
 
 
 ## Nasjonalmuseet (National Museum of Norway) (`nasjonalmuseet-national-museum-of-norway`)
@@ -735,7 +746,7 @@ Overview 5 points; funding: Nasjonalmuseet: mainly public: a state foundation fu
 
 ## National Art Gallery of Namibia (`national-art-gallery-of-namibia-windhoek`)
 
-Overview 7 points; funding: National Art Gallery of Namibia: mainly public: an annual government grant, with foundation project money and bank sponsorship; red flags: 2023 to 2024 dispute with the Namibian Arts Association over ownership of the collection; press items: 0; sources: 12
+Overview 7 points; funding: National Art Gallery of Namibia: mainly public: an annual government grant, with foundation project money and bank sponsorship; red flags: 2023 to 2024 dispute with the Namibian Arts Association over ownership of the collection; press items: 0; sources: 10
 
 - no CRITICISM IN ART MEDIA
 
@@ -759,7 +770,7 @@ Overview 7 points; funding: National Museum of Damascus: public: Syria's Directo
 
 ## National Museum of Modern and Contemporary Art (MMCA) (`national-museum-of-modern-and-contemporary-art-mmca`)
 
-Overview 4 points; funding: National Museum of Modern and Contemporary Art: state museum funded by the Ministry of Culture, Sports and Tourism, with corporate series sponsors; red flags: 2023 ministry audit of acquisitions and workplace bullying; press items: 3; sources: 16
+Overview 4 points; funding: National Museum of Modern and Contemporary Art: state museum funded by the Ministry of Culture, Sports and Tourism, with corporate series sponsors; red flags: 2023 ministry audit finding 16 irregular practices; press items: 3; sources: 15
 
 
 ## National Museum of Tajikistan (`national-museum-of-tajikistan`)
@@ -776,18 +787,18 @@ Overview 7 points; funding: National Taiwan Museum of Fine Arts: mainly public: 
 
 ## New National Theatre Tokyo (NNTT) (`new-national-theatre-tokyo-nntt`)
 
-Overview 8 points; funding: New National Theatre Tokyo: mainly public: state funds placed in trust, with ticket income and corporate sponsors; red flags: none; press items: 0; sources: 5
+Overview 8 points; funding: New National Theatre Tokyo: mainly public: state funds placed in trust, with ticket income and corporate sponsors; red flags: 2024 support from defence contractor Mitsubishi Heavy Industries; press items: 0; sources: 9
 
 - no CRITICISM IN ART MEDIA
 
 ## New York Academy of Art (`new-york-academy-of-art-new-york`)
 
-Overview 6 points; funding: New York Academy of Art: privately funded: tuition, donations and fundraising events; red flags: Jeffrey Epstein on the board, 1987 to 1994, and his money after his 2008 plea; press items: 4; sources: 10
+Overview 6 points; funding: New York Academy of Art: privately funded: tuition, donations and fundraising events; red flags: Jeffrey Epstein's board seat (1987 to 1994) and his gifts after his 2008 plea; press items: 4; sources: 10
 
 
 ## Noguchi Museum (`noguchi-museum`)
 
-Overview 6 points; funding: Noguchi Museum: mainly self-generated: sales, its own assets and investments, with city and state grants and foundation gifts; red flags: 2024 keffiyeh ban and the firing of three gallery attendants, 2024 protests and boycott calls over the dress code; press items: 5; sources: 13
+Overview 6 points; funding: Noguchi Museum: mainly self-generated: sales, its own assets and investments, with city and state grants and foundation gifts; red flags: 2024 keffiyeh ban and the firing of three gallery attendants, 2024 protests against the dress code; press items: 5; sources: 13
 
 
 ## North Hamgyong Province E-Library (`north-hamgyong-province-e-library`)
@@ -814,7 +825,7 @@ Overview 8 points; funding: Nuuk Art Museum: municipal, with a 2024 Augustinus F
 
 ## Okayama Art Summit (`okayama-art-summit-okayama`)
 
-Overview 8 points; funding: Okayama Art Summit: public and corporate: Okayama City and Prefecture, the Ishikawa Foundation, and regional sponsors; red flags: 2025 tobacco sponsor, 2021 to 2022 citizen petitions over executive producer Yasuharu Ishikawa; press items: 2; sources: 10
+Overview 8 points; funding: Okayama Art Summit: public and corporate: Okayama City and Prefecture, the Ishikawa Foundation, and regional sponsors; red flags: 2025 sponsorship by Japan Tobacco, Citizen petitions of 2021 and 2022 over executive producer Yasuharu Ishikawa; press items: 2; sources: 11
 
 
 ## Oman Across Ages Museum (`oman-across-ages-museum`)
@@ -825,7 +836,7 @@ Overview 9 points; funding: Oman Across Ages Museum: state-funded: a public body
 
 ## Origins Centre (`origins-centre-johannesburg`)
 
-Overview 8 points; funding: Origins Centre: university museum: Wits, with renovation grants from a national humanities institute and the French Institute; red flags: none; press items: 1; sources: 7
+Overview 8 points; funding: Origins Centre: university museum: Wits, with renovation money from a national humanities institute and the French Institute; red flags: none; press items: 1; sources: 7
 
 
 ## Pinacoteca Agnelli (`pinacoteca-agnelli`)
@@ -836,7 +847,7 @@ Overview 8 points; funding: Pinacoteca Agnelli: private: an Agnelli family found
 
 ## PinchukArtCentre (`pinchukartcentre`)
 
-Overview 6 points; funding: PinchukArtCentre: self-funded: founder Victor Pinchuk and his foundation; red flags: 2004 Kryvorizhstal privatisation, reversed in 2005; press items: 3; sources: 9
+Overview 6 points; funding: PinchukArtCentre: self-funded: founder Victor Pinchuk and his foundation; red flags: none; press items: 3; sources: 9
 
 
 ## Pola Museum of Art (`pola-museum-of-art-hakone`)
@@ -859,18 +870,18 @@ Overview 8 points; funding: Pyongyang Grand Theatre: state-run: a state theatre 
 
 ## Qasr Al Hosn (`qasr-al-hosn`)
 
-Overview 8 points; funding: Qasr Al Hosn: state-run: Abu Dhabi's Department of Culture and Tourism; red flags: Run by Abu Dhabi's Department of Culture and Tourism, a Gulf state body; press items: 0; sources: 7
+Overview 8 points; funding: Qasr Al Hosn: state-run: Abu Dhabi's Department of Culture and Tourism; red flags: Run by Abu Dhabi's government culture department since the 2018 reopening (Gulf state body); press items: 0; sources: 7
 
 - no CRITICISM IN ART MEDIA
 
 ## Queens Museum (`queens-museum`)
 
-Overview 7 points; funding: Queens Museum: mainly public: New York City and State, with trustees, members and friends; red flags: 2023 staff dispute over a statement on Gaza, 2023 artists' complaints about the residency programme, 2023 reuse of a Xaviera Simmons structure without permission; press items: 5; sources: 10
+Overview 7 points; funding: Queens Museum: mainly public: New York City and State, with trustees, members and friends; red flags: 2023 reuse of a Xaviera Simmons structure without permission; press items: 5; sources: 11
 
 
 ## Rahmi M. Koç Museum (`rahmi-m-koc-museum`)
 
-Overview 7 points; funding: Rahmi M. Koç Museum: private: the Rahmi M. Koç Museology and Cultural Foundation, built on the Koç family's Koç Holding fortune; red flags: Founder's fortune from Koç Holding, owner of the refiner Tüpraş and the defence maker Otokar; press items: 0; sources: 6
+Overview 7 points; funding: Rahmi M. Koç Museum: private: the Rahmi M. Koç Museology and Cultural Foundation, built on the Koç family's Koç Holding fortune; red flags: Founder's Koç Holding fortune, led by oil refining in 2024; press items: 0; sources: 6
 
 - no CRITICISM IN ART MEDIA
 
@@ -916,7 +927,7 @@ Overview 8 points; funding: Ruang MES 56: self-funded: the members' own money an
 
 ## Ruarts Foundation (`ruarts-foundation-moscow`)
 
-Overview 6 points; funding: Ruarts Foundation: private: the founder's family money, with ticket and membership income; red flags: Founder's family money from oil and gas; press items: 0; sources: 7
+Overview 6 points; funding: Ruarts Foundation: private: founded by the collector Marianna Sardarova around her own collection, with ticket and membership income; red flags: Founder's husband's oil and gas fortune, reported in 2016 and 2025; press items: 0; sources: 7
 
 - no CRITICISM IN ART MEDIA
 
@@ -939,17 +950,17 @@ Overview 8 points; funding: Selasar Sunaryo Art Space: self-funded: the founder'
 
 ## Serralves Foundation (`serralves-foundation-porto`)
 
-Overview 4 points; funding: Serralves Foundation: mixed: State subsidy, corporate founders and sponsors, and earned income; red flags: Galp Energia, Patron Founder 2021 to 2024, REN Portgás, a natural gas distributor, Patron Founder in 2025, Tabaqueira, Patron Founder 2021 and 2022, 2025 resignation of board president Isabel Pires de Lima; press items: 4; sources: 18
+Overview 5 points; funding: Serralves Foundation: mixed: State subsidy, corporate founders and sponsors, and earned income; red flags: Galp Energia, oil and gas Patron Founder 2021 to 2024, REN Portgás, natural gas distributor, Patron Founder 2021 to 2025, Tabaqueira tobacco money, Patron Founder 2021 and 2022; press items: 4; sources: 19
 
 
 ## Sharjah Art Foundation (`sharjah-art-foundation-sharjah`)
 
-Overview 5 points; funding: Sharjah Art Foundation: state-backed: Sharjah government money and the ruler's patronage, with corporate sponsors; red flags: Sharjah government money and the ruler's daughter at its head (Gulf state body), 2025 Biennial sponsor from the Crescent Group, owner of Crescent Petroleum; press items: 5; sources: 15
+Overview 5 points; funding: Sharjah Art Foundation: state-backed: Sharjah government money and the ruler's patronage, with corporate sponsors; red flags: Sharjah government funding under the ruler's daughter, set up by Emiri Decree in 2009 (Gulf state body); press items: 5; sources: 15
 
 
 ## Sharjah Museum of Islamic Civilization (`sharjah-museum-of-islamic-civilization`)
 
-Overview 7 points; funding: Sharjah Museum of Islamic Civilization: state-run: the Sharjah Museums Authority, a government body of the emirate; red flags: Run by the Sharjah Museums Authority, a Gulf state body; press items: 0; sources: 6
+Overview 7 points; funding: Sharjah Museum of Islamic Civilization: state-run: the Sharjah Museums Authority, a government body of the emirate; red flags: Run by the Sharjah Museums Authority, a government body set up in 2006 (Gulf state body); press items: 0; sources: 6
 
 - no CRITICISM IN ART MEDIA
 
@@ -977,7 +988,7 @@ Overview 6 points; funding: Staatliche Museen zu Berlin: mainly public: the fede
 
 ## The State Hermitage Museum (`state-hermitage-museum-spb`)
 
-Overview 6 points; funding: The State Hermitage Museum: mainly public: the Russian federal budget, with Gazprom, Magnit and Sber sponsoring galleries and shows; red flags: Gazprom sponsorship, 2022, EU sanctions on the director, 2026, 2022 suspension of ties by foreign partners, 2026 Accounts Chamber finding on the storage complex; press items: 3; sources: 17
+Overview 4 points; funding: The State Hermitage Museum: mainly public: the Russian federal budget, with Gazprom, Magnit and Sber sponsoring galleries and shows; red flags: Gazprom sponsorship, 2022, 2026 sponsorship by sanctioned state bank Sber, EU sanctions on the director, 2026, 2022 boycott by foreign partners, 2026 Accounts Chamber finding on the storage complex; press items: 3; sources: 17
 
 
 ## Suzhou Museum (`suzhou-museum`)
@@ -994,7 +1005,7 @@ Overview 10 points; funding: Taller Experimental de Gráfica: earned income from
 
 ## Tanoto Art Foundation (`tanoto-art-foundation-singapore`)
 
-Overview 8 points; funding: Tanoto Art Foundation: family-funded: the Tanoto family, whose fortune is the RGE group; the foundation publishes no funders or accounts; red flags: none; press items: 0; sources: 10
+Overview 8 points; funding: Tanoto Art Foundation: family-funded: the Tanoto family, whose fortune is the RGE group; red flags: none; press items: 0; sources: 9
 
 - no CRITICISM IN ART MEDIA
 
@@ -1033,19 +1044,19 @@ Overview 8 points; funding: The Factory Contemporary Arts Centre: self-funded: a
 
 ## The Jordan Museum (`the-jordan-museum`)
 
-Overview 6 points; funding: The Jordan Museum: public: the Jordanian state, with a building planned under a Japanese aid loan; red flags: none; press items: 0; sources: 7
+Overview 6 points; funding: The Jordan Museum: public: the Jordanian state, with a building paid for in part by a Japanese yen loan; red flags: none; press items: 0; sources: 8
 
 - no CRITICISM IN ART MEDIA
 
 ## The War Memorial of Korea (`the-war-memorial-of-korea`)
 
-Overview 5 points; funding: War Memorial of Korea: public: run by the Korea War Memorial Organization, a body under the Ministry of National Defense; red flags: 2026 audit finding against chairman Baek Seung-joo, 2026 use of China's account of the Korean War in education programmes; press items: 0; sources: 9
+Overview 5 points; funding: War Memorial of Korea: public: run by the Korea War Memorial Organization, a body under the Ministry of National Defense; red flags: 2026 audit finding against chairman Baek Seung-joo; press items: 0; sources: 9
 
 - no CRITICISM IN ART MEDIA
 
 ## Tishreen War Panorama (October War Panorama) (`tishreen-war-panorama-october-war-panorama`)
 
-Overview 7 points; funding: Tishreen War Panorama: public: Syrian Ministry of Defence; red flags: none; press items: 1; sources: 5
+Overview 6 points; funding: Tishreen War Panorama: public: Syrian Ministry of Defence; red flags: none; press items: 1; sources: 5
 
 
 ## Today Art Museum (`today-art-museum`)
@@ -1056,7 +1067,7 @@ Overview 7 points; funding: Today Art Museum: private non-profit: founded on a p
 
 ## Tokyo Metropolitan Art Museum (`tokyo-metropolitan-art-museum`)
 
-Overview 6 points; funding: Tokyo Metropolitan Art Museum: public: the Tokyo Metropolitan Government, with newspaper and corporate partners for big shows; red flags: none; press items: 0; sources: 6
+Overview 7 points; funding: Tokyo Metropolitan Art Museum: public: the Tokyo Metropolitan Government, with newspaper and corporate partners for big shows; red flags: none; press items: 0; sources: 6
 
 - no CRITICISM IN ART MEDIA
 
@@ -1090,7 +1101,7 @@ Overview 6 points; funding: Van Schijndel House: self-funded: tour donations and
 
 ## Victoria Gallery (`victoria-gallery-samara`)
 
-Overview 10 points; funding: Victoria Gallery: owner-funded: Leonid Mikhelson, whose fortune comes from gas and petrochemicals; red flags: Owner's gas fortune, Owner under UK sanctions since 2022; press items: 2; sources: 11
+Overview 10 points; funding: Victoria Gallery: owner-funded: Leonid Mikhelson, whose fortune comes from gas and chemicals; red flags: Owner's gas fortune, current in 2026, Owner under UK sanctions since 2022; press items: 2; sources: 11
 
 
 ## Victoria Memorial Hall (`victoria-memorial-hall`)
@@ -1118,7 +1129,7 @@ Overview 13 points; funding: Villa Rothmayer: mainly public: the City of Prague 
 
 ## Wellcome Collection (`wellcome-collection`)
 
-Overview 7 points; funding: Wellcome Collection: endowed: the Wellcome Trust's investment portfolio, about £39.9 billion; red flags: none; press items: 3; sources: 12
+Overview 7 points; funding: Wellcome Collection: endowed: the Wellcome Trust's investment portfolio, about £39.9 billion; red flags: none; press items: 3; sources: 13
 
 
 ## WHW (What, How & for Whom) / Galerija Nova (`whw-galerija-nova-zagreb`)
@@ -1129,7 +1140,7 @@ Overview 7 points; funding: WHW / Galerija Nova: public and foundation grants: C
 
 ## Winnipeg Art Gallery-Qaumajuq (`winnipeg-art-gallery-qaumajuq-winnipeg`)
 
-Overview 9 points; funding: Winnipeg Art Gallery-Qaumajuq: mixed public and private: federal, Manitoba, Winnipeg and Nunavut governments with bank and corporate sponsors; red flags: 2024 gift from casino operator Manitoba Liquor & Lotteries, 2024 money-laundering plea by TD Bank, a top 2024 donor; press items: 2; sources: 12
+Overview 6 points; funding: Winnipeg Art Gallery-Qaumajuq: mixed public and private: governments and private donors built Qaumajuq, and Nunavut pays to keep its collection there; red flags: none; press items: 2; sources: 6
 
 
 ## Wrocław Contemporary Museum (`wroc-aw-contemporary-museum`)
@@ -1140,7 +1151,7 @@ Overview 7 points; funding: Wrocław Contemporary Museum: public: the City of Wr
 
 ## Zanabazar Museum of Fine Art (`zanabazar-museum-of-fine-art-ulaanbaatar`)
 
-Overview 8 points; funding: Zanabazar Museum of Fine Art: listed by Mongolia's National Centre for Cultural Heritage, with a long-running UNESCO project; red flags: none; press items: 0; sources: 6
+Overview 8 points; funding: Zanabazar Museum of Fine Art: public: a state museum, with foreign project grants; red flags: none; press items: 0; sources: 6
 
 - no CRITICISM IN ART MEDIA
 
