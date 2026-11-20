@@ -5088,6 +5088,14 @@ body.gossip-mode-active #cityMapContainer{--wc-ground:#ffeff1;--wc-ink:#000;--wc
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin .inst-pin-dot{width:18px!important;height:18px!important;border:0!important;border-radius:50%!important;background:var(--wc-mark)!important;box-shadow:none!important}
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="B"] .inst-pin-dot{width:16px!important;height:16px!important;border-radius:0!important}
 :is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin[data-tier="U"] .inst-pin-dot{width:22px!important;height:19px!important;border-radius:0!important;clip-path:polygon(50% 0,100% 100%,0 100%)}
+/* The open space's mark gets the globe's ring (user, 20 Nov 2026: "fix this triangle", then "i dont see it" of the street
+   map): ink 1.5px wide, set 2.75px off the mark, ground between. A circle or square takes it as a box shadow; the triangle is
+   clipped, so its ring is two larger triangles behind it, each the mark scaled round its incentre, so the ring keeps one
+   distance from every side (22 x 19 mark, inradius 6.34px; ink 4.25px out, ground 2.75px out). */
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-dot{box-shadow:0 0 0 2.75px var(--wc-ground),0 0 0 4.25px var(--wc-ink)!important}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-tier="U"]:not(.pin-crowded)::before,:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-tier="U"]:not(.pin-crowded)::after{content:"";position:absolute;z-index:-1;clip-path:polygon(50% 0,100% 100%,0 100%);pointer-events:none}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-tier="U"]:not(.pin-crowded)::before{left:-2.37px;top:-1.98px;width:36.74px;height:31.73px;background:var(--wc-ink)}
+:is(#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1#wc1,html) #cityMapContainer.street-poster .custom-inst-pin.popup-active[data-tier="U"]:not(.pin-crowded)::after{left:.23px;top:1.01px;width:31.54px;height:27.24px;background:var(--wc-ground)}
 /* No dropped pin close in (user, 18 Nov 2026: "dont do pins"): the open space is told by its bubble, which carries its grade.
    The globe has none either since 20 Nov 2026 ("delete those pins and put dots and triangles instead"): its marks are the
    same solid circle, square and triangle, drawn on the canvas in index.html. */
