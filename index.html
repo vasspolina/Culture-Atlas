@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=874"></script>
+  <script src="assets/load-image-data.js?v=875"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=874">
-  <link rel="stylesheet" href="assets/sheet.css?v=874">
-  <script src="assets/config.js?v=874"></script>
-  <script src="assets/analytics.js?v=874"></script>
-  <script src="assets/subtopic.js?v=874"></script>
-  <script src="assets/names.js?v=874"></script>
-  <script src="assets/grounding.js?v=874"></script>
-  <script src="assets/repeats.js?v=874"></script>
-  <script src="assets/intro-narration.js?v=874"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=875">
+  <link rel="stylesheet" href="assets/sheet.css?v=875">
+  <script src="assets/config.js?v=875"></script>
+  <script src="assets/analytics.js?v=875"></script>
+  <script src="assets/subtopic.js?v=875"></script>
+  <script src="assets/names.js?v=875"></script>
+  <script src="assets/grounding.js?v=875"></script>
+  <script src="assets/repeats.js?v=875"></script>
+  <script src="assets/intro-narration.js?v=875"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=874"></script>
+  <script src="assets/load-image.js?v=875"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=874"></script>
-  <script src="assets/money-ids.js?v=874"></script>
+  <script src="assets/institutions.js?v=875"></script>
+  <script src="assets/money-ids.js?v=875"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10888,11 +10888,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v874';
+    const ATLAS_RELEASE = 'culture-atlas-v875';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=874').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=875').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12193,25 +12193,15 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // so it slides at most half its width less the tail's reach), then the same below the dot. The place it
             // had last frame is tried first, so a name does not hop while the view moves. The first place clear of other
             // names, of the spaces' marks and of the screen's edge wins.
-            // A city whose dots are folded into its name may also stand a row or two farther off, its tail drawn out to the dot.
-            const far = bh + 6;
-            // A city of two spaces or more (its count shown or folded in) may stand off its dot; a city of one gives way.
+            // A name sits only right at its dot, joined by its short tail: no name stands a row off or beside its dot on a
+            // drawn-out tail or a hairline (user, 20 Nov 2026: "return to previous design no need for lines").
+            // A city of two spaces or more (its count shown or folded in) still shows where it covers fewest marks; a city of one gives way.
             const manySpaces = isClustered || (city.count || 0) >= 2;
             const buildSpots = () => {
             const slide = Math.max(0, bw / 2 - 18), spots = [];
-            [0, 1, 2].forEach(lvl => {
-              if (lvl && !manySpaces) return;
-              [false, true].forEach(below => [0, -slide, slide].forEach(dx => {
-                spots.push({ dx, below, lvl, side: 0, x: pt.x - bw / 2 + dx, y: below ? yBelow + lvl * far : yAbove - lvl * far });
-              }));
-            });
-            // Last, a counted city may sit beside its dot, level with it or half a row up or down, near or a step away, a
-            // hairline from the name's edge to the dot (user, 20 Nov 2026: "fix berlin too": Berlin (48) found no place above
-            // or below in the press of Europe's marks and still lay over two).
-            if (manySpaces) [0, 1].forEach(lvl => [0, -(bh / 2 + 8), bh / 2 + 8].forEach(dy => [1, -1].forEach(side => {
-              const off = cityR + 5 + lvl * 22;
-              spots.push({ dx: dy, below: false, lvl, side, x: side > 0 ? pt.x + off : pt.x - off - bw, y: pt.y - bh / 2 + dy });
-            })));
+            [false, true].forEach(below => [0, -slide, slide].forEach(dx => {
+              spots.push({ dx, below, lvl: 0, side: 0, x: pt.x - bw / 2 + dx, y: below ? yBelow : yAbove });
+            }));
             if (had) spots.sort((a, b) => (same(b, had) ? 1 : 0) - (same(a, had) ? 1 : 0));
             return spots;
             };
@@ -22903,24 +22893,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=874"></script>
-<script src="assets/note-aids.js?v=874" defer></script>
-<script src="assets/place-list.js?v=874" defer></script>
-<script src="assets/chat-share.js?v=874" defer></script>
-<script src="assets/note-files.js?v=874" defer></script>
-<script src="assets/funding-views.js?v=874"></script>
-<script src="assets/layers.js?v=874"></script>
-<script src="assets/critique-gallery-data.js?v=874"></script>
-<script src="assets/critique-captions.js?v=874"></script>
-<script src="assets/critique-gallery.js?v=874"></script>
-<script src="assets/hq-detail.js?v=874"></script>
-<script src="assets/influence-mode.js?v=874"></script>
-<script src="assets/bubbles.js?v=874" defer></script>
-<script src="assets/phone-maps.js?v=874"></script>
-<script src="assets/desktop-maps.js?v=874"></script>
-<script src="assets/chat-resize.js?v=874"></script>
-<script src="assets/frame-refusers.js?v=874"></script>
-<script src="assets/link-pane.js?v=874"></script>
-<script src="assets/tab-suggest.js?v=874"></script>
+<script src="assets/typeset.js?v=875"></script>
+<script src="assets/note-aids.js?v=875" defer></script>
+<script src="assets/place-list.js?v=875" defer></script>
+<script src="assets/chat-share.js?v=875" defer></script>
+<script src="assets/note-files.js?v=875" defer></script>
+<script src="assets/funding-views.js?v=875"></script>
+<script src="assets/layers.js?v=875"></script>
+<script src="assets/critique-gallery-data.js?v=875"></script>
+<script src="assets/critique-captions.js?v=875"></script>
+<script src="assets/critique-gallery.js?v=875"></script>
+<script src="assets/hq-detail.js?v=875"></script>
+<script src="assets/influence-mode.js?v=875"></script>
+<script src="assets/bubbles.js?v=875" defer></script>
+<script src="assets/phone-maps.js?v=875"></script>
+<script src="assets/desktop-maps.js?v=875"></script>
+<script src="assets/chat-resize.js?v=875"></script>
+<script src="assets/frame-refusers.js?v=875"></script>
+<script src="assets/link-pane.js?v=875"></script>
+<script src="assets/tab-suggest.js?v=875"></script>
 </body>
 </html>
