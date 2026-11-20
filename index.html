@@ -14402,7 +14402,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       if (typeof f.net_assets === 'number' && f.net_assets > 0 && cur) lis.push(proseLi('Net worth:', escapeHtml(`${proseMoney(cur, f.net_assets)} at the end of the year.`)));
       if (sc.visitors) lis.push(proseLi('Visitors:', escapeHtml(`${proseCount(sc.visitors)}${sc.visitors_year ? ' in ' + sc.visitors_year : ''}.`)));
       if (sc.staff) lis.push(proseLi('Staff:', escapeHtml(`${proseCount(sc.staff)}${sc.staff_kind && sc.staff_kind !== 'staff' ? ' ' + sc.staff_kind : ''}${sc.staff_year ? ', ' + sc.staff_year : ''}.`)));
-      if (sc.area_m2) lis.push(proseLi('Floor area:', escapeHtml(`${proseCount(sc.area_m2)} square metres${sc.area_kind ? ' of ' + sc.area_kind : ''}.`)));
+      // The kind names the row ("Gallery space:", "Site:"), so the figure reads "13,900 square metres." and never "square metres of building" (user, 20 Nov 2026: slop).
+      const AREA_LABEL = { building: 'Floor area:', 'gallery space': 'Gallery space:', site: 'Site:' };
+      if (sc.area_m2) lis.push(proseLi(AREA_LABEL[sc.area_kind] || 'Floor area:', escapeHtml(`${proseCount(sc.area_m2)} square metres.`)));
       // A filing's figure can differ from the one the funding line quotes from another document; finance.note says why, from the filing.
       if (f.note && total && cur) lis.push(proseLi('Note:', escapeHtml(proseEnd(f.note))));
       const cite = proseCite([f.url].concat(sc.sources || []), 4);
