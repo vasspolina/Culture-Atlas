@@ -913,12 +913,90 @@
       // a funder. FLAG_EVENT: its title names something that happened at the space (a dismissal, a censored work, a theft).
       // FLAG_LEAD and FLAG_FUNDER: its text says who the named party is to the space, a sponsor, donor, trustee or partner.
       // Read against all 1,535 flagged sections on 19 Nov 2026, title by title.
-      const FLAG_MONEY = /fund|sponsor|donor|donat|benefactor|supporter|membership|partner|naming rights|money|fortune|endow|bequest|wealth|patron|financ|budget|subsid(?:y|ies|i[sz])|\bgrants?\b|gift|\bbanks?\b|banka\b|banking|bankrupt|fossil|\boil\b|\bgas\b|coal|mining|petrol|energy|tobacco|cigarette|\barms\b|weapon|defen[cs]e|gambl|gaming|betting|casino|lotter|opioid|sackler|\bkoch\b|sanction|launder|\btax|debt|receivable|deficit|operating loss|loss in \d|insolven|going concern|cost|spent|spending|\bpaid\b|payment|revenue|income|invest|shareholder|\bowned\b|\bowner|billionaire|oligarch|gulf state|state body|government body|government backing|epstein|philanthrop|trustee|name to know|settlement(?! perf)|\bplea\b|penalt|\bfines?\b|briber|\bbp\b/;
+      const FLAG_MONEY = /fund|sponsor|donor|donat|benefactor|supporter|membership|partner|naming rights|money|fortune|endow|bequest|wealth|patron|financ|budget|subsid(?:y|ies|i[sz])|\bgrants?\b|gift|\bbanks?\b|banka\b|banking|bankrupt|fossil|\boil\b|\bgas\b|coal|mining|petrol|energy|tobacco|cigarette|\barms\b|defen[cs]e|gambl|gaming|betting|casino|lotter|opioid|sackler|\bkoch\b|sanction|launder|\btax|debt|receivable|deficit|operating loss|loss in \d|insolven|going concern|cost|spent|spending|\bpaid\b|payment|revenue|income|invest|shareholder|\bowned\b|\bowner|billionaire|oligarch|gulf state|state body|government body|government backing|epstein|philanthrop|trustee|name to know|settlement(?! perf)|\bplea\b|penalt|\bfines?\b|briber|\bbp\b/;
       const FLAG_EVENT = /governance|labou?r|staff|union|strike|layoff|job (?:cuts|losses)|dismiss|ouster|resign|director|curator|leadership|management|censor|punish|pressure|police|arrest|looted|holdings|provenance|restitution|return|antiquit|human remains|dispute|petition|open letter|campaign|cancel|withdr[ae]w|removal|removed|closure|closed|delay|audit|allegation|racism|racist|occupation|sit-in|encampment|vandal|threat|damage|theft|stolen|fire\b|earthquake|\bwar\b|misconduct|abuse|inquiry|criticism|rebrand|deaccession|sale of|missing|expansion|commission|debate|journalist|exhibit|ticket|performance|takeover/;
       const FLAG_LEAD = /\b(?:sponsor\w*|funder\w*|funded|funds|donor\w*|donat\w*|benefactor\w*|patrons?|supporters?|supports|supported|backers?|trustees?|board (?:member|chair|seat)\w*|gift\w*|gave|partners?|maintainer|owned by|owner|parent company)\b/i;
       const FLAG_FUNDER = /\b(?:sponsor\w*|funder\w*|donor\w*|benefactor\w*|(?:corporate|founding|main|lead|major|principal|official) (?:member|partner)\w*)\b/i;
       const PROTEST_MONEY = /sponsor|donor|donat|benefactor|funder|\bfund(?:ing|ed|s)?\b|partnership|corporate ties|naming|patron|\bbanks?\b|fossil|\boil\b|\bgas\b|\bcoal\b|mining|tobacco|\barms\b|weapon|gambl|casino|opioid|sackler|\bkoch\b|invest|trustee|ownership|\bbp\b|money/;
       const PROTEST_SPONSOR = /\b(?:sponsor(?:s|ed|ship|ships|ing)?|donors?|benefactors?|(?:corporate|founding|main|lead|major|principal|official) partners?)\b/i;
+      // Flags about a sponsor, a donor, a founder's company or the source of the money whose titles name an event, not the
+      // money ("BHP and the 2015 Samarco dam collapse", "Vingroup's 2025 defamation suits", "Petition to drop Hennessy, Soho
+      // House and BNP Paribas"), so the word rules below read them as Record. Each was read in full on 20 Nov 2026 (user:
+      // "put the remaining sponsor flags under Funding too") and is listed by space id and title, since several titles are
+      // as plain as "Protest or boycott" and the same title elsewhere is about something else. A flag that only mentions a
+      // funder in passing (the Goldin slide, the Walker's Scaffold, the Haub collection's pictures) is not listed.
+      const FLAG_FUNDING_BY_SPACE = new Set([
+        "museum-of-norilsk|nornickel's 2020 diesel spill in norilsk",
+        "a4-arts-foundation-cape-town|2018 boycott call over the kirsh family's israel ties",
+        "art-belarus-gallery-belgazprombank-corporate-collection-minsk|2020 state seizure of the collection and the babaryka case",
+        "art-gallery-of-south-australia-adelaide|bhp and the 2015 samarco dam collapse",
+        "art-institute-of-chicago-chicago|gaza encampment and arrests, 2024",
+        "bangkok-kunsthalle|protest by artn't at the opening show",
+        "biennale-of-sydney-sydney|2026 opening night and pwc's withdrawal",
+        "cheongju-craft-biennale-cheongju|hyundai motor subsidiary named in a us child labour complaint",
+        "dhaka-art-summit-dhaka|reported closeness to the hasina family",
+        "fondation-cartier|cartier's gold and the yanomami (2023)",
+        "fondation-louis-vuitton-paris|labour exploitation at an lvmh unit",
+        "frist-art-museum-nashville|nurses' protests at the frist gala",
+        "fundação-sindika-dokolo-luanda|us corruption designation",
+        "galleria-nazionale-d-arte-moderna-e-contemporanea|autostrade per l'italia and the morandi bridge",
+        "gwangju-biennale-gwangju|park seo-bo art prize dropped after protest (2023)",
+        "hamburger-bahnhof-berlin|protest over the flick collection",
+        "hasty-pudding-theatricals-cambridge|petitions against the chair",
+        "hay-festival-hay-on-wye|baillie gifford suspended under campaign pressure",
+        "he-art-museum-foshan|midea factories in the uyghur labour-transfer scheme",
+        "heidi-horten-collection|protest: the christie's jewellery sale",
+        "ica-london|protests and staff dispute over palestine",
+        "imma-dublin|petition to drop hennessy, soho house and bnp paribas",
+        "kiasma-museum-of-contemporary-art|protest or boycott (kiasma strike, 2022 to 2023)",
+        "kunsthalle-bielefeld-bielefeld|protest over the kaselowsky name",
+        "kunsthalle-praha-prague|opening-day protest over artwashing",
+        "maat-lisbon|edp leadership case",
+        "maxxi|boycott over eni, leonardo and gaza",
+        "nam-june-paik-art-center-yongin|hyundai and child labour at a subsidiary",
+        "pérez-art-museum-miami-miami|campaigned name, the 2011 renaming",
+        "riga-international-biennial-of-contemporary-art-riboca|boycott and campaign against the biennial",
+        "science-museum-london|campaigns",
+        "the-broad|eli broad's move from the grand avenue committee to a museum site on public land",
+        "the-national-museum-of-western-art|protest or boycott",
+        "tselinny-center-of-contemporary-culture-almaty|founder's conviction and asset handover",
+        "villa-des-arts-de-casablanca-casablanca|al mada transparency",
+        "vincom-center-for-contemporary-art-hanoi|vingroup's 2025 defamation suits",
+        "vizcaya-museum-and-gardens|ken griffin, protested at another museum",
+        "yarat-contemporary-art-space-baku|ties to the aliyev family and state",
+        "zabludowicz-collection-london|boycott and protest over the founders' ties to israel"
+      ]);
+      // "Also reported" is the line the record's watch note becomes when it is printed as a flag, and on the 106 spaces with
+      // one it is nearly always about the money: a sponsor, a donor, an owner, a founder's fortune or the funding itself (BP at
+      // the British Museum, Getty Oil's endowment, Casinos Austria at the Burgtheater). Each was read on 20 Nov 2026 (user:
+      // "put the remaining sponsor flags under Funding too"); it goes under Funding except on these spaces, where it is about a
+      // director, a protest over a work, a theft or a contractor. The word rules were no help here: they missed most of the
+      // money and caught job-cut protests on the word "supporters".
+      const ALSO_REPORTED_IN_RECORD = new Set([
+        "art-gallery-of-new-south-wales",
+        "field-museum",
+        "ges-2-house-of-culture-moscow",
+        "grand-people-s-study-house-pyongyang",
+        "hungarian-national-museum",
+        "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
+        "museo-nacional-de-colombia",
+        "museum-of-cycladic-art",
+        "national-gallery-of-ireland",
+        "national-museum-of-bosnia-and-herzegovina",
+        "new-orleans-museum-of-art-new-orleans",
+        "palacio-de-bellas-artes",
+        "palacio-libertad-buenos-aires",
+        "penn-museum",
+        "royal-ontario-museum",
+        "state-russian-museum-st-petersburg",
+        "sydney-opera-house",
+        "trinity-church-bellingshausen",
+        "victoria-gallery-samara",
+        "victorious-fatherland-liberation-war-museum",
+        "victory-museum-central-museum-of-the-great-patriotic-war",
+        "whanki-museum-seoul"
+      ]);
+      let tabSpace = '';
       const tabOf = (el) => {
         if (el.matches('figure')) return 'overview';
         // Titles are typeset too (a no-break space before the last word), so they are read with plain spaces.
@@ -946,6 +1024,8 @@
         // "Protests against Koç sponsorship"), or its opening lines name the sponsorship protested, or its text speaks of
         // the sponsorships. A protest over a director, a work or a cancelled show stays in Record. Read against the 170
         // protest and boycott sections in the records: 31 moved to Funding, the rest stay in Record.
+        if (el.classList.contains('is-flag') && FLAG_FUNDING_BY_SPACE.has(tabSpace + '|' + t)) return 'funding';
+        if (el.classList.contains('is-flag') && t === 'also reported') return ALSO_REPORTED_IN_RECORD.has(tabSpace) ? 'record' : 'funding';
         if (el.classList.contains('is-flag') && /protest|boycott/.test(t)) {
           const body = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(t.length);
           const lead = body.slice(0, 260);
@@ -955,6 +1035,10 @@
           if (/\bsponsorships?\b/i.test(body) && !denied(body)) return 'funding';
           return 'record';
         }
+        // A title that names a sponsor, funder, donor or corporate partner is about the money, even when it also says
+        // "accounts" ("Corporate partner Deutsche Bank and its 2020 penalty over Jeffrey Epstein's accounts", Städel, added
+        // on 20 Nov 2026), which the next test reads as someone's personal account.
+        if (el.classList.contains('is-flag') && FLAG_FUNDER.test(t)) return 'funding';
         if (el.classList.contains('is-flag') && !/case|account|gossip|talk|report/.test(t)) {
           // "Flagged" is the row that says why the space is flagged, and a space is flagged for who funds or owns it.
           if (t === 'flagged') return 'funding';
@@ -969,6 +1053,7 @@
         return 'record';
       };
       function buildFull(inst) {
+        tabSpace = inst.id || '';
         const key = (inst.id || inst.name) + '|' + (window.isGossipModeActive ? 1 : 0) + '|' + (window.dossierVcIndex || 0);
         if (full.dataset.key === key) return full.childElementCount > 0;
         full.dataset.key = key;
