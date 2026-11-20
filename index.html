@@ -10936,8 +10936,14 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     let width = 800;
     let height = 600;
 
+    // The room the atlas's name takes at the canvas's top on a wide screen (assets/sheet.css sets it as the canvas's
+    // scroll-padding-top). The canvas fills the map to its top edge, so a zoomed map runs up behind the name with no blank
+    // band (user, 20 Nov 2026: "do not add background here"); the globe is centred and sized in the room under the name, so
+    // the whole globe still keeps clear of it (16 Nov 2026).
+    let globeTop = 0;
+    const globeCY = () => globeTop + (height - globeTop) / 2;
     function computeBaseRadius() {
-      const minDim = Math.min(width, height);
+      const minDim = Math.min(width, height - globeTop);
       // Phone: the globe sits inside the 16pt side margins with room for the labels on its rim
       // (city labels are centred on their dot, so a rim dot's label reaches ~half a label past the globe).
       if (window.innerWidth < 768) return Math.max(120, Math.min(width * 0.40, height * 0.44));
@@ -11024,9 +11030,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 3));
       
       width = Math.round(rect.width) || canvas.parentElement.clientWidth || 800;
-      // The height is the canvas's own: on a wide screen it is dropped below the atlas's name (assets/sheet.css), so the
-      // globe is centred and sized in the room under the name, not behind it.
       height = Math.round(canvas.getBoundingClientRect().height) || Math.round(rect.height) || canvas.parentElement.clientHeight || 600;
+      globeTop = Math.max(0, Math.min(height / 3, parseFloat(getComputedStyle(canvas).scrollPaddingTop) || 0));
 
       // Double/triple buffer dimensions for razor-sharp Retina displays.
       // Setting a canvas's size clears it to black (the context has no alpha), so it is set only when it changes, and a
@@ -11156,7 +11161,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       wtOffsetY = (top + bottom) / 2 - (cRect.top + cRect.height / 2);
     }
     function wtScale(r) {
-      let roomW = width * 0.94, roomH = height * 0.9;
+      let roomW = width * 0.94, roomH = (height - globeTop) * 0.9;
       // The whole oval stays in view, closed, at every width (user, 11 Nov 2026: "keep map closed to onion shape"): on a phone
       // the map no longer grows to 1.6 times the screen's width to fill the height, which cut off both ends; it fits the
       // width, and the free band's height when that is the tighter. Zooming in still opens it up.
@@ -11617,7 +11622,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // Wheel zoom holds the place under the pointer still: the globe turns as it scales
         // so the point that was under the wheel is under it afterwards.
         if (zoomAnchor && !isDragging) {
-          const acx = width / 2, acy = height / 2;
+          const acx = width / 2, acy = globeCY();
           const before = unproject(zoomAnchor.x, zoomAnchor.y, prevR, acx, acy);
           if (before) {
             // The point that was under the wheel, where it is now, turned straight back to under the wheel.
@@ -11634,7 +11639,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       }
 
       const cx = width / 2;
-      const cy = height / 2;
+      const cy = globeCY();
       const r = currentRadius;
       const isVisualCritiqueOnly = typeof selectedTierFilter !== 'undefined' && selectedTierFilter.size === 1 && selectedTierFilter.has('VISUAL_CRITIQUE');
 
@@ -11944,6 +11949,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           drawnCityBoxes.push({ x: width - 330, y: height - 48, w: 330, h: 48 });
           // The compass and its N, top right.
           drawnCityBoxes.push({ x: width - 76, y: 0, w: 76, h: 76 });
+          // The atlas's name and the place line under it, which the map now runs behind (20 Nov 2026).
+          const cvBox = canvas.getBoundingClientRect();
+          document.querySelectorAll('#gmdTitle button, #cityViewControlBanner:not(.hidden) :is(button, #cityViewTitleText)').forEach((t) => {
+            const b = t.getBoundingClientRect();
+            if (b.width && b.height && b.top < cvBox.top + height / 3) drawnCityBoxes.push({ x: b.left - cvBox.left - 6, y: b.top - cvBox.top - 4, w: b.width + 12, h: b.height + 8 });
+          });
         }
         // The selected space's label always draws, so city names give way to it rather than sit under it.
         if (selectedInstitution && !isCityStreetViewActive) {
@@ -21579,7 +21590,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const mx = clientX - rect.left;
       const my = clientY - rect.top;
       const cx = width / 2;
-      const cy = height / 2;
+      const cy = globeCY();
       const r = currentRadius;
 
       // 0. Check city museum hitboxes (when in city street view)
@@ -21701,7 +21712,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (isCityStreetViewActive) return null;
       const r = currentRadius;
       const cx = width / 2;
-      const cy = height / 2;
+      const cy = globeCY();
 
       // If pointer is directly on a labeled institution dot, prioritize the institution dot
       for (let i = 0; i < visibleDots.length; i++) {
@@ -21806,7 +21817,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       if (onLabel) return { city };
       const dot = visibleDots.find(d => d.inst === inst || d.inst.name === inst.name);
       const dInst = dot ? Math.hypot(dot.x - mx, dot.y - my) : Infinity;
-      const cp = (city.lon !== undefined && city.lat !== undefined) ? project(city.lon, city.lat, currentRadius, width / 2, height / 2) : null;
+      const cp = (city.lon !== undefined && city.lat !== undefined) ? project(city.lon, city.lat, currentRadius, width / 2, globeCY()) : null;
       const dCity = cp ? Math.hypot(cp.x - mx, cp.y - my) : Infinity;
       return dCity < dInst ? { city } : { inst };
     }
@@ -21817,8 +21828,8 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     window.getSelectedCityFilter = () => selectedCityFilter;
     window.getLabelCounts = () => ({ inst: visibleDots.filter(d => d.labelBox).length, country: lastShownCountryLabels.size, city: cityBadgeHitboxes.length });
     window.getView = () => ({ r: currentRadius, target: targetRadius, lon: rotLon, lat: rotLat, roll: rotRoll });
-    window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, height / 2);
-    window.__project = (lon, lat) => project(lon, lat, currentRadius, width / 2, height / 2);
+    window.__unproject = (x, y) => unproject(x, y, currentRadius, width / 2, globeCY());
+    window.__project = (lon, lat) => project(lon, lat, currentRadius, width / 2, globeCY());
     window.handleGlobeClick = handleGlobeClick;
     window.renderGlobe = render;
     window.updateVisibleDots = () => { if (typeof render === 'function') render(); };
@@ -21830,7 +21841,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const mx = clientX - rect.left;
       const my = clientY - rect.top;
       const cx = width / 2;
-      const cy = height / 2;
+      const cy = globeCY();
       const r = currentRadius;
 
       hoverStick = hoveredInstitution;   // findInstitutionAt: the space hovered until now keeps the hover at its edge
@@ -22032,7 +22043,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       const rect = canvas.getBoundingClientRect();
       const mx = e.clientX - rect.left;
       const my = e.clientY - rect.top;
-      const geo = unproject(mx, my, currentRadius, width / 2, height / 2);
+      const geo = unproject(mx, my, currentRadius, width / 2, globeCY());
       if (globeAtMaxZoom() && zoomPastGlobe(mx, my)) return;
       if (geo && isFinite(geo.lon) && isFinite(geo.lat)) {
         flyTo(geo.lon, geo.lat, currentRadius * 1.7);
@@ -22252,11 +22263,11 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
     function zoomPastGlobe(px, py) {
       if (isCityStreetViewActive) return false;
-      const ax = px != null ? px : width / 2, ay = py != null ? py : height / 2;
+      const ax = px != null ? px : width / 2, ay = py != null ? py : globeCY();
       let best = null, bestD = Infinity;
       for (const c of ALL_CITIES_REGISTRY) {
         if (!c || !(c.count > 0) || !isFinite(c.lat) || !isFinite(c.lon)) continue;
-        const pt = project(c.lon, c.lat, currentRadius, width / 2, height / 2);
+        const pt = project(c.lon, c.lat, currentRadius, width / 2, globeCY());
         if (!pt || pt.front === false || pt.x < 0 || pt.y < 0 || pt.x > width || pt.y > height) continue;
         const d = Math.hypot(pt.x - ax, pt.y - ay);
         if (d < bestD) { bestD = d; best = c; }
@@ -22302,7 +22313,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // Zoom about the place under the wheel, when the wheel is over the globe.
       const wrect = canvas.getBoundingClientRect();
       const wx = e.clientX - wrect.left, wy = e.clientY - wrect.top;
-      zoomAnchor = unproject(wx, wy, currentRadius, width / 2, height / 2) ? { x: wx, y: wy } : null;
+      zoomAnchor = unproject(wx, wy, currentRadius, width / 2, globeCY()) ? { x: wx, y: wy } : null;
       if (e.pointerType !== 'touch') lastPointer = { x: e.clientX, y: e.clientY };
 
       if (targetRadius < baseRadius * 1.3 && selectedCountryFilter !== 'all') {
@@ -22524,7 +22535,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
         const my = (e.touches[0].clientY + e.touches[1].clientY) / 2 - trect.top;
         // Spreading on past the globe's limit, by a quarter again, goes on into the street map.
         if (initialZoomRadius * scale >= getMaxRadius() * 1.25 && globeAtMaxZoom() && zoomPastGlobe(mx, my)) { touchDistance = 0; return; }
-        zoomAnchor = unproject(mx, my, currentRadius, width / 2, height / 2) ? { x: mx, y: my } : null;
+        zoomAnchor = unproject(mx, my, currentRadius, width / 2, globeCY()) ? { x: mx, y: my } : null;
         // A twist of the two fingers turns the picture with them: the globe has no up.
         const ang = Math.atan2(e.touches[1].clientY - e.touches[0].clientY, e.touches[1].clientX - e.touches[0].clientX);
         let dA = ang - touchAngle;
