@@ -182,19 +182,6 @@ aliases = json.load(open(os.path.join(here, 'hq_aliases.json')))
 for k in aliases.pop('drop', []): out.pop(k, None)
 for k, ks in aliases.items():
     if k in out and ks: out[k]['also'] = ks
-# A researched funder profile (data/funder_profiles.json, tools/funder_profiles.py) gives the official name, the street address
-# and a better source than the register scraper an office was first placed from. The city stays the office's: a profile that
-# moves the seat is checked by hand, since the pin's coordinates come with the city.
-prof_path = os.path.join(here, '..', 'data', 'funder_profiles.json')
-for k, p in (json.load(open(prof_path)) if os.path.exists(prof_path) else {}).items():
-    o = out.get(k)
-    if not o or p.get('wrong_match'): continue
-    if p.get('name'): o['n'] = p['name']
-    if p.get('address') and (not o.get('c') or p.get('city', o.get('c')) == o.get('c')): o['a'] = p['address']
-    if p.get('sources'): o['s'] = p['sources'][0]
-    # The researcher's kind over the one guessed from the name: a person is labelled as one, not as the company the line named.
-    if p.get('kind') == 'person': o['kindLabel'] = 'Individual donor'; o['k'] = 'found'
-    elif p.get('kind') in ('gov', 'corp', 'found'): o['k'] = p['kind']
 lines = [n for r in json.load(open(os.path.join(here, '..', 'assets', 'money-maps.json'))) for n in r['nodes'] if len(n) > 5 and n[5]]
 used = {n[5] for n in lines}
 # An office whose keys no line uses also takes the keys of the lines that spell its name ('LINZ AG' and 'Linz AG').
@@ -202,6 +189,23 @@ by_name = {}
 for n in lines: by_name.setdefault(n[0].lower(), set()).add(n[5])
 for k, o in out.items():
     if not ({k, *o.get('also', [])} & used) and o['n'].lower() in by_name: o['also'] = o.get('also', []) + sorted(by_name[o['n'].lower()])
+# A researched funder profile (data/funder_profiles.json, tools/funder_profiles.py) gives the official name, the street address
+# and a better source than the register scraper an office was first placed from. The city stays the office's: a profile that
+# moves the seat is checked by hand, since the pin's coordinates come with the city. It runs after the lines are matched to
+# offices by name: six offices ('Canton of Zurich', 'LINZ AG') lost their funding lines when the official name came first.
+prof_path = os.path.join(here, '..', 'data', 'funder_profiles.json')
+for k, p in (json.load(open(prof_path)) if os.path.exists(prof_path) else {}).items():
+    o = out.get(k)
+    if not o or p.get('wrong_match'): continue
+    if p.get('name'): o['n'] = p['name']
+    if p.get('address') and (not o.get('c') or p.get('city', o.get('c')) == o.get('c')): o['a'] = p['address']
+    if p.get('sources'): o['s'] = p['sources'][0]
+    # The name a reader knows it by, or the body that gives in its name ('Steven & Alexandra Cohen Foundation'): the page lists
+    # it with the other spellings and finds the museum's sentence by it.
+    if p.get('short') and p['short'] != p.get('name'): o['sn'] = p['short']
+    # The researcher's kind over the one guessed from the name: a person is labelled as one, not as the company the line named.
+    if p.get('kind') == 'person': o['kindLabel'] = 'Individual donor'; o['k'] = 'found'
+    elif p.get('kind') in ('gov', 'corp', 'found'): o['k'] = p['kind']
 # An office whose funding lines are hedge funds or investors ('priv' in tools/build_money_maps.py, from 17 Nov 2026) takes that
 # group too, so its record and its dot say the same as the money map; the group is decided there, by name, not here.
 priv = {n[5] for n in lines if n[1] == 'priv'}

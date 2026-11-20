@@ -874,19 +874,53 @@
       // its sections are sorted into the tabs, and the sheet's shorter blocks that say the same give way to it.
       const full = document.createElement('div');
       full.id = 'gmFull';
+      // recordHtml has already taken its own repeats out. The sheet's pass (updateMobileDossier, index.html) runs over the
+      // whole pane each time the sheet is written, and on a second write for the same space it read the sheet's hidden
+      // Funding block first and then cut the same lines from this copy, the one on screen: Funding showed the grade and
+      // nothing under it (19 Nov 2026, Neue Nationalgalerie opened from the chat). data-repeat-ok keeps it out of that pass.
+      full.setAttribute('data-repeat-ok', '');
       pane.appendChild(full);
+      // How a flagged section is filed (tabOf, below). FLAG_MONEY: its title names money, a funder's trade or a penalty on
+      // a funder. FLAG_EVENT: its title names something that happened at the space (a dismissal, a censored work, a theft).
+      // FLAG_LEAD and FLAG_FUNDER: its text says who the named party is to the space, a sponsor, donor, trustee or partner.
+      // Read against all 1,535 flagged sections on 19 Nov 2026, title by title.
+      const FLAG_MONEY = /fund|sponsor|donor|donat|benefactor|supporter|membership|partner|naming rights|money|fortune|endow|bequest|wealth|patron|financ|budget|subsid(?:y|ies|i[sz])|\bgrants?\b|gift|\bbanks?\b|banka\b|banking|bankrupt|fossil|\boil\b|\bgas\b|coal|mining|petrol|energy|tobacco|cigarette|\barms\b|weapon|defen[cs]e|gambl|gaming|betting|casino|lotter|opioid|sackler|\bkoch\b|sanction|launder|\btax|debt|receivable|deficit|operating loss|loss in \d|insolven|going concern|cost|spent|spending|\bpaid\b|payment|revenue|income|invest|shareholder|\bowned\b|\bowner|billionaire|oligarch|gulf state|state body|government body|government backing|epstein|philanthrop|trustee|name to know|settlement(?! perf)|\bplea\b|penalt|\bfines?\b|briber|\bbp\b/;
+      const FLAG_EVENT = /governance|labou?r|staff|union|strike|layoff|job (?:cuts|losses)|dismiss|ouster|resign|director|curator|leadership|management|censor|punish|pressure|police|arrest|looted|holdings|provenance|restitution|return|antiquit|human remains|dispute|petition|open letter|campaign|cancel|withdr[ae]w|removal|removed|closure|closed|delay|audit|allegation|racism|racist|occupation|sit-in|encampment|vandal|threat|damage|theft|stolen|fire\b|earthquake|\bwar\b|misconduct|abuse|inquiry|criticism|rebrand|deaccession|sale of|missing|expansion|commission|debate|journalist|exhibit|ticket|performance|takeover/;
+      const FLAG_LEAD = /\b(?:sponsor\w*|funder\w*|funded|funds|donor\w*|donat\w*|benefactor\w*|patrons?|supporters?|supports|supported|backers?|trustees?|board (?:member|chair|seat)\w*|gift\w*|gave|partners?|maintainer|owned by|owner|parent company)\b/i;
+      const FLAG_FUNDER = /\b(?:sponsor\w*|funder\w*|donor\w*|benefactor\w*|(?:corporate|founding|main|lead|major|principal|official) (?:member|partner)\w*)\b/i;
       const tabOf = (el) => {
         if (el.matches('figure')) return 'overview';
-        const t = ((el.querySelector('.d-row-title') || {}).textContent || '').trim().toLowerCase();
-        if (/^(overview|what it publishes|bottom line)\b/.test(t)) return 'overview';
-        if (/^(funding|scale and money)\b/.test(t)) return 'funding';
+        // Titles are typeset too (a no-break space before the last word), so they are read with plain spaces.
+        const t = ((el.querySelector('.d-row-title') || {}).textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+        // The rows were renamed after these tests were written ("Bottom line" to "In short", "Scale and money" to "Size and
+        // money"), and both then fell through to Record (19 Nov 2026: 1,880 and 666 spaces). Both names are kept.
+        if (/^(overview|what it publishes|bottom line|in short|highlight)\b/.test(t)) return 'overview';
+        if (/^(funding|scale and money|size and money)\b/.test(t)) return 'funding';
+        // The accounts note is about money; a row that only lists what the space is linked to stays in Record.
+        if (/^accounts and links\b/.test(t)) return /accounts:/i.test(el.textContent || '') ? 'funding' : 'record';
+        // Address, hours and admission are Overview's own rows (info, above); under Record they were said a second time.
+        if (el.classList.contains('d-row-visit')) return 'visit';
         if (/^sources\b/.test(t)) return 'sources';
         // The artists' images of a space (assets/critique-gallery.js) have a tab of their own (user, 14 Nov 2026: "add images
         // tab"). Few spaces have any, and the tab is offered only for those.
         if (/^artists.? images\b/.test(t)) return 'images';
         // A flag about money (fossil fuels, opioids, arms, tobacco and the rest) is about who funds the space; a protest,
-        // a case or a personal account is part of its record.
-        if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) return 'funding';
+        // a case or a personal account is part of its record. A flag goes under Funding only when its title names money or
+        // a funder, or, where the title names neither money nor an event, when its text names a sponsor or donor. Before
+        // 19 Nov 2026 every flag went there unless its title held one of seven words, so "2024 dispute over a Nan Goldin
+        // slide", censorship, governance and labour disputes were all read under Funding (user: "this is funding but the
+        // info it's not funding").
+        if (el.classList.contains('is-flag') && !/protest|boycott|case|account|gossip|talk|report/.test(t)) {
+          // "Flagged" is the row that says why the space is flagged, and a space is flagged for who funds or owns it.
+          if (t === 'flagged') return 'funding';
+          // The West Bank is a place, not a bank.
+          const title = t.replace(/west bank/g, '');
+          if (FLAG_MONEY.test(title)) return 'funding';
+          if (!FLAG_EVENT.test(title)) {
+            const body = (el.textContent || '').replace(/\s+/g, ' ').trim().slice(t.length);
+            if (FLAG_LEAD.test(body.slice(0, 220)) || FLAG_FUNDER.test(body)) return 'funding';
+          }
+        }
         return 'record';
       };
       function buildFull(inst) {
@@ -957,9 +991,13 @@
         // and the selected space is then another one (9 Nov 2026: the sheet said MoMA over ARoS's grade and sources). The
         // selected space is the fallback, for a sheet whose name is not a space's (a funder's record).
         const sel = (typeof selectedInstitution !== 'undefined' && selectedInstitution) || null;
-        const nameText = name.textContent.trim();
+        // The name on the sheet is typeset: its last two words are held together with a no-break space, so it is compared
+        // with every run of spaces read as one plain space. Compared as written, 1,935 of the 2,091 names matched no space
+        // (19 Nov 2026) and a sheet the chat had written took the selected space's record instead of its own.
+        const plain = (t) => String(t || '').replace(/[\s\u00a0\u202f\u2009\u2060]+/g, ' ').trim();
+        const nameText = plain(name.textContent);
         const all = window.ALL_INSTITUTIONS || (typeof ALL_INSTITUTIONS !== 'undefined' ? ALL_INSTITUTIONS : []);
-        const inst = (sel && sel.name === nameText ? sel : null) || (nameText && all.find((i) => i.name === nameText)) || sel;
+        const inst = (sel && plain(sel.name) === nameText ? sel : null) || (nameText && all.find((i) => plain(i.name) === nameText)) || sel;
         if (!inst) return;
         // Rating line.
         let g = null;
