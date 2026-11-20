@@ -66,7 +66,11 @@
   window.atlasHqFrame = function (hits) {
     const root = box(); if (!root) return;
     const vp = viewport(), W = vp.clientWidth, H = vp.clientHeight;
-    const live = hits.filter(p => p.x > 4 && p.x < W - 4 && p.y > 4 && p.y < H - 4)
+    // The hits are in the canvas's box and the buttons in the viewport's; the canvas starts below the viewport's top
+    // (sheet.css: the globe drops below the name), so each button is moved down by that much to sit on its mark.
+    const cv = document.getElementById('globeCanvas'), vr = vp.getBoundingClientRect(), cr = cv ? cv.getBoundingClientRect() : vr;
+    const ox = cr.left - vr.left, oy = cr.top - vr.top;
+    const live = hits.filter(p => p.x + ox > 4 && p.x + ox < W - 4 && p.y + oy > 4 && p.y + oy < H - 4)
       .sort((a, b) => Math.hypot(a.x - W / 2, a.y - H / 2) - Math.hypot(b.x - W / 2, b.y - H / 2)).slice(0, MAX_MARKS)
       .sort((a, b) => a.x - b.x || a.y - b.y);
     const keep = new Set(live.map(p => p.e));
@@ -75,7 +79,7 @@
     const settled = !root.contains(document.activeElement);
     live.forEach((p, i) => {
       const b = markButton(p.e);
-      b.style.transform = `translate(${Math.round(p.x - 12)}px, ${Math.round(p.y - 12)}px)`;
+      b.style.transform = `translate(${Math.round(p.x + ox - 12)}px, ${Math.round(p.y + oy - 12)}px)`;
       // The tab order follows the picture left to right, but is only rearranged while no mark has focus.
       if (!b.isConnected) root.appendChild(b);
       if (settled && root.children[i] !== b) root.insertBefore(b, root.children[i] || null);
@@ -108,37 +112,122 @@
       const t = hq().at(mx, my, hq().reach(), dots);
       if (!t.marks.length) return false;
       if (t.marks.length + t.spaces.length === 1) { openRecord(t.marks[0].e, null); return true; }
-      openChooser(t, mx, my);
+      // The list is placed in the viewport's own box, and the globe's canvas starts below its top (sheet.css: the globe drops
+      // below the name), so the spot is taken from the pointer's page position, not the canvas's.
+      const r = viewport().getBoundingClientRect();
+      openChooser(t, clientX != null ? clientX - r.left : mx, clientY != null ? clientY - r.top : my);
       return true;
     }
   };
 
   // ---- A crowded spot: everything under the pointer, each one pickable ----
+  // The list is a callout, as the map's own names are (index.html, drawPillLabel: an ink bubble, the name in the ground's
+  // colour, a tail toward its mark). Its tail points at the spot that was clicked and the box stands beside it, so the spot
+  // stays in view (user, 20 Nov 2026: "design this", a screenshot of the plain white box laid over the spot and the city
+  // names). The heading says how many and of what; where funders and museums share the spot they are listed under their own
+  // small heads, and a museum's line then gives only its city, since its head already says what it is.
+  // Keyboard: the box takes focus when it opens (no row is picked for you); Up and Down move between the rows, Home and End
+  // go to the first and last, Tab walks the rows and the close button, Escape or a click elsewhere closes it, and focus goes
+  // back where it was.
   function closeChooser(restore) {
     if (!chooser) return;
     chooser.remove(); chooser = null;
     if (restore && chooserReturn && chooserReturn.isConnected) chooserReturn.focus();
     chooserReturn = null;
   }
+  const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
   function openChooser(t, mx, my) {
     closeChooser(false);
     const vp = viewport(); if (!vp) return;
     chooserReturn = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
-    const items = [];
-    t.marks.forEach(m => items.push({ label: m.e.n, sub: `${hq().kindLabel(m.e)} / ${m.e.c}`, go: () => openRecord(m.e, null) }));
-    t.spaces.forEach(s => items.push({ label: s.inst.name, sub: `Museum${s.inst.city ? ' / ' + s.inst.city : ''}`, go: () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(s.inst, false); } }));
-    chooser = h('div', { id: 'hqChooser', role: 'dialog', 'aria-label': `${items.length} places here. Choose one.` },
-      h('p', { class: 'hq-chooser-title', text: `${items.length} places here` }),
-      h('ul', null, items.map(it => h('li', null, (() => {
-        const b = h('button', { type: 'button' }, h('span', { class: 'hq-l', text: it.label }), h('span', { class: 'hq-s', text: it.sub }));
-        b.addEventListener('click', () => { closeChooser(false); it.go(); });
-        return b;
-      })()))));
+    const nm = t.marks.length, ns = t.spaces.length, mixed = nm > 0 && ns > 0, n = nm + ns;
+    const funders = t.marks.map(m => ({ label: m.e.n, sub: [hq().kindLabel(m.e), m.e.c].filter(Boolean).join(' / '), go: () => openRecord(m.e, null) }));
+    const spaces = t.spaces.map(s => ({ label: s.inst.name, sub: s.inst.city || '', go: () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(s.inst, false); } }));
+    const title = !ns ? plural(nm, 'funder here', 'funders here') : !nm ? plural(ns, 'museum here', 'museums here') : `${n} places here`;
+    const row = it => {
+      const b = h('button', { type: 'button', class: 'hq-row' }, h('span', { class: 'hq-l', text: it.label }), it.sub ? h('span', { class: 'hq-s', text: it.sub }) : null);
+      b.addEventListener('click', () => { closeChooser(false); it.go(); });
+      return h('li', null, b);
+    };
+    const group = (head, list, id) => [
+      mixed ? h('h3', { class: 'hq-group', id, text: head }) : null,
+      h('ul', mixed ? { 'aria-labelledby': id } : null, list.map(row))
+    ];
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close' }, h('span', { 'aria-hidden': 'true', text: '×' }));
+    close.addEventListener('click', () => closeChooser(true));
+    chooser = h('div', { id: 'hqChooser', role: 'dialog', tabindex: '-1', 'aria-labelledby': 'hqChooserTitle', 'aria-describedby': 'hqChooserHint' },
+      h('div', { class: 'hq-head' },
+        h('h2', { class: 'hq-chooser-title', id: 'hqChooserTitle', text: title }),
+        close),
+      h('p', { class: 'hq-hint', id: 'hqChooserHint', text: 'Choose one to open it.' }),
+      h('div', { class: 'hq-body' },
+        nm ? group(plural(nm, 'Funder', 'Funders'), funders, 'hqChooserFunders') : null,
+        ns ? group(plural(ns, 'Museum', 'Museums'), spaces, 'hqChooserSpaces') : null));
+    chooser.addEventListener('keydown', ev => {
+      const rows = [...chooser.querySelectorAll('.hq-row')], i = rows.indexOf(document.activeElement);
+      let to = null;
+      if (ev.key === 'ArrowDown') to = i < 0 ? 0 : (i + 1) % rows.length;
+      else if (ev.key === 'ArrowUp') to = i < 0 ? rows.length - 1 : (i - 1 + rows.length) % rows.length;
+      else if (ev.key === 'Home') to = 0;
+      else if (ev.key === 'End') to = rows.length - 1;
+      if (to === null || !rows.length) return;
+      ev.preventDefault(); rows[to].focus();
+    });
+    // Focus that leaves the box (Tab past its last row) closes it; the page keeps that focus.
+    chooser.addEventListener('focusout', ev => { if (chooser && ev.relatedTarget && !chooser.contains(ev.relatedTarget)) closeChooser(false); });
     vp.appendChild(chooser);
-    const W = vp.clientWidth, H = vp.clientHeight, cw = chooser.offsetWidth, ch = chooser.offsetHeight;
-    chooser.style.left = Math.max(8, Math.min(W - cw - 8, mx + 14)) + 'px';
-    chooser.style.top = Math.max(8, Math.min(H - ch - 8, my - 12)) + 'px';
-    const first = chooser.querySelector('button'); if (first) first.focus();
+    placeChooser(vp, mx, my);
+    chooser.focus({ preventScroll: true });
+  }
+  // The box stands to the right of the spot with its tail on its left edge, or to the left with the tail on its right edge;
+  // where neither side has room (a phone), above or below the spot with the tail on its bottom or top edge. The tail is
+  // moved along its edge to point straight at the spot. `TAIL` is how far the tail reaches out from the box, `GAP` the air
+  // between the tail's point and the spot, so the dot itself stays in view.
+  // The box keeps to the band of the map that is not covered: below the map's name (the canvas starts lower than the
+  // viewport) and below the filter chips and buttons laid over the map's top on a phone; above the filter chips over its
+  // foot on a desktop and the chat bar over its foot on a phone. So it never covers them, nor slides under them.
+  const COVERS = ['gmdChips', 'gmChips', 'gmTopBtns', 'mobileStickyInputBar'];
+  function mapBand(vp) {
+    const vr = vp.getBoundingClientRect(), cv = document.getElementById('globeCanvas'), mid = vr.height / 2;
+    let top = cv ? Math.max(0, cv.getBoundingClientRect().top - vr.top) : 0, bottom = vp.clientHeight;
+    COVERS.forEach(id => {
+      const el = document.getElementById(id), r = el && el.getBoundingClientRect();
+      if (!r || !r.height || !r.width || r.right <= vr.left || r.left >= vr.right || r.bottom <= vr.top || r.top >= vr.bottom) return;
+      if (r.top + r.height / 2 - vr.top < mid) top = Math.max(top, r.bottom - vr.top);
+      else bottom = Math.min(bottom, r.top - vr.top);
+    });
+    return { top, bottom };
+  }
+  function placeChooser(vp, mx, my) {
+    const TAIL = 9, GAP = 6, EDGE = 8, R = 9, MIN = 140;
+    const band = mapBand(vp), lo = band.top + EDGE, hi = Math.max(band.top + EDGE + MIN, band.bottom - EDGE);
+    const cap = h => chooser.style.setProperty('max-height', Math.round(Math.max(MIN, Math.min(400, h))) + 'px', 'important');
+    cap(hi - lo);
+    const W = vp.clientWidth, cw = chooser.offsetWidth, off = TAIL + GAP;
+    let ch = chooser.offsetHeight;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    let side, x, y;
+    if (mx + off + cw <= W - EDGE) side = 'right';
+    else if (mx - off - cw >= EDGE) side = 'left';
+    else {
+      // Above or below: the side with room for the whole list, else the side with more room, and the list is cut to that
+      // room (it scrolls) rather than slid over the spot.
+      const up = my - off - lo, down = hi - my - off;
+      side = down >= ch || down >= up ? 'below' : 'above';
+      cap(side === 'below' ? down : up); ch = chooser.offsetHeight;
+    }
+    if (side === 'right' || side === 'left') {
+      x = side === 'right' ? mx + off : mx - off - cw;
+      y = clamp(my - Math.min(ch / 2, 34), lo, hi - ch);
+      chooser.style.setProperty('--hq-tail', clamp(my - y, R + 6, ch - R - 6) + 'px');
+    } else {
+      x = clamp(mx - cw / 2, EDGE, W - cw - EDGE);
+      y = side === 'above' ? my - off - ch : my + off;
+      chooser.style.setProperty('--hq-tail', clamp(mx - x, R + 6, cw - R - 6) + 'px');
+    }
+    chooser.dataset.side = side;
+    chooser.style.left = Math.round(x) + 'px';
+    chooser.style.top = Math.round(y) + 'px';
   }
   document.addEventListener('pointerdown', ev => { if (chooser && !chooser.contains(ev.target)) closeChooser(false); }, true);
 

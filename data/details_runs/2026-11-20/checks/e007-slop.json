@@ -1,0 +1,463 @@
+[
+ {
+  "id": "museum-of-modern-belarusian-statehood",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported source: Sputnik8 listings page returns 401, ticket and booking rule could not be confirmed"
+  ],
+  "before": "- Visiting: Monday to Saturday 10.00 to 19.00, last entry 18.30, closed Sunday (museum website). Sputnik8 lists a ticket of 5 roubles and says visits need booking with passport details five days ahead.",
+  "after": "- Visiting: Monday to Saturday 10.00 to 19.00, last entry 18.30, closed Sunday (museum website).",
+  "sources": [
+   "http://msbd.museum.by/"
+  ],
+  "reason": "Ruling: credit or cut. The Sputnik8 page could not be opened (HTTP 401), so the 5-rouble ticket and booking rule were cut and the URL removed from SOURCES."
+ },
+ {
+  "id": "museum-of-modern-belarusian-statehood",
+  "section": "OVERVIEW",
+  "problems": [
+   "undated archive copy"
+  ],
+  "before": "- The same address is given by the President's own portal as the seat of the Presidential Property Management Directorate (president.gov.by, archived 2022).\n- Alexander Lukashenko visited on 22 June 2012 and said that in two decades \"we have built in fact a new European country\"; his portal described the main theme as the country's achievements since independence and \"the formation of the presidential state\" (president.gov.by).\n- The President's portal lists the first presidential decrees, state awards and festival prizes among the exhibits (president.gov.by).",
+  "after": "- The same address is given by the President's own portal as the seat of the Presidential Property Management Directorate (president.gov.by, read in a 2022 Wayback Machine copy).\n- Alexander Lukashenko visited on 22 June 2012 and said that in two decades \"we have built in fact a new European country\"; his portal described the main theme as the country's achievements since independence and \"the formation of the presidential state\" (president.gov.by, read in a 2022 Wayback Machine copy).\n- The same portal page lists the first presidential decrees and festival prizes among the exhibits.",
+  "sources": [
+   "https://web.archive.org/web/20220722161622/https://president.gov.by/en/events/alexander-lukashenko-visits-museum-of-modern-belarusian-statehood-498"
+  ],
+  "reason": "The President's portal pages were read as 2022 Wayback copies; each citation now says so."
+ },
+ {
+  "id": "museum-of-modern-belarusian-statehood",
+  "section": "OVERVIEW",
+  "problems": [
+   "text says more than source: museum did not open 'for' the anniversary; its creation was timed to it"
+  ],
+  "before": "- Opened in 2012 for the 20th anniversary of Belarus's declaration of sovereignty, announced by Svetlana Gavrilova of the Ministry of Culture (Nasha Niva, reposting BelTA, 17 May 2012). The museum dates its exhibition's opening to August 2012.",
+  "after": "- Svetlana Gavrilova of the Ministry of Culture announced in May 2012 that it would open in June and said its creation marked the 20th anniversary of Belarus's declaration of sovereignty (Nasha Niva, reposting BelTA, 17 May 2012). The museum dates its exhibition's opening to August 2012.",
+  "sources": [
+   "https://nashaniva.com/ru/73614"
+  ],
+  "reason": "BelTA via Nasha Niva (17 May 2012): Gavrilova said the museum would open in June and its creation was timed to the 20th anniversary of sovereignty."
+ },
+ {
+  "id": "museum-of-modern-belarusian-statehood",
+  "section": "OVERVIEW, FUNDING, BOTTOM LINE",
+  "problems": [
+   "repetition: state awards twice; branch status in verdict and in owner line; bottom line restated verdict"
+  ],
+  "before": "- The President's portal lists the first presidential decrees, state awards and festival prizes among the exhibits (president.gov.by).\nMuseum of Modern Belarusian Statehood: state-funded: a branch of the Ministry of Culture's National Historical Museum\nOnly Belarusian state money, with no outside funder. The weak point is its purpose: a display of the presidency as the story of the state.",
+  "after": "- The same portal page lists the first presidential decrees and festival prizes among the exhibits.\nMuseum of Modern Belarusian Statehood: state-funded: the Belarusian state\nNo outside money. The weak point is its purpose: a display of the presidency as the story of the state.",
+  "sources": [
+   "http://msbd.museum.by/"
+  ],
+  "reason": "No statement twice."
+ },
+ {
+  "id": "africamuseum-royal-museum-for-central-africa",
+  "section": "Red flags to WIDER CONTEXT",
+  "problems": [
+   "older than five years: 2019 UN finding and 2020 bust attacks"
+  ],
+  "before": "Red flags: 2019 UN experts' finding that the renovation had not gone far enough\n- After a visit to Belgium in February 2019, the UN Working Group of Experts on People of African Descent said the museum's reorganisation \"has not gone far enough\" and noted it had been called the last colonial museum in the world (Brussels Times, 12 February 2019).\n- Then director Guido Gryseels replied that the museum wanted \"a new, more honest narrative\" (Brussels Times).\nRed flags: 2020 attacks on the Leopold II bust outside the museum\n- Activists defaced the Leopold II bust outside the museum twice in 2020, after the killing of George Floyd and the Black Lives Matter protests (Zofia Wóycicka, Cultures of History Forum, 2020).",
+  "after": "WIDER CONTEXT\n- In its report on its February 2019 visit to Belgium (A/HRC/42/59/Add.1, 14 August 2019), the UN Working Group of Experts on People of African Descent judged that the steps taken to reorganise the museum \"have not gone far enough\" and noted \"the importance of removing all colonial propaganda\".\n- Reporting the experts' view on 12 February 2019, the Brussels Times quoted then director Guido Gryseels saying the museum wanted \"a new, more honest narrative\".\n- Activists defaced the bust of King Leopold II twice in 2020, after the killing of George Floyd and the Black Lives Matter protests (Zofia Wóycicka, Cultures of History Forum, 2020).\n- Both concern the museum itself: the UN experts toured it with its director, and the bust stood there.",
+  "sources": [
+   "https://www.ecoi.net/en/file/local/2016421/a_hrc_42_59_add.1_E.pdf",
+   "https://www.brusselstimes.com/53690/un-urges-belgium-to-confront-its-colonial-past-in-africa-and-fight-racism",
+   "https://cultures-of-history.uni-jena.de/exhibitions/too-beautiful-to-hurt-anyone-the-permanent-exhibition-at-the-africamuseum-tervuren"
+  ],
+  "reason": "Ruling applied: both moved to WIDER CONTEXT. The UN Working Group is now quoted from its own report A/HRC/42/59/Add.1 (14 August 2019, para. 34); the Brussels Times is kept for the Gryseels reply."
+ },
+ {
+  "id": "africamuseum-royal-museum-for-central-africa",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only: closing month, collection figures; conflicting reopening date"
+  ],
+  "before": "- Closed in November 2013 for a renovation by Stéphane Beel Architects and reopened on 8 December 2018 with a new visitor centre; public space grew from 6,000 to 11,000 square metres (museum website, Wikipedia).\n- Collections include over 10 million zoological specimens and 120,000 ethnographic objects (Wikipedia).",
+  "after": "- Closed to the public on 1 December 2013 for a renovation by the Stéphane Beel Architecten consortium and reopened on 8 December 2018 with a new visitor centre; public space grew from 6,000 to 11,000 square metres (museum website).\n- Collections include 10 million zoological specimens, 120,000 ethnographic objects and 8,000 musical instruments (museum website).",
+  "sources": [
+   "https://www.africamuseum.be/discover/renovation",
+   "https://www.africamuseum.be/research/collections_libraries",
+   "https://www.africamuseum.be/en/about_us/history_renovation"
+  ],
+  "reason": "The museum's own timeline gives closure on 1 December 2013 and reopening on 8 December 2018 (the government release said 9 December; the museum's date is used). Collection figures now from the museum's collections page."
+ },
+ {
+  "id": "africamuseum-royal-museum-for-central-africa",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only figure: 66 million euro renovation cost"
+  ],
+  "before": "- Buildings: the Belgian Buildings Agency owns and manages the buildings and park and carried out the renovation, the reception pavilion and the underground gallery (museum website). The Belgian government spent €66 million on the renovation (Wikipedia).",
+  "after": "- Buildings: the Belgian Buildings Agency owns and manages the buildings and park and carried out the renovation, the reception pavilion and the underground gallery (museum website), which cost over 65 million euros (Africa Is a Country, 2019).",
+  "sources": [
+   "https://africasacountry.com/2019/04/renovating-the-africamuseum"
+  ],
+  "reason": "The government's 66.5 million release (news.belgium.be) returned 403; press figures differ (The Art Newspaper: 74 million). Kept the figure from an opened source, credited, and dropped Wikipedia."
+ },
+ {
+  "id": "africamuseum-royal-museum-for-central-africa",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported quotation marks; text says more than source"
+  ],
+  "before": "- In 2026 the museum declined to let KoBold Metals, a US mining company backed by Bill Gates, digitise its colonial-era Congolese geological archives, saying it \"cannot delegate the management of complete archives to a private company\"; an EU-funded digitisation project sends copies to Congolese authorities instead (Brussels Times, February 2026).",
+  "after": "- In February 2026 Belgian authorities refused KoBold Metals, a US mining company backed by Bill Gates, exclusive access to the colonial-era Congolese geological archives held at the museum, which said it cannot delegate their management to a private company (Brussels Times, 12 February 2026).",
+  "sources": [
+   "https://www.brusselstimes.com/belgium/1965785/bill-gates-backed-mining-company-itching-to-access-colonial-archives-but-belgium-says-no"
+  ],
+  "reason": "The refusal came from Belgian authorities; the museum's 'cannot delegate' line is paraphrase in the article, not a quotation. Dated 12 February 2026."
+ },
+ {
+  "id": "africamuseum-royal-museum-for-central-africa",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'favoured spectacle over decolonisation'; misattributed 65 million figure; Mathys and Wóycicka points loosely paraphrased"
+  ],
+  "before": "- Luyckfasseel rejects the museum's claim to be a neutral \"forum\", arguing that \"neutrality always favors the strong\", and says the over €65 million spent favoured spectacle over decolonisation.\n- Mathys notes Umicore's place as a museum partner; Tansia says the museum avoids upsetting sponsors and former colonial elites.\n- Argues the museum cannot be decolonised while it keeps showing objects taken from colonised peoples, and that the director leaves restitution to the government.\n- Reports that COMRAF, the diaspora advisory committee, complained its members had little impact on the exhibition.",
+  "after": "- Luyckfasseel rejects the museum's framing of itself as an impartial forum: \"neutrality always favors the strong\".\n- Mathys notes that the colonial history room names no companies, though Umicore owes part of its success to exploitation by its predecessor Union Minière du Haut Katanga; Tansia says dismissing diaspora voices \"when it does not suit sponsors, former colonial elites, or possible investors\" is not decolonising.\n- Reports that director Guido Gryseels agrees with restitution claims in general but leaves the solution to the national government.\n- Reports that COMRAF, the diaspora advisory committee, said its members had a limited impact on the exhibition.",
+  "sources": [
+   "https://africasacountry.com/2019/04/renovating-the-africamuseum",
+   "https://cultures-of-history.uni-jena.de/exhibitions/too-beautiful-to-hurt-anyone-the-permanent-exhibition-at-the-africamuseum-tervuren"
+  ],
+  "reason": "Rewritten from the pieces: the cost is in the introduction, not Luyckfasseel's text; 'spectacle' is not in the piece; Umicore point is Mathys on UMHK; sponsor point is Tansia's quote."
+ },
+ {
+  "id": "africamuseum-royal-museum-for-central-africa",
+  "section": "whole report",
+  "problems": [
+   "over 800 words (853)"
+  ],
+  "before": "853 words",
+  "after": "797 words",
+  "sources": [],
+  "reason": "Trimmed the KoBold, visitors, press Overall and Wider context lines; no heading dropped."
+ },
+ {
+  "id": "museo-de-la-revolucion-democratica-y-cultural",
+  "section": "Red flags: 2026 investigation",
+  "problems": [
+   "allegation without Unverified label; missing date"
+  ],
+  "before": "- In April 2026 the government's Vice Ministry of Transparency opened an inquiry into how the project was justified before investment and why it was contracted directly instead of by public tender (eju.tv, citing ERBOL).\n- Yamil García said the officials who approved the project, set its cost or authorised the contracting method could be held responsible (eju.tv).",
+  "after": "- On 7 April 2026 eju.tv, citing ERBOL, reported that the government's Vice Ministry of Transparency had opened an investigation into how the project was justified before investment and why it was contracted directly instead of by public tender.\n- Unverified: Vice Minister of Transparency Yamil García said the officials who approved the project, set its cost and authorised direct contracting will have to answer for it (eju.tv, citing ERBOL).",
+  "sources": [
+   "https://eju.tv/?p=4941584"
+  ],
+  "reason": "Ruling applied: the investigation by the Vice Ministry of Transparency is stated plainly with its date (eju.tv, 7 April 2026, citing ERBOL); García's claim that officials must answer for it is labelled Unverified."
+ },
+ {
+  "id": "museo-de-la-revolucion-democratica-y-cultural",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting opening date (2 or 7 February 2017)"
+  ],
+  "before": "- Construction began in December 2012; Morales inaugurated it on 2 February 2017 (Los Tiempos, 2017).",
+  "after": "- Construction began in December 2012; Morales inaugurated it on 2 February 2017 (Los Tiempos, 2 and 3 February 2017).",
+  "sources": [
+   "https://www.lostiempos.com/node/138285",
+   "https://www.lostiempos.com/actualidad/nacional/20170203/romero-justifica-museo-orinoca-tiene-valor-casi-divino",
+   "https://www.lostiempos.com/doble-click/cultura/20230621/deteriorado-anuncian-cierre-auditoria-del-museo-orinoca"
+  ],
+  "reason": "Settled from the contemporary reports: Los Tiempos published the inauguration on 2 February 2017 and on 3 February wrote it opened 'ayer'. The 7 February date appears only in a 2023 Los Tiempos piece."
+ },
+ {
+  "id": "museo-de-la-revolucion-democratica-y-cultural",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: FPS as builder not stated in the cited 2017 article; repeated cost figures; 'about 47 million' should be 'over'"
+  ],
+  "before": "- Builder and funder: the Fondo Nacional de Inversión Productiva y Social (FPS), for almost 50 million bolivianos (Los Tiempos, 2017); about 7.1 million US dollars, according to the authorities of the time (EFE, 2019).\n- Breakdown: close to 49 million bolivianos in all, about 47 million for the building and about 2.5 million for equipment (Vice Minister of Transparency Yamil García, eju.tv, April 2026).\n- Operator: the FPS and the Andamarca municipality still held its administration in June 2023; Culture Minister Sabina Orellana said the museum had \"problemas legales\" and had not been transferred to her ministry, which could fund repairs only after a transfer (Los Tiempos, citing agencies).",
+  "after": "- Cost: almost 50 million bolivianos of state investment (Los Tiempos, 2017), about 7.1 million US dollars according to the authorities of the time (EFE, 2019). In April 2026 the Vice Minister of Transparency put it at over 47 million bolivianos for the building and about 2.5 million for equipment (eju.tv, citing ERBOL).\n- Administration: the national investment fund, the Fondo Nacional de Inversión Productiva y Social (FPS), and the Andamarca municipality still held it in June 2023. Culture Minister Sabina Orellana said the museum had \"problemas legales\" (legal problems) and had not been transferred to her ministry, which could pay for its running and repair only after a transfer (Los Tiempos).",
+  "sources": [
+   "https://www.lostiempos.com/node/138285",
+   "https://eju.tv/?p=4941584",
+   "https://www.lostiempos.com/doble-click/cultura/20230621/deteriorado-anuncian-cierre-auditoria-del-museo-orinoca"
+  ],
+  "reason": "Merged the cost figures into one line; FPS now stated only as holder of the administration, as Los Tiempos 2023 reports."
+ },
+ {
+  "id": "museo-de-la-revolucion-democratica-y-cultural",
+  "section": "Red flags: Decay and closure",
+  "problems": [
+   "text says more than source: closure 'announced'; allegation unlabelled"
+  ],
+  "before": "- In June 2023 Sabina Orellana announced its closure and an audit (Los Tiempos).\n- In December 2023 she said the structure \"no está bien\" and could endanger visitors, and that those who built it would have to answer for it (eju.tv).",
+  "after": "- In June 2023 Sabina Orellana said her ministry would close the museum and audit it once it was transferred (Los Tiempos).\n- Unverified: Orellana said those who built it will have to answer for it (eju.tv, citing ANF).",
+  "sources": [
+   "https://www.lostiempos.com/doble-click/cultura/20230621/deteriorado-anuncian-cierre-auditoria-del-museo-orinoca",
+   "https://eju.tv/2023/12/la-infraestructura-no-esta-bien-ministra-dice-que-museo-de-evo-puede-ser-un-peligro-para-visitantes/"
+  ],
+  "reason": "Orellana said the ministry would close and audit it once transferred; her claim about the builders is labelled Unverified."
+ },
+ {
+  "id": "museo-de-la-revolucion-democratica-y-cultural",
+  "section": "OVERVIEW, CRITICISM",
+  "problems": [
+   "broken grammar in quotation; untranslated quotations; 'local authorities' for 'autoridades originarias'"
+  ],
+  "before": "- Minister of Government Carlos Romero said in 2017 that Orinoca had \"un valor teológico, casi divino\" and that the museum was \"no es para ensalzar la figura de Evo Morales\" (Los Tiempos).\n- Closed: in December 2023 the culture minister said it had not operated for more than three years (eju.tv, citing ANF). Local authorities and residents have asked for it to reopen (eju.tv).\n- An opinion column by a sociologist: 47 million bolivianos of public money went on a building that shows the \"megalomanía y borrachera de poder\" of officials.\n- Argues the museum reduces indigenous history to \"el culto a la personalidad de un individuo\", while Orinoca lacks adequate schools and health care.",
+  "after": "- Minister of Government Carlos Romero said in 2017 that Orinoca had \"un valor teológico, casi divino\" (a theological, almost divine value) for the Andean indigenous world, and that the museum \"no es para ensalzar la figura de Evo Morales\" (is not meant to exalt Evo Morales) (Los Tiempos; translations ours).\n- Closed: in December 2023 the culture minister said it had not operated for more than three years (eju.tv, citing ANF). Indigenous authorities and residents of Orinoca asked the Ministry of Cultures to reopen it (eju.tv).\n- An opinion column by a sociologist: 47 million bolivianos of public money went on a building that shows the \"megalomanía y borrachera de poder\" of officials.\n- Argues the museum reduces indigenous history to \"el culto a la personalidad de un individuo\" (the personality cult of one individual), while Orinoca lacks adequate schools and health care.",
+  "sources": [
+   "https://www.lostiempos.com/actualidad/nacional/20170203/romero-justifica-museo-orinoca-tiene-valor-casi-divino",
+   "https://www.lostiempos.com/node/139008",
+   "https://eju.tv/2023/12/la-infraestructura-no-esta-bien-ministra-dice-que-museo-de-evo-puede-ser-un-peligro-para-visitantes/"
+  ],
+  "reason": "Quotations kept in Spanish with translations marked as ours."
+ },
+ {
+  "id": "tuol-sleng-genocide-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only: S-21 history, prisoner estimate, Duch, museum founding 1979 to 1980"
+  ],
+  "before": "- Memorial museum on Street 113 in Boeung Keng Kang, Phnom Penh, in the former Tuol Svay Prey High School (museum website, Wikipedia).\n- The Khmer Rouge turned the school's five buildings into the S-21 prison and interrogation centre in 1976; Wikipedia, citing the Documentation Center of Cambodia, estimates about 20,000 people were held there until 1979, and names its chief as Kang Kek Iew, known as Duch.\n- The People's Republic of Kampuchea government reopened the site as a museum between 1979 and 1980 (Wikipedia).",
+  "after": "- Memorial museum on Street 113 in Boeung Keng Kang, Phnom Penh (museum website).\n- The site began as two schools built in 1962, Tuol Sleng Primary School and Tuol Svay Prey High School. After the Khmer Rouge took Phnom Penh on 17 April 1975 it became S-21, the regime's main detention and interrogation centre, where about 15,000 to 20,000 prisoners were held and tortured before execution at Choeung Ek (Ministry of Culture and Fine Arts).",
+  "sources": [
+   "https://mcfa.gov.kh/?p=6485",
+   "https://tuolsleng.gov.kh/en/?p=355"
+  ],
+  "reason": "Replaced with the Ministry of Culture and Fine Arts page: schools built 1962, S-21 from April 1975, 15,000 to 20,000 prisoners. Duch and the 1979 to 1980 founding were on no opened official or press page and were cut."
+ },
+ {
+  "id": "tuol-sleng-genocide-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only: 2025 UNESCO inscription"
+  ],
+  "before": "- Wikipedia, citing AP, reports the site was inscribed on the World Heritage List in 2025 as part of the Cambodian Memorial Sites.",
+  "after": "- On 11 July 2025 UNESCO inscribed it on the World Heritage List in Paris, with the former M-13 prison and Choeung Ek, as the Cambodian Memorial Sites (Ministry of Culture and Fine Arts).",
+  "sources": [
+   "https://mcfa.gov.kh/?p=6485"
+  ],
+  "reason": "UNESCO's own page (whc.unesco.org/en/list/1748) refused automated reads (403); the ministry's page gives the inscription date and place."
+ },
+ {
+  "id": "tuol-sleng-genocide-museum",
+  "section": "OVERVIEW, FUNDING, CRITICISM",
+  "problems": [
+   "unsupported: K-VISA holders free; KOICA signing month; 'critique found'"
+  ],
+  "before": "- Visiting: open every day 8.00 to 17.00; foreign adults $5, ages 10 to 17 $3, children under 10, Cambodians and K-VISA holders free; audio guide $5 for foreigners and $1 for Cambodians; cash only (museum website).\n- Archive digitisation, phase II: the Korea International Cooperation Agency (KOICA) committed US$3 million over five years from 2024, through UNESCO; KOICA's Cambodia director Choi Moon Jung and UNESCO representative Alam Sardar Umar signed the grant in August 2024, with Culture Minister Phoeurng Sackona signing the record of discussion. Phase I digitised over 745,494 pages (Cambodge Mag).\nOverall: Little criticism in the art press; the main critique found is a 2014 essay on how the museum has been framed politically since 1979.",
+  "after": "- Visiting: open every day 8.00 to 17.00; foreign adults $5, ages 10 to 17 $3, children under 10 and Cambodians free; audio guide $5 for foreigners and $1 for Cambodians; cash only (museum website).\n- Archive digitisation, phase II: the Korea International Cooperation Agency (KOICA) committed US$3 million over five years from 2024, through UNESCO; KOICA's Cambodia director Choi Moon Jung and UNESCO representative Alam Sardar Umar signed the grant, with Culture Minister Phoeurng Sackona signing the record of discussion. Phase I digitised over 745,494 pages (Cambodge Mag).\nOverall: Little criticism in the art press; the main critique is a 2014 essay on how the museum has been framed politically since 1979.",
+  "sources": [
+   "https://tuolsleng.gov.kh/en/?p=18",
+   "https://www.cambodgemag.com/en/post/tuol-sleng-genocide-museum-koica-unesco-and-ministry-of-culture-launch-phase-ii-of-archive-project"
+  ],
+  "reason": "Neither the museum pages nor Cambodge Mag state these; cut."
+ },
+ {
+  "id": "win-win-memorial",
+  "section": "Red flags",
+  "problems": [
+   "programme not named"
+  ],
+  "before": "- On 12 September 2024 the US Treasury's Office of Foreign Assets Control sanctioned Ly Yong Phat, his L.Y.P. Group and O-Smach Resort \"for their role in serious human rights abuse related to the treatment of trafficked workers subjected to forced labor in online scam centers\" (US Treasury).",
+  "after": "- On 12 September 2024 the US Treasury's Office of Foreign Assets Control sanctioned Ly Yong Phat, his L.Y.P. Group and O-Smach Resort \"for their role in serious human rights abuse related to the treatment of trafficked workers subjected to forced labor in online scam centers\", under Executive Order 13818, the Global Magnitsky sanctions programme (US Treasury press release).",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy2576"
+  ],
+  "reason": "Ruling applied: the Treasury press release of 12 September 2024 confirms the designation, the quoted wording and the authority (E.O. 13818, Global Magnitsky); the Red flag stays and is stated from that page."
+ },
+ {
+  "id": "win-win-memorial",
+  "section": "Red flags",
+  "problems": [
+   "text says more than source (RFA)"
+  ],
+  "before": "- RFA described him as a casino tycoon who heads the LYP Group and controls much of Cambodia's sugar industry (RFA, 12 September 2024).",
+  "after": "- RFA called him a casino tycoon known for controlling large parts of Cambodia's sugar industry for more than a decade (RFA, 12 September 2024).",
+  "sources": [
+   "https://www.rfa.org/english/news/cambodia/sanctions-tycoon-trafficked-workers-09122024163603.html"
+  ],
+  "reason": "RFA says he is known for controlling large parts of the sugar industry for over a decade."
+ },
+ {
+  "id": "win-win-memorial",
+  "section": "OVERVIEW",
+  "problems": [
+   "hedge: 'said to'; repetition of CNRP carvings point in Overview and press item"
+  ],
+  "before": "- Design: Modernist Khmer style; a pentagonal base 117 metres a side, said to stand for Hun Sen's five-point \"Divide, Isolate, Finish, Integrate and Develop\" strategy, under a 33 metre triangular monolith for the three guarantees given to the Khmer Rouge. Built from 29,000 square metres of marble, 15,000 square metres of concrete and 3,000 tonnes of steel, with eight pools and bas-reliefs (Phnom Penh Post).\n- The Diplomat reports that the carvings include the dissolution of the opposition Cambodia National Rescue Party, and that the base holds historical documents.\n- Argues the carvings recast the dissolution of the opposition CNRP as a \"win\" for Cambodia.",
+  "after": "- Design: Modernist Khmer style; a pentagonal base 117 metres a side, which the Phnom Penh Post says represents Hun Sen's five-point \"Divide, Isolate, Finish, Integrate and Develop\" strategy, under a 33 metre triangular monolith for the three guarantees given to the Khmer Rouge. Built from 29,000 square metres of marble, 15,000 square metres of concrete and 3,000 tonnes of steel, with eight pools and bas-reliefs (Phnom Penh Post).\n- The Diplomat reports that the base holds historical documents.\n- Argues the carvings recast the dissolution of the opposition Cambodia National Rescue Party (CNRP) as a \"win\" for Cambodia.",
+  "sources": [
+   "https://web.archive.org/web/20191212032057/https://www.phnompenhpost.com/national/win-win-monument-cost-12m-build",
+   "https://web.archive.org/web/20191207230847/https://thediplomat.com/2018/12/hun-sens-monument-to-himself/"
+  ],
+  "reason": "Attributed the pentagon symbolism to the Post; the carvings point now appears once, in the press item."
+ },
+ {
+  "id": "great-northern-arts-festival-inuvik",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'for the festivals of 2025, 2026 and 2027'; agreement numbers missing"
+  ],
+  "before": "- Canadian Heritage: $160,000 from the Canada Arts Presentation Fund for the festivals of 2025, 2026 and 2027, agreement dated 9 July 2025 to 12 July 2027 and amended 20 May 2026; an earlier grant gave $20,000 for April 2023 to March 2025 (Government of Canada grants register).\n- Employment and Social Development Canada: $15,957 from Canada Summer Jobs for May to August 2025 (grants register).",
+  "after": "- Canadian Heritage: $160,000 from the Canada Arts Presentation Fund, agreement 1369349, running 9 July 2025 to 12 July 2027 and amended 20 May 2026; agreement 1349931 gave $20,000 for April 2023 to March 2025 (Government of Canada grants register).\n- Employment and Social Development Canada: $15,957 from Canada Summer Jobs, agreement 20492989, for May to August 2025 (grants register).",
+  "sources": [
+   "https://search.open.canada.ca/grants/record/pch,016-2024-2025-Q2-1369349,current",
+   "https://search.open.canada.ca/grants/record/pch%2C016-2024-2025-Q2-1349931%2Ccurrent",
+   "https://search.open.canada.ca/grants/record/esdc-edsc%2C014-2025-2026-Q2-25095%2Ccurrent"
+  ],
+  "reason": "Register records give agreement numbers 1369349, 1349931 and 20492989 and dates only, not festival years."
+ },
+ {
+  "id": "great-northern-arts-festival-inuvik",
+  "section": "FUNDING, BOTTOM LINE",
+  "problems": [
+   "repetition: bottom line restated the oil history"
+  ],
+  "before": "- Former oil sponsors: ConocoPhillips and Imperial Oil stopped funding the festival in 2015 after halting their exploration plans in the Northwest Territories; the festival's executive director, Maia Lepage, said \"our corporate sponsorship is not where it used to be\". That year's festival was estimated to cost nearly $500,000 (CBC, 2 July 2015).\nClean today: public, Indigenous and community money. The oil sponsorship is history rather than a current tie. The weak point is fragility: the festival depends on grants it cannot count on from one year to the next.",
+  "after": "- Former oil sponsors: ConocoPhillips and Imperial Oil stopped funding the festival in 2015 after halting their exploration plans in the Northwest Territories; then executive director Maia Lepage said \"our corporate sponsorship is not where it used to be\". That year's festival was estimated to cost nearly $500,000 (CBC, 2 July 2015).\nClean today: public, Indigenous and community money. The weak point is fragility: the festival depends on grants it cannot count on from one year to the next.",
+  "sources": [
+   "https://www.cbc.ca/news/canada/north/imperial-oil-conocophillips-stop-funding-inuvik-arts-festival-1.3135387"
+  ],
+  "reason": "Ruling applied: Imperial Oil and ConocoPhillips stopped funding in 2015 (CBC, 2 July 2015); kept under FUNDING as dated history, no Red flag; the bottom line gives the verdict only."
+ },
+ {
+  "id": "kitikmeot-heritage-society-cambridge-bay",
+  "section": "FUNDING",
+  "problems": [
+   "date not plain",
+   "agreement numbers missing",
+   "unsupported purposes: 'for Inuinnaqtun work', 'embodied carbon analysis'; capital grants not tied to Kuugalaaq in the register"
+  ],
+  "before": "- Revenue in 2021-22: CAD 2,471,324, of which CAD 1,006,801 came from the Government of Canada, CAD 420,086 from the Government of Nunavut, CAD 396,378 from corporate grants, CAD 149,735 from donations and CAD 15,124 from the Kitikmeot Inuit Association (audited statements, year to 31 March 2022, Lenehan McCain and Associates).\n- Current federal grants: CAD 162,608 from Canadian Heritage's Museums Assistance Program for Inuinnaqtun work from April 2025; CAD 52,665 from Library and Archives Canada (2025); CAD 40,000 from Polar Knowledge Canada (2026); CAD 25,000 a year from New Horizons for Seniors (Government of Canada grants register).\n- Kuugalaaq building: CAD 766,018 from CanNor's Canada Community Revitalization Fund toward a CAD 1.7 million building, after Nunavut Tunngavik Inc., the Government of Nunavut, the federal government and Indigenous Clean Energy paid for feasibility work (CBC, May 2022); CAD 240,000 from the Canada Cultural Spaces Fund (2023) and CAD 99,000 from Natural Resources Canada for an embodied carbon analysis (2023) (grants register).",
+  "after": "- Revenue in the year to 31 March 2022: CAD 2,471,324, of which CAD 1,006,801 came from the Government of Canada, CAD 420,086 from the Government of Nunavut, CAD 396,378 from corporate grants, CAD 149,735 from donations and CAD 15,124 from the Kitikmeot Inuit Association (audited statements by Lenehan McCain and Associates).\n- Current federal grants: CAD 162,608 from Canadian Heritage's Museums Assistance Program, Indigenous Heritage (agreement 1373579, April 2025 to March 2027); CAD 52,665 from Library and Archives Canada for cloud storage of cultural records (agreement 2526-0059, 2025-26); CAD 40,000 from Polar Knowledge Canada to share Kuugalaaq research findings (agreement KME-2627-0009, 2026-27); CAD 25,000 from New Horizons for Seniors (agreement 20848610, 2026-27) (Government of Canada grants register).\n- Kuugalaaq building: CAD 766,018 from CanNor's Canada Community Revitalization Fund toward a CAD 1.7 million building, after Nunavut Tunngavik Inc., the Government of Nunavut, the federal government and Indigenous Clean Energy paid for feasibility work (CBC, May 2022).\n- Other capital grants: CAD 240,000 from the Canada Cultural Spaces Fund (agreement 1360034, April 2023 to March 2025) and CAD 99,000 from Natural Resources Canada's Clean Energy for Rural and Remote Communities programme (agreement CERRC-DM-G06, 2023-24) (grants register).",
+  "sources": [
+   "https://www.kitikmeotheritage.ca/_files/ugd/56a2ca_271d2b84b05341778d522a1ce6324786.pdf",
+   "https://search.open.canada.ca/grants/?search_text=%22Kitikmeot+Heritage%22&sort=agreement_start_date+desc",
+   "https://www.cbc.ca/news/canada/north/cambridge-bay-cultural-centre-2022-1.6456263"
+  ],
+  "reason": "Revenue dated to the year ending 31 March 2022 and checked against the audited statements. Grants now give agreement numbers 1373579, 2526-0059, KME-2627-0009, 20848610, 1360034 and CERRC-DM-G06 with the purposes the register records state."
+ },
+ {
+  "id": "chairman-mao-memorial-hall",
+  "section": "OVERVIEW, FUNDING",
+  "problems": [
+   "figures read through garbled characters; needed a second source"
+  ],
+  "before": "- Mausoleum of Mao Zedong on Tiananmen Square, on a 5.72 hectare site with 33,867 square metres of floor space (People's Daily, 2020).\n- Building began on 24 November 1976, the main structure was finished on 24 May 1977 and it opened on 9 September 1977 (People's Daily, 2020).\n- People's Daily counted about 240 million visits by 2020. On 9 September 2026, the 50th anniversary of Mao's death, long queues formed outside (Beijing Daily).\n- Founders: built by joint decision of the CCP Central Committee, the National People's Congress Standing Committee, the State Council and the Central Military Commission, taken on 8 October 1976 (People's Daily, 2020).",
+  "after": "- Mausoleum of Mao Zedong on Tiananmen Square, on a 5.72 hectare site with 33,867 square metres of floor space (People's Daily, 2020 and 2024; Our China Story).\n- Building began on 24 November 1976, the main structure was finished on 24 May 1977 and it opened on 9 September 1977 (People's Daily, 2020 and 2024).\n- People's Daily counted more than 240 million visits by January 2024. On 9 September 2026, the 50th anniversary of Mao's death, long queues formed outside (Beijing Daily).\n- Founders: built by joint decision of the CCP Central Committee, the National People's Congress Standing Committee, the State Council and the Central Military Commission, taken on 8 October 1976 (People's Daily, 2020 and 2024).",
+  "sources": [
+   "https://cpc.people.com.cn/n1/2020/0908/c143528-31854065.html",
+   "https://cpc.people.com.cn/GB/143527/143528/10412112.html",
+   "https://www.ourchinastory.com/en/15606"
+  ],
+  "reason": "Decoded the People's Daily page correctly (GB2312) and confirmed each figure on the separate 2024 People's Daily overview; site area, floor area, start month, opening date and 44 columns also confirmed by Our China Story. Visits updated to the 2024 figure, more than 240 million."
+ },
+ {
+  "id": "chairman-mao-memorial-hall",
+  "section": "OVERVIEW, FUNDING",
+  "problems": [
+   "Wikipedia-only: honoured leaders, architects, materials, cremation proposal, Ninth Office, Li Ruihuan, 700,000 labourers, free entry"
+  ],
+  "before": "- Wikipedia names Zhou Enlai, Liu Shaoqi and Zhu De among those honoured, after a 1983 Central Committee decision to share the hall with other revolutionaries.\n- Design was led by Zhao Pengfei with Yuan Jingshi and Shen Bo, drawing on Tsinghua and Tianjin universities; materials came from across China, from Sichuan granite to rock samples from Mount Everest (Wikipedia).\n- Wikipedia, citing scholars, notes that Mao was the first to sign a 1950s proposal that leaders be cremated, and that no reliable record explains the decision to preserve his body.\n- Visiting: free, by real-name booking one to six days ahead through the hall's WeChat account, WeChat mini-program or People's Daily page; open Tuesday to Sunday 8.00 to 12.00 since reopening on 1 September 2026 (People's Daily notices; Wikipedia for free entry).\n- Construction: coordinated by the State Council's \"Ninth Office\" under Vice Premier Gu Mu, with a project command led by Li Ruihuan from 9 November 1976; 700,000 people from across China did \"symbolic voluntary labor\" (Wikipedia, citing Chinese-language sources).\n- Visitors pay nothing; since 1 January 2025 they can download an electronic commemorative ticket (People's Daily notice).",
+  "after": "- The second floor holds memorial rooms for Mao, Zhou Enlai, Liu Shaoqi, Zhu De, Deng Xiaoping and Chen Yun (People's Daily).\n- Visiting: by real-name booking one to six days ahead through the hall's WeChat account, WeChat mini-program or People's Daily page; open Tuesday to Sunday 8.00 to 12.00 since reopening on 1 September 2026; since 1 January 2025 visitors can download an electronic commemorative ticket (People's Daily notices).",
+  "sources": [
+   "https://cpc.people.com.cn/GB/143527/143528/index.html"
+  ],
+  "reason": "The six memorial rooms are now from People's Daily. The construction details, architects, labourers and free entry were on no opened official or press page and were cut."
+ },
+ {
+  "id": "chairman-mao-memorial-hall",
+  "section": "FUNDING",
+  "problems": [
+   "confusing figure: 40,744 square metres is the contractor's tender area, not in the hall's notice"
+  ],
+  "before": "- Operator: the Chairman Mao Memorial Hall Administration Bureau, which issues its notices and closed the hall from 1 March to 31 August 2017 for repairs to the building and equipment over about 40,744 square metres (Phoenix News, 2017).",
+  "after": "- Operator: the Chairman Mao Memorial Hall Administration Bureau, which issues its notices and closed the hall from 1 March to 31 August 2017 for repairs to the building and equipment (Phoenix News, 2017).",
+  "sources": [
+   "https://news.ifeng.com/a/20170901/51842063_0.shtml"
+  ],
+  "reason": "Cut; the closure dates are kept."
+ },
+ {
+  "id": "hong-kong-museum-of-the-war-of-resistance-and-coastal-defence",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only: fort dates 1887, 1941, 1987, 1993, 2000"
+  ],
+  "before": "- The British built the fort in 1887 to guard the eastern approach to Victoria Harbour; it fell to Japanese forces on 19 December 1941 and was vacated by British forces in 1987 (Wikipedia).\n- The Urban Council decided in 1993 to convert it, and the Hong Kong Museum of Coastal Defence opened on 25 July 2000; it closed in September 2018 after Typhoon Mangkhut damaged it and reopened on 24 November 2022 (Wikipedia).",
+  "after": "- Government museum at 175 Tung Hei Road, Shau Kei Wan, in the converted Lyemun (Lei Yue Mun) Fort, which the museum calls a hundred years old, on a headland 64 metres above sea level, about 15 minutes' walk from Shau Kei Wan MTR station; the site covers 34,200 square metres (museum website).\n- As the Hong Kong Museum of Coastal Defence, it closed in mid-September 2018 after Super Typhoon Mangkhut severely damaged it, and reopened on 24 November 2022 (LCSD press release, 8 November 2022).",
+  "sources": [
+   "https://www.info.gov.hk/gia/general/202211/08/P2022110800366.htm",
+   "https://hk.waranddefence.museum/en_US/web/mcd/about-us.html"
+  ],
+  "reason": "Closure in mid-September 2018 and reopening on 24 November 2022 now from the LCSD press release; the museum calls the fort a hundred years old. The other dates were on no official or press page opened and were cut."
+ },
+ {
+  "id": "hong-kong-museum-of-the-war-of-resistance-and-coastal-defence",
+  "section": "OVERVIEW, FUNDING",
+  "problems": [
+   "repetition: Brothers in Arms co-presenters in Overview and FUNDING"
+  ],
+  "before": "- Galleries: 11 in the permanent exhibition, four of them War of Resistance galleries, and a 24-stop historical trail (museum website). The opening show, \"Brothers in Arms\", on the East River Column guerrillas, was presented jointly with Shenzhen's culture bureau and two Shenzhen memorial halls (info.gov.hk, August 2024).",
+  "after": "- Galleries: 11 in the permanent exhibition, four of them War of Resistance galleries, and a 24-stop historical trail (museum website). The first show after the conversion, \"Brothers in Arms\", covered the East River Column guerrillas (info.gov.hk, August 2024).",
+  "sources": [
+   "https://www.info.gov.hk/gia/general/202408/27/P2024082700358.htm"
+  ],
+  "reason": "Partners stay under FUNDING only."
+ },
+ {
+  "id": "hong-kong-museum-of-the-war-of-resistance-and-coastal-defence",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "none: check only"
+  ],
+  "before": "- Read as reposted by the MCLC Resource Center (Ohio State University); the original is paywalled.",
+  "after": "- Read as reposted by the MCLC Resource Center (Ohio State University); the original is paywalled.",
+  "sources": [
+   "https://u.osu.edu/mclc/?p=49615"
+  ],
+  "reason": "The New York Times item was already credited as read in the MCLC repost with the original marked paywalled; left as is."
+ },
+ {
+  "id": "hong-kong-museum-of-the-war-of-resistance-and-coastal-defence",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition of the conversion fact"
+  ],
+  "before": "Public money from the Hong Kong government, with no private funder. The issue is not the money but the mandate: the museum was repurposed by government order to serve patriotic education.",
+  "after": "Public money only, with no private funder. The issue is not the money but the mandate: a government museum turned to patriotic education.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "liu-manor-museum-rent-collection-courtyard",
+  "section": "Not related",
+  "problems": [
+   "text says more than source: 'funded from his property fortune'"
+  ],
+  "before": "Not related: the Jianchuan Museum Cluster across the street, a private museum complex founded in 2005 by real estate developer Fan Jianchuan and funded from his property fortune (Ho and Li). It is a separate institution.",
+  "after": "Not related: the Jianchuan Museum Cluster across the street, a private museum complex founded in 2005 by the real estate developer and collector Fan Jianchuan (Ho and Li). It is a separate institution.",
+  "sources": [
+   "https://deniseyho.com/wp-content/uploads/2017/12/holi_landlordmanor_2016.pdf"
+  ],
+  "reason": "Ho and Li call Fan a real estate mogul and collector; the funding claim is not in the paper."
+ },
+ {
+  "id": "liu-manor-museum-rent-collection-courtyard",
+  "section": "OVERVIEW",
+  "problems": [
+   "conflicting opening date (1958 or 1959)"
+  ],
+  "before": "- Opened as an exhibition hall in 1959, in answer to the Ministry of Culture's call for a museum in every county (Ho and Li); a 2025 ticket guide dates the exhibition hall to October 1958.",
+  "after": "- Opened as an exhibition hall in 1959, in answer to the Ministry of Culture's call for a museum in every county (Ho and Li); a 2025 ticket guide dates the exhibition hall to October 1958.",
+  "sources": [
+   "https://deniseyho.com/wp-content/uploads/2017/12/holi_landlordmanor_2016.pdf",
+   "https://www.dahepiao.com/lvyounews1/20250227505264.html"
+  ],
+  "reason": "No primary source found; both dates are stated with their sources (Ho and Li: 1959; Dahe Piao: October 1958). Text unchanged."
+ },
+ {
+  "id": "liu-manor-museum-rent-collection-courtyard",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition of the press item's finding"
+  ],
+  "before": "Public money under county administration, with no outside funder of concern. The issue is what the state built it to do: a propaganda site whose evidence scholars have shown to be partly invented.",
+  "after": "Public money under county administration, with no outside funder of concern. The weak point is its origin as a state propaganda site.",
+  "sources": [],
+  "reason": "Verdict only."
+ }
+]

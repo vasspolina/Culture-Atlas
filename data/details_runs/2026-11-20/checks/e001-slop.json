@@ -1,0 +1,383 @@
+[
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'first opened on 30 July 2018'"
+  ],
+  "before": "first opened on 30 July 2018 and officially on 10 December 2018",
+  "after": "pre-opened on 30 July 2018 and officially opened on 10 December 2018",
+  "sources": [
+   "https://premionalcritica.uniandes.edu.co/wp-content/uploads/El-artista-como-institucion_Categoria-1_Reconocimiento-nacional-a-la-critica_Jose-Ruiz.pdf"
+  ],
+  "reason": "Ruiz calls 30 July 2018 a pre-inauguration."
+ },
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "OVERVIEW",
+  "problems": [
+   "citation: yearly call credited to Wikipedia"
+  ],
+  "before": "A yearly call, held from 2019 with the Museo Nacional, brings projects that answer the work: ... (Wikipedia).",
+  "after": "A yearly call, run from 2019 by the Ministry of Culture and the Museo Nacional, brings projects that answer the work (Radio Nacional). Shows include ... (Wikipedia).",
+  "sources": [
+   "https://www.radionacional.co/noticias/cultura/fragmentos-doris-salcedo-arte",
+   "https://en.wikipedia.org/wiki/Fragmentos"
+  ],
+  "reason": "Radio Nacional states the call; Wikipedia lists the shows."
+ },
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "FUNDING",
+  "problems": [
+   "missing funding point a source supports"
+  ],
+  "before": "",
+  "after": "Running costs: in May 2021 the ministry said the government provides the budget that keeps Fragmentos open and pays for its calls (El Universal).",
+  "sources": [
+   "https://www.eluniversal.com.mx/cultura/se-protegio-la-obra-de-francis-alys-ministerio-de-cultura-de-colombia/"
+  ],
+  "reason": "Stated in the ministry's reply to El Universal."
+ },
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "Red flags",
+  "problems": [
+   "unsupported: 'white sheets'",
+   "credit: Hyperallergic 'reported' what Salcedo said"
+  ],
+  "before": "Some of Francis Alÿs's works on show there were covered with white sheets (El Universal). Hyperallergic reported that Alÿs, the museum's board and Salcedo were not consulted.",
+  "after": "Works by Francis Alÿs on show there were covered with white paper for the meeting (El Universal). Salcedo told Hyperallergic that neither Alÿs, the museum's board nor she was consulted.",
+  "sources": [
+   "https://www.eluniversal.com.mx/cultura/gobernantes-vampirizan-la-cultura-cuestionan-conversacion-del-gobierno-colombiano-e-iglesias/",
+   "https://web.archive.org/web/2021/https://hyperallergic.com/645108/colombian-government-exploited-doris-salcedo-art-to-denounce-nationwide-protests/"
+  ],
+  "reason": "El Universal says 'hojas blancas' and 'papel blanco'; the consultation point is Salcedo's statement in Hyperallergic."
+ },
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "repetition with WIDER CONTEXT",
+   "internal note in public text"
+  ],
+  "before": "Argues the government used a memorial ... dozens of deaths and at least 87 missing. / Notes that the Ministry of Culture did not respond. Sign-in wall on 2026-11-20; carried from the earlier reading.",
+  "after": "Reports the meeting as the latest case of \"artwashing\" by the Ministry of Culture, which did not answer the outlet.",
+  "sources": [
+   "https://web.archive.org/web/2021/https://hyperallergic.com/645108/colombian-government-exploited-doris-salcedo-art-to-denounce-nationwide-protests/"
+  ],
+  "reason": "The crackdown figures stay once, in WIDER CONTEXT; archived copy read in full, so the internal note goes."
+ },
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "press item author dropped (restored from old report)",
+   "repetition with Red flags"
+  ],
+  "before": "El Universal: \"'Gobernantes vampirizan la cultura'...\" (2021) / Not criticism: the ministry's answer, that the space was chosen for \"su importancia simbólica\" and the work was protected.",
+  "after": "El Universal: Sonia Sierra, \"'Gobernantes vampirizan la cultura'...\" (2021) / Not criticism: the ministry's answer, that the space was chosen for \"su importancia simbólica\". El Universal notes the ministry did not say who checked the works.",
+  "sources": [
+   "https://www.eluniversal.com.mx/cultura/gobernantes-vampirizan-la-cultura-cuestionan-conversacion-del-gobierno-colombiano-e-iglesias/",
+   "https://www.eluniversal.com.mx/cultura/se-protegio-la-obra-de-francis-alys-ministerio-de-cultura-de-colombia/"
+  ],
+  "reason": "Byline is Sonia Sierra; the 'no alteration' quote is already under Red flags."
+ },
+ {
+  "id": "fragmentos-espacio-de-arte-y-memoria-bogotá",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition with FUNDING",
+   "over length"
+  ],
+  "before": "The money is the Colombian state's: the Ministry of Culture owns the site, paid for the building and funds the yearly award. ...",
+  "after": "The money is the Colombian state's, through the Ministry of Culture and the Museo Nacional. ...",
+  "sources": [],
+  "reason": "Bottom line gives the verdict; report brought from 899 to 796 counted words. The old point that Salcedo was chosen from 28 entries stays dropped: Herrera and Peñuela show the 28-entry call was the United Nations monument's."
+ },
+ {
+  "id": "fototeca-de-cuba",
+  "section": "FUNDING",
+  "problems": [
+   "overstated: jury of the whole 2025 edition",
+   "peripheral detail"
+  ],
+  "before": "The 2025 jury was the Fototeca's director ... / ... The edition marked 80 years of the United Nations and of Cuba's diplomatic relations with Canada (Prensa Latina).",
+  "after": "The jury of the 2025 festival's first central show was the Fototeca's director ... (the UN and Canada anniversary cut)",
+  "sources": [
+   "https://www.prensa-latina.cu/2025/11/04/noviembre-fotografico-exhibe-su-primera-muestra-central/",
+   "https://www.prensa-latina.cu/?p=1652794"
+  ],
+  "reason": "Prensa Latina gives that jury for the first central show only."
+ },
+ {
+  "id": "fototeca-de-cuba",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: festival count and jury already in OVERVIEW and FUNDING"
+  ],
+  "before": "... and its festival jury is drawn from CNAP's own centres. The sources give different festival counts: a 2008 start in EcuRed and OnCuba, and a 19th edition in 2025 in Prensa Latina. ...",
+  "after": "The Fototeca is a Cuban state body paid through CNAP and the Ministry of Culture, and its festival relies on partner venues and CNAP staff. ...",
+  "sources": [],
+  "reason": "No statement twice."
+ },
+ {
+  "id": "muestra-joven-icaic",
+  "section": "Red flags",
+  "problems": [
+   "two issues under one heading",
+   "ICAIC's stated position lost from old report"
+  ],
+  "before": "Red flags: ICAIC's removal of films from the programme, 2018 and 2020 (five points, incl. 2004, 2009, 2011 removals)",
+  "after": "Red flags: ICAIC's 2020 censorship of the documentary \"Sueños al pairo\" (three points) and Red flags: ICAIC's 2018 relocation of \"Quiero hacer una película\" (one point); ICAIC's reply restored: refusal concerned the film's production and completion, not its screening at the Muestra; '13 days of dialogue' restored",
+  "sources": [
+   "https://oncubanews.com/cultura/cine/icaic-no-autoriza-uso-de-imagenes-a-documental-censurado-en-muestra-joven/",
+   "https://oncubanews.com/cultura/cine/posponen-muestra-joven-de-cine-realizadores-retiran-sus-obras-tras-la-censura-de-un-documental/",
+   "https://havanatimes.org/features/youth-film-exhibition-in-cuba-once-again-clouded-in-controversy/"
+  ],
+  "reason": "One heading per issue with its year; the 2004 to 2011 removals moved to the Havana Times press item, which is where they are reported."
+ },
+ {
+  "id": "muestra-joven-icaic",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "peripheral detail over length",
+   "not funding of the Muestra"
+  ],
+  "before": "OnCuba reported one edition of close to 50 films ... / Adolfo Mena ... paid for his shorts with help from the Norwegian Embassy, the Ludwig Foundation ...",
+  "after": "(cut)",
+  "sources": [
+   "https://oncubanews.com/cultura/cine/visiones-sobre-la-cita-del-audiovisual-joven-cubano"
+  ],
+  "reason": "A filmmaker's own funders are not the event's funders; cut to stay under 800 words."
+ },
+ {
+  "id": "muestra-joven-icaic",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition of Red flags list"
+  ],
+  "before": "The weak points are documented: ICAIC's 2018 relocation of a film, its 2020 removal of a documentary, the filmmakers' walkout and, per 14ymedio in 2025, the event's disappearance.",
+  "after": "The weak point is ICAIC's control of the programme, which it used against films in 2018 and 2020.",
+  "sources": [],
+  "reason": "Bottom line adds the verdict, not a restatement."
+ },
+ {
+  "id": "museo-nacional-de-artes-decorativas",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "repetition: 1964 expropriation stated twice"
+  ],
+  "before": "The Socarrás family bought it later, and the state expropriated it in 1964. / The state did not buy the house: it took it by expropriation in 1964 ...",
+  "after": "The Socarrás family bought it later. / Building: the state took the house by expropriation in 1964 and opened the museum the same year (Spanish Wikipedia).",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Museo_Nacional_de_Artes_Decorativas_(La_Habana)"
+  ],
+  "reason": "Kept once, under FUNDING (who paid for the building)."
+ },
+ {
+  "id": "museo-nacional-de-artes-decorativas",
+  "section": "SOURCES / BOTTOM LINE",
+  "problems": [
+   "source URL returned a database error",
+   "repetition"
+  ],
+  "before": "https://www.ecured.cu/Museo_Nacional_de_Artes_Decorativas / bottom line restating the Wikipedia notice and EcuRed text",
+  "after": "archived copy of 24 September 2025, which confirms the address, date, 33,000 works and the Riesener secretaire / shorter bottom line",
+  "sources": [
+   "https://web.archive.org/web/20250924062325/https://www.ecured.cu/Museo_Nacional_de_Artes_Decorativas"
+  ],
+  "reason": "EcuRed live page served 'Cannot access the database' on 2026-11-20."
+ },
+ {
+  "id": "museo-nacional-de-historia-natural-de-cuba",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Wikipedia 'citing that history page' on financial problems"
+  ],
+  "before": "English Wikipedia, citing that history page, says the museum had financial problems from 1980 to 1984, before the restructuring.",
+  "after": "English Wikipedia says the museum had financial problems from 1980 to 1984; the museum's own page calls 1981 to 1984 a decline.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Museum_of_Natural_History_(Cuba)",
+   "https://web.archive.org/web/20211024153153/http://www.mnhnc.inf.cu/de-su-historia/"
+  ],
+  "reason": "The history page says 'Declinación: 1981-1984', not financial problems."
+ },
+ {
+  "id": "museo-nacional-de-historia-natural-de-cuba",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition with FUNDING"
+  ],
+  "before": "Its one documented foreign partner is the American Museum of Natural History, whose exhibition funders paid for work in New York.",
+  "after": "its main foreign tie, the 2016 agreement with the American Museum of Natural History, is a research partnership.",
+  "sources": [],
+  "reason": "No statement twice."
+ },
+ {
+  "id": "cairo-opera-house",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported descriptor 'bass-baritone'",
+   "repetition with Red flags",
+   "unsupported: tazkarti tickets for the festival"
+  ],
+  "before": "Leadership: the house's site named the bass-baritone Reda El-Wakil as chairman ...; Asharq News reported ... stepped down. / This week it hosts ... 20 to 24 November 2026; tickets sell through tazkarti.com",
+  "after": "Leadership: the house's site still named Reda El-Wakil as chairman on 2026-11-20. / It hosts the Cairo International Film Festival's closing ceremony on 20 November 2026 and screenings of award-winning films to 24 November (the house).",
+  "sources": [
+   "https://www.cairoopera.org/en/about/",
+   "https://www.cairoopera.org/en/"
+  ],
+  "reason": "The site lists the festival events with no ticket link; the resignation stays once, under Red flags."
+ },
+ {
+  "id": "cairo-opera-house",
+  "section": "FUNDING",
+  "problems": [
+   "credit: festival support stated by one conductor"
+  ],
+  "before": "Arab Music Festival: the state and the Ministry of Culture support it each year (Asharq News).",
+  "after": "Arab Music Festival: conductor Hany Farahat said the state and the Ministry of Culture support it every year (Asharq News).",
+  "sources": [
+   "https://asharq.com/art/198174/%D8%A7%D8%B3%D8%AA%D9%82%D8%A7%D9%84%D8%A9-%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D9%88%D8%A8%D8%B1%D8%A7-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9-%D8%A8%D8%B9%D8%AF-%D8%A3%D8%B2%D9%85%D8%A9-%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%D8%A7%D8%AA-%D9%88%D8%A7%D8%B9%D8%AA%D8%B0%D8%A7%D8%B1%D8%A7%D8%AA/"
+  ],
+  "reason": "Asharq attributes the statement to Farahat."
+ },
+ {
+  "id": "cairo-opera-house",
+  "section": "Red flags",
+  "problems": [
+   "two issues under one heading",
+   "unsupported: 'conductor Nayer Nagui read a protest statement from the stage'"
+  ],
+  "before": "Red flags: 2013 dismissal of the opera's head and the staff strike",
+  "after": "Red flags: 2013 dismissal of the opera's head, Ines Abdel-Dayem / Red flags: 2013 staff strike over the dismissal (cast 'protested on stage'; the staff statement's 'without legal grounds' moved here from the press item; seven further dismissals moved here from the press item)",
+  "sources": [
+   "https://www.dailynewsegypt.com/2013/06/02/cairo-opera-house-strikes/",
+   "https://www.hppr.org/2013-06-16/burning-down-the-house-artistic-freedom-under-fire-in-egypt",
+   "https://www.aljazeera.com/features/2013/6/3/strike-silences-cairo-opera-house"
+  ],
+  "reason": "Daily News Egypt says the cast protested on stage and quotes Nagi in a TV interview, not reading a statement from the stage."
+ },
+ {
+  "id": "cairo-opera-house",
+  "section": "Red flags / CRITICISM IN ART MEDIA",
+  "problems": [
+   "heading folds the chairman's exit into the withdrawals",
+   "repetition between press items and Red flags"
+  ],
+  "before": "Red flags: 2026 withdrawals from the Arab Music Festival and the chairman's exit / press items restating the strike statement and singers' replies",
+  "after": "Red flags: 2026 artists' withdrawals from the Arab Music Festival (exit kept as its last point, with his stated reason) / press items give new points: the 'cultural war' framing, Nagi's 'enemy of intellect' statement, Farahat's warning",
+  "sources": [
+   "https://asharq.com/art/198174/%D8%A7%D8%B3%D8%AA%D9%82%D8%A7%D9%84%D8%A9-%D8%B1%D8%A6%D9%8A%D8%B3-%D8%A7%D9%84%D8%A3%D9%88%D8%A8%D8%B1%D8%A7-%D8%A7%D9%84%D9%85%D8%B5%D8%B1%D9%8A%D8%A9-%D8%A8%D8%B9%D8%AF-%D8%A3%D8%B2%D9%85%D8%A9-%D8%AA%D8%B5%D8%B1%D9%8A%D8%AD%D8%A7%D8%AA-%D9%88%D8%A7%D8%B9%D8%AA%D8%B0%D8%A7%D8%B1%D8%A7%D8%AA/",
+   "https://www.okaz.com.sa/variety/na/2268723"
+  ],
+  "reason": "One issue per heading; no statement twice; report brought from 885 to 794 words."
+ },
+ {
+  "id": "museum-of-modern-egyptian-art-cairo",
+  "section": "Red flags",
+  "problems": [
+   "wrong: painting 'went back to the museum'",
+   "missing point a source supports"
+  ],
+  "before": "... turned up in a cafe in Shubra El-Kheima and went back to the museum (Al Jazeera; El Watan).",
+  "after": "... turned up in a cafe in Shubra El-Kheima and was returned to the Ministry of Culture (Al Jazeera; El Watan). Added under the 2017 theft: The authorities dismissed the museum's director and imposed administrative penalties on some officials (Al Jazeera).",
+  "sources": [
+   "https://www.aljazeera.net/arts/2022/6/29/%d8%aa%d8%b1%d8%a7%d8%ab-%d9%85%d8%b5%d8%b1-%d8%a7%d9%84%d8%aa%d8%b4%d9%83%d9%8a%d9%84%d9%8a-%d8%a8%d9%8a%d9%86-%d9%85%d8%b7%d8%b1%d9%82%d8%a9-%d8%a7%d9%84%d8%b3%d8%b1%d9%82%d8%a9-%d9%88",
+   "https://www.elwatannews.com/news/details/6143962"
+  ],
+  "reason": "Both outlets say it was returned to the Ministry of Culture; Al Jazeera reports the dismissal and penalties after the 2017 theft."
+ },
+ {
+  "id": "museum-of-modern-egyptian-art-cairo",
+  "section": "OVERVIEW / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "over length",
+   "repetition"
+  ],
+  "before": "Closures list from 2005; El Watan item 'Lists the works Naguib counts as lost'; bottom line repeating closures since 2010",
+  "after": "Closures from 2010; press item keeps only the Efflatoun claim; bottom line gives the verdict",
+  "sources": [
+   "https://aawsat.com/node/5104062",
+   "https://www.elwatannews.com/news/details/5070394"
+  ],
+  "reason": "Lost works are listed once, under Red flags; report brought from 879 to 792 words."
+ },
+ {
+  "id": "hiap-helsinki",
+  "section": "OVERVIEW",
+  "problems": [
+   "overstated: 'asks'"
+  ],
+  "before": "HIAP asks residents and partners to travel to Helsinki by land or sea",
+  "after": "HIAP encourages residents and partners to travel to Helsinki by land or sea",
+  "sources": [
+   "https://www.hiap.fi/about/"
+  ],
+  "reason": "The page says 'we encourage'. Every other point checked against the HIAP pages and holds."
+ },
+ {
+  "id": "kunsthalle-tbilisi-tbilisi",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: own-site description from the 2023 archive",
+   "repetition with FUNDING"
+  ],
+  "before": "Its own site describes it as a roving exhibition space ... (archived February 2023). / The Art Newspaper calls it \"the nomadic project Kunsthalle Tbilisi\" ... in the city (23 May 2018).",
+  "after": "(cut; the Art Newspaper quote kept once under FUNDING)",
+  "sources": [
+   "http://web.archive.org/web/20230208080056/https://kunsthalletbilisi.org/en/about",
+   "https://theartnewspaper.com/analysis/can-tbilisi-sustain-an-art-market"
+  ],
+  "reason": "The archived about page holds only navigation; its text loads by script and was not in the capture."
+ },
+ {
+  "id": "kunsthalle-tbilisi-tbilisi",
+  "section": "FUNDING",
+  "problems": [
+   "wrong place: 'in Tbilisi' (source says Georgia)",
+   "named funder missing",
+   "single-show partner missing"
+  ],
+  "before": "writes that in Tbilisi \"commercial galleries ...\" step in / Partners on single projects: ... Gallery Artbeat hosted the 2023 show ...",
+  "after": "writes that in Georgia ... / The 2023 show was funded by IFA, Germany's Institute for Foreign Cultural Relations, and by Kunsthalle Tbilisi itself (the artist's site). / Protocinema of Istanbul organised the 2018 Angelica Mesiti show (The Art Newspaper).",
+  "sources": [
+   "https://sabine-hornig.de/en/ausstellungen/patterns-of-in-security",
+   "https://theartnewspaper.com/analysis/can-tbilisi-sustain-an-art-market"
+  ],
+  "reason": "Both facts are on the opened pages; the Artbeat venue stays once, in OVERVIEW."
+ },
+ {
+  "id": "bauhaus-archiv-museum-fur-gestaltung",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'more than one million objects' credited to the Berlin Senate",
+   "unsupported descriptors: 'private association', 'Berlin architect'"
+  ],
+  "before": "world's largest collection on the Bauhaus, with more than one million objects (museum website; Berlin Senate). / Founded as a private association ... / the Berlin architect Hans Bandel",
+  "after": "world's largest collection on the Bauhaus (museum website). / Founded in Darmstadt in 1960 ... / Hans Bandel",
+  "sources": [
+   "https://www.bauhaus.de/en/about-us/",
+   "https://www.bauhaus.de/en/about-us/history/",
+   "https://www.berlin.de/sen/sbw/presse/pressemeldungen/2023/pressemitteilung.1321885.php"
+  ],
+  "reason": "'One Million Objects' is an exhibition title; the Senate release gives no object count; the history page gives neither descriptor."
+ },
+ {
+  "id": "bauhaus-archiv-museum-fur-gestaltung",
+  "section": "Red flags / CRITICISM / BOTTOM LINE",
+  "problems": [
+   "missing point a source supports",
+   "press item thin",
+   "bottom line compared unlike figures"
+  ],
+  "before": "Franzen ... that the closure is a chance to reach new audiences. / Places the Bauhaus-Archiv beside the Museum der Moderne ... / budget grew from an estimated 56.3 million euros to 92 million in Berlin's books",
+  "after": "Entwicklungsstadt reported in 2026 that the project is to become significantly more expensive. / press item names the Komische Oper and Pergamonmuseum too / bottom line: years behind its first completion date of 2021 and dearer than first estimated",
+  "sources": [
+   "https://www.entwicklungsstadt.de/kulturbauten-in-der-krise-warum-berlins-grossprojekte-aus-dem-takt-geraten/",
+   "https://de.wikipedia.org/wiki/Bauhaus-Archiv"
+  ],
+  "reason": "The 92 million is Berlin's budget line, not a like-for-like total with the 56.3 million estimate; report brought from 861 to 735 words."
+ }
+]
