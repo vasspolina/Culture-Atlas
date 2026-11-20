@@ -449,7 +449,7 @@ Overview 10 points; funding: Museu de Arte Popular: public: Portuguese state; re
 
 ## Museum für Deutsche Geschichte (`museum-fur-deutsche-geschichte`)
 
-Overview 8 points; funding: Museum für Deutsche Geschichte: state-owned: the GDR state under SED party control (closed 1990); red flags: 1952 party control and censorship of the founding exhibition, GDR-era land-reform expropriations in the collection; press items: 0; sources: 3
+Overview 8 points; funding: Museum für Deutsche Geschichte: state-owned: the GDR state under SED party control (closed 1990); red flags: 1952 party control and censorship of the founding exhibition, Collection items from East German land-reform expropriations (museum years 1952 to 1990); press items: 0; sources: 3
 
 - no CRITICISM IN ART MEDIA
 
