@@ -5166,7 +5166,7 @@
   "short": "City of Ljubljana",
   "kind": "gov",
   "what": "The City Municipality of Ljubljana, the local government of Slovenia's capital, led by Mayor Zoran Janković.",
-  "money": "The municipal budget of Ljubljana: €346.5 million in 2011.",
+  "money": "The municipal budget of Ljubljana.",
   "site": "https://www.ljubljana.si",
   "city": "Ljubljana",
   "country": "Slovenia",
@@ -11732,10 +11732,12 @@
   "kind": "person",
   "what": "Indian businessman, born in 1957, youngest son of Brijmohan Lall Munjal; he founded BML Munjal University in 2014 and chairs the Doon School's board of governors.",
   "money": "Hero Enterprise, the business group he chairs.",
+  "city": "New Delhi",
   "country": "India",
   "status": "done",
   "sources": [
-   "https://en.wikipedia.org/wiki/Sunil_Kant_Munjal"
+   "https://en.wikipedia.org/wiki/Sunil_Kant_Munjal",
+   "https://www.herocorp.com/our-management/board-of-directors/"
   ],
   "batch": "fp39"
  },
@@ -12807,11 +12809,15 @@
   "kind": "found",
   "what": "A nonprofit foundation for contemporary culture set up by Dasha Zhukova in 2008; the Garage Museum in Moscow is its project and IRIS New Holland its arm since 2011.",
   "money": "Dasha Zhukova and Roman Abramovich, who would keep paying about two-thirds of Garage's US$13 million to 15 million yearly budget, its director said in 2018.",
+  "city": "Moscow",
+  "country": "Russia",
+  "address": "Krymsky Val 9, building 32, Moscow",
   "status": "done",
   "sources": [
    "https://www.newhollandsp.ru/en/information/about-the-project/iris-foundation/",
    "https://garagemca.org/en/about",
-   "https://www.theartnewspaper.com/2018/07/11/moscows-garage-museum-still-going-strong-at-ten-despite-co-founders-split"
+   "https://www.theartnewspaper.com/2018/07/11/moscows-garage-museum-still-going-strong-at-ten-despite-co-founders-split",
+   "https://tapki.com/company/535174431"
   ],
   "batch": "fp38"
  },
@@ -13393,10 +13399,12 @@
   "what": "American businessman, chairman and CEO of Cadre Holdings since 2012, who resigned as vice chair of the Whitney Museum board on 25 July 2019 after protests.",
   "money": "Armor Holdings, which he chaired until BAE Systems bought it in 2007, and Cadre Holdings, whose subsidiary Safariland sells law enforcement equipment including tear gas.",
   "arts": "In 2016 he and his wife Allison endowed $2.5 million to the Aspen Music Festival and School.",
+  "city": "Jacksonville",
   "country": "United States",
   "status": "done",
   "sources": [
-   "https://en.wikipedia.org/wiki/Warren_Kanders"
+   "https://en.wikipedia.org/wiki/Warren_Kanders",
+   "https://www.sec.gov/Archives/edgar/data/1860543/000110465924054037/tm242836-1_def14a.htm"
   ],
   "batch": "fp39"
  },
@@ -16168,7 +16176,9 @@
   "name": "Mori Provan Foundation",
   "kind": "found",
   "what": "An Australian private giving fund run by a trustee in Victoria, registered as a charity and a deductible gift recipient from 26 June 2021.",
+  "city": "Melbourne",
   "country": "Australia",
+  "address": "VIC 3065",
   "status": "done",
   "sources": [
    "https://abr.business.gov.au/ABN/View?id=19198920224"
