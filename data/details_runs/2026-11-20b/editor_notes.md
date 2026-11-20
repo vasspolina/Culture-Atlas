@@ -6,6 +6,28 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 
 ## Grade or flag questions
 
+- national-museum-of-cambodia: no Red flags remain (Latchford's 2008 honour and 2019 indictment are
+  WIDER CONTEXT); check whether the record carries a flag that rested on them.
+- nuuk-art-museum-nuuk-kunstmuseum-nuuk: Tobacco confirmed on STG's own page (Chr. Augustinus
+  Fabrikker over 25%, C.W. Obel over 10%); the STG stake is about 6% of the holding company's balance.
+- ludwig-museum-budapest-budapest: director Fabényi sat on the advisory board of the central bank's
+  art collection, which the 2025 MNB-Ingatlan money showed: a conflict-of-interest point, no flag.
+- horta-museum: the Getty Conservation Institute thanked as a past contributor (a one-off Getty grant
+  is a note).
+
+- centro-de-arte-contemporaneo-wifredo-lam: its Protest flag now rests on Otero Alcántara's 2024
+  "Proof of Life" action addressed to Biennial visitors (The Art Newspaper); older cases are WIDER
+  CONTEXT.
+- festival-internacional-del-nuevo-cine-latinoamericano-de-la-habana: the 2025 exclusion of Pisani's
+  documentary on Pablo Milanés (OnCuba) is a press item; could be a third censorship heading.
+- museo-de-arte-colonial: record has why_flagged but no flags.
+
+- fridericianum-kassel: the 2025 cancellation of the Merz show, after the lender withdrew over the
+  operator's code of conduct, reads as a boycott aimed at the institution (Protest or boycott), not
+  state censorship.
+- museum-funf-kontinente: Benin holdings, no return as of May 2023: kept as a titled section; fits no
+  flag category.
+
 - winnipeg-art-gallery-qaumajuq-winnipeg: 2024 gift from Manitoba Liquor & Lotteries, a state-owned
   operator that runs casinos and sponsors directly (Gambling under CHECKER.md, like Loto-Québec), and
   TD Bank's 2024 money-laundering plea (name to know).
@@ -40,6 +62,25 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   under the five-year rule; no red flag remains.
 
 ## Record fields that are wrong
+
+- korean-art-gallery-pyongyang: website (korean-books.com.kp) is the Foreign Languages Publishing
+  House site and returned 502; year_founded 1954 vs 1948 (Wikipedia, Koryo Studio).
+- kaesong-koryo-museum-kaesong: website is a Koryo Tours blog page; the record's 1,000+ artefacts vs
+  about 600 (Seoul Shinmun, 1991).
+- international-friendship-exhibition: Hyangsan County is in North Pyongan (English Wikipedia, the
+  Ministry of Unification) or Chagang (Korean Wikipedia).
+- mansudae-art-theatre: the cited statement that the troupe works under the Party is now on the
+  troupe's Korean Wikipedia page, not the theatre's.
+
+- national-centre-for-contemporary-arts-minsk: watch says Kryshtapovich in post since 2018 (Russian
+  Wikipedia: 2018 to 2025); records_note says "being liquidated" (closed 29 October 2026).
+- argos-brussels: records_note says no accounts; accounts are filed with the National Bank of
+  Belgium. On the company register since 18 July 1985, before the stated 1989 founding.
+- braemhuis-renaat-braem-huis: watch says Braem "left" the house in 1999; he gave it in his lifetime.
+- thapong-visual-arts-centre-gaborone: website is a Contemporary And page; HB Botswana partnership
+  began 2023, not 2024.
+- national-museum-of-cambodia: funding line is a "pages read did not state" line, now answered;
+  nationalmuseum.gov.kh was down on 20 Nov 2026.
 
 - musee-d-arts-de-nantes: funding says the funders are not named; they are (EU, State, Region,
   Département, City and agglomeration; 88.5 million euros, AFP via Weka 2016). Watch's 4,000 m²
@@ -105,3 +146,11 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   Nacional de Cuba; unconfirmed.
 
 ## Thin sourcing to know about
+
+- Archive-copy review before import also covers: museo-para-la-identidad-nacional-min-tegucigalpa
+  (Hyperallergic, November 2020 archive copy) and skulpturenpark-waldfrieden (Westdeutsche Zeitung
+  2012, archived copy).
+
+- Before import: review every press item or point sourced to a web.archive.org copy of a page behind
+  a registration wall or paywall (RUN.md rule added mid-run), e.g. the two Hyperallergic pieces read
+  by the g006 checker.

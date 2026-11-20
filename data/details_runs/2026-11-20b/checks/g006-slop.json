@@ -1,0 +1,569 @@
+[
+ {
+  "id": "fridericianum-kassel",
+  "section": "OVERVIEW",
+  "problems": [
+   "over length (803 words after the funding addition)"
+  ],
+  "before": "- Wesseler's contract was extended to 2027 (documenta, 9 December 2021); the company advertised for a new director with applications due 15 May 2026 (e-flux, 2 May 2026), and the Fridericianum holds a farewell for Wesseler on 1 December 2026 (Fridericianum).",
+  "after": "- The company advertised for a new director in May 2026 (e-flux, 2 May 2026); the Fridericianum holds a farewell for Wesseler on 1 December 2026 (Fridericianum).",
+  "sources": [
+   "https://www.e-flux.com/announcements/6787341/seeking-director-m-f-d-of-fridericianum-in-kassel",
+   "https://fridericianum.org/"
+  ],
+  "reason": "Dropped the 2021 contract extension, peripheral now that Wesseler leaves; kept the 2026 search and farewell."
+ },
+ {
+  "id": "fridericianum-kassel",
+  "section": "FUNDING",
+  "problems": [
+   "incomplete: single-show backers"
+  ],
+  "before": "- The Catherine Opie show of 2026 was sponsored by Maria Seferian, and the Kunsthalle receives \"further significant support\" from the Rudolf Augstein Stiftung; Monopol was media partner (Fridericianum).",
+  "after": "- The Catherine Opie show of 2026 was sponsored by Maria Seferian, and the Kunsthalle receives \"further significant support\" from the Rudolf Augstein Stiftung; Monopol was media partner. Pro Helvetia supports the Peter Fischli show and AMA Venezia the Mohammed Sami show (Fridericianum).",
+  "sources": [
+   "https://fridericianum.org/jahresvorschau-2026/"
+  ],
+  "reason": "Added the two other named single-show backers from the same programme page."
+ },
+ {
+  "id": "fridericianum-kassel",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "wrong title"
+  ],
+  "before": "2. Finestre sull'Arte: editorial staff, \"Germany, an exhibition dedicated to Arte Povera artist Marisa Merz will not take place\" (2025)",
+  "after": "2. Finestre sull'Arte: editorial staff, \"Germany, skips Marisa Merz exhibition: disagreement over definition of anti-Semitism\" (2025)",
+  "sources": [
+   "https://www.finestresullarte.info/en/news/germany-skips-marisa-merz-exhibition-disagreement-over-definition-of-anti-semitism"
+  ],
+  "reason": "The item gave the article's standfirst as its title; restored the page title."
+ },
+ {
+  "id": "fridericianum-kassel",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "paraphrase sharper than source"
+  ],
+  "before": "- Calls for a boycott of these institutions.",
+  "after": "- Ends by saying the only way forward with integrity is to boycott these institutions.",
+  "sources": [
+   "https://web.archive.org/web/20250911095241id_/https://hyperallergic.com/1040816/the-twisted-logic-of-documentas-artistic-freedom/"
+  ],
+  "reason": "Broomberg closes by saying boycott is the only way forward with integrity; stated as he puts it."
+ },
+ {
+  "id": "fridericianum-kassel",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: restates FUNDING"
+  ],
+  "before": "The money is public, from Kassel and Hesse in equal shares, with named private backers on single shows. The weak point is political control through the documenta code of conduct. Watch who succeeds Wesseler and whether more lenders withdraw before documenta 16.",
+  "after": "The public money behind the Fridericianum is clean. The weak point is political control through the documenta code of conduct. Watch who succeeds Wesseler and whether more lenders withdraw before documenta 16.",
+  "sources": [],
+  "reason": "Bottom line now gives the verdict only."
+ },
+ {
+  "id": "fridericianum-kassel",
+  "section": "SOURCES",
+  "problems": [
+   "source no longer cited"
+  ],
+  "before": "- https://documenta.de/en/news/verlaengerung-des-vertrags-von-moritz-wesseler-als-direktor-des-fridericianum",
+  "after": "",
+  "sources": [],
+  "reason": "Removed the 2021 contract-extension page."
+ },
+ {
+  "id": "gfzk-galerie-fur-zeitgenossische-kunst-leipzig",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: Wikipedia only, unsourced on the page"
+  ],
+  "before": "- German Wikipedia names the entrepreneur Arend Oetker (Schwartauer Werke) among the main funders and says he pays for a substantial part of the running costs.",
+  "after": "",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Galerie_f%C3%BCr_Zeitgen%C3%B6ssische_Kunst",
+   "https://gfzk.de/en/institution/geschichte/"
+  ],
+  "reason": "German Wikipedia's claim that Arend Oetker pays a substantial part of the running costs carries no citation and no other source found confirms it; cut. GfZK's own history (Oetker co-founded the Friends) stays in OVERVIEW."
+ },
+ {
+  "id": "gfzk-galerie-fur-zeitgenossische-kunst-leipzig",
+  "section": "FUNDING; Red flags",
+  "problems": [
+   "unsupported: 'donations at the door', 'hotel suites in the former carriage house'",
+   "ruling: budget cut is a funding fact, not a flag",
+   "absence statement: 'The article gives no amount...'"
+  ],
+  "before": "- Ticket income and donations at the door; the site also runs artist-designed hotel suites in the former carriage house (GfZK).\n\nRed flags: 2025 Saxon budget cuts to the GfZK\n- The Saxon minority government's 2025/2026 double budget draft cut culture funding, including the GfZK (Leipziger Zeitung, 1 June 2025).\n- Claudia Maicher, culture spokesperson of the Greens in the Saxon Landtag, said the Free State as co-founder had always matched the City of Leipzig's share, and that leaving upkeep to the city and private founders puts the funding model at risk (Leipziger Zeitung).\n- The article gives no amount for the GfZK and no reply from the culture ministry.",
+  "after": "- Ticket income, and two artist-designed hotel apartments in a former studio building on the site, let at 120 to 150 euros a night (GfZK).\n- 2025: the Saxon minority government's draft double budget for 2025/2026 cut culture funding, the GfZK included. Claudia Maicher, culture spokesperson of the Greens in the Saxon Landtag, said the Free State as co-founder had always matched the City of Leipzig's share, and that leaving upkeep to the city and private founders puts the funding model at risk (Leipziger Zeitung, 1 June 2025).",
+  "sources": [
+   "https://gfzk.de/en/orte/hotel/",
+   "https://www.l-iz.de/politik/sachsen/2025/06/claudia-maicher-kritisiert-kurzungsplane-der-staatsregierung-rotstift-leipziger-kultureinrichtungen-625707"
+  ],
+  "reason": "The hotel page names two artist-designed apartments in a former studio building. The Red flags heading is dropped per ruling and the 2025 cut is a dated FUNDING point, worded as a draft, as the article reports it; the absence line is cut."
+ },
+ {
+  "id": "gfzk-galerie-fur-zeitgenossische-kunst-leipzig",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition",
+   "unsupported: Saxony 'cut' (the source reports a draft); Oetker claim cut"
+  ],
+  "before": "The money is two public shares and one private share of equal size, with one patron, Arend Oetker, named as a main backer. The weak point is the state share, which Saxony cut in its 2025/2026 budget; watch the 2027/2028 budgets of Saxony and Leipzig.",
+  "after": "The money is clean: two public shares and one private share. The weak point is the state share, under pressure since the 2025/2026 budget draft; watch the next budgets of Saxony and Leipzig.",
+  "sources": [],
+  "reason": "Verdict only, matching the draft wording."
+ },
+ {
+  "id": "gfzk-galerie-fur-zeitgenossische-kunst-leipzig",
+  "section": "SOURCES",
+  "problems": [
+   "missing source"
+  ],
+  "before": "",
+  "after": "- https://gfzk.de/en/orte/hotel/",
+  "sources": [
+   "https://gfzk.de/en/orte/hotel/"
+  ],
+  "reason": "Added the hotel page."
+ },
+ {
+  "id": "schinkel-pavillon",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement: 'The source does not name the funding line.'",
+   "ruling: budget cut is a dated funding point"
+  ],
+  "before": "- The space warned in December 2024 that it could lose 50 per cent of its funding under the Berlin Senate's planned 13 per cent cut to arts funding, about 130 million euros (ArtDog Istanbul, 10 December 2024). The source does not name the funding line.",
+  "after": "- 2024: the Pavillon said it could lose 50 per cent of its funding and close for good under the Berlin Senate's plan to cut arts funding by 13 per cent, about 130 million euros, in 2025 (ArtDog Istanbul, 10 December 2024).",
+  "sources": [
+   "https://artdogistanbul.com/en/berlin-museums-condemn-arts-budget-cuts/"
+  ],
+  "reason": "Dated point kept, absence sentence cut."
+ },
+ {
+  "id": "schinkel-pavillon",
+  "section": "Red flags",
+  "problems": [
+   "ruling: budget cut is a funding fact, not a flag"
+  ],
+  "before": "Red flags: 2024 warning of a 50 per cent funding cut under Berlin's 2025 budget\n- ArtDog Istanbul (10 December 2024): the Pavillon warned of permanent closure; KW Institute, Künstlerhaus Bethanien, n.b.k. and nGbK warned of a \"domino effect\", and culture senator Joe Chialo called the cuts \"very drastic and brutal\".\n- Der Freitag (Laura Ewert, 13 December 2024) reported that the Schinkel Pavillon \"stellt sein Aus in Aussicht\" (translated: has raised the prospect of its end) as the CDU-SPD Senate planned to cut about 12 per cent of the culture budget.\n- Berliner Zeitung (Ingeborg Ruthe, 27 November 2024; commentary, paywalled, only the opening was read) asked whether Berlin's art venues would soon get \"only half rations\" and said art associations and independent projects have no political lobby.\n",
+  "after": "",
+  "sources": [
+   "https://artdogistanbul.com/en/berlin-museums-condemn-arts-budget-cuts/",
+   "https://www.freitag.de/autoren/laura-ewert/kahlschlag-in-der-kulturszene-raven-bis-der-arzt-kommt",
+   "https://www.berliner-zeitung.de/article/kahlschlag-fuer-schinkel-pavillon-gibt-es-fuer-berlins-beliebteste-kunstorte-bald-nur-noch-die-halbe-ration-2276021"
+  ],
+  "reason": "Heading dropped. The supported reactions to Berlin's cuts moved to WIDER CONTEXT."
+ },
+ {
+  "id": "schinkel-pavillon",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "moved from Red flags",
+   "hedge in source: Berliner Zeitung's 'Wie es scheint'"
+  ],
+  "before": "",
+  "after": "WIDER CONTEXT\n- KW Institute, Künstlerhaus Bethanien, n.b.k. and nGbK warned that the Senate's cuts would set off a \"domino effect\"; culture senator Joe Chialo called them \"very drastic and brutal\" (ArtDog Istanbul, 10 December 2024).\n- Der Freitag (Laura Ewert, 13 December 2024) reported that the CDU-SPD Senate planned to cut about 12 per cent of the culture budget and that the Schinkel Pavillon \"stellt sein Aus in Aussicht\" (translated: \"has raised the prospect of its end\").\n- Berliner Zeitung (Ingeborg Ruthe, 27 November 2024; commentary, paywalled, only the opening was read) asked under the headline \"Gibt es für Berlins beliebteste Kunstorte bald nur noch die halbe Ration?\" (translated: \"Will Berlin's favourite art venues soon get only half rations?\") whether the cuts would starve such spaces.\n- The Pavillon depends on the Berlin culture budget these cuts target.\n",
+  "sources": [
+   "https://www.freitag.de/autoren/laura-ewert/kahlschlag-in-der-kulturszene-raven-bis-der-arzt-kommt",
+   "https://www.berliner-zeitung.de/article/kahlschlag-fuer-schinkel-pavillon-gibt-es-fuer-berlins-beliebteste-kunstorte-bald-nur-noch-die-halbe-ration-2276021"
+  ],
+  "reason": "Reactions to Berlin's cuts as context, with the connection stated. Berliner Zeitung's lobby line hedges in the original, so its headline is quoted and translated instead (opening only read)."
+ },
+ {
+  "id": "schinkel-pavillon",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The money is Berlin public money and federal project grants channelled through a private art association. The weak point is dependence on a Berlin culture budget the Senate set out to cut for 2025; watch whether the Pavillon keeps its full programme.",
+  "after": "The public money behind the Pavillon is clean. The weak point is its dependence on a shrinking Berlin culture budget; watch whether it keeps its full programme.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "glyptothek",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: credit both ORF and the ministry"
+  ],
+  "before": "- The renovation finished in 2021 had a total budget of 17 million euros and stayed within cost and schedule, said Bavaria's building minister Kerstin Schreyer (ORF, quoting the Bavarian art ministry).",
+  "after": "- The renovation finished in 2021 had a total budget of 17 million euros and stayed within cost and schedule: ORF (19 December 2021) reported the Bavarian art ministry's announcement and quoted Bavaria's building minister Kerstin Schreyer.",
+  "sources": [
+   "https://orf.at/stories/3240732/"
+  ],
+  "reason": "ORF reported the art ministry's announcement and quoted building minister Schreyer on the 17 million euro budget; both now credited."
+ },
+ {
+  "id": "glyptothek",
+  "section": "FUNDING",
+  "problems": [
+   "repetition: 6-euro day ticket already in Visiting"
+  ],
+  "before": "- Ticket income: day tickets of 6 euros and annual passes of 20 euros (museum website).",
+  "after": "- Ticket income, including annual passes of 20 euros, reduced 15 euros (museum website).",
+  "sources": [
+   "https://www.antike-am-koenigsplatz.mwn.de/en/visitor-information/"
+  ],
+  "reason": "Kept the annual pass only."
+ },
+ {
+  "id": "glyptothek",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: 1938 Discobolus return already in OVERVIEW",
+   "absence: 'no corporate sponsor is named'"
+  ],
+  "before": "The money is Bavarian state money with a members' association on top, and no corporate sponsor is named. Nothing in the funding draws a red flag. Watch the collection history: one 1938 purchase has already gone back to Italy.",
+  "after": "The money is clean: Bavarian state money with a members' association on top. Nothing in the funding draws a red flag.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: Foreign Office funding rests on German Wikipedia (citing a 2010 Tagesspiegel piece)"
+  ],
+  "before": "- German Wikipedia states that it receives regular funding from both the Federal Foreign Office and the BKM, and lists it as an intermediary organisation of the Foreign Office for cultural policy abroad.",
+  "after": "",
+  "sources": [
+   "https://www.hkw.de/impressum",
+   "https://de.wikipedia.org/wiki/Haus_der_Kulturen_der_Welt"
+  ],
+  "reason": "HKW's imprint names only the BKM as institutional funder; followed the imprint and cut the Wikipedia point."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: English Wikipedia also names the Foreign Office"
+  ],
+  "before": "- English Wikipedia names the HKW among the federal \"lighthouses of culture\" funded by the federal government.",
+  "after": "",
+  "sources": [
+   "https://en.wikipedia.org/wiki/House_of_World_Cultures"
+  ],
+  "reason": "Cut with the German Wikipedia point; the imprint governs."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: supervisory board chair and Chefket case stated above"
+  ],
+  "before": "The money is federal, and the federal culture minister chairs the supervisory board. The documented weak point is political pressure on the programme from that same funder, seen in the Chefket cancellation of 2025.",
+  "after": "The federal money behind the HKW is clean. The weak point is political pressure on the programme from the funder itself.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "haus-der-kulturen-der-welt-hkw",
+  "section": "SOURCES",
+  "problems": [
+   "source no longer cited"
+  ],
+  "before": "- https://en.wikipedia.org/wiki/House_of_World_Cultures",
+  "after": "",
+  "sources": [],
+  "reason": "Removed English Wikipedia."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'June 2016'"
+  ],
+  "before": "- Julia Stoschek, born 1975, began buying art in 2003; she opened the Düsseldorf venue, a converted industrial building from 1907 with a cinema and an archive, in 2007, and the Berlin venue in June 2016 (English Wikipedia; Apollo, 2016).",
+  "after": "- Julia Stoschek, born 1975, began buying art in 2003; she opened the Düsseldorf venue, a converted industrial building from 1907 with a cinema and an archive, in 2007, and the Berlin venue in 2016 (English Wikipedia; Apollo, 2016; ArtReview).",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Julia_Stoschek",
+   "https://artreview.com/julia-stoschek-foundation-to-close-berlin-location/"
+  ],
+  "reason": "Sources give 2016 only."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "OVERVIEW",
+  "problems": [
+   "credit: 'GDR prefabricated building' is Tagesspiegel's"
+  ],
+  "before": "- The Berlin venue is the former Czech Cultural Centre, a GDR prefabricated building of 3,000 square metres owned by the Bundesanstalt für Immobilienaufgaben; it hosted 22 exhibitions, including Arthur Jafa, Meriem Bennani and Mark Leckey, and drew 450,000 visitors (Berliner Zeitung; ArtReview).",
+  "after": "- The Berlin venue is the former Czech Cultural Centre, a GDR prefabricated building of 3,000 square metres owned by the Bundesanstalt für Immobilienaufgaben; it hosted 22 exhibitions, including Arthur Jafa, Meriem Bennani and Mark Leckey, and drew 450,000 visitors (Berliner Zeitung; Tagesspiegel; ArtReview).",
+  "sources": [
+   "https://www.tagesspiegel.de/kultur/julia-stoschek-schliesst-die-wichtigste-sammlerin-fur-zeitbasierte-kunst-verlasst-berlin-15518862.html"
+  ],
+  "reason": "Tagesspiegel calls it a Plattenbau aus DDR-Zeiten; credited."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Tagesspiegel does not name Brose"
+  ],
+  "before": "- Stoschek is \"an active shareholder\" in Brose, the automotive-parts group founded by her great-grandfather; her father Michael Stoschek is its chairman (W Magazine, Diane Solway, 20 November 2017). Tagesspiegel and Berliner Zeitung (2026) also describe her as a Gesellschafterin (shareholder) of Brose.",
+  "after": "- Stoschek is \"an active shareholder\" in Brose, the automotive-parts group founded by her great-grandfather; her father Michael Stoschek is its chairman (W Magazine, Diane Solway, 20 November 2017). Berliner Zeitung (2026) calls her a Gesellschafterin (shareholder) of the Brose group; Tagesspiegel (2026) a shareholder of a Coburg car-parts supplier.",
+  "sources": [
+   "https://www.tagesspiegel.de/kultur/julia-stoschek-schliesst-die-wichtigste-sammlerin-fur-zeitbasierte-kunst-verlasst-berlin-15518862.html",
+   "https://www.berliner-zeitung.de/article/julia-stoschek-verkuendet-endgueltige-schliessung-ihres-ausstellungshauses-in-berlin-10032553"
+  ],
+  "reason": "Berliner Zeitung names Brose; Tagesspiegel says a Coburg car-parts supplier."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "FUNDING",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "- Tagesspiegel (2026) writes that her Berlin programme of workshops, talks, loans to institutions and conservation of fragile early video consumes a high annual budget. No source opened says how the foundation is financed in detail.",
+  "after": "- Tagesspiegel (2026) writes that her Berlin programme of workshops, talks, loans to institutions and conservation of fragile early video consumes a high annual budget.",
+  "sources": [],
+  "reason": "Cut 'No source opened says how the foundation is financed in detail.'"
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "ruling: Steyerl buyback credited as the paper's claim",
+   "full title restored"
+  ],
+  "before": "- Berliner Zeitung, Hanno Hauenstein, \"Ende der Documenta 15\" (25 September 2022; opinion-led commentary): says Stoschek shields her great-grandfather's Nazi past \"aktiv gegen Kritik\" (actively against criticism), and that a Brose-commissioned history drew criticism for missing footnotes.\n- Unverified: the same Berliner Zeitung piece says Michael Stoschek pressed in 2015 for a street to be renamed Max-Brose-Strasse and compared Brose to Oskar Schindler; that the artist Hito Steyerl bought back her work from the collection shortly after a text by David de Jong criticised rich families' handling of their Nazi past; and that the paper received an Abmahnung (warning letter) over a phrase in its translation of that text.\n- The foundation's money comes from a Brose shareholder, which is the connection to this history.",
+  "after": "- Berliner Zeitung, Hanno Hauenstein, \"Ende der Documenta 15: Warum diese Debatte uns noch lange begleiten wird\" (25 September 2022; commentary): says Stoschek shields her great-grandfather's Nazi past \"aktiv gegen Kritik\" (actively against criticism), giving as an example an Abmahnung (warning letter) the paper received over a phrase in its translation of a text by David de Jong on rich families' Nazi ties; it also says a Brose-commissioned history drew criticism for missing footnotes.\n- Unverified: the same commentary says Michael Stoschek pressed in 2015 for a street to be renamed Max-Brose-Strasse and compared Brose to Oskar Schindler.\n- Unverified: the same commentary states that the artist Hito Steyerl bought back her work from the collection shortly after de Jong's text; this is the paper's claim, made in an opinion piece.\n- The connection: the foundation is paid for by a Brose shareholder.",
+  "sources": [
+   "https://www.berliner-zeitung.de/article/269501"
+  ],
+  "reason": "Split the Unverified bundle: the Abmahnung goes with the paper's own claim, the street renaming and the Steyerl buyback each carry 'Unverified' and are credited to the commentary. Read in full (free article). Brose forced labour stays in WIDER CONTEXT."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition",
+   "absence: 'no public or corporate sponsor named'"
+  ],
+  "before": "The money is one heir's private fortune from a car-parts group, with no public or corporate sponsor named. The weak point is the Nazi-era forced labour behind that fortune and the family's handling of it. Watch what replaces the Berlin venue after October 2026.",
+  "after": "The private money behind the foundation draws no current red flag. The weak point is the Nazi-era forced labour behind the Brose fortune and the family's handling of it. Watch what replaces the Berlin venue after October 2026.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "julia-stoschek-foundation",
+  "section": "SOURCES",
+  "problems": [
+   "label"
+  ],
+  "before": "- https://www.berliner-zeitung.de/article/269501 (opinion-led commentary)",
+  "after": "- https://www.berliner-zeitung.de/article/269501 (commentary)",
+  "sources": [],
+  "reason": "'opinion-led commentary' shortened to 'commentary'."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak spot: heads rest on German Wikipedia only"
+  ],
+  "before": "- Curators were Uli Aigner (2006 to 2010), Felix Ruhöfer (2011 to 2014) and Jörg Koopmann (2014 to 2019, with Dana Weschke until 2016); Lisa Britzger led the programme from 2020, and the Bulgarian artist and curator Kalas Liebfried became head in April 2025 (German Wikipedia).\n- Visiting: Wednesday to Friday 12:00 to 20:00, Saturday and Sunday 10:00 to 18:00, closed Monday and Tuesday, open only while an exhibition runs; admission free, step-free access (muenchen.de).",
+  "after": "- Kalas Liebfried has been artistic director since April 2025 (Openart München); the directorship is limited to a term of up to five years (e-flux).\n- Visiting: Wednesday to Friday 12:00 to 20:00, Saturday and Sunday 10:00 to 18:00, closed Monday and Tuesday, open only while an event runs; admission free, step-free access (muenchen.de).",
+  "sources": [
+   "https://openart-munich.de/en/exhibition/paul-valentin-petya-ivanova-joshua-bonnetta-antoni-rayzhekov-maxine-weiss-georgi-gospodinov-angela-melitopoulos-dr-julian-zuber-animistic-beliefs-voin-de-voin-beni-brachtel-salome-voegelin/",
+   "https://www.e-flux.com/directory/603399/lothringer-13-halle"
+  ],
+  "reason": "Kalas Liebfried re-sourced to Openart München (artistic director from April 2025) and the five-year term to e-flux; the earlier curator list, Wikipedia only, cut. Visiting: muenchen.de says open only during an event (Veranstaltung)."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: funding line German Wikipedia only",
+   "repetition: Medienlabor already in OVERVIEW"
+  ],
+  "before": "- The Halle is a cultural institution of the Kulturreferat (culture department) of the Landeshauptstadt München (City of Munich; German Wikipedia). The Kulturreferent is Marek Wiechers (City of Munich organigram, March 2026).\n- German Wikipedia states that the Halle is a fully non-profit project financed by grants from the City of Munich, project-bound funds and donations.\n- Entry to all events is free, so there is no ticket income (German Wikipedia; muenchen.de).\n- The city also funded the former Medienlabor München in the building from 1992 to 1998 (German Wikipedia).",
+  "after": "- The Halle is a cultural institution of the Kulturreferat (culture department) of the Landeshauptstadt München, a municipal art space run by the city (City of Munich; e-flux). The Kulturreferent is Marek Wiechers (City of Munich organigram, March 2026).\n- Entry is free, so there is no ticket income (muenchen.de).",
+  "sources": [
+   "https://stadt.muenchen.de/infos/lothringer13-kunstraum.html",
+   "https://www.e-flux.com/directory/603399/lothringer-13-halle"
+  ],
+  "reason": "Funding re-sourced: city page and e-flux (a municipal art space run by the city's Cultural Department). Wikipedia's grants/project funds/donations line cut."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "absence: 'donations that no source names'",
+   "repetition"
+  ],
+  "before": "The money is municipal: the City of Munich runs the space through its culture department, topped up by project grants and donations that no source names. Nothing in the funding draws a red flag.",
+  "after": "The municipal money behind the Halle is clean. Nothing in the funding draws a red flag.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "lothringer-13-halle-munich",
+  "section": "SOURCES",
+  "problems": [
+   "missing sources"
+  ],
+  "before": "",
+  "after": "- https://openart-munich.de/en/exhibition/paul-valentin-petya-ivanova-joshua-bonnetta-antoni-rayzhekov-maxine-weiss-georgi-gospodinov-angela-melitopoulos-dr-julian-zuber-animistic-beliefs-voin-de-voin-beni-brachtel-salome-voegelin/\n- https://www.e-flux.com/directory/603399/lothringer-13-halle",
+  "sources": [],
+  "reason": "Added Openart München and e-flux."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "OVERVIEW",
+  "problems": [
+   "weak spot: conflicting building dates"
+  ],
+  "before": "- Bavaria's state museum of world cultures at Maximilianstrasse 42, Munich, in a building that Eduard Riedel built from 1859 to 1865 for the Bavarian National Museum; the museum moved there in 1925 and 1926 (museum website; German Lost Art Foundation).",
+  "after": "- Bavaria's state museum of world cultures at Maximilianstrasse 42, Munich, in a building that Eduard Riedel built from 1859 to 1865 for the Bavarian National Museum (German Lost Art Foundation; museum history page, which elsewhere gives 1858 to 1867); the museum moved there in 1925 and 1926 (museum website).",
+  "sources": [
+   "https://kulturgutverluste.de/en/node/45",
+   "https://www.museum-fuenf-kontinente.de/museum/ueber-uns/geschichte-des-museums"
+  ],
+  "reason": "The museum's own history page gives both 1859 to 1865 and 1858 to 1867; both stated with sources."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "FUNDING",
+  "problems": [
+   "weak spot: operator German Wikipedia only"
+  ],
+  "before": "- The museum is run by the Free State of Bavaria through the Bavarian Ministry of Science and Arts (German Wikipedia).",
+  "after": "- A state museum: its imprint lists it under \"Staatliche Museen in Bayern\" (state museums in Bavaria), and its superior authority is the Bavarian Ministry of Science and Arts (museum imprint; Hilke Thode-Arora, Abendzeitung, 12 March 2019).",
+  "sources": [
+   "https://www.museum-fuenf-kontinente.de/impressum",
+   "https://www.abendzeitung-muenchen.de/kultur/kunst/behalten-oder-zurueckgeben-art-465599"
+  ],
+  "reason": "Re-sourced: the imprint lists it under Staatliche Museen in Bayern; Thode-Arora names the Bavarian Ministry of Science and Arts as superior authority."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'funded collecting and research expeditions'"
+  ],
+  "before": "- In the 19th century the Kingdom of Bavaria and its monarchs funded collecting and research expeditions (museum website).",
+  "after": "- In the 19th century the Kingdom of Bavaria and its monarchs promoted exploration and collecting, and rewarded large gifts of objects with orders and honours (museum website).",
+  "sources": [
+   "https://www.museum-fuenf-kontinente.de/museum/ueber-uns/geschichte-des-museums"
+  ],
+  "reason": "The page says the kingdom and monarchs 'förderten' the interest and rewarded gifts with orders and honours; stated so."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "Red flags",
+  "problems": [
+   "misquote: the original reads 'Der Fall scheint recht eindeutig zu sein'",
+   "undated claim"
+  ],
+  "before": "- Werlich called the Benin case \"recht eindeutig\" (translated: fairly clear-cut) and said the museum is prepared to return objects from problematic acquisition contexts (LMU, 4 July 2022).\n- Bavaria and Saxony were the only German states that had not concluded return agreements with Nigeria (Berliner Zeitung, 17 May 2023).",
+  "after": "- Werlich said experts hold that Benin court objects almost certainly came from that expedition, a well-documented context of injustice: \"Diese Objekte müssen zurückgehen\" (translated: \"These objects must go back\") (LMU, 4 July 2022).\n- In May 2023 Bavaria and Saxony were the only German states that had not concluded return agreements with Nigeria (Berliner Zeitung, 17 May 2023).",
+  "sources": [
+   "https://www.lmu.de/de/newsroom/newsuebersicht/news/mehr-als-eine-frage-der-herkunft-010e12c1.html",
+   "https://www.berliner-zeitung.de/article/349483"
+  ],
+  "reason": "The quote dropped Werlich's hedge; replaced by her unhedged 'Diese Objekte müssen zurückgehen', with the 1897 link credited to experts as she does. The no-agreement point is dated May 2023. Heading kept per ruling."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition: decision authority now in FUNDING",
+   "paraphrase stronger than source"
+  ],
+  "before": "- In 2019 Werlich said the only return claim on the museum was for a ship's prow from Cameroon sought by Prince Kum'a Ndumbe III; in 2016 the museum asked him to prove he was entitled to receive it, and there had been no contact since. She said the decision on returns does not lie with the museum (Abendzeitung, 12 March 2019).\n- In January 2024 the museum was one of eleven German museums that agreed with Cameroon's interministerial committee to work together on returns of cultural goods taken in the colonial era (Stuttgarter Communiqué, 24 January 2024).",
+  "after": "- In 2019 Werlich said the only return claim on the museum was for a ship's prow from Cameroon sought by Prince Kum'a Ndumbe III; in 2016 the museum asked him to prove he was entitled to receive it, and there had been no contact since (Abendzeitung, 12 March 2019).\n- In January 2024 the museum was one of eleven German museums that declared, with delegates of Cameroon's interministerial committee, their intent to work together for returns of cultural goods taken in the colonial era (Stuttgarter Communiqué, 24 January 2024).",
+  "sources": [
+   "https://www.abendzeitung-muenchen.de/kultur/kunst/behalten-oder-zurueckgeben-art-465599",
+   "https://lindenmuseum.de/wp-content/uploads/Stuttgarter-Communique_24_1_24_DT.pdf"
+  ],
+  "reason": "Cut the duplicate sentence; the 2019 Cameroon claim stays here per ruling. The communiqué records an intent to promote returns, not an agreement."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The money is Bavarian state money, with a friends' association and a collector's foundation on top. The open question is the colonial collection: no Benin object has gone back, and the decision rests with the Bavarian government.",
+  "after": "The state money behind the museum is clean. The weak point is the colonial collection, the Benin holdings above all.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "museum-funf-kontinente",
+  "section": "SOURCES",
+  "problems": [
+   "missing source"
+  ],
+  "before": "",
+  "after": "- https://www.museum-fuenf-kontinente.de/impressum",
+  "sources": [],
+  "reason": "Added the imprint."
+ },
+ {
+  "id": "museum-mmk-fur-moderne-kunst",
+  "section": "FUNDING",
+  "problems": [
+   "credit: the figures are on the Taunusturm article",
+   "weak spot: cost-sharers rest on the developer"
+  ],
+  "before": "- TOWER MMK: the museum has more than 1,500 square metres in the Taunusturm free of charge for 15 years from October 2014, and the running costs are privately financed for that period (German Wikipedia, citing FAZ, 25 September 2013).\n- According to the developer, the entrepreneur Stefan Quandt, the Ernst Max von Grunelius Stiftung, Helaba and others share those costs (structurae, an engineering database).",
+  "after": "- TOWER MMK: the museum has more than 1,500 square metres in the Taunusturm free of charge for 15 years from October 2014, and the running costs are privately financed for that period (German Wikipedia article on the Taunusturm, citing FAZ, 25 September 2013).\n- The entrepreneur Stefan Quandt, the Ernst Max von Grunelius Stiftung, Helaba and others share those costs, according to the developer as quoted by structurae.net, an engineering database, and the same Wikipedia article.",
+  "sources": [
+   "https://structurae.net/de/bauwerke/taunusturm",
+   "https://de.wikipedia.org/wiki/Taunusturm"
+  ],
+  "reason": "Credited as the developer's statement quoted by structurae.net and the Taunusturm article; nothing ties Quandt's family history to the MMK, so only the funding fact is given."
+ },
+ {
+  "id": "museum-mmk-fur-moderne-kunst",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: Szenenwechsel 'private sponsors'"
+  ],
+  "before": "- From 1992 to 2002 the twenty \"Szenenwechsel\" collection shows were staged with private sponsors (German Wikipedia).",
+  "after": "",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Museum_f%C3%BCr_Moderne_Kunst"
+  ],
+  "reason": "The article lists the shows but says nothing of sponsors; cut."
+ },
+ {
+  "id": "museum-mmk-fur-moderne-kunst",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition: Quandt and the tower backers stated above"
+  ],
+  "before": "The money is municipal, with private backers for the tower venue, among them the entrepreneur Stefan Quandt, and for the young-artist shows. The weak point is governance: a staff revolt against the director that the city had not settled by May 2023.",
+  "after": "The money is clean: city money with named private backers. The weak point is governance: a staff dispute with the director that the city had not settled by May 2023.",
+  "sources": [],
+  "reason": "Verdict only. The 2022 letter and the 2023 mediation stay one Red flag: the city answer says the mediation followed the staff letter."
+ },
+ {
+  "id": "residenztheater-bayerisches-staatsschauspiel",
+  "section": "FUNDING",
+  "problems": [
+   "repetition: State Theatre status already in OVERVIEW"
+  ],
+  "before": "- The Bayerisches Staatsschauspiel is one of the Bavarian State Theatres (German Wikipedia; theatre website).",
+  "after": "",
+  "sources": [],
+  "reason": "Cut."
+ },
+ {
+  "id": "residenztheater-bayerisches-staatsschauspiel",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'small'"
+  ],
+  "before": "The money is Bavarian state money, with small private and federal grants for single projects. Nothing in the funding draws a red flag. Watch whether the new production centre opens on time and within its budget.",
+  "after": "The money is clean: Bavarian state money, with private and federal grants for single projects. Nothing in the funding draws a red flag. Watch whether the new production centre opens on time and within its budget.",
+  "sources": [],
+  "reason": "No source sizes the grants."
+ }
+]

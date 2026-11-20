@@ -68,6 +68,9 @@ existing Red flags section or press item unless a source shows it is wrong; say 
 - WebSearch, and `curl` through Bash (name each host in `allowed_domains`) or WebFetch.
 - Never the browser tools (`mcp__Claude_Browser__*`, `mcp__claude-in-chrome__*`, `mcp__computer-use__*`).
 - Never pass `-k` to curl and never disguise curl as a browser. If a site refuses, use another source.
+- An archive copy (web.archive.org) may stand in for a page that is gone or down; it is not a way
+  round a site that refuses automated reads or sits behind a paywall or registration wall. Leave
+  such points out unless another source carries them.
 - Scratch files go in `$TMPDIR`, never in the repository.
 - Write only `data/details_runs/2026-11-20b/reports/<record id>.txt` (research) or edit those files
   and write `checks/<batch>-slop.json` (checking). Never touch `institutions.json` or any other file.
