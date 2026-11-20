@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=867"></script>
+  <script src="assets/load-image-data.js?v=868"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=867">
-  <link rel="stylesheet" href="assets/sheet.css?v=867">
-  <script src="assets/config.js?v=867"></script>
-  <script src="assets/analytics.js?v=867"></script>
-  <script src="assets/subtopic.js?v=867"></script>
-  <script src="assets/names.js?v=867"></script>
-  <script src="assets/grounding.js?v=867"></script>
-  <script src="assets/repeats.js?v=867"></script>
-  <script src="assets/intro-narration.js?v=867"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=868">
+  <link rel="stylesheet" href="assets/sheet.css?v=868">
+  <script src="assets/config.js?v=868"></script>
+  <script src="assets/analytics.js?v=868"></script>
+  <script src="assets/subtopic.js?v=868"></script>
+  <script src="assets/names.js?v=868"></script>
+  <script src="assets/grounding.js?v=868"></script>
+  <script src="assets/repeats.js?v=868"></script>
+  <script src="assets/intro-narration.js?v=868"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=867"></script>
+  <script src="assets/load-image.js?v=868"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=867"></script>
-  <script src="assets/money-ids.js?v=867"></script>
+  <script src="assets/institutions.js?v=868"></script>
+  <script src="assets/money-ids.js?v=868"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10887,11 +10887,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v867';
+    const ATLAS_RELEASE = 'culture-atlas-v868';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=867').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=868').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11132,10 +11132,29 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // and every drawing and hit test goes through projectWinkel / winkelScreenToView / wtOutlinePath, which add it.
     let wtPhoneHalfH = 0;   // half the free height, in CSS px; 0 = not measured, or not a phone
     let wtOffsetY = 0;      // the free band's middle less the canvas's middle, in CSS px
+    let wtChipsWatched = null;
     function measureWtPhoneRoom() {
       wtPhoneHalfH = 0; wtOffsetY = 0;
-      if (window.innerWidth >= 768) return;
       const cRect = canvas.getBoundingClientRect();
+      if (window.innerWidth >= 768) {
+        // Wide screen (user, 20 Nov 2026: "center atlas"): when the filter row sits over the map pane (under it in a narrow
+        // pane, assets/sheet.css), the map is centred and fitted in the room between the name and the filters, 12px clear
+        // of them, not in the whole canvas, which runs under the filters and left the map low.
+        const chips = document.getElementById('gmdChips');
+        if (chips && chips !== wtChipsWatched && typeof ResizeObserver === 'function') {
+          wtChipsWatched = chips;
+          new ResizeObserver(() => window.atlasMeasurePhoneRoom && window.atlasMeasurePhoneRoom()).observe(chips);
+        }
+        if (!chips || getComputedStyle(chips).display === 'none') return;
+        const b = chips.getBoundingClientRect();
+        if (!b.height || b.right <= cRect.left || b.left >= cRect.right || b.bottom <= cRect.top || b.top >= cRect.bottom) return;
+        let top = cRect.top + 12, bottom = cRect.bottom - 12;
+        if (b.top + b.height / 2 > cRect.top + cRect.height / 2) bottom = b.top - 12; else top = b.bottom + 12;
+        if (bottom - top < 120) return;
+        wtPhoneHalfH = (bottom - top) / 2;
+        wtOffsetY = (top + bottom) / 2 - (cRect.top + cRect.height / 2);
+        return;
+      }
       const dock = document.getElementById('mobileStickyInputBar');
       const db = dock ? dock.getBoundingClientRect() : null;
       // The band starts under whatever hangs from the top: the old top bar, or on the map the row of top buttons and the
@@ -22652,24 +22671,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=867"></script>
-<script src="assets/note-aids.js?v=867" defer></script>
-<script src="assets/place-list.js?v=867" defer></script>
-<script src="assets/chat-share.js?v=867" defer></script>
-<script src="assets/note-files.js?v=867" defer></script>
-<script src="assets/funding-views.js?v=867"></script>
-<script src="assets/layers.js?v=867"></script>
-<script src="assets/critique-gallery-data.js?v=867"></script>
-<script src="assets/critique-captions.js?v=867"></script>
-<script src="assets/critique-gallery.js?v=867"></script>
-<script src="assets/hq-detail.js?v=867"></script>
-<script src="assets/influence-mode.js?v=867"></script>
-<script src="assets/bubbles.js?v=867" defer></script>
-<script src="assets/phone-maps.js?v=867"></script>
-<script src="assets/desktop-maps.js?v=867"></script>
-<script src="assets/chat-resize.js?v=867"></script>
-<script src="assets/frame-refusers.js?v=867"></script>
-<script src="assets/link-pane.js?v=867"></script>
-<script src="assets/tab-suggest.js?v=867"></script>
+<script src="assets/typeset.js?v=868"></script>
+<script src="assets/note-aids.js?v=868" defer></script>
+<script src="assets/place-list.js?v=868" defer></script>
+<script src="assets/chat-share.js?v=868" defer></script>
+<script src="assets/note-files.js?v=868" defer></script>
+<script src="assets/funding-views.js?v=868"></script>
+<script src="assets/layers.js?v=868"></script>
+<script src="assets/critique-gallery-data.js?v=868"></script>
+<script src="assets/critique-captions.js?v=868"></script>
+<script src="assets/critique-gallery.js?v=868"></script>
+<script src="assets/hq-detail.js?v=868"></script>
+<script src="assets/influence-mode.js?v=868"></script>
+<script src="assets/bubbles.js?v=868" defer></script>
+<script src="assets/phone-maps.js?v=868"></script>
+<script src="assets/desktop-maps.js?v=868"></script>
+<script src="assets/chat-resize.js?v=868"></script>
+<script src="assets/frame-refusers.js?v=868"></script>
+<script src="assets/link-pane.js?v=868"></script>
+<script src="assets/tab-suggest.js?v=868"></script>
 </body>
 </html>
