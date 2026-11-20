@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=871"></script>
+  <script src="assets/load-image-data.js?v=872"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=871">
-  <link rel="stylesheet" href="assets/sheet.css?v=871">
-  <script src="assets/config.js?v=871"></script>
-  <script src="assets/analytics.js?v=871"></script>
-  <script src="assets/subtopic.js?v=871"></script>
-  <script src="assets/names.js?v=871"></script>
-  <script src="assets/grounding.js?v=871"></script>
-  <script src="assets/repeats.js?v=871"></script>
-  <script src="assets/intro-narration.js?v=871"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=872">
+  <link rel="stylesheet" href="assets/sheet.css?v=872">
+  <script src="assets/config.js?v=872"></script>
+  <script src="assets/analytics.js?v=872"></script>
+  <script src="assets/subtopic.js?v=872"></script>
+  <script src="assets/names.js?v=872"></script>
+  <script src="assets/grounding.js?v=872"></script>
+  <script src="assets/repeats.js?v=872"></script>
+  <script src="assets/intro-narration.js?v=872"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=871"></script>
+  <script src="assets/load-image.js?v=872"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=871"></script>
-  <script src="assets/money-ids.js?v=871"></script>
+  <script src="assets/institutions.js?v=872"></script>
+  <script src="assets/money-ids.js?v=872"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -8938,7 +8938,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // Hidden, not left out: the filter can be switched off here (assets/layers.js then clears the inline display and the
         // class gives flex). This line used to come before an inline 'flex' that undid it, so a city opened with a filter on
         // showed every space, and the ones filtered out took the taps meant for their neighbours.
-        if (cityPinKeep && !cityPinKeep(inst)) pinEl.style.display = 'none';
+        // The open space keeps its pin and name under any filter (streetPinsShow).
+        if (cityPinKeep && !cityPinKeep(inst) && !isOpenSpace(inst)) pinEl.style.display = 'none';
         pinEl.style.alignItems = 'center';
         pinEl.style.justifyContent = 'center';
         pinEl.style.cursor = 'pointer';
@@ -10887,11 +10888,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v871';
+    const ATLAS_RELEASE = 'culture-atlas-v872';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=871').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=872').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13742,8 +13743,25 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       el.dataset.pinColour = hex;
       el.innerHTML = atlasPinSvg(hex);
     }
+    // THE OPEN SPACE UNDER A FILTER (user, 20 Nov 2026, of Neue Nationalgalerie, Grade C, open on the street map with the
+    // Grade D filter on: "title not displayed on map"). The street map hides the pins a filter leaves out; the open space's
+    // own pin, with its name, stays, so the space the Details tab is about is always marked. When another space opens or
+    // the space closes, the pins are shown again by the filter alone.
+    function isOpenSpace(inst) {
+      return !!(inst && selectedInstitution && (inst === selectedInstitution || (inst.id && inst.id === selectedInstitution.id)));
+    }
+    let streetPinIndex = null;
+    function streetPinsShow() {
+      const pins = document.querySelectorAll('.custom-inst-pin[data-entity-id]');
+      if (!pins.length) return;
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      if (!streetPinIndex) { streetPinIndex = new Map(); ALL_INSTITUTIONS.forEach(i => streetPinIndex.set(i.id || i.name, i)); }
+      pins.forEach(el => { const i = streetPinIndex.get(el.dataset.entityId); el.style.display = !keep || !i || keep(i) || isOpenSpace(i) ? '' : 'none'; });
+    }
+    window.atlasStreetPinsShow = streetPinsShow;
     function syncStreetDropPin() {
       syncStreetSite();
+      streetPinsShow();
       const pin = selectedInstitution ? atlasPinOf(selectedInstitution) : null;
       if (!pin || !cityVectorMap || typeof maplibregl === 'undefined' || typeof cityVectorMap.getCanvas !== 'function') {
         if (streetDropPin) { streetDropPin.remove(); streetDropPin = null; }
@@ -22720,24 +22738,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=871"></script>
-<script src="assets/note-aids.js?v=871" defer></script>
-<script src="assets/place-list.js?v=871" defer></script>
-<script src="assets/chat-share.js?v=871" defer></script>
-<script src="assets/note-files.js?v=871" defer></script>
-<script src="assets/funding-views.js?v=871"></script>
-<script src="assets/layers.js?v=871"></script>
-<script src="assets/critique-gallery-data.js?v=871"></script>
-<script src="assets/critique-captions.js?v=871"></script>
-<script src="assets/critique-gallery.js?v=871"></script>
-<script src="assets/hq-detail.js?v=871"></script>
-<script src="assets/influence-mode.js?v=871"></script>
-<script src="assets/bubbles.js?v=871" defer></script>
-<script src="assets/phone-maps.js?v=871"></script>
-<script src="assets/desktop-maps.js?v=871"></script>
-<script src="assets/chat-resize.js?v=871"></script>
-<script src="assets/frame-refusers.js?v=871"></script>
-<script src="assets/link-pane.js?v=871"></script>
-<script src="assets/tab-suggest.js?v=871"></script>
+<script src="assets/typeset.js?v=872"></script>
+<script src="assets/note-aids.js?v=872" defer></script>
+<script src="assets/place-list.js?v=872" defer></script>
+<script src="assets/chat-share.js?v=872" defer></script>
+<script src="assets/note-files.js?v=872" defer></script>
+<script src="assets/funding-views.js?v=872"></script>
+<script src="assets/layers.js?v=872"></script>
+<script src="assets/critique-gallery-data.js?v=872"></script>
+<script src="assets/critique-captions.js?v=872"></script>
+<script src="assets/critique-gallery.js?v=872"></script>
+<script src="assets/hq-detail.js?v=872"></script>
+<script src="assets/influence-mode.js?v=872"></script>
+<script src="assets/bubbles.js?v=872" defer></script>
+<script src="assets/phone-maps.js?v=872"></script>
+<script src="assets/desktop-maps.js?v=872"></script>
+<script src="assets/chat-resize.js?v=872"></script>
+<script src="assets/frame-refusers.js?v=872"></script>
+<script src="assets/link-pane.js?v=872"></script>
+<script src="assets/tab-suggest.js?v=872"></script>
 </body>
 </html>
