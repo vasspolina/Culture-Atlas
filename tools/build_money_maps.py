@@ -99,6 +99,9 @@ RECORD_KEY={
  ('amon-carter-museum','fidelity'):'fidelityinvestments',('dallas-museum-of-art-dallas','fidelity'):'fidelityinvestments',
  ('frank-lloyd-wright-houses-at-the-currier-museum','fidelity'):'fidelityinvestments',('nasher-museum-of-art-at-duke-durham','fidelity'):'fidelityfoundation',
  ('tarrawarra-museum-of-art','victoria'):'victoriandepartmentofeducation',  # 'Victoria' there is the state's education department
+ ('kigali-genocide-memorial','sweden'):'sida',                          # "Sweden (Sida)": the aid agency, on the map as Sida
+ ('new-holland-island-st-petersburg','romanabramovich'):None,           # named as Millhouse's founder; Millhouse paid
+ ('new-holland-island-st-petersburg','iris'):None,                      # a partner that produced a concept, not a payer
 }
 def record_key(rid,k): return RECORD_KEY.get((rid,k),k)
 # Funders the page can highlight as right-wing sponsors. The atlas records carry no political field, so this is a short
