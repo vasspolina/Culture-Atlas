@@ -2670,3 +2670,17 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
     #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name:not(#sh-x):not(#sh-y){max-width:min(24ch,62vw)!important;overflow:hidden!important;text-overflow:ellipsis!important}
   }
 }
+
+/* ==== THE PHONE MAP'S SHARE INFORMATION BUTTON IS DARK GREEN (user, 20 Nov 2026: "make it green", of the black Share
+   information under the map's box on a phone) ====
+   The button under the box on the phone's map and record screens (#gmMapShareBtn, assets/phone-maps.js) was an ink pill,
+   the pale pill in dark mode. It takes the dock button's dark green (--sh-green) with the paper's colour on it, and under
+   the pointer or a press deepens a fifth toward the ink, as #chatShareBtn does. White on #3e6826 6.5:1; dark theme
+   #151412 on #9fd0a6 10:1. The :not(#gsN) outrank the dark theme's pill rule for it. */
+@layer sheet{
+:root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2) *{color:var(--sh-paper)!important}
+:root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):is(:hover,:active,:focus-visible){
+  background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;color:var(--sh-paper)!important}
+:root:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):focus-visible{outline:2px solid var(--sh-green)!important;outline-offset:2px!important}
+}
