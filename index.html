@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=853"></script>
+  <script src="assets/load-image-data.js?v=854"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=853">
-  <link rel="stylesheet" href="assets/sheet.css?v=853">
-  <script src="assets/config.js?v=853"></script>
-  <script src="assets/analytics.js?v=853"></script>
-  <script src="assets/subtopic.js?v=853"></script>
-  <script src="assets/names.js?v=853"></script>
-  <script src="assets/grounding.js?v=853"></script>
-  <script src="assets/repeats.js?v=853"></script>
-  <script src="assets/intro-narration.js?v=853"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=854">
+  <link rel="stylesheet" href="assets/sheet.css?v=854">
+  <script src="assets/config.js?v=854"></script>
+  <script src="assets/analytics.js?v=854"></script>
+  <script src="assets/subtopic.js?v=854"></script>
+  <script src="assets/names.js?v=854"></script>
+  <script src="assets/grounding.js?v=854"></script>
+  <script src="assets/repeats.js?v=854"></script>
+  <script src="assets/intro-narration.js?v=854"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=853"></script>
+  <script src="assets/load-image.js?v=854"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1178,8 +1178,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=853"></script>
-  <script src="assets/money-ids.js?v=853"></script>
+  <script src="assets/institutions.js?v=854"></script>
+  <script src="assets/money-ids.js?v=854"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7358,18 +7358,10 @@ return maplibregl$1;
         // A tag that would run off the map is cut by its edge, so that side is not free.
         const edge = box ? box.getBoundingClientRect() : null;
         // On a phone (user, 18 Nov 2026: "the map on mobile looks very overlapping") the part of the map in sight is smaller: the
-        // title and chips lie over the top, and the open record sheet over the bottom. A name there is cut or sits under them.
-        let view = edge;
-        if (edge && edge.width > 0 && window.innerWidth < 768) {
-          const sheetEl = document.getElementById('dossier-bottom-sheet');
-          const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) || 0 : 0;
-          const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : edge;
-          const cover = sheetH > 0 ? Math.max(0, edge.bottom - (hostBox.bottom - sheetH)) : 0;
-          // A sheet over nearly the whole map (a phone's record is a full sheet) leaves no room to place in: then only the top
-          // is held back, so the tags are already in place when the sheet is closed.
-          const room = edge.bottom - cover - (edge.top + 56);
-          view = { left: edge.left, right: edge.right, top: edge.top + 56, bottom: room >= 160 ? edge.bottom - cover : edge.bottom };
-        }
+        // buttons, pills and title lie over the top, and the record card or the question box over the foot. A name there is
+        // cut or sits under them. The band is measured, not guessed: the pills wrap to one, two or three rows.
+        const band = typeof window.atlasPhoneMapBand === 'function' ? window.atlasPhoneMapBand() : null;
+        const view = band || edge;
         const offMap = r => !!view && view.right - view.left > 0 && (r.left + BUFFER < view.left || r.right - BUFFER > view.right || r.top + BUFFER < view.top || r.bottom - BUFFER > view.bottom);
 
         // Read everything first: the marks, every shown pin's box and its tag's four positions.
@@ -7436,6 +7428,81 @@ return maplibregl$1;
         });
       }
       window.resolveCityMarkerCollisions = resolveCityMarkerCollisions;
+
+      // ---- The phone's street map as something to browse (user, 20 Nov 2026: "I like to be able to browse on the map ...
+      // it's really hard to pick the place") ----
+      // The part of the map a reader on a phone can see and touch, in viewport pixels: under the top buttons, the filter
+      // pills and the city's title, and over the record card or, with no card, over the question box and its chips. Names are
+      // placed inside it, the city is fitted to it, and a chosen space is brought into it. Null on a desktop.
+      let bandMemo = null, bandAt = 0;
+      window.atlasPhoneMapBand = function (fresh) {
+        if (window.innerWidth >= 768) return null;
+        const now = performance.now();
+        if (!fresh && bandMemo && now - bandAt < 250) return bandMemo;
+        const mapEl = document.getElementById('cityMapContainer');
+        const mb = mapEl ? mapEl.getBoundingClientRect() : null;
+        if (!mb || !mb.width || !mb.height) return null;
+        let top = mb.top;
+        ['gmTopBtns', 'gmChips', 'cityViewControlBanner'].forEach(id => {
+          const el = document.getElementById(id);
+          const r = el && !el.classList.contains('hidden') ? el.getBoundingClientRect() : null;
+          if (r && r.height && r.bottom > top && r.top < mb.top + mb.height / 2) top = r.bottom;
+        });
+        let bottom = mb.bottom;
+        const sheetEl = document.getElementById('dossier-bottom-sheet');
+        const sheetUp = !!sheetEl && !sheetEl.classList.contains('hidden');
+        if (sheetUp) {
+          // The height the card is going to (--gm-h, assets/phone-maps.js), not its box, which may still be sliding.
+          const sheetH = parseFloat(sheetEl.style.getPropertyValue('--gm-h')) || sheetEl.getBoundingClientRect().height || 0;
+          const host = sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : mb;
+          bottom = Math.min(bottom, host.bottom - sheetH);
+        } else {
+          // No card: whatever lies over the foot of the map (the Top story strip, the chips, the question box). Found by asking
+          // what is under three points of each row, from the foot up, so it holds whatever is added there.
+          const inMap = (x, y) => { const el = document.elementFromPoint(x, y); return !!el && mapEl.contains(el); };
+          const xs = [mb.left + mb.width * 0.25, mb.left + mb.width * 0.5, mb.left + mb.width * 0.75];
+          let y = Math.min(mb.bottom, window.innerHeight) - 4;
+          while (y > top + 120 && !xs.every(x => inMap(x, y))) y -= 12;
+          bottom = Math.min(bottom, y + 4);
+        }
+        // The full page lies over the whole map: then the band is the map under the top rows, as it will be once it is closed.
+        const full = bottom - top < 120;
+        if (full) bottom = mb.bottom;
+        bandMemo = { left: mb.left, right: mb.right, top, bottom, map: mb, full };
+        bandAt = now;
+        return bandMemo;
+      };
+
+      // A space chosen on a phone stays where it is on the map, at the zoom the reader had: the camera used to fly down to
+      // the one building (zoom 17.2), so every neighbour left the screen and choosing the next space meant zooming back out.
+      // The map only moves when the chosen mark is out of sight, under the card or the title, and then just far enough to
+      // bring it to the middle of what can be seen.
+      window.atlasKeepSpaceInSight = function (inst) {
+        if (!inst || !cityVectorMap || !isFinite(inst.lon) || !isFinite(inst.lat)) return;
+        // After the card has taken its height for this space (an observer sets it a frame or two after the record is filled).
+        setTimeout(() => {
+          if (!isCityStreetViewActive || !cityVectorMap || selectedInstitution !== inst) return;
+          const band = window.atlasPhoneMapBand(true);
+          if (!band || band.full) return;
+          const pt = cityVectorMap.project([inst.lon, inst.lat]);
+          const x = band.map.left + pt.x, y = band.map.top + pt.y;
+          // Room for the mark and its name: the name sits over the mark, 24 characters wide at most (assets/sheet.css), so
+          // 120px at each side and 62px at the top; 28px at the foot.
+          if (x >= band.left + 120 && x <= band.right - 120 && y >= band.top + 62 && y <= band.bottom - 28) return;
+          const dy = (band.top + band.bottom) / 2 - (band.map.top + band.map.bottom) / 2;
+          cityVectorMap.easeTo({ center: [inst.lon, inst.lat], offset: [0, Math.round(dy) + 14], duration: 450, essential: true });
+        }, 140);
+      };
+      // A second tap on the chosen mark goes closer: a zoom step and a half each time, which pulls marks that sit on each other
+      // apart, and from zoom 16 the building itself, with what the record holds on it.
+      window.atlasCloserToSpace = function (inst) {
+        if (!inst || !cityVectorMap) return;
+        const z = cityVectorMap.getZoom();
+        if (z >= 16 && typeof zoomToBuilding === 'function') { zoomToBuilding(inst); return; }
+        const band = window.atlasPhoneMapBand(true);
+        const dy = band && !band.full ? (band.top + band.bottom) / 2 - (band.map.top + band.map.bottom) / 2 : 0;
+        cityVectorMap.easeTo({ center: [inst.lon, inst.lat], zoom: Math.min(z + 1.5, 16.6), offset: [0, Math.round(dy) + 14], duration: 500, essential: true });
+      };
 
       cityVectorMap.on('zoom', updateCityZoomClasses);
       // Once a frame while the camera moves ('zoom' comes with a 'move'), in the frame after the markers have followed it.
@@ -8948,6 +9015,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
 
         pinEl.addEventListener('click', (e) => {
           e.stopPropagation();
+          // On a phone a tap on the mark that is already chosen, with its card up, goes closer (atlasCloserToSpace).
+          const cardUp = !document.getElementById('dossier-bottom-sheet')?.classList.contains('hidden');
+          if (window.innerWidth < 768 && selectedInstitution === inst && cardUp && typeof window.atlasCloserToSpace === 'function') {
+            window.atlasCloserToSpace(inst);
+            return;
+          }
           selectedInstitution = inst;
           if (typeof selectInstitution === 'function') selectInstitution(inst, false);
           if (typeof curatorContext !== 'undefined' && inst) {
@@ -8987,16 +9060,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // just after the sheet opens, so this waits a turn for it.
       if (cityInsts.length > 1 && !targetLat && window.innerWidth < 768 && typeof cityVectorMap.fitBounds === 'function') setTimeout(() => {
         if (!isCityStreetViewActive || cityStreetViewCity !== cityName || !cityVectorMap) return;
-        const sheetEl = document.getElementById('dossier-bottom-sheet');
-        const sheetH = sheetEl && !sheetEl.classList.contains('hidden') ? parseFloat(sheetEl.style.getPropertyValue('--gm-h')) : 0;
-        const mapBox = mapEl.getBoundingClientRect();
-        const hostBox = sheetEl && sheetEl.parentElement ? sheetEl.parentElement.getBoundingClientRect() : mapBox;
-        let cover = sheetH > 0 ? Math.max(0, mapBox.bottom - (hostBox.bottom - sheetH)) : 0;
-        // Never so much padding that less than 120px of map is left to fit into. A phone's record is a full sheet over the whole
-        // map: the city is then fitted to the whole map, so it is already spread out when the sheet is closed.
-        const fullSheet = cover > 0 && mapBox.height - 130 - cover - 30 < 120;
-        if (fullSheet) cover = 0;
-        if (cover > 0 || fullSheet) {
+        // The band is the map between the title above and the card (or the question box) below, measured (atlasPhoneMapBand).
+        const band = typeof window.atlasPhoneMapBand === 'function' ? window.atlasPhoneMapBand(true) : null;
+        if (band && band.bottom - band.top >= 120) {
+          const mapBox = band.map;
           const phoneBounds = new maplibregl.LngLatBounds();
           const shown = cityPinKeep ? cityInsts.filter(i => cityPinKeep(i)) : cityInsts;
           // Fit the dense core, not every outlier: one museum 15 km out shrank the downtown cluster to a few dozen pixels
@@ -9010,13 +9077,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           const core = pool.filter(i => dist(i) <= cut);
           (core.length >= 3 ? core : pool).forEach(i => phoneBounds.extend([i.lon, i.lat]));
           cityVectorMap.fitBounds(phoneBounds, {
-            padding: { top: 130, bottom: cover + 30, left: 40, right: 40 },
+            padding: { top: Math.round(band.top - mapBox.top) + 46, bottom: Math.round(mapBox.bottom - band.bottom) + 24, left: 36, right: 36 },
             maxZoom: 16,
             duration: 850,
             essential: true
           });
         }
-      }, 0);
+      }, 140);
 
       if (typeof resolveCityMarkerCollisions === 'function') {
         setTimeout(resolveCityMarkerCollisions, 60);
@@ -10816,11 +10883,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v853';
+    const ATLAS_RELEASE = 'culture-atlas-v854';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=853').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=854').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13915,6 +13982,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // dossier only, leave the camera on the city fit and do not re-enter the street view.
           } else if (inst.city && !matchC(selectedCityFilter, inst.city)) {
             openCityStreetView(inst.city, inst.lat, inst.lon);
+          } else if (cityVectorMap && inst.lon && inst.lat && window.innerWidth < 768 && typeof window.atlasKeepSpaceInSight === 'function') {
+            // A phone: the space is chosen where it stands and the map is left to browse (see atlasKeepSpaceInSight).
+            window.atlasKeepSpaceInSight(inst);
           } else if (cityVectorMap && inst.lon && inst.lat) {
             cityVectorMap.flyTo({ center: [inst.lon, inst.lat], zoom: Math.max(cityVectorMap.getZoom() || 14, 17.2), pitch: 55, duration: 700, offset: (typeof xrayFlyOffset === 'function') ? xrayFlyOffset() : [0, 0] });
             if (typeof xrayWhenSettled === 'function') xrayWhenSettled(inst);
@@ -22377,22 +22447,22 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=853"></script>
-<script src="assets/note-aids.js?v=853" defer></script>
-<script src="assets/place-list.js?v=853" defer></script>
-<script src="assets/chat-share.js?v=853" defer></script>
-<script src="assets/note-files.js?v=853" defer></script>
-<script src="assets/funding-views.js?v=853"></script>
-<script src="assets/layers.js?v=853"></script>
-<script src="assets/critique-gallery-data.js?v=853"></script>
-<script src="assets/critique-captions.js?v=853"></script>
-<script src="assets/critique-gallery.js?v=853"></script>
-<script src="assets/hq-detail.js?v=853"></script>
-<script src="assets/influence-mode.js?v=853"></script>
-<script src="assets/bubbles.js?v=853" defer></script>
-<script src="assets/phone-maps.js?v=853"></script>
-<script src="assets/desktop-maps.js?v=853"></script>
-<script src="assets/chat-resize.js?v=853"></script>
-<script src="assets/tab-suggest.js?v=853"></script>
+<script src="assets/typeset.js?v=854"></script>
+<script src="assets/note-aids.js?v=854" defer></script>
+<script src="assets/place-list.js?v=854" defer></script>
+<script src="assets/chat-share.js?v=854" defer></script>
+<script src="assets/note-files.js?v=854" defer></script>
+<script src="assets/funding-views.js?v=854"></script>
+<script src="assets/layers.js?v=854"></script>
+<script src="assets/critique-gallery-data.js?v=854"></script>
+<script src="assets/critique-captions.js?v=854"></script>
+<script src="assets/critique-gallery.js?v=854"></script>
+<script src="assets/hq-detail.js?v=854"></script>
+<script src="assets/influence-mode.js?v=854"></script>
+<script src="assets/bubbles.js?v=854" defer></script>
+<script src="assets/phone-maps.js?v=854"></script>
+<script src="assets/desktop-maps.js?v=854"></script>
+<script src="assets/chat-resize.js?v=854"></script>
+<script src="assets/tab-suggest.js?v=854"></script>
 </body>
 </html>
