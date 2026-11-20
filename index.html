@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=873"></script>
+  <script src="assets/load-image-data.js?v=874"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=873">
-  <link rel="stylesheet" href="assets/sheet.css?v=873">
-  <script src="assets/config.js?v=873"></script>
-  <script src="assets/analytics.js?v=873"></script>
-  <script src="assets/subtopic.js?v=873"></script>
-  <script src="assets/names.js?v=873"></script>
-  <script src="assets/grounding.js?v=873"></script>
-  <script src="assets/repeats.js?v=873"></script>
-  <script src="assets/intro-narration.js?v=873"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=874">
+  <link rel="stylesheet" href="assets/sheet.css?v=874">
+  <script src="assets/config.js?v=874"></script>
+  <script src="assets/analytics.js?v=874"></script>
+  <script src="assets/subtopic.js?v=874"></script>
+  <script src="assets/names.js?v=874"></script>
+  <script src="assets/grounding.js?v=874"></script>
+  <script src="assets/repeats.js?v=874"></script>
+  <script src="assets/intro-narration.js?v=874"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=873"></script>
+  <script src="assets/load-image.js?v=874"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=873"></script>
-  <script src="assets/money-ids.js?v=873"></script>
+  <script src="assets/institutions.js?v=874"></script>
+  <script src="assets/money-ids.js?v=874"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10888,11 +10888,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v873';
+    const ATLAS_RELEASE = 'culture-atlas-v874';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=873').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=874').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11969,6 +11969,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           // A hairline of the ground round the bubble parts it from a mark or another bubble under it.
           box(); ctx.strokeStyle = G_GROUND; ctx.lineWidth = 2; ctx.stroke();
           ctx.fillStyle = bubFill;
+          // On the dark theme the tail is not filled: its two sides are drawn in the bubble's own pale edge, open over the
+          // ground, and stroked with the edge in one pass below so they join it with no seam (user, 20 Nov 2026: "make
+          // places on map back to what it was, just outline the tail"). The light theme keeps the filled ink tail.
+          let tailV = null;
           if (mark && mark.side) {
             // A name beside its mark: a hairline from the bubble's near edge to the mark, in place of the tail.
             const ex = mark.x < bx0 ? bx0 : bx0 + bw0, ey = Math.max(y0 + 5, Math.min(y0 + h - 5, mark.y));
@@ -11981,8 +11985,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           } else if (mark) {
             const tx = Math.max(bx0 + rr + 6, Math.min(bx0 + bw0 - rr - 6, mark.x));
             const below = mark.y - mark.r - 1, above = mark.y + mark.r + 1;
+            if (!GLOBE_LIGHT) {
+              if (below > y0 + h) tailV = [tx, y0 + h, Math.min(below, y0 + h + 9)];
+              else if (above < y0) tailV = [tx, y0, Math.max(above, y0 - 9)];
+            }
             ctx.beginPath();
-            if (below > y0 + h) { ctx.moveTo(tx - 6, y0 + h - 1); ctx.lineTo(tx + 6, y0 + h - 1); ctx.lineTo(tx, Math.min(below, y0 + h + 9)); ctx.closePath(); ctx.fill(); }
+            if (!GLOBE_LIGHT) { /* the open tail is stroked with the edge below */ }
+            else if (below > y0 + h) { ctx.moveTo(tx - 6, y0 + h - 1); ctx.lineTo(tx + 6, y0 + h - 1); ctx.lineTo(tx, Math.min(below, y0 + h + 9)); ctx.closePath(); ctx.fill(); }
             else if (above < y0) { ctx.moveTo(tx - 6, y0 + 1); ctx.lineTo(tx + 6, y0 + 1); ctx.lineTo(tx, Math.max(above, y0 - 9)); ctx.closePath(); ctx.fill(); }
             // A name set a row off its mark (mark.far, a city name clearing its neighbours' marks) carries on from the tail's
             // point to the mark in a hairline of the bubble's ink.
@@ -11994,7 +12003,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             }
           }
           box(); ctx.fill();
-          if (!GLOBE_LIGHT) { box(); ctx.strokeStyle = 'rgba(244, 244, 244, 0.45)'; ctx.lineWidth = 1; ctx.stroke(); }
+          if (!GLOBE_LIGHT) {
+            box();
+            if (tailV) { ctx.moveTo(tailV[0] - 6, tailV[1]); ctx.lineTo(tailV[0], tailV[2]); ctx.lineTo(tailV[0] + 6, tailV[1]); }
+            ctx.lineJoin = 'miter'; ctx.strokeStyle = 'rgba(244, 244, 244, 0.45)'; ctx.lineWidth = 1; ctx.stroke();
+          }
           ctx.fillStyle = bubInk;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
@@ -22890,24 +22903,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=873"></script>
-<script src="assets/note-aids.js?v=873" defer></script>
-<script src="assets/place-list.js?v=873" defer></script>
-<script src="assets/chat-share.js?v=873" defer></script>
-<script src="assets/note-files.js?v=873" defer></script>
-<script src="assets/funding-views.js?v=873"></script>
-<script src="assets/layers.js?v=873"></script>
-<script src="assets/critique-gallery-data.js?v=873"></script>
-<script src="assets/critique-captions.js?v=873"></script>
-<script src="assets/critique-gallery.js?v=873"></script>
-<script src="assets/hq-detail.js?v=873"></script>
-<script src="assets/influence-mode.js?v=873"></script>
-<script src="assets/bubbles.js?v=873" defer></script>
-<script src="assets/phone-maps.js?v=873"></script>
-<script src="assets/desktop-maps.js?v=873"></script>
-<script src="assets/chat-resize.js?v=873"></script>
-<script src="assets/frame-refusers.js?v=873"></script>
-<script src="assets/link-pane.js?v=873"></script>
-<script src="assets/tab-suggest.js?v=873"></script>
+<script src="assets/typeset.js?v=874"></script>
+<script src="assets/note-aids.js?v=874" defer></script>
+<script src="assets/place-list.js?v=874" defer></script>
+<script src="assets/chat-share.js?v=874" defer></script>
+<script src="assets/note-files.js?v=874" defer></script>
+<script src="assets/funding-views.js?v=874"></script>
+<script src="assets/layers.js?v=874"></script>
+<script src="assets/critique-gallery-data.js?v=874"></script>
+<script src="assets/critique-captions.js?v=874"></script>
+<script src="assets/critique-gallery.js?v=874"></script>
+<script src="assets/hq-detail.js?v=874"></script>
+<script src="assets/influence-mode.js?v=874"></script>
+<script src="assets/bubbles.js?v=874" defer></script>
+<script src="assets/phone-maps.js?v=874"></script>
+<script src="assets/desktop-maps.js?v=874"></script>
+<script src="assets/chat-resize.js?v=874"></script>
+<script src="assets/frame-refusers.js?v=874"></script>
+<script src="assets/link-pane.js?v=874"></script>
+<script src="assets/tab-suggest.js?v=874"></script>
 </body>
 </html>
