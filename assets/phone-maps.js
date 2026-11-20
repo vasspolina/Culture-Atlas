@@ -1335,7 +1335,8 @@
         if (!here) { dot.classList.remove('is-on'); return; }
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
         if (typeof project !== 'function' || g('isCityStreetViewActive')) { dot.classList.remove('is-on'); return; }
-        const p = project(here.lon, here.lat, r, w / 2, h / 2);
+        // The map's own projection (window.__project): the globe's centre sits under the atlas's name, not at half the canvas.
+        const p = window.__project ? window.__project(here.lon, here.lat) : project(here.lon, here.lat, r, w / 2, h / 2);
         const rect = canvas.getBoundingClientRect(), vr = viewport.getBoundingClientRect();
         dot.classList.toggle('is-on', !!p.front);
         if (p.front) dot.style.transform = 'translate(' + (rect.left - vr.left + p.x) + 'px,' + (rect.top - vr.top + p.y) + 'px)';
@@ -1696,7 +1697,9 @@
         const rect = ok ? canvas.getBoundingClientRect() : null, vr = ok ? viewport.getBoundingClientRect() : null;
         marks.forEach((el) => {
           const x = el._x;
-          const p = ok ? project(x.inst.lon, x.inst.lat, r, w / 2, h / 2) : null;
+          // The map's own projection (window.__project, index.html): since the globe was centred under the atlas's name
+          // (globeCY), half the canvas's height put each ring about 40px above its space (user, 20 Nov 2026: "fix overlap").
+          const p = ok ? (window.__project ? window.__project(x.inst.lon, x.inst.lat) : project(x.inst.lon, x.inst.lat, r, w / 2, h / 2)) : null;
           const on = !!(p && p.front);
           el.classList.toggle('is-on', on);
           el.tabIndex = on ? 0 : -1;
