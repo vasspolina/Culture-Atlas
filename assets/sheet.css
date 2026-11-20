@@ -2472,6 +2472,15 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important;filter:none!important}
 :root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:is(:hover,:focus-visible) *,
 :root:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible) *{color:var(--sh-paper)!important}
+/* The share buttons are dark green at rest too (user, 20 Nov 2026: "make the share buttons green too"): the dock's Share
+   information button (and Back to chat) fills --sh-green with the paper's colour on it, and under the pointer it deepens
+   a fifth toward the ink; the chat's "Share information about ..." and "Or fill in a form" are set in --sh-green and fill
+   with it under the pointer, as above. White on #3e6826 6.5:1; dark theme #151412 on #9fd0a6 10:1. The four :not(#dkN) outrank the dark
+   theme's pill rule for these buttons. */
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4){background:var(--sh-green)!important;border-color:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4) *{color:var(--sh-paper)!important}
+:root:root:root:root #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:focus-visible){background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important}
+:root:root:root #curatorMessages .chat-share-invite-btn.chat-share-invite-btn{color:var(--sh-green)!important}
 /* The form's description starts on the left edge with the labels and fields (user, 19 Nov 2026: "allign description to
    the left"); it had the sheet's indent. */
 :root:root #noteFormIntro{padding-left:0!important;margin-left:0!important;text-indent:0!important}
