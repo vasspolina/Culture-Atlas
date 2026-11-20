@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=869"></script>
+  <script src="assets/load-image-data.js?v=870"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=869">
-  <link rel="stylesheet" href="assets/sheet.css?v=869">
-  <script src="assets/config.js?v=869"></script>
-  <script src="assets/analytics.js?v=869"></script>
-  <script src="assets/subtopic.js?v=869"></script>
-  <script src="assets/names.js?v=869"></script>
-  <script src="assets/grounding.js?v=869"></script>
-  <script src="assets/repeats.js?v=869"></script>
-  <script src="assets/intro-narration.js?v=869"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=870">
+  <link rel="stylesheet" href="assets/sheet.css?v=870">
+  <script src="assets/config.js?v=870"></script>
+  <script src="assets/analytics.js?v=870"></script>
+  <script src="assets/subtopic.js?v=870"></script>
+  <script src="assets/names.js?v=870"></script>
+  <script src="assets/grounding.js?v=870"></script>
+  <script src="assets/repeats.js?v=870"></script>
+  <script src="assets/intro-narration.js?v=870"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=869"></script>
+  <script src="assets/load-image.js?v=870"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=869"></script>
-  <script src="assets/money-ids.js?v=869"></script>
+  <script src="assets/institutions.js?v=870"></script>
+  <script src="assets/money-ids.js?v=870"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10887,11 +10887,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v869';
+    const ATLAS_RELEASE = 'culture-atlas-v870';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=869').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=870').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11137,8 +11137,35 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // and every drawing and hit test goes through projectWinkel / winkelScreenToView / wtOutlinePath, which add it.
     let wtPhoneHalfH = 0;   // half the free height, in CSS px; 0 = not measured, or not a phone
     let wtOffsetY = 0;      // the free band's middle less the canvas's middle, in CSS px
+    let wtOffsetX = 0;      // the window's middle less the canvas's middle, in CSS px (wide screens; see measureWtWindowX)
     let wtChipsWatched = null;
     function measureWtPhoneRoom() {
+      measureWtBand();
+      measureWtWindowX();
+    }
+    // Centred on the window (user, 20 Nov 2026: "still not centered horizontally", then "Whole window"): when the window's
+    // middle falls inside the map pane (the chat narrow or closed), the map and the name above it stand on the window's
+    // middle line, not the pane's, as far as the map can move and still keep 12px clear of the pane's sides. With the chat
+    // open past the middle the map stays in its pane's middle, since the window's middle is behind the chat.
+    function measureWtWindowX() {
+      wtOffsetX = 0;
+      const head = document.getElementById('gmdTitle'), title = head && head.querySelector('button');
+      if (head) head.style.removeProperty('translate');
+      if (window.innerWidth < 768) return;
+      const cRect = canvas.getBoundingClientRect();
+      const mid = window.innerWidth / 2;
+      if (!cRect.width || mid <= cRect.left || mid >= cRect.right) return;
+      const ovalW = WT_W * wtScale(baseRadius) * wtSX;   // wtScale first: it sets the squeeze
+      const room = Math.max(0, (cRect.width - ovalW) / 2 - 12);
+      wtOffsetX = Math.max(-room, Math.min(room, mid - (cRect.left + cRect.width / 2)));
+      // The name moves with the map, by the same amount, so the two stay on one line.
+      if (title && title.offsetParent) {
+        const box = head.getBoundingClientRect();
+        const dx = (cRect.left + cRect.width / 2 + wtOffsetX) - (box.left + box.width / 2);
+        if (Math.abs(dx) >= 0.5) head.style.setProperty('translate', dx.toFixed(1) + 'px 0');
+      }
+    }
+    function measureWtBand() {
       wtPhoneHalfH = 0; wtOffsetY = 0;
       const cRect = canvas.getBoundingClientRect();
       if (window.innerWidth >= 768) {
@@ -11207,7 +11234,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     function wtOutlinePath(r, cx, cy) {
       const k = wtScale(r);
       ctx.beginPath();
-      WT_OUTLINE.forEach((q, i) => { const x = cx + q[0] * wtSX * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+      WT_OUTLINE.forEach((q, i) => { const x = cx + wtOffsetX + q[0] * wtSX * k, y = cy + wtOffsetY - q[1] * k; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
       ctx.closePath();
     }
     // The view matrix, cached: project() runs for every coastline point of every frame.
@@ -11228,12 +11255,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const k = wtScale(r), q = wtRaw(lam, phi);   // the scale first: it sets the squeeze wtRaw uses
       // Everything is on the map, so everything is "front" at full depth; lam is the oblique longitude,
       // which the coastline drawing uses to break a line where it crosses the seam.
-      return { x: cx + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam, phi };
+      return { x: cx + wtOffsetX + q[0] * k, y: cy + wtOffsetY - q[1] * k, z: r, front: true, depth: 1, lam, phi };
     }
     // A canvas point to the oblique view vector under it (x right, y up, z toward the viewer), or null off the map.
     function winkelScreenToView(px, py, r, cx, cy) {
       const k = wtScale(r);
-      const inv = wtInverse((px - cx) / k, -(py - cy - wtOffsetY) / k);
+      const inv = wtInverse((px - cx - wtOffsetX) / k, -(py - cy - wtOffsetY) / k);
       if (!inv) return null;
       const cp = Math.cos(inv[1]);
       return [cp * Math.sin(inv[0]), Math.sin(inv[1]), cp * Math.cos(inv[0])];
@@ -11783,7 +11810,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               const turn = run[nP - 1] + wrapD(proj[0].lam - proj[nP - 1].lam) - run[0];
               const put = (lam, phi, first) => {
                 const q = wtRaw(Math.max(-Math.PI, Math.min(Math.PI, lam)), phi);
-                if (first) ctx.moveTo(cx + q[0] * kS, cy + wtOffsetY - q[1] * kS); else ctx.lineTo(cx + q[0] * kS, cy + wtOffsetY - q[1] * kS);
+                if (first) ctx.moveTo(cx + wtOffsetX + q[0] * kS, cy + wtOffsetY - q[1] * kS); else ctx.lineTo(cx + wtOffsetX + q[0] * kS, cy + wtOffsetY - q[1] * kS);
               };
               if (Math.abs(turn) < 1) {
                 for (let sft = -1; sft <= 1; sft++) {
@@ -12452,7 +12479,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         ctx.textAlign = 'center';
 
         // Coordinates HUD
-        const centerCoord = unproject(cx, cy + (WINKEL ? wtOffsetY : 0), r, cx, cy) || { lat: rotLat, lon: rotLon };
+        const centerCoord = unproject(cx + (WINKEL ? wtOffsetX : 0), cy + (WINKEL ? wtOffsetY : 0), r, cx, cy) || { lat: rotLat, lon: rotLon };
         const latTxt = `${Math.abs(centerCoord.lat).toFixed(4)}° ${centerCoord.lat >= 0 ? 'N' : 'S'}`;
         const lonTxt = `${Math.abs(centerCoord.lon).toFixed(4)}° ${centerCoord.lon >= 0 ? 'E' : 'W'}`;
         const coordTxt = `${latTxt}  ${lonTxt}`;
@@ -22691,24 +22718,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=869"></script>
-<script src="assets/note-aids.js?v=869" defer></script>
-<script src="assets/place-list.js?v=869" defer></script>
-<script src="assets/chat-share.js?v=869" defer></script>
-<script src="assets/note-files.js?v=869" defer></script>
-<script src="assets/funding-views.js?v=869"></script>
-<script src="assets/layers.js?v=869"></script>
-<script src="assets/critique-gallery-data.js?v=869"></script>
-<script src="assets/critique-captions.js?v=869"></script>
-<script src="assets/critique-gallery.js?v=869"></script>
-<script src="assets/hq-detail.js?v=869"></script>
-<script src="assets/influence-mode.js?v=869"></script>
-<script src="assets/bubbles.js?v=869" defer></script>
-<script src="assets/phone-maps.js?v=869"></script>
-<script src="assets/desktop-maps.js?v=869"></script>
-<script src="assets/chat-resize.js?v=869"></script>
-<script src="assets/frame-refusers.js?v=869"></script>
-<script src="assets/link-pane.js?v=869"></script>
-<script src="assets/tab-suggest.js?v=869"></script>
+<script src="assets/typeset.js?v=870"></script>
+<script src="assets/note-aids.js?v=870" defer></script>
+<script src="assets/place-list.js?v=870" defer></script>
+<script src="assets/chat-share.js?v=870" defer></script>
+<script src="assets/note-files.js?v=870" defer></script>
+<script src="assets/funding-views.js?v=870"></script>
+<script src="assets/layers.js?v=870"></script>
+<script src="assets/critique-gallery-data.js?v=870"></script>
+<script src="assets/critique-captions.js?v=870"></script>
+<script src="assets/critique-gallery.js?v=870"></script>
+<script src="assets/hq-detail.js?v=870"></script>
+<script src="assets/influence-mode.js?v=870"></script>
+<script src="assets/bubbles.js?v=870" defer></script>
+<script src="assets/phone-maps.js?v=870"></script>
+<script src="assets/desktop-maps.js?v=870"></script>
+<script src="assets/chat-resize.js?v=870"></script>
+<script src="assets/frame-refusers.js?v=870"></script>
+<script src="assets/link-pane.js?v=870"></script>
+<script src="assets/tab-suggest.js?v=870"></script>
 </body>
 </html>
