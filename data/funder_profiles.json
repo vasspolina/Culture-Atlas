@@ -1929,6 +1929,21 @@
   ],
   "batch": "fp7"
  },
+ "bangkokbank": {
+  "name": "Bangkok Bank Public Company Limited",
+  "short": "Bangkok Bank",
+  "kind": "corp",
+  "what": "A Thai commercial bank founded in Bangkok in 1944 by Chin Sophonpanich, whose grandson Chartsiri Sophonpanich is its president.",
+  "money": "Banking profits: revenue of THB 154.26 billion and net income of THB 35.32 billion in 2018.",
+  "site": "https://www.bangkokbank.com",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bangkok_Bank"
+  ],
+  "batch": "fp34"
+ },
  "bankaekonomike": {
   "name": "Banka Ekonomike",
   "kind": "corp",
@@ -2183,6 +2198,22 @@
    "https://www.bauermedia.com/company"
   ],
   "batch": "fp8"
+ },
+ "bbbank": {
+  "name": "BBBank eG",
+  "short": "BBBank",
+  "kind": "corp",
+  "what": "A German cooperative bank founded in Karlsruhe in 1921 as the Badische Beamten-Genossenschaftsbank, since 2021 the largest cooperative retail bank in Germany.",
+  "money": "Retail banking for its 492,814 member owners: a balance sheet total of EUR 22.3 billion in 2025.",
+  "site": "https://www.bbbank.de",
+  "city": "Karlsruhe",
+  "country": "Germany",
+  "address": "Herrenstraße 2-10, 76133 Karlsruhe",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/BBBank"
+  ],
+  "batch": "fp34"
  },
  "bcartscouncil|Canada": {
   "name": "British Columbia Arts Council",
@@ -5769,6 +5800,22 @@
   ],
   "batch": "fp10"
  },
+ "darpa": {
+  "name": "Defense Advanced Research Projects Agency",
+  "short": "DARPA",
+  "kind": "gov",
+  "what": "The research agency of the US Department of Defense, founded in February 1958 as ARPA after the Soviet launch of Sputnik 1, in Arlington, Virginia.",
+  "money": "The US defence budget: USD 4.322 billion in fiscal 2026.",
+  "site": "https://www.darpa.mil",
+  "city": "Arlington, Virginia",
+  "country": "USA",
+  "address": "675 North Randolph Street, Arlington, Virginia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/DARPA"
+  ],
+  "batch": "fp34"
+ },
  "davidzwirner": {
   "name": "David Zwirner",
   "kind": "corp",
@@ -6807,6 +6854,23 @@
    "https://en.wikipedia.org/wiki/Enabel"
   ],
   "batch": "fp4"
+ },
+ "enbw": {
+  "name": "EnBW Energie Baden-Württemberg AG",
+  "short": "EnBW",
+  "kind": "corp",
+  "what": "A German energy company formed in 1997 by merging Badenwerk and Energie-Versorgung Schwaben, seated in Karlsruhe.",
+  "money": "Electricity generation, grids and energy sales, EUR 56.0 billion revenue in 2022; Baden-Württemberg and the OEW municipal group each own 46.75 percent.",
+  "site": "https://www.enbw.com",
+  "city": "Karlsruhe",
+  "country": "Germany",
+  "address": "Durlacher Allee 93, 76131 Karlsruhe",
+  "status": "done",
+  "sources": [
+   "https://www.enbw.com/impressum",
+   "https://en.wikipedia.org/wiki/EnBW"
+  ],
+  "batch": "fp34"
  },
  "enbwwindpower": {
   "name": "Borusan EnBW Enerji A.Ş.",
@@ -8538,6 +8602,22 @@
   ],
   "batch": "fp12"
  },
+ "galpenergia": {
+  "name": "Galp Energia, SGPS, S.A.",
+  "short": "Galp",
+  "kind": "corp",
+  "what": "A Portuguese energy company formed in 1999 by merging Petrogal, Gás de Portugal and Transgás, seated in Lisbon; Amorim Energia holds 35.8 percent.",
+  "money": "Oil and gas exploration and production, refining, fuel marketing, and gas and power sales: EUR 961 million profit in 2024.",
+  "site": "https://www.galp.com",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Galp_Energia",
+   "https://www.dn.pt/economia/lucro-da-galp-caiu-4-no-ano-passado-para-961-milhões-de-euros"
+  ],
+  "batch": "fp34"
+ },
  "garantibbvainternational": {
   "name": "Garanti BBVA International N.V.",
   "kind": "corp",
@@ -8586,6 +8666,22 @@
   ],
   "batch": "fp26"
  },
+ "gazprombank": {
+  "name": "Gazprombank (JSC)",
+  "short": "Gazprombank",
+  "kind": "corp",
+  "what": "Russia's third largest bank by assets, founded in 1990 in Moscow, under UK sanctions since March 2022 and US blocking sanctions since November 2024; Gazfond is its largest shareholder.",
+  "money": "Banking profits; the Russian state has held 36.44 percent since a 2022 capital increase.",
+  "site": "https://www.gazprombank.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "wrong_match": "The OK16 line names Gazprombank only as a shareholder of Belgazprombank, the building owner and sponsor; it does not show Gazprombank paying.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Gazprombank"
+  ],
+  "batch": "fp34"
+ },
  "gazpromfinancedparks": {
   "name": "PJSC Gazprom",
   "short": "Gazprom",
@@ -8601,6 +8697,22 @@
    "https://en.wikipedia.org/wiki/Gazprom"
   ],
   "batch": "fp12"
+ },
+ "gazpromneft": {
+  "name": "PJSC Gazprom Neft",
+  "short": "Gazprom Neft",
+  "kind": "corp",
+  "what": "Russia's third largest oil producer, founded in 1995 as Sibneft and seated in St Petersburg, under EU sanctions since March 2022; Gazprom holds 95.68 percent.",
+  "money": "Oil and gas production and refining: RUB 3.61 trillion revenue in 2025.",
+  "site": "https://www.gazprom-neft.com",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Gazprom_Neft",
+   "https://www.wikidata.org/wiki/Q1461799"
+  ],
+  "batch": "fp34"
  },
  "gemeenteleiden|Netherlands": {
   "name": "Gemeente Leiden",
@@ -9064,6 +9176,22 @@
   ],
   "batch": "fp2"
  },
+ "goodstorage": {
+  "name": "GoodStorage",
+  "kind": "corp",
+  "what": "A Brazilian urban storage company in São Paulo, founded by its chief executive Thiago Cordeiro, which marked ten years in 2023.",
+  "money": "Rent from self storage units and city warehouses in São Paulo: more than BRL 300 million revenue in 2025, 40 percent above 2024.",
+  "site": "https://goodstorage.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://forbes.com.br/forbes-money/2026/01/goodstorage-fecha-2025-com-crescimento-de-40-na-receita-e-ultrapassa-a-marca-de-300-milhoes-anual/",
+   "https://forbes.com.br/forbes-money/2023/11/infomercial-goodstorage-completa-dez-anos-e-chega-a-35-unidades-na-capital-paulista/",
+   "https://forbes.com.br/forbes-money/2024/11/goodstorage-se-consolida-lider-no-mercado-de-armazenagem-e-impulsiona-a-mobilidade-urbana-de-sao-paulo/"
+  ],
+  "batch": "fp34"
+ },
  "governmentofsindhownspalace|Pakistan": {
   "name": "Government of Sindh",
   "kind": "gov",
@@ -9265,6 +9393,24 @@
    "https://www.banprogrupopromerica.com.ni/"
   ],
   "batch": "fp13"
+ },
+ "grupoultra": {
+  "name": "Ultrapar Participações S.A.",
+  "short": "Grupo Ultra",
+  "kind": "corp",
+  "what": "A Brazilian holding company founded in 1937 by Ernesto Igel as a home gas distributor, seated in São Paulo.",
+  "money": "Fuel distribution through Ipiranga, LPG sales through Ultragaz and liquid bulk storage through Ultracargo: net revenue of BRL 147 billion in 2022.",
+  "site": "https://www.ultra.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "address": "Avenida Brigadeiro Luís Antônio 1343, 9th floor, São Paulo, SP 01317-910",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ultrapar",
+   "https://web.archive.org/web/20250505083845/https://www.sec.gov/Archives/edgar/data/1094972/000155485523000169/MainDocument.htm",
+   "https://timesbrasil.com.br/empresas-e-negocios/ultrapar-balanco-quarto-trimestre/"
+  ],
+  "batch": "fp34"
  },
  "gstaserlachiusfinearts": {
   "name": "Gösta Serlachius Fine Arts Foundation",
@@ -9613,6 +9759,22 @@
    "https://hartwigartfoundation.nl/en/museum"
   ],
   "batch": "fp13"
+ },
+ "harvard": {
+  "name": "Harvard University",
+  "short": "Harvard",
+  "kind": "priv",
+  "what": "A private research university in Cambridge, Massachusetts, founded in 1636 and a member of the Ivy League.",
+  "money": "An endowment of USD 68.0 billion in 2026.",
+  "site": "https://www.harvard.edu",
+  "city": "Cambridge, Massachusetts",
+  "country": "USA",
+  "wrong_match": "The Poetry in America line says Harvard gave office space, which is in-kind help, not money.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Harvard_University"
+  ],
+  "batch": "fp34"
  },
  "hassoplattner": {
   "name": "Hasso Plattner Foundation",
@@ -10172,6 +10334,21 @@
   ],
   "batch": "fp14"
  },
+ "hp": {
+  "name": "HP Inc.",
+  "short": "HP",
+  "kind": "corp",
+  "what": "An American computer and printer maker in Palo Alto, California, formed in 2015 when Hewlett-Packard, founded in 1939 by Bill Hewlett and David Packard, split in two.",
+  "money": "Sales of personal computers, printers and printing supplies: USD 55.29 billion revenue in fiscal 2025.",
+  "site": "https://www.hp.com",
+  "city": "Palo Alto",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/HP_Inc."
+  ],
+  "batch": "fp34"
+ },
  "hrmann": {
   "name": "Hörmann KG Verkaufsgesellschaft",
   "short": "Hörmann",
@@ -10386,6 +10563,19 @@
   ],
   "batch": "fp14"
  },
+ "ibrahimmahama": {
+  "name": "Ibrahim Mahama",
+  "kind": "person",
+  "what": "A Ghanaian artist born in 1987 in Tamale, known for installations of stitched jute sacks, who founded SCCA Tamale in 2019 and Red Clay Studio in 2020.",
+  "money": "Sales of his own art, handled by galleries including White Cube; proceeds from his Saatchi Gallery exhibition bought a 40,000 square metre plot near Tamale.",
+  "country": "Ghana",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ibrahim_Mahama_(artist)",
+   "https://www.whitecube.com/news/ibrahim-mahama-opens-the-savannah-centre-for-contemporary-art-scca-tamale-ghana"
+  ],
+  "batch": "fp34"
+ },
  "idahocommissiononarts|USA": {
   "name": "Idaho Commission on the Arts",
   "short": "Arts Idaho",
@@ -10402,6 +10592,18 @@
    "https://arts.idaho.gov/contact/"
   ],
   "batch": "fp14"
+ },
+ "igordergunov": {
+  "name": "Igor Dergunov",
+  "kind": "person",
+  "what": "A private donor listed with Olga Dergunova among the patrons of the Zotov Centre for Constructivism in Moscow.",
+  "country": "Russia",
+  "status": "thin",
+  "sources": [
+   "https://centrezotov.ru/partners/",
+   "https://www.bfm.ru/news/143125"
+  ],
+  "batch": "fp34"
  },
  "ikahocountryclub": {
   "name": "伊香保カントリークラブ (Ikaho Country Club)",
@@ -10997,6 +11199,18 @@
   ],
   "batch": "fp14"
  },
+ "jeanlouishaguenauer": {
+  "name": "Jean-Louis Haguenauer",
+  "kind": "person",
+  "what": "A French art collector and patron with business ties to Moscow since 1981, who bought the land near Marrakesh in 2002 and opened Jardin Rouge there in 2009.",
+  "arts": "The Montresso Art Foundation he set up runs the Jardin Rouge residency and opened a 1,300 square metre exhibition space on the site in 2016.",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://arterritory.com/en/conversations_with-collectors/conversations_with-collectors/24571-the_oasis_encouraging_artists_to_step_out_of_their_creative_comfort_zones"
+  ],
+  "batch": "fp34"
+ },
  "jeffbezos": {
   "name": "Jeff Bezos",
   "kind": "person",
@@ -11229,6 +11443,19 @@
    "https://www.thegardenisland.com/2024/05/13/hawaii-news/highgate-morphs-into-most-rapidly-growing-hotel-company-in-hawaii/"
   ],
   "batch": "fp15"
+ },
+ "kairatboranbayev": {
+  "name": "Kairat Boranbayev",
+  "kind": "person",
+  "what": "A Kazakh businessman born in 1966, a former KazRosGas manager and chairman of FC Kairat's supervisory board, sentenced in September 2023 to six years for embezzlement under a plea agreement.",
+  "money": "A fortune made in oil and gas, real estate and retail; in September 2023 he handed assets worth 90 billion tenge to the state.",
+  "country": "Kazakhstan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Qairat_Boranbaev",
+   "https://en.orda.kz/kairat-boranbayev-returned-oil-field-to-state-3107/"
+  ],
+  "batch": "fp34"
  },
  "kaiserfriedrichmuseumsverein": {
   "name": "Kaiser Friedrich Museumsverein",
@@ -11532,6 +11759,22 @@
    "https://projects.propublica.org/nonprofits/organizations/650464177"
   ],
   "batch": "fp15"
+ },
+ "kohler": {
+  "name": "Kohler Co.",
+  "short": "Kohler",
+  "kind": "corp",
+  "what": "An American manufacturer founded in 1873 by John Michael Kohler in Kohler, Wisconsin, privately owned by the Kohler family.",
+  "money": "Sales of plumbing fixtures, tile, furniture and cabinetry, and its Destination Kohler hotels.",
+  "site": "https://www.kohler.com",
+  "city": "Kohler, Wisconsin",
+  "country": "USA",
+  "address": "444 Highland Drive, Kohler, Wisconsin",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Kohler_Co."
+  ],
+  "batch": "fp34"
  },
  "kolmont": {
   "name": "Kolmont",
@@ -12106,6 +12349,21 @@
    "https://leica-camera.com/en/company"
   ],
   "batch": "fp16"
+ },
+ "lendlease": {
+  "name": "Lendlease Corporation Limited",
+  "short": "Lendlease",
+  "kind": "corp",
+  "what": "An Australian property and construction group founded in Sydney in 1958 by Dick Dusseldorp, with its head office in the International Towers at Barangaroo.",
+  "money": "Property investment, development, construction and asset management: AUD 8.82 billion revenue in 2022.",
+  "site": "https://www.lendlease.com",
+  "city": "Sydney",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lendlease"
+  ],
+  "batch": "fp34"
  },
  "lesamisdesmusesdartetdhistoireluxembourg": {
   "name": "Les Amis des Musées d'art et d'histoire du Luxembourg a.s.b.l.",
@@ -13254,6 +13512,22 @@
   ],
   "batch": "fp25"
  },
+ "millhouse": {
+  "name": "Millhouse LLC",
+  "short": "Millhouse",
+  "kind": "corp",
+  "what": "A Moscow company formed in 2006 to manage the assets of Roman Abramovich and his partners; in August 2024 it passed to Centrotrust, a Moscow company.",
+  "money": "The capital of Abramovich, under EU and UK sanctions since 2022, and his partners, who held Sibneft, Rusal and Aeroflot stakes through Millhouse Capital.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Millhouse_Capital",
+   "https://www.dp.ru/a/2024/08/23/jurlico-novoj-gollandii-pereshlo",
+   "https://en.wikipedia.org/wiki/Roman_Abramovich"
+  ],
+  "batch": "fp34"
+ },
  "ministerofheritage": {
   "name": "Ministry of Heritage and Tourism",
   "kind": "gov",
@@ -13469,6 +13743,38 @@
    "https://www.mirangroup.com/"
   ],
   "batch": "fp33"
+ },
+ "mit": {
+  "name": "Massachusetts Institute of Technology",
+  "short": "MIT",
+  "kind": "priv",
+  "what": "A private research university in Cambridge, Massachusetts, chartered in 1861 and founded by William Barton Rogers.",
+  "money": "USD 5.37 billion operating revenue in FY2025: 45 percent sponsored research, 29 percent investment return, 9 percent gifts, 8 percent net tuition.",
+  "site": "https://www.mit.edu",
+  "city": "Cambridge, Massachusetts",
+  "country": "USA",
+  "address": "77 Massachusetts Avenue, Cambridge, MA",
+  "status": "done",
+  "sources": [
+   "https://facts.mit.edu/operating-financials/",
+   "https://en.wikipedia.org/wiki/Massachusetts_Institute_of_Technology"
+  ],
+  "batch": "fp34"
+ },
+ "mitre": {
+  "name": "The MITRE Corporation",
+  "short": "MITRE",
+  "kind": "priv",
+  "what": "An American nonprofit corporation spun out of MIT Lincoln Laboratory in 1958, with headquarters in Bedford, Massachusetts, and McLean, Virginia.",
+  "money": "Contracts to run federally funded research and development centres for US government agencies in aviation, defence, healthcare and cybersecurity: USD 2.37 billion revenue in 2023.",
+  "site": "https://www.mitre.org",
+  "city": "Bedford, Massachusetts",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mitre_Corporation"
+  ],
+  "batch": "fp34"
  },
  "mitsuifudosan": {
   "name": "Mitsui Fudosan Co., Ltd.",
@@ -13842,6 +14148,31 @@
    "https://www.mccy.gov.sg/about-us/news-and-resources/parliamentary-matters/2021/may/government-funding-for-the-arts-sector"
   ],
   "batch": "fp18"
+ },
+ "nataliaopaleva": {
+  "name": "Natalia Opaleva",
+  "kind": "person",
+  "what": "A Russian collector and general director of the AZ Museum of Anatoly Zverev in Moscow, which she created in 2015; she opened the AZ/ART centre in 2024.",
+  "money": "A fortune from 20.36 percent of the gold miner GV Gold, built with her Lanta-Bank partners; Forbes put it at USD 260 million in 2018.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://finance.rambler.ru/other/41266910-zolotye-ruki-kak-nataliya-opaleva-sovmeschaet-mnozhestvo-professiy/",
+   "https://snob.ru/ya-snob/ia-snob-generalnyi-direktor-i-sozdatel-muzeia-az-natalia-opaleva/"
+  ],
+  "batch": "fp34"
+ },
+ "natashabelaya": {
+  "name": "Natasha Belaya",
+  "kind": "person",
+  "what": "A private donor listed among the patrons of the Zotov Centre for Constructivism in Moscow.",
+  "country": "Russia",
+  "status": "thin",
+  "sources": [
+   "https://centrezotov.ru/partners/"
+  ],
+  "batch": "fp34"
  },
  "nationalartscouncil|Singapore": {
   "name": "National Arts Council",
@@ -14220,6 +14551,21 @@
   ],
   "batch": "fp21"
  },
+ "nih": {
+  "name": "National Institutes of Health",
+  "short": "NIH",
+  "kind": "gov",
+  "what": "The medical research agency of the US Department of Health and Human Services, in Bethesda, Maryland, which began in 1887 as the Hygienic Laboratory.",
+  "money": "The US federal budget: USD 48.86 billion in 2024.",
+  "site": "https://www.nih.gov",
+  "city": "Bethesda, Maryland",
+  "country": "USA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Institutes_of_Health"
+  ],
+  "batch": "fp34"
+ },
  "nikolaimoroz": {
   "name": "Nikolai Moroz",
   "kind": "person",
@@ -14519,6 +14865,22 @@
   ],
   "batch": "fp18"
  },
+ "novatek": {
+  "name": "PJSC Novatek",
+  "short": "Novatek",
+  "kind": "corp",
+  "what": "A Russian gas producer founded in 1994, with its head office in Moscow, on the US sectoral sanctions list since 2014; founder Leonid Mikhelson holds 28 percent.",
+  "money": "Natural gas and petroleum production, including Yamal LNG and Arctic LNG 2: RUB 1.45 trillion revenue in 2025.",
+  "site": "https://www.novatek.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Novatek",
+   "https://www.wikidata.org/wiki/Q251546"
+  ],
+  "batch": "fp34"
+ },
  "nrwcultureministry|Germany": {
   "name": "Ministerium für Kultur und Wissenschaft des Landes Nordrhein-Westfalen",
   "short": "MKW NRW",
@@ -14536,6 +14898,22 @@
    "https://www.mkw.nrw/system/files/media/document/file/mkw_2026-06-25_pm_foerderbescheid_kultur_ruhr.pdf"
   ],
   "batch": "fp4"
+ },
+ "nsf": {
+  "name": "U.S. National Science Foundation",
+  "short": "NSF",
+  "kind": "gov",
+  "what": "An independent US federal agency for science and engineering research, set up by the National Science Foundation Act signed by President Truman on 10 May 1950.",
+  "money": "The US federal budget: USD 8.75 billion for fiscal 2026.",
+  "site": "https://www.nsf.gov",
+  "city": "Alexandria, Virginia",
+  "country": "USA",
+  "address": "401 Dulany Street, Alexandria, Virginia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/National_Science_Foundation"
+  ],
+  "batch": "fp34"
  },
  "nswgovernment|Australia": {
   "name": "NSW Government",
@@ -14897,6 +15275,23 @@
    "https://ghettobiennale.org/"
   ],
   "batch": "fp33"
+ },
+ "omk": {
+  "name": "АО «Объединённая металлургическая компания»",
+  "short": "OMK (United Metallurgical Company)",
+  "kind": "corp",
+  "what": "A Moscow steel pipe maker with five plants between Moscow and the Urals, including the Vyksa Steel Works; under UK sanctions since May 2023 and US sanctions since September 2023.",
+  "money": "Sales of steel pipes, pipeline valves and fittings, railway wheels and automotive springs.",
+  "site": "https://omk.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "address": "Ozerkovskaya nab. 28, building 2, Moscow 115184",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20251116160643/https://www.offshore-technology.com/contractors/pipes/united-metallurgical-company-omk/",
+   "https://www.opensanctions.org/entities/NK-mqaXfnVQ299ouiB5v63vzt"
+  ],
+  "batch": "fp34"
  },
  "omkuchastie": {
   "name": "Благотворительный фонд поддержки семьи, защиты детства, материнства и отцовства «ОМК-Участие»",
@@ -16136,6 +16531,22 @@
   ],
   "batch": "fp27"
  },
+ "psb": {
+  "name": "PJSC Promsvyazbank",
+  "short": "PSB",
+  "kind": "corp",
+  "what": "A Moscow bank founded in 1995, nationalised in 2018, made the supporting bank for Russia's defence industry by a 2019 law and under US and UK sanctions since February 2022.",
+  "money": "Lending to the defence industry and retail banking: a net loss of RUB 19.2 billion in 2025.",
+  "site": "https://www.psbank.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Promsvyazbank",
+   "https://www.themoscowtimes.com/2026/03/11/russian-military-bank-posts-2025-loss-amid-rising-defaults-a92197"
+  ],
+  "batch": "fp34"
+ },
  "publiccentrefundedbygipuzkoacouncil|Spain": {
   "name": "Gipuzkoako Foru Aldundia / Diputación Foral de Gipuzkoa",
   "short": "Provincial Council of Gipuzkoa",
@@ -16839,6 +17250,33 @@
   ],
   "batch": "fp23"
  },
+ "romantrotsenko": {
+  "name": "Roman Trotsenko",
+  "kind": "person",
+  "what": "A Russian businessman born in 1970, owner of the investment company Aeon Corporation and president of United Shipbuilding Corporation from 2009 to 2012.",
+  "money": "70 percent of Russkaya Energia, which agreed in 2021 to buy the coal miner Vorkutaugol; Forbes put his fortune at USD 1.6 billion in 2019.",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Roman_Trotsenko"
+  ],
+  "batch": "fp34"
+ },
+ "rosatommashinostroenie": {
+  "name": "ООО «Росатом Машиностроение»",
+  "short": "Rosatom Mashinostroenie",
+  "kind": "corp",
+  "what": "The machine building division of Rosatom, the Russian state nuclear corporation, whose factories make reactor equipment for power plants and nuclear icebreakers.",
+  "money": "Sales of equipment for nuclear and thermal power plants, made in Moscow, St Petersburg, Karelia and the Moscow, Rostov, Nizhny Novgorod and Yekaterinburg regions.",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://www.dp.ru/a/2025/08/16/putin-podpisal-ukaz-o-restrukturizacii",
+   "https://hh.kz/employer/65665"
+  ],
+  "batch": "fp34"
+ },
  "rosenthalfamily": {
   "name": "Rosenthal Family Foundation",
   "kind": "found",
@@ -16937,6 +17375,22 @@
    "https://data.sec.gov/submissions/CIK0000101829.json"
   ],
   "batch": "fp33"
+ },
+ "rubismcnat": {
+  "name": "Rubis Mécénat",
+  "kind": "found",
+  "what": "The endowment fund of the French energy group Rubis, running artistic and social projects since 2011.",
+  "money": "The Rubis group, founded in 1990 by Gilles Gobin in Paris, which stores and distributes petroleum products and LPG.",
+  "arts": "It funds the Prix Rubis Mécénat with the Beaux-Arts de Paris and youth programmes in South Africa, Madagascar and Jamaica.",
+  "site": "https://www.rubismecenat.fr",
+  "city": "Paris",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.rubismecenat.fr/",
+   "https://en.wikipedia.org/wiki/Rubis_(company)"
+  ],
+  "batch": "fp34"
  },
  "rundirectlybyrgionoccitanie": {
   "name": "Région Occitanie / Pyrénées-Méditerranée",
@@ -17173,6 +17627,22 @@
    "https://en.wikipedia.org/wiki/SaskTel"
   ],
   "batch": "fp5"
+ },
+ "sber": {
+  "name": "PJSC Sberbank",
+  "short": "Sber",
+  "kind": "corp",
+  "what": "A Russian bank branded Sber since 2020, seated in Moscow, under US and EU sanctions since 2014; the National Wealth Fund holds 50 percent plus one share.",
+  "money": "Banking profits: net income of RUB 1.71 trillion in 2025.",
+  "site": "https://www.sberbank.com",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sberbank",
+   "https://www.wikidata.org/wiki/Q205012"
+  ],
+  "batch": "fp34"
  },
  "scfdsalestax": {
   "name": "Scientific and Cultural Facilities District",
@@ -18330,6 +18800,40 @@
   ],
   "batch": "fp21"
  },
+ "stpetersburgcommitteeforculture": {
+  "name": "Комитет по культуре Санкт-Петербурга",
+  "short": "St Petersburg Committee for Culture",
+  "kind": "gov",
+  "what": "The executive body of the St Petersburg city government for cultural policy, covering art, cinema and art and music education, chaired by Fyodor Boltin since December 2021.",
+  "money": "The budget of the city of St Petersburg.",
+  "site": "https://www.gov.spb.ru/gov/otrasl/c_culture",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "address": "Nevsky Prospekt 40, St Petersburg 191186",
+  "status": "done",
+  "sources": [
+   "https://ru.wikipedia.org/wiki/Комитет_по_культуре_Санкт-Петербурга",
+   "https://web.archive.org/web/20240912222630/https://www.gov.spb.ru/gov/otrasl/c_culture/"
+  ],
+  "batch": "fp34"
+ },
+ "stpetersburgcommitteeforsocialpolicy": {
+  "name": "Комитет по социальной политике Санкт-Петербурга",
+  "short": "St Petersburg Committee for Social Policy",
+  "kind": "gov",
+  "what": "The executive body of the St Petersburg city government for social support and social services; in 2021 it served 3 million residents in 85 categories.",
+  "money": "The budget of the city of St Petersburg.",
+  "site": "https://www.gov.spb.ru/gov/otrasl/trud/",
+  "city": "St Petersburg",
+  "country": "Russia",
+  "address": "Novgorodskaya ulitsa 20, lit. A, St Petersburg 191144",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20260517175645/https://www.gov.spb.ru/gov/otrasl/trud/",
+   "https://peterburg2.ru/news/nazvana-glavnaya-zadacha-komiteta-po-socialnoy-politike-peterburga-97304.html"
+  ],
+  "batch": "fp34"
+ },
  "strabagmainsponsorofneststage": {
   "name": "STRABAG SE",
   "short": "Strabag",
@@ -19305,6 +19809,23 @@
   ],
   "batch": "fp23"
  },
+ "unipar": {
+  "name": "Unipar Carbocloro S.A.",
+  "short": "Unipar",
+  "kind": "corp",
+  "what": "A Brazilian chemical company founded in 1969 as a petrochemical holding, seated in São Paulo, whose controlling shareholder is Frank Geyer Abubakir.",
+  "money": "Sales of chlorine, caustic soda and PVC from plants in Cubatão and Santo André in Brazil and Bahía Blanca in Argentina.",
+  "site": "https://www.unipar.com",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Unipar_Carbocloro",
+   "https://www.infomoney.com.br/?p=2559386",
+   "https://en.wikipedia.org/wiki/Unipar_Carbocloro"
+  ],
+  "batch": "fp34"
+ },
  "unipol": {
   "name": "Unipol Assicurazioni S.p.A.",
   "short": "Unipol",
@@ -19883,6 +20404,21 @@
    "https://give.do/discover/19OI/1shanthiroad-studiogallery-vac-trust-visual-art-collective-trust/"
   ],
   "batch": "fp23"
+ },
+ "vivaenergyaustralia": {
+  "name": "Viva Energy Australia",
+  "short": "Viva Energy",
+  "kind": "corp",
+  "what": "An Australian fuel company set up in August 2014 when Vitol bought Shell's Australian downstream business, seated in Melbourne and listed on the ASX since 2018.",
+  "money": "Refining at its Geelong refinery and fuel sales: AUD 26.7 billion revenue in 2023; Vitol keeps 29.9 percent.",
+  "site": "https://www.vivaenergy.com.au",
+  "city": "Melbourne",
+  "country": "Australia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Viva_Energy"
+  ],
+  "batch": "fp34"
  },
  "vlaamseoverheid": {
   "name": "Vlaamse Regering",
@@ -20609,6 +21145,22 @@
    "https://www.business-gazeta.ru/article/307956"
   ],
   "batch": "fp33"
+ },
+ "yandexeda": {
+  "name": "Yandex.Eda LLC",
+  "short": "Yandex Eda",
+  "kind": "corp",
+  "what": "The food delivery service of the Russian technology group Yandex, launched in 2018 after Yandex.Taxi bought the Moscow service Foodfox in December 2017.",
+  "money": "Food delivery: RUB 144.6 billion revenue in 2025, within the Yandex group, owned since July 2024 by investors including Lukoil.",
+  "site": "https://eda.yandex.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Yandex_Eats",
+   "https://en.wikipedia.org/wiki/Yandex"
+  ],
+  "batch": "fp34"
  },
  "yayasanilham": {
   "name": "Yayasan ILHAM",
