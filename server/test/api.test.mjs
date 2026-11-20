@@ -153,7 +153,7 @@ describe('submitting a review', () => {
     const id = await submit();
     const row = await prisma.whistleblowerReport.findUnique({ where: { id } });
     assert.deepEqual(Object.keys(row).sort(), [
-      'authorLabel', 'city', 'content', 'createdAt', 'id', 'institution', 'kind', 'latitude', 'longitude', 'placeId', 'rating', 'status', 'updatedAt'
+      'address', 'authorLabel', 'city', 'content', 'createdAt', 'id', 'institution', 'kind', 'latitude', 'longitude', 'placeId', 'rating', 'status', 'updatedAt'
     ]);
     assert.equal(row.authorLabel, null);
     assert.equal(row.rating, null);

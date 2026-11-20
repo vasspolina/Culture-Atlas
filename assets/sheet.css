@@ -2659,3 +2659,14 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.inst-pin-label::after{background:var(--wc-mark)!important}
 #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label.label-pos-bottom{bottom:auto!important}
 }
+
+/* The chosen space's name on a phone's street map, 20 Nov 2026 (user: "it's really hard to pick the place"): cut with an
+   ellipsis at 24 characters or 62% of the screen. The poster's names are set whole (the rule above, max-width none), and
+   the chosen one is set larger, so a long name ran off the side of the screen ("Instituto de Artivismo Hannah...") or lay
+   over the marks beside it; the whole name is in the card under the map. In the sheet layer, since an important rule in a
+   layer beats one outside it. */
+@layer sheet{
+  @media (max-width:767px){
+    #cityMapContainer.street-poster .custom-inst-pin.popup-active .inst-pin-label .inst-pin-label-name:not(#sh-x):not(#sh-y){max-width:min(24ch,62vw)!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  }
+}
