@@ -179,6 +179,23 @@
   ],
   "batch": "fp6"
  },
+ "aggvendowment": {
+  "name": "Art Gallery of Greater Victoria Foundation",
+  "short": "AGGV Foundation",
+  "kind": "found",
+  "what": "A registered charity set up in 1973 that holds and invests capital assets in perpetuity for the Art Gallery of Greater Victoria, at 1040 Moss Street in Victoria.",
+  "money": "Planned gifts and bequests from donors, which it invests to sustain the gallery's operations.",
+  "site": "https://aggv.ca/about/board",
+  "city": "Victoria",
+  "country": "Canada",
+  "address": "1040 Moss Street, Victoria, BC V8V 4P1",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20260103150924/https://aggv.ca/about/board/",
+   "https://www.canadahelps.org/en/charities/art-gallery-of-greater-victoria-foundation/"
+  ],
+  "batch": "fp26"
+ },
  "ahlstrmkiinteisttoy": {
   "name": "A. Ahlström Kiinteistöt Oy",
   "short": "A. Ahlström Real Estate",
@@ -245,6 +262,24 @@
    "https://en.wikipedia.org/wiki/Nicolai_Tangen"
   ],
   "batch": "fp2"
+ },
+ "alburycity|Australia": {
+  "name": "Albury City Council",
+  "short": "AlburyCity",
+  "kind": "gov",
+  "what": "The council of the City of Albury, a local government area on the Murray River in New South Wales, declared a municipality in 1859 and a city in 1946.",
+  "money": "Rates and charges on Albury ratepayers; the 2025/26 budget raised ordinary rate revenue by 4.1 percent, the rate peg set by IPART.",
+  "site": "https://www.alburycity.nsw.gov.au",
+  "city": "Albury",
+  "country": "Australia",
+  "address": "553 Kiewa Street, Albury NSW 2640",
+  "status": "done",
+  "sources": [
+   "https://www.alburycity.nsw.gov.au/news/alburycity-adopts-202526-budget-focus-long-term-financial-sustainability",
+   "https://www.alburycity.nsw.gov.au/contact/all-our-facilities",
+   "https://en.wikipedia.org/wiki/City_of_Albury"
+  ],
+  "batch": "fp25"
  },
  "alcaldademedelln": {
   "name": "Alcaldía de Medellín",
@@ -992,6 +1027,24 @@
   ],
   "batch": "fp2"
  },
+ "artscouncilwales|UK": {
+  "name": "Arts Council of Wales",
+  "kind": "gov",
+  "what": "A Welsh Government sponsored body and registered charity that funds and develops the arts in Wales, set up by Royal Charter in 1994 and based in Cardiff.",
+  "money": "Money from the Welsh Government and National Lottery funds for the arts in Wales, allocated by the Department for Culture, Media and Sport.",
+  "arts": "Most of its funding goes to artists and arts organisations carrying out programmes of work across Wales.",
+  "site": "https://arts.wales",
+  "city": "Cardiff",
+  "country": "United Kingdom",
+  "address": "Bute Place, Cardiff CF10 5AL",
+  "status": "done",
+  "sources": [
+   "https://arts.wales/about-us/our-organisation",
+   "https://arts.wales/about-us/contact-us/where-are-our-offices",
+   "https://en.wikipedia.org/wiki/Arts_Council_of_Wales"
+  ],
+  "batch": "fp26"
+ },
  "artscouncil|Ireland": {
   "name": "The Arts Council / An Chomhairle Ealaíon",
   "short": "Arts Council of Ireland",
@@ -1007,6 +1060,27 @@
    "https://en.wikipedia.org/wiki/Arts_Council_of_Ireland"
   ],
   "batch": "fp1"
+ },
+ "artspromotioncentrefinland": {
+  "name": "Arts Promotion Centre Finland (Taike)",
+  "short": "Taike",
+  "kind": "gov",
+  "what": "A Finnish state agency for promoting the arts under the Ministry of Education and Culture, started in 2013 and merged into the Finnish Arts and Culture Agency in 2026.",
+  "money": "The Finnish state, through the Ministry of Education and Culture.",
+  "arts": "With its arts councils and boards it awarded grants to professional artists and subsidies to arts communities of about 45 million euros a year.",
+  "site": "https://www.taike.fi",
+  "city": "Helsinki",
+  "country": "Finland",
+  "address": "Kaikukatu 2 C, 00530 Helsinki",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20251117105351/https://www.taike.fi/en/about-us",
+   "https://kuvi.fi/en/about-us/",
+   "https://kuvi.fi/en/contact/",
+   "https://fi.wikipedia.org/wiki/Taiteen_edist%C3%A4miskeskus",
+   "https://en.wikipedia.org/wiki/Arts_Council_of_Finland"
+  ],
+  "batch": "fp26"
  },
  "artsqueensland": {
   "name": "Arts Queensland",
@@ -1350,6 +1424,25 @@
   ],
   "batch": "fp7"
  },
+ "b3stockexchangeasmaintainer": {
+  "name": "B3 S.A. - Brasil, Bolsa, Balcão",
+  "short": "B3",
+  "kind": "corp",
+  "what": "The Brazilian stock exchange company, headquartered in São Paulo and created on 30 March 2017 when BM&FBOVESPA merged with Cetip.",
+  "money": "Fees for trading, post-trading, registration, financing infrastructure and data services, with revenues of R$11.1 billion in 2025.",
+  "site": "https://www.b3.com.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "address": "Praça Antonio Prado, 48, Centro, São Paulo, SP 01010-901",
+  "status": "done",
+  "sources": [
+   "https://ri.b3.com.br/en/b3/profile/",
+   "https://ri.b3.com.br/en/b3/corporate-information/",
+   "https://www.b3.com.br/pt_br/noticias/resultados-financeiros.htm",
+   "https://en.wikipedia.org/wiki/B3_(stock_exchange)"
+  ],
+  "batch": "fp26"
+ },
  "bahr": {
   "name": "Advokatfirmaet BAHR AS",
   "short": "BAHR",
@@ -1616,6 +1709,25 @@
   ],
   "batch": "fp2"
  },
+ "basquegovernmentculturaldepartment|Spain": {
+  "name": "Departamento de Cultura y Política Lingüística del Gobierno Vasco",
+  "short": "Basque Government culture department",
+  "kind": "gov",
+  "what": "The Basque Government department for culture and the Basque language, headed by Ibone Bengoetxea, first vice-lehendakari and minister of culture and language policy.",
+  "money": "The Basque Government budget: 413.7 million euros in the 2026 draft, 5.5 percent more than in 2025.",
+  "arts": "The 2026 draft gives 50.5 million euros to support for artists and creators and 37.9 million euros to cultural heritage.",
+  "site": "https://www.euskadi.eus/gobierno-vasco/departamento-cultura-politica-linguistica/",
+  "city": "Vitoria-Gasteiz",
+  "country": "Spain",
+  "address": "Donostia-San Sebastián 1, 01010 Vitoria-Gasteiz",
+  "status": "done",
+  "sources": [
+   "https://orain.eus/es/cultura/2025/11/03/el-departamento-cultura-politica-linguistica-alcanza-el-presupuesto-mas-alto-su-historia-4137-millones-euros/",
+   "https://www.euskadi.eus/kultura-eta-hizkuntza-politika-saila/r61-vedorok/eu/",
+   "https://www.euskadi.eus/gobierno-vasco/departamento-cultura-politica-linguistica/"
+  ],
+  "batch": "fp25"
+ },
  "bataschuh": {
   "name": "Bata Schuh Stiftung",
   "short": "Bata Shoe Foundation",
@@ -1792,6 +1904,25 @@
   ],
   "batch": "fp18"
  },
+ "bergenmunicipality|Norway": {
+  "name": "Bergen kommune",
+  "short": "City of Bergen",
+  "kind": "gov",
+  "what": "The municipality of Bergen in Vestland county, Norway, run on a parliamentary model in which a seven-member City Government answers to the City Council.",
+  "money": "The municipal budget adopted by the City Council, with total operating spending of NOK 29.68 billion for 2025.",
+  "site": "https://www.bergen.kommune.no",
+  "city": "Bergen",
+  "country": "Norway",
+  "address": "Rådhusgaten 10, 5014 Bergen",
+  "status": "done",
+  "sources": [
+   "https://www.bergen.kommune.no/english/council-and-democracy",
+   "https://www.bergen.kommune.no/hvaskjer/samfunn/bybudsjett-2025-og-okonomisk-handlingsplan-pa-plass",
+   "https://data.brreg.no/enhetsregisteret/api/enheter/964338531",
+   "https://en.wikipedia.org/wiki/Bergen_Municipality"
+  ],
+  "batch": "fp26"
+ },
  "bergerpaints": {
   "name": "Berger Paints Jamaica Limited",
   "short": "Berger Paints",
@@ -1946,6 +2077,25 @@
    "https://www.blackmagicdesign.com/company/offices"
   ],
   "batch": "fp8"
+ },
+ "blkbcantonalbank": {
+  "name": "Basellandschaftliche Kantonalbank",
+  "short": "BLKB",
+  "kind": "corp",
+  "what": "The cantonal bank of Basel-Landschaft, founded in 1864 as a public-law institution with its seat in Liestal, whose liabilities the canton guarantees by law.",
+  "money": "Retail banking, mortgages, private banking and lending to small and medium-sized firms, with an annual profit of CHF 130.2 million in 2022.",
+  "arts": "Its sponsorship has two themes, art and culture and nature and leisure, and it has a foundation for culture and education.",
+  "site": "https://www.blkb.ch",
+  "city": "Liestal",
+  "country": "Switzerland",
+  "address": "Rheinstrasse 7, 4410 Liestal",
+  "status": "done",
+  "sources": [
+   "https://www.blkb.ch/die-blkb/point-of-contact/about-us/regulatory-compliance-information.html",
+   "https://de.wikipedia.org/wiki/Basellandschaftliche_Kantonalbank",
+   "https://www.blkb.ch/die-blkb/sponsoring-engagements/sponsoring.html"
+  ],
+  "batch": "fp26"
  },
  "bmofinancial": {
   "name": "Bank of Montreal",
@@ -2152,6 +2302,22 @@
   ],
   "batch": "fp7"
  },
+ "bramall": {
+  "name": "The Liz and Terry Bramall Foundation",
+  "short": "Bramall Foundation",
+  "kind": "found",
+  "what": "A grant-making charity (England and Wales number 1121670) set up by Terry Bramall, former chairman of the housebuilder Keepmoat, with a £100 million endowment in 2008.",
+  "money": "Terry Bramall's fortune from Keepmoat, sold in 2007 for £783 million; the charity's investments earned £2.43 million in the year to 5 April 2025.",
+  "arts": "Promoting the arts is one of its charitable purposes; it spent £7.76 million on charitable activities in the year to 5 April 2025.",
+  "city": "Harrogate",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://register-of-charities.charitycommission.gov.uk/charity-details/?regid=1121670&subid=0",
+   "https://en.wikipedia.org/wiki/Terry_Bramall"
+  ],
+  "batch": "fp27"
+ },
  "brdgroupesocitgnrale": {
   "name": "BRD - Groupe Société Générale S.A.",
   "short": "BRD",
@@ -2286,6 +2452,22 @@
   ],
   "batch": "fp5"
  },
+ "brusselscapital": {
+  "name": "Brussels-Capital Region",
+  "kind": "gov",
+  "what": "One of the three federal regions of Belgium, formed on 18 June 1989; its government is a minister-president and four ministers elected by the regional parliament.",
+  "money": "The regional budget, voted by the Brussels Parliament; the government's 2026 budget closes with a deficit of 957 million euros.",
+  "site": "https://be.brussels",
+  "city": "Brussels",
+  "country": "Belgium",
+  "status": "done",
+  "sources": [
+   "https://be.brussels/en/about-region/structure-and-organisations/parliament-ministers/government-region",
+   "https://www.vrt.be/vrtnws/en/2026/03/06/brussels-government-approves-2026-budget.consumer/",
+   "https://en.wikipedia.org/wiki/Brussels-Capital_Region"
+  ],
+  "batch": "fp25"
+ },
  "bukhman": {
   "name": "Bukhman Foundation",
   "kind": "found",
@@ -2397,6 +2579,43 @@
   ],
   "batch": "fp8"
  },
+ "californiaartscouncil|United States": {
+  "name": "California Arts Council",
+  "kind": "gov",
+  "what": "A California state agency in Sacramento, founded in 1976 under Governor Jerry Brown; the governor and the state legislature appoint its eight council members.",
+  "money": "State budget funds, plus proceeds of the California Arts License Plate and voluntary contributions.",
+  "arts": "On 14 August 2026 the council allocated nearly $24.6 million for 1,200 grants to nonprofit organisations and units of government.",
+  "site": "https://arts.ca.gov",
+  "city": "Sacramento",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://arts.ca.gov/press-release/council-votes-unanimously-to-approve-allocations-for-2026-grant-program-awards/",
+   "https://arts.ca.gov/about/about-us/",
+   "https://en.wikipedia.org/wiki/California_Arts_Council"
+  ],
+  "batch": "fp25"
+ },
+ "californiainstituteofarts": {
+  "name": "California Institute of the Arts",
+  "short": "CalArts",
+  "kind": "priv",
+  "what": "A private art school in Santa Clarita, California, formed in 1961 by Walt and Roy Disney through the merger of Chouinard Art Institute and the Los Angeles Conservatory of Music.",
+  "money": "Program services brought in $82,980,132 of its $122,015,803 revenue in 2024 to 2025, and contributions $10,472,635.",
+  "arts": "With the Herb Alpert Foundation it set up the Alpert Award in the Arts in 1994, a yearly $75,000 fellowship for each of five artists.",
+  "site": "https://calarts.edu",
+  "city": "Valencia",
+  "country": "United States",
+  "address": "24700 McBean Parkway, Valencia, CA 91355",
+  "status": "done",
+  "sources": [
+   "https://calarts.edu/about/institute/history",
+   "https://projects.propublica.org/nonprofits/organizations/956102146",
+   "https://calarts.edu/plan-visit/directions",
+   "https://en.wikipedia.org/wiki/California_Institute_of_the_Arts"
+  ],
+  "batch": "fp26"
+ },
  "caloustegulbenkian": {
   "name": "Fundação Calouste Gulbenkian",
   "short": "Gulbenkian Foundation",
@@ -2497,6 +2716,78 @@
    "https://en.wikipedia.org/wiki/Canada_Life"
   ],
   "batch": "fp5"
+ },
+ "cantonofgeneva": {
+  "name": "République et canton de Genève",
+  "short": "Canton of Geneva",
+  "kind": "gov",
+  "what": "One of the 26 cantons of Switzerland, a Swiss canton since 19 May 1815, governed by a Conseil d'État of seven members and a Grand Conseil of 100.",
+  "money": "The cantonal budget of Geneva.",
+  "arts": "Its Service cantonal de la culture committed 47,805,598 francs in 2025, 14 percent more than in 2024; a culture promotion law has applied since January 2024.",
+  "site": "https://www.ge.ch",
+  "city": "Geneva",
+  "country": "Switzerland",
+  "status": "done",
+  "sources": [
+   "https://www.ge.ch/document/44028/telecharger",
+   "https://www.ge.ch/document/nouvelle-dynamique-culture-genevoise",
+   "https://fr.wikipedia.org/wiki/Canton_de_Gen%C3%A8ve"
+  ],
+  "batch": "fp25"
+ },
+ "cantonofneuchtel": {
+  "name": "République et Canton de Neuchâtel",
+  "short": "Canton of Neuchâtel",
+  "kind": "gov",
+  "what": "A Swiss canton, a republic since the revolution of 1 March 1848, with a five-member Conseil d'État, a 100-seat Grand Conseil and 180,365 residents at the end of 2025.",
+  "money": "The cantonal budget, with operating revenue of CHF 2,444,590,150 for 2026, adopted by the Grand Conseil on 2 December 2025.",
+  "site": "https://www.ne.ch",
+  "city": "Neuchâtel",
+  "country": "Switzerland",
+  "status": "done",
+  "sources": [
+   "https://www.ne.ch/legislation-jurisprudence/pubfo/ld/Documents/2025/D_Budget_2026.pdf",
+   "https://fr.wikipedia.org/wiki/Canton_de_Neuchâtel"
+  ],
+  "batch": "fp27"
+ },
+ "cantonofsarajevo": {
+  "name": "Vlada Kantona Sarajevo",
+  "short": "Government of Sarajevo Canton",
+  "kind": "gov",
+  "what": "The government of Sarajevo Canton, a canton of the Federation of Bosnia and Herzegovina established in 1995, led by a prime minister and a cabinet.",
+  "money": "The budget of Sarajevo Canton.",
+  "site": "https://vlada.ks.gov.ba",
+  "city": "Sarajevo",
+  "country": "Bosnia and Herzegovina",
+  "address": "Reisa Džemaludina Čauševića 1, Sarajevo",
+  "status": "done",
+  "sources": [
+   "https://vlada.ks.gov.ba/",
+   "https://en.wikipedia.org/wiki/Sarajevo_Canton",
+   "https://mks.ks.gov.ba/"
+  ],
+  "batch": "fp26"
+ },
+ "cantonofzurich": {
+  "name": "Kanton Zürich",
+  "short": "Canton of Zurich",
+  "kind": "gov",
+  "what": "A Swiss canton that joined the Swiss Confederacy in 1351, governed by a seven-member Regierungsrat and a 180-seat Cantonal Council.",
+  "money": "The cantonal budget, in which the Cantonal Council raised the culture funding budget from 2026.",
+  "arts": "Its Fachstelle Kultur, under the Direktion der Justiz und des Innern, pays operating grants to cultural institutions, as a rule for four years.",
+  "site": "https://www.zh.ch",
+  "city": "Zurich",
+  "country": "Switzerland",
+  "address": "Neumühlequai 10, 8090 Zürich",
+  "status": "done",
+  "sources": [
+   "https://www.zh.ch/de/sport-kultur/kultur.html",
+   "https://www.zh.ch/de/sport-kultur/kultur/kulturfoerderung/institutionen.html",
+   "https://www.zh.ch/de/sport-kultur/kultur/kulturfoerderung.html",
+   "https://en.wikipedia.org/wiki/Canton_of_Z%C3%BCrich"
+  ],
+  "batch": "fp26"
  },
  "carter": {
   "name": "Amon G. Carter Foundation",
@@ -2890,6 +3181,93 @@
   ],
   "batch": "fp3"
  },
+ "citygovernment|aros": {
+  "name": "Aarhus Kommune",
+  "short": "Aarhus Municipality",
+  "kind": "gov",
+  "what": "The municipality of Aarhus in the Central Denmark Region, run by a city council of 31 members under a magistrate system; Anders Winnerskjold is mayor.",
+  "money": "The municipal budget of Aarhus, set by the city council.",
+  "site": "https://aarhus.dk",
+  "city": "Aarhus",
+  "country": "Denmark",
+  "address": "Rådhuset, Rådhuspladsen 2, 8000 Aarhus C",
+  "status": "done",
+  "sources": [
+   "https://aarhus.dk/demokrati/politik/byraadet",
+   "https://da.wikipedia.org/wiki/Aarhus_Kommune",
+   "https://en.wikipedia.org/wiki/Aarhus_Municipality"
+  ],
+  "batch": "fp25"
+ },
+ "citygovernment|dundee-contemporary-arts": {
+  "name": "Dundee City Council",
+  "kind": "gov",
+  "what": "The local authority for Dundee City, one of the 32 council areas of Scotland, created in its modern form in 1996.",
+  "money": "A revenue budget of £502 million for 2026 to 2027; council tax funds 18 percent of the budget.",
+  "site": "https://www.dundeecity.gov.uk",
+  "city": "Dundee",
+  "country": "United Kingdom",
+  "address": "Dundee House, 50 North Lindsay Street, Dundee DD1 1QE",
+  "status": "done",
+  "sources": [
+   "https://www.dundeecity.gov.uk/sites/default/files/council_budget_tax_letter_2026.pdf",
+   "https://www.scottishhousingnews.com/articles/202627-budget-and-council-tax-agreed-in-dundee",
+   "https://en.wikipedia.org/wiki/Dundee_City_Council"
+  ],
+  "batch": "fp25"
+ },
+ "citygovernment|kamloops-art-gallery": {
+  "name": "City of Kamloops",
+  "kind": "gov",
+  "what": "The municipal government of Kamloops, British Columbia, a city incorporated in 1893 and amalgamated in 1973, run by an elected city council.",
+  "money": "Property taxes collected from homeowners each July, set through a yearly budget and five-year financial plan, with utilities on separate budgets.",
+  "site": "https://www.kamloops.ca",
+  "city": "Kamloops",
+  "country": "Canada",
+  "address": "7 Victoria Street West, Kamloops, BC V2C 1A2",
+  "status": "done",
+  "sources": [
+   "https://www.kamloops.ca/city-hall/governance-finance/city-budget",
+   "https://www.kamloops.ca/city-hall/city-council",
+   "https://en.wikipedia.org/wiki/Kamloops"
+  ],
+  "batch": "fp26"
+ },
+ "citygovernment|kunsthalle-mannheim": {
+  "name": "Stadt Mannheim",
+  "short": "City of Mannheim",
+  "kind": "gov",
+  "what": "The city government of Mannheim, an urban district of 319,536 inhabitants (31 December 2025) in Baden-Württemberg and the state's second most populous city.",
+  "money": "The municipal budget, with ordinary revenue of 1,646,343,951 euros planned for 2026 after a second supplementary budget cut it by 82 million euros.",
+  "arts": "The Kunsthalle Mannheim, founded for the city's 300th anniversary in 1907, is one of its municipal enterprises (Eigenbetriebe).",
+  "site": "https://www.mannheim.de",
+  "city": "Mannheim",
+  "country": "Germany",
+  "address": "Rathaus E 5, 68159 Mannheim",
+  "status": "done",
+  "sources": [
+   "https://www.mannheim.de/sites/default/files/2026-08/Nachtragshaushalt%202026.pdf",
+   "https://de.wikipedia.org/wiki/Mannheim"
+  ],
+  "batch": "fp27"
+ },
+ "citygovernment|spike-island-bristol": {
+  "name": "Bristol City Council",
+  "kind": "gov",
+  "what": "The local authority for Bristol, a unitary authority since 1996, based at City Hall on College Green; the Green Party has been its largest party since the 2024 election.",
+  "money": "Council tax, business rates, government grants and fees: council tax gives £316.54 million of the £634.1 million net revenue budget for 2026 to 2027.",
+  "site": "https://www.bristol.gov.uk",
+  "city": "Bristol",
+  "country": "United Kingdom",
+  "address": "City Hall, College Green, Bristol",
+  "status": "done",
+  "sources": [
+   "https://www.bristol.gov.uk/residents/council-tax/council-tax-explained",
+   "https://www.bristol.gov.uk/council/council-spending-and-performance/council-budgets",
+   "https://en.wikipedia.org/wiki/Bristol_City_Council"
+  ],
+  "batch": "fp25"
+ },
  "cityofamsterdam|Netherlands": {
   "name": "Gemeente Amsterdam",
   "short": "City of Amsterdam",
@@ -2961,6 +3339,25 @@
    "https://gamec.it/en/?p=2086"
   ],
   "batch": "fp9"
+ },
+ "cityofbilbao|Spain": {
+  "name": "Ayuntamiento de Bilbao",
+  "short": "Bilbao City Council",
+  "kind": "gov",
+  "what": "The city council of Bilbao, made up of the mayor, a governing board and a municipal plenary, with its seat at Bilbao City Hall on Plaza Ernesto Erkoreka.",
+  "money": "The municipal budget: 751 million euros for 2026, 32 million more than in 2025, approved without new debt.",
+  "arts": "Its 2026 budget plan gives the culture directorate 49,817,713 euros; Teatro Arriaga receives 8.1 million euros and Bilbaoarte 1,068,356 euros.",
+  "site": "https://www.bilbao.eus",
+  "city": "Bilbao",
+  "country": "Spain",
+  "address": "Plaza Ernesto Erkoreka, Bilbao",
+  "status": "done",
+  "sources": [
+   "https://orain.eus/es/politica/2025/12/29/el-ayuntamiento-bilbao-aprueba-su-presupuesto-2026-el-tradicional-brindis-fin-ano/",
+   "https://www.deia.eus/cultura/2025/11/12/bilbao-destinara-49-8-millones-10336563.html",
+   "https://en.wikipedia.org/wiki/Bilbao_City_Council"
+  ],
+  "batch": "fp25"
  },
  "cityofcopenhagen|Denmark": {
   "name": "Københavns Kommune",
@@ -3047,6 +3444,25 @@
   ],
   "batch": "fp21"
  },
+ "cityofdortmund|Germany": {
+  "name": "Stadt Dortmund",
+  "short": "City of Dortmund",
+  "kind": "gov",
+  "what": "The city government of Dortmund, an independent city of 600,880 inhabitants (31 December 2025) in North Rhine-Westphalia and the largest city of the Ruhr.",
+  "money": "The municipal budget, which the city council set as a two-year plan for 2025 and 2026 on 12 December 2024.",
+  "arts": "Its municipal enterprise Kulturbetriebe Dortmund has run the city's museums, libraries and culture office since 1995; its 2027 plan foresees a city subsidy of 86.6 million euros.",
+  "site": "https://www.dortmund.de",
+  "city": "Dortmund",
+  "country": "Germany",
+  "address": "Friedensplatz 1, 44135 Dortmund",
+  "status": "done",
+  "sources": [
+   "https://www.dortmund.de/rathaus/verwaltung/kulturbetriebe/",
+   "https://www.dortmund.de/newsroom/nachrichten-dortmund.de/dortmund-spart-und-investiert-in-die-zukunft-rat-beschliesst-mit-grosser-mehrheit-doppelhaushalt.html",
+   "https://de.wikipedia.org/wiki/Dortmund"
+  ],
+  "batch": "fp27"
+ },
  "cityofdsseldorf|Germany": {
   "name": "Landeshauptstadt Düsseldorf",
   "short": "City of Düsseldorf",
@@ -3111,6 +3527,25 @@
    "https://www.kultur-frankfurt.de/portal/en/Press/FieldofResponsibility/1711/1713/0/0/1453.aspx"
   ],
   "batch": "fp15"
+ },
+ "cityoffribourg|Switzerland": {
+  "name": "Ville de Fribourg",
+  "short": "City of Fribourg",
+  "kind": "gov",
+  "what": "The communal government of Fribourg, Switzerland, led by a five-member full-time Conseil communal under a syndic, with an 80-member Conseil général as its assembly.",
+  "money": "The communal budget, fed by taxes on residents and companies; the Conseil général approved the 2026 budget on 9 and 10 December 2025.",
+  "site": "https://www.ville-fribourg.ch",
+  "city": "Fribourg",
+  "country": "Switzerland",
+  "address": "Place de l'Hôtel-de-Ville 3, 1700 Fribourg",
+  "status": "done",
+  "sources": [
+   "https://www.ville-fribourg.ch/sites/default/files/inline-files/Synthese%20modifications%20Budget%202026%20apres%20CG%20-%20signee.pdf",
+   "https://www.ville-fribourg.ch/sites/default/files/inline-files/Budget-2026_Fascicule%20WEB.pdf",
+   "https://www.ville-fribourg.ch/finances/budget",
+   "https://fr.wikipedia.org/wiki/Fribourg_(ville_suisse)"
+  ],
+  "batch": "fp27"
  },
  "cityofgeneva|Switzerland": {
   "name": "Ville de Genève",
@@ -3250,6 +3685,42 @@
   ],
   "batch": "fp21"
  },
+ "cityoflondonfunding|United Kingdom": {
+  "name": "City of London Corporation",
+  "kind": "gov",
+  "what": "The municipal governing body of the City of London, based at Guildhall, with a Lord Mayor, a Court of Aldermen and a Court of Common Council.",
+  "money": "Three funds: the City Fund of grants, business rates and council tax, the City's Estate endowment of property income, and the City Bridge Foundation charity.",
+  "arts": "City's Estate pays for the Guildhall School of Music & Drama, and City Bridge Foundation has made grants from its investment portfolio since 1995.",
+  "site": "https://www.cityoflondon.gov.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "Guildhall, London",
+  "status": "done",
+  "sources": [
+   "https://www.cityoflondon.gov.uk/about-us/budgets-spending/city-of-london-funds",
+   "https://www.cityoflondon.gov.uk/about-us/about-the-city-of-london-corporation",
+   "https://en.wikipedia.org/wiki/City_of_London_Corporation"
+  ],
+  "batch": "fp25"
+ },
+ "cityoflondon|United Kingdom": {
+  "name": "City of London Corporation",
+  "kind": "gov",
+  "what": "The municipal governing body of the City of London, based at Guildhall, with a Lord Mayor, a Court of Aldermen and a Court of Common Council.",
+  "money": "Three funds: the City Fund of grants, business rates and council tax, the City's Estate endowment of property income, and the City Bridge Foundation charity.",
+  "arts": "City's Estate pays for the Guildhall School of Music & Drama, and City Bridge Foundation has made grants from its investment portfolio since 1995.",
+  "site": "https://www.cityoflondon.gov.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "Guildhall, London",
+  "status": "done",
+  "sources": [
+   "https://www.cityoflondon.gov.uk/about-us/budgets-spending/city-of-london-funds",
+   "https://www.cityoflondon.gov.uk/about-us/about-the-city-of-london-corporation",
+   "https://en.wikipedia.org/wiki/City_of_London_Corporation"
+  ],
+  "batch": "fp25"
+ },
  "cityofmainz|Germany": {
   "name": "Landeshauptstadt Mainz",
   "short": "City of Mainz",
@@ -3266,6 +3737,22 @@
    "https://de.wikipedia.org/wiki/Mainz"
   ],
   "batch": "fp21"
+ },
+ "cityofmechelen|Belgium": {
+  "name": "Stad Mechelen",
+  "short": "City of Mechelen",
+  "kind": "gov",
+  "what": "The city government of Mechelen in the Belgian province of Antwerp, a city of 90,355 inhabitants on 1 January 2026 and the sixth largest in Flanders.",
+  "money": "Local taxes and fees, which brought in 1,211 euros per inhabitant from residents and businesses at the end of 2024.",
+  "site": "https://www.mechelen.be",
+  "city": "Mechelen",
+  "country": "Belgium",
+  "status": "done",
+  "sources": [
+   "https://www.vrt.be/vrtnws/nl/2026/01/29/mechelen-meerjarenplan-bestuur-2026-2031/",
+   "https://nl.wikipedia.org/wiki/Mechelen_(stad)"
+  ],
+  "batch": "fp27"
  },
  "cityofmontbliard|France": {
   "name": "Ville de Montbéliard",
@@ -3300,6 +3787,25 @@
    "https://en.wikipedia.org/wiki/Oakland,_California"
   ],
   "batch": "fp9"
+ },
+ "cityofoslo|Norway": {
+  "name": "Oslo kommune",
+  "short": "City of Oslo",
+  "kind": "gov",
+  "what": "The municipality of Oslo, Norway's capital, which carries both municipal and county functions and is run on a parliamentary model with a city government (byråd).",
+  "money": "The city budget, adopted for 2026 by the city council on 11 December 2025 and later adjusted for higher tax revenue.",
+  "arts": "Its culture agency Kulturetaten gives grants and stipends for art and culture and runs the Vigeland Museum and the city's art collection.",
+  "site": "https://www.oslo.kommune.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "address": "Rådhusplassen 1, 0037 Oslo",
+  "status": "done",
+  "sources": [
+   "https://www.oslo.kommune.no/etater-foretak-og-ombud/kulturetaten/",
+   "https://www.oslo.kommune.no/politikk/budsjett-regnskap-og-rapportering/budsjett-2026/",
+   "https://no.wikipedia.org/wiki/Oslo_kommune"
+  ],
+  "batch": "fp27"
  },
  "cityofparis|France": {
   "name": "Ville de Paris",
@@ -3438,6 +3944,25 @@
   ],
   "batch": "fp9"
  },
+ "cityofturinculturaldepartment|Italy": {
+  "name": "Città di Torino",
+  "short": "City of Turin",
+  "kind": "gov",
+  "what": "The municipality of Turin, capital of Piedmont, with its seat at Piazza Palazzo di Città; Stefano Lo Russo has been mayor since 27 October 2021.",
+  "money": "The municipal budget; its 2025 to 2027 plan repays a deficit of 577,654,134 euros at 66,980,863 euros a year.",
+  "arts": "The 2025 to 2027 budget sets current spending on culture, events, sport, tourism and commerce at 36,406,769 euros for 2025.",
+  "site": "https://www.comune.torino.it",
+  "city": "Turin",
+  "country": "Italy",
+  "address": "Piazza Palazzo di Città 1, 10122 Torino",
+  "status": "done",
+  "sources": [
+   "https://risorse.comune.torino.it/bilancio/pdf/2025/presentazione_bilancio_2025-2027.pdf",
+   "https://www.comune.torino.it/amministrazione/uffici",
+   "https://it.wikipedia.org/wiki/Torino"
+  ],
+  "batch": "fp25"
+ },
  "cityofutrecht|Netherlands": {
   "name": "Gemeente Utrecht",
   "short": "City of Utrecht",
@@ -3488,6 +4013,26 @@
   ],
   "batch": "fp9"
  },
+ "cityofwarsawculturaldepartment|Poland": {
+  "name": "Urząd m.st. Warszawy",
+  "short": "City of Warsaw",
+  "kind": "gov",
+  "what": "The city government of Warsaw, Poland's capital: a mayor, Rafał Trzaskowski, and a council of 60 members regulated by the Warsaw Act of 2002.",
+  "money": "The city budget: income of 28.125 billion zloty in 2025, including shares of personal and corporate income tax.",
+  "arts": "The 2025 budget put 130.2 million zloty into modernising the Congress Hall and 100.4 million zloty into the Sinfonia Varsovia concert hall project.",
+  "site": "https://um.warszawa.pl",
+  "city": "Warsaw",
+  "country": "Poland",
+  "address": "Plac Bankowy 3/5, 00-950 Warszawa",
+  "status": "done",
+  "sources": [
+   "https://www.rmf24.pl/regiony/warszawa/news-warszawa-rafal-trzaskowski-nad-ranem-uzyskal-absolutorium-ra,nIdn,1007716",
+   "https://tvn24.pl/tvnwarszawa/srodmiescie/warszawa-budzet-na-przyszly-rok-uchwalony-st8220228",
+   "https://warszawa19115.pl/-/dane-teleadresowe-urzedu-m-st-warszawy",
+   "https://en.wikipedia.org/wiki/Warsaw_City_Council"
+  ],
+  "batch": "fp25"
+ },
  "cityofwinnipeg|Canada": {
   "name": "City of Winnipeg",
   "kind": "gov",
@@ -3523,6 +4068,24 @@
    "https://en.wikipedia.org/wiki/Zagreb"
   ],
   "batch": "fp13"
+ },
+ "cityofzurichculturedepartment|Switzerland": {
+  "name": "Stadt Zürich Kultur",
+  "short": "City of Zurich Culture Department",
+  "kind": "gov",
+  "what": "The culture department (Dienstabteilung Kultur) of the City of Zurich, organised in six funding sections that include visual art and film.",
+  "money": "The City of Zurich's budget; the Stadtrat sets the use of culture funds in a four-year Kulturleitbild, currently for 2024 to 2027.",
+  "arts": "It supports artists and cultural institutions with one-off contributions and recurring subsidies.",
+  "site": "https://www.stadt-zuerich.ch/kultur",
+  "city": "Zürich",
+  "country": "Switzerland",
+  "address": "Stadthausquai 17, 8001 Zürich",
+  "status": "done",
+  "sources": [
+   "https://www.stadt-zuerich.ch/de/stadtleben/kultur/kultur-foerdern.html",
+   "https://www.stadt-zuerich.ch/de/stadtleben/kultur/kulturauftrag/grundsaetze.html"
+  ],
+  "batch": "fp27"
  },
  "civilrightsdefenders": {
   "name": "Civil Rights Defenders",
@@ -3606,6 +4169,24 @@
    "https://en.wikipedia.org/wiki/French_Community_Commission"
   ],
   "batch": "fp9"
+ },
+ "colegioalemndecaliasmajorpatron": {
+  "name": "Corporación Cultural Colegio Alemán de Cali",
+  "short": "Colegio Alemán de Cali",
+  "kind": "priv",
+  "what": "A German school in Cali, started in 1935 as the Club Colegio Alemán for the children of German families and run since 1960 by the Corporación Cultural Colegio Alemán.",
+  "money": "In 1960 the corporation sought money from Germany's Foreign Ministry to buy a new school site.",
+  "site": "https://www.dscali.edu.co",
+  "city": "Cali",
+  "country": "Colombia",
+  "address": "Carrera 106A No. 18-160, Ciudad Jardín, Cali",
+  "status": "done",
+  "sources": [
+   "https://www.dscali.edu.co/colegio-aleman-de-cali/",
+   "https://www.dscali.edu.co/",
+   "https://www.elpais.com.co/informacion-comercial/colegio-aleman-de-cali-90-anos-de-influencia-en-el-sistema-educativo-0321.html"
+  ],
+  "batch": "fp26"
  },
  "collectiviteuropennedalsace": {
   "name": "Collectivité européenne d'Alsace",
@@ -3760,6 +4341,21 @@
    "https://en.wikipedia.org/wiki/DOEN_Foundation"
   ],
   "batch": "fp21"
+ },
+ "corningincorporatedismainfunder": {
+  "name": "Corning Incorporated",
+  "short": "Corning",
+  "kind": "corp",
+  "what": "An American technology company specialising in glass, ceramics and related materials, founded in 1851 by Amory Houghton as Bay State Glass Co. and headquartered in Corning, New York.",
+  "money": "Sales of specialty glass, ceramics, optical fibre and LCD glass, with revenue of US$15.63 billion in 2025.",
+  "site": "https://www.corning.com",
+  "city": "Corning",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Corning_Inc."
+  ],
+  "batch": "fp26"
  },
  "cosmooil": {
   "name": "Cosmo Oil Company, Limited",
@@ -4062,6 +4658,26 @@
   ],
   "batch": "fp15"
  },
+ "culturenorway": {
+  "name": "Kulturdirektoratet",
+  "short": "Arts and Culture Norway",
+  "kind": "gov",
+  "what": "A Norwegian state directorate set up on 1 January 2023 as secretariat for Kulturrådet (Arts Council Norway), Statens kunstnerstipend and Fond for lyd og bilde.",
+  "money": "The Norwegian state budget, through the Ministry of Culture and Equality.",
+  "arts": "Kulturrådet, an independent body created in 1965, manages the Norwegian Cultural Fund; the directorate handles around 20,000 applications a year.",
+  "site": "https://www.kulturdirektoratet.no",
+  "city": "Oslo",
+  "country": "Norway",
+  "address": "Mølleparken 2, 0459 Oslo",
+  "status": "done",
+  "sources": [
+   "https://www.kulturdirektoratet.no/om-oss",
+   "https://www.kulturdirektoratet.no/english",
+   "https://snl.no/Kulturr%C3%A5det",
+   "https://no.wikipedia.org/wiki/Kulturdirektoratet"
+  ],
+  "batch": "fp25"
+ },
  "cultuurfonds": {
   "name": "Cultuurfonds",
   "short": "Het Cultuurfonds",
@@ -4116,6 +4732,20 @@
    "https://www.ceskatelevize.cz/vse-o-ct/kontakty/"
   ],
   "batch": "fp24"
+ },
+ "dalhousie": {
+  "name": "Dalhousie University",
+  "kind": "gov",
+  "what": "A public research university in Halifax, Nova Scotia, established in 1818 as Dalhousie College by George Ramsay, 9th Earl of Dalhousie, then Lieutenant Governor of Nova Scotia.",
+  "money": "Provincial operating grants and tuition fees, with an endowment of C$1.0074 billion in 2025.",
+  "site": "https://www.dal.ca",
+  "city": "Halifax",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Dalhousie_University"
+  ],
+  "batch": "fp26"
  },
  "danireissctoexpansion": {
   "name": "Dani Reiss",
@@ -4397,6 +5027,42 @@
   ],
   "batch": "fp4"
  },
+ "deutscheklassenlotterie": {
+  "name": "Stiftung Deutsche Klassenlotterie Berlin",
+  "short": "LOTTO-Stiftung Berlin",
+  "kind": "found",
+  "what": "A public-law foundation set up by the State of Berlin under a law of 7 June 1974, operating since 1 January 1975 and supervised by the Senate's interior department.",
+  "money": "A levy of 20 percent of stakes plus the balance-sheet profit of Deutsche Klassenlotterie Berlin, the Berlin lottery, fixed by law.",
+  "arts": "It funds social, environmental, civic and cultural projects in Berlin and reports on its grants to the Berlin parliament every quarter.",
+  "site": "https://www.lotto-stiftung-berlin.de",
+  "city": "Berlin",
+  "country": "Germany",
+  "address": "Brandenburgische Str. 36, 10707 Berlin",
+  "status": "done",
+  "sources": [
+   "https://www.lotto-stiftung-berlin.de/wir-%C3%BCber-uns/",
+   "https://www.lotto-stiftung-berlin.de/impressum/",
+   "https://de.wikipedia.org/wiki/Stiftung_Deutsche_Klassenlotterie_Berlin"
+  ],
+  "batch": "fp27"
+ },
+ "diaartendowment": {
+  "name": "Dia Art Foundation",
+  "kind": "found",
+  "what": "A New York nonprofit for contemporary art, set up in 1974 by Philippa de Menil, the art dealer Heiner Friedrich and the art historian Helen Winkler.",
+  "money": "Founded on Philippa de Menil's Schlumberger oil fortune; today contributions and investment income, $24,122,046 and $14,446,583 in the year to June 2025.",
+  "arts": "It maintains long-term installations and site-specific projects beyond its exhibition spaces at Dia Beacon and Dia Chelsea.",
+  "site": "https://www.diaart.org",
+  "city": "New York",
+  "country": "United States",
+  "address": "535 West 22nd Street, New York",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Dia_Art_Foundation",
+   "https://projects.propublica.org/nonprofits/organizations/237397946"
+  ],
+  "batch": "fp25"
+ },
  "didrichsenart": {
   "name": "Didrichsens konstmuseum sr",
   "short": "Didrichsen Art Foundation",
@@ -4448,6 +5114,25 @@
    "https://en.wikipedia.org/wiki/Christian_Dior_SE"
   ],
   "batch": "fp9"
+ },
+ "directorategeneralforarts": {
+  "name": "Direção-Geral das Artes",
+  "short": "DGARTES",
+  "kind": "gov",
+  "what": "The Portuguese government's directorate-general for the arts, which coordinates state support policies for the arts from its offices at Campo Grande in Lisbon.",
+  "money": "Portuguese State funds for arts support, which it sets out each year in its Declaração Anual.",
+  "arts": "Its Programa de Apoio a Projetos 2025 had €13.35 million for six competitions, the same amount as in 2023 and 2024.",
+  "site": "https://www.dgartes.gov.pt",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "address": "Campo Grande, 83 - 1º, 1700-088 Lisboa",
+  "status": "done",
+  "sources": [
+   "https://www.gov.pt/entidades/direcao-geral-das-artes",
+   "https://www.dgartes.gov.pt/",
+   "https://observador.pt/2025/01/17/declaracao-anual-da-dgartes-mantem-inalterados-valores-dos-concursos-de-apoio-a-projetos/"
+  ],
+  "batch": "fp26"
  },
  "dlgsc": {
   "name": "Department of Creative Industries, Tourism and Sport",
@@ -4635,6 +5320,26 @@
    "https://www.culture.gouv.fr/Regions/DRAC-Nouvelle-Aquitaine"
   ],
   "batch": "fp10"
+ },
+ "dreweattsauctioneers": {
+  "name": "Dreweatts 1759 Limited",
+  "short": "Dreweatts",
+  "kind": "corp",
+  "what": "An auction house established in 1759, with its main saleroom at Donnington Priory in Newbury, Berkshire, and a London showroom on Pall Mall; Gurr Johns controlled it until October 2026.",
+  "money": "Income from its auctions and from valuation services.",
+  "site": "https://www.dreweatts.com",
+  "city": "Newbury",
+  "country": "United Kingdom",
+  "address": "Donnington Priory, Newbury, Berkshire RG14 2JE",
+  "status": "done",
+  "sources": [
+   "https://find-and-update.company-information.service.gov.uk/company/10758982/persons-with-significant-control",
+   "https://dreweatts.com/about/about-us/",
+   "https://www.dreweatts.com/about/the-history-of-dreweatts/",
+   "https://www.dreweatts.com/contact-us/",
+   "https://find-and-update.company-information.service.gov.uk/search/companies?q=dreweatts+1759"
+  ],
+  "batch": "fp26"
  },
  "droomendaad": {
   "name": "Stichting Droom en Daad",
@@ -5067,6 +5772,24 @@
    "https://www.gramwzielone.pl/?p=106333"
   ],
   "batch": "fp10"
+ },
+ "epmmunicipalutility|Colombia": {
+  "name": "Empresas Públicas de Medellín",
+  "short": "EPM",
+  "kind": "corp",
+  "what": "A public utility company organised as a state industrial and commercial enterprise, owned by the District of Medellín, where it began operating in 1955.",
+  "money": "Sales of electricity, piped gas, water and sanitation: Grupo EPM reported consolidated income of 40.6 trillion Colombian pesos for 2025.",
+  "site": "https://www.epm.com.co",
+  "city": "Medellín",
+  "country": "Colombia",
+  "address": "Carrera 58 # 42-125, Medellín",
+  "status": "done",
+  "sources": [
+   "https://www.epm.com.co/institucional/sobre-epm/quienes-somos.html",
+   "https://forbes.co/negocios/epm-obtuvo-53-billones-en-utilidades-y-406-billones-en-ingresos-en-2025",
+   "https://en.wikipedia.org/wiki/Empresas_P%C3%BAblicas_de_Medell%C3%ADn"
+  ],
+  "batch": "fp25"
  },
  "ernstvonsiemenskunststiftung": {
   "name": "Ernst von Siemens Kunststiftung",
@@ -6353,6 +7076,21 @@
   ],
   "batch": "fp12"
  },
+ "fundaodeserralvesendowment": {
+  "name": "Fundação de Serralves",
+  "short": "Serralves Foundation",
+  "kind": "found",
+  "what": "A foundation in Porto created by Decree-Law 240-A/89 of 27 July 1989 as a partnership between the Portuguese State and about 51 public and private bodies.",
+  "money": "Contributions from its 181 founders, which include companies and private individuals, alongside cooperation with the State.",
+  "site": "https://www.serralves.pt",
+  "city": "Porto",
+  "country": "Portugal",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Serralves"
+  ],
+  "batch": "fp26"
+ },
  "fundaomanuelantniodamota": {
   "name": "Fundação Manuel António da Mota",
   "kind": "found",
@@ -6480,6 +7218,22 @@
   ],
   "batch": "fp12"
  },
+ "gateshead": {
+  "name": "Gateshead Council",
+  "kind": "gov",
+  "what": "The local authority for the Metropolitan Borough of Gateshead in Tyne and Wear, created in 1974 under the Local Government Act 1972 and based at Gateshead Civic Centre.",
+  "money": "Council Tax supplied 39% of its income, according to its 2024-25 budget page, alongside government funding.",
+  "site": "https://www.gateshead.gov.uk",
+  "city": "Gateshead",
+  "country": "United Kingdom",
+  "address": "Civic Centre, Regent Street, Gateshead NE8 1HH",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Gateshead_Council",
+   "https://web.archive.org/web/20231217225729/https://www.gateshead.gov.uk/article/25729/Budget-2024-25"
+  ],
+  "batch": "fp26"
+ },
  "gazpromfinancedparks": {
   "name": "PJSC Gazprom",
   "short": "Gazprom",
@@ -6516,6 +7270,24 @@
   ],
   "batch": "fp13"
  },
+ "gemeenterotterdam|Netherlands": {
+  "name": "Gemeente Rotterdam",
+  "short": "City of Rotterdam",
+  "kind": "gov",
+  "what": "The municipality of Rotterdam, governed by a directly elected council of 45 members and a college of mayor and aldermen.",
+  "money": "The municipal budget, about two thirds of it from the national government and other authorities in the 2026 budget.",
+  "site": "https://www.rotterdam.nl",
+  "city": "Rotterdam",
+  "country": "Netherlands",
+  "address": "Coolsingel 40, 3011 AD Rotterdam",
+  "status": "done",
+  "sources": [
+   "https://www.watdoetdegemeente.rotterdam.nl/media/njhjvbce/eindejaarsbrief-2025.pdf",
+   "https://nl.wikipedia.org/wiki/Rotterdam_(gemeente)",
+   "https://organisaties.overheid.nl/30414289/Dhr_S_Leewis/"
+  ],
+  "batch": "fp25"
+ },
  "genelec": {
   "name": "Genelec Oy",
   "short": "Genelec",
@@ -6533,6 +7305,25 @@
    "https://www.asiakastieto.fi/yritykset/fi/genelec-oy/02011934/taloustiedot"
   ],
   "batch": "fp13"
+ },
+ "generalitatdecatalunyadepartmentofculture|Spain": {
+  "name": "Departament de Cultura de la Generalitat de Catalunya",
+  "short": "Catalan Department of Culture",
+  "kind": "gov",
+  "what": "The culture department of the Generalitat de Catalunya, the Catalan government, seated at the Palau Marc on the Rambla in Barcelona; Sònia Hernández has been minister since 12 August 2024.",
+  "money": "The budget of the Generalitat: 574 million euros for 2026, 1.8 percent of the Catalan government's accounts.",
+  "arts": "It manages cultural heritage, archives and museums, the cultural industries and Catalan traditional and popular culture.",
+  "site": "https://cultura.gencat.cat",
+  "city": "Barcelona",
+  "country": "Spain",
+  "address": "Palau Marc, Rambla 8, Barcelona",
+  "status": "done",
+  "sources": [
+   "https://en.ara.cat/culture/the-culture-budget-grows-to-574-million-euros-and-exceeds-1-8-of-the-generalitat-s-accounts_25_5751524.html",
+   "https://ca.wikipedia.org/wiki/Departament_de_Cultura_de_la_Generalitat_de_Catalunya",
+   "https://cultura.gencat.cat/ca/departament/"
+  ],
+  "batch": "fp25"
  },
  "generalpartnerkomernbanka": {
   "name": "Komerční banka, a.s.",
@@ -6753,6 +7544,39 @@
   ],
   "batch": "fp13"
  },
+ "glasgowcitycouncil|United Kingdom": {
+  "name": "Glasgow City Council",
+  "kind": "gov",
+  "what": "The local authority for the Glasgow City council area, the most populous of Scotland's 32, a unitary authority since 1 April 1996 with 85 councillors.",
+  "money": "The council's annual budget, set by a vote of its councillors.",
+  "site": "https://www.glasgow.gov.uk",
+  "city": "Glasgow",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Glasgow_City_Council",
+   "https://www.glasgowlife.org.uk/about-us/colleague-information/colleague-news/glasgow-city-council-budget-2026-27"
+  ],
+  "batch": "fp26"
+ },
+ "glasgowliferun": {
+  "name": "Culture and Sport Glasgow",
+  "short": "Glasgow Life",
+  "kind": "gov",
+  "what": "A charity and company formed in December 2006 and controlled by Glasgow City Council, for which it runs arts, music, sport, events, festivals and libraries.",
+  "money": "A service fee from Glasgow City Council, about 60 percent of income, plus what its culture and sport programmes earn.",
+  "site": "https://www.glasgowlife.org.uk",
+  "city": "Glasgow",
+  "country": "United Kingdom",
+  "address": "Commonwealth House, 38 Albion Street, Glasgow G1 1LH",
+  "status": "done",
+  "sources": [
+   "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC037844",
+   "https://www.glasgowlife.org.uk/about-us",
+   "https://en.wikipedia.org/wiki/Glasgow_Life"
+  ],
+  "batch": "fp25"
+ },
  "glasshousetrusthesettled": {
   "name": "The Glass-House Trust",
   "kind": "found",
@@ -6872,6 +7696,22 @@
   ],
   "batch": "fp2"
  },
+ "governmentofsindhownspalace|Pakistan": {
+  "name": "Government of Sindh",
+  "kind": "gov",
+  "what": "The provincial government of Sindh, Pakistan, seated in Karachi and headed by a Chief Minister, with powers set out in the 1973 Constitution.",
+  "money": "The provincial budget, which the Sindh Assembly passed for 2026-27 with a total outlay of Rs3.652 trillion.",
+  "arts": "Its Culture, Tourism & Antiquities Department is one of its secretariat departments.",
+  "site": "https://www.sindh.gov.pk",
+  "city": "Karachi",
+  "country": "Pakistan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Sindh",
+   "https://profit.pakistantoday.com.pk/2026/06/29/sindh-assembly-passes-rs3652-trillion-budget-rejects-1600-opposition-cut-motions"
+  ],
+  "batch": "fp26"
+ },
  "grandcasinodelyonlepharaonaspartenairehistorique": {
   "name": "Grand Casino de Lyon Le Pharaon",
   "short": "Le Pharaon",
@@ -6889,6 +7729,40 @@
    "https://www.boursorama.com/bourse/actualites/groupe-partouche-devoile-son-chiffre-d-affaires-annuel-ea67e2712d04d1a77e8d88b455bab784"
   ],
   "batch": "fp13"
+ },
+ "greaterlondonauthoritypublicfunding": {
+  "name": "Greater London Authority",
+  "short": "GLA",
+  "kind": "gov",
+  "what": "The devolved regional government of Greater London, established in 2000 and made up of the Mayor of London and the 25-member London Assembly.",
+  "money": "Government grants and retained business rates of £8,466.8 million and £1,667.0 million from council tax payers in its 2026 to 2027 budget.",
+  "site": "https://www.london.gov.uk",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "City Hall, Kamal Chunchie Way, London E16 1ZE",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Greater_London_Authority",
+   "https://haringey.gov.uk/council-tax/what-council-tax-bands-bills/your-council-tax-greater-london-authority-gla",
+   "https://www.london.gov.uk/who-we-are/city-halls-buildings-and-squares/how-find-city-hall"
+  ],
+  "batch": "fp26"
+ },
+ "greatersheppartoncouncil|Australia": {
+  "name": "Greater Shepparton City Council",
+  "kind": "gov",
+  "what": "The local council for the City of Greater Shepparton, a local government area in the Hume region of Victoria, Australia, established in 1994.",
+  "money": "The council's annual budget.",
+  "site": "https://greatershepparton.com.au",
+  "city": "Shepparton",
+  "country": "Australia",
+  "address": "90 Welsford Street, Shepparton VIC 3630",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Greater_Shepparton",
+   "https://ovic.vic.gov.au/agency/greater-shepparton-city-council/"
+  ],
+  "batch": "fp26"
  },
  "greekministryofculture|Greece": {
   "name": "Hellenic Ministry of Culture",
@@ -7175,6 +8049,24 @@
    "https://www.hamberfoundation.ca/"
   ],
   "batch": "fp13"
+ },
+ "hamburgministryofculture|Germany": {
+  "name": "Behörde für Kultur und Medien",
+  "short": "Hamburg Ministry of Culture and Media",
+  "kind": "gov",
+  "what": "One of eleven departments of the Senate of the Free and Hanseatic City of Hamburg, responsible for culture and media policy; Carsten Brosda has headed it since February 2017.",
+  "money": "The Hamburg state budget: 461 million euros for culture and media in 2025 and 474 million euros in 2026.",
+  "arts": "Its culture office covers theatre, music, the Elbphilharmonie, art, museums, libraries and remembrance culture.",
+  "site": "https://www.hamburg.de/politik-und-verwaltung/behoerden/behoerde-fuer-kultur-und-medien",
+  "city": "Hamburg",
+  "country": "Germany",
+  "address": "Hohe Bleichen 22, Hamburg",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Beh%C3%B6rde_f%C3%BCr_Kultur_und_Medien",
+   "https://politikkultur.de/inland/hamburg-wie-steht-es-um-die-kulturfinanzierung-2/"
+  ],
+  "batch": "fp25"
  },
  "hanafinancial": {
   "name": "Hana Financial Group Inc.",
@@ -7518,6 +8410,25 @@
    "https://de.wikipedia.org/wiki/Hermann-Hinrich_Reemtsma"
   ],
   "batch": "fp14"
+ },
+ "hessianministryforscience|Germany": {
+  "name": "Hessisches Ministerium für Wissenschaft und Forschung, Kunst und Kultur",
+  "short": "Hessian Ministry of Science and Research, Arts and Culture",
+  "kind": "gov",
+  "what": "The higher education and culture ministry of the German state of Hesse, split from the Hessian Kultusministerium on 4 July 1984; Timon Gremmels is minister.",
+  "money": "The state budget of Hesse.",
+  "arts": "The 2025 budget added over 2 million euros for the documenta in Kassel and 1.2 million euros for music schools.",
+  "site": "https://wissenschaft.hessen.de",
+  "city": "Wiesbaden",
+  "country": "Germany",
+  "address": "Rheinstraße 23-25, 65185 Wiesbaden",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Hessisches_Ministerium_f%C3%BCr_Wissenschaft_und_Forschung,_Kunst_und_Kultur",
+   "https://politikkultur.de/inland/hessen-wie-steht-es-um-die-kulturfinanzierung/",
+   "https://wissenschaft.hessen.de/sites/wissenschaft.hessen.de/files/2026-04/20260415_organigramm_hmwk_extern.pdf"
+  ],
+  "batch": "fp25"
  },
  "hetblaaksebos": {
   "name": "Stichting Het Blaakse Bos",
@@ -8186,6 +9097,23 @@
   ],
   "batch": "fp3",
   "renamed": "The Cologne, Beijing and Havana sentences describe gifts by Peter and Irene Ludwig themselves; the 1976 Museum Ludwig gift came before the foundation existed."
+ },
+ "italianministryofculture|Italy": {
+  "name": "Ministero della Cultura",
+  "short": "Italian Ministry of Culture",
+  "kind": "gov",
+  "what": "The Italian government ministry for national museums and historical monuments, set up in 1974 as the Ministry for Cultural Assets and Environments; Alessandro Giuli is minister.",
+  "money": "The Italian state budget: the 2026 budget law authorises 3,066.6 million euros of spending for it, 190.8 million less than in 2025.",
+  "site": "https://cultura.gov.it",
+  "city": "Rome",
+  "country": "Italy",
+  "address": "Via del Collegio Romano 27, Rome",
+  "status": "done",
+  "sources": [
+   "https://temi.camera.it/leg19/temi/legge-di-bilancio-2026-le-disposizioni-di-interesse-della-vii-commissione.html",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Italy)"
+  ],
+  "batch": "fp25"
  },
  "italysmondotv": {
   "name": "Mondo TV S.p.A.",
@@ -9497,6 +10425,41 @@
   ],
   "batch": "fp16"
  },
+ "lindapaceendowment": {
+  "name": "Linda Pace Foundation",
+  "kind": "found",
+  "what": "A private foundation in San Antonio, founded in 2003 as owner and steward of the art collection of Linda Pace (1945 to 2007), founder of Artpace.",
+  "money": "The fortune of Linda Pace, whose parents owned Pace Foods, with total assets of $95,476,515 in 2024.",
+  "arts": "It runs the exhibition spaces Ruby City and Studio in San Antonio and lends works from its collection to museums.",
+  "site": "https://www.rubycity.org",
+  "city": "San Antonio",
+  "country": "United States",
+  "address": "150 Camp St, San Antonio, TX",
+  "status": "done",
+  "sources": [
+   "https://www.rubycity.org/about/",
+   "https://projects.propublica.org/nonprofits/organizations/43757853",
+   "https://en.wikipedia.org/wiki/Linda_Pace"
+  ],
+  "batch": "fp26"
+ },
+ "linzagascorepartners": {
+  "name": "LINZ AG für Energie, Telekommunikation, Verkehr und Kommunale Dienste",
+  "short": "LINZ AG",
+  "kind": "corp",
+  "what": "A utility holding company formed in October 2000 from the merger of ESG and Stadtbetriebe Linz, wholly owned by the City of Linz through its holding company.",
+  "money": "Energy supply, municipal services and public transport in Linz and 115 other municipalities: revenue of 1,182.8 million euros in the year to 30 September 2025.",
+  "site": "https://www.linzag.at",
+  "city": "Linz",
+  "country": "Austria",
+  "address": "Wiener Straße 151, 4021 Linz",
+  "status": "done",
+  "sources": [
+   "https://www.linzag.at/media/dokumente/infomaterial_2/Auf_einen_Blick_2025.pdf",
+   "https://de.wikipedia.org/wiki/Linz_AG"
+  ],
+  "batch": "fp25"
+ },
  "littlegreene": {
   "name": "The Little Greene Paint Company Limited",
   "short": "Little Greene",
@@ -10136,6 +11099,23 @@
   ],
   "batch": "fp17"
  },
+ "merian": {
+  "name": "Christoph Merian Stiftung",
+  "kind": "found",
+  "what": "A public-law foundation in Basel created by the 1857 will of Christoph Merian (1800 to 1858), active since 3 May 1886 under the supervision of the Bürgergemeinde der Stadt Basel.",
+  "money": "Income from CHF 1.8 billion of yield assets in 2025, made up of rental property, building leases and an equity fund.",
+  "arts": "Its culture department runs the Cartoonmuseum Basel and the Christoph Merian Verlag, and total giving in 2025 was CHF 23 million.",
+  "site": "https://www.cms-basel.ch",
+  "city": "Basel",
+  "country": "Switzerland",
+  "address": "St. Alban-Vorstadt 12, 4052 Basel",
+  "status": "done",
+  "sources": [
+   "https://www.cms-basel.ch/en/about-us",
+   "https://de.wikipedia.org/wiki/Christoph_Merian_Stiftung"
+  ],
+  "batch": "fp26"
+ },
  "merribekcouncil|Australia": {
   "name": "Merri-bek City Council",
   "kind": "gov",
@@ -10253,6 +11233,26 @@
   ],
   "batch": "fp17"
  },
+ "mikekelleyforarts": {
+  "name": "Mike Kelley Foundation for the Arts",
+  "kind": "found",
+  "what": "A private grantmaking foundation in Los Angeles, established in 2007 by the artist Mike Kelley, which also keeps his art collection and archives.",
+  "money": "Its own assets, $87,212,377 at the end of 2025; contributions that year were $13,900.",
+  "arts": "Its Artist Project Grants gave $400,000 to ten Los Angeles organisations in 2019; its Infinite Expansion Grants offer up to $50,000 per project.",
+  "site": "https://mikekelleyfoundation.org",
+  "city": "Los Angeles",
+  "country": "United States",
+  "address": "7019 N. Figueroa Street, Los Angeles, CA 90042",
+  "status": "done",
+  "sources": [
+   "https://mikekelleyfoundation.org/foundation/mission",
+   "https://projects.propublica.org/nonprofits/organizations/300434789",
+   "https://mikekelleyfoundation.org/news/2019/mike-kelley-foundation-2019-artist-project-grants-announced",
+   "https://mikekelleyfoundation.org/grants/overview",
+   "https://mikekelleyfoundation.org/"
+  ],
+  "batch": "fp25"
+ },
  "ministerofheritage": {
   "name": "Ministry of Heritage and Tourism",
   "kind": "gov",
@@ -10285,6 +11285,60 @@
    "https://www.senat.fr/rap/l25-139-37/l25-139-37_mono.html"
   ],
   "batch": "fp3"
+ },
+ "ministryofcultureczechrepublic|Czech Republic": {
+  "name": "Ministerstvo kultury České republiky",
+  "short": "Czech Ministry of Culture",
+  "kind": "gov",
+  "what": "The Czech government ministry for culture, established in 1969 and seated in the Nostický palác in Prague; Oto Klempíř is minister.",
+  "money": "The Czech state budget: 17,228,038,390 koruna for 2026, down from 19,656,512,686 koruna in 2025.",
+  "site": "https://mk.gov.cz",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "address": "Maltézské náměstí 1, 118 11 Praha 1",
+  "status": "done",
+  "sources": [
+   "https://mf.gov.cz/cs/ministerstvo/media/tiskove-zpravy/2026/snemovna-schvalila-zakon-o-statnim-rozpoctu-2026-63269",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Czech_Republic)"
+  ],
+  "batch": "fp25"
+ },
+ "ministryofcultures|Colombia": {
+  "name": "Ministerio de las Culturas, las Artes y los Saberes",
+  "short": "Colombian Ministry of Cultures",
+  "kind": "gov",
+  "what": "Colombia's national culture ministry, created as the Ministerio de Cultura by Law 397 of 1997 and renamed by Law 2319 of 2023, housed in Bogotá's Palacio Echeverry since 2004.",
+  "money": "Colombia's national government budget, from which the ministry had COP 1.09 trillion (1,09 billones) in 2025.",
+  "arts": "Of the COP 4.27 trillion it received from 2023 to 2025, 18% went to the country's five largest cities.",
+  "site": "https://www.mincultura.gov.co",
+  "city": "Bogotá",
+  "country": "Colombia",
+  "address": "Calle 9 No. 8-31, Bogotá",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ministerio_de_las_Culturas,_las_Artes_y_los_Saberes",
+   "https://www.elespectador.com/el-magazin-cultural/la-sostenibilidad-del-ministerio-de-las-culturas-y-los-eventos-que-marcaran-2026/"
+  ],
+  "batch": "fp27"
+ },
+ "ministryofculture|North Macedonia": {
+  "name": "Министерство за култура и туризам",
+  "short": "Ministry of Culture and Tourism of North Macedonia",
+  "kind": "gov",
+  "what": "The North Macedonian government ministry for culture and tourism, seated in Skopje; Sedat Sulejmani has been minister since 14 July 2026.",
+  "money": "The state budget of North Macedonia.",
+  "arts": "Its 2025 budget for projects of national interest was 814 million denars (13.23 million euros), supporting 1,365 of 2,888 entries.",
+  "site": "https://kultura.gov.mk",
+  "city": "Skopje",
+  "country": "North Macedonia",
+  "address": "Gjuro Gjakovikj 61, Skopje",
+  "status": "done",
+  "sources": [
+   "https://kultura.gov.mk/",
+   "https://mia.mk/story/minister-of-culture-and-tourism-announces-projects-to-be-supported-in-2025",
+   "https://filmneweurope.com/news/macedonia-news/item/128122-north-macedonia-appoints-new-minister-of-culture-and-tourism"
+  ],
+  "batch": "fp25"
  },
  "ministryofculture|bergen-kunsthall-norway": {
   "name": "Kultur- og likestillingsdepartementet",
@@ -10551,6 +11605,23 @@
   ],
   "batch": "fp16"
  },
+ "municipalityofbudapest|Hungary": {
+  "name": "Budapest Főváros Önkormányzata",
+  "short": "Municipality of Budapest",
+  "kind": "gov",
+  "what": "The municipal government of Budapest, led by a mayor and a 33-seat General Assembly that meets at City Hall on Városház Street.",
+  "money": "Local business tax is its largest income, expected at HUF 318.6 billion within a 2026 budget of HUF 532.5 billion.",
+  "site": "https://budapest.hu",
+  "city": "Budapest",
+  "country": "Hungary",
+  "address": "Városház utca 9-11, 1052 Budapest",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/General_Assembly_of_Budapest",
+   "https://telex.hu/belfold/2025/12/17/fovarosi-kozgyules-koltsegvetes-vita-szavazas-airbnb-rakoczi-csarnok-budapest"
+  ],
+  "batch": "fp26"
+ },
  "municipalityofhagueculturalallocation|Netherlands": {
   "name": "Gemeente Den Haag",
   "short": "City of The Hague",
@@ -10571,6 +11642,23 @@
    "https://nl.wikipedia.org/wiki/Gemeentefonds_(Nederland)"
   ],
   "batch": "fp13"
+ },
+ "municipalityofmiddelburg|Netherlands": {
+  "name": "Gemeente Middelburg",
+  "kind": "gov",
+  "what": "The municipality of Middelburg, capital of the province of Zeeland, with 50,439 inhabitants in Middelburg, Arnemuiden and Nieuw- en Sint Joosland.",
+  "money": "The municipal budget, funded by Dutch state payments from the Gemeentefonds, specific grants and local taxes.",
+  "site": "https://www.middelburg.nl",
+  "city": "Middelburg",
+  "country": "Netherlands",
+  "address": "Kanaalweg 3, 4337 PA Middelburg",
+  "status": "done",
+  "sources": [
+   "https://organisaties.overheid.nl/22048/Gemeente_Middelburg",
+   "https://nl.wikipedia.org/wiki/Middelburg_(Zeeland)",
+   "https://nl.wikipedia.org/wiki/Gemeentefonds_(Nederland)"
+  ],
+  "batch": "fp26"
  },
  "municipalmuseumofcityofkrakw|Poland": {
   "name": "Gmina Miejska Kraków",
@@ -10764,6 +11852,26 @@
   ],
   "batch": "fp3"
  },
+ "ncmm": {
+  "name": "National Commission for Museums and Monuments",
+  "short": "NCMM",
+  "kind": "gov",
+  "what": "A Nigerian federal agency set up by Decree 77 of 1979 in place of the Federal Antiquities Department, headquartered in Abuja and managing 53 museums.",
+  "money": "Nigeria's federal budget, which gave it ₦15 billion in 2025, the largest allocation among the culture ministry's agencies.",
+  "arts": "Sixty-five national monuments and sites have been declared, and Nigeria has two UNESCO World Heritage Sites, Sukur Cultural Landscape and Osun Osogbo Sacred Grove.",
+  "site": "https://museum.ng",
+  "city": "Abuja",
+  "country": "Nigeria",
+  "address": "Block C, First Floor, Federal Secretariat, Abuja",
+  "status": "done",
+  "sources": [
+   "https://museum.ng/about-us/",
+   "https://museum.ng/?p=428",
+   "https://intelpoint.co/insights/the-national-commission-for-museums-and-monuments-received-the-largest-allocation-%e2%82%a615-billion-among-the-ministrys-mdas/",
+   "https://en.wikipedia.org/wiki/National_Commission_for_Museums_and_Monuments"
+  ],
+  "batch": "fp27"
+ },
  "ndr": {
   "name": "Norddeutscher Rundfunk",
   "short": "NDR",
@@ -10830,6 +11938,21 @@
   ],
   "batch": "fp18"
  },
+ "netherlandsembassy|Egypt": {
+  "name": "Embassy of the Kingdom of the Netherlands in Cairo",
+  "kind": "gov",
+  "what": "The embassy of the Netherlands in Egypt, at 18 Hassan Sabri Street in Zamalek, Cairo.",
+  "money": "The Dutch government, which the embassy represents in Egypt.",
+  "site": "https://www.netherlandsworldwide.nl/contact/embassies-consulates-general/egypt/embassy-cairo",
+  "city": "Cairo",
+  "country": "Egypt",
+  "address": "18 Hassan Sabri Street, 11211 Zamalek, Cairo",
+  "status": "done",
+  "sources": [
+   "https://www.netherlandsworldwide.nl/contact/embassies-consulates-general/egypt/embassy-cairo"
+  ],
+  "batch": "fp26"
+ },
  "neubauerfamily": {
   "name": "Neubauer Family Foundation",
   "kind": "found",
@@ -10864,6 +11987,24 @@
    "https://www.ny-carlsbergfondet.dk/en"
   ],
   "batch": "fp4"
+ },
+ "newcastlecitycouncil|United Kingdom": {
+  "name": "Newcastle City Council",
+  "kind": "gov",
+  "what": "The local authority for Newcastle upon Tyne, a metropolitan borough council since 1974 and a member of the North East Combined Authority since 2024, based at the Civic Centre.",
+  "money": "Council Tax, business rates and government grants, which set a net revenue budget estimated at £328.2 million for 2026-27.",
+  "arts": "Its Museums, Arts and Culture division has a net budget of £1,801,670 for 2026-27.",
+  "site": "https://www.newcastle.gov.uk",
+  "city": "Newcastle upon Tyne",
+  "country": "United Kingdom",
+  "address": "Civic Centre, Barras Bridge, Newcastle upon Tyne NE1 8QH",
+  "status": "done",
+  "sources": [
+   "https://www.letstalknewcastle.co.uk/storage/contributing_files/consultation-580/6a.%20MTFP%202026-27%20revenue%20and%20capital%20plan.pdf",
+   "https://new.newcastle.gov.uk/sites/default/files/2026-05/2026-27%20Budget%20pages%20%28final%29.pdf",
+   "https://en.wikipedia.org/wiki/Newcastle_City_Council"
+  ],
+  "batch": "fp27"
  },
  "newyorkstatecouncilonarts|USA": {
   "name": "New York State Council on the Arts",
@@ -11089,6 +12230,23 @@
    "https://en.wikipedia.org/wiki/Norton_Simon"
   ],
   "batch": "fp18"
+ },
+ "norwegianmfa": {
+  "name": "Royal Norwegian Ministry of Foreign Affairs",
+  "short": "Norwegian Ministry of Foreign Affairs",
+  "kind": "gov",
+  "what": "The foreign ministry of the Kingdom of Norway, established on 7 June 1905, the day the Storting decided to dissolve the union with Sweden.",
+  "money": "The state budget of Norway, as a government ministry.",
+  "arts": "It is responsible for presenting Norwegian arts and culture abroad, including exchange projects with developing countries, and its embassies administer cultural cooperation with other countries.",
+  "site": "https://www.regjeringen.no/en/dep/ud/id833/",
+  "city": "Oslo",
+  "country": "Norway",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Foreign_Affairs_(Norway)",
+   "https://www.culturalpolicies.net/country_profile/norway-1-4-1/"
+  ],
+  "batch": "fp27"
  },
  "norwegianministryofculture|Norway": {
   "name": "Kultur- og likestillingsdepartementet",
@@ -12165,6 +13323,24 @@
   ],
   "batch": "fp23"
  },
+ "pirellionly": {
+  "name": "Pirelli & C. S.p.A.",
+  "short": "Pirelli",
+  "kind": "corp",
+  "what": "An Italian tyre maker founded in Milan in 1872 by Giovanni Battista Pirelli, listed on the Borsa Italiana and headquartered in the city's Bicocca district.",
+  "money": "Sales of tyres for cars, motorcycles and bicycles, with revenues of 6.8 billion euros in 2025.",
+  "arts": "It established and supports Pirelli HangarBicocca, a non-profit foundation for contemporary art whose exhibitions are free of charge.",
+  "site": "https://corporate.pirelli.com",
+  "city": "Milan",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://corporate.pirelli.com/corporate/en-ww/aboutus/pirelli-in-brief",
+   "https://corporate.pirelli.com/corporate/en-ww/aboutus/our-commitment-in-art",
+   "https://en.wikipedia.org/wiki/Pirelli"
+  ],
+  "batch": "fp27"
+ },
  "platinumbarjeel": {
   "name": "Barjeel Art Foundation",
   "kind": "found",
@@ -12359,6 +13535,24 @@
   ],
   "batch": "fp3"
  },
+ "praguecityhall|Czech Republic": {
+  "name": "Magistrát hlavního města Prahy",
+  "short": "Prague City Hall",
+  "kind": "gov",
+  "what": "The administrative office of the City of Prague, formed on 1 January 1922, which carries out tasks set by the City Assembly and City Council from New City Hall.",
+  "money": "The city budget, planned for 2025 with income of CZK 110.92 billion and spending of CZK 113.49 billion.",
+  "site": "https://praha.eu",
+  "city": "Prague",
+  "country": "Czech Republic",
+  "address": "Mariánské náměstí 2/2, 110 00 Praha 1",
+  "status": "done",
+  "sources": [
+   "https://cs.wikipedia.org/wiki/Magistr%C3%A1t_hlavn%C3%ADho_m%C4%9Bsta_Prahy",
+   "https://en.wikipedia.org/wiki/Prague_City_Assembly",
+   "https://www.ceskenoviny.cz/zpravy/praha-chce-pristi-rok-hospodarit-s-prijmy-11092-mld-a-vydaji-11349-mld-kc/2600094"
+  ],
+  "batch": "fp26"
+ },
  "preservationleague": {
   "name": "Preservation League of New York State",
   "short": "Preservation League of NYS",
@@ -12534,6 +13728,95 @@
    "https://en.wikipedia.org/wiki/Government_of_Manitoba"
   ],
   "batch": "fp13"
+ },
+ "provinceofstyriaculturaldepartment|Austria": {
+  "name": "Amt der Steiermärkischen Landesregierung, Abteilung 9 Kultur, Europa, Sport",
+  "short": "Land Steiermark, Abteilung 9",
+  "kind": "gov",
+  "what": "Department 9 (Culture, Europe, Sports) of the administration of the Austrian state of Styria, headed by Patrick Schnabl and based at Landhausgasse 7 in Graz.",
+  "money": "The budget of the State of Styria.",
+  "arts": "It publishes a Kulturförderungsbericht each year that sets out how its culture funds were awarded.",
+  "site": "https://www.kultur.steiermark.at",
+  "city": "Graz",
+  "country": "Austria",
+  "address": "Landhausgasse 7, 8010 Graz",
+  "status": "done",
+  "sources": [
+   "https://www.verwaltung.steiermark.at/cms/ziel/74966926/EN/",
+   "https://www.kultur.steiermark.at/cms/ziel/183664754/DE/"
+  ],
+  "batch": "fp26"
+ },
+ "provincialcouncilofbiscay|Spain": {
+  "name": "Diputación Foral de Bizkaia",
+  "short": "Provincial Council of Biscay",
+  "kind": "gov",
+  "what": "The governing body of the historical territory of Bizkaia in the Basque Country, headed since 2023 by the diputada general Elixabete Etxanobe.",
+  "money": "The Bizkaia budget: 11,320.3 million euros for 2026, of which 1,716.2 million go to its own departments.",
+  "arts": "Its department of Basque language, culture and sport receives 70.4 million euros in the 2026 budget plan.",
+  "site": "https://www.bizkaia.eus",
+  "city": "Bilbao",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://orain.eus/es/politica/2025/10/31/bizkaia-presenta-un-presupuesto-1716-millones-euros-2026-destinando-la-mitad-gasto-social/",
+   "https://es.wikipedia.org/wiki/Diputaci%C3%B3n_Foral_de_Vizcaya"
+  ],
+  "batch": "fp25"
+ },
+ "provinciezeeland": {
+  "name": "Provincie Zeeland",
+  "short": "Province of Zeeland",
+  "kind": "gov",
+  "what": "The provincial government of Zeeland in the Netherlands, seated in Middelburg, with 39 members in its Provinciale Staten and 394,514 inhabitants at the end of 2025.",
+  "money": "The national provinciefonds, €169.4 million in its 2026 budget, plus €46.3 million from motor vehicle tax surcharges and a €16.0 million Westerscheldetunnel dividend.",
+  "site": "https://www.zeeland.nl",
+  "city": "Middelburg",
+  "country": "Netherlands",
+  "address": "Abdij 6, 4331 BK Middelburg",
+  "status": "done",
+  "sources": [
+   "https://pcportal.zeeland.nl/Data/fdb2bdca-8b92-42c0-8201-5cf9653a42a2/Public/begroting-2026%20-%209-1-algemene-dekkingsmiddelen-en-onvoorzien.pdf",
+   "https://www.zeeland.nl/over-ons",
+   "https://nl.wikipedia.org/wiki/Zeeland_(provincie)"
+  ],
+  "batch": "fp27"
+ },
+ "prtourism": {
+  "name": "Compañía de Turismo de Puerto Rico",
+  "short": "Puerto Rico Tourism Company",
+  "kind": "gov",
+  "what": "A government-owned corporation in charge of tourism in Puerto Rico, created under Governor Luis A. Ferré (1969-1973) and headquartered in the former La Princesa jail in San Juan.",
+  "money": "The room occupancy tax on hotel stays, which Act 272 of 2003 moved from the Treasury to the company to levy, collect and distribute.",
+  "arts": "La Princesa also houses a gallery that shows the agency's art collection.",
+  "site": "https://tourism.pr.gov",
+  "city": "San Juan",
+  "country": "Puerto Rico",
+  "address": "2 Paseo de la Princesa, San Juan, PR 00902",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Puerto_Rico_Tourism_Company",
+   "https://www.lexjuris.com/lexlex/leyes2003/lexl2003272.htm"
+  ],
+  "batch": "fp27"
+ },
+ "publiccentrefundedbygipuzkoacouncil|Spain": {
+  "name": "Gipuzkoako Foru Aldundia / Diputación Foral de Gipuzkoa",
+  "short": "Provincial Council of Gipuzkoa",
+  "kind": "gov",
+  "what": "The government of the historical territory of Gipuzkoa in the Basque Country, based in San Sebastián and headed by a Diputado General elected by the Juntas Generales.",
+  "money": "The provincial budget, of which its Hacienda y Finanzas department accounts for about €6.03 billion.",
+  "site": "https://www.gipuzkoa.eus",
+  "city": "San Sebastián",
+  "country": "Spain",
+  "address": "Gipuzkoa Plaza, 1, 20004 Donostia",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Diputaci%C3%B3n_Foral_de_Guip%C3%BAzcoa",
+   "https://www.gipuzkoa.eus/es/diputacion",
+   "https://www.gipuzkoa.eus/es/contacto"
+  ],
+  "batch": "fp26"
  },
  "puig": {
   "name": "Puig Brands, S.A.",
@@ -12945,6 +14228,25 @@
   ],
   "batch": "fp19"
  },
+ "rigacity|Latvia": {
+  "name": "Rīgas dome",
+  "short": "Riga City Council",
+  "kind": "gov",
+  "what": "The government of Riga, Latvia's capital, with 60 councillors elected every four years, meeting in the Town Hall on Rātslaukums.",
+  "money": "The city budget: planned revenue of 1.5 billion euros in 2026, with growth from personal income tax, against 1.7 billion euros of spending.",
+  "arts": "Its 2026 cultural programme centres on the 825th anniversary of Riga.",
+  "site": "https://www.riga.lv",
+  "city": "Riga",
+  "country": "Latvia",
+  "address": "Rātslaukums 1, Rīga, LV-1050",
+  "status": "done",
+  "sources": [
+   "https://www.riga.lv/en/article/rigas-2026-budget-approved-focus-safe-healthy-and-smart-capital-city",
+   "https://www.riga.lv/en/contacts",
+   "https://en.wikipedia.org/wiki/Riga_City_Council"
+  ],
+  "batch": "fp25"
+ },
  "right:cohen": {
   "name": "Steven A. Cohen",
   "short": "Steve Cohen",
@@ -13187,6 +14489,23 @@
   ],
   "batch": "fp20"
  },
+ "rundirectlybyrgionoccitanie": {
+  "name": "Région Occitanie / Pyrénées-Méditerranée",
+  "short": "Région Occitanie",
+  "kind": "gov",
+  "what": "The regional council of Occitanie in France, created on 1 January 2016 by merging the Languedoc-Roussillon and Midi-Pyrénées councils, with 158 councillors and its seat in Toulouse.",
+  "money": "The regional budget voted by its councillors, 3.54 billion euros for 2026.",
+  "site": "https://www.laregion.fr",
+  "city": "Toulouse",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.laregion.fr/budget2026",
+   "https://www.laregion.fr/Le-budget",
+   "https://fr.wikipedia.org/wiki/Conseil_régional_d'Occitanie"
+  ],
+  "batch": "fp27"
+ },
  "russiasmajornaturalgasproducer": {
   "name": "PJSC Novatek",
   "short": "Novatek",
@@ -13291,6 +14610,24 @@
    "https://en.wikipedia.org/wiki/Salone_del_Mobile"
   ],
   "batch": "fp20"
+ },
+ "sanfranciscoartscommission|United States": {
+  "name": "San Francisco Arts Commission",
+  "short": "SFAC",
+  "kind": "gov",
+  "what": "The arts agency of the City of San Francisco, established in 1932 as the San Francisco Art Commission, with fifteen commissioners appointed by the Mayor.",
+  "money": "The city's hotel tax under Proposition E, $13.09 million of its $23.02 million operating budget in fiscal 2026, and the General Fund.",
+  "arts": "Hotel-tax money pays for its Community Investments grant programmes, budgeted at $13.79 million in fiscal 2026.",
+  "site": "https://www.sfartscommission.org",
+  "city": "San Francisco",
+  "country": "USA",
+  "address": "401 Van Ness Avenue, Suite 325, San Francisco, CA 94102",
+  "status": "done",
+  "sources": [
+   "https://media.api.sf.gov/documents/FY27_FY28_Full_Commission_Budget_Presentation.pdf",
+   "https://en.wikipedia.org/wiki/San_Francisco_Arts_Commission"
+  ],
+  "batch": "fp27"
  },
  "sansebastincity|Spain": {
   "name": "Ayuntamiento de San Sebastián / Donostiako Udala",
@@ -13582,6 +14919,24 @@
   ],
   "batch": "fp20"
  },
+ "sheffieldcitycouncil|United Kingdom": {
+  "name": "Sheffield City Council",
+  "kind": "gov",
+  "what": "The local authority for the City of Sheffield, a metropolitan borough in South Yorkshire, with 84 councillors elected in 28 wards.",
+  "money": "Council Tax (£301.3 million), business rates and related grants (£205.2 million) and Revenue Support Grant (£47.6 million) financed its £563.8 million budget for 2025/26.",
+  "arts": "Its Economy, Culture and Skills service had a net budget of £8.754 million in 2025/26.",
+  "site": "https://www.sheffield.gov.uk",
+  "city": "Sheffield",
+  "country": "United Kingdom",
+  "address": "Town Hall, Pinstone Street, Sheffield S1 2HH",
+  "status": "done",
+  "sources": [
+   "https://www.sheffield.gov.uk/sites/default/files/2025-03/revenue-budget-2025-2026.pdf",
+   "https://www.sheffield.gov.uk/budget",
+   "https://en.wikipedia.org/wiki/Sheffield_City_Council"
+  ],
+  "batch": "fp27"
+ },
  "shellsqgcbusiness": {
   "name": "Shell QGC",
   "short": "QGC",
@@ -13844,6 +15199,23 @@
   ],
   "batch": "fp21"
  },
+ "sofiamunicipalityyearlyacquisitions": {
+  "name": "Столична община",
+  "short": "Sofia Municipality",
+  "kind": "gov",
+  "what": "The municipality of Bulgaria's capital, covering Sofia and 37 other settlements, with 1,232,905 inhabitants projected for 2025.",
+  "money": "The municipal budget, EUR 1.54 billion for 2026, approved by Sofia's Municipal Council on 24 September 2026.",
+  "site": "https://www.sofia.bg",
+  "city": "Sofia",
+  "country": "Bulgaria",
+  "address": "Moskovska 33, 1000 Sofia",
+  "status": "done",
+  "sources": [
+   "https://www.bta.bg/en/news/bulgaria/1210816-sofia-approves-eur-1-54-billion-budget-for-2026",
+   "https://en.wikipedia.org/wiki/Stolichna_Municipality"
+  ],
+  "batch": "fp27"
+ },
  "softwareag": {
   "name": "Software AG – Stiftung",
   "short": "Software AG Stiftung",
@@ -14032,6 +15404,23 @@
   ],
   "batch": "fp21"
  },
+ "sparebankenvest": {
+  "name": "Sparebanken Norge",
+  "kind": "corp",
+  "what": "A Norwegian savings bank group created on 2 May 2025 by the merger of Sparebanken Vest and Sparebanken Sør, with head offices in Bergen and Kristiansand.",
+  "money": "Its banking business; the two merged banks had 517 billion kroner in assets under management in 2024.",
+  "arts": "It shares its profit with customers and local communities, with NOK 1.5 billion set for public-benefit causes in 2026.",
+  "site": "https://www.sparebankennorge.no",
+  "city": "Bergen",
+  "country": "Norway",
+  "address": "Jonsvollsgaten 2, 5011 Bergen",
+  "status": "done",
+  "sources": [
+   "https://www.sparebankennorge.no/om-oss/",
+   "https://en.wikipedia.org/wiki/Sparebanken_Norge"
+  ],
+  "batch": "fp27"
+ },
  "sparebankstiftelsendnb": {
   "name": "Sparebankstiftelsen DNB",
   "kind": "found",
@@ -14111,6 +15500,23 @@
    "https://lokaleregelgeving.overheid.nl/CVDR673559"
   ],
   "batch": "fp12"
+ },
+ "stadtwerkedsseldorfaspermanentpartner": {
+  "name": "Stadtwerke Düsseldorf AG",
+  "kind": "corp",
+  "what": "A Düsseldorf utility company owned 54.95 percent by EnBW, 25.05 percent by the city's holding company and 20 percent by GEW Köln.",
+  "money": "Supply of electricity, natural gas, heat and drinking water: revenue of 2,516 million euros in 2025, net of electricity and energy tax.",
+  "site": "https://www.swd-ag.de",
+  "city": "Düsseldorf",
+  "country": "Germany",
+  "address": "Höherweg 100, 40233 Düsseldorf",
+  "status": "done",
+  "sources": [
+   "https://unserwerk.swd-ag.de/fileadmin/user_upload/pdfs/Geschaeftsbericht-2025_Stadtwerke-Duesseldorf.pdf",
+   "https://a.storyblok.com/f/274772/x/e94abbee7a/zahlenspiegel-stadtwerke-duesseldorf-2025.pdf",
+   "https://de.wikipedia.org/wiki/Stadtwerke_D%C3%BCsseldorf"
+  ],
+  "batch": "fp25"
  },
  "standardbankhasbeencollection": {
   "name": "Standard Bank Group Limited",
@@ -14200,6 +15606,25 @@
    "https://www.mwk.niedersachsen.de/impressum/impressum-18442.html"
   ],
   "batch": "fp4"
+ },
+ "stateofsopaulo|Brazil": {
+  "name": "Governo do Estado de São Paulo",
+  "short": "São Paulo State Government",
+  "kind": "gov",
+  "what": "The executive government of the Brazilian state of São Paulo, headed by governor Tarcísio Gomes de Freitas and seated at the Palácio dos Bandeirantes since 1964.",
+  "money": "The state budget: the Legislative Assembly approved total revenue of R$ 382.3 billion for 2026 on 16 December 2025.",
+  "arts": "Its culture arm is the Secretaria da Cultura, Economia e Indústria Criativas.",
+  "site": "https://www.saopaulo.sp.gov.br",
+  "city": "São Paulo",
+  "country": "Brazil",
+  "address": "Palácio dos Bandeirantes, Morumbi, São Paulo",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Governo_do_Estado_de_S%C3%A3o_Paulo",
+   "https://www.dgabc.com.br/Noticia/4275032/alesp-aprova-orcamento-de-2026-com-receita-estimada-em-r$-382-3-bilhoes",
+   "https://www.cultura.sp.gov.br/sec_cultura"
+  ],
+  "batch": "fp25"
  },
  "stavrosniarchos": {
   "name": "Stavros S. Niarchos Foundation for Charity",
@@ -14605,6 +16030,24 @@
    "https://en.wikipedia.org/wiki/Tesonet"
   ],
   "batch": "fp22"
+ },
+ "texascommissiononarts|United States": {
+  "name": "Texas Commission on the Arts",
+  "kind": "gov",
+  "what": "The State of Texas arts agency, established in 1965 as the Texas Fine Arts Commission and renamed in 1979, governed by nine commissioners whom the governor appoints.",
+  "money": "State general revenue and federal funds: $18,288,573 and $1,514,538 of an estimated $20,309,111 budget in fiscal 2026.",
+  "arts": "It spends 93 percent of its budget on grants to arts and cultural organisations across Texas.",
+  "site": "https://www.arts.texas.gov",
+  "city": "Austin",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.arts.texas.gov/wp-content/uploads/2026/08/2028-2029_LAR_TCA_2026-08-28_Revised.pdf",
+   "https://www.tshaonline.org/handbook/entries/texas-commission-on-the-arts",
+   "https://www.arts.texas.gov/about-us/agency-overview/",
+   "https://www.tsl.texas.gov/node/9721"
+  ],
+  "batch": "fp25"
  },
  "thief": {
   "name": "THE THIEF",
@@ -15023,6 +16466,22 @@
   ],
   "batch": "fp23"
  },
+ "undernonprofitmill6": {
+  "name": "MILL6 Foundation",
+  "kind": "found",
+  "what": "A non-profit arts and cultural organisation founded in 2015 that manages and operates CHAT (Centre for Heritage, Arts and Textile) at The Mills in Tsuen Wan, Hong Kong.",
+  "money": "The D. H. Chen Foundation is its Founding Donor and Nan Fung Group, whose former cotton-spinning factory houses CHAT, is its Main Donor.",
+  "site": "https://www.mill6chat.org",
+  "city": "Hong Kong",
+  "country": "Hong Kong",
+  "address": "The Mills, 45 Pak Tin Par Street, Tsuen Wan, N.T., Hong Kong",
+  "status": "done",
+  "sources": [
+   "https://www.nanfung.com/en/our-business/the-mills/",
+   "https://www.mill6chat.org/about/chat/"
+  ],
+  "batch": "fp26"
+ },
  "undp": {
   "name": "United Nations Development Programme",
   "short": "UNDP",
@@ -15139,6 +16598,22 @@
   ],
   "batch": "fp23"
  },
+ "universityofpennsylvaniaculturalpartnerships": {
+  "name": "University of Pennsylvania",
+  "short": "Penn",
+  "kind": "priv",
+  "what": "A private Ivy League research university in Philadelphia, founded by Benjamin Franklin and dating its history to 1740.",
+  "money": "A total budget of $17.7 billion in fiscal 2026, an endowment of $24.81 billion in fiscal 2025 and $1.34 billion in sponsored research awards.",
+  "site": "https://www.upenn.edu",
+  "city": "Philadelphia",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.upenn.edu/about/facts",
+   "https://en.wikipedia.org/wiki/University_of_Pennsylvania"
+  ],
+  "batch": "fp27"
+ },
  "universityofsouthampton": {
   "name": "University of Southampton",
   "kind": "gov",
@@ -15154,6 +16629,24 @@
    "https://www.southampton.ac.uk/contact"
   ],
   "batch": "fp23"
+ },
+ "universityofwitwatersrand": {
+  "name": "University of the Witwatersrand, Johannesburg",
+  "short": "Wits",
+  "kind": "gov",
+  "what": "A public university in Johannesburg with 41,702 students in 2025, grown from the South African School of Mines founded in Kimberley in 1896 and a full university since 1922.",
+  "site": "https://www.wits.ac.za",
+  "city": "Johannesburg",
+  "country": "South Africa",
+  "address": "1 Jan Smuts Avenue, Braamfontein 2000, Johannesburg",
+  "status": "done",
+  "sources": [
+   "https://www.wits.ac.za/about-wits/history-and-heritage/",
+   "https://www.wits.ac.za/about-wits/facts-and-figures/",
+   "https://www.wits.ac.za/about-wits/",
+   "https://en.wikipedia.org/wiki/University_of_the_Witwatersrand"
+  ],
+  "batch": "fp27"
  },
  "usbank": {
   "name": "U.S. Bancorp",
@@ -15326,6 +16819,25 @@
   "batch": "fp15",
   "renamed": "The atlas name points at the Kimbell Art Foundation, but the museum sentence means Velma Kimbell's own gift of her share of the couple's property."
  },
+ "verbundhydro": {
+  "name": "VERBUND AG",
+  "short": "Verbund",
+  "kind": "corp",
+  "what": "Austria's largest electricity company, founded in 1947 under the second nationalisation act, listed on the Vienna Stock Exchange and 51% owned by the Republic of Austria.",
+  "money": "Electricity from hydropower, wind and solar, and the power grid, with revenue of 8,013.6 million euros in 2025.",
+  "arts": "Since 2004 it has kept its own collection of contemporary international art, the Sammlung Verbund.",
+  "site": "https://www.verbund.com",
+  "city": "Vienna",
+  "country": "Austria",
+  "address": "Am Hof 6a, 1010 Vienna",
+  "status": "done",
+  "sources": [
+   "https://www.verbund.com/en/group/news-press/press-releases/2026/3/18/annual-result-2025",
+   "https://oebag.gv.at/en/portfolio-slider/verbund-ag/",
+   "https://en.wikipedia.org/wiki/Verbund"
+  ],
+  "batch": "fp27"
+ },
  "vestlandcounty|Norway": {
   "name": "Vestland fylkeskommune",
   "short": "Vestland County Council",
@@ -15394,6 +16906,23 @@
   ],
   "batch": "fp23"
  },
+ "villedejoliette|Canada": {
+  "name": "Ville de Joliette",
+  "short": "City of Joliette",
+  "kind": "gov",
+  "what": "The municipal government of Joliette, Quebec, a city incorporated in 1863 with 21,384 residents at the 2021 census, led by Mayor Pierre-Luc Bellerose.",
+  "money": "A 2026 budget of C$98.8 million, announced on 15 December 2025, with property tax set at $0.549 per $100 of assessed value.",
+  "site": "https://www.joliette.ca",
+  "city": "Joliette",
+  "country": "Canada",
+  "address": "614 boulevard Manseau, Joliette QC J6E 3E4",
+  "status": "done",
+  "sources": [
+   "https://www.joliette.ca/storage/app/media/la-ville/administration-et-finances/budget-et-rapports-financiers/2025/25_cmnq_budget_2026_vf.pdf",
+   "https://en.wikipedia.org/wiki/Joliette"
+  ],
+  "batch": "fp27"
+ },
  "villedemarseille|France": {
   "name": "Ville de Marseille",
   "kind": "gov",
@@ -15407,6 +16936,25 @@
    "https://fr.wikipedia.org/wiki/Marseille"
   ],
   "batch": "fp23"
+ },
+ "villedestrasbourg|France": {
+  "name": "Ville de Strasbourg",
+  "short": "City of Strasbourg",
+  "kind": "gov",
+  "what": "The municipal government of Strasbourg, the largest commune of the Grand Est with 293,771 inhabitants on 1 January 2023 and the seat of the Eurométropole de Strasbourg.",
+  "money": "The city budget voted by the municipal council, drawn mainly from direct local taxes and the State's operating grant (DGF).",
+  "arts": "The City and the Eurométropole together allocate 120 million euros a year to culture.",
+  "site": "https://www.strasbourg.eu",
+  "city": "Strasbourg",
+  "country": "France",
+  "address": "1 parc de l'Étoile, 67076 Strasbourg Cedex",
+  "status": "done",
+  "sources": [
+   "https://www.strasbourg.eu/budget-ville-strasbourg",
+   "https://www.strasbourg.eu/-/strasbourg-affirme-son-ambition-culturelle",
+   "https://fr.wikipedia.org/wiki/Strasbourg"
+  ],
+  "batch": "fp27"
  },
  "villum": {
   "name": "Villum Fonden",
@@ -15492,6 +17040,23 @@
    "https://en.wikipedia.org/wiki/Volkart_Brothers"
   ],
   "batch": "fp23"
+ },
+ "volksbank": {
+  "name": "Volksbank Darmstadt Mainz eG",
+  "short": "Volksbank Darmstadt Mainz",
+  "kind": "corp",
+  "what": "A cooperative bank seated in Mainz, formed on 1 January 2023 by the merger of Mainzer Volksbank, founded in 1862, and Volksbank Darmstadt-Südhessen.",
+  "money": "Its banking business in Mainz, Rheinhessen and the Darmstadt area, as a registered cooperative within Germany's cooperative financial group.",
+  "site": "https://www.volksbanking.de",
+  "city": "Mainz",
+  "country": "Germany",
+  "address": "Neubrunnenstraße 2, 55116 Mainz",
+  "status": "done",
+  "sources": [
+   "https://www.volksbanking.de/impressum.html",
+   "https://de.wikipedia.org/wiki/Volksbank_Darmstadt_Mainz"
+  ],
+  "batch": "fp27"
  },
  "vriendenloterij": {
   "name": "VriendenLoterij N.V.",
@@ -15638,6 +17203,25 @@
   ],
   "batch": "fp24"
  },
+ "wdr3mediapartner": {
+  "name": "Westdeutscher Rundfunk Köln",
+  "short": "WDR",
+  "kind": "gov",
+  "what": "The public broadcaster for North Rhine-Westphalia, a public-law institution based in Cologne, created in 1955 from the split of NWDR and on air since 1 January 1956.",
+  "money": "Mainly the household broadcasting fee, €18.36 a month in 2023, collected by a joint agency of ARD, ZDF and Deutschlandradio, plus limited on-air advertising.",
+  "arts": "WDR 3 is its cultural radio channel, carrying mostly classical, jazz and world music.",
+  "site": "https://www1.wdr.de",
+  "city": "Cologne",
+  "country": "Germany",
+  "address": "Appellhofplatz 1, 50667 Köln",
+  "status": "done",
+  "sources": [
+   "https://www1.wdr.de/impressum/index.html",
+   "https://en.wikipedia.org/wiki/Westdeutscher_Rundfunk",
+   "https://www1.wdr.de/unternehmen/der-wdr/unternehmen/index.html"
+  ],
+  "batch": "fp27"
+ },
  "weilfamilyofficeproventus": {
   "name": "Proventus AB",
   "short": "Proventus",
@@ -15673,6 +17257,24 @@
    "https://www.weitzer.com/impressum/"
   ],
   "batch": "fp24"
+ },
+ "wellcometrustendowment": {
+  "name": "Wellcome Trust",
+  "short": "Wellcome",
+  "kind": "found",
+  "what": "A charitable foundation for health research based in London, founded in 1936 under the will of the pharmaceutical entrepreneur Sir Henry Wellcome.",
+  "money": "Returns on an investment portfolio of £39.9 billion, built from Henry Wellcome's fortune in the drug company Burroughs Wellcome.",
+  "arts": "The Wellcome Building at 183 Euston Road houses Wellcome Collection; the Trust spent £1.1 billion on charitable activities in 2023/24.",
+  "site": "https://wellcome.org",
+  "city": "London",
+  "country": "UK",
+  "address": "Gibbs Building, 215 Euston Road, London NW1 2BE",
+  "status": "done",
+  "sources": [
+   "https://wellcome.org/who-we-are",
+   "https://en.wikipedia.org/wiki/Wellcome_Trust"
+  ],
+  "batch": "fp27"
  },
  "wellingtoncitycouncil|New Zealand": {
   "name": "Wellington City Council",
@@ -15982,6 +17584,22 @@
   ],
   "batch": "fp24",
   "renamed": "This is the gallery's own operating foundation, not an outside donor."
+ },
+ "yokohamacitymanagementfee|Japan": {
+  "name": "City of Yokohama",
+  "kind": "gov",
+  "what": "The municipal government of Yokohama, the capital of Kanagawa Prefecture, a city since 1 April 1889 and a designated city since 1 September 1956.",
+  "money": "The municipal budget of Yokohama.",
+  "site": "https://www.city.yokohama.lg.jp",
+  "city": "Yokohama",
+  "country": "Japan",
+  "address": "6-50-10 Honcho, Naka-ku, Yokohama 231-0005",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Yokohama",
+   "https://www.city.yokohama.lg.jp/lang/overseas/yport/access.html"
+  ],
+  "batch": "fp26"
  },
  "zain": {
   "name": "Mobile Telecommunications Company K.S.C.P.",

@@ -100,7 +100,7 @@
       $('list').innerHTML = reports.map(report => `
         <article data-id="${esc(report.id)}">
           ${report.kind === 'new-place' ? '<p><mark>New place, not on the atlas yet.</mark> Approving keeps it as accepted; add the place to the atlas data by hand.</p>' : ''}
-          <p><strong>${esc(report.institution || report.city)}</strong>${report.institution ? ` | ${esc(report.city)}` : ''} · ${esc(new Date(report.createdAt).toLocaleString())}</p>
+          <p><strong>${esc(report.institution || report.city)}</strong>${report.institution ? ` | ${esc(report.city)}` : ''}${report.address ? ` | ${esc(report.address)}` : ''} · ${esc(new Date(report.createdAt).toLocaleString())}</p>
           <p>${report.authorLabel ? `shown as “${esc(report.authorLabel)}”` : 'shown as Whistleblower'}</p>
           <p style="white-space:pre-wrap">${esc(report.content)}</p>
           ${filesFor(report)}

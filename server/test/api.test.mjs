@@ -93,6 +93,7 @@ describe('suggesting a place the atlas is missing', () => {
     assert.equal(row.placeId, null);
     assert.equal(row.institution, 'The Back Room Collective');
     assert.equal(row.city, 'Lagos');
+    assert.equal(row.address, null);
     assert.equal(row.status, 'PENDING');
     assert.ok((await pending()).some(r => r.id === id && r.kind === 'new-place'));
   });
@@ -102,6 +103,14 @@ describe('suggesting a place the atlas is missing', () => {
       data: { kind: 'new-place', content: NOTE, city: place.city, institution: place.name, status: 'APPROVED' }
     })).id;
     assert.ok(!(await reviews()).some(r => r.id === id));
+  });
+
+  test('keeps an optional street address, cleaned to one line', async () => {
+    const res = await postNew({ placeName: 'The Side Room', city: 'Lagos', address: '  12 Broad   Street\n', content: NOTE });
+    assert.equal(res.status, 201);
+    const row = await prisma.whistleblowerReport.findUnique({ where: { id: (await res.json()).id } });
+    assert.equal(row.address, '12 Broad Street');
+    assert.equal((await postNew({ placeName: 'The Side Room', city: 'Lagos', address: 'x'.repeat(201), content: NOTE })).status, 400);
   });
 
   test('a name the atlas already has is refused with that record id', async () => {
@@ -117,6 +126,7 @@ describe('suggesting a place the atlas is missing', () => {
     assert.equal((await postNew({ placeName: 'The Back Room', city: 'x'.repeat(81), content: NOTE })).status, 400);
     assert.equal((await postNew({ placeName: 'The Back Room', city: 'Lagos', content: 'Too short' })).status, 400);
     assert.equal((await postNew({ placeName: '<b></b>', city: 'Lagos', content: NOTE })).status, 400);
+    assert.equal((await postNew({ placeName: 'hfhgffjghghk', city: 'Lagos', content: NOTE })).status, 400);
   });
 });
 
