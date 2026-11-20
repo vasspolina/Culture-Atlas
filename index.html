@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=861"></script>
+  <script src="assets/load-image-data.js?v=862"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=861">
-  <link rel="stylesheet" href="assets/sheet.css?v=861">
-  <script src="assets/config.js?v=861"></script>
-  <script src="assets/analytics.js?v=861"></script>
-  <script src="assets/subtopic.js?v=861"></script>
-  <script src="assets/names.js?v=861"></script>
-  <script src="assets/grounding.js?v=861"></script>
-  <script src="assets/repeats.js?v=861"></script>
-  <script src="assets/intro-narration.js?v=861"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=862">
+  <link rel="stylesheet" href="assets/sheet.css?v=862">
+  <script src="assets/config.js?v=862"></script>
+  <script src="assets/analytics.js?v=862"></script>
+  <script src="assets/subtopic.js?v=862"></script>
+  <script src="assets/names.js?v=862"></script>
+  <script src="assets/grounding.js?v=862"></script>
+  <script src="assets/repeats.js?v=862"></script>
+  <script src="assets/intro-narration.js?v=862"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=861"></script>
+  <script src="assets/load-image.js?v=862"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1178,8 +1178,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=861"></script>
-  <script src="assets/money-ids.js?v=861"></script>
+  <script src="assets/institutions.js?v=862"></script>
+  <script src="assets/money-ids.js?v=862"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10883,11 +10883,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v861';
+    const ATLAS_RELEASE = 'culture-atlas-v862';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=861').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=862').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -15817,8 +15817,9 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         if (/^(for\s+)?(more|further)\s+(information|details)[^.]*https?:\/\//i.test(t) || /^(see|visit|learn\s+more\s+at)\b[^.]*https?:\/\/\S+[.)]*$/i.test(t)) return false;
         return true;
       }).join('\n').replace(/\n{3,}/g, '\n\n').trim();
-      // A bare address left inside a sentence is dropped too, with any brackets that held it.
-      text = text.replace(/(?<!\])\s*[\(\[<]\s*https?:\/\/[^\s\)\]>]+\s*[\)\]>]/g, '').replace(/(^|\s)https?:\/\/\S+(?=[\s.,;)]|$)/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;])/g, '$1');
+      // A bare address left inside a sentence is dropped too, with any brackets that held it, full-width and lenticular ones
+      // included: the chat's model cites as 【https://…】 (seen 20 Nov 2026), which slipped past and printed the address.
+      text = text.replace(/(?<!\])\s*[\(\[<（［【〔〖]\s*https?:\/\/[^\s\)\]>）］】〕〗]+\s*[\)\]>）］】〕〗]/g, ' ').replace(/(^|[\s（［【〔〖])https?:\/\/[^\s）］】〕〗]+(?=[\s.,;)）］】〕〗]|$)/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\s+([.,;])/g, '$1');
 
       // 1. Helper to render clickable source citation pills
       const renderSourcePills = (str) => {
@@ -22524,24 +22525,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=861"></script>
-<script src="assets/note-aids.js?v=861" defer></script>
-<script src="assets/place-list.js?v=861" defer></script>
-<script src="assets/chat-share.js?v=861" defer></script>
-<script src="assets/note-files.js?v=861" defer></script>
-<script src="assets/funding-views.js?v=861"></script>
-<script src="assets/layers.js?v=861"></script>
-<script src="assets/critique-gallery-data.js?v=861"></script>
-<script src="assets/critique-captions.js?v=861"></script>
-<script src="assets/critique-gallery.js?v=861"></script>
-<script src="assets/hq-detail.js?v=861"></script>
-<script src="assets/influence-mode.js?v=861"></script>
-<script src="assets/bubbles.js?v=861" defer></script>
-<script src="assets/phone-maps.js?v=861"></script>
-<script src="assets/desktop-maps.js?v=861"></script>
-<script src="assets/chat-resize.js?v=861"></script>
-<script src="assets/frame-refusers.js?v=861"></script>
-<script src="assets/link-pane.js?v=861"></script>
-<script src="assets/tab-suggest.js?v=861"></script>
+<script src="assets/typeset.js?v=862"></script>
+<script src="assets/note-aids.js?v=862" defer></script>
+<script src="assets/place-list.js?v=862" defer></script>
+<script src="assets/chat-share.js?v=862" defer></script>
+<script src="assets/note-files.js?v=862" defer></script>
+<script src="assets/funding-views.js?v=862"></script>
+<script src="assets/layers.js?v=862"></script>
+<script src="assets/critique-gallery-data.js?v=862"></script>
+<script src="assets/critique-captions.js?v=862"></script>
+<script src="assets/critique-gallery.js?v=862"></script>
+<script src="assets/hq-detail.js?v=862"></script>
+<script src="assets/influence-mode.js?v=862"></script>
+<script src="assets/bubbles.js?v=862" defer></script>
+<script src="assets/phone-maps.js?v=862"></script>
+<script src="assets/desktop-maps.js?v=862"></script>
+<script src="assets/chat-resize.js?v=862"></script>
+<script src="assets/frame-refusers.js?v=862"></script>
+<script src="assets/link-pane.js?v=862"></script>
+<script src="assets/tab-suggest.js?v=862"></script>
 </body>
 </html>
