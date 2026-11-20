@@ -13536,10 +13536,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // THE SPACE'S OWN GROUND (user, 15 Nov 2026, of Nafasi Art Space, whose pin stood on open ground among buildings: "i do
     // not see museum building here"). A space that is a compound and not one building has no building under its pin: the pin
     // is the middle of its yard. assets/sites.json (tools/site_outlines.py) holds the outline OpenStreetMap gives for the
-    // space itself, for the records that have one with the pin inside it. While such a space is open, its ground is filled in
-    // the sheet's lime and edged in ink, under the buildings, so the buildings that stand on it read as the space's own.
+    // space itself, for the records that have one with the pin inside it. While such a space is open, its ground is washed
+    // and edged in its grade's colour, under the buildings, so the buildings that stand on it read as the space's own
+    // (user, 20 Nov 2026: "make it colored in grade color when selected"; it was the sheet's lime, edged in ink, for every
+    // space). The wash is two fifths of the colour, so the space's mark, in the full colour, still shows on it.
     // Where the outline is one building's footprint the building covers the fill and only the edge at its foot shows.
-    // The layers are named xray- so applyCityMapGossip leaves their colours alone; streetSiteColours sets them by theme.
+    // The layers are named xray- so applyCityMapGossip leaves their colours alone; streetSiteColours sets them by the open
+    // space's grade and the theme, each time the open space changes.
     let atlasSites = null, atlasSitesAsked = false;
     function atlasSiteOf(inst) { return (inst && atlasSites && inst.id && atlasSites[inst.id]) || null; }
     function atlasSitesLoad() {
@@ -13556,9 +13559,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const map = cityVectorMap;
       if (!map || typeof map.getLayer !== 'function' || typeof map.setPaintProperty !== 'function') return;
       const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const hex = spaceInk(selectedInstitution, !dark);   // the grade's colour, as the space's mark and bubble have it
       try {
-        if (map.getLayer('xray-site-fill')) map.setPaintProperty('xray-site-fill', 'fill-color', dark ? '#3d4416' : '#e2f86c');
-        if (map.getLayer('xray-site-line')) map.setPaintProperty('xray-site-line', 'line-color', dark ? '#e6e1d7' : '#000000');
+        if (map.getLayer('xray-site-fill')) { map.setPaintProperty('xray-site-fill', 'fill-color', hex); map.setPaintProperty('xray-site-fill', 'fill-opacity', 0.4); }
+        if (map.getLayer('xray-site-line')) { map.setPaintProperty('xray-site-line', 'line-color', hex); map.setPaintProperty('xray-site-line', 'line-width', 1.5); }
       } catch (e) { /* the style is between two states */ }
     }
     function syncStreetSite() {
@@ -13569,12 +13573,12 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       const data = { type: 'FeatureCollection', features: rings ? [{ type: 'Feature', properties: {}, geometry: { type: 'MultiPolygon', coordinates: rings.map(r => [r]) } }] : [] };
       try {
         const src = map.getSource('xray-site');
-        if (src) { src.setData(data); return; }
+        if (src) { src.setData(data); if (rings) streetSiteColours(); return; }
         if (!rings) return;
         const under = map.getLayer('building') ? 'building' : undefined;
         map.addSource('xray-site', { type: 'geojson', data });
-        map.addLayer({ id: 'xray-site-fill', type: 'fill', source: 'xray-site', paint: { 'fill-color': '#e2f86c', 'fill-antialias': false } }, under);
-        map.addLayer({ id: 'xray-site-line', type: 'line', source: 'xray-site', paint: { 'line-color': '#000000', 'line-width': 1 } }, under);
+        map.addLayer({ id: 'xray-site-fill', type: 'fill', source: 'xray-site', paint: { 'fill-color': '#6b6b6b', 'fill-opacity': 0.4, 'fill-antialias': false } }, under);
+        map.addLayer({ id: 'xray-site-line', type: 'line', source: 'xray-site', paint: { 'line-color': '#6b6b6b', 'line-width': 1.5 } }, under);
         streetSiteColours();
       } catch (e) {
         // The style is still loading: once, when the map is next at rest.
