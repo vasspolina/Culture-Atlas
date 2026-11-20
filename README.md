@@ -1,6 +1,10 @@
 # Leaving it on the table
 
-A globe and a chat for looking up who funds museums and cultural spaces. Each record shows what is stated about its funding and links to where that comes from. Live: https://vasspolina.github.io/Culture-Atlas/
+Culture Atlas makes information about cultural spaces easier to find and share. It brings together public records for 2,091 museums and cultural spaces in 156 countries, with links to the sources. Journalists, researchers and visitors can use it to find out who funds a space and check the evidence for themselves.
+
+A venue can be open today and still have little or no information online. Through Undocumented History, anyone can tell the Atlas about a space missing from the map or add information about a place already listed, such as who funded it, who ran it or what happened there. People can contribute by typing or speaking, and a person reviews each submission before it appears on the map. This gives artists, venue staff and local communities a way to make what they know part of the public record.
+
+Live: https://vasspolina.github.io/Culture-Atlas/
 
 ## Run it locally
 
