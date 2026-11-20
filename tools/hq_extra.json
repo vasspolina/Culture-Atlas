@@ -13320,5 +13320,263 @@
 "lat": -23.5507,
 "lon": -46.6334,
 "s": "https://healthcare-digital.com/company/santa-joana-group"
+},
+"crditmutuelnordeurope": {
+"n": "Crédit Mutuel Nord Europe",
+"k": "corp",
+"c": "Lille",
+"co": "France",
+"lat": 50.6366,
+"lon": 3.0635,
+"a": "4 place Richebé, 59000 Lille",
+"s": "https://www.creditmutuel.fr/fr/alliancefederale/banque-mutualiste/implantations/federation-nord-europe.html"
+},
+"nyu": {
+"n": "New York University",
+"k": "priv",
+"c": "New York",
+"co": "United States",
+"lat": 40.7127,
+"lon": -74.006,
+"s": "https://en.wikipedia.org/wiki/New_York_University"
+},
+"rockwellautomation": {
+"n": "Rockwell Automation, Inc.",
+"k": "corp",
+"c": "Milwaukee",
+"co": "United States",
+"lat": 43.0386,
+"lon": -87.9091,
+"s": "https://www.sec.gov/Archives/edgar/data/1024478/000102447825000112/fy2025ex99.htm"
+},
+"insightinvestment": {
+"n": "Insight Investment",
+"k": "corp",
+"c": "London",
+"co": "United Kingdom",
+"lat": 51.5074,
+"lon": -0.1278,
+"a": "160 Queen Victoria Street, London EC4V 4LA",
+"s": "https://en.wikipedia.org/wiki/Insight_Investment"
+},
+"carlowcountycouncil|Ireland": {
+"n": "Carlow County Council",
+"k": "gov",
+"c": "Carlow",
+"co": "Ireland",
+"lat": 52.8408,
+"lon": -6.9261,
+"a": "Athy Road, Carlow, R93 E7R7",
+"s": "https://en.wikipedia.org/wiki/Carlow_County_Council"
+},
+"sligocountycouncil|Ireland": {
+"n": "Sligo County Council",
+"k": "gov",
+"c": "Sligo",
+"co": "Ireland",
+"lat": 54.2721,
+"lon": -8.4751,
+"a": "County Hall, Riverside, Sligo, F91 Y763",
+"s": "https://en.wikipedia.org/wiki/Sligo_County_Council"
+},
+"ministryofnationalresources|Hungary": {
+"n": "Nemzeti Erőforrás Minisztérium",
+"k": "gov",
+"c": "Budapest",
+"co": "Hungary",
+"lat": 47.4979,
+"lon": 19.0402,
+"s": "https://hu.wikipedia.org/wiki/Nemzeti_Er%C5%91forr%C3%A1s_Miniszt%C3%A9rium"
+},
+"cityofbrussels|Belgium": {
+"n": "Ville de Bruxelles / Stad Brussel",
+"k": "gov",
+"c": "Brussels",
+"co": "Belgium",
+"lat": 50.8467,
+"lon": 4.3525,
+"s": "https://en.wikipedia.org/wiki/City_of_Brussels"
+},
+"estonianministryofculture|Estonia": {
+"n": "Kultuuriministeerium",
+"k": "gov",
+"c": "Tallinn",
+"co": "Estonia",
+"lat": 59.4372,
+"lon": 24.7573,
+"a": "Suur-Karja 23, 15076 Tallinn",
+"s": "https://www.kul.ee/en"
+},
+"cityofmnchengladbach|Germany": {
+"n": "Stadt Mönchengladbach",
+"k": "gov",
+"c": "Mönchengladbach",
+"co": "Germany",
+"lat": 51.1947,
+"lon": 6.4354,
+"a": "Rathausplatz 1, 41061 Mönchengladbach",
+"s": "https://museum-abteiberg.de/impressum/"
+},
+"landofsalzburg|Austria": {
+"n": "Land Salzburg",
+"k": "gov",
+"c": "Salzburg",
+"co": "Austria",
+"lat": 47.7981,
+"lon": 13.0465,
+"s": "https://en.wikipedia.org/wiki/Salzburg_(state)"
+},
+"autonomousregionoftrentinoaltoadigesdtirol|Italy": {
+"n": "Regione autonoma Trentino-Alto Adige/Südtirol",
+"k": "gov",
+"c": "Trento",
+"co": "Italy",
+"lat": 46.0664,
+"lon": 11.1258,
+"a": "Via Gazzoletti 2, 38122 Trento",
+"s": "https://www.regione.taa.it/"
+},
+"municipalityofdro|Italy": {
+"n": "Comune di Dro",
+"k": "gov",
+"c": "Dro",
+"co": "Italy",
+"lat": 45.9864,
+"lon": 10.9263,
+"a": "Via Torre 1, 38074 Dro (TN)",
+"s": "https://www.comune.dro.tn.it/"
+},
+"estoniangovernment|Estonia": {
+"n": "Vabariigi Valitsus",
+"k": "gov",
+"c": "Tallinn",
+"co": "Estonia",
+"lat": 59.4372,
+"lon": 24.7573,
+"a": "Stenbock House, Rahukohtu 3, 15161 Tallinn",
+"s": "https://en.wikipedia.org/wiki/Government_of_Estonia"
+},
+"brazilianforeignministry|Brazil": {
+"n": "Ministério das Relações Exteriores",
+"k": "gov",
+"c": "Brasília",
+"co": "Brazil",
+"lat": -15.794,
+"lon": -47.8828,
+"s": "https://en.wikipedia.org/wiki/Ministry_of_Foreign_Affairs_(Brazil)"
+},
+"brazilsministryofculture|Brazil": {
+"n": "Ministério da Cultura",
+"k": "gov",
+"c": "Brasília",
+"co": "Brazil",
+"lat": -15.794,
+"lon": -47.8828,
+"s": "https://pt.wikipedia.org/wiki/Minist%C3%A9rio_da_Cultura_(Brasil)"
+},
+"finnishheritageagency|Finland": {
+"n": "Museovirasto",
+"k": "gov",
+"c": "Helsinki",
+"co": "Finland",
+"lat": 60.1666,
+"lon": 24.9435,
+"a": "Mannerheimintie 34, Helsinki",
+"s": "https://www.museovirasto.fi/en/about-us"
+},
+"madridcitycouncil|Spain": {
+"n": "Ayuntamiento de Madrid",
+"k": "gov",
+"c": "Madrid",
+"co": "Spain",
+"lat": 40.4168,
+"lon": -3.7035,
+"s": "https://es.wikipedia.org/wiki/Ayuntamiento_de_Madrid"
+},
+"ministryofinterior|Italy": {
+"n": "Ministero dell'Interno",
+"k": "gov",
+"c": "Rome",
+"co": "Italy",
+"lat": 41.8933,
+"lon": 12.4829,
+"a": "Piazza del Viminale 1, 00184 Roma",
+"s": "https://it.wikipedia.org/wiki/Ministero_dell%27interno"
+},
+"republicofkosovoministries|Kosovo": {
+"n": "Ministria e Kulturës, Rinisë dhe Sportit",
+"k": "gov",
+"c": "Pristina",
+"co": "Kosovo",
+"lat": 42.6639,
+"lon": 21.1641,
+"s": "https://stacion.org/en/Open-Call-AoT-2023"
+},
+"municipalityofprishtina|Kosovo": {
+"n": "Komuna e Prishtinës",
+"k": "gov",
+"c": "Pristina",
+"co": "Kosovo",
+"lat": 42.6639,
+"lon": 21.1641,
+"a": "Rr. UÇK nr. 2, 10000 Prishtinë",
+"s": "https://prishtina.rks-gov.net/"
+},
+"uruguaysministryofeducation|Uruguay": {
+"n": "Ministerio de Educación y Cultura",
+"k": "gov",
+"c": "Montevideo",
+"co": "Uruguay",
+"lat": -34.9059,
+"lon": -56.1913,
+"a": "Reconquista 535, Montevideo",
+"s": "https://www.gub.uy/ministerio-educacion-cultura/"
+},
+"argentinenationalgovernment|Argentina": {
+"n": "Poder Ejecutivo Nacional",
+"k": "gov",
+"c": "Buenos Aires",
+"co": "Argentina",
+"lat": -34.6096,
+"lon": -58.3888,
+"s": "https://es.wikipedia.org/wiki/Poder_Ejecutivo_Nacional_(Argentina)"
+},
+"bahiastategovernment|Brazil": {
+"n": "Governo do Estado da Bahia",
+"k": "gov",
+"c": "Salvador",
+"co": "Brazil",
+"lat": -12.9822,
+"lon": -38.4813,
+"s": "https://pt.wikipedia.org/wiki/Governo_da_Bahia"
+},
+"aomoriprefecture|Japan": {
+"n": "青森県",
+"k": "gov",
+"c": "Aomori",
+"co": "Japan",
+"lat": 40.8223,
+"lon": 140.7472,
+"a": "1-1-1 Nagashima, Aomori 030-8570",
+"s": "https://www.pref.aomori.lg.jp/"
+},
+"zapopancitycouncil|Mexico": {
+"n": "Ayuntamiento de Zapopan",
+"k": "gov",
+"c": "Zapopan",
+"co": "Mexico",
+"lat": 20.7211,
+"lon": -103.3914,
+"s": "https://www.cronica.com.mx/jalisco/guadalajara/2025/12/16/ayuntamiento-de-zapopan-aprueba-presupuesto-de-egresos-2026-con-aumento-de-61/"
+},
+"arizonacommissiononarts|USA": {
+"n": "Arizona Commission on the Arts",
+"k": "gov",
+"c": "Phoenix",
+"co": "United States",
+"lat": 33.4484,
+"lon": -112.0741,
+"a": "417 West Roosevelt Street, Phoenix, Arizona 85003-1326",
+"s": "https://azarts.gov/nextAZ/first-50/"
 }
 }

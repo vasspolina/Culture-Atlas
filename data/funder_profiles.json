@@ -506,6 +506,20 @@
   ],
   "batch": "fp33"
  },
+ "alineforieldestezet": {
+  "name": "Aline Foriel-Destezet",
+  "kind": "person",
+  "what": "An arts patron, widow of Philippe Foriel-Destezet, who founded the temp agency Ecco in 1964, merged it with Adia into Adecco in 1996 and died in June 2021.",
+  "money": "The fortune of her late husband, who owned 18% of the staffing group Adecco.",
+  "arts": "In 2021 she and a founders' committee endowed the Fondation des Amis de l'Opéra Royal de Versailles with EUR 850,000, and she became vice-president of its board.",
+  "status": "done",
+  "sources": [
+   "https://www.hec.edu/en/news-room/philippe-foriel-deste-zet-committed-visionary-and-entrepreneur",
+   "https://www.culture.gouv.fr/Thematiques/mecenat/ARTICLES-A-LA-UNE/Une-fondation-pour-l-Opera-Royal-de-Versailles",
+   "https://en.wikipedia.org/wiki/Philippe_Foriel-Destezet"
+  ],
+  "batch": "fp35"
+ },
  "aliph": {
   "name": "ALIPH Foundation",
   "short": "International Alliance for the Protection of Heritage (ALIPH)",
@@ -908,6 +922,24 @@
   ],
   "batch": "fp31"
  },
+ "aomoriprefecture|Japan": {
+  "name": "青森県",
+  "short": "Aomori Prefecture",
+  "kind": "gov",
+  "what": "The prefectural government of Aomori, the northernmost prefecture on Honshu, with 1,141,747 inhabitants on 1 January 2026 and its seat in Aomori city.",
+  "money": "The prefectural budget: a JPY 709.5 billion general account for fiscal 2025, with prefectural taxes making up 22.0% of revenue.",
+  "site": "https://www.pref.aomori.lg.jp",
+  "city": "Aomori",
+  "country": "Japan",
+  "address": "1-1-1 Nagashima, Aomori 030-8570",
+  "status": "done",
+  "sources": [
+   "https://www.pref.aomori.lg.jp/",
+   "https://www.pref.aomori.lg.jp/soshiki/zaimu/zaisei/files/R7tousyo_gaiyou.pdf",
+   "https://en.wikipedia.org/wiki/Aomori_Prefecture"
+  ],
+  "batch": "fp35"
+ },
  "aomoritelevision": {
   "name": "Aomori Television Broadcasting Co., Ltd.",
   "short": "ATV",
@@ -1034,6 +1066,22 @@
   ],
   "batch": "fp7"
  },
+ "argentinenationalgovernment|Argentina": {
+  "name": "Poder Ejecutivo Nacional",
+  "short": "Argentine national government",
+  "kind": "gov",
+  "what": "The executive branch of Argentina's federal state, headed by the president, Javier Milei since 10 December 2023, with its seat in Buenos Aires.",
+  "money": "The national budget of Argentina; the executive branch holds the largest budget of any part of the Argentine state.",
+  "site": "https://www.argentina.gob.ar",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Poder_Ejecutivo_Nacional_(Argentina)",
+   "https://es.wikipedia.org/wiki/Gobierno_de_Argentina"
+  ],
+  "batch": "fp35"
+ },
  "argosy": {
   "name": "Argosy Foundation",
   "kind": "found",
@@ -1050,6 +1098,23 @@
    "https://en.wikipedia.org/wiki/John_Abele"
   ],
   "batch": "fp30"
+ },
+ "arizonacommissiononarts|USA": {
+  "name": "Arizona Commission on the Arts",
+  "kind": "gov",
+  "what": "The arts agency of the State of Arizona, in Phoenix, established in 1967 as the Arizona Commission on the Arts and Humanities.",
+  "money": "The Arts Trust Fund, USD 15 from each Corporation Commission filing fee, plus a one-time USD 2 million appropriation for fiscal 2026 and NEA funds.",
+  "arts": "It budgeted over USD 3 million for grants in fiscal 2026, 61.4% of its budget.",
+  "site": "https://azarts.gov",
+  "city": "Phoenix",
+  "country": "United States",
+  "address": "417 West Roosevelt Street, Phoenix, Arizona 85003-1326",
+  "status": "done",
+  "sources": [
+   "https://azarts.gov/nextAZ/first-50/",
+   "https://azarts.gov/about-us/who-we-are/budget"
+  ],
+  "batch": "fp35"
  },
  "arnoldblochleibler": {
   "name": "Arnold Bloch Leibler",
@@ -1650,6 +1715,24 @@
   ],
   "batch": "fp7"
  },
+ "autonomousregionoftrentinoaltoadigesdtirol|Italy": {
+  "name": "Regione autonoma Trentino-Alto Adige/Südtirol",
+  "short": "Trentino-South Tyrol Region",
+  "kind": "gov",
+  "what": "An Italian autonomous region with a special statute since 1948, made up of the provinces of Trento and Bolzano, to which most of its powers passed after the 1972 statute.",
+  "money": "The regional budget of Trentino-Alto Adige/Südtirol.",
+  "site": "https://www.regione.taa.it",
+  "city": "Trento",
+  "country": "Italy",
+  "address": "Via Gazzoletti 2, 38122 Trento",
+  "status": "done",
+  "sources": [
+   "https://www.regione.taa.it/",
+   "https://it.wikipedia.org/wiki/Trentino-Alto_Adige",
+   "https://en.wikipedia.org/wiki/Trentino-Alto_Adige/S%C3%BCdtirol"
+  ],
+  "batch": "fp35"
+ },
  "axaforexhibitions": {
   "name": "AXA",
   "kind": "corp",
@@ -1736,6 +1819,21 @@
    "https://opencharities.uk/ew/1145887/files/2024-04-05-accounts.md"
   ],
   "batch": "fp30"
+ },
+ "bahiastategovernment|Brazil": {
+  "name": "Governo do Estado da Bahia",
+  "short": "Bahia state government",
+  "kind": "gov",
+  "what": "The executive of the Brazilian state of Bahia, headed by Governor Jerônimo Rodrigues, with its seat at the Centro Administrativo da Bahia in Salvador.",
+  "money": "The state budget of Bahia.",
+  "site": "https://www.ba.gov.br",
+  "city": "Salvador",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Governo_da_Bahia"
+  ],
+  "batch": "fp35"
  },
  "bahr": {
   "name": "Advokatfirmaet BAHR AS",
@@ -2747,6 +2845,40 @@
   ],
   "batch": "fp27"
  },
+ "brazilianforeignministry|Brazil": {
+  "name": "Ministério das Relações Exteriores",
+  "short": "Itamaraty",
+  "kind": "gov",
+  "what": "Brazil's foreign ministry, called Itamaraty after the palace that houses it in Brasília, which advises the president on foreign relations; Mauro Vieira has been minister since January 2023.",
+  "money": "The federal budget of Brazil.",
+  "arts": "Its remit includes the cultural side of Brazil's foreign relations.",
+  "site": "https://www.gov.br/mre",
+  "city": "Brasília",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Foreign_Affairs_(Brazil)",
+   "https://pt.wikipedia.org/wiki/Minist%C3%A9rio_das_Rela%C3%A7%C3%B5es_Exteriores_(Brasil)"
+  ],
+  "batch": "fp35"
+ },
+ "brazilsministryofculture|Brazil": {
+  "name": "Ministério da Cultura",
+  "short": "MinC",
+  "kind": "gov",
+  "what": "Brazil's federal culture ministry, created in March 1985 under President José Sarney, abolished three times, most recently in 2019, and re-created on 1 January 2023 under Margareth Menezes.",
+  "money": "The federal budget of Brazil.",
+  "arts": "Its main instrument is the Lei Rouanet of 1991, which lets companies and individuals sponsor culture against up to 4% and 6% of their income tax.",
+  "site": "https://www.gov.br/cultura",
+  "city": "Brasília",
+  "country": "Brazil",
+  "status": "done",
+  "sources": [
+   "https://pt.wikipedia.org/wiki/Minist%C3%A9rio_da_Cultura_(Brasil)",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Brazil)"
+  ],
+  "batch": "fp35"
+ },
  "brdgroupesocitgnrale": {
   "name": "BRD - Groupe Société Générale S.A.",
   "short": "BRD",
@@ -3270,6 +3402,24 @@
    "https://en.wikipedia.org/wiki/Canton_of_Z%C3%BCrich"
   ],
   "batch": "fp26"
+ },
+ "carlowcountycouncil|Ireland": {
+  "name": "Carlow County Council",
+  "short": "Comhairle Chontae Cheatharlach",
+  "kind": "gov",
+  "what": "The local authority of County Carlow, Ireland, governed by the Local Government Act 2001, with 18 elected members and a chief executive, Coilín O'Reilly.",
+  "money": "Its draft 2026 budget set EUR 83.3 million of spending; the Department of Housing allocated it EUR 9.214 million of local property tax.",
+  "site": "https://www.carlow.ie",
+  "city": "Carlow",
+  "country": "Ireland",
+  "address": "Athy Road, Carlow, R93 E7R7",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Carlow_County_Council",
+   "https://www.carlow.ie/",
+   "https://www.carlow-nationalist.ie/news/housing-takes-up-largest-chunk-of-draft-2026-budget_arid-80705.html"
+  ],
+  "batch": "fp35"
  },
  "carlowleo": {
   "name": "Local Enterprise Office Carlow",
@@ -3975,6 +4125,22 @@
   ],
   "batch": "fp25"
  },
+ "cityofbrussels|Belgium": {
+  "name": "Ville de Bruxelles / Stad Brussel",
+  "short": "City of Brussels",
+  "kind": "gov",
+  "what": "The municipal government of the City of Brussels, capital of Belgium and the largest municipality of the Brussels-Capital Region, with 196,828 inhabitants in January 2024.",
+  "money": "The city budget: more than EUR 1.1 billion of ordinary spending in 2025, with tax revenue of EUR 455.9 million as its largest source.",
+  "site": "https://www.brussels.be",
+  "city": "Brussels",
+  "country": "Belgium",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/City_of_Brussels",
+   "https://www.rtbf.be/article/la-ville-de-bruxelles-presente-un-budget-2025-rigoureux-mais-ambitieux-11562620"
+  ],
+  "batch": "fp35"
+ },
  "cityofcopenhagen|Denmark": {
   "name": "Københavns Kommune",
   "short": "City of Copenhagen",
@@ -4389,6 +4555,23 @@
   ],
   "batch": "fp27"
  },
+ "cityofmnchengladbach|Germany": {
+  "name": "Stadt Mönchengladbach",
+  "short": "City of Mönchengladbach",
+  "kind": "gov",
+  "what": "Mönchengladbach's city government: an independent city (kreisfreie Stadt) in North Rhine-Westphalia with 267,176 inhabitants at the end of 2025, led by Lord Mayor Felix Heinrichs.",
+  "money": "The city budget of Mönchengladbach.",
+  "site": "https://www.moenchengladbach.de",
+  "city": "Mönchengladbach",
+  "country": "Germany",
+  "address": "Rathausplatz 1, 41061 Mönchengladbach",
+  "status": "done",
+  "sources": [
+   "https://museum-abteiberg.de/impressum/",
+   "https://de.wikipedia.org/wiki/M%C3%B6nchengladbach"
+  ],
+  "batch": "fp35"
+ },
  "cityofmontbliard|France": {
   "name": "Ville de Montbéliard",
   "kind": "gov",
@@ -4475,6 +4658,23 @@
    "https://en.wikipedia.org/wiki/City_of_Perth"
   ],
   "batch": "fp9"
+ },
+ "cityofpoitiers|France": {
+  "name": "Ville de Poitiers",
+  "short": "City of Poitiers",
+  "kind": "gov",
+  "what": "Poitiers's city government; the city is the prefecture of the Vienne department in Nouvelle-Aquitaine and a university city of 90,899 inhabitants in 2025.",
+  "money": "The municipal budget of Poitiers.",
+  "site": "https://www.poitiers.fr",
+  "city": "Poitiers",
+  "country": "France",
+  "address": "Hôtel de Ville, CS 10569, 86021 Poitiers Cedex",
+  "status": "done",
+  "sources": [
+   "https://fr.wikipedia.org/wiki/Poitiers",
+   "https://www.poitiers.fr/"
+  ],
+  "batch": "fp35"
  },
  "cityofreykjavk|Iceland": {
   "name": "Reykjavíkurborg",
@@ -5152,6 +5352,25 @@
    "https://banque.meilleurtaux.com/ouvrir-un-compte-bancaire/actualites/2023-janvier/fusion-societe-generale-credit-nord-change-clients.html"
   ],
   "batch": "fp10"
+ },
+ "crditmutuelnordeurope": {
+  "name": "Crédit Mutuel Nord Europe",
+  "short": "CMNE",
+  "kind": "corp",
+  "what": "A mutual bank of the Crédit Mutuel group with its seat in Lille, 129 local caisses and 239 branches; part of Crédit Mutuel Alliance Fédérale since 1 January 2022.",
+  "money": "Banking and insurance for 982,066 clients, 657,073 of them member-owners (sociétaires), at the end of 2024; it also owns Beobank in Belgium.",
+  "arts": "Its Fondation Crédit Mutuel Nord Europe, set up in 2013, funds culture, training, solidarity and environment projects and has paid out more than EUR 13 million.",
+  "site": "https://www.creditmutuel.fr/cmne/fr/",
+  "city": "Lille",
+  "country": "France",
+  "address": "4 place Richebé, 59000 Lille",
+  "status": "done",
+  "sources": [
+   "https://www.creditmutuel.fr/fr/alliancefederale/banque-mutualiste/implantations/federation-nord-europe.html",
+   "https://www.creditmutuel.fr/fr/alliancefederale/fondation/la-fondation-Credit-Mutuel-Nord-Europe.html",
+   "https://fr.wikipedia.org/wiki/Cr%C3%A9dit_mutuel_Nord_Europe"
+  ],
+  "batch": "fp35"
  },
  "creatensw": {
   "name": "Create NSW",
@@ -6777,6 +6996,41 @@
   ],
   "batch": "fp11"
  },
+ "estoniangovernment|Estonia": {
+  "name": "Vabariigi Valitsus",
+  "short": "Government of Estonia",
+  "kind": "gov",
+  "what": "The cabinet of the Republic of Estonia, headed by the prime minister, which holds executive power and directs the work of government agencies.",
+  "money": "The Estonian state budget, which the government drafts and the Riigikogu adopts; for 2026 it set a deficit of 4.5% of GDP.",
+  "site": "https://valitsus.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Stenbock House, Rahukohtu 3, 15161 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Estonia",
+   "https://valitsus.ee/en/news/prime-minister-michal-agreement-reached-budget-prioritising-defence-economic-and-income-growth"
+  ],
+  "batch": "fp35"
+ },
+ "estonianministryofculture|Estonia": {
+  "name": "Kultuuriministeerium",
+  "short": "Estonian Ministry of Culture",
+  "kind": "gov",
+  "what": "Estonia's government ministry for the arts, cultural heritage, sport and integration policy, in Tallinn, led by Minister of Culture Heidy Purga.",
+  "money": "The Estonian state budget: EUR 391 million for the ministry in 2025, including EUR 40 million carried over from the previous year.",
+  "site": "https://www.kul.ee",
+  "city": "Tallinn",
+  "country": "Estonia",
+  "address": "Suur-Karja 23, 15076 Tallinn",
+  "status": "done",
+  "sources": [
+   "https://www.kul.ee/en",
+   "https://news.err.ee/1609815069/ministry-of-culture-funding-set-to-fall-over-the-next-several-years",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Estonia)"
+  ],
+  "batch": "fp35"
+ },
  "estrelladamm": {
   "name": "Sociedad Anónima Damm",
   "short": "Damm",
@@ -7199,6 +7453,25 @@
    "https://en.wikipedia.org/wiki/Ministry_of_Education_and_Culture_(Finland)"
   ],
   "batch": "fp17"
+ },
+ "finnishheritageagency|Finland": {
+  "name": "Museovirasto",
+  "short": "Finnish Heritage Agency",
+  "kind": "gov",
+  "what": "A Finnish government agency under the Ministry of Education and Culture that preserves the country's material cultural heritage and protects archaeological sites and built heritage.",
+  "money": "The Finnish state budget.",
+  "arts": "In spring 2023 it paid EUR 668,000 in grants toward the exhibition fees of 440 visual artists in 167 exhibitions.",
+  "site": "https://www.museovirasto.fi",
+  "city": "Helsinki",
+  "country": "Finland",
+  "address": "Mannerheimintie 34, Helsinki",
+  "status": "done",
+  "sources": [
+   "https://www.museovirasto.fi/en/about-us",
+   "https://en.wikipedia.org/wiki/Finnish_Heritage_Agency",
+   "https://www.sttinfo.fi/tiedote/70004232/avustukset-kuvataiteilijoiden-nayttelypalkkioihin-jalleen-haettavissa?publisherId=69817951"
+  ],
+  "batch": "fp35"
  },
  "finnishministryofeducation|Finland": {
   "name": "Opetus- ja kulttuuriministeriö",
@@ -10267,6 +10540,22 @@
   ],
   "batch": "fp30"
  },
+ "insightinvestment": {
+  "name": "Insight Investment",
+  "kind": "corp",
+  "what": "A British asset manager in London, formed in 2002 by the banking group HBOS and owned since 2009 by BNY, the US financial services group.",
+  "money": "Investment management of USD 839.3 billion of client assets (30 September 2026) in fixed income, liability-driven investment, cash and multi-asset strategies.",
+  "site": "https://www.insightinvestment.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "address": "160 Queen Victoria Street, London EC4V 4LA",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Insight_Investment",
+   "https://www.insightinvestment.com/"
+  ],
+  "batch": "fp35"
+ },
  "institutfranais": {
   "name": "Institut français",
   "kind": "gov",
@@ -11619,6 +11908,23 @@
   ],
   "batch": "fp16"
  },
+ "landofsalzburg|Austria": {
+  "name": "Land Salzburg",
+  "short": "State of Salzburg",
+  "kind": "gov",
+  "what": "A federal state (Land) of Austria with 561,714 inhabitants (2021 census), governed from the city of Salzburg; Governor Karoline Edtstadler heads its government.",
+  "money": "The state budget: about EUR 4.5 billion for 2026, approved in the Salzburg Landtag on 26 November 2025.",
+  "arts": "The 2026 budget gives EUR 105 million to art, culture and religious affairs (Kunst, Kultur und Kultus).",
+  "site": "https://www.salzburg.gv.at",
+  "city": "Salzburg",
+  "country": "Austria",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Salzburg_(state)",
+   "https://www.salzburg24.at/news/salzburg/politik-der-giesskanne-beenden-land-beschliesst-budget-2026-art-309553"
+  ],
+  "batch": "fp35"
+ },
  "landvorarlberg|Austria": {
   "name": "Amt der Vorarlberger Landesregierung",
   "short": "Land Vorarlberg",
@@ -12412,6 +12718,22 @@
   ],
   "batch": "fp16"
  },
+ "madridcitycouncil|Spain": {
+  "name": "Ayuntamiento de Madrid",
+  "short": "Madrid City Council",
+  "kind": "gov",
+  "what": "Madrid's city council, led by Mayor José Luis Martínez-Almeida of the Partido Popular, with its main seat in the Palacio de Cibeles since November 2007.",
+  "money": "The city budget: EUR 6,578 million for 2026, approved by the council plenary on 22 December 2025.",
+  "site": "https://www.madrid.es",
+  "city": "Madrid",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ayuntamiento_de_Madrid",
+   "https://www.vozpopuli.com/espana/madrid/el-ayuntamiento-de-madrid-aprueba-sus-presupuestos-tras-incorporar-52-enmiendas-de-todos-los-grupos-municipales.html"
+  ],
+  "batch": "fp35"
+ },
  "madriddestino": {
   "name": "Madrid Destino Cultura Turismo y Negocio, S.A.",
   "short": "Madrid Destino",
@@ -13082,6 +13404,39 @@
   ],
   "batch": "fp17"
  },
+ "ministryofinterior|Italy": {
+  "name": "Ministero dell'Interno",
+  "short": "Italian Ministry of the Interior",
+  "kind": "gov",
+  "what": "Italy's interior ministry, the national authority for public order and security, based at the Viminale in Rome and led by Matteo Piantedosi since 22 October 2022.",
+  "money": "The Italian state budget.",
+  "site": "https://www.interno.gov.it",
+  "city": "Rome",
+  "country": "Italy",
+  "address": "Piazza del Viminale 1, 00184 Roma",
+  "status": "done",
+  "sources": [
+   "https://it.wikipedia.org/wiki/Ministero_dell%27interno",
+   "https://www.interno.gov.it/it"
+  ],
+  "batch": "fp35"
+ },
+ "ministryofnationalresources|Hungary": {
+  "name": "Nemzeti Erőforrás Minisztérium",
+  "short": "Ministry of National Resources",
+  "kind": "gov",
+  "what": "Hungary's ministry for health, social affairs, education, culture and sport, formed in 2010, renamed Ministry of Human Capacities in 2012 and dissolved in 2022.",
+  "money": "The state budget of Hungary.",
+  "arts": "Géza Szőcs was its state secretary for culture.",
+  "city": "Budapest",
+  "country": "Hungary",
+  "status": "done",
+  "sources": [
+   "https://hu.wikipedia.org/wiki/Nemzeti_Er%C5%91forr%C3%A1s_Miniszt%C3%A9rium",
+   "https://hu.wikipedia.org/wiki/Emberi_Er%C5%91forr%C3%A1sok_Miniszt%C3%A9riuma"
+  ],
+  "batch": "fp35"
+ },
  "ministryofocw|Netherlands": {
   "name": "Ministerie van Onderwijs, Cultuur en Wetenschap",
   "short": "Dutch Ministry of Education, Culture and Science (OCW)",
@@ -13317,6 +13672,24 @@
   ],
   "batch": "fp26"
  },
+ "municipalityofdro|Italy": {
+  "name": "Comune di Dro",
+  "short": "Municipality of Dro",
+  "kind": "gov",
+  "what": "The municipality of Dro, a town of 5,093 inhabitants in the Sarca valley in the autonomous province of Trento, part of the Alto Garda e Ledro valley community.",
+  "money": "The municipal budget of Dro.",
+  "site": "https://www.comune.dro.tn.it",
+  "city": "Dro",
+  "country": "Italy",
+  "address": "Via Torre 1, 38074 Dro (TN)",
+  "status": "done",
+  "sources": [
+   "https://www.comune.dro.tn.it/",
+   "https://it.wikipedia.org/wiki/Dro",
+   "https://en.wikipedia.org/wiki/Dro,_Trentino"
+  ],
+  "batch": "fp35"
+ },
  "municipalityofhagueculturalallocation|Netherlands": {
   "name": "Gemeente Den Haag",
   "short": "City of The Hague",
@@ -13354,6 +13727,23 @@
    "https://nl.wikipedia.org/wiki/Gemeentefonds_(Nederland)"
   ],
   "batch": "fp26"
+ },
+ "municipalityofprishtina|Kosovo": {
+  "name": "Komuna e Prishtinës",
+  "short": "Municipality of Prishtina",
+  "kind": "gov",
+  "what": "The municipal government of Pristina, the capital and largest city of Kosovo.",
+  "money": "The municipal budget of Pristina.",
+  "site": "https://prishtina.rks-gov.net",
+  "city": "Pristina",
+  "country": "Kosovo",
+  "address": "Rr. UÇK nr. 2, 10000 Prishtinë",
+  "status": "done",
+  "sources": [
+   "https://prishtina.rks-gov.net/",
+   "https://en.wikipedia.org/wiki/Pristina"
+  ],
+  "batch": "fp35"
  },
  "municipalmuseumofcityofkrakw|Poland": {
   "name": "Gmina Miejska Kraków",
@@ -14304,6 +14694,21 @@
    "https://www.governor.ny.gov/news/governor-hochul-announces-63-million-arts-and-culture-grants-awarded-new-york-state-council"
   ],
   "batch": "fp1"
+ },
+ "nyu": {
+  "name": "New York University",
+  "short": "NYU",
+  "kind": "priv",
+  "what": "A private research university in New York City, chartered in 1831 by the New York State Legislature and founded in 1832 by Albert Gallatin, based in Greenwich Village.",
+  "money": "An operating budget of USD 4.3 billion in 2025, excluding NYU Langone, and an endowment of USD 7.28 billion (2025).",
+  "site": "https://www.nyu.edu",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/New_York_University"
+  ],
+  "batch": "fp35"
  },
  "oak": {
   "name": "Oak Foundation",
@@ -16079,6 +16484,22 @@
   ],
   "batch": "fp19"
  },
+ "republicofkosovoministries|Kosovo": {
+  "name": "Ministria e Kulturës, Rinisë dhe Sportit",
+  "short": "Kosovo Ministry of Culture, Youth and Sport",
+  "kind": "gov",
+  "what": "The government ministry of the Republic of Kosovo for culture, youth and sport.",
+  "money": "The Kosovo state budget: EUR 86.4 million planned for the ministry in 2025, down from EUR 88.1 million in 2024.",
+  "site": "https://www.mkrs-ks.org",
+  "city": "Pristina",
+  "country": "Kosovo",
+  "status": "done",
+  "sources": [
+   "https://stacion.org/en/Open-Call-AoT-2023",
+   "https://www.institutigap.org/documents/7624_projektbuxheti_2025.pdf"
+  ],
+  "batch": "fp35"
+ },
  "resoluteav": {
   "name": "Resolute Audio Visual Limited",
   "short": "Resolute AV",
@@ -16369,6 +16790,22 @@
    "https://en.wikipedia.org/wiki/Roche_Holding"
   ],
   "batch": "fp20"
+ },
+ "rockwellautomation": {
+  "name": "Rockwell Automation, Inc.",
+  "short": "Rockwell Automation",
+  "kind": "corp",
+  "what": "A US industrial automation company in Milwaukee, Wisconsin; it began in 1903, founded by Stanton Allen and Lynde Bradley, and took the name Allen-Bradley Company in 1909.",
+  "money": "Sales of industrial automation hardware, software and services under brands such as Allen-Bradley and FactoryTalk: USD 8,342 million in fiscal 2025.",
+  "site": "https://www.rockwellautomation.com",
+  "city": "Milwaukee",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.sec.gov/Archives/edgar/data/1024478/000102447825000112/fy2025ex99.htm",
+   "https://en.wikipedia.org/wiki/Rockwell_Automation"
+  ],
+  "batch": "fp35"
  },
  "rolex": {
   "name": "Rolex SA",
@@ -17236,6 +17673,24 @@
    "https://museumdd.be/uploads/photos/DOCUMENTS/brochures/handout-Gust-De-Smet.pdf"
   ],
   "batch": "fp13"
+ },
+ "sligocountycouncil|Ireland": {
+  "name": "Sligo County Council",
+  "short": "Comhairle Chontae Shligigh",
+  "kind": "gov",
+  "what": "County Sligo's local authority in Ireland: 18 councillors elected for five-year terms by single transferable vote, and a chief executive, Martin Lydon.",
+  "money": "Its 2025 budget of EUR 80.8 million: EUR 52.6 million grants and other income, EUR 15.8 million rates, EUR 12.4 million property tax.",
+  "site": "https://www.sligococo.ie",
+  "city": "Sligo",
+  "country": "Ireland",
+  "address": "County Hall, Riverside, Sligo, F91 Y763",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sligo_County_Council",
+   "https://www.sligococo.ie/",
+   "https://www.sligococo.ie/YourCouncil/Finance/Budgets/Adopted%20Budget%202025.pdf"
+  ],
+  "batch": "fp35"
  },
  "sloan": {
   "name": "Alfred P. Sloan Foundation",
@@ -19003,6 +19458,24 @@
   ],
   "batch": "fp27"
  },
+ "uruguaysministryofeducation|Uruguay": {
+  "name": "Ministerio de Educación y Cultura",
+  "short": "MEC",
+  "kind": "gov",
+  "what": "Uruguay's government ministry for education policy, cultural development, heritage, science and human rights, in Montevideo.",
+  "money": "The national budget of Uruguay.",
+  "site": "https://www.gub.uy/ministerio-educacion-cultura",
+  "city": "Montevideo",
+  "country": "Uruguay",
+  "address": "Reconquista 535, Montevideo",
+  "status": "done",
+  "sources": [
+   "https://www.gub.uy/ministerio-educacion-cultura/",
+   "https://es.wikipedia.org/wiki/Ministerio_de_Educaci%C3%B3n_y_Cultura_de_Uruguay",
+   "https://en.wikipedia.org/wiki/Ministry_of_Education_and_Culture_(Uruguay)"
+  ],
+  "batch": "fp35"
+ },
  "usbank": {
   "name": "U.S. Bancorp",
   "short": "U.S. Bank",
@@ -20215,6 +20688,22 @@
    "https://it.wikipedia.org/wiki/Zanotta_(azienda)"
   ],
   "batch": "fp33"
+ },
+ "zapopancitycouncil|Mexico": {
+  "name": "Ayuntamiento de Zapopan",
+  "short": "Zapopan City Council",
+  "kind": "gov",
+  "what": "Zapopan's city council, which governs Jalisco's second most populous city, part of metropolitan Guadalajara; Juan José Frangie Saade is municipal president.",
+  "money": "The municipal budget: MXN 13,147.9 million approved for 2026 on 16 December 2025.",
+  "site": "https://www.zapopan.gob.mx",
+  "city": "Zapopan",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://www.cronica.com.mx/jalisco/guadalajara/2025/12/16/ayuntamiento-de-zapopan-aprueba-presupuesto-de-egresos-2026-con-aumento-de-61/",
+   "https://es.wikipedia.org/wiki/Zapopan"
+  ],
+  "batch": "fp35"
  },
  "zeitzmocaa": {
   "name": "Zeitz Museum of Contemporary Art Africa",

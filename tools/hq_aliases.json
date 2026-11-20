@@ -102,7 +102,8 @@
  "cityofutrecht|Netherlands": [
   "cityofutrecht|Netherlands",
   "utrecht",
-  "gemeenteutrecht|Netherlands"
+  "gemeenteutrecht|Netherlands",
+  "municipalityofutrecht|Netherlands"
  ],
  "cityofwarsawculturaldepartment|Poland": [
   "cityofwarsaw|Poland"
@@ -171,7 +172,8 @@
   "federalartsministry|Austria",
   "austrianartsministry|Austria",
   "bmks",
-  "bundesministeriumfrkunstundkultur"
+  "bundesministeriumfrkunstundkultur",
+  "austrianfederalgovernment|Austria"
  ],
  "flemishgovernment|Belgium": [
   "flemishgovernment|Belgium",
@@ -179,7 +181,8 @@
   "flemish",
   "flanders",
   "flemishcommunityculturaldepartment|Belgium",
-  "vlaamseoverheid"
+  "vlaamseoverheid",
+  "governmentofflanders|Belgium"
  ],
  "fundacincostantini": [
   "fundacincostantini",
@@ -217,14 +220,16 @@
  "hessianministryforscience|Germany": [
   "hessianscience",
   "hessensscience",
-  "hessenartsministry|Germany"
+  "hessenartsministry|Germany",
+  "stateofhesse|Germany"
  ],
  "italianministryofculture|Italy": [
   "ministryofculture|uffizi",
   "ministryofculture|triennale-milano",
   "ministryofculture|quadriennale-di-roma",
   "ministryofcultureeur|Italy",
-  "ministryofculture|maxxi"
+  "ministryofculture|maxxi",
+  "italiancouncil|Italy"
  ],
  "lacountydepartmentofarts|United States": [
   "losangelescountyartscommission|United States",
@@ -266,7 +271,8 @@
   "ocw",
   "ocwit",
   "dutchministryofeducation|Netherlands",
-  "dutchministryofocw|Netherlands"
+  "dutchministryofocw|Netherlands",
+  "dutcheducationministry|Netherlands"
  ],
  "municipalityofmiddelburg|Netherlands": [
   "cityofmiddelburg|Netherlands"
@@ -511,5 +517,14 @@
  ],
  "goetheinstitut": [
   "goetheinstitute"
+ ],
+ "municipalmuseumofcityofkrakw|Poland": [
+  "cityofkrakow|Poland"
+ ],
+ "villedepoitiers|France": [
+  "cityofpoitiers|France"
+ ],
+ "dracnouvelleaquitaine": [
+  "stategovernment|le-confort-moderne-poitiers"
  ]
 }
