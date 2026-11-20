@@ -11908,9 +11908,13 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             if (ctx.roundRect) ctx.roundRect(bx0, y0, bw0, h, rr);
             else { ctx.moveTo(bx0 + rr, y0); ctx.arcTo(bx0 + bw0, y0, bx0 + bw0, y0 + h, rr); ctx.arcTo(bx0 + bw0, y0 + h, bx0, y0 + h, rr); ctx.arcTo(bx0, y0 + h, bx0, y0, rr); ctx.arcTo(bx0, y0, bx0 + bw0, y0, rr); ctx.closePath(); }
           };
+          // On the dark theme the bubble is dark too (user, 20 Nov 2026: "make button and map call outs dark color on dark
+          // mode"): black, the name in the light ink (19:1), with a thin pale edge so it keeps its shape on the dark ground.
+          // The light theme keeps the ink bubble with the name in the ground's colour.
+          const bubFill = GLOBE_LIGHT ? G_TEXT : '#000000', bubInk = GLOBE_LIGHT ? G_GROUND : '#f4f4f4';
           // A hairline of the ground round the bubble parts it from a mark or another bubble under it.
           box(); ctx.strokeStyle = G_GROUND; ctx.lineWidth = 2; ctx.stroke();
-          ctx.fillStyle = G_TEXT;
+          ctx.fillStyle = bubFill;
           if (mark) {
             const tx = Math.max(bx0 + rr + 6, Math.min(bx0 + bw0 - rr - 6, mark.x));
             const below = mark.y - mark.r - 1, above = mark.y + mark.r + 1;
@@ -11919,7 +11923,8 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             else if (above < y0) { ctx.moveTo(tx - 6, y0 + 1); ctx.lineTo(tx + 6, y0 + 1); ctx.lineTo(tx, Math.max(above, y0 - 9)); ctx.closePath(); ctx.fill(); }
           }
           box(); ctx.fill();
-          ctx.fillStyle = G_GROUND;
+          if (!GLOBE_LIGHT) { box(); ctx.strokeStyle = 'rgba(244, 244, 244, 0.45)'; ctx.lineWidth = 1; ctx.stroke(); }
+          ctx.fillStyle = bubInk;
           ctx.textAlign = 'center';
           ctx.textBaseline = 'middle';
           ctx.fillText(text, x0 + w / 2, y0 + h / 2 + 0.5);
