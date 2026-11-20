@@ -6,6 +6,52 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 
 ## Grade or flag questions
 
+- arko-art-center-seoul and nam-june-paik-art-center-yongin: Hyundai (2026 Venice pavilion partner;
+  exhibition money) and documented child labour at Alabama suppliers: Forced or exploited labour.
+  Arko's record has no flag.
+- national-museum-of-modern-and-contemporary-art-mmca: 2023 ministry audit; older protest and
+  censorship items are WIDER CONTEXT.
+- the-war-memorial-of-korea: January 2026 Board of Audit finding against its chairman (name to know).
+- centre-dart-la-panera-lleida: arts bodies' open letter (Protest), if dated.
+- art-sonje-center: Kim Woo-choong's 2006 conviction is WIDER CONTEXT.
+
+- new-york-academy-of-art-new-york: Epstein board seat 1987 to 1994 and money after his 2008 plea
+  (Epstein-linked).
+- noguchi-museum: 2024 keffiyeh ban and firings, 2024 protests (Protest); record carries no flag.
+- queens-museum: Protest rests on 2023 staff and artist disputes, if readable sources confirm them;
+  tier_note says no reason is recorded.
+- pinchukartcentre: Kryvorizhstal (2004 to 2005) and the 2019 to 2020 union dispute are WIDER CONTEXT;
+  check why_flagged and tier.
+- kuindzhi-art-museum: Sanctions on the DNR entity; its control rests on a 2022 sign (Bellingcat).
+
+- african-artists-foundation-lagos: no text source names Deutsche Bank; watch and why_flagged rest on a
+  logo file name: the flag basis should go.
+- heroes-acre-windhoek: no Red flag left (overrun and Mansudae are WIDER CONTEXT); why_flagged and
+  watch rest on them.
+- national-art-gallery-of-namibia-windhoek: live issue is the 2023 to 2024 collection-ownership dispute;
+  why_flagged and watch cite the 2014 Bozzi withdrawal.
+- North Korean records (april-25-film-studio, april-25-house-of-culture, foreign-languages-publishing-house):
+  why_flagged holds funding text, not the sanctions reason.
+
+- state-hermitage-museum-spb: Gazprom (2022, Fossil fuels), the director's EU sanctions (2026), a
+  possible Sanctions flag for sponsor Sber (a listed state bank, VTB precedent), the 2026 Accounts
+  Chamber audit, 2022 partners cutting ties. Its tier_note says no reason is recorded.
+- victoria-gallery-samara: record's only flag is "Campaigned name", which targeted V-A-C in Venice:
+  drop it; Fossil fuels (Mikhelson's gas fortune) and Sanctions (UK designation) fit instead.
+- alula-arts-cultural-oasis: Gulf state body stays; the 2019 protest is WIDER CONTEXT.
+- tanoto-art-foundation-singapore: RGE's gas business and Asian Agri's 2012 tax ruling are WIDER
+  CONTEXT (no documented money link; old).
+
+- serralves-foundation-porto: Galp (to 2024) and REN Portgás (2025, gas distributor) as current Fossil
+  fuels; Tabaqueira (2021 to 2022) as Tobacco. Record carries only Fossil fuels.
+- mac-lima-lima: 2022 Getty grant is a note (Getty ruling), no flag.
+- katara-cultural-village and msheireb-museums: Gulf state body (government foundation; Msheireb
+  Properties 51% Qatar Foundation, 49% QIA). Records have no flags.
+- ruarts-foundation-moscow: Fossil fuels rests on the founder's family oil and gas fortune (TI Russia,
+  Business FM); Sardarov is not on the UK list.
+- muzeum-sztuki-lodz: 2022 removal of director by the funder (State censorship or punishment).
+- museo-de-arte-de-puerto-rico: why_flagged describes funding, not its 2023 protest.
+
 - pinacoteca-agnelli: main sponsor Stellantis's unit FCA US pleaded guilty in the US in 2022 (name to
   know); the Elkann and Ferrero tax case is pending (WIDER CONTEXT).
 - museo-revoltella: July 2022 open letter (Protest); attendants' pay disputes 2023 to 2026.
@@ -98,6 +144,55 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
   under the five-year rule; no red flag remains.
 
 ## Record fields that are wrong
+
+- casa-de-la-arquitectura-madrid: website should be https://lacasadelaarquitectura.es; board chair is
+  the Housing Minister (BOE).
+- the-war-memorial-of-korea: funding "did not say" now answered (state and local subsidy allowed;
+  Defense Ministry approves its budget); records_note out of date (audited accounts go to the minister).
+- nam-june-paik-art-center-yongin: admission is free.
+- national-museum-of-modern-and-contemporary-art-mmca: new director Ki Hey-kyung, 13 November 2026.
+- busan-museum-of-contemporary-art-busan: no director found in September 2026; Gallery Climate
+  Coalition membership unconfirmed.
+- centre-dart-la-panera-lleida: Christian Alonso's term ended 28 August; opening year 2003 (centre)
+  vs 1997 (Wikipedia).
+
+- noguchi-museum: visitor address is 9-01 33rd Road, not 32-37 Vernon Boulevard.
+- the-factory-contemporary-arts-centre-ho-chi-minh-city: factoryartscentre.com serves a football-
+  streaming spam page; it may have closed or moved (snippets only).
+- queens-museum: finances_note's 67% government grants unchecked.
+
+- fondation-pierre-gianadda: watch says nobody is named as running it; François Gianadda is president
+  (register, 19 Nov 2025). funding and records_note carry no-budget lines.
+- la-virreina-barcelona: watch names Valentín Roma as director; he left in May 2026 for the MACBA.
+- teatro-espanol: funding and records_note are "pages read" lines; Madrid Destino's 2025 budget is
+  published.
+- museum-rietberg: funding says no funder is stated; the City of Zurich 2026 budget gives it.
+- national-taiwan-museum-of-fine-arts-taichung: finances_note's 97% excludes donations (87.7% with
+  them); no website field (https://www.ntmofa.gov.tw).
+- national-museum-of-tajikistan: records_note's "under the president's office" unconfirmed.
+- tishreen-war-panorama-october-war-panorama: painting size 38 m² (ministry), not 238 m².
+
+- tanoto-art-foundation-singapore: website is an SCMP article; site is https://www.tanotoartfoundation.org.
+- state-hermitage-museum-spb: funding names VTB, found only in a headline; confirmed sponsors are
+  Gazprom, Magnit, Sber and Samsung.
+- alula-arts-cultural-oasis: "100% state-funded" vs the RCU's 40% private investment target;
+  year_founded 2019, RCU set up 2017.
+- musee-boribana: location Ngor vs Rond-point Place ONU; founding 1990, 1992 or 1998; founder Boubacar
+  Koné has died.
+- musée-des-civilisations-noires-dakar: director since 1 July 2026 Abdou Simbandy Diatta; RMB 180M
+  unconfirmed (AFP over 30M euros; Mail & Guardian $34M).
+- kapelica-gallery-kersnikova-institute-ljubljana: "small NGO venue" vs 2025 income €751,157.
+- center-for-cultural-decontamination-czkd-belgrade: tier_note "no outside source" out of date.
+
+- mac-lima-lima: board president is Meg de Romaña, Hochschild vice-president; address Av. Grau 1511.
+- serralves-foundation-porto: records_note says accounts 1989 to 2020; reports run to 2025 (income
+  €17.8M).
+- wroc-aw-contemporary-museum: funding "did not state" is wrong; 2024 subsidy PLN 5.0M from the city;
+  Lisowski director since February 2026.
+- katara-cultural-village: funding misses Amiri Decision No. 38 of 2010 and government funding.
+- msheireb-museums: funding misses the owner, Msheireb Properties.
+- museo-de-arte-de-puerto-rico: funding names show backers the current pages do not name.
+- ruarts-foundation-moscow: the Ostozhenka gallery closed in October 2026.
 
 - pinacoteca-agnelli: funding says the funder is not stated; it is the foundation, Stellantis and
   Lingotto IM.
@@ -254,7 +349,8 @@ like `data/details_runs/2026-11-20/flags_from_notes.py`.
 - brucke-museum: the 2024 budget lists 500,000 euros each from the Kulturstiftung der Länder and the
   Ernst von Siemens Kunststiftung as "Entschädigung von Gemälde Kirchner"; no source explains it.
 
-- Archive-copy review before import also covers: taller-experimental-de-grafica-de-la-habana
+- Archive-copy review before import also covers: foreign-languages-publishing-house (North Korea
+  Leadership Watch 2009 PDF, archived; the g012 checker cut NKLW as a refusing site); taller-experimental-de-grafica-de-la-habana
   (Smithsonian 2016, archive copy after a live 403); museo-para-la-identidad-nacional-min-tegucigalpa
   (Hyperallergic, November 2020 archive copy) and skulpturenpark-waldfrieden (Westdeutsche Zeitung
   2012, archived copy).
