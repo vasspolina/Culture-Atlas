@@ -1,0 +1,524 @@
+[
+ {
+  "id": "house-of-terror-terror-haza",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only: basement cells",
+   "unsupported: 'cells where the ÁVH tortured prisoners'"
+  ],
+  "before": "the building used by the Arrow Cross Party and then by the ÁVH state security authority; its basement shows cells where the ÁVH tortured prisoners (Wikipedia).",
+  "after": "the Arrow Cross party's former House of Loyalty and later the ÁVH state security headquarters (444); half of its basement reconstructs the prison cells of the 1940s and 1950s (museum website).",
+  "sources": [
+   "https://www.terrorhaza.hu/en/exhibitions/permanent-exhibition/basement",
+   "https://444.hu/2026/09/19/a-ner-propagandagyaranak-latvanykonyhajabol-kellene-valodi-muzeumot-csinalni-a-terror-haza-schmidt-maria-utan"
+  ],
+  "reason": "Replaced Wikipedia with the museum's basement page and 444; the museum's page describes reconstructed cells, not ÁVH torture in them."
+ },
+ {
+  "id": "house-of-terror-terror-haza",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'chaired by Schmidt'",
+   "miscount: 'eight research institutes and workshops'"
+  ],
+  "before": "set up in 1999 and chaired by Schmidt, which ran the museum with eight research institutes and workshops",
+  "after": "set up in 1999 and led by Schmidt as director-general, which ran the museum alongside seven research institutes and a workshop",
+  "sources": [
+   "https://444.hu/2026/09/15/tarr-zoltan-kirugta-schmidt-mariat-a-terror-haza-muzeum-ideiglenesen-bezar",
+   "https://444.hu/2020/08/17/tavaly-egymilliarddal-tobb-jutott-a-schmidt-maria-fele-alapitvanynak-mint-egy-evvel-korabban"
+  ],
+  "reason": "444 calls Schmidt the foundation's director-general and lists seven institutes and the Deák Ferenc workshop."
+ },
+ {
+  "id": "house-of-terror-terror-haza",
+  "section": "Red flags",
+  "problems": [
+   "heading named two issues",
+   "added detail: 'display rights'"
+  ],
+  "before": "Red flags: 2026 dismissal of the director and state review of the exhibition / ... and display rights were settled",
+  "after": "Red flags: 2026 ministerial order removing the director and closing the museum / ... and the rights were settled",
+  "sources": [
+   "https://444.hu/2026/09/15/tarr-zoltan-kirugta-schmidt-mariat-a-terror-haza-muzeum-ideiglenesen-bezar"
+  ],
+  "reason": "One decision of 15 September 2026, now one heading; the minister wrote only that the rights had to be clarified."
+ },
+ {
+  "id": "house-of-terror-terror-haza",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "paraphrase drift: 'showroom'"
+  ],
+  "before": "Calls the museum a showroom of the Orbán system's propaganda",
+  "after": "Calls the museum the show kitchen of the Orbán system's propaganda factory",
+  "sources": [
+   "https://444.hu/2026/09/19/a-ner-propagandagyaranak-latvanykonyhajabol-kellene-valodi-muzeumot-csinalni-a-terror-haza-schmidt-maria-utan"
+  ],
+  "reason": "Matches the article's title (látványkonyha, propagandagyár)."
+ },
+ {
+  "id": "house-of-terror-terror-haza",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "summarising-fetcher wording: title case and quotation not verbatim"
+  ],
+  "before": "\"House of the Rising Hun: Manipulations of Historical Memory in Orbán's Hungary\" ... calls Schmidt the Fidesz-appointed \"historian-in-chief\".",
+  "after": "\"House of the Rising Hun: Manipulations of historical memory in Orbán's Hungary\" ... Counts \"three rooms dedicated to fascism and perhaps two dozen to communism\" ... describes Schmidt as a professor and media mogul \"whom Fidesz appointed as historian-in-chief\".",
+  "sources": [
+   "https://thebaffler.com/salvos/house-of-the-rising-hun-wells"
+  ],
+  "reason": "curl got 403; WebFetch asked for exact sentences returned the subtitle and the quoted sentences; the rest is paraphrase without quotation marks."
+ },
+ {
+  "id": "house-of-terror-terror-haza",
+  "section": "SOURCES",
+  "problems": [
+   "wikipedia source no longer used"
+  ],
+  "before": "https://en.wikipedia.org/wiki/House_of_Terror",
+  "after": "https://www.terrorhaza.hu/en/exhibitions/permanent-exhibition/basement",
+  "sources": [
+   "https://www.terrorhaza.hu/en/exhibitions/permanent-exhibition/basement"
+  ],
+  "reason": "Source swapped with the point."
+ },
+ {
+  "id": "akureyri-art-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "overview point of two sentences"
+  ],
+  "before": "...a café and a shop (Hönnunarmiðstöð). The museum reopened with 12 galleries on 25 August 2018...",
+  "after": "...a café and a shop (Hönnunarmiðstöð). / - The museum reopened with 12 galleries on 25 August 2018...",
+  "sources": [
+   "https://www.stjornarradid.is/library/03-Verkefni/Menningarmal/Menningarsamningar/Menningarsamningur%20Akureyrarb.pdf",
+   "https://www.stjornarradid.is/efst-a-baugi/frettir/stok-frett/2026/03/27/Voruthlutun-ur-myndlistarsjodi-2026/"
+  ],
+  "reason": "Split into two points. State agreement (690M total, 230M a year, 12 May 2021, matching clause) and the 700,000 krónur grant confirmed."
+ },
+ {
+  "id": "museum-of-pki-treachery",
+  "section": "Red flags",
+  "problems": [
+   "censorship case older than five years (2018) as a Red flag"
+  ],
+  "before": "Red flags: 2018 permit rule for foreign researchers (two points)",
+  "after": "WIDER CONTEXT: the same two points, then 'The rule named this museum, with Satriamandala, among the museums it covers.'",
+  "sources": [
+   "https://theconversation.com/whats-behind-the-move-to-limit-foreign-researchers-access-to-indonesias-military-museums-92056"
+  ],
+  "reason": "February 2018 case, before October 2021, and no newer case of the same kind; quotation and the call to scrap the rule confirmed."
+ },
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "section": "OVERVIEW",
+  "problems": [
+   "summarising-fetcher wording (EcoIran)",
+   "conflicting dates"
+  ],
+  "before": "Tehran city council members dated its opening to 2012 and gave its floor area as 205,000 square metres (EcoIran, 2024); Rivetti dates the opening of the main building to 2016.",
+  "after": "Narges Madanipour, head of the city council's culture commission, gave its floor area as 205,000 square metres and its opening as the Iranian year 1391, 2012 to 2013 (EcoIran, 2024); AFP gives 2012, while Rivetti dates the opening of the main building to 2016.",
+  "sources": [
+   "https://ecoiran.com/fa/tiny/news-69172",
+   "https://www.hurriyetdailynews.com/tehran-museum-lionizes-war-in-which-iran-took-on-world-135970",
+   "https://doras.dcu.ie/24538/1/MES2000033_snapshot.pdf"
+  ],
+  "reason": "One council member said it, giving the year 1391. AFP also says 2012; no primary source settles 2012 against Rivetti's 2016, so both stay."
+ },
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "section": "FUNDING",
+  "problems": [
+   "summarising-fetcher wording (Official Gazette)",
+   "missing funding point the source supports"
+  ],
+  "before": "Approval: the amendment was approved by the Supreme Leader and Commander-in-Chief in a letter of 28 April 2021 ...",
+  "after": "...The same amendment transferred the staff, equipment and annual credits of the Tehran province office for Holy Defense works to the museum. / Approval: the Supreme Leader and Commander-in-Chief approved the amendment, communicated in a letter of 28 April 2021 ...",
+  "sources": [
+   "https://www.edalatsara.com/paper/%D8%B1%D9%88%D8%B2%D9%86%D8%A7%D9%85%D9%87-%D8%B1%D8%B3%D9%85%DB%8C-%DA%A9%D8%B4%D9%88%D8%B1-%D8%A7%D8%B5%D9%84%D8%A7%D8%AD-%D8%A7%D8%B3%D8%A7%D8%B3%D9%86%D8%A7%D9%85%D9%87-%D9%85%D9%88%D8%B2%D9%87-%D8%A7%D9%86%D9%82%D9%84%D8%A7%D8%A8-%D8%A7%D8%B3%D9%84%D8%A7%D9%85%DB%8C-%D9%88-%D8%AF%D9%81%D8%A7%D8%B9-%D9%85%D9%82%D8%AF%D8%B3"
+  ],
+  "reason": "Read the Gazette text: letter 1400/2/8 (28 April 2021), Gazette 22214 of 1400/4/3; Article 13 confirmed; Article 4 note transfers the provincial office's credits."
+ },
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "section": "FUNDING",
+  "problems": [
+   "summarising-fetcher wording (EcoIran): wrong content of the 2024 vote"
+  ],
+  "before": "In August 2024 the council voted to have the municipality, with the Armed Forces General Staff and the museum's trustees, set up a separate Tehran Holy Defense museum on the Abbas Abad grounds and put it in its annual budget (EcoIran).",
+  "after": "In August 2024 the council passed a plan obliging the municipality to create a Tehran Holy Defense museum section inside the garden museum; council chair Mehdi Chamran said its money could come through a budget amendment (EcoIran).",
+  "sources": [
+   "https://ecoiran.com/fa/tiny/news-69172"
+  ],
+  "reason": "The plan passed was for a section inside the garden museum; the budget clause was a member's draft, and Chamran pointed to a budget amendment."
+ },
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "press item described instead of titled",
+   "partial read not marked clearly"
+  ],
+  "before": "AFP (Hürriyet Daily News): report on the museum for the war's 30th anniversary (2018) / Read in the author's proof copy in Dublin City University's repository.",
+  "after": "AFP (Hürriyet Daily News): \"Tehran museum lionizes war in which Iran took on 'world'\" (2018) / Read in the author's proof copy in Dublin City University's repository, not the published text.",
+  "sources": [
+   "https://www.hurriyetdailynews.com/tehran-museum-lionizes-war-in-which-iran-took-on-world-135970",
+   "https://doras.dcu.ie/24538/1/MES2000033_snapshot.pdf"
+  ],
+  "reason": "Headline read on the page (AFP, 20 August 2018); Rivetti's quotations checked against the proof copy."
+ },
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "summarising-fetcher wording (Radio Farda): years converted wrongly"
+  ],
+  "before": "founded on Khamenei's order in 1990, secured over 423 billion tomans in the 2023 national budget ... and about 2,257 billion tomans for its museums through 1405.",
+  "after": "founded on Khamenei's order in the Iranian year 1369, took over 423 billion tomans of public money in the year 1402 alone through at least 17 museum projects in the national development budget ... the projects are part of 2,257 billion tomans set aside for Holy Defense museums through 1405.",
+  "sources": [
+   "https://www.radiofarda.com/a/32708408.html"
+  ],
+  "reason": "Radio Farda (30 Nov 2023) gives Iranian years 1369 and 1402, which straddle two Gregorian years."
+ },
+ {
+  "id": "national-museum-of-the-islamic-revolution-and-holy-defense",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats a fact stated above"
+  ],
+  "before": "Municipal public money, which alone is no red flag on the atlas, under a statute signed off by the Supreme Leader and the armed forces staff.",
+  "after": "Municipal public money, which alone is no red flag on the atlas.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "palazzo-delle-esposizioni",
+  "section": "OVERVIEW",
+  "problems": [
+   "wikipedia-only: 1932 to 1934 exhibition figures",
+   "figure not on an official page: 3,854,927 visitors"
+  ],
+  "before": "From 28 October 1932 to 28 October 1934 it housed the National Fascist Party's Exhibition of the Fascist Revolution, directed by Dino Alfieri and opened by Mussolini, behind a facade by Adalberto Libera and Mario De Renzi; it drew 3,854,927 visitors (Wikipedia).",
+  "after": "From 28 October 1932 it housed the National Fascist Party's Exhibition of the Fascist Revolution for the tenth anniversary of the March on Rome, behind a facade by De Renzi and Libera with 25 metre metal fasces; it stayed two more years because its planned permanent home was not built (museum website).",
+  "sources": [
+   "https://www.palazzoesposizioniroma.it/pagine/navigazione-principale-the-palazzo-history-restoration-work-in-the-1930s-and-the-first-quadriennali-quadrennial-exhibitions"
+  ],
+  "reason": "Rewritten from the Palazzo's own history page; the visitor figure, Alfieri and 'opened by Mussolini' are not on it and were cut."
+ },
+ {
+  "id": "palazzo-delle-esposizioni",
+  "section": "FUNDING",
+  "problems": [
+   "summarising-fetcher wording (Artribune): claim credited to the outlet, not the workers"
+  ],
+  "before": "Cost to the city: about 10 million euros a year in 2011 (Artribune).",
+  "after": "Cost to the city: 10 million euros a year in 2011, according to an open letter from Palaexpo workers (Artribune).",
+  "sources": [
+   "https://www.artribune.com/tribnews/2011/07/privatizzare-la-produzione-culturale-di-palaexpo-e-scuderie-a-roma-arriva-l%e2%80%99altola-dei-lavoratori-al-sindaco-alemanno/"
+  ],
+  "reason": "Artribune attributes the figure to the letter's signatories."
+ },
+ {
+  "id": "palazzo-delle-esposizioni",
+  "section": "Red flags",
+  "problems": [
+   "heading named two issues"
+  ],
+  "before": "Red flags: 2021 Court of Auditors finding and planned merger into Zètema",
+  "after": "Red flags: 2021 Court of Auditors finding on overlapping city culture bodies",
+  "sources": [
+   "https://www.zetema.it/wp-content/uploads/2026/03/Deliberazione-Giunta-Capitolina-n-81-del-20-marzo-2026.pdf"
+  ],
+  "reason": "The merger is the city's response to the finding and stays under it; deliberation 47/2021/GEST, 116/2021, 109/2022 and 171/2024 confirmed."
+ },
+ {
+  "id": "palazzo-delle-esposizioni",
+  "section": "Red flags",
+  "problems": [
+   "protest older than five years (2011) as a Red flag",
+   "summarising-fetcher wording: tender demand was Artribune's, not the workers'"
+  ],
+  "before": "Red flags: 2011 workers' letter against handing the Azienda to a private body / ... they asked for any change to go through an international, transparent public tender (Artribune, 2011).",
+  "after": "WIDER CONTEXT: In July 2011 Palaexpo workers wrote to mayor Gianni Alemanno against plans in the news to \"rationalise\" the Azienda ... / Artribune itself argued that any lease of the building should go through an international, transparent call. / The letter concerned the Azienda that runs the Palazzo.",
+  "sources": [
+   "https://www.artribune.com/tribnews/2011/07/privatizzare-la-produzione-culturale-di-palaexpo-e-scuderie-a-roma-arriva-l%e2%80%99altola-dei-lavoratori-al-sindaco-alemanno/"
+  ],
+  "reason": "Moved as instructed; the call for an international tender is the editors' closing paragraph, not the letter."
+ },
+ {
+  "id": "palazzo-delle-esposizioni",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts stated above"
+  ],
+  "before": "Clean municipal money, with a small utility-company contribution to the building. The weak points are governance: auditors' doubts about overlapping city culture bodies and an unfinished merger that would end Palaexpo as a separate body.",
+  "after": "Clean municipal money. The weak point is governance: the future of the body that runs the Palazzo is unsettled.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "palazzo-delle-esposizioni",
+  "section": "SOURCES",
+  "problems": [
+   "wikipedia source no longer used"
+  ],
+  "before": "https://en.wikipedia.org/wiki/Exhibition_of_the_Fascist_Revolution",
+  "after": "removed",
+  "sources": [],
+  "reason": "No point cites it now."
+ },
+ {
+  "id": "quadriennale-di-roma",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "summarising-fetcher wording (Artribune): claim not in the review"
+  ],
+  "before": "Praises several artists and notes that the concept announced by Beatrice never fully took shape.",
+  "after": "Praises several artists and notes that no one can know whether the show matches the one Beatrice imagined.",
+  "sources": [
+   "https://www.artribune.com/?p=1191761"
+  ],
+  "reason": "Mammì writes that we do not and never will know whether this is the show Beatrice imagined; other quotations are verbatim."
+ },
+ {
+  "id": "quadriennale-di-roma",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "summarising-fetcher wording (Finestre sull'Arte): quotations attached to the wrong subject"
+  ],
+  "before": "Judges much of the painting \"sostanzialmente epigonale\" and the art \"carini, potabili e rassicuranti\". / Cites a budget of 2.6 million euros and finds the result \"un poco modesto\" for it",
+  "after": "Calls some of the painting \"sostanzialmente epigonale\" and writes that the selection makes Italian artists look concerned to appear \"carini, potabili e rassicuranti\". / Cites a budget of 2.6 million euros, for which the result could look \"un poco modesto\"",
+  "sources": [
+   "https://www.finestresullarte.info/recensioni-mostre/recensione-18a-quadriennale-di-roma-fantastica-ma-educata"
+  ],
+  "reason": "Giannini applies 'carini, potabili e rassicuranti' to the artists and says the result 'potrebbe apparire' modest."
+ },
+ {
+  "id": "quadriennale-di-roma",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts stated above"
+  ],
+  "before": "Clean public money from the state, region and city, with one bank sponsor for the 2025 edition. Its leadership and most of its budget depend on the culture ministry, and that dependence is the thing to watch.",
+  "after": "Clean public money. Its dependence on the culture ministry, for its leadership and most of its budget, is the thing to watch.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "yushukan",
+  "section": "FUNDING",
+  "problems": [
+   "wikipedia-only: 1947 lease",
+   "not funding: no source states rent"
+  ],
+  "before": "Rent: from November 1947 the shrine leased the building to Fukoku Mutual Life Insurance, which used it as its head office until 1980 (Wikipedia; museum website).",
+  "after": "OVERVIEW: Fukoku Mutual Life Insurance, whose own offices the Occupation had taken over, then used the building as its head office until 1980 (museum website).",
+  "sources": [
+   "https://www.yasukuni.or.jp/english/yushukan/"
+  ],
+  "reason": "The museum's page gives the use and the 1980 departure but no date or lease, so the point moved to OVERVIEW without them."
+ },
+ {
+  "id": "yushukan",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "press item described instead of titled",
+   "quotation cut short"
+  ],
+  "before": "Reuters (NBC News): report on the shrine's plan to revise its exhibits (2006) / An unnamed source involved said: \"There is no mistake in the facts.\"",
+  "after": "Reuters (NBC News): \"Japan to 'soften' controversial war shrine\" (2006) / An unnamed source involved in the revisions, quoted by the Mainichi: \"There is no mistake in the facts, but the expressions are such that some parts could be misunderstood, so we will substitute softer expressions.\"",
+  "sources": [
+   "https://www.nbcnews.com/news/amp/wbna16289597"
+  ],
+  "reason": "Headline and full quotation read on the page (19 December 2006)."
+ },
+ {
+  "id": "yushukan",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "overall line repeated item 2",
+   "partial read not marked"
+  ],
+  "before": "Overall: ... the museum rewrote some panels in 2006 and 2007 after criticism from US officials. / (no excerpt note)",
+  "after": "Overall: ... AP (2026) cites scholars who say it leaves out the experiences of China and Korea under Japanese imperialism. / An edited excerpt from Tsujita's book \"「あの戦争」は何だったのか\" (Kodansha), not the full text.",
+  "sources": [
+   "https://gendai.media/articles/-/169604",
+   "https://wtop.com/national/2026/08/a-look-at-the-history-and-beliefs-behind-japans-controversial-shrine-to-the-war-dead/"
+  ],
+  "reason": "Gendai marks the piece as an edited book excerpt; both pages of it were read and match."
+ },
+ {
+  "id": "yushukan",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wikipedia-only: enshrined war criminals"
+  ],
+  "before": "Yasukuni Shrine is dedicated to soldiers who died fighting for the Emperor, including convicted war criminals (Wikipedia). / The shrine owns and runs the museum, so disputes over the shrine attach to it.",
+  "after": "Among the more than 2.4 million people Yasukuni Shrine honours are 14 Class-A war criminals, including wartime Prime Minister Hideki Tojo; the head priest enshrined them in secret in 1978 (AP, 2026). / These disputes attach to the museum through its owner.",
+  "sources": [
+   "https://wtop.com/national/2026/08/a-look-at-the-history-and-beliefs-behind-japans-controversial-shrine-to-the-war-dead/"
+  ],
+  "reason": "AP explainer (14 August 2026, read via WTOP; the ABC News copy now returns 404). Connection line no longer restates the owner."
+ },
+ {
+  "id": "yushukan",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts stated above"
+  ],
+  "before": "Clean money: private religious funds and ticket sales. The weak point is its account of Japan's wars, softened in places after outside criticism and still disputed.",
+  "after": "Clean money. The weak point is its account of Japan's wars, which remains disputed.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "kaysone-phomvihane-museum",
+  "section": "FUNDING",
+  "problems": [
+   "not funding: speaker at exhibitions",
+   "repetition with OVERVIEW"
+  ],
+  "before": "Party programme: Khamphanh Pheuyavong, head of the Party Central Committee's Propaganda and Training Board, spoke at both 2025 exhibitions and gave the opening remarks in November (KPL; Vientiane Times).",
+  "after": "Folded into the two OVERVIEW exhibition points; November date set to 28 November 2025 (KPL).",
+  "sources": [
+   "https://kpl.gov.la/En/detail.aspx?id=90210",
+   "https://kpl.gov.la/detail.aspx?id=95794",
+   "https://vientianetimes.org.la/freefreenews/freecontent_232_Kaysone_y25.php"
+  ],
+  "reason": "KPL read through WebFetch for exact sentences (curl fails on KPL's certificate); Vientiane Times read with curl. KPL misprints the year as 2015."
+ },
+ {
+  "id": "kaysone-phomvihane-museum",
+  "section": "FUNDING",
+  "problems": [
+   "credit: page is a VOV reprint"
+  ],
+  "before": "(Vietnam National Museum of History, 2014)",
+  "after": "(VOV, reprinted by the Vietnam National Museum of History, 2014)",
+  "sources": [
+   "https://baotanglichsu.vn/en/Articles/3175/16037/vietnam-funds-lao-museum-upgrade.html",
+   "https://en.vietnamplus.vn/vietnam-helps-laos-upgrade-revolutionary-museum/58166.vnp"
+  ],
+  "reason": "The museum page credits english.vov.vn. The implementer conflict (Ho Chi Minh City Museum or Ho Chi Minh Museum) stays with both sources; no primary source settles it."
+ },
+ {
+  "id": "kaysone-phomvihane-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats facts stated above"
+  ],
+  "before": "State money throughout: foreign aid from Vietnam for a ruling party's memorial to its leader, which is no red flag on the atlas. The weak point is its purpose as a party shrine used for the leadership's own anniversaries.",
+  "after": "State money, which is no red flag on the atlas. The weak point is its purpose as a ruling party's shrine to its own leader.",
+  "sources": [],
+  "reason": "Verdict only."
+ },
+ {
+  "id": "defence-services-museum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: 'run by the military authorities'",
+   "fact resting on Recoil (undated firearms magazine): active-duty docents"
+  ],
+  "before": "Operator: run by the military authorities as a \"Tatmadaw showcase\" ... / Staff: active-duty docents from each service branch and corps staff the halls (Recoil).",
+  "after": "Operator: New Mandala describes it as the military officers' own museum, a \"Tatmadaw showcase\" with a big budget, lights and bilingual explanations (New Mandala, 2015).",
+  "sources": [
+   "https://www.newmandala.org/past-and-future-the-military-still-matters/",
+   "https://blogs.lse.ac.uk/seac/2023/07/07/the-nation-forgetting-rehabilitating-memory-in-the-defence-service-museum-in-myanmar/"
+  ],
+  "reason": "No opened page names the office that administers it; mdn.gov.mm and the Toronto Star copy refuse automated reads (403). Recoil kept only for layout, exhibits and hours."
+ },
+ {
+  "id": "defence-services-museum",
+  "section": "Red flags",
+  "problems": [
+   "outdated: commander-in-chief changed in March 2026",
+   "count wrong: 'eight other military leaders'"
+  ],
+  "before": "Red flags: US sanctions on the commander-in-chief, 2019 and 2021 / ... with eight other military leaders, under a new executive order on Burma (US Treasury).",
+  "after": "Red flags: US sanctions on the armed forces' commanders, 2019 and 2021 / ... among 10 individuals and three entities; the same action designated Lieutenant General Ye Win Oo, then Joint Secretary of the State Administration Council (US Treasury). / Ye Win Oo took over from Min Aung Hlaing as Commander-in-Chief of Defence Services on 30 March 2026 (DMG).",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy0024",
+   "https://www.dmediag.com/news/niiow.html"
+  ],
+  "reason": "Treasury's 11 Feb 2021 release confirms the 10 Dec 2019 E.O. 13818 designations, the 2021 re-designations and Ye Win Oo's designation; DMG reports he became commander-in-chief on 30 March 2026."
+ },
+ {
+  "id": "drug-elimination-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "summarising-fetcher wording (drugmuseum.gov.mm): purpose paraphrased beyond the page"
+  ],
+  "before": "Its stated purpose is to show the public, especially young people, the dangers of drugs and to tell the international community about Myanmar's anti-drug work, including military operations from 1975 to 1988 and a 15-year plan for 1999 to 2014 (museum website).",
+  "after": "Its inscription states two aims: that the whole people, youth and national races included, learn lessons and abstain from drugs, and that the international community learn of successive governments' efforts, among them military operations from 1975 to 1988 and a 15-year plan for 1999 to 2014 (museum website).",
+  "sources": [
+   "https://drugmuseum.gov.mm/about-museum/"
+  ],
+  "reason": "curl gets 403; WebFetch asked for exact sentences returned the inscription text, which this follows."
+ },
+ {
+  "id": "drug-elimination-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'photographs of victims and preserved organs'",
+   "overview point of two sentences"
+  ],
+  "before": "...the third, a five-scene story of a boy's decline to death, a rehabilitation mock-up and photographs of victims and preserved organs (Vice).",
+  "after": "...and the third a five-scene story of a boy's decline to death and a mock rehabilitation centre (Vice).",
+  "sources": [
+   "https://www.vice.com/da/article/inside-burmas-drug-eradication-museum/"
+  ],
+  "reason": "Vice (19 Dec 2013) describes no victims' photographs or preserved organs."
+ },
+ {
+  "id": "drug-elimination-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 2020 visitors"
+  ],
+  "before": "Visitors in 2020 included private school groups, trainees from a rehabilitation camp and a 13-member study delegation from Croatia (museum website).",
+  "after": "cut",
+  "sources": [
+   "https://drugmuseum.gov.mm/?s=Croatia",
+   "https://drugmuseum.gov.mm/?p=181"
+  ],
+  "reason": "No page of the museum site that could be read states it; the site search returns nothing."
+ },
+ {
+  "id": "drug-elimination-museum",
+  "section": "FUNDING",
+  "problems": [
+   "unsupported: deputy director",
+   "name misread: 'Soe Thwe'"
+  ],
+  "before": "...signed by ministers Soe Thwe (2022) ... / Staff: a deputy director, Daw Khin Swe Lhaing, runs training sessions for rehabilitation camps at the museum (museum website).",
+  "after": "...signed by ministers Soe Htut (2022) ... (staff point cut)",
+  "sources": [
+   "https://drugmuseum.gov.mm/"
+  ],
+  "reason": "The Burmese name on the 2022 message reads Soe Htut; the deputy director appears on no page that could be read."
+ },
+ {
+  "id": "drug-elimination-museum",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "description beyond the source"
+  ],
+  "before": "Describes a crumbling, overgrown and nearly abandoned compound with broken exhibits, staff napping at the front desk and few visitors, mostly curious foreigners.",
+  "after": "Describes unkempt and nearly abandoned grounds, a broken interactive display, staff napping at the front desk and rare visitors, mostly curious foreigners.",
+  "sources": [
+   "https://www.vice.com/da/article/inside-burmas-drug-eradication-museum/"
+  ],
+  "reason": "Matches Vice's wording."
+ },
+ {
+  "id": "drug-elimination-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line repeats a fact stated above"
+  ],
+  "before": "State money from the Home Affairs ministry's drug committee, which alone is no red flag on the atlas.",
+  "after": "State money, which alone is no red flag on the atlas.",
+  "sources": [],
+  "reason": "Verdict only. The Kyandaw Cemetery point keeps its Wikipedia credit: the Frontier Myanmar piece that states it refuses automated reads (403)."
+ }
+]

@@ -74,9 +74,16 @@ fields outside `details` (funding, watch, flags, tier, grade, website) and calls
 - chiang-kai-shek-memorial-hall: the hall's site gives the opening as 4 April 1980; the record says
   5 April.
 - ajtte-jokkmokk: the record's "state money about half the budget in 2009" rests on Wikipedia only.
-- russia-my-history-vdnkh: report carries Gazprom and Gazprom Neft money (2016 to 2021) as Fossil
-  fuels and a sanctions point (Gazprom Neft is on the UK list; the parent is not). Record flags may
-  need both.
+- russia-my-history-vdnkh: after checking, the report has no Red flags. No source dates a Gazprom
+  payment to the Moscow park after 2019 (only Bumaga 2023, on the St Petersburg park, dates later
+  Gazprom Neft payments), so the Gazprom money and the sanctions (UK and US list Gazprom Neft and Miller,
+  not the parent) are under WIDER CONTEXT. The record's flags still list Fossil fuels: reconsider.
+- vdnkh-exhibition-of-achievements-of-national-economy: Red flag "Investment by Gennady Timchenko's
+  companies, 2019" (Snob citing Vedomosti; Timchenko UK-designated 22 February 2022).
+- victory-museum-central-museum-of-the-great-patriotic-war: Wikipedia's architect (Polyansky) is wrong;
+  the museum names V. M. Budaev as chief architect.
+- defence-services-museum: the US sanctions on Myanmar's commanders moved to WIDER CONTEXT (a state
+  funder never takes the Sanctions flag for its officials).
 - victory-museum-central-museum-of-the-great-patriotic-war: its director Shkolnik is under UK and
   Australian sanctions (2022), kept as a Red flag.
 - great-northern-arts-festival-inuvik: the record's Fossil fuels flag rests on Imperial Oil and

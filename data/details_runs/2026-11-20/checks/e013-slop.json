@@ -1,0 +1,432 @@
+[
+ {
+  "id": "russia-my-history-vdnkh",
+  "section": "Red flags",
+  "problems": [
+   "ruling: Fossil fuels flag needs a payment dated within about five years",
+   "Bumaga 2023 concerns the St Petersburg park"
+  ],
+  "before": "Red flags: Gazprom and Gazprom Neft money, 2016 to 2021 (Shevkunov via The Bell 360M in 2018; Rodnye Goroda 1bn 2019 and 3bn 2021 to the My History foundation, 'which Yesin has also led since 2021')",
+  "after": "Both payments moved to WIDER CONTEXT, credited 'Bumaga, citing The Bell' and 'Bumaga, citing Vazhnye Istorii'; the Yesin clause cut. Gazprom funding stays under FUNDING (RFE/RL 2019; Gazprom report 2019).",
+  "sources": [
+   "https://paperpaper.io/zapovednik-pravilnoj-istorii-kak/",
+   "https://sustainability.gazpromreport.ru/2019/5-social/5-3-charity/",
+   "https://www.rferl.org/a/russian-orthodox-church-gazprom-history-parks/30214143.html"
+  ],
+  "reason": "The only payments dated after 2019 come from Bumaga's 2023 piece on the St Petersburg park and go to the My History foundation, a network fact; per the ruling that source supports WIDER CONTEXT only. Gazprom's reports for 2021 to 2023 opened do not name a payment to the parks. Bumaga does not say Yesin has led the My History foundation since 2021."
+ },
+ {
+  "id": "russia-my-history-vdnkh",
+  "section": "Red flags",
+  "problems": [
+   "sanctions point must name which Gazprom entity is listed by whom"
+  ],
+  "before": "Red flags: Sanctions on the Gazprom group, 2018 to 2025 (US: Miller 2018; UK: Miller 2022, Gazprom Neft 2025)",
+  "after": "WIDER CONTEXT: US designated Miller 6 April 2018 and Gazprom Neft plus more than two dozen subsidiaries 10 January 2025 (Treasury sm0338, jy2777); UK designated Miller 10 March 2022 and Gazprom Neft 10 January 2025, list names Gazprom Neft not PJSC Gazprom; OpenSanctions (secondary) records Gazprom Neft in EU Official Journal sanctions acts.",
+  "sources": [
+   "https://home.treasury.gov/news/press-releases/jy2777",
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv",
+   "https://www.opensanctions.org/entities/NK-cuVFsKgk3rPqzM4pWTexzc/"
+  ],
+  "reason": "UK list parsed: Gazprom Neft RUS2383 (10/01/2025), Miller RUS0268 (10/03/2022), no PJSC Gazprom entry. Treasury jy2777 confirms the US designation. EUR-Lex refused automated reads, so the EU point rests on OpenSanctions, credited as secondary. With the Gazprom money no longer a current-funder flag, the sanctions on its group go to WIDER CONTEXT."
+ },
+ {
+  "id": "russia-my-history-vdnkh",
+  "section": "Red flags",
+  "problems": [
+   "ruling: protest older than five years goes to WIDER CONTEXT"
+  ],
+  "before": "Red flags: 2017 open letter from the Free Historical Society",
+  "after": "Moved to WIDER CONTEXT as one point with the Kuzenkov quotation (RFE/RL).",
+  "sources": [
+   "https://www.rferl.org/a/russian-orthodox-church-gazprom-history-parks/30214143.html"
+  ],
+  "reason": "Open letter of 2017, no newer protest of the same kind."
+ },
+ {
+  "id": "russia-my-history-vdnkh",
+  "section": "FUNDING",
+  "problems": [
+   "Bumaga used for operator facts"
+  ],
+  "before": "The parks are run by the Humanitarian Projects Foundation, set up in 2013 by Ivan Yesin, a former legal counsel of Gazprom Neft, who heads the network (Bumaga, 2023). RFE/RL describes Yesin as a former Gazprom lawyer...",
+  "after": "The Humanitarian Projects Foundation runs the parks. Its managing director is former Gazprom lawyer Ivan Yesin, and Shevkunov heads its expert council (RFE/RL, 2019).",
+  "sources": [
+   "https://www.rferl.org/a/russian-orthodox-church-gazprom-history-parks/30214143.html"
+  ],
+  "reason": "Operator facts re-sourced to RFE/RL; Bumaga limited to WIDER CONTEXT."
+ },
+ {
+  "id": "russia-my-history-vdnkh",
+  "section": "OVERVIEW / WIDER CONTEXT",
+  "problems": [
+   "figure out of date",
+   "unsupported date",
+   "title not on page"
+  ],
+  "before": "25 million visitors; parks opened in Melitopol and Luhansk in September 2023; displays cover 'the years 1914 to 1945'",
+  "after": "more than 29 million (site, February 2026); Melitopol open since autumn 2023, Luhansk in its third year, Donetsk January 2026; third display given by its translated title",
+  "sources": [
+   "https://myhistorypark.ru/about/info/",
+   "https://myhistorypark.ru/"
+  ],
+  "reason": "The site's 2026 news item gives 29 million and 'autumn 2023' for Melitopol; no September date; the Moscow display list names the exhibition, not the years."
+ },
+ {
+  "id": "russia-my-history-vdnkh",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "The money behind the park is Gazprom group and Russian state money, channelled through a foundation run by a former Gazprom Neft lawyer...",
+  "after": "Verdict only, without restating the operator or the letter.",
+  "sources": [],
+  "reason": "BOTTOM LINE gives the verdict only."
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "section": "Red flags",
+  "problems": [
+   "ruling: SIBUR tie is only a mos.ru partner mention",
+   "mos.ru read only through a summarising fetcher"
+  ],
+  "before": "Red flags: SIBUR sanctions, 2026; FUNDING point naming SIBUR, Roscosmos, Rosatom and five governments as participants (mos.ru)",
+  "after": "Both cut.",
+  "sources": [
+   "https://www.mos.ru/en/mayor/themes/13195050/"
+  ],
+  "reason": "mos.ru fails curl on a certificate error and was read only through a summarising fetcher; the partner list and the SIBUR heading go."
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "section": "Red flags",
+  "problems": [
+   "ruling: government funder takes no Sanctions flag for its officials"
+  ],
+  "before": "Red flags: UK sanctions on Moscow's mayor, 2022",
+  "after": "WIDER CONTEXT: The UK designated Mayor Sergei Sobyanin on 15 March 2022 ... ; last point ties Sobyanin's city government to VDNKh.",
+  "sources": [
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
+  ],
+  "reason": "UK list RUS0824 confirms 15/03/2022 and the reason."
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "section": "Red flags",
+  "problems": [
+   "ruling: investors stay only if a source shows investment in VDNKh itself"
+  ],
+  "before": "Red flags: Investors close to Putin, 2019 (Timchenko restaurant; Rotenberg held to own the oceanarium, denied; both UK-designated)",
+  "after": "Red flags: Investment by Gennady Timchenko's companies, 2019 (Snob, citing Vedomosti; UK designation 22 February 2022). Rotenberg cut.",
+  "sources": [
+   "https://snob.ru/news/175187/",
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
+  ],
+  "reason": "Snob, citing Vedomosti, names Timchenko's companies among the private investors in the reconstruction; Rotenberg's tie is an ownership belief his representative denied, not an investment in VDNKh."
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "section": "Red flags",
+  "problems": [
+   "ruling: protest older than five years goes to WIDER CONTEXT"
+  ],
+  "before": "Red flags: 2015 preservationists' objections to the tourist zone status",
+  "after": "Moved to WIDER CONTEXT.",
+  "sources": [
+   "https://www.themoscowtimes.com/2015/04/29/preservationists-warn-over-new-status-for-soviet-ensemble-vdnkh-a46223"
+  ],
+  "reason": "2015 objection, no newer one."
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "mos.ru read only through a summarising fetcher"
+  ],
+  "before": "42 monuments restored since 2013 (mos.ru); museum list incl. Museum of Heroism, Karelia pavilion (mos.ru); 'The mayor's office states that Putin decided the transfer in 2013 (mos.ru)'",
+  "after": "42 monuments and the Putin sentence cut; museum list re-sourced to vdnh.ru (Cosmonautics and Aviation Centre, Atom museum).",
+  "sources": [
+   "https://vdnh.ru/"
+  ],
+  "reason": "Only details confirmed on vdnh.ru kept."
+ },
+ {
+  "id": "vdnkh-exhibition-of-achievements-of-national-economy",
+  "section": "FUNDING",
+  "problems": [
+   "second-hand figure not credited both ways"
+  ],
+  "before": "(Snob, citing Vedomosti) already credited; Timchenko listed in both FUNDING and Red flags",
+  "after": "Investors in FUNDING limited to Tashir and Regiony; Timchenko only under Red flags.",
+  "sources": [
+   "https://snob.ru/news/175187/"
+  ],
+  "reason": "No statement twice."
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "section": "Red flags",
+  "problems": [
+   "confirm both listings on the governments' pages"
+  ],
+  "before": "Australia added him in May 2022 (The Art Newspaper)",
+  "after": "Australia listed him, as the museum's director, in the Autonomous Sanctions Amendment (No. 17) Instrument 2022, made on 17 May 2022 (Federal Register of Legislation, F2022L00708).",
+  "sources": [
+   "https://legislation.gov.au/F2022L00708/asmade/2022-05-17/text/original/pdf",
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
+  ],
+  "reason": "UK list RUS1380 confirms 04/05/2022; the Australian instrument item 166 names Shkolnik as director of the Central Museum of the Great Patriotic War."
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "section": "Red flags",
+  "problems": [
+   "ruling: government funder takes no Sanctions flag for its officials"
+  ],
+  "before": "Red flags: UK sanctions on the Culture Minister, 2023",
+  "after": "Moved to WIDER CONTEXT.",
+  "sources": [
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv"
+  ],
+  "reason": "UK list RUS1938, 17/07/2023."
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "section": "Red flags",
+  "problems": [
+   "ruling: appointment dispute older than five years goes to WIDER CONTEXT"
+  ],
+  "before": "Red flags: Appointments from the culture minister's circle, 2017",
+  "after": "Merged into one WIDER CONTEXT point (Novaya Gazeta, 2025).",
+  "sources": [
+   "https://novayagazeta.ru/articles/2025/12/08/ia-v-russkii"
+  ],
+  "reason": "2017 appointments, no newer dispute."
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only point",
+   "contradicted by official source"
+  ],
+  "before": "Work on the museum began on 3 March 1986 in a building designed by Anatoly Polyansky, and it opened on 9 May 1995 (Wikipedia).",
+  "after": "Building work began in 1985, a USSR Culture Ministry order founded the museum in 1986, and it opened officially on 9 May 1995; Zurab Tsereteli was artistic director of the building project and V. M. Budaev its chief architect (victorymuseum.ru).",
+  "sources": [
+   "https://victorymuseum.ru/about/about-museum/"
+  ],
+  "reason": "The museum's own history names Tsereteli and Budaev, not Polyansky. Wikipedia URL removed."
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "section": "FUNDING",
+  "problems": [
+   "clients not funders"
+  ],
+  "before": "Novaya Gazeta reported in 2025 that ticket prices rose substantially after the 2017 change of management.",
+  "after": "Cut.",
+  "sources": [
+   "https://novayagazeta.ru/articles/2025/12/08/ia-v-russkii"
+  ],
+  "reason": "Ticket buyers are clients; not a funding point."
+ },
+ {
+  "id": "victory-museum-central-museum-of-the-great-patriotic-war",
+  "section": "OVERVIEW / CRITICISM",
+  "problems": [
+   "press item author missing",
+   "figure wording"
+  ],
+  "before": "150,000 visitors in the first month; The Art Newspaper item without author",
+  "after": "150,000 visitors by 18 May; author Sophia Kishkovsky added",
+  "sources": [
+   "https://www.theartnewspaper.com/2022/06/01/director-of-moscows-second-world-war-museum-says-he-is-proud-to-be-sanctioned"
+  ],
+  "reason": "Matches the article's wording."
+ },
+ {
+  "id": "state-museum-of-the-history-of-religion",
+  "section": "Red flags",
+  "problems": [
+   "ruling: government funder takes no Sanctions flag for its officials"
+  ],
+  "before": "Red flags: UK sanctions on the Culture Minister, 2023",
+  "after": "Moved to WIDER CONTEXT; BOTTOM LINE rewritten to the verdict.",
+  "sources": [
+   "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.csv",
+   "https://www.gmir.ru/files/museum/official-documents/pfhd22_23-24.pdf"
+  ],
+  "reason": "Financial plan figures and the history page checked and hold."
+ },
+ {
+  "id": "museum-of-yugoslavia",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only points"
+  ],
+  "before": "The Government of the Federal Republic of Yugoslavia founded it in 1996 as the Museum of the History of Yugoslavia ... took its present name in 2016 (Wikipedia); Tito and his wife Jovanka are buried (Wikipedia)",
+  "after": "Founded in 1996 as the Museum of Yugoslav History by merging the Memorial Center and the Museum of the Revolution, renamed at the end of 2016; May 25 Museum opened 15 May 1962 (muzej-jugoslavije.org)",
+  "sources": [
+   "https://muzej-jugoslavije.org/en/predistorija-osnova-za-razumevanje-muzeja-jugoslavije/",
+   "https://muzej-jugoslavije.org/en/o-nama/",
+   "https://vreme.com/kultura/muzej-jugoslavije-vlada-srbije-ministarstvo-kulture/"
+  ],
+  "reason": "Re-sourced to the museum's own history; the FRY government and Jovanka details are on no official page opened, so cut. Wikipedia URL removed. Vreme Red flags points checked and hold."
+ },
+ {
+  "id": "museo-de-america",
+  "section": "OVERVIEW",
+  "problems": [
+   "Wikipedia-only points"
+  ],
+  "before": "Collection shown in eleven rooms of the National Archaeological Museum from 13 July 1944; building opened 17 July 1965, closed 1981 to 1994; Moya and Martínez-Feduchi, neo-Herrerian and neo-colonial (Spanish Wikipedia)",
+  "after": "Moya and Martínez Feduchi designed the building from 1942 ... opened in part in 1965 and in its present form in 1994 (museum site)",
+  "sources": [
+   "https://www.cultura.gob.es/museodeamerica/2023-sobre-nosotros/historia/una-joya-arquitect-nica.html",
+   "https://www.cultura.gob.es/museodeamerica/2023-sobre-nosotros/historia/historia-de-las-colecciones2.html"
+  ],
+  "reason": "The 1944 rooms and exact day dates appear on no official page opened, so cut. Wikipedia URL removed."
+ },
+ {
+  "id": "museo-de-america",
+  "section": "FUNDING",
+  "problems": [
+   "second-hand figures credited to one outlet",
+   "'estimated' not in source"
+  ],
+  "before": "an estimated EUR 9.2 million ... (Infobae, citing Europa Press); PP request (Infobae); director (Infobae)",
+  "after": "budget of EUR 9.2 million, tender planned for March 2026 (Infobae, citing Europa Press), with both outlets credited on every point from that article",
+  "sources": [
+   "https://www.infobae.com/america/agencias/2025/11/27/pp-pide-a-cultura-que-informe-en-el-congreso-sobre-novedades-del-museo-america-y-antropologia/"
+  ],
+  "reason": "Infobae reports Europa Press; the PP request concerns the new displays and their budgets."
+ },
+ {
+  "id": "ajtte-jokkmokk",
+  "section": "FUNDING",
+  "problems": [
+   "Wikipedia-only point"
+  ],
+  "before": "Wikipedia states that the founders agreed in 1983 on a long-term state contribution that comes from a court decision on compensation for hydropower development..., that the government appoints the chair and three board members, and that state funds cover about half the budget.",
+  "after": "Cut; verdict changed to 'public foundation: Swedish state, Norrbotten Region, Jokkmokk Municipality and two Sámi organisations'.",
+  "sources": [
+   "https://www.ajtte.com/",
+   "https://www.regeringen.se/contentassets/8fc046c8c0af47b487c3263425c3780a/utgiftsomrade-17-kultur-medier-trossamfund-och-fritid.pdf"
+  ],
+  "reason": "No official or press page opened states the hydropower origin, the board appointments or the half-budget share. 'Mainly public: state, region, municipality' implied shares no source gives."
+ },
+ {
+  "id": "ajtte-jokkmokk",
+  "section": "OVERVIEW / FUNDING",
+  "problems": [
+   "wrong year",
+   "not a funding point"
+  ],
+  "before": "24 employees in 2020 (Region Norrbotten audit, 2020); 'An auditor appointed by Norrbotten Region reviews the foundation's accounts'",
+  "after": "24 employees in early 2021 (Region Norrbotten audit, 2021); auditor point cut",
+  "sources": [
+   "https://norrbotten.se/globalassets/amnen/politik-och-demokrati/revisorer/rapporter/2020/rapport-oversiktlig-arbetsmiljogranskning-stiftelsen-ajtte.pdf"
+  ],
+  "reason": "The PwC report is dated March 2021 and does not say the region appoints the auditor."
+ },
+ {
+  "id": "kin-museum-of-contemporary-art-kiruna",
+  "section": "FUNDING / BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "Two points on the owners and their payments; SEK 2.2M grant stated in FUNDING and Red flags; BOTTOM LINE restating funders",
+  "after": "Merged into one point; the overspend point refers to 'the withdrawn municipal grant'; BOTTOM LINE gives the verdict.",
+  "sources": [
+   "https://www.svt.se/nyheter/lokalt/norrbotten/kravs-pa-miljoner-efter-brak-om-konstmuseet-i-kiruna",
+   "https://www.svt.se/nyheter/lokalt/norrbotten/publiklyft-for-konstmuseet-i-kiruna-men-miljoner-i-minus",
+   "https://www.svt.se/nyheter/lokalt/norrbotten/reste-over-hela-varlden-for-skattepengar-konstmuseet-i-kiruna-far-kritik"
+  ],
+  "reason": "SVT figures and both Red flags checked and hold."
+ },
+ {
+  "id": "voortrekker-monument",
+  "section": "Not related",
+  "problems": [
+   "wrong label"
+  ],
+  "before": "Not related: the Heritage Foundation (Erfenisstigting), set up by the monument in 2002 ...",
+  "after": "Moved to OVERVIEW as a related body set up and run by the monument until 1 August 2011; the heritage centre funding credited to the Heritage Foundation.",
+  "sources": [
+   "https://pmg.org.za/committee-meeting/13677/"
+  ],
+  "reason": "PMG shows the monument founded and managed the foundation and that its tasks included the R13 million heritage centre, so 'Not related' is wrong."
+ },
+ {
+  "id": "voortrekker-monument",
+  "section": "FUNDING",
+  "problems": [
+   "not a funding point",
+   "text says more than source"
+  ],
+  "before": "Retired Major General Gert Opperman told Parliament in 2011 that he had run the monument since March 2000 (PMG).",
+  "after": "Moved to OVERVIEW: in 2011 its director was Opperman; new management had started in March 2000 (PMG).",
+  "sources": [
+   "https://pmg.org.za/committee-meeting/13677/"
+  ],
+  "reason": "PMG says new management started in March 2000, not that Opperman said he ran it from then."
+ },
+ {
+  "id": "voortrekker-monument",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "repetition"
+  ],
+  "before": "...its own visitor, site and members' income, without state support...",
+  "after": "Verdict only.",
+  "sources": [
+   "https://www.enca.com/afrikaans/voortrekkermonument-die-rooi-kulturele-geheue-kan-verdwyn",
+   "https://vtm.org.za/donasies/"
+  ],
+  "reason": "eNCA and the donations page confirm no state funding; not repeated."
+ },
+ {
+  "id": "chiang-kai-shek-memorial-hall",
+  "section": "OVERVIEW",
+  "problems": [
+   "romanised names without characters",
+   "translations unmarked"
+  ],
+  "before": "Yang Cho-cheng (romanisation by the atlas); Chang Hui-chun (romanisation by the atlas); Cho Jung-tai (romanisation by the atlas); titles translated",
+  "after": "Yang Cho-cheng (楊卓成), Chang Hui-chun (張惠君), Cho Jung-tai (卓榮泰); exhibition titles given with Chinese originals; hall-history paraphrase, 'democracy education park' and budget line marked as translations",
+  "sources": [
+   "https://www.cksmh.gov.tw/cp.aspx?n=5882",
+   "https://www.cksmh.gov.tw/cp.aspx?n=6008",
+   "https://www.cksmh.gov.tw/cp.aspx?n=6002"
+  ],
+  "reason": "Characters taken from the hall's own pages; opening date 4 April 1980 already matched the hall's site."
+ },
+ {
+  "id": "chiang-kai-shek-memorial-hall",
+  "section": "Red flags",
+  "problems": [
+   "two issues under one heading"
+  ],
+  "before": "Red flags: Dispute over the statue and the 2024 removal of the honour guard (guard withdrawal, families' demand, civic action, 2026 plan)",
+  "after": "Red flags: Demands to remove the Chiang statue, reported in 2024 (families' demand; civic action). The July 2024 guard withdrawal and the June 2026 plan moved to OVERVIEW as government actions.",
+  "sources": [
+   "https://www.aljazeera.com/news/2024/7/12/taiwan-to-stop-worshipping-authoritarianism-at-chiang-kai-shek-statue",
+   "https://www.taipeitimes.com/News/taiwan/archives/2024/07/13/2003820750",
+   "https://news.pts.org.tw/article/814876"
+  ],
+  "reason": "One issue per heading; the ministry's own policy steps are not a dispute."
+ },
+ {
+  "id": "chiang-kai-shek-memorial-hall",
+  "section": "OVERVIEW",
+  "problems": [
+   "wording"
+  ],
+  "before": "current displays include 'Soul of Freedom vs. Dictator' (2022), which drew more than 350,000 visitors in three years",
+  "after": "'Soul of Freedom vs. Dictator' (2022 to 2025) drew 350,000 visitors",
+  "sources": [
+   "https://www.cksmh.gov.tw/cp.aspx?n=6002"
+  ],
+  "reason": "The hall's chronicle records that the show closed on 28 May 2025 with 350,000 visits, so it is no longer current."
+ }
+]
