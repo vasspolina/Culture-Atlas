@@ -2503,6 +2503,12 @@ body.chat-input-mode-active #noteFormHead>#noteFormTitle{grid-column:2!important
 body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!important;justify-self:end!important;margin:0!important}
 /* Your note is 30% taller (user, 19 Nov 2026: "make your note 30% taller bigger field"): 92px to 120px. */
 :root:root body.chat-input-mode-active #workBottomDock #workInputCard #workInput{min-height:120px!important}
+/* The form's Back and Close are dark green too (user, 20 Nov 2026: "make the close and back buttons green too"): their
+   words and marks take --sh-green, at rest and under the pointer. #3e6826 on white 6.5:1; dark theme #9fd0a6 10:1. */
+:root:root:root:root body #workInputCard :is(#noteFormBackBtn,#noteFormCloseBtn):not(#dk1):not(#dk2):not(#dk3):not(#dk4),
+:root:root:root:root body #workInputCard :is(#noteFormBackBtn,#noteFormCloseBtn):not(#dk1):not(#dk2):not(#dk3):not(#dk4) *,
+:root:root:root:root body #workInputCard :is(#noteFormBackBtn,#noteFormCloseBtn):not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:active,:focus-visible),
+:root:root:root:root body #workInputCard :is(#noteFormBackBtn,#noteFormCloseBtn):not(#dk1):not(#dk2):not(#dk3):not(#dk4):is(:hover,:active,:focus-visible) *{color:var(--sh-green)!important}
 }
 
 /* ==== SHARE AS A CHAT: REAL BUTTONS, A CARD EDITED IN PLACE (user, 19 Nov 2026: "make these into buttons", "i need to edit
