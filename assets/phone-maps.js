@@ -977,9 +977,12 @@
         "field-museum",
         "ges-2-house-of-culture-moscow",
         "grand-people-s-study-house-pyongyang",
+        "hungarian-national-museum",
         "mansudae-overseas-project-group-of-companies-mansudae-overseas-projects-pyongyang",
         "museo-nacional-de-colombia",
+        "museum-of-cycladic-art",
         "national-gallery-of-ireland",
+        "national-museum-of-bosnia-and-herzegovina",
         "new-orleans-museum-of-art-new-orleans",
         "palacio-de-bellas-artes",
         "palacio-libertad-buenos-aires",
@@ -1032,6 +1035,10 @@
           if (/\bsponsorships?\b/i.test(body) && !denied(body)) return 'funding';
           return 'record';
         }
+        // A title that names a sponsor, funder, donor or corporate partner is about the money, even when it also says
+        // "accounts" ("Corporate partner Deutsche Bank and its 2020 penalty over Jeffrey Epstein's accounts", Städel, added
+        // on 20 Nov 2026), which the next test reads as someone's personal account.
+        if (el.classList.contains('is-flag') && FLAG_FUNDER.test(t)) return 'funding';
         if (el.classList.contains('is-flag') && !/case|account|gossip|talk|report/.test(t)) {
           // "Flagged" is the row that says why the space is flagged, and a space is flagged for who funds or owns it.
           if (t === 'flagged') return 'funding';

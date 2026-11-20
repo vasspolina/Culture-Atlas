@@ -626,7 +626,9 @@
       const set = (k, val) => { if (root.style.getPropertyValue(k) !== val) root.style.setProperty(k, val); };
       set('--sh-chips-l', `${Math.round(v.left + pad)}px`);
       set('--sh-chips-t', top ? `${Math.round(v.top + pad * 0.6)}px` : 'auto');
-      set('--sh-chips-b', top ? 'auto' : `${Math.round(window.innerHeight - v.bottom + pad)}px`);
+      // At the foot they stand above the scale bar and the coordinates the globe draws there (15px figures whose tops reach
+      // about 49px up from the map's foot); a pad's height left the pills over "0 … km" (20 Nov 2026).
+      set('--sh-chips-b', top ? 'auto' : `${Math.round(window.innerHeight - v.bottom + Math.max(pad, 60))}px`);
       set('--sh-chips-mw', `${Math.round(top ? room : v.width - 2 * pad - 60)}px`);
     }
     placeChips();

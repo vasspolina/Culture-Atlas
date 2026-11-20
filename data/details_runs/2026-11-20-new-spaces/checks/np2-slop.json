@@ -1,0 +1,472 @@
+[
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "Website",
+  "problems": [
+   "wrong url: ofam.org.ua returns HTTP 522, the museum's site is ofam.ua"
+  ],
+  "before": "Website: https://ofam.org.ua (checked 2026-11-20; down, HTTP 522)",
+  "after": "Website: https://www.ofam.ua (checked 2026-11-20)",
+  "sources": [
+   "https://www.ofam.ua/en/about"
+  ],
+  "reason": "The museum's working site is ofam.ua; it answered on 2026-11-20."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: 'which bought the palace in 1892'",
+   "date differs by source"
+  ],
+  "before": "- Opened on 6 November 1899 through the efforts of the Odesa Society of Fine Arts, which bought the palace in 1892.",
+  "after": "- Opened in November 1899 through the efforts of the Odesa Society of Fine Arts; mayor Hryhoriy Marazli bought the palace in 1888 and transferred it to the city in 1892 for the museum (museum's About page).",
+  "sources": [
+   "https://www.ofam.ua/en/about",
+   "https://uk.wikipedia.org/wiki/Одеський_національний_художній_музей"
+  ],
+  "reason": "The museum's own page says Marazli gave the palace to the city in 1892 and gives 24 October (5 November) 1899; Wikipedia gives 6 November."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "sources disagree, stated as fact"
+  ],
+  "before": "- The palace was ordered by Seweryn Potocki; building began in 1805 and the main house was ready by 1810.",
+  "after": "- English Wikipedia says Seweryn Potocki ordered the palace and building began in 1805; the museum dates the palace to the 1820s.",
+  "sources": [
+   "https://www.ofam.ua/en/about",
+   "https://en.wikipedia.org/wiki/Odesa_Fine_Arts_Museum"
+  ],
+  "reason": "The museum's page and Ukrainian Wikipedia date the building to the 1820s; the 1805 to 1810 dates are English Wikipedia's alone."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "visiting facts missing though the museum's visit page gives them"
+  ],
+  "before": "- Visiting: the ground floor reopened in December 2023 after missile damage (Ukrainska Pravda).",
+  "after": "- Visiting: Wednesday and Thursday 11:00 to 17:00, Friday to Sunday 11:00 to 18:00, closed Monday and Tuesday; temporary exhibitions UAH 200. The ground floor reopened in December 2023 after missile damage (Ukrainska Pravda).",
+  "sources": [
+   "https://www.ofam.ua/en/visit"
+  ],
+  "reason": "Hours and ticket price read from the museum's visit page."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "FUNDING",
+  "problems": [
+   "thin source: Wikipedia alone for the ownership claim"
+  ],
+  "before": "- The state took ownership of the museum in December 2021 (Ukrainian Wikipedia).",
+  "after": "- The museum, until then under Odesa regional council, passed into state ownership in December 2021 (RBC-Ukraine).",
+  "sources": [
+   "https://www.rbc.ua/ukr/news/odesskiy-hudozhestvennyy-muzey-peredali-gossobstvennost-1639742153.html"
+  ],
+  "reason": "Opened the RBC-Ukraine report Wikipedia cites; it confirms the transfer to state ownership."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "unsupported: 'the museum's own site was down'"
+  ],
+  "before": "The state's share rests on the ownership record, not on a published budget, and the museum's own site was down when checked.",
+  "after": "The state's share rests on the ownership record, not on a published budget.",
+  "sources": [
+   "https://www.ofam.ua/en/about"
+  ],
+  "reason": "The museum's site (ofam.ua) is up."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "SOURCES",
+  "problems": [
+   "sources added for the corrected points"
+  ],
+  "before": "- https://www.ukrinform.ua/rubric-culture/3681494-odeskomu-hudoznomu-muzeu-priznacili-novogo-direktora.html",
+  "after": "- https://www.ukrinform.ua/rubric-culture/3681494-odeskomu-hudoznomu-muzeu-priznacili-novogo-direktora.html\n- https://www.rbc.ua/ukr/news/odesskiy-hudozhestvennyy-muzey-peredali-gossobstvennost-1639742153.html\n- https://www.ofam.ua/en/about\n- https://www.ofam.ua/en/visit",
+  "sources": [
+   "https://www.ofam.ua/en/about"
+  ],
+  "reason": "Three pages opened in the check."
+ },
+ {
+  "id": "national-museum-of-bosnia-and-herzegovina",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong weekend hours",
+   "student price is for international students"
+  ],
+  "before": "- Visiting: Tuesday to Sunday 10:00 to 19:00, closed Monday; adults BAM 20, students BAM 10, ages 6 to 18 BAM 2, age 5 and under free.",
+  "after": "- Visiting: Tuesday to Friday 10:00 to 19:00, Saturday and Sunday 10:00 to 18:00, closed Monday; adults BAM 20 (citizens of Bosnia and Herzegovina BAM 10), international students BAM 10, ages 6 to 18 BAM 2, preschool children free.",
+  "sources": [
+   "https://zemaljskimuzej.ba/en/information-for-visitors/"
+  ],
+  "reason": "The visitors' information page gives Saturday and Sunday 10:00 to 18:00 and separate prices for citizens; the home page widget says 19:00."
+ },
+ {
+  "id": "national-museum-of-bosnia-and-herzegovina",
+  "section": "Red flags",
+  "problems": [
+   "date not in source: 'In August 2025 the museum said'"
+  ],
+  "before": "- In August 2025 the museum said it would give the proceeds of its book on the Sarajevo Haggadah, and of tickets to the Haggadah room, to the Palestinian people (RFE/RL, 6 August 2025).",
+  "after": "- The museum decided to give the proceeds of its book on the Sarajevo Haggadah, and of tickets to the Haggadah room, to the Palestinian people (RFE/RL, 6 August 2025).",
+  "sources": [
+   "https://www.slobodnaevropa.org/a/zemaljski-muzej-hagada-izrael-gaza-palestinci-pomoc/33496022.html"
+  ],
+  "reason": "RFE/RL reports the decision on 6 August 2025 and does not date the decision itself."
+ },
+ {
+  "id": "national-museum-of-bosnia-and-herzegovina",
+  "section": "Red flags",
+  "problems": [
+   "says more than the source: the ADL 'condemned'"
+  ],
+  "before": "- B'nai B'rith International and the Anti-Defamation League condemned the decision; Pinchas Goldschmidt, president of the Conference of European Rabbis, called it shameful.",
+  "after": "- B'nai B'rith International condemned the decision and the Anti-Defamation League said it was \"appalled\" (translated from Bosnian); Pinchas Goldschmidt, president of the Conference of European Rabbis, called it shameful.",
+  "sources": [
+   "https://www.slobodnaevropa.org/a/zemaljski-muzej-hagada-izrael-gaza-palestinci-pomoc/33496022.html"
+  ],
+  "reason": "RFE/RL says B'nai B'rith condemned the decision and the ADL said it was 'užasnuta' by the politicisation of the Haggadah."
+ },
+ {
+  "id": "national-museum-of-women-in-the-arts",
+  "section": "FUNDING",
+  "problems": [
+   "says more than the source: 'lost a grant'",
+   "every funding source was the museum's own site"
+  ],
+  "before": "- The museum lost a grant in fiscal 2025 through cuts to the National Endowment for the Humanities; members and donors filled the gap (stated by the museum).",
+  "after": "- The museum reported \"a major funding loss\" in fiscal 2025 from cuts to the National Endowment for the Humanities; members and donors filled the gap (stated by the museum).\n- Form 990 data for the year to June 2025 give contributions of $7,322,699, 55.7% of revenue (ProPublica).",
+  "sources": [
+   "https://nmwa.org/wp-content/uploads/2025/12/year-in-review-2025-1.pdf",
+   "https://projects.propublica.org/nonprofits/organizations/521238810"
+  ],
+  "reason": "The Year in Review says 'a major funding loss', not a grant; ProPublica's Form 990 summary confirms donor funding from outside the museum's site."
+ },
+ {
+  "id": "national-museum-of-women-in-the-arts",
+  "section": "SOURCES",
+  "problems": [
+   "source added"
+  ],
+  "before": "- https://nmwa.org/visit/plan-your-visit/",
+  "after": "- https://nmwa.org/visit/plan-your-visit/\n- https://projects.propublica.org/nonprofits/organizations/521238810",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/521238810"
+  ],
+  "reason": "Independent page opened in the check."
+ },
+ {
+  "id": "pennsylvania-academy-of-the-fine-arts",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "paywall not stated"
+  ],
+  "before": "- Names PAFA; a news report, not a review.",
+  "after": "- Names PAFA; a news report, not a review.\n- Paywalled; only excerpts were read.",
+  "sources": [
+   "https://hyperallergic.com/866079/pafa-historic-philadelphia-art-school-axes-degree-programs/"
+  ],
+  "reason": "Hyperallergic shows the headline and summary and asks for an account for the rest; both points are in the summary."
+ },
+ {
+  "id": "aga-khan-museum",
+  "section": "FUNDING",
+  "problems": [
+   "space's own claim stated as fact: 'its best fundraising year'"
+  ],
+  "before": "- The museum raised $11.7 million in 2023, its best fundraising year; the Lapis Ball of 28 September 2023 raised over $1 million.",
+  "after": "- The museum raised $11.7 million in 2023 and calls it its most successful fundraising year to date; the Lapis Ball of 28 September 2023 raised over $1 million.",
+  "sources": [
+   "https://aga-khan-museum-assets.s3.amazonaws.com/uploads/2024/11/Aga-Khan-Museum_2023-Annual-Report.pdf"
+  ],
+  "reason": "The annual report's words are 'the Museum's most successful fundraising year to date'."
+ },
+ {
+  "id": "aga-khan-museum",
+  "section": "Red flags",
+  "problems": [
+   "thin evidence: the flag rested on a partner listing alone"
+  ],
+  "before": "Red flags: Gulf state partners\n- The 2023 annual report lists the Ministry of Culture of the United Arab Emirates and Louvre Abu Dhabi among the museum's institutional partners.\n- Both appear under the heading of institutional partners, not among the donors or sponsors.",
+  "after": "Red flags: partnership with the United Arab Emirates Ministry of Culture\n- The UAE Ministry of Culture and the museum signed a memorandum of understanding at the Louvre Abu Dhabi on 19 December 2023, in force until 18 December 2026; it covers residencies, workshops, internships and fellowships for young Emirati curators and museum professionals (AKDN, 10 January 2024).\n- In June 2025 the museum opened \"As the Sun Appears from Beyond: Twenty Years of the Al Burda Award\", the first exhibition under the memorandum; the ministry launched the Al Burda Award in 2004 (AKDN, 18 June 2025).\n- The 2023 annual report lists the ministry and Louvre Abu Dhabi under institutional partners, not among the donors or sponsors.",
+  "sources": [
+   "https://the.akdn/en/resources-media/whats-new/news-release/uae-ministry-of-culture-enters-memorandum-of-understanding-with-the-aga-khan-museum",
+   "https://the.akdn/en/resources-media/whats-new/news-release/aga-khan-museum-illuminates-20-years-of-the-al-burda-award-in-new-exhibition",
+   "https://aga-khan-museum-assets.s3.amazonaws.com/uploads/2024/11/Aga-Khan-Museum_2023-Annual-Report.pdf"
+  ],
+  "reason": "Two AKDN releases document a three-year agreement with the UAE ministry and a 2025 exhibition under it; neither states a sum."
+ },
+ {
+  "id": "aga-khan-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "bottom line brought in line with the corrected red flag"
+  ],
+  "before": "The weak points are a sponsor fined for money-laundering control failures and two United Arab Emirates state bodies on the partner list. Worth watching: whether those partnerships carry money.",
+  "after": "The weak points are a sponsor fined for money-laundering control failures and a three-year agreement with the United Arab Emirates Ministry of Culture. Worth watching: whether that partnership carries money.",
+  "sources": [
+   "https://the.akdn/en/resources-media/whats-new/news-release/uae-ministry-of-culture-enters-memorandum-of-understanding-with-the-aga-khan-museum"
+  ],
+  "reason": "Follows the corrected Red flags section."
+ },
+ {
+  "id": "aga-khan-museum",
+  "section": "SOURCES",
+  "problems": [
+   "sources added"
+  ],
+  "before": "- https://www.fincen.gov/news/news-releases/fincen-assesses-record-13-billion-penalty-against-td-bank",
+  "after": "- https://www.fincen.gov/news/news-releases/fincen-assesses-record-13-billion-penalty-against-td-bank\n- https://the.akdn/en/resources-media/whats-new/news-release/uae-ministry-of-culture-enters-memorandum-of-understanding-with-the-aga-khan-museum\n- https://the.akdn/en/resources-media/whats-new/news-release/aga-khan-museum-illuminates-20-years-of-the-al-burda-award-in-new-exhibition",
+  "sources": [
+   "https://the.akdn/en/resources-media/whats-new/news-release/uae-ministry-of-culture-enters-memorandum-of-understanding-with-the-aga-khan-museum"
+  ],
+  "reason": "Two AKDN releases opened in the check."
+ },
+ {
+  "id": "azerbaijan-national-museum-of-art",
+  "section": "OVERVIEW",
+  "problems": [
+   "repetition: the 2011 status is stated in OVERVIEW and again in FUNDING"
+  ],
+  "before": "- The Cabinet of Ministers gave the State Art Museum \"National\" status by Decision No. 94 of 10 June 2011 (museum history page).",
+  "after": "",
+  "sources": [
+   "https://www.nationalartmuseum.az/museum/museum-history/"
+  ],
+  "reason": "Kept once, under FUNDING."
+ },
+ {
+  "id": "azerbaijan-national-museum-of-art",
+  "section": "FUNDING",
+  "problems": [
+   "repetition"
+  ],
+  "before": "- National status came from the Cabinet of Ministers in 2011.",
+  "after": "- The Cabinet of Ministers gave the State Art Museum \"National\" status by Decision No. 94 of 10 June 2011 (museum history page).",
+  "sources": [
+   "https://www.nationalartmuseum.az/museum/museum-history/"
+  ],
+  "reason": "The full statement now stands in FUNDING only."
+ },
+ {
+  "id": "azerbaijan-national-museum-of-art",
+  "section": "OVERVIEW",
+  "problems": [
+   "number differs from the cited source"
+  ],
+  "before": "- The collection has over 15,000 works, with over 3,000 shown in 60 rooms.",
+  "after": "- The museum counts more than 18,000 exhibits in six collections (museum history page); AzerNews reported over 3,000 on show in 60 rooms in 2023.",
+  "sources": [
+   "https://www.nationalartmuseum.az/museum/museum-history/",
+   "https://www.azernews.az/culture/214902.html"
+  ],
+  "reason": "The museum's history page says 'more than 18 thousand exhibits'; 15,000 is Wikipedia's figure."
+ },
+ {
+  "id": "national-museum-of-ghana-accra",
+  "section": "OVERVIEW",
+  "problems": [
+   "repetition: ownership stated in OVERVIEW and again in FUNDING"
+  ],
+  "before": "- Owned and operated by the Ghana Museums and Monuments Board.",
+  "after": "",
+  "sources": [
+   "https://gmmb.gov.gh/national-museum-of-ghana/"
+  ],
+  "reason": "Kept once, under FUNDING."
+ },
+ {
+  "id": "national-museum-of-pakistan-karachi",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wrong date"
+  ],
+  "before": "- On 25 June 2024 Sindh culture minister Zulfiqar Ali Shah said",
+  "after": "- On 24 June 2024 Sindh culture minister Zulfiqar Ali Shah said",
+  "sources": [
+   "https://tribune.com.pk/story/2473719/sindh-wants-control-of-national-museum"
+  ],
+  "reason": "The Express Tribune report of 25 June 2024 says he spoke 'on Monday', which was 24 June."
+ },
+ {
+  "id": "bangladesh-national-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "sources disagree, stated as fact"
+  ],
+  "before": "- The Shahbag complex, by architect Syed Mainul Hossain, was approved in December 1975 and opened to the public on 17 November 1983.",
+  "after": "- The Shahbag project was approved in December 1975 and the museum opened there on 17 November 1983; Wikipedia credits the building to Syed Mainul Hossain, Banglapedia to Robert C. Boghe.",
+  "sources": [
+   "https://en.banglapedia.org/index.php/Bangladesh_National_Museum",
+   "https://en.wikipedia.org/wiki/Bangladesh_National_Museum"
+  ],
+  "reason": "Banglapedia names Robert C. Boghe as the architect; Wikipedia names Syed Mainul Hossain."
+ },
+ {
+  "id": "bangladesh-national-museum",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "verdict with no event behind it: a site outage called a transparency weakness",
+   "wrong budget year label"
+  ],
+  "before": "The money is the Bangladeshi state's and no funder is objected to. The weak point is transparency: the museum's own site was down when checked. Worth watching: the gallery modernisation promised in the 2025 budget.",
+  "after": "The money is the Bangladeshi state's, with ticket and auditorium income on top, and no funder is objected to. Worth watching: the gallery modernisation promised in the 2025 to 2026 budget.",
+  "sources": [
+   "https://en.banglapedia.org/index.php/Bangladesh_National_Museum",
+   "https://unb.com.bd/category/Entertainment/fy-202526-budget-tk-824-crore-proposed-for-cultural-sector/161175"
+  ],
+  "reason": "A site that fails to load is not evidence about transparency; UNB reports the fiscal 2025 to 2026 budget."
+ },
+ {
+  "id": "national-museum-of-singapore",
+  "section": "OVERVIEW",
+  "problems": [
+   "visiting facts missing though the museum's admissions page gives them"
+  ],
+  "before": "The museum stays open with exhibitions and programmes.",
+  "after": "The museum stays open with exhibitions and programmes.\n- Visiting: daily 10am to 7pm; permanent galleries are free for Singapore citizens and permanent residents; tourists and foreign residents pay SGD 18, concessions SGD 13, children aged 6 and below free.",
+  "sources": [
+   "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/admissions"
+  ],
+  "reason": "Hours and prices read from the museum's admissions page."
+ },
+ {
+  "id": "national-museum-of-singapore",
+  "section": "FUNDING",
+  "problems": [
+   "thin source: the space's own site alone"
+  ],
+  "before": "- The museum's About page describes it as an institution of the National Heritage Board, supported by the Ministry of Culture, Community and Youth.",
+  "after": "- The museum's site names it an institution of the National Heritage Board, supported by the Ministry of Culture, Community and Youth.\n- The National Heritage Board is a statutory board under that ministry and operates the national museums (National Heritage Board).",
+  "sources": [
+   "https://www.nhb.gov.sg/who-we-are/about-us",
+   "https://www.nationalmuseum.nhb.gov.sg/about-us/about-us"
+  ],
+  "reason": "The board's own About page states its legal status and that it operates the museums."
+ },
+ {
+  "id": "national-museum-of-singapore",
+  "section": "FUNDING",
+  "problems": [
+   "signpost: names a heading, not what it says"
+  ],
+  "before": "- The upgrading notice on the museum's site carries a section titled \"Capital Campaign for Revamp\".",
+  "after": "- The museum is raising a capital campaign for the revamp from individuals, foundations and corporations (museum's upgrading notice).",
+  "sources": [
+   "https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/upgrading"
+  ],
+  "reason": "The notice says the museum 'is raising capital from individuals, foundations and corporations'."
+ },
+ {
+  "id": "national-museum-of-singapore",
+  "section": "BOTTOM LINE",
+  "problems": [
+   "talks about the record, not the museum"
+  ],
+  "before": "The museum is run by a government heritage board and backed by its ministry, and no funder is objected to. The weak point in this record is detail: it rests on the museum's own description of its backers. Worth watching: who gives to the capital campaign.",
+  "after": "The museum is run by a statutory board under Singapore's culture ministry, and no funder is objected to. Worth watching: who gives to the capital campaign for the revamp.",
+  "sources": [
+   "https://www.nhb.gov.sg/who-we-are/about-us"
+  ],
+  "reason": "The backers are now confirmed on the heritage board's page, so the sentence about the record goes."
+ },
+ {
+  "id": "national-museum-of-singapore",
+  "section": "SOURCES",
+  "problems": [
+   "sources added"
+  ],
+  "before": "- https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/upgrading",
+  "after": "- https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/upgrading\n- https://www.nationalmuseum.nhb.gov.sg/plan-your-visit/visitor-information/admissions\n- https://www.nhb.gov.sg/who-we-are/about-us",
+  "sources": [
+   "https://www.nhb.gov.sg/who-we-are/about-us"
+  ],
+  "reason": "Two pages opened in the check."
+ },
+ {
+  "id": "nara-national-museum",
+  "section": "Website",
+  "problems": [
+   "site answers"
+  ],
+  "before": "Website: https://www.narahaku.go.jp/english/ (checked 2026-11-20; refused the request with HTTP 403)",
+  "after": "Website: https://www.narahaku.go.jp/english/ (checked 2026-11-20)",
+  "sources": [
+   "https://www.narahaku.go.jp/english/"
+  ],
+  "reason": "The site returned its pages on 2026-11-20."
+ },
+ {
+  "id": "nara-national-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "thin source: Wikipedia alone for the founding year"
+  ],
+  "before": "- Established in 1889 as the Imperial Nara Museum; it held its first exhibition in 1895 (Wikipedia).",
+  "after": "- Established in 1889 as the Imperial Museum of Nara and opened to the public on 29 April 1895 (museum history page).",
+  "sources": [
+   "https://www.narahaku.go.jp/english/about/history/"
+  ],
+  "reason": "The museum's own chronology gives both dates."
+ },
+ {
+  "id": "nara-national-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "unsupported: East Wing credited to Yoshimura"
+  ],
+  "before": "- The West Wing (1972) and East Wing (1998) are by Junzo Yoshimura; the Hassoan tea house was moved to the grounds in 1892.",
+  "after": "- The West Wing, by Junzo Yoshimura, was completed in 1972 and the East Wing opened in 1998; the Hassoan tea house was moved to the grounds in 1892.",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Nara_National_Museum"
+  ],
+  "reason": "Wikipedia credits Yoshimura with the West Wing and says only that the East Wing matches its style."
+ },
+ {
+  "id": "nara-national-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "visiting facts missing though the museum's page gives them"
+  ],
+  "before": "- Each autumn it exhibits objects kept in the Shosoin repository.",
+  "after": "- Each autumn it exhibits objects kept in the Shosoin repository.\n- Visiting: 9:30 am to 5:00 pm, closed Monday and from 28 December to 1 January; general admission JPY 700, college students JPY 350, free for visitors 18 and under and 70 and over. The Buddhist Sculpture Hall is closed for renovation from 14 September 2026 until around spring 2028.",
+  "sources": [
+   "https://www.narahaku.go.jp/english/info/fee-2/"
+  ],
+  "reason": "Hours, fees and the closure notice read from the museum's hours and fees page."
+ },
+ {
+  "id": "nara-national-museum",
+  "section": "SOURCES",
+  "problems": [
+   "sources added"
+  ],
+  "before": "- https://www.nich.go.jp/en/booklet/133030/",
+  "after": "- https://www.nich.go.jp/en/booklet/133030/\n- https://www.narahaku.go.jp/english/about/history/\n- https://www.narahaku.go.jp/english/info/fee-2/",
+  "sources": [
+   "https://www.narahaku.go.jp/english/about/history/"
+  ],
+  "reason": "Two museum pages opened in the check."
+ },
+ {
+  "id": "sudan-national-museum",
+  "section": "OVERVIEW",
+  "problems": [
+   "wrong attribution: AP does not give March 2025",
+   "closure not explained plainly"
+  ],
+  "before": "- Visiting: closed. The Rapid Support Forces took over the museum on 2 June 2023 (Wikipedia), and the army regained the capital in March 2025 (AP).",
+  "after": "- Visiting: closed. The museum was wrecked and looted in the war: the Rapid Support Forces took it over on 2 June 2023 and were expelled from Khartoum in March 2025 (Wikipedia).",
+  "sources": [
+   "https://www.ksat.com/news/world/2025/04/14/home-to-centuries-of-heritage-sudans-biggest-museum-is-looted-and-wrecked-by-a-2-year-war/",
+   "https://en.wikipedia.org/wiki/National_Museum_of_Sudan"
+  ],
+  "reason": "AP reports the RSF were driven out without a month; March 2025 is Wikipedia's. The line now says why the museum is closed."
+ }
+]
