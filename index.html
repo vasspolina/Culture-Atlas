@@ -11968,7 +11968,16 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           // A hairline of the ground round the bubble parts it from a mark or another bubble under it.
           box(); ctx.strokeStyle = G_GROUND; ctx.lineWidth = 2; ctx.stroke();
           ctx.fillStyle = bubFill;
-          if (mark) {
+          if (mark && mark.side) {
+            // A name beside its mark: a hairline from the bubble's near edge to the mark, in place of the tail.
+            const ex = mark.x < bx0 ? bx0 : bx0 + bw0, ey = Math.max(y0 + 5, Math.min(y0 + h - 5, mark.y));
+            const d = Math.hypot(mark.x - ex, mark.y - ey);
+            if (d > mark.r + 2) {
+              const k = (d - mark.r - 1) / d;
+              ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(ex + (mark.x - ex) * k, ey + (mark.y - ey) * k);
+              ctx.lineWidth = 1.2; ctx.strokeStyle = GLOBE_LIGHT ? G_TEXT : 'rgba(244, 244, 244, 0.7)'; ctx.stroke();
+            }
+          } else if (mark) {
             const tx = Math.max(bx0 + rr + 6, Math.min(bx0 + bw0 - rr - 6, mark.x));
             const below = mark.y - mark.r - 1, above = mark.y + mark.r + 1;
             ctx.beginPath();
@@ -12059,6 +12068,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           // A label already on screen is laid out before one that is not, whatever their counts:
           // when the text changes width at a zoom threshold, the bigger city re-measured first
           // used to evict five neighbours at once and seat five others.
+          // A city of ten spaces or more is laid out before the smaller ones, so Berlin or London is never crowded out by
+          // its neighbours' names (user, 20 Nov 2026: "fix berlin too"); among the big ones, and among the rest, the rule
+          // below holds.
+          const aBig = (a.count || 0) >= 10, bBig = (b.count || 0) >= 10;
+          if (aBig !== bBig) return aBig ? -1 : 1;
           const aShown = lastShownCityLabels.has(a.name), bShown = lastShownCityLabels.has(b.name);
           if (aShown !== bShown) return aShown ? -1 : 1;
           return (b.count || 0) - (a.count || 0);
@@ -12075,19 +12089,26 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         // marks set beside it and lengthened for the propaganda mark under it, and each alert ring (assets/phone-maps.js, an
         // HTML button over the canvas, 24px). A space's own city keeps its dots: they sit under its name's tail.
         const markObstacles = [];
+        const foldedByCity = new Map();      // a counted city's spaces, folded into its name at the world view
+        const unfoldedCities = new Set();    // counted cities that found no clear place for a name: their dots show instead
+        let markOf = () => null;
         {
           const Lr = window.atlasLayers || {};
-          const side = (Lr.right || Lr.epstein) ? 7 : 0, R = MARK_R + 1;
+          const side = (Lr.right || Lr.epstein) ? 7 : 0, R = MARK_R + 2;   // the mark and its hairline of ground, and a pixel of air
           const cityN = {};
           if (isClusterZoom) filteredList.forEach(i => { const k = (i.city || '').toLowerCase().trim(); cityN[k] = (cityN[k] || 0) + 1; });
+          markOf = (i) => {
+            const p = project(i.lon, i.lat, r, cx, cy);
+            if (!p.front || p.depth <= 0.05) return null;
+            const bottom = p.y + (Lr.propaganda && i.propaganda && i.propaganda.length ? 19 : R);
+            return { x: p.x - R - side, y: p.y - R, w: 2 * (R + side), h: bottom - p.y + R, city: i.city.toLowerCase().trim(), name: i.name };
+          };
           filteredList.forEach(i => {
             if (!i.city || typeof i.lon !== 'number' || typeof i.lat !== 'number' || isNaN(i.lon) || isNaN(i.lat) || (i.lat === 0 && i.lon === 0)) return;
             const k = i.city.toLowerCase().trim();
-            if (isClusterZoom && cityN[k] >= 2) return;
-            const p = project(i.lon, i.lat, r, cx, cy);
-            if (!p.front || p.depth <= 0.05) return;
-            const bottom = p.y + (Lr.propaganda && i.propaganda && i.propaganda.length ? 19 : R);
-            markObstacles.push({ x: p.x - R - side, y: p.y - R, w: 2 * (R + side), h: bottom - p.y + R, city: k, name: i.name });
+            if (isClusterZoom && cityN[k] >= 2) { if (!foldedByCity.has(k)) foldedByCity.set(k, []); foldedByCity.get(k).push(i); return; }
+            const m = markOf(i);
+            if (m) markObstacles.push(m);
           });
           if (!isCityStreetViewActive) {
             const seenAlert = new Set();
@@ -12164,47 +12185,86 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
             // had last frame is tried first, so a name does not hop while the view moves. The first place clear of other
             // names, of the spaces' marks and of the screen's edge wins.
             // A city whose dots are folded into its name may also stand a row or two farther off, its tail drawn out to the dot.
-            const slide = Math.max(0, bw / 2 - 18), far = bh + 6;
-            const spots = [];
+            const far = bh + 6;
+            // A city of two spaces or more (its count shown or folded in) may stand off its dot; a city of one gives way.
+            const manySpaces = isClustered || (city.count || 0) >= 2;
+            const buildSpots = () => {
+            const slide = Math.max(0, bw / 2 - 18), spots = [];
             [0, 1, 2].forEach(lvl => {
-              if (lvl && !isClustered) return;
+              if (lvl && !manySpaces) return;
               [false, true].forEach(below => [0, -slide, slide].forEach(dx => {
-                spots.push({ dx, below, lvl, x: pt.x - bw / 2 + dx, y: below ? yBelow + lvl * far : yAbove - lvl * far });
+                spots.push({ dx, below, lvl, side: 0, x: pt.x - bw / 2 + dx, y: below ? yBelow + lvl * far : yAbove - lvl * far });
               }));
             });
-            const same = (s, h) => s.dx === h.dx && s.below === h.below && s.lvl === h.lvl;
-            const had = wasShown && lastCityPlace.get(city.name);
+            // Last, a counted city may sit beside its dot, level with it or half a row up or down, near or a step away, a
+            // hairline from the name's edge to the dot (user, 20 Nov 2026: "fix berlin too": Berlin (48) found no place above
+            // or below in the press of Europe's marks and still lay over two).
+            if (manySpaces) [0, 1].forEach(lvl => [0, -(bh / 2 + 8), bh / 2 + 8].forEach(dy => [1, -1].forEach(side => {
+              const off = cityR + 5 + lvl * 22;
+              spots.push({ dx: dy, below: false, lvl, side, x: side > 0 ? pt.x + off : pt.x - off - bw, y: pt.y - bh / 2 + dy });
+            })));
             if (had) spots.sort((a, b) => (same(b, had) ? 1 : 0) - (same(a, had) ? 1 : 0));
-            const tailOf = (s) => { const t0 = s.below ? pt.y : s.y + bh, t1 = s.below ? s.y : pt.y; return { x: pt.x - 4, y: t0, w: 8, h: Math.max(0, t1 - t0) }; };
-            const tailClear = (s) => !s.lvl || !drawnCityBoxes.some(b => { const t = tailOf(s); return !(t.x + t.w <= b.x || t.x >= b.x + b.w || t.y + t.h <= b.y || t.y >= b.y + b.h); });
+            return spots;
+            };
+            const same = (s, h) => s.dx === h.dx && s.below === h.below && s.lvl === h.lvl && s.side === h.side;
+            const had = wasShown && lastCityPlace.get(city.name);
+            let spots = buildSpots();
+            const tailOf = (s) => {
+              if (s.side) { const ex = s.side > 0 ? s.x : s.x + bw, ey = Math.max(s.y + 4, Math.min(s.y + bh - 4, pt.y)); return { x: Math.min(ex, pt.x), y: Math.min(ey, pt.y) - 2, w: Math.abs(ex - pt.x), h: Math.abs(ey - pt.y) + 4 }; }
+              const t0 = s.below ? pt.y : s.y + bh, t1 = s.below ? s.y : pt.y; return { x: pt.x - 4, y: t0, w: 8, h: Math.max(0, t1 - t0) };
+            };
+            const tailClear = (s) => !(s.lvl || s.side) || !drawnCityBoxes.some(b => { const t = tailOf(s); return !(t.x + t.w <= b.x || t.x >= b.x + b.w || t.y + t.h <= b.y || t.y >= b.y + b.h); });
             const free = (s) => !collidesAt(s.x, s.y) && !clippedAt(s.x) && tailClear(s);
             let spot = spots.find(s => free(s) && !marksAt(s.x, s.y));
-            // No place is clear of every mark. A city whose dots are folded into its name (a count of two or more at the
-            // world view) has no other mark on the map, so it still shows, where it covers fewest marks; a city of one
-            // space keeps its dot and gives way, as a space's own name does.
+            // Still no clear place: a counted city tries its name without the count, which is narrower. The count is
+            // in the place sheet a click opens, and the name is what finds the city on the map.
+            let pillText = isClustered ? city.name + ' ' + countTxt : txt;
+            if (!spot && manySpaces && pillText !== city.name) {
+              const fullW = bw, fullSpots = spots;
+              bw = ctx.measureText(city.name).width + 28;
+              spots = buildSpots();
+              spot = spots.find(s => free(s) && !marksAt(s.x, s.y));
+              if (spot) pillText = city.name;
+              else { bw = fullW; spots = fullSpots; }
+            }
+            // No place is clear of every mark. At the world view a counted city, its dots folded into its name, first tries
+            // showing them instead (below), else it shows where it covers fewest marks; a city of one space keeps its dot
+            // and gives way, as a space's own name does.
             const mustShow = isSelected || isHovered || isOpenCity;
             // A city whose own dot falls under a name already laid out would show a name pointing at nothing: it gives way.
             const dotUnder = drawnCityBoxes.some(b => !(pt.x + cityR <= b.x || pt.x - cityR >= b.x + b.w || pt.y + cityR <= b.y || pt.y - cityR >= b.y + b.h));
             if (dotUnder && !mustShow) spot = undefined;
-            else if (!spot && (isClustered || mustShow)) {
+            else if (!spot && (manySpaces || mustShow)) {
               // First a place clear of every mark that only gives up the air a new name is usually given.
               spot = spots.find(s => !collidesAt(s.x, s.y, true) && !clippedAt(s.x) && tailClear(s) && !marksAt(s.x, s.y));
             }
-            if (!spot && (!dotUnder || mustShow) && (isClustered || mustShow)) {
+            // Still nothing: a counted city lets its name go and shows its spaces as dots, as a city of one space does, so
+            // nothing is covered and nothing is hidden (user, 20 Nov 2026: "fix berlin too"). Its name is back as soon as
+            // the view gives it room. Names laid out after it keep off those dots.
+            // It unfolds only where its dots fall clear of the names already laid out; otherwise the name stays where it covers least.
+            if (!spot && isClustered && !mustShow && foldedByCity.has(ownKey)) {
+              const ms = foldedByCity.get(ownKey).map(markOf).filter(Boolean);
+              const clear = ms.every(m => !drawnCityBoxes.some(b => !(m.x + m.w <= b.x || m.x >= b.x + b.w || m.y + m.h <= b.y || m.y >= b.y + b.h)));
+              if (clear) { unfoldedCities.add(ownKey); ms.forEach(m => markObstacles.push(m)); }
+            }
+            // Past the world view a city's dots are on the map already, so only a city of ten spaces or more keeps its name
+            // over a neighbour's mark; a smaller one gives way, its dots still there.
+            const mayCover = isClustered ? !unfoldedCities.has(ownKey) : (city.count || 0) >= 10;
+            if (!spot && (!dotUnder || mustShow) && (mustShow || mayCover)) {
               const ok = spots.filter(free);
               if (ok.length) spot = ok.reduce((best, s) => marksAt(s.x, s.y) < marksAt(best.x, best.y) ? s : best, ok[0]);
             }
-            if (!spot && mustShow) spot = spots[0].lvl === 0 && spots[0].dx === 0 && !spots[0].below ? spots[0] : spots.find(s => s.dx === 0 && !s.below && !s.lvl);
+            if (!spot && mustShow) spot = spots.find(s => s.dx === 0 && !s.below && !s.lvl && !s.side);
             const bx = spot ? spot.x : pt.x - bw / 2, by = spot ? spot.y : yAbove;
 
             // Selected city or hovered city always draws; other cities only draw if they find a place.
             if (spot) {
-              lastCityPlace.set(city.name, { dx: spot.dx, below: spot.below, lvl: spot.lvl });
+              lastCityPlace.set(city.name, { dx: spot.dx, below: spot.below, lvl: spot.lvl, side: spot.side });
               drawnCityBoxes.push({ x: bx, y: by, w: bw, h: bh });
               // The city's own dot is a mark too: a name laid out after this one keeps off it.
               drawnCityBoxes.push({ x: pt.x - cityR - 1, y: pt.y - cityR - 1, w: 2 * cityR + 2, h: 2 * cityR + 2 });
               // A drawn-out tail is kept clear too, so no later name sits across it.
-              if (spot.lvl) drawnCityBoxes.push(tailOf(spot));
+              if (spot.lvl || spot.side) drawnCityBoxes.push(tailOf(spot));
               shownCityLabels.add(city.name);
               const limb = limbFade(pt.depth, 0.08);
               if (limb >= 0.5) cityBadgeHitboxes.push({
@@ -12229,7 +12289,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
               ctx.save();
               ctx.globalAlpha = badgeAlpha;
 
-              deferredPills.push([isClustered ? city.name + ' ' + countTxt : txt, bx + bw / 2, by + bh / 2, !!(isSelected || isOpenCity), null, badgeAlpha, { x: pt.x, y: pt.y, r: cityR, far: spot.lvl > 0 }]);
+              deferredPills.push([pillText, bx + bw / 2, by + bh / 2, !!(isSelected || isOpenCity), null, badgeAlpha, { x: pt.x, y: pt.y, r: cityR, far: spot.lvl > 0 && !spot.side, side: spot.side }]);
               // The city's mark: a solid dot in the ink with a hairline of the ground round it, where the hollow ring was.
               ctx.beginPath();
               ctx.arc(pt.x, pt.y, cityR, 0, Math.PI * 2);
@@ -12337,7 +12397,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
           if (!inst.city || inst.lon === undefined || inst.lat === undefined || inst.lon === null || inst.lat === null || isNaN(inst.lon) || isNaN(inst.lat)) return;
           if (inst.lat === 0 && inst.lon === 0) return;   // 0, 0 is the data's "no pin" (a festival with no single venue), not a place off West Africa
           const k = (inst.city || '').toLowerCase().trim();
-          if (isClusterZoom && clusteredCityKeys.has(k)) {
+          if (isClusterZoom && clusteredCityKeys.has(k) && !unfoldedCities.has(k)) {
             return;
           }
           const pt = project(inst.lon, inst.lat, r, cx, cy);
