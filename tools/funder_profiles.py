@@ -8,6 +8,9 @@ Two steps, run from anywhere:
       rows into data/funder_profiles.json, keyed by office key. A row the lint stops is listed and left out until fixed.
       With no batch named it reads every fpN-result.json there.
 
+  python3 tools/funder_profiles.py lint batch [...]
+      Prints what the lint would stop in the named batches, without merging (for the researcher and the checker).
+
   python3 tools/funder_profiles.py build
       Writes assets/funder-profiles.json for the page: per office key the profile's sentences and sources, plus the
       influence study's `made_from` line and dated facts (data/influence_senders.json) where that study read the funder.
@@ -69,6 +72,7 @@ def merge(paths):
             k = r.get('key')
             if not k: continue
             if k in dropped: continue          # the office it repeated holds the profile
+            if r.get('same_as'): continue      # the office it joins (tools/add_funder_offices.py) keeps its own profile
             probs = lint(r)
             if probs:
                 stopped.append((os.path.basename(p), k, probs)); continue
@@ -132,5 +136,14 @@ if __name__ == '__main__':
         merge(paths)
     elif cmd == 'build':
         build()
+    elif cmd == 'lint':
+        # The script-visible problems in researched batches, before they are merged: one line per row the lint stops.
+        n = 0
+        for p in sys.argv[2:]:
+            for r in json.load(open(p)):
+                probs = [] if r.get('same_as') else lint(r)
+                if probs:
+                    n += 1; print(f"{os.path.basename(p)} {r.get('key')}: " + '; '.join(probs))
+        print(f'{n} rows with problems')
     else:
         print(__doc__)
