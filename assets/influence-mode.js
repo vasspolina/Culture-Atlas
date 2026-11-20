@@ -829,6 +829,14 @@
 <p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
 </li>`;
   };
+  // A long list shows its first few lines and folds the rest behind "N more" (user, 20 Nov 2026: "no toggle through
+  // content and scroll gets stuck"): a funder like BP ran to sixty entries in one unbroken column on a phone.
+  const LIST_KEEP = 3;
+  const foldList = lines => {
+    const shown = lines.slice(0, LIST_KEEP).join(''), rest = lines.slice(LIST_KEEP).join('');
+    const fold = rest ? `<li class="d-row-fold"><details><summary><span class="fold-closed">${lines.length - LIST_KEEP} more</span><span class="fold-open">Fewer</span></summary><ul class="d-row-list influence-list">${rest}</ul></details></li>` : '';
+    return `<ul class="d-row-list influence-list">${shown}${fold}</ul>`;
+  };
   const row = (title, sub, inner, titleHtml) => `<section class="d-row" role="group"><div class="d-row-head"><h3 class="d-row-title">${titleHtml || esc(title)}</h3>${sub ? `<p class="d-row-sub no-indent">${esc(sub)}</p>` : ''}</div>${inner}</section>`;
 
   // What the MoMA Influence Map study says (user, 17 Nov 2026: "add moma money map to moma on our influence map ... just
@@ -893,9 +901,15 @@
   function afterRows(f) {
     const a = afterNo(f), told = ((f.sender && f.sender.facts) || []).filter(x => x.kind === 'after');
     if (!a.kept.length && !told.length) return '';
+    // The ties themselves are in the ledger above, each with its sentence and source, so here they are named, not printed
+    // again (user, 20 Nov 2026: "content repetition"): the museum, and the year the record gives.
+    const names = (ties, yr) => {
+      const seen = new Set();
+      return ties.filter(x => !seen.has(x.space) && seen.add(x.space)).map(x => `<a href="#" class="influence-space-link" data-influence-space="${esc(x.space)}">${esc(x.space_name)}</a>${yr(x) ? `<span class="influence-meta"> ${esc(yr(x))}</span>` : ''}`).join(', ');
+    };
     let inner = '';
-    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that dropped it.</span></p><ul class="d-row-list influence-list">${a.ended.map(x => lineFor(x, true, null)).join('')}</ul>`;
-    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts since ${esc(a.first)}.</span></p><ul class="d-row-list influence-list">${a.kept.map(x => lineFor(x, true, null)).join('')}</ul>`;
+    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that dropped it.</span> ${names(a.ended, endYearOf)}</p>`;
+    if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts since ${esc(a.first)}.</span> ${names(a.kept, yearOf)}</p>`;
     if (told.length) inner += `<p class="no-indent"><span class="lead-in">What happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
     return row('When a museum said no', '', inner);
   }
@@ -915,8 +929,8 @@
     const items = f.ties.flatMap(t => (t.links || []).map(l => ({ t, l })));
     if (!items.length) return '';
     const what = { us: 'US lobbying', eu: 'EU lobbying', politics: 'Political giving', other: 'Other lobbying' };
-    const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`).join('');
-    return row('Lobbying through museums', '', `<ul class="d-row-list influence-list">${lis}</ul>`);
+    const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`);
+    return row('Lobbying through museums', '', foldList(lis));
   }
   // ---- What art the money pays for ----
   // Reader feedback (user, 19 Nov 2026): "see what kind of influence they're buying. I.e. are they funding modern art,
@@ -998,13 +1012,17 @@
     html += artRow(f);
     html += linkRows(f);
     html += senderRows(f);
+    // Each gift once, under the first thing it bought in ORDER (user, 20 Nov 2026: "content repetition"): a gift that paid
+    // for a programme and a building (Lentos, Raiffeisen) was printed in full under both, and BP's 64 lines held 46 gifts.
+    // Its own sentence says the rest of what it bought.
+    const firstKind = x => ORDER.find(k => x.kinds.includes(k));
     ORDER.forEach(k => {
-      const ties = f.ties.filter(x => (x.kinds.length ? x.kinds : []).includes(k));
-      if (ties.length) html += row(label(k), '', `<ul class="d-row-list influence-list">${ties.map(x => lineFor(x, true, null)).join('')}</ul>`);
+      const ties = f.ties.filter(x => x.kinds.length && firstKind(x) === k);
+      if (ties.length) html += row(label(k), '', foldList(ties.map(x => lineFor(x, true, null))));
     });
     html += afterRows(f);
     const pushback = f.ties.filter(x => !x.kinds.length);
-    if (pushback.length) html += row('Protests and resignations', '', `<ul class="d-row-list influence-list">${pushback.map(x => lineFor(x, true, null)).join('')}</ul>`);
+    if (pushback.length) html += row('Protests and resignations', '', foldList(pushback.map(x => lineFor(x, true, null))));
     if (t.ended || t.protest) html += `<p class="no-indent influence-meta">${esc([t.ended ? plural(t.ended, 'deal') + ' ended' : '', t.protest ? plural(t.protest, 'deal') + ' drew protest' : ''].filter(Boolean).join('; '))}.</p>`;
     el.innerHTML = html;
     return el;
@@ -1040,6 +1058,18 @@
     el.innerHTML = row('At MoMA', 'from the MoMA Influence Map', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> · <a href="${esc(STUDY.page)}">Open the study</a></p>`);
     return el;
   }
+  // The funder's own record (assets/hq-detail.js) has a "Where the money comes from" of its own, from its profile; the
+  // ledger's row of that name says it from the sender facts. Two sections of one title (user, 20 Nov 2026: "content
+  // repetition"): the record's words join the ledger's row, unless they say the same, and its own section goes.
+  function oneMoneyRow(panel, part) {
+    const own = panel.querySelector('#hqMoneyT'), sec = own && own.closest('section');
+    const mine = [...part.querySelectorAll('.d-row-title')].find(t => t.textContent.trim() === own?.textContent.trim());
+    if (!sec || !mine) return;
+    const inner = mine.closest('section'), have = norm(inner.textContent);
+    let at = inner.querySelector('.d-row-head');
+    sec.querySelectorAll('.hq-prose p').forEach(p => { if (!have.includes(norm(p.textContent))) { at.after(p); at = p; } });
+    sec.remove();
+  }
   function decorate() {
     if (busy) return;
     busy = true;
@@ -1050,7 +1080,7 @@
       const panel = document.getElementById('hqPanel');
       if (panel && !panel.hidden && !panel.querySelector('.influence-part')) {
         const f = funderForPanel(panel), head = panel.querySelector('.record-head');
-        if (f && !f.moneyOnly && head) head.after(funderPart(f));
+        if (f && !f.moneyOnly && head) { const part = funderPart(f); head.after(part); oneMoneyRow(panel, part); }
         else if (f && f.study && head) { const part = studyFunderPart(f); if (part) head.after(part); }
         else if (f && f.moneyOnly && head) { const part = artPart(f); if (part) head.after(part); }
       }
