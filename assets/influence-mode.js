@@ -733,6 +733,10 @@
     if (window.atlasHq && window.atlasHq.ready && !window.atlasHq.loaded()) window.atlasHq.ready(go); else go();
   };
   window.isInfluenceModeActive = () => on;
+  // The ledger for the chat (index.html, queryAI): asked what funders got in return, the chat prints it from here whether
+  // the mode is on or off. Resolves to null when the file does not load. The labels are this file's words for each kind.
+  window.atlasInfluenceLedger = () => load();
+  window.atlasInfluenceLabels = () => Object.assign({}, CAME);
 
   // ---- The chat ----
   function say(html) {
