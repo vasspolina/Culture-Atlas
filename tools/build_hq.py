@@ -200,6 +200,9 @@ for k, p in (json.load(open(prof_path)) if os.path.exists(prof_path) else {}).it
     if p.get('name'): o['n'] = p['name']
     if p.get('address') and (not o.get('c') or p.get('city', o.get('c')) == o.get('c')): o['a'] = p['address']
     if p.get('sources'): o['s'] = p['sources'][0]
+    # The name a reader knows it by, or the body that gives in its name ('Steven & Alexandra Cohen Foundation'): the page lists
+    # it with the other spellings and finds the museum's sentence by it.
+    if p.get('short') and p['short'] != p.get('name'): o['sn'] = p['short']
     # The researcher's kind over the one guessed from the name: a person is labelled as one, not as the company the line named.
     if p.get('kind') == 'person': o['kindLabel'] = 'Individual donor'; o['k'] = 'found'
     elif p.get('kind') in ('gov', 'corp', 'found'): o['k'] = p['kind']
