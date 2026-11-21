@@ -2124,17 +2124,19 @@
     // is a .starter-prompt with its question in data-query, so the page's one click handler asks it. The sheet goes when the
     // first question is asked, while a note is written and while the keyboard is up (assets/sheet.css).
     (function suggestSheet() {
-      const dock = $('workBottomDock');
+      // Not a sheet of its own (user, the same day: "don't do it half sheet"): the first version sat under the box with a
+      // grabber, a ground and its own scroll, and showed only its top. The suggestions are now part of the chat's page,
+      // under the greeting, whole, and scroll with it.
       const chips = $('mobileSuggestChips');
-      const wrap = dock && dock.firstElementChild;
+      const msgs = $('curatorMessages');
+      const wrap = msgs && msgs.parentElement;
       if (!wrap || !chips) return;
       const sheet = document.createElement('section');
       sheet.id = 'gmSuggestSheet';
       sheet.setAttribute('aria-label', 'Suggested questions');
-      sheet.innerHTML = '<span class="gss-grab" aria-hidden="true"></span>'
-        + '<div class="gss-kinds" role="group" aria-label="Questions to start with"></div>'
+      sheet.innerHTML = '<div class="gss-kinds" role="group" aria-label="Questions to start with"></div>'
         + '<div class="gss-tiles" id="gmSuggestTiles" role="group" aria-label="Questions about one museum"></div>';
-      wrap.appendChild(sheet);
+      wrap.insertBefore(sheet, msgs);
       const kinds = sheet.querySelector('.gss-kinds');
       function paintKinds() {
         const out = [];
