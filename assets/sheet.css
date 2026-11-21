@@ -2845,3 +2845,9 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 @layer sheet{
   .starter-prompt .sp-text:not(#sh-x):not(#sh-y):not(#sh-z)::after{content:none!important}
 }
+
+/* A paragraph break after "Ask Clio" (user, 21 Nov 2026: "add paragraph break after ask Clio"): the greeting's first
+   line sat right under the title. One line of the text's own leading stands between them, on a phone and on a desktop. */
+@layer sheet{
+  #curatorHeroGreeting:not(#sh-x):not(#sh-y):not(#sh-z)::before{margin-bottom:var(--sh-s-lh)!important}
+}
