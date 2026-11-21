@@ -2116,8 +2116,8 @@
     })();
 
     // ---- The chat's suggestions on a phone (user, 21 Nov 2026) ----
-    // Over the box of an empty chat stand at most four short suggestions, as round buttons holding a few words each, with
-    // no icons. It began as a sheet under the box with marks in circles and tiles of longer questions; the user took the
+    // Over the box of an empty chat stand the short suggestions in one row that scrolls sideways ("make suggestions
+    // scroll"), as round buttons holding a few words each, with no icons. It began as a sheet under the box with marks in circles and tiles of longer questions; the user took the
     // icons out ("no icons"), then the sheet ("don't do it half sheet"), then most of the questions ("make them more
     // concise and these are too many"). The buttons are the suggestion chips of the map's search box (#mobileSuggestChips),
     // so they follow the place in view as those do, said shorter. Each is a .starter-prompt with its question in data-query,
@@ -2127,7 +2127,6 @@
       const chips = $('mobileSuggestChips');
       const card = $('workInputCard');
       if (!card || !card.parentElement || !chips) return;
-      const MAX = 4;
       // The chip's words, shorter: the question itself is unchanged.
       const brief = (t) => t.replace(/^Arms-industry donors$/, 'Arms donors').replace(/^Museums near me$/, 'Near me')
         .replace(/^Oil and gas money\b/, 'Oil and gas').replace(/^What is happening at /, 'News at ');
@@ -2140,7 +2139,7 @@
         const out = [];
         [...chips.children].forEach((c) => {
           const q = c.dataset.query;
-          if (!q || out.length >= MAX) return;   // the place's own chip moves the map; it is not a question
+          if (!q) return;   // the place's own chip moves the map; it is not a question
           const b = document.createElement('button');
           b.type = 'button';
           b.className = 'starter-prompt gss-kind';
