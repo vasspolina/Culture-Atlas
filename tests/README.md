@@ -10,6 +10,7 @@ scripts, so most tests load them into a `vm` context and call what they set on t
 | `analytics.test.mjs` | `assets/analytics.js` is off without an address or when the browser says not to track. |
 | `data-noise.test.mjs` | The records carry no broken links or empty points. |
 | `editor.test.mjs`, `editor-structure.test.mjs` | The data editor (`tools/editor.py`, `editor/`): a save writes only the edited record. |
+| `gossip-ahead.test.mjs` | In Gossip mode a money question is answered with the space's gossip first; gossip is upright; the 10% on the line height. |
 | `gossip-kind.test.mjs` | A question about a kind of story is answered from the gossip data. |
 | `gossip-place.test.mjs` | Gossip mode tells the stories of the place in view first: the space, its city, its country. |
 | `gossip-voice.test.mjs` | Gossip mode's voice: a journalist who claims no source of its own, read aloud in a woman's voice from the device. |
