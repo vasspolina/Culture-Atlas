@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Text-slop lint for institutions.json: the rules in sponsor-atlas/work/ubatch/SLOP.md, run over every shown text field.
+"""Text-slop lint for institutions.json: the rules in sponsor-atlas/work/ubatch/SLOP.md, plus the Humanizer patterns
+(github.com/blader/humanizer) they did not cover, run over every shown text field.
 
 The prose fields get every rule; the visit fields (amenities, accessibility, transit tips, curatorial focus) get the filler and
 dash rules only. A sweep is recorded in data/slop_runs/<date>/changes.json (25 Oct and 3 Nov 2026).
@@ -43,6 +44,17 @@ VERDICT = re.compile(r"\b(controversial|problematic|troubling|concerning)\b", re
 VAGUE = re.compile(r"\b(a major (oil|tobacco|mining|arms|gas)\b|various (donors|funders)|several (donors|funders)|many foundations|"
                    r"unnamed (donors|funders)|private donors|corporate partners)\b", re.I)
 STAT_IN_FUNDING = re.compile(r"\b\d[\d,.]*\s?[kKmM]?\s+(annual |yearly )?(visitors|visits)\b|visitors \(\d{4}", re.I)
+# From the Humanizer skill (github.com/blader/humanizer, v4.0.0; user, 21 Nov 2026: "apply Humanizer to cultural atlas"):
+# the patterns the earlier rules did not cover. Report only, since each needs the sentence rewritten, not a word swapped.
+# COPULA is its section 18 (serves as, operates as: say "is"); AIWORD its section 12 words not already in FILLER; INFLATE
+# its sections 13 and 17 (a fact dressed as a turning point, or credited to everyone); SOFTCLOSE its section 2 and 15
+# (an -ing tail or a closing line that names what the fact showed).
+COPULA = re.compile(r"\b(serves as|serving as|stands as|functions as|operates as)\b", re.I)
+AIWORD = re.compile(r"\b(crucial|enduring|enhanc(e|es|ed|ing)|garner\w*|interplay|intricate|intricacies|meticulous\w*|quietly|robust|"
+                    r"valuable|[Aa]dditionally|bolster\w*|seminal|famously|groundbreaking|unrivall?ed|staggering)\b")  # lower case: Enhanced Education is a name
+INFLATE = re.compile(r"\b(widely (seen|regarded|considered) as|turning point|marking (a|the) (new|turning|shift)|one of the most significant|"
+                     r"lasting legacy|set the stage|in the heart of)\b", re.I)
+SOFTCLOSE = re.compile(r", (highlighting|underscoring|emphasi[sz]ing|reflecting|symboli[sz]ing|fostering|showcasing)\b", re.I)
 NOSITE = re.compile(r"nothing from it or its|that we could find", re.I)
 MEDIAL = re.compile(r"[—–]")
 CURLY = re.compile(r"[‘’“”]")
@@ -79,6 +91,10 @@ def problems(rec):
         m = VERDICT.search(t)
         if m:
             found.append('verdict: ' + m.group(0))
+        for name, rx in (('copula', COPULA), ('ai-word', AIWORD), ('inflated', INFLATE), ('ing-tail', SOFTCLOSE)):
+            m = rx.search(t)
+            if m:
+                found.append(f'{name}: ' + m.group(0))
         m = FRAME.search(t)
         if m:
             found.append('frame: ' + m.group(0))
