@@ -1,0 +1,451 @@
+// Funder headquarters and people's offices as things you can pick. layers.js draws the marks and keeps what each one links to;
+// this file adds the three ways in and the record that opens:
+//   a mouse or finger on the map  -> atlasHqPointer (index.html calls it from the globe's hover and click handlers)
+//   the keyboard                  -> one real button laid over each mark in view (#hqMarks), invisible until it has focus
+//   a crowded spot                -> a short list of everything under the pointer, so each mark and space stays pickable
+// The record (#hqPanel) is set in the Details tab, the right column on a desktop and the record sheet on a phone, not in a window over the map
+// (user's instruction, 19 Oct 2026). It shows the info the data holds, every name it holds, and the connections it holds: the spaces the
+// office is named on, the other funders on those spaces, and the people the files tie to them. Nothing here is inferred.
+(function () {
+  const hq = () => window.atlasHq;
+  const viewport = () => document.getElementById('globeViewport');
+  const MAX_MARKS = 60;   // buttons laid over the map: the ones nearest the centre of the view, so the tab order stays short
+  const LIST_SHOWN = 8;   // a connections list shows this many until "Show all" is pressed
+  let panel = null, chooser = null, marksBox = null;
+  let openFor = null, openFrom = null, chooserReturn = null;
+  const buttons = new Map();
+
+  function h(tag, attrs, ...kids) {
+    const n = document.createElement(tag);
+    Object.entries(attrs || {}).forEach(([k, v]) => { if (v === false || v == null) return; if (k === 'text') n.textContent = v; else n.setAttribute(k, v === true ? '' : v); });
+    kids.flat().forEach(k => { if (k != null && k !== false) n.append(k); });
+    return n;
+  }
+  const where = e => [e.c, e.co].filter(Boolean).join(', ');
+  // Who a funder is and where its money comes from (assets/funder-profiles.json, written by tools/funder_profiles.py from the
+  // researched profiles in data/funder_profiles.json and the influence study's facts). Fetched once, when a funder first opens.
+  let PROFILES = null, profilesLoading = false;
+  function loadProfiles(cb) {
+    if (PROFILES) return cb();
+    if (profilesLoading) return;
+    profilesLoading = true;
+    fetch('assets/funder-profiles.json').then(r => r.json()).then(d => { PROFILES = d; }).catch(() => { PROFILES = {}; }).then(cb);
+  }
+  const profileOf = e => (PROFILES && e.kind === 'org' && [e.key, ...(e.also || [])].map(k => PROFILES[k]).find(Boolean)) || null;
+  const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (x) { return u; } };
+  const link = u => h('a', { href: u, target: '_blank', rel: 'noopener noreferrer', text: hostOf(u) });
+  // The sentences of a space's funding line (else its note) that name this funder: what the space's own record says it gave.
+  function giftLines(rec, names) {
+    const low = names.map(n => n.toLowerCase()).filter(n => n.length > 2);
+    for (const text of [rec.f, rec.w, rec.why]) {
+      const hit = String(text || '').split(/(?<=[.!?])\s+(?=[A-Z0-9"\u201c$\u00a3\u20ac])/).filter(x => { const l = x.toLowerCase(); return low.some(n => l.includes(n)); });
+      if (hit.length) return hit.slice(0, 2).join(' ');
+    }
+    return '';
+  }
+  const markName = e => `${e.n}, ${hq().kindLabel(e)}, ${where(e)}`;
+
+  // ---- Keyboard: a button over each mark in view ----
+  function box() {
+    if (marksBox && marksBox.isConnected) return marksBox;
+    const vp = viewport(); if (!vp) return null;
+    marksBox = h('div', { id: 'hqMarks', role: 'group', 'aria-label': 'Funder headquarters and offices in view. Press Enter on one to open its page.' });
+    vp.appendChild(marksBox);
+    return marksBox;
+  }
+  function markButton(e) {
+    let b = buttons.get(e);
+    if (b) return b;
+    b = h('button', { type: 'button', class: 'hq-mark', 'aria-haspopup': 'dialog', 'aria-label': markName(e) });
+    b.addEventListener('focus', () => { hq().hover(e); if (window.atlasHoldGlobe) window.atlasHoldGlobe(); });
+    b.addEventListener('blur', () => hq().hover(null));
+    b.addEventListener('click', () => openRecord(e, b));
+    buttons.set(e, b);
+    return b;
+  }
+  window.atlasHqFrame = function (hits) {
+    const root = box(); if (!root) return;
+    const vp = viewport(), W = vp.clientWidth, H = vp.clientHeight;
+    // The hits are in the canvas's box and the buttons in the viewport's; the canvas starts below the viewport's top
+    // (sheet.css: the globe drops below the name), so each button is moved down by that much to sit on its mark.
+    const cv = document.getElementById('globeCanvas'), vr = vp.getBoundingClientRect(), cr = cv ? cv.getBoundingClientRect() : vr;
+    const ox = cr.left - vr.left, oy = cr.top - vr.top;
+    const live = hits.filter(p => p.x + ox > 4 && p.x + ox < W - 4 && p.y + oy > 4 && p.y + oy < H - 4)
+      .sort((a, b) => Math.hypot(a.x - W / 2, a.y - H / 2) - Math.hypot(b.x - W / 2, b.y - H / 2)).slice(0, MAX_MARKS)
+      .sort((a, b) => a.x - b.x || a.y - b.y);
+    const keep = new Set(live.map(p => p.e));
+    const focused = document.activeElement && document.activeElement.classList.contains('hq-mark') ? document.activeElement : null;
+    buttons.forEach((b, e) => { if (!keep.has(e) && b !== focused) { b.remove(); if (e !== openFor) buttons.delete(e); } });
+    const settled = !root.contains(document.activeElement);
+    live.forEach((p, i) => {
+      const b = markButton(p.e);
+      b.style.transform = `translate(${Math.round(p.x + ox - 12)}px, ${Math.round(p.y + oy - 12)}px)`;
+      // The tab order follows the picture left to right, but is only rearranged while no mark has focus.
+      if (!b.isConnected) root.appendChild(b);
+      if (settled && root.children[i] !== b) root.insertBefore(b, root.children[i] || null);
+    });
+  };
+
+  // ---- Chat: a click on a name prints what the records say about it in the chat ----
+  // A funder asks the question the chat already answers for funders; a person asks the one it answers for people on boards.
+  function askInChat(e) {
+    const ask = window.atlasAskInChat || window.atlasAskCurator;
+    if (typeof ask !== 'function') return;
+    ask(e.kind === 'org' ? `Which institutions does ${e.n} fund?` : `Tell me about ${e.n} and museum board conflicts`);
+  }
+
+  // ---- Pointer: the globe's own handlers ask these first ----
+  window.atlasHqPointer = {
+    hover(mx, my, dots) {
+      if (!hq() || !hq().loaded()) return false;
+      const named = hq().labelAt(mx, my);
+      if (named) { hq().hover(named); return true; }
+      const t = hq().at(mx, my, hq().reach(), dots), m = t.marks[0];
+      if (m && (!t.spaces[0] || m.d <= t.spaces[0].d)) { hq().hover(m.e); return true; }
+      if (!(document.activeElement && document.activeElement.classList.contains('hq-mark'))) hq().hover(null);
+      return false;
+    },
+    click(mx, my, clientX, clientY, dots) {
+      if (!hq() || !hq().loaded()) return false;
+      const named = hq().labelAt(mx, my);
+      if (named) { askInChat(named); return true; }
+      const t = hq().at(mx, my, hq().reach(), dots);
+      if (!t.marks.length) return false;
+      if (t.marks.length + t.spaces.length === 1) { openRecord(t.marks[0].e, null); return true; }
+      // The list is placed in the viewport's own box, and the globe's canvas starts below its top (sheet.css: the globe drops
+      // below the name), so the spot is taken from the pointer's page position, not the canvas's.
+      const r = viewport().getBoundingClientRect();
+      openChooser(t, clientX != null ? clientX - r.left : mx, clientY != null ? clientY - r.top : my);
+      return true;
+    }
+  };
+
+  // ---- A crowded spot: everything under the pointer, each one pickable ----
+  // The list is a callout, as the map's own names are (index.html, drawPillLabel: an ink bubble, the name in the ground's
+  // colour, a tail toward its mark). Its tail points at the spot that was clicked and the box stands beside it, so the spot
+  // stays in view (user, 20 Nov 2026: "design this", a screenshot of the plain white box laid over the spot and the city
+  // names). The heading says how many and of what; where funders and museums share the spot they are listed under their own
+  // small heads, and a museum's line then gives only its city, since its head already says what it is.
+  // Keyboard: the box takes focus when it opens (no row is picked for you); Up and Down move between the rows, Home and End
+  // go to the first and last, Tab walks the rows and the close button, Escape or a click elsewhere closes it, and focus goes
+  // back where it was.
+  function closeChooser(restore) {
+    if (!chooser) return;
+    chooser.remove(); chooser = null;
+    if (restore && chooserReturn && chooserReturn.isConnected) chooserReturn.focus();
+    chooserReturn = null;
+  }
+  const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  function openChooser(t, mx, my) {
+    closeChooser(false);
+    const vp = viewport(); if (!vp) return;
+    chooserReturn = document.activeElement && document.activeElement !== document.body ? document.activeElement : null;
+    const nm = t.marks.length, ns = t.spaces.length, mixed = nm > 0 && ns > 0, n = nm + ns;
+    const funders = t.marks.map(m => ({ label: m.e.n, sub: [hq().kindLabel(m.e), m.e.c].filter(Boolean).join(' / '), go: () => openRecord(m.e, null) }));
+    const spaces = t.spaces.map(s => ({ label: s.inst.name, sub: s.inst.city || '', go: () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(s.inst, false); } }));
+    const title = !ns ? plural(nm, 'funder here', 'funders here') : !nm ? plural(ns, 'museum here', 'museums here') : `${n} places here`;
+    const row = it => {
+      const b = h('button', { type: 'button', class: 'hq-row' }, h('span', { class: 'hq-l', text: it.label }), it.sub ? h('span', { class: 'hq-s', text: it.sub }) : null);
+      b.addEventListener('click', () => { closeChooser(false); it.go(); });
+      return h('li', null, b);
+    };
+    const group = (head, list, id) => [
+      mixed ? h('h3', { class: 'hq-group', id, text: head }) : null,
+      h('ul', mixed ? { 'aria-labelledby': id } : null, list.map(row))
+    ];
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close' }, h('span', { 'aria-hidden': 'true', text: '×' }));
+    close.addEventListener('click', () => closeChooser(true));
+    chooser = h('div', { id: 'hqChooser', role: 'dialog', tabindex: '-1', 'aria-labelledby': 'hqChooserTitle', 'aria-describedby': 'hqChooserHint' },
+      h('div', { class: 'hq-head' },
+        h('h2', { class: 'hq-chooser-title', id: 'hqChooserTitle', text: title }),
+        close),
+      h('p', { class: 'hq-hint', id: 'hqChooserHint', text: 'Choose one to open it.' }),
+      h('div', { class: 'hq-body' },
+        nm ? group(plural(nm, 'Funder', 'Funders'), funders, 'hqChooserFunders') : null,
+        ns ? group(plural(ns, 'Museum', 'Museums'), spaces, 'hqChooserSpaces') : null));
+    chooser.addEventListener('keydown', ev => {
+      const rows = [...chooser.querySelectorAll('.hq-row')], i = rows.indexOf(document.activeElement);
+      let to = null;
+      if (ev.key === 'ArrowDown') to = i < 0 ? 0 : (i + 1) % rows.length;
+      else if (ev.key === 'ArrowUp') to = i < 0 ? rows.length - 1 : (i - 1 + rows.length) % rows.length;
+      else if (ev.key === 'Home') to = 0;
+      else if (ev.key === 'End') to = rows.length - 1;
+      if (to === null || !rows.length) return;
+      ev.preventDefault(); rows[to].focus();
+    });
+    // Focus that leaves the box (Tab past its last row) closes it; the page keeps that focus.
+    chooser.addEventListener('focusout', ev => { if (chooser && ev.relatedTarget && !chooser.contains(ev.relatedTarget)) closeChooser(false); });
+    vp.appendChild(chooser);
+    placeChooser(vp, mx, my);
+    chooser.focus({ preventScroll: true });
+  }
+  // The box stands to the right of the spot with its tail on its left edge, or to the left with the tail on its right edge;
+  // where neither side has room (a phone), above or below the spot with the tail on its bottom or top edge. The tail is
+  // moved along its edge to point straight at the spot. `TAIL` is how far the tail reaches out from the box, `GAP` the air
+  // between the tail's point and the spot, so the dot itself stays in view.
+  // The box keeps to the band of the map that is not covered: below the map's name (the canvas starts lower than the
+  // viewport) and below the filter chips and buttons laid over the map's top on a phone; above the filter chips over its
+  // foot on a desktop and the chat bar over its foot on a phone. So it never covers them, nor slides under them.
+  const COVERS = ['gmdChips', 'gmChips', 'gmTopBtns', 'mobileStickyInputBar'];
+  function mapBand(vp) {
+    const vr = vp.getBoundingClientRect(), cv = document.getElementById('globeCanvas'), mid = vr.height / 2;
+    let top = cv ? Math.max(0, cv.getBoundingClientRect().top - vr.top) : 0, bottom = vp.clientHeight;
+    COVERS.forEach(id => {
+      const el = document.getElementById(id), r = el && el.getBoundingClientRect();
+      if (!r || !r.height || !r.width || r.right <= vr.left || r.left >= vr.right || r.bottom <= vr.top || r.top >= vr.bottom) return;
+      if (r.top + r.height / 2 - vr.top < mid) top = Math.max(top, r.bottom - vr.top);
+      else bottom = Math.min(bottom, r.top - vr.top);
+    });
+    return { top, bottom };
+  }
+  function placeChooser(vp, mx, my) {
+    const TAIL = 9, GAP = 6, EDGE = 8, R = 9, MIN = 140;
+    const band = mapBand(vp), lo = band.top + EDGE, hi = Math.max(band.top + EDGE + MIN, band.bottom - EDGE);
+    const cap = h => chooser.style.setProperty('max-height', Math.round(Math.max(MIN, Math.min(400, h))) + 'px', 'important');
+    cap(hi - lo);
+    const W = vp.clientWidth, cw = chooser.offsetWidth, off = TAIL + GAP;
+    let ch = chooser.offsetHeight;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+    let side, x, y;
+    if (mx + off + cw <= W - EDGE) side = 'right';
+    else if (mx - off - cw >= EDGE) side = 'left';
+    else {
+      // Above or below: the side with room for the whole list, else the side with more room, and the list is cut to that
+      // room (it scrolls) rather than slid over the spot.
+      const up = my - off - lo, down = hi - my - off;
+      side = down >= ch || down >= up ? 'below' : 'above';
+      cap(side === 'below' ? down : up); ch = chooser.offsetHeight;
+    }
+    if (side === 'right' || side === 'left') {
+      x = side === 'right' ? mx + off : mx - off - cw;
+      y = clamp(my - Math.min(ch / 2, 34), lo, hi - ch);
+      chooser.style.setProperty('--hq-tail', clamp(my - y, R + 6, ch - R - 6) + 'px');
+    } else {
+      x = clamp(mx - cw / 2, EDGE, W - cw - EDGE);
+      y = side === 'above' ? my - off - ch : my + off;
+      chooser.style.setProperty('--hq-tail', clamp(mx - x, R + 6, cw - R - 6) + 'px');
+    }
+    chooser.dataset.side = side;
+    chooser.style.left = Math.round(x) + 'px';
+    chooser.style.top = Math.round(y) + 'px';
+  }
+  document.addEventListener('pointerdown', ev => { if (chooser && !chooser.contains(ev.target)) closeChooser(false); }, true);
+
+  // ---- The record ----
+  // The record lives in the Details tab. On a desktop that is the record body of the right column; on a phone it is the record sheet's
+  // scroll body. Whatever the tab held (a space's record) is hidden, not removed, while a funder's record shows, and comes back on close.
+  // A new record opens at its top. The panel itself does not scroll: its host's column does (the desktop Details column, the
+  // phone sheet), so every scrolling box it sits in goes back to the top (12 Nov 2026: a city or funder opened partway down).
+  function toTop(p) { for (let el = p; el && el !== document.body; el = el.parentElement) if (el.scrollTop) el.scrollTop = 0; }
+  function detailsHost() {
+    return document.getElementById(window.innerWidth >= 768 ? 'desktopDossierRecordBody' : 'dossier-sheet-scrollable-body');
+  }
+  function ensurePanel() {
+    if (!panel) panel = h('aside', { id: 'hqPanel', class: 'is-details', role: 'region', 'aria-labelledby': 'hqPanelTitle', tabindex: '-1', hidden: true });
+    const host = detailsHost(); if (!host) return null;
+    if (panel.parentElement !== host) {
+      if (panel.parentElement) panel.parentElement.classList.remove('is-hq');
+      host.appendChild(panel);
+    }
+    return panel;
+  }
+  function showDetails(host) {
+    host.classList.add('is-hq');
+    if (window.innerWidth >= 768) {
+      if (typeof window.toggleDesktopDossier === 'function') window.toggleDesktopDossier(true);
+    } else {
+      const sheet = document.getElementById('dossier-bottom-sheet');
+      if (sheet) { sheet.classList.remove('hidden'); sheet.classList.add('is-hq-sheet'); }
+      const tab = document.getElementById('tab-dossier');
+      if (tab && typeof window.setActiveMobileTab === 'function') window.setActiveMobileTab(tab);
+    }
+  }
+  function listOf(items, build, cap) {
+    const ul = h('ul', { class: 'd-row-list hq-list' });
+    const rows = items.map(build);
+    rows.forEach((li, i) => { if (i >= cap) li.hidden = true; ul.appendChild(li); });
+    if (rows.length <= cap) return ul;
+    const more = h('button', { type: 'button', class: 'hq-more', 'aria-expanded': 'false', text: `Show all ${rows.length}` });
+    more.addEventListener('click', () => {
+      const expand = more.getAttribute('aria-expanded') !== 'true';
+      rows.forEach((li, i) => { li.hidden = !expand && i >= cap; });
+      more.setAttribute('aria-expanded', String(expand));
+      more.textContent = expand ? 'Show fewer' : `Show all ${rows.length}`;
+    });
+    return h('div', null, ul, more);
+  }
+  const spaceRow = s => {
+    const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: s.rec.n }), h('span', { class: 'hq-s', text: s.rec.c || '' }));
+    b.addEventListener('click', () => hq().flyToSpace(s.rec));
+    const li = h('li', null, b);
+    // The tie as the space's own record words it: a person's line from the files, a funder's sentence from the funding line.
+    if (s.text) li.append(h('p', { class: 'hq-note', text: s.text }));
+    return li;
+  };
+  const officeRow = (o, shared) => {
+    const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: o.n }), h('span', { class: 'hq-s', text: `${hq().kindLabel(o)} / ${o.c} / ${shared} shared ${shared === 1 ? 'museum' : 'museums'}` }));
+    b.addEventListener('click', () => { hq().flyToOffice(o); openRecord(o, null, true); });
+    return h('li', null, b);
+  };
+
+  // The record is set like a space's record (user, 2 Nov 2026): the name over a rule, then two columns, a third and two thirds. In the head
+  // the Ask in chat pill is on the left and the place, address, note and source on the right. Under the head each part is a row under a
+  // hairline: Names, then each connections group, its title on the left and its items on the right. All the classes are the space record's,
+  // so the funder's record takes its typesetting (sizes, rhythm, the narrow one-column form) from the same rules.
+  const row = (id, title, sub, items, extra) => {
+    const head = h('div', { class: 'd-row-head' }, h('h3', { id, class: 'd-row-title', text: title }));
+    if (sub) head.append(h('p', { class: 'd-row-sub no-indent', text: sub }));
+    const sec = h('section', { class: 'd-row', role: 'group', 'aria-labelledby': id }, head);
+    if (items) sec.append(items);
+    if (extra) sec.append(extra);
+    return sec;
+  };
+  const fact = (k, v) => v ? h('li', null, h('span', { class: 'lead-in', text: k + ' ' }), v instanceof Node ? v : document.createTextNode(v)) : null;
+
+  function fill(e) {
+    const p = panel, ready = hq().loaded();
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this page' });
+    // A drawn cross, not the × character: the glyph sat low and small in its box and the hover square was off its centre.
+    close.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    close.addEventListener('click', () => closeRecord(true));
+    const title = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: hq().kindLabel(e) }), h('h2', { id: 'hqPanelTitle', class: 'dossier-main-heading', text: e.n })), close);
+    const ask = h('button', { type: 'button', class: 'record-action', text: 'Ask in chat' });
+    ask.addEventListener('click', () => askInChat(e));
+
+    // Head: the pill on the left; the place as the row's title, the address under it, then the note and the source as the row's points.
+    const facts = h('ul', { class: 'd-row-list' });
+    const add = li => { if (li) facts.append(li); };
+    const pf = profileOf(e);
+    add(fact(e.kind === 'person' ? 'Role' : 'Note', e.w));
+    if (pf && pf.site) add(fact('Website', link(pf.site)));
+    else if (e.s && !(pf && pf.src && pf.src.length)) add(fact('Source', link(e.s)));
+    const info = row('hqInfoT', where(e) || 'Record', e.a || '', facts);
+    const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
+      h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
+
+    const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Names and connections' });
+    // A row is shown only when it has something in it: no 'no other name', 'no space', 'None' lines (user, 3 Nov 2026).
+    // While the offices load, the slot stays empty rather than showing a "Loading…" row; fill() runs again once they arrive.
+    if (ready) {
+      // The other spellings only: the funder's own name is the title above, and the sentence that explained the list is gone
+      // (user, 9 Nov 2026: "Slop"). No row when every funding line spells it as the title does.
+      // `sn` is the profile's short name (tools/build_hq.py): one more spelling the records can use for this funder.
+      const names = hq().names(e).concat(e.sn && !hq().names(e).some(n => n.toLowerCase() === e.sn.toLowerCase()) ? [e.sn] : []), others = names.filter(n => n !== e.n);
+      // The profile: what the funder is, where its money comes from, what it gives to culture, each a sentence from a
+      // source opened for it, with those sources under them; then the dated facts the influence study read.
+      if (pf) {
+        const said = [pf.what, pf.arts].filter(Boolean);
+        if (said.length) rows.append(row('hqWhatT', 'What it is', '', h('div', { class: 'hq-prose' }, said.map(t => h('p', { class: 'no-indent', text: t })))));
+        if (pf.money) rows.append(row('hqMoneyT', 'Where the money comes from', '', h('div', { class: 'hq-prose' }, h('p', { class: 'no-indent', text: pf.money }))));
+        if (pf.facts && pf.facts.length) rows.append(row('hqFactsT', 'On record', '', listOf(pf.facts, f => h('li', { class: 'hq-fact' },
+          h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' / ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
+        if (pf.src && pf.src.length) rows.append(row('hqSrcT', 'Sources', '', h('ul', { class: 'd-row-list hq-src' }, pf.src.map(u => h('li', null, link(u))))));
+      }
+      const sp = hq().spaces(e).map(s => (s.text || e.kind !== 'org') ? s : Object.assign({}, s, { text: giftLines(s.rec, names) })), rel = hq().related(e);
+      const group = (id, title, list, build) => { if (list.length) rows.append(row(id, title, '', listOf(list, build, LIST_SHOWN))); };
+      // The row's title is the relation, not a count ("Funds 1 space": user, 9 Nov 2026, "Slop"); the list under it is the count.
+      group('hqConnSpaces', e.kind === 'org' ? 'Funds' : 'Named on', sp, spaceRow);
+      if (e.kind === 'org') {
+        group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
+        group('hqConnPeople', 'Named with these museums in the Epstein files', rel.people, r => officeRow(r.e, r.shared));
+      }
+      if (others.length) rows.append(row('hqNamesT', 'Also written', '', h('ul', { class: 'd-row-list hq-names' }, others.map(n => h('li', { text: n })))));
+    }
+    if (rows.childElementCount) p.replaceChildren(head, rows); else p.replaceChildren(head);
+    toTop(p);
+  }
+
+  function openRecord(e, from, keepFocusOrigin) {
+    const p = ensurePanel(); if (!p) return;
+    closeChooser(false);
+    if (!keepFocusOrigin) openFrom = from;
+    openFor = e;
+    if (!e.noOffice && !e.noLayer) hq().showLayer(e);   // Influence mode draws its own funders and asks for no office layer
+    hq().select(e);
+    fill(e);
+    p.hidden = false;
+    showDetails(p.parentElement);
+    p.querySelector('h2').setAttribute('tabindex', '-1');
+    p.focus({ preventScroll: true });
+    if (!hq().loaded()) hq().ready(() => { if (openFor === e) fill(e); });
+    if (!PROFILES && e.kind === 'org') loadProfiles(() => { if (openFor === e) fill(e); });
+  }
+  function closeRecord(restore) {
+    if (!panel || panel.hidden) return;
+    panel.hidden = true; panel.replaceChildren();
+    if (panel.parentElement) panel.parentElement.classList.remove('is-hq');
+    const sheet = document.getElementById('dossier-bottom-sheet'); if (sheet) sheet.classList.remove('is-hq-sheet');
+    openFor = null; if (hq()) hq().select(null);
+    if (window.atlasPlacePin) { window.atlasPlacePin = null; if (window.atlasDropPinRefresh) window.atlasDropPinRefresh(); }
+    if (restore && openFrom && openFrom.isConnected) openFrom.focus();
+    openFrom = null;
+  }
+  // ---- A city's place sheet ----
+  // A tap on a city opens its sheet, as a maps app opens a place's (user, 11 Nov 2026: "when a place or pin drops the info
+  // shows in sheet not like on hover"). It takes the funder's record's panel and host, so it sits in the Details tab: the
+  // right column on a desktop, the record sheet at its peek height on a phone. It holds what the city's hover slip held:
+  // the city, its country, and its spaces by name, the large ones first, each a button that opens that space's record.
+  const SIZE_RANK = { XL: 0, L: 1, M: 2, S: 3, XS: 4 };
+  function fillPlace(c) {
+    const p = panel;
+    const close = h('button', { type: 'button', class: 'hq-close', 'aria-label': 'Close this place' });
+    close.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    close.addEventListener('click', () => closeRecord(true));
+    const title = h('div', { class: 'hq-head' }, h('div', null, h('p', { class: 'hq-kind', text: 'City' }), h('h2', { id: 'hqPanelTitle', class: 'dossier-main-heading', text: c.name })), close);
+    const ask = h('button', { type: 'button', class: 'record-action', text: 'Ask in chat' });
+    ask.addEventListener('click', () => {
+      const fn = window.atlasAskInChat || window.atlasAskCurator;
+      if (typeof fn === 'function') fn(`What should I know about the museums in ${c.name}?`);
+    });
+    const n = c.spaces.length;
+    const info = row('hqInfoT', c.country || 'Place', `${n} ${n === 1 ? 'museum' : 'museums'} on the atlas`, null);
+    const head = h('div', { class: 'record-head head-sheet rule-b hq-sheet' }, title,
+      h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
+    const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Museums' });
+    if (n) rows.append(row('hqConnSpaces', 'Museums', '', listOf(c.spaces, inst => {
+      const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: inst.shortName || inst.name }), h('span', { class: 'hq-s', text: [inst.neighborhood, inst.category].filter(Boolean).join(' / ') }));
+      b.addEventListener('click', () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(inst, false); });
+      return h('li', null, b);
+    }, LIST_SHOWN)));
+    p.replaceChildren(head, rows);
+    toTop(p);
+  }
+  window.atlasPlaceOpen = function (cityName) {
+    if (!cityName || cityName === 'all') return;
+    const g = n => { try { return (0, eval)(n); } catch (_) { return undefined; } };
+    const cities = g('ALL_CITIES_REGISTRY') || [], all = g('ALL_INSTITUTIONS') || [];
+    const same = (a, b) => String(a || '').trim().toLowerCase() === String(b || '').trim().toLowerCase();
+    // One name can be two cities (Cambridge, England and Massachusetts): the sheet takes the one the map opened, and only its
+    // spaces (index.html, cityPlaceFor), so it never says "UK" over spaces in Massachusetts.
+    const meta = (window.atlasCityPlace && window.atlasCityPlace(cityName)) || cities.find(c => same(c.name, cityName)) || { name: cityName };
+    const named = all.filter(i => same(i.city, meta.name));
+    const spaces = (window.atlasCityInsts && typeof meta.lat === 'number' ? window.atlasCityInsts(meta.name, meta).filter(i => named.includes(i)) : named).map((inst, k) => ({ inst, k }))
+      .sort((a, b) => ((SIZE_RANK[a.inst.size] ?? 5) - (SIZE_RANK[b.inst.size] ?? 5)) || (a.k - b.k)).map(o => o.inst);
+    const p = ensurePanel(); if (!p) return;
+    closeChooser(false);
+    openFrom = null;
+    openFor = { place: meta.name };
+    if (hq()) hq().select(null);
+    let lon = Number(meta.lon), lat = Number(meta.lat);
+    if (!isFinite(lon) || !isFinite(lat)) { const s0 = spaces.find(i => isFinite(Number(i.lon)) && isFinite(Number(i.lat))); if (s0) { lon = Number(s0.lon); lat = Number(s0.lat); } }
+    window.atlasPlacePin = isFinite(lon) && isFinite(lat) ? { name: meta.name, lon, lat } : null;
+    if (window.atlasDropPinRefresh) window.atlasDropPinRefresh();
+    fillPlace({ name: meta.name, country: meta.country ? String(meta.country).trim() : '', spaces });
+    p.hidden = false;
+    showDetails(p.parentElement);
+  };
+  window.atlasPlaceIsOpen = () => !!(openFor && openFor.place);
+
+  // Choosing a space (on the map, in the chat, or from a connection in this record) puts that space's record in the tab.
+  window.atlasHqClose = () => closeRecord(false);
+  // A click on a funding line (assets/layers.js) opens the line's funder here, with or without a mapped office.
+  window.atlasHqOpen = e => openRecord(e, null);
+  // Escape closes the list first, then the record, and does not also clear the space or city the page has selected.
+  document.addEventListener('keydown', ev => {
+    if (ev.key !== 'Escape') return;
+    if (chooser) { ev.stopPropagation(); closeChooser(true); return; }
+    if (panel && !panel.hidden && (panel.contains(document.activeElement) || document.activeElement === document.body || (marksBox && marksBox.contains(document.activeElement)))) {
+      ev.stopPropagation(); closeRecord(true);
+    }
+  }, true);
+})();
