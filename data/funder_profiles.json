@@ -15467,6 +15467,21 @@
   ],
   "batch": "fp34"
  },
+ "jeanmichelbeurdeley": {
+  "name": "Jean Michel Beurdeley",
+  "kind": "person",
+  "what": "A French collector and former Paris antiques dealer who opened the MAIIAM museum in Chiang Mai in 2016 with his late wife Patsri Bunnag and her son Eric Bunnag Booth.",
+  "money": "He ran a gallery of antiques and Chinese art in Saint-Germain-des-Prés, Paris, from 1965 for about 30 years.",
+  "arts": "The museum shows the family's collection of Thai contemporary art, which he began buying around 1990.",
+  "site": "https://maiiam.com",
+  "country": "Thailand",
+  "status": "done",
+  "sources": [
+   "https://maiiam.com/en",
+   "https://lepetitjournal.com/thailande/beurdeley-musee-art-contemporain-maiiam-thailande-289781"
+  ],
+  "batch": "fp45"
+ },
  "jeffbezos": {
   "name": "Jeff Bezos",
   "kind": "person",
@@ -15517,6 +15532,19 @@
   ],
   "batch": "fp39"
  },
+ "jimhill": {
+  "name": "Jim Hill",
+  "kind": "person",
+  "what": "The former board chairman of Pason Systems, a Calgary oilfield technology company he bought in 1987; he and Susan Hill founded the Esker Foundation gallery, opened in 2012.",
+  "money": "Pason Systems, which supplies hardware, software and services mainly to the oil and gas drilling industry and went public in 1996.",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://pason.com/about-us/",
+   "https://businessincalgary.com/?p=12736"
+  ],
+  "batch": "fp45"
+ },
  "johnellerman": {
   "name": "John Ellerman Foundation",
   "kind": "found",
@@ -15535,6 +15563,19 @@
    "https://ellerman.org.uk/contact-us/"
   ],
   "batch": "fp15"
+ },
+ "johngellatly": {
+  "name": "John Gellatly",
+  "kind": "person",
+  "what": "An American businessman and art collector who gave his collection to the Smithsonian on 13 June 1929 and died in 1931, before it went on show in Washington in 1933.",
+  "arts": "He bought the American painters of his day, among them Whistler, Sargent, Ryder, Dewing, Thayer, Hassam and Twachtman.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://americanart.si.edu/about/history/patrons",
+   "https://en.wikipedia.org/wiki/John_Gellatly"
+  ],
+  "batch": "fp45"
  },
  "johnkeells": {
   "name": "John Keells Foundation",
@@ -15707,6 +15748,54 @@
   ],
   "batch": "fp29"
  },
+ "juliastoschek": {
+  "name": "Julia Stoschek",
+  "kind": "person",
+  "what": "A German collector of media art, born in Coburg in 1975, who opened the Julia Stoschek Collection in Düsseldorf-Oberkassel in 2007 and a Berlin space in 2016.",
+  "money": "Her stake, held since 1993, in Brose Fahrzeugteile, the car parts maker her great-grandfather Max Brose founded; its sales were €7.7 billion in fiscal 2024.",
+  "arts": "She has sat on the boards of the Museum of Contemporary Art, Los Angeles, since 2018 and of the Kunst-Werke Institute for Contemporary Art since 2015.",
+  "site": "https://jsfoundation.art",
+  "city": "Düsseldorf",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Julia_Stoschek",
+   "https://en.wikipedia.org/wiki/Julia_Stoschek",
+   "https://en.wikipedia.org/wiki/Brose_Fahrzeugteile"
+  ],
+  "batch": "fp45"
+ },
+ "juntadeandalucaauthorisedanominativegrantof|Spain": {
+  "name": "Junta de Andalucía",
+  "short": "Regional Government of Andalusia",
+  "kind": "gov",
+  "what": "The self-government institution of the Spanish autonomous community of Andalusia, made up of its Parliament, presidency and Government Council; the presidency sits in the Palacio de San Telmo, Seville.",
+  "money": "The budget of the Autonomous Community of Andalusia, 51.6 billion euros for 2026.",
+  "site": "https://www.juntadeandalucia.es",
+  "city": "Seville",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Junta_de_Andaluc%C3%ADa",
+   "https://en.wikipedia.org/wiki/Regional_Government_of_Andalusia"
+  ],
+  "batch": "fp45"
+ },
+ "justamoment": {
+  "name": "Just A Moment Foundation",
+  "short": "Just A Moment",
+  "kind": "found",
+  "what": "A US private foundation in Hallandale Beach, Florida, tax exempt since March 2023, registered by the RIBOCA founder Agniya Mirgorodskaya and her husband William Pokora, an American real estate investor.",
+  "money": "Contributions, which made up all of its US$21,083 revenue in 2024; it reported no revenue in 2022 or 2023.",
+  "city": "Hallandale Beach",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/920858263",
+   "https://www.theartnewspaper.com/2023/07/12/riga-biennial-cancelled-after-outcry-over-organisers-russian-links"
+  ],
+  "batch": "fp45"
+ },
  "kai": {
   "name": "Ulli und Uwe Kai-Stiftung",
   "kind": "found",
@@ -15770,6 +15859,23 @@
    "https://de.wikipedia.org/wiki/Kaiser_Friedrich-Museums-Verein"
   ],
   "batch": "fp15"
+ },
+ "kaiserpermanente": {
+  "name": "Kaiser Permanente",
+  "kind": "corp",
+  "what": "An Oakland managed care consortium of the not-for-profit Kaiser Foundation Health Plan, Kaiser Foundation Hospitals and the Permanente Medical Groups, founded in 1945 by Henry J. Kaiser and Sidney Garfield.",
+  "money": "Its health plan and hospitals: operating revenues of US$127.7 billion in 2025, counted together with Risant Health.",
+  "arts": "Its community health contribution was US$5.3 billion in 2025, of which more than US$192 million was grant funding.",
+  "site": "https://about.kaiserpermanente.org",
+  "city": "Oakland",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://about.kaiserpermanente.org/news/press-release-archive/kaiser-permanente-risant-health-report-2025-financial-results",
+   "https://en.wikipedia.org/wiki/Kaiser_Permanente",
+   "https://about.kaiserpermanente.org/who-we-are/fast-facts"
+  ],
+  "batch": "fp45"
  },
  "kanderses": {
   "name": "Warren Kanders",
@@ -15985,6 +16091,25 @@
    "https://daratalfunun.org/khalid-shoman/lifestory2.htm"
   ],
   "batch": "fp15"
+ },
+ "khaoyaiart": {
+  "name": "Khao Yai Art",
+  "kind": "found",
+  "what": "A Thai contemporary art institution that Marisa Chearavanont founded in 2023, led by Stefano Rabolli Pansera; it comprises Bangkok Kunsthalle and the Khao Yai Art Forest in Nakhon Ratchasima province.",
+  "money": "Its founder Marisa Chearavanont, who bought the land for the Art Forest in 2022.",
+  "site": "https://khaoyaiart.org",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "wrong_match": "Khao Yai Art is the institution that runs Bangkok Kunsthalle; the line shows Marisa Chearavanont, its founder, as the one who pays.",
+  "status": "done",
+  "sources": [
+   "https://www.artbasel.com/stories/kunsthalle-art-forest-turn-thailand-into-southeast-asia-premier-art-hub",
+   "https://en.wikipedia.org/wiki/Marisa_Chearavanont",
+   "https://en.wikipedia.org/wiki/Khao_Yai_Art_Forest",
+   "https://en.wikipedia.org/wiki/Bangkok_Kunsthalle",
+   "https://khaoyaiart.org/"
+  ],
+  "batch": "fp45"
  },
  "kier": {
   "name": "Kier Group plc",
@@ -16207,6 +16332,17 @@
   ],
   "batch": "fp15"
  },
+ "kon": {
+  "name": "Boubacar Koné",
+  "kind": "person",
+  "what": "An anthropologist, married to the actress CCH Pounder from 1990, who founded the Musée Boribana in Ngor, Dakar, with her in 1997; he died in 2016.",
+  "status": "done",
+  "sources": [
+   "https://blacklistedculture.com/musee-boribana/",
+   "https://en.wikipedia.org/wiki/CCH_Pounder"
+  ],
+  "batch": "fp45"
+ },
  "koreahana": {
   "name": "Korea Hana Foundation",
   "kind": "gov",
@@ -16345,6 +16481,25 @@
   ],
   "batch": "fp31"
  },
+ "kulturraumleipzigerraum": {
+  "name": "Zweckverband Kulturraum Leipziger Raum",
+  "short": "Kulturraum Leipziger Raum",
+  "kind": "gov",
+  "what": "A special-purpose association of the districts of Leipzig and Nordsachsen, formed under the Saxon Cultural Areas Act to maintain, coordinate and fund cultural institutions of regional importance.",
+  "money": "A culture levy on its member districts, set each year by its convention, and Saxony's cultural burden-sharing grant from the state budget.",
+  "arts": "The fields it funds are museums, professional orchestras and music, public libraries, cultural education and socio-cultural centres.",
+  "site": "https://www.kultur-leipzigerraum.de",
+  "city": "Borna",
+  "country": "Germany",
+  "address": "Stauffenbergstr. 4, 04552 Borna",
+  "status": "done",
+  "sources": [
+   "https://www.kultur-leipzigerraum.de/de_DE/impressum",
+   "https://www.l-iz.de/melder/wortmelder/2019/05/Berufung-des-Kulturbeirates-Kulturraum-Leipziger-Raum-275178",
+   "https://revosax.sachsen.de/vorschrift/3215-Saechsisches-Kulturraumgesetz"
+  ],
+  "batch": "fp45"
+ },
  "kulturreferatoflandeshauptstadtmnchen": {
   "name": "Kulturreferat der Landeshauptstadt München",
   "short": "Kulturreferat München",
@@ -16359,6 +16514,23 @@
    "https://de.wikipedia.org/wiki/Kulturreferat_(M%C3%BCnchen)"
   ],
   "batch": "fp31"
+ },
+ "kulturruhrgmbh": {
+  "name": "Kultur Ruhr GmbH",
+  "kind": "gov",
+  "what": "A company in Bochum, of which the state of North Rhine-Westphalia is a shareholder, that produces the Ruhrtriennale, Chorwerk Ruhr, Tanzlandschaft Ruhr and Urbane Künste Ruhr.",
+  "money": "Public grants: the state of North Rhine-Westphalia, its most important funder, gave about 18 million euros for 2025.",
+  "site": "https://www.ruhrtriennale.de/en/kultur-ruhr",
+  "city": "Bochum",
+  "country": "Germany",
+  "address": "Gerard-Mortier-Platz 1, 44793 Bochum",
+  "wrong_match": "Kultur Ruhr GmbH is the company that produces the Ruhrtriennale, so the line shows the festival's own operator, not an outside funder.",
+  "status": "done",
+  "sources": [
+   "https://www.ruhrtriennale.de/en/kultur-ruhr",
+   "https://miz.org/de/nachrichten/nordrhein-westfalen-foerdert-kultur-ruhr-mit-rund-18-millionen-euro"
+  ],
+  "batch": "fp45"
  },
  "kulturstiftungdesbundes": {
   "name": "Kulturstiftung des Bundes",
@@ -16393,6 +16565,20 @@
    "https://kunsthalle-bielefeld.de/museum/traegerschaft/"
   ],
   "batch": "fp32"
+ },
+ "kulturstiftunglandkreisleipzig": {
+  "name": "Kulturstiftung Landkreis Leipzig",
+  "kind": "found",
+  "what": "A charitable private-law foundation that the district of Leipzig resolved to set up in 2018, recognised by the Landesdirektion Sachsen on 30 September 2020; it operates Haus Rabe in Zwenkau.",
+  "site": "https://haus-rabe.space/ueber-uns/",
+  "country": "Germany",
+  "wrong_match": "The foundation owns and operates Haus Rabe, so the line shows the house's own operator, which bought it with federal money.",
+  "status": "done",
+  "sources": [
+   "https://haus-rabe.space/ueber-uns/",
+   "https://tu-dresden.de/bu/architektur-landschaft/ek/die-professur/news/benedikt-schulz-wird-stiftungsratsmitglied-der-kulturstiftung-landkreis-leipzig"
+  ],
+  "batch": "fp45"
  },
  "kunsthallebern": {
   "name": "Stiftung Kunsthalle Bern",
@@ -16630,6 +16816,21 @@
   ],
   "batch": "fp35"
  },
+ "landschaftsverbandrheinland": {
+  "name": "Landschaftsverband Rheinland",
+  "short": "LVR",
+  "kind": "gov",
+  "what": "One of the two regional authorities formed in North Rhine-Westphalia in 1953, a public-law corporation seated in Cologne that carries out regional tasks for the Rhineland's cities and districts.",
+  "money": "A levy paid by its member cities and districts.",
+  "site": "https://www.lvr.de",
+  "city": "Cologne",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://de.wikipedia.org/wiki/Landschaftsverband_Rheinland"
+  ],
+  "batch": "fp45"
+ },
  "landvorarlberg|Austria": {
   "name": "Amt der Vorarlberger Landesregierung",
   "short": "Land Vorarlberg",
@@ -16726,6 +16927,22 @@
    "https://www.km.gov.lv/en/ministry"
   ],
   "batch": "fp17"
+ },
+ "lavaprovincialcouncil|Spain": {
+  "name": "Diputación Foral de Álava",
+  "short": "Álava Provincial Council",
+  "kind": "gov",
+  "what": "The governing body of Álava, a province and historical territory of the Basque Country in Spain, seated in the Palacio de la Diputación in Vitoria-Gasteiz.",
+  "money": "The provincial budget; as a foral council it holds tax powers that ordinary Spanish provincial councils do not have.",
+  "site": "https://www.araba.eus",
+  "city": "Vitoria-Gasteiz",
+  "country": "Spain",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Diputaci%C3%B3n_Foral_de_%C3%81lava",
+   "https://en.wikipedia.org/wiki/%C3%81lava"
+  ],
+  "batch": "fp45"
  },
  "lazardfreresgestion": {
   "name": "Fondation Lazard Frères Gestion-Institut de France",
@@ -16838,6 +17055,22 @@
    "https://en.wikipedia.org/wiki/Leon_Black"
   ],
   "batch": "fp37"
+ },
+ "leovlka": {
+  "name": "Leoš Válka",
+  "kind": "person",
+  "what": "A Czech businessman, born in 1953, who founded the DOX Centre for Contemporary Art in Prague, opened in October 2008, and is its director and board chairman.",
+  "money": "A company for work at height that he started in Australia after 1981, then construction and interior design business in Prague from 1996.",
+  "arts": "He built DOX with his business partner Robert Aafjes and the financial help of additional partners.",
+  "site": "https://www.dox.cz",
+  "city": "Prague",
+  "country": "Czechia",
+  "status": "done",
+  "sources": [
+   "https://www.dox.cz/en/about-us",
+   "https://cs.wikipedia.org/wiki/Leo%C5%A1_V%C3%A1lka"
+  ],
+  "batch": "fp45"
  },
  "lesamisdesmusesdartetdhistoireluxembourg": {
   "name": "Les Amis des Musées d'art et d'histoire du Luxembourg a.s.b.l.",
@@ -16960,6 +17193,21 @@
    "https://en.wikipedia.org/wiki/Liljestrand_House"
   ],
   "batch": "fp22"
+ },
+ "lillemorjakobson": {
+  "name": "Lillemor Jakobson",
+  "kind": "person",
+  "what": "A Swedish designer, born in 1935, who married Björn Jakobson in 1962 and became BabyBjörn's creative designer; the couple opened Artipelag in 2012.",
+  "money": "BabyBjörn, the family-owned maker of baby carriers and bouncers, which Björn Jakobson started in 1961.",
+  "country": "Sweden",
+  "status": "done",
+  "sources": [
+   "https://sv.wikipedia.org/wiki/Bj%C3%B6rn_Jakobson",
+   "https://artipelag.se/en/about-artipelag/",
+   "https://en.wikipedia.org/wiki/Bj%C3%B6rn_Jakobson",
+   "https://en.wikipedia.org/wiki/BabyBj%C3%B6rn"
+  ],
+  "batch": "fp45"
  },
  "lilly": {
   "name": "Lilly Endowment Inc.",
@@ -17196,6 +17444,20 @@
   ],
   "batch": "fp33"
  },
+ "loiseskenazi": {
+  "name": "Sidney and Lois Eskenazi",
+  "kind": "person",
+  "what": "An Indianapolis couple of philanthropists; Sidney Eskenazi is a lawyer, and Indiana University's art museum took their name in May 2016.",
+  "money": "Sandor Development Company, the real estate development firm Sidney Eskenazi set up in the early 1960s.",
+  "arts": "The couple have supported Indiana University arts programmes, among them the Herron School of Art and Design.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://universitychancellor.iu.edu/speeches/select-speeches/2016/2016-05-11-eskenazi.html",
+   "https://en.wikipedia.org/wiki/Eskenazi_Museum_of_Art"
+  ],
+  "batch": "fp45"
+ },
  "lombardodier": {
   "name": "Bank Lombard Odier & Co Ltd",
   "short": "Lombard Odier",
@@ -17278,6 +17540,24 @@
    "https://fr.wikipedia.org/wiki/Loterie_romande"
   ],
   "batch": "fp3"
+ },
+ "lotterygrantsboard": {
+  "name": "New Zealand Lottery Grants Board Te Puna Tahua",
+  "short": "Lottery Grants Board",
+  "kind": "gov",
+  "what": "A body under New Zealand's Gambling Act 2003 that distributes state lottery profits to communities; the Department of Internal Affairs administers it, with a national office in Wellington.",
+  "money": "The profits of Lotto New Zealand's lotteries; Lotto NZ said in December 2024 that its past financial year raised a record NZ$434 million.",
+  "arts": "Creative New Zealand and the New Zealand Film Commission are among the main recipients of lottery funding.",
+  "site": "https://www.communitymatters.govt.nz",
+  "city": "Wellington",
+  "country": "New Zealand",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/New_Zealand_Lottery_Grants_Board",
+   "https://en.wikipedia.org/wiki/Lotto_New_Zealand",
+   "https://www.sunlive.co.nz/news/356389-lotto--record--434m-returned-to-the-community.html"
+  ],
+  "batch": "fp45"
  },
  "lotterywest": {
   "name": "Lotterywest (Lotteries Commission of Western Australia)",
@@ -17448,6 +17728,22 @@
    "https://luma.org/arles"
   ],
   "batch": "fp1"
+ },
+ "lundmunicipality|Sweden": {
+  "name": "Lunds kommun",
+  "short": "Lund Municipality",
+  "kind": "gov",
+  "what": "A municipality in Scania County, southern Sweden, with its seat in the city of Lund; it took its present extent in 1974.",
+  "money": "Municipal tax: its tax revenue was 57,434 kronor per resident in 2025.",
+  "site": "https://lund.se",
+  "city": "Lund",
+  "country": "Sweden",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Lund_Municipality",
+   "https://www.ekonomifakta.se/regional-jamforelse/lund/"
+  ],
+  "batch": "fp45"
  },
  "macallan": {
   "name": "The Macallan",
@@ -17734,6 +18030,35 @@
   ],
   "batch": "fp39"
  },
+ "marinavarvarina": {
+  "name": "Marina Varvarina",
+  "kind": "person",
+  "what": "The founder of Erarta, a private museum of contemporary art that opened in St Petersburg in 2010 and began with her own art collection.",
+  "site": "https://www.erarta.com",
+  "country": "Russia",
+  "status": "done",
+  "sources": [
+   "https://www.sobaka.ru/entertainment/art/100509",
+   "https://www.erarta.com/en/museum/about/"
+  ],
+  "batch": "fp45"
+ },
+ "marisachearavanont": {
+  "name": "Marisa Chearavanont",
+  "kind": "person",
+  "what": "A Seoul-born Thai philanthropist and art collector who founded and chairs Khao Yai Art, the institution behind Bangkok Kunsthalle and the Khao Yai Art Forest.",
+  "money": "Charoen Pokphand Group, the conglomerate whose senior chairman Dhanin Chearavanont she advises; she married Soopakij Chearavanont in 1988.",
+  "arts": "She sits on Tate Modern's Asia-Pacific Acquisition Committee and the New Museum's International Leadership Council and is a founding patron of M+ in Hong Kong.",
+  "city": "Bangkok",
+  "country": "Thailand",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Marisa_Chearavanont",
+   "https://www.artbasel.com/stories/kunsthalle-art-forest-turn-thailand-into-southeast-asia-premier-art-hub",
+   "https://en.wikipedia.org/wiki/Bangkok_Kunsthalle"
+  ],
+  "batch": "fp45"
+ },
  "maritimeelectric": {
   "name": "Maritime Electric",
   "kind": "corp",
@@ -17764,6 +18089,23 @@
   ],
   "batch": "fp17"
  },
+ "marshalofficeofprovinceofmazovia|Poland": {
+  "name": "Urząd Marszałkowski Województwa Mazowieckiego w Warszawie",
+  "short": "Marshal's Office of the Mazovian Voivodeship",
+  "kind": "gov",
+  "what": "The office through which the board and marshal of the Mazovian voivodeship's self-government carry out their tasks, created on 1 January 1999 and seated on Jagiellońska Street, Warsaw.",
+  "money": "The budget of the Mazovian voivodeship's self-government, of which the office is a budget unit.",
+  "arts": "The Mazowiecki Instytut Kultury, set up in 2014, is a cultural institution of the voivodeship's self-government.",
+  "site": "https://mazovia.pl",
+  "city": "Warsaw",
+  "country": "Poland",
+  "status": "done",
+  "sources": [
+   "https://pl.wikipedia.org/wiki/Urz%C4%85d_Marsza%C5%82kowski_Wojew%C3%B3dztwa_Mazowieckiego",
+   "https://pl.wikipedia.org/wiki/Mazowiecki_Instytut_Kultury"
+  ],
+  "batch": "fp45"
+ },
  "marwanassaf": {
   "name": "Marwan T. Assaf",
   "short": "Marwan Assaf",
@@ -17777,6 +18119,22 @@
    "https://sursock.museum/node/80"
   ],
   "batch": "fp31"
+ },
+ "marylouisetandy": {
+  "name": "A.R. and Marylouise Tandy Foundation",
+  "short": "Tandy Foundation",
+  "kind": "found",
+  "what": "A Tulsa private foundation, tax exempt since October 1985, named for Alfred Randolph (Bill) Tandy, who died in 1971, and his wife Marylouise; The Trust Company of Oklahoma is trustee.",
+  "money": "The fortune of Bill Tandy, who bought the property developer Tandy Industries in 1957 and headed the Tulsa oil and gas producer Great Yellowstone Corp.",
+  "arts": "It paid US$7.1 million in charitable disbursements in 2024, which left net assets of US$153,378.",
+  "city": "Tulsa",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/731254985",
+   "https://tulsahistory.org/halloffame/alfred-randolph-bill-tandy/"
+  ],
+  "batch": "fp45"
  },
  "massachusettsculturalcouncil|USA": {
   "name": "Mass Cultural Council",
@@ -17861,6 +18219,22 @@
   ],
   "batch": "fp39"
  },
+ "meijer": {
+  "name": "Meijer Foundation",
+  "kind": "found",
+  "what": "A private grantmaking foundation in Grand Rapids, Michigan, tax exempt since October 2024; Hendrik, Douglas and Mark Meijer sit on its board and David Hooker is president.",
+  "money": "The Meijer family, which owns the Meijer supercenter chain founded in 1934; the foundation held net assets of US$195 million in 2024.",
+  "arts": "It paid US$7.6 million in charitable disbursements in 2024.",
+  "city": "Grand Rapids",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://projects.propublica.org/nonprofits/organizations/365091795",
+   "https://en.wikipedia.org/wiki/Meijer",
+   "https://projects.propublica.org/nonprofits/organizations/386575227"
+  ],
+  "batch": "fp45"
+ },
  "memoriav": {
   "name": "Memoriav, Verein zur Erhaltung des audiovisuellen Kulturgutes der Schweiz",
   "short": "Memoriav",
@@ -17893,6 +18267,21 @@
    "https://mendeswooddm.com/"
   ],
   "batch": "fp30"
+ },
+ "mendozaindustrialfamily": {
+  "name": "Mendoza family",
+  "kind": "person",
+  "what": "The Caracas family of the industrialist Eugenio Mendoza Goiticoa, who died in 1979, and his wife Luisa Rodríguez de Mendoza; the couple started the Sala Mendoza in 1956.",
+  "money": "Grupo Mendoza, the conglomerate Eugenio Mendoza built from the construction materials firm Materiales Mendoza and the cement maker Venezolana de Cementos.",
+  "city": "Caracas",
+  "country": "Venezuela",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Eugenio_Mendoza",
+   "https://fundacionsalamendoza.com/",
+   "https://sumandonegocios.us/la-fundacion-sala-mendoza-rumbo-a-sus-70-anos-impulsando-el-arte-contemporaneo-en-venezuela/"
+  ],
+  "batch": "fp45"
  },
  "mercator": {
   "name": "Stiftung Mercator GmbH",
@@ -17964,6 +18353,22 @@
   ],
   "batch": "fp26"
  },
+ "meridiancreditunion": {
+  "name": "Meridian Credit Union Ltd.",
+  "short": "Meridian",
+  "kind": "corp",
+  "what": "The largest credit union in Ontario, formed on 1 April 2005 by the merger of Niagara Credit Union and HEPCOE Credit Union, with headquarters in St. Catharines.",
+  "money": "Banking, loans, mortgages and wealth management for its members: revenue of C$509 million and total assets of C$27.5 billion in 2023.",
+  "site": "https://www.meridiancu.ca",
+  "city": "St. Catharines",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Meridian_Credit_Union",
+   "https://www.meridiancu.ca/about-meridian"
+  ],
+  "batch": "fp45"
+ },
  "merribekcouncil|Australia": {
   "name": "Merri-bek City Council",
   "kind": "gov",
@@ -18013,6 +18418,39 @@
    "https://en.wikipedia.org/wiki/Metrobank_(Philippines)"
   ],
   "batch": "fp17"
+ },
+ "mexicocityministryofculture|Mexico": {
+  "name": "Secretaría de Cultura de la Ciudad de México",
+  "short": "Mexico City Ministry of Culture",
+  "kind": "gov",
+  "what": "The department of Mexico City's government that designs and carries out its culture policy, founded on 29 May 2002 as successor to the city's Instituto de Cultura.",
+  "money": "The budget of the Government of Mexico City, to which it answers.",
+  "arts": "Its dependencies include the Archivo Histórico de la Ciudad de México and the Fábricas de Artes y Oficios.",
+  "site": "https://www.cultura.cdmx.gob.mx",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Secretar%C3%ADa_de_Cultura_de_la_Ciudad_de_M%C3%A9xico"
+  ],
+  "batch": "fp45"
+ },
+ "mexicoscultureministry|Mexico": {
+  "name": "Secretaría de Cultura",
+  "short": "Mexico's Ministry of Culture",
+  "kind": "gov",
+  "what": "Mexico's federal culture ministry, created in December 2015 from the National Council for Culture and Arts (Conaculta), which had been a body of the education ministry since 1988.",
+  "money": "The Mexican federal budget.",
+  "arts": "The Instituto Nacional de Bellas Artes y Literatura and the Instituto Nacional de Antropología e Historia are bodies under the ministry.",
+  "site": "https://www.gob.mx/cultura",
+  "city": "Mexico City",
+  "country": "Mexico",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Secretar%C3%ADa_de_Cultura_(M%C3%A9xico)",
+   "https://en.wikipedia.org/wiki/Secretariat_of_Culture"
+  ],
+  "batch": "fp45"
  },
  "miamidadecounty|USA": {
   "name": "Miami-Dade County",
@@ -18148,6 +18586,21 @@
   ],
   "batch": "fp36"
  },
+ "milwaukeecounty|USA": {
+  "name": "Milwaukee County",
+  "kind": "gov",
+  "what": "The most populous county in Wisconsin, created in 1834, with its seat in Milwaukee; an elected county executive and an eighteen-member Board of Supervisors govern it.",
+  "money": "The county budget, US$1.39 billion for 2026, raised in part from the county's property tax levy.",
+  "site": "https://county.milwaukee.gov",
+  "city": "Milwaukee",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Milwaukee_County,_Wisconsin",
+   "https://urbanmilwaukee.com/2025/11/11/mke-county-crowley-signs-1-3-billion-budget-without-vetoes/"
+  ],
+  "batch": "fp45"
+ },
  "minalbajaj": {
   "name": "Minal Bajaj",
   "kind": "person",
@@ -18213,6 +18666,36 @@
   ],
   "batch": "fp39"
  },
+ "ministryofcultureandfinearts|Cambodia": {
+  "name": "Ministry of Culture and Fine Arts",
+  "short": "MCFA",
+  "kind": "gov",
+  "what": "The Cambodian government ministry with a mandate to promote and preserve Cambodian culture, formed in October 1997 and based on Norodom Boulevard in Phnom Penh.",
+  "money": "The Cambodian state budget.",
+  "site": "https://www.mcfa.gov.kh",
+  "city": "Phnom Penh",
+  "country": "Cambodia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_and_Fine_Arts_(Cambodia)"
+  ],
+  "batch": "fp45"
+ },
+ "ministryofcultureandmonuments|Georgia": {
+  "name": "Ministry of Culture of Georgia",
+  "kind": "gov",
+  "what": "Georgia's culture ministry in Tbilisi, set up in 2010 as the Ministry of Culture and Monument Protection, merged into the education ministry in July 2018 and re-established in 2021.",
+  "money": "The Georgian state budget: GEL 431.23 million for the ministry in 2023, when it also covered sport and youth.",
+  "site": "https://www.culture.gov.ge",
+  "city": "Tbilisi",
+  "country": "Georgia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_and_Sports_of_Georgia",
+   "https://www.culture.gov.ge/en"
+  ],
+  "batch": "fp45"
+ },
  "ministryofcultureczechrepublic|Czech Republic": {
   "name": "Ministerstvo kultury České republiky",
   "short": "Czech Ministry of Culture",
@@ -18229,6 +18712,40 @@
    "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Czech_Republic)"
   ],
   "batch": "fp25"
+ },
+ "ministryofcultureofpermkrai|Russia": {
+  "name": "Министерство культуры Пермского края",
+  "short": "Ministry of Culture of Perm Krai",
+  "kind": "gov",
+  "what": "An executive body of Perm Krai that sets regional policy on culture and art, formed in January 2007 from the region's culture department and youth policy committee.",
+  "money": "The Perm Krai regional budget.",
+  "site": "https://mk.permkrai.ru",
+  "city": "Perm",
+  "country": "Russia",
+  "address": "Ulitsa Kuibysheva 14, Perm 614006",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20220606022315/https://mk.permkrai.ru/o-ministerstve/polnomochiya",
+   "https://web.archive.org/web/20220603214956/https://mk.permkrai.ru/",
+   "https://www.kommersant.ru/doc/2271007"
+  ],
+  "batch": "fp45"
+ },
+ "ministryofcultures|Chile": {
+  "name": "Ministerio de las Culturas, las Artes y el Patrimonio",
+  "short": "Mincap",
+  "kind": "gov",
+  "what": "Chile's culture ministry, created by Law 21.045 of 2017, at work since March 2018 as successor to the Consejo Nacional de la Cultura y las Artes and based in Valparaíso.",
+  "money": "The Chilean national budget: 198,193,425 thousand pesos for the ministry in 2020.",
+  "site": "https://www.cultura.gob.cl",
+  "city": "Valparaíso",
+  "country": "Chile",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ministerio_de_las_Culturas,_las_Artes_y_el_Patrimonio_(Chile)",
+   "https://en.wikipedia.org/wiki/Ministry_of_Cultures,_Arts_and_Heritage_(Chile)"
+  ],
+  "batch": "fp45"
  },
  "ministryofcultures|Colombia": {
   "name": "Ministerio de las Culturas, las Artes y los Saberes",
@@ -18330,6 +18847,21 @@
   ],
   "batch": "fp17"
  },
+ "ministryoffinanceofethiopia|Ethiopia": {
+  "name": "Ministry of Finance",
+  "kind": "gov",
+  "what": "The Ethiopian government department for financial management and economic policy, in Addis Ababa, with origins in the ministerial system Emperor Menelik II introduced in 1907.",
+  "money": "The federal budget of Ethiopia.",
+  "site": "https://www.mofed.gov.et",
+  "city": "Addis Ababa",
+  "country": "Ethiopia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Finance_and_Economic_Development_(Ethiopia)",
+   "https://web.archive.org/web/20261005101217/https://www.mofed.gov.et/"
+  ],
+  "batch": "fp45"
+ },
  "ministryofinterior|Italy": {
   "name": "Ministero dell'Interno",
   "short": "Italian Ministry of the Interior",
@@ -18380,6 +18912,37 @@
   ],
   "batch": "fp2"
  },
+ "ministryofpublicworks|Argentina": {
+  "name": "Ministerio de Obras Públicas",
+  "short": "Ministry of Public Works",
+  "kind": "gov",
+  "what": "A former ministry of Argentina's national executive for public works, first created in 1898 and dissolved by decree in December 2023 under President Javier Milei, when it became a secretariat.",
+  "money": "The Argentine national budget.",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ministerio_de_Obras_P%C3%BAblicas_(Argentina)",
+   "https://en.wikipedia.org/wiki/Secretariat_of_Public_Works_(Argentina)"
+  ],
+  "batch": "fp45"
+ },
+ "ministryofsciencetechnologyandenvironment|Cuba": {
+  "name": "Ministerio de Ciencia, Tecnología y Medio Ambiente",
+  "short": "CITMA",
+  "kind": "gov",
+  "what": "The Cuban ministry, founded in 1994 as successor to the Academia de Ciencias de Cuba, that directs state policy on science, technology, the environment and peaceful nuclear energy.",
+  "money": "The Cuban state budget.",
+  "site": "https://www.citma.gob.cu",
+  "city": "Havana",
+  "country": "Cuba",
+  "status": "done",
+  "sources": [
+   "https://es.wikipedia.org/wiki/Ministerio_de_Ciencia,_Tecnolog%C3%ADa_y_Medio_Ambiente_de_Cuba",
+   "https://en.wikipedia.org/wiki/Ministry_of_Science,_Technology_and_Environment_(Cuba)"
+  ],
+  "batch": "fp45"
+ },
  "miran": {
   "name": "Miran Group",
   "kind": "corp",
@@ -18427,6 +18990,35 @@
    "https://en.wikipedia.org/wiki/Mitre_Corporation"
   ],
   "batch": "fp34"
+ },
+ "mitsubishi": {
+  "name": "Mitsubishi Corporation",
+  "kind": "corp",
+  "what": "A Japanese general trading company and core member of the Mitsubishi Group, incorporated in 1918 and refounded in 1954, listed in Tokyo with headquarters in Marunouchi.",
+  "money": "Energy, mining, chemical and infrastructure projects abroad and consumer businesses: revenue of ¥18.9 trillion in the year to March 2026.",
+  "site": "https://www.mitsubishicorp.com",
+  "city": "Tokyo",
+  "country": "Japan",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mitsubishi_Corporation"
+  ],
+  "batch": "fp45"
+ },
+ "mitsubishicompaniesleaditscorporatemembers": {
+  "name": "Mitsubishi Group",
+  "kind": "corp",
+  "what": "A group of independent Japanese companies that share the Mitsubishi name and mark, heirs of the Mitsubishi zaibatsu that Iwasaki Yatarō founded in 1870 and the Allies disbanded in 1946.",
+  "money": "The separate businesses of its member companies, chief among them MUFG, Mitsubishi Corporation and Mitsubishi Heavy Industries.",
+  "site": "https://www.mitsubishi.com",
+  "city": "Tokyo",
+  "country": "Japan",
+  "status": "thin",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Mitsubishi",
+   "https://www.mitsubishi.com/en/profile/group/"
+  ],
+  "batch": "fp45"
  },
  "mitsui": {
   "name": "Mitsui & Co., Ltd.",
