@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=891"></script>
+  <script src="assets/load-image-data.js?v=892"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=891">
-  <link rel="stylesheet" href="assets/sheet.css?v=891">
-  <script src="assets/config.js?v=891"></script>
-  <script src="assets/analytics.js?v=891"></script>
-  <script src="assets/subtopic.js?v=891"></script>
-  <script src="assets/names.js?v=891"></script>
-  <script src="assets/grounding.js?v=891"></script>
-  <script src="assets/repeats.js?v=891"></script>
-  <script src="assets/intro-narration.js?v=891"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=892">
+  <link rel="stylesheet" href="assets/sheet.css?v=892">
+  <script src="assets/config.js?v=892"></script>
+  <script src="assets/analytics.js?v=892"></script>
+  <script src="assets/subtopic.js?v=892"></script>
+  <script src="assets/names.js?v=892"></script>
+  <script src="assets/grounding.js?v=892"></script>
+  <script src="assets/repeats.js?v=892"></script>
+  <script src="assets/intro-narration.js?v=892"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=891"></script>
+  <script src="assets/load-image.js?v=892"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=891"></script>
-  <script src="assets/money-ids.js?v=891"></script>
+  <script src="assets/institutions.js?v=892"></script>
+  <script src="assets/money-ids.js?v=892"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7735,12 +7735,73 @@ return maplibregl$1;
       return out.sort((a, b) => String(b.g.when).localeCompare(String(a.g.when)));
     }
     const pickOne = (arr) => arr[Math.floor(Math.random() * arr.length)];
-    function pickGossip(pool, avoidInst) {
-      // The newest stories first: a random one of the 40 newest not yet shown in this visit, then any not yet shown.
-      const unseen = pool.filter(x => !gossipShown.has(x.g.id || x.g.headline) && (!avoidInst || x.inst !== avoidInst));
-      const pick = pickOne(unseen.slice(0, 40)) || pickOne(unseen) || pickOne(pool);
-      if (pick) gossipShown.add(pick.g.id || pick.g.headline);
+    // The place in view: the open space, else the city or the country the map is on. Gossip mode tells that place's stories
+    // first (user, 21 Nov 2026: "make gossip mode to be specific to selected place"). at: a point, for a city name two cities share.
+    function gossipScope() {
+      const inst = selectedInstitution || null;
+      const city = selectedCityFilter !== 'all' ? selectedCityFilter : '', country = selectedCountryFilter !== 'all' ? selectedCountryFilter : '';
+      const pick = !inst && city ? cityPick : null;
+      return { inst, city: inst ? (inst.city || '') : city, country: inst ? (inst.country || '') : (country || (pick && pick.country) || ''), at: inst || pick };
+    }
+    const gossipNorm = (s) => String(s || '').toLowerCase().trim();
+    const gossipCountry = (c) => gossipNorm(COUNTRY_LABEL[c] || c);
+    // The pool from the place outwards: the space, its city, its country, everywhere. Each level holds the ones before it.
+    function gossipTiers(scope, pool) {
+      const tiers = [], at = scope.at;
+      const sameTown = (i) => !at || !isFinite(at.lat) || !isFinite(i.lat) || cityNear(at, i);
+      if (scope.inst) tiers.push({ level: 'inst', items: pool.filter(x => x.inst === scope.inst) });
+      if (scope.city) tiers.push({ level: 'city', items: pool.filter(x => gossipNorm(x.inst.city) === gossipNorm(scope.city) && sameTown(x.inst)) });
+      if (scope.country) tiers.push({ level: 'country', items: pool.filter(x => gossipCountry(x.inst.country) === gossipCountry(scope.country)) });
+      tiers.push({ level: 'world', items: pool });
+      return tiers;
+    }
+    // How many of a level's newest stories the next one is drawn from: a space tells its newest, the world one of its 40 newest.
+    const GOSSIP_NEWEST = { inst: 1, city: 5, country: 10, world: 40 };
+    // The next story: from the nearest level that has one not yet told in this visit. wide: it comes from further out than the
+    // place in view, and the telling says so. peek: a story named on a chip, which is not counted as told.
+    function pickGossip(pool, avoidInst, scope, peek) {
+      const tiers = gossipTiers(scope || {}, pool);
+      const untold = (x) => !gossipShown.has(x.g.id || x.g.headline) && (!avoidInst || x.inst !== avoidInst);
+      let pick = null;
+      for (let n = 0; n < tiers.length && !pick; n++) {
+        const unseen = tiers[n].items.filter(untold);
+        if (unseen.length) pick = { ...pickOne(unseen.slice(0, GOSSIP_NEWEST[tiers[n].level])), level: tiers[n].level, wide: n > 0 };
+      }
+      // Every story has been told: one of the place's own again.
+      if (!pick && !avoidInst && pool.length) pick = { ...pickOne((tiers.find(t => t.items.length) || tiers[0]).items), level: 'world', wide: false };
+      if (pick && !peek) gossipShown.add(pick.g.id || pick.g.headline);
       return pick;
+    }
+    // A space with no dated item can still have something reported on its record (a case, a flag, a watch line): what the chat
+    // answers to "What is reported about this museum?" and what lights its dot in Gossip mode. Told once in a visit.
+    function gossipRecordStory(inst) {
+      const key = 'record:' + (inst && (inst.id || inst.name));
+      if (!inst || gossipShown.has(key) || gossipItems(inst, true).length) return null;
+      let fact = null;
+      try { fact = recordFact(inst, true); } catch (e) { fact = null; }
+      if (!fact || !fact.text) return null;
+      gossipShown.add(key);
+      return { inst, fact, level: 'inst', wide: false };
+    }
+    // The story for the place in view: the open space's own (a dated item, else its record), then outwards.
+    function gossipFor(scope, pool) {
+      if (scope.inst) {
+        const own = pickGossip(pool, null, { inst: scope.inst }, true);
+        const rec = own && own.level === 'inst' ? null : gossipRecordStory(scope.inst);
+        if (rec) return rec;
+      }
+      return pickGossip(pool, null, scope);
+    }
+    // "the" before the country names that take it.
+    const gossipIn = (place) => (/^(USA|UK|UAE|United |Netherlands|Philippines|Czech Republic|Dominican Republic|Democratic Republic)/.test(place) ? 'the ' : '') + place;
+    // Where a story is, as its telling opens. A story from further out than the place in view says where, and never what the
+    // place in view lacks.
+    function gossipLead(main) {
+      const i = main.inst, country = COUNTRY_LABEL[i.country] || i.country || '';
+      if (main.wide && main.level === 'city' && i.city) return `Elsewhere in ${i.city}, at ${i.name}`;
+      if (main.wide && main.level === 'country' && country) return `Elsewhere in ${gossipIn(country)}, at ${i.name}${i.city ? ' in ' + i.city : ''}`;
+      if (main.wide) { const place = [i.city, country && country !== i.city ? gossipIn(country) : ''].filter(Boolean).join(', '); return `Further afield, at ${i.name}${place ? ' in ' + place : ''}`; }
+      return `At ${i.name}${main.level === 'country' && i.city ? ' in ' + i.city : ''}`;
     }
     const GOSSIP_STATUS_LINE = {
       talk: 'Nobody has confirmed it.',
@@ -7797,16 +7858,22 @@ return maplibregl$1;
       if (!g || !g.headline) return '';
       return `<div data-gossip="aside"><p>Also being said: ${escapeHtml(proseEnd(g.headline))} ${escapeHtml(`${gossipAttribution(g)} ${GOSSIP_STATUS_LINE[g.status] || ''}`.trim())}</p></div>`;
     }
-    function gossipChips(main, other, pool) {
-      const chips = [];
+    // scope: with a place in view the chips stay there (the space told, another in the same place, its city); the question
+    // about a kind of story, which is answered from all the records, is offered only when nothing is in view.
+    function gossipChips(main, other, pool, scope) {
+      const chips = [], placed = !!(scope && (scope.inst || scope.city || scope.country));
       const add = (q, inst) => { if (q && !chips.includes(q) && (!inst || typeof resolvesTo !== 'function' || resolvesTo(q, inst))) chips.push(q); };
       add('Tell me another');
       add(`What is the gossip about ${main.inst.name}?`, main.inst);
-      if (other) add(`What are people saying about ${other.inst.name}?`, other.inst);
-      const kinds = [...new Set(pool.slice(0, 60).map(x => x.g.kind).filter(k => KIND_CHIP[k] && k !== main.g.kind))];
-      const k = pickOne(kinds) || main.g.kind;
-      if (KIND_CHIP[k]) add(pickOne(KIND_CHIP[k]));
-      const city = main.inst.city || (other && other.inst.city);
+      // A story from further out keeps a way back to the open space, when its record has something reported.
+      const back = scope && scope.inst && scope.inst !== main.inst && hasGossip(scope.inst) ? scope.inst : null;
+      if (back) add(`What is the gossip about ${back.name}?`, back);
+      else if (other) add(`What are people saying about ${other.inst.name}?`, other.inst);
+      const mainKind = main.g ? main.g.kind : '';
+      const kinds = [...new Set(pool.slice(0, 60).map(x => x.g.kind).filter(k => KIND_CHIP[k] && k !== mainKind))];
+      const k = pickOne(kinds) || mainKind;
+      if (!placed && KIND_CHIP[k]) add(pickOne(KIND_CHIP[k]));
+      const city = (scope && scope.city) || main.inst.city || (other && other.inst.city);
       if (city) add(`What's the gossip at museums in ${city}?`);
       const out = chips.slice(0, 4);
       out.fromModel = true;   // kept as written: the gossip-mode chip filter would swap them for generic ones
@@ -7835,12 +7902,15 @@ return maplibregl$1;
     let lastOpener = '';
     function gossipTemplate(main, next) {
       let opener = next ? '' : pickOne(GOSSIP_OPENERS.filter(o => o !== lastOpener)); if (opener) lastOpener = opener;
-      const said = `At ${main.inst.name}: ${main.g.headline.replace(/\.$/, '')}. ${gossipAttribution(main.g)} ${gossipStatusLine(main)}`.trim();
-      return [opener, said, pickOne(GOSSIP_HOOKS)].filter(Boolean).map(s => `<p class="no-indent">${escapeHtml(s)}</p>`).join('');
+      // A record's line carries its own source links (recordFact), so they are printed after the escaped words.
+      const said = main.fact ? `${gossipLead(main)}: ${main.fact.full || main.fact.text}` : `${gossipLead(main)}: ${main.g.headline.replace(/\.$/, '')}. ${gossipAttribution(main.g)} ${gossipStatusLine(main)}`.trim();
+      const para = (t, tail) => `<p class="no-indent">${escapeHtml(t)}${tail ? ' ' + tail : ''}</p>`;
+      return [opener ? para(opener) : '', para(said, main.fact && main.fact.src), para(pickOne(GOSSIP_HOOKS))].join('');
     }
     // The model's version, from the items' own fields only. Null when no model is reachable, it is slow, or the text strays
     // (a name not given, a dash, a heading, a list), so the page falls back to its own sentences.
     async function gossipModelGreeting(main) {
+      if (!main.g) return null;   // a record's line is said as the record has it
       const key = aiApiKey || _SYS_KEY;
       const useProxy = !key && !!ATLAS_AI_PROXY_URL;
       if (!useProxy && !(key && getEffectiveProvider() === 'anthropic')) return null;
@@ -7873,19 +7943,41 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     async function gossipGreeting(on, next) {
       const seq = ++gossipGreetSeq;
       if (!on) { appendCuratorMessage(`<p class="no-indent">${escapeHtml(pickOne(GOSSIP_OFF))}</p>`, [], null, null, false); return; }
-      const pool = gossipPool();
-      const main = pickGossip(pool);
+      const pool = gossipPool(), scope = gossipScope();
+      const main = gossipFor(scope, pool);
       if (!main) { appendCuratorMessage('<p class="no-indent">Gossip mode is on. Ask about a museum, or which museums people are talking about.</p>', [], null, null, false); return; }
-      const other = pickGossip(pool, main.inst);
-      const chips = gossipChips(main, other, pool);
+      const other = pickGossip(pool, main.inst, scope, true);
+      const chips = gossipChips(main, other, pool, scope);
       const typing = document.getElementById('curatorTyping');
       if (typing) typing.classList.remove('hidden');
       const html = next ? null : await gossipModelGreeting(main);
       if (typing) typing.classList.add('hidden');
       // A second click while the model was writing: only the latest switch speaks.
       if (seq !== gossipGreetSeq || !isGossipModeActive) return;
+      // Another space was opened while the model was writing: the greeting is for the place now in view, and this story is kept for later.
+      if (gossipScope().inst !== scope.inst) { gossipShown.delete(main.g ? (main.g.id || main.g.headline) : 'record:' + (main.inst.id || main.inst.name)); return gossipGreeting(on, next); }
       // data-gossip: the turn is talk, so it is drawn as a balloon and set in the gossip colour.
       appendCuratorMessage(`<div data-gossip="greeting">${html || gossipTemplate(main, next)}</div>`, chips, null, null, false);
+    }
+    // In Gossip mode, opening a space on the map tells that space's own story not yet told, without the opener. A space with
+    // none adds no turn: "Tell me another" then starts from its city. Not for a space the chat itself opened (atlasKeepTab),
+    // nor when the turn above already names it.
+    let gossipSelectTimer = 0;
+    function gossipOnSelect(inst) {
+      clearTimeout(gossipSelectTimer);
+      if (!isGossipModeActive || !inst || window.atlasKeepTab || typeof appendCuratorMessage !== 'function') return;
+      gossipSelectTimer = setTimeout(() => {
+        if (!isGossipModeActive || selectedInstitution !== inst) return;
+        const last = ((typeof curatorContext !== 'undefined' && curatorContext.history) || []).slice(-1)[0];
+        if (last && last.role === 'assistant' && typeof last.content === 'string' && last.content.includes(escapeHtml(inst.name))) return;
+        const pool = gossipPool(), scope = gossipScope();
+        const own = pickGossip(pool, null, { inst }, true);
+        const main = own && own.level === 'inst' ? pickGossip(pool, null, { inst }) : gossipRecordStory(inst);
+        if (!main) return;
+        ++gossipGreetSeq;   // a greeting the model is still writing gives way to this
+        document.getElementById('curatorTyping')?.classList.add('hidden');
+        appendCuratorMessage(`<div data-gossip="greeting">${gossipTemplate(main, true)}</div>`, gossipChips(main, pickGossip(pool, inst, scope, true), pool, scope), null, null, false);
+      }, 600);
     }
 
     let currentCardMode = 'info';
@@ -10891,11 +10983,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v891';
+    const ATLAS_RELEASE = 'culture-atlas-v892';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=891').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=892').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14046,6 +14138,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         return;
       }
       offerBrowseChips(inst);
+      gossipOnSelect(inst);
       if (typeof XRAY !== 'undefined' && XRAY.inst && XRAY.inst !== inst && typeof hideBuildingXray === 'function') hideBuildingXray();
       selectedInstitution = inst;
       // The street map's badge for this space is drawn as selected, as the globe draws its own.
@@ -22948,24 +23041,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=891"></script>
-<script src="assets/note-aids.js?v=891" defer></script>
-<script src="assets/place-list.js?v=891" defer></script>
-<script src="assets/chat-share.js?v=891" defer></script>
-<script src="assets/note-files.js?v=891" defer></script>
-<script src="assets/funding-views.js?v=891"></script>
-<script src="assets/layers.js?v=891"></script>
-<script src="assets/critique-gallery-data.js?v=891"></script>
-<script src="assets/critique-captions.js?v=891"></script>
-<script src="assets/critique-gallery.js?v=891"></script>
-<script src="assets/hq-detail.js?v=891"></script>
-<script src="assets/influence-mode.js?v=891"></script>
-<script src="assets/bubbles.js?v=891" defer></script>
-<script src="assets/phone-maps.js?v=891"></script>
-<script src="assets/desktop-maps.js?v=891"></script>
-<script src="assets/chat-resize.js?v=891"></script>
-<script src="assets/frame-refusers.js?v=891"></script>
-<script src="assets/link-pane.js?v=891"></script>
-<script src="assets/tab-suggest.js?v=891"></script>
+<script src="assets/typeset.js?v=892"></script>
+<script src="assets/note-aids.js?v=892" defer></script>
+<script src="assets/place-list.js?v=892" defer></script>
+<script src="assets/chat-share.js?v=892" defer></script>
+<script src="assets/note-files.js?v=892" defer></script>
+<script src="assets/funding-views.js?v=892"></script>
+<script src="assets/layers.js?v=892"></script>
+<script src="assets/critique-gallery-data.js?v=892"></script>
+<script src="assets/critique-captions.js?v=892"></script>
+<script src="assets/critique-gallery.js?v=892"></script>
+<script src="assets/hq-detail.js?v=892"></script>
+<script src="assets/influence-mode.js?v=892"></script>
+<script src="assets/bubbles.js?v=892" defer></script>
+<script src="assets/phone-maps.js?v=892"></script>
+<script src="assets/desktop-maps.js?v=892"></script>
+<script src="assets/chat-resize.js?v=892"></script>
+<script src="assets/frame-refusers.js?v=892"></script>
+<script src="assets/link-pane.js?v=892"></script>
+<script src="assets/tab-suggest.js?v=892"></script>
 </body>
 </html>
