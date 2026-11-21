@@ -1,0 +1,394 @@
+[
+ {
+  "file": "institutions.json",
+  "id": "solomon-r-guggenheim-museum",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "The cancellation is widely seen as a turning point in relations between artists and museums in the United States.",
+  "after": "Artists called a boycott of the Guggenheim over the cancellation, and the work became a model for later projects that trace trustees' money.",
+  "why": "Humanizer 13, 17: turning point credited to no one; replaced with what followed"
+ },
+ {
+  "file": "institutions.json",
+  "id": "cca-derry-londonderry",
+  "field": "details.overview[0]",
+  "before": "Contemporary art centre at 10-12 Artillery Street, Derry (Art Fund). Its Library/Workshop operates as a Project Space visible from Artillery Street (CCA annual report to March 2024).",
+  "after": "Contemporary art centre at 10-12 Artillery Street, Derry (Art Fund). Its Library/Workshop is also a Project Space visible from Artillery Street (CCA annual report to March 2024).",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "yyz-artists-outlet-toronto",
+  "field": "details.overview[3]",
+  "before": "The name reflects a commitment to artists supporting artists, and YYZ jokes that it is not an airport (stated by YYZ).",
+  "after": "YYZ says the name stands for artists supporting artists, and jokes that it is not an airport (stated by YYZ).",
+  "why": "Humanizer 12, 16: attribute the claim to YYZ"
+ },
+ {
+  "file": "institutions.json",
+  "id": "casa-frança-brasil-rio-de-janeiro",
+  "field": "why_flagged",
+  "before": "The former Casa França-Brasil now operates as Casa Brasil, with Petrobras as sponsor through its Novos Eixos call (Ícones da Cultura Brasileira line). The rename date is not confirmed.",
+  "after": "The former Casa França-Brasil is now Casa Brasil, with Petrobras as sponsor through its Novos Eixos call (Ícones da Cultura Brasileira line). The rename date is not confirmed.",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "peggy-guggenheim-collection-venice",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "The cancellation is widely seen as a turning point in relations between artists and museums in the United States.",
+  "after": "Artists called a boycott of the Guggenheim over the cancellation, and the work became a model for later projects that trace trustees' money.",
+  "why": "Humanizer 13, 17: turning point credited to no one; replaced with what followed"
+ },
+ {
+  "file": "institutions.json",
+  "id": "guggenheim-bilbao-bilbao",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "The cancellation is widely seen as a turning point in relations between artists and museums in the United States.",
+  "after": "Artists called a boycott of the Guggenheim over the cancellation, and the work became a model for later projects that trace trustees' money.",
+  "why": "Humanizer 13, 17: turning point credited to no one; replaced with what followed"
+ },
+ {
+  "file": "institutions.json",
+  "id": "dulwich-picture-gallery-london",
+  "field": "details.bottom_line",
+  "before": "The gallery runs on admissions, trading, donations from British trusts and a large endowment. The weak point is that a £3.4 million endowment paying for the director's post came from the Dr. Mortimer & Teresa Sackler Foundation and is still held, after the name was dropped quietly. Worth watching: whether the gallery says how it uses the Sackler funds.",
+  "after": "The gallery runs on admissions, trading, donations from British trusts and a large endowment. The weak point is that a £3.4 million endowment paying for the director's post came from the Dr. Mortimer & Teresa Sackler Foundation and is still held, after the name was dropped without an announcement. Worth watching: whether the gallery says how it uses the Sackler funds.",
+  "why": "Humanizer 12: quietly; the fact is no announcement"
+ },
+ {
+  "file": "institutions.json",
+  "id": "state-tretyakov-gallery-moscow",
+  "field": "details.press.items[1].points[0]",
+  "before": "The cancellation marks a new stage of censorship; officials had already banned dozens of contemporary art shows since the invasion.",
+  "after": "Calls the cancellation a new stage of censorship; says officials had already banned dozens of contemporary art shows since the invasion.",
+  "why": "Humanizer 13: a press point stated as fact; attributed to the article"
+ },
+ {
+  "file": "institutions.json",
+  "id": "galerie-rudolfinum-prague",
+  "field": "details.funding[0]",
+  "before": "The gallery calls itself a public institution supported by the Ministry of Culture. It is part of the Czech Philharmonic and operates as an independent unit with its own budget (annual report 2025).",
+  "after": "The gallery calls itself a public institution supported by the Ministry of Culture. It is part of the Czech Philharmonic and is an independent unit with its own budget (annual report 2025).",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "mosaic-rooms-london",
+  "field": "affiliations_note",
+  "before": "The A.M. Qattan Foundation founded the Mosaic Rooms in London in 2008; the Mosaic Rooms now operates as an independent charity. Listed in the Art Fund directory.",
+  "after": "The A.M. Qattan Foundation founded the Mosaic Rooms in London in 2008; it is now an independent charity. Listed in the Art Fund directory.",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "ca2m-centro-de-arte-dos-de-mayo-m-stoles",
+  "field": "details.overview[0]",
+  "before": "Contemporary art museum at Avenida de la Constitución 23 in the heart of Móstoles, in the Comunidad de Madrid (Es Madrid).",
+  "after": "Contemporary art museum at Avenida de la Constitución 23 in central Móstoles, in the Comunidad de Madrid (Es Madrid).",
+  "why": "Humanizer 16: sales language"
+ },
+ {
+  "file": "institutions.json",
+  "id": "bishop-museum-bernice-pauahi-bishop-museum-honolulu",
+  "field": "details.overview[0]",
+  "before": "Museum of natural and cultural history on a 15-acre campus in Honolulu, Hawai'i, serving as the state's museum of natural and cultural history (Maui Now, 2022).",
+  "after": "Museum of natural and cultural history on a 15-acre campus in Honolulu, Hawai'i, and the state's museum of natural and cultural history (Maui Now, 2022).",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "japan-folk-crafts-museum-nihon-mingeikan-tokyo",
+  "field": "affiliations_note",
+  "before": "Linked to the Japan Folk Crafts Association, the 1934 body that serves as the organisational base of the folk crafts movement.",
+  "after": "Linked to the Japan Folk Crafts Association, the 1934 body that is the organisational base of the folk crafts movement.",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "kharkiv-municipal-gallery",
+  "field": "details.red_flags[0].points[3]",
+  "before": "The gallery's website states that its \"White Cube\" hall still serves as a city information media outlet.",
+  "after": "The gallery's website states that its \"White Cube\" hall is still a city information media outlet.",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "hillarys-tae-igy-hut-scott-base",
+  "field": "watch",
+  "before": "It still serves as a refuge inside New Zealand's Scott Base, so most people see it through the Trust's virtual reality tour.",
+  "after": "It is still a refuge inside New Zealand's Scott Base, so most people see it through the Trust's virtual reality tour.",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "hillarys-tae-igy-hut-scott-base",
+  "field": "details.overview[4]",
+  "before": "It is the only surviving Trans-Antarctic Expedition building in Antarctica and is listed as Historic Site or Monument 75 under the Antarctic Treaty (Wikipedia). It still serves as a refuge for the base (Antarctic Heritage Trust).",
+  "after": "It is the only surviving Trans-Antarctic Expedition building in Antarctica and is listed as Historic Site or Monument 75 under the Antarctic Treaty (Wikipedia). It is still a refuge for the base (Antarctic Heritage Trust).",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "rubin-museum-of-art",
+  "field": "details.overview[1]",
+  "before": "Donald and Shelley Rubin founded it to house their art collection, focused mainly on Himalayan works; it now operates as a museum without walls with a loan programme, grant-making, digital resources and collaborations abroad (Time Out New York; The Art Newspaper).",
+  "after": "Donald and Shelley Rubin founded it to house their art collection, focused mainly on Himalayan works; it is now a museum without walls with a loan programme, grant-making, digital resources and collaborations abroad (Time Out New York; The Art Newspaper).",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "institutions.json",
+  "id": "denver-center-for-the-performing-arts",
+  "field": "details.red_flags[0].points[0]",
+  "before": "The Denver Gazette reported on 8 October 2025 that the DCPA ended Off-Center, its immersive programming line, citing the cost of producing new immersive work, a July layoff and two consecutive financial losses. The DCPA quietly laid off 12 staff in July with no public explanation. President and chief executive Janice Sinden said the company would 'no longer be investing in the development and production of new immersive experiences'. Off-Center's co-curator Charlie Miller leaves in March after 17 years, and the last show closed two months early (Denver Gazette, 8 October 2025).",
+  "after": "The Denver Gazette reported on 8 October 2025 that the DCPA ended Off-Center, its immersive programming line, citing the cost of producing new immersive work, a July layoff and two consecutive financial losses. The DCPA laid off 12 staff in July with no public explanation. President and chief executive Janice Sinden said the company would 'no longer be investing in the development and production of new immersive experiences'. Off-Center's co-curator Charlie Miller leaves in March after 17 years, and the last show closed two months early (Denver Gazette, 8 October 2025).",
+  "why": "Humanizer 12: quietly; the fact is no announcement"
+ },
+ {
+  "file": "institutions.json",
+  "id": "museo-nazionale-etrusco-di-villa-giulia",
+  "field": "details.overview[2]",
+  "before": "What is there: the site highlights the Lamine di Pyrgi, the Testa di Leucotea, the Sarcofago degli sposi, the Apollo di Veio, the Scudo bilobato and the Tomba François, a painted tomb from Vulci now permanently displayed there (museum website). The pages read gave no object count.",
+  "after": "What is there: the site singles out the Lamine di Pyrgi, the Testa di Leucotea, the Sarcofago degli sposi, the Apollo di Veio, the Scudo bilobato and the Tomba François, a painted tomb from Vulci now permanently displayed there (museum website). The pages read gave no object count.",
+  "why": "Humanizer 12: highlight (verb)"
+ },
+ {
+  "file": "institutions.json",
+  "id": "memorial-art-gallery-of-the-university-of-rochester",
+  "field": "watch",
+  "before": "Emily Sibley Watson gave it to the community in 1913 and it was free for its first 56 years; it is one of the few university art museums that also operates as a public museum (University of Rochester, May 2026). It is part of the University of Rochester, so its accounts are inside the university's.",
+  "after": "Emily Sibley Watson gave it to the community in 1913 and it was free for its first 56 years; it is one of the few university art museums that is also a public museum (University of Rochester, May 2026). It is part of the University of Rochester, so its accounts are inside the university's.",
+  "why": "Humanizer 18: say is"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "mmca-seoul",
+  "field": "highlight",
+  "before": "Founded in Independent Space, Celebrated cultural anchor in Seoul featuring landmark holdings of contemporary art & research housed in independent artist-run warehouse & adaptive urban loft space across 1,400 sqm of exhibition space.",
+  "after": "National museum of modern and contemporary art, with branches in Seoul, Gwacheon, Deoksugung and Cheongju.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "guggenheim-new-york",
+  "field": "visual_critiques[0].summary",
+  "before": "Invited by curator Edward Fry to mount a solo exhibition at the Guggenheim, Haacke conducted deep archival investigations into public deed registries, exposing the interconnected shell companies of Harry Shapolsky—Manhattan's largest slum landlord syndicate owning 142 decrepit tenements in the Lower East Side and Harlem. When Director Thomas Messer discovered the work mapped real estate networks overlapping with museum board interests, he cancelled the exhibition six weeks before opening and fired Fry. The work established empirical property tracking as a core institutional critique medium.",
+  "after": "Invited by curator Edward Fry to mount a solo show at the Guggenheim, Haacke used public deed records to trace the shell companies of Harry Shapolsky, Manhattan's largest slum landlord network, which owned 142 tenements on the Lower East Side and in Harlem. Director Thomas Messer cancelled the exhibition six weeks before it opened and fired Fry.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "guggenheim-new-york",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "Sparked major artist boycotts of the Guggenheim, public demonstrations by the Art Workers Coalition (AWC), and set the enduring art-historical precedent of mapping trustee financial entanglements.",
+  "after": "Artists called a boycott of the Guggenheim and the Art Workers Coalition demonstrated there. The work became a model for later projects that trace trustees' money.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "guggenheim-new-york",
+  "field": "visual_critiques[1].summary",
+  "before": "Nan Goldin and dozens of activists from P.A.I.N. staged an unannounced die-in across Frank Lloyd Wright's iconic spiral rotunda, dropping thousands of slips modeled after OxyContin warning labels from the top tiers down to the fountain floor. Activists held banners declaring 'SHAME ON SACKLER' and demanded the museum cease accepting Sackler family opioid wealth.",
+  "after": "Nan Goldin and dozens of activists from P.A.I.N. staged an unannounced die-in on Frank Lloyd Wright's spiral rotunda, dropping thousands of slips made to look like OxyContin warning labels from the upper tiers to the floor. They held banners reading 'SHAME ON SACKLER' and demanded that the museum stop taking Sackler family money.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "guggenheim-new-york",
+  "field": "visual_critiques[1].historical_impact",
+  "before": "In March 2019, the Guggenheim announced it would accept no further gifts from the Sackler family, followed by the permanent removal of the Sackler name from the Arts Education Center in 2022.",
+  "after": "In March 2019 the Guggenheim said it would accept no more gifts from the Sackler family, and in 2022 it removed the Sackler name from its Arts Education Center.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "moma-new-york",
+  "field": "visual_critiques[0].summary",
+  "before": "Commissioned for the landmark 1970 'Information' exhibition at MoMA, Haacke installed two acrylic ballot boxes asking visitors: 'Would the fact that Governor Rockefeller has not denounced President Nixon's Indochina policy be a reason for you not to vote for him in November?' Over 37,000 visitors voted, with 68.7% casting ballots in the 'YES' box, publicly exposing the political entanglement of MoMA's primary trustee and benefactor in the Indochina War.",
+  "after": "For MoMA's 1970 'Information' exhibition, Haacke installed two acrylic ballot boxes that asked visitors: 'Would the fact that Governor Rockefeller has not denounced President Nixon's Indochina policy be a reason for you not to vote for him in November?' More than 37,000 visitors voted, 68.7% of them yes. Nelson Rockefeller was a MoMA trustee and one of its main benefactors.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "moma-new-york",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "Directly challenged museum claims of political neutrality and demonstrated that the museum audience could be transformed into an active, voting civic body inside the white cube.",
+  "after": "It put a trustee's politics to a vote inside the museum, against MoMA's claim to be politically neutral.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "moma-new-york",
+  "field": "visual_critiques[1].summary",
+  "before": "Positioned behind an overturned table in a physical corner, Piper's video addresses the viewer directly, methodically analyzing racial passing, genealogical denial, and the institutional complicity of elite museums in maintaining exclusionary Eurocentric cultural hierarchies.",
+  "after": "In the video, set behind an overturned table in a corner, Piper speaks to the viewer about racial passing and the Black ancestry many white Americans do not acknowledge.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "moma-new-york",
+  "field": "visual_critiques[1].historical_impact",
+  "before": "Pioneered conceptual confrontation in institutional space, deconstructing audience passivity and racial gatekeeping in major museum collections.",
+  "after": "The viewer is addressed directly and asked to account for their own racial identity.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "the-met-new-york",
+  "field": "visual_critiques[0].summary",
+  "before": "In March 2018, artist Nan Goldin led over 100 activists into the Met's soaring Sackler Wing housing the Egyptian Temple of Dendur. At a signal, participants tossed hundreds of empty pill bottles labeled with Purdue Pharma warnings into the moat and staged a mass die-in on the floor, chanting 'Sacklers lie, people die!' The action dramatically framed the museum's acceptance of opioid fortune as complicity in a national public health crisis.",
+  "after": "In March 2018 Nan Goldin led more than 100 activists into the Met's Sackler Wing, home of the Egyptian Temple of Dendur. At a signal they threw hundreds of empty pill bottles labelled with Purdue Pharma warnings into the moat and lay down on the floor in a die-in, chanting 'Sacklers lie, people die!' They said that by taking the family's opioid money the museum shared responsibility for the crisis.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "the-met-new-york",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "In December 2021, the Met voted to remove the Sackler family name from all seven exhibition spaces including the Sackler Wing, triggering a global domino effect across the Louvre, Guggenheim, British Museum, and Tate.",
+  "after": "In December 2021 the Met removed the Sackler name from seven exhibition spaces, including the Sackler Wing. The Louvre had taken the name down in 2019; the Guggenheim, Tate and the British Museum followed.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "the-met-new-york",
+  "field": "visual_critiques[1].summary",
+  "before": "The Guerrilla Girls famously counted artists represented in the Met's Modern Art sections, finding that less than 5% of the artists were women, but 85% of the nudes depicted were female. The iconic poster—depicting Ingres' Grande Odalisque wearing a gorilla mask—transformed statistical auditing into high-impact graphic design, calling out board trustees and curators for institutional sexism.",
+  "after": "In 1989 the Guerrilla Girls counted the artists in the Met's modern art sections and found that fewer than 5% were women, while 85% of the nudes were female. Their poster puts a gorilla mask on Ingres' Grande Odalisque and asks whether women have to be naked to get into the Met.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "the-met-new-york",
+  "field": "visual_critiques[1].historical_impact",
+  "before": "Became one of the most recognized artworks of institutional critique in history, forcing major art museums worldwide to institute diversity auditing and revise acquisitions budgets.",
+  "after": "They repeated the count in 2005 and 2012, and both times women were still fewer than 5% of the artists.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "whitney-museum-new-york",
+  "field": "visual_critiques[0].summary",
+  "before": "Commissioned for the 2019 Whitney Biennial, Forensic Architecture partnered with filmmaker Laura Poitras to investigate Warren Kanders, the Whitney's Vice Chairman of the Board of Trustees and CEO of Safariland—a manufacturer of military and crowd-control weapons. The team trained a computer vision algorithm using synthetic 3D rendering to locate Safariland 'Triple-Chaser' tear gas canisters deployed against civilian protesters at the US-Mexico border, in Gaza, and in Puerto Rico, directly projecting the evidence inside the Whitney galleries.",
+  "after": "For the 2019 Whitney Biennial, Forensic Architecture worked with the filmmaker Laura Poitras to investigate Warren Kanders, the Whitney's vice chairman and chief executive of Safariland, which makes tear gas and other crowd-control equipment. The team trained a computer vision model on synthetic 3D images to find Safariland 'Triple-Chaser' tear gas canisters used against protesters at the US-Mexico border, in Gaza and in Puerto Rico, and showed the findings in the Whitney's galleries.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "whitney-museum-new-york",
+  "field": "visual_critiques[0].historical_impact",
+  "before": "Triggered protests by Decolonize This Place, an open letter signed by nearly 100 Whitney staff members, and the withdrawal of eight participating artists (including Korakrit Arunanondchai, Meriem Bennani, and Michael Rakowitz). Warren Kanders resigned from the board in July 2019, marking one of the most significant trustee accountability victories in modern museum history.",
+  "after": "Decolonize This Place protested, nearly 100 Whitney staff signed an open letter, and eight artists withdrew from the Biennial, among them Korakrit Arunanondchai, Meriem Bennani and Michael Rakowitz. Kanders resigned from the board in July 2019.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "whitney-museum-new-york",
+  "field": "visual_critiques[1].summary",
+  "before": "Organized nine consecutive Friday afternoon assemblies and marches starting at the Whitney and culminating at Warren Kanders' Greenwich Village residence. Activists occupied the museum lobby with banners, distributed counter-literature, and created an autonomous public forum demanding the immediate removal of defense contractor leadership from cultural institutions.",
+  "after": "Decolonize This Place held nine Friday protests in a row that began at the Whitney and marched to Kanders's home in Greenwich Village. Activists occupied the lobby with banners, handed out leaflets and held open meetings demanding that arms makers be removed from museum boards.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "whitney-museum-new-york",
+  "field": "visual_critiques[1].historical_impact",
+  "before": "Directly accelerated the resignation of Warren Kanders and prompted the Whitney to inaugurate internal reviews of board trustee vetting processes.",
+  "after": "Kanders resigned from the board in July 2019.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "whitney-museum-new-york",
+  "field": "visual_critiques[2].summary",
+  "before": "Debtfair mapped the staggering \\$30+ million student and living debt held by 79 exhibiting artists against the predatory investment portfolios of museum board trustees, specifically exposing board members profiting from Puerto Rico's unpayable debt restructuring while cultivating high-society philanthropic credentials.",
+  "after": "Debtfair set more than $30 million of student and other debt held by 79 exhibiting artists beside the investments of museum trustees, including board members who profited from the restructuring of Puerto Rico's debt.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "whitney-museum-new-york",
+  "field": "visual_critiques[2].historical_impact",
+  "before": "Demystified the economic precarity of participating artists in high-profile biennials and exposed trustee connections to hedge funds holding sovereign debt.",
+  "after": "It showed inside the Biennial how much the exhibiting artists owed, and which trustees' funds held Puerto Rican debt.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "museo-nacional-del-prado",
+  "field": "ethical_safeguard",
+  "before": "Statutory civil service transparency and national public audit board oversight.",
+  "after": "Subject to Spain's public transparency law and to audit by the national audit office.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "museo-nacional-del-prado",
+  "field": "curator_recommendation",
+  "before": "Unrivalled royal collection housing Las Meninas and The Garden of Earthly Delights.",
+  "after": "The royal collection that holds Las Meninas and The Garden of Earthly Delights.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "museo-nacional-del-prado",
+  "field": "highlight",
+  "before": "Spanish royal and national collection holding the world's greatest works by Velázquez, Goya, and Hieronymus Bosch.",
+  "after": "The Spanish royal and national collection, with Velázquez's Las Meninas, Goya's Black Paintings and Bosch's The Garden of Earthly Delights.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "museo-nacional-del-prado",
+  "field": "governance_details",
+  "before": "National state cultural institution governed under specific statutory parliamentary public law 46/2003.",
+  "after": "A national public body governed by its own law, Law 46/2003.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "bourse-de-commerce-paris",
+  "field": "ethical_safeguard",
+  "before": "Statutory French corporate foundation oversight and regular public civic consultation.",
+  "after": "Overseen under French rules for corporate foundations.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "bourse-de-commerce-paris",
+  "field": "curator_recommendation",
+  "before": "Tadao Ando's dramatic intervention within the historic circular grain exchange displaying the Pinault contemporary collection.",
+  "after": "Tadao Ando's concrete cylinder inside the round former grain exchange, where the Pinault Collection's contemporary art is shown.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "bourse-de-commerce-paris",
+  "field": "highlight",
+  "before": "Tadao Ando's concrete cylinder intervention within the historic Paris grain exchange, showcasing modern masterpieces.",
+  "after": "Tadao Ando's concrete cylinder inside the historic Paris grain exchange, which shows the Pinault Collection.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "index.html EXCLUDED_INSTITUTIONS",
+  "id": "bourse-de-commerce-paris",
+  "field": "governance_details",
+  "before": "Private commercial and corporate foundation operating with municipal long-term lease oversight.",
+  "after": "A private corporate foundation on a long lease from the City of Paris.",
+  "why": "Humanizer 12, 13, 15, 16, 17: inflation and sales language cut, the facts kept; unsupported claims dropped"
+ },
+ {
+  "file": "data/library/case_studies.json",
+  "id": null,
+  "field": null,
+  "before": "serves as marketing for large companies",
+  "after": "works as marketing for large companies",
+  "why": "Humanizer 18, 16: say is; landmark replaced by the exhibition it means"
+ },
+ {
+  "file": "data/library/case_studies.json",
+  "id": null,
+  "field": null,
+  "before": "Re-reads a landmark Canadian exhibition through its corporate, national and institutional interests, bringing out the sponsorship and public relations work.",
+  "after": "Re-reads the 1988 exhibition The Spirit Sings through its corporate, national and institutional interests, and brings out the sponsorship and public relations work behind it.",
+  "why": "Humanizer 18, 16: say is; landmark replaced by the exhibition it means"
+ }
+]
