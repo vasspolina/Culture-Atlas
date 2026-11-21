@@ -2817,11 +2817,11 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 
 /* The chat's suggestion sheet on a phone (user, 21 Nov 2026: "the chat with suggestions can look like this", after a phone's
    attachment sheet; markup in assets/phone-maps.js, suggestSheet). Under the box of an empty chat: a sheet with round top
-   corners and a grabber, running to the screen's edges and its foot. The short suggestions are round buttons, four to a
-   row, a mark in a circle over its words; under them the questions about one museum are tiles, two to a row. It takes the
+   corners and a grabber, running to the screen's edges and its foot. The short suggestions are round buttons holding
+   their words, with no icons (user, the same day: "no icons"); under them the questions about one museum are tiles, two to a row. It takes the
    height the greeting can spare (168px on a short phone, up to 380px) and scrolls inside itself, so the box above never moves. The greeting's own list of the same questions
    is put away while the sheet shows, so no question is on screen twice. Not shown on a desktop, while a note is written,
-   or while the keyboard is up. The marks take the grade colours of the map; each measures 3:1 or better on its circle. */
+   or while the keyboard is up. */
 @layer sheet{
   #gmSuggestSheet:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
   @media (max-width:767px){
@@ -2835,24 +2835,13 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
     #gmSuggestSheet:not(#sh-x):not(#sh-y)::-webkit-scrollbar{display:none}
     #gmSuggestSheet .gss-grab:not(#sh-x):not(#sh-y):not(#sh-z){display:block!important;width:36px!important;height:4px!important;margin:8px auto 14px!important;
       border-radius:2px!important;background:var(--sh-rule)!important}
-    #gmSuggestSheet .gss-kinds:not(#sh-x):not(#sh-y):not(#sh-z){display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px 8px!important;margin:0!important;padding:0!important}
-    #gmSuggestSheet .gss-kind:not(#sh-x):not(#sh-y):not(#sh-z){display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:6px!important;
-      width:auto!important;min-width:0!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;
-      color:var(--sh-ink)!important;text-align:center!important;text-indent:0!important;white-space:normal!important;cursor:pointer!important}
+    #gmSuggestSheet .gss-kinds:not(#sh-x):not(#sh-y):not(#sh-z){display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin:0!important;padding:0!important}
+    #gmSuggestSheet .gss-kind:not(#sh-x):not(#sh-y):not(#sh-z){display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;
+      width:auto!important;min-width:0!important;max-width:100%!important;min-height:44px!important;margin:0!important;padding:10px 18px!important;border:0!important;border-radius:22px!important;
+      background:color-mix(in srgb,var(--sh-ink) 16%,var(--sh-paper))!important;color:var(--sh-ink)!important;
+      font-family:var(--sh-serif)!important;font-size:15px!important;line-height:18px!important;font-style:normal!important;text-align:center!important;text-indent:0!important;text-decoration:none!important;white-space:normal!important;cursor:pointer!important}
     #gmSuggestSheet .gss-kind:not(#sh-x):not(#sh-y)::before{content:none!important}
-    #gmSuggestSheet .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){display:flex!important;align-items:center!important;justify-content:center!important;flex:none!important;
-      width:100%!important;max-width:76px!important;height:52px!important;border-radius:26px!important;background:color-mix(in srgb,var(--sh-ink) 16%,var(--sh-paper))!important;color:var(--sh-ink)!important}
-    #gmSuggestSheet .gss-mark svg:not(#sh-x):not(#sh-y):not(#sh-z){display:block!important;width:26px!important;height:26px!important}
-    #gmSuggestSheet .gss-kind[data-mark="funds"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-violet)!important}
-    #gmSuggestSheet .gss-kind[data-mark="oil"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-yellow)!important}
-    #gmSuggestSheet .gss-kind[data-mark="name"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-pink)!important}
-    #gmSuggestSheet .gss-kind[data-mark="arms"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-red)!important}
-    #gmSuggestSheet .gss-kind[data-mark="near"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-cyan)!important}
-    #gmSuggestSheet .gss-kind[data-mark="flag"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-red)!important}
-    #gmSuggestSheet .gss-kind[data-mark="gossip"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-pink)!important}
-    #gmSuggestSheet .gss-kind[data-mark="alert"] .gss-mark:not(#sh-x):not(#sh-y):not(#sh-z){color:var(--gss-blue)!important}
-    #gmSuggestSheet .gss-label:not(#sh-x):not(#sh-y):not(#sh-z){display:block!important;max-width:100%!important;font-family:var(--sh-serif)!important;font-size:15px!important;line-height:18px!important;
-      font-style:normal!important;color:var(--sh-ink)!important;overflow-wrap:break-word!important;text-decoration:none!important}
+    #gmSuggestSheet .gss-kind:is(:hover,:active):not(#sh-x):not(#sh-y):not(#sh-z){background:color-mix(in srgb,var(--sh-ink) 24%,var(--sh-paper))!important}
     #gmSuggestSheet .gss-tiles:not(#sh-x):not(#sh-y):not(#sh-z){display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;margin:18px 0 0!important;padding:0!important}
     #gmSuggestSheet .gss-tiles:empty:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
     #gmSuggestSheet .gss-tiles .starter-prompt:not(#sh-x):not(#sh-y):not(#sh-z){display:flex!important;align-items:flex-start!important;justify-content:flex-start!important;box-sizing:border-box!important;width:auto!important;min-width:0!important;min-height:96px!important;margin:0!important;padding:12px!important;
@@ -2860,13 +2849,9 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
       font-family:var(--sh-serif)!important;font-size:15px!important;line-height:18px!important;font-style:normal!important;text-align:left!important;text-indent:0!important;white-space:normal!important;cursor:pointer!important}
     #gmSuggestSheet .gss-tiles .starter-prompt:not(#sh-x):not(#sh-y)::before{content:none!important}
     #gmSuggestSheet .gss-tiles .starter-prompt *:not(#sh-x):not(#sh-y):not(#sh-z){font-size:15px!important;line-height:18px!important;color:inherit!important;text-decoration:none!important;white-space:normal!important}
-    #gmSuggestSheet .starter-prompt:is(:hover,:active) :is(.gss-mark,.gss-label):not(#sh-x):not(#sh-y):not(#sh-z){color:var(--sh-hover)!important}
     #gmSuggestSheet .gss-tiles .starter-prompt:is(:hover,:active):not(#sh-x):not(#sh-y):not(#sh-z){background:color-mix(in srgb,var(--sh-ink) 24%,var(--sh-paper))!important}
     #gmSuggestSheet .starter-prompt:focus-visible:not(#sh-x):not(#sh-y):not(#sh-z){outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
     /* The same questions under the greeting are put away while the sheet shows them. */
     :root.gm-chat.gm-suggest-on #curatorStarterPrompts:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
   }
 }
-/* The marks' colours: dark enough on the light circle, light enough on the dark one. */
-:root{--gss-violet:#5b2fd6;--gss-yellow:#6b5a00;--gss-pink:#a3138f;--gss-red:#b3200d;--gss-cyan:#006a73;--gss-blue:#1f5fc4}
-:root[data-theme="dark"]{--gss-violet:#b79bff;--gss-yellow:#ffff3c;--gss-pink:#ff7eff;--gss-red:#ff7a66;--gss-cyan:#b8fbff;--gss-blue:#8bbdf5}
