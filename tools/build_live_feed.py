@@ -105,7 +105,7 @@ def main():
             if not DAY.match(str(g.get('retrieved_on') or '')):
                 skip('gossip: never checked (no retrieved_on)'); continue
             items.append(dict(base, type='gossip', id=g.get('id') or '', when=g['when'], headline=g['headline'],
-                              said=g.get('said') or '', who_says=g['who_says'], where=g['where'], urls=urls,
+                              said=g.get('said') or '', told=g.get('told') or '', who_says=g['who_says'], where=g['where'], urls=urls,
                               kind=g.get('kind') or 'report', status=g.get('status') or 'talk',
                               response=g.get('response') or '', outcome=g.get('outcome') or '',
                               checked=g['retrieved_on']))

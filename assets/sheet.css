@@ -528,6 +528,11 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 #gmFeed .ts-label{display:block!important;background:var(--sh-stone)!important;text-align:center!important;height:var(--sh-band)!important;line-height:var(--sh-band-lh)!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important;border:0!important}
 #gmFeed :is(.ts-headline,.ts-prose){margin:0!important;padding:0!important;border:0!important;text-transform:none!important;max-width:none!important;hyphens:manual!important}
 #gmFeed .ts-headline{font-style:italic!important}
+/* In Gossip mode a gossip report in the feed is set in the gossip colour, as gossip is in the chat (user, 21 Nov 2026: "make
+   yellow also"): brown #7a4416 on the light sheet, the lime #e2f86c on the dark one. The name band, the labels and the facts
+   keep their ink. */
+body.gossip-mode-active #gmFeed .ts-story[data-type="gossip"] :is(.ts-headline,.ts-prose),body.gossip-mode-active #gmFeed .ts-story[data-type="gossip"] :is(.ts-headline,.ts-prose) *{color:#7a4416!important}
+:root[data-theme="dark"] body.gossip-mode-active #gmFeed .ts-story[data-type="gossip"] :is(.ts-headline,.ts-prose),:root[data-theme="dark"] body.gossip-mode-active #gmFeed .ts-story[data-type="gossip"] :is(.ts-headline,.ts-prose) *{color:#e2f86c!important}
 #gmFeed .ts-rows{display:block!important;margin:0!important;padding:0!important;border:0!important}
 #gmFeed .ts-row{display:block!important;margin:0!important;padding:0 0 0 var(--sh-indent)!important;text-indent:calc(-1 * var(--sh-indent))!important;border:0!important}
 #gmFeed .ts-row dt{display:inline!important;font-style:italic!important;margin:0!important;padding:0!important;width:auto!important}

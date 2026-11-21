@@ -34,6 +34,7 @@ Descriptions below are each script's own docstring; read the script for details.
 | `attach_finance_scale.py` | Attach the structured accounts figures to records as `finance`. |
 | `attach_flag_details.py` | Add the further detail found for "Why it is flagged" to each flagged record as flag_details: |
 | `attach_gossip.py` | Write the gossip items from data/gossip_items.json onto the records they are about, as `gossip_data.gossip`. |
+| `tell_gossip.py` | The gossip items retold in the voice of Gossip mode (`told`): lists the items still to retell, checks retellings against their items and writes them in. |
 | `attach_lobbying_notes.py` | Add the case notes on funders' lobbying through a space (data/research_attach/lobbying_case_notes_*.json) to the records. |
 | `attach_pin_layers.py` | Attach the Sponsor Atlas's per-pin research layers to the records they are about. |
 | `attach_research.py` | Fold what the retired research library held into the museum records it is about. |
