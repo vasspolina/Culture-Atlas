@@ -1,0 +1,82 @@
+[
+ {
+  "id": "konsthall-c-stockholm",
+  "section": "Red flags",
+  "problems": [
+   "heading carried the official's words as its subject; plainer heading",
+   "district committee named in the column's caption not stated",
+   "quotation context: Ackinger spoke of art being read as party-political, not 'public art' generally",
+   "source is an opinion column in a self-described socialist paper; marked in SOURCES"
+  ],
+  "before": "Red flags: 2022 cancellation of a show at Sergels torg as \"too political\" ... Ackinger said public art should avoid a party-political reading ...",
+  "after": "Red flags: 2022 cancellation of a Konsthall C show at Sergels torg; points kept as the column reports them (date, cancellation the day before, Ackinger's words), Norrmalm district committee added from the column, SOURCES marked opinion column.",
+  "sources": [
+   "https://www.flamman.se/varning-for-konst/"
+  ],
+  "reason": "The column reports the cancellation as fact: the show co-curated by Konsthall C, due 27 June 2022, cancelled the day before by the Norrmalm district administration, with the district director's words quoted word for word. Kept, credited to Flamman. The City of Stockholm is a funder of the space, so it stays under Red flags."
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "section": "Red flags: 2021 decision to give up 29 works from the Gurlitt bequest",
+  "problems": [
+   "announcement date: ORF gives 10 December 2021 (after November 2021, so Red flags as a restitution holds)",
+   "'which it suspected' added an actor; TAN says the works are suspected of being Nazi loot",
+   "'foundation board decision' is 'the Kunstmuseum Bern Foundation decided' on the page; 'pending an agreement' left out",
+   "Glaser: TAN says the museum is considering the heirs' claim, not that heirs were pursuing it",
+   "ORF quote point duplicated the announcement; merged into the first point"
+  ],
+  "before": "The Kunstmuseum Bern announced in December 2021 that it would give up 29 works ... which it suspected of being Nazi loot ... under a foundation board decision of 5 November 2021 ... The heirs of Fritz Salo Glaser were pursuing a restitution claim ...",
+  "after": "Announcement dated 10 December 2021 (ORF); 29 works 'suspected of being Nazi-looted art' (TAN); Kunstmuseum Bern Foundation decision of 5 November 2021 pending agreement; museum considering the Glaser heirs' claim to 13 works.",
+  "sources": [
+   "https://orf.at/stories/3239678/",
+   "https://www.theartnewspaper.com/2021/12/17/kunstmuseum-bern-gurlitt-trove-nazi-loot"
+  ],
+  "reason": "All points confirmed on TAN and ORF; wording brought back to the pages. Restitution dated after November 2021, within five years: Red flags."
+ },
+ {
+  "id": "kunstmuseum-bern",
+  "section": "Red flags: 2025 Munich court ruling on a fee claim by Gurlitt's former lawyer",
+  "problems": [
+   "the 2016 LTO suit was against Gurlitt's unknown heirs for 6,000 euros; no source ties it to the 2025 case, so 'the case began' is unsupported",
+   "LTO date is the first hearing (26 January 2016), not the start of the case",
+   "CMS says 'legal remuneration', not a fee claim 'connected with the Gurlitt collection'"
+  ],
+  "before": "Hannes Hartung ... sued the Kunstmuseum Bern for legal fees connected with the Gurlitt collection, claiming about EUR 1.36 million ... The case began before the Munich Regional Court I in January 2016 with a partial claim of 6,000 euros against Gurlitt's unknown heirs ...",
+  "after": "Hartung sued the Kunstmuseum Bern for legal remuneration of about EUR 1.36 million; OLG München judgment of 14 May 2025 awarded EUR 106,815 (credited to CMS, the museum's law firm). 2016 hearing stated on its own: partial bill of 6,000 euros against unknown heirs, unpaid by the museum and the estate administrator (LTO).",
+  "sources": [
+   "https://cms.law/en/deu/news-information/cms-scores-a-win-for-the-kunstmuseum-bern-in-the-gurlitt-collection-proceedings",
+   "https://www.lto.de/recht/hintergruende/h/lg-muenchen-az-4020537-15-gurlitt-hannes-hartung-stein-anwalt-honorar"
+  ],
+  "reason": "The CMS release names the museum as the defendant (Hartung 'brought the action against the Kunstmuseum Bern'), so the museum is the party; kept, credited to the firm and marked in SOURCES. A court order within five years: Red flags, though not a flag category. CMS refused curl (403) and was read with WebFetch."
+ },
+ {
+  "id": "chora-museum-kariye",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "quotation not word for word: the tweet's words 'Dünya sanat tarihinin baş yapıtlarından' were dropped from the middle without a mark; now plain paraphrase",
+   "Polat's title as the page gives it (secretary general) added in place of 'of the municipality'",
+   "ministry reply: the page has officials answering a Habertürk writer's call; 'uncovered afterwards' from the same quote"
+  ],
+  "before": "Mahir Polat of the Istanbul Metropolitan Municipality wrote on Twitter on 27 October 2020: \"Kariye fresk ve mozaiklerinin kapatılması ne yazık ki yapının karakterini ve sanatsal değerini öldürecek vasıfsızlıkta\" (...)",
+  "after": "Mahir Polat, secretary general of the Istanbul Metropolitan Municipality, wrote on Twitter on 27 October 2020 that covering the Kariye frescoes and mosaics would destroy the building's character and artistic value (Bianet, 28 October 2020).",
+  "sources": [
+   "https://bianet.org/haber/camiye-cevrilen-kariye-muzesi-ndeki-freskler-kapatildi-233484",
+   "https://www.haberturk.com/son-dakika-haberi-kultur-bakanligi-alci-degil-perde-2851136"
+  ],
+  "reason": "October 2020, before November 2021: WIDER CONTEXT. The record (details overview) states the 2024 curtaining during prayers but not the 2020 objection, so no repetition. Bianet refused curl (403 Cloudflare) and was read with WebFetch."
+ },
+ {
+  "id": "the-bowes-museum",
+  "section": "Red flags: 2023 dispute with the Castle Players over hire terms",
+  "problems": [
+   "not a dispute of the kinds RUN.md counts: a disagreement over hire terms with a hirer (a client, not a funder) and one resident's appeal at a town council meeting",
+   "a Red flags heading would overstate it"
+  ],
+  "before": "Red flags: 2023 dispute with the Castle Players over hire terms (four points from the Teesdale Mercury, 30 March 2023)",
+  "after": "",
+  "sources": [
+   "https://teesdalemercury.co.uk/news/the-bowes-museum-defends-its-stance-over-the-castle-players-after-summer-show-cancellation/"
+  ],
+  "reason": "The page confirms the facts (34 years, £3,000 hire fee, two duty managers at £50 an hour, the director's reply), but this is a hirer cancelling over a venue's prices, with a lone resident's appeal: no protest, petition, labour, governance or censorship issue. File deleted."
+ }
+]

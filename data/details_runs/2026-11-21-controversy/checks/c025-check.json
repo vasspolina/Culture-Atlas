@@ -1,0 +1,105 @@
+[
+ {
+  "id": "palm-springs-art-museum-palm-springs",
+  "section": "Red flags: 2025 trustee resignation over the director hire",
+  "problems": [
+   "repeats record: Marino's resignation, both her quotes, Hartzman's reply and the museum's statement on one trustee are already in the Los Angeles Times press item",
+   "refused read: both sources are ARTnews pages read with curl after a tollbit redirect (RUN.md Tools)"
+  ],
+  "before": "Three points from ARTnews (12 November 2025) on Patsy Marino's resignation, Craig Hartzman's reply and the museum's statement.",
+  "after": "",
+  "sources": [
+   "https://www.psmuseum.org/about/news"
+  ],
+  "reason": "Section cut: nothing in it is new to the record, and its only source was a refused read."
+ },
+ {
+  "id": "palm-springs-art-museum-palm-springs",
+  "section": "Red flags: 2026 whistleblower complaint and the museum's investigation",
+  "problems": [
+   "refused read: ARTnews source replaced by the museum board's own statement of 15 May 2026",
+   "repeats record: the whistleblower's allegations and the $544,403 figure are in the USA Art News press item",
+   "unsupported once ARTnews is dropped: 'declined to release the report', 'six-month', Marino not interviewed",
+   "changed detail: the 'procedural deficiencies' concerned the 2025 board officer nominations; the statement says the director search 'was not improperly manipulated'"
+  ],
+  "before": "Five points from ARTnews (19 May 2026): the anonymous complaint; the investigation and the museum declining to release the report; art sale proceeds and $544,403; governance shortfalls and 'procedural deficiencies' in the director search; Marino not interviewed.",
+  "after": "ID: palm-springs-art-museum-palm-springs\n\nRed flags: 2026 outcome of the board's investigation into anonymous allegations\n- On 15 May 2026 the board announced the completion of an investigation commissioned by a Special Committee of its Audit Committee, begun in December 2025 after anonymous allegations received in October 2025, and carried out by the law firm Barnes & Thornburg and the forensic accounting firm RSM US (museum statement, 15 May 2026).\n- The board stated: \"The anonymous allegations of fraud, theft, and other malicious conduct were not substantiated\", naming among them allegations of sales tax fraud and payroll fraud (museum statement).\n- The statement says the investigation \"confirmed a long-standing, Board-acknowledged practice\" of using art sale proceeds \"for purposes beyond strictly the acquisition of art during periods of operating stress\", and that the museum plans to repay this internal loan in full by 2030 (museum statement).\n- It says \"some of the Museum's historical governance, reporting, and recordkeeping practices fell short of the Board's standards\" and that the investigation found \"certain procedural deficiencies\" in the 2025 board officer nominations. It found the director search, \"while expedited, was not improperly manipulated\" (museum statement).\n- The remedial measures listed include mandatory annual governance training for all trustees and a review of the policies on deaccession proceeds and restricted donor funds (museum statement).\n\nSOURCES\n- https://www.psmuseum.org/storage/app/media/Press%20Releases/2026/Statement%20from%20the%20Board%20of%20Trustees%20of%20Palm%20Springs%20Art%20Museum_5-15-26.pdf\n",
+  "sources": [
+   "https://www.psmuseum.org/storage/app/media/Press%20Releases/2026/Statement%20from%20the%20Board%20of%20Trustees%20of%20Palm%20Springs%20Art%20Museum_5-15-26.pdf"
+  ],
+  "reason": "Rewritten from the board's own statement, the one readable source for the outcome; heading renamed. The USA Art News press item (complaint, investigation hired) can now carry the outcome; the editor may note it there."
+ },
+ {
+  "id": "portland-museum-of-art-portland-maine",
+  "section": "Red flags: 2024 to 2025 court challenge over demolishing 142 Free Street",
+  "problems": [
+   "repeats record: the filing against the city over the May 2024 vote and the boards' votes are in the Press Herald press item; the $100 million expansion is in the overview",
+   "date: the judge ruled 'late last week' before the 31 March 2025 report, not on 31 March"
+  ],
+  "before": "Greater Portland Landmarks filed a civil complaint against the City of Portland over the City Council's May 2024 vote ... A Cumberland County Superior Court judge rejected the appeal on 31 March 2025, siding with the museum, which planned a $100 million expansion on the site ...",
+  "after": "ID: portland-museum-of-art-portland-maine\n\nRed flags: 2024 to 2025 court challenge over demolishing 142 Free Street\n- Greater Portland Landmarks' complaint alleged that city councilors failed to consider Historic Preservation Land Use standards, such as the building's architectural significance, when they voted in May 2024 to declassify 142 Free Street as non-contributing, and asked the Superior Court to vacate the order and send the matter back to the City Council (Maine Public, Carol Bousquet, 20 June 2024).\n- The museum argued that alterations over time had diminished the building's historical significance. Director Mark Bessire said: \"This appeal questions the judgment of our elected officials and will also impose a significant financial and human resource burden on the City of Portland\" (Maine Public, 20 June 2024).\n- A Cumberland County Superior Court judge rejected the appeal in late March 2025, siding with the museum (Maine Public, Nicole Ogrysko and Madi Smith, 31 March 2025).\n- Kate Lemos McHale, executive director of Greater Portland Landmarks, said she supports the expansion and said: \"It doesn't need to come down to a choice between new and old\" (Maine Public, 31 March 2025).\n\nSOURCES\n- https://www.mainepublic.org/courts-and-crime/2024-06-20/greater-portland-landmarks-files-complaint-against-city-of-portland-over-vote-on-142-free-street\n- https://www.mainepublic.org/arts-and-culture/2025-03-31/judge-gives-portland-museum-of-art-the-green-light-to-demolish-the-old-childrens-museum\n",
+  "sources": [
+   "https://www.mainepublic.org/courts-and-crime/2024-06-20/greater-portland-landmarks-files-complaint-against-city-of-portland-over-vote-on-142-free-street",
+   "https://www.mainepublic.org/arts-and-culture/2025-03-31/judge-gives-portland-museum-of-art-the-green-light-to-demolish-the-old-childrens-museum"
+  ],
+  "reason": "Kept the complaint's grounds, the museum's reply, and the ruling with Maine Public as source. The Press Herald press item cites Wikipedia for the March 2025 ruling; the editor can replace that with Maine Public."
+ },
+ {
+  "id": "odesa-national-fine-arts-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "truncated quotation of Texty turned into paraphrase; added that the Supreme Court upheld the district court and the ruling is final",
+   "'the artist' descriptor not in the Supreme Court page (kept out of the first point)",
+   "'without approval': 24 Kanal says repairs were carried out unlawfully"
+  ],
+  "before": "... the Supreme Court ruled on 19 May 2021 that the council's dismissal decision was unlawful: \"Верховний Суд визнав незаконним рішення ...\" (translated) (Texty.org.ua, 2 June 2021).",
+  "after": "ID: odesa-national-fine-arts-museum\n\nWIDER CONTEXT\n- The Odesa Regional Council dismissed the museum's director, Oleksandr Roitburd, by decision No. 1050-VII of 4 September 2019, citing breaches of several points of his contract (Supreme Court of Ukraine press service, 10 February 2020).\n- The Prymorskyi District Court of Odesa ruled on 10 February 2020 that the council's decision was unlawful and cancelled it (Supreme Court of Ukraine press service, 10 February 2020).\n- The Odesa Court of Appeal reversed that ruling on 1 June 2020. The stated grounds were holding concerts, refusing council deputies an inspection of the storerooms and carrying out repairs unlawfully; Roitburd objected that the court ruled without the parties present and said the repairs, paid for without state money, saved works from a building in a state of emergency (24 Kanal, 3 June 2020).\n- The head of the Odesa Regional State Administration, Maksym Kutsyi, backed Roitburd and said his contract would not be terminated (24 Kanal, 3 June 2020).\n- In a ruling of 19 May 2021 the Supreme Court upheld the Prymorskyi court's decision that the dismissal was unlawful and overturned the appeal ruling; the decision is final (Texty.org.ua, 2 June 2021).\n\nSOURCES\n- https://www.supreme.court.gov.ua/press/general/885207/\n- https://24tv.ua/odesa/roytburda-vkotre-zvilnili-posadi-direktora-novini-odesi-sogodni_n1354370\n- https://texty.org.ua/fragments/103717/azh-cilyj-verhovnyj-sud-vyznav-nezakonnym-zvilnennya-rojtburda/\n",
+  "sources": [
+   "https://www.supreme.court.gov.ua/press/general/885207/",
+   "https://24tv.ua/odesa/roytburda-vkotre-zvilnili-posadi-direktora-novini-odesi-sogodni_n1354370",
+   "https://texty.org.ua/fragments/103717/azh-cilyj-verhovnyj-sud-vyznav-nezakonnym-zvilnennya-rojtburda/"
+  ],
+  "reason": "Dates, decision number and rulings confirmed. 2019 to May 2021 is before the five-year line, so WIDER CONTEXT stands."
+ },
+ {
+  "id": "state-museum-of-arts-of-the-republic-of-karakalpakstan-savitsky-museum-nukus",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repeats record: the theft allegations and Babanazarova's denial are in The Art Newspaper press item"
+  ],
+  "before": "Babanazarova told the BBC the dismissal was tied to claims that she stole original paintings and replaced them with fakes, and called the accusations \"absurd\"; museum staff protested ...",
+  "after": "ID: state-museum-of-arts-of-the-republic-of-karakalpakstan-savitsky-museum-nukus\n\nWIDER CONTEXT\n- The government of the autonomous Karakalpakstan region dismissed Marinika Babanazarova, director of the museum since 1984, on 24 August 2015 without specifying a reason (Radio Free Europe/Radio Liberty, 25 August 2015).\n- Museum staff protested the decision, saying in a statement that they had no doubts about her honesty (Radio Free Europe/Radio Liberty, 25 August 2015).\n\nSOURCES\n- https://www.rferl.org/a/director-babanazarova-uzbek-art-museum-fired/27208629.html\n",
+  "sources": [
+   "https://www.rferl.org/a/director-babanazarova-uzbek-art-museum-fired/27208629.html"
+  ],
+  "reason": "Kept the new facts: date, the regional government as the authority, and the staff protest. Public role only."
+ },
+ {
+  "id": "state-museum-of-arts-of-uzbekistan-tashkent",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "date: 12 December 2014 is when court officials announced the sentences, not a stated conviction date",
+   "private persons: the restoration-lab head and the restorer named; kept by role only",
+   "repeats record: the overview's Wikipedia line states the same convictions"
+  ],
+  "before": "A court in Tashkent convicted three former staff ... on 12 December 2014: former senior curator Mirfaizi Usmanov ..., and Bakhtiyor Botirov, former chief of the restoration lab, and the restorer Abdurakhmon Muranov received 8 years each ...",
+  "after": "ID: state-museum-of-arts-of-uzbekistan-tashkent\n\nWIDER CONTEXT\n- On 12 December 2014 court officials in Tashkent said three former senior employees of the Tashkent State Arts Museum had been sentenced to prison for fraud: the former senior curator Mirfaizi Usmanov to nine years and three months, and the former head of the restoration lab and a restorer to eight years each (Radio Free Europe/Radio Liberty, 12 December 2014).\n- They were found guilty of replacing paintings by Soviet artists with copies between 1999 and 2014 and selling the originals to unknown individuals; authorities said they did the same with about 25 paintings from the museum's European art collection. RFE/RL wrote that the verdicts could not be independently verified (Radio Free Europe/Radio Liberty, 12 December 2014).\n\nSOURCES\n- https://rferl.org/a/tashkent-museum-employees-sentenced-for-fraud/26739137.html\n",
+  "sources": [
+   "https://rferl.org/a/tashkent-museum-employees-sentenced-for-fraud/26739137.html"
+  ],
+  "reason": "The senior curator is named as the court ruling and RFE/RL name him and as the record already does. The record's overview holds a weaker Wikipedia version ('caught selling artworks on the black market'); the editor should replace it with this RFE/RL section."
+ },
+ {
+  "id": "vanuatu-cultural-centre-vanuatu-kaljoral-senta-port-vila",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wording: RNZ says the minister 'ordered the sacking', and credits the Asal detail to the Daily Post"
+  ],
+  "before": "Minister of Internal Affairs Hosea Nevu sacked staff at the Vanuatu National Cultural Council ...",
+  "after": "ID: vanuatu-cultural-centre-vanuatu-kaljoral-senta-port-vila\n\nWIDER CONTEXT\n- Minister of Internal Affairs Hosea Nevu ordered the sacking of staff at the Vanuatu National Cultural Council three days after the Sato Kilman Government came to power; the Daily Post reported that the sacking included the director of the Cultural Centre, Lazare Asal (RNZ, 2 July 2015).\n- Senimao Tirsupe, chairman of the Malvatumauri Council of Chiefs, warned the Government about \"interference in traditional practices\" and said the minister could take such action only after consulting the chiefs. The Daily Post reported there was no consultation and no vacancies at the centre had been advertised (RNZ, 2 July 2015).\n\nSOURCES\n- https://www.rnz.co.nz/international/pacific-news/277775/vanuatu-chiefs-angry-at-sacking\n",
+  "sources": [
+   "https://www.rnz.co.nz/international/pacific-news/277775/vanuatu-chiefs-angry-at-sacking"
+  ],
+  "reason": "Confirmed on the page (now served at rnz.co.nz/news/pacific/277775); added the Daily Post's report that no vacancies were advertised. 2015, WIDER CONTEXT."
+ }
+]

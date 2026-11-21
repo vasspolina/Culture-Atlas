@@ -1,0 +1,103 @@
+[
+ {
+  "id": "teatro-espanol",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "misattribution: Madrid Destino's responsibility, the 18 January visit and the vacant posts since 1 January are Pérez de la Fuente's statements in the interview, not the article's",
+   "quotation not word for word: the page prints 'a fin', not 'afín'",
+   "missing year on 18 January",
+   "the vote breakdown is his account"
+  ],
+  "before": "In 2016 the government of Mayor Manuela Carmena removed Juan Carlos Pérez de la Fuente ...; the article places the administrative and labour responsibility with Madrid Destino ... On 18 January a technical official told the artistic director to stop programming ... He said the culture department wanted someone more \"afín\" (like-minded)...",
+  "after": "Removal and 2014 competition stated from the article; plenary call and new competition stated from the article, vote breakdown credited to him; 18 January 2016 visit by Ana Varela, consejera delegada, with Eraso present, the press-conference bar and the vacancy since 1 January all credited to him; 'like-minded' given as paraphrase.",
+  "sources": [
+   "https://www.vozpopuli.com/altavoz/cultura/teatro_espanol-manuela_carmena-culturas-celia_mayer-juan_carlos_perez_de_la_fuente-entrevistas-cultura-madrid-carmena_0_920608007.html"
+  ],
+  "reason": "Points confirmed on the page, which is an interview; claims made by the dismissed director are now credited to him. 2016, so WIDER CONTEXT."
+ },
+ {
+  "id": "museo-carmen-thyssen-malaga",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "name not on the page: Euro Weekly News says 'the Baroness', and neither source names Carmen Cervera"
+  ],
+  "before": "Carmen Cervera replied that Llorens wanted to \"manage the museum as he pleased\"...",
+  "after": "Baroness Thyssen replied that Llorens wanted to \"manage the museum as he pleased\"...",
+  "sources": [
+   "https://euroweeklynews.com/2011/04/14/manager-of-thyssen-museum-quits-two-weeks-after-opening/",
+   "https://www.elsaltodiario.com/arte/cuadro-cambia-firma-carmen-thyssen-malaga-otras-raras-historias-museos-ciudad-picasso"
+  ],
+  "reason": "Other points and the El Salto quotation match word for word. 2011 board resignation in protest, so WIDER CONTEXT."
+ },
+ {
+  "id": "centro-andaluz-de-arte-contemporaneo",
+  "section": "Red flags: 2023 dismissal of the director",
+  "problems": [
+   "omission: the cited Última Hora page also reports the Comisión Técnica's resignation in protest, which the log left out because El País and ABC refused reads"
+  ],
+  "before": "(no point on the Comisión Técnica)",
+  "after": "In protest at the director's \"cese fulminante\" (summary dismissal, translated), the members of the CAAC's Comisión Técnica decided to resign, stating their \"desacuerdo y preocupación por el procedimiento\" (disagreement and concern about the procedure, translated) (Última Hora, 4 November 2023).",
+  "sources": [
+   "https://www.ultimahora.es/noticias/comunidades/2023/11/04/2043915/bernal-defiende-caac-necesita-nuevo-impulso-proyecto-director-cesado-estaba-agotado.html",
+   "https://artdaily.com/news/167228/Two-alarming-cases-of-bad-practices-by-the-administration-in-regional-museums-in-Spain"
+  ],
+  "reason": "Bernal's quotations, the 31 October 2023 appointment and the CIMAM statement all match the pages. Dismissal by the government that funds and controls the centre, 2023: a Red flag."
+ },
+ {
+  "id": "centro-andaluz-de-arte-contemporaneo",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "text says more than the source: 'without a public management record'"
+  ],
+  "before": "She asks whether a collector without a public management record is enough to run an important public museum, and what ...",
+  "after": "She asks whether being a collector is enough to run an important public museum, and what ...",
+  "sources": [
+   "https://www.elespanol.com/el-cultural/blogs/y_tu_que_lo_veas/20231101/tumba-centro-andaluz-arte-contemporaneo/806539342_12.html"
+  ],
+  "reason": "Vozmediano asks '¿es eso suficiente para dirigir un importante museo público?' after describing her collecting; the other quotations match word for word."
+ },
+ {
+  "id": "zeugma-mosaic-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition: the record's details and watch already state the 2018 return of 12 pieces from Bowling Green",
+   "date: the ministry announced the return on Monday 25 May 2026 (Daily Sabah, 26 May)"
+  ],
+  "before": "Twelve pieces of the \"Gypsy Girl\" mosaic composition left Turkey in the 1960s and were bought by Bowling Green State University ... A 13th panel ... The panel went first to the Anatolian Civilizations Museum ...",
+  "after": "2018 point cut; 13th panel point kept from Daily Sabah 15 July 2026; return announced 25 May 2026 and taken to Ankara for conservation and documentation (26 May); handover at the museum 14 July 2026.",
+  "sources": [
+   "https://www.dailysabah.com/arts/turkiye-repatriates-gypsy-girl-mosaic-fragment-from-us/news",
+   "https://www.dailysabah.com/life/history/turkiye-recovers-13th-panel-of-famed-gypsy-girl-mosaic-from-us",
+   "https://www.dailysabah.com/turkey/2018/12/08/iconic-gypsy-girl-welcomes-visitors-with-missing-pieces-retrieved-decades-later"
+  ],
+  "reason": "RUN.md's Red flags placement for a restitution covers a return out of the space's holdings, a contested holding. Here the looted panel was returned to the ministry-run museum from a US holder; nobody contests the museum's holdings and the museum is not a party at fault, so it stays WIDER CONTEXT and carries no flag."
+ },
+ {
+  "id": "the-burrell-collection",
+  "section": "Red flags: 2022 objection over works acquired through Nazi-era forced sales",
+  "problems": [
+   "sole source is an advocacy group's page relaying a Scotsman report that could not be opened (403)",
+   "no protest, open letter, petition or boycott: two named critics quoted in a news repost",
+   "presented as a documented act rather than an allegation"
+  ],
+  "before": "Red flags: 2022 objection over works acquired through Nazi-era forced sales\n- On 31 March 2022 ... the Campaign Against Antisemitism published a statement ...\n- Unverified: a book by the curator Martin Bellamy ...\n- The statement says Glasgow Life ... accepted ...",
+  "after": "Red flags heading removed. One WIDER CONTEXT point: \"Unverified: on 31 March 2022, as the museum reopened, the Campaign Against Antisemitism, an advocacy group, wrote that a book by the Glasgow Museums curator Martin Bellamy, A Collector's Life: William Burrell, maintains that more works than previously acknowledged belonged to Jewish owners who gave them up through \"forced sale\", and that Glasgow Life accepted such works are on display without identifying which. It quoted ... Sir Tom Devine ... and Ephraim Borowski ...\"",
+  "sources": [
+   "https://antisemitism.org/glasgow-museum-displays-works-looted-from-jews-by-the-nazis-but-refuses-to-identify-which-works"
+  ],
+  "reason": "The CAA page is the only opened source; under the rule on campaign pages its claims are Unverified and credited to it. The claim about Bellamy's book describes a published argument, not a crime, so it stays, credited to the CAA. Without a protest act or an opened news report it is not a Red flag."
+ },
+ {
+  "id": "the-burrell-collection",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wording: tightened the Chardin and Visitation points to the Glasgow Life page's terms"
+  ],
+  "before": "In 2004 the Spoliation Advisory Panel agreed that a Chardin still life from the A. S. Drey stock sale ...",
+  "after": "In 2004 the Spoliation Advisory Panel agreed that a Chardin still life from the sale of the stock of A. S. Drey, a Jewish-owned gallery in Munich, \"had been subject to a forced sale\" ...",
+  "sources": [
+   "https://www.glasgowlife.org.uk/museums/the-collection/spoliation"
+  ],
+  "reason": "Both panel findings confirmed; 2004 and 2014 are older than five years, so WIDER CONTEXT."
+ }
+]

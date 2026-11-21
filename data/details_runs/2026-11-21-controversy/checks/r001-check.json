@@ -1,0 +1,76 @@
+[
+ {
+  "id": "anu-museum-of-the-jewish-people",
+  "section": "Red flags: 2025 call by Yad L'Achim to stay away over displays on mixed marriage",
+  "problems": [
+   "attribution: the museum officials' replies are Yad L'Achim's account in Haredim 10, not a statement Haredim 10 obtained",
+   "sponsored content: the Israel National News piece is authored 'Sponsored content' and adds nothing the Haredim 10 report lacks (the removal demand is in Yad L'Achim's quotes there); repetition of the stay-away call"
+  ],
+  "before": "- Museum officials first said the display was innocent and later called changing the content on such a scale \"a complex process that takes time\" (Haredim 10, 21 December 2025). / - Unverified: that Yad L'Achim demanded the removal of the exhibit and that the museum showed no intention of removing it, from a piece labelled \"Sponsored content\" on Israel National News, 18 February 2026 ...",
+  "after": "- Yad L'Achim said museum officials first called the display innocent and later said that changing the content on such a scale is \"a complex process that takes time\" (Haredim 10, 21 December 2025). [Unverified point and the Israel National News source cut]",
+  "sources": [
+   "https://ch10.co.il/en/news/1034218/",
+   "https://www.israelnationalnews.com/news/422593"
+  ],
+  "reason": "The two quotations are word for word from the English version of the Haredim 10 page of 21 December 2025; the sponsored piece is the group's own paid account and was dropped."
+ },
+ {
+  "id": "museo-nazionale-della-scienza-e-della-tecnologia-leonardo-da-vinci",
+  "section": "Red flags: 2026 audit office finding on public procurement rules",
+  "problems": [
+   "misread: the court cites the renovation contract as one where the code had been applied ('come avvenuto per'), not as a contract it must now apply it to",
+   "added: the staff-contract request repeats the court's previous report"
+  ],
+  "before": "- The court found that the foundation is a body governed by public law and must apply the public contracts code, a status the foundation contests, and recommended that it apply the code in full, including to the contract for the renovation works on its building in Milan (Corte dei conti report on 2024).",
+  "after": "- The court held that the foundation, as a body governed by public law, is subject to the public contracts code, a status the foundation contests, and recommended that it apply the code in full, as it had for the contracts it reported to the court in 2024 and 2025, among them the renovation works on its building in Milan (Corte dei conti report on 2024).",
+  "sources": [
+   "https://documenti.camera.it/_dati/leg19/lavori/documentiparlamentari/indiceetesti/015/552/INTERO.pdf"
+  ],
+  "reason": "Determination 59/2026 (24 March 2026, sent 16 April 2026), the 174 staff, the MEF auditor's objection and the quoted sentence confirmed; the staff contract and procurement status are two issues, so two headings stay. The record cites this report only for its figures."
+ },
+ {
+  "id": "mus-e-yves-saint-laurent-marrakech-marrakech",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "second-hand: the IGA point rests on Bladi.net relaying Le Canard enchaîné; credited as such",
+   "paraphrase: 'a eu vent de toutes les pièces requises' means informed of, not received",
+   "connection to the space moved to a last point as RUN.md asks for disputes about the operator"
+  ],
+  "before": "... after Le Canard enchaîné reported that the foundation was criticised for making profits; Jardin Majorelle SCA, which Cox also heads, runs the Musée Yves Saint Laurent and the Berber museum (Bladi.net, 12 December 2020). ... a spokesman for Cox said the government had received all the documents required (Bladi.net, 12 December 2020).",
+  "after": "... after Le Canard enchaîné reported that the foundation was faulted for making profits (Bladi.net, citing Le Canard enchaîné, 12 December 2020). ... a spokesman for Cox said the government had been informed of all the documents required (Bladi.net, 12 December 2020). / - The connection: Jardin Majorelle SCA, which Cox also heads, runs the Musée Yves Saint Laurent and the Berber museum in Marrakech (Bladi.net, 12 December 2020).",
+  "sources": [
+   "https://www.theartnewspaper.com/2018/11/26/jardin-majorelle-in-marrakech-can-keep-its-name-paris-court-rules",
+   "https://fr.le360.ma/lifestyle/marrakech-guerre-dheritage-au-jardin-majorelle-179048/",
+   "https://www.bladi.net/jardin-majorelle-marrakech-controle-france,77301.html"
+  ],
+  "reason": "Pidancet's suit over the inaugural exhibition, the 20 November 2018 appeal ruling and the EUR 60,000 confirmed; all pre-2021 or an inspection with no reported outcome, so WIDER CONTEXT."
+ },
+ {
+  "id": "plateforme-10",
+  "section": "Red flags: 2023 dismissal of the mudac director after her probation period",
+  "problems": [
+   "false quotation: the sentence is ATS reported speech of the communiqué, not in quotation marks on the page"
+  ],
+  "before": "citing strategic differences; its communiqué said \"Ces divergences constatées par la Fondation Plateforme 10 n'ont pas permis de confirmer l'engagement de Mme Leanza\" (...translated) (Radio Lac with ATS-Keystone, 4 July 2023).",
+  "after": "citing strategic differences that, its communiqué said, did not allow her appointment to be confirmed (Radio Lac with ATS-Keystone, 4 July 2023).",
+  "sources": [
+   "https://www.radiolac.ch/culture/la-directrice-du-mudac-remerciee-au-terme-de-sa-periode-dessai/",
+   "http://www.artnewspaper.fr/2023/07/05/beatrice-leanza-directrice-du-mudac-a-lausanne-remerciee"
+  ],
+  "reason": "Dismissal, start date, unanimous jury, interim director and Gyger's quotation confirmed; only her public role is described."
+ },
+ {
+  "id": "cincinnati-art-museum",
+  "section": "Red flags: 2022 calls by police to remove a painting from an exhibition",
+  "problems": [
+   "overreach: no opened page says the police union called for removal; The National Desk says 'many, including law enforcement' called for it and quotes the FOP president"
+  ],
+  "before": "Red flags: 2022 police union call to remove a painting from an exhibition / - In May 2022 law enforcement figures called for the removal from the museum of ...",
+  "after": "Red flags: 2022 calls by police to remove a painting from an exhibition / - In May 2022 people including law enforcement called for the removal from the museum of ...",
+  "sources": [
+   "https://web.archive.org/web/20230205083352/https://thenationaldesk.com/news/americas-news-now/piglet-shoots-winnie-the-pooh-in-violent-new-art-exhibit-police-call-for-its-removal-police-brutality-cincinnati-art-museum-piglet-tigger-christopher-robin-hundred-acre-wood-off-the-pig-eeyore",
+   "https://insidethemagic.net/?p=462655"
+  ],
+  "reason": "The archive copy (original page gone) carries the article of 31 May 2022 with both quotations word for word; Inside the Magic (Rebekah Barton, 27 June 2022) is a real report crediting WLWT for the museum's sign and the 19 June end date."
+ }
+]

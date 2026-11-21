@@ -1,0 +1,85 @@
+[
+ {
+  "id": "doualart-douala",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported descriptor: 'scrap metal'",
+   "figure overstated: source says 'about twelve meters'",
+   "misquote: Le360 has 'déboulonnée et détruite', not 'renversée et détruite'",
+   "paraphrase drifted: 'figure of local nationalism'"
+  ],
+  "before": "La Nouvelle Liberté, a 12-metre sculpture of scrap metal by Joseph-Francis Sumégné ... \"renversée et détruite\" (\"toppled and destroyed\", translated) by André Blase Essama, whom it describes as a figure of local nationalism.",
+  "after": "La Nouvelle Liberté, a sculpture about 12 metres high by Joseph-Francis Sumégné ... \"déboulonnée et détruite\" (\"taken down and destroyed\", translated) by André Blase Essama, whom it describes as one of the city's most fervent defenders of the nationalist cause.",
+  "sources": [
+   "https://springerin.at/en/2007/4/la-nouvelle-liberte-oder-le-nju-nju-du-rond-point/",
+   "https://afrique.le360.ma/autres-pays/societe/2017/12/07/17046-cameroun-polemique-autour-du-monument-dune-artiste-francaise-douala-17046/",
+   "https://www.biennialfoundation.org/2017/11/sud-2017-held-early-december-cameroon/"
+  ],
+  "reason": "Quotation corrected to the page's wording; the size and material now follow springerin. The rest is confirmed. The destruction is attributed to a named person, but a named outlet (Le360) carries it."
+ },
+ {
+  "id": "dalhousie-art-gallery-halifax",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "changed detail: Gibson Garvey brought in an ICI exhibition as the gallery's curator; she did not curate it",
+   "quote placed out of time: 'Removing these works ... was not considered' describes the decision before opening"
+  ],
+  "before": "an Independent Curators International exhibition curated by Sue Gibson Garvey ... kept the works up: \"Removing these works from the exhibition was not considered.\"",
+  "after": "an Independent Curators International exhibition brought in by its curator Sue Gibson Garvey ... kept the works up; before the opening, \"Removing these works from the exhibition was not considered.\"",
+  "sources": [
+   "https://canadianart.ca/features/dirty-words-sensitive/"
+  ],
+  "reason": "Canadian Art (Sarah Hollenberg, 9 May 2018) confirms the protest, the letters, the sit-in, the president's editorial and the closing quotation. Two details now follow the page."
+ },
+ {
+  "id": "museo-de-arte-contemporáneo-de-santiago-santiago",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "credit: CPI republished El Mostrador's article in full, so El Mostrador is the outlet",
+   "omitted: the CMN did not confirm the decision officially; the quotation comes from El Mostrador's sources"
+  ],
+  "before": "Two councillors told El Mostrador it was agreed \"por unanimidad ...\" (CPI, 15 January 2021, citing El Mostrador of 14 January 2021). ... (CPI, citing El Mostrador)",
+  "after": "The CMN did not confirm the decision officially; at least two councillors confirmed it to El Mostrador, whose sources said it was agreed \"por unanimidad ...\" (El Mostrador, 14 January 2021, republished by CPI on 15 January 2021). ... (El Mostrador)",
+  "sources": [
+   "https://cpichile.org/?p=45603"
+  ],
+  "reason": "The CPI page is El Mostrador's article, marked as originally published there. Every figure, name and quotation matches it. The decision is reported, not official, and the text now says so."
+ },
+ {
+  "id": "museo-de-arte-moderno-de-medell-n-mamm-medell-n",
+  "section": "Red flags: 2025 refused sale of two Débora Arango paintings",
+  "problems": [
+   "changed detail: El Tiempo puts the 2023 Museo Nacional idea on unnamed sources and does not date the Ministry offer to 2023",
+   "single anonymous account: quotation from an unnamed cultural manager",
+   "hedge in quotation used as a claim: 'al parecer, la renuncia no se explica solo por eso'"
+  ],
+  "before": "An earlier offer of the works to the Ministry in 2023 was also turned down ... quoted a cultural manager: \"En lugar de vender esos cuadros, el Mamm debería promocionarlos más.\" ... El Colombiano wrote that \"al parecer, la renuncia no se explica solo por eso\"",
+  "after": "El Tiempo reported that the museum had first offered to sell the paintings to the Ministry, which declined ... set off a press debate over dispersing Arango's paintings, and that cultural managers spoke both against the sale and for it ... the museum said she was taking up a public post in the culture sector and would stay on its board, and its statement did not mention the Arango case",
+  "sources": [
+   "https://www.eltiempo.com/cultura/arte-y-teatro/la-historia-detras-de-la-frustrada-venta-de-los-cuadros-de-debora-arango-al-banco-de-la-republica-3493910",
+   "https://www.elcolombiano.com/cultura/pinturas-de-debora-arango-polemica-mamm-FC30100041",
+   "https://www.elcolombiano.com/cultura/renuncia-maria-mercedes-gonzalez-directora-mamm-razones-EE30071489"
+  ],
+  "reason": "Resolution 1489 of 22 September 2025 and its grounds are confirmed. The anonymous opinion and the speculative line on the resignation were removed, and the museum's stated reason for her departure was added from El Colombiano."
+ },
+ {
+  "id": "museo-de-arte-costarricense-mac-san-jos",
+  "section": "Red flags (all) and WIDER CONTEXT",
+  "problems": [
+   "single anonymous account: the minister's quotation 'Esteban, usted es el director...' comes only from an unnamed second source",
+   "misquote: ministry said 'su formalización nunca se concretó', not 'nunca se concretó'; 'has no effect' is not on the page (it says the procedure is suspended)",
+   "repetition: record funding already states the 8 September 2026 board approval of the loan",
+   "wrong date: Garrido spoke on 30 September 2020, not in October",
+   "sector-wide march against culture budget cuts does not target the space",
+   "omitted: La Nación documents the November 2024 dismissal of the deputy director and staff's request to reverse it"
+  ],
+  "before": "(three sections as filed: dismissal with the minister's anonymous-sourced quote; loan section opening with the 8 September approval and 'nunca se concretó' ... 'has no effect'; 'October 2020: Planning Minister...'; 'artists and arts workers then marched in San José against culture budget cuts')",
+  "after": "(new heading '2024 dismissal of the deputy director' from La Nación 11 December 2025; dismissal section without the anonymous quotation, adding that the choir was to be paid from museum funds and was not hired; loan section opens with the records requests, quotes 'su formalización nunca se concretó' and the suspension; Garrido dated 30 September 2020; march clause removed)",
+  "sources": [
+   "https://www.nacion.com/ancora/antes-de-ser-destituido-exdirector-de-museo-sufrio/XVAAIZPDJNHJBDXCPWJCHQQN6E/story/",
+   "https://www.nacion.com/viva/museo-de-arte-costarricense-rechaza-entregar/KR5IS5MKZ5HH5LPXFBR6SWU2SA/story/",
+   "https://semanariouniversidad.com/?p=202096"
+  ],
+  "reason": "Calvo's own account stays as Unverified, and La Nación says a second source matched it. The quotation of the minister rested on that anonymous source alone and was cut. The deputy director's 2024 dismissal and staff's reconsideration request are on the same La Nación page and form a separate issue. The Meer critique (10 May 2022) is confirmed."
+ }
+]

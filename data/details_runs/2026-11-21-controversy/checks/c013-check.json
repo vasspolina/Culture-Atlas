@@ -1,0 +1,44 @@
+[
+ {
+  "id": "worcester-art-museum",
+  "section": "Red flags: 2023 seizure of a Roman bronze bust looted from Turkey",
+  "problems": [
+   "heading states looting as fact; sources report an investigation and the museum's 'likely stolen'"
+  ],
+  "before": "Red flags: 2023 seizure of a Roman bronze bust looted from Turkey",
+  "after": "Red flags: 2023 seizure of a Roman bronze bust in a Turkish looting investigation",
+  "sources": [
+   "https://www.wbur.org/news/2023/09/05/ancient-roman-bust-worcester-art-museum-looting-turkey",
+   "https://www.wgbh.org/news/2023-09-04/worcester-art-museum-turns-over-ancient-bronze-bust-allegedly-looted-in-turkey"
+  ],
+  "reason": "WBUR/AP describe a seizure in an ongoing investigation into objects looted from Bubon; no ruling on this bust. The seizure is a documented act, so it stays under Red flags with a heading that names the investigation. All other points confirmed, including the 2025 Italy agreement (The Art Newspaper, Daniel Grant)."
+ },
+ {
+  "id": "mus-e-national-des-beaux-arts-d-alger-algiers",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition: the record's overview already states that about 300 works went to the Louvre in 1962"
+  ],
+  "before": "- In 1962 Christian Fouchet, the French Republic's high commissioner in Algeria, decided to transfer works held by the museum to France: 304 works (112 old drawings, 84 modern drawings, 156 paintings) were received and stored in the reserves of the Louvre in May 1962 (Académie des sciences d'outre-mer, ...).",
+  "after": "- The 1962 transfer of the museum's works to the Louvre was decided by Christian Fouchet, the French Republic's high commissioner in Algeria (Académie des sciences d'outre-mer, Stéphane Richemond, review of ... Abd-el-Tif, 2017).",
+  "sources": [
+   "https://www.academieoutremer.fr/images/files/20220602_0dbec20fd78448659efab05e22718ff4.pdf"
+  ],
+  "reason": "Kept only what the record lacks (who decided). The review's own breakdown (112+84+156) does not add up to its 304, another reason not to repeat the count. The 1970 restitution dispute and the legal-status point are confirmed word for word."
+ },
+ {
+  "id": "shepparton-art-museum-shepparton",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "not a dispute: Gantner's gift conditions",
+   "repetition: record funding already names the Gantner gift",
+   "repetition: record overview gives the $50 million cost"
+  ],
+  "before": "- The new building was first estimated at A$30m and finished at about A$50m, ... - The collector Carrillo Gantner gave more than 350 Aboriginal artworks on two conditions, a standalone gallery and a not-for-profit company independent of the council, saying councils are \"not natural operators of major arts facilities\" (The Art Newspaper).",
+  "after": "- Initial estimates put the new building at A$30m against a final figure of about A$50m, ... (Gantner point removed)",
+  "sources": [
+   "https://www.theartnewspaper.com/2022/01/07/australian-collectors-strings-attached-gift-36m-museum"
+  ],
+  "reason": "The Art Newspaper (Tim Stone, 7 January 2022) confirms the cost rise, the funding shares, Fern Summer's quotes and re-election, and Coates's remark. The point is now the A$30m estimate, since the record already gives the A$50m cost. The gift conditions describe no dispute and were cut."
+ }
+]

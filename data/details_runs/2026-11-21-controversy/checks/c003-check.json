@@ -1,0 +1,148 @@
+[
+ {
+  "id": "singapore-art-museum-singapore",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported figure: 'two' magazines",
+   "missing title: Storer is the Biennale curator"
+  ],
+  "before": "removed two gay pornographic magazines from ... curator Russell Storer said",
+  "after": "removed gay pornographic magazines from ... Biennale curator Russell Storer said",
+  "sources": [
+   "https://www.fridae.asia/gay-news/2011/03/30/10750.museum-censors-explicit-art-work-the-straits-times"
+  ],
+  "reason": "The Straits Times text names 'a row' of magazines plus one more, no count of two."
+ },
+ {
+  "id": "national-asian-culture-center-acc-gwangju",
+  "section": "Red flags: 2026 dispute over the Taiwan Pavilion installation",
+  "problems": [
+   "placement: dispute was with the Gwangju Biennale Foundation, not the ACC",
+   "quote not word for word: 'political censorship'"
+  ],
+  "before": "Red flags: 2026 dispute over the Taiwan Pavilion installation (four points)",
+  "after": "WIDER CONTEXT (four points), the ACC's role as venue stated in the last point; 'political censorship' given as paraphrase",
+  "sources": [
+   "https://www.taiwannews.com.tw/en/news/6424818",
+   "https://view.asiae.co.kr/en/article/2026083113314504332"
+  ],
+  "reason": "The renaming was the Biennale Foundation's act and the later objection came from China; the ACC is the venue where setup halted. A dispute about the organiser goes under WIDER CONTEXT with the connection stated."
+ },
+ {
+  "id": "museo-picasso-malaga",
+  "section": "Red flags: 2023 strikes over the staff collective agreement",
+  "problems": [
+   "tense: 'struck again' from an article announcing strikes"
+  ],
+  "before": "Workers struck again on 26 and 27 September 2023 after another failed meeting at the Andalusian mediation body SERCLA, and planned protests for the 2 October opening of El eco de Picasso (Europa Press, via Última Hora, 25 September 2023).",
+  "after": "After another failed meeting at the Andalusian mediation body SERCLA, the works committee called further strikes for 26, 27 and 30 September and 2 October 2023, and a protest at the main entrance during the 2 October opening of El eco de Picasso (Europa Press, via Última Hora, 25 September 2023).",
+  "sources": [
+   "https://www.ultimahora.es/noticias/comunidades/2023/09/25/2019155/trabajadores-del-museo-picasso-malaga-comienzan-este-martes-nuevas-huelgas.html",
+   "https://artdaily.com/news/157825/Workers-at-Museo-Picasso-Malaga-vote--Yes--to-strike",
+   "https://www.elindependiente.com/tendencias/cultura/2023/06/06/el-ano-estrella-del-picasso-de-malaga-huelga-de-trabajadores-en-fechas-clave-para-el-museo-mas-visitado-de-andalucia/amp/"
+  ],
+  "reason": "The 25 September piece announces the strikes; it cannot confirm they took place. Other points confirmed in Artdaily, El Salto, El Independiente and The Art Newspaper."
+ },
+ {
+  "id": "opernhaus-zurich",
+  "section": "Red flags: 2022 replacement of Anna Netrebko and complaint over her successor",
+  "problems": [
+   "two issues under one heading",
+   "quote not word for word (Auge)",
+   "unsupported: 'the performances went ahead'"
+  ],
+  "before": "One heading for the Netrebko cancellation and the Dzhioewa complaint; Auge quoted as \"Die Künstlerin hat uns versichert, dass es sich dabei um eine zufällige und ungeplante Aufnahme handelte\"; '; the performances went ahead'",
+  "after": "Split into 'Red flags: 2022 cancellation of Anna Netrebko's appearances' and 'Red flags: 2022 complaint over Veronika Dzhioewa'; Auge's statement given as paraphrase; 'performances went ahead' cut. Schulz's 'künstlerische Entscheidung' given as paraphrase.",
+  "sources": [
+   "https://www.blick.ch/schweiz/kritik-am-opernhaus-zuerich-auch-netrebko-ersatz-soll-putin-freundin-sein-id17361455.html",
+   "https://www.srf.ch/kultur/musik/kontroverse-um-opernsaengerin-anna-netrebkos-auftritt-in-zuerich-sorgt-fuer-zuendstoff",
+   "https://www.srf.ch/news/schweiz/opernstar-in-zuerich-umstrittene-netrebko-bejubelt-kontroverse-ohne-einfache-antwort"
+  ],
+  "reason": "The Blick quote omits words from the middle of the sentence, and Blick does not say whether the performances went ahead. 2025 points confirmed in both SRF pieces."
+ },
+ {
+  "id": "kaohsiung-museum-of-fine-arts-kaohsiung",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsourced English name: 'Taiwan Visual Arts Association'"
+  ],
+  "before": "among them the Taiwan Visual Arts Association,",
+  "after": "among them the 中華民國視覺藝術協會 (視盟),",
+  "sources": [
+   "https://www.twreporter.org/a/kaohsiung-public-corporatization",
+   "https://www.storm.mg/article/53805"
+  ],
+  "reason": "The Reporter names the group only in Chinese; other points and quotations confirmed."
+ },
+ {
+  "id": "istanbul-archaeology-museums",
+  "section": "Red flags: 2022 and 2025 Israeli requests for the Siloam inscription",
+  "problems": [
+   "placement: requests from a state that neither funds nor controls the museum",
+   "two years under one heading"
+  ],
+  "before": "Red flags: 2022 and 2025 Israeli requests for the Siloam inscription (three points)",
+  "after": "WIDER CONTEXT (three points); Erdoğan quote extended to the page's words 'even a single pebble belonging to Jerusalem'; holding point credited to Daily Sabah and bianet",
+  "sources": [
+   "https://www.dailysabah.com/turkey/turkey-denies-return-of-inscription-to-israel-after-herzog-visit/news",
+   "https://bianet.org/haber/turkey-will-never-return-siloam-inscription-to-israel-erdogan-says-311713"
+  ],
+  "reason": "Israel neither funds nor controls the museum, and no claim, ruling or seizure was made against the museum itself: RUN.md puts this under WIDER CONTEXT."
+ },
+ {
+  "id": "sadler-s-wells",
+  "section": "Red flags: 2024 dispute over Maguy Marin's Gaza statement",
+  "problems": [
+   "missing the space's reply"
+  ],
+  "before": "a statement she had read at earlier European performances (Writing about dance, Nicholas Minns, 13 July 2024).",
+  "after": "a statement she had read at earlier European performances; Spalding said an artist's message should be expressed in the work and cited neutrality and audience concerns (Writing about dance, Nicholas Minns, 13 July 2024).",
+  "sources": [
+   "https://www.writingaboutdance.com/tag/louise-marin/",
+   "https://www.jewishnews.co.uk/sadlers-wells-faces-questions-after-aggressive-performance/"
+  ],
+  "reason": "The page gives Spalding's reason; the rule asks for the space's reply where a source has it. UKLFI point confirmed (WebFetch; curl refused with 403)."
+ },
+ {
+  "id": "sadler-s-wells",
+  "section": "Red flags: 2025 withdrawal of associate artist Michael Keegan-Dolan over Barclays",
+  "problems": [
+   "overstated: 'ended his affiliation' on 16 September",
+   "quote cut mid-sentence"
+  ],
+  "before": "On 16 September 2025 Michael Keegan-Dolan, an Associate Artist of Sadler's Wells since 2011, ended his affiliation, saying \"I can no longer remain affiliated with Sadler's Wells, particularly in light of the Theatre's partnership with Barclays\" and citing Barclays' ties to the arms trade and the Israeli government (Teaċ Daṁsa statement).",
+  "after": "On 16 September 2025 Michael Keegan-Dolan, who signs as Sadler's Wells Associate Artist 2011 to 2025, said in a statement: \"I can no longer remain affiliated with Sadler's Wells, particularly in light of the Theatre's partnership with Barclays and the lack of meaningful institutional response to the concerns raised around it\" ... He named Barclays' connections to the arms trade and to the Israeli government, and said that week's performances would be Teaċ Daṁsa's last at Sadler's Wells and that, unless the institution changed its position, The Only Tune in November would end his contribution as an Associate Artist.",
+  "sources": [
+   "https://teacdamsa.com/?p=2471"
+  ],
+  "reason": "The statement sets the end of his association at The Only Tune in November unless Sadler's Wells changes position. It is the artist's own statement of his own act; one search found no press coverage, so it stays attributed to the statement."
+ },
+ {
+  "id": "buffalo-akg-art-museum",
+  "section": "Red flags: 2023 donor's posts against a staff union",
+  "problems": [
+   "repetition: the $65 million gift is already in the record's funding"
+  ],
+  "before": "Gundlach wrote that he is not on the board and \"gave $65 million only so it could all be better\" (WIVB).",
+  "after": "Gundlach wrote: \"I am not on the Board, I am not a Trustee\" (WIVB).",
+  "sources": [
+   "https://www.yahoo.com/news/akg-art-museum-says-willing-190900383.html"
+  ],
+  "reason": "The record's FUNDING already states his $65 million; his reply is kept word for word (read through WebFetch; curl got 429)."
+ },
+ {
+  "id": "buffalo-akg-art-museum",
+  "section": "Red flags: 2025 layoff of 13 union members",
+  "problems": [
+   "absence statement"
+  ],
+  "before": "..., 31 May 2026; the page carries no statement from the museum.",
+  "after": "..., 31 May 2026.",
+  "sources": [
+   "https://www.wnylabortoday.com/news/2026/05/31/buffalo-and-western-new-york-labor-news/the-nlrb-rules-the-buffalo-akg-art-museum-violated-federal-labor-law-with-the-retaliatory-layoff-of-13-union-represented-employees/",
+   "https://www.btpm.org/from-wbfo-and-our-partners/2025-03-10/union-accuses-buffalo-akg-art-museum-of-union-busting-through-planned-layoffs",
+   "https://hyperallergic.com/994907/buffalo-akg-art-museum-workers-decry-layoffs-of-13-union-members/"
+  ],
+  "reason": "A sentence about what a page lacks is cut. The NLRB point stays 'Unverified:' since it rests on the union's own item (by AKG Workers United News)."
+ }
+]

@@ -1,0 +1,63 @@
+[
+ {
+  "id": "musee-des-augustins",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "over-long provenance chain across two points",
+   "missing: notice classes the work as definitely looted",
+   "state source not labelled"
+  ],
+  "before": "Three points: 1951 deposit by ministerial order; Gurlitt purchase 1944 with Alt Aussee, Munich CCP, 1946 return, 1950 Louvre assignment; 17 May 2005 restitution to the heirs of Anna Gluge-Jaffé.",
+  "after": "Two points: Gurlitt purchase 1944 for Linz, return to France 1946, Louvre 1950, deposit at the Augustins 1951; classed 'Oeuvre assurément spoliée' and restituted 17 May 2005 to the heirs of Anna Gluge-Jaffé. Source marked (state outlet).",
+  "sources": [
+   "https://pop.culture.gouv.fr/notice/mnr/MNR00286"
+  ],
+  "reason": "Every date and figure checked against the MNR notice; a 2005 restitution is older than five years, so WIDER CONTEXT."
+ },
+ {
+  "id": "museum-kuppersmuhle-fur-moderne-kunst-mkm",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "not a dispute and repeats the record: the privately funded new extension and the MKM foundation are already in the record's funding",
+   "author not credited"
+  ],
+  "before": "A new start was made possible by the private MKM foundation set up by the Ströhers; museum director Walter Smerling said the privately borne costs were still \"im beachtlichen zweistelligen Millionenbereich\" ...",
+  "after": "",
+  "sources": [
+   "https://www.volksstimme.de/kultur/museum-kuppersmuhle-bekommt-schlichten-anbau-818772"
+  ],
+  "reason": "The two points on the failed first extension match the dpa text (Dorothea Hülsmeier) and stay; the third point was cut."
+ },
+ {
+  "id": "thalia-theater",
+  "section": "Red flags: 2024 boycott call over a season with almost no women",
+  "problems": [
+   "missing figure: taz counts one work by a woman and one woman director across 13 premieres",
+   "paraphrase of Lux's reason now quoted word for word",
+   "criticism points: 'treats absence of women as routine' and 'beyond Hamburg' did not match the commentary"
+  ],
+  "before": "... and that the season was meant to round off and close long-standing working relationships ... / It argues that Lux's explanation is worse than the programme, because it treats the absence of women as routine. / ... Lux should stop working as a theatre official beyond Hamburg.",
+  "after": "... \"langjährige Arbeitsbeziehungen noch einmal zu runden und abzuschließen\" (translated) ... / It argues that Lux's explanation is worse than the programme, since the working relationships he wants to close already left out women writers and directors. / ... Lux should refrain from further work as a theatre official worldwide.",
+  "sources": [
+   "https://taz.de/Boykottaufruf-gegen-Thalia-Theater/!6003681/",
+   "https://eng.lsm.lv/article/society/society/hermanis-leaves-hamburg-theater-over-german-refugee-policies.a158372/"
+  ],
+  "reason": "Boycott call of April 2024 confirmed in taz and stays a Red flag; the 2015 Hermanis withdrawal matches LSM and stays WIDER CONTEXT."
+ },
+ {
+  "id": "museum-wurth",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "speculation: the 3.5 million euro figure was Der Spiegel's hypothetical, not the court's",
+   "misattribution: the description of the offence is Der Spiegel's, not the prosecutors'",
+   "date of the order and the prosecutors' 'criminal record' remark missing",
+   "connection point repeated the record; now states the funder link only"
+  ],
+  "before": "... the amount of the fine was not disclosed, and at the highest possible daily rate of 5,000 euros it would come to 3.5 million euros (Der Spiegel, 28 May 2008). / The prosecutors said the offence lay in costs ... / Reinhold Würth built the Sammlung Würth, which Museum Würth, a venue of the Würth Group, shows.",
+  "after": "On 28 May 2008 the Amtsgericht Heilbronn issued a penalty order (Strafbefehl) of 700 daily rates against Reinhold Würth for tax evasion; the amount of the fine was not given, and the Stuttgart prosecutors said Würth now had a criminal record ... / Der Spiegel reported that costs ... / Connection: Reinhold Würth built the Würth Group (Der Spiegel), the company that owns and pays for Museum Würth.",
+  "sources": [
+   "https://www.spiegel.de/wirtschaft/steuerhinterziehung-wuerth-kommt-mit-geldstrafe-davon-a-556132.html"
+  ],
+  "reason": "The item concerns the founder of the company that funds the museum, stated as the court ordered it; 2008, so WIDER CONTEXT."
+ }
+]

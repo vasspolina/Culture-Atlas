@@ -1,0 +1,120 @@
+[
+ {
+  "id": "sydney-symphony-orchestra",
+  "section": "Red flags: 2021 dismissal of the chief executive and her claim against the orchestra",
+  "problems": [
+   "order of events changed: Limelight says the AFR story of 25 November 2021 revealed that Create NSW had commissioned two reviews, not that the reviews followed the story",
+   "cut back: 'serious concerns' is Limelight's wording"
+  ],
+  "before": "- Create NSW commissioned two reviews that raised concerns about the orchestra's leadership, after an Australian Financial Review report of 25 November 2021 (Limelight, 11 December 2021).",
+  "after": "- An Australian Financial Review story of 25 November 2021 reported that Create NSW had commissioned two reviews that raised serious concerns about the orchestra's leadership (Limelight, 11 December 2021).",
+  "sources": [
+   "https://limelight-arts.com.au/news/emma-dunch-leaves-role-as-ceo-at-sydney-symphony-orchestra",
+   "https://slippedisc.com/2022/04/boss-says-she-was-sacked-for-investigating-orchestra-sex-abuse/",
+   "https://www.lawyerly.com.au/ex-sydney-symphony-ceo-drops-case-linked-to-sexual-harassment-probe"
+  ],
+  "reason": "All other points confirmed on the opened pages (Limelight excerpts of 10/11 December 2021 and 8 April 2022, Slipped Disc 8 April 2022, Lawyerly 28 March 2023 standfirst). The allegation rests on court documents reported by The Australian and stays labelled Unverified."
+ },
+ {
+  "id": "national-art-museum-of-china",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "misquoted framing: the excerpt says the show 'is often remembered' as closed by the authorities on opening day, and then corrects this: it opened with official permission and reopened after three days",
+   "quotation 'for the many transgressions' restored to the fine point"
+  ],
+  "before": "- The 1989 China/Avant-Garde exhibition at the museum (called the National Art Gallery in the source) was \"closed by the authorities on opening day after an artist shot her own work\", Xiao Lu's installation Dialogue; it was shut for three days, reopened, and was closed again two days later after a bomb threat ...",
+  "after": "- The 1989 exhibition \"China/Avant-Garde\" at the museum ... opened on 5 February 1989 with official permission; its agreement barred performance art and sexually explicit content. After Xiao Lu shot her installation \"Dialogue\" at the opening, the exhibition was shut for three days, reopened, and was closed two days later after a bomb threat ... / - After the show the gallery fined the sponsors \"for the many transgressions\" and barred them from sponsoring exhibitions at the museum for two years (Phaidon Artspace).",
+  "sources": [
+   "https://www.phaidon.com/en-gb/blogs/artspace/three-exhibitions-that-were-censored-or-worse-for-challenging-the-status-quo"
+  ],
+  "reason": "The Phaidon Artspace page is the publisher's own excerpt of Altshuler's book, so it is kept as the source; the opening-day closure was presented as fact although the author calls it a common memory and corrects it."
+ },
+ {
+  "id": "hubei-provincial-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "absence statement: 'the report carries no statement from the museum or the photographer'"
+  ],
+  "before": "- The museum took the exhibition down in the week of 13 October 2017 after complaints from Africans; the report carries no statement from the museum or the photographer (OkayAfrica, 13 October 2017).",
+  "after": "- The museum took the exhibition down in the week of 13 October 2017 after complaints from Africans (OkayAfrica, 13 October 2017).",
+  "sources": [
+   "https://www.euronews.com/2017/10/12/outrage-as-chinese-museum-s-racist-exhibits-compare-africans-to-animals",
+   "https://www.okayafrica.com/a-chinese-museum-was-forced-to-pull-this-racist-exhibit-comparing-africans-to-animals/273298"
+  ],
+  "reason": "Facts confirmed on both pages (Euronews needed an Accept header on the second request); only the absence clause was cut."
+ },
+ {
+  "id": "statens-museum-for-kunst-smk",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "credit: the Copenhagen Post quotes Wandall from theartnewspaper.com",
+   "absence statement: 'The report records no decision to return the works'"
+  ],
+  "before": "- Wandall said: \"We should not use this regime and their illegal acts to accept this\" (The Copenhagen Post, 2 January 2014). ... The report records no decision to return the works (The Copenhagen Post, 2 January 2014).",
+  "after": "- Wandall told The Art Newspaper's website: \"We should not use this regime and their illegal acts to accept this\" (The Copenhagen Post, 2 January 2014). ... (The Copenhagen Post, 2 January 2014).",
+  "sources": [
+   "https://cphpost.dk/2014-01-02/general/national-gallery-benefited-from-the-illegal-acts-of-the-nazis-claims-historian/"
+  ],
+  "reason": "Paintings, museums of origin, dates and both quotations confirmed; a 2014 call by one named expert stays WIDER CONTEXT."
+ },
+ {
+  "id": "les-rencontres-d-arles",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "conflation: Watkins calls the absence of any tangible mention of present political realities 'deeply disappointing and troubling', not the Ukraine absence alone",
+   "quotation altered: 'turn[ed] a blind eye' is not word for word; the page has 'who turn a blind eye in order to maintain their position'"
+  ],
+  "before": "- The festival, which pledged support for Ukraine in 2022, carried no Ukrainian artists or geopolitical content in 2025, an absence the author calls \"deeply disappointing and troubling\". / - The author says the festival's board members and senior figures \"turn[ed] a blind eye\" to Gaza.",
+  "after": "- The festival declared its support for the Ukrainian people in 2022, but its 2025 edition included no mention or representation of Ukrainian artists or institutions; the author calls the absence of any tangible mention of present political realities \"deeply disappointing and troubling\". / - The author faults the board members and senior figures responsible for the festival, \"who turn a blind eye in order to maintain their position\", over Gaza.",
+  "sources": [
+   "https://1000wordsmag.com/arles-2025-staging-radicality-within-safe-limits/",
+   "https://americansuburbx.com/?p=87090",
+   "https://francegenocidetutsi.org/RetraitVedrinePhotographieArlesLibe19juin2021.pdf"
+  ],
+  "reason": "The June 2021 tribune text, signatories and the quoted sentence were confirmed in the PDF copy (dated Libération, 19 June 2021), and Védrine's reply in Livres Hebdo of 28 June 2021; the tribune stays WIDER CONTEXT as it predates November 2021."
+ },
+ {
+  "id": "musee-d-arts-de-nantes",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "absence statement: 'The report carries no reply from the city'",
+   "credit: Apollo links to Ouest-France rather than citing it in the text"
+  ],
+  "before": "... (Apollo, 9 September 2015, citing Ouest-France). The report carries no reply from the city.",
+  "after": "... (Apollo, 9 September 2015, linking to Ouest-France).",
+  "sources": [
+   "https://apollo-magazine.com/?p=278602"
+  ],
+  "reason": "Resignation, 'interference', the cancelled O'Keeffe show and 'slamming the door' (the source's own phrase) confirmed in Apollo's news round-up of 9 September 2015."
+ },
+ {
+  "id": "musee-d-art-moderne-de-paris",
+  "section": "file",
+  "problems": [
+   "not a dispute about the space: a 2010 theft and the 2017 sentences of the thieves",
+   "security faults come from a report the defence cited at trial; neither the court nor the city faulted the museum's security in the opened pages",
+   "names private persons convicted of a crime against the museum"
+  ],
+  "before": "WIDER CONTEXT: 2010 theft of five paintings, February 2017 sentences and EUR 104m damages to the City of Paris; trial report cited by the defence on the non-working alarm; city spent EUR 3m on upgrades.",
+  "after": "",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/02/21/spider-man-and-accomplices-sentenced-in-paris-museum-theft",
+   "https://www.theartnewspaper.com/2017/01/31/trial-testimony-reveals-how-one-man-walked-off-with-five-masterpieces-worth-euro108m-from-a-paris-museum"
+  ],
+  "reason": "The Art Newspaper attributes the 'damning report' on security to the defence and records only that the city upgraded the system and that no one at the museum was sanctioned; no court or city finding against the museum, so the file is deleted."
+ },
+ {
+  "id": "gropius-bau",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "omitted reply: the Jüdische Allgemeine says Simon disputed the taz account"
+  ],
+  "before": "Simon said he had sent the museum his opinion in writing",
+  "after": "Simon disputed the taz account; he said he had sent the museum his opinion in writing",
+  "sources": [
+   "https://www.juedische-allgemeine.de/unsere-woche/aus-respekt",
+   "https://www.tagesspiegel.de/kultur/gefangen-6432115.html"
+  ],
+  "reason": "Removal, film length, Sievernich's dpa quote and Simon's words confirmed (JA, 1 November 2011); the Tagesspiegel headline is confirmed in the page code. The en dash in 'Tür an Tür: Polen – Deutschland' is the title's own and stays."
+ }
+]

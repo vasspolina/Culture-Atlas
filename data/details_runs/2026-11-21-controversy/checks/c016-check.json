@@ -1,0 +1,67 @@
+[
+ {
+  "id": "centro-de-arte-contemporáneo-de-quito-quito",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "sector-wide protest outside the Constitutional Court does not name the space",
+   "imprecise credit: El Comercio dated only '2017' (interview of 6 March 2017)",
+   "omitted reply: Corral said legal procedures were followed",
+   "'five spaces' not stated by Expreso"
+  ],
+  "before": "... artists and cultural collectives protested outside the court in May 2026 (Prensa Latina, 18 May 2026). The Centro de Arte Contemporáneo is one of the five spaces ...",
+  "after": "The reform requires municipalities to spend 70 per cent ... (Prensa Latina, 18 May 2026). The Centro de Arte Contemporáneo is one of the spaces the Fundación Museos de la Ciudad runs (Expreso, 8 May 2026). (El Comercio points dated 6 March 2017; Sierra's removal attributed to the Secretaría de Cultura as his letter says; Corral's reply added.)",
+  "sources": [
+   "https://www.elcomercio.com/tendencias/pablocorralvega-entrevista-centrodeartecontemporaneo-leonsierra-mariaelenamachuca.html",
+   "https://www.expreso.ec/quito/museos-quito-celebran-20-anos-medio-incertidumbre-reforma-cootad-281521.html",
+   "https://www.prensa-latina.cu/2026/05/18/gobierno-de-ecuador-impulsa-museo-nacional-otros-espacios-peligran/"
+  ],
+  "reason": "Prensa Latina returned HTTP 500 at first and opened on a retry; it confirms the 70/30 rule and the operator's suit. The court protest was aimed at the law, not at the space, so it was cut. Expreso lists the operator's spaces including the CAC without giving a count."
+ },
+ {
+  "id": "museo-nacional-del-ecuador-muna-quito",
+  "section": "Red flags: 2026 dispute over the design of the new museum building",
+  "problems": [
+   "repetition: record funding and overview already state the 6 July winner, the Change.org petition, Muñoz leaving on 9 July and Luque's 10 July rejection on X",
+   "vague: 'drew criticism from civil society participants' (Primicias gives the presentation ending amid shouts of protest)",
+   "quote shortened: Campo Baeza + MAODA statement now quoted in full sentence"
+  ],
+  "before": "(six points: winner announced 6 July; petition with almost 3,000 signatures; Muñoz on Radio Sucesos; 9 July forum and resignation; Luque's rejection on X; 14 July statement)",
+  "after": "(four points: Muñoz on Radio Sucesos 7 July; 9 July presentation ended amid shouts of protest; Muñoz, MuNa director 2021 to 2023, said the minister asked for her resignation, ministry silent; 14 July Campo Baeza + MAODA statement)",
+  "sources": [
+   "https://www.primicias.ec/entretenimiento/cultura/diseno-museo-nacional-ecuador-muna-viceministra-cultura-firmas-rechazo-127453/",
+   "https://www.primicias.ec/entretenimiento/cultura/diseno-museo-nacional-ecuador-muna-concurso-publico-rechazo-gobierno-127929/",
+   "https://www.extra.ec/noticia/ecuador/ministra-gilda-alcivar-me-pidio-renuncia-romina-munoz-polemica-nuevo-muna-157942.html"
+  ],
+  "reason": "All points were confirmed. Those the record already carries were cut, and only the new facts remain under the same heading."
+ },
+ {
+  "id": "fiji-museum-suva",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition: record overview already states Nemani opposed the 2019 Thurston Gardens proposal",
+   "changed detail: the Fiji Sun says the minister's statement came earlier ('were earlier clarified'), not as a reply"
+  ],
+  "before": "- In 2019 land in Thurston Gardens, Suva, was earmarked for the India High Commission. Fiji Museum director Sipiriano Nemani objected that ... - Nemani said: \"It's our right to protect the site\". Lands Minister Ashneel Sudhakar replied: \"The lot was not a burial site.\"",
+  "after": "- In March 2019 Fiji Museum director Sipiriano Nemani said the Thurston Gardens land earmarked for the India High Commission was a former village site and a meke ground in the early 1930s, and that a cave there stored the National Museum's objects in the 1940s: \"It's our right to protect the site\" (Fiji Sun, 2 March 2019). - Lands Minister Ashneel Sudhakar had said earlier: \"The lot was not a burial site.\"",
+  "sources": [
+   "https://fijisun.com.fj/news/nation/465323"
+  ],
+  "reason": "Merged into the reasons and the minister's statement, which the record lacks. The order of the two statements now follows the page."
+ },
+ {
+  "id": "national-museum-of-finland",
+  "section": "Red flags: 2024 decision to return a looted Dahomey stool to Benin; SOURCES",
+  "problems": [
+   "outdated: the museum returned the kataklé on 13 May 2025; 'no date for the handover had been set' is no longer true",
+   "archive copy replaced: the page moved to suomenkansallismuseo.fi"
+  ],
+  "before": "Red flags: 2024 decision to return a looted Dahomey stool to Benin ... no date for the handover had been set ... https://web.archive.org/web/20250117052645/https://www.kansallismuseo.fi/en/articles/...",
+  "after": "Red flags: 2025 return of a looted Dahomey stool to Benin ... - The museum returned the kataklé at a ceremony in Cotonou on 13 May 2025, attended by Finland's Minister of Science and Culture Mari-Leena Talvitie and Benin's Minister of Culture Jean Michel Abimbola ... https://suomenkansallismuseo.fi/en/news/repatriation-namibia-power-stone-fragments/",
+  "sources": [
+   "https://suomenkansallismuseo.fi/en/news/repatriation-namibia-power-stone-fragments/",
+   "https://suomenkansallismuseo.fi/en/news/katakle-repatriation-ceremony/",
+   "https://www.sttinfo.fi/tiedote/70640303/the-national-museum-of-finland-launches-a-repatriation-to-benin"
+  ],
+  "reason": "The old kansallismuseo.fi URL redirects to the homepage. The site search found the article's new address, whose text matches the archive copy. The same search turned up the museum's page on the May 2025 return ceremony."
+ }
+]
