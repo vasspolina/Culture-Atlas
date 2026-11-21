@@ -2294,7 +2294,13 @@ body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-me
      closes the record to the map, as the chat's closes the chat), the Chat and Details tabs centred, on paper that stays
      put while the record scrolls under it. */
   :root.gm-from-chat #gmTopBtns #gmBackChatBtn:not(#sh-x):not(#sh-y){display:none!important}
-  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){top:0!important;bottom:0!important;height:auto!important;
+  :root.gm-from-chat #globeViewport #dossier-bottom-sheet:not(.hidden):not(#sh-x):not(#sh-y){top:0!important;bottom:var(--gm-under,0px)!important;height:auto!important;
+    /* The page ends where the screen can be seen (user, 21 Nov 2026: "scroll on mobile gets stuck"). It was pinned to the
+       whole page, which on an iPhone runs under the browser's bottom bar and the home strip (viewport-fit=cover), so the
+       record's last lines stopped under the bar and no scroll could bring them up. It is never taller than the visible
+       screen (100dvh), it stops above whatever the browser draws over the page's foot (--gm-under, assets/phone-maps.js),
+       and its last line clears the home strip. */
+    max-height:100dvh!important;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))!important;
     padding-top:0!important;border:0!important;border-radius:0!important;
     box-shadow:none!important;
     animation:ca-sheet-up .42s cubic-bezier(.32,.72,0,1) backwards}
