@@ -12,3 +12,11 @@ test('index.html and sw.js name the same release', () => {
   assert.ok(page && worker, 'both release names are found');
   assert.equal(page[1], worker[1]);
 });
+
+// The third number of a release (docs/design.md): the ?v= on the sw.js registration. Release v900 left it at 899.
+test('the service worker is registered under the same release', () => {
+  const page = /const ATLAS_RELEASE = 'culture-atlas-v(\d+)'/.exec(read('index.html'));
+  const registered = /register\('sw\.js\?v=(\d+)'\)/.exec(read('index.html'));
+  assert.ok(page && registered, 'both numbers are found');
+  assert.equal(registered[1], page[1]);
+});
