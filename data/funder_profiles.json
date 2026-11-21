@@ -19120,6 +19120,24 @@
   ],
   "batch": "fp7"
  },
+ "mlagacitycouncil|Spain": {
+  "name": "Ayuntamiento de Málaga",
+  "short": "Málaga City Council",
+  "kind": "gov",
+  "what": "The city government of Málaga, capital of the province of Málaga, led by Mayor Francisco de la Torre and seated in the Casa Consistorial.",
+  "money": "The municipal budget of Málaga.",
+  "site": "https://www.malaga.eu",
+  "city": "Málaga",
+  "country": "Spain",
+  "address": "Avenida de Cervantes, 4, Málaga",
+  "status": "done",
+  "sources": [
+   "https://www.malaga.eu/el-ayuntamiento/bienvenida/",
+   "https://es.wikipedia.org/wiki/Ayuntamiento_de_M%C3%A1laga",
+   "https://en.wikipedia.org/wiki/M%C3%A1laga"
+  ],
+  "batch": "fp46"
+ },
  "mllerfonden": {
   "name": "A.P. Møller og Hustru Chastine Mc-Kinney Møllers Fond til almene Formaal",
   "short": "A.P. Møller Fonden",
@@ -19171,6 +19189,55 @@
    "https://www.mondriaanfonds.nl/en/about-the-fund/"
   ],
   "batch": "fp1"
+ },
+ "monet": {
+  "name": "Monet family",
+  "kind": "person",
+  "what": "The family of the painter Claude Monet; his younger son and sole heir Michel Monet (1878 to 1966) made the Musée Marmottan his universal legatee.",
+  "money": "Claude Monet's estate: the house at Giverny and Impressionist canvases, his own works among them.",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.marmottan.fr/en/the-museum/donors/",
+   "https://en.wikipedia.org/wiki/Michel_Monet"
+  ],
+  "batch": "fp46"
+ },
+ "montresso": {
+  "name": "Fondation Montresso",
+  "short": "Montresso Art Foundation",
+  "kind": "found",
+  "what": "An art foundation in Marrakesh, a legal entity since 1981, that has run the Jardin Rouge artists' residency since 2009; Jean-Louis Haguenauer is the patron behind its collection.",
+  "money": "An endowment from Jean-Louis Haguenauer, plus sales of residency artists' works to the collectors in its friends' group.",
+  "site": "https://www.montresso.com",
+  "city": "Marrakesh",
+  "country": "Morocco",
+  "address": "Jnane Al'ahmar Ouidane, Douar Ouled Zbir, Marrakesh",
+  "wrong_match": "The Kin ArtStudio line names a partnership with the foundation and shows no payment.",
+  "status": "done",
+  "sources": [
+   "https://www.artribune.com/?p=759256",
+   "https://transartists.org/en/air/fondation-montresso"
+  ],
+  "batch": "fp46"
+ },
+ "monumentsboard": {
+  "name": "Ghana Museums and Monuments Board",
+  "short": "GMMB",
+  "kind": "gov",
+  "what": "A Ghanaian government body set up in March 1957 as legal custodian of the country's material cultural heritage; it is governed by Act 387 of 1969.",
+  "money": "The Government of Ghana, whose agency it is, and the fees it charges at its museums and monuments.",
+  "site": "https://gmmb.gov.gh",
+  "city": "Accra",
+  "country": "Ghana",
+  "address": "2 Barnes Road, Adabraka, Accra",
+  "status": "done",
+  "sources": [
+   "https://gmmb.gov.gh/about-us/",
+   "https://gmmb.gov.gh/contact-us/",
+   "https://en.wikipedia.org/wiki/Ghana_Museums_and_Monuments_Board"
+  ],
+  "batch": "fp46"
  },
  "moriprovan": {
   "name": "Mori Provan Foundation",
@@ -19473,6 +19540,21 @@
   ],
   "batch": "fp36"
  },
+ "municipalmuseumofcityofbologna|Italy": {
+  "name": "Comune di Bologna",
+  "short": "City of Bologna",
+  "kind": "gov",
+  "what": "The city government of Bologna, capital of the Emilia-Romagna region; the City Council is its legislative body and Matteo Lepore has been mayor since October 2021.",
+  "money": "The municipal budget of Bologna.",
+  "site": "https://www.comune.bologna.it",
+  "city": "Bologna",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Bologna"
+  ],
+  "batch": "fp46"
+ },
  "municipalmuseumofcityofkrakw|Poland": {
   "name": "Gmina Miejska Kraków",
   "short": "City of Kraków",
@@ -19489,6 +19571,19 @@
   ],
   "batch": "fp17",
   "renamed": "The museum sentence calls MOCAK a municipal museum of the City of Kraków; its organiser is Gmina Miejska Kraków, not the Muzeum Krakowa."
+ },
+ "munsonfamilysindustrialinterests": {
+  "name": "Munson family",
+  "kind": "person",
+  "what": "Three generations of Munsons of Utica, New York, descended from Alfred Munson (1793 to 1854), who moved there from Connecticut in 1823.",
+  "money": "Alfred Munson's industrial interests: burrstone and textile manufacturing, coal mines, canal development, and railroad and steamboat transportation.",
+  "arts": "Family members Maria Williams Proctor, Thomas Proctor and Frederick Proctor drafted the plan for the arts institute, chartered in 1919.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.munson.art/about/history"
+  ],
+  "batch": "fp46"
  },
  "museumsvereinmnchengladbach": {
   "name": "Museumsverein Abteiberg e.V.",
@@ -19553,6 +19648,21 @@
   ],
   "batch": "fp33"
  },
+ "mylesmcdonoughcharitable": {
+  "name": "The C. Jean & Myles McDonough Charitable Foundation",
+  "short": "McDonough Charitable Foundation",
+  "kind": "found",
+  "what": "A private family foundation in Worcester, Massachusetts, set up by Myles McDonough, founder of FLEXcon, and his wife Jean; its tax exemption dates from July 1988.",
+  "money": "Myles McDonough's fortune from FLEXcon, which he founded in a Spencer garage in 1956; net assets were $18,640,405 in November 2025.",
+  "city": "Worcester",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.wpi.edu/news/mcdonough-inmemor",
+   "https://projects.propublica.org/nonprofits/organizations/42947391"
+  ],
+  "batch": "fp46"
+ },
  "nacsingapore": {
   "name": "National Arts Council",
   "short": "NAC Singapore",
@@ -19586,6 +19696,21 @@
    "https://en.wikipedia.org/wiki/Heroes%27_Acre_(Namibia)"
   ],
   "batch": "fp40"
+ },
+ "nanjingmunicipalgovernment|China": {
+  "name": "Nanjing Municipal People's Government",
+  "short": "Nanjing city government",
+  "kind": "gov",
+  "what": "The government of Nanjing, capital of Jiangsu province and a sub-provincial city, under the rule of the Chinese Communist Party through the city's Party Secretary.",
+  "money": "The Nanjing municipal budget.",
+  "site": "https://www.nanjing.gov.cn",
+  "city": "Nanjing",
+  "country": "China",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Nanjing"
+  ],
+  "batch": "fp46"
  },
  "naomimilgrom": {
   "name": "Naomi Milgrom",
@@ -19626,6 +19751,22 @@
    "https://centrezotov.ru/partners/"
   ],
   "batch": "fp34"
+ },
+ "nationalartscentre": {
+  "name": "National Arts Centre Foundation",
+  "short": "NAC Foundation",
+  "kind": "found",
+  "what": "The registered charity that raises funds for Canada's National Arts Centre in Ottawa; it has run for over 25 years.",
+  "money": "Gifts from individuals, companies and foundations across Canada.",
+  "site": "https://nac-cna.ca/en/foundation",
+  "city": "Ottawa",
+  "country": "Canada",
+  "address": "1 Elgin Street, Ottawa, Ontario K1P 5W1",
+  "status": "done",
+  "sources": [
+   "https://nac-cna.ca/en/foundation/about"
+  ],
+  "batch": "fp46"
  },
  "nationalartscouncil|Singapore": {
   "name": "National Arts Council",
@@ -20005,6 +20146,23 @@
    "https://en.wikipedia.org/wiki/Newcastle_City_Council"
   ],
   "batch": "fp27"
+ },
+ "newplymouthdistrictcouncil|New Zealand": {
+  "name": "New Plymouth District Council",
+  "short": "NPDC",
+  "kind": "gov",
+  "what": "The local authority of New Plymouth District in New Zealand; voters elect its mayor and councillors every three years.",
+  "money": "The council's own income: operating revenue of NZ$210.946 million in 2022/2023.",
+  "site": "https://www.npdc.govt.nz",
+  "city": "New Plymouth",
+  "country": "New Zealand",
+  "address": "84 Liardet Street, New Plymouth 4340",
+  "status": "done",
+  "sources": [
+   "https://www.npdc.govt.nz/contact-us/",
+   "https://en.wikipedia.org/wiki/New_Plymouth_District"
+  ],
+  "batch": "fp46"
  },
  "newyorkstatecouncilonarts|USA": {
   "name": "New York State Council on the Arts",
@@ -20754,6 +20912,23 @@
   ],
   "batch": "fp40"
  },
+ "officeofpresidentatharvard": {
+  "name": "Harvard University",
+  "short": "Harvard",
+  "kind": "priv",
+  "what": "A private research university in Cambridge, Massachusetts, founded in 1636 by the Massachusetts General Court; the Harvard Corporation and the Board of Overseers govern it.",
+  "money": "An endowment of $68 billion in the 2026 fiscal year, when its operating expenses were $6.6 billion.",
+  "site": "https://www.harvard.edu",
+  "city": "Cambridge, Massachusetts",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.harvard.edu/about/endowment/",
+   "https://www.harvard.edu/about/",
+   "https://en.wikipedia.org/wiki/Harvard_University"
+  ],
+  "batch": "fp46"
+ },
  "ogasawara": {
   "name": "Ogasawara Toshiaki Memorial Foundation",
   "short": "Ogasawara Foundation",
@@ -21288,6 +21463,23 @@
   ],
   "batch": "fp40"
  },
+ "paransstatesecretariatofcultureallocatedr|Brazil": {
+  "name": "Secretaria de Estado da Cultura do Paraná",
+  "short": "SEEC",
+  "kind": "gov",
+  "what": "The culture secretariat of the government of Paraná, a state in the south of Brazil, with its office in Curitiba, the state capital.",
+  "money": "The Paraná state budget.",
+  "site": "https://www.cultura.pr.gov.br",
+  "city": "Curitiba",
+  "country": "Brazil",
+  "address": "Rua Ébano Pereira, 240, Centro, 80410-240 Curitiba, PR",
+  "status": "done",
+  "sources": [
+   "https://www.cultura.pr.gov.br/",
+   "https://en.wikipedia.org/wiki/Paran%C3%A1_(state)"
+  ],
+  "batch": "fp46"
+ },
  "paribu": {
   "name": "Paribu Kripto Varlık Alım Satım Platformu A.Ş.",
   "short": "Paribu",
@@ -21369,6 +21561,19 @@
    "https://pac.org.mx/acerca/"
   ],
   "batch": "fp30"
+ },
+ "patronatomembers": {
+  "name": "Patronato de las Artes",
+  "kind": "priv",
+  "what": "A Lima association that 25 businessmen and intellectuals formed in 1954 to found an art museum; the Municipality of Lima ceded it the Palacio de la Exposición that year.",
+  "site": "https://mali.pe",
+  "city": "Lima",
+  "country": "Peru",
+  "status": "done",
+  "sources": [
+   "https://mali.pe/es/museo/nosotros/patronato/"
+  ],
+  "batch": "fp46"
  },
  "patronatopageshowsinterceramic": {
   "name": "Internacional de Cerámica, S.A.B. de C.V.",
@@ -21504,6 +21709,24 @@
   ],
   "batch": "fp19"
  },
+ "pdvsa": {
+  "name": "Petróleos de Venezuela, S.A.",
+  "short": "PDVSA",
+  "kind": "corp",
+  "what": "The state-owned oil and gas company of Venezuela, founded in January 1976 and owned by the Government of Venezuela.",
+  "money": "Exploration, production, refining and export of Venezuelan oil and natural gas.",
+  "site": "http://www.pdvsa.com",
+  "city": "Caracas",
+  "country": "Venezuela",
+  "address": "Avenida Libertador con calle El Empalme, La Campiña, Caracas",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/PDVSA",
+   "https://web.archive.org/web/20251211204923/http://www.pdvsa.com/index.php?lang=es",
+   "https://eldiario.com/2026/11/10/jubilados-pdvsa-exigieron-pago-deuda-fondo-pensiones-la-campina/"
+  ],
+  "batch": "fp46"
+ },
  "pellerestates": {
   "name": "Andrew Peller Limited",
   "kind": "corp",
@@ -21616,6 +21839,23 @@
    "https://en.wikipedia.org/wiki/PGE_Polska_Grupa_Energetyczna"
   ],
   "batch": "fp40"
+ },
+ "philipmorris": {
+  "name": "Altria Group, Inc.",
+  "short": "Philip Morris",
+  "kind": "corp",
+  "what": "A US tobacco company, named Philip Morris Companies Inc. from 1985 to 2003 and parent of Philip Morris USA, with headquarters in Richmond, Virginia.",
+  "money": "Sales of cigarettes and other tobacco products: revenue of US$23.28 billion in 2025.",
+  "site": "https://www.altria.com",
+  "city": "Richmond",
+  "country": "United States",
+  "address": "6601 West Broad Street, Richmond, VA 23230",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Altria",
+   "https://www.altria.com/contact-us"
+  ],
+  "batch": "fp46"
  },
  "phillips": {
   "name": "Phillips",
@@ -21738,6 +21978,26 @@
   ],
   "batch": "fp27"
  },
+ "planoderecuperaoeresilincia": {
+  "name": "Plano de Recuperação e Resiliência",
+  "short": "PRR",
+  "kind": "gov",
+  "what": "Portugal's programme of reforms and investments under the EU recovery facility, approved by the Council on 13 July 2021 and coordinated by the Recuperar Portugal mission unit.",
+  "money": "The European Union's NextGenerationEU instrument: €16.3 billion in grants and €5.6 billion in loans after the revision approved on 12 December 2025.",
+  "arts": "Its Cultural Networks and Digital Transition investment upgrades the technology of public cultural buildings to preserve works of art and heritage.",
+  "site": "https://recuperarportugal.gov.pt",
+  "city": "Lisbon",
+  "country": "Portugal",
+  "address": "Av. João Crisóstomo, 11, 1000-177 Lisboa",
+  "status": "done",
+  "sources": [
+   "https://reforms-investments.ec.europa.eu/recovery-and-resilience-facility-1/country-pages/portugals-recovery-and-resilience-plan_en",
+   "https://web.archive.org/web/20261021182232/https://recuperarportugal.gov.pt/",
+   "https://pt.wikipedia.org/wiki/Plano_de_Recupera%C3%A7%C3%A3o_e_Resili%C3%AAncia",
+   "https://eco.sapo.pt/2025/12/12/conselho-europeu-deu-luz-verde-a-reprogramacao-do-prr/"
+  ],
+  "batch": "fp46"
+ },
  "platinumbarjeel": {
   "name": "Barjeel Art Foundation",
   "kind": "found",
@@ -21803,6 +22063,23 @@
    "https://en.wikipedia.org/wiki/PNC_Financial_Services"
   ],
   "batch": "fp5"
+ },
+ "polaart": {
+  "name": "Pola Art Foundation",
+  "kind": "found",
+  "what": "A public interest foundation in Tokyo, set up in May 1996 by Suzuki Tsuneshi, then owner of the Pola Orbis cosmetics group; it runs the Pola Museum of Art.",
+  "money": "Suzuki Tsuneshi's private funds, given with the cooperation of the Pola Orbis Group companies.",
+  "arts": "It gives grants for overseas study by young artists, research by museum curatorial staff and international exchange in art.",
+  "site": "https://www.pola-art-foundation.jp",
+  "city": "Tokyo",
+  "country": "Japan",
+  "address": "2-2-3 Nishi-Gotanda, Shinagawa-ku, Tokyo 141-8523",
+  "status": "done",
+  "sources": [
+   "https://www.pola-art-foundation.jp/english.html",
+   "https://www.pola-art-foundation.jp/foundation/"
+  ],
+  "batch": "fp46"
  },
  "polishcultureministry|UK": {
   "name": "Ministerstwo Kultury i Dziedzictwa Narodowego",
@@ -21985,6 +22262,24 @@
   ],
   "batch": "fp26"
  },
+ "preetorius": {
+  "name": "Preetorius-Stiftung",
+  "short": "Preetorius Foundation",
+  "kind": "found",
+  "what": "A public foundation under civil law in Munich, set up by the joint will of the stage designer Emil Preetorius and Lilly Preetorius and approved on 31 July 1998.",
+  "money": "Its own endowment, left under the Preetorius will, plus donations.",
+  "arts": "It pays for research, restoration and purchases for the Preetorius collection of Asian art, a large part of which Emil Preetorius gave to Bavaria in 1960.",
+  "site": "https://preetoriusstiftung.de",
+  "city": "Munich",
+  "country": "Germany",
+  "address": "Ländstraße 4, 80538 München",
+  "status": "done",
+  "sources": [
+   "https://preetoriusstiftung.de/home/die-stiftung/entwicklung-der-preetorius-stiftung/",
+   "https://preetoriusstiftung.de/home/impressum/"
+  ],
+  "batch": "fp46"
+ },
  "prefeituradorio": {
   "name": "Prefeitura do Rio de Janeiro",
   "short": "Prefeitura do Rio",
@@ -22053,6 +22348,32 @@
    "https://en.wikipedia.org/wiki/Calouste_Gulbenkian_Foundation"
   ],
   "batch": "fp8"
+ },
+ "privatelyheldbybeurdeleybunnagfamily": {
+  "name": "Beurdeley-Bunnag family",
+  "kind": "person",
+  "what": "The family of Jean Michel Beurdeley, his late wife Patsri Bunnag and their son Eric Bunnag Booth, who set up MAIIAM, a private contemporary art museum in northern Thailand.",
+  "site": "https://maiiam.com",
+  "city": "Chiang Mai",
+  "country": "Thailand",
+  "status": "done",
+  "sources": [
+   "https://maiiam.com/en"
+  ],
+  "batch": "fp46"
+ },
+ "privatemuseumofhoteliercollectorzhenghao": {
+  "name": "Zheng Hao",
+  "kind": "person",
+  "what": "A Chinese hotelier and collector who opened the How Art Museum in Wenzhou in 2013 and its Shanghai venue on 20 September 2017.",
+  "money": "His hotel business, which includes the Onehome Art Hotel in Shanghai's Zhangjiang Hi-Tech Park, opened in 2016.",
+  "city": "Shanghai",
+  "country": "China",
+  "status": "done",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/09/22/chinese-hotelier-collector-opens-shanghais-newest-private-museum"
+  ],
+  "batch": "fp46"
  },
  "privateofpatriziasandrettorerebaudengo": {
   "name": "Fondazione Sandretto Re Rebaudengo",
@@ -22225,6 +22546,23 @@
   ],
   "batch": "fp25"
  },
+ "provincialgrowth": {
+  "name": "Provincial Growth Fund",
+  "short": "PGF",
+  "kind": "gov",
+  "what": "A New Zealand government fund created in 2018 to invest in regional economies, run by Kānoa, the Regional Economic Development and Investment Unit.",
+  "money": "The New Zealand government's budget.",
+  "site": "https://www.growregions.govt.nz",
+  "city": "Wellington",
+  "country": "New Zealand",
+  "address": "15 Stout Street, Wellington 6011",
+  "status": "done",
+  "sources": [
+   "https://www.growregions.govt.nz/established-funds/what-we-have-funded/the-provincial-growth-fund",
+   "https://www.growregions.govt.nz/about-us/contact-us"
+  ],
+  "batch": "fp46"
+ },
  "provinciezeeland": {
   "name": "Provincie Zeeland",
   "short": "Province of Zeeland",
@@ -22329,6 +22667,20 @@
    "https://www.catalannews.com/highlights/item/perfume-maker-puig-unveils-new-headquarters-designed-by-moneo-and-aims-to-rank-the-world-s-3rd-by-2020"
   ],
   "batch": "fp19"
+ },
+ "putnamsisters": {
+  "name": "Amy and Anne Putnam",
+  "short": "Putnam sisters",
+  "kind": "person",
+  "what": "Sisters who settled in San Diego in the early 20th century, gave to the San Diego Museum of Art and in 1951 formed the Putnam Foundation for their art collection.",
+  "money": "Their inheritance as nieces and heirs of Henry W. Putnam (1825 to 1915), inventor and manufacturer of the Lightning stopper.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Timken_Museum_of_Art",
+   "https://en.wikipedia.org/wiki/Henry_W._Putnam"
+  ],
+  "batch": "fp46"
  },
  "pwc": {
   "name": "PricewaterhouseCoopers",
@@ -22553,6 +22905,22 @@
   ],
   "batch": "fp10",
   "renamed": "The atlas name points at the Danaher Corporation, while the museum sentence means a gift from the Rales family."
+ },
+ "rashidalkhalifa": {
+  "name": "Rashid bin Khalifa Al Khalifa",
+  "short": "Rashid Al Khalifa",
+  "kind": "person",
+  "what": "A Bahraini artist and collector born in Riffa in 1952, a member of the royal family and chairman of Bahrain's National Council for Arts.",
+  "arts": "He founded the Bahrain Arts Society in 1983 and is its honorary president.",
+  "site": "https://www.rakartfoundation.com",
+  "city": "Riffa",
+  "country": "Bahrain",
+  "status": "done",
+  "sources": [
+   "https://www.rakartfoundation.com/about",
+   "https://en.wikipedia.org/wiki/Rashid_bin_Khalifa_Al_Khalifa"
+  ],
+  "batch": "fp46"
  },
  "rattispa": {
   "name": "Ratti S.p.A. Società Benefit",
@@ -22790,6 +23158,21 @@
    "https://resolute-av.com/contact"
   ],
   "batch": "fp19"
+ },
+ "revada": {
+  "name": "Revada Foundation",
+  "kind": "found",
+  "what": "A private foundation that Daniel Logan formed and named after his parents, Reva and David Logan; its tax exemption dates from January 2016 and it files from Alexandria, Virginia.",
+  "money": "The Logan family's wealth from David Logan, a Chicago-born lawyer and investor; net assets were $54,359,054 in June 2025.",
+  "arts": "It funds Mosaic Theater in Washington, which Daniel Logan co-founded in 2014, and Studio Acting Conservatory.",
+  "city": "Alexandria",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.insidephilanthropy.com/home/2022-10-20-the-logan-legacy-three-brothers-carry-on-the-philanthropic-work-their-parents-started",
+   "https://projects.propublica.org/nonprofits/organizations/474329394"
+  ],
+  "batch": "fp46"
  },
  "rgionbourgognefranchecomt": {
   "name": "Région Bourgogne-Franche-Comté",
@@ -23082,6 +23465,19 @@
   ],
   "batch": "fp19"
  },
+ "robertwoodsbliss": {
+  "name": "Robert Woods Bliss",
+  "kind": "person",
+  "what": "A US diplomat (1875 to 1962), ambassador to Argentina from 1927 to 1933, who collected pre-Columbian and Byzantine art with his wife Mildred Barnes Bliss.",
+  "money": "Mildred Barnes Bliss's inheritance, largely from her father Demas Barnes's investments in the Centaur Company, maker of Fletcher's Castoria.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Robert_Woods_Bliss",
+   "https://en.wikipedia.org/wiki/Mildred_Barnes_Bliss"
+  ],
+  "batch": "fp46"
+ },
  "rocheespaa": {
   "name": "Roche Farma, S.A.U.",
   "short": "Roche Farma",
@@ -23269,6 +23665,20 @@
   ],
   "batch": "fp20"
  },
+ "rouart": {
+  "name": "Rouart family",
+  "kind": "person",
+  "what": "A French family descended from Berthe Morisot through her daughter Julie Manet, who married the painter Ernest Rouart in 1900; their son Denis Rouart was an art historian.",
+  "money": "Inherited family collections, Berthe Morisot's works among them.",
+  "arts": "Denis and Annie Rouart's bequest reached the Musée Marmottan Monet in 1993 and Julien and Thérèse Rouart's in 1996; Françoise Rouart's followed in 2018.",
+  "country": "France",
+  "status": "done",
+  "sources": [
+   "https://www.marmottan.fr/en/the-museum/donors/",
+   "https://en.wikipedia.org/wiki/Julie_Manet"
+  ],
+  "batch": "fp46"
+ },
  "royalairmaroc": {
   "name": "Royal Air Maroc",
   "kind": "corp",
@@ -23284,6 +23694,24 @@
    "https://fr.wikipedia.org/wiki/Royal_Air_Maroc"
   ],
   "batch": "fp20"
+ },
+ "royalcommissionforalula|Saudi Arabia": {
+  "name": "Royal Commission for AlUla",
+  "short": "RCU",
+  "kind": "gov",
+  "what": "The Saudi government agency that governs AlUla Governorate in Medina Province, set up in July 2017 and chaired by Crown Prince Mohammed bin Salman.",
+  "money": "The Saudi state budget.",
+  "site": "https://www.rcu.gov.sa",
+  "city": "AlUla",
+  "country": "Saudi Arabia",
+  "address": "Royal Commission for AlUla Headquarters, Madinah Road, As-Sukhayrat, AlUla 43312",
+  "status": "done",
+  "sources": [
+   "https://www.rcu.gov.sa/en/about-rcu",
+   "https://www.rcu.gov.sa/en/contact",
+   "https://en.wikipedia.org/wiki/Royal_Commission_for_Al-Ula"
+  ],
+  "batch": "fp46"
  },
  "royalinstituteofbritisharchitects": {
   "name": "Royal Institute of British Architects",
@@ -23354,6 +23782,20 @@
    "https://www.guggenheim-venice.it/en/support-us/corporate-engagement/guggenheim-intrapresae/rubelli/"
   ],
   "batch": "fp32"
+ },
+ "rubells": {
+  "name": "Don and Mera Rubell",
+  "kind": "person",
+  "what": "Miami collectors, married in 1964, who opened the Rubell Family Collection in 1993; it is now the Rubell Museum in Miami and Washington.",
+  "money": "An inheritance from Don's brother Steve Rubell, co-owner of Studio 54, who died in 1989, and investments in South Florida hotels.",
+  "site": "https://rubellmuseum.org",
+  "city": "Miami",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Rubell_Museum"
+  ],
+  "batch": "fp46"
  },
  "rubismcnat": {
   "name": "Rubis Mécénat",
@@ -23434,6 +23876,22 @@
    "https://rusmuseum.ru/upload/medialibrary/f91/d2c70zwq3l272mks7mv5dff8sz8d19qf/nomer%201228.pdf"
   ],
   "batch": "fp36"
+ },
+ "russiasdefenceministry|Russia": {
+  "name": "Министерство обороны Российской Федерации",
+  "short": "Russian Ministry of Defence",
+  "kind": "gov",
+  "what": "The governing body of the Russian Armed Forces, formed on 16 March 1992; Andrey Belousov is minister and the president of Russia directs its activity.",
+  "money": "The Russian federal budget.",
+  "site": "https://mil.ru",
+  "city": "Moscow",
+  "country": "Russia",
+  "address": "Znamenka 19, Moscow",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Defence_(Russia)"
+  ],
+  "batch": "fp46"
  },
  "russiasmajornaturalgasproducer": {
   "name": "Leonid Mikhelson",
@@ -23602,6 +24060,53 @@
    "https://en.wikipedia.org/wiki/Salone_del_Mobile"
   ],
   "batch": "fp20"
+ },
+ "salzburgag": {
+  "name": "Salzburg AG für Energie, Verkehr und Telekommunikation",
+  "short": "Salzburg AG",
+  "kind": "corp",
+  "what": "An energy and infrastructure company founded in 2000, owned by the State of Salzburg, the City of Salzburg and an Energie AG Oberösterreich holding company.",
+  "money": "Energy, water, telecommunications and transport services in Salzburg state: revenue of 2,710.3 million euros in 2023.",
+  "site": "https://www.salzburg-ag.at",
+  "city": "Salzburg",
+  "country": "Austria",
+  "address": "Bayerhamerstraße 16, 5020 Salzburg",
+  "status": "done",
+  "sources": [
+   "https://www.salzburg-ag.at/servicemenue/impressum.html",
+   "https://de.wikipedia.org/wiki/Salzburg_AG"
+  ],
+  "batch": "fp46"
+ },
+ "samstag": {
+  "name": "Gordon Samstag",
+  "short": "Samstag bequest",
+  "kind": "person",
+  "what": "An American artist (1906 to 1990), born in New York, who taught at the South Australian School of Art from 1961 to 1970.",
+  "money": "The estate of Gordon Samstag and his wife Anne, whose bequest set up scholarships for Australian artists in 1991.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://samstag.adelaide.edu.au/scholarship/",
+   "https://en.wikipedia.org/wiki/Samstag_Museum"
+  ],
+  "batch": "fp46"
+ },
+ "samsungofculture": {
+  "name": "Samsung Foundation of Culture",
+  "kind": "found",
+  "what": "A cultural foundation that Samsung's founder Lee Byung-chull set up in 1965; it operates the Leeum Museum of Art in Seoul and the Ho-Am Art Museum in Yongin.",
+  "site": "https://www.samsungfoundation.org",
+  "city": "Seoul",
+  "country": "South Korea",
+  "status": "done",
+  "sources": [
+   "https://www.samsungfoundation.org/",
+   "https://encykorea.aks.ac.kr/Article/E0063810",
+   "https://www.koreatimes.co.kr/lifestyle/arts-theater/20201026/lee-kun-hees-love-for-art-founded-leeum",
+   "https://en.wikipedia.org/wiki/Leeum_Museum_of_Art"
+  ],
+  "batch": "fp46"
  },
  "sanfranciscoartscommission|United States": {
   "name": "San Francisco Arts Commission",
@@ -23808,6 +24313,21 @@
   ],
   "batch": "fp20"
  },
+ "schwarzman": {
+  "name": "Stephen A. Schwarzman",
+  "kind": "person",
+  "what": "An American businessman born in 1947, chairman and chief executive of the private equity firm Blackstone, which he established in 1985 with Peter G. Peterson.",
+  "money": "His stake in Blackstone; Forbes put his net worth at about US$50 billion in early 2026.",
+  "arts": "He served on the Frick Collection's board of trustees from at least 2004 to 2022.",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Stephen_A._Schwarzman",
+   "https://en.wikipedia.org/wiki/Blackstone_Inc."
+  ],
+  "batch": "fp46"
+ },
  "scottishgovernmentenvironmentdirectorate|UK": {
   "name": "Scottish Government, Environment and Forestry Directorate",
   "kind": "gov",
@@ -23859,6 +24379,21 @@
    "https://www.sdworx.com/en-en/about-sd-worx/press/2026-04-30-ai-european-scale-sd-worx-looks-back-2025-new-annual-report"
   ],
   "batch": "fp20"
+ },
+ "seatholders": {
+  "name": "Members of the Corporation of the Hall of Arts and Sciences",
+  "short": "Royal Albert Hall seatholders",
+  "kind": "priv",
+  "what": "About 315 persons, known as Members, who in 2025 permanently owned more than 1,250 of the Royal Albert Hall's seats under arrangements in a charter of 1867.",
+  "money": "The Members' own funds; statute provides for an annual contribution from them to the Hall.",
+  "site": "https://www.royalalberthall.com",
+  "city": "London",
+  "country": "United Kingdom",
+  "status": "done",
+  "sources": [
+   "https://caselaw.nationalarchives.gov.uk/ewhc/ch/2025/1979"
+  ],
+  "batch": "fp46"
  },
  "secretaradeculturadelanacin": {
   "name": "Secretaría de Cultura de la Nación",
@@ -23927,6 +24462,22 @@
   ],
   "batch": "fp20"
  },
+ "senegalesestateallocatedcfa|Senegal": {
+  "name": "Gouvernement du Sénégal",
+  "short": "Government of Senegal",
+  "kind": "gov",
+  "what": "The national government of Senegal, made up of the executive, parliament and judiciary under the constitution and led by President Bassirou Diomaye Faye.",
+  "money": "The state budget of Senegal.",
+  "site": "https://primature.sn",
+  "city": "Dakar",
+  "country": "Senegal",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Government_of_Senegal",
+   "https://primature.sn/"
+  ],
+  "batch": "fp46"
+ },
  "serbiasministryofculture|Serbia": {
   "name": "Министарство културе Републике Србије",
   "short": "Serbian Ministry of Culture",
@@ -23993,6 +24544,20 @@
   ],
   "batch": "fp20"
  },
+ "shanghaipartycommittee": {
+  "name": "Shanghai Municipal Committee of the Chinese Communist Party",
+  "short": "CPC Shanghai Municipal Committee",
+  "kind": "gov",
+  "what": "The Chinese Communist Party's municipal committee in Shanghai; its secretary, Chen Jining since 28 October 2022, holds the highest-ranking post in the city and outranks the mayor.",
+  "city": "Shanghai",
+  "country": "China",
+  "address": "200 Renmin Avenue, Huangpu District, Shanghai",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Shanghai_Municipal_Committee_of_the_Chinese_Communist_Party"
+  ],
+  "batch": "fp46"
+ },
  "sharjahgovernment|UAE": {
   "name": "Government of Sharjah",
   "kind": "gov",
@@ -24025,6 +24590,23 @@
    "https://en.wikipedia.org/wiki/Sheffield_City_Council"
   ],
   "batch": "fp27"
+ },
+ "shelleyrubin": {
+  "name": "Shelley Frost Rubin",
+  "short": "Shelley Rubin",
+  "kind": "person",
+  "what": "Chair and co-founder, with her husband Donald Rubin, of the Rubin Museum of Art, which opened in 2004 to show their collection of Himalayan art.",
+  "money": "Her husband Donald Rubin founded MultiPlan, Inc., a general service PPO health provider.",
+  "arts": "She chairs the Shelley & Donald Rubin Foundation, set up in 1995 to give grants to arts and cultural organisations.",
+  "city": "New York",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://defunct.rubinmuseum.org/page/shelley-rubin/",
+   "https://defunct.rubinmuseum.org/page/donald-rubin/",
+   "https://en.wikipedia.org/wiki/Shelley_and_Donald_Rubin_Foundation"
+  ],
+  "batch": "fp46"
  },
  "shellsqgcbusiness": {
   "name": "Shell QGC",
@@ -24207,6 +24789,19 @@
    "https://en.wikipedia.org/wiki/Sigrid_Rausing"
   ],
   "batch": "fp5"
+ },
+ "sime": {
+  "name": "Elias Sime",
+  "kind": "person",
+  "what": "An Ethiopian artist born in Addis Ababa in 1968 who works with electronic waste; he co-founded Zoma Contemporary Art Center, now Zoma Museum, with the curator Meskerem Assegued.",
+  "city": "Addis Ababa",
+  "country": "Ethiopia",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Elias_Sime",
+   "https://en.wikipedia.org/wiki/Zoma_Museum"
+  ],
+  "batch": "fp46"
  },
  "sindikadokolo": {
   "name": "Sindika Dokolo",
