@@ -699,7 +699,7 @@
         if (e.target.closest('input, textarea, select, [contenteditable="true"]')) { y0 = null; return; }
         x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; h0 = sheet.offsetHeight; dragging = false; speed.start(y0, e.timeStamp);
       }, { passive: true });
-      sheet.addEventListener('touchmove', (e) => {
+      const onSheetMove = (e) => {
         if (y0 === null) return;
         const y = e.touches[0].clientY, d = y - y0;
         if (!dragging) {
@@ -718,7 +718,18 @@
         if (e.cancelable) e.preventDefault();
         speed.move(y, e.timeStamp);
         sheet.style.setProperty('--gm-h', Math.max(64, Math.min(room(), h0 - d)) + 'px');
-      }, { passive: false });
+      };
+      // The listener can stop a scroll, so the browser asks the page before it scrolls the record at all, and waits for the
+      // answer while the map behind is busy: on an iPhone the scroll then stuck. The record opened from the chat is never
+      // dragged, so the listener is taken off while it is open (dragOff, below) and the record scrolls without asking.
+      let moveOn = false;
+      const dragOff = (off) => {
+        if (off === !moveOn) return;
+        moveOn = !off;
+        if (off) sheet.removeEventListener('touchmove', onSheetMove);
+        else sheet.addEventListener('touchmove', onSheetMove, { passive: false });
+      };
+      dragOff(false);
       const end = (e) => {
         if (y0 === null) return;
         y0 = null;
@@ -754,11 +765,27 @@
       function markFromChat() {
         if (!PHONE()) return;
         viaChat = true;
+        dragOff(true);
         const sc = $('curatorScrollArea');
         chatScrollTop = sc ? sc.scrollTop : 0;
         showPage();
       }
+      // What the browser draws over the foot of the page (an iPhone browser's bottom bar, where the page runs under it):
+      // the full page stops above it (--gm-under, assets/sheet.css). Not while the keyboard is open or the page is zoomed,
+      // when the visible area is smaller for another reason.
+      function fitUnder() {
+        const vv = window.visualViewport;
+        let under = 0;
+        if (vv && PHONE() && Math.abs(vv.scale - 1) < 0.01 && !root.classList.contains('kb-open')) {
+          under = Math.round(window.innerHeight - (vv.offsetTop + vv.height));
+          if (under < 1 || under > window.innerHeight * 0.25) under = 0;
+        }
+        if (under) root.style.setProperty('--gm-under', under + 'px'); else root.style.removeProperty('--gm-under');
+      }
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', fitUnder);
+      window.addEventListener('resize', fitUnder);
       function showPage() {
+        fitUnder();
         if (!PHONE() || root.classList.contains('gm-from-chat')) return;
         root.classList.add('gm-from-chat');
         fromChatBar.hidden = false;
@@ -766,7 +793,7 @@
         // Inline and !important: the sheet's controls are drawn by rules that are themselves !important (atlas.css).
         putAway().forEach((el) => el.style.setProperty('display', 'none', 'important'));
       }
-      function clearFromChat() { viaChat = false; hidePage(); }
+      function clearFromChat() { viaChat = false; dragOff(false); hidePage(); }
       function hidePage() {
         if (!root.classList.contains('gm-from-chat')) return;
         root.classList.remove('gm-from-chat');
