@@ -2828,3 +2828,40 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 @layer sheet{
   #dossier-bottom-sheet .gm-tabs + .sheet-title-block:not(#sh-x):not(#sh-y):not(#sh-z){margin-top:20px!important}
 }
+
+/* The chat's suggestions on a phone (user, 21 Nov 2026; markup and the story of it in assets/phone-maps.js, suggestSheet).
+   Short suggestions stand over the box of an empty chat in one row that scrolls sideways: round buttons holding a few
+   words, no icons, no sheet or ground of their own. The greeting's longer list of questions is put away on a phone while they show ("these
+   are too many"). Not shown on a desktop or while a note is written. */
+@layer sheet{
+  #gmSuggestSheet:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  @media (max-width:767px){
+    :root.gm-chat.gm-suggest-on body:not(.chat-share-active) #gmSuggestSheet:not(#sh-x):not(#sh-y):not(#sh-z){display:flex!important;flex-wrap:nowrap!important;gap:8px!important;
+      /* One row that scrolls sideways (user, the same day: "make suggestions scroll"), running to the screen's edges so a
+         button passes under the edge and is not cut short of it; the next one showing at the right says there is more. */
+      box-sizing:border-box!important;align-self:stretch!important;width:calc(100% + 2 * var(--sh-pad))!important;max-width:none!important;
+      margin:0 calc(-1 * var(--sh-pad))!important;padding:2px var(--sh-pad) 4px!important;border:0!important;background:transparent!important;
+      overflow-x:auto!important;overflow-y:hidden!important;overscroll-behavior-x:contain!important;-webkit-overflow-scrolling:touch;scrollbar-width:none!important}
+    #gmSuggestSheet:not(#sh-x):not(#sh-y)::-webkit-scrollbar{display:none}
+    #gmSuggestSheet .gss-kind:not(#sh-x):not(#sh-y):not(#sh-z){display:inline-flex!important;align-items:center!important;justify-content:center!important;box-sizing:border-box!important;
+      flex:none!important;width:auto!important;min-width:0!important;max-width:none!important;min-height:44px!important;margin:0!important;padding:10px 18px!important;border:0!important;border-radius:22px!important;
+      background:color-mix(in srgb,var(--sh-ink) 16%,var(--sh-paper))!important;color:var(--sh-ink)!important;
+      font-family:var(--sh-serif)!important;font-size:15px!important;line-height:18px!important;font-style:normal!important;text-align:center!important;text-indent:0!important;text-decoration:none!important;white-space:nowrap!important;cursor:pointer!important}
+    #gmSuggestSheet .gss-kind:not(#sh-x):not(#sh-y)::before{content:none!important}
+    #gmSuggestSheet .gss-kind:is(:hover,:active):not(#sh-x):not(#sh-y):not(#sh-z){background:color-mix(in srgb,var(--sh-ink) 24%,var(--sh-paper))!important}
+    #gmSuggestSheet .gss-kind:focus-visible:not(#sh-x):not(#sh-y):not(#sh-z){outline:2px solid var(--sh-hover)!important;outline-offset:2px!important}
+    :root.gm-chat.gm-suggest-on #curatorStarterPrompts:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  }
+}
+
+/* No arrow after a suggested question (user, 21 Nov 2026: "arrows not needed"). atlas.css set a "→" after each one; the
+   question is a button already, on a phone and on a desktop. */
+@layer sheet{
+  .starter-prompt .sp-text:not(#sh-x):not(#sh-y):not(#sh-z)::after{content:none!important}
+}
+
+/* A paragraph break after "Ask Clio" (user, 21 Nov 2026: "add paragraph break after ask Clio"): the greeting's first
+   line sat right under the title. One line of the text's own leading stands between them, on a phone and on a desktop. */
+@layer sheet{
+  #curatorHeroGreeting:not(#sh-x):not(#sh-y):not(#sh-z)::before{margin-bottom:var(--sh-s-lh)!important}
+}
