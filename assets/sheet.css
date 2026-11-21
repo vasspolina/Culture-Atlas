@@ -381,9 +381,14 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 /* What is hearsay is set in italic. */
 :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{font-style:italic!important}
 /* And in colour (user, 18 Nov 2026: "make gossip mode text go yellow on dark and brown on light"): brown #7a4416 on the
-   white sheet measures 7.9:1, yellow #f2cf3a on the dark sheet 12.1:1 (9.5:1 on its stone). */
+   white sheet measures 7.9:1. On the dark theme the yellow is the lime #e2f86c, the sheet's own bar colour (user, 21 Nov
+   2026: "make gossip text yellow on dark this yellow", a lime swatch read as #e2f96e; was #f2cf3a): 16.0:1 on the gossip
+   navy #000050, 15.7:1 on the dark sheet, 12.4:1 on its stone, 17.9:1 on black. */
 :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{color:#7a4416!important}
-:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{color:#f2cf3a!important}
+:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:root[data-theme="dark"] :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{color:#e2f86c!important}
+/* The outlet links in the gossip keep the sheet's hover blue (the rule for every link near the top), which the colour above had covered, so a hovered or
+   focused link shows; the thicker underline marks it too. #59a0f1 on the gossip navy is 6.9:1. */
+:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) a:is(:hover,:focus-visible),:root:root:root :is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) a:is(:hover,:focus-visible) *{color:var(--sh-hover)!important;text-decoration-thickness:2px!important}
 /* The suggestions keep one line of space under them, so the next turn starts as a new paragraph (user, 18 Nov 2026: "add
    paragraph breaks"). Scoped to the transcript because the list sits two divs inside the turn, where
    .curator-message-wrap>div>div above set its margin to 0 and the next answer ran straight on under the last suggestion. */
