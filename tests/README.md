@@ -12,6 +12,7 @@ scripts, so most tests load them into a `vm` context and call what they set on t
 | `editor.test.mjs`, `editor-structure.test.mjs` | The data editor (`tools/editor.py`, `editor/`): a save writes only the edited record. |
 | `gossip-kind.test.mjs` | A question about a kind of story is answered from the gossip data. |
 | `gossip-place.test.mjs` | Gossip mode tells the stories of the place in view first: the space, its city, its country. |
+| `gossip-voice.test.mjs` | Gossip mode's voice: a journalist who claims no source of its own, read aloud in a woman's voice from the device. |
 | `grounding.test.mjs` | The chat's grounding in the records. |
 | `influence.test.mjs` | Influence mode shows only what `data/influence_review.json` keeps. |
 | `live-feed.test.mjs` | `assets/live.json`: dated, sourced items only. |
