@@ -2115,6 +2115,75 @@
       }).observe(drawer, { attributes: true, attributeFilter: ['class'] });
     })();
 
+    // ---- The chat's suggestion sheet (user, 21 Nov 2026: "the chat with suggestions can look like this", after a phone's
+    // attachment sheet) ----
+    // Under the box of an empty chat sits a sheet with round corners and a grabber: the short suggestions as round buttons,
+    // four to a row, each a mark over its words, then questions about one museum as tiles, two to a row. The round buttons
+    // are the suggestion chips of the map's search box (#mobileSuggestChips), so they follow the place in view as those do;
+    // the tiles are the chat's own starter questions (renderStarterPrompts in index.html fills #gmSuggestTiles). Every one
+    // is a .starter-prompt with its question in data-query, so the page's one click handler asks it. The sheet goes when the
+    // first question is asked, while a note is written and while the keyboard is up (assets/sheet.css).
+    (function suggestSheet() {
+      const dock = $('workBottomDock');
+      const chips = $('mobileSuggestChips');
+      const wrap = dock && dock.firstElementChild;
+      if (!wrap || !chips) return;
+      const svg = (d) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>';
+      // A mark for what the question is about. The marks are the atlas's own where it has one: the hexagon is a company on
+      // the money map, the square a flagged space, the ringed dot the map's own place mark, the circled ! an alert.
+      const MARKS = [
+        [/happening/i, 'alert', '<circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/>'],
+        [/gossip/i, 'gossip', '<path d="M4 5h16v11H11l-4 4v-4H4z"/>'],
+        [/oil|gas|fossil/i, 'oil', '<path d="M12 3c3.2 4.2 6 7.4 6 11a6 6 0 0 1-12 0c0-3.6 2.8-6.8 6-11z"/>'],
+        [/sackler|name/i, 'name', '<rect x="3.5" y="7" width="17" height="10"/><path d="M7.5 12h9"/>'],
+        [/arms|defence|weapon/i, 'arms', '<path d="M12 3l8 3v6c0 4.6-3.2 7.8-8 9-4.8-1.2-8-4.4-8-9V6z"/>'],
+        [/near me/i, 'near', '<circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><path d="M12 2v3.500M12 18.500V22M2 12h3.500M18.5 12H22"/>'],
+        [/flagged/i, 'flag', '<rect x="5" y="5" width="14" height="14"/>'],
+        [/who funds|funded/i, 'funds', '<path d="M12 3l7.8 4.500v9L12 21l-7.8-4.500v-9z"/>'],
+      ];
+      const DASH = ['other', '<path d="M6 12h12"/>'];
+      const sheet = document.createElement('section');
+      sheet.id = 'gmSuggestSheet';
+      sheet.setAttribute('aria-label', 'Suggested questions');
+      sheet.innerHTML = '<span class="gss-grab" aria-hidden="true"></span>'
+        + '<div class="gss-kinds" role="group" aria-label="Questions to start with"></div>'
+        + '<div class="gss-tiles" id="gmSuggestTiles" role="group" aria-label="Questions about one museum"></div>';
+      wrap.appendChild(sheet);
+      const kinds = sheet.querySelector('.gss-kinds');
+      function paintKinds() {
+        const out = [];
+        [...chips.children].forEach((c) => {
+          const q = c.dataset.query;
+          if (!q) return;   // the place's own chip moves the map; it is not a question
+          const m = MARKS.find((x) => x[0].test(q));
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'starter-prompt gss-kind';
+          b.dataset.query = q;
+          b.dataset.mark = m ? m[1] : DASH[0];
+          b.innerHTML = '<span class="gss-mark">' + svg(m ? m[2] : DASH[1]) + '</span><span class="gss-label"></span>';
+          b.lastChild.textContent = c.textContent.trim();
+          out.push(b);
+        });
+        kinds.replaceChildren(...out);
+      }
+      paintKinds();
+      new MutationObserver(paintKinds).observe(chips, { childList: true });
+      // Shown with the chat's greeting: the first question hides both.
+      // The greeting is taken out of the page when a question lands and made again by New chat, so it is looked up each time.
+      const content = $('curatorScrollContent') || document.body;
+      const sync = () => {
+        const h = $('curatorHeroGreeting');
+        const on = !!h && !h.classList.contains('hidden');
+        const was = root.classList.contains('gm-suggest-on');
+        root.classList.toggle('gm-suggest-on', on);
+        // A new chat draws new questions, so the tiles are drawn with them.
+        if (on && !was && typeof window.refitQuestionCloud === 'function') { try { (0, eval)('renderStarterPrompts')(); } catch (_) {} }
+      };
+      new MutationObserver(sync).observe(content, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      sync();
+    })();
+
     syncState();
   });
 })();
