@@ -2672,9 +2672,10 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 /* ==== THE CHAT'S TWO SHARE LINES ARE BUTTONS (user, 20 Nov 2026: "make share information or fill in the form buttons") ====
    "Share information about ..." and "Or fill in a form" under each answer were two lines of the chat's dashed suggestion
    list, set in green. They are buttons in a row, as the choices under Clio's questions are: round ends, a thin green
-   outline. The first is filled dark green with the paper's colour on it, as the dock's Share information button is, and
-   deepens a fifth toward the ink under the pointer; the second is outlined and fills green under the pointer. A long name
-   wraps inside its button. White on #3e6826 6.5:1; dark theme #151412 on #9fd0a6 10:1. */
+   outline. Neither is filled at rest (user, 21 Nov 2026: "just make dashed green otline, no need to fill the button"): the
+   first has a dashed green line, the second a solid one, and both carry the words in the same green. Both fill green
+   under the pointer, the keyboard or a press, with the paper's colour on it. A long name wraps inside its button.
+   #3e6826 on white 6.5:1; dark theme #9fd0a6 on #151412 10.6:1. */
 @layer sheet{
 :root:root:root:root #curatorMessages .chat-share-invite .curator-followups{display:flex!important;flex-direction:row!important;flex-wrap:wrap!important;align-items:center!important;
   gap:calc(8px * var(--sh-k))!important;margin:calc(8px * var(--sh-k)) 0 var(--sh-s-lh)!important;padding:0!important}
@@ -2683,10 +2684,8 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
   border:1px solid var(--sh-green)!important;border-radius:999px!important;background:transparent!important;color:var(--sh-green)!important;cursor:pointer!important;
   font:inherit!important;line-height:var(--sh-lead)!important;text-decoration:none!important;box-shadow:none!important}
 :root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn::before{content:none!important;display:none!important}
-:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn){background:var(--sh-green)!important;color:var(--sh-paper)!important}
-:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn):is(:hover,:focus-visible){
-  background:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;border-color:color-mix(in srgb,var(--sh-green) 80%,var(--sh-ink))!important;color:var(--sh-paper)!important}
-:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-form-btn:is(:hover,:focus-visible){background:var(--sh-green)!important;color:var(--sh-paper)!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn){border-style:dashed!important}
+:root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible,:active){background:var(--sh-green)!important;border-style:solid!important;color:var(--sh-paper)!important}
 :root:root:root:root #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:focus-visible{outline:2px solid var(--sh-green)!important;outline-offset:2px!important}
 }
 
@@ -2736,8 +2735,8 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    On the dark theme the filled share buttons and the map's name bubbles had become light fills with dark type: the share
    buttons the pale green (#9fd0a6), the street map's bubbles the pale ink (#f4f4f4), the open space's bubble its pale grade
    colour. They are dark now, with light type.
-   - The filled share buttons (the dock's Share information, the phone map's, the chat's "Share information about ...", the
-     chat-share Send button, the form's "Tell it in the chat" under the pointer, "Or fill in a form" under the pointer) are
+   - The filled share buttons (the dock's Share information, the phone map's, the chat-share Send button, and under the
+     pointer the form's "Tell it in the chat" and the chat's "Share information about ..." and "Or fill in a form") are
      the light theme's dark green, #3e6826, with #f4f4f4 on it (6:1), deepening a fifth toward black under the pointer.
      The outlined buttons keep their pale green line and words on the dark ground.
    - The street map's bubbles are black with the name in #f4f4f4 (19:1) and a thin pale edge so they keep their shape on
@@ -2749,18 +2748,16 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
 /* The filled share buttons. */
 :root:root:root:root[data-theme="dark"] #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5),
 :root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):not(#gs3),
-:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn),
 :root:root[data-theme="dark"] #curatorMessages .chat-share-choices .chat-share-choice.chat-share-choice.is-primary{
   background:var(--sh-share-dark)!important;border-color:var(--sh-share-dark)!important;color:#f4f4f4!important}
 :root:root:root:root[data-theme="dark"] #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5) *,
 :root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):not(#gs3) *{color:#f4f4f4!important}
 :root:root:root:root[data-theme="dark"] #workBottomDock #workInputCard #chatShareBtn#chatShareBtn:not(#dk1):not(#dk2):not(#dk3):not(#dk4):not(#dk5):is(:hover,:focus-visible),
 :root[data-theme="dark"]:is(.gm-map,.gm-record) #mobileStickyInputBar #gmMapShareBtn:not(#sh-x):not(#sh-y):not(#gs1):not(#gs2):not(#gs3):is(:hover,:active,:focus-visible),
-:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:not(.chat-share-form-btn):is(:hover,:focus-visible),
 :root:root[data-theme="dark"] #curatorMessages .chat-share-choices .chat-share-choice.chat-share-choice.is-primary:is(:hover,:focus-visible){
   background:var(--sh-share-dark-2)!important;border-color:var(--sh-share-dark-2)!important;color:#f4f4f4!important}
 /* Buttons that are outlined at rest and fill under the pointer fill dark green, not pale. */
-:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-form-btn:is(:hover,:focus-visible),
+:root:root:root:root[data-theme="dark"] #curatorMessages .chat-share-invite .chat-share-invite-btn.chat-share-invite-btn:is(:hover,:focus-visible,:active),
 :root:root:root[data-theme="dark"] body #workInputCard #noteFormIntro .nf-to-chat.nf-to-chat:is(:hover,:focus-visible){
   background:var(--sh-share-dark)!important;border-color:var(--sh-share-dark)!important;color:#f4f4f4!important}
 
