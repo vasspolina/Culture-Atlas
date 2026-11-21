@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=899">
-  <link rel="stylesheet" href="assets/sheet.css?v=901">
+  <link rel="stylesheet" href="assets/sheet.css?v=902">
   <script src="assets/config.js?v=899"></script>
   <script src="assets/analytics.js?v=899"></script>
   <script src="assets/subtopic.js?v=899"></script>
@@ -11007,11 +11007,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v901';
+    const ATLAS_RELEASE = 'culture-atlas-v902';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=901').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=902').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -17580,6 +17580,9 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     function scrollChatToBottom(smooth = false) {
       const scrollArea = document.getElementById('curatorScrollArea') || document.getElementById('workViewContainer');
       chatStickToBottom = true;
+      // Before the first message the chat is the greeting and the suggestions under it, read from the top (see the
+      // ResizeObserver above): opening the chat on a phone went to their foot and left the greeting off screen.
+      if (scrollArea && scrollArea.id === 'curatorScrollArea' && !document.querySelector('#curatorMessages > *')) { scrollArea.scrollTop = 0; return; }
       if (scrollArea) {
         if (smooth) {
           scrollArea.scrollTo({ top: chatFollowTop(scrollArea), behavior: 'smooth' });
@@ -23134,7 +23137,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/hq-detail.js?v=899"></script>
 <script src="assets/influence-mode.js?v=899"></script>
 <script src="assets/bubbles.js?v=899" defer></script>
-<script src="assets/phone-maps.js?v=899"></script>
+<script src="assets/phone-maps.js?v=902"></script>
 <script src="assets/desktop-maps.js?v=899"></script>
 <script src="assets/chat-resize.js?v=899"></script>
 <script src="assets/frame-refusers.js?v=899"></script>

@@ -2115,6 +2115,52 @@
       }).observe(drawer, { attributes: true, attributeFilter: ['class'] });
     })();
 
+    // ---- The chat's suggestions on a phone (user, 21 Nov 2026) ----
+    // Over the box of an empty chat stand the short suggestions in one row that scrolls sideways ("make suggestions
+    // scroll"), as round buttons holding a few words each, with no icons. It began as a sheet under the box with marks in circles and tiles of longer questions; the user took the
+    // icons out ("no icons"), then the sheet ("don't do it half sheet"), then most of the questions ("make them more
+    // concise and these are too many"). The buttons are the suggestion chips of the map's search box (#mobileSuggestChips),
+    // so they follow the place in view as those do, said shorter. Each is a .starter-prompt with its question in data-query,
+    // so the page's one click handler asks it. They go when the first question is asked and while a note is written
+    // (assets/sheet.css), and the greeting's own longer list is put away on a phone while they show.
+    (function suggestSheet() {
+      const chips = $('mobileSuggestChips');
+      const card = $('workInputCard');
+      if (!card || !card.parentElement || !chips) return;
+      // The chip's words, shorter: the question itself is unchanged.
+      const brief = (t) => t.replace(/^Arms-industry donors$/, 'Arms donors').replace(/^Museums near me$/, 'Near me')
+        .replace(/^Oil and gas money\b/, 'Oil and gas').replace(/^What is happening at /, 'News at ');
+      const sheet = document.createElement('div');
+      sheet.id = 'gmSuggestSheet';
+      sheet.setAttribute('role', 'group');
+      sheet.setAttribute('aria-label', 'Suggested questions');
+      card.parentElement.insertBefore(sheet, card);
+      function paintKinds() {
+        const out = [];
+        [...chips.children].forEach((c) => {
+          const q = c.dataset.query;
+          if (!q) return;   // the place's own chip moves the map; it is not a question
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'starter-prompt gss-kind';
+          b.dataset.query = q;
+          b.textContent = brief(c.textContent.trim());
+          out.push(b);
+        });
+        sheet.replaceChildren(...out);
+      }
+      paintKinds();
+      new MutationObserver(paintKinds).observe(chips, { childList: true });
+      // Shown with the chat's greeting, which is taken out of the page when a question lands and made again by New chat.
+      const content = $('curatorScrollContent') || document.body;
+      const sync = () => {
+        const h = $('curatorHeroGreeting');
+        root.classList.toggle('gm-suggest-on', !!h && !h.classList.contains('hidden'));
+      };
+      new MutationObserver(sync).observe(content, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+      sync();
+    })();
+
     syncState();
   });
 })();
