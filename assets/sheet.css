@@ -248,6 +248,12 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(.d-rows,.d-row,.prose-part){border:0!important;padding:0!important;margin:0!important;display:block!important;background:transparent!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-head{display:block!important;margin:var(--sh-s-lh) 0 var(--sh-gap)!important;padding:0!important;border:0!important}
+/* A phone section named as its tab is (Overview, Funding, Sources) does not say its name again under the tab. atlas.css has held
+   this rule since release 842, but an !important in this layer beats an unlayered one, so the title was still drawn
+   (user, 21 Nov 2026: "check for other repetition"). */
+#dossier-bottom-sheet #gmFull section.d-row.gm-same-as-tab>.d-row-head{display:none!important}
+/* Its number goes with its title, so the first title shown under the tab is 01. */
+#dossier-bottom-sheet #gmFull section.d-row.gm-same-as-tab{counter-increment:none!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title,
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#curatorMessages,#curatorDrawerLiveStream) .kicker{display:block!important;background:var(--sh-stone)!important;text-align:center!important;min-height:var(--sh-band)!important;line-height:var(--sh-band)!important;margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;text-wrap:balance}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) .d-row-title *{line-height:var(--sh-band)!important}
