@@ -58,10 +58,14 @@
      and 4 under. --sh-k is the one factor; change it and the whole sheet follows. The map's own names stay at 15 on 19
      (--sh-map), or the labels would cover the map. */
   --sh-k:1.4;
-  --sh-s:calc(15px * var(--sh-k)); --sh-s-lh:calc(19px * var(--sh-k)); --sh-l:calc(28px * var(--sh-k)); --sh-l-lh:calc(32px * var(--sh-k));
+  /* --sh-up is the 10% added to the line height of all text (user, 21 Nov 2026: "add 10% line height to all text"): the
+     text's line (--sh-lead), the large size's line (--sh-l-lh) and the few lines set on their own all carry it. */
+  --sh-up:1.1;
+  --sh-s:calc(15px * var(--sh-k)); --sh-s-lh:calc(19px * var(--sh-k)); --sh-l:calc(28px * var(--sh-k)); --sh-l-lh:calc(32px * var(--sh-k) * var(--sh-up));
   /* The leading of the text is 15% under the sheet's line (user, 10 Nov 2026: "make text line height, not paragraph
-     break, 15% less"): --sh-lead is what a line of text takes, --sh-s-lh stays the space between paragraphs and blocks. */
-  --sh-lead:calc(var(--sh-s-lh) * 0.85);
+     break, 15% less"), and 10% over that since 21 Nov 2026 (--sh-up), so 16.15 on 15 is 17.77 on 15: --sh-lead is what a
+     line of text takes, --sh-s-lh stays the space between paragraphs and blocks. */
+  --sh-lead:calc(var(--sh-s-lh) * 0.85 * var(--sh-up));
   --sh-band:calc(15px * var(--sh-k)); --sh-band-lh:calc(12px * var(--sh-k)); --sh-gap:calc(4px * var(--sh-k));
   --sh-pad:calc(16px * var(--sh-k)); --sh-indent:calc(20px * var(--sh-k)); --sh-dash:calc(13px * var(--sh-k));
   --sh-head:calc(30px * var(--sh-k)); --sh-foot:calc(50px * var(--sh-k)); --sh-col:0px;
@@ -71,7 +75,7 @@
   --ink:var(--sh-ink)!important; --paper:var(--sh-paper)!important; --grey:var(--sh-stone)!important; --block:var(--sh-stone-2)!important; --line:var(--sh-rule)!important;
   --sans:var(--sh-serif)!important; --display:var(--sh-serif)!important; --display-xl:var(--sh-serif)!important; --gm-badge-font:var(--sh-serif)!important;
   --fs-s:var(--sh-s)!important; --fs-m:var(--sh-s)!important; --fs-l:var(--sh-l)!important;
-  --lh:1.0767!important; --L:var(--sh-s-lh)!important; --H:calc(var(--sh-s-lh) / 2)!important;
+  --lh:1.1843!important; --L:var(--sh-s-lh)!important; --H:calc(var(--sh-s-lh) / 2)!important;
   --focus:var(--sh-ink)!important; --ul-w:1px!important; --ul-off:.2em!important;
   --gmd-gap:var(--sh-pad)!important; --gmd-shadow:none!important;
 }
@@ -384,9 +388,8 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap :is(ul,ol){list-style:none!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li{margin:0!important;padding:0 0 0 var(--sh-dash)!important;text-indent:calc(-1 * var(--sh-dash))!important}
 :is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li::before{content:"– "!important;display:inline!important;position:static!important;background:none!important;width:auto!important;height:auto!important}
-/* What is hearsay is set in italic. */
-:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li),:is(#curatorMessages,#curatorDrawerLiveStream) .is-gossip [data-gossip] :is(p,li) *{font-style:italic!important}
-/* And in colour (user, 18 Nov 2026: "make gossip mode text go yellow on dark and brown on light"): brown #7a4416 on the
+/* What is hearsay is set upright, like the rest of the chat, and told apart by its colour alone (user, 21 Nov 2026: "do not
+   make it italics"; it was italic before). The colour (user, 18 Nov 2026: "make gossip mode text go yellow on dark and brown on light"): brown #7a4416 on the
    white sheet measures 7.9:1. On the dark theme the yellow is the lime #e2f86c, the sheet's own bar colour (user, 21 Nov
    2026: "make gossip text yellow on dark this yellow", a lime swatch read as #e2f96e; was #f2cf3a): 16.0:1 on the gossip
    navy #000050, 15.7:1 on the dark sheet, 12.4:1 on its stone, 17.9:1 on black. */
@@ -1777,7 +1780,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    is still prevented by typeset.js, which binds the last two words. ---- */
 @layer sheet{
   @media (max-width:767px){
-    :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26)}
+    :root{--sh-s:calc(15px * 1.26); --sh-s-lh:calc(19px * 1.26); --sh-l:calc(28px * 1.26); --sh-l-lh:calc(32px * 1.26 * var(--sh-up))}
     :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside,#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(p,li,dd,blockquote,figcaption,.institution-summary,.d-row-sub,.ts-prose,.intro-line){
       hyphens:auto!important;-webkit-hyphens:auto!important;hyphenate-limit-chars:8 3 3!important;overflow-wrap:break-word!important;text-wrap:wrap!important}
     :is(#dossier-bottom-sheet,#curatorMessages,#curatorDrawerLiveStream,#curatorHeroGreeting,#curatorDrawerGreeting,#gmFeed):not(#sh-x) :is(h1,h2,h3,h4,.dossier-main-heading,#dossier-sheet-name,.space-name,.kicker,.user-bubble,a.domain,a.influence-meta,.influence-meta a,.curator-suggest-chip,.starter-prompt){
