@@ -2834,3 +2834,9 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
     :root.gm-chat.gm-suggest-on #curatorStarterPrompts:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
   }
 }
+
+/* No arrow after a suggested question (user, 21 Nov 2026: "arrows not needed"). atlas.css set a "→" after each one; the
+   question is a button already, on a phone and on a desktop. */
+@layer sheet{
+  .starter-prompt .sp-text:not(#sh-x):not(#sh-y):not(#sh-z)::after{content:none!important}
+}
