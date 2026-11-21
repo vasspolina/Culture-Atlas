@@ -1,0 +1,90 @@
+[
+ {
+  "id": "teatro-colon",
+  "section": "Red flags: 2024 removal of the director",
+  "problems": [
+   "absence statement: 'La Nación gave no official reason'",
+   "detail cut back to what La Nación states"
+  ],
+  "before": "La Nación gave no official reason; it wrote that Telerman had backed Martín Lousteau's campaign, which left him outside the new city administration's plans.",
+  "after": "La Nación wrote that Telerman had backed Martín Lousteau's campaign and was left out of the picture after Lousteau's primary rival, Jorge Macri, became head of the city government.",
+  "sources": [
+   "https://www.lanacion.com.ar/espectaculos/echaron-a-jorge-telerman-de-la-direccion-del-teatro-colon-nid23082024/"
+  ],
+  "reason": "Absence clause removed; the rest restated as La Nación gives it."
+ },
+ {
+  "id": "teatro-colon",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: unpaid months given as October to December 2019 only",
+   "unsupported: 'asked the City Government to take them on' (other theatre workers planned that)",
+   "absence statement: 'the article carried no statement from the theatre'"
+  ],
+  "before": "...citing fees for October, November and December 2019 that the City Government had not paid... The guides rejected the grounds, said the dismissals breached decree DNU 329/20, which barred dismissals, and asked the City Government to take them on; the article carried no statement from the theatre",
+  "after": "...dismissed all 25 guides and coordinators, citing fees from October 2019 to March 2020 that the City Government had not paid, and the pandemic... The guides rejected the grounds and called on Goliardos SRL and the City Government to reconsider under decree DNU 329/20, which barred dismissals; other theatre workers planned to ask the City to take them on",
+  "sources": [
+   "https://www.tiempoar.com.ar/ta_article/despiden-a-25-trabajadores-del-teatro-colon/"
+  ],
+  "reason": "Tiempo Argentino gives unpaid fees from October 2019 to March 2020 and says other workers, not the guides, would ask the City to absorb them; absence clause cut."
+ },
+ {
+  "id": "qagoma-brisbane",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repeats record: the 2021 police objection and Saines keeping the helmet on display are already in the record's overview",
+   "date: NAVA release date 3 February not on the opened pages"
+  ],
+  "before": "Three points: the 4BC account of the Police Minister's and union's objection, Saines's refusal to remove it, and NAVA's statement (NAVA media release, Penelope Benton, 3 February 2021).",
+  "after": "In February 2021 the National Association for the Visual Arts defended TextaQueen's Defund the Police Helmet (2020), shown at QAGOMA in Full Face: Artists' Helmets, and said \"demands from police representatives for an apology from the hosting gallery contributes to delegitimising debates on significant social justice issues\" (NAVA media release; Arts Review, 4 February 2021).",
+  "sources": [
+   "https://visualarts.net.au/news-opinion/2021/nava-defends-anti-police-sentiments-artwork/",
+   "https://artsreview.com.au/nava-defends-anti-police-sentiments-in-artwork/",
+   "https://www.4bc.com.au/police-demand-apology-for-outrageous-goma-art-piece/"
+  ],
+  "reason": "The overview already states the objection and the director's reply, so only the new NAVA point stays; the quoted sentence is not attributed to Benton on the page, and Arts Review dates it 4 February 2021. 4BC source dropped with the cut points."
+ },
+ {
+  "id": "arts-centre-melbourne",
+  "section": "Red flags: 2026 strikes over pay",
+  "problems": [
+   "dash inside quotation"
+  ],
+  "before": "\"The decision to interrupt Macy Gray's show has not been made lightly - but we are left with no choice until the government funds the Arts Centre properly,\" said the CPSU's Victorian secretary, Jiselle Hanna (AAP, 11 September 2026).",
+  "after": "The CPSU's Victorian secretary, Jiselle Hanna, said the union was left with no choice \"until the government funds the Arts Centre properly\" (AAP, 11 September 2026).",
+  "sources": [
+   "https://www.newcastleherald.com.au/story/9348127/show-wont-go-on-as-arts-workers-demand-pay-rise/"
+  ],
+  "reason": "Quotation shortened to drop the dash; all other points confirmed on CPSU, Limelight (both pieces) and the AAP story."
+ },
+ {
+  "id": "national-museum-prague",
+  "section": "Red flags",
+  "problems": [
+   "two issues share one heading",
+   "Unverified line mixed with a documented statement"
+  ],
+  "before": "Red flags: 2023 and 2025 protests over the Ukrainian flag on the museum ... Unverified: Otakar Stephan van Gemund ... said he suspected the director was yielding to the incoming government, from Novinky (Petr Svorník, 29 October 2025); Interior Minister Vít Rakušan also called for the flag's return.",
+  "after": "Red flags: 2023 protest demanding removal of the Ukrainian flag / Red flags: 2025 removal of the Ukrainian flag and protest for its return; Unverified line and Rakušan's call split into two points.",
+  "sources": [
+   "https://www.ceskenoviny.cz/zpravy/ucastnici-protestu-v-praze-zkusili-sundat-ukrajinskou-vlajku-z-muzea/2337512",
+   "https://www.novinky.cz/clanek/domaci-za-navrat-ukrajinske-vlajky-se-bude-demonstrovat-pred-narodnim-muzeem-40546216",
+   "https://www.novinky.cz/clanek/domaci-lide-pred-narodnim-muzeem-protestovali-za-navrat-ukrajinske-vlajky-40546442"
+  ],
+  "reason": "The 2023 protest for removal and the 2025 protest for return are separate issues; every fact confirmed on ČTK, Novinky (three pieces) and Radio Prague International."
+ },
+ {
+  "id": "national-museum-of-denmark",
+  "section": "CRITICISM IN ART MEDIA",
+  "problems": [
+   "unsupported: 'main asset is public trust'"
+  ],
+  "before": "He argues that the museum's main asset is public trust and that the exhibition's tone does not fit a national museum of cultural history.",
+  "after": "He argues that credibility is the basic material of a museum of cultural history and that chasing popularity this way can never be right for Denmark's main museum of cultural history.",
+  "sources": [
+   "https://videnskab.dk/kultur-samfund/anmeldelse-jim-lyngvilds-samarbejde-med-nationalmuseet-er-paa-vildspor",
+   "https://cphpost.dk/2018-07-05/news/national-museum-under-fire-over-decaying-artefacts"
+  ],
+  "reason": "Sindbæk's word is 'troværdighed' (credibility); restated in his terms. Audit points confirmed in The Copenhagen Post."
+ }
+]

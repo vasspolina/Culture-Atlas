@@ -1,0 +1,115 @@
+[
+ {
+  "id": "theatre-de-la-ville",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "claim from a deputy's written question stated as fact"
+  ],
+  "before": "In October 2011 Christian fundamentalist groups, among them Civitas and Renouveau français, tried to stop performances ... they entered on 20 October, threw engine oil and eggs ...",
+  "after": "The deputy André Gerin wrote that in October 2011 Christian fundamentalist groups, in particular Civitas and Renouveau français, tried to stop performances ... they forced their way in on 20 October, threw engine oil and eggs at the audience on 21 October and invaded the stage on 22 October (Assemblée nationale, written question 120824, 1 November 2011).",
+  "sources": [
+   "https://www.assemblee-nationale.fr/dyn/13/questions/QANR5L13QE120824.pdf",
+   "https://www.lalibre.be/international/2011/10/30/des-catholiques-integristes-opposes-a-une-piece-blasphematoire-QRSQEQAFWNGQBHYQI43BWQ3IKI/"
+  ],
+  "reason": "The specific acts rest on the deputy's question, so they are credited to him; AFP points confirmed."
+ },
+ {
+  "id": "akademie-der-kunste",
+  "section": "Red flags: 2023 member's withdrawal in protest at the Akademie's statement on artistic freedom",
+  "problems": [
+   "statement twice: Berliner Zeitung point repeats the withdrawal already stated from The Art Newspaper"
+  ],
+  "before": "The statement did not go far enough for Breitz, and \"sie lässt seitdem ihre Akademiemitgliedschaft ruhen\" ... (Berliner Zeitung, Ulrich Seidler, 22 December 2023).",
+  "after": "",
+  "sources": [
+   "https://www.theartnewspaper.com/2023/12/19/german-academy-of-arts-criticises-dangerous-violations-of-artistic-freedom",
+   "https://adk.de/en/news/2023/12-14/statement-by-the-senate-of-the-akademie-der-kunste",
+   "https://www.berliner-zeitung.de/article/akademie-der-kuenste-praesidentin-meerapfel-im-interview-eine-freie-gesellschaft-braucht-keine-gesinnungspruefungen-2170318"
+  ],
+  "reason": "Repetition cut with its source; remaining points confirmed."
+ },
+ {
+  "id": "altes-museum",
+  "section": "Red flags: 2024 return of 25 looted antiquities to Italy",
+  "problems": [
+   "hedge word: 'believed'"
+  ],
+  "before": "The Stiftung said it believed \"with a high degree of certainty that the items were acquired via archaeological looting\"; it called the return voluntary",
+  "after": "The Stiftung said that \"with a high degree of certainty\" the items were acquired through archaeological looting, and called the return voluntary",
+  "sources": [
+   "https://www.smb.museum/en/whats-new/detail/restitution-to-italy-apulian-vases-from-the-antikensammlung/",
+   "https://www.theartnewspaper.com/2024/06/13/germany-returns-looted-antiquities-in-berlins-altes-museum-to-italy"
+  ],
+  "reason": "Rephrased without the hedge; all facts confirmed on the SMB release and The Art Newspaper."
+ },
+ {
+  "id": "oper-frankfurt",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "incomplete: open letter credited to one signatory"
+  ],
+  "before": "On 16 November 2020 the Deutsche Stiftung Denkmalschutz wrote an open letter to the mayor and three city department heads",
+  "after": "On 16 November 2020 the Deutsche Stiftung Denkmalschutz, ICOMOS Deutschland and four other heritage and art history bodies signed an open letter to the mayor and three city department heads",
+  "sources": [
+   "https://www.denkmalschutz.de/fileadmin/media/PDF/Denkmale_in_Gefahr/Offener_Brief_Denkmalschutz_Buehnen_Frankfurt_16Nov2020.pdf",
+   "https://www.entwicklungsstadt.de/zwischen-sanierung-und-abriss-debatte-um-die-zukunft-der-theaterdoppelanlage-haelt-an/",
+   "https://www.evangelisch.de/inhalte/165497/31-01-2020/frankfurter-staedtische-buehnen-werden-abgerissen"
+  ],
+  "reason": "The letter has six signing bodies; other points confirmed."
+ },
+ {
+  "id": "sprengel-museum-hannover",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "changed descriptor: 'Jewish collector'"
+  ],
+  "before": "Max Rüdenberg, a Jewish collector who died in Theresienstadt in 1942",
+  "after": "Max Rüdenberg, a Jewish businessman who died in Theresienstadt in 1942",
+  "sources": [
+   "https://www.theartnewspaper.com/2017/01/10/nazi-loot-panel-asks-sprengel-museum-to-return-schmidt-rottluff-work-to-heirs"
+  ],
+  "reason": "The Art Newspaper calls him a Jewish businessman."
+ },
+ {
+  "id": "staatliche-kunsthalle-karlsruhe",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'which the Kunsthalle bought in 1972'"
+  ],
+  "before": "which the family owned until 1939 and which the Kunsthalle bought in 1972;",
+  "after": "which the family owned until 1939 and which came into the Kunsthalle's possession in 1972;",
+  "sources": [
+   "https://www.juedische-allgemeine.de/kultur/raubkunst-gemaelde-von-franz-krueger-bleibt-in-karlsruhe",
+   "https://mwk.baden-wuerttemberg.de/fileadmin/redaktion/m-mwk/intern/dateien/Anlagen_PM/2021/_017_PM_MWK_Entscheidung_Limbach-Kommission_Restitution_Heckel.pdf"
+  ],
+  "reason": "dpa says the painting 'gelangte in den Besitz' of the Kunsthalle, not that it was bought. Heckel point confirmed."
+ },
+ {
+  "id": "kolner-philharmonie",
+  "section": "Red flags: 2022 cancellation of a Teodor Currentzis concert",
+  "problems": [
+   "unsupported: 'and refunded tickets'",
+   "statement twice: Schwäbische Zeitung point repeats the closeness-to-the-regime reason"
+  ],
+  "before": "...planned for 27 January 2023 and refunded tickets (OperaWire, 4 October 2022). ... Schwäbische Zeitung reported that the Philharmonie cited Currentzis's closeness to Putin in disinviting the orchestra from the concert (Schwäbische Zeitung, 22 November 2022).",
+  "after": "In October 2022 the Kölner Philharmonie cancelled a concert by the conductor Teodor Currentzis planned for 27 January 2023 (OperaWire, Francisco Salazar, 4 October 2022). [Schwäbische point and source removed]",
+  "sources": [
+   "https://operawire.com/kolner-philharmonie-cancels-teodor-currentziss-concert",
+   "https://www.schwaebische.de/__article__-1302119"
+  ],
+  "reason": "OperaWire does not mention refunds; the second outlet only restated the reason already given."
+ },
+ {
+  "id": "museum-der-bildenden-kunste-leipzig",
+  "section": "Red flags: 2023 dispute over racist terms at an exhibition opening",
+  "problems": [
+   "overstated: 'held a dialogue with those involved first'"
+  ],
+  "before": "The museum called off an event with the duo planned for early June and held a dialogue with those involved first (epd, 7 August 2023).",
+  "after": "The museum called off an event with the duo planned for early June, saying it would first hold a dialogue with all involved and then reschedule it (epd, 7 August 2023).",
+  "sources": [
+   "https://www.evangelisch.de/inhalte/219449/07-08-2023/museum-der-bildenden-kuenste-es-kommt-immer-darauf-wer-es-sagt-und-wie"
+  ],
+  "reason": "epd reports the stated plan, not that the dialogue took place."
+ }
+]

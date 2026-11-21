@@ -1,0 +1,107 @@
+[
+ {
+  "id": "mehrangarh-museum-trust",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'state government'",
+   "unsupported: 'told the paper'"
+  ],
+  "before": "The state government set up the Justice Chopra commission to investigate; in January 2017 The PinkCity Post reported that the commission's report had been forwarded to the chief minister's office for further action. ... Bishnoi told the paper he was not given any VIP treatment",
+  "after": "The government set up the Justice Chopra commission to investigate; in January 2017 The PinkCity Post reported that the home department had forwarded the commission's report to the chief minister's office for further action. ... Bishnoi was quoted as saying he was not given any VIP treatment",
+  "sources": [
+   "https://www.pinkcitypost.com/vip-treatment-parliamentarian-caused-mehrangarh-strategy-killed-214-people-report/"
+  ],
+  "reason": "The page says 'The government', that the home department forwarded the report, and that Bishnoi 'was quoted as saying'. All other points confirmed; one source, a named outlet, kept as WIDER CONTEXT (2008 and 2017)."
+ },
+ {
+  "id": "castello-sforzesco",
+  "section": "Red flags: 2022 dispute over pay of outsourced museum reception staff",
+  "problems": [
+   "miscited: 26 May article does not state the contract point",
+   "off-subject: closure of the Museo del Novecento and the PAC, other venues"
+  ],
+  "before": "(Il Giorno, 24 March and 26 May 2022). ... On 25 May 2022 a workers' assembly closed the Museo del Novecento and the PAC for some hours; the workers called a further two-hour assembly for 31 May and gave the union a mandate for an eight-hour strike package (Il Giorno, 26 May 2022; Finestre sull'Arte, 28 May 2022).",
+  "after": "(Il Giorno, 24 March 2022). ... At an assembly on 25 May 2022 the workers gave the union a mandate for an eight-hour strike package and called a two-hour assembly for 31 May, which would close the civic museums for two hours (Il Giorno, 26 May 2022; Finestre sull'Arte, 28 May 2022).",
+  "sources": [
+   "https://www.ilgiorno.it/milano/cronaca/nei-musei-a-750-euro-al-mese-operatori-contro-il-comune-44cb3a8d",
+   "https://www.ilgiorno.it/milano/cronaca/muro-sullappalto-musei-chiusi-per-protesta-169b1884",
+   "https://www.finestresullarte.info/attualita/milano-protesta-lavoratori-musei-civici-assemblee-e-musei-chiusi"
+  ],
+  "reason": "Both Il Giorno pieces name the Castello Sforzesco's exhibition rooms; the 25 May closure concerned two other civic venues, so the point now states what touches all civic museums."
+ },
+ {
+  "id": "piccolo-teatro-di-milano",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "overstated: Il Giorno calls Longhi's designation probable, not opened"
+  ],
+  "before": "and the City and the Ministry moved to co-opt two extra board members to break the deadlock, opening the way to Claudio Longhi's designation by majority (Il Giorno, 30 September 2020).",
+  "after": "and the City and the Ministry moved to co-opt two extra board members to break the deadlock and allow a majority vote; Il Giorno named Claudio Longhi as the probable choice (Il Giorno, 30 September 2020).",
+  "sources": [
+   "https://www.ilgiorno.it/milano/cronaca/piccolo-teatro-7379d8fd",
+   "https://www.avvenire.it/politica/geronimo-la-russa-nel-cda-del-piccolo-teatro-le-opposizioni-e-parentopoli_70803",
+   "https://www.open.online/2023/11/09/figlio-la-russa-cda-piccolo-teatro-milano-sala/"
+  ],
+  "reason": "2023 La Russa points confirmed word for word in Avvenire and Open; the 2020 point cut back to what Il Giorno states."
+ },
+ {
+  "id": "madre-museum-naples",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "unsupported: 'in early 2021'"
+  ],
+  "before": "After Angela Tecce replaced Laura Valente as president of the Fondazione Donnaregina in early 2021, the collector",
+  "after": "After Angela Tecce replaced Laura Valente as president of the Fondazione Donnaregina, the collector",
+  "sources": [
+   "https://www.artribune.com/?p=717895",
+   "https://www.artribune.com/?p=721386"
+  ],
+  "reason": "Artribune gives no date for the change of president; quotations confirmed word for word."
+ },
+ {
+  "id": "reggia-di-venaria",
+  "section": "file",
+  "problems": [
+   "single union release",
+   "thin",
+   "pre-2021"
+  ],
+  "before": "WIDER CONTEXT: 2017 Ivrea court ruling against Coopculture for anti-union conduct at the Reggia, from the USB release only (two points).",
+  "after": "",
+  "sources": [
+   "https://areastampa.usb.it/leggi-notizia/usb-vince-in-tribunale-a-venaria-reale-attivita-antisindacale-di-coopculture.pdf"
+  ],
+  "reason": "The release (14 March 2017) supports the points, but the whole file rests on one union page about a contractor's 2017 conduct, and its 'guilty' wording and the Consorzio reproach are the union's rhetoric. Thin single advocacy source: file deleted."
+ },
+ {
+  "id": "tokyo-metropolitan-art-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "party paper as only source",
+   "second source added",
+   "2012 point unverified"
+  ],
+  "before": "Three points from Japan Press Weekly (Akahata): the 2014 Nakagaki request, the metropolitan rules, and the 2012 removal of a comfort women work.",
+  "after": "2014 Nakagaki point kept from Akahata via Japan Press Weekly; the rules point replaced by the deputy director Akiko Komuro's admission from Noi Sawaragi's ART iT column; the 2012 point now starts 'Unverified:' and names Akahata via Japan Press Weekly; source marked (partisan).",
+  "sources": [
+   "https://www.japan-press.co.jp/s/news/?id=6996",
+   "https://www.art-it.asia/?p=137781"
+  ],
+  "reason": "ART iT confirms the museum admitted the February 2014 request and cites the political-party guideline; the 2012 removal rests on the party paper alone."
+ },
+ {
+  "id": "museo-nacional-de-arte",
+  "section": "Red flags: 2023 staff protest over cuts to guards",
+  "problems": [
+   "overstated: 'stayed closed from 11 March'"
+  ],
+  "before": "The museum stayed closed from 11 March 2023 after workers shut it",
+  "after": "The museum was closed until further notice from 11 March 2023 after workers shut it",
+  "sources": [
+   "https://www.timeoutmexico.mx/ciudad-de-mexico/arte/el-munal-esta-cerrado-hasta-nuevo-aviso-te-contamos-por-que",
+   "https://www.theartnewspaper.com/2025/09/19/mexico-city-art-museums-closed-union-dispute",
+   "https://www.razon.com.mx/cultura/pugna-sindical-pega-a-noche-de-museos/"
+  ],
+  "reason": "Time Out's notice says closed on 11 March and until further notice; other points confirmed."
+ }
+]

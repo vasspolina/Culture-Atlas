@@ -1,0 +1,68 @@
+[
+ {
+  "id": "hvittrask",
+  "section": "Red flags: 2024 planned closure under state budget cuts",
+  "problems": [
+   "objection on record not stated: the minister's challenge to the agency was missing",
+   "'herätti polemiikkia' is a video headline on the MTV page, not the article text",
+   "overstated: MTV reports a government proposal, not a grant",
+   "repetition: the 1 million euros appeared in two points"
+  ],
+  "before": "MTV point quoting 'herätti polemiikkia' and saying the government proposed 1 million euros; Kulttuurivihkot point repeating the 1 million euros of the supplementary budget.",
+  "after": "Kulttuurivihkot point now carries the largest public outcry, culture minister Sari Multala questioning whether the agency followed the principle of least harm, and her 2.1 million euro proposal 'as a result of strong public pressure'. The MTV point states the 21 November 2024 government proposal of 1 million euros so that Seurasaari and some other museums would not close. The supplementary budget's 1 million euros and the agency's statement that it prevents the 2025 closures are given once.",
+  "sources": [
+   "https://www.sttinfo.fi/tiedote/70608723/museoviraston-yt-neuvottelut-johtavat-palveluiden-supistamiseen-museokohteiden-sulkemiseen-ja-laajoihin-lomautuksiin?lang=fi",
+   "https://www.mtvuutiset.fi/artikkeli/seurasaari-pelastuu-muun-kulttuurin-kustannuksella-museovirasto-saa-hallitukselta-lisamiljoonan/9051316",
+   "https://www.kulttuurivihkot.fi/mielipide/paakirjoitus/jatetaanko-kulttuuriperinto-heitteille/"
+  ],
+  "reason": "The STT release names Hvitträsk among the four sites to close 'toistaiseksi' and gives about 150 furloughs. The objection on record is the public outcry and the minister's challenge, both in Kulttuurivihkot, an editorial in a magazine that calls itself independent and left-wing. The closure was contested and then withdrawn for 2025, so it stays."
+ },
+ {
+  "id": "fondation-vincent-van-gogh-arles",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition: the 1983 founding of the association and the 8 July 2010 decree are already in the record's overview",
+   "the link between the two foundations needed a source-based statement tied to the painting"
+  ],
+  "before": "- The present foundation states that its origins 'go back to an initiative by Yolande Clergue', whose 1983 association was 'subsequently known simply as the Fondation Van Gogh', and that it was established by ministerial decree of 8 July 2010 (foundation's history page).",
+  "after": "- The order was against Yolande Clergue's association, known as the Fondation Van Gogh, which the present foundation names as its origin; the association began in 1985 the collection of homages to Van Gogh that included works by Bacon (foundation's history page). Evening Standard credit trimmed to author and date.",
+  "sources": [
+   "https://web.archive.org/web/20240526185918/https://www.expatica.com/uk/general/french-museum-ordered-to-return-bacon-painting-155860/",
+   "https://www.francis-bacon.com/publication/van-gogh-tribute-must-be-returned-bacons-estate",
+   "https://www.fondation-vincentvangogh-arles.org/en/the-foundation/"
+  ],
+  "reason": "The archived Expatica page (the live address redirects to the homepage, so an archive copy is allowed) supports the order, the court's words, 'The association must therefore give back the painting', and the Gruber and Jouanneau quotations. The catalogue site lists Terry Kirby's Evening Standard piece of 22 April 2010. The foundation's own history page gives the link: the association it names as its origin began the collection that held Bacon's homage. The 2010 order is more than five years old, so it stays in WIDER CONTEXT."
+ },
+ {
+  "id": "luma-arles",
+  "section": "Red flags: 2025 protest at the Luma tower",
+  "problems": [
+   "child: 'peaceful' is the characterisation of a 15-year-old school pupil quoted on the page",
+   "absence statement: 'the readable part gives no reply from Luma'",
+   "added descriptor: 'Arles branch'"
+  ],
+  "before": "... about fifteen members of the Arles branch ... Objectif Sud describes the action as a peaceful picnic. Paywalled; only excerpts were read, and the readable part gives no reply from Luma.",
+  "after": "... about fifteen Arles members of the 'Bloquons tout' movement ...; the action took the form of a picnic (Objectif Sud ...). ... Paywalled; only excerpts were read.",
+  "sources": [
+   "https://www.objectifsud.fr/gard/arles/arles-bloquons-tout-le-mouvement-se-poursuit-malgre-des-altercations-avec-la-police-152619.php"
+  ],
+  "reason": "The readable part of Objectif Sud supports the gathering at the foot of the tower, the banner addressed to Maja Hoffmann and the participant's words aimed at Hoffmann 'et ses projets'. The action was aimed at the founder and her project at the space, not only at the national movement, so it stays."
+ },
+ {
+  "id": "appartement-atelier-le-corbusier",
+  "section": "Red flags: 2024 dispute over the colour of the Molitor building facade -> WIDER CONTEXT",
+  "problems": [
+   "placement: the space's operator is the objecting party, not the target, and no flag category applies",
+   "only source is a party to the dispute",
+   "repetition: Le Corbusier's occupation of the top floors from 1934 to 1965 is in the record's overview",
+   "absence statement: 'The page gives no reply from the project manager'",
+   "long name list trimmed"
+  ],
+  "before": "Red flags heading; nine experts listed by name; Picon's note with the 1934 to 1965 occupation; 'The page gives no reply from the project manager.'",
+  "after": "WIDER CONTEXT, three points credited to the Fondation Le Corbusier: the July 2024 open letter by nine experts (three named) against the RAL 7037 grey 'imposed by the project manager', with the building identified as the one whose top two floors hold the apartment-studio; 'The Fondation Le Corbusier has not been listened to', with the Olympic scaffolding deadline; Picon's note and the autumn work on the Boulogne-side facade.",
+  "sources": [
+   "https://www.fondationlecorbusier.fr/en/news/une-nouvelle-polychromie-pour-limmeuble-molitor/"
+  ],
+  "reason": "The facade at 24 rue Nungesser et Coli belongs to the Immeuble Molitor itself, the building that holds the apartment-studio (record overview), not a neighbouring building, so the dispute concerns the space's building and the file is kept. But the Fondation that runs the space is the complainant, the project manager is the target, and the only source is the Fondation's own page. That is context, not a red flag against the space."
+ }
+]

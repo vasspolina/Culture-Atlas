@@ -1,0 +1,86 @@
+[
+ {
+  "id": "fondazione-merz",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "wording: 'led by' for president; 'withdrew' where the source says cancelled",
+   "machine translation not marked"
+  ],
+  "before": "In December 2025 the Fondazione Merz, led by Beatrice Merz, withdrew from a Marisa Merz exhibition planned for the autumn at the Fridericianum in Kassel, ...",
+  "after": "Finestre sull'Arte reported on 4 December 2025 that the Fondazione Merz had cancelled a Marisa Merz exhibition planned for the autumn at the Fridericianum in Kassel, ... The foundation's president, Beatrice Merz, told Monopol ... (read in its machine translation).",
+  "sources": [
+   "https://www.finestresullarte.info/en/news/germany-skips-marisa-merz-exhibition-disagreement-over-definition-of-anti-semitism"
+  ],
+  "reason": "Points match the page and are paraphrased, not quoted, since the English text is a machine translation; the foundation acted, nobody targeted it, so WIDER CONTEXT and no flag."
+ },
+ {
+  "id": "parco-arte-vivente-pav-turin",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "misattribution: the visitor and cost figures are the PAV staff's, reported by Artribune"
+  ],
+  "before": "Artribune gave the PAV's figures as 70,000 visitors in 2013 against 20,000 in 2012, costs cut from one million to 500,000 euros, and staff cut from 14 to 7.",
+  "after": "PAV staff gave figures of 70,000 visitors in 2013 against 20,000 in 2012, costs cut from one million to 500,000 euros, and staff cut from 14 to 7 (Artribune).",
+  "sources": [
+   "https://www.artribune.com/?p=181267"
+  ],
+  "reason": "Closure threat and petition confirmed; 2014, so WIDER CONTEXT."
+ },
+ {
+  "id": "miho-museum",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "paywall label not in RUN.md wording"
+  ],
+  "before": "(International Enforcement Law Reporter, Bruce Zagaris, June 2001; paywalled; only the abstract was read).",
+  "after": "(International Enforcement Law Reporter, Bruce Zagaris, June 2001; paywalled; only excerpts were read).",
+  "sources": [
+   "https://www.ielr.com/content/japan-and-prc-agree-cooperate-stolen-cultural-property",
+   "https://www.theguardian.com/world/2007/jan/11/italy.japan"
+  ],
+  "reason": "The public abstract states the 16 and 17 April 2001 dates, the 1994 theft and the return without payment; the Guardian points match word for word. Both are old or unresolved, so WIDER CONTEXT."
+ },
+ {
+  "id": "okura-museum-of-art",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "source could not be opened: tobunken.go.jp timed out twice, so the July 2010 petition point is cut",
+   "tie to the space: added the Yonhap caption placing the pagoda in the Okura Shukokan's rear garden",
+   "wording: Kyeonggi Ilbo says the city formed a committee in 2008"
+  ],
+  "before": "On 21 July 2010 Icheon's mayor, Cho Byeong-don, delivered a petition with over 100,000 signatures to the Okura Museum of Art, which said it \"could not comply with the request at this stage\" (Tokyo National Research Institute for Cultural Properties, July 2010).",
+  "after": "",
+  "sources": [
+   "https://m.seoul.co.kr/news/2010/10/29/20101029800060",
+   "https://www.kyeonggi.com/article/202102151156895"
+  ],
+  "reason": "The remaining points match the two Korean pages; the return campaign has no development after November 2021 on these pages, so WIDER CONTEXT."
+ },
+ {
+  "id": "kuona-collective-nairobi",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repeats the record: the 2016 office shutdown, Forum Syd audit, missing shillings, stalled projects, Sh1 million Maathai cheque and the artists' committee are all in the record's details overview"
+  ],
+  "before": "Four points from Business Daily (10 November 2016) on the Kuona Trust office shutdown, audit, missing funds, the Maathai sculpture money and the artists' fundraiser.",
+  "after": "",
+  "sources": [
+   "https://www.businessdailyafrica.com/bd/lifestyle/art-fair-opens-under-the-shadow-of-kuona-trust-scandal--2130986"
+  ],
+  "reason": "File deleted: every point is already stated in the record, leaving no Red flags, WIDER CONTEXT or press item."
+ },
+ {
+  "id": "casino-luxembourg",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repeats the record: description of the work as a pregnant replica of the Gëlle Fra",
+   "artist's aim is the page's statement, not a quotation of the artist"
+  ],
+  "before": "In spring 2001 Sanja Iveković's \"Lady Rosa of Luxembourg\", a pregnant woman modelled on the Gëlle Fra war memorial, was installed ... / The artist said she wanted to draw attention ...",
+  "after": "Sanja Iveković's \"Lady Rosa of Luxembourg\" was installed near the Place de la Constitution in spring 2001 as part of the Casino Luxembourg exhibition ... / The page states that the artist wanted to draw attention ...",
+  "sources": [
+   "https://luxembourg.public.lu/en/society-and-culture/artistic-creation/artwork-art-contemporary-critic-liberty-openness-luxembourg.html"
+  ],
+  "reason": "The state portal supports the petition and the 5,000 signatures; 2001, so WIDER CONTEXT. It is a state page, not a campaign page, so no Unverified label."
+ }
+]

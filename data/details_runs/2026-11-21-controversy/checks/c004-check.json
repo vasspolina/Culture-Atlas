@@ -1,0 +1,89 @@
+[
+ {
+  "id": "the-nelson-atkins-museum-of-art",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "not a dispute under the run's categories: 2020 police staging drew only social-media posts by private individuals, no protest, letter or petition"
+  ],
+  "before": "Two KCUR points on the Kansas City police parking squad cars on museum grounds on 29 May 2020 and the director's request that they leave.",
+  "after": "",
+  "sources": [
+   "https://www.kcur.org/arts-life/2020-06-01/nelson-atkins-museum-director-says-police-presence-on-its-grounds-exactly-the-opposite-of-what-we-stand-for",
+   "https://kcstudio.org/nelson-atkins-lays-off-36-employees-prompting-pushback/"
+  ],
+  "reason": "The objections KCUR cites are individual tweets; the layoff points (petition, curator's resignation) stay, confirmed in KC Studio, with the director now named in the petition point."
+ },
+ {
+  "id": "morgan-library-museum-new-york",
+  "section": "Red flags: 2023 return of a Nazi-looted Schiele drawing",
+  "problems": [
+   "statement twice: AP quotation repeats that the Morgan returned the self-portrait"
+  ],
+  "before": "\"A self portrait of the artist was returned by the Morgan Library & Museum in New York\" (Associated Press, Bobby Caina Calvan, 20 September 2023).",
+  "after": "",
+  "sources": [
+   "https://manhattanda.org/d-a-bragg-seven-pieces-of-nazi-looted-art-returned-to-relatives-of-holocaust-victim/",
+   "https://www.news4jax.com/news/national/2023/09/20/artworks-stolen-by-nazis-returned-to-heirs-of-outspoken-cabaret-performer-killed-in-the-holocaust/"
+  ],
+  "reason": "Repetition cut with its source; DA release confirms the other points, including the $1 million value."
+ },
+ {
+  "id": "cantor-arts-center",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "absence statement: 'Dackerman did not immediately respond to a request for comment'"
+  ],
+  "before": "Deputy director James Gaddy also left; Dackerman did not immediately respond to a request for comment (The Art Newspaper, 19 November 2020).",
+  "after": "Stanford said deputy director James Gaddy had also left the museum (The Art Newspaper, 19 November 2020).",
+  "sources": [
+   "https://www.theartnewspaper.com/2020/11/19/after-controversy-over-her-leadership-stanford-says-director-of-its-cantor-arts-center-has-resigned"
+  ],
+  "reason": "Non-response clause cut; rest confirmed."
+ },
+ {
+  "id": "shakespeare-theatre-company",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "changed descriptor: landlord 'set up to support the company'",
+   "unsupported: 'that the company vacate the theatre' worded beyond the source"
+  ],
+  "before": "after its landlord, Lansburgh Theatre, Inc., a non-profit set up to support the company, demanded a 700 percent increase in base rent and that the company vacate the theatre",
+  "after": "after its landlord, Lansburgh Theatre, Inc., a non-profit created to serve as the theatre's landlord, demanded a 700 percent increase in base rent and moved to evict the company",
+  "sources": [
+   "https://www.broadwayworld.com/washington-dc/article/Shakespeare-Theatre-Company-Files-Injunction-to-Stay-at-Lansburgh-Theatre-20120615"
+  ],
+  "reason": "BroadwayWorld describes LTI as 'created to serve as the Theatre's landlord' and STC as seeking to block its eviction. Page refused curl (403) and was read through WebFetch."
+ },
+ {
+  "id": "kunsthaus-graz",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "garbled double quotation",
+   "wrong date: 2 October (issue dated 3 October 2012)",
+   "missing actor: activist group from the steirischer herbst camp"
+  ],
+  "before": "In 2012 oil was poured in the Kunsthaus to draw attention to its sponsor Raiffeisenbank ... (Falter 40/2012, \"Steiermark kurz\", 2 October 2012). The Falter's words: \"So wurde etwa im Kunsthaus Öl verschüttet, um auf den Kunsthaussponsor Raiffeisenbank und seine Investitionen in die Ölindustrie\", ...",
+  "after": "In late September 2012 an activist group formed at the steirischer herbst Marathon Camp poured oil in the Kunsthaus during a protest tour of Graz, to draw attention to the Kunsthaus sponsor Raiffeisenbank and its \"Investitionen in die Ölindustrie\" (\"investments in the oil industry\", translated) (Falter 40/2012, \"Steiermark kurz\", 3 October 2012).",
+  "sources": [
+   "https://www.falter.at/zeitung/20121003/kultur"
+  ],
+  "reason": "Rewritten from the Falter item; one point, no repetition."
+ },
+ {
+  "id": "art-gallery-of-western-australia",
+  "section": "file",
+  "problems": [
+   "protest aimed at someone else on the premises (Woodside, which no source names as a funder)",
+   "Holmes à Court item concerns her private gallery, which the record lists as not related",
+   "acrylic sheet acquisition is not a dispute"
+  ],
+  "before": "WIDER CONTEXT on the January 2023 Disrupt Burrup Hub paint action at the gallery, the protester's fine, the WA Museum taking the acrylic sheet, and Janet Holmes à Court withdrawing her private gallery's support for the group.",
+  "after": "",
+  "sources": [
+   "https://www.sbs.com.au/nitv/article/woodside-protesters-spray-paint-famous-australian-artwork/fte2yv1yy",
+   "https://www.albanyadvertiser.com.au/news/crime/janet-holmes-a-court-cancelled-plans-to-host-public-meeting-for-disrupt-burrup-hub-over-criminal-link-c-11478901",
+   "https://www.theartnewspaper.com/2024/11/06/australian-museum-acquires-acrylic-sheet-damaged-in-attack-on-frederick-mccubbin-work"
+  ],
+  "reason": "Under 'What never goes in', a protest aimed at another party on the space's premises is excluded; nothing left is a dispute about the gallery, so the file is deleted."
+ }
+]

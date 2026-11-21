@@ -1,0 +1,60 @@
+[
+ {
+  "id": "mambo-bologna",
+  "section": "Red flags: 2025 protest over a stuffed cat in the exhibition \"Facile ironia\"",
+  "problems": [
+   "quotation: GreenMe quotes only 'orribile spettacolo', not 'un orribile spettacolo'",
+   "attribution: the request to the mayor is LAV's, Felicetti's words are separate",
+   "false quotation: the road-accident sentence is Il Resto del Carlino's own paraphrase of MAMbo's reply, not MAMbo's words",
+   "writer's verb 'killed' replaced by the source's sense, died in a road accident"
+  ],
+  "before": "- LAV (Lega Anti Vivisezione), through its president Gianluca Felicetti, asked Mayor Matteo Lepore ... LAV said the work was \"un orribile spettacolo\" (a horrible spectacle, translated) and not art ... / - MAMbo replied that the work is certified: \"il gatto in questione è rimasto vittima di un incidente stradale ...\" (the cat was killed in a road accident ...)",
+  "after": "- LAV (Lega Anti Vivisezione) asked Mayor Matteo Lepore ... LAV said the work was not art but an \"orribile spettacolo\" (\"horrible spectacle\", translated), and its president Gianluca Felicetti said turning the body of a sentient being into an \"oggetto concettuale\" (\"conceptual object\", translated) is a lack of respect, not irony ... / - MAMbo replied that the work is certified: the cat died in a road accident and was only afterwards stuffed and given to the artist (Il Resto del Carlino, 20 August 2025).",
+  "sources": [
+   "https://www.greenme.it/?p=1253058",
+   "https://www.ilrestodelcarlino.it/editoriale/il-gatto-non-fa-ridere-sc6pqgrm"
+  ],
+  "reason": "Boycott call, request to the mayor, Fratelli d'Italia's regional question and MAMbo's reply all confirmed in pages of 19 and 20 August 2025."
+ },
+ {
+  "id": "museion-bolzano",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "overstated verb: Die Welt says Pahl wanted the frog gone ('möchte, dass der Frosch ... verschwindet'), not that he demanded it"
+  ],
+  "before": "- In 2008 Franz Pahl, president of the South Tyrol regional council, demanded the removal of Martin Kippenberger's crucified frog from the museum ...",
+  "after": "- In 2008 Franz Pahl, president of the South Tyrol regional council, wanted Martin Kippenberger's crucified frog removed from the museum ...",
+  "sources": [
+   "http://news.bbc.co.uk/1/hi/world/europe/6122448.stm",
+   "https://www.welt.de/debatte/kolumnen/Fuhrs-Woche/article6056740/Kunstfrosch-am-Kreuz-veraergert-den-Papst.html"
+  ],
+  "reason": "BBC of 6 November 2006 and Die Welt (Eckhard Fuhr, 29 August 2008) confirm the rest; both pre-2021, so WIDER CONTEXT."
+ },
+ {
+  "id": "castello-di-rivoli-turin",
+  "section": "WIDER CONTEXT",
+  "problems": [
+   "repetition: the record's red_tape note already states the February 2013 open letter and its line on political and administrative slowness",
+   "paraphrase: the letter lists inadequate recognition of roles, unregulated contracts and lacking financial stability as causes of planning difficulty, not as demands"
+  ],
+  "before": "- On 1 February 2013 Artribune (Massimo Mattioli) reported an open letter from the museum's workers ... \"La struttura operativa del Museo non vuole più essere penalizzata dalle lentezze politiche e amministrative\" ... / - The workers asked for guarantees for the future, recognition of professional roles, regulated contracts and financial stability, and announced further awareness campaigns and protests; Artribune noted that the crisis could not be blamed on the museum's management (Artribune, 1 February 2013).",
+  "after": "- In their open letter of February 2013 the museum's workers wrote that inadequate recognition of professional roles, unregulated contracts and a lack of financial stability had made long-term planning difficult, and announced further awareness campaigns and protests; Artribune noted that the financial and systemic crisis could not be blamed on the museum's management (Artribune, Massimo Mattioli, 1 February 2013).",
+  "sources": [
+   "https://www.artribune.com/tribnews/2013/02/mobilitazione-tra-i-lavoratori-del-castello-di-rivoli-le-preoccupazioni-in-una-lettera-aperta-basta-lentezze-politiche-e-amministrative-vogliamo-garanzie-per-il-futuro-e-minacciano-altre-proteste/"
+  ],
+  "reason": "The quoted line is already in the record (bureaucracy red_tape note); only the letter's grievances and the announced protests are new."
+ },
+ {
+  "id": "nezu-museum-tokyo",
+  "section": "Red flags: 2025 Jeju claim to a Korean bell in the collection",
+  "problems": [
+   "absence line reworded as the report's own statement: MBC says the museum has issued no position ('아무런 입장을 내지 않고 있어') and that this hampers return and restoration"
+  ],
+  "before": "- The Nezu Museum gave no statement on the bell (MBC News, 8 May 2025).",
+  "after": "- MBC News reported that the Nezu Museum had stated no position on the bell, which it said hampered both its return and its proper restoration (MBC News, 8 May 2025).",
+  "sources": [
+   "https://imnews.imbc.com/replay/2025/nwdesk/article/6714155_36799.html"
+  ],
+  "reason": "Bell size, 1690 Unheungsa label, location by the lockers and toilet, 1850 and 1916 dates and Jeju's talks with the Korea Heritage Service confirmed in the MBC report of 8 May 2025."
+ }
+]
