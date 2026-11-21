@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=898"></script>
+  <script src="assets/load-image-data.js?v=899"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=898">
-  <link rel="stylesheet" href="assets/sheet.css?v=898">
-  <script src="assets/config.js?v=898"></script>
-  <script src="assets/analytics.js?v=898"></script>
-  <script src="assets/subtopic.js?v=898"></script>
-  <script src="assets/names.js?v=898"></script>
-  <script src="assets/grounding.js?v=898"></script>
-  <script src="assets/repeats.js?v=898"></script>
-  <script src="assets/intro-narration.js?v=898"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=899">
+  <link rel="stylesheet" href="assets/sheet.css?v=899">
+  <script src="assets/config.js?v=899"></script>
+  <script src="assets/analytics.js?v=899"></script>
+  <script src="assets/subtopic.js?v=899"></script>
+  <script src="assets/names.js?v=899"></script>
+  <script src="assets/grounding.js?v=899"></script>
+  <script src="assets/repeats.js?v=899"></script>
+  <script src="assets/intro-narration.js?v=899"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=898"></script>
+  <script src="assets/load-image.js?v=899"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=898"></script>
-  <script src="assets/money-ids.js?v=898"></script>
+  <script src="assets/institutions.js?v=899"></script>
+  <script src="assets/money-ids.js?v=899"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -10983,11 +10983,11 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v898';
+    const ATLAS_RELEASE = 'culture-atlas-v899';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=898').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=899').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -14542,7 +14542,24 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
     // its title in the accent colour with what it comes to beneath it on the left, its points on the right as a bulleted list.
     // The words are the same as the prose they replace; only the structure differs. A row that holds reported, unverified items
     // is tone "flag" and carries data-gossip, so Gossip mode still sets it, and only it, in the gossip colour.
-    const proseLi = (lead, html, gossip) => html ? `<li${gossip ? ' data-gossip="item"' : ''}>${lead ? proseLead(lead) : ''}${html}</li>` : '';
+    // A label is not said again by the line it leads (user, 21 Nov 2026: "check for other repetition"). "Leon Black. Leon Black is a
+    // MoMA trustee" loses the label; "Queensland ministerial diary, 20 Nov 2013: The Queensland ministerial diary records" keeps
+    // the date alone, "20 Nov 2013:". With `surname`, a person's label also goes when the line opens on the surname ("David A.
+    // Ross. Ross chaired"). 104 lines across the records read this way when the rule was written.
+    function leadUnsaid(lead, html, surname) {
+      const core = String(lead || '').replace(/[.:]+$/, ''), end = String(lead || '').slice(core.length);
+      if (!core) return lead;
+      const t = String(html).replace(/<[^>]*>/g, '').replace(/^\s*(the|an?)\s+/i, '').toLowerCase();
+      const opens = (n) => { const k = escapeHtml(n).toLowerCase(); return k.length > 2 && t.startsWith(k) && !/[a-z0-9]/.test(t.charAt(k.length)); };
+      if (opens(core)) return '';
+      const cut = core.search(/,\s|\s\(/);
+      const name = cut > 0 ? core.slice(0, cut) : core;
+      const tail = cut > 0 ? core.slice(cut).replace(/^,\s|^\s\(/, '').replace(/\)$/, '') : '';
+      const last = name.split(/\s+/).pop();
+      if (opens(name) || (surname && /\s/.test(name) && last.length > 3 && opens(last))) return tail && !surname ? tail.replace(/^(\w)/, c => c.toUpperCase()) + end : '';
+      return lead;
+    }
+    const proseLi = (lead, html, gossip, surname) => { lead = html && lead ? leadUnsaid(lead, html, surname) : lead; return html ? `<li${gossip ? ' data-gossip="item"' : ''}>${lead ? proseLead(lead) : ''}${html}</li>` : ''; };
     const proseTitle = (t) => String(t || '').replace(/\s+/g, ' ').trim().replace(/[.:…]+$/, '');
     // Details rows carry a title and their points, nothing under the title (user, 5 Nov 2026: "delete all the subtext").
     // Callers still pass a second argument; it is ignored, so no subtitle, verdict line or caption is drawn, long or short.
@@ -14650,7 +14667,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         said('Budget set by:', b.budget_set_by);
         if ((b.controls || []).length) lis.push(proseLi('Rules it must follow:', escapeHtml(proseEnd(proseCap(b.controls.join('; '))))));
       }
-      if (r) lis.push(proseLi('Red tape reported:', escapeHtml(proseEnd(r.note)) + ` ${proseLinks([r.url], 1)}`));
+      if (r) lis.push(proseLi('Red tape:', escapeHtml(proseEnd(r.note)) + ` ${proseLinks([r.url], 1)}`));
       const cite = proseLinks(((b && b.sources) || []).slice(0, 3), 3);
       if (lis.length && cite) lis.push(`<li>Sources: ${cite}.</li>`);
       const head = b && b.level ? `Level ${b.level} of 5, ${BUREAUCRACY[b.level]}. ${proseEnd(b.level_basis)}` : '';
@@ -14673,15 +14690,17 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const spent = l.total_usd > 0
           ? `, reporting ${usd(l.total_usd)} in all${l.last_year && l.last_year_usd ? `; ${usd(l.last_year_usd)} in ${l.last_year}` : ''}`
           : ', each report under $5,000, the least a report has to state';
-        lis.push(proseLi('In the US:', escapeHtml(`Lobbied the US government ${span}${spent}.`)));
+        // No label that the line or the row's title already says (user, 21 Nov 2026): "Lobbying / In the US: Lobbied the US
+        // government / Lobbied by:" said the country and the verb twice each.
+        lis.push(proseLi('', escapeHtml(`Lobbied the US government ${span}${spent}.`)));
         // A report line that only repeats the start of another (the same filing, shortened) is said once.
         const on = (l.on || []).map(proseEnd).filter((t, i, all) => !all.some((u, j) => j !== i && u.length > t.length && u.toLowerCase().startsWith(t.slice(0, -1).toLowerCase())));
         if (on.length) lis.push(proseLi('Latest reports:', escapeHtml(on.join(' '))));
         const who = (l.firms || []).slice();
         if (l.in_house) who.unshift('its own staff');
-        if (who.length) lis.push(proseLi('Lobbied by:', escapeHtml(proseEnd(who.join(', ')))));
+        if (who.length) lis.push(proseLi('Done by:', escapeHtml(proseEnd(who.join(', ')))));
       } else if (l.register === 'eu') {
-        lis.push(proseLi('In the EU:', escapeHtml(`${l.filed_as} signed up as an EU lobbyist in ${String(l.registered || '').slice(0, 4)}.`)));
+        lis.push(proseLi('', escapeHtml(`${l.filed_as} has been on the EU Transparency Register since ${String(l.registered || '').slice(0, 4)}.`)));
         if (l.declared) lis.push(proseLi('', escapeHtml(proseEnd(l.declared))));
       }
       if (lis.length && l.source) lis.push(`<li>Source: ${proseLinks([l.source], 1)}.</li>`);
@@ -14745,7 +14764,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // Reported items from the archive that the report does not already carry. They are said once to be reported, not verified.
       const items = [];
       (inst.epstein_records || []).forEach(e => items.push(proseLi(`${e.person || 'Epstein files'}.`,
-        escapeHtml([proseEnd(e.summary), e.tie ? 'Link: ' + proseEnd(e.tie) : '', e.consequence ? 'What happened: ' + proseEnd(e.consequence) : ''].filter(Boolean).join(' ')) + proseCite(e.sources, 3), true)));
+        escapeHtml([proseEnd(e.summary), e.tie ? 'Link: ' + proseEnd(e.tie) : '', e.consequence ? 'What happened: ' + proseEnd(e.consequence) : ''].filter(Boolean).join(' ')) + proseCite(e.sources, 3), true, true)));
       const seenCables = new Set();
       (inst.wikileaks_records || []).forEach(w => {
         const key = (w.doc_id || '') + (w.what_shows || '');
@@ -14768,7 +14787,7 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
         const m = part.match(/^([^:·]+?)\s*·\s*([^:·]+?)\s*·\s*([^:]+?):\s*(.+)$/s);
         const ep = m ? null : part.match(/^Epstein link\s*·\s*([^:·]+?):\s*(.+)$/s);
         if (m) items.push(proseLi(`${m[2]}, ${m[1].replace(/^(\w)/, c => c.toUpperCase())}, ${m[3].toLowerCase()}.`, escapeHtml(proseEnd(m[4])), true));
-        else if (ep) items.push(proseLi(`${ep[1]}.`, escapeHtml(proseEnd(ep[2])), true));
+        else if (ep) items.push(proseLi(`${ep[1]}.`, escapeHtml(proseEnd(ep[2])), true, true));
         else items.push(proseLi('', escapeHtml(proseEnd(part)), true));
       });
       if (inst.case_study) {
@@ -23044,24 +23063,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=898"></script>
-<script src="assets/note-aids.js?v=898" defer></script>
-<script src="assets/place-list.js?v=898" defer></script>
-<script src="assets/chat-share.js?v=898" defer></script>
-<script src="assets/note-files.js?v=898" defer></script>
-<script src="assets/funding-views.js?v=898"></script>
-<script src="assets/layers.js?v=898"></script>
-<script src="assets/critique-gallery-data.js?v=898"></script>
-<script src="assets/critique-captions.js?v=898"></script>
-<script src="assets/critique-gallery.js?v=898"></script>
-<script src="assets/hq-detail.js?v=898"></script>
-<script src="assets/influence-mode.js?v=898"></script>
-<script src="assets/bubbles.js?v=898" defer></script>
-<script src="assets/phone-maps.js?v=898"></script>
-<script src="assets/desktop-maps.js?v=898"></script>
-<script src="assets/chat-resize.js?v=898"></script>
-<script src="assets/frame-refusers.js?v=898"></script>
-<script src="assets/link-pane.js?v=898"></script>
-<script src="assets/tab-suggest.js?v=898"></script>
+<script src="assets/typeset.js?v=899"></script>
+<script src="assets/note-aids.js?v=899" defer></script>
+<script src="assets/place-list.js?v=899" defer></script>
+<script src="assets/chat-share.js?v=899" defer></script>
+<script src="assets/note-files.js?v=899" defer></script>
+<script src="assets/funding-views.js?v=899"></script>
+<script src="assets/layers.js?v=899"></script>
+<script src="assets/critique-gallery-data.js?v=899"></script>
+<script src="assets/critique-captions.js?v=899"></script>
+<script src="assets/critique-gallery.js?v=899"></script>
+<script src="assets/hq-detail.js?v=899"></script>
+<script src="assets/influence-mode.js?v=899"></script>
+<script src="assets/bubbles.js?v=899" defer></script>
+<script src="assets/phone-maps.js?v=899"></script>
+<script src="assets/desktop-maps.js?v=899"></script>
+<script src="assets/chat-resize.js?v=899"></script>
+<script src="assets/frame-refusers.js?v=899"></script>
+<script src="assets/link-pane.js?v=899"></script>
+<script src="assets/tab-suggest.js?v=899"></script>
 </body>
 </html>
