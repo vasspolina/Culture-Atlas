@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=899">
-  <link rel="stylesheet" href="assets/sheet.css?v=902">
+  <link rel="stylesheet" href="assets/sheet.css?v=903">
   <script src="assets/config.js?v=899"></script>
   <script src="assets/analytics.js?v=899"></script>
   <script src="assets/subtopic.js?v=899"></script>
@@ -1182,7 +1182,7 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=899"></script>
+  <script src="assets/institutions.js?v=903"></script>
   <script src="assets/money-ids.js?v=899"></script>
   <script>
 
@@ -11007,11 +11007,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v902';
+    const ATLAS_RELEASE = 'culture-atlas-v903';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=902').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=903').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13633,7 +13633,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
       // not shown here: the chat does not volunteer gossip, and the desktop record has its own row for them in Gossip mode.
       const gossipOn = typeof isGossipModeActive !== 'undefined' && isGossipModeActive;
       const gossipCard = (g) => item(g.headline, { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span><br><span class="meta gossip-provenance">${escapeHtml(gossipProvenance(g))}</span>` },
-        p('', g.said) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Settled.', stale: 'Old rumour, nothing since.' }[g.status] || '')),
+        p('', gossipSaid(g)) + list(li('Response: ', g.response), li('Outcome: ', g.outcome), li('', { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Settled.', stale: 'Old rumour, nothing since.' }[g.status] || '')),
         g.urls);
       // The headline is the sentence: an item's first sentence runs to 250 characters and more, and cut short it stops mid-claim.
       const gossipBrief = (g) => item('', { html: `<span class="meta">${escapeHtml(gossipAttribution(g))}</span>` }, p('', proseEnd(g.headline)), (g.urls || []).slice(0, 1));
@@ -14756,7 +14756,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     // Gossip mode: the gossip items (notes/gossip-criteria.md §7) as the first row of the record, newest first, stale ones last.
     function proseGossipHtml(inst) {
       if (!isGossipModeActive || !gossipItems(inst).length) return '';
-      const gLis = gossipItems(inst).map(g => proseLi(`${g.headline}.`, escapeHtml([proseEnd(g.said), gossipAttribution(g), g.response ? 'The response: ' + proseEnd(g.response) : '', g.outcome ? 'The outcome: ' + proseEnd(g.outcome) : '', g.status === 'stale' ? 'Old rumour, nothing since.' : g.status === 'denied' ? 'Denied.' : g.status === 'confirmed' ? 'Later confirmed.' : ''].filter(Boolean).join(' ')) + proseCite(g.urls, 4), true));
+      const gLis = gossipItems(inst).map(g => proseLi(`${g.headline}.`, escapeHtml([proseEnd(gossipSaid(g)), gossipAttribution(g), g.response ? 'The response: ' + proseEnd(g.response) : '', g.outcome ? 'The outcome: ' + proseEnd(g.outcome) : '', g.status === 'stale' ? 'Old rumour, nothing since.' : g.status === 'denied' ? 'Denied.' : g.status === 'confirmed' ? 'Later confirmed.' : ''].filter(Boolean).join(' ')) + proseCite(g.urls, 4), true));
       return proseRows([proseRow('Gossip', '', gLis, { tone: 'flag', gossip: true })], 'Gossip', true);
     }
     function proseBodyHtml(inst) {
@@ -15020,6 +15020,10 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     // The gossip items: talk collected from the internet by the rules in notes/gossip-criteria.md, written onto the record by
     // tools/attach_gossip.py as gossip_data.gossip, newest first, stale ones last. Each names who says it, where, when and its sources.
     const GOSSIP_WHO = { press: 'reported by', court_or_regulator: 'in a filing with', union: 'said by', open_letter: 'in an open letter at', campaign: 'said by a campaign at', social_named: 'posted under a real name on', social_anonymous: 'posted anonymously on', review_platform: 'said in reviews on', institution: 'said by the museum on' };
+    // What an item says, as it is shown: in Gossip mode its retelling in the mode's voice where it has one (told, written with
+    // tools/tell_gossip.py; user, 21 Nov 2026: "it just not changing content to gossip", then "Retell in gossip voice"), else
+    // the record's own words. The chat model is always given the record's words (assets/grounding.js).
+    const gossipSaid = (g) => (typeof isGossipModeActive !== 'undefined' && isGossipModeActive && g && g.told) || (g && g.said) || '';
     function gossipItems(inst, fresh) {
       const all = ((inst && inst.gossip_data || {}).gossip || []).filter(g => g && g.headline);
       return fresh ? all.filter(g => g.status !== 'stale') : all;
@@ -15047,7 +15051,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     // One item as plain text for the chat's record answers: the headline, what is said, who says it, the response, its status.
     function gossipItemText(g) {
       const status = { denied: 'Denied.', confirmed: 'Later confirmed.', resolved: 'Settled.', stale: 'Old rumour.' }[g.status] || '';
-      return [g.headline + '.', g.said, gossipAttribution(g), g.response ? 'Response: ' + g.response : '', g.outcome ? 'Outcome: ' + g.outcome : '', status].filter(Boolean).join(' ').replace(/\.\./g, '.');
+      return [g.headline + '.', gossipSaid(g), gossipAttribution(g), g.response ? 'Response: ' + g.response : '', g.outcome ? 'Outcome: ' + g.outcome : '', status].filter(Boolean).join(' ').replace(/\.\./g, '.');
     }
     // gossip: what is reported, from the item that names its own sources first. Otherwise: who funds it. Null when the record has nothing to say.
     function recordFact(inst, gossip) {
@@ -23137,7 +23141,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/hq-detail.js?v=899"></script>
 <script src="assets/influence-mode.js?v=899"></script>
 <script src="assets/bubbles.js?v=899" defer></script>
-<script src="assets/phone-maps.js?v=902"></script>
+<script src="assets/phone-maps.js?v=903"></script>
 <script src="assets/desktop-maps.js?v=899"></script>
 <script src="assets/chat-resize.js?v=899"></script>
 <script src="assets/frame-refusers.js?v=899"></script>

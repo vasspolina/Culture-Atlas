@@ -1420,12 +1420,14 @@
       // The items, from the records the page loaded, or from assets/live.json once a newer one has been deployed.
       let live = null;
       const recordOf = (() => { let map = null; return (id) => { if (!map) { map = new Map(); (g('ALL_INSTITUTIONS') || []).forEach((i) => { map.set(i.id || i.name, i); map.set(i.name, i); }); } return map.get(id); }; })();
+      // An item's retelling in the voice of Gossip mode (told, tools/tell_gossip.py), from the feed file or else the record.
+      const toldOf = (inst, id) => { const it = (((inst || {}).gossip_data || {}).gossip || []).find((q) => q && q.id === id); return (it && it.told) || ''; };
       function allItems() {
         const out = [];
         if (live) {
           live.items.forEach((x) => {
             const inst = recordOf(x.inst) || { id: x.inst, name: x.name, city: x.city, country: x.country, lat: x.lat, lon: x.lon };
-            out.push({ key: x.type + ':' + (x.id || x.headline) + (x.type === 'leak' || x.type === 'account' ? ':' + x.inst + ':' + String(x.said).length : ''), inst, type: x.type, when: x.when, head: x.headline, said: x.said, where: x.where, who: x.type === 'case' ? 'case' : x.who_says, urls: (x.urls || []).filter(http), status: x.status, kind: x.kind, reply: x.response, outcome: x.outcome, checked: x.checked, role: x.role || '', dated: x.dated || '' });
+            out.push({ key: x.type + ':' + (x.id || x.headline) + (x.type === 'leak' || x.type === 'account' ? ':' + x.inst + ':' + String(x.said).length : ''), inst, type: x.type, when: x.when, head: x.headline, said: x.said, told: x.type === 'gossip' ? (x.told || toldOf(inst, x.id)) : '', where: x.where, who: x.type === 'case' ? 'case' : x.who_says, urls: (x.urls || []).filter(http), status: x.status, kind: x.kind, reply: x.response, outcome: x.outcome, checked: x.checked, role: x.role || '', dated: x.dated || '' });
           });
         } else {
           (g('ALL_INSTITUTIONS') || []).forEach((inst) => {
@@ -1433,7 +1435,7 @@
               const urls = (it && it.urls || []).filter(http);
               // The same test as tools/build_live_feed.py: nothing without a date, an address, a named source and a check date.
               if (!it || !it.headline || !parse(it.when) || !urls.length || !it.who_says || !it.where || !/^\d{4}-\d{2}-\d{2}$/.test(it.retrieved_on || '')) return;
-              out.push({ key: 'gossip:' + (it.id || it.headline), inst, type: 'gossip', when: it.when, head: it.headline, said: it.said, where: it.where, who: it.who_says, urls, status: it.status || 'talk', kind: it.kind || 'report', reply: it.response || '', outcome: it.outcome || '', checked: it.retrieved_on });
+              out.push({ key: 'gossip:' + (it.id || it.headline), inst, type: 'gossip', when: it.when, head: it.headline, said: it.said, told: it.told || '', where: it.where, who: it.who_says, urls, status: it.status || 'talk', kind: it.kind || 'report', reply: it.response || '', outcome: it.outcome || '', checked: it.retrieved_on });
             });
             // Staff and visitor posts, read as the record reads them (accountView), with the date from the post's own fields.
             ((inst.gossip_data || {}).accounts || []).forEach((a) => {
@@ -1606,7 +1608,9 @@
         // descriptive"): status, date, place, source. The source's name is its link; a user post says "(unverified)" and no more.
         const day = dateText(x.when);
         const leakDated = x.type === 'leak' && x.dated ? monthsText(x.dated) : '';
-        const said = saidRest(x);
+        // In Gossip mode a gossip report is told in the mode's voice where it has a retelling (user, 21 Nov 2026: "it just not
+        // changing content to gossip", then "Retell in gossip voice"); otherwise the record's own words.
+        const said = gossipOn() && x.told ? x.told : saidRest(x);
         const place = x.inst.city && x.inst.city === x.inst.country ? x.inst.city : placeOf(x.inst);
         const link = (u, t) => '<a href="' + esc(u) + '" target="_blank" rel="noopener noreferrer">' + t + '</a>';
         const sourceName = esc(x.where || src[0]) + (x.role ? ', ' + esc(x.role) : '');
@@ -1624,7 +1628,7 @@
         // Each article opens with a title, the space's name on a stone band (user, 11 Nov 2026: "add titles to top story
         // articles and color background to the titles"). The name is the way from a report to its place on the map, so the
         // Space line in the facts is gone and the name is not said twice.
-        return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '">'
+        return '<article class="gm-story ts-story' + (poster ? ' is-top' : '') + (alert ? ' is-alert' : '') + '" data-i="' + i + '" data-key="' + esc(x.key) + '" data-type="' + esc(x.type) + '">'
           + '<p class="ts-name"><button type="button" class="gm-open ts-space" data-i="' + i + '">' + esc(x.inst.name) + '</button></p>'
           // The label is the kind alone: no "Alert" word and no middle dot (user, 15 Nov 2026).
           + '<p class="ts-label">' + esc(KIND[x.kind] || 'Report') + '</p>'
