@@ -21484,9 +21484,6 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // The phone drawer takes the same eight to twelve.
       const drawer = document.getElementById('curatorDrawerStarterPrompts');
       if (drawer) drawer.innerHTML = list.slice(0, STARTER_SHOWN).map(promptButton).join('');
-      // The phone chat's suggestion sheet (assets/phone-maps.js, gmSuggestSheet) takes the first six as its tiles.
-      const tiles = document.getElementById('gmSuggestTiles');
-      if (tiles) tiles.innerHTML = list.slice(0, 6).map(promptButton).join('');
       fitQuestionCloud();
       verifyShown(list);
     }
