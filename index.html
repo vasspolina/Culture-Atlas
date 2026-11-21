@@ -14703,7 +14703,10 @@ Rules: use only the facts in the ITEMS. Name who says each thing and when, in re
       // carries the filing's figures, so the same year's income is not said twice.
       const f = inst.finance || {};
       const moneyShown = typeof f.income === 'number' && f.income > 0 && f.currency;
-      rows.push(proseRow('Accounts and links', '', [moneyShown ? '' : note('Accounts:', inst.finances_note), note('Linked to:', affiliationsNotInOverview(inst, inst.affiliations_note))]));
+      // Two rows, each under its own title and with no label on its line (user, 21 Nov 2026: "It's repeating the words again,
+      // linked links too"): one row titled "Accounts and links" over lines led "Accounts:" and "Linked to:" said each word twice.
+      rows.push(proseRow('Accounts', '', [moneyShown ? '' : note('', inst.finances_note)]));
+      rows.push(proseRow('Links', '', [note('', affiliationsNotInOverview(inst, inst.affiliations_note))]));
       return proseRows(rows, 'Overview and funding');
     }
     // What is flagged, the art press, wider context, the bottom line and the sources: the report's points with the archive's cases beside them.
