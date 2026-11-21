@@ -15,6 +15,22 @@
   ],
   "batch": "fp2"
  },
+ "a2a": {
+  "name": "A2A S.p.A.",
+  "short": "A2A",
+  "kind": "corp",
+  "what": "An Italian energy, water and waste company formed on 1 January 2008 from the municipal utilities AEM and AMSA of Milan and ASM of Brescia, listed in Milan.",
+  "money": "Sales of energy, water and waste services: adjusted revenues of €14,014 million in 2025; Milan and Brescia each owned 25% in December 2024.",
+  "site": "https://www.gruppoa2a.it",
+  "city": "Brescia",
+  "country": "Italy",
+  "status": "done",
+  "sources": [
+   "https://www.gruppoa2a.it/en/about-us",
+   "https://en.wikipedia.org/wiki/A2A"
+  ],
+  "batch": "fp47"
+ },
  "aalborgmunicipality|Denmark": {
   "name": "Aalborg Kommune",
   "short": "Aalborg Municipality",
@@ -31,6 +47,20 @@
    "https://www.aalborg.dk/"
   ],
   "batch": "fp36"
+ },
+ "aaronfleischman": {
+  "name": "Aaron I. Fleischman",
+  "short": "Aaron Fleischman",
+  "kind": "person",
+  "what": "An American art collector and trustee emeritus of the Art Institute of Chicago.",
+  "money": "His career as a lawyer and investor.",
+  "arts": "He is an honorary trustee of the Metropolitan Museum of Art, where he endowed a curator's post in modern and contemporary art, and earlier sat on the Whitney Museum's board.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://www.theartnewspaper.com/2024/09/10/art-institute-chicago-75m-gift-aaron-fleischman-lin-lougheed"
+  ],
+  "batch": "fp47"
  },
  "aatoserkko": {
   "name": "Jane and Aatos Erkko Foundation",
@@ -24178,6 +24208,19 @@
   ],
   "batch": "fp5"
  },
+ "sindikadokolo": {
+  "name": "Sindika Dokolo",
+  "kind": "person",
+  "what": "A Congolese businessman and art collector (1972 to 2020), husband of Isabel dos Santos, daughter of Angola's then president, and president of the Sindika Dokolo Foundation.",
+  "money": "His father Augustin Dokolo's businesses in Congo, which he joined in 1995, and his own investments in diamonds, oil, real estate and telecommunications.",
+  "arts": "He began collecting at 15 and built a collection of contemporary African art, which his foundation lent to museums abroad.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sindika_Dokolo",
+   "https://web.archive.org/web/20191207164137/http://www.fondation-sindikadokolo.com/"
+  ],
+  "batch": "fp47"
+ },
  "singaporeairlines": {
   "name": "Singapore Airlines Limited",
   "short": "Singapore Airlines",
@@ -24271,6 +24314,24 @@
   ],
   "batch": "fp30"
  },
+ "slovakiasministryofculture|Slovakia": {
+  "name": "Ministerstvo kultúry Slovenskej republiky",
+  "short": "Slovak Ministry of Culture",
+  "kind": "gov",
+  "what": "The central body of Slovakia's state administration for culture, covering the state language, heritage protection, the arts and copyright, seated at Námestie SNP in Bratislava.",
+  "money": "The state budget of Slovakia.",
+  "site": "https://www.culture.gov.sk",
+  "city": "Bratislava",
+  "country": "Slovakia",
+  "address": "Námestie SNP č. 33, 813 31 Bratislava",
+  "status": "done",
+  "sources": [
+   "https://www.culture.gov.sk/",
+   "https://sk.wikipedia.org/wiki/Ministerstvo_kult%C3%BAry_Slovenskej_republiky",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_(Slovakia)"
+  ],
+  "batch": "fp47"
+ },
  "sloveniasministryofculture|Slovenia": {
   "name": "Ministrstvo za kulturo",
   "short": "Slovenian Ministry of Culture",
@@ -24287,6 +24348,23 @@
    "https://www.gov.si/drzavni-organi/ministrstva/ministrstvo-za-kulturo/"
   ],
   "batch": "fp17"
+ },
+ "smallingerland": {
+  "name": "Gemeente Smallingerland",
+  "short": "Municipality of Smallingerland",
+  "kind": "gov",
+  "what": "A municipality in the east of the Dutch province of Friesland, with Drachten as its main town and the seat of its municipal offices.",
+  "money": "The municipal budget of Smallingerland.",
+  "site": "https://www.smallingerland.nl",
+  "city": "Drachten",
+  "country": "Netherlands",
+  "address": "Reidingweg 6, 9203 KR Drachten",
+  "status": "done",
+  "sources": [
+   "https://www.smallingerland.nl/contact",
+   "https://nl.wikipedia.org/wiki/Smallingerland"
+  ],
+  "batch": "fp47"
  },
  "smiparliamentdirectgrant|Norway": {
   "name": "Sametinget",
@@ -24478,6 +24556,24 @@
    "https://en.wikipedia.org/wiki/Soudal"
   ],
   "batch": "fp21"
+ },
+ "southafricannationalgovernment|South Africa": {
+  "name": "Government of South Africa",
+  "kind": "gov",
+  "what": "The national government of South Africa, a parliamentary republic with three tiers of government; the President and Cabinet hold executive authority and sit at the Union Buildings in Pretoria.",
+  "money": "The national budget of South Africa, R2.67 trillion for 2026-27.",
+  "arts": "Its Department of Sport, Arts and Culture, created in June 2019, is the national department for sport, the arts, culture and heritage.",
+  "site": "https://www.gov.za",
+  "city": "Pretoria",
+  "country": "South Africa",
+  "address": "Union Buildings, Pretoria",
+  "status": "done",
+  "sources": [
+   "https://www.gov.za/about-government/government-system/structure-and-functions-south-african-government",
+   "https://en.wikipedia.org/wiki/Government_of_South_Africa",
+   "https://en.wikipedia.org/wiki/Department_of_Sport,_Arts_and_Culture"
+  ],
+  "batch": "fp47"
  },
  "southaustraliangovernment|Australia": {
   "name": "Government of South Australia",
@@ -24785,6 +24881,55 @@
   ],
   "batch": "fp29"
  },
+ "statedepartmentofculturalaffairsunit|USA": {
+  "name": "New Mexico Department of Cultural Affairs",
+  "short": "NMDCA",
+  "kind": "gov",
+  "what": "A New Mexico state agency created in 1978 by the state legislature, led by a Secretary the Governor appoints; it runs the state's museums and historic sites from Santa Fe.",
+  "money": "The state budget of New Mexico.",
+  "site": "https://www.nmculture.dca.nm.gov",
+  "city": "Santa Fe",
+  "country": "United States",
+  "address": "Bataan Memorial Building, 407 Galisteo Street, Suite 260, Santa Fe, NM 87501",
+  "status": "done",
+  "sources": [
+   "https://www.nmculture.dca.nm.gov/about-nmdca/",
+   "https://en.wikipedia.org/wiki/New_Mexico_Department_of_Cultural_Affairs"
+  ],
+  "batch": "fp47"
+ },
+ "statelegislature|USA": {
+  "name": "New York State Legislature",
+  "kind": "gov",
+  "what": "The legislature of the US state of New York, made up of the State Senate and the State Assembly, which meets at the State Capitol in Albany.",
+  "money": "The New York state budget.",
+  "city": "Albany",
+  "country": "United States",
+  "wrong_match": "The Munson line is the standard New York State Council on the Arts credit, which thanks the Governor's office and the Legislature; the council, already named on that line, is the payer.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/New_York_State_Legislature",
+   "https://arts.ny.gov/our-mission"
+  ],
+  "batch": "fp47"
+ },
+ "statemuseumofministeriodeculturaydeportes|Guatemala": {
+  "name": "Ministerio de Cultura y Deportes",
+  "short": "Guatemala's Ministry of Culture and Sports (MCD)",
+  "kind": "gov",
+  "what": "A ministry of the Government of Guatemala formed on 10 January 1986, responsible for promoting and conserving the country's culture and heritage, housed in the Palacio Nacional de la Cultura.",
+  "money": "The state budget of Guatemala.",
+  "site": "https://mcd.gob.gt",
+  "city": "Guatemala City",
+  "country": "Guatemala",
+  "address": "6a. Calle y 6a. Avenida, Zona 1, Palacio Nacional de la Cultura, Guatemala City",
+  "status": "done",
+  "sources": [
+   "https://mcd.gob.gt/",
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture_and_Sports_(Guatemala)"
+  ],
+  "batch": "fp47"
+ },
  "statenskunstfond": {
   "name": "Statens Kunstfond",
   "short": "Danish Arts Foundation",
@@ -24973,6 +25118,23 @@
   ],
   "batch": "fp32"
  },
+ "stichtingvriendencuypershuisroermond": {
+  "name": "Stichting Vrienden Cuypershuis Roermond",
+  "short": "Vrienden van het Cuypershuis",
+  "kind": "found",
+  "what": "A friends' foundation with ANBI charity status that has backed the Cuypershuis museum in Roermond since late 2004.",
+  "money": "Yearly contributions from its friends and patrons, and gifts that are tax-deductible under its ANBI status.",
+  "site": "https://vriendencuypershuisroermond.nl",
+  "city": "Roermond",
+  "country": "Netherlands",
+  "status": "done",
+  "sources": [
+   "https://vriendencuypershuisroermond.nl/",
+   "https://vriendencuypershuisroermond.nl/over-de-vrienden/anbi-status/",
+   "https://vriendencuypershuisroermond.nl/vriend-worden/"
+  ],
+  "batch": "fp47"
+ },
  "stillwater": {
   "name": "Still Water Foundation",
   "kind": "found",
@@ -25022,6 +25184,24 @@
    "https://www.jerseyfinance.com/news/corient-completes-acquisitions-of-stonehage-fleming-and-stanhope-capital-group/"
   ],
   "batch": "fp21"
+ },
+ "stouttrust": {
+  "name": "The Stout Trust",
+  "short": "Stout Trust",
+  "kind": "found",
+  "what": "A charitable trust set up under the will of the Wellington-born soil scientist Dr John David Stout, who died in 1982, with Perpetual Guardian as trustee.",
+  "money": "The estate of John Stout, added to by a bequest from his sister, Dr Vida Stout.",
+  "arts": "It gives grants to promote and preserve New Zealand's arts, cultural and natural heritage.",
+  "site": "https://www.perpetualguardian.co.nz",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "address": "c/o Perpetual Guardian Trust, Level 23, 191 Queen Street, Auckland 1010",
+  "status": "done",
+  "sources": [
+   "https://www.perpetualguardian.co.nz/wp-content/uploads/The-Stout-Trust-FAQs-May-2026.pdf",
+   "https://register.charities.govt.nz/Charity/CC32797"
+  ],
+  "batch": "fp47"
  },
  "stpetersburgcommitteeforculture": {
   "name": "Комитет по культуре Санкт-Петербурга",
@@ -25120,6 +25300,38 @@
    "https://en.wikipedia.org/wiki/Suna_K%C4%B1ra%C3%A7"
   ],
   "batch": "fp21"
+ },
+ "supportingact": {
+  "name": "Stichting The Supporting Act",
+  "short": "The Supporting Act Foundation",
+  "kind": "found",
+  "what": "A charitable foundation in Amsterdam with ANBI status, founded in 2021 by the file-transfer company WeTransfer to fund emerging artists and arts nonprofits.",
+  "money": "WeTransfer, which endowed it with €1 million in 2021 and pledged 1% of its revenue for the first five years.",
+  "site": "https://thesupportingact.org",
+  "city": "Amsterdam",
+  "country": "Netherlands",
+  "address": "Weesperstraat 107, 1018 VN Amsterdam",
+  "status": "done",
+  "sources": [
+   "https://thesupportingact.org/about",
+   "https://www.itsnicethat.com/news/the-supporting-act-wetransfer-creative-industry-210421"
+  ],
+  "batch": "fp47"
+ },
+ "susanhill": {
+  "name": "Jim and Susan Hill",
+  "kind": "person",
+  "what": "Calgary collectors and philanthropists who founded the Esker Foundation, a contemporary art gallery opened in 2012; Jim Hill bought Pason Systems in 1987 and chaired its board.",
+  "money": "Pason Systems, a Calgary energy services and technology company founded in 1978 that makes hardware and software for oil and gas drilling.",
+  "city": "Calgary",
+  "country": "Canada",
+  "status": "done",
+  "sources": [
+   "https://www.e-flux.com/directory/166071/esker-foundation",
+   "https://pason.com/about-us/",
+   "https://businessincalgary.com/gift-art-esker-foundation/"
+  ],
+  "batch": "fp47"
  },
  "svyturys": {
   "name": "UAB Švyturys-Utenos alus",
@@ -25381,6 +25593,21 @@
   ],
   "batch": "fp30"
  },
+ "tatmadaw": {
+  "name": "Tatmadaw",
+  "short": "Myanmar armed forces",
+  "kind": "gov",
+  "what": "The armed forces of Myanmar, founded on 27 March 1945 and made up of the army, navy and air force, with headquarters in Naypyidaw.",
+  "money": "Myanmar's national budget, and revenue from its two conglomerates, Myanma Economic Holdings Limited and the Myanmar Economic Corporation.",
+  "city": "Naypyidaw",
+  "country": "Myanmar",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Tatmadaw",
+   "https://web.archive.org/web/20260625152344/https://sacoffice.gov.mm/en/tatmadaw-reaffirms-vigilance-national-duties"
+  ],
+  "batch": "fp47"
+ },
  "tavairports": {
   "name": "TAV Havalimanları Holding A.Ş.",
   "short": "TAV Airports",
@@ -25413,6 +25640,41 @@
    "https://en.wikipedia.org/wiki/Aso_O._Tavitian"
   ],
   "batch": "fp22"
+ },
+ "techintorganization": {
+  "name": "Techint Group",
+  "short": "Techint",
+  "kind": "corp",
+  "what": "An Italian-Argentine industrial group founded in 1945 by Agostino Rocca, based in Buenos Aires and Milan, that holds Tenaris, Ternium, Techint Engineering & Construction, Tenova, Tecpetrol and Humanitas.",
+  "money": "Steel pipes, flat steel, engineering, mining technology, oil and gas and hospitals; annual revenues of US$32.9 billion in 2025.",
+  "arts": "Its companies invested US$79.1 million in community programmes in 19 countries in 2025; its culture programmes include Fondazione Dalmine and a film festival.",
+  "site": "https://www.techintgroup.com",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "status": "done",
+  "sources": [
+   "https://www.techintgroup.com/en/about-us",
+   "https://www.techintgroup.com/en/community-relations",
+   "https://en.wikipedia.org/wiki/Techint"
+  ],
+  "batch": "fp47"
+ },
+ "tecpetrol": {
+  "name": "Tecpetrol",
+  "kind": "corp",
+  "what": "The oil and gas company of the Techint Group, which explores and produces in Argentina, Bolivia, Colombia, Ecuador, Mexico, Peru and Venezuela, with an office in Buenos Aires.",
+  "money": "Exploration, production, transport and distribution of oil and gas, and power generation, in Latin America.",
+  "site": "https://www.tecpetrol.com",
+  "city": "Buenos Aires",
+  "country": "Argentina",
+  "address": "Carlos María Della Paolera 299, 20th floor, C1001ADA Buenos Aires",
+  "status": "done",
+  "sources": [
+   "https://www.tecpetrol.com/en/what-we-do",
+   "https://www.tecpetrol.com/en/contact",
+   "https://www.techintgroup.com/en"
+  ],
+  "batch": "fp47"
  },
  "teiger": {
   "name": "Teiger Foundation",
@@ -25464,6 +25726,38 @@
   ],
   "batch": "fp40"
  },
+ "tenaris": {
+  "name": "Tenaris S.A.",
+  "short": "Tenaris",
+  "kind": "corp",
+  "what": "A maker of steel pipes for the energy industry, organised in Luxembourg in 2001 and controlled by the Techint Group, with shares listed in New York, Milan and Mexico.",
+  "money": "Sales of steel pipes and related services to the energy industry: net sales of US$12 billion in 2025.",
+  "site": "https://www.tenaris.com",
+  "city": "Luxembourg",
+  "country": "Luxembourg",
+  "status": "done",
+  "sources": [
+   "https://www.tenaris.com/en/about-us",
+   "https://en.wikipedia.org/wiki/Tenaris"
+  ],
+  "batch": "fp47"
+ },
+ "ternium": {
+  "name": "Ternium S.A.",
+  "short": "Ternium",
+  "kind": "corp",
+  "what": "A steel producer formed in 2005 from Siderar of Argentina, Sidor of Venezuela and Hylsa of Mexico, based in Luxembourg and controlled by the Techint Group.",
+  "money": "Flat and long steel made at 26 production centres in the Americas; revenue of US$17.61 billion in 2023.",
+  "site": "https://www.ternium.com",
+  "city": "Luxembourg",
+  "country": "Luxembourg",
+  "status": "done",
+  "sources": [
+   "https://www.ternium.com/en/company",
+   "https://en.wikipedia.org/wiki/Ternium"
+  ],
+  "batch": "fp47"
+ },
  "terraforamericanart": {
   "name": "Terra Foundation for American Art",
   "short": "Terra Foundation",
@@ -25498,6 +25792,25 @@
    "https://en.wikipedia.org/wiki/Tesonet"
   ],
   "batch": "fp22"
+ },
+ "texaf": {
+  "name": "TEXAF S.A.",
+  "short": "Texaf",
+  "kind": "corp",
+  "what": "A company formed in 1925 and listed on Euronext Brussels, with all its activities in the Democratic Republic of Congo; textiles were its main business until the early 2000s.",
+  "money": "Real estate, quarrying and digital business: revenues of €35.0 million in 2025.",
+  "site": "https://www.texaf.be",
+  "city": "Brussels",
+  "country": "Belgium",
+  "address": "Avenue Louise 130a, box 6, 1050 Brussels",
+  "status": "done",
+  "sources": [
+   "https://www.texaf.be/en/about-us/profile-and-strategy",
+   "https://www.texaf.be/en/about-us/history",
+   "https://www.texaf.be/en/",
+   "https://www.texaf.be/sites/default/files/downloads/Texaf%20rapport%20EN%20light.pdf"
+  ],
+  "batch": "fp47"
  },
  "texascommissiononarts|United States": {
   "name": "Texas Commission on the Arts",
@@ -25665,6 +25978,23 @@
   ],
   "batch": "fp30"
  },
+ "toddenergy": {
+  "name": "Todd Energy",
+  "kind": "corp",
+  "what": "A natural gas producer with its head office in New Plymouth, New Zealand, part of the family-owned Todd Corporation; it holds all of the Kapuni, McKee and Mangahewa fields.",
+  "money": "Production of natural gas, condensate and oil from its fields in Taranaki.",
+  "site": "https://toddenergy.co.nz",
+  "city": "New Plymouth",
+  "country": "New Zealand",
+  "address": "32-38 Molesworth St, New Plymouth 4310",
+  "status": "done",
+  "sources": [
+   "https://toddenergy.co.nz/our-business/",
+   "https://todd.co.nz/",
+   "https://en.wikipedia.org/wiki/Todd_Corporation"
+  ],
+  "batch": "fp47"
+ },
  "tohogas": {
   "name": "Toho Gas Co., Ltd.",
   "short": "Toho Gas",
@@ -25700,6 +26030,23 @@
    "https://en.wikipedia.org/wiki/Mori_Building_Company"
   ],
   "batch": "fp17"
+ },
+ "tokyu": {
+  "name": "Tokyu Corporation",
+  "short": "Tokyu",
+  "kind": "corp",
+  "what": "A Japanese railway and real estate company, established on 2 September 1922 as Meguro-Kamata Electric Railway, with its head office in Shibuya, Tokyo.",
+  "money": "Railways and real estate in Tokyo and Kanagawa; operating revenue of ¥167.5 billion in the year to 31 March 2023.",
+  "site": "https://www.tokyu.co.jp",
+  "city": "Tokyo",
+  "country": "Japan",
+  "address": "5-6 Nanpeidai-cho, Shibuya-ku, Tokyo 150-8511",
+  "status": "done",
+  "sources": [
+   "https://www.tokyu.co.jp/global/company/profile/",
+   "https://en.wikipedia.org/wiki/Tokyu_Corporation"
+  ],
+  "batch": "fp47"
  },
  "tommeetippee": {
   "name": "Mayborn Group Limited",
@@ -26001,6 +26348,23 @@
   ],
   "batch": "fp23"
  },
+ "uaebasedinitiativeofitsfoundersultansooudalqassemi": {
+  "name": "Sultan Sooud Al Qassemi",
+  "kind": "person",
+  "what": "An Emirati columnist, educator and art collector, a member of Sharjah's ruling Al Qasimi family, who founded the Barjeel Art Foundation in Sharjah in 2010.",
+  "money": "He is founder and chairman of Barjeel Geojit Securities, a joint venture formed in 2000 with Geojit Financial Services of India.",
+  "arts": "The Barjeel Art Foundation manages and exhibits his collection of modern and contemporary Arab art.",
+  "city": "Sharjah",
+  "country": "United Arab Emirates",
+  "wrong_match": "The Barjeel line names him as the founder whose collection the foundation shows and says the pages read did not state who pays; it does not show him paying.",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Sultan_Sooud_Al-Qassemi",
+   "https://en.wikipedia.org/wiki/Barjeel_Art_Foundation",
+   "https://www.barjeelartfoundation.org/contact-us/"
+  ],
+  "batch": "fp47"
+ },
  "uccsubvention": {
   "name": "University College Cork",
   "short": "UCC",
@@ -26067,6 +26431,23 @@
    "https://en.wikipedia.org/wiki/UK_Research_and_Innovation"
   ],
   "batch": "fp23"
+ },
+ "ulrichstrher": {
+  "name": "MKM-Stiftung",
+  "short": "MKM Foundation",
+  "kind": "found",
+  "what": "A private foundation in Darmstadt founded by the collectors Sylvia and Ulrich Ströher, whose collection of German art after 1945 is shown at the Museum Küppersmühle in Duisburg.",
+  "money": "Its founders, who sold their share in the hair-care company Wella in 2003.",
+  "city": "Darmstadt",
+  "country": "Germany",
+  "status": "done",
+  "sources": [
+   "https://museum-kueppersmuehle.de/en/museum/",
+   "https://museum-kueppersmuehle.de/en/ausstellung/sammlung-stroeher/",
+   "https://www.baunetzwissen.de/drucken/erweiterungsbau-des-museums-kueppersmuehle-in-duisburg-7956191",
+   "https://www.theartnewspaper.com/2019/07/17/top-german-collector-disappoints-museums-by-selling-loans"
+  ],
+  "batch": "fp47"
  },
  "ulsteruniversity": {
   "name": "Ulster University",
@@ -26364,6 +26745,22 @@
   ],
   "batch": "fp27"
  },
+ "universityofpretoria": {
+  "name": "University of Pretoria",
+  "short": "UP",
+  "kind": "gov",
+  "what": "A public research university in Pretoria, South Africa, established in 1908 as the Pretoria campus of the Transvaal University College, with nine faculties and a business school.",
+  "money": "The university's own budget; its endowment was R7.4 billion in 2022.",
+  "site": "https://www.up.ac.za",
+  "city": "Pretoria",
+  "country": "South Africa",
+  "status": "done",
+  "sources": [
+   "https://web.archive.org/web/20260728161213/https://www.up.ac.za/about-us",
+   "https://en.wikipedia.org/wiki/University_of_Pretoria"
+  ],
+  "batch": "fp47"
+ },
  "universityofsouthampton": {
   "name": "University of Southampton",
   "kind": "gov",
@@ -26571,6 +26968,41 @@
   ],
   "batch": "fp23"
  },
+ "vanuatugovernment|Vanuatu": {
+  "name": "Government of the Republic of Vanuatu",
+  "short": "Government of Vanuatu",
+  "kind": "gov",
+  "what": "The national government of Vanuatu, independent since 30 July 1980: the prime minister, elected by Parliament, and the Council of Ministers form the executive, in the capital Port Vila.",
+  "money": "The state budget of Vanuatu.",
+  "site": "https://www.gov.vu",
+  "city": "Port Vila",
+  "country": "Vanuatu",
+  "status": "done",
+  "sources": [
+   "https://www.gov.vu/index.php/about/about-vanuatu",
+   "https://en.wikipedia.org/wiki/Politics_of_Vanuatu"
+  ],
+  "batch": "fp47"
+ },
+ "vehbiko": {
+  "name": "Vehbi Koç Vakfı",
+  "short": "Vehbi Koç Foundation",
+  "kind": "found",
+  "what": "A private foundation established on 17 January 1969 by the Turkish entrepreneur Vehbi Koç, working in education, healthcare and culture from its headquarters at Nakkaştepe, Istanbul.",
+  "money": "Koç Holding, the Koç family's group, funds it with 10 percent of its income, Rahmi M. Koç said in 2024.",
+  "arts": "It set up the Sadberk Hanım Museum in 1980 and the Antalya Kaleiçi Museum in 1996.",
+  "site": "https://www.vkv.org.tr",
+  "city": "Istanbul",
+  "country": "Turkey",
+  "status": "done",
+  "sources": [
+   "https://www.vkv.org.tr/hakkimizda.aspx?hl=en",
+   "https://en.wikipedia.org/wiki/Vehbi_Ko%C3%A7_Foundation",
+   "https://www.haberturk.com/rahmi-m-koc-vehbi-koc-vakfi-nin-kurulus-hikayesini-anlatti-3721582-ekonomi",
+   "https://www.koc.com.tr/media-center/latest-news/2019/vkv-half-a-century"
+  ],
+  "batch": "fp47"
+ },
  "veinisober": {
   "name": "Veinisõber",
   "kind": "corp",
@@ -26707,6 +27139,40 @@
    "https://en.wikipedia.org/wiki/Victor_Pinchuk"
   ],
   "batch": "fp23"
+ },
+ "vietnam": {
+  "name": "Government of the Socialist Republic of Vietnam",
+  "short": "Government of Vietnam",
+  "kind": "gov",
+  "what": "The executive organ of Vietnam's National Assembly and the country's cabinet, led by the Prime Minister under the Communist Party of Vietnam, in the capital Hanoi.",
+  "money": "The state budget of Vietnam.",
+  "site": "https://vietnam.gov.vn",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "status": "done",
+  "sources": [
+   "https://vietnam.gov.vn/introduction-70586",
+   "https://en.wikipedia.org/wiki/Government_of_Vietnam",
+   "https://en.wikipedia.org/wiki/Hanoi"
+  ],
+  "batch": "fp47"
+ },
+ "vietnamsministryofculturesportsandtourism|Vietnam": {
+  "name": "Bộ Văn hóa, Thể thao và Du lịch",
+  "short": "Ministry of Culture, Sports and Tourism (Vietnam)",
+  "kind": "gov",
+  "what": "Vietnam's ministry for culture, family, sports and tourism, founded in 2007 by merging the sports committee, the tourism department and the culture section of the Ministry of Culture and Information.",
+  "money": "The state budget of Vietnam: 3,563.75 billion dong for 2026.",
+  "site": "https://bvhttdl.gov.vn",
+  "city": "Hanoi",
+  "country": "Vietnam",
+  "address": "51 Ngô Quyền Street, Hanoi",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Ministry_of_Culture,_Sports_and_Tourism_(Vietnam)",
+   "https://bvhttdl.gov.vn/tru-so-cua-bo-2.htm"
+  ],
+  "batch": "fp47"
  },
  "vikingcruises": {
   "name": "Viking Holdings Ltd",
@@ -26871,6 +27337,24 @@
    "https://en.wikipedia.org/wiki/Visa_Inc."
   ],
   "batch": "fp23"
+ },
+ "visitstpeteclearwater": {
+  "name": "Visit St. Pete-Clearwater",
+  "short": "VSPC",
+  "kind": "gov",
+  "what": "Pinellas County's tourism marketing organisation in Largo, Florida; the county's Tourist Development Council, an advisory board to the county commissioners, reviews its budget and programmes.",
+  "money": "A share of the Tourist Development Tax, a 6% tax on stays under six months in Pinellas County; fiscal 2025 collections were $92.5 million.",
+  "arts": "Bed tax proceeds also pay for beach nourishment and the construction of stadiums and museums.",
+  "site": "https://www.visitstpeteclearwater.com",
+  "city": "Largo",
+  "country": "United States",
+  "address": "8200 Bryan Dairy Road, Suite 200, Largo, FL 33777",
+  "status": "done",
+  "sources": [
+   "https://www.visitstpeteclearwater.com/partners/bed-tax",
+   "https://www.visitstpeteclearwater.com/partners/pinellas-county-tdc"
+  ],
+  "batch": "fp47"
  },
  "visualartcollectivetrustadministersit": {
   "name": "Visual Art Collective (VAC) Trust",
@@ -27098,6 +27582,25 @@
   ],
   "batch": "fp2"
  },
+ "vstragtalandsregionen": {
+  "name": "Västra Götalandsregionen",
+  "short": "Region Västra Götaland (VGR)",
+  "kind": "gov",
+  "what": "The regional council of Västra Götaland County in Sweden, created in 1999 by merging three county councils, responsible for health care, public transport, culture and regional development.",
+  "money": "The regional budget of Västra Götaland.",
+  "arts": "It owns the Göteborg Opera, the Gothenburg Symphony Orchestra and Film i Väst.",
+  "site": "https://www.vgregion.se",
+  "city": "Vänersborg",
+  "country": "Sweden",
+  "address": "Regionens hus, 462 80 Vänersborg",
+  "status": "done",
+  "sources": [
+   "https://www.vgregion.se/om-vgr/",
+   "https://en.wikipedia.org/wiki/Region_V%C3%A4stra_G%C3%B6taland",
+   "https://sv.wikipedia.org/wiki/V%C3%A4stra_G%C3%B6talandsregionen"
+  ],
+  "batch": "fp47"
+ },
  "vtb": {
   "name": "VTB Bank (PJSC)",
   "short": "VTB",
@@ -27179,6 +27682,21 @@
    "https://en.wikipedia.org/wiki/City_of_Wakefield_Metropolitan_District_Council"
   ],
   "batch": "fp40"
+ },
+ "wallaceholladay": {
+  "name": "Wilhelmina and Wallace Holladay",
+  "kind": "person",
+  "what": "Wilhelmina Cole Holladay (1922 to 2021) and her husband Wallace F. Holladay (died 2012), art collectors who founded the National Museum of Women in the Arts in Washington in 1981.",
+  "money": "The Holladay Corporation, the Washington real estate development firm Wallace Holladay founded in the early 1950s.",
+  "arts": "Their collection of art by women became the core of the museum's holdings.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Wilhelmina_Holladay",
+   "https://nmwa.org/about/",
+   "https://www.holladaycorp.com/about"
+  ],
+  "batch": "fp47"
  },
  "walmart": {
   "name": "Walmart Inc.",
@@ -27473,6 +27991,22 @@
   ],
   "batch": "fp29"
  },
+ "whanganuidistrictcouncillednzrebuild|New Zealand": {
+  "name": "Whanganui District Council",
+  "kind": "gov",
+  "what": "The territorial authority for Whanganui District, New Zealand, covering the city of Whanganui and its surroundings, with a mayor and 12 councillors.",
+  "money": "The district council's budget.",
+  "site": "https://www.whanganui.govt.nz",
+  "city": "Whanganui",
+  "country": "New Zealand",
+  "address": "101 Guyton Street, Whanganui 4500",
+  "status": "done",
+  "sources": [
+   "https://whanganui.govt.nz/Your-Council/About-Whanganui-District-Council/Contact-Us",
+   "https://en.wikipedia.org/wiki/Whanganui_District_Council"
+  ],
+  "batch": "fp47"
+ },
  "whanki": {
   "name": "Whanki Foundation",
   "kind": "found",
@@ -27574,6 +28108,20 @@
    "https://en.wikipedia.org/wiki/William_Penn_Foundation"
   ],
   "batch": "fp24"
+ },
+ "williamtevans": {
+  "name": "William T. Evans",
+  "kind": "person",
+  "what": "An Irish-born American art collector and dry-goods merchant (about 1843 to 1918) who grew up in Scotch Plains, New Jersey.",
+  "money": "Mills & Gibb, the firm of which he was president.",
+  "arts": "He gave paintings to the U.S. National Gallery, now the Smithsonian American Art Museum, in 1915, and to the Montclair Art Museum.",
+  "country": "United States",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/William_T._Evans",
+   "https://americanart.si.edu/about/history"
+  ],
+  "batch": "fp47"
  },
  "winnipegartscouncil|Canada": {
   "name": "Winnipeg Arts Council",
@@ -27934,6 +28482,22 @@
   "batch": "fp24",
   "renamed": "This is the museum's own operating foundation, not an outside donor."
  },
+ "zimbabwesgovernmentcommissionedit|Zimbabwe": {
+  "name": "Government of Zimbabwe",
+  "kind": "gov",
+  "what": "The national government of Zimbabwe, in which the President is head of state and head of government and governs through the Cabinet, which sits at Munhumutapa Building, Harare.",
+  "money": "The state budget of Zimbabwe.",
+  "site": "https://www.zim.gov.zw",
+  "city": "Harare",
+  "country": "Zimbabwe",
+  "address": "Munhumutapa Building, Samora Machel Avenue / Sam Nujoma Street, Harare",
+  "status": "done",
+  "sources": [
+   "https://en.wikipedia.org/wiki/Politics_of_Zimbabwe",
+   "https://web.archive.org/web/20261026061336/https://www.zim.gov.zw/"
+  ],
+  "batch": "fp47"
+ },
  "zionsbank": {
   "name": "Zions Bancorporation, N.A.",
   "short": "Zions Bank",
@@ -27950,6 +28514,24 @@
   ],
   "batch": "fp24"
  },
+ "zollverein": {
+  "name": "Stiftung Zollverein",
+  "kind": "found",
+  "what": "A non-profit foundation set up in 1998 by the city of Essen and the state of North Rhine-Westphalia, since 2008 sole operator of the Zollverein World Heritage Site in Essen.",
+  "money": "Institutional funding from the state of North Rhine-Westphalia since 2010, and project grants from the state and the Regionalverband Ruhr.",
+  "arts": "Its task is to preserve the colliery and coking plant buildings as monuments and develop them for future use.",
+  "site": "https://www.zollverein.de",
+  "city": "Essen",
+  "country": "Germany",
+  "address": "Bullmannaue 11, Essen",
+  "wrong_match": "The Ruhr Museum line names the foundation as a recipient of state funding, and its own page calls it the museum's carrier; the line does not show it paying.",
+  "status": "done",
+  "sources": [
+   "https://www.zollverein.de/ueber-zollverein/stiftung-zollverein/",
+   "https://de.wikipedia.org/wiki/Stiftung_Zollverein"
+  ],
+  "batch": "fp47"
+ },
  "zumtobel": {
   "name": "Zumtobel Group AG",
   "short": "Zumtobel",
@@ -27964,6 +28546,24 @@
    "https://en.wikipedia.org/wiki/Zumtobel_Group"
   ],
   "batch": "fp24"
+ },
+ "zwenkautown": {
+  "name": "Stadt Zwenkau",
+  "short": "Town of Zwenkau",
+  "kind": "gov",
+  "what": "A small town south of Leipzig in the district of Leipzig, Saxony, with Holger Schulz (CDU) as mayor.",
+  "money": "The municipal budget of Zwenkau.",
+  "site": "https://www.zwenkau.de",
+  "city": "Zwenkau",
+  "country": "Germany",
+  "address": "Bürgermeister-Ahnert-Platz 1, 04442 Zwenkau",
+  "status": "done",
+  "sources": [
+   "https://www.zwenkau.de/impressum",
+   "https://de.wikipedia.org/wiki/Zwenkau",
+   "https://en.wikipedia.org/wiki/Zwenkau"
+  ],
+  "batch": "fp47"
  },
  "zwirner": {
   "name": "David Zwirner",
