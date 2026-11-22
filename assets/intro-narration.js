@@ -75,6 +75,7 @@
 
     function ask() {
       if (!box.isConnected) { end(); return; }
+      if (unseen()) { setTimeout(ask, 400); return; }
       if (cur && !cur.isConnected) cur = null;
       if (!cur) {
         var list = questions();
@@ -103,8 +104,13 @@
       setTimeout(ask, PAUSE_MS);
     }
 
+    // The typing waits while its greeting is not on screen (22 Nov 2026): a phone's full-screen record, or the map, over
+    // the chat. Each letter changes the page, and every change is read by the page's type passes (assets/typeset.js),
+    // which restyled the whole page some ten times a second behind a record that was being scrolled.
+    function unseen() { return !box.getClientRects().length || document.documentElement.classList.contains('gm-from-chat'); }
     function tick() {
       if (!box.isConnected) { end(); return; }    // the greeting is gone: the visitor has asked something
+      if (unseen()) { setTimeout(tick, 400); return; }
       var p = lines[line];
       if (!p) { ch = 0; ask(); return; }
       if (ch === 0) p.classList.add('is-typing');
