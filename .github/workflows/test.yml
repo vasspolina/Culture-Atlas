@@ -38,3 +38,6 @@ jobs:
 
       - name: Records have no repeated statement
         run: python3 tools/check_repetition.py --max 0
+
+      - name: Records have no label that its own line says again
+        run: python3 tools/unlabel_repeats.py --max 0

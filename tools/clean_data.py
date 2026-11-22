@@ -372,6 +372,12 @@ def clean(records, report=None):
         n = len(check_repetition.check_record(r, fix=True))
         if n:
             report['repeated_statement'] = report.get('repeated_statement', 0) + n
+    # No label that its own line says again: "Building: the museum owns a building" loses the label (tools/unlabel_repeats.py).
+    import unlabel_repeats
+    for r in records:
+        n = len(unlabel_repeats.check_record(r, fix=True))
+        if n:
+            report['label_said_again'] = report.get('label_said_again', 0) + n
     # The Clean Funding Grade is computed last, from the cleaned flags and sources (tools/grade_funding.py).
     import grade_funding
     for k, n in grade_funding.apply(records).items():
