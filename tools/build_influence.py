@@ -610,8 +610,8 @@ def urls(src):
     return out[:6]
 
 
-def main():
-    recs = json.load(open(os.path.join(ROOT, 'institutions.json')))
+def find_candidates(recs):
+    """Every candidate sentence in the records, sorted. tools/rekey_influence_review.py reads them too, without writing."""
     fun = [(k, n, kind, re.compile(p)) for k, n, kind, p in FUNDERS]
     kinds = [(k, lab, re.compile(p, re.I)) for k, lab, p in KINDS]
     ended, protest = re.compile(ENDED, re.I), re.compile(PROTEST, re.I)
@@ -639,6 +639,11 @@ def main():
                         'sources': urls(src),
                     })
     out.sort(key=lambda c: (c['funder'], c['space'], c['field']))
+    return out
+
+
+def main():
+    out = find_candidates(json.load(open(os.path.join(ROOT, 'institutions.json'))))
     json.dump(out, open(os.path.join(ROOT, 'data', 'influence_candidates.json'), 'w'), ensure_ascii=False, indent=1)
     print(f'{len(out)} candidate sentences')
     build_layer(out)
@@ -652,13 +657,22 @@ def build_layer(cands):
     missing = [cid for cid in review if cid not in byc and not cid.startswith('_')]
     if missing:
         print(f'warning: {len(missing)} reviewed candidates no longer in the records: {missing[:5]}')
+        print('         reworded records? run python3 -I tools/rekey_influence_review.py (git restore data/influence_candidates.json first)')
     names = {k: (n, kind) for k, n, kind, _ in FUNDERS}
     offices = json.load(open(os.path.join(ROOT, 'assets', 'hq.json')))['org']
+    # Verdicts whose sentence the records no longer hold and that tools/rekey_influence_review.py could not pair with a
+    # current one are parked in data/influence_review_unmatched.json. A kept one stays in the layer, with the sentence as
+    # it was reviewed and `unmatched` set, until the editor moves or removes it: a published entry is not dropped unseen.
+    ppath = os.path.join(ROOT, 'data', 'influence_review_unmatched.json')
+    parked = json.load(open(ppath)) if os.path.exists(ppath) else {}
+    parked = {k: p for k, p in parked.items() if not k.startswith('_') and k not in review and p.get('was')
+              and not p['verdict'].get('drop') and p['was']['funder'] in names}
+    if parked:
+        print(f'{len(parked)} kept entries shown from data/influence_review_unmatched.json: their sentence is no longer in the records, for the editor to settle')
     funders = {}
-    for cid, v in review.items():
-        if cid.startswith('_') or cid not in byc or v.get('drop'):
-            continue
-        c = byc[cid]
+    entries = [(cid, v, byc[cid], False) for cid, v in review.items() if not cid.startswith('_') and cid in byc and not v.get('drop')]
+    entries += [(cid, p['verdict'], p['was'], True) for cid, p in parked.items()]
+    for cid, v, c, unmatched in entries:
         n, kind = names[c['funder']]
         if c['funder'] not in funders:
             o = offices.get(c['funder']) or HQ_EXTRA.get(c['funder'])
@@ -679,6 +693,7 @@ def build_layer(cands):
             # What ties a money measure to this space (assets/influence-mode.js shows US lobbying, EU lobbying or political
             # giving only at a space a record links it to): [{measure: 'us' | 'eu' | 'politics', text, source}].
             **({'links': v['links']} if v.get('links') else {}),
+            **({'unmatched': True} if unmatched else {}),
         })
     for f in funders.values():
         f['ties'].sort(key=lambda t: (t['space_name'], t['date']))

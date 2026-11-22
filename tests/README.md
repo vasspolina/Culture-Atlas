@@ -16,7 +16,7 @@ scripts, so most tests load them into a `vm` context and call what they set on t
 | `gossip-told.test.mjs` | The retellings shown in Gossip mode (`told`) add no figure or quotation to their items, and show only while the mode is on. |
 | `gossip-voice.test.mjs` | Gossip mode's voice: a journalist who claims no source of its own, read aloud in a woman's voice from the device. |
 | `grounding.test.mjs` | The chat's grounding in the records. |
-| `influence.test.mjs` | Influence mode shows only what `data/influence_review.json` keeps. |
+| `influence.test.mjs` | Influence mode shows only what `data/influence_review.json` keeps, plus the kept verdicts parked in `data/influence_review_unmatched.json`. |
 | `live-feed.test.mjs` | `assets/live.json`: dated, sourced items only. |
 | `name-request.test.mjs`, `names.test.mjs` | Matching a typed space or city name to a record. |
 | `release.test.mjs` | The page reloads itself when its release differs from the live one. |
