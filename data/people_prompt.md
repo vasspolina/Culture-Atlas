@@ -127,7 +127,7 @@ site.
 
 ### House rules
 
-Plain English, no em dashes or en dashes in `basis` (write "2015 to 2021" in `previously`). Only
+Plain English, no rule of three, no gerunds, no em dashes or en dashes in `basis` (write "2015 to 2021" in `previously`). Only
 `basis` is free text. Write the file early and update it after every few records. Reply with: how
 many records got at least one person, how many people in total by role, how many predecessors, how
 many `pay` entries, and the three records you are least sure of and why.

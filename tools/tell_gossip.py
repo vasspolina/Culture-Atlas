@@ -8,7 +8,8 @@ outside Gossip mode and wherever an item has no `told` yet.
 The voice: an investigative journalist who talks the way a voice assistant with a character does. Quick and dry, a little
 ironic, never sweet, short sentences that land when read aloud. A retelling carries the same claims as `said`, each still
 with who says it and when, in the same reported speech; talk stays talk. Figures, dates, names and quotations are kept
-exactly. The irony is for institutions and money, never for a named person, and it adds no fact and no verdict. No dash.
+exactly. The irony is for institutions and money, never for a named person, and it adds no fact and no verdict. No dash, no rule of three
+(nothing grouped in threes for rhythm), no gerunds or other -ing verb forms.
 The voice never claims a source, a document or an interview of its own. tools/attach_gossip.py (told_errors) checks each
 retelling against the item it retells and refuses one that adds a figure, a quotation or a name.
 

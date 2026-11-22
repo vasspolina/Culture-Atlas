@@ -75,6 +75,11 @@ corrects or adds to it; it does not restate it.
   bequest), "plays a crucial role", "it is worth noting", "a diverse range of", "among others",
   "and more". No "not only X but also Y". Quoting a source's own words inside quotation marks is
   allowed.
+- No rule of three: do not group words, phrases or clauses in threes for rhythm ("free, open and
+  public"). Give two, or every item the source names; a list of named funders is a list of facts.
+- No gerunds or other -ing verb forms ("including", "naming", "covering", "operating"): write a
+  finite verb or a plain noun ("it names", "the museum runs"). Nouns that name a thing (a building,
+  a painting, funding, holdings, filings) are allowed. Quoted words stay as the source has them.
 - No verdict adjective (controversial, problematic, troubling) without the named event, date and
   actor behind it. No moralising about a funder; state what the funder does and let it stand.
 - Every number, date, person and title must appear in a source you opened. If the text says more
