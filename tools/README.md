@@ -80,6 +80,7 @@ Descriptions below are each script's own docstring; read the script for details.
 | `add_reports.py` | Add newly researched reports to the atlas in one step, for the daily update (notes/daily-reports.md). |
 | `audit_pin_buildings.py` | Is there a building under each space's pin on the street map? |
 | `check_repetition.py` | No statement twice in one record: |
+| `unlabel_repeats.py` | No label that its own line says again: the label check for the text of institutions.json. |
 | `clean_data.py` | Rules that decide what the page is allowed to show from institutions.json. |
 | `editor.py` | The data editor: |
 | `embed_data.py` | Rewrite assets/institutions.js, the institution data the page loads, from institutions.json (after tools/clean_data.py). |
