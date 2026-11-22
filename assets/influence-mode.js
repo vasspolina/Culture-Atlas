@@ -567,6 +567,13 @@
       const h = document.getElementById(id); if (!h) return;
       h.querySelectorAll('button').forEach(b => { const q = b.getBoundingClientRect(); if (q.width && q.height) names.push({ x: q.left - cr.left - 4, y: q.top - cr.top - 4, w: q.width + 8, h: q.height + 8 }); });
     });
+    // The picked space's mark and its ring (index.html sets atlasSelMarkAt as it draws them) are drawn over this layer, so no
+    // name may lie under them. A funder whose office is in that space's city sat its name on the ring: Kamehameha Schools
+    // beside Bishop Museum in Honolulu (user, 22 Nov 2026: "i still see it"). A dot under the mark sets its name past the ring.
+    const selMark = g('window.atlasSelMarkAt');
+    const selBox = selMark ? { x: selMark.x - selMark.r, y: selMark.y - selMark.r, w: 2 * selMark.r, h: 2 * selMark.r } : null;
+    if (selBox) names.push(selBox);
+    const gapFor = (x, y, s) => selMark && Math.hypot(x - selMark.x, y - selMark.y) < selMark.r ? Math.max(s + 5, selMark.r + 4) : s + 5;
     // The picked funder's name always shows, beside its own dot: it may lie over other funders' dots (the halo keeps it
     // readable), and it is placed before any other name, so nothing else can be under it.
     const spotFor = (spots, boxAt) => spots.find(sp => !off(boxAt(sp))) || spots[0];
@@ -576,7 +583,7 @@
     if (pickedMark) {
       const { f, x, y, s } = pickedMark;
       const figure = shown(f) ? MEASURES[MEASURE].text(f) : '';
-      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = gapFor(x, y, s);
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
       const spot = spotFor(spots, boxAt), b = boxAt(spot);
@@ -644,7 +651,7 @@
       // The funding maps add some 600 funders; only the widest-reaching of them try for a name, so placing names stays quick.
       // The rest show theirs when pointed at, picked, or tied to the space in focus.
       if (f.moneyOnly && !sel && !hov && ++tried > 60) { HITS.push({ f, x, y, s, label: null }); return; }
-      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = s + 5;
+      const label = figure ? `${f.name}  ${figure}` : f.name, w = ctx.measureText(label).width, gap = gapFor(x, y, s);
       const spots = [[gap, 0], [-gap - w, 0], [-w / 2, gap + 8], [-w / 2, -gap - 8], [gap, 15], [gap, -15], [-gap - w, 15], [-gap - w, -15], [gap, 30], [-gap - w, 30], [gap, -30], [-gap - w, -30]];
       const boxAt = ([dx, dy]) => ({ x: x + dx - 2, y: y + dy - 9, w: w + 4, h: 18 });
       const clash = b => off(b) || hits(b, placed) || hits(b, names);
