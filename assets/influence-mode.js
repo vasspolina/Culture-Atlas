@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=25', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=26', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
