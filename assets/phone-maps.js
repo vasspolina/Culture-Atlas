@@ -1359,6 +1359,8 @@
       // The dot follows the globe.
       (function follow() {
         requestAnimationFrame(follow);
+        // Nothing to follow while a phone's full-screen record covers the map (22 Nov 2026, see renderFrame in index.html).
+        if (root.classList.contains('gm-from-chat')) return;
         if (!here) { dot.classList.remove('is-on'); return; }
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
         if (typeof project !== 'function' || g('isCityStreetViewActive')) { dot.classList.remove('is-on'); return; }
@@ -1722,7 +1724,9 @@
       }
       (function follow() {
         requestAnimationFrame(follow);
-        if (!marks.size) return;
+        // Not while a phone's full-screen record covers the map (22 Nov 2026): each ring's place was written again on
+        // every frame, which restyled the page under a record that was being scrolled.
+        if (!marks.size || (PHONE() && root.classList.contains('gm-from-chat'))) return;
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
         const ok = (PHONE() ? root.classList.contains('gm-map') : root.classList.contains('gmd')) && typeof project === 'function' && !g('isCityStreetViewActive') && canvas;
         const rect = ok ? canvas.getBoundingClientRect() : null, vr = ok ? viewport.getBoundingClientRect() : null;

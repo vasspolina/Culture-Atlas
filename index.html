@@ -86,7 +86,7 @@
   <script src="assets/names.js?v=899"></script>
   <script src="assets/grounding.js?v=899"></script>
   <script src="assets/repeats.js?v=899"></script>
-  <script src="assets/intro-narration.js?v=899"></script>
+  <script src="assets/intro-narration.js?v=907"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -11007,11 +11007,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v906';
+    const ATLAS_RELEASE = 'culture-atlas-v907';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=906').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=907').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11689,10 +11689,21 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     let renderFrameId = 0;
     let lastRenderTs = 0;
     const AUTO_SPIN_DEG_PER_SEC = 2;
+    // The globe is not drawn while a phone's full-screen record covers it (user, 22 Nov 2026: "still getting stuck when
+    // scrolling through details on mobile"). The loop redraws every frame, and measured at a phone's speed (4x slower) with
+    // the record open it kept the page busy for 48 s of 51, in tasks of up to half a second, so a touch on the record waited
+    // its turn and the scroll stuck. The record is the whole screen there (root class gm-from-chat, assets/phone-maps.js),
+    // so nothing of the globe shows. The loop stops on that frame and starts again when the record closes or shrinks.
+    let renderHeldByCover = false;
+    const globeCovered = () => window.innerWidth < 768 && document.documentElement.classList.contains('gm-from-chat');
     function renderFrame(ts) {
       renderFrameId = 0;
+      if (globeCovered()) { renderHeldByCover = true; return; }
       render(ts);
     }
+    const resumeGlobe = () => { if (renderHeldByCover && !globeCovered()) { renderHeldByCover = false; scheduleRender(); } };
+    new MutationObserver(resumeGlobe).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    window.addEventListener('resize', resumeGlobe);
     function scheduleRender() {
       if (!renderFrameId) renderFrameId = requestAnimationFrame(renderFrame);
     }
@@ -23141,7 +23152,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/hq-detail.js?v=899"></script>
 <script src="assets/influence-mode.js?v=899"></script>
 <script src="assets/bubbles.js?v=899" defer></script>
-<script src="assets/phone-maps.js?v=903"></script>
+<script src="assets/phone-maps.js?v=907"></script>
 <script src="assets/desktop-maps.js?v=899"></script>
 <script src="assets/chat-resize.js?v=899"></script>
 <script src="assets/frame-refusers.js?v=899"></script>
