@@ -67,7 +67,7 @@ ING_NOUN = re.compile(r"^(building|painting|drawing|funding|crowdfunding|holding
                       r"listing|housing|ceiling|wing|evening|morning|clothing|lightning|pudding|sibling|wedding|offspring|"
                       r"thing|nothing|something|anything|everything|king|ring|spring|string|sting|swing|bring|sing|cling|fling|sling|wring|"
                       r"during|ongoing|"
-                      r"[a-z]*(stichting|vereniging|rekening|ning|jing|qing))$", re.I)
+                      r"[a-z]*(stichting|vereniging|rekening|jing|qing)|nanning|liaoning|shenning)$", re.I)
 
 
 def triad(t):
@@ -79,7 +79,22 @@ def triad(t):
     return None
 
 
+# Fixed terms that name a role, a field, a legal form, a crime or an event, where a rewrite would change the fact: a
+# person's title (managing director, acting director), the performing arts, a ruling family, a US private operating
+# foundation, money laundering, the 1985 MOVE bombing. Struck out before the gerund check, as are quotations.
+FIXED = re.compile(r"\b(managing directors?|acting (director|president|chair|head|chief)\w*( general)?|chief operating officer|"
+                   r"performing arts?|performing artists?|ruling (family|party)|private operating foundation|reading room|cost of living|"
+                   r"money[- ]laundering|anti-money-laundering|insider trading|MOVE bombing|ruling( [A-Z][\w-]+){0,2} family|"
+                   r"operating and marketing company|blamed marketing|air[- ]conditioning|French-speaking|J\.D\. Irving|"
+                   # an industry or a crime named as a funder's trade or a charge: a betting operator, the gaming
+                   # corporation, a shipping fortune, trading income on UK charity accounts, a banking foundation
+                   # (fondazione bancaria), laundering of tax fraud; and arching, the Vienna engineers' chamber
+                   r"(?-i:betting|gaming|gambling|shipping|banking|[Tt]rading|engineering|mining|publishing|laundering|arching))\b", re.I)
+QUOTED = re.compile(r"\"[^\"]+\"|“[^”]+”|‘[^’]+’|(?<!\w)'[^']+'(?!\w)")
+
+
 def gerund(t):
+    t = QUOTED.sub('""', FIXED.sub('', t))
     for m in GERUND.finditer(t):
         w = m.group(0)
         if ING_NOUN.match(w):
