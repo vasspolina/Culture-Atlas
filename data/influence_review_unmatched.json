@@ -1,0 +1,4183 @@
+{
+ "_about": "Verdicts of data/influence_review.json whose sentence is no longer in the records and that tools/rekey_influence_review.py could not pair with a current sentence with confidence. Each keeps its verdict, the sentence as reviewed (\"was\") and the closest current sentence for the same record and funder (\"closest\", with how alike the two are). A kept one is still shown in assets/influence.json with its old sentence. To settle one: set \"move_to\" to the cid of a current candidate, or \"remove\": true, then run python3 -I tools/rekey_influence_review.py --write and python3 -I tools/build_influence.py.",
+ "a84e8b1908": {
+  "verdict": {
+   "drop": true,
+   "why": "About the Wellcome Trust’s share holdings, not the museum."
+  },
+  "was": {
+   "funder": "bp",
+   "funder_name": "BP",
+   "funder_kind": "corp",
+   "space": "wellcome-collection",
+   "space_name": "Wellcome Collection",
+   "city": "London",
+   "field": "details.wider_context",
+   "text": "The Guardian's 2015 petition and the 2022 sale of BP and Shell shares concern the Trust's investments, not the museum.",
+   "date": "2015",
+   "sources": [
+    "https://wellcomecollection.org/about-us",
+    "https://wellcome.org/about-us/history-wellcome",
+    "https://en.wikipedia.org/wiki/Wellcome_Collection",
+    "https://www.civilsociety.co.uk/news/guardian-launches-petition-attacking-wellcome-trust-investment-strategy.html",
+    "https://civilsociety.co.uk/news/wellcome-sells-its-shares-in-bp-and-shell.html",
+    "https://theconversation.com/why-wellcome-closed-its-medicine-man-exhibition-and-others-should-follow-suit-196171"
+   ]
+  },
+  "closest": {
+   "cid": "0b5672e56d",
+   "field": "details.wider_context",
+   "text": "2022: Wellcome sold its BP and Shell shares to concentrate on \"non-cyclical industries\" and said the sales were \"not a reflection of the companies' approach to the energy transition\" (Civil Society, 2022).",
+   "alike": 0.37
+  }
+ },
+ "ec41d5758a": {
+  "verdict": {
+   "drop": true,
+   "why": "About the Wellcome Trust’s share holdings, not the museum."
+  },
+  "was": {
+   "funder": "bp",
+   "funder_name": "BP",
+   "funder_kind": "corp",
+   "space": "wellcome-collection",
+   "space_name": "Wellcome Collection",
+   "city": "London",
+   "field": "watch",
+   "text": "Wellcome faced a divestment call in March 2015 over fossil-fuel holdings and sold its BP and Shell shares in 2022.",
+   "date": "2015",
+   "sources": [
+    "https://wellcome.org/about-us/history-wellcome"
+   ]
+  },
+  "closest": {
+   "cid": "105998375e",
+   "field": "details.wider_context",
+   "text": "2015: the Guardian launched a petition, signed by more than 93,000 people that asked the Wellcome Trust and the Gates Foundation to divest from the top 200 fossil fuel companies; the Trust's direct holdings then included Shell and BP, worth £260 million together (Civil Society, 2015).",
+   "alike": 0.33
+  }
+ },
+ "512a0b16b8": {
+  "verdict": {
+   "drop": true,
+   "why": "About the Wellcome Trust’s share holdings, not the museum."
+  },
+  "was": {
+   "funder": "shell",
+   "funder_name": "Shell",
+   "funder_kind": "corp",
+   "space": "wellcome-collection",
+   "space_name": "Wellcome Collection",
+   "city": "London",
+   "field": "details.wider_context",
+   "text": "The Guardian's 2015 petition and the 2022 sale of BP and Shell shares concern the Trust's investments, not the museum.",
+   "date": "2015",
+   "sources": [
+    "https://wellcomecollection.org/about-us",
+    "https://wellcome.org/about-us/history-wellcome",
+    "https://en.wikipedia.org/wiki/Wellcome_Collection",
+    "https://www.civilsociety.co.uk/news/guardian-launches-petition-attacking-wellcome-trust-investment-strategy.html",
+    "https://civilsociety.co.uk/news/wellcome-sells-its-shares-in-bp-and-shell.html",
+    "https://theconversation.com/why-wellcome-closed-its-medicine-man-exhibition-and-others-should-follow-suit-196171"
+   ]
+  },
+  "closest": {
+   "cid": "a7a88848ca",
+   "field": "details.wider_context",
+   "text": "2022: Wellcome sold its BP and Shell shares to concentrate on \"non-cyclical industries\" and said the sales were \"not a reflection of the companies' approach to the energy transition\" (Civil Society, 2022).",
+   "alike": 0.37
+  }
+ },
+ "26059f8ea2": {
+  "verdict": {
+   "drop": true,
+   "why": "About the Wellcome Trust’s share holdings, not the museum."
+  },
+  "was": {
+   "funder": "shell",
+   "funder_name": "Shell",
+   "funder_kind": "corp",
+   "space": "wellcome-collection",
+   "space_name": "Wellcome Collection",
+   "city": "London",
+   "field": "watch",
+   "text": "Wellcome faced a divestment call in March 2015 over fossil-fuel holdings and sold its BP and Shell shares in 2022.",
+   "date": "2015",
+   "sources": [
+    "https://wellcome.org/about-us/history-wellcome"
+   ]
+  },
+  "closest": {
+   "cid": "669bf7497a",
+   "field": "details.wider_context",
+   "text": "2015: the Guardian launched a petition, signed by more than 93,000 people that asked the Wellcome Trust and the Gates Foundation to divest from the top 200 fossil fuel companies; the Trust's direct holdings then included Shell and BP, worth £260 million together (Civil Society, 2015).",
+   "alike": 0.33
+  }
+ },
+ "3cf58f6f45": {
+  "verdict": {
+   "kinds": [],
+   "summary": "Activists disrupted the Met Opera’s Carmen on 21 November 2025, demanding the Koch names come down.",
+   "protest": true,
+   "date": "2025-11-21",
+   "check": "source",
+   "checked_source": "https://operawire.com/?p=105239",
+   "checked_on": "2026-11-17",
+   "checked_quote": "the group’s stated aim was to call on Lincoln Center to remove donor naming affiliations tied to Koch Industries, Chevron, and Texaco."
+  },
+  "was": {
+   "funder": "right:koch",
+   "funder_name": "Koch",
+   "funder_kind": "family",
+   "space": "lincoln-center-for-the-performing-arts",
+   "space_name": "Lincoln Center for the Performing Arts",
+   "city": "New York",
+   "field": "watch",
+   "text": "Activists disrupted the Met Opera's Carmen on 21 November 2025, demanding Lincoln Center remove Koch names.",
+   "date": "2025",
+   "sources": [
+    "https://operawire.com/?p=105239",
+    "https://www.aol.com/news/trio-disrupts-nyc-met-opera-001833298.html",
+    "https://www.lincolncenter.org/campus-fund/our-supporters",
+    "https://www.democracynow.org/2010/8/25/the_new_yorker___billionaire",
+    "https://wikileaks.org/clinton-emails/emailid/29728"
+   ]
+  },
+  "closest": {
+   "cid": "825e0e28e5",
+   "field": "watch",
+   "text": "They demanded Lincoln Center remove Koch names.",
+   "alike": 0.56
+  }
+ },
+ "25f77c7884": {
+  "verdict": {
+   "drop": true,
+   "why": "Does not name Griffin."
+  },
+  "was": {
+   "funder": "right:griffin",
+   "funder_name": "Ken Griffin / Citadel",
+   "funder_kind": "family",
+   "space": "modern-art-museum-of-fort-worth-fort-worth",
+   "space_name": "Modern Art Museum of Fort Worth",
+   "city": "Fort Worth",
+   "field": "details.funding",
+   "text": "Keith Foundation, CAF America, Bratton Family Foundation, City of Fort Worth, Crystelle Waggoner Charitable Trust (Bank of America trustee), Communities Foundation of Texas, DAFgiving360, Fash Foundation, Fidelity Charitable Gift Fund, Fort Worth Promotion and Development Fund, Fort Worth Tourism Public Improvement District, Jedel Family Foundation, John & Amy Griffin Foundation, North Texas Community Foundation, Raymond James Charitable, Sid W.",
+   "date": "",
+   "sources": [
+    "https://www.themodern.org/foundation-support",
+    "https://www.themodern.org/visit",
+    "https://en.wikipedia.org/wiki/Modern_Art_Museum_of_Fort_Worth",
+    "https://en.wikipedia.org/wiki/Sid_W._Richardson_Foundation",
+    "https://sidrichardson.org/",
+    "https://www.fire.org/cases/fort-worth-texas-police-seize-artist-sally-manns-photos-museum-and-launch-investigation"
+   ]
+  },
+  "closest": null
+ },
+ "3e7e4c2e03": {
+  "verdict": {
+   "drop": true,
+   "why": "A gift to a state museum from a Hyundai Group leader, not company sponsorship."
+  },
+  "was": {
+   "funder": "hyundaimotor",
+   "funder_name": "Hyundai Motor",
+   "funder_kind": "corp",
+   "space": "international-friendship-exhibition",
+   "space_name": "International Friendship Exhibition",
+   "city": "Hyangsan",
+   "field": "details.funding",
+   "text": "The collection is gifts from foreign leaders, friendship groups, notable individuals and companies (Koryo Tours); Reuters named a luxury car from the late leader of the Hyundai Group, a clock from CNN's founder and a living-room set from a South Korean furniture maker (2006).",
+   "date": "2006",
+   "sources": [
+    "https://web.archive.org/web/2012/http://www.kcna.co.jp/item/1998/9806/news06/05.htm",
+    "https://koryogroup.com/travel-guide/mt-myohyang-international-friendship-exhibition-north-korea-travel-guide",
+    "https://en.wikipedia.org/wiki/International_Friendship_Exhibition",
+    "https://ko.wikipedia.org/wiki/%EA%B5%AD%EC%A0%9C%EC%B9%9C%EC%84%A0%EC%A0%84%EB%9E%8C%EA%B4%80",
+    "https://www.theage.com.au/lifestyle/north-korean-museum-shows-off-leaders-gifts-20061222-gdp3p6.html",
+    "https://www.independent.co.uk/news/world/the-great-leader-rules-from-beyond-the-grave-1245349.html"
+   ]
+  },
+  "closest": {
+   "cid": "d04f53a5e8",
+   "field": "details.funding",
+   "text": "Reuters named a luxury sedan from the late leader of the Hyundai Group, a clock from CNN founder Ted Turner and a living-room set from a South Korean furniture maker (2006).",
+   "alike": 0.7
+  }
+ },
+ "117bea5714": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Its sponsorship set the 2025 programme at four exhibitions.",
+   "date": "2025-06",
+   "check": "record"
+  },
+  "was": {
+   "funder": "hyundaimotor",
+   "funder_name": "Hyundai Motor",
+   "funder_kind": "corp",
+   "space": "nam-june-paik-art-center-yongin",
+   "space_name": "Nam June Paik Art Center",
+   "city": "Yongin",
+   "field": "details.funding",
+   "text": "The Gyeonggi Ilbo (June 2025) reports that the 2025 programme was set at four exhibitions \"thanks to Hyundai Motor's sponsorship\" (translation from the Korean), against an exhibition budget of 510 million won.",
+   "date": "2025",
+   "sources": [
+    "https://njp.ggcf.kr/",
+    "https://njpart.ggcf.kr/",
+    "https://njpart.ggcf.kr/pages/architecture",
+    "https://english.gg.go.kr/blog/daily-news/2956/",
+    "https://english.gg.go.kr/nam-june-paik-art-center/",
+    "https://en.wikipedia.org/wiki/Nam_June_Paik_Art_Center"
+   ]
+  },
+  "closest": {
+   "cid": "99043bcd23",
+   "field": "details.funding",
+   "text": "The 2025 programme reached four exhibitions \"thanks to Hyundai Motor's sponsorship\" (Kyeonggi Ilbo editorial, own translation).",
+   "alike": 0.55
+  }
+ },
+ "7f331f4fa8": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Runs the Hyundai Translocal Series, an exchange with the Pinacoteca de São Paulo opening in November 2026.",
+   "date": "2026-06",
+   "check": "source-partly",
+   "checked_source": "https://njpart.ggcf.kr/",
+   "checked_missing": "the exchange with the Pinacoteca de São Paulo",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Exhibition Hyundai Translocal Series: Via Satellite - Moon, Echo, Mosquitoes, and Memes Nov 5, 2026— Mar 28, 2027"
+  },
+  "was": {
+   "funder": "hyundaimotor",
+   "funder_name": "Hyundai Motor",
+   "funder_kind": "corp",
+   "space": "nam-june-paik-art-center-yongin",
+   "space_name": "Nam June Paik Art Center",
+   "city": "Yongin",
+   "field": "details.funding",
+   "text": "Hyundai Motor money reaching the centre today: Hyundai Motor Group (23 June 2026) says it runs the Hyundai Translocal Series, launched in 2025, in which the centre and the Pinacoteca de Sao Paulo co-organise an exhibition opening in November 2026; the Herald (22 June 2026) describes Hyundai Motor as the series' organiser and does not say Hyundai sponsors the centre directly.",
+   "date": "2026",
+   "sources": [
+    "https://njp.ggcf.kr/",
+    "https://njpart.ggcf.kr/",
+    "https://njpart.ggcf.kr/pages/architecture",
+    "https://english.gg.go.kr/blog/daily-news/2956/",
+    "https://english.gg.go.kr/nam-june-paik-art-center/",
+    "https://en.wikipedia.org/wiki/Nam_June_Paik_Art_Center"
+   ]
+  },
+  "closest": {
+   "cid": "300aa84478",
+   "field": "details.funding",
+   "text": "Hyundai Motor runs the Hyundai Translocal Series, launched in 2025, and supports partner institutions' multi-year research, commissions, exhibitions and publications; the centre and the Pinacoteca de São Paulo co-organised its November 2026 exhibition (Hyundai Motor Group, 23 June 2026).",
+   "alike": 0.5
+  }
+ },
+ "eb3667357c": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Paid 12 billion won over ten years for one solo show a year, the Hyundai Motor Series. It was the largest sponsorship in the museum’s history.",
+   "date": "2014",
+   "check": "source-partly",
+   "checked_source": "https://www.sidae.com/article/2013111411358064800",
+   "checked_on": "2026-11-17",
+   "checked_quote": "지난 7일, 현대차는 경기도 과천의 국립현대미술관에 내년부터 2023년까지 10년 동안 총 120억원을 후원한다고 밝혔다. ... 매년 1명씩 중진 작가들을 선정해 국립현대미술관 서울관에서 최고 수준의 전시회를 열 계획이다.",
+   "checked_beyond_record": true,
+   "checked_missing": "'Largest in the museum's history': the page says it is the largest among Korean corporate arts sponsorships ('국내 기업의 문화·예술 후원 활동(메세나) 가운데 금액 면에서 가장 클'), not the museum's largest.",
+   "extra_sources": [
+    "https://www.sidae.com/article/2013111411358064800"
+   ]
+  },
+  "was": {
+   "funder": "hyundaimotor",
+   "funder_name": "Hyundai Motor",
+   "funder_kind": "corp",
+   "space": "national-museum-of-modern-and-contemporary-art-mmca",
+   "space_name": "National Museum of Modern and Contemporary Art (MMCA)",
+   "city": "Seoul",
+   "field": "details.funding",
+   "text": "Hyundai Motor sponsored one solo exhibition of a mid-career Korean artist each year from 2014: 12 billion won over 10 years, announced in November 2013 and the largest sponsorship in the museum's history; the tenth and final show ran through 25 February 2024 (Hankyung Magazine, Lee Seung-ryul, 18 September 2023, translated).",
+   "date": "2014",
+   "sources": [
+    "https://en.wikipedia.org/wiki/National_Museum_of_Modern_and_Contemporary_Art",
+    "https://magazine.hankyung.com/money/article/202309187863c",
+    "https://www.lg.com/global/newsroom/news/media-entertainment-solution/mmcaxlg-oled-series-kicks-off-to-bring-digital-art-closer-to-the-public/",
+    "https://en.wikipedia.org/wiki/Hyundai_Alabama_child_labor_allegations",
+    "http://www.theartnewspaper.com/news/korean-artists-protest-appointment-of-former-barcelona-museum-director-due-to-censorship-concerns",
+    "https://artreview.com/director-of-south-koreas-mmca-museums-steps-down-amid-alleged-political-pressure"
+   ]
+  },
+  "closest": {
+   "cid": "9122434e9e",
+   "field": "funding",
+   "text": "Hyundai Motor sponsored its series from 2014 to February 2024; LG Electronics sponsors the OLED Series from 2025.",
+   "alike": 0.33
+  }
+ },
+ "ba7da134b5": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "The Hyundai Motor Series ended in February 2024.",
+   "date": "2024-02",
+   "ended": true,
+   "check": "source-partly",
+   "checked_source": "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000309",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Now in its 10th edition, MMCA Hyundai Motor Series provides substantial support for large-scale exhibitions.",
+   "checked_beyond_record": true,
+   "checked_missing": "An explicit statement that the series ended: the page gives the 10th show's run to 25 February 2024 but doesn't call it the last.",
+   "extra_sources": [
+    "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000309"
+   ]
+  },
+  "was": {
+   "funder": "hyundaimotor",
+   "funder_name": "Hyundai Motor",
+   "funder_kind": "corp",
+   "space": "national-museum-of-modern-and-contemporary-art-mmca",
+   "space_name": "National Museum of Modern and Contemporary Art (MMCA)",
+   "city": "Seoul",
+   "field": "watch",
+   "text": "Hyundai Motor sponsored its series to February 2024.",
+   "date": "2024",
+   "sources": [
+    "https://magazine.hankyung.com/money/article/202309187863c",
+    "https://www.lg.com/global/newsroom/news/media-entertainment-solution/mmcaxlg-oled-series-kicks-off-to-bring-digital-art-closer-to-the-public/",
+    "https://en.wikipedia.org/wiki/Hyundai_Alabama_child_labor_allegations"
+   ]
+  },
+  "closest": {
+   "cid": "9122434e9e",
+   "field": "funding",
+   "text": "Hyundai Motor sponsored its series from 2014 to February 2024; LG Electronics sponsors the OLED Series from 2025.",
+   "alike": 0.63
+  }
+ },
+ "f1733ce6c5": {
+  "verdict": {
+   "drop": true,
+   "why": "Bank of America as the trustee of another donor’s trust."
+  },
+  "was": {
+   "funder": "bankofamerica",
+   "funder_name": "Bank of America",
+   "funder_kind": "corp",
+   "space": "modern-art-museum-of-fort-worth-fort-worth",
+   "space_name": "Modern Art Museum of Fort Worth",
+   "city": "Fort Worth",
+   "field": "details.funding",
+   "text": "Keith Foundation, CAF America, Bratton Family Foundation, City of Fort Worth, Crystelle Waggoner Charitable Trust (Bank of America trustee), Communities Foundation of Texas, DAFgiving360, Fash Foundation, Fidelity Charitable Gift Fund, Fort Worth Promotion and Development Fund, Fort Worth Tourism Public Improvement District, Jedel Family Foundation, John & Amy Griffin Foundation, North Texas Community Foundation, Raymond James Charitable, Sid W.",
+   "date": "",
+   "sources": [
+    "https://www.themodern.org/foundation-support",
+    "https://www.themodern.org/visit",
+    "https://en.wikipedia.org/wiki/Modern_Art_Museum_of_Fort_Worth",
+    "https://en.wikipedia.org/wiki/Sid_W._Richardson_Foundation",
+    "https://sidrichardson.org/",
+    "https://www.fire.org/cases/fort-worth-texas-police-seize-artist-sally-manns-photos-museum-and-launch-investigation"
+   ]
+  },
+  "closest": {
+   "cid": "adddbef3ad",
+   "field": "details.funding",
+   "text": "Keith Foundation, Bank of America Charitable Foundation, the Crystelle Waggoner Charitable Trust (Bank of America trustee), Communities Foundation of Texas, Three G Foundation, Fidelity Charitable and DAFgiving360 (museum website).",
+   "alike": 0.56
+  }
+ },
+ "31cbf83c73": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Its name is on BMO Free Access Thursday Nights, free entry from 5 to 9pm on Thursdays.",
+   "check": "source",
+   "checked_source": "https://agns.ca/plan-your-visit/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Thanks to the generous support of BMO Financial Group, we are pleased to present BMO Free Access Thursday Nights, where admission from 5-9pm every Thursday is free of charge."
+  },
+  "was": {
+   "funder": "bmo",
+   "funder_name": "BMO",
+   "funder_kind": "corp",
+   "space": "art-gallery-of-nova-scotia",
+   "space_name": "Art Gallery of Nova Scotia",
+   "city": "Halifax",
+   "field": "details.overview",
+   "text": "Free for Nova Scotia residents under 25, children under 7 and Indigenous Peoples, and free from 5 to 9pm on Thursdays through BMO Free Access Thursday Nights.",
+   "date": "",
+   "sources": [
+    "https://agns.ca/about/",
+    "https://agns.ca/plan-your-visit/",
+    "https://agns.ca/support/support-through-business/",
+    "https://agns.ca/?p=1004",
+    "https://en.wikipedia.org/wiki/Art_Gallery_of_Nova_Scotia",
+    "https://www.nbcnews.com/business/business-news/td-bank-pleads-guilty-money-laundering-case-will-pay-3-billion-penalti-rcna174912"
+   ]
+  },
+  "closest": {
+   "cid": "14126bd65f",
+   "field": "funding",
+   "text": "Provincial crown agency. 2024-25 supporters: Province, Arts Nova Scotia, Canada Council, BMO, Scotiabank, TD Bank Group, Ubisoft, the Sobey foundations and Benjamin Bridge winery.",
+   "alike": 0.24
+  }
+ },
+ "68bf80fe5b": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "A sponsor.",
+   "check": "source",
+   "checked_source": "https://maclima.pe/auspicios-mac-lima/",
+   "checked_on": "2026-11-17"
+  },
+  "was": {
+   "funder": "bloomberg",
+   "funder_name": "Bloomberg Philanthropies",
+   "funder_kind": "family",
+   "space": "mac-lima-lima",
+   "space_name": "MAC Lima",
+   "city": "Lima",
+   "field": "funding",
+   "text": "Sponsors include UTEC, Fundación Telefónica Movistar, Fundación BBVA, Credicorp, Bloomberg and the EU delegation.",
+   "date": "",
+   "sources": [
+    "https://maclima.pe/",
+    "https://maclima.pe/auspicios-mac-lima/",
+    "https://www.getty.edu/projects/paper-project/grants-awarded/",
+    "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+   ]
+  },
+  "closest": null
+ },
+ "41eaff899f": {
+  "verdict": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Still a trustee after his payments to Epstein. Trustees were named in Strike MoMA and the 2024 sit-in.",
+   "check": "source-partly",
+   "protest": true,
+   "date": "2024",
+   "checked_on": "2026-11-17",
+   "checked_source": "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
+   "checked_quote": "US Senator calls for investigation into MoMA trustee Leon Black's business ties to Jeffrey Epstein",
+   "checked_missing": "that trustees were named in Strike MoMA and the 2024 sit-in"
+  },
+  "was": {
+   "funder": "leonblack",
+   "funder_name": "Leon Black (Apollo)",
+   "funder_kind": "family",
+   "space": "moma-the-museum-of-modern-art",
+   "space_name": "MoMA (The Museum of Modern Art)",
+   "city": "New York",
+   "field": "watch",
+   "text": "Leon Black still a trustee after Epstein payments; Fink, Crown and Dubin named in Strike MoMA and the 2024 sit-in.",
+   "date": "2024",
+   "sources": [
+    "https://www.moma.org/about/who-we-are/support",
+    "https://www.nytimes.com/2021/03/26/arts/design/leon-black-moma.html",
+    "https://www.artforum.com/news/strike-moma-campaign-demands-museums-reinvention-246949/",
+    "https://projects.propublica.org/nonprofits/organizations/131628410",
+    "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
+    "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   ]
+  },
+  "closest": {
+   "cid": "98f181bd96",
+   "field": "why_flagged",
+   "text": "Trustees Leon Black, who paid Jeffrey Epstein at least $158 million, and Glenn Dubin; 2024 Gaza and climate protests targeted its board.",
+   "alike": 0.38
+  }
+ },
+ "e855c5a4ef": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Founded in 2005 and owned by Mikhelson.",
+   "check": "source",
+   "date": "2005",
+   "checked_on": "2026-11-17",
+   "checked_source": "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+   "checked_quote": "В 2005 году в Самаре открыла двери художественная галерея «Виктория». Она была основана предпринимателем из Новокуйбышевска Леонидом Михельсоном"
+  },
+  "was": {
+   "funder": "leonidmikhelsonvac",
+   "funder_name": "Leonid Mikhelson / V-A-C",
+   "funder_kind": "family",
+   "space": "victoria-gallery-samara",
+   "space_name": "Victoria Gallery",
+   "city": "Samara",
+   "field": "details.funding",
+   "text": "The gallery is private, founded and owned by Mikhelson (gallery website, Kommersant FM).",
+   "date": "",
+   "sources": [
+    "https://gallery-victoria.ru/",
+    "https://gallery-victoria.ru/about/",
+    "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+    "https://snob.ru/news/samarskaia-galereia-viktoriia-otkroetsia-posle-masshtabnoi-rekonstruktsii/",
+    "https://www.kommersant.ru/doc/8497660",
+    "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests"
+   ]
+  },
+  "closest": {
+   "cid": "f79cdf44bb",
+   "field": "details.funding",
+   "text": "The gallery describes itself as a private institution founded by Mikhelson (gallery website); Kommersant FM calls him number three on the Russian Forbes list and the owner of all the art bodies named after his daughter.",
+   "alike": 0.49
+  }
+ },
+ "316b735f04": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "leonidmikhelsonvac",
+   "funder_name": "Leonid Mikhelson / V-A-C",
+   "funder_kind": "family",
+   "space": "victoria-gallery-samara",
+   "space_name": "Victoria Gallery",
+   "city": "Samara",
+   "field": "details.funding",
+   "text": "Mikhelson is chairman of the management board of Novatek (UK Sanctions List), described as Russia's second-largest gas company (The Art Newspaper, 2022).",
+   "date": "2022",
+   "sources": [
+    "https://gallery-victoria.ru/",
+    "https://gallery-victoria.ru/about/",
+    "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+    "https://snob.ru/news/samarskaia-galereia-viktoriia-otkroetsia-posle-masshtabnoi-rekonstruktsii/",
+    "https://www.kommersant.ru/doc/8497660",
+    "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests"
+   ]
+  },
+  "closest": {
+   "cid": "8fddc32a2c",
+   "field": "details.funding",
+   "text": "The UK Sanctions List (FCDO) gives his posts as chairman of the management board and board member of Novatek and chairman of the board of directors of Sibur.",
+   "alike": 0.46
+  }
+ },
+ "a05716bcdd": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "leonidmikhelsonvac",
+   "funder_name": "Leonid Mikhelson / V-A-C",
+   "funder_kind": "family",
+   "space": "victoria-gallery-samara",
+   "space_name": "Victoria Gallery",
+   "city": "Samara",
+   "field": "details.overview",
+   "text": "Founded in 2005 by Leonid Mikhelson, a businessman from Novokuybyshevsk.",
+   "date": "2005",
+   "sources": [
+    "https://gallery-victoria.ru/",
+    "https://gallery-victoria.ru/about/",
+    "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+    "https://snob.ru/news/samarskaia-galereia-viktoriia-otkroetsia-posle-masshtabnoi-rekonstruktsii/",
+    "https://www.kommersant.ru/doc/8497660",
+    "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests"
+   ]
+  },
+  "closest": {
+   "cid": "926e542dbd",
+   "field": "details.overview",
+   "text": "Founded in 2005 by Leonid Mikhelson, a businessman from Novokuybyshevsk, with Lyudmila Patrati as its first director (VK long read, Vse v Samare).",
+   "alike": 0.66
+  }
+ },
+ "533392a1f9": {
+  "verdict": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "Named for his daughter Victoria.",
+   "check": "source",
+   "checked_on": "2026-11-17",
+   "checked_source": "https://www.kommersant.ru/doc/8497660",
+   "checked_quote": "Все художественные структуры, которыми владеет третий номер российского Forbes Леонид Михельсон, связаны с именем его дочери"
+  },
+  "was": {
+   "funder": "leonidmikhelsonvac",
+   "funder_name": "Leonid Mikhelson / V-A-C",
+   "funder_kind": "family",
+   "space": "victoria-gallery-samara",
+   "space_name": "Victoria Gallery",
+   "city": "Samara",
+   "field": "details.overview",
+   "text": "Named for Mikhelson's daughter Victoria, a name shared with the V-A-C Foundation (Kommersant FM).",
+   "date": "",
+   "sources": [
+    "https://gallery-victoria.ru/",
+    "https://gallery-victoria.ru/about/",
+    "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+    "https://snob.ru/news/samarskaia-galereia-viktoriia-otkroetsia-posle-masshtabnoi-rekonstruktsii/",
+    "https://www.kommersant.ru/doc/8497660",
+    "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests"
+   ]
+  },
+  "closest": {
+   "cid": "f87afb1852",
+   "field": "details.overview",
+   "text": "Named, like Mikhelson's other art bodies, after his daughter Victoria (Kommersant FM).",
+   "alike": 0.58
+  }
+ },
+ "918a298b17": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "leonidmikhelsonvac",
+   "funder_name": "Leonid Mikhelson / V-A-C",
+   "funder_kind": "family",
+   "space": "victoria-gallery-samara",
+   "space_name": "Victoria Gallery",
+   "city": "Samara",
+   "field": "details.wider_context",
+   "text": "The Samara gallery is Mikhelson's earlier project and is linked by name and by staff to V-A-C (VK long read, Kommersant FM); campaigners targeted V-A-C in Venice, not Samara.",
+   "date": "",
+   "sources": [
+    "https://gallery-victoria.ru/",
+    "https://gallery-victoria.ru/about/",
+    "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+    "https://snob.ru/news/samarskaia-galereia-viktoriia-otkroetsia-posle-masshtabnoi-rekonstruktsii/",
+    "https://www.kommersant.ru/doc/8497660",
+    "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests"
+   ]
+  },
+  "closest": {
+   "cid": "f87afb1852",
+   "field": "details.overview",
+   "text": "Named, like Mikhelson's other art bodies, after his daughter Victoria (Kommersant FM).",
+   "alike": 0.38
+  }
+ },
+ "e27b65c833": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Open Society Foundations is among the sponsors and partners whose logos the space shows.",
+   "check": "record",
+   "checked_on": "2026-11-17"
+  },
+  "was": {
+   "funder": "opensociety",
+   "funder_name": "Soros family / Open Society Foundations",
+   "funder_kind": "family",
+   "space": "african-artists-foundation-lagos",
+   "space_name": "African Artists' Foundation",
+   "city": "Lagos",
+   "field": "details.funding",
+   "text": "AAF's undated \"Sponsors and Partners\" logos include the Ford Foundation, Open Society Foundations, Mondriaan Fonds, Outset, Goethe-Institut, Alliance Française, the Spanish Embassy, Canon, National Geographic, Vontobel, Nigerian Breweries and Deutsche Bank (stated by the space; only the Goethe-Institut logo has alt text, the other names are read from image file names).",
+   "date": "",
+   "sources": [
+    "https://africanartists.org/",
+    "https://africanartists.org/about-aaf/",
+    "https://africanartists.org/collaborators/",
+    "https://en.wikipedia.org/wiki/African_Artists%27_Foundation",
+    "https://www.nbplc.com/nb-plc-and-african-artists-foundation-announce-call-for-entries-for-national-art-competition-2016/",
+    "https://businessday.ng/?p=1036094"
+   ]
+  },
+  "closest": {
+   "cid": "c475943db4",
+   "field": "details.funding",
+   "text": "LagosPhoto: the festival's supporters page, headed \"Festival 2025\" with dates of 27 October to 23 January 2025, so the edition it covers is uncertain, names the Open Society Foundations, the Ford Foundation, Tecno Mobile and the Mike Adenuga Center as principal sponsors, Canon Central and North Africa as imaging partner, the Institut Français and Alliance Française among partners, and Vontobel, Tiger Lager Beer and Hennessy as supporters (LagosPhoto).",
+   "alike": 0.33
+  }
+ },
+ "2f7d15b8b3": {
+  "verdict": {
+   "kinds": [
+    "building",
+    "programme"
+   ],
+   "summary": "As DTC Botswana, gave P654,908 for the gallery refurbishment in the 2013 to 2014 refit. It also sponsored the Thapong Artist of the Year Awards.",
+   "date": "2013-10",
+   "check": "source",
+   "checked_source": "https://mmegi.bw/ampArticle/164605",
+   "checked_on": "2026-11-17",
+   "checked_quote": "DTC donated P654,908 to sponsor the refurbishment of the gallery"
+  },
+  "was": {
+   "funder": "angloamerican",
+   "funder_name": "Anglo American and De Beers",
+   "funder_kind": "corp",
+   "space": "thapong-visual-arts-centre-gaborone",
+   "space_name": "Thapong Visual Arts Centre",
+   "city": "Gaborone",
+   "field": "details.funding",
+   "text": "2013 to 2014 refit: Ministry of Youth, Sports and Culture, P1.5 million for new art studios; DTC Botswana, P654,908 for the gallery refurbishment; First National Bank Foundation, the coffee shop (Mmegi, 30 October 2013).",
+   "date": "2013",
+   "sources": [
+    "https://contemporaryand.com/en/places/thapong-visual-arts-centre",
+    "https://mmegi.bw/ampArticle/198808",
+    "https://mmegi.bw/ampArticle/170408",
+    "https://mmegi.bw/ampArticle/164605",
+    "https://mmegi.bw/lifestyle/good-progress-in-thapong-gallery-refurbishment/news",
+    "https://mmegi.bw/lifestyle/thapong-members-exhibition-impresses/news"
+   ]
+  },
+  "closest": {
+   "cid": "f5ba8a80c8",
+   "field": "details.funding",
+   "text": "2013 to 2014 refurbishment: the acting culture minister Vincent Seretse gave the funders as the Ministry of Youth, Sport and Culture P2.2 million, Diamond Trading Company (DTC) Botswana P700,000, the FNB Foundation P250,000, De Beers P75,000 and Collegium Book Publishers P10,000, and Plascon donated paint worth P10,000 (Daily News, August 2014).",
+   "alike": 0.47
+  }
+ },
+ "199dde0e2b": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "angloamerican",
+   "funder_name": "Anglo American and De Beers",
+   "funder_kind": "corp",
+   "space": "thapong-visual-arts-centre-gaborone",
+   "space_name": "Thapong Visual Arts Centre",
+   "city": "Gaborone",
+   "field": "funding",
+   "text": "Partners: HB Botswana (2024), BTC Foundation (2018), DTC Botswana and FNB Foundation (2014).",
+   "date": "2024",
+   "sources": [
+    "https://dailynews.gov.bw/news-detail/13565",
+    "https://dailynews.gov.bw/news-detail/78920",
+    "https://dailynews.gov.bw/news-detail/45561"
+   ]
+  },
+  "closest": {
+   "cid": "4189fc66ef",
+   "field": "funding",
+   "text": "Partners: HB Botswana (2023), BTC Foundation (2018), DTC Botswana and FNB Foundation (2014).",
+   "alike": 0.99
+  }
+ },
+ "c73a8ea718": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "bankwindhoek",
+   "funder_name": "Bank Windhoek (Capricorn Group)",
+   "funder_kind": "corp",
+   "space": "national-art-gallery-of-namibia-windhoek",
+   "space_name": "National Art Gallery of Namibia",
+   "city": "Windhoek",
+   "field": "details.funding",
+   "text": "Bank Windhoek hosts the 2025/2026 Triennial in partnership with the gallery; the page states prizes of N$50,000, N$35,000 and N$25,000 but not who pays them or the bank's amount (NAGN triennial page).",
+   "date": "2025",
+   "sources": [
+    "https://nagn.org.na/",
+    "https://nagn.org.na/projects/",
+    "https://nagn.org.na/2025-2026-bank-windhoek-triennial-art-competition/",
+    "https://en.wikipedia.org/wiki/National_Art_Gallery_of_Namibia",
+    "https://wiki.ncac.org/Namibia_Sun_Pictures_(exhibition)",
+    "https://article19.org/resources/artist-alert-march-2014"
+   ]
+  },
+  "closest": {
+   "cid": "56fa0525bf",
+   "field": "details.funding",
+   "text": "Bank Windhoek Triennial: the competition began in 2008, and Bank Windhoek calls its support a long-time commitment; the 2025/2026 edition paid prizes of N$50,000 with a solo show, N$35,000 and N$25,000 (Bank Windhoek, NAGN).",
+   "alike": 0.45
+  }
+ },
+ "6a277a339e": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Its name is on the Bank Windhoek Triennial, which the gallery calls Namibia's biggest visual art competition. It sponsors the 2025/2026 edition.",
+   "date": "2025",
+   "check": "source",
+   "checked_source": "https://nagn.org.na/projects/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "The 2025/2026 Bank Windhoek Triennial is Namibia’s biggest visual art competition, hosted by the National Art Gallery of Namibia (NAGN) in partnership with Bank"
+  },
+  "was": {
+   "funder": "bankwindhoek",
+   "funder_name": "Bank Windhoek (Capricorn Group)",
+   "funder_kind": "corp",
+   "space": "national-art-gallery-of-namibia-windhoek",
+   "space_name": "National Art Gallery of Namibia",
+   "city": "Windhoek",
+   "field": "details.overview",
+   "text": "Hosts the Bank Windhoek Triennial, \"Namibia's biggest visual art competition\" (NAGN's words).",
+   "date": "",
+   "sources": [
+    "https://nagn.org.na/",
+    "https://nagn.org.na/projects/",
+    "https://nagn.org.na/2025-2026-bank-windhoek-triennial-art-competition/",
+    "https://en.wikipedia.org/wiki/National_Art_Gallery_of_Namibia",
+    "https://wiki.ncac.org/Namibia_Sun_Pictures_(exhibition)",
+    "https://article19.org/resources/artist-alert-march-2014"
+   ]
+  },
+  "closest": {
+   "cid": "238117973e",
+   "field": "details.overview",
+   "text": "The 2025/2026 Bank Windhoek Triennial opened on 18 August 2026 with 277 submissions; Josef Madisia won (Bank Windhoek).",
+   "alike": 0.42
+  }
+ },
+ "efca3b1ca9": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "fnbfirstrand",
+   "funder_name": "FNB (FirstRand)",
+   "funder_kind": "corp",
+   "space": "thapong-visual-arts-centre-gaborone",
+   "space_name": "Thapong Visual Arts Centre",
+   "city": "Gaborone",
+   "field": "details.funding",
+   "text": "Mmegi's July 2014 piece names the Department of Youth Sports and Culture, DTC, Plascon, Collegiums and the FNB Foundation as funders, gives no amounts for them, and reports the colonial-era building was renovated at a cost of P250 000.",
+   "date": "2014",
+   "sources": [
+    "https://contemporaryand.com/en/places/thapong-visual-arts-centre",
+    "https://mmegi.bw/ampArticle/198808",
+    "https://mmegi.bw/ampArticle/170408",
+    "https://mmegi.bw/ampArticle/164605",
+    "https://mmegi.bw/lifestyle/good-progress-in-thapong-gallery-refurbishment/news",
+    "https://mmegi.bw/lifestyle/thapong-members-exhibition-impresses/news"
+   ]
+  },
+  "closest": {
+   "cid": "36d5b63633",
+   "field": "details.funding",
+   "text": "Mmegi reported earlier figures of P1.5 million from the ministry for studios and P654,908 from DTC for the gallery, while the FNB Foundation paid for the coffee shop (Mmegi, 30 October 2013), and later put the cost to renovate the old gallery at P250,000 (Mmegi, 24 July 2014).",
+   "alike": 0.42
+  }
+ },
+ "ecf34967aa": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "As the FNB Foundation, it gave P250,000 toward the 2013 to 2014 refit.",
+   "date": "2014",
+   "check": "source",
+   "checked_source": "https://dailynews.gov.bw/news-detail/13565",
+   "checked_on": "2026-11-17",
+   "checked_quote": "FNB Foundation P250 000"
+  },
+  "was": {
+   "funder": "fnbfirstrand",
+   "funder_name": "FNB (FirstRand)",
+   "funder_kind": "corp",
+   "space": "thapong-visual-arts-centre-gaborone",
+   "space_name": "Thapong Visual Arts Centre",
+   "city": "Gaborone",
+   "field": "funding",
+   "text": "Partners: HB Botswana (2024), BTC Foundation (2018), DTC Botswana and FNB Foundation (2014).",
+   "date": "2024",
+   "sources": [
+    "https://dailynews.gov.bw/news-detail/13565",
+    "https://dailynews.gov.bw/news-detail/78920",
+    "https://dailynews.gov.bw/news-detail/45561"
+   ]
+  },
+  "closest": {
+   "cid": "8edba7f408",
+   "field": "funding",
+   "text": "Partners: HB Botswana (2023), BTC Foundation (2018), DTC Botswana and FNB Foundation (2014).",
+   "alike": 0.99
+  }
+ },
+ "0553c18c96": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "isabeldossantos",
+   "funder_name": "Sindika Dokolo and Isabel dos Santos",
+   "funder_kind": "family",
+   "space": "fundação-sindika-dokolo-luanda",
+   "space_name": "Fundação Sindika Dokolo",
+   "city": "Luanda",
+   "field": "details.overview",
+   "text": "Dokolo, a Congolese collector, began the collection in 2004 with the Angolan artist and curator Fernando Alvim and set up the foundation in 2006 (The Art Newspaper, 2017).",
+   "date": "2004",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Sindika_Dokolo_Foundation",
+    "https://www.theartnewspaper.com/news/isabel-dos-santos-angola",
+    "https://www.theartnewspaper.com/2020/01/07/angola-freezes-assets-of-billionaire-and-her-art-collector-husband",
+    "https://www.theartnewspaper.com/2017/06/08/documenta-14-to-collaborate-on-show-in-luanda",
+    "https://www.theartnewspaper.com/news/africa-s-top-collector-returns-ancestral-works-to-angola",
+    "https://www.icij.org/investigations/luanda-leaks/court-ties-dos-santos-to-fraudulent-diamond-deal-as-portugal-further-freezes-out-billionaire/"
+   ]
+  },
+  "closest": {
+   "cid": "b63863f8c7",
+   "field": "details.overview",
+   "text": "Dokolo started the collection in 2004 with the Angolan artist and curator Fernando Alvim and formed the foundation in 2006 (The Art Newspaper, 2017); Ver Angola (2016) and Observador (2018) give 2003.",
+   "alike": 0.75
+  }
+ },
+ "ffa06e5cd1": {
+  "verdict": {
+   "drop": "Standard Bank Limited of Bangladesh, a different bank"
+  },
+  "was": {
+   "funder": "standardbank",
+   "funder_name": "Standard Bank",
+   "funder_kind": "corp",
+   "space": "bangabandhu-memorial-museum",
+   "space_name": "Bangabandhu Memorial Museum",
+   "city": "Dhaka",
+   "field": "funding",
+   "text": "The Bangabandhu Memorial Trust ran it from 1994; banks gave it 1,360 million taka in 2017 and Standard Bank 100 million in 2020.",
+   "date": "1994",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Bangabandhu_Memorial_Trust",
+    "https://www.dhakatribune.com/amp/bangladesh/politics/195389/pm-chairs-bangabandhu-memorial-trust-meeting",
+    "https://en.wikipedia.org/wiki/Bangabandhu_Memorial_Museum"
+   ]
+  },
+  "closest": {
+   "cid": "eb30a04392",
+   "field": "details.funding",
+   "text": "On 6 January 2020 Standard Bank's chairman Kazi Akram Uddin Ahmed handed Hasina a Tk 10 crore cheque for the trust to mark Mujib Year (The Business Standard).",
+   "alike": 0.23
+  }
+ },
+ "3a8bfa91dd": {
+  "verdict": {
+   "kinds": [
+    "building",
+    "programme",
+    "licence"
+   ],
+   "summary": "Built, funds and runs the centre, which was set up to mark Aramco’s 75th anniversary.",
+   "check": "source-partly",
+   "checked_source": "https://en-archive.aawsat.com/2017/01/26/dhahran-oil-culture/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "King Salman inaugurated King Abdulaziz Center for World Culture, known as Ithraa, which was built by Aramco ... The center was established to celebrate the 75th anniversary of Aramco",
+   "extra_sources": [
+    "https://en-archive.aawsat.com/2017/01/26/dhahran-oil-culture/"
+   ],
+   "checked_beyond_record": true,
+   "checked_missing": "that Aramco funds and runs it; this page says Aramco built it, The Art Newspaper (5 January 2018) says it is funded by Aramco and Wikipedia that it is operated by Saudi Aramco"
+  },
+  "was": {
+   "funder": "aramco",
+   "funder_name": "Saudi Aramco",
+   "funder_kind": "corp",
+   "space": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+   "space_name": "King Abdulaziz Center for World Culture (Ithra)",
+   "city": "Dhahran",
+   "field": "why_flagged",
+   "text": "Established, built and run by Saudi Aramco, the national oil company, 82% owned by the Saudi government.",
+   "date": "",
+   "sources": [
+    "https://en.wikipedia.org/wiki/King_Abdulaziz_Center_for_World_Culture",
+    "https://en.wikipedia.org/wiki/Saudi_Aramco",
+    "https://wikileaks.org/plusd/cables/09DHAHRAN265_a.html"
+   ]
+  },
+  "closest": {
+   "cid": "0ddc1701a3",
+   "field": "why_flagged",
+   "text": "Aramco is the national oil company, 82% owned by the Saudi government.",
+   "alike": 0.77
+  }
+ },
+ "caaa1655bf": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "cpgroup",
+   "funder_name": "Chearavanont family (CP Group)",
+   "funder_kind": "family",
+   "space": "bangkok-kunsthalle",
+   "space_name": "Bangkok Kunsthalle",
+   "city": "Bangkok",
+   "field": "details.overview",
+   "text": "Founded by the art patron Marisa Chearavanont through her organisation Khao Yai Art.",
+   "date": "",
+   "sources": [
+    "https://khaoyaiart.org/",
+    "https://en.wikipedia.org/wiki/Bangkok_Kunsthalle",
+    "https://www.timeout.com/bangkok/art/bangkok-kunsthalle-1",
+    "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+    "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
+    "https://www.artbasel.com/stories/kunsthalle-art-forest-turn-thailand-into-southeast-asia-premier-art-hub"
+   ]
+  },
+  "closest": {
+   "cid": "d733d2e0d4",
+   "field": "details.overview",
+   "text": "Founded by the art patron Marisa Chearavanont through her organisation Khao Yai Art, launched in 2023; it opened in January 2024 with Michel Auder's \"Nine Plus Five\" (12 January to 11 February 2024) (ArtAsiaPacific; Domus).",
+   "alike": 0.55
+  }
+ },
+ "9292e6fa05": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "cpgroup",
+   "funder_name": "Chearavanont family (CP Group)",
+   "funder_kind": "family",
+   "space": "bangkok-kunsthalle",
+   "space_name": "Bangkok Kunsthalle",
+   "city": "Bangkok",
+   "field": "funding",
+   "text": "Her husband Soopakij chairs CP Group, Thailand's largest private company.",
+   "date": "",
+   "sources": [
+    "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
+    "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+    "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826"
+   ]
+  },
+  "closest": {
+   "cid": "af353d2c16",
+   "field": "details.funding",
+   "text": "Marisa Chearavanont is married to Soopakij Chearavanont, chairman of the Charoen Pokphand (CP) Group, which ArtAsiaPacific calls Thailand's largest private company and ArtReview Thailand's largest agribusiness.",
+   "alike": 0.47
+  }
+ },
+ "40d9dccfd7": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "cpgroup",
+   "funder_name": "Chearavanont family (CP Group)",
+   "funder_kind": "family",
+   "space": "bangkok-kunsthalle",
+   "space_name": "Bangkok Kunsthalle",
+   "city": "Bangkok",
+   "field": "why_flagged",
+   "text": "Opened January 2024 by philanthropist Marisa Chearavanont through her Khao Yai Art; no sponsors are named.",
+   "date": "2024",
+   "sources": [
+    "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
+    "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+    "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826"
+   ]
+  },
+  "closest": {
+   "cid": "fdcb99a6da",
+   "field": "funding",
+   "text": "Founded by Marisa Chearavanont through Khao Yai Art; six private donors are named on its Team page, without amounts.",
+   "alike": 0.6
+  }
+ },
+ "6de347e622": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "cpgroup",
+   "funder_name": "Chearavanont family (CP Group)",
+   "funder_kind": "family",
+   "space": "bangkok-kunsthalle",
+   "space_name": "Bangkok Kunsthalle",
+   "city": "Bangkok",
+   "field": "why_flagged",
+   "text": "She is married to Soopakij Chearavanont, chairman of CP Group.",
+   "date": "",
+   "sources": [
+    "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
+    "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+    "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826"
+   ]
+  },
+  "closest": {
+   "cid": "272cc68f0f",
+   "field": "watch",
+   "text": "Founder Marisa Chearavanont is married to Soopakij Chearavanont, chairman of CP Group, whose CP Foods faced slavery claims in its prawn feed chain in 2014.",
+   "alike": 0.56
+  }
+ },
+ "f1d62eab19": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "cpgroup",
+   "funder_name": "Chearavanont family (CP Group)",
+   "funder_kind": "family",
+   "space": "bangkok-kunsthalle",
+   "space_name": "Bangkok Kunsthalle",
+   "city": "Bangkok",
+   "field": "watch",
+   "text": "CP Group's CP Foods faced 2014 slavery claims in its prawn-feed chain.",
+   "date": "2014",
+   "sources": [
+    "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
+    "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+    "https://taipeitimes.com/News/biz/archives/2015/08/21/2003625826"
+   ]
+  },
+  "closest": {
+   "cid": "272cc68f0f",
+   "field": "watch",
+   "text": "Founder Marisa Chearavanont is married to Soopakij Chearavanont, chairman of CP Group, whose CP Foods faced slavery claims in its prawn feed chain in 2014.",
+   "alike": 0.56
+  }
+ },
+ "86645c5506": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Founded by Marisa Chearavanont, wife of CP Group chairman Soopakij Chearavanont.",
+   "check": "source",
+   "checked_source": "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+   "checked_on": "2026-11-17",
+   "checked_quote": "The initiative is spearheaded by art philanthropist Marisa Chearavanont, spouse to chairman Soopakij Chearavanont of the Charoen Pokphand Group, Thailand’s largest private company."
+  },
+  "was": {
+   "funder": "cpgroup",
+   "funder_name": "Chearavanont family (CP Group)",
+   "funder_kind": "family",
+   "space": "bangkok-kunsthalle",
+   "space_name": "Bangkok Kunsthalle",
+   "city": "Bangkok",
+   "field": "details.funding",
+   "text": "Marisa Chearavanont is married to Soopakij Chearavanont, chairman of the Charoen Pokphand (CP) Group, which ArtReview calls Thailand's largest agribusiness (ArtAsiaPacific; ArtReview).",
+   "date": "",
+   "sources": [
+    "https://khaoyaiart.org/",
+    "https://en.wikipedia.org/wiki/Bangkok_Kunsthalle",
+    "https://www.timeout.com/bangkok/art/bangkok-kunsthalle-1",
+    "https://artasiapacific.com/news/private-art-space-takes-over-factory-in-bangkok-s-chinatown",
+    "https://artreview.com/will-the-new-bangkok-kunsthalle-fire-up-the-art-scene/",
+    "https://www.artbasel.com/stories/kunsthalle-art-forest-turn-thailand-into-southeast-asia-premier-art-hub"
+   ]
+  },
+  "closest": {
+   "cid": "af353d2c16",
+   "field": "details.funding",
+   "text": "Marisa Chearavanont is married to Soopakij Chearavanont, chairman of the Charoen Pokphand (CP) Group, which ArtAsiaPacific calls Thailand's largest private company and ArtReview Thailand's largest agribusiness.",
+   "alike": 0.76
+  }
+ },
+ "53f2a3cf6d": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "building"
+   ],
+   "summary": "Runs the museum, which carries its name and sits in its global headquarters in Seoul.",
+   "check": "source",
+   "checked_source": "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+   "checked_on": "2026-11-17",
+   "checked_quote": "it’s not only the headquarters of Korean cosmetics giant Amorepacific, it also houses one of Seoul’s most impressive museums"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.funding",
+   "text": "The museum's website is run by Amorepacific Corp. and the museum sits in the company's headquarters (museum site; W Magazine).",
+   "date": "",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "19fd68a399",
+   "field": "details.funding",
+   "text": "The museum site is run by Amorepacific Corp.",
+   "alike": 0.52
+  }
+ },
+ "0f75a32dc4": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.funding",
+   "text": "Amorepacific was founded in 1945 by Sungwhan Suh as Pacific Chemical; he handed it to his second son Kyungbae Suh in 1997.",
+   "date": "1997",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "27201701b5",
+   "field": "details.funding",
+   "text": "Amorepacific grew from the camellia oil business of Yun Dokjeong; her son Suh Sung-whan took it over in 1945 and handed it to his second son Suh Kyung-bae in 1997, who chairs it (Wikipedia).",
+   "alike": 0.5
+  }
+ },
+ "c827a8cdaf": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.funding",
+   "text": "The parent is Amorepacific Holdings (renamed from Amorepacific Group in 2025). 2025 revenue was 4.25 trillion won and net income 247.3 billion won (Wikipedia).",
+   "date": "2025",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "0eff70d8d1",
+   "field": "details.funding",
+   "text": "The parent is Amorepacific Holdings; 2025 revenue was 4.25 trillion won and net income 247.3 billion won (Wikipedia).",
+   "alike": 0.84
+  }
+ },
+ "00999c365a": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.overview",
+   "text": "Corporate art museum inside the Amorepacific global headquarters at Hangang-daero 100, Yongsan-gu, Seoul (museum site; W Magazine, Ann Binlot, 27 August 2025).",
+   "date": "2025",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "fb99c2db02",
+   "field": "details.overview",
+   "text": "Corporate art museum in the Amorepacific headquarters at Hangang-daero 100, Yongsan-gu, Seoul (museum site), David Chipperfield's \"luminous cube\" (W Magazine, 27 August 2025).",
+   "alike": 0.81
+  }
+ },
+ "3af4f7ff41": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.wider_context",
+   "text": "The Korea Fair Trade Commission fined Amorepacific 500 million won in August 2014 for forcing door-to-door sales agencies to send high-performing employees to new or struggling agencies.",
+   "date": "2014",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "34d99922cc",
+   "field": "details.wider_context",
+   "text": "The Korea Fair Trade Commission fined Amorepacific 500 million won in August 2014 because it forced door-to-door sales agencies to move about 3,480 high-performance sales staff to new or weak agencies from 2005 to June 2013; the commission said this was the highest fine it could impose (Korea JoongAng Daily, 18 August 2014).",
+   "alike": 0.62
+  }
+ },
+ "b95fcf6b5a": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.wider_context",
+   "text": "On 6 April 2020 the commission fined Amorepacific Group and its affiliate Cosvision 48 million won each, 96 million won in total, over fixed deposits of 75 billion won given to Cosvision without a fee, which helped it obtain five low-interest loans from the Korea Development Bank worth 60 billion won (Korea Times, 6 April 2020; the article body also prints 9.6 billion won, inconsistent with its headline).",
+   "date": "2020",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "19059fbdcf",
+   "field": "details.wider_context",
+   "text": "In April 2020 the commission fined Amorepacific Group and its affiliate Cosvision 48 million won each, 96 million won in all, over 75 billion won in fee-free fixed deposits that let Cosvision take five low-interest Korea Development Bank loans worth 60 billion won; the article also prints 9.6 billion won, at odds with its headline (Korea Times).",
+   "alike": 0.76
+  }
+ },
+ "2cf4695b87": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "amorepacific",
+   "funder_name": "Amorepacific",
+   "funder_kind": "corp",
+   "space": "amorepacific-museum-of-art-seoul",
+   "space_name": "Amorepacific Museum of Art",
+   "city": "Seoul",
+   "field": "details.wider_context",
+   "text": "Both cases concern the museum's owner, Amorepacific.",
+   "date": "",
+   "sources": [
+    "https://apma.amorepacific.com/index.do",
+    "https://apma.amorepacific.com/contents/exhibition/4128332/view.do",
+    "https://www.utusan.com.my/pr-newswire-en/2025/12/amorepacific-museum-of-art-announces-2026-exhibition-program/",
+    "https://www.wmagazine.com/culture/seoul-korea-travel-guide-art-museums-galleries-frieze",
+    "https://artessere.com/amore-pacific-museum-of-art",
+    "https://en.wikipedia.org/wiki/Amorepacific"
+   ]
+  },
+  "closest": {
+   "cid": "19fd68a399",
+   "field": "details.funding",
+   "text": "The museum site is run by Amorepacific Corp.",
+   "alike": 0.54
+  }
+ },
+ "ad0623b0a9": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "benesse",
+   "funder_name": "Benesse (Fukutake family)",
+   "funder_kind": "family",
+   "space": "benesse-art-site-naoshima",
+   "space_name": "Benesse Art Site Naoshima",
+   "city": "Naoshima",
+   "field": "details.funding",
+   "text": "Benesse Corporation, an education and publishing company in Okayama, was founded in 1955 as Fukutake Publishing by Tetsuhiko Fukutake.",
+   "date": "1955",
+   "sources": [
+    "https://benesse-artsite.jp/en/about/",
+    "https://benesse-artsite.jp/en/soichiro-fukutake.html",
+    "https://benesse-artsite.jp/en/access/",
+    "https://www.mecenat.or.jp/en/activities/benesse-corporation-naoshima-fukutake-art-museum-foundation",
+    "https://fukutake.or.jp",
+    "https://en.wikipedia.org/wiki/Naoshima"
+   ]
+  },
+  "closest": {
+   "cid": "2fe43f43fe",
+   "field": "details.funding",
+   "text": "It was founded in 1955 as Fukutake Publishing by Tetsuhiko Fukutake.",
+   "alike": 0.66
+  }
+ },
+ "0e5fcfda7a": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Its logo is among the foundation’s undated sponsors and partners.",
+   "check": "source",
+   "checked_source": "https://africanartists.org/collaborators/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "[logo file] canon-logo-good.png"
+  },
+  "was": {
+   "funder": "canon",
+   "funder_name": "Canon",
+   "funder_kind": "corp",
+   "space": "african-artists-foundation-lagos",
+   "space_name": "African Artists' Foundation",
+   "city": "Lagos",
+   "field": "details.funding",
+   "text": "AAF's undated \"Sponsors and Partners\" logos include the Ford Foundation, Open Society Foundations, Mondriaan Fonds, Outset, Goethe-Institut, Alliance Française, the Spanish Embassy, Canon, National Geographic, Vontobel, Nigerian Breweries and Deutsche Bank (stated by the space; only the Goethe-Institut logo has alt text, the other names are read from image file names).",
+   "date": "",
+   "sources": [
+    "https://africanartists.org/",
+    "https://africanartists.org/about-aaf/",
+    "https://africanartists.org/collaborators/",
+    "https://en.wikipedia.org/wiki/African_Artists%27_Foundation",
+    "https://www.nbplc.com/nb-plc-and-african-artists-foundation-announce-call-for-entries-for-national-art-competition-2016/",
+    "https://businessday.ng/?p=1036094"
+   ]
+  },
+  "closest": {
+   "cid": "b3be8730be",
+   "field": "details.funding",
+   "text": "LagosPhoto: the festival's supporters page, headed \"Festival 2025\" with dates of 27 October to 23 January 2025, so the edition it covers is uncertain, names the Open Society Foundations, the Ford Foundation, Tecno Mobile and the Mike Adenuga Center as principal sponsors, Canon Central and North Africa as imaging partner, the Institut Français and Alliance Française among partners, and Vontobel, Tiger Lager Beer and Hennessy as supporters (LagosPhoto).",
+   "alike": 0.33
+  }
+ },
+ "7a9d20da01": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Uniqlo Friday Nights: free entry for New York State residents on Friday evenings.",
+   "check": "source",
+   "checked_source": "https://theimpression.com/uniqlo-and-moma-renew-longstanding-partnership/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "UNIQLO Friday Nights will now offer complimentary gallery access to all New York State residents, every Friday from 5:30 to 8:30 p.m.",
+   "extra_sources": [
+    "https://theimpression.com/uniqlo-and-moma-renew-longstanding-partnership/"
+   ],
+   "checked_beyond_record": true
+  },
+  "was": {
+   "funder": "fastretailing",
+   "funder_name": "Uniqlo (Fast Retailing)",
+   "funder_kind": "corp",
+   "space": "moma-the-museum-of-modern-art",
+   "space_name": "MoMA (The Museum of Modern Art)",
+   "city": "New York",
+   "field": "details.overview",
+   "text": "New York State residents enter free on Friday evenings, 17:30 to 20:30 (Uniqlo Friday Nights, Wikipedia).",
+   "date": "",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Museum_of_Modern_Art",
+    "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
+    "https://www.cbsnews.com/news/sen-ron-wyden-leon-black-paid-epstein-170-million-tax-planning/",
+    "https://hyperallergic.com/when-will-moma-dump-leon-black/",
+    "https://hyperallergic.com/guerrilla-girls-target-moma-trustees-with-ties-to-jeffrey-epstein-in-an-ad-takeover/",
+    "https://hyperallergic.com/virgin-islands-glenn-dubin-subpoena/"
+   ]
+  },
+  "closest": null
+ },
+ "fa9baf3f8d": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "fastretailing",
+   "funder_name": "Uniqlo (Fast Retailing)",
+   "funder_kind": "corp",
+   "space": "moma-the-museum-of-modern-art",
+   "space_name": "MoMA (The Museum of Modern Art)",
+   "city": "New York",
+   "field": "funding",
+   "text": "Admissions, individual board donations, UNIQLO.",
+   "date": "",
+   "sources": [
+    "https://www.moma.org/about/who-we-are/support",
+    "https://www.nytimes.com/2021/03/26/arts/design/leon-black-moma.html",
+    "https://www.artforum.com/news/strike-moma-campaign-demands-museums-reinvention-246949/",
+    "https://projects.propublica.org/nonprofits/organizations/131628410",
+    "https://www.theartnewspaper.com/2025/08/19/leon-black-moma-trustee-senator-ron-wyden-investigation-jeffrey-epstein-irs",
+    "https://www.artnews.com/list/art-news/news/jeffrey-epstein-art-connections-1234771821/"
+   ]
+  },
+  "closest": null
+ },
+ "bb085bd17d": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Its name is on the MMCA x LG OLED Series, which it sponsors under a multi-year partnership. The first show ran from August 2025.",
+   "date": "2025-08",
+   "check": "source-partly",
+   "checked_source": "https://www.lg.com/global/newsroom/news/media-entertainment-solution/mmcaxlg-oled-series-kicks-off-to-bring-digital-art-closer-to-the-public/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "LG Electronics (LG) announces “MMCA×LG OLED Series 2025 – TZUSOO,” the inaugural exhibition of a multi-year partnership with the National Museum of Modern and Contemporary Art, Korea (MMCA)",
+   "checked_missing": "the words title sponsor; the page gives the series its name and calls it a multi-year partnership"
+  },
+  "was": {
+   "funder": "lg",
+   "funder_name": "LG",
+   "funder_kind": "corp",
+   "space": "national-museum-of-modern-and-contemporary-art-mmca",
+   "space_name": "National Museum of Modern and Contemporary Art (MMCA)",
+   "city": "Seoul",
+   "field": "details.funding",
+   "text": "LG Electronics is title sponsor of the MMCA x LG OLED Series, a multi-year partnership whose first exhibition, TZUSOO, ran from 1 August 2025 to 1 February 2026 (LG newsroom, 31 July 2025).",
+   "date": "2025",
+   "sources": [
+    "https://en.wikipedia.org/wiki/National_Museum_of_Modern_and_Contemporary_Art",
+    "https://magazine.hankyung.com/money/article/202309187863c",
+    "https://www.lg.com/global/newsroom/news/media-entertainment-solution/mmcaxlg-oled-series-kicks-off-to-bring-digital-art-closer-to-the-public/",
+    "https://en.wikipedia.org/wiki/Hyundai_Alabama_child_labor_allegations",
+    "http://www.theartnewspaper.com/news/korean-artists-protest-appointment-of-former-barcelona-museum-director-due-to-censorship-concerns",
+    "https://artreview.com/director-of-south-koreas-mmca-museums-steps-down-amid-alleged-political-pressure"
+   ]
+  },
+  "closest": {
+   "cid": "efe95e12c3",
+   "field": "details.funding",
+   "text": "LG Electronics: title sponsor of the MMCA x LG OLED Series, a multi-year partnership with one new work a year in Seoul Box; the first, by TZUSOO, opened in August 2025 on 88 LG OLED screens (LG, 31 July 2025).",
+   "alike": 0.72
+  }
+ },
+ "2a8c05a7d4": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "pola",
+   "funder_name": "Pola Orbis (Suzuki family)",
+   "funder_kind": "corp",
+   "space": "pola-museum-of-art-hakone",
+   "space_name": "Pola Museum of Art",
+   "city": "Hakone",
+   "field": "details.funding",
+   "text": "The Pola Art Foundation operates the museum and also runs overseas internships for young artists, research programmes for curators and international exchange (Mecenat Association).",
+   "date": "",
+   "sources": [
+    "https://www.polamuseum.or.jp/en/",
+    "https://mecenat.or.jp/en/activities/pola-art-foundation",
+    "https://ja.wikipedia.org/wiki/ポーラ美術館",
+    "https://en.wikipedia.org/wiki/Pola_Museum_of_Art",
+    "https://www.e-flux.com/directory/562838/pola-museum-of-art",
+    "https://artscape.jp/artscape/eng/ht/0701index.html"
+   ]
+  },
+  "closest": {
+   "cid": "29b976aecf",
+   "field": "funding",
+   "text": "Pola Art Foundation, set up in May 1996 with the personal assets of Tsuneshi Suzuki of the family that founded Pola; a public-interest foundation since July 2010.",
+   "alike": 0.36
+  }
+ },
+ "a03abfb821": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "pola",
+   "funder_name": "Pola Orbis (Suzuki family)",
+   "funder_kind": "corp",
+   "space": "pola-museum-of-art-hakone",
+   "space_name": "Pola Museum of Art",
+   "city": "Hakone",
+   "field": "details.funding",
+   "text": "Japanese Wikipedia says the museum opened in September 2002 to display the collection of Tsuneji Suzuki, second head of the Pola founding family; English Wikipedia says the works were acquired by the former head of the Pola cosmetics group.",
+   "date": "2002",
+   "sources": [
+    "https://www.polamuseum.or.jp/en/",
+    "https://mecenat.or.jp/en/activities/pola-art-foundation",
+    "https://ja.wikipedia.org/wiki/ポーラ美術館",
+    "https://en.wikipedia.org/wiki/Pola_Museum_of_Art",
+    "https://www.e-flux.com/directory/562838/pola-museum-of-art",
+    "https://artscape.jp/artscape/eng/ht/0701index.html"
+   ]
+  },
+  "closest": {
+   "cid": "f4f1654ab9",
+   "field": "details.overview",
+   "text": "It opened in September 2002 to show the collection of Suzuki Tsuneshi (鈴木常司, 1930 to 2000; as e-flux spells it), son of Pola's founder and president of the cosmetics company for about 40 years, who died before it opened (museum website).",
+   "alike": 0.37
+  }
+ },
+ "4ab3276387": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "pola",
+   "funder_name": "Pola Orbis (Suzuki family)",
+   "funder_kind": "corp",
+   "space": "pola-museum-of-art-hakone",
+   "space_name": "Pola Museum of Art",
+   "city": "Hakone",
+   "field": "details.overview",
+   "text": "Opened in September 2002, run by the Pola Art Foundation (Japanese Wikipedia).",
+   "date": "2002",
+   "sources": [
+    "https://www.polamuseum.or.jp/en/",
+    "https://mecenat.or.jp/en/activities/pola-art-foundation",
+    "https://ja.wikipedia.org/wiki/ポーラ美術館",
+    "https://en.wikipedia.org/wiki/Pola_Museum_of_Art",
+    "https://www.e-flux.com/directory/562838/pola-museum-of-art",
+    "https://artscape.jp/artscape/eng/ht/0701index.html"
+   ]
+  },
+  "closest": {
+   "cid": "f4f1654ab9",
+   "field": "details.overview",
+   "text": "It opened in September 2002 to show the collection of Suzuki Tsuneshi (鈴木常司, 1930 to 2000; as e-flux spells it), son of Pola's founder and president of the cosmetics company for about 40 years, who died before it opened (museum website).",
+   "alike": 0.32
+  }
+ },
+ "ccdc4281bf": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "pola",
+   "funder_name": "Pola Orbis (Suzuki family)",
+   "funder_kind": "corp",
+   "space": "pola-museum-of-art-hakone",
+   "space_name": "Pola Museum of Art",
+   "city": "Hakone",
+   "field": "details.overview",
+   "text": "Built to show about 9,500 works collected over decades by Tsuneji Suzuki, second head of the Pola founding family.",
+   "date": "",
+   "sources": [
+    "https://www.polamuseum.or.jp/en/",
+    "https://mecenat.or.jp/en/activities/pola-art-foundation",
+    "https://ja.wikipedia.org/wiki/ポーラ美術館",
+    "https://en.wikipedia.org/wiki/Pola_Museum_of_Art",
+    "https://www.e-flux.com/directory/562838/pola-museum-of-art",
+    "https://artscape.jp/artscape/eng/ht/0701index.html"
+   ]
+  },
+  "closest": {
+   "cid": "29b976aecf",
+   "field": "funding",
+   "text": "Pola Art Foundation, set up in May 1996 with the personal assets of Tsuneshi Suzuki of the family that founded Pola; a public-interest foundation since July 2010.",
+   "alike": 0.39
+  }
+ },
+ "ce554bfaf6": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Became the gallery's technology sponsor in 2025, supporting exhibitions through the year and upgrading the front-of-house digital screens.",
+   "date": "2025",
+   "check": "source",
+   "checked_source": "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_2025_vyrocni_zprava_EN.pdf",
+   "checked_on": "2026-11-17",
+   "checked_quote": "as the gallery’s Technology Partner, Samsung provided vital exhibition support throughout 2025 and upgraded the gallery’s front-of-house digital sites."
+  },
+  "was": {
+   "funder": "samsung",
+   "funder_name": "Samsung (Lee family)",
+   "funder_kind": "corp",
+   "space": "galerie-rudolfinum-prague",
+   "space_name": "Galerie Rudolfinum",
+   "city": "Prague",
+   "field": "details.funding",
+   "text": "Samsung became the gallery's Technology Partner in 2025 with the exhibition Poetics of Encryption, providing exhibition support throughout 2025 and upgrading the gallery's front-of-house digital sites (annual report 2025); the partners page lists Samsung as Technology Partner.",
+   "date": "2025",
+   "sources": [
+    "https://www.galerierudolfinum.cz/en/",
+    "https://www.galerierudolfinum.cz/en/history/",
+    "https://www.galerierudolfinum.cz/wp-content/uploads/Galerie_Rudolfinum_2025_vyrocni_zprava_EN.pdf",
+    "https://www.galerierudolfinum.cz/en/partners/",
+    "https://www.galerierudolfinum.cz/en/about-gallery/vstupne/",
+    "https://abakus.cz/en/"
+   ]
+  },
+  "closest": {
+   "cid": "3966ac052f",
+   "field": "details.funding",
+   "text": "It provided exhibition support throughout 2025 and upgraded the gallery's front-of-house digital sites (annual report 2025); the partners page lists Samsung as Technology Partner.",
+   "alike": 0.76
+  }
+ },
+ "e1dc6a5202": {
+  "verdict": {
+   "drop": "the contractor that built it, not a funder"
+  },
+  "was": {
+   "funder": "takenaka",
+   "funder_name": "Takenaka",
+   "funder_kind": "corp",
+   "space": "pola-museum-of-art-hakone",
+   "space_name": "Pola Museum of Art",
+   "city": "Hakone",
+   "field": "details.overview",
+   "text": "Designed by Nikken Sekkei and built by Takenaka Corporation (Japanese Wikipedia).",
+   "date": "",
+   "sources": [
+    "https://www.polamuseum.or.jp/en/",
+    "https://mecenat.or.jp/en/activities/pola-art-foundation",
+    "https://ja.wikipedia.org/wiki/ポーラ美術館",
+    "https://en.wikipedia.org/wiki/Pola_Museum_of_Art",
+    "https://www.e-flux.com/directory/562838/pola-museum-of-art",
+    "https://artscape.jp/artscape/eng/ht/0701index.html"
+   ]
+  },
+  "closest": null
+ },
+ "bdf23f35e1": {
+  "verdict": {
+   "drop": "Okayama Toyota Group, a regional dealer group, not Toyota Motor"
+  },
+  "was": {
+   "funder": "toyota",
+   "funder_name": "Toyota",
+   "funder_kind": "corp",
+   "space": "okayama-art-summit-okayama",
+   "space_name": "Okayama Art Summit",
+   "city": "Okayama",
+   "field": "details.funding",
+   "text": "The 2025 about page lists Merco Group as co-organizer; Special Sponsors Ishikawa Holdings, Sanyo Shimbun, Chugin Financial Group and JR West Group; and Sponsors Okayama Toyota Group, Sapix, Tomiya Corporation, Nakashima Holdings, JT, Ryobi Group, RSK, OHK, TSC, ProdCo, Okayama University of Science and Maruzen-Yushodo.",
+   "date": "2025",
+   "sources": [
+    "https://www.okayamaartsummit.jp/2025/en/about/",
+    "https://www.okayamaartsummit.jp/2025/en/",
+    "https://www.okayamaartsummit.jp/en/about",
+    "https://www.e-flux.com/announcements/579895/okayama-art-summit-2025/",
+    "https://www.e-flux.com/announcements/647482/okayama-art-summit-2025-the-parks-of-aomame",
+    "https://www.tokyoartbeat.com/en/articles/-/controversy-brews-over-rirkrit-tiravanijas-okayama-art-summit"
+   ]
+  },
+  "closest": {
+   "cid": "6534bad10b",
+   "field": "details.funding",
+   "text": "2025 backers: Merco Group as special co-organiser; Ishikawa Holdings, the Sanyo Shimbun, Chugin Financial Group and the JR West Group as special sponsors; the Okayama Toyota dealers' group, Sapix, Tomiya Corporation, Nakashima Holdings, Japan Tobacco, Ryobi Group, RSK, OHK, TSC, ProdCo, Okayama University of Science and Maruzen-Yushodo as sponsors (2025 event report, March 2026).",
+   "alike": 0.8
+  }
+ },
+ "7c2bf6c226": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "pinchuk",
+   "funder_name": "Victor Pinchuk",
+   "funder_kind": "family",
+   "space": "pinchukartcentre",
+   "space_name": "PinchukArtCentre",
+   "city": "Kyiv",
+   "field": "details.funding",
+   "text": "The centre site names Pinchuk as founder.",
+   "date": "",
+   "sources": [
+    "https://pinchukartcentre.org/en/about",
+    "https://en.wikipedia.org/wiki/PinchukArtCentre",
+    "https://en.wikipedia.org/wiki/Victor_Pinchuk",
+    "https://www.theartnewspaper.com/2020/02/28/pinchukartcenter-employees-claim-to-have-been-sacked-after-attempting-to-form-trade-union",
+    "https://www.nbcnews.com/id/wbna9801877",
+    "https://www.kyivpost.com/article/content/ukraine-politics/clearer-picture-112083.html"
+   ]
+  },
+  "closest": {
+   "cid": "e402deee87",
+   "field": "details.funding",
+   "text": "The centre names Pinchuk as its founder and charges no admission (centre website).",
+   "alike": 0.59
+  }
+ },
+ "2314a8ebce": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "pinchuk",
+   "funder_name": "Victor Pinchuk",
+   "funder_kind": "family",
+   "space": "pinchukartcentre",
+   "space_name": "PinchukArtCentre",
+   "city": "Kyiv",
+   "field": "details.overview",
+   "text": "Founded by Victor Pinchuk, who consolidated his philanthropy under the Victor Pinchuk Foundation in 2006.",
+   "date": "2006",
+   "sources": [
+    "https://pinchukartcentre.org/en/about",
+    "https://en.wikipedia.org/wiki/PinchukArtCentre",
+    "https://en.wikipedia.org/wiki/Victor_Pinchuk",
+    "https://www.theartnewspaper.com/2020/02/28/pinchukartcenter-employees-claim-to-have-been-sacked-after-attempting-to-form-trade-union",
+    "https://www.nbcnews.com/id/wbna9801877",
+    "https://www.kyivpost.com/article/content/ukraine-politics/clearer-picture-112083.html"
+   ]
+  },
+  "closest": {
+   "cid": "84ab8e0847",
+   "field": "details.wider_context",
+   "text": "The Trump Foundation's 2015 tax return showed $150,000 from Pinchuk's London-based charity; his press service said in November 2016 that it paid for Donald Trump's video call to the Yalta European Strategy conference, which the Victor Pinchuk Foundation organises (UNIAN, which cites Fast Company and Ukrayinska Pravda).",
+   "alike": 0.37
+  }
+ },
+ "9cea9bbc58": {
+  "verdict": {
+   "drop": "background on the funder, not a tie to this space"
+  },
+  "was": {
+   "funder": "pinchuk",
+   "funder_name": "Victor Pinchuk",
+   "funder_kind": "family",
+   "space": "pinchukartcentre",
+   "space_name": "PinchukArtCentre",
+   "city": "Kyiv",
+   "field": "details.funding",
+   "text": "Pinchuk's fortune: he founded Interpipe, a producer of seamless pipes and railway wheels, and with his wife is the largest shareholder of StarLightMedia (Wikipedia).",
+   "date": "",
+   "sources": [
+    "https://pinchukartcentre.org/en/about",
+    "https://en.wikipedia.org/wiki/PinchukArtCentre",
+    "https://en.wikipedia.org/wiki/Victor_Pinchuk",
+    "https://www.theartnewspaper.com/2020/02/28/pinchukartcenter-employees-claim-to-have-been-sacked-after-attempting-to-form-trade-union",
+    "https://www.nbcnews.com/id/wbna9801877",
+    "https://www.kyivpost.com/article/content/ukraine-politics/clearer-picture-112083.html"
+   ]
+  },
+  "closest": {
+   "cid": "7958fdca9b",
+   "field": "details.funding",
+   "text": "Pinchuk founded Interpipe, a producer of seamless pipes and railway wheels, in 1990, and the London investment firm EastOne in 2006; before the invasion he and his wife were the largest shareholders of the broadcaster StarLightMedia (Wikipedia).",
+   "alike": 0.72
+  }
+ },
+ "63f6194036": {
+  "verdict": {
+   "kinds": [],
+   "summary": "In 2020 two nominees withdrew from its prize in solidarity with 28 guides dismissed after trying to form a union.",
+   "date": "2020",
+   "protest": true,
+   "check": "source",
+   "checked_source": "https://www.theartnewspaper.com/2020/02/28/pinchukartcenter-employees-claim-to-have-been-sacked-after-attempting-to-form-trade-union",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Two of the 20 nominees of this year’s PinchukArtPrize 2020, Valentina Petrova and Pavel Grazhdansky, published separate open letters after deciding to withdraw from the competition in solidarity with the dismissed guides."
+  },
+  "was": {
+   "funder": "pinchuk",
+   "funder_name": "Victor Pinchuk",
+   "funder_kind": "family",
+   "space": "pinchukartcentre",
+   "space_name": "PinchukArtCentre",
+   "city": "Kyiv",
+   "field": "watch",
+   "text": "Father-in-law Leonid Kuchma authorised the 2004 Kryvorizhstal sale to Pinchuk and Akhmetov; rivals called it below market. 2020: two prize nominees quit over dismissed guides.",
+   "date": "2004",
+   "sources": [
+    "https://pinchukartcentre.org/en/about",
+    "https://www.theartnewspaper.com/2020/02/28/pinchukartcenter-employees-claim-to-have-been-sacked-after-attempting-to-form-trade-union",
+    "https://en.wikipedia.org/wiki/Victor_Pinchuk"
+   ]
+  },
+  "closest": {
+   "cid": "1bde45208f",
+   "field": "watch",
+   "text": "Pinchuk's fortune grew while his father-in-law Leonid Kuchma was president; the 2004 Kryvorizhstal sale to him was reversed in 2005.",
+   "alike": 0.5
+  }
+ },
+ "9bcff265d5": {
+  "verdict": {
+   "kinds": [
+    "programme",
+    "building"
+   ],
+   "summary": "Was the main sponsor of the Peter the Great Gallery, which opened in January 2022 with Gazprom's chief executive Alexey Miller present. Gazprom also helped restore the ivory chandelier.",
+   "date": "2022-01",
+   "check": "source",
+   "checked_source": "https://www.spb.kp.ru/daily/27351/4532773/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Восстановить паникадило помог ПАО «Газпром». Компания также выступила генеральным спонсором выставки, на открытии присутствовал председатель правления ПАО «Газпром» Алексей Миллер."
+  },
+  "was": {
+   "funder": "gazprom",
+   "funder_name": "Gazprom",
+   "funder_kind": "corp",
+   "space": "state-hermitage-museum-spb",
+   "space_name": "The State Hermitage Museum",
+   "city": "Saint Petersburg",
+   "field": "details.funding",
+   "text": "Gazprom was general sponsor of the permanent exhibition \"Peter the Great Gallery\", which opened in the Winter Palace on 14 January 2022; the chairman of Gazprom's management board, Alexey Miller, attended the opening, and Gazprom helped restore the ivory chandelier (Komsomolskaya Pravda, 17 January 2022).",
+   "date": "2022",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hermitage_Museum",
+    "https://rulaws.ru/amp/president/Ukaz-Prezidenta-RF-ot-12.06.1996-N-862/",
+    "https://www.spb.kp.ru/daily/27351/4532773/",
+    "https://www.akm.ru/press/v_ermitazhe_otkryty_novye_zaly_galerei_petra_velikogo/",
+    "https://tass.com/society/2014897/amp",
+    "https://www.theartnewspaper.com/2023/08/31/canada-imposes-sanctions-state-hermitage-museum-director-mikhail-piotrovsky"
+   ]
+  },
+  "closest": {
+   "cid": "0b0b648748",
+   "field": "why_flagged",
+   "text": "Gazprom sponsored a gallery in 2022, sanctioned state bank Sber sponsored a 2026 show, and the EU sanctioned director Mikhail Piotrovsky in April 2026.",
+   "alike": 0.29
+  }
+ },
+ "857f3ecad3": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Two more halls of the gallery opened with its support on 21 June 2022, and the director thanked the company.",
+   "date": "2022-06",
+   "check": "source",
+   "checked_source": "https://www.akm.ru/press/v_ermitazhe_otkryty_novye_zaly_galerei_petra_velikogo/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Мы благодарим за поддержку компанию „Газпром“»"
+  },
+  "was": {
+   "funder": "gazprom",
+   "funder_name": "Gazprom",
+   "funder_kind": "corp",
+   "space": "state-hermitage-museum-spb",
+   "space_name": "The State Hermitage Museum",
+   "city": "Saint Petersburg",
+   "field": "details.funding",
+   "text": "Two more halls opened on 21 June 2022 with Gazprom's support, and Piotrovsky thanked the company (AK&M, reprinting a Gazprom press release, 21 June 2022).",
+   "date": "2022",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Hermitage_Museum",
+    "https://rulaws.ru/amp/president/Ukaz-Prezidenta-RF-ot-12.06.1996-N-862/",
+    "https://www.spb.kp.ru/daily/27351/4532773/",
+    "https://www.akm.ru/press/v_ermitazhe_otkryty_novye_zaly_galerei_petra_velikogo/",
+    "https://tass.com/society/2014897/amp",
+    "https://www.theartnewspaper.com/2023/08/31/canada-imposes-sanctions-state-hermitage-museum-director-mikhail-piotrovsky"
+   ]
+  },
+  "closest": {
+   "cid": "c49a1acdff",
+   "field": "funding",
+   "text": "Paid for from a separate federal budget line since 1997; Gazprom, Magnit and Sber have sponsored galleries and shows since 2022.",
+   "alike": 0.35
+  }
+ },
+ "6386ce496d": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "gazprom",
+   "funder_name": "Gazprom",
+   "funder_kind": "corp",
+   "space": "state-hermitage-museum-spb",
+   "space_name": "The State Hermitage Museum",
+   "city": "Saint Petersburg",
+   "field": "funding",
+   "text": "Federal budget of the Russian Federation and state corporate sponsorships (VTB Bank, Gazprom).",
+   "date": "",
+   "sources": [
+    "https://www.theartnewspaper.com/2022/06/27/hermitage-director-mikhail-piotrovsky-russia-cultural-offensive-ukraine",
+    "https://hermitagemuseum.org"
+   ]
+  },
+  "closest": {
+   "cid": "c49a1acdff",
+   "field": "funding",
+   "text": "Paid for from a separate federal budget line since 1997; Gazprom, Magnit and Sber have sponsored galleries and shows since 2022.",
+   "alike": 0.38
+  }
+ },
+ "6a5fc04033": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "gazprombank",
+   "funder_name": "Gazprombank",
+   "funder_kind": "corp",
+   "space": "art-belarus-gallery-belgazprombank-corporate-collection-minsk",
+   "space_name": "Art-Belarus Gallery (Belgazprombank corporate collection)",
+   "city": "Minsk",
+   "field": "details.overview",
+   "text": "Gallery in the Palace of Arts at Kozlova Street 3, Minsk, entered from the left end of the building, showing Belgazprombank's corporate collection (stated by the space).",
+   "date": "",
+   "sources": [
+    "https://artbelarus.by/ru/about.html",
+    "https://artbelarus.by/en/gallery/441/info.html",
+    "https://en.wikipedia.org/wiki/Belgazprombank",
+    "https://en.wikipedia.org/wiki/Viktar_Babaryka",
+    "https://www.theartnewspaper.com/2020/08/24/belarus-art-collector-viktor-babariko-rival-to-president-alexander-lukashenko-jailed-before-election",
+    "https://portal.eclat.org/exhibition/antiutopie-widerstand/the-heritage/"
+   ]
+  },
+  "closest": {
+   "cid": "c0f22267b2",
+   "field": "details.overview",
+   "text": "It shows Belgazprombank's corporate collection (stated by the space).",
+   "alike": 0.56
+  }
+ },
+ "e03a9ecc6e": {
+  "verdict": {
+   "drop": "contradicted by the record’s fuller reading of Kommersant, which names Gazprombank Asset Management for the Hermitage and Peterhof, not this museum"
+  },
+  "was": {
+   "funder": "gazprombank",
+   "funder_name": "Gazprombank",
+   "funder_kind": "corp",
+   "space": "jewish-museum-and-tolerance-center-moscow",
+   "space_name": "Jewish Museum and Tolerance Center",
+   "city": "Moscow",
+   "field": "watch",
+   "text": "Endowment managed via Gazprombank asset management per Kommersant; the museum's partners page is empty.",
+   "date": "",
+   "sources": [
+    "https://www.kommersant.ru/doc/2400953",
+    "https://wikileaks.org/plusd/cables/08MOSCOW2700_a.html"
+   ]
+  },
+  "closest": {
+   "cid": "d048b7484f",
+   "field": "watch",
+   "text": "Endowment managed via Gazprombank asset management per Kommersant.",
+   "alike": 0.78
+  }
+ },
+ "43d5cd3581": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Is named, with Gazprom, among the state companies that sponsor the museum, alongside the federal budget.",
+   "check": "record"
+  },
+  "was": {
+   "funder": "vtb",
+   "funder_name": "VTB",
+   "funder_kind": "corp",
+   "space": "state-hermitage-museum-spb",
+   "space_name": "The State Hermitage Museum",
+   "city": "Saint Petersburg",
+   "field": "funding",
+   "text": "Federal budget of the Russian Federation and state corporate sponsorships (VTB Bank, Gazprom).",
+   "date": "",
+   "sources": [
+    "https://www.theartnewspaper.com/2022/06/27/hermitage-director-mikhail-piotrovsky-russia-cultural-offensive-ukraine",
+    "https://hermitagemuseum.org"
+   ]
+  },
+  "closest": null
+ },
+ "845b0dc12c": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Founded by He Jianfeng, son of Midea's founder He Xiangjian, who commissioned the RMB 220 million Tadao Ando building in 2015.",
+   "date": "2015",
+   "check": "source",
+   "checked_source": "https://artasiapacific.com/news/new-museum-highlighting-guangzhou-art-finally-to-open-in-october",
+   "checked_on": "2026-11-17",
+   "checked_quote": "He Jianfeng, son of billionaire He Xiangjian who is founder of the electronics manufacturer Midea Group, commissioned architect Tadao Ando to design the RMB 220 million (USD 31 million), 16,000-square-meter museum in 2015"
+  },
+  "was": {
+   "funder": "midea",
+   "funder_name": "He family (Midea)",
+   "funder_kind": "family",
+   "space": "he-art-museum-foshan",
+   "space_name": "He Art Museum",
+   "city": "Foshan",
+   "field": "details.overview",
+   "text": "Founded by He Jianfeng and his father He Xiangjian, founder of Midea Group.",
+   "date": "",
+   "sources": [
+    "https://hem.org/",
+    "https://www.e-flux.com/announcements/348735/soft-launch",
+    "https://www.aljazeera.com/news/2020/12/7/in-industrial-foshan-he-art-museum-joins-chinas-arts",
+    "https://artasiapacific.com/news/new-museum-highlighting-guangzhou-art-finally-to-open-in-october",
+    "https://en.wikipedia.org/wiki/He_Art_Museum",
+    "https://www.midea.com.cn/en/about-midea/news/news-2020-07-09"
+   ]
+  },
+  "closest": {
+   "cid": "ab5c9ef33b",
+   "field": "details.overview",
+   "text": "Founded by the collector He Jianfeng, son of Midea founder He Xiangjian; it opened on 1 October 2020 after Covid-19 delayed it from March (ArtAsiaPacific; The Art Newspaper).",
+   "alike": 0.46
+  }
+ },
+ "a17db3c89c": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (founded by the He family of Midea)"
+  },
+  "was": {
+   "funder": "midea",
+   "funder_name": "He family (Midea)",
+   "funder_kind": "family",
+   "space": "he-art-museum-foshan",
+   "space_name": "He Art Museum",
+   "city": "Foshan",
+   "field": "details.overview",
+   "text": "Private non-profit art museum (HEM) at 6 Yixing Road, Beijiao New Town, Shunde district, Foshan, Guangdong, opposite the headquarters of the appliance maker Midea (e-flux, Al Jazeera).",
+   "date": "",
+   "sources": [
+    "https://hem.org/",
+    "https://www.e-flux.com/announcements/348735/soft-launch",
+    "https://www.aljazeera.com/news/2020/12/7/in-industrial-foshan-he-art-museum-joins-chinas-arts",
+    "https://artasiapacific.com/news/new-museum-highlighting-guangzhou-art-finally-to-open-in-october",
+    "https://en.wikipedia.org/wiki/He_Art_Museum",
+    "https://www.midea.com.cn/en/about-midea/news/news-2020-07-09"
+   ]
+  },
+  "closest": {
+   "cid": "d6998d9678",
+   "field": "details.overview",
+   "text": "Private non-profit art museum (HEM, 和美术馆) in the Shunde district of Foshan, Guangdong, opposite the headquarters of the appliance maker Midea (Al Jazeera; e-flux).",
+   "alike": 0.83
+  }
+ },
+ "7e2697da0d": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (founded by Yan Shijie and Cao Mei)"
+  },
+  "was": {
+   "funder": "yanshijie",
+   "funder_name": "Yan Shijie and Cao Mei",
+   "funder_kind": "family",
+   "space": "red-brick-art-museum",
+   "space_name": "Red Brick Art Museum",
+   "city": "Beijing",
+   "field": "details.overview",
+   "text": "Founded by the collector and entrepreneur Yan Shijie (阎士杰) and his wife Cao Mei.",
+   "date": "",
+   "sources": [
+    "https://www.ourchinastory.com/cn/10523",
+    "https://www.ourchinastory.com/en/amp/16755",
+    "https://www.visitbeijing.com.cn/article/47QoeJhVvxc?device=amp",
+    "https://www.archdaily.com/884521/dong-yugans-brick-art-museum-through-the-lens-of-he-lian",
+    "https://www.thepaper.cn/newsDetail_forward_1700081"
+   ]
+  },
+  "closest": {
+   "cid": "b9ae1cf254",
+   "field": "details.overview",
+   "text": "Founded by the collector and entrepreneur Yan Shijie (闫士杰, also written 阎士杰) and his wife Cao Mei; planning began in 2007 and the museum opened in May 2014 (Our China Story, Chinese edition; Beijing municipal government).",
+   "alike": 0.53
+  }
+ },
+ "dca92a1538": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Warhol's bequest after his death in 1987 let the school buy its Franklin Street headquarters, and the foundation had given more than $1 million by 2004.",
+   "date": "1987",
+   "check": "source-partly",
+   "checked_source": "https://en.wikipedia.org/wiki/New_York_Academy_of_Art",
+   "checked_on": "2026-11-17",
+   "checked_quote": "After Warhol died in 1987, he left a bequest to the academy, allowing it to purchase its Franklin Street headquarters in Tribeca. [ 5 ] ... the Warhol Foundation had given the academy more than $1 million (as of 2004).",
+   "checked_missing": "a source beyond Wikipedia"
+  },
+  "was": {
+   "funder": "andywarhol",
+   "funder_name": "Andy Warhol Foundation",
+   "funder_kind": "family",
+   "space": "new-york-academy-of-art-new-york",
+   "space_name": "New York Academy of Art",
+   "city": "New York",
+   "field": "details.funding",
+   "text": "Warhol's bequest after his death in 1987 let the school buy its Franklin Street headquarters, and the Warhol Foundation had given more than $1 million by 2004.",
+   "date": "1987",
+   "sources": [
+    "https://nyaa.edu/",
+    "https://en.wikipedia.org/wiki/New_York_Academy_of_Art",
+    "https://tribecacitizen.com/2025/04/11/join-the-party-at-tribeca-ball-on-april-15th-2/",
+    "https://hyperallergic.com/new-york-academy-of-art-says-it-will-donate-epstein-money/",
+    "https://hyperallergic.com/petition-calls-for-removal-of-new-york-academy-of-art-board-chair/",
+    "https://usaartnews.com/news/new-york-academy-of-art-donates-66000-linked-to-jeffrey-epstein"
+   ]
+  },
+  "closest": {
+   "cid": "fba0719ca9",
+   "field": "details.funding",
+   "text": "Warhol left the school a bequest after his death in 1987 that let it buy the Franklin Street building, and the Warhol Foundation had given it more than $1 million by 2004 (Wikipedia).",
+   "alike": 0.8
+  }
+ },
+ "a3d371358e": {
+  "verdict": {
+   "drop": "a loan and stock losses given as background; the tie is kept in 2b0decdb9a"
+  },
+  "was": {
+   "funder": "schlumberger",
+   "funder_name": "Schlumberger (SLB) and the de Menil family",
+   "funder_kind": "family",
+   "space": "dia-beacon",
+   "space_name": "Dia Beacon",
+   "city": "Beacon",
+   "field": "details.funding",
+   "text": "Between 1980 and 1982 the Schlumberger stock fell from about 87 to about 30 dollars a share, Dia took a 3.87 million dollar Citibank loan against it in 1983, and in 1985 Dia's board was reshaken and a Sotheby's auction raised about 1.3 million dollars (Wikipedia).",
+   "date": "1980",
+   "sources": [
+    "https://www.diaart.org",
+    "https://en.wikipedia.org/wiki/Dia_Beacon",
+    "https://en.wikipedia.org/wiki/Dia_Art_Foundation",
+    "https://projects.propublica.org/nonprofits/organizations/237397946",
+    "https://www.mellon.org/grant-details/special-non-profit-initiatives-14125",
+    "https://www.theartnewspaper.com/2020/12/04/dia-chelsea-plans-to-reopen-in-april-after-connecting-three-buildings-in-a-dollar20m-project"
+   ]
+  },
+  "closest": {
+   "cid": "3053f9ff38",
+   "field": "details.funding",
+   "text": "Between 1980 and 1982 the Schlumberger stock fell from about 87 to about 30 dollars a share.",
+   "alike": 0.52
+  }
+ },
+ "e74fe3a977": {
+  "verdict": {
+   "drop": "Facebook or Instagram named only as where a post appeared: a platform, not a funder"
+  },
+  "was": {
+   "funder": "zuckerberg",
+   "funder_name": "Meta (Zuckerberg)",
+   "funder_kind": "corp",
+   "space": "maxxi",
+   "space_name": "MAXXI",
+   "city": "Rome",
+   "field": "report",
+   "text": "Five Star parliamentarians said a dentist was far from a humanities background, artist and researcher Alessandra Ferrini said ministry-driven appointments invite influence over the agenda, and Maria Rosaria Boccia mocked the appointment on Instagram.",
+   "date": "2024-09-13",
+   "sources": [
+    "https://www.theartnewspaper.com/2024/09/13/romes-maxxi-museum-gets-second-interim-president-in-a-week-after-ouster-of-dentist",
+    "https://www.artribune.com/professioni-e-professionisti/politica-e-pubblica-amministrazione/2025/03/maria-emanuela-bruni-nuova-presidente-fondazione-maxxi"
+   ]
+  },
+  "closest": {
+   "cid": "0ed0082907",
+   "field": "report",
+   "text": "Maria Rosaria Boccia mocked the appointment on Instagram.",
+   "alike": 0.37
+  }
+ },
+ "0c4fd44931": {
+  "verdict": {
+   "drop": "Facebook or Instagram named only as where a post appeared: a platform, not a funder"
+  },
+  "was": {
+   "funder": "zuckerberg",
+   "funder_name": "Meta (Zuckerberg)",
+   "funder_kind": "corp",
+   "space": "musée-des-civilisations-noires-dakar",
+   "space_name": "Musée des Civilisations Noires",
+   "city": "Dakar",
+   "field": "details.overview",
+   "text": "Professor Mouhamed Abdalah Ly was the museum's director in 2025 (Sud Quotidien via AllAfrica, 14 February 2026) and announced his resignation as Director General on his Facebook page in May 2026 (Sud Quotidien via AllAfrica, 26 May 2026).",
+   "date": "2025",
+   "sources": [
+    "https://www.rtbf.be/article/de-toumai-a-l-anti-colonialisme-les-civilisations-noires-entrent-au-musee-a-dakar-10091609",
+    "https://mg.co.za/friday/2018-12-20-senegalese-artistic-heritage-gets-a-home/",
+    "https://fr.allafrica.com/stories/202602140208.html",
+    "https://fr.allafrica.com/stories/202605260334.html",
+    "https://en.wikipedia.org/wiki/Museum_of_Black_Civilisations"
+   ]
+  },
+  "closest": {
+   "cid": "1cd395cd57",
+   "field": "details.overview",
+   "text": "Directors: Hamady Bocoum when it opened (AFP via RTBF); Mouhamed Abdallah Ly from September 2024 (Le Soleil, 24 November 2025), who announced his resignation on Facebook in May 2026 (Sud Quotidien via AllAfrica); Abdou Simbandy Diatta, formerly Director General of Culture, since 1 July 2026 (Vie Publique Sénégal).",
+   "alike": 0.47
+  }
+ },
+ "c6a527e3fa": {
+  "verdict": {
+   "drop": "Facebook or Instagram named only as where a post appeared: a platform, not a funder"
+  },
+  "was": {
+   "funder": "zuckerberg",
+   "funder_name": "Meta (Zuckerberg)",
+   "funder_kind": "corp",
+   "space": "sesc-são-paulo-são-paulo",
+   "space_name": "Sesc São Paulo",
+   "city": "São Paulo",
+   "field": "details.wider_context",
+   "text": "An anonymous online petition asking Sesc to cancel her visit reached 88,821 signatures, and about 386 negative reviews appeared on the Sesc Pompeia Facebook page in about 24 hours from 26 October.",
+   "date": "",
+   "sources": [
+    "https://www.sescsp.org.br",
+    "https://transparencia-sp.sesc.com.br",
+    "https://pt.wikipedia.org/wiki/Serviço_Social_do_Comércio",
+    "https://en.wikipedia.org/wiki/Serviço_Social_do_Comércio",
+    "https://en.wikipedia.org/wiki/SESC_Pompeia",
+    "https://www.e-flux.com/announcements/6784487"
+   ]
+  },
+  "closest": null
+ },
+ "c10822f5ba": {
+  "verdict": {
+   "drop": "Facebook or Instagram named only as where a post appeared: a platform, not a funder"
+  },
+  "was": {
+   "funder": "zuckerberg",
+   "funder_name": "Meta (Zuckerberg)",
+   "funder_kind": "corp",
+   "space": "victoria-gallery-samara",
+   "space_name": "Victoria Gallery",
+   "city": "Samara",
+   "field": "details.wider_context",
+   "text": "After the February 2022 invasion V-A-C left Instagram on 1 March 2022 and its artistic director Francesco Manacorda resigned in March 2022 (Coda Story).",
+   "date": "2022",
+   "sources": [
+    "https://gallery-victoria.ru/",
+    "https://gallery-victoria.ru/about/",
+    "https://m.vk.ru/@vsevsamare-galereya-viktoriya-20-let-na-peredovoi-samarskogo-iskusstva",
+    "https://snob.ru/news/samarskaia-galereia-viktoriia-otkroetsia-posle-masshtabnoi-rekonstruktsii/",
+    "https://www.kommersant.ru/doc/8497660",
+    "http://www.theartnewspaper.com/2022/05/19/venice-gets-political-how-the-art-worlds-biggest-stage-has-become-a-focal-point-for-ukrainian-protests"
+   ]
+  },
+  "closest": {
+   "cid": "5e53e9e151",
+   "field": "details.wider_context",
+   "text": "V-A-C left Instagram on 1 March 2022 and its artistic director Francesco Manacorda resigned in March 2022 (Coda Story); V-A-C suspended its activities at Palazzo Zattere after the occupation (The Art Newspaper).",
+   "alike": 0.66
+  }
+ },
+ "a0249a7210": {
+  "verdict": {
+   "drop": "the Temple of Athena Nike, a namesake"
+  },
+  "was": {
+   "funder": "nike",
+   "funder_name": "Nike",
+   "funder_kind": "corp",
+   "space": "acropolis-museum",
+   "space_name": "Acropolis Museum",
+   "city": "Athens",
+   "field": "details.overview",
+   "text": "The Gallery of the Acropolis Slopes shows finds from the sanctuaries and settlement on the hillside; the Archaic Acropolis Gallery shows sculptures from the early temples and votive offerings such as the Korai and the horsemen; the Parthenon Gallery on the third level shows the frieze of the Panathenaic procession, the metopes and the two pediments; sculptures of the Propylaea, the Temple of Athena Nike and the Erechtheion are on the first level (Greek National Tourism Organisation).",
+   "date": "",
+   "sources": [
+    "https://www.visitgreece.gr/experiences/culture/museums/acropolis-museum/",
+    "https://www.tovima.com/culture/telegraph-parthenon-marbles-talks-collapse/",
+    "https://www.iefimerida.gr/english/parthenon-marbles-talks-collapse-no-plan-resume-telegraph-reports"
+   ]
+  },
+  "closest": null
+ },
+ "76ae57f365": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "The Ford Foundation's logo is on AAF's list of sponsors and partners.",
+   "check": "source",
+   "checked_source": "https://africanartists.org/collaborators/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Ford-Foundation-logo-square.png (logo image file name)"
+  },
+  "was": {
+   "funder": "ford",
+   "funder_name": "Ford Foundation and Ford Motor",
+   "funder_kind": "family",
+   "space": "african-artists-foundation-lagos",
+   "space_name": "African Artists' Foundation",
+   "city": "Lagos",
+   "field": "details.funding",
+   "text": "AAF's undated \"Sponsors and Partners\" logos include the Ford Foundation, Open Society Foundations, Mondriaan Fonds, Outset, Goethe-Institut, Alliance Française, the Spanish Embassy, Canon, National Geographic, Vontobel, Nigerian Breweries and Deutsche Bank (stated by the space; only the Goethe-Institut logo has alt text, the other names are read from image file names).",
+   "date": "",
+   "sources": [
+    "https://africanartists.org/",
+    "https://africanartists.org/about-aaf/",
+    "https://africanartists.org/collaborators/",
+    "https://en.wikipedia.org/wiki/African_Artists%27_Foundation",
+    "https://www.nbplc.com/nb-plc-and-african-artists-foundation-announce-call-for-entries-for-national-art-competition-2016/",
+    "https://businessday.ng/?p=1036094"
+   ]
+  },
+  "closest": {
+   "cid": "3257d2afe7",
+   "field": "details.funding",
+   "text": "LagosPhoto: the festival's supporters page, headed \"Festival 2025\" with dates of 27 October to 23 January 2025, so the edition it covers is uncertain, names the Open Society Foundations, the Ford Foundation, Tecno Mobile and the Mike Adenuga Center as principal sponsors, Canon Central and North Africa as imaging partner, the Institut Français and Alliance Française among partners, and Vontobel, Tiger Lager Beer and Hennessy as supporters (LagosPhoto).",
+   "alike": 0.33
+  }
+ },
+ "f88e6c4268": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Created the artists-in-Berlin programme in 1963 with an initial donation of three million US dollars.",
+   "date": "1963",
+   "check": "source-partly",
+   "checked_source": "https://en.wikipedia.org/wiki/DAAD_Artists-in-Berlin_Program",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Originally initiated by the Ford Foundation in 1963 ... The Foundation made an initial donation of three million US dollars",
+   "checked_missing": "a source beyond Wikipedia"
+  },
+  "was": {
+   "funder": "ford",
+   "funder_name": "Ford Foundation and Ford Motor",
+   "funder_kind": "family",
+   "space": "daadgalerie-berlin",
+   "space_name": "daadgalerie",
+   "city": "Berlin",
+   "field": "details.funding",
+   "text": "The Ford Foundation created the programme in 1963 with an initial donation of three million US dollars (Wikipedia).",
+   "date": "1963",
+   "sources": [
+    "https://www.berliner-kuenstlerprogramm.de",
+    "https://www.berliner-kuenstlerprogramm.de/de/besuch/",
+    "https://en.wikipedia.org/wiki/DAAD_Artists-in-Berlin_Program",
+    "https://taz.de/Neueroeffnung-der-daadgalerie-in-Berlin/!5371599"
+   ]
+  },
+  "closest": {
+   "cid": "3586965890",
+   "field": "details.overview",
+   "text": "The Ford Foundation founded the programme in West Berlin in 1963 and the DAAD took it over in 1965 (German Music Information Centre, miz.org).",
+   "alike": 0.54
+  }
+ },
+ "027a8eabdc": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (f88e6c4268)"
+  },
+  "was": {
+   "funder": "ford",
+   "funder_name": "Ford Foundation and Ford Motor",
+   "funder_kind": "family",
+   "space": "daadgalerie-berlin",
+   "space_name": "daadgalerie",
+   "city": "Berlin",
+   "field": "details.overview",
+   "text": "The programme began in 1963 as a Ford Foundation initiative.",
+   "date": "1963",
+   "sources": [
+    "https://www.berliner-kuenstlerprogramm.de",
+    "https://www.berliner-kuenstlerprogramm.de/de/besuch/",
+    "https://en.wikipedia.org/wiki/DAAD_Artists-in-Berlin_Program",
+    "https://taz.de/Neueroeffnung-der-daadgalerie-in-Berlin/!5371599"
+   ]
+  },
+  "closest": {
+   "cid": "3586965890",
+   "field": "details.overview",
+   "text": "The Ford Foundation founded the programme in West Berlin in 1963 and the DAAD took it over in 1965 (German Music Information Centre, miz.org).",
+   "alike": 0.3
+  }
+ },
+ "2f5aeace83": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "$64,000 in 2022 for a works-on-paper show.",
+   "date": "2022",
+   "check": "source",
+   "checked_source": "https://www.getty.edu/projects/paper-project/grants-awarded/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "develop an exhibition and publication ... through the lens of MAC Lima's works on paper collection. Exhibition support: $64,000"
+  },
+  "was": {
+   "funder": "getty",
+   "funder_name": "Getty (J. Paul Getty Trust and the Getty family)",
+   "funder_kind": "family",
+   "space": "mac-lima-lima",
+   "space_name": "MAC Lima",
+   "city": "Lima",
+   "field": "funding",
+   "text": "The Getty Foundation gave $64,000 in 2022 for a works-on-paper show.",
+   "date": "2022",
+   "sources": [
+    "https://maclima.pe/",
+    "https://maclima.pe/auspicios-mac-lima/",
+    "https://www.getty.edu/projects/paper-project/grants-awarded/",
+    "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+   ]
+  },
+  "closest": {
+   "cid": "375f9b7037",
+   "field": "details.funding",
+   "text": "The Getty Foundation's Paper Project gave a one-off grant of 64,000 US dollars in its 2022 round for an exhibition and publication on MAC Lima's prints and drawings, led by Gómez Echeverri and Giuliana Vidarte Basurco (Getty Foundation).",
+   "alike": 0.38
+  }
+ },
+ "1892ee38ad": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (2f5aeace83)"
+  },
+  "was": {
+   "funder": "getty",
+   "funder_name": "Getty (J. Paul Getty Trust and the Getty family)",
+   "funder_kind": "family",
+   "space": "mac-lima-lima",
+   "space_name": "MAC Lima",
+   "city": "Lima",
+   "field": "watch",
+   "text": "The 2022 Getty Foundation grant was one-off.",
+   "date": "2022",
+   "sources": [
+    "https://maclima.pe/",
+    "https://maclima.pe/auspicios-mac-lima/",
+    "https://www.getty.edu/projects/paper-project/grants-awarded/",
+    "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+   ]
+  },
+  "closest": {
+   "cid": "375f9b7037",
+   "field": "details.funding",
+   "text": "The Getty Foundation's Paper Project gave a one-off grant of 64,000 US dollars in its 2022 round for an exhibition and publication on MAC Lima's prints and drawings, led by Gómez Echeverri and Giuliana Vidarte Basurco (Getty Foundation).",
+   "alike": 0.24
+  }
+ },
+ "1973f61344": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "The Walton Family Foundation made three endowments totalling $800 million, announced on 4 May 2011: $350 million for operations, $325 million for acquisitions and $125 million for capital improvements.",
+   "date": "2011-05",
+   "check": "source",
+   "checked_source": "https://talkbusiness.net/2011/05/walton-family-donates-800-million-to-crystal-bridges-museum/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Walton Family donates $800 million to Crystal Bridges Museum"
+  },
+  "was": {
+   "funder": "waltonfamily",
+   "funder_name": "Walton family (Walmart)",
+   "funder_kind": "family",
+   "space": "crystal-bridges",
+   "space_name": "Crystal Bridges",
+   "city": "Bentonville",
+   "field": "details.funding",
+   "text": "2011 endowment: the Walton Family Foundation made three endowments totalling $800 million, announced on 4 May 2011: $350 million for operations, $325 million for acquisitions and $125 million for capital improvements (Talk Business, The City Wire staff).",
+   "date": "2011",
+   "sources": [
+    "https://crystalbridges.org/about/",
+    "https://crystalbridges.org/visit/",
+    "https://en.wikipedia.org/wiki/Crystal_Bridges_Museum_of_American_Art",
+    "https://en.wikipedia.org/wiki/Walmart",
+    "https://talkbusiness.net/2011/05/walton-family-donates-800-million-to-crystal-bridges-museum/",
+    "https://talkbusiness.net/2023/08/7m-grant-keeps-crystal-bridges-admission-free-through-2028/"
+   ]
+  },
+  "closest": {
+   "cid": "b0df81f0c5",
+   "field": "details.funding",
+   "text": "The Walton Family Foundation made three endowments that total $800 million, announced on 4 May 2011: $350 million for operations, $325 million for acquisitions and $125 million for capital improvements (Talk Business, The City Wire staff).",
+   "alike": 0.95
+  }
+ },
+ "a46814a880": {
+  "verdict": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Gave two paintings by Étienne Dinet in 2012.",
+   "date": "2012",
+   "check": "source-partly",
+   "checked_source": "https://fr.wikipedia.org/wiki/Musée_national_des_Beaux-Arts_d'Alger",
+   "checked_quote": "En 2012, la banque française BNP Paribas à travers sa filiale en Algérie, a donné deux tableaux du peintre orientaliste Étienne Dinet",
+   "checked_missing": "a page beyond Wikipedia",
+   "checked_on": "2026-11-17"
+  },
+  "was": {
+   "funder": "bnpparibas",
+   "funder_name": "BNP Paribas",
+   "funder_kind": "corp",
+   "space": "mus-e-national-des-beaux-arts-d-alger-algiers",
+   "space_name": "Musée National des Beaux-Arts d'Alger",
+   "city": "Algiers",
+   "field": "details.funding",
+   "text": "Gifts: Sonatrach handed over 174 canvases by Juanita Guccione in 2012, and BNP Paribas gave two Étienne Dinet paintings in 2012 (French Wikipedia).",
+   "date": "2012",
+   "sources": [
+    "https://en.wikipedia.org/wiki/National_Museum_of_Fine_Arts_of_Algiers",
+    "https://fr.wikipedia.org/wiki/Musée_national_des_Beaux-Arts_d'Alger",
+    "https://www.modernism.ro/2024/12/22/musee-national-des-beaux-arts-dalger/",
+    "https://artessere.com/algeria-le-musee-national-des-beaux-arts"
+   ]
+  },
+  "closest": {
+   "cid": "27b7bbbb5a",
+   "field": "details.funding",
+   "text": "In April 2012 the director general of BNP Paribas El Djazaïr gave the museum two Étienne Dinet paintings, \"L'aveugle\" and \"L'embuscade\" (Echorouk, 7 April 2012).",
+   "alike": 0.4
+  }
+ },
+ "6a724cd51e": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Sparebankstiftelsen DNB is one of the museum's six partners.",
+   "check": "source",
+   "checked_source": "https://www.nasjonalmuseet.no/en/about-the-national-museum/partnership/",
+   "checked_quote": "Lise M Stolt-Nielsen and family ... Sparebankstiftelsen DNB ... Stiftelsen Scheibler",
+   "checked_on": "2026-11-17"
+  },
+  "was": {
+   "funder": "dnb",
+   "funder_name": "DNB and Sparebankstiftelsen DNB",
+   "funder_kind": "corp",
+   "space": "nasjonalmuseet-national-museum-of-norway",
+   "space_name": "Nasjonalmuseet (National Museum of Norway)",
+   "city": "Oslo",
+   "field": "details.funding",
+   "text": "The museum lists six partners: AKO Foundation, the Fredriksen Family Collection, Lise M Stolt-Nielsen and family, Sparebankstiftelsen DNB, Stiftelsen Scheibler and Viking.",
+   "date": "",
+   "sources": [
+    "https://www.nasjonalmuseet.no/en/about-the-national-museum/partnership/",
+    "https://www.nasjonalmuseet.no/en/about-the-national-museum/partnership/the-fredriksen-collaboration",
+    "https://en.wikipedia.org/wiki/National_Museum_of_Norway",
+    "https://kunstkritikk.com/the-national-museum-of-norway-linked-to-russia/",
+    "https://kunstkritikk.com/artists-fight-the-fredriksen-collaboration",
+    "https://apollo-magazine.com/?p=1035836"
+   ]
+  },
+  "closest": {
+   "cid": "6dfaedb4cb",
+   "field": "details.funding",
+   "text": "Sparebankstiftelsen DNB: long-term art loans and exhibitions, plus NOK 6 million over three years to buy Norwegian contemporary art (annual report 2024); NOK 12 million in 2022 (Kunstkritikk).",
+   "alike": 0.2
+  }
+ },
+ "0dea105ac9": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (54ee865209)"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "tranzit-ro-bucharest",
+   "space_name": "tranzit.ro",
+   "city": "Bucharest",
+   "field": "details.funding",
+   "text": "ERSTE Foundation initiated tranzit.ro and funds it (e-flux, 15 December 2011).",
+   "date": "2011",
+   "sources": [
+    "https://www.e-flux.com/announcements/34752/erste-foundation-announces-the-launch-of-tranzit-ro/",
+    "https://www.erstestiftung.org/en/projects/tranzit/",
+    "https://temporaryartreview.com/?p=14516",
+    "https://en.wikipedia.org/wiki/ERSTE_Foundation",
+    "https://myartguides.com/artspaces/non-profit/cluj/tranzit-ro-cluj-napoca/",
+    "https://myartguides.com/artspaces/non-profit/iasi/tranzit-ro-iasi"
+   ]
+  },
+  "closest": {
+   "cid": "1d7dce2dcb",
+   "field": "details.funding",
+   "text": "ERSTE Foundation initiated and funded tranzit.ro (e-flux, 2011).",
+   "alike": 0.75
+  }
+ },
+ "0efadf3af3": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (54ee865209)"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "tranzit-ro-bucharest",
+   "space_name": "tranzit.ro",
+   "city": "Bucharest",
+   "field": "details.funding",
+   "text": "Temporary Art Review (Adriana Ledecouvreur, 6 April 2017) calls ERSTE Foundation the primary financial supporter, with additional applications to Romanian state funds, the Goethe-Institut and EU programmes.",
+   "date": "2017",
+   "sources": [
+    "https://www.e-flux.com/announcements/34752/erste-foundation-announces-the-launch-of-tranzit-ro/",
+    "https://www.erstestiftung.org/en/projects/tranzit/",
+    "https://temporaryartreview.com/?p=14516",
+    "https://en.wikipedia.org/wiki/ERSTE_Foundation",
+    "https://myartguides.com/artspaces/non-profit/cluj/tranzit-ro-cluj-napoca/",
+    "https://myartguides.com/artspaces/non-profit/iasi/tranzit-ro-iasi"
+   ]
+  },
+  "closest": {
+   "cid": "8499df4077",
+   "field": "details.funding",
+   "text": "In 2017 the organisation said most of its funding came from \"the constant support of the ERSTE Foundation\", and that it also applied to Romanian state funds, the Goethe-Institut and EU programmes (Temporary Art Review).",
+   "alike": 0.5
+  }
+ },
+ "7584cf8391": {
+  "verdict": {
+   "drop": "background on ERSTE Foundation, not a tie"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "tranzit-ro-bucharest",
+   "space_name": "tranzit.ro",
+   "city": "Bucharest",
+   "field": "details.funding",
+   "text": "Wikipedia calls ERSTE Foundation the biggest Austrian savings bank foundation and the main anchor shareholder of Erste Group Bank AG, using part of its dividend income to fund projects in Central and South Eastern Europe.",
+   "date": "",
+   "sources": [
+    "https://www.e-flux.com/announcements/34752/erste-foundation-announces-the-launch-of-tranzit-ro/",
+    "https://www.erstestiftung.org/en/projects/tranzit/",
+    "https://temporaryartreview.com/?p=14516",
+    "https://en.wikipedia.org/wiki/ERSTE_Foundation",
+    "https://myartguides.com/artspaces/non-profit/cluj/tranzit-ro-cluj-napoca/",
+    "https://myartguides.com/artspaces/non-profit/iasi/tranzit-ro-iasi"
+   ]
+  },
+  "closest": {
+   "cid": "556e03e09f",
+   "field": "details.funding",
+   "text": "ERSTE Foundation is the biggest Austrian savings bank foundation and the core shareholder of Erste Group Bank; it spends part of its dividends on projects in Central and South Eastern Europe (English Wikipedia).",
+   "alike": 0.82
+  }
+ },
+ "6efb781a46": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (54ee865209)"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "tranzit-ro-bucharest",
+   "space_name": "tranzit.ro",
+   "city": "Bucharest",
+   "field": "details.overview",
+   "text": "The network was founded in 2002 and ERSTE Foundation has been its main partner since 2010 (e-flux).",
+   "date": "2002",
+   "sources": [
+    "https://www.e-flux.com/announcements/34752/erste-foundation-announces-the-launch-of-tranzit-ro/",
+    "https://www.erstestiftung.org/en/projects/tranzit/",
+    "https://temporaryartreview.com/?p=14516",
+    "https://en.wikipedia.org/wiki/ERSTE_Foundation",
+    "https://myartguides.com/artspaces/non-profit/cluj/tranzit-ro-cluj-napoca/",
+    "https://myartguides.com/artspaces/non-profit/iasi/tranzit-ro-iasi"
+   ]
+  },
+  "closest": {
+   "cid": "42df122115",
+   "field": "details.funding",
+   "text": "ERSTE Foundation is described as the main partner of tranzit.org on the 2026 MODEM exhibition page.",
+   "alike": 0.45
+  }
+ },
+ "9a6c89f972": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "ERSTE Foundation / Kontakt Collection is on its list of supporters for each year from 2023 to 2026.",
+   "date": "2023",
+   "check": "source",
+   "checked_source": "https://www.whw.hr/o-nama/podrska/",
+   "checked_quote": "Podrška za 2026. godinu ... Zaklada ERSTE / zbirka Kontakt",
+   "checked_on": "2026-11-17"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "whw-galerija-nova-zagreb",
+   "space_name": "WHW (What, How & for Whom) / Galerija Nova",
+   "city": "Zagreb",
+   "field": "details.funding",
+   "text": "WHW's support page lists the same supporters for each year from 2023 to 2026: the Kultura Nova Foundation, the Ministry of Culture and Media of the Republic of Croatia, the City of Zagreb (City Office for Culture, Inter-City and International Cooperation and Civil Society), the Croatian Audiovisual Centre, the Office for Associations of the Government of the Republic of Croatia, the EU Creative Europe programme, ERSTE Foundation / Kontakt Collection, the Foundation for Arts Initiatives, the Trust for Mutual Understanding and the Erasmus+ programme (Agency for Mobility and EU Programmes).",
+   "date": "2023",
+   "sources": [
+    "https://www.whw.hr",
+    "https://www.whw.hr/o-nama/podrska/",
+    "https://www.whw.hr/o-nama/galerija-nova/",
+    "https://www.whw.hr/o-nama/kontakt/",
+    "https://www.whw.hr/en/?p=3843",
+    "https://www.whw.hr/en/?p=13"
+   ]
+  },
+  "closest": {
+   "cid": "98e1d84e36",
+   "field": "details.funding",
+   "text": "WHW's support page lists the same funders for 2025 and 2026: the Kultura Nova Foundation, the Ministry of Culture and Media, the City of Zagreb's Office for Culture, the Government Office for Associations, the EU's Creative Europe and Erasmus+ programmes, ERSTE Foundation / Kontakt Collection, the Foundation for Arts Initiatives and the Trust for Mutual Understanding.",
+   "alike": 0.7
+  }
+ },
+ "954bd37976": {
+  "verdict": {
+   "drop": "about the Kunsthalle Wien, not this space"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "whw-galerija-nova-zagreb",
+   "space_name": "WHW (What, How & for Whom) / Galerija Nova",
+   "city": "Zagreb",
+   "field": "details.wider_context",
+   "text": "ERSTE Foundation chief executive Boris Marte resigned from the Kunsthalle's supervisory board in protest (Hyperallergic).",
+   "date": "",
+   "sources": [
+    "https://www.whw.hr",
+    "https://www.whw.hr/o-nama/podrska/",
+    "https://www.whw.hr/o-nama/galerija-nova/",
+    "https://www.whw.hr/o-nama/kontakt/",
+    "https://www.whw.hr/en/?p=3843",
+    "https://www.whw.hr/en/?p=13"
+   ]
+  },
+  "closest": {
+   "cid": "d14d9d1b26",
+   "field": "details.wider_context",
+   "text": "This concerns the Vienna institution three WHW members directed, not WHW's Zagreb funding; ERSTE Foundation, whose chair resigned from the Kunsthalle board, is also on WHW's own funder list.",
+   "alike": 0.41
+  }
+ },
+ "6f68dd73e8": {
+  "verdict": {
+   "drop": "about the Kunsthalle Wien; the WHW support list is the same tie as 9a6c89f972"
+  },
+  "was": {
+   "funder": "erstebank",
+   "funder_name": "Erste Group and ERSTE Foundation",
+   "funder_kind": "corp",
+   "space": "whw-galerija-nova-zagreb",
+   "space_name": "WHW (What, How & for Whom) / Galerija Nova",
+   "city": "Zagreb",
+   "field": "details.wider_context",
+   "text": "ERSTE Foundation, whose chief executive resigned from the Kunsthalle board, is also on WHW's support list.",
+   "date": "",
+   "sources": [
+    "https://www.whw.hr",
+    "https://www.whw.hr/o-nama/podrska/",
+    "https://www.whw.hr/o-nama/galerija-nova/",
+    "https://www.whw.hr/o-nama/kontakt/",
+    "https://www.whw.hr/en/?p=3843",
+    "https://www.whw.hr/en/?p=13"
+   ]
+  },
+  "closest": {
+   "cid": "d14d9d1b26",
+   "field": "details.wider_context",
+   "text": "This concerns the Vienna institution three WHW members directed, not WHW's Zagreb funding; ERSTE Foundation, whose chair resigned from the Kunsthalle board, is also on WHW's own funder list.",
+   "alike": 0.6
+  }
+ },
+ "0df5add92b": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (d07639cb2b)"
+  },
+  "was": {
+   "funder": "kering",
+   "funder_name": "Kering (Pinault family)",
+   "funder_kind": "corp",
+   "space": "pinault-collection-bourse-de-commerce-paris",
+   "space_name": "Pinault Collection (Bourse de Commerce)",
+   "city": "Paris",
+   "field": "details.overview",
+   "text": "The Pinault Collection is \"the legal entity holding the artistic and cultural assets\" of François Pinault, founded in 1999 and held by Groupe Artémis.",
+   "date": "1999",
+   "sources": [
+    "https://www.pinaultcollection.com",
+    "https://www.pinaultcollection.com/en/boursedecommerce",
+    "https://en.wikipedia.org/wiki/Pinault_Collection",
+    "https://en.wikipedia.org/wiki/Bourse_de_Commerce_(Paris)",
+    "https://en.wikipedia.org/wiki/Groupe_Art%C3%A9mis",
+    "https://www.theartnewspaper.com/2019/04/18/director-of-pinault-collection-proposes-controversial-90percent-tax-breaks-for-notre-dame-donors"
+   ]
+  },
+  "closest": {
+   "cid": "4e685fb034",
+   "field": "details.overview",
+   "text": "The Pinault Collection is \"the legal entity holding the artistic and cultural assets\" of François Pinault.",
+   "alike": 0.83
+  }
+ },
+ "b0e9d0a3cd": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (a40adabf67)"
+  },
+  "was": {
+   "funder": "sainsbury",
+   "funder_name": "Sainsbury family",
+   "funder_kind": "family",
+   "space": "raven-row-london",
+   "space_name": "Raven Row",
+   "city": "London",
+   "field": "details.funding",
+   "text": "Sainsbury is described as a collector, curator and supermarket heir, and says he funds the gallery himself, calling it a \"streamlined operation\" (The Art Newspaper, 2022).",
+   "date": "2022",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Raven_Row",
+    "https://www.theartnewspaper.com/2022/12/15/east-london-art-space-raven-row-makes-a-comeback",
+    "https://www.timeout.com/london/art/raven-row",
+    "https://www.galleriesnow.net/gallery/raven-row/",
+    "https://www.anothermag.com/art-photography/3248/a-shrink-wrapped-house",
+    "https://timeout.com/london/art/chronoplasticity"
+   ]
+  },
+  "closest": {
+   "cid": "307bfae9ae",
+   "field": "details.funding",
+   "text": "Sainsbury is described as a collector and curator, also a supermarket heir.",
+   "alike": 0.53
+  }
+ },
+ "8134f9c1af": {
+  "verdict": {
+   "drop": "only cites Google Arts & Culture as a source"
+  },
+  "was": {
+   "funder": "google",
+   "funder_name": "Google (Alphabet)",
+   "funder_kind": "corp",
+   "space": "zanabazar-museum-of-fine-art-ulaanbaatar",
+   "space_name": "Zanabazar Museum of Fine Art",
+   "city": "Ulaanbaatar",
+   "field": "details.overview",
+   "text": "Google Arts & Culture gives the address as Sambuu St, CHD 4th khoroo, Ulaanbaatar 15170.",
+   "date": "",
+   "sources": [
+    "http://ncch.gov.mn/Museum/5",
+    "https://en.wikipedia.org/wiki/Fine_Arts_Zanabazar_Museum",
+    "https://artsandculture.google.com/partner/the-fine-arts-zanabazar-museum",
+    "https://ikon.mn/n/3jte"
+   ]
+  },
+  "closest": {
+   "cid": "c137e26a25",
+   "field": "details.overview",
+   "text": "Google Arts & Culture gives over 300 works when it opened.",
+   "alike": 0.45
+  }
+ },
+ "7cb6443dc1": {
+  "verdict": {
+   "drop": "only cites Google Arts & Culture as a source"
+  },
+  "was": {
+   "funder": "google",
+   "funder_name": "Google (Alphabet)",
+   "funder_kind": "corp",
+   "space": "zanabazar-museum-of-fine-art-ulaanbaatar",
+   "space_name": "Zanabazar Museum of Fine Art",
+   "city": "Ulaanbaatar",
+   "field": "details.overview",
+   "text": "Galleries: 12 according to Wikipedia and Google Arts & Culture, 10 exhibition halls according to the NCCH page, covering Mongolian art from ancient times to the early 20th century (NCCH).",
+   "date": "",
+   "sources": [
+    "http://ncch.gov.mn/Museum/5",
+    "https://en.wikipedia.org/wiki/Fine_Arts_Zanabazar_Museum",
+    "https://artsandculture.google.com/partner/the-fine-arts-zanabazar-museum",
+    "https://ikon.mn/n/3jte"
+   ]
+  },
+  "closest": {
+   "cid": "c137e26a25",
+   "field": "details.overview",
+   "text": "Google Arts & Culture gives over 300 works when it opened.",
+   "alike": 0.33
+  }
+ },
+ "1d96fa142c": {
+  "verdict": {
+   "drop": "only cites Google Arts & Culture as a source"
+  },
+  "was": {
+   "funder": "google",
+   "funder_name": "Google (Alphabet)",
+   "funder_kind": "corp",
+   "space": "zanabazar-museum-of-fine-art-ulaanbaatar",
+   "space_name": "Zanabazar Museum of Fine Art",
+   "city": "Ulaanbaatar",
+   "field": "details.overview",
+   "text": "Named in 1995 for Gombodorj Zanabazar, the sculptor whose works it holds, including Sita Tara statues, the Five Dhyani Buddhas and the Bodhi Stupa (Google Arts & Culture).",
+   "date": "1995",
+   "sources": [
+    "http://ncch.gov.mn/Museum/5",
+    "https://en.wikipedia.org/wiki/Fine_Arts_Zanabazar_Museum",
+    "https://artsandculture.google.com/partner/the-fine-arts-zanabazar-museum",
+    "https://ikon.mn/n/3jte"
+   ]
+  },
+  "closest": {
+   "cid": "6011377fa8",
+   "field": "details.overview",
+   "text": "Named in 1995, on his 360th anniversary, for Gombodorjiin Zanabazar (1635 to 1724), the first Jebtsundamba Khutuktu (museum site), whose works it holds, among them the Sita Tara statues, the Five Dhyani Buddhas and the Bodhi Stupa (Google Arts & Culture).",
+   "alike": 0.75
+  }
+ },
+ "288b5017a2": {
+  "verdict": {
+   "drop": "only cites Google Arts & Culture as a source"
+  },
+  "was": {
+   "funder": "google",
+   "funder_name": "Google (Alphabet)",
+   "funder_kind": "corp",
+   "space": "zanabazar-museum-of-fine-art-ulaanbaatar",
+   "space_name": "Zanabazar Museum of Fine Art",
+   "city": "Ulaanbaatar",
+   "field": "details.overview",
+   "text": "Collection: nearly 16,600 objects according to Google Arts & Culture, more than 16,000 according to the NCCH page, and more than 20,000 according to Wikipedia, which names paintings by Marzan Sharav.",
+   "date": "",
+   "sources": [
+    "http://ncch.gov.mn/Museum/5",
+    "https://en.wikipedia.org/wiki/Fine_Arts_Zanabazar_Museum",
+    "https://artsandculture.google.com/partner/the-fine-arts-zanabazar-museum",
+    "https://ikon.mn/n/3jte"
+   ]
+  },
+  "closest": {
+   "cid": "c31f082d27",
+   "field": "details.overview",
+   "text": "NCCH gives more than 16,000 objects in 10 halls; Google Arts & Culture gives nearly 16,600 in 12 galleries, with thangkas, coral masks and B.",
+   "alike": 0.38
+  }
+ },
+ "0c77119243": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Joined Google Arts & Culture with a virtual tour.",
+   "date": "2015",
+   "check": "source-partly",
+   "checked_source": "https://en.wikipedia.org/wiki/Fine_Arts_Zanabazar_Museum",
+   "checked_on": "2026-11-17",
+   "checked_quote": "In 2015, the museum joined the Google Arts & Culture platform and added a virtual tour of the museum's rooms",
+   "checked_missing": "a source beyond Wikipedia for the year; the Google Arts & Culture partner page confirms the partnership only"
+  },
+  "was": {
+   "funder": "google",
+   "funder_name": "Google (Alphabet)",
+   "funder_kind": "corp",
+   "space": "zanabazar-museum-of-fine-art-ulaanbaatar",
+   "space_name": "Zanabazar Museum of Fine Art",
+   "city": "Ulaanbaatar",
+   "field": "details.overview",
+   "text": "The museum joined Google Arts & Culture in 2015 with a virtual tour (Wikipedia).",
+   "date": "2015",
+   "sources": [
+    "http://ncch.gov.mn/Museum/5",
+    "https://en.wikipedia.org/wiki/Fine_Arts_Zanabazar_Museum",
+    "https://artsandculture.google.com/partner/the-fine-arts-zanabazar-museum",
+    "https://ikon.mn/n/3jte"
+   ]
+  },
+  "closest": {
+   "cid": "c137e26a25",
+   "field": "details.overview",
+   "text": "Google Arts & Culture gives over 300 works when it opened.",
+   "alike": 0.48
+  }
+ },
+ "68c52bb29f": {
+  "verdict": {
+   "drop": "Microsoft software seen on the library's computers, not a tie"
+  },
+  "was": {
+   "funder": "gates",
+   "funder_name": "Bill Gates and Microsoft",
+   "funder_kind": "family",
+   "space": "north-hamgyong-province-e-library",
+   "space_name": "North Hamgyong Province E-Library",
+   "city": "Chongjin",
+   "field": "details.overview",
+   "text": "DW saw Dell machines running Windows XP and Microsoft Office, with an Internet Explorer icon on the desktop.",
+   "date": "",
+   "sources": [
+    "https://koryogroup.com/travel-guide/chongjin-north-hamgyong-province-e-library-north-korea-travel-guide",
+    "https://www.dw.com/en/a-rare-glimpse-into-north-korea/a-16977796",
+    "https://www.govinfo.gov/content/pkg/FR-2016-03-18/html/2016-06355.htm",
+    "https://www.globalsecurity.org/wmd/library/news/dprk/2026/dprk-260324-kcna02.htm"
+   ]
+  },
+  "closest": {
+   "cid": "e3e90a29af",
+   "field": "details.overview",
+   "text": "In June 2013 a guide, who translated for the head librarian, told DW's reporter the library had 301 computers and opened every day at 10 a.m.; the reporter found it half full at 9 a.m. and saw Dell machines that ran Windows XP and Microsoft Office, with an Internet Explorer icon on the desktop.",
+   "alike": 0.51
+  }
+ },
+ "bf76319e4a": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "The Mellon Foundation backs current exhibitions.",
+   "check": "record",
+   "checked_note": "The museum's site draws its text with script."
+  },
+  "was": {
+   "funder": "mellon",
+   "funder_name": "Mellon (the Mellon Foundation and the Mellon family funds)",
+   "funder_kind": "family",
+   "space": "museo-de-arte-de-puerto-rico",
+   "space_name": "Museo de Arte de Puerto Rico",
+   "city": "San Juan",
+   "field": "why_flagged",
+   "text": "Current exhibitions are backed by the Flamboyan Foundation, Mellon Foundation, Helen Frankenthaler Foundation, Mano Amiga and the Puerto Rico Tourism Company.",
+   "date": "",
+   "sources": [
+    "https://mapr.org/en/",
+    "https://amsterdamnews.com/news/2023/11/30/afri-puerto-ricansmarch-for-cecilia-orta/",
+    "https://sandrarodriguezcotto.substack.com/p/museo-de-puerto-rico-reitera-no-son"
+   ]
+  },
+  "closest": {
+   "cid": "ae3b0b2928",
+   "field": "details.funding",
+   "text": "The Mellon Foundation gave 250,000 dollars in 2018 for conservation and curatorial capacity for recovery and response efforts (Mellon Foundation); the Darryl Chappell Foundation sponsored the artist residency at the Center for Educational Innovation (Amsterdam News).",
+   "alike": 0.28
+  }
+ },
+ "4c129b2672": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Fundación BBVA is listed among the sponsors.",
+   "check": "source",
+   "checked_source": "https://maclima.pe/auspicios-mac-lima/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "[img:Fundación BBVA]"
+  },
+  "was": {
+   "funder": "bbva",
+   "funder_name": "BBVA",
+   "funder_kind": "corp",
+   "space": "mac-lima-lima",
+   "space_name": "MAC Lima",
+   "city": "Lima",
+   "field": "funding",
+   "text": "Sponsors include UTEC, Fundación Telefónica Movistar, Fundación BBVA, Credicorp, Bloomberg and the EU delegation.",
+   "date": "",
+   "sources": [
+    "https://maclima.pe/",
+    "https://maclima.pe/auspicios-mac-lima/",
+    "https://www.getty.edu/projects/paper-project/grants-awarded/",
+    "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+   ]
+  },
+  "closest": null
+ },
+ "f684f5aff4": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Listed under Sponsors and Partners, undated; the name is read from a logo's file name.",
+   "check": "source",
+   "checked_source": "https://africanartists.org/collaborators/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "https://africanartists.org/wp-content/uploads/deutsche-bank.jpg"
+  },
+  "was": {
+   "funder": "deutschebank",
+   "funder_name": "Deutsche Bank",
+   "funder_kind": "corp",
+   "space": "african-artists-foundation-lagos",
+   "space_name": "African Artists' Foundation",
+   "city": "Lagos",
+   "field": "details.funding",
+   "text": "AAF's undated \"Sponsors and Partners\" logos include the Ford Foundation, Open Society Foundations, Mondriaan Fonds, Outset, Goethe-Institut, Alliance Française, the Spanish Embassy, Canon, National Geographic, Vontobel, Nigerian Breweries and Deutsche Bank (stated by the space; only the Goethe-Institut logo has alt text, the other names are read from image file names).",
+   "date": "",
+   "sources": [
+    "https://africanartists.org/",
+    "https://africanartists.org/about-aaf/",
+    "https://africanartists.org/collaborators/",
+    "https://en.wikipedia.org/wiki/African_Artists%27_Foundation",
+    "https://www.nbplc.com/nb-plc-and-african-artists-foundation-announce-call-for-entries-for-national-art-competition-2016/",
+    "https://businessday.ng/?p=1036094"
+   ]
+  },
+  "closest": null
+ },
+ "8bf2661c43": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (f684f5aff4)"
+  },
+  "was": {
+   "funder": "deutschebank",
+   "funder_name": "Deutsche Bank",
+   "funder_kind": "corp",
+   "space": "african-artists-foundation-lagos",
+   "space_name": "African Artists' Foundation",
+   "city": "Lagos",
+   "field": "watch",
+   "text": "Deutsche Bank is listed under 'Sponsors and Partners' on AAF's collaborators page.",
+   "date": "",
+   "sources": [
+    "https://africanartists.org/collaborators/",
+    "https://africanartists.org/"
+   ]
+  },
+  "closest": null
+ },
+ "7ccc3b299c": {
+  "verdict": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Henkel Corporation co-sponsored the exhibition “Styling Identities: Hair's Tangled Histories” (March to August 2024).",
+   "date": "2024-03",
+   "check": "record"
+  },
+  "was": {
+   "funder": "henkel",
+   "funder_name": "Henkel",
+   "funder_kind": "corp",
+   "space": "wadsworth-atheneum-museum-of-art-hartford",
+   "space_name": "Wadsworth Atheneum Museum of Art",
+   "city": "Hartford",
+   "field": "details.funding",
+   "text": "Roberts Foundation, the Henkel Corporation and Travelers.",
+   "date": "",
+   "sources": [
+    "https://projects.propublica.org/nonprofits/organizations/60653111",
+    "http://web.archive.org/web/20241118203019/https://www.thewadsworth.org/annual-reports/annual-report-2024/fy24-philanthropy/",
+    "http://web.archive.org/web/20241119144748/https://www.thewadsworth.org/annual-reports/annual-report-2024/exhibitions-sponsors/",
+    "http://web.archive.org/web/20241118203019/https://www.thewadsworth.org/annual-reports/annual-report-2024/",
+    "https://www.oilmonster.com/company/viking-fuel-oil-company/64874",
+    "https://en.wikipedia.org/wiki/Wadsworth_Atheneum"
+   ]
+  },
+  "closest": {
+   "cid": "105deef317",
+   "field": "details.funding",
+   "text": "\"Styling Identities: Hair's Tangled Histories\" (21 March to 11 August 2024) was sponsored by the Hartford Foundation for Public Giving, the Henkel Corporation, The Edward C. & Ann T.",
+   "alike": 0.38
+  }
+ },
+ "6be171b1fc": {
+  "verdict": {
+   "drop": "the founder's wealth came from advising AGAM, an importer of Mercedes-Benz; not Mercedes-Benz money"
+  },
+  "was": {
+   "funder": "mercedesbenz",
+   "funder_name": "Mercedes-Benz",
+   "funder_kind": "corp",
+   "space": "de-pont",
+   "space_name": "De Pont",
+   "city": "Tilburg",
+   "field": "details.funding",
+   "text": "Source of the wealth: De Pont practised as a lawyer in Amsterdam and advised AGAM, the Dutch importer of Mercedes-Benz, becoming acting director in 1956 and taking full control in 1960; he also advised other companies and helped restructure Tilburg textile mills (museum website).",
+   "date": "1956",
+   "sources": [
+    "https://depont.nl",
+    "https://www.depont.nl/over-het-museum",
+    "https://www.depont.nl/en/about-the-museum/j-h-de-pont",
+    "https://nl.wikipedia.org/wiki/Museum_De_Pont",
+    "https://en.wikipedia.org/wiki/De_Pont_Museum_of_Contemporary_Art",
+    "https://www.omroeptilburg.nl/regio/tilburg/tilburgse-musea-halen-bezoekersrecords-maar-financieel-gaat-het-minder-goed/"
+   ]
+  },
+  "closest": {
+   "cid": "e24e5a2f6d",
+   "field": "details.funding",
+   "text": "Source of the wealth: De Pont practised as a lawyer in Amsterdam and advised AGAM, the Dutch importer of Mercedes-Benz.",
+   "alike": 0.6
+  }
+ },
+ "25af6ad27c": {
+  "verdict": {
+   "drop": "Hilda Mercedes Castañeda Moncada, a person, a namesake"
+  },
+  "was": {
+   "funder": "mercedesbenz",
+   "funder_name": "Mercedes-Benz",
+   "funder_kind": "corp",
+   "space": "museo-para-la-identidad-nacional-min-tegucigalpa",
+   "space_name": "Museo para la Identidad Nacional (MIN)",
+   "city": "Tegucigalpa",
+   "field": "details.funding",
+   "text": "Board: Thierry Jean Marie Ghislain de Pierrefeu Midence (president), Aline Flores Pavón (vice president), Arturo Zacapa (secretary), Ana Carolina Galeano Burgos (assistant secretary), Lorena Isabel Maduro Andreu (treasurer), Ruy Axel Merriam Rubiano (assistant treasurer), Leonel Zacarias Bendeck Nasser (fiscal), and members Lizzeth Guadalupe Villatoro Flores, José Alfredo Castillo Callejas, Hilda Mercedes Castañeda Moncada and Karla Sofía Simón Saide (stated by the museum).",
+   "date": "",
+   "sources": [
+    "https://www.min.hn/juntadirectiva",
+    "https://www.min.hn/node/84",
+    "https://es.wikipedia.org/wiki/Museo_para_la_Identidad_Nacional",
+    "https://www.elheraldo.hn/entretenimiento/el-min-suma-13-anos-en-favor-del-arte-y-la-cultura-CBEH1253045",
+    "https://hyperallergic.com/519157/how-a-museum-wields-its-power-in-crafting-a-national-identity/"
+   ]
+  },
+  "closest": {
+   "cid": "c1d37701ae",
+   "field": "details.funding",
+   "text": "Members: Aline Flores Pavón (vice president), Arturo Zacapa (secretary), Ana Carolina Galeano Burgos, Lorena Isabel Maduro Andreu (treasurer), Ruy Axel Merriam Rubiano, Leonel Zacarias Bendeck Nasser (fiscal), Lizzeth Guadalupe Villatoro Flores, José Alfredo Castillo Callejas, Hilda Mercedes Castañeda Moncada and Karla Sofía Simón Saide.",
+   "alike": 0.82
+  }
+ },
+ "7b3d234ceb": {
+  "verdict": {
+   "kinds": [
+    "name",
+    "building"
+   ],
+   "summary": "Owns the museum network, run under its Progetto Cultura.",
+   "check": "source",
+   "checked_source": "https://www.lapresse.it/ambiente/2025/03/02/torino-attivisti-di-extinction-rebellion-occupano-sala-in-gallerie-ditalia/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Intesa Sanpaolo, banca proprietaria del museo"
+  },
+  "was": {
+   "funder": "intesasanpaolo",
+   "funder_name": "Intesa Sanpaolo",
+   "funder_kind": "corp",
+   "space": "gallerie-d-italia",
+   "space_name": "Gallerie d'Italia",
+   "city": "Milan",
+   "field": "details.funding",
+   "text": "Owned and run by Intesa Sanpaolo under its Progetto Cultura, conceived by Giovanni Bazoli, now honorary chairman, and part of a business plan that commits €1.5 billion to Italian communities by 2027 (Intesa Sanpaolo).",
+   "date": "2027",
+   "sources": [
+    "https://gallerieditalia.com/it/milano/",
+    "https://gallerieditalia.com/it/milano/pianifica-la-tua-visita/",
+    "https://it.wikipedia.org/wiki/Gallerie_d%27Italia",
+    "https://group.intesasanpaolo.com/it/newsroom/tutte-le-news/news/2024/gallerie-d-italia-750mila-visitatori",
+    "https://www.lapresse.it/ambiente/2025/03/02/torino-attivisti-di-extinction-rebellion-occupano-sala-in-gallerie-ditalia/",
+    "https://www.lindipendente.online/2025/05/10/intesa-sanpaolo-si-conferma-la-prima-banca-italiana-per-investimenti-nelle-fossili/"
+   ]
+  },
+  "closest": {
+   "cid": "4da03a4bc3",
+   "field": "details.funding",
+   "text": "Owner and operator: Intesa Sanpaolo, under its Progetto Cultura, a multi-year plan conceived by its president emeritus Giovanni Bazoli; it sits inside a programme that commits 1.5 billion euros to projects in Italy by 2027 (Finestre sull'Arte, 2024).",
+   "alike": 0.6
+  }
+ },
+ "9c8e661336": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (owned and run by the bank)"
+  },
+  "was": {
+   "funder": "intesasanpaolo",
+   "funder_name": "Intesa Sanpaolo",
+   "funder_kind": "corp",
+   "space": "gallerie-d-italia",
+   "space_name": "Gallerie d'Italia",
+   "city": "Milan",
+   "field": "details.overview",
+   "text": "Michele Coppola is general director of the Gallerie and runs Intesa Sanpaolo's Progetto Cultura (Intesa Sanpaolo).",
+   "date": "",
+   "sources": [
+    "https://gallerieditalia.com/it/milano/",
+    "https://gallerieditalia.com/it/milano/pianifica-la-tua-visita/",
+    "https://it.wikipedia.org/wiki/Gallerie_d%27Italia",
+    "https://group.intesasanpaolo.com/it/newsroom/tutte-le-news/news/2024/gallerie-d-italia-750mila-visitatori",
+    "https://www.lapresse.it/ambiente/2025/03/02/torino-attivisti-di-extinction-rebellion-occupano-sala-in-gallerie-ditalia/",
+    "https://www.lindipendente.online/2025/05/10/intesa-sanpaolo-si-conferma-la-prima-banca-italiana-per-investimenti-nelle-fossili/"
+   ]
+  },
+  "closest": {
+   "cid": "c9bfa9a85e",
+   "field": "why_flagged",
+   "text": "Extinction Rebellion occupied its Turin site in 2025 over owner Intesa Sanpaolo's fossil loans; Italy's privacy authority fined Intesa in 2026.",
+   "alike": 0.33
+  }
+ },
+ "c113b79661": {
+  "verdict": {
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Customers of the Intesa Sanpaolo group get in free.",
+   "check": "source",
+   "checked_source": "https://gallerieditalia.com/it/milano/pianifica-la-tua-visita/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Gratuito Under 26, Scolaresche, Clienti Gruppo Intesa Sanpaolo"
+  },
+  "was": {
+   "funder": "intesasanpaolo",
+   "funder_name": "Intesa Sanpaolo",
+   "funder_kind": "corp",
+   "space": "gallerie-d-italia",
+   "space_name": "Gallerie d'Italia",
+   "city": "Milan",
+   "field": "details.overview",
+   "text": "Milan opens Tuesday to Sunday, 9:30am to 7pm. €6 full, €3 reduced, free for under-26s, school groups and Intesa Sanpaolo customers.",
+   "date": "",
+   "sources": [
+    "https://gallerieditalia.com/it/milano/",
+    "https://gallerieditalia.com/it/milano/pianifica-la-tua-visita/",
+    "https://it.wikipedia.org/wiki/Gallerie_d%27Italia",
+    "https://group.intesasanpaolo.com/it/newsroom/tutte-le-news/news/2024/gallerie-d-italia-750mila-visitatori",
+    "https://www.lapresse.it/ambiente/2025/03/02/torino-attivisti-di-extinction-rebellion-occupano-sala-in-gallerie-ditalia/",
+    "https://www.lindipendente.online/2025/05/10/intesa-sanpaolo-si-conferma-la-prima-banca-italiana-per-investimenti-nelle-fossili/"
+   ]
+  },
+  "closest": {
+   "cid": "ce761e75c6",
+   "field": "details.overview",
+   "text": "Tickets cost 6 euros, 3 euros reduced, and are free for under-26s, school groups, Intesa Sanpaolo customers, and a disabled visitor with one companion; it arranges visits for people with motor, cognitive and sensory disabilities (museum website, archived November 2026).",
+   "alike": 0.4
+  }
+ },
+ "69974cb3a3": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Fundación Telefónica Movistar is a sponsor.",
+   "check": "source",
+   "checked_source": "https://maclima.pe/auspicios-mac-lima/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "Agradecemos a las siguientes organizaciones, instituciones y empresas por apoyarnos [img:UTEC] [img:Fundación Telefónica Movistar]"
+  },
+  "was": {
+   "funder": "telefonica",
+   "funder_name": "Telefónica",
+   "funder_kind": "corp",
+   "space": "mac-lima-lima",
+   "space_name": "MAC Lima",
+   "city": "Lima",
+   "field": "funding",
+   "text": "Sponsors include UTEC, Fundación Telefónica Movistar, Fundación BBVA, Credicorp, Bloomberg and the EU delegation.",
+   "date": "",
+   "sources": [
+    "https://maclima.pe/",
+    "https://maclima.pe/auspicios-mac-lima/",
+    "https://www.getty.edu/projects/paper-project/grants-awarded/",
+    "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+   ]
+  },
+  "closest": {
+   "cid": "bce3dea70c",
+   "field": "details.funding",
+   "text": "Fundación Telefónica Movistar financed \"Color.",
+   "alike": 0.48
+  }
+ },
+ "6f55791946": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space (266588d764)"
+  },
+  "was": {
+   "funder": "ianpotter",
+   "funder_name": "Ian Potter Foundation",
+   "funder_kind": "family",
+   "space": "monash-university-museum-of-art-melbourne",
+   "space_name": "Monash University Museum of Art",
+   "city": "Melbourne",
+   "field": "details.overview",
+   "text": "The current building on the Caulfield campus, designed by Kerstin Thompson and completed in 2010, includes the Ian Potter Sculpture Court (Wikipedia).",
+   "date": "2010",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Monash_University_Museum_of_Art",
+    "https://www.abc.net.au/news/2025-03-26/artist-khaled-sabsabi-muma-exhibition-postponed/105096590",
+    "https://artreview.com/khaled-sabsabi-exhibition-cancelled-following-venice-biennale-sacking-monash-university",
+    "https://hyperallergic.com/australian-university-scraps-show-featuring-work-of-lebanese-born-artist",
+    "https://visualarts.net.au/news-opinion/2025/monash-universitys-postponement-exhibition-featuring-khaled-sabsabi-undermines-artistic-and-academic-freedom/",
+    "https://milanigallery.com.au/exhibitions/stolon-press-flat-earth/"
+   ]
+  },
+  "closest": {
+   "cid": "1154b57937",
+   "field": "details.funding",
+   "text": "Building: MUMA credits philanthropic support for its Caulfield premises and names the Ian Potter Sculpture Court, the Merlyn Myer Gallery, the Helen Macpherson Education Space and the Marc and Eva Besen Commission, Callum Morton's \"Silverscreen\" of 2010 (MUMA support page, archived 7 October 2024).",
+   "alike": 0.32
+  }
+ },
+ "aa8d44f011": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Dulux is a 2026 partner. In Indonesia it is an AkzoNobel joint venture that Nippon Paint agreed in October 2026 to buy.",
+   "date": "2026",
+   "check": "source",
+   "checked_source": "https://jakartabiennale.id/partner/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "dulux-letscolour-bw.png",
+   "checked_note": "The partner page shows the Dulux Let's Colour logo (file uploaded September 2026). PCI Magazine (5 October 2026, https://www.pcimag.com/articles/115350-akzonobel-to-sell-southeast-asia-decorative-paints-business-to-nippon-paint-for-135-billion): Nippon Paint (H.K.) will acquire 100% of AkzoNobel's Decorative Paints joint venture in Indonesia, expected to close in late 2026."
+  },
+  "was": {
+   "funder": "dulux",
+   "funder_name": "Dulux (DuluxGroup and AkzoNobel paint businesses)",
+   "funder_kind": "corp",
+   "space": "jakarta-biennale",
+   "space_name": "Jakarta Biennale",
+   "city": "Jakarta",
+   "field": "funding",
+   "text": "Run since 2024 by Majelis Jakarta, an artist-collective network. 2026 partners: Dulux, Artotel's Paviliun Raden Saleh, iForte.",
+   "date": "2024",
+   "sources": [
+    "https://jakartabiennale.id/partner/",
+    "https://jakartabiennale.id/",
+    "https://jakartabiennale.id/uncategorized/majelis-jakarta/"
+   ]
+  },
+  "closest": null
+ },
+ "b7be6345ea": {
+  "verdict": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "Is on the festival's partner list, with its logo among the business partners.",
+   "check": "record"
+  },
+  "was": {
+   "funder": "akerbp",
+   "funder_name": "Aker BP",
+   "funder_kind": "corp",
+   "space": "festspillene-i-nord-norge-harstad",
+   "space_name": "Festspillene i Nord-Norge (Arctic Arts Festival)",
+   "city": "Harstad",
+   "field": "tier_note",
+   "text": "The oil producer Aker BP is on its partner list.",
+   "date": "",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
+    "https://www.festspillnn.no"
+   ]
+  },
+  "closest": null
+ },
+ "a1f94f4d28": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "akerbp",
+   "funder_name": "Aker BP",
+   "funder_kind": "corp",
+   "space": "festspillene-i-nord-norge-harstad",
+   "space_name": "Festspillene i Nord-Norge (Arctic Arts Festival)",
+   "city": "Harstad",
+   "field": "funding",
+   "text": "A foundation backed by the Ministry of Culture, three northern counties, Harstad Municipality and SpareBank 1 Nord-Norge, with Aker BP, UiT and local firms as partners.",
+   "date": "",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
+    "https://www.festspillnn.no"
+   ]
+  },
+  "closest": null
+ },
+ "9ab3558226": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "akerbp",
+   "funder_name": "Aker BP",
+   "funder_kind": "corp",
+   "space": "festspillene-i-nord-norge-harstad",
+   "space_name": "Festspillene i Nord-Norge (Arctic Arts Festival)",
+   "city": "Harstad",
+   "field": "watch",
+   "text": "An annual festival in Harstad since 1964; Aker BP's logo sits among its business partners, with no amount given.",
+   "date": "1964",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
+    "https://www.festspillnn.no"
+   ]
+  },
+  "closest": null
+ },
+ "3eff3b2299": {
+  "verdict": {
+   "drop": "Aker BP, not BP"
+  },
+  "was": {
+   "funder": "bp",
+   "funder_name": "BP",
+   "funder_kind": "corp",
+   "space": "festspillene-i-nord-norge-harstad",
+   "space_name": "Festspillene i Nord-Norge (Arctic Arts Festival)",
+   "city": "Harstad",
+   "field": "funding",
+   "text": "A foundation backed by the Ministry of Culture, three northern counties, Harstad Municipality and SpareBank 1 Nord-Norge, with Aker BP, UiT and local firms as partners.",
+   "date": "",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
+    "https://www.festspillnn.no"
+   ]
+  },
+  "closest": null
+ },
+ "03ff4475fb": {
+  "verdict": {
+   "drop": "Aker BP, not BP"
+  },
+  "was": {
+   "funder": "bp",
+   "funder_name": "BP",
+   "funder_kind": "corp",
+   "space": "festspillene-i-nord-norge-harstad",
+   "space_name": "Festspillene i Nord-Norge (Arctic Arts Festival)",
+   "city": "Harstad",
+   "field": "tier_note",
+   "text": "The oil producer Aker BP is on its partner list.",
+   "date": "",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
+    "https://www.festspillnn.no"
+   ]
+  },
+  "closest": null
+ },
+ "d34b289a69": {
+  "verdict": {
+   "drop": "Aker BP, not BP"
+  },
+  "was": {
+   "funder": "bp",
+   "funder_name": "BP",
+   "funder_kind": "corp",
+   "space": "festspillene-i-nord-norge-harstad",
+   "space_name": "Festspillene i Nord-Norge (Arctic Arts Festival)",
+   "city": "Harstad",
+   "field": "watch",
+   "text": "An annual festival in Harstad since 1964; Aker BP's logo sits among its business partners, with no amount given.",
+   "date": "1964",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Festspillene_i_Nord-Norge",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/958581645",
+    "https://www.festspillnn.no"
+   ]
+  },
+  "closest": null
+ },
+ "ba81814aef": {
+  "verdict": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "The Antarctic Heritage Trust, which conserves the hut, lists ANZ as a core funder on its partners page.",
+   "check": "record"
+  },
+  "was": {
+   "funder": "anz",
+   "funder_name": "ANZ",
+   "funder_kind": "corp",
+   "space": "scotts-discovery-hut-hut-point",
+   "space_name": "Scott's Discovery Hut",
+   "city": "Hut Point",
+   "field": "funding",
+   "text": "Antarctic Heritage Trust (NZ charity CC24071) took NZ$3.43M in the year to June 2025, NZ$1.54M of it government grants; its partners page names MFAT, the Ministry for Culture and Heritage and ANZ as core funders.",
+   "date": "2025",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Discovery_Hut",
+    "https://www.odata.charities.govt.nz/AnnualReturn?$filter=OrganisationId%20eq%2041088&$format=json&$orderby=YearEnded%20desc&$top=3",
+    "https://www.rnz.co.nz/news/national/264769/heroic-era-huts,-artefacts-saved",
+    "https://nzaht.org/conserve/explorer-bases/scotts-hut-hut-point/",
+    "https://nzaht.org/sustain/ways-to-give/support-and-partners/"
+   ]
+  },
+  "closest": null
+ },
+ "a5cb685fe6": {
+  "verdict": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "The Antarctic Heritage Trust, which conserves the hut, lists ANZ as a core funder on its partners page.",
+   "check": "record"
+  },
+  "was": {
+   "funder": "anz",
+   "funder_name": "ANZ",
+   "funder_kind": "corp",
+   "space": "shackletons-nimrod-hut-cape-royds",
+   "space_name": "Shackleton's Hut, Cape Royds (Nimrod Hut)",
+   "city": "Cape Royds",
+   "field": "funding",
+   "text": "Antarctic Heritage Trust (NZ charity CC24071) took NZ$3.43M in the year to June 2025, NZ$1.54M of it government grants; its partners page names MFAT, the Ministry for Culture and Heritage and ANZ as core funders.",
+   "date": "2025",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Shackleton%27s_Hut",
+    "https://nzherald.co.nz/nz/british-cough-up-for-antarctic-huts/XJX7KF3PUEWYN57UU42DLWIACE",
+    "https://www.odata.charities.govt.nz/AnnualReturn?$filter=OrganisationId%20eq%2041088&$format=json&$orderby=YearEnded%20desc&$top=3",
+    "https://nzaht.org/conserve/explorer-bases/shackletons-hut/",
+    "https://nzaht.org/sustain/ways-to-give/support-and-partners/"
+   ]
+  },
+  "closest": null
+ },
+ "1209db0ab3": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "kaspersky",
+   "funder_name": "Kaspersky Lab (Eugene Kaspersky)",
+   "funder_kind": "corp",
+   "space": "antarctic-biennale",
+   "space_name": "Antarctic Biennale",
+   "city": "Cuverville Island",
+   "field": "watch",
+   "text": "In June 2024 the US put Kaspersky Lab on its Entity List and sanctioned twelve of its leaders; no second edition has been found.",
+   "date": "2024",
+   "sources": [
+    "https://www.theartnewspaper.com/feature/the-antarctic-biennale-a-crazy-idea-becomes-reality",
+    "https://www.theartnewspaper.com/2016/06/15/artists-set-sail-for-the-south-pole-via-venice",
+    "https://www.theartnewspaper.com/2016/04/12/art-among-the-penguins-inaugural-antarctic-biennale-to-launch-next-year",
+    "https://www.theartnewspaper.com/2017/04/12/dispatches-from-our-man-at-the-antarctic-biennale-an-underwater-art-show",
+    "https://worldarchitecture.org/architecture-news/cggvz/first-antarctic-biennale-winners-sho-hasegawa-and-gustav-dusing-will-visit-southern-continent.html",
+    "https://www.biennialfoundation.org/?p=13679"
+   ]
+  },
+  "closest": {
+   "cid": "3ffd8d1930",
+   "field": "details.wider_context",
+   "text": "On 20 June 2024 the US Commerce Department barred Kaspersky Lab, Inc. and its affiliates and subsidiaries, as well as its parent companies, from the supply of anti-virus and cyber security products or services in the United States.",
+   "alike": 0.44
+  }
+ },
+ "1ab10ca200": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "kaspersky",
+   "funder_name": "Kaspersky Lab (Eugene Kaspersky)",
+   "funder_kind": "corp",
+   "space": "antarctic-biennale",
+   "space_name": "Antarctic Biennale",
+   "city": "Cuverville Island",
+   "field": "why_flagged",
+   "text": "Its main sponsor's company, Kaspersky Lab, was placed on the US Entity List and its leadership sanctioned by OFAC in June 2024, after the 2017 voyage.",
+   "date": "2024",
+   "sources": [
+    "https://www.theartnewspaper.com/feature/the-antarctic-biennale-a-crazy-idea-becomes-reality",
+    "https://www.theartnewspaper.com/2016/06/15/artists-set-sail-for-the-south-pole-via-venice",
+    "https://www.theartnewspaper.com/2016/04/12/art-among-the-penguins-inaugural-antarctic-biennale-to-launch-next-year",
+    "https://www.theartnewspaper.com/2017/04/12/dispatches-from-our-man-at-the-antarctic-biennale-an-underwater-art-show",
+    "https://worldarchitecture.org/architecture-news/cggvz/first-antarctic-biennale-winners-sho-hasegawa-and-gustav-dusing-will-visit-southern-continent.html",
+    "https://www.biennialfoundation.org/?p=13679"
+   ]
+  },
+  "closest": {
+   "cid": "b3f6232dff",
+   "field": "why_flagged",
+   "text": "Main sponsor Eugene Kaspersky heads Kaspersky Lab, whose US sales were barred in June 2024; neither he nor the firm is on a sanctions list.",
+   "alike": 0.51
+  }
+ },
+ "1757cc00f2": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Funded the festival until 2015, when it shelved Arctic exploration.",
+   "check": "record",
+   "ended": true,
+   "date": "2015"
+  },
+  "was": {
+   "funder": "conocophillips",
+   "funder_name": "ConocoPhillips",
+   "funder_kind": "corp",
+   "space": "great-northern-arts-festival-inuvik",
+   "space_name": "Great Northern Arts Festival",
+   "city": "Inuvik",
+   "field": "tier_note",
+   "text": "Imperial Oil and ConocoPhillips funded it until 2015.",
+   "date": "2015",
+   "sources": [
+    "https://www.cbc.ca/news/canada/north/imperial-oil-conocophillips-stop-funding-inuvik-arts-festival-1.3135387",
+    "https://cabinradio.ca/286235/news/arts/great-northern-arts-festival-hit-by-surprising-funding-rejection/",
+    "https://rechercher.ouvert.canada.ca/grants/record/pch%2C016-2024-2025-Q2-1369349%2Ccurrent",
+    "https://greatnorthernartsfestival.org/our-sponsors"
+   ]
+  },
+  "closest": {
+   "cid": "eb919497af",
+   "field": "watch",
+   "text": "Imperial Oil and ConocoPhillips stopped funding it in 2015 when they shelved Arctic exploration, and the programme was cut.",
+   "alike": 0.53
+  }
+ },
+ "1e79152633": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "Funded the festival until 2015, when it shelved Arctic exploration.",
+   "check": "record",
+   "ended": true,
+   "date": "2015"
+  },
+  "was": {
+   "funder": "imperialoil",
+   "funder_name": "Imperial Oil",
+   "funder_kind": "corp",
+   "space": "great-northern-arts-festival-inuvik",
+   "space_name": "Great Northern Arts Festival",
+   "city": "Inuvik",
+   "field": "tier_note",
+   "text": "Imperial Oil and ConocoPhillips funded it until 2015.",
+   "date": "2015",
+   "sources": [
+    "https://www.cbc.ca/news/canada/north/imperial-oil-conocophillips-stop-funding-inuvik-arts-festival-1.3135387",
+    "https://cabinradio.ca/286235/news/arts/great-northern-arts-festival-hit-by-surprising-funding-rejection/",
+    "https://rechercher.ouvert.canada.ca/grants/record/pch%2C016-2024-2025-Q2-1369349%2Ccurrent",
+    "https://greatnorthernartsfestival.org/our-sponsors"
+   ]
+  },
+  "closest": {
+   "cid": "efe7333a0e",
+   "field": "watch",
+   "text": "Imperial Oil and ConocoPhillips stopped funding it in 2015 when they shelved Arctic exploration, and the programme was cut.",
+   "alike": 0.53
+  }
+ },
+ "9a9368f78b": {
+  "verdict": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "One of the museum foundation's five founders, with a seat on its board; the museum keeps 10,000 of its photographs.",
+   "check": "record"
+  },
+  "was": {
+   "funder": "storenorske",
+   "funder_name": "Store Norske (state coal miner)",
+   "funder_kind": "corp",
+   "space": "svalbard-museum-longyearbyen",
+   "space_name": "Svalbard Museum",
+   "city": "Longyearbyen",
+   "field": "tier_note",
+   "text": "The state coal miner Store Norske is one of the foundation's five founders and sits on its board.",
+   "date": "",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Svalbard_museum",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/989469266",
+    "https://dms-cf-08.dimu.org/file/019EBwjX26WY1"
+   ]
+  },
+  "closest": {
+   "cid": "cb22e48b0a",
+   "field": "why_flagged",
+   "text": "The coal company Store Norske is one of the foundation's five founders, who appoint the board; the chair sits for Store Norske (museum, 2025).",
+   "alike": 0.68
+  }
+ },
+ "cb549d9f2e": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "storenorske",
+   "funder_name": "Store Norske (state coal miner)",
+   "funder_kind": "corp",
+   "space": "svalbard-museum-longyearbyen",
+   "space_name": "Svalbard Museum",
+   "city": "Longyearbyen",
+   "field": "watch",
+   "text": "Store Norske, which ended coal mining on Svalbard in 2025, holds a board seat; the museum keeps 10,000 of its photographs.",
+   "date": "2025",
+   "sources": [
+    "https://no.wikipedia.org/wiki/Svalbard_museum",
+    "https://data.brreg.no/regnskapsregisteret/regnskap/989469266",
+    "https://dms-cf-08.dimu.org/file/019EBwjX26WY1"
+   ]
+  },
+  "closest": {
+   "cid": "c68e9495db",
+   "field": "watch",
+   "text": "Store Norske, which closed its last coal mine on 4 May 2026, holds a board seat; the museum keeps 10,000 of its photographs.",
+   "alike": 0.85
+  }
+ },
+ "9a8ea7837c": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "On the museum’s sponsors page (undated logos).",
+   "check": "source",
+   "checked_source": "https://maclima.pe/auspicios-mac-lima/",
+   "checked_on": "2026-11-17",
+   "checked_quote": "[img:UTEC] [img:Fundación Telefónica Movistar] [img:Fundación BBVA] ... [img:Bloomberg] [img:Getty Foundation] [img:Credicorp]"
+  },
+  "was": {
+   "funder": "credicorp",
+   "funder_name": "Credicorp (Romero family)",
+   "funder_kind": "corp",
+   "space": "mac-lima-lima",
+   "space_name": "MAC Lima",
+   "city": "Lima",
+   "field": "funding",
+   "text": "Sponsors include UTEC, Fundación Telefónica Movistar, Fundación BBVA, Credicorp, Bloomberg and the EU delegation.",
+   "date": "",
+   "sources": [
+    "https://maclima.pe/",
+    "https://maclima.pe/auspicios-mac-lima/",
+    "https://www.getty.edu/projects/paper-project/grants-awarded/",
+    "https://en.wikipedia.org/wiki/J._Paul_Getty_Trust"
+   ]
+  },
+  "closest": null
+ },
+ "29d2b9a7e7": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "patino",
+   "funder_name": "Patiño family and foundations",
+   "funder_kind": "family",
+   "space": "espacio-cultural-patino",
+   "space_name": "Espacio Cultural Patiño",
+   "city": "La Paz",
+   "field": "details.funding",
+   "text": "Patiño in Geneva \"to guarantee the economic sustainability\" of the foundations' activities (translation); its mission is to manage the funds, and the foundations say they finance the centres they created in Bolivia (Patiño foundation website, Spanish page).",
+   "date": "",
+   "sources": [
+    "https://patino.org/en/",
+    "https://patino.org/en/places/espacio-simon-i-patino-a-la-paz/",
+    "https://fundacionpatino.org/quienes-somos/",
+    "https://www.lostiempos.com/node/441912",
+    "https://en.wikipedia.org/wiki/Sim%C3%B3n_I._Pati%C3%B1o",
+    "https://en.wikipedia.org/wiki/Catavi_mine"
+   ]
+  },
+  "closest": {
+   "cid": "177eccb7c9",
+   "field": "details.overview",
+   "text": "Patiño Foundation, it opened on 14 September 1984 in the Alameda building on El Prado Avenue and moved permanently to Ecuador Street in 1996 (Patiño foundation website).",
+   "alike": 0.38
+  }
+ },
+ "f8baf36a26": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "patino",
+   "funder_name": "Patiño family and foundations",
+   "funder_kind": "family",
+   "space": "espacio-cultural-patino",
+   "space_name": "Espacio Cultural Patiño",
+   "city": "La Paz",
+   "field": "details.overview",
+   "text": "Patiño Foundation.",
+   "date": "",
+   "sources": [
+    "https://patino.org/en/",
+    "https://patino.org/en/places/espacio-simon-i-patino-a-la-paz/",
+    "https://fundacionpatino.org/quienes-somos/",
+    "https://www.lostiempos.com/node/441912",
+    "https://en.wikipedia.org/wiki/Sim%C3%B3n_I._Pati%C3%B1o",
+    "https://en.wikipedia.org/wiki/Catavi_mine"
+   ]
+  },
+  "closest": {
+   "cid": "7425d2e570",
+   "field": "details.overview",
+   "text": "More than 35,000 people visit each year (Patiño foundation website).",
+   "alike": 0.4
+  }
+ },
+ "1109599d03": {
+  "verdict": {
+   "drop": "a move of premises, no new tie"
+  },
+  "was": {
+   "funder": "patino",
+   "funder_name": "Patiño family and foundations",
+   "funder_kind": "family",
+   "space": "espacio-cultural-patino",
+   "space_name": "Espacio Cultural Patiño",
+   "city": "La Paz",
+   "field": "details.overview",
+   "text": "It moved permanently in 1996 to the Guayaquil building on Ecuador Street (Patiño foundation website).",
+   "date": "1996",
+   "sources": [
+    "https://patino.org/en/",
+    "https://patino.org/en/places/espacio-simon-i-patino-a-la-paz/",
+    "https://fundacionpatino.org/quienes-somos/",
+    "https://www.lostiempos.com/node/441912",
+    "https://en.wikipedia.org/wiki/Sim%C3%B3n_I._Pati%C3%B1o",
+    "https://en.wikipedia.org/wiki/Catavi_mine"
+   ]
+  },
+  "closest": {
+   "cid": "2a4aaeacac",
+   "field": "details.overview",
+   "text": "Cultural centre of the Patiño foundations in the Sopocachi neighbourhood of La Paz, in the Guayaquil building on Ecuador Street (Patiño foundation website).",
+   "alike": 0.63
+  }
+ },
+ "5b4a6b98ff": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "patino",
+   "funder_name": "Patiño family and foundations",
+   "funder_kind": "family",
+   "space": "espacio-cultural-patino",
+   "space_name": "Espacio Cultural Patiño",
+   "city": "La Paz",
+   "field": "details.overview",
+   "text": "Patiño in 1931 (Wikipedia; Patiño foundation website).",
+   "date": "",
+   "sources": [
+    "https://patino.org/en/",
+    "https://patino.org/en/places/espacio-simon-i-patino-a-la-paz/",
+    "https://fundacionpatino.org/quienes-somos/",
+    "https://www.lostiempos.com/node/441912",
+    "https://en.wikipedia.org/wiki/Sim%C3%B3n_I._Pati%C3%B1o",
+    "https://en.wikipedia.org/wiki/Catavi_mine"
+   ]
+  },
+  "closest": {
+   "cid": "7425d2e570",
+   "field": "details.overview",
+   "text": "More than 35,000 people visit each year (Patiño foundation website).",
+   "alike": 0.54
+  }
+ },
+ "a6ce4de891": {
+  "verdict": {
+   "drop": "a programme list fragment, no funder named in it"
+  },
+  "was": {
+   "funder": "patino",
+   "funder_name": "Patiño family and foundations",
+   "funder_kind": "family",
+   "space": "espacio-cultural-patino",
+   "space_name": "Espacio Cultural Patiño",
+   "city": "La Paz",
+   "field": "details.overview",
+   "text": "And C-Musical, begun in 2013, which preserves Bolivian audio recordings and hosts concerts (Patiño foundation website).",
+   "date": "2013",
+   "sources": [
+    "https://patino.org/en/",
+    "https://patino.org/en/places/espacio-simon-i-patino-a-la-paz/",
+    "https://fundacionpatino.org/quienes-somos/",
+    "https://www.lostiempos.com/node/441912",
+    "https://en.wikipedia.org/wiki/Sim%C3%B3n_I._Pati%C3%B1o",
+    "https://en.wikipedia.org/wiki/Catavi_mine"
+   ]
+  },
+  "closest": {
+   "cid": "c7a0143272",
+   "field": "details.overview",
+   "text": "On site: exhibitions of contemporary art, photography and painting; CEDOAL, a documentation centre on Latin American arts and literatures founded in 2001; CAP, a pedagogical centre since 2008; C+C Espacio, a comic centre opened in 2003; and C-Musical, begun in 2013, which keeps an audio collection of Bolivian music and hosts concerts (Patiño foundation website).",
+   "alike": 0.41
+  }
+ },
+ "6be09f9e38": {
+  "verdict": {
+   "kinds": [
+    "money"
+   ],
+   "summary": "The Sigrid Rausing Trust supported it from 2020 to 2024, £280,000 in all.",
+   "check": "record",
+   "date": "2020"
+  },
+  "was": {
+   "funder": "sigridrausingtrust",
+   "funder_name": "Rausing family",
+   "funder_kind": "family",
+   "space": "center-for-cultural-decontamination-czkd-belgrade",
+   "space_name": "Center for Cultural Decontamination (CZKD)",
+   "city": "Belgrade",
+   "field": "details.funding",
+   "text": "Sigrid Rausing Trust: lists CZKD as a grantee, supported from 2020 to 2024, with a total of £280,000 in previous grants (Sigrid Rausing Trust grantee profile).",
+   "date": "2020",
+   "sources": [
+    "https://czkd.org",
+    "https://www.sigrid-rausing-trust.org/grantee/center-for-cultural-decontamination-ckzd/",
+    "https://www.mott.org/grants/201300226/",
+    "https://www.mott.org/grants/201300226-01/",
+    "https://en.wikipedia.org/wiki/Centre_for_Cultural_Decontamination",
+    "https://www.slobodnaevropa.org/a/centar_za_kulturnu_dekontaminaciju/1953211.html"
+   ]
+  },
+  "closest": {
+   "cid": "6709d4e005",
+   "field": "details.funding",
+   "text": "Sigrid Rausing Trust: lists CZKD as a grantee from 2020 to 2024, with £280,000 in previous grants (grantee profile).",
+   "alike": 0.84
+  }
+ },
+ "023416bbc4": {
+  "verdict": {
+   "drop": "a fact about the building, cited to the funder’s page"
+  },
+  "was": {
+   "funder": "sigridrausingtrust",
+   "funder_name": "Rausing family",
+   "funder_kind": "family",
+   "space": "center-for-cultural-decontamination-czkd-belgrade",
+   "space_name": "Center for Cultural Decontamination (CZKD)",
+   "city": "Belgrade",
+   "field": "details.overview",
+   "text": "The pavilion was built in 1931 as Belgrade's first private museum (Sigrid Rausing Trust).",
+   "date": "",
+   "sources": [
+    "https://czkd.org",
+    "https://www.sigrid-rausing-trust.org/grantee/center-for-cultural-decontamination-ckzd/",
+    "https://www.mott.org/grants/201300226/",
+    "https://www.mott.org/grants/201300226-01/",
+    "https://en.wikipedia.org/wiki/Centre_for_Cultural_Decontamination",
+    "https://www.slobodnaevropa.org/a/centar_za_kulturnu_dekontaminaciju/1953211.html"
+   ]
+  },
+  "closest": {
+   "cid": "e8bfc9fd99",
+   "field": "details.overview",
+   "text": "The pavilion was built in 1931 as Belgrade's first private art museum (CZKD; Sigrid Rausing Trust) and was the courtyard art pavilion of the Veljković family house until 1941 (Wikipedia).",
+   "alike": 0.64
+  }
+ },
+ "a04acc3649": {
+  "verdict": {
+   "drop": "a fact about the building, cited to the funder’s page"
+  },
+  "was": {
+   "funder": "sigridrausingtrust",
+   "funder_name": "Rausing family",
+   "funder_kind": "family",
+   "space": "center-for-cultural-decontamination-czkd-belgrade",
+   "space_name": "Center for Cultural Decontamination (CZKD)",
+   "city": "Belgrade",
+   "field": "details.overview",
+   "text": "On site: a flexible theatre, a library, a smaller room for talks and book launches and a courtyard (Sigrid Rausing Trust).",
+   "date": "",
+   "sources": [
+    "https://czkd.org",
+    "https://www.sigrid-rausing-trust.org/grantee/center-for-cultural-decontamination-ckzd/",
+    "https://www.mott.org/grants/201300226/",
+    "https://www.mott.org/grants/201300226-01/",
+    "https://en.wikipedia.org/wiki/Centre_for_Cultural_Decontamination",
+    "https://www.slobodnaevropa.org/a/centar_za_kulturnu_dekontaminaciju/1953211.html"
+   ]
+  },
+  "closest": {
+   "cid": "d3a8e03b54",
+   "field": "funding",
+   "text": "Sigrid Rausing Trust supported it from 2020 to 2024.",
+   "alike": 0.24
+  }
+ }
+}

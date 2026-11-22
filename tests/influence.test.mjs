@@ -3,7 +3,7 @@
 // and a source; and every reviewed candidate must still be a sentence of the records, or the review has gone stale.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const read = (p) => JSON.parse(readFileSync(new URL('../' + p, import.meta.url), 'utf8'));
 const layer = read('assets/influence.json');
@@ -35,9 +35,29 @@ test('every reviewed candidate is still in the records', () => {
   assert.deepEqual(stale, []);
 });
 
-test('the layer holds exactly the kept reviews', () => {
-  const kept = Object.entries(review).filter(([k, v]) => !k.startsWith('_') && !v.drop).length;
-  assert.equal(layer.funders.reduce((s, f) => s + f.ties.length, 0), kept);
+// A kept verdict whose sentence left the records and found no confident match is parked in
+// data/influence_review_unmatched.json (tools/rekey_influence_review.py) and stays in the layer, marked, until the editor
+// settles it. So the layer is the kept reviews plus the kept parked ones, and no verdict is in both files.
+test('the layer holds exactly the kept reviews and the kept parked ones', () => {
+  const p = new URL('../data/influence_review_unmatched.json', import.meta.url);
+  const parked = Object.entries(existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : {}).filter(([k]) => !k.startsWith('_'));
+  const live = new Set(cands.map((c) => c.cid));
+  for (const [k, v] of parked) {
+    assert.ok(!(k in review), `${k} is parked and reviewed at once`);
+    assert.ok(!live.has(k), `${k} is parked but its sentence is in the records`);
+    assert.ok(v.verdict && v.was && v.was.text, `${k}: a parked verdict keeps its sentence`);
+  }
+  const kept = Object.entries(review).filter(([k, v]) => !k.startsWith('_') && !v.drop).map(([k]) => k);
+  const keptParked = parked.filter(([, v]) => !v.verdict.drop).map(([k]) => k);
+  const ties = layer.funders.flatMap((f) => f.ties);
+  assert.deepEqual(ties.filter((t) => t.unmatched).map((t) => t.cid).sort(), keptParked.sort());
+  assert.deepEqual(ties.filter((t) => !t.unmatched).map((t) => t.cid).sort(), kept.sort());
+});
+
+// Outside the parked entries, the sentence an entry quotes is the candidate's own, so it is in the records as they read now.
+test('every entry quotes its candidate sentence', () => {
+  const text = new Map(cands.map((c) => [c.cid, c.text]));
+  for (const f of layer.funders) for (const t of f.ties) if (!t.unmatched) assert.equal(t.quote, text.get(t.cid), `${f.name} at ${t.space_name}`);
 });
 
 // The sender's side (data/influence_senders.json): every fact is a short sentence with a known kind, a date and its own

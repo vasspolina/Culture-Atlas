@@ -11007,11 +11007,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v909';
+    const ATLAS_RELEASE = 'culture-atlas-v910';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=909').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=910').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
