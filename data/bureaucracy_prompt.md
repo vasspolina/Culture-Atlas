@@ -116,7 +116,7 @@ The note states what the source says, with no verdict of your own.
 
 ### House rules
 
-Plain English, no em dashes or en dashes, no hedging words. Only the `note` and `basis` sentences
+Plain English, no em dashes or en dashes, no hedging words, no rule of three, no gerunds. Only the `note` and `basis` sentences
 are free text, and the atlas never says something was not found: do not write what a search missed
 in them. Do not write that a space has no bureaucracy, or that none was reported.
 

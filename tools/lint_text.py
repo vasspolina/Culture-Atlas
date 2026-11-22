@@ -55,6 +55,42 @@ AIWORD = re.compile(r"\b(crucial|enduring|enhanc(e|es|ed|ing)|garner\w*|interpla
 INFLATE = re.compile(r"\b(widely (seen|regarded|considered) as|turning point|marking (a|the) (new|turning|shift)|one of the most significant|"
                      r"lasting legacy|set the stage|in the heart of)\b", re.I)
 SOFTCLOSE = re.compile(r", (highlighting|underscoring|emphasi[sz]ing|reflecting|symboli[sz]ing|fostering|showcasing)\b", re.I)
+# No rule of three and no gerunds (user, 22 Nov 2026: "No rule of thirds no gerunds for cultural atlas text"). Report only:
+# each needs the sentence rewritten. TRIAD is a series of exactly three short items ("free, open and public"); a series
+# whose items are names or figures (three funders, three cities, three shares of a budget) is a list of facts, not a cadence, and is not counted.
+# GERUND is any -ing form of a verb, gerund or participle alike ("including", "naming", "covering"): write a finite verb
+# or a plain noun. Nouns that name a thing are not verbs here (a building, a painting, the funding line, holdings,
+# filings), nor words that only end in -ing (thing, during, spring, Beijing, Stichting).
+TRIAD = re.compile(r"(?<![\w'&.-])(?<![\w,] )([A-Za-z][\w'&-]*(?: [\w'&-]+){0,2}), ([\w'&-]+(?: [\w'&-]+){0,2}),? (?:and|or) ([\w'&-]+(?: [\w'&-]+){0,2})\b(?!,? (?:and|or)\b|, [\w'&-]+,)")
+GERUND = re.compile(r"\b[A-Za-z]+ing\b")
+ING_NOUN = re.compile(r"^(building|painting|drawing|funding|crowdfunding|holding|earning|saving|filing|taking|dealing|finding|proceeding|"
+                      r"listing|housing|ceiling|wing|evening|morning|clothing|lightning|pudding|sibling|wedding|offspring|"
+                      r"thing|nothing|something|anything|everything|king|ring|spring|string|sting|swing|bring|sing|cling|fling|sling|wring|"
+                      r"during|ongoing|"
+                      r"[a-z]*(stichting|vereniging|rekening|ning|jing|qing))$", re.I)
+
+
+def triad(t):
+    for m in TRIAD.finditer(t):
+        items = [g.strip() for g in m.groups()]
+        if all(re.match(r"[A-Z0-9]", i) for i in items[1:]):
+            continue
+        return m.group(0)
+    return None
+
+
+def gerund(t):
+    for m in GERUND.finditer(t):
+        w = m.group(0)
+        if ING_NOUN.match(w):
+            continue
+        # a capital inside a sentence is a name (Salling, Kering, Rausing, Boeing), not a verb
+        if w[0].isupper() and not re.search(r"(^|[.!?:]\s+|\()$", t[:m.start()]):
+            continue
+        return w
+    return None
+
+
 NOSITE = re.compile(r"nothing from it or its|that we could find", re.I)
 MEDIAL = re.compile(r"[—–]")
 CURLY = re.compile(r"[‘’“”]")
@@ -95,6 +131,12 @@ def problems(rec):
             m = rx.search(t)
             if m:
                 found.append(f'{name}: ' + m.group(0))
+        w = triad(t)
+        if w:
+            found.append('triad: ' + w)
+        w = gerund(t)
+        if w:
+            found.append('gerund: ' + w)
         m = FRAME.search(t)
         if m:
             found.append('frame: ' + m.group(0))

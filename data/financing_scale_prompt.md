@@ -87,7 +87,7 @@ record, in input order, and edit no other file:
 
 ### House rules
 
-Plain English, no em dashes or en dashes, no hedging words. Only the `basis` sentence is free text
+Plain English, no em dashes or en dashes, no hedging words, no rule of three, no gerunds. Only the `basis` sentence is free text
 and the atlas never says something was not found: do not write what a search missed in it.
 
 Write the file early and update it after every few records. Reply with: how many records got
