@@ -85,7 +85,7 @@ def triad(t):
 FIXED = re.compile(r"\b(managing directors?|acting (director|president|chair|head|chief)\w*( general)?|chief operating officer|"
                    r"performing arts?|performing artists?|ruling (family|party)|private operating foundation|reading room|cost of living|"
                    r"money[- ]laundering|anti-money-laundering|insider trading|MOVE bombing|ruling( [A-Z][\w-]+){0,2} family|"
-                   r"operating and marketing company|blamed marketing|air[- ]conditioning|French-speaking|J\.D\. Irving|"
+                   r"operating and marketing company|blamed marketing|air[- ]conditioning|bargaining[- ]committee|content warning|self-governing institution|urban planning|French-speaking|J\.D\. Irving|"
                    # an industry or a crime named as a funder's trade or a charge: a betting operator, the gaming
                    # corporation, a shipping fortune, trading income on UK charity accounts, a banking foundation
                    # (fondazione bancaria), laundering of tax fraud; and arching, the Vienna engineers' chamber
