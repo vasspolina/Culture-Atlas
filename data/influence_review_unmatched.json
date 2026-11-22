@@ -4179,5 +4179,45 @@
    "text": "Sigrid Rausing Trust supported it from 2020 to 2024.",
    "alike": 0.24
   }
+ },
+ "ff8b8f3f49": {
+  "verdict": {
+   "kinds": [
+    "building",
+    "name"
+   ],
+   "summary": "$1 million toward the renovation and expansion (2015); the learning space is the JPMorgan Chase Center for Creativity.",
+   "date": "2015",
+   "check": "source-partly",
+   "checked_source": "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-receives-dollar12-investment-from-battelle-for-fund-for-learning",
+   "checked_missing": "the $1 million gift toward the renovation and expansion, and the year 2015",
+   "checked_on": "2026-11-17",
+   "checked_quote": "CMA’s robust Learning and Engagement program, which includes the JPMorgan Chase Center for Creativity"
+  },
+  "was": {
+   "funder": "jpmorganchase",
+   "funder_name": "JPMorganChase",
+   "funder_kind": "corp",
+   "space": "columbus-museum-of-art-columbus",
+   "space_name": "Columbus Museum of Art",
+   "city": "Columbus",
+   "field": "details.funding",
+   "text": "JPMorgan Chase: a $1 million donation toward the museum's renovation and expansion, in honour of the late Bank One patriarch John G.",
+   "date": "",
+   "sources": [
+    "https://www.columbusmuseum.org/about-us",
+    "https://www.columbusmuseum.org/visit",
+    "https://www.columbusmuseum.org/free-discounted-tickets",
+    "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-to-offer-free-admission-for-visitors-25-and-under",
+    "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-receives-dollar12-million-gift-from-art-bridges-foundation",
+    "https://www.columbusmuseum.org/newsroom/posts/columbus-museum-of-art-receives-dollar12-investment-from-battelle-for-fund-for-learning"
+   ]
+  },
+  "closest": {
+   "cid": "fa41f136d0",
+   "field": "details.funding",
+   "text": "McCoy (JPMorgan Chase press release, 2015); the museum's learning space is the JPMorgan Chase Center for Creativity (museum release, 2023).",
+   "alike": 0.39
+  }
  }
 }

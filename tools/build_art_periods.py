@@ -194,6 +194,13 @@ def read_space(x):
             for sent in sentences(para):
                 if sent == first or re.match(r'^(Archive|Library|Archives)\b', sent):
                     continue
+                # The same sentences without their label (the labels went on 22 Nov 2026, tools/unlabel_repeats.py): one
+                # whose first three words are the archive, the library or the reading room, or that counts linear feet of
+                # records, is still about books and papers. A space named a library or an archive is read as before.
+                opens = ' '.join(sent.split()[:3])
+                if (re.search(r'(?i)\b(archiv\w*|librar\w+|reading room)\b', opens) or re.search(r'(?i)\blinear feet\b', sent)) \
+                        and not re.search(r'(?i)archiv|librar', name):
+                    continue
                 if COLLECTION.search(sent):
                     b = markers(sent, own_name=name)
                     if b and not set(b) <= got:

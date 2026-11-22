@@ -13,7 +13,7 @@ data/influence_candidates.json still holds the old sentences:
 A verdict moves only when the match is confident and one to one. The old and the new sentence must be in the same record
 and the same field and name the same funder, each must be the other's closest sentence (difflib), and then either
 
-  log   the rewrite logs (data/slop_runs/*/changes*.json, each entry a field's text before and after) show the field
+  log   the rewrite logs (data/slop_runs/*/*.json, each entry a field's text before and after) show the field
         that held the old sentence now holds the new one, and the two are at least 60% alike (a sentence cut into
         two that both name the funder is left for the editor); or
   near  the two are at least 85% alike, no other sentence comes within 10 points, and they give the same numbers.
@@ -52,7 +52,7 @@ def log_pairs(recs):
     for r in recs:
         by_name.setdefault(r['name'], []).append(r['id'])
     out = {}
-    for path in sorted(glob.glob(os.path.join(ROOT, 'data', 'slop_runs', '*', 'changes*.json'))):
+    for path in sorted(glob.glob(os.path.join(ROOT, 'data', 'slop_runs', '*', '*.json'))):
         try:
             rows = json.load(open(path))
         except ValueError:
@@ -204,8 +204,10 @@ def main():
     # every move, old cid to new with both sentences, beside the rewrite logs of the day it answers
     day = os.path.join(ROOT, 'data', 'slop_runs', datetime.date.today().isoformat())
     os.makedirs(day, exist_ok=True)
-    with open(os.path.join(day, 'influence-rekey.json'), 'w') as f:
-        json.dump([{'from': k, 'to': n['cid'], 'how': h, 'alike': round(r, 2), 'space': n['space'], 'funder': n['funder'], 'field': n['field'],
+    path = os.path.join(day, 'influence-rekey.json')
+    earlier = json.load(open(path)) if os.path.exists(path) else []   # a second run on one day adds to the first
+    with open(path, 'w') as f:
+        json.dump(earlier + [{'from': k, 'to': n['cid'], 'how': h, 'alike': round(r, 2), 'space': n['space'], 'funder': n['funder'], 'field': n['field'],
                     'before': old[k]['text'], 'after': n['text']} for k, (n, h, r) in moves.items()], f, ensure_ascii=False, indent=1)
 
 

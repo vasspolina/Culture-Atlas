@@ -45,7 +45,7 @@ research agents (prompts below) -> data/*_runs/ -> tools/import_*.py / merge_*.p
 
 | File | What it is | Used by |
 |---|---|---|
-| `influence_candidates.json` | 5,119 candidate funder/space links found automatically, before review. | `tools/build_influence.py`, `tools/rekey_influence_review.py`, `tests/influence.test.mjs` |
+| `influence_candidates.json` | 5,118 candidate funder/space links found automatically, before review. | `tools/build_influence.py`, `tools/rekey_influence_review.py`, `tests/influence.test.mjs` |
 | `influence_review.json` | The review verdict on each candidate. | `tools/build_influence.py`, `tools/rekey_influence_review.py`, `build_money_maps.py`, `attach_lobbying_notes.py` |
 | `influence_review_unmatched.json` | Verdicts whose sentence left the records and found no confident match after a rewording, parked for the editor with the old sentence and the closest current one. | `tools/rekey_influence_review.py`, `tools/build_influence.py`, `tests/influence.test.mjs` |
 | `influence_hq.json` | Head-office locations of funders. | `tools/build_influence.py` |
