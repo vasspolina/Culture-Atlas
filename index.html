@@ -11007,11 +11007,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v907';
+    const ATLAS_RELEASE = 'culture-atlas-v908';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=907').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=908').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -11684,6 +11684,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     const atlasMarkR = (zoom) => Math.max(4, Math.min(5.5, 3.7 + zoom * 0.15));
     // How far a name's bubble stands off its mark: the tail's length.
     const ATLAS_TAIL = 6;
+    const SEL_RING_OUT = 5.75;   // the picked mark's ring: half its 8.5px stroke, and 1.5px of air
     window.atlasDropPinRefresh = () => scheduleRender();
 
     let renderFrameId = 0;
@@ -12618,6 +12619,8 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
         const drawnInstLabelBoxes = [];
         const shownInstLabels = new Set();
         let selMarkOnTop = null;   // set while the picked space is drawn; called again over the Influence map's funders
+        // Where the picked space's mark and its ring stand this frame, so the Influence map's funder names keep clear of it.
+        window.atlasSelMarkAt = null;
 
         // The picked and the hovered space are drawn last, so their marks stand over their neighbours'.
         const dotOrder = (d) => (selectedInstitution && selectedInstitution.name === d.inst.name) ? 2 : (hoveredInstitution && hoveredInstitution.name === d.inst.name) ? 1 : 0;
@@ -12666,6 +12669,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
           ctx.restore();
           // The Influence map draws its funders after the spaces, and a funder whose office stands by the picked space put its
           // dots on the picked mark (Kamehameha Schools on the Bishop Museum); the picked mark is drawn again over that layer.
+          if (isSel) window.atlasSelMarkAt = { x: d.x, y: d.y, r: shapeR + SEL_RING_OUT };
           if (isSel) selMarkOnTop = () => { ctx.save(); ctx.globalAlpha = limbD; paintMark(); ctx.restore(); };
 
           // Institution label on 3D globe
@@ -12704,7 +12708,10 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
             });
             // Above the dot; below it when the city's own badge sits there. A country with one city draws the badge on its spaces,
             // and the space's name was dropped as a collision, so a click on the country showed a badge and no space.
-            const off = d.markR * 1.12 + ATLAS_TAIL, yAbove = d.y - off - bh, yBelow = d.y + off;   // 1.12: a triangle stands taller than its radius
+            // The picked mark's ring stands SEL_RING_OUT past the mark, so its name's tail stops short of the ring, not of the mark
+            // (user, 22 Nov 2026: "i still see it", the tail's point on the Bishop Museum triangle's ring).
+            const markTop = d.markR * 1.12 + (isSel ? SEL_RING_OUT : 0);
+            const off = markTop + ATLAS_TAIL, yAbove = d.y - off - bh, yBelow = d.y + off;   // 1.12: a triangle stands taller than its radius
             let by = yAbove;
             if (!isSel && clashes(drawnCityBoxes, by) && !clashes(drawnCityBoxes, yBelow)) by = yBelow;
             // Another space's dot under the label hides it; the label then tries clear above its own dot, then below.
@@ -12721,7 +12728,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
               shownInstLabels.add(d.inst.name);
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
-              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst, { x: d.x, y: d.y, r: d.markR * 1.12 });
+              drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst, { x: d.x, y: d.y, r: markTop });
             }
             ctx.restore();
           }
@@ -23150,7 +23157,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/critique-captions.js?v=899"></script>
 <script src="assets/critique-gallery.js?v=899"></script>
 <script src="assets/hq-detail.js?v=899"></script>
-<script src="assets/influence-mode.js?v=899"></script>
+<script src="assets/influence-mode.js?v=908"></script>
 <script src="assets/bubbles.js?v=899" defer></script>
 <script src="assets/phone-maps.js?v=907"></script>
 <script src="assets/desktop-maps.js?v=899"></script>
