@@ -412,6 +412,14 @@ details.chat-info[open]>summary{background:var(--sh-stone)!important}
 .inst-pin-label{border-radius:0!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #drawerAuditView,
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .space-y-3>*{margin-top:0!important}
+/* The rule above also took the quotation's line of space, so it ran on from the Sources list and its "N more", its source
+   line ran on from it, and the building's photograph ran on from the source line (user, 22 Nov 2026: "add proper paragraph
+   breaks here"). The sheet's paragraph space comes back: a line (--sh-s-lh) over the quotation and over the photograph,
+   half a line between a quotation or a photograph and its source line. */
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) .space-y-3>:is(.standalone-quote,.critique-quote){margin-top:var(--sh-s-lh)!important}
+:is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body,#desktopDossierInside) :is(.standalone-quote,.critique-quote) figcaption{margin-top:calc(var(--sh-s-lh) / 2)!important}
+#desktopDossierInside .xray-photo{margin:var(--sh-s-lh) 0 0!important}
+#desktopDossierInside .xray-photo figcaption{margin-top:calc(var(--sh-s-lh) / 2)!important}
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) details>summary,
 :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) details>summary *{text-decoration:none!important}
 #desktopDossierRecordBody,#desktopDossierRecordBody>div{padding:0!important;margin:0!important}
