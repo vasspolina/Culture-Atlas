@@ -567,9 +567,9 @@
       const h = document.getElementById(id); if (!h) return;
       h.querySelectorAll('button').forEach(b => { const q = b.getBoundingClientRect(); if (q.width && q.height) names.push({ x: q.left - cr.left - 4, y: q.top - cr.top - 4, w: q.width + 8, h: q.height + 8 }); });
     });
-    // The picked space's mark and its ring (index.html sets atlasSelMarkAt as it draws them) are drawn over this layer, so no
+    // The picked space's mark (index.html sets atlasSelMarkAt, with a little air, as it draws it) is drawn over this layer, so no
     // name may lie under them. A funder whose office is in that space's city sat its name on the ring: Kamehameha Schools
-    // beside Bishop Museum in Honolulu (user, 22 Nov 2026: "i still see it"). A dot under the mark sets its name past the ring.
+    // beside Bishop Museum in Honolulu (user, 22 Nov 2026: "i still see it"). A dot under the mark sets its name past it.
     const selMark = g('window.atlasSelMarkAt');
     const selBox = selMark ? { x: selMark.x - selMark.r, y: selMark.y - selMark.r, w: 2 * selMark.r, h: 2 * selMark.r } : null;
     if (selBox) names.push(selBox);
