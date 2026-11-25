@@ -321,6 +321,18 @@
       li.appendChild(b);
       return li;
     };
+    // The glass under the name (assets/sheet.css, THE GLASS UNDER THE NAME) reaches down to the foot of the country's or
+    // the city's line ("‹ World  Japan, 47 museums in 23 cities"), which wraps to two rows in a narrow map: --street-top is
+    // that foot, measured from the top of the map. index.html measures it too once a street map is open, for the camera.
+    const glassBanner = $('cityViewControlBanner'), glassHost = $('globeViewport');
+    function glassFoot() {
+      if (!glassBanner || !glassHost) return;
+      const b = glassBanner.getBoundingClientRect();
+      if (!b.height) return;
+      const v = Math.max(0, Math.round(b.bottom - glassHost.getBoundingClientRect().top)) + 'px';
+      if (glassHost.style.getPropertyValue('--street-top') !== v) glassHost.style.setProperty('--street-top', v);
+    }
+    if (glassBanner && typeof ResizeObserver === 'function') new ResizeObserver(glassFoot).observe(glassBanner, { box: 'border-box' });
     let idxKey = '';
     function renderIndex(force) {
       if (!DESK()) return;
@@ -329,6 +341,7 @@
       const key = $('mapColourKey'), chipsEl = $('gmdChips');
       if (key) root.style.setProperty('--sh-key-h', key.offsetHeight + 'px');
       if (chipsEl && chipsEl.offsetHeight) root.style.setProperty('--sh-chips-h', chipsEl.offsetHeight + 'px');
+      glassFoot();
       const map = cityIndex();
       if (!map) return;
       const country = g('selectedCountryFilter'), city = g('selectedCityFilter'), sel = g('selectedInstitution');

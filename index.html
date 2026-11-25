@@ -79,7 +79,7 @@
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
   <link rel="stylesheet" href="assets/atlas.css?v=906">
-  <link rel="stylesheet" href="assets/sheet.css?v=912">
+  <link rel="stylesheet" href="assets/sheet.css?v=913">
   <script src="assets/config.js?v=899"></script>
   <script src="assets/analytics.js?v=899"></script>
   <script src="assets/subtopic.js?v=899"></script>
@@ -7190,16 +7190,22 @@ return maplibregl$1;
         cityVectorMap.on('load', posterSync);
         // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
-        // The street map starts under the name and the city's line (user, 19 Nov 2026, yes to keeping the tags and the map's
-        // place names off them; the globe had dropped below the name on 16 Nov). The line wraps to two rows in a narrow map, so
-        // its foot is measured: --street-top is how far below the map's box it ends, and sheet.css sets the map's top there.
+        // The street map runs up under the name and the city's line, behind frosted glass (user, 25 Nov 2026: "make background
+        // like apple glass fade under title"; from 19 Nov it had started under them). The line wraps to two rows in a narrow
+        // map, so its foot is measured: --street-top is how far below the map's box it ends, and sheet.css makes the glass that
+        // tall plus its fade. On a desktop the camera takes the same measure as its top padding, so the spaces a city fits and
+        // the space it centres on stand below the glass, as they stood below the line before; the phone has its own band.
         const streetBanner = document.getElementById('cityViewControlBanner');
+        let streetPadTop = -1;
         const streetTopSync = () => {
           const host = mapEl.parentElement;
           if (!streetBanner || !host) return;
           const b = streetBanner.getBoundingClientRect(), h = host.getBoundingClientRect();
           if (!b.height) return;   // the line is hidden: keep the last measure
-          host.style.setProperty('--street-top', Math.max(0, Math.round(b.bottom - h.top)) + 'px');
+          const top = Math.max(0, Math.round(b.bottom - h.top));
+          host.style.setProperty('--street-top', top + 'px');
+          const pad = window.matchMedia('(min-width: 768px)').matches ? top : 0;
+          if (pad !== streetPadTop && typeof cityVectorMap.setPadding === 'function') { streetPadTop = pad; cityVectorMap.setPadding({ top: pad, bottom: 0, left: 0, right: 0 }); }
         };
         if (streetBanner && typeof ResizeObserver === 'function') new ResizeObserver(streetTopSync).observe(streetBanner, { box: 'border-box' });
         window.addEventListener('resize', streetTopSync);
@@ -11007,11 +11013,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v912';
+    const ATLAS_RELEASE = 'culture-atlas-v913';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=912').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=913').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -23160,7 +23166,7 @@ FORMATTING & DOSSIER PRESENTATION RULES:
 <script src="assets/influence-mode.js?v=909"></script>
 <script src="assets/bubbles.js?v=899" defer></script>
 <script src="assets/phone-maps.js?v=907"></script>
-<script src="assets/desktop-maps.js?v=899"></script>
+<script src="assets/desktop-maps.js?v=913"></script>
 <script src="assets/chat-resize.js?v=899"></script>
 <script src="assets/frame-refusers.js?v=899"></script>
 <script src="assets/link-pane.js?v=899"></script>
