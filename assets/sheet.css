@@ -1881,11 +1881,12 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #cityViewControlBanner:not(#sh-x) #cityViewTitleBadge{display:block!important;flex:0 0 auto!important;max-width:100%!important;
       overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important;pointer-events:auto!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #cityViewControlBanner:not(#sh-x) #cityViewTitleText{display:inline!important;overflow:visible!important}
-    /* The street map starts under the name and this line, so neither the spaces' tags nor the map's place names are drawn
-       over them (19 Nov 2026), as the globe drops below the name. --street-top is the line's measured foot (index.html,
-       initCityMapIfNeeded); before it is measured, the name's line and one row of this one. */
+    /* The street map runs up under the name and this line, behind a pane of frosted glass (user, 25 Nov 2026: "make
+       background like apple glass fade under title"; it started under them from 19 Nov). The glass is THE GLASS UNDER THE
+       NAME below; the map's camera keeps the spaces clear of it with a top padding of the line's measured foot
+       (--street-top, index.html, initCityMapIfNeeded). */
     :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #cityMapContainer:not(#sh-x){
-      top:var(--street-top,calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-head) * .8))!important;bottom:0!important;height:auto!important}
+      top:0!important;bottom:0!important;height:auto!important}
     /* The globe is not drawn behind an open street map (19 Nov 2026). The street map used to cover it whole; starting
        under the city's line, it left the globe's canvases showing in that row, a strip of the globe's land behind
        "‹ World ‹ Germany Berlin". Hidden, they take no pointer there either. */
@@ -2875,4 +2876,42 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    line sat right under the title. One line of the text's own leading stands between them, on a phone and on a desktop. */
 @layer sheet{
   #curatorHeroGreeting:not(#sh-x):not(#sh-y):not(#sh-z)::before{margin-bottom:var(--sh-s-lh)!important}
+}
+
+/* ---- THE GLASS UNDER THE NAME (user, 25 Nov 2026: "make background like apple glass fade under title", a screenshot of
+   Tokyo with the name and "‹ World ‹ Japan Tokyo, 21 museums" on a white band over the street map). The map runs up under
+   the name (above, where the city's line is placed) and a pane of frosted glass lies over it: the paper, translucent, the
+   map behind blurred 14px and its colours lifted, so the streets show through soft. The pane is opaque to the mask down to
+   the foot of the name, or of the country's or city's line when one is open (--street-top, measured in
+   assets/desktop-maps.js), and melts into
+   the map over the 44px under that, with no edge. It is drawn over the map, the head offices and the spaces' tags and
+   under the filter pills, the name and the line. The tint is set for 4.5:1 against any map behind it: the light sheet's
+   paper at 58 to 48% keeps its black ink at 4.9:1 or better even over pure black, the dark sheet's at 78 to 68% keeps its
+   ink (#e6e1d7) at 4.8:1 or better even over pure white; the text is set above the fade, where the pane is whole. Where a browser has no backdrop-filter, and where the reader asks for less transparency, the pane is paper at 96
+   to 92%, still fading at its foot. With the chat wide there is no map and no pane. ---- */
+@layer sheet{
+  :root{--sh-glass-a:58%;--sh-glass-b:48%}
+  :root[data-theme="dark"]{--sh-glass-a:78%;--sh-glass-b:68%}
+  @media (min-width:768px){
+    :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #globeViewport:not(#sh-x)::after{
+      --sh-glass-fade:44px;
+      content:""!important;display:block!important;position:absolute!important;top:0!important;left:0!important;right:0!important;
+      height:calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-glass-fade))!important;
+      z-index:30!important;pointer-events:none!important;
+      background:linear-gradient(to bottom,color-mix(in srgb,var(--sh-paper) var(--sh-glass-a),transparent),color-mix(in srgb,var(--sh-paper) var(--sh-glass-b),transparent))!important;
+      -webkit-backdrop-filter:blur(14px) saturate(1.6)!important;backdrop-filter:blur(14px) saturate(1.6)!important;
+      -webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - var(--sh-glass-fade)),transparent)!important;
+      mask-image:linear-gradient(to bottom,#000 calc(100% - var(--sh-glass-fade)),transparent)!important}
+    :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top):has(#cityViewControlBanner:not(.hidden)) #globeViewport:not(#sh-x)::after{
+      height:calc(var(--street-top,calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-head) * .8)) + var(--sh-glass-fade))!important}
+    @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+      :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #globeViewport:not(#sh-x)::after{
+        background:linear-gradient(to bottom,color-mix(in srgb,var(--sh-paper) 96%,transparent),color-mix(in srgb,var(--sh-paper) 92%,transparent))!important}
+    }
+    @media (prefers-reduced-transparency:reduce){
+      :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #globeViewport:not(#sh-x)::after{
+        background:linear-gradient(to bottom,color-mix(in srgb,var(--sh-paper) 96%,transparent),color-mix(in srgb,var(--sh-paper) 92%,transparent))!important;
+        -webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+    }
+  }
 }
