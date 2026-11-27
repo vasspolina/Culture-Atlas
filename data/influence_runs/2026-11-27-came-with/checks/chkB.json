@@ -1,0 +1,557 @@
+[
+ {
+  "file": "cw4",
+  "funder": "dulux",
+  "space": "acca",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Dulux paint coloured the walls of the 2016 show Painting. More Painting, credited as exhibition colours by Dulux in Ticking Flat Acrylic and White Flat Acrylic.",
+   "date": "2016",
+   "source": "https://acca.melbourne/?p=889",
+   "evidence": "EXHIBITION COLOURS BY DULUX Ticking Flat Acrylic White Flat Acrylic",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw4",
+  "funder": "dulux",
+  "space": "lahore-biennale-foundation-lahore",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "AkzoNobel, the Biennale's Color Partner for its 2020 edition, unveiled its 2020 Color of the Year, Tranquil Dawn, with the Lahore Biennale at the Wazir Khan Baradari.",
+   "date": "2020-02",
+   "source": "https://www.brandsynario.com/news/pakistan/akzonobel-sees-new-dawn-rising-with-2020-color-of-the-year-unveiled-in-collaboration-with-the-lahore-biennale/",
+   "evidence": "the Color Partner of the Lahore Biennale (LB02)",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'maker of Dulux' (page does not name Dulux)",
+   "kinds: Color Partner is the sponsorship title, not a programme it paid for"
+  ],
+  "reason": "Product launch at a Biennale venue in collaboration with the Biennale is access; programme kind and the Dulux link not on the page."
+ },
+ {
+  "file": "cw4",
+  "funder": "bouygues",
+  "space": "louvre-lens",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Members of the Cercle Louvre-Lens, where Bouygues Bâtiment Nord-Est is a partner member, get private visits of the Galerie du temps, exhibitions and backstage, and museum spaces for their own events.",
+   "date": "",
+   "source": "https://mecenat.louvrelens.fr/le-cercle-louvre-lens/",
+   "evidence": "visites privées de la Galerie du temps, des expositions temporaires et des coulisses",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw4",
+  "funder": "bouygues",
+  "space": "louvre-lens",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "tax"
+   ],
+   "summary": "Cercle Louvre-Lens gifts run through the French mécénat deduction: the company deducts 60% of the gift from its tax, up to 0.5% of turnover.",
+   "date": "",
+   "source": "https://mecenat.louvrelens.fr/le-cercle-louvre-lens/",
+   "evidence": "60%",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw4",
+  "funder": "lauder",
+  "space": "whitney-museum-of-american-art",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "The Whitney's Meatpacking District home is named the Leonard A. Lauder Building, announced in April 2016 when he received the first Whitney Collection Award.",
+   "date": "2016-04",
+   "source": "https://whitney.org/leonard-a-lauder",
+   "evidence": "is being named the Leonard A. Lauder Building in his honor",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw4",
+  "funder": "lauder",
+  "space": "whitney-museum-of-american-art",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Leonard Lauder was a Whitney trustee from 1977 to 2011 and became Chairman Emeritus.",
+   "date": "1977",
+   "source": "https://whitney.org/leonard-a-lauder",
+   "evidence": "was a trustee from 1977 to 2011",
+   "replaces": "",
+   "ended": true,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw4",
+  "funder": "murdoch",
+  "space": "wysing-arts-centre-bourn",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "In 2021 Freelands Foundation awarded Wysing £500,000 for the Syllabus, a ten year development programme for ten artists from under-represented backgrounds.",
+   "date": "2021-11",
+   "source": "https://www.theartnewspaper.com/2021/11/10/new-pound800000-projects-aim-to-support-uk-artists-of-colour",
+   "evidence": "will receive £500,000 from the same foundation for a ten-year artist development programme",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'led by Wysing'"
+  ],
+  "reason": "The article says Wysing receives the money and the programme runs across eight organisations; it does not say Wysing leads it."
+ },
+ {
+  "file": "cw4",
+  "funder": "quartzreef",
+  "space": "dunedin-public-art-gallery-dunedin",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Quartz Reef is the gallery's preferred vineyard and wine supplier, named with its contact details on the gallery's venue hire page.",
+   "date": "",
+   "source": "https://dunedin.art.museum/venue/",
+   "evidence": "Quartz Reef is the Dunedin Public Art Gallery’s preferred vineyard, and supplier of wine.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "stretched: 'sends clients to the winery'"
+  ],
+  "reason": "The venue page names Quartz Reef as preferred supplier and lists its contacts; cut to that."
+ },
+ {
+  "file": "cw4",
+  "funder": "fonalledas",
+  "space": "museo-de-arte-de-ponce-ponce",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "In 2021 the museum dressed 12 store windows at Plaza del Caribe with printed works from its collection and ran art workshops there and at Plaza Las Américas, malls of the Empresas Fonalledas group.",
+   "date": "2021-09",
+   "source": "https://museoarteponce.org/en/the-museo-de-arte-de-ponce-celebrates-alliance-with-plaza-del-caribe-and-plaza-las-americas/",
+   "evidence": "Plaza Del Caribe se viste del Museo de Arte de Ponce",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw5",
+  "funder": "canon",
+  "space": "addis-foto-fest",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Award winners at the 2016 festival received Canon equipment: an EOS 5D Mark III camera and two Pixma printers with paper and ink.",
+   "date": "2016",
+   "source": "https://contemporaryand.com/en/events/addis-foto-fest-2016",
+   "evidence": "EOS 5D Mark III Canon Camera, Pixma MG6840 printer with paper and ink",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw5",
+  "funder": "canon",
+  "space": "african-artists-foundation-lagos",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "The Canon Storytelling Workshop, part of Canon's Miraisha sustainability programme, was held at the African Artists' Foundation in Lagos on 25 October 2018, led by Georgina Goodwin.",
+   "date": "2018-10",
+   "source": "https://www.lagosphotofestival.com/events/canon-storytelling-workshop.html",
+   "evidence": "an initiative under Canon's sustainability programme, Miraisha",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'where Canon is the official imaging partner'",
+   "unsupported: 'during LagosPhoto'"
+  ],
+  "reason": "The page gives the workshop, venue, date and Miraisha link only."
+ },
+ {
+  "file": "cw5",
+  "funder": "cocacola",
+  "space": "elbphilharmonie-hamburg",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "As a product sponsor, Coca-Cola has its drinks placed in the concert hall's catering facilities.",
+   "date": "",
+   "source": "https://www.elbphilharmonie.de/en/support",
+   "evidence": "product sponsors place selected products in the Elbphilharmonie's catering facilities",
+   "replaces": "0838959341",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw5",
+  "funder": "accessbank",
+  "space": "g-a-s-foundation-guest-artists-space",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Since the 2022/23 edition, the Africa and diaspora winner of the Access ART X Prize, sponsored by Access Bank's parent Access Corporation, takes a residency at G.A.S. in Lagos.",
+   "date": "2022",
+   "source": "https://guestartistsspace.com/Access-ART-X-Prize",
+   "evidence": "another artist from Africa and its Diaspora is selected to undergo a residency at G.A.S.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw5",
+  "funder": "mirvac",
+  "space": "biennale-of-sydney-sydney",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Under its five year Principal Partner deal of 2021, the Biennale agreed to bring commissioned artworks, hosted exhibitions and workshops to Mirvac's residential, office, retail and build to rent properties through 2026.",
+   "date": "2021-08",
+   "source": "https://shoppingcentrenews.com.au/latest-news/industry-news/mirvac-signs-five-year-partnership-with-biennale-of-sydney/",
+   "evidence": "Mirvac and Biennale will deliver a program of commissioned artworks, hosted exhibitions and workshops",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "kinds: art brought to the funder's properties is a return in kind, not a programme it paid for"
+  ],
+  "reason": "Supported by the August 2021 article; kinds set to access and date to the article's month."
+ },
+ {
+  "file": "cw5",
+  "funder": "mirvac",
+  "space": "biennale-of-sydney-sydney",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Some of Mirvac's residential, office and retail customers attended three previews held before the 2024 Biennale, Ten Thousand Suns, opened.",
+   "date": "2024-03",
+   "source": "https://www.mirvac.com/about/news-and-media/the-24th-biennale-of-sydney-ten-thousand-suns-now-open",
+   "evidence": "Three previews in the lead up to the launch captivated some of Mirvac's customers",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "stretched: page says the previews 'captivated some of Mirvac's customers', not that they were held for them"
+  ],
+  "reason": "Cut to what Mirvac's release says."
+ },
+ {
+  "file": "cw5",
+  "funder": "quarkexpeditions",
+  "space": "port-lockroy-bransfield-house",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Quark's 2023 sustainability report says money from its onboard guest auctions supported repairs and maintenance on the historic buildings of the UK Antarctic Heritage Trust, which runs Port Lockroy.",
+   "date": "2023",
+   "source": "https://brochures.quarkexpeditions.com/view/765358088/38-39/",
+   "evidence": "Funds from the Quark Expeditions onboard auctions supported repairs and maintenance on UKAHT's historic buildings",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "stretched: 'paid for'; repairs are on the Trust's buildings in general, not tied to Port Lockroy",
+   "unsupported: 'for the 2022/23 season' (the auction sentence carries no season)"
+  ],
+  "reason": "The report ties the auction money to the Trust's buildings, which include Port Lockroy; the summary now says only that."
+ },
+ {
+  "file": "cw6",
+  "funder": "pictet",
+  "space": "les-rencontres-d-arles",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "programme",
+    "name"
+   ],
+   "summary": "The festival showed \"Prix Pictet Celebrates its Laureates\" at La Croisière in 2018, an exhibition produced by the Prix Pictet in collaboration with the Pictet Group.",
+   "date": "2018",
+   "source": "https://www.rencontres-arles.com/en/expositions/view/369/le-prix-pictet-celebre-ses-laureats",
+   "evidence": "Exhibition produced by the Prix Pictet. In collaboration with the Pictet Group",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'with the Pictet Group's photography collection' (the collection credited is the Prix Pictet Photography Collection)"
+  ],
+  "reason": "Credit line corrected to the page's wording."
+ },
+ {
+  "file": "cw6",
+  "funder": "pictet",
+  "space": "les-rencontres-d-arles",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "programme",
+    "name"
+   ],
+   "summary": "\"Prix Pictet: a retrospective\" ran at the Magasin Électrique in 2014, coproduced by the Prix Pictet and the festival.",
+   "date": "2014",
+   "source": "https://www.rencontres-arles.com/en/expositions/view/417/prix-pictet-a-retrospective",
+   "evidence": "Exhibition coproduced by the Prix Pictet and the Rencontres d'Arles.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw6",
+  "funder": "shiseido",
+  "space": "21-21-design-sight-tokyo",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Corporate partners, Shiseido among the main ones, are invited to special previews and events and receive annual invitation tickets.",
+   "date": "2026-10",
+   "source": "https://www.2121designsight.jp/designsight/partner/",
+   "evidence": "特別内覧会や各種イベントへのご招待、年間共通招待券を贈呈いたします",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "name on a panel and the website is the sponsorship restated (logo)"
+  ],
+  "reason": "Kept the in-kind benefits the partner page ties to corporate partners; dropped the name credit."
+ },
+ {
+  "file": "cw6",
+  "funder": "infosys",
+  "space": "museum-of-art-photography-map",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "A gallery at MAP bears the foundation's name: the Infosys Foundation Gallery, where the 2025 to 2026 annual report records a ten day show of Putul dolls from West Bengal.",
+   "date": "",
+   "source": "https://map-india.org/wp-content/uploads/2026/04/MAP-Annual-Report-2025-2026.pdf",
+   "evidence": "A 10-day showcase of dolls ... was hosted at the Infosys Foundation Gallery.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'In 2025' (the report covers 2025 to 2026 and gives no date for the showcase)"
+  ],
+  "reason": "Gallery name supported; year cut to the report's span."
+ },
+ {
+  "file": "cw7",
+  "funder": "neilson",
+  "space": "biennale-of-sydney-sydney",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Paris Neilson, a trustee of the Neilson Foundation, sat on the Biennale's board from 2011 and was still on it in 2016.",
+   "date": "2011",
+   "source": "https://apollo-magazine.com/?p=449481",
+   "evidence": "Paris has been on the board for the Biennale of Sydney since 2011.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "present currency unsupported: the Biennale's team page (Nov 2026) lists ten directors and no Neilson"
+  ],
+  "reason": "Apollo bears out 2011 to 2016; the current board page omits her, so the seat is put in the past; ended left false because no source states the end."
+ },
+ {
+  "file": "cw7",
+  "funder": "azurapower",
+  "space": "museum-of-west-african-art-mowaa",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Leadership Circle donors, the level Azura is listed at, get priority consideration for MOWAA subcommittees and advisory councils, plus Friends access to museum events.",
+   "date": "",
+   "source": "https://wearemowaa.org/support",
+   "evidence": "Priority consideration for MOWAA leadership opportunities, including consideration for subcommittees, advisory councils",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw7",
+  "funder": "mphasis",
+  "space": "museum-of-art-photography-map",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "programme",
+    "building"
+   ],
+   "summary": "Mphasis granted MAP INR 10 crore over five years for accessibility: barrier-free building work and interiors, workshops for people with disabilities, accessible exhibitions and website, and an Inclusion Officer.",
+   "date": "2019",
+   "source": "https://www.ciol.com/map-mphasis-join-forces-create-one-accessible-museums-country",
+   "evidence": "will be given to MAP over a period of five years",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw7",
+  "funder": "bellcanada",
+  "space": "montreal-museum-of-fine-arts",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Bell is credited among the donors who made the Michal and Renata Hornstein Pavilion for Peace possible. The pavilion opened in 2016.",
+   "date": "2016",
+   "source": "https://mbam.qc.ca/en/the-museum/the-michal-and-renata-hornstein-pavilion-for-peace",
+   "evidence": "individuals and organizations that helped make this pavilion a reality",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ },
+ {
+  "file": "cw7",
+  "funder": "megacable",
+  "space": "festival-internacional-cervantino",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Since 2019 Megacable, as MEGA, has supplied the high-speed internet at festival venues that carries the transmission of performances.",
+   "date": "2019",
+   "source": "https://53.festivalcervantino.gob.mx/patrocinadores/?lan=en",
+   "evidence": "festival venues have high-speed internet that enables the transmission, dissemination, and access to performances",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Source page bears out every name, year and claim; a benefit tied to this funder or its level."
+ }
+]

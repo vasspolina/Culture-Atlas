@@ -2176,6 +2176,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
 .influence-part{border-top:1px solid var(--sh-rule)!important;margin-top:var(--sh-gap)!important;padding-top:var(--sh-gap)!important}
 .influence-part .influence-list{list-style:none!important;margin:0!important;padding:0!important}
 .influence-part .influence-entry{margin:0 0 calc(var(--sh-gap) * 2) 0!important}
+/* A kind or a funder inside "What came with the money": a line of its own over its entries. */
+.influence-part .influence-kind{margin:0 0 var(--sh-gap) 0!important}
 .influence-part .influence-entry>p:first-child::before{content:"\2013\00a0"!important}
 :is(.influence-part,.influence-chat) .lead-in{font-style:italic!important}
 :is(.influence-part,.influence-chat) .influence-meta{color:inherit!important}

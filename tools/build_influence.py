@@ -695,6 +695,29 @@ def build_layer(cands):
             **({'links': v['links']} if v.get('links') else {}),
             **({'unmatched': True} if unmatched else {}),
         })
+    # What came with the money, researched on the web for the funders whose ledger held money alone (user, 27 Nov 2026:
+    # "collect content as proffesional data researcher to add to this section but if there is none keep title out"):
+    # data/influence_found.json, merged from data/influence_runs/2026-11-27-came-with/results by tools/merge_came_with.py.
+    # Each entry has one source read in that run. An entry naming the gift of a record's line more fully replaces it.
+    fpath = os.path.join(ROOT, 'data', 'influence_found.json')
+    found = json.load(open(fpath)) if os.path.exists(fpath) else {}
+    for fk, rows in found.items():
+        if fk.startswith('_') or fk not in funders:
+            continue
+        f = funders[fk]
+        gone = {e['replaces'] for r in rows for e in r['entries'] if e.get('replaces')}
+        f['ties'] = [t for t in f['ties'] if t['cid'] not in gone]
+        for r in rows:
+            rec = next((t for t in f['ties'] if t['space'] == r['space']), None) or {}
+            for e in r['entries']:
+                f['ties'].append({
+                    'cid': hashlib.sha1(f"{fk}|{r['space']}|{e['summary']}".encode()).hexdigest()[:10],
+                    'space': r['space'], 'space_name': r['space_name'], 'city': r.get('city') or rec.get('city', ''),
+                    'kinds': e['kinds'], 'ended': bool(e.get('ended')), 'protest': bool(e.get('protest')),
+                    'summary': e['summary'], 'quote': e['summary'], 'field': 'research', 'date': e.get('date', ''),
+                    'sources': [e['source']], 'check': 'source', 'checked_source': e['source'], 'checked_missing': None,
+                    'found': True,
+                })
     for f in funders.values():
         f['ties'].sort(key=lambda t: (t['space_name'], t['date']))
     # The sender's side (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at fault?"):
