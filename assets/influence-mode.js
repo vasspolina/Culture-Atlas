@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=25', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=26', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -792,7 +792,10 @@
       let e = (!f.study && hq && hq.funderRecord && hq.funderRecord(key)) || { key, kind: 'org', k: f.kind === 'corp' ? 'corp' : f.kind === 'fund' ? 'priv' : f.kind === 'gov' ? 'gov' : 'found', n: f.name, c: '', co: '', noOffice: true };
       // The mode places every pilot funder at an office (assets/influence.json, hq), so its record names that office too.
       if (f.kindLabel) e = Object.assign({}, e, { kindLabel: f.kindLabel });
-      if (e.noOffice && f.hq) e = Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
+      // A key with no office gets its name from the funding lines, which can be the bare key ("bajaj"); the ledger's name
+      // is written by hand.
+      if (e.noOffice && f.name) e = Object.assign({}, e, { n: f.name });
+      if (e.noOffice && f.hq) e =Object.assign({}, e, { c: f.hq.c, co: f.hq.co, a: f.hq.a, lat: f.hq.lat, lon: f.hq.lon, noOffice: false });
       // Its own office layer stays off: the mode draws the funders itself (assets/hq-detail.js reads noLayer).
       if (typeof window.atlasHqOpen === 'function') window.atlasHqOpen(Object.assign({}, e, { noLayer: true }));
       openFor = f;
@@ -876,9 +879,15 @@
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', 'What came with the money');
-    el.innerHTML = row('What came with the money', '', '') +
-      [...byF.entries()].map(([f, ties]) => row(f.name, '', `<ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul>`, `<a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a>`)).join('') + study;
+    // One section, its funders inside it, so the title never stands alone (user, 27 Nov 2026). A funder whose gifts here are
+    // money alone is listed after, under "Money only", not under "What came with the money".
+    const fLine = ([f, ties]) => `<p class="no-indent influence-kind"><a href="#" class="influence-funder-link" data-influence-funder="${esc(f.key)}">${esc(f.name)}</a></p><ul class="d-row-list influence-list">${ties.map(t => lineFor(t, false, null)).join('')}</ul>`;
+    const all = [...byF.entries()];
+    const came = all.filter(([, ties]) => ties.some(t => !(t.kinds.length === 1 && t.kinds[0] === 'money')));
+    const money = all.filter(x => !came.includes(x));
+    el.setAttribute('aria-label', came.length ? 'What came with the money' : 'Money only');
+    el.innerHTML = (came.length ? row('What came with the money', '', came.map(fLine).join('')) : '') +
+      (money.length ? row(label('money'), '', money.map(fLine).join('')) : '') + study;
     return el;
   }
 
@@ -1008,25 +1017,39 @@
     el.innerHTML = html;
     return el;
   }
+  // What came with the money is one section whose kinds sit inside it (user, 27 Nov 2026: "what came with the money
+  // question do not have content under ... if there is none keep title out"). The title used to be a row of its own with
+  // nothing under it, its kinds drawn as separate rows after the giving and art rows. A gift with money alone is not
+  // something that came with the money: it gets a row of its own after, and a funder with only those has no such section.
+  function cameRows(f) {
+    // Each gift once, under the first thing it bought in ORDER (user, 20 Nov 2026: "content repetition"): a gift that paid
+    // for a programme and a building (Lentos, Raiffeisen) was printed in full under both, and BP's 64 lines held 46 gifts.
+    // Its own sentence says the rest of what it bought.
+    const firstKind = x => ORDER.find(k => x.kinds.includes(k));
+    const block = k => {
+      const ties = f.ties.filter(x => x.kinds.length && firstKind(x) === k);
+      return ties.length ? { k, ties } : null;
+    };
+    const came = ORDER.filter(k => k !== 'money').map(block).filter(Boolean);
+    const money = block('money');
+    return {
+      came: came.length ? row('What came with the money', '', came.map(({ k, ties }) => `<p class="no-indent influence-kind"><span class="lead-in">${esc(label(k))}.</span></p>${foldList(ties.map(x => lineFor(x, true, null)))}`).join('')) : '',
+      money: money ? row(label('money'), '', foldList(money.ties.map(x => lineFor(x, true, null)))) : ''
+    };
+  }
   function funderPart(f) {
     const t = tally(f.ties);
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', 'What came with the money');
-    let html = row('What came with the money', '', '');
+    const c = cameRows(f);
+    el.setAttribute('aria-label', c.came ? 'What came with the money' : 'Giving to museums');
+    let html = c.came;
     html += compareRow(f);
     html += artRow(f);
     html += linkRows(f);
     html += senderRows(f);
-    // Each gift once, under the first thing it bought in ORDER (user, 20 Nov 2026: "content repetition"): a gift that paid
-    // for a programme and a building (Lentos, Raiffeisen) was printed in full under both, and BP's 64 lines held 46 gifts.
-    // Its own sentence says the rest of what it bought.
-    const firstKind = x => ORDER.find(k => x.kinds.includes(k));
-    ORDER.forEach(k => {
-      const ties = f.ties.filter(x => x.kinds.length && firstKind(x) === k);
-      if (ties.length) html += row(label(k), '', foldList(ties.map(x => lineFor(x, true, null))));
-    });
+    html += c.money;
     html += afterRows(f);
     const pushback = f.ties.filter(x => !x.kinds.length);
     if (pushback.length) html += row('Protests and resignations', '', foldList(pushback.map(x => lineFor(x, true, null))));
@@ -1087,6 +1110,9 @@
       const panel = document.getElementById('hqPanel');
       if (panel && !panel.hidden && !panel.querySelector('.influence-part')) {
         const f = funderForPanel(panel), head = panel.querySelector('.record-head');
+        // A record titled with its bare key ("bajaj") takes the ledger's name.
+        const ttl = panel.querySelector('#hqPanelTitle');
+        if (f && ttl && f.name && norm(ttl.textContent) === norm(f.key)) ttl.textContent = f.name;
         if (f && !f.moneyOnly && head) { const part = funderPart(f); head.after(part); oneMoneyRow(panel, part); }
         else if (f && f.study && head) { const part = studyFunderPart(f); if (part) head.after(part); }
         else if (f && f.moneyOnly && head) { const part = artPart(f); if (part) head.after(part); }

@@ -11,6 +11,8 @@ const review = read('data/influence_review.json');
 const cands = read('data/influence_candidates.json');
 const ids = new Set(read('institutions.json').map((i) => i.id));
 const kinds = new Set(layer.kinds.map((k) => k.key));
+const foundPath = new URL('../data/influence_found.json', import.meta.url);
+const foundRows = existsSync(foundPath) ? Object.entries(JSON.parse(readFileSync(foundPath, 'utf8'))).filter(([k]) => !k.startsWith('_')).flatMap(([, rows]) => rows) : [];
 
 test('every entry has a summary, known kinds, a real space and a source', () => {
   let n = 0;
@@ -47,17 +49,32 @@ test('the layer holds exactly the kept reviews and the kept parked ones', () => 
     assert.ok(!live.has(k), `${k} is parked but its sentence is in the records`);
     assert.ok(v.verdict && v.was && v.was.text, `${k}: a parked verdict keeps its sentence`);
   }
-  const kept = Object.entries(review).filter(([k, v]) => !k.startsWith('_') && !v.drop).map(([k]) => k);
-  const keptParked = parked.filter(([, v]) => !v.verdict.drop).map(([k]) => k);
+  // A researched entry (data/influence_found.json) that states a reviewed gift more fully replaces it.
+  const replaced = new Set(foundRows.flatMap((r) => r.entries.map((e) => e.replaces).filter(Boolean)));
+  const kept = Object.entries(review).filter(([k, v]) => !k.startsWith('_') && !v.drop && !replaced.has(k)).map(([k]) => k);
+  const keptParked = parked.filter(([k, v]) => !v.verdict.drop && !replaced.has(k)).map(([k]) => k);
   const ties = layer.funders.flatMap((f) => f.ties);
   assert.deepEqual(ties.filter((t) => t.unmatched).map((t) => t.cid).sort(), keptParked.sort());
-  assert.deepEqual(ties.filter((t) => !t.unmatched).map((t) => t.cid).sort(), kept.sort());
+  assert.deepEqual(ties.filter((t) => !t.unmatched && !t.found).map((t) => t.cid).sort(), kept.sort());
 });
 
-// Outside the parked entries, the sentence an entry quotes is the candidate's own, so it is in the records as they read now.
+// Outside the parked and researched entries, the sentence an entry quotes is the candidate's own, so it is in the records
+// as they read now.
 test('every entry quotes its candidate sentence', () => {
   const text = new Map(cands.map((c) => [c.cid, c.text]));
-  for (const f of layer.funders) for (const t of f.ties) if (!t.unmatched) assert.equal(t.quote, text.get(t.cid), `${f.name} at ${t.space_name}`);
+  for (const f of layer.funders) for (const t of f.ties) if (!t.unmatched && !t.found) assert.equal(t.quote, text.get(t.cid), `${f.name} at ${t.space_name}`);
+});
+
+// What came with the money, researched on the web (27 Nov 2026): each entry in data/influence_found.json reaches the layer
+// once, with a kind and the one page it was checked against.
+test('every researched entry is in the layer with a kind and its page', () => {
+  const found = layer.funders.flatMap((f) => f.ties.filter((t) => t.found));
+  assert.equal(found.length, foundRows.reduce((n, r) => n + r.entries.length, 0));
+  for (const t of found) {
+    assert.ok(t.kinds.length || t.ended || t.protest, `${t.space_name}: a kind`);
+    assert.equal(t.check, 'source');
+    assert.equal(t.sources[0], t.checked_source);
+  }
 });
 
 // The sender's side (data/influence_senders.json): every fact is a short sentence with a known kind, a date and its own

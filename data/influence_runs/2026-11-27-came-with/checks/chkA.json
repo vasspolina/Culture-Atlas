@@ -1,0 +1,561 @@
+[
+ {
+  "file": "cw1",
+  "funder": "siemens",
+  "space": "ars-electronica-center-linz",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "Siemens Österreich and Ars Electronica ran the Siemens Artist in Residence programme from 2001, in which artists made works at the Ars Electronica Futurelab, later shown at the Siemens_artLab in Vienna in 2005.",
+   "date": "2001",
+   "source": "https://webarchive.ars.electronica.art/documents/Siemens.pdf",
+   "evidence": "Seit 2001 konnten insgesamt vier Künstler ihre Visionen und Konzepte im Ars Electronica Futurelab realisieren",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The 2005 press release states the residence programme since 2001 at the Futurelab and the 2005 Siemens_artLab show."
+ },
+ {
+  "file": "cw1",
+  "funder": "siemens",
+  "space": "kunsthaus-zürich-zürich",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Siemens Smart Infrastructure supplied the access control, fire protection and intruder detection for the 2021 extension, and developed with the museum a sensor that sounds a warning when someone nears an artwork.",
+   "date": "2021",
+   "source": "https://www.siemens.com/en-us/content/kunsthaus-zurich-siemens-partnership/",
+   "evidence": "provided various access control, fire protection system, intruder detection and picture alarm products",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "imprecise: 'touch warning sensor' (page: a capacitive sensor that sounds a warning when someone gets close)"
+  ],
+  "reason": "Siemens page states the security products for the 2021 extension and the jointly developed proximity sensor; the sensor wording is brought to the page."
+ },
+ {
+  "file": "cw1",
+  "funder": "siemens",
+  "space": "salzburger-festspiele",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "name",
+    "programme"
+   ],
+   "summary": "The free public screenings of festival operas and concerts on the Kapitelplatz carry its name, the Siemens Fest>Spiel>Nächte, since 2002, with about 70,000 visitors a year.",
+   "date": "2002",
+   "source": "https://www.salzburgerfestspiele.at/wp-content/uploads/2026/05/2026_05_05_sfs_verlaengerung_siemens_2026.pdf",
+   "evidence": "Seit 2002 werden gemeinsam mit den Partnern Siemens, ORF Salzburg und UNITEL ausgewählte Höhepunkte",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The 2026 festival press release states the Siemens Fest>Spiel>Nächte since 2002 on the Kapitelplatz and about 70,000 visitors a year."
+ },
+ {
+  "file": "cw1",
+  "funder": "siemens",
+  "space": "salzburger-festspiele",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Its Simcenter Digital Twin software was used in the “Sound of Science” simulation, which replicates the acoustics of the festival halls digitally.",
+   "date": "",
+   "source": "https://www.salzburgerfestspiele.at/wp-content/uploads/2026/05/2026_05_05_sfs_verlaengerung_siemens_2026.pdf",
+   "evidence": "mithilfe von Simcenter Digital Twin den Akustikcharakter der Festspielhäuser digital repliziert",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The same release states the Sound of Science simulation with Simcenter Digital Twin replicating the halls acoustics."
+ },
+ {
+  "file": "cw1",
+  "funder": "nike",
+  "space": "design-museum-london",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "An exclusive NIGO x Nike Air Force 1 launch was held at the museum when its exhibition NIGO: From Japan with Love opened.",
+   "date": "2026-05",
+   "source": "https://www.complex.com/style/a/alex-ocho/nigo-nike-design-museum-apparel-collection",
+   "evidence": "exclusive NIGO x Nike Air Force 1 launch held at the museum",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "repetition: museum-shop apparel line restates on_record 'Nike x NIGO retail pop-up'",
+   "date: page gives May 2026, not spring"
+  ],
+  "reason": "Complex states the Air Force 1 launch at the museum at the May opening; the shop line overlaps the on_record pop-up and is cut."
+ },
+ {
+  "file": "cw1",
+  "funder": "octgroup",
+  "space": "ocat-shenzhen-shenzhen",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "name"
+   ],
+   "summary": "The museum carries the group's name: its Chinese name, 华侨城当代艺术中心, means OCT Contemporary Art Center.",
+   "date": "2005",
+   "source": "https://www.artforum.com.cn/news/14470",
+   "evidence": "华侨城当代艺术中心",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Artforum China gives the name OCAT (华侨城当代艺术中心) and OCT当代艺术中心, founded 2005 with OCT Group backing."
+ },
+ {
+  "file": "cw1",
+  "funder": "wipro",
+  "space": "museum-of-art-photography-map",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "name",
+    "building"
+   ],
+   "summary": "The museum's art and research library is named the Wipro Library. The Wipro Foundation grant supported construction of the museum building, which opened in February 2023.",
+   "date": "",
+   "source": "https://www.wipro.com/content/dam/nexus/en/sustainability/pdf/wipro-foundation-impact-assessment.pdf",
+   "evidence": "Supporting the construction of the museum building",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Wipro Foundation impact assessment names the Wipro Library and the construction support, and the 18 February 2023 opening."
+ },
+ {
+  "file": "cw1",
+  "funder": "wipro",
+  "space": "museum-of-art-photography-map",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "The grant covers visits by Wipro's customers to the museum as part of Wipro's customer relationship work.",
+   "date": "",
+   "source": "https://www.wipro.com/content/dam/nexus/en/sustainability/pdf/wipro-foundation-impact-assessment.pdf",
+   "evidence": "Facilitating Wipro’s customers visits to the museum as a part of Wipro’s customer relationship engagement.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The same report lists facilitating Wipro customers visits as part of its customer relationship engagement."
+ },
+ {
+  "file": "cw1",
+  "funder": "levistrauss",
+  "space": "oakland-museum-of-california-oakland",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Its Benefactor membership ($10,000+) brings free admission for all its employees, two Executive Memberships, an invitation to the annual Director's Dinner and custom volunteer opportunities.",
+   "date": "",
+   "source": "https://museumca.org/corporate-partners/",
+   "evidence": "Free Museum admission for all of your company’s employees",
+   "replaces": "c76d3a13f3",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "awkward: 'At the Benefactor level it is listed at ($10,000+)'",
+   "replaces: states the on_record Benefactor line more fully"
+  ],
+  "reason": "The partners page lists Levi Strauss & Co. at Benefactor ($10,000+) with the Director benefits plus volunteer opportunities; wording tidied and the on_record tier line replaced."
+ },
+ {
+  "file": "cw1",
+  "funder": "cloudwalk",
+  "space": "pinacoteca-de-s-o-paulo",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "The 2026 master sponsorship gives InfinitePay signage in the museum's three buildings, exclusive guided tours, and events and tickets for its guests and staff.",
+   "date": "2026-04",
+   "source": "https://www.abcdacomunicacao.com.br/infinitepay-e-a-nova-patrocinadora-da-pinacoteca-de-sao-paulo/",
+   "evidence": "presença da marca em espaços expositivos, visitas guiadas exclusivas ... eventos e ingressos",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "not a return: 'educational activities'",
+   "missing: events and tickets for its guests and staff, on the page"
+  ],
+  "reason": "The ABC da Comunicação report states signage in the three buildings, exclusive guided tours and events and tickets for guests and staff; educational activities are the museum programme, not a return."
+ },
+ {
+  "file": "cw2",
+  "funder": "novartis",
+  "space": "kunstmuseum-basel",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Novartis International AG backed Sculpture on the Move 1946 to 2016, the opening special exhibition of the museum's new building, April to September 2016.",
+   "date": "2016",
+   "source": "https://felixgonzalez-torresfoundation.org/exhibitions/sculpture-on-the-move-1946-2016",
+   "evidence": "THE EXHIBITION IS SUPPORTED BY: NOVARTIS INTERNATIONAL AG",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The exhibition press text names Novartis International AG first among supporters of Sculpture on the Move, 19 April to 18 September 2016."
+ },
+ {
+  "file": "cw2",
+  "funder": "ibm",
+  "space": "museu-do-amanha",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "IRIS+, the talking assistant added to the main exhibition in December 2017, runs on IBM Watson and is hosted on the IBM Cloud.",
+   "date": "2017-12",
+   "source": "https://museudoamanha.org.br/en/exhibitions/685/iris-uma-nova-experiencia-no-museu-do-amanha",
+   "evidence": "built with IBM Watson ... hosted on the IBM Cloud",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The museum page states IRIS+ opened December 2017, built with IBM Watson and hosted on the IBM Cloud: the funder product in use on site, named by the museum."
+ },
+ {
+  "file": "cw2",
+  "funder": "lekoilnigeria",
+  "space": "museum-of-west-african-art-mowaa",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "Listed in the Leadership Circle, the $100,000 Leader tier, which brings priority consideration for MOWAA leadership roles, subcommittees and advisory councils, plus all Friends of MOWAA benefits.",
+   "date": "",
+   "source": "https://wearemowaa.org/support",
+   "evidence": "Leader $100,000 (or $25,000 per annum over 4 years) Priority consideration for MOWAA leadership opportunities",
+   "replaces": "b2bd362e1c",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The support page lists Lekoil Nigeria Limited in the Leadership Circle and gives the Leader tier benefits."
+ },
+ {
+  "file": "cw2",
+  "funder": "jindal",
+  "space": "khoj-new-delhi",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Sangita Jindal, chair of the JSW Foundation, sits on the Khoj board as an advisor.",
+   "date": "",
+   "source": "https://www.britishasiantrust.org/support-us/advisory-councils/sangita-jindal/",
+   "evidence": "as an Advisor on the Khoj Board",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The British Asian Trust profile states Sangita Jindal, JSW Foundation chair, serves as an Advisor on the Khoj Board."
+ },
+ {
+  "file": "cw2",
+  "funder": "pfizer",
+  "space": "c-o-berlin-berlin",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "kinds": [
+    "access"
+   ],
+   "summary": "The €5,000 yearly corporate membership of C/O Berlin Friends gives Pfizer Deutschland employees direct access to the photography programme and a place in the C/O Berlin network.",
+   "date": "",
+   "source": "https://co-berlin.org/en/support/co-berlin-friends",
+   "evidence": "a corporate membership gives your employees direct access to photography",
+   "replaces": "d4aa6e89ba",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "vague benefit",
+   "sponsorship restated"
+  ],
+  "reason": "The page offers corporate members only \"direct access to photography\" and \"the network\": no concrete benefit, so the entry restates the €5,000 membership already on record."
+ },
+ {
+  "file": "cw2",
+  "funder": "airnorth",
+  "space": "great-northern-arts-festival-inuvik",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "kinds": [
+    "programme",
+    "access"
+   ],
+   "summary": "Air North flies the festival's artists to Inuvik and gives the festival's volunteers and staff a discount on its flights.",
+   "date": "",
+   "source": "https://greatnorthernartsfestival.org/our-sponsors",
+   "evidence": "Air North sponsor our artists each to travel to the festival",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "sponsorship restated: in-kind travel gift, no named programme",
+   "unsupported: 'flies the artists' (page: sponsors their travel)"
+  ],
+  "reason": "The page says Air North pays artists travel and gives volunteers a flight discount: that is its in-kind gift itself, not a named programme or a return to the funder."
+ },
+ {
+  "file": "cw2",
+  "funder": "digicel",
+  "space": "kingston-creative",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Nature in Action, a 2026 Kingston Creative mural commission at the Abilities Foundation on Constant Spring Road, is made in partnership with the Digicel Foundation as the centrepiece of a rain garden project.",
+   "date": "2026-05",
+   "source": "https://www.jamaicaobserver.com/value-added-section/2026/05/28/kingston-creative-launches-3-major-calls-public-art/",
+   "evidence": "In partnership with the Digicel Foundation",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "imprecise: 'open call for the Abilities Foundation' (page: located at its home)"
+  ],
+  "reason": "The Observer states Nature in Action is made in partnership with the Digicel Foundation at the Abilities Foundation as centrepiece of a rain garden project; the page names a partner, not a payer, so the wording stays with partnership."
+ },
+ {
+  "file": "cw3",
+  "funder": "socgen",
+  "space": "philharmonie-de-paris",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Its foundation funds the Chaire Création & Innovation held by conductor Esa-Pekka Salonen in 2026-2027, under a three-season deal of April 2026 that made it principal patron.",
+   "date": "2026-04",
+   "source": "https://www.societegenerale.com/sites/default/files/cp-20260403-philharmonie-de-paris-et-fondation-socie-te-ge-ne-rale-renforcent-leur-partenariat-historique.pdf",
+   "evidence": "Son premier soutien portera, en 2026-2027, sur la Chaire Création & Innovation",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The 3 April 2026 release states the three-season deal, principal patron status and the 2026-2027 Chaire Création & Innovation with Esa-Pekka Salonen."
+ },
+ {
+  "file": "cw3",
+  "funder": "socgen",
+  "space": "philharmonie-de-paris",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Démos, the Philharmonie's orchestra programme for children, has had the foundation as patron since it began, and the foundation backs La Balise, the house radio for 15 to 25 year olds.",
+   "date": "2026-04",
+   "source": "https://www.societegenerale.com/sites/default/files/cp-20260403-philharmonie-de-paris-et-fondation-socie-te-ge-ne-rale-renforcent-leur-partenariat-historique.pdf",
+   "evidence": "mécène du dispositif Démos ... depuis sa création",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "same opening as entry 0 ('Its foundation')",
+   "imprecise: 'run with young people' (page: for 15 to 25 year olds)"
+  ],
+  "reason": "The release states the foundation has backed Démos since its creation and supports La Balise for 15 to 25 year olds; reworded so the row entries do not open the same way."
+ },
+ {
+  "file": "cw3",
+  "funder": "socgen",
+  "space": "philharmonie-de-paris",
+  "i": 2,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Through Mécénat Musical Société Générale it was grand mécène of the visiting international orchestras programme for the 2015, 2015/2016 and 2016/2017 seasons.",
+   "date": "2015-01",
+   "source": "https://www.societegenerale.com/en/news/newsroom/societe-generale-major-patron-philharmonie-de-paris",
+   "evidence": "Grand mécène (major sponsor) of the programming of major international orchestras at the Philharmonie",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The January 2015 Société Générale article states grand mécène of the international orchestras programme for the 2015, 2015/2016 and 2016/2017 seasons."
+ },
+ {
+  "file": "cw3",
+  "funder": "baesystems",
+  "space": "smithsonian-air-and-space-washington",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "Helped pay for the Modern Military Aviation gallery, where the museum thanks it with General Atomics among the gallery's supporters.",
+   "date": "",
+   "source": "https://airandspace.si.edu/whats-on/exhibitions/modern-military-aviation",
+   "evidence": "The Museum gratefully acknowledges those who have generously supported this gallery.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The gallery page acknowledges General Atomics and BAE Systems as the supporters of Modern Military Aviation."
+ },
+ {
+  "file": "cw3",
+  "funder": "baesystems",
+  "space": "smithsonian-air-and-space-washington",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "kinds": [
+    "building"
+   ],
+   "summary": "Is named among the leadership donors to the renovation of the museum's building on the National Mall.",
+   "date": "",
+   "source": "https://airandspace.si.edu/transformation-donors",
+   "evidence": "gratefully acknowledges the leadership donors",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Transformation Donors page lists BAE Systems among leadership donors to the National Mall building renovation."
+ },
+ {
+  "file": "cw3",
+  "funder": "grupohabita",
+  "space": "museo-tamayo",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Grupo Habita founders Carlos Couturier, Moisés Micha and Rafael Micha sit in the museum foundation's Círculo contemporáneo patrons' group.",
+   "date": "",
+   "source": "https://museotamayo.org/en/fundacion",
+   "evidence": "Círculo contemporáneo ... Carlos Couturier ... Moisés Micha ... Rafael Micha",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported on the source: 'Grupo Habita founders'",
+   "patrons circle, not a board or committee seat"
+  ],
+  "reason": "The Tamayo page lists the three names in the Círculo contemporáneo, a donors circle, but does not tie them to Grupo Habita; that tie rests on a 2010 Chilango profile, and personal circle membership is not a seat of the funder."
+ },
+ {
+  "file": "cw3",
+  "funder": "northwestel",
+  "space": "great-northern-arts-festival-inuvik",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "programme"
+   ],
+   "summary": "It sponsored the festival's 2025 Fashion Show.",
+   "date": "2025",
+   "source": "https://www.greatnorthernartsfestival.org/our-sponsors",
+   "evidence": "Northwestel powered our Fashion Show in 2025!",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "filler: 'which the festival credits to it on its sponsors page'",
+   "stretched: 'Paid for' (page: 'powered')"
+  ],
+  "reason": "The sponsors page says Northwestel powered the 2025 Fashion Show; the second clause was filler."
+ },
+ {
+  "file": "cw3",
+  "funder": "ferrerangel",
+  "space": "museo-de-arte-de-ponce-ponce",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "kinds": [
+    "seat"
+   ],
+   "summary": "María Luisa Ferré Rangel chairs the board of trustees (Junta de Síndicos) of the museum and of the Fundación Luis A. Ferré, a post she has held for 33 years.",
+   "date": "",
+   "source": "https://museoarteponce.org/wp-content/uploads/2026/01/Nombramiento-Montero.pdf",
+   "evidence": "presidenta de la Junta de Síndicos de la Fundación Luis A. Ferré y del Museo",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "source is paid content (El Nuevo Día supplement)"
+  ],
+  "reason": "The El Nuevo Día piece is paid content; a press clipping on the museum site (2026) gives the same post, held for 33 years, so the source is swapped."
+ }
+]
