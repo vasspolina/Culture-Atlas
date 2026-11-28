@@ -7190,8 +7190,8 @@ return maplibregl$1;
         cityVectorMap.on('load', posterSync);
         // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
-        // The street map runs up under the name and the city's line, each on a small fade of its own (user, 28 Nov 2026:
-        // "just fade tiny bit behind letters and do not fade background"; until 19 Nov the map started under them). The line
+        // The street map runs up under the name and the city's line, with nothing between (user, 28 Nov 2026: "Remove the
+        // fade"; until 19 Nov the map started under them). The line
         // wraps to two rows in a narrow map, so its foot is measured: on a desktop the camera takes how far below the map's
         // box it ends as its top padding, so the spaces a city fits and the space it centres on stand below the line, as they
         // stood before; the phone has its own band.
