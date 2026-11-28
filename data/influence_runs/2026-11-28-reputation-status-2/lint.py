@@ -30,7 +30,11 @@ def check_entry(e):
         out.append(f'{n} words (35 at most)')
     for name, rx in (('hedge', HEDGE), ('promo', PROMO), ('absence', ABSENCE), ('dash', DASH)):
         # "May" the month is not a hedge.
-        m = rx.search(re.sub(r"\bMay(?= (?:19|20)\d\d)|(?<=\d )May\b", 'Mai', s) if name == 'hedge' else s)
+        t = re.sub(r"\bMay(?= (?:19|20)\d\d)|(?<=\d )May\b", 'Mai', s) if name == 'hedge' else s
+        # A surname is not a promo word (Jo Foster, a Science Museum trustee).
+        if name == 'promo':
+            t = re.sub(r"(?<=[a-z,] )Fosters?\b", 'F.', t)
+        m = rx.search(t)
         if m:
             out.append(f'{name}: {m.group(0)!r}')
     if s.count(';') > 1:
