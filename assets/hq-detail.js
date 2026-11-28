@@ -336,7 +336,7 @@
       if (pf) {
         const said = [pf.what, pf.arts].filter(Boolean);
         if (said.length) rows.append(row('hqWhatT', 'What it is', '', h('div', { class: 'hq-prose' }, said.map(t => h('p', { class: 'no-indent', text: t })))));
-        if (pf.money) rows.append(row('hqMoneyT', 'Where the money comes from', '', h('div', { class: 'hq-prose' }, h('p', { class: 'no-indent', text: pf.money }))));
+        if (pf.money) rows.append(row('hqMoneyT', 'Source of the money', '', h('div', { class: 'hq-prose' }, h('p', { class: 'no-indent', text: pf.money }))));
         if (pf.facts && pf.facts.length) rows.append(row('hqFactsT', 'On record', '', listOf(pf.facts, f => h('li', { class: 'hq-fact' },
           h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' – ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
         if (pf.src && pf.src.length) rows.append(row('hqSrcT', 'Sources', '', h('ul', { class: 'd-row-list hq-src' }, pf.src.map(u => h('li', null, link(u))))));
@@ -346,7 +346,7 @@
       // The row's title is the relation, not a count ("Funds 1 space": user, 9 Nov 2026, "Slop"); the list under it is the count.
       group('hqConnSpaces', e.kind === 'org' ? 'Funds' : 'Named on', sp, spaceRow);
       if (e.kind === 'org') {
-        group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
+        group('hqConnFunders', 'Other funders of the same museums', rel.funders, r => officeRow(r.e, r.shared));
         group('hqConnPeople', 'Named with these museums in the Epstein files', rel.people, r => officeRow(r.e, r.shared));
       }
     }

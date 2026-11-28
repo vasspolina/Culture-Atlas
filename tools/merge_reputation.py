@@ -70,6 +70,14 @@ def main():
         print(f'{len(unchecked)} entries no checker saw, left out: {unchecked[:5]}')
     if bad:
         sys.exit(f'{bad} problems; nothing written')
+    # Plain rewordings of entries that quoted a critic's slogan (data/influence_runs/plain_summaries.json) are applied last.
+    ppath = os.path.join(ROOT, 'data', 'influence_runs', 'plain_summaries.json')
+    plain = json.load(open(ppath))['plain'] if os.path.exists(ppath) else {}
+    for k, rows in out.items():
+        if not k.startswith('_'):
+            for r in rows:
+                for e in r['entries']:
+                    e['summary'] = plain.get(e['summary'], e['summary'])
     json.dump(out, open(path, 'w'), ensure_ascii=False, indent=1)
     print(f'{n} reputation and status entries merged into data/influence_found.json')
 
