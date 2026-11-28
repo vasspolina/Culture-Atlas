@@ -1,0 +1,269 @@
+[
+ {
+  "file": "rs1",
+  "funder": "adelson",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "yad-vashem",
+   "kinds": [
+    "status"
+   ],
+   "summary": "JTA reported in October 2006 that Yad Vashem was to hold a ceremony in honour of Sheldon and Miriam Adelson after their $25 million gift, with Prime Minister Ehud Olmert and Elie Wiesel attending.",
+   "date": "2006-10",
+   "source": "https://www.jta.org/archive/an-american-couple-gave-25-million-to-yad",
+   "evidence": "A ceremony in honor of the Adelsons will be held Friday at Yad Vashem",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'held a ceremony' (page says 'will be held Friday')"
+  ],
+  "reason": "Editor, 28 Nov 2026: too weak to publish. The JTA brief of 27 October 2006 is an advance notice: it says the ceremony will be held, so the summary now reports the announcement only."
+ },
+ {
+  "file": "rs1",
+  "funder": "belgiorno",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "biennale-of-sydney-sydney",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In an open letter of 19 February 2014, participating artists told the Biennale board that their role under the sponsorship added value to the Transfield brand and gave Transfield \"cultural capital\".",
+   "date": "2014-02",
+   "source": "https://art-leaks.org/2014/02/19/the-sydney-biennale-case-open-letters/",
+   "evidence": "adding value to the Transfield brand. Participation is an active endorsement, providing cultural capital",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "The letter of 19 February 2014 on the page carries both phrases; on_record c8373d7c85 gives the boycott and the cut ties, not what the artists said the sponsorship gave Transfield."
+ },
+ {
+  "file": "rs1",
+  "funder": "viktorvekselberg",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "jewish-museum-and-tolerance-center-moscow",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Viktor Vekselberg chaired the museum's board of trustees. The Jerusalem Post reported in March 2021 that he had given up the post.",
+   "date": "2021-03",
+   "source": "https://www.jpost.com/jerusalem-report/russian-billionaire-viktor-vekselberg-on-his-charity-projects-interview-663157",
+   "evidence": "chairman of the Board of Trustees of the Moscow Jewish Museum and Tolerance Center",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'early 2021' (pieced from two pages)",
+   "ended: true, but the museum's board page still lists him as a member"
+  ],
+  "reason": "The Jerusalem Post page (25 March 2021) says he was chairman and gave the post up 'just recently'; 'early 2021' is on no single page, and the museum's own board page still lists him, so ended is false. No on_record line holds this seat."
+ },
+ {
+  "file": "rs1",
+  "funder": "munjal",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "serendipity-arts-festival",
+   "kinds": [
+    "status"
+   ],
+   "summary": "France's ambassador conferred the Chevalier de l'Ordre national du Mérite on Sunil Kant Munjal, a November 2025 press release said. Munjal said the honour celebrates \"the work we do at Serendipity Arts\".",
+   "date": "2025-11",
+   "source": "https://www.tribuneindia.com/news/business/mr-sunil-kant-munjal-honoured-by-france-as-serendipity-arts-festival-celebrates-10-transformative-years",
+   "evidence": "it celebrates not just the work we do at Serendipity Arts",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'The announcement credits his work through the foundation and its festival' (the award's stated grounds do not name them)",
+   "source is a press release, now said"
+  ],
+  "reason": "The page is a paid PNN release carried by ANI; its stated grounds for the award are civil society, education and access to art, and the festival link is the release's own framing plus Munjal's quoted words, so the summary now says only that."
+ },
+ {
+  "file": "rs1",
+  "funder": "woodside",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "wa-museum-boola-bardip-perth",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In June 2026 Matt Roberts, executive director of the Conservation Council of WA, said Woodside spends heavily to \"buy its relevance to WA culture\" and named the WA Museum among the bodies it funds.",
+   "date": "2026-06",
+   "source": "https://www.ccwa.org.au/new_report_highlights_insidious_nature_of_fossil_fuel_companies_targeting_children_to_build_social_license",
+   "evidence": "Woodside spends a lot of money trying to buy its relevance to WA culture",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "CCWA's release of 29 June 2026 quotes Roberts and names the WA Museum; the protest flag is borne out by Green Left, 23 April 2026 (greenleft.org.au/2026/1452/news/climate-protesters-demand-answers-woodside), which reports a campaign to end Woodside's sponsorship of the WA Museum."
+ },
+ {
+  "file": "rs1",
+  "funder": "woodside",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "fringe-world-perth",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Artist Adam Bennett wrote in June 2021 that ten nights of protest readings beside the festival's Woodside Pleasure Garden challenged Woodside's \"social licence\".",
+   "date": "2021-06",
+   "source": "https://counteract.org.au/fossil-free-arts-breaking-social-license/",
+   "evidence": "For ten nights we challenged the social licence of Woodside",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "Bennett's signed guest post of 24 June 2021 has the sentence and describes the readings a few metres from the Woodside Pleasure Gardens entrance; the summary attributes it to him, and on_record cbc04b08bc gives only the 2023 ending."
+ },
+ {
+  "file": "rs2",
+  "funder": "heinz",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "carnegie-museum-of-art",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Teresa Heinz, chair emeritus of The Heinz Endowments, is an emeritus member of the museum's advisory board.",
+   "date": "",
+   "source": "https://carnegieart.org/about/advisory-board",
+   "evidence": "Teresa Heinz is the chairman of the Heinz Family Foundation and chair emeritus",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The museum's advisory board page lists Teresa Heinz under Emeritus and gives her role at The Heinz Endowments; no on_record line holds a seat."
+ },
+ {
+  "file": "rs2",
+  "funder": "aircanada",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "mac-montr-al",
+   "kinds": [
+    "access"
+   ],
+   "summary": "Marc Barbeau, Air Canada's executive vice president and chief legal officer, was a co-chair of the 2026 Bal du MAC, the museum foundation said in September 2026.",
+   "date": "2026-09",
+   "source": "https://www.cantechletter.com/newswires/leclat-dun-soir-the-2026-bal-du-mac-unveils-its-highlights/",
+   "evidence": "Marc Barbeau, Executive Vice President, Chief Legal Officer and Corporate Secretary, Air Canada",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'held on 25 September 2026' (advance notice)",
+   "venue is La Nesra, not the museum building"
+  ],
+  "reason": "Editor, 28 Nov 2026: too weak to publish. The page is the Fondation du MAC's release of 10 September 2026, written before the ball, so 'held on 25 September' is not on it; it names Barbeau as co-chair with his Air Canada title. The ball was set for La Nesra, a hired hall, and is the museum foundation's own gala."
+ },
+ {
+  "file": "rs2",
+  "funder": "obayashi",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "mori-art-museum",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Takeo Obayashi, chairman of the board of Obayashi Corporation, sits on the museum's Board of Trustees, as listed in July 2026.",
+   "date": "2026-07",
+   "source": "https://www.mori.art.museum/en/about/organization/",
+   "evidence": "Obayashi Takeo (Chairman of the Board, Obayashi Corporation)",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The museum's organisation page, as of July 2026, lists him on the Board of Trustees with his Obayashi Corporation title; the on_record seat is at the Aichi Triennale, not here."
+ },
+ {
+  "file": "rs2",
+  "funder": "broad",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "moca-los-angeles-los-angeles",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Eli Broad was a life trustee on the museum's board, KPCC reported in March 2013.",
+   "date": "2013-03",
+   "source": "https://laist.com/news/kpcc-archive/southland-billionaire-eli-broad-now-at-center-of-l",
+   "evidence": "Broad is a life trustee on both boards.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "kind: status needs a stated reason for the title; a life trusteeship is a seat"
+  ],
+  "reason": "The KPCC page says only that Broad is a life trustee on both boards, with no reason given, so it cannot stand as an honour; it is a board seat that on_record (founding chairman) does not hold, so the kind is now seat."
+ },
+ {
+  "file": "rs2",
+  "funder": "safra",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "israel-museum",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Lily Safra, chairwoman of the Edmond J. Safra Philanthropic Foundation, was one of four international Honorary Co-Chairs of the museum's endowment campaign, the museum said in April 2009.",
+   "date": "2009-04",
+   "source": "https://www.bdcnetwork.com/home/press-release/55167682/israel-museum-gets-12-million-gift-to-renovate-fine-arts-wing-james-carpenter-design-associates-to-lead-design-team",
+   "evidence": "international Honorary Co-Chairs Charles Bronfman, Lord Rothschild, Lily Safra, and Michael Steinhardt",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "repeats on_record 88722adc7d ($12 million in 2009)"
+  ],
+  "reason": "The museum's April 2009 release names her among the four honorary co-chairs of the endowment campaign launched in 2007 and as chairwoman of the foundation; it is the museum's own title, and the $12 million gift is cut because on_record 88722adc7d already states it."
+ },
+ {
+  "file": "rs2",
+  "funder": "aramco",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "king-abdulaziz-center-for-world-culture-ithra-dhahran",
+   "kinds": [
+    "status"
+   ],
+   "summary": "King Salman attended the inauguration ceremony in December 2016, where Aramco chief executive Amin Nasser spoke.",
+   "date": "2016-12",
+   "source": "https://www.middleeastmonitor.com/20161202-saudi-aramco-inaugurates-800-mln-cultural-center-in-dhahran/",
+   "evidence": "At a ceremony attended by King Salman",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Middle East Monitor, 2 December 2016, reports the inauguration ceremony attended by King Salman with Nasser speaking; a head of state at the opening of the centre Aramco built, not in on_record."
+ }
+]

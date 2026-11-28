@@ -11,7 +11,8 @@ import glob, json, os, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Each wave of the search has its own run folder; a row is marked with its wave's tag.
-RUNS = [('reputation', '2026-11-27-reputation-status'), ('reputation-2', '2026-11-28-reputation-status-2')]
+RUNS = [('reputation', '2026-11-27-reputation-status'), ('reputation-2', '2026-11-28-reputation-status-2'),
+        ('reputation-3', '2026-11-28-reputation-status-3')]
 sys.path.insert(0, os.path.join(ROOT, 'data', 'influence_runs', RUNS[0][1]))
 from lint import check_entry  # noqa: E402
 
