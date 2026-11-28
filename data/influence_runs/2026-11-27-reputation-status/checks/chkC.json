@@ -1,0 +1,375 @@
+[
+ {
+  "file": "rs6",
+  "funder": "ford",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "the-studio-museum-in-harlem",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The Studio Museum in Harlem gave the Ford Foundation an award at its gala on 24 October 2016. Darren Walker, then the foundation's president, accepted it.",
+   "date": "2016-10",
+   "source": "https://www.fordfoundation.org/news-and-stories/stories/darren-walker-accepts-an-award-from-the-studio-museum-on-behalf-of-the-ford-foundation/",
+   "evidence": "Darren Walker accepts an award on behalf of the Ford Foundation",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The foundation's own page carries Walker's remarks on accepting an award at the Studio Museum Gala of 24 October 2016; the page does not name the award and the summary does not either."
+ },
+ {
+  "file": "rs6",
+  "funder": "chanel",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "grand-palais-paris",
+   "kinds": [
+    "status"
+   ],
+   "summary": "President Emmanuel Macron and culture minister Rachida Dati toured the Grand Palais renovation site on 15 April 2024 in the presence of Bruno Pavlovsky, president of Chanel SAS.",
+   "date": "2024-04",
+   "source": "https://www.timeinternational.co.id/emmanuel-macron-visits-grand-palais-site-with-chanels-president/",
+   "evidence": "visited the construction site of the Grand Palais, in Paris, with Didier Fusillier",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The page is a retailer's repost of Chanel's press release and states the 15 April 2024 visit, Dati, and Pavlovsky's title; elysee.fr (J-100 visite de chantier du Grand Palais, 15 April 2024) confirms the visit and has Macron saluting Chanel there."
+ },
+ {
+  "file": "rs6",
+  "funder": "bbva",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "fundaci-joan-mir",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The Fundació Joan Miró gave Fundación BBVA its bronze 'garrofa' in January 2025 for more than three decades of collaboration. Carlos Torres Vila, who chairs BBVA and its foundation, collected it.",
+   "date": "2025-01",
+   "source": "https://www.vozpopuli.com/economia/banca/la-fundacion-bbva-recibe-el-reconocimiento-de-la-fundacio-joan-miro-por-mas-de-tres-decadas-de-apoyo-al-arte.html",
+   "evidence": "ha reconocido a la Fundación BBVA, en la figura de su presidente, Carlos Torres Vila",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Europa Press report on Vozpopuli of 16 January 2025 states the bronze 'garrofa', the three decades, and Torres Vila collecting it as president of BBVA and of its foundation."
+ },
+ {
+  "file": "rs6",
+  "funder": "bbva",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "museo-del-prado",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "The culture minister renewed BBVA chair Carlos Torres Vila as a member of the Prado's Real Patronato for five years in November 2025. The order says such members are named for contributions to the museum.",
+   "date": "2025-11",
+   "source": "https://www.boe.es/boe/dias/2025/12/04/pdfs/BOE-A-2025-24585.pdf",
+   "evidence": "Renovar como vocales del Real Patronato del Museo Nacional del Prado",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The order of 26 November 2025 renews Carlos Torres Vila for five years and gives the contributions ground; his post as president of BBVA is on the Vozpopuli page of 16 January 2025 (the funder's other source); the seat is not in on_record."
+ },
+ {
+  "file": "rs6",
+  "funder": "bp",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "british-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In December 2023 Doug Parr, policy director of Greenpeace UK, said of the £50 million deal that no cultural body should let fossil fuel companies pay it \"to clean their image\".",
+   "date": "2023-12",
+   "source": "https://artreview.com/greenpeace-accuse-bp-of-worming-its-way-back-into-the-british-museum-after-news-of-50-million-deal",
+   "evidence": "allowing fossil fuel companies to pay them to clean their image",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "ArtReview of 19 December 2023 quotes Doug Parr, Greenpeace UK's policy director, in these words and names the British Museum and the £50 million deal; no on_record line holds it."
+ },
+ {
+  "file": "rs6",
+  "funder": "bp",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "national-portrait-gallery-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In June 2019 Gary Hume, a judge of that year's BP Portrait Award, wrote to the gallery's director that the art world needs to refuse \"to launder the oil industry's image\".",
+   "date": "2019-06",
+   "source": "https://www.theartnewspaper.com/2019/06/11/artists-call-for-national-portrait-gallery-to-drop-bp-sponsorship",
+   "evidence": "refusing to launder the oil industry’s image is a step that the art world",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "The Art Newspaper of 11 June 2019 quotes Hume's letter to Nicholas Cullinan in these words and calls him a judge of that year's award; no on_record line holds it."
+ },
+ {
+  "file": "rs6",
+  "funder": "bp",
+  "i": 2,
+  "verdict": "fix",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In January 2026, after documents showed BP's role in the museum's STEM academy, Stuart Tannock of UCL said linking the BP brand with STEM education helps it \"acquire and retain a social licence to operate\".",
+   "date": "2026-01",
+   "source": "https://cultureunstained.org/2026/01/16/bp-played-dominant-role-in-developing-science-museums-stem-academy-documents-reveal/",
+   "evidence": "The linking of the BP brand with good STEM research and education",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "unsupported: 'the tie between BP and the museum's STEM academy' is the writer's paraphrase of 'the linking of the BP brand with good STEM research and education'"
+  ],
+  "reason": "Tannock's quoted words are about linking the BP brand with STEM research and education, said in response to the academy documents, so the summary is cut back to that."
+ },
+ {
+  "file": "rs6",
+  "funder": "bp",
+  "i": 3,
+  "verdict": "fix",
+  "after": {
+   "space": "tate-modern",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "On 22 December 2014 the First-tier Tribunal, ordering Tate to disclose BP sponsorship sums, accepted that arts sponsorship \"can legitimately be understood as a means of maintaining BP's 'social licence' to operate\".",
+   "date": "2014-12",
+   "source": "https://informationrights.decisions.tribunals.gov.uk/DBFiles/Decision/i1438/Montague,%20Brendan%20&%20Tate%20Gallery%20EA.2014.0040,%200070%20&%200071%20(22.12.2014).pdf",
+   "evidence": "We accept Mr Montague's evidence that arts sponsorship can legitimately be understood as a means",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "second-hand quotation: the Platform article quotes the ruling",
+   "date inferred from an article of January 2015",
+   "overstated: the tribunal accepted evidence that sponsorship 'can legitimately be understood as', it did not rule that it is"
+  ],
+  "reason": "The decision itself (paragraph 21, dated 22 December 2014) has the sentence as evidence the tribunal accepted, so the source is now the decision and 'ruled that sponsorship is' becomes 'accepted that it can legitimately be understood as'."
+ },
+ {
+  "file": "rs6",
+  "funder": "bailliegifford",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "edinburgh-international-book-festival-edinburgh",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Greta Thunberg pulled out of the August 2023 festival over Baillie Gifford's sponsorship. Her statement said fossil fuel industry greenwashing, sponsorship of cultural events included, lets the industry \"keep the social licence to continue operating\".",
+   "date": "2023-08",
+   "source": "https://news.stv.tv/east-central/greta-thunberg-cancels-edinburgh-international-book-festival-appearance-over-greenwashing",
+   "evidence": "cannot attend an event which receives sponsorship from Baillie Gifford, who invest heavily",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "stretched: 'such sponsorship is greenwashing' turns a sentence about the fossil fuel industry into one about Baillie Gifford"
+  ],
+  "reason": "STV of 4 August 2023 says she pulled out in protest over Baillie Gifford and accused the sponsors of greenwashing, but her greenwashing sentence names the fossil fuel industry, so the summary now says so."
+ },
+ {
+  "file": "rs6",
+  "funder": "axa",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "museo-del-prado",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Olga Sánchez Rodríguez, president of Fundación AXA and chief executive of AXA España, joined the Prado's Real Patronato in 2019 as representative of a benefactor body. Her seat was renewed in July 2024.",
+   "date": "2024-07",
+   "source": "https://www.axa.es/fundacion/proteccion-patrimonio-cultura/museo-del-prado",
+   "evidence": "se incorporó en 2019 al pleno del Real Patronato del Museo del Prado",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "curl met a bot check, but the page read through WebFetch states her two posts, the 2019 seat as representative of a benefactor body and the July 2024 renewal on the one page; the seat is not in on_record."
+ },
+ {
+  "file": "rs7",
+  "funder": "sigridrausingtrust",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "national-gallery-london",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Hans Rausing was knighted in the King's Birthday Honours of June 2025. The Art Newspaper's report of the honour named his support of projects at the National Gallery.",
+   "date": "2025-06",
+   "source": "https://www.theartnewspaper.com/2025/06/16/tate-and-va-chiefs-knighted-in-kings-birthday-honours",
+   "evidence": "Hans Rausing has supported projects at the Royal Academy of Arts and the National Gallery",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Art Newspaper's honours report of 16 June 2025 states the knighthood and names his support of National Gallery projects, and the summary claims no more than that the report named it."
+ },
+ {
+  "file": "rs7",
+  "funder": "ianpotter",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "potter-museum-of-art-melbourne",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Lady Potter is the current Patron of the Ian Potter Museum of Art.",
+   "date": "",
+   "source": "https://www.ianpotterculturaltrust.org.au/about-us/people",
+   "evidence": "is current Patron of The Ian Potter Museum of Art at Melbourne University",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "title listed in a biography with no reason given"
+  ],
+  "reason": "The trust's biography lists the patronage with nothing said of why or when, which the status rule drops."
+ },
+ {
+  "file": "rs7",
+  "funder": "ianpotter",
+  "i": 1,
+  "verdict": "drop",
+  "after": {
+   "space": "national-gallery-of-victoria",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Lady Potter is an Honorary Life Member of the National Gallery of Victoria. Charles Goode, the foundation's chairman from 1994 to 2024, was made a Life Member.",
+   "date": "",
+   "source": "https://www.ianpotterculturaltrust.org.au/about-us/people",
+   "evidence": "He has been honoured as a Life Member of the National Gallery of Victoria",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "titles listed in biographies with no reason given"
+  ],
+  "reason": "The biographies list the two life memberships with nothing said of why or when, which the status rule drops."
+ },
+ {
+  "file": "rs7",
+  "funder": "audain",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "vancouver-art-gallery",
+   "kinds": [
+    "status",
+    "seat"
+   ],
+   "summary": "Michael Audain was made an Officer of the Order of Canada in 2009. The citation names his gifts to galleries and his service as president of the Vancouver Art Gallery and chair of its foundation.",
+   "date": "2009-11",
+   "source": "https://gg.ca/en/honours/recipients/146-15494",
+   "evidence": "served as both president of the Vancouver Art Gallery and chair of its foundation",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Governor General's page gives Officer of the Order of Canada, awarded 2009-11-04, and a citation naming his gifts to galleries and both Vancouver Art Gallery posts; the seat is not in on_record."
+ },
+ {
+  "file": "rs7",
+  "funder": "bnpparibas",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "imma-dublin",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Right Side Of History IRL's petition, signed in September 2025, says IMMA still lists BNP Paribas as a Freud Circle sponsor, \"lending legitimacy to its practices\", and wants it removed. The partnership ended in 2019.",
+   "date": "2025-09",
+   "source": "https://my.uplift.ie/petitions/public-art-public-values-imma-must-divest",
+   "evidence": "remains listed as a sponsor of The Freud Circle on IMMA’s website, lending legitimacy",
+   "replaces": "ddd1e4e71a",
+   "ended": true,
+   "protest": true
+  },
+  "problems": [
+   "date: the page dates signature milestones, not the petition",
+   "replaces an on_record line but lost its second fact, the demand to remove the listing"
+  ],
+  "reason": "The petition page bears out the quotation, the 2019 end and its creator, but dates only its signature milestones (13 to 16 September 2025), and the replaced on_record line also held the demand to take the listing off, now restored."
+ },
+ {
+  "file": "rs7",
+  "funder": "deutschebank",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "bronx-museum-of-the-arts-bronx",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The Bronx Museum gave the Deutsche Bank Americas Foundation its Corporate Philanthropic Award at its 2024 gala, for almost twenty years of support.",
+   "date": "2024",
+   "source": "https://country.db.com/usa/responsibility/awards/deutsche-bank-americas-foundation-receives-corporate-philanthropic-award-from-the-bronx-museum",
+   "evidence": "received the Corporate Philanthropic Award from The Bronx Museum of the Arts",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Deutsche Bank's page states the Corporate Philanthropic Award, the museum's 2024 gala and the almost twenty years."
+ },
+ {
+  "file": "rs7",
+  "funder": "hsbc",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "m-hong-kong",
+   "kinds": [
+    "status"
+   ],
+   "summary": "HSBC won the Award for Arts Sponsorship at the Hong Kong Arts Development Awards in June 2025, for its support as Lead Partner of M+ from 2022 to 2024.",
+   "date": "2025-06",
+   "source": "https://www.mplus.org.hk/en/press/hsbc-receives-hong-kong-arts-development-awards-for-lead-partnership-with-mplus/",
+   "evidence": "The award recognises HSBC’s on-going support as Lead Partner of M+’s key arts programmes",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "M+'s press page of 11 June 2025 states the Award for Arts Sponsorship and that it recognises HSBC's support as Lead Partner of M+ between 2022 and 2024."
+ }
+]
