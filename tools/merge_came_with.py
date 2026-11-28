@@ -66,7 +66,13 @@ def main():
         print(f'{len(unchecked)} entries no checker saw, left out: {unchecked[:5]}')
     if bad:
         sys.exit(f'{bad} problems; nothing written')
-    json.dump(out, open(os.path.join(ROOT, 'data', 'influence_found.json'), 'w'), ensure_ascii=False, indent=1)
+    # Rows another run merged into the file (tools/merge_reputation.py marks its own with `run`) are kept.
+    path = os.path.join(ROOT, 'data', 'influence_found.json')
+    if os.path.exists(path):
+        for k, rows in json.load(open(path)).items():
+            if not k.startswith('_'):
+                out.setdefault(k, []).extend(r for r in rows if r.get('run'))
+    json.dump(out, open(path, 'w'), ensure_ascii=False, indent=1)
     print(f"{n} entries for {len(out) - 1} funders in data/influence_found.json")
 
 
