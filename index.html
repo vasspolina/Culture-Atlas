@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=930"></script>
+  <script src="assets/load-image-data.js?v=931"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=930">
-  <link rel="stylesheet" href="assets/sheet.css?v=930">
-  <script src="assets/config.js?v=930"></script>
-  <script src="assets/analytics.js?v=930"></script>
-  <script src="assets/subtopic.js?v=930"></script>
-  <script src="assets/names.js?v=930"></script>
-  <script src="assets/grounding.js?v=930"></script>
-  <script src="assets/repeats.js?v=930"></script>
-  <script src="assets/intro-narration.js?v=930"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=931">
+  <link rel="stylesheet" href="assets/sheet.css?v=931">
+  <script src="assets/config.js?v=931"></script>
+  <script src="assets/analytics.js?v=931"></script>
+  <script src="assets/subtopic.js?v=931"></script>
+  <script src="assets/names.js?v=931"></script>
+  <script src="assets/grounding.js?v=931"></script>
+  <script src="assets/repeats.js?v=931"></script>
+  <script src="assets/intro-narration.js?v=931"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=930"></script>
+  <script src="assets/load-image.js?v=931"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=930"></script>
-  <script src="assets/money-ids.js?v=930"></script>
+  <script src="assets/institutions.js?v=931"></script>
+  <script src="assets/money-ids.js?v=931"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -11035,11 +11035,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v930';
+    const ATLAS_RELEASE = 'culture-atlas-v931';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=930').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=931').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -13255,22 +13255,6 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
           && /[€$£¥₹₩₺₽]\s?\d|\d\s?[€$£]|\b[A-Z]{3}\s?\d|\d\s?(euros?|dollars?|pesos?|pounds|yen|kr|kronor|kroner|zł|lei|reais)\b|\bfree\b/i.test(s)),
       };
     }
-    // A Bottom line that only restates the record is not printed (user, 5 Nov 2026). It goes when nine in ten of its words (over three
-    // letters) and every figure in it are already in the report's other parts. A bottom line that judges ("the weak point is", "worth
-    // watching") carries words the rest does not, so it stays; 96 of the 1,403 bottom lines went when this was written.
-    function bottomLineRestates(inst) {
-      const d = (inst && inst.details) || {};
-      if (!d.bottom_line) return false;
-      const press = d.press || {};
-      const rest = [].concat(d.overview || [], d.funding_verdict || '', d.funding || [], ...(d.red_flags || []).map(f => [f.heading || ''].concat(f.points || [])),
-        d.wider_context || [], d.not_related || [], press.overall || '', ...(press.items || []).map(x => x.points || [])).join(' ');
-      const words = (t) => String(t || '').toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').match(/[a-z0-9$€£]+/g) || [];
-      const mine = [...new Set(words(d.bottom_line).filter(w => w.length > 3))];
-      if (mine.length < 4) return false;
-      if ((String(d.bottom_line).match(/\d[\d,.]*/g) || []).some(f => !rest.includes(f.replace(/[,.]+$/, '')))) return false;
-      const have = new Set(words(rest));
-      return mine.filter(w => have.has(w)).length / mine.length >= 0.9;
-    }
     // An Affiliations note loses each sentence the Overview already says.
     function affiliationsNotInOverview(inst, note) {
       if (!note) return '';
@@ -14924,7 +14908,6 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
       rows.push(proseRow('Cases', '', caseLis, { tone: 'flag', gossip: true, fold: 3 }));
       rows.push(proseRow('Background', '', proseChunks(d.wider_context, 0).map(t => proseLi('', escapeHtml(t))), { fold: 2 }));
       rows.push(proseRow('Studies', '', (inst.study_notes || []).map(s => proseLi(`${s.title} (${[s.authors, s.year, s.journal].filter(Boolean).join(', ')}):`, escapeHtml(proseEnd(s.text)) + (s.doi ? ` <a href="https://doi.org/${escapeHtml(s.doi)}" target="_blank" rel="noopener noreferrer" class="domain">doi.org</a>` : '')))));
-      if (d.bottom_line && !bottomLineRestates(inst)) rows.push(proseRow('In short', '', [proseLi('', escapeHtml(proseEnd(d.bottom_line)))]));
       // Sources: every source the report and the record name, one bullet per site; the date it was researched is the subtitle, and the
       // registry and the filings sit in the box under the title.
       const urls = [].concat((d.sources || []).map(s => s && s.url), inst.sources || []);
@@ -23217,25 +23200,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=930"></script>
-<script src="assets/note-aids.js?v=930" defer></script>
-<script src="assets/place-list.js?v=930" defer></script>
-<script src="assets/chat-share.js?v=930" defer></script>
-<script src="assets/note-files.js?v=930" defer></script>
-<script src="assets/funding-views.js?v=930"></script>
-<script src="assets/years.js?v=930"></script>
-<script src="assets/layers.js?v=930"></script>
-<script src="assets/critique-gallery-data.js?v=930"></script>
-<script src="assets/critique-captions.js?v=930"></script>
-<script src="assets/critique-gallery.js?v=930"></script>
-<script src="assets/hq-detail.js?v=930"></script>
-<script src="assets/influence-mode.js?v=930"></script>
-<script src="assets/bubbles.js?v=930" defer></script>
-<script src="assets/phone-maps.js?v=930"></script>
-<script src="assets/desktop-maps.js?v=930"></script>
-<script src="assets/chat-resize.js?v=930"></script>
-<script src="assets/frame-refusers.js?v=930"></script>
-<script src="assets/link-pane.js?v=930"></script>
-<script src="assets/tab-suggest.js?v=930"></script>
+<script src="assets/typeset.js?v=931"></script>
+<script src="assets/note-aids.js?v=931" defer></script>
+<script src="assets/place-list.js?v=931" defer></script>
+<script src="assets/chat-share.js?v=931" defer></script>
+<script src="assets/note-files.js?v=931" defer></script>
+<script src="assets/funding-views.js?v=931"></script>
+<script src="assets/years.js?v=931"></script>
+<script src="assets/layers.js?v=931"></script>
+<script src="assets/critique-gallery-data.js?v=931"></script>
+<script src="assets/critique-captions.js?v=931"></script>
+<script src="assets/critique-gallery.js?v=931"></script>
+<script src="assets/hq-detail.js?v=931"></script>
+<script src="assets/influence-mode.js?v=931"></script>
+<script src="assets/bubbles.js?v=931" defer></script>
+<script src="assets/phone-maps.js?v=931"></script>
+<script src="assets/desktop-maps.js?v=931"></script>
+<script src="assets/chat-resize.js?v=931"></script>
+<script src="assets/frame-refusers.js?v=931"></script>
+<script src="assets/link-pane.js?v=931"></script>
+<script src="assets/tab-suggest.js?v=931"></script>
 </body>
 </html>
