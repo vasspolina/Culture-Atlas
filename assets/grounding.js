@@ -47,6 +47,7 @@
       '\n  Place: ' + [i.city, i.country].filter(Boolean).join(', ') + (i.address ? ' — ' + i.address : '') + (i.neighborhood ? ' — ' + cut(i.neighborhood, 160) : '') +
       (i.year_founded ? '\n  Founded: ' + i.year_founded : '') +
       (i.closed_note ? '\n  Closed: ' + (i.year_closed ? i.year_closed + '. ' : '') + i.closed_note : '') +
+      (!i.closed_note && i.year_last_seen ? '\n  Last seen active (not a closing date): ' + i.year_last_seen + '. ' + (i.last_seen_note || '') : '') +
       (i.size ? '\n  Size: ' + ({ S: 'small', M: 'medium', L: 'large', XL: 'very large' }[i.size] || i.size) : '') +
       (i.website ? '\n  Website: ' + i.website : '');
     parts.push(head);
