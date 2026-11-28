@@ -1,0 +1,331 @@
+[
+ {
+  "file": "rs1",
+  "funder": "biocon",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "museum-of-art-photography-map",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "STIR named Kiran Mazumdar-Shaw, the founder of Biocon, as a board member of MAP in its January 2023 report on the museum's inauguration.",
+   "date": "2023-01",
+   "source": "https://www.stirworld.com/see-news-museum-of-art-and-photography-democratises-dialogues-on-art-and-culture",
+   "evidence": "Kiran Mazumdar-Shaw, Executive Chairperson and Founder, Biocon and MAP's board member, shared",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: present tense 'sits on the museum's board' rests on a 2023 page",
+   "repeats itself: two sentences state the seat"
+  ],
+  "reason": "STIR (2 Jan 2023) calls her Biocon's founder and 'MAP's board member'; the page is a 2023 report, so the present-tense 'sits' is cut and the seat is given as STIR reported it."
+ },
+ {
+  "file": "rs2",
+  "funder": "schwarzman",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "the-frick-collection",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The Frick honoured Stephen Schwarzman at its 2019 Autumn Dinner, where director Ian Wardropper toasted him and he received a commemorative silver tray.",
+   "date": "2019-10",
+   "source": "https://popstyletv.com/annual-autumn-dinner-at-the-frick-honoring",
+   "evidence": "held at the elegant Frick mansion honored Stephen A. Schwarzman, a trustee of the Frick",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The page states the honour, the toast by Ian Wardropper and the silver tray, and calls him a Frick trustee; frick.org refused curl and its Autumn Dinner page lists only the 2026 honoree, so this rests on one society-press page."
+ },
+ {
+  "file": "rs2",
+  "funder": "hanwha",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "centre-pompidou",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "An open letter of 27 May 2026, signed by over 100 art professionals including Ali Cherri and Dominique Gonzalez-Foerster, called the Centre Pompidou partnership with Hanwha an \"art-washing\" operation and asked for its termination.",
+   "date": "2026-05",
+   "source": "https://artreview.com/open-letter-denounces-centre-pompidou-and-hanwha-group-partnership/",
+   "evidence": "criticises the partnership with the French museum as a form ‘“art-washing” operation masking profits",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "ArtReview (2 June 2026) gives the 27 May letter, the 'art-washing' wording, over 100 signatories and both names; on_record holds only the naming line, so nothing repeats."
+ },
+ {
+  "file": "rs2",
+  "funder": "hanwha",
+  "i": 1,
+  "verdict": "drop",
+  "after": null,
+  "problems": [
+   "status: head of state did not open the museum",
+   "no funder person on the page"
+  ],
+  "reason": "A presidential visit to a building site two months before opening; the page names no Hanwha person and does not tie the visit to Hanwha's payment, so it is not an opening or a hosting."
+ },
+ {
+  "file": "rs2",
+  "funder": "amorepacific",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "amorepacific-museum-of-art-seoul",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Amorepacific won the Korea Mécénat Association's Mécénat Award in November 2021. The company says the award also recognises its support of the Amorepacific Museum of Art.",
+   "date": "2021-11",
+   "source": "https://www.apgroup.com/int/en/news/2021-11-18-a.html",
+   "evidence": "This award also recognizes the company’s various efforts in supporting culture and arts",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The company's release ties the award to its support of the Amorepacific Museum of Art and the summary attributes that to the company; Asia Business Daily (17 Nov 2021) confirms the award was given that day."
+ },
+ {
+  "file": "rs3",
+  "funder": "buditek",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "yuz-museum-shanghai",
+   "kinds": [
+    "status"
+   ],
+   "summary": "France's consul general in Shanghai gave Budi Tek the Legion of Honour at the Yuz Museum in August 2017. China Daily said he received it for the museum's dialogue between Chinese and Western cultures.",
+   "date": "2017-08",
+   "source": "https://global.chinadaily.com.cn/a/201708/15/WS59bb6267a310d4d9ab7e3ca5.html",
+   "evidence": "bestowed by Alex Cruau, the consulate general of France in Shanghai, at the museum",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "source is advance notice ('is to be awarded')",
+   "reason on the cited page does not name the museum"
+  ],
+  "reason": "The Art Newspaper page is advance notice and its reason does not name the museum; China Daily (15 Aug 2017) reports the award bestowed at the museum and ties it to the museum's goal, so the source is changed to it and the rank is left out because China Daily says Officer where The Art Newspaper says Chevalier."
+ },
+ {
+  "file": "rs3",
+  "funder": "perelman",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "carnegie-hall",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Carnegie Hall's board elected Ronald Perelman chairman on 19 February 2015. He had been a trustee since 1988 and a vice chairman since 2012.",
+   "date": "2015-02",
+   "source": "https://www.broadwayworld.com/article/Carnegie-Hall-Elects-New-Chairman-of-Board-of-Trustees-Sanford-I-Weill-to-Serve-as-President-20150219",
+   "evidence": "was elected today as the new Chairman of the Board of Trustees",
+   "replaces": "",
+   "ended": true,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Carnegie Hall release on BroadwayWorld gives the election on 19 February 2015, the 1988 board seat and the 2012 vice chair; on_record 240b447bdb holds only his leaving, so this adds the seat history without restating it (ended stays true on the strength of that line)."
+ },
+ {
+  "file": "rs4",
+  "funder": "remai",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "remai-modern",
+   "kinds": [
+    "status"
+   ],
+   "summary": "In June 2025 French ambassador Michel Miraillet made Ellen Remai a Knight of the Order of Arts and Letters at Remai Modern, citing her support of the arts and her donation of Picasso linocuts.",
+   "date": "2025-06",
+   "source": "https://remaimodern.org/ellen-remai-named-first-saskatchewan-recipient-of-french-honour/",
+   "evidence": "Ellen Remai received the Knight of the Order of Arts and Letters",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Read through WebFetch: the museum's release gives the 18 June ceremony in Remai Modern's galleries, Ambassador Michel Miraillet, her support of the arts and the Picasso linocut donation; SaskCulture dates it June 2025."
+ },
+ {
+  "file": "rs5",
+  "funder": "mordant",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "museum-of-contemporary-art-australia-mca",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Simon Mordant was made an Officer of the Order of Australia in June 2020 for service to visual arts and philanthropy. The Sydney Morning Herald cited his MCA chair and gift to its new wing.",
+   "date": "2020-06",
+   "source": "https://web.archive.org/web/20200609174515/https://www.smh.com.au/culture/art-and-design/prominent-arts-philanthropists-honoured-in-queen-s-birthday-list-20200603-p54za8.html",
+   "evidence": "later became its chair, donating $15 million to the MCA's new wing",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "repeats on_record: '$15 million'"
+  ],
+  "reason": "The SMH report gives the AO and its reason and names his MCA chair and gift; the $15 million figure is already in on_record 2160db31cc, so it is cut."
+ },
+ {
+  "file": "rs5",
+  "funder": "gibbs",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "auckland-art-gallery-toi-o-t-maki",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Jenny Gibbs received Auckland City's second Distinguished Citizen Award in February 2004. The citation said she uses her influence to help Auckland Art Gallery.",
+   "date": "2004-02",
+   "source": "https://www.nzherald.co.nz/lifestyle/art-patron-reluctant-but-blown-away/SPXKOKNDNM3K24EKC4RSNRVTSA/",
+   "evidence": "who uses her influence to help Auckland Art Gallery and raise the profile",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The NZ Herald page (25 Feb 2004, read through WebFetch) gives the second Distinguished Citizen Award and a citation that says she uses her influence to help Auckland Art Gallery."
+ },
+ {
+  "file": "rs5",
+  "funder": "gibbs",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "space": "auckland-art-gallery-toi-o-t-maki",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Jenny Gibbs was made a Dame Companion of the New Zealand Order of Merit in 2009 for services to the arts. The New Zealand Herald listed first her help buying Auckland Art Gallery's New Gallery.",
+   "date": "2009",
+   "source": "https://www.nzherald.co.nz/nz/gong-a-bit-of-a-giggle-for-gibbs/2SMNAWMLV3FXQTD4Z5QXCOODYI/",
+   "evidence": "the New Gallery, an adjunct to the Auckland Art Gallery",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unclear tie: summary did not say the New Gallery belongs to Auckland Art Gallery"
+  ],
+  "reason": "The NZ Herald report (31 May 2009) gives the damehood 'for services to the arts' and lists the New Gallery first; the tie is the reporter's, so the summary says so and says what the New Gallery is to the museum."
+ },
+ {
+  "file": "rs5",
+  "funder": "leechin",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "royal-ontario-museum",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Michael Lee-Chin is a director on the ROM Board of Governors, the board that manages the museum's endowments and capital funds.",
+   "date": "",
+   "source": "https://www.rom.on.ca/about-rom/leadership",
+   "evidence": "Michael Lee-Chin, OOnt Board Director Chairman, Portland Holdings",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The ROM leadership page lists him as a Board Director of the ROM Board of Governors with his Portland Holdings title and describes that board's role; the seat is not in on_record and the page gives no date."
+ },
+ {
+  "file": "rs6",
+  "funder": "isabeldossantos",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "fundação-sindika-dokolo-luanda",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In January 2020 the academics Delinda Collier and Marissa Moorman wrote in Africa Is a Country that Dokolo's patronage of African artists and his repatriation efforts \"clean up his image\".",
+   "date": "2020-01",
+   "source": "https://africasacountry.com/2020/01/the-artwashing-of-sindika-dokolo",
+   "evidence": "his patronage of African artists, no matter how sincere his interest, clean up his image",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The image sentence names Dokolo, and the same article names the Sindika Dokolo Foundation as the body behind the repatriation work; authors, outlet and date (23 Jan 2020) are on the page."
+ },
+ {
+  "file": "rs6",
+  "funder": "minsheng",
+  "i": 0,
+  "verdict": "drop",
+  "after": null,
+  "problems": [
+   "licence: funder not named in the remark"
+  ],
+  "reason": "Lu Peng's remark is a general one about 'the funding parties' of museums ('very often'), not about Minsheng by name, and the cited page does not turn it into a statement about Minsheng's money at this museum."
+ },
+ {
+  "file": "rs6",
+  "funder": "occidental",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "hammer-museum",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In January 1991 the Time critic Robert Hughes called it America's \"vainest\" museum, paid for by Occidental's shareholders, and wrote that Hammer flew his collection around the world \"as promotion for Oxy and himself\".",
+   "date": "1991-01",
+   "source": "https://content.time.com/time/subscriber/article/0,33009,972206-1,00.html",
+   "evidence": "which he flew around the world as promotion for Oxy and himself",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Hughes's Time piece (28 Jan 1991) has every quoted word: the vainest museum, paid for by Occidental's shareholders, the collection flown as 'promotion for Oxy and himself'; it is a named critic on the image of the funder and its chairman."
+ },
+ {
+  "file": "rs7",
+  "funder": "carlosslim",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "museo-soumaya",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Mexico's President Felipe Calderón attended the opening of the museum on 1 March 2011 and spoke after Carlos Slim.",
+   "date": "2011-03",
+   "source": "https://www.cbsnews.com/news/billionaire-slim-opens-art-museum-in-mexico-city",
+   "evidence": "Calderon, who spoke after King and Slim, thanked King in English for his comments.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "wording: 'inauguration' is not the page's word"
+  ],
+  "reason": "CBS News says Slim opened the museum on Tuesday 1 March 2011 with Calderon among those beside him, and that Calderon spoke after King and Slim; the page's word is opened, so 'inauguration' becomes 'opening'."
+ }
+]

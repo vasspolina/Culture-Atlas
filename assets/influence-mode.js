@@ -943,6 +943,27 @@
     return row('Giving to museums', '', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
   }
 
+  // What it spent lobbying the US government and the EU, back on the record (user, 28 Nov 2026: "add us and eu lobbying
+  // ... if that exists"; it was taken out on 17 Nov 2026). Drawn only where data/influence_senders.json holds a figure:
+  // US from the Lobbying Disclosure Act reports, EU from the Transparency Register, each with its own source. No filing
+  // is not the same as nothing spent, so a funder with neither figure has no row.
+  function lobbyRow(f) {
+    const u = fig(f).us_lobbying, e = fig(f).eu_lobbying;
+    if (!u && !e) return '';
+    const line = (text, src) => `<li class="influence-entry"><p class="no-indent">${esc(text)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    let lis = '';
+    if (u && u.usd) {
+      lis += line(u.outside_only
+        ? `US government: outside lobbying firms reported ${fmtMoney(u.usd, 'USD')} in fees from it in ${u.year}.`
+        : `US government: it reported ${fmtMoney(u.usd, 'USD')} of lobbying in ${u.year}${u.filer ? `, filed as ${u.filer}` : ''}.`, u.source);
+    }
+    if (e && e.eur_max) {
+      const amount = e.eur_min ? `${fmtMoney(e.eur_min, 'EUR')} to ${fmtMoney(e.eur_max + 1, 'EUR')}` : `under ${fmtMoney(e.eur_max + 1, 'EUR')}`;
+      lis += line(`European Union: it declared ${amount} of lobbying costs for ${e.period}.`, e.source);
+    }
+    return lis ? row('US and EU lobbying', '', `<ul class="d-row-list influence-list">${lis}</ul>`) : '';
+  }
+
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.
   function linkRows(f) {
     const items = f.ties.flatMap(t => (t.links || []).map(l => ({ t, l })));
@@ -1050,6 +1071,7 @@
     let html = c.came;
     html += compareRow(f);
     html += artRow(f);
+    html += lobbyRow(f);
     html += linkRows(f);
     html += senderRows(f);
     html += c.money;
