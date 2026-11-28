@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=922"></script>
+  <script src="assets/load-image-data.js?v=923"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=922">
-  <link rel="stylesheet" href="assets/sheet.css?v=922">
-  <script src="assets/config.js?v=922"></script>
-  <script src="assets/analytics.js?v=922"></script>
-  <script src="assets/subtopic.js?v=922"></script>
-  <script src="assets/names.js?v=922"></script>
-  <script src="assets/grounding.js?v=922"></script>
-  <script src="assets/repeats.js?v=922"></script>
-  <script src="assets/intro-narration.js?v=922"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=923">
+  <link rel="stylesheet" href="assets/sheet.css?v=923">
+  <script src="assets/config.js?v=923"></script>
+  <script src="assets/analytics.js?v=923"></script>
+  <script src="assets/subtopic.js?v=923"></script>
+  <script src="assets/names.js?v=923"></script>
+  <script src="assets/grounding.js?v=923"></script>
+  <script src="assets/repeats.js?v=923"></script>
+  <script src="assets/intro-narration.js?v=923"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=922"></script>
+  <script src="assets/load-image.js?v=923"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=922"></script>
-  <script src="assets/money-ids.js?v=922"></script>
+  <script src="assets/institutions.js?v=923"></script>
+  <script src="assets/money-ids.js?v=923"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -7190,8 +7190,8 @@ return maplibregl$1;
         cityVectorMap.on('load', posterSync);
         // A scale bar, shown close in. No frame round the map (user, 18 Nov 2026: "dont do any frame like that").
         cityVectorMap.addControl(new maplibregl.ScaleControl({ maxWidth: 110, unit: 'metric' }), 'bottom-left');
-        // The street map runs up under the name and the city's line, each on a small fade of its own (user, 28 Nov 2026:
-        // "just fade tiny bit behind letters and do not fade background"; until 19 Nov the map started under them). The line
+        // The street map runs up under the name and the city's line, with nothing between (user, 28 Nov 2026: "Remove the
+        // fade"; until 19 Nov the map started under them). The line
         // wraps to two rows in a narrow map, so its foot is measured: on a desktop the camera takes how far below the map's
         // box it ends as its top padding, so the spaces a city fits and the space it centres on stand below the line, as they
         // stood before; the phone has its own band.
@@ -11012,11 +11012,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v922';
+    const ATLAS_RELEASE = 'culture-atlas-v923';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=922').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=923').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -23146,24 +23146,24 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=922"></script>
-<script src="assets/note-aids.js?v=922" defer></script>
-<script src="assets/place-list.js?v=922" defer></script>
-<script src="assets/chat-share.js?v=922" defer></script>
-<script src="assets/note-files.js?v=922" defer></script>
-<script src="assets/funding-views.js?v=922"></script>
-<script src="assets/layers.js?v=922"></script>
-<script src="assets/critique-gallery-data.js?v=922"></script>
-<script src="assets/critique-captions.js?v=922"></script>
-<script src="assets/critique-gallery.js?v=922"></script>
-<script src="assets/hq-detail.js?v=922"></script>
-<script src="assets/influence-mode.js?v=922"></script>
-<script src="assets/bubbles.js?v=922" defer></script>
-<script src="assets/phone-maps.js?v=922"></script>
-<script src="assets/desktop-maps.js?v=922"></script>
-<script src="assets/chat-resize.js?v=922"></script>
-<script src="assets/frame-refusers.js?v=922"></script>
-<script src="assets/link-pane.js?v=922"></script>
-<script src="assets/tab-suggest.js?v=922"></script>
+<script src="assets/typeset.js?v=923"></script>
+<script src="assets/note-aids.js?v=923" defer></script>
+<script src="assets/place-list.js?v=923" defer></script>
+<script src="assets/chat-share.js?v=923" defer></script>
+<script src="assets/note-files.js?v=923" defer></script>
+<script src="assets/funding-views.js?v=923"></script>
+<script src="assets/layers.js?v=923"></script>
+<script src="assets/critique-gallery-data.js?v=923"></script>
+<script src="assets/critique-captions.js?v=923"></script>
+<script src="assets/critique-gallery.js?v=923"></script>
+<script src="assets/hq-detail.js?v=923"></script>
+<script src="assets/influence-mode.js?v=923"></script>
+<script src="assets/bubbles.js?v=923" defer></script>
+<script src="assets/phone-maps.js?v=923"></script>
+<script src="assets/desktop-maps.js?v=923"></script>
+<script src="assets/chat-resize.js?v=923"></script>
+<script src="assets/frame-refusers.js?v=923"></script>
+<script src="assets/link-pane.js?v=923"></script>
+<script src="assets/tab-suggest.js?v=923"></script>
 </body>
 </html>
