@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=33', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=34', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -267,7 +267,7 @@
   // Commission. A funder with no figure for the measure is a small hollow dot, its name only on pointing: no filing found
   // is not the same as nothing spent, so it is never drawn as zero.
   const fmtMoney = (v, cur) => {
-    const sym = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', BRL: 'R$', QAR: 'QAR ', INR: 'Rs ' }[cur] || '$';
+    const sym = { USD: '$', EUR: '€', GBP: '£', AUD: 'A$', CAD: 'C$', BRL: 'R$', QAR: 'QAR ', INR: 'Rs ' }[cur] || '$';
     if (v >= 1e9) return `${sym}${(v / 1e9).toFixed(v >= 1e10 ? 0 : 1).replace(/\.0$/, '')}bn`;
     if (v >= 1e6) return `${sym}${(v / 1e6).toFixed(v >= 1e7 ? 0 : 1).replace(/\.0$/, '')}M`;
     if (v >= 1e3) return `${sym}${Math.round(v / 1e3)}k`;
@@ -970,8 +970,8 @@
   // for 2023 and 2024. Drawn only where data/influence_senders.json holds a figure; a company's executives are not
   // counted as the company.
   function politicsRow(f) {
-    const p = fig(f).political, q = fig(f).personal, uk = fig(f).uk_political;
-    if (!p && !q && !uk) return '';
+    const p = fig(f).political, q = fig(f).personal, uk = fig(f).uk_political, au = fig(f).au_political;
+    if (!p && !q && !uk && !au) return '';
     const line = (text, src) => `<li class="influence-entry"><p class="no-indent">${esc(text)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
     const years = c => String(c || '2023-24') === '2023-24' ? '2023 and 2024' : String(c);
     let lis = '';
@@ -996,6 +996,18 @@
         : x.in_kind ? `${x.name} gave ${x.party} ${fmtMoney(x.gbp, 'GBP')} in kind in ${years(uk.period)}: ${x.in_kind} (${n}).`
         : `${x.name} gave ${fmtMoney(x.gbp, 'GBP')} to ${x.party} in ${years(uk.period)} (${n}).`;
       lis += line(text, x.source);
+    });
+    // Australian donations, from the donor's own returns to the Australian Electoral Commission for the two financial
+    // years to June 2025 (28 Nov 2026): the total, then the split between Labor and the Liberal and National parties, and
+    // any other recipient by name.
+    ((au && au.donors) || []).forEach(x => {
+      if (!x.aud) return;
+      const parts = [];
+      if (x.labor_aud) parts.push(`${fmtMoney(x.labor_aud, 'AUD')} to Labor`);
+      if (x.coalition_aud) parts.push(`${fmtMoney(x.coalition_aud, 'AUD')} to the Liberal and National parties`);
+      (x.other || []).forEach(o => parts.push(`${fmtMoney(o.aud, 'AUD')} to ${o.to}`));
+      const split = parts.length > 1 ? `: ${parts.slice(0, -1).join(', ')} and ${parts[parts.length - 1]}` : parts.length ? `, ${parts[0].replace(/^A\$[^ ]+ /, 'all ')}` : '';
+      lis += line(`${x.name} reported ${fmtMoney(x.aud, 'AUD')} in political donations in Australia in the two years to June 2025${split}.`, x.source);
     });
     // A US personal figure counts only gifts where the donor reported the company or foundation as employer, so it can be
     // a floor; the row says so instead of letting a small sum read as the whole.
