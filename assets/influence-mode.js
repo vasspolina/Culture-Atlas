@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=34', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=35', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -54,12 +54,14 @@
   // another column"): no second wording for the influence, and no note under a ledger row's heading. assets/influence.json
   // keeps its own labels and these win. "Its name on something" became "Its name on a building, room or prize" (user, 19 Nov 2026).
   const CAME = { name: 'Its name on a building, room or prize', seat: 'A board seat', programme: 'A show or programme it paid for',
-    building: 'A building or endowment', access: 'Galas and perks', silence: 'Secrecy', licence: 'An image clean-up',
-    tax: 'A tax break', money: 'Money only', status: 'Honours and standing' };
+    building: 'A building or endowment', access: 'Events and benefits', silence: 'Secrecy', licence: 'Statements about its image',
+    tax: 'A tax break', money: 'Gifts with nothing stated in return', status: 'Honours and titles' };
   const label = k => { if (CAME[k]) return CAME[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
-  // The ledger's title (user, 27 Nov 2026: "rename it nto What influence does museum sponsorship buy or similar"); it was
-  // "What came with the money".
-  const TITLE = 'What influence the sponsorship buys';
+  // The ledger's title and its rows' titles are plain labels (user, 28 Nov 2026: "look for sentenses slogans and make them
+  // normal", and of the section titles: yes). It was "What came with the money", then "What influence the sponsorship
+  // buys" (27 Nov 2026); "Money only" is "Gifts with nothing stated in return", "An image clean-up" is "Statements about its
+  // image", "When a museum said no" is "Museums that ended the tie", "Where the money comes from" is "Source of the money".
+  const TITLE = 'What the funder got';
   const plural = (n, one, many) => `${n} ${n === 1 ? one : (many || one + 's')}`;
   // The order a ledger lists kinds: what was bought first, money alone last.
   const ORDER = ['name', 'seat', 'status', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
@@ -410,7 +412,7 @@
       // The list is kept out of assets/repeats.js: its lines differ by the place's name only (the National Theatre and English
       // National Ballet both earn 64% in their 2024-25 accounts on the same register), so the pass took one for a repeat. And
       // they are places, not all museums: an orchestra, a ballet, a college and a festival pay their own way too.
-      say(`<div class="influence-chat"><p class="no-indent">Self-funded: ${list.length} places that pay their own way. Their accounts show they earn at least half their income themselves, from tickets, shops, hire and sales, or their record says sales and artists pay for them. A founder's own fortune does not count.</p><ul class="influence-funders" data-repeat-ok>${items}</ul></div>`);
+      say(`<div class="influence-chat"><p class="no-indent">Self-funded: ${list.length} places that earn most of their own income. Their accounts show at least half of it comes from tickets, shops, venue hire and sales, or their record says sales and artists fund them. Money from a founder is not counted as earned income.</p><ul class="influence-funders" data-repeat-ok>${items}</ul></div>`);
       return;
     }
     const ranked = DATA.funders.filter(f => shown(f) && (M.value(f) || MEASURE !== 'culture')).sort((a, b) => (M.value(b) || 0) - (M.value(a) || 0));
@@ -777,7 +779,7 @@
     // Its last sentence says what the field's ink means (user, 18 Nov 2026: "fading out where the money doesn't go"),
     // since nothing else on the page does.
     say(`<div class="influence-chat">
-<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private fortunes that pay for culture, at their head offices. Pick one to see which museums it pays, what its money bought and what kind of art it backs. A museum is darker the more of them pay it, and faint where none is on record.</p>
+<p class="no-indent">Influence map is on. The map now shows the companies, foundations and private donors that fund museums, each at its head office. Pick one to see which museums it funds, what it got in return and what kinds of art it funds. A museum is drawn darker the more of these funders it has, and faint where the atlas records none.</p>
 </div>`);
   }
   // A funder named in the chat or in a ledger opens its record, which then leads with what it got.
@@ -888,7 +890,7 @@
     const all = [...byF.entries()];
     const came = all.filter(([, ties]) => ties.some(t => !(t.kinds.length === 1 && t.kinds[0] === 'money')));
     const money = all.filter(x => !came.includes(x));
-    el.setAttribute('aria-label', came.length ? TITLE : 'Money only');
+    el.setAttribute('aria-label', came.length ? TITLE : label('money'));
     el.innerHTML = (came.length ? row(TITLE, '', came.map(fLine).join('')) : '') +
       (money.length ? row(label('money'), '', money.map(fLine).join('')) : '') + study;
     return el;
@@ -897,7 +899,7 @@
   // The sender's side, from data/influence_senders.json: what the money is made from, what else it pays for, and what the
   // sources say happened to the money after a space said no. Each fact carries its own source, read on its page.
   const FACT_ROWS = [
-    ['harm', 'Where the money comes from', null],
+    ['harm', 'Source of the money', null],
     ['scale', 'Size of its business', 'in one year']
   ];
   // Lobbying and politics facts are no longer drawn in the record (user, 17 Nov 2026: "only keep relevant info to cultural
@@ -927,10 +929,10 @@
       return ties.filter(x => !seen.has(x.space) && seen.add(x.space)).map(x => `<a href="#" class="influence-space-link" data-influence-space="${esc(x.space)}">${esc(x.space_name)}</a>${yr(x) ? `<span class="influence-meta"> ${esc(yr(x))}</span>` : ''}`).join(', ');
     };
     let inner = '';
-    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that dropped it.</span> ${names(a.ended, endYearOf)}</p>`;
+    if (a.ended.length) inner += `<p class="no-indent"><span class="lead-in">Museums that ended it.</span> ${names(a.ended, endYearOf)}</p>`;
     if (a.kept.length) inner += `<p class="no-indent"><span class="lead-in">Gifts since ${esc(a.first)}.</span> ${names(a.kept, yearOf)}</p>`;
-    if (told.length) inner += `<p class="no-indent"><span class="lead-in">What happened next.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
-    return row('When a museum said no', '', inner);
+    if (told.length) inner += `<p class="no-indent"><span class="lead-in">Afterwards.</span></p><ul class="d-row-list influence-list">${told.map(factLine).join('')}</ul>`;
+    return row('Museums that ended the tie', '', inner);
   }
 
   // What it gives culture, with the largest gift the atlas entries state and that gift's source. The lobbying and political
@@ -940,7 +942,7 @@
     const c = fig(f).culture || {}, src = c.largest_gift && c.largest_gift.source;
     const n = cultureSpaces(f);
     const body = `Gives to ${n} ${n === 1 ? 'museum' : 'museums'}.${c.largest_gift ? ` The largest gift is ${c.largest_gift.text}.` : ''}`;
-    return row('Giving to museums', '', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
+    return row('Museums it funds', '', `<ul class="d-row-list influence-list"><li class="influence-entry"><p class="no-indent">${esc(body)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li></ul>`);
   }
 
   // What it spent lobbying the US government and the EU, back on the record (user, 28 Nov 2026: "add us and eu lobbying
@@ -1012,7 +1014,7 @@
     // A US personal figure counts only gifts where the donor reported the company or foundation as employer, so it can be
     // a floor; the row says so instead of letting a small sum read as the whole.
     const floor = q && (q.people || []).length ? '<p class="no-indent influence-meta">US personal figures count only gifts where the donor reported their company or foundation as employer, so a total can be lower than what the person gave.</p>' : '';
-    return lis ? row('Political giving', '', `<ul class="d-row-list influence-list">${lis}</ul>${floor}`) : '';
+    return lis ? row('Political donations', '', `<ul class="d-row-list influence-list">${lis}</ul>${floor}`) : '';
   }
 
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.
@@ -1021,7 +1023,7 @@
     if (!items.length) return '';
     const what = { us: 'US lobbying', eu: 'EU lobbying', politics: 'Political giving', other: 'Other lobbying' };
     const lis = items.map(({ t, l }) => `<li class="influence-entry"><p class="no-indent"><span class="influence-who"><a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a></span> <span class="lead-in">${esc(what[l.measure] || l.measure)}${l.gov ? `, ${esc(l.gov)}` : ''}.</span> ${esc(l.text)}</p>${l.source ? `<p class="no-indent influence-meta"><a href="${esc(l.source)}" target="_blank" rel="noopener noreferrer">${esc(host(l.source))}</a></p>` : ''}</li>`);
-    return row('Lobbying through museums', '', foldList(lis));
+    return row('Lobbying recorded at a museum', '', foldList(lis));
   }
   // ---- What art the money pays for ----
   // Reader feedback (user, 19 Nov 2026): "see what kind of influence they're buying. I.e. are they funding modern art,
@@ -1061,7 +1063,7 @@
     const parts = ART_KEYS.filter(k => g.has(k)).map(k => `${artLabel(k).toLowerCase()} ${g.get(k).length}`);
     NOT_ART.filter(k => g.has(k)).forEach(k => parts.push(`${artLabel(k).toLowerCase()} ${g.get(k).length}`));
     if (g.has('none')) parts.push(`not stated ${g.get('none').length}`);
-    return parts.length ? `What art it backs: ${parts.join(', ')}.` : '';
+    return parts.length ? `Kinds of art it funds: ${parts.join(', ')}.` : '';
   }
   const ART_SHOWN = 8;
   function artNames(list) {
@@ -1077,7 +1079,7 @@
     // Every art under its own name: books, music, design and the rest each get a line, as the periods do.
     let lis = [...ART_KEYS, ...NOT_ART].filter(k => g.has(k)).map(k => line(artLabel(k), g.get(k), artSpan(k))).join('');
     if (g.has('none')) lis += line('Not stated', g.get('none'), 'the atlas does not yet say what these show');
-    return row('What art it backs', '', `<ul class="d-row-list influence-list">${lis}</ul>`);
+    return row('Kinds of art it funds', '', `<ul class="d-row-list influence-list">${lis}</ul>`);
   }
   // A funder from the funding maps alone has no ledger, but its museums still say what they show.
   function artPart(f) {
@@ -1085,7 +1087,7 @@
     const el = document.createElement('div');
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
-    el.setAttribute('aria-label', 'What art it backs');
+    el.setAttribute('aria-label', 'Kinds of art it funds');
     el.innerHTML = html;
     return el;
   }
@@ -1115,7 +1117,7 @@
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
     const c = cameRows(f);
-    el.setAttribute('aria-label', c.came ? TITLE : 'Giving to museums');
+    el.setAttribute('aria-label', c.came ? TITLE : 'Museums it funds');
     let html = c.came;
     html += compareRow(f);
     html += artRow(f);

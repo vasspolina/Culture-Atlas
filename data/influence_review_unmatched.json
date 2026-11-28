@@ -4219,5 +4219,59 @@
    "text": "McCoy (JPMorgan Chase press release, 2015); the museum's learning space is the JPMorgan Chase Center for Creativity (museum release, 2023).",
    "alike": 0.39
   }
+ },
+ "629f56a73d": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "corporateartcollectionoffemsa",
+   "funder_name": "FEMSA",
+   "funder_kind": "corp",
+   "space": "museo-amparo-puebla",
+   "space_name": "Museo Amparo",
+   "city": "Puebla",
+   "field": "watch",
+   "text": "Name to know: FEMSA.",
+   "date": "",
+   "sources": [
+    "https://www.femsa.com/wp-content/uploads/2026/07/070826-BP-Coleccion-FEMSA-continua-la-celebracion.pdf",
+    "https://business-humanrights.org/en/latest-news/chiapas-protest-to-cancel-femsa-coca-cola-concession-in-san-cristobal-de-las-casas",
+    "https://museoamparo.com/acerca-de"
+   ]
+  },
+  "closest": {
+   "cid": "b75c6db444",
+   "field": "watch",
+   "text": "Funder to note: FEMSA.",
+   "alike": 0.71
+  }
+ },
+ "e173b943a7": {
+  "verdict": {
+   "drop": "the same tie as another kept entry for this space"
+  },
+  "was": {
+   "funder": "carlosslim",
+   "funder_name": "Carlos Slim (Grupo Carso)",
+   "funder_kind": "family",
+   "space": "museo-soumaya",
+   "space_name": "Museo Soumaya",
+   "city": "Mexico City",
+   "field": "watch",
+   "text": "Name to know: Carlos Slim.",
+   "date": "",
+   "sources": [
+    "https://en.wikipedia.org/wiki/Museo_Soumaya",
+    "https://telecomtv.com/content/tracker/am-rica-m-vil-informs-about-a-resolution-of-the-instituto-federal-de-telecomunicaciones-25955",
+    "https://www.bloomberglinea.com/2021/10/21/cicsa-de-slim-se-deslinda-de-responsabilidades-por-el-colapso-de-la-linea-12/"
+   ]
+  },
+  "closest": {
+   "cid": "725c761376",
+   "field": "watch",
+   "text": "Funder to note: Carlos Slim.",
+   "alike": 0.78
+  }
  }
 }

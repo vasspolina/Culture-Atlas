@@ -1730,12 +1730,15 @@
         const project = g('project'), r = g('currentRadius'), w = g('width'), h = g('height');
         const ok = (PHONE() ? root.classList.contains('gm-map') : root.classList.contains('gmd')) && typeof project === 'function' && !g('isCityStreetViewActive') && canvas;
         const rect = ok ? canvas.getBoundingClientRect() : null, vr = ok ? viewport.getBoundingClientRect() : null;
+        // A filter on the map (assets/layers.js) hides the ring of a museum it does not keep, as it hides the museum's dot
+        // (user, 28 Nov 2026: "show only independent"). The alert stays in the Latest list.
+        const keep = ok && typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
         marks.forEach((el) => {
           const x = el._x;
           // The map's own projection (window.__project, index.html): since the globe was centred under the atlas's name
           // (globeCY), half the canvas's height put each ring about 40px above its space (user, 20 Nov 2026: "fix overlap").
           const p = ok ? (window.__project ? window.__project(x.inst.lon, x.inst.lat) : project(x.inst.lon, x.inst.lat, r, w / 2, h / 2)) : null;
-          const on = !!(p && p.front);
+          const on = !!(p && p.front) && (!keep || keep(x.inst));
           el.classList.toggle('is-on', on);
           el.tabIndex = on ? 0 : -1;
           if (on) el.style.transform = 'translate(' + (rect.left - vr.left + p.x) + 'px,' + (rect.top - vr.top + p.y) + 'px)';
