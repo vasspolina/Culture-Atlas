@@ -111,6 +111,11 @@ test('every funder figure is a number with a source', () => {
       f.personal.people.forEach((x) => assert.ok(x.name && x.usd > 0 && /fec\.gov/.test(x.source), `${k}: personal giving by ${x.name}`));
       assert.ok(Math.abs(f.personal.people.reduce((t, x) => t + x.usd, 0) - f.personal.usd) < 1, `${k}: personal total is the sum of its people`);
     }
+    if (f.uk_political) {
+      assert.ok(f.uk_political.gbp > 0 && Array.isArray(f.uk_political.donors) && f.uk_political.donors.length, `${k}: UK political donations`);
+      f.uk_political.donors.forEach((x) => assert.ok(x.name && x.gbp > 0 && x.n > 0 && /electoralcommission\.org\.uk/.test(x.source), `${k}: UK donations by ${x.name}`));
+      assert.ok(Math.abs(f.uk_political.donors.reduce((t, x) => t + x.gbp, 0) - f.uk_political.gbp) < 1, `${k}: UK total is the sum of its donors`);
+    }
     if (f.political) assert.ok(f.political.usd > 0 && f.political.rep_usd >= 0 && f.political.dem_usd >= 0 && f.political.rep_usd + f.political.dem_usd <= f.political.usd * 1.05 && /fec\.gov/.test(f.political.source), `${k}: political giving`);
   }
 });
