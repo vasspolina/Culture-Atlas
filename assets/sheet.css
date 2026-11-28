@@ -1760,7 +1760,8 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    bar of release 654 and its band: the lime strip goes, the sheet runs to the window's foot, and the columns that scroll
    (the chat, the record, the detail) fade to paper over their last 72px instead of stopping on a bar. A spacer as tall as
    the fade lets the last line scroll clear of it. The name stands at the top of the map, centred under the head bar, with
-   no halo or ground behind it (user, 17 Nov 2026: "no need to add background behind title"); with the chat wide there is no map and it is hidden, as in release 640. The filter
+   no halo or ground behind it (user, 17 Nov 2026: "no need to add background behind title"), set at four fifths of the
+   large size, its line and box with it (user, 28 Nov 2026: "make this smaller 20% and background fading less tall"); with the chat wide there is no map and it is hidden, as in release 640. The filter
    pills give it room: placeChips() (assets/desktop-maps.js) counts the name as it counts the tagline. ---- */
 @layer sheet{
   @media (min-width:768px){
@@ -1768,8 +1769,9 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
     :root.gmd.gmd body::after{content:none!important;display:none!important}
     :root.gmd.gmd:not(#sh-mid) #mainAppContainer{bottom:0!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle{display:flex!important;align-items:center!important;justify-content:center!important;position:fixed!important;
-      top:calc(var(--sh-head) + 1px + var(--sh-pad) * .6)!important;bottom:auto!important;left:var(--sh-map-l)!important;right:0!important;width:auto!important;height:var(--sh-l-lh)!important;
+      top:calc(var(--sh-head) + 1px + var(--sh-pad) * .6)!important;bottom:auto!important;left:var(--sh-map-l)!important;right:0!important;width:auto!important;height:calc(var(--sh-l-lh) * .8)!important;
       margin:0!important;padding:0 var(--sh-pad)!important;border:0!important;background:transparent!important;text-align:center!important;white-space:nowrap!important;z-index:44!important;pointer-events:none!important}
+    :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle button,:root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle button *{font-size:calc(var(--sh-l) * .8)!important;line-height:calc(var(--sh-l-lh) * .8)!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #gmdTitle button{max-width:100%!important;overflow:hidden!important;text-overflow:ellipsis!important;
       text-shadow:none!important;pointer-events:auto!important}
     :root.gmd.gmd.chat-wide #gmdTitle{display:none!important}
@@ -2886,7 +2888,8 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    map behind blurred 14px and its colours lifted, so the streets show through soft. The pane is opaque to the mask down to
    the foot of the name, or of the country's or city's line when one is open (--street-top, measured in
    assets/desktop-maps.js), and melts into
-   the map over the 44px under that, with no edge. It is drawn over the map, the head offices and the spaces' tags and
+   the map over the 22px under that, with no edge (user, 28 Nov 2026: "make this smaller 20% and background fading less
+   tall": the fade went from 44px to 22px and the pane now ends at the name set four fifths as large). It is drawn over the map, the head offices and the spaces' tags and
    under the filter pills, the name and the line. The tint is set for 4.5:1 against any map behind it: the light sheet's
    paper at 58 to 48% keeps its black ink at 4.9:1 or better even over pure black, the dark sheet's at 78 to 68% keeps its
    ink (#e6e1d7) at 4.8:1 or better even over pure white; the text is set above the fade, where the pane is whole. Where a browser has no backdrop-filter, and where the reader asks for less transparency, the pane is paper at 96
@@ -2896,9 +2899,9 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
   :root[data-theme="dark"]{--sh-glass-a:78%;--sh-glass-b:68%}
   @media (min-width:768px){
     :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #globeViewport:not(#sh-x)::after{
-      --sh-glass-fade:44px;
+      --sh-glass-fade:22px;
       content:""!important;display:block!important;position:absolute!important;top:0!important;left:0!important;right:0!important;
-      height:calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) + var(--sh-glass-fade))!important;
+      height:calc(var(--sh-pad) * 1.2 + var(--sh-l-lh) * .8 + var(--sh-glass-fade))!important;
       z-index:30!important;pointer-events:none!important;
       background:linear-gradient(to bottom,color-mix(in srgb,var(--sh-paper) var(--sh-glass-a),transparent),color-mix(in srgb,var(--sh-paper) var(--sh-glass-b),transparent))!important;
       -webkit-backdrop-filter:blur(14px) saturate(1.6)!important;backdrop-filter:blur(14px) saturate(1.6)!important;
