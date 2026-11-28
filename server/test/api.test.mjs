@@ -152,11 +152,13 @@ describe('submitting a review', () => {
   test('stores nothing that identifies the sender', async () => {
     const id = await submit();
     const row = await prisma.whistleblowerReport.findUnique({ where: { id } });
+    // address is a new place's street address (user, 20 Nov 2026: "it's the place's address"); a review leaves it empty.
     assert.deepEqual(Object.keys(row).sort(), [
       'address', 'authorLabel', 'city', 'content', 'createdAt', 'id', 'institution', 'kind', 'latitude', 'longitude', 'placeId', 'rating', 'status', 'updatedAt'
     ]);
     assert.equal(row.authorLabel, null);
     assert.equal(row.rating, null);
+    assert.equal(row.address, null);
     assert.ok(!JSON.stringify(row).includes('127.0.0.1'));
   });
 
