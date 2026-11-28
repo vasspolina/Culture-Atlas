@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=929"></script>
+  <script src="assets/load-image-data.js?v=930"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=929">
-  <link rel="stylesheet" href="assets/sheet.css?v=929">
-  <script src="assets/config.js?v=929"></script>
-  <script src="assets/analytics.js?v=929"></script>
-  <script src="assets/subtopic.js?v=929"></script>
-  <script src="assets/names.js?v=929"></script>
-  <script src="assets/grounding.js?v=929"></script>
-  <script src="assets/repeats.js?v=929"></script>
-  <script src="assets/intro-narration.js?v=929"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=930">
+  <link rel="stylesheet" href="assets/sheet.css?v=930">
+  <script src="assets/config.js?v=930"></script>
+  <script src="assets/analytics.js?v=930"></script>
+  <script src="assets/subtopic.js?v=930"></script>
+  <script src="assets/names.js?v=930"></script>
+  <script src="assets/grounding.js?v=930"></script>
+  <script src="assets/repeats.js?v=930"></script>
+  <script src="assets/intro-narration.js?v=930"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=929"></script>
+  <script src="assets/load-image.js?v=930"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=929"></script>
-  <script src="assets/money-ids.js?v=929"></script>
+  <script src="assets/institutions.js?v=930"></script>
+  <script src="assets/money-ids.js?v=930"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -1200,6 +1200,8 @@ return maplibregl$1;
     // spaces; Kyiv and 130 other cities had no label at all). Their counts, city lists and missing entries
     // are rebuilt here from the records, so a city label always counts the pins under it. A hand-placed
     // city or country centre is kept; a new one sits at the mean of its pins; a city with no space left drops out.
+    // Which registry city each record counts under, kept so a filter on the map can count a city's records again (cityCountsShown).
+    const CITY_ENTRY_OF = new Map();
     (function syncRegistries() {
       const key = (s) => String(s || '').trim().toLowerCase();
       // The records spell some countries two ways; both count as one.
@@ -1236,6 +1238,7 @@ return maplibregl$1;
         if (!byCity.has(ck) || kept.has(ck)) { ALL_CITIES_REGISTRY.splice(n--, 1); continue; }
         kept.set(ck, c);
         c.count = byCity.get(ck).list.length;
+        byCity.get(ck).list.forEach(i => CITY_ENTRY_OF.set(i, c));
         // An entry no space of its own is near is moved to the middle of its spaces. Cambridge, UK sat at 44.8 N 53.3 W and
         // Birmingham, UK at 46.2 N 30.2 W, the means of the English and the American cities of each name, so the street map
         // opened in mid-Atlantic, fitted wide enough to hold both, and drew nothing (user, 13 Nov 2026: "map isn't showing").
@@ -1252,10 +1255,11 @@ return maplibregl$1;
         const at = mean(v.list);
         if (!at) return;
         const twin = ALL_CITIES_REGISTRY.find(c => key(c.name) === key(v.name) && typeof c.lat === 'number' && near(c, at));
-        if (twin) { twin.count += v.list.length; return; }
+        if (twin) { twin.count += v.list.length; v.list.forEach(i => CITY_ENTRY_OF.set(i, twin)); return; }
         const c = { name: v.name, country: v.country, count: v.list.length, lon: at.lon, lat: at.lat, streets: [v.name] };
         ALL_CITIES_REGISTRY.push(c);
         kept.set(ck, c);
+        v.list.forEach(i => CITY_ENTRY_OF.set(i, c));
       });
       const seenCountry = new Set();
       for (let n = 0; n < ALL_COUNTRIES_REGISTRY.length; n++) {
@@ -1273,6 +1277,23 @@ return maplibregl$1;
         if (at) ALL_COUNTRIES_REGISTRY.push({ name: v.name, count: v.list.length, cities: [...v.cities].sort((a, b) => a.localeCompare(b)), lon: at.lon, lat: at.lat, zoom: 4.0 });
       });
     })();
+    // A FILTER ON THE MAP COUNTS THE CITIES AGAIN (user, 28 Nov 2026: "show only independent"). With Independent chosen the
+    // dots narrowed to the 29 independent museums, but every city kept its name and its full count (London (54), Havana (33)),
+    // so the map still read as all 2,116. With a filter on (a chip, a grade, a funder switch, the years: whatever
+    // assets/layers.js atlasLayerKeep holds), a city is named only if the filter keeps one of its museums, and its count is
+    // of those. Null with no filter on: the registry is then used as it is. Built once per filter change (applyFilters
+    // makes a new filteredList each time), not per frame.
+    let cityShown = { list: null, keep: null, cities: null, counts: null };
+    function cityCountsShown() {
+      const keep = typeof window.atlasLayerKeep === 'function' ? window.atlasLayerKeep() : null;
+      if (!keep) return null;
+      if (cityShown.list !== filteredList || !cityShown.cities) {
+        const counts = new Map();
+        ALL_INSTITUTIONS.forEach(i => { const c = CITY_ENTRY_OF.get(i); if (c && keep(i)) counts.set(c, (counts.get(c) || 0) + 1); });
+        cityShown = { list: filteredList, keep, counts, cities: ALL_CITIES_REGISTRY.map(c => Object.assign({}, c, { count: counts.get(c) || 0 })) };
+      }
+      return cityShown;
+    }
     const COUNTRY_CENTROIDS = ALL_COUNTRIES_REGISTRY;
     const PRIORITY_CITIES = ALL_CITIES_REGISTRY;
 
@@ -11014,11 +11035,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v929';
+    const ATLAS_RELEASE = 'culture-atlas-v930';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=929').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=930').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12210,10 +12231,14 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
         ctx.font = atlasMonoFont();
         
         let candidateCities = [];
+        // With a filter on, only the cities it keeps a museum in, each with the count it keeps (cityCountsShown). The city
+        // the visitor picked keeps its name either way.
+        const shownCities = cityCountsShown();
+        const cityPool = shownCities ? shownCities.cities.filter(c => c.count > 0 || selectedCityFilter.toLowerCase() === c.name.toLowerCase()) : ALL_CITIES_REGISTRY;
         if (selectedCountryFilter !== 'all') {
-          candidateCities = ALL_CITIES_REGISTRY.filter(c => matchC(c.country, selectedCountryFilter));
+          candidateCities = cityPool.filter(c => matchC(c.country, selectedCountryFilter));
         } else {
-          candidateCities = ALL_CITIES_REGISTRY;
+          candidateCities = cityPool;
         }
 
         const sortedCities = [...candidateCities].sort((a, b) => {
@@ -12273,6 +12298,8 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
               const key = i.id || i.name;
               if (seenAlert.has(key)) return;
               seenAlert.add(key);
+              // A ring the filter hides (assets/phone-maps.js) is no obstacle.
+              if (shownCities && !shownCities.keep(i)) return;
               const p = project(i.lon, i.lat, r, cx, cy);
               if (p.front) markObstacles.push({ x: p.x - 13, y: p.y - 13, w: 26, h: 26, city: (i.city || '').toLowerCase().trim(), name: i.name, alert: true });
             });
@@ -22297,9 +22324,12 @@ FORMATTING & DOSSIER PRESENTATION RULES:
       // 20px away and the card opened with the pointer on empty sea beside it.
       let directPinCity = null;
       let bestPinDist = Infinity;
+      // A city the filter on the map keeps no museum in has no pin to point at (cityCountsShown).
+      const shownCities = cityCountsShown();
       for (let i = 0; i < ALL_CITIES_REGISTRY.length; i++) {
         const c = ALL_CITIES_REGISTRY[i];
         if (isCountryActive && c.country && !matchC(c.country, selectedCountryFilter)) continue;
+        if (shownCities && !shownCities.counts.get(c) && selectedCityFilter.toLowerCase() !== c.name.toLowerCase()) continue;
         const pt = project(c.lon, c.lat, r, cx, cy);
         if (pt.front && pt.depth > 0.05) {
           const pinDist = Math.hypot(pt.x - mx, pt.y - my);
@@ -23187,25 +23217,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=929"></script>
-<script src="assets/note-aids.js?v=929" defer></script>
-<script src="assets/place-list.js?v=929" defer></script>
-<script src="assets/chat-share.js?v=929" defer></script>
-<script src="assets/note-files.js?v=929" defer></script>
-<script src="assets/funding-views.js?v=929"></script>
-<script src="assets/years.js?v=929"></script>
-<script src="assets/layers.js?v=929"></script>
-<script src="assets/critique-gallery-data.js?v=929"></script>
-<script src="assets/critique-captions.js?v=929"></script>
-<script src="assets/critique-gallery.js?v=929"></script>
-<script src="assets/hq-detail.js?v=929"></script>
-<script src="assets/influence-mode.js?v=929"></script>
-<script src="assets/bubbles.js?v=929" defer></script>
-<script src="assets/phone-maps.js?v=929"></script>
-<script src="assets/desktop-maps.js?v=929"></script>
-<script src="assets/chat-resize.js?v=929"></script>
-<script src="assets/frame-refusers.js?v=929"></script>
-<script src="assets/link-pane.js?v=929"></script>
-<script src="assets/tab-suggest.js?v=929"></script>
+<script src="assets/typeset.js?v=930"></script>
+<script src="assets/note-aids.js?v=930" defer></script>
+<script src="assets/place-list.js?v=930" defer></script>
+<script src="assets/chat-share.js?v=930" defer></script>
+<script src="assets/note-files.js?v=930" defer></script>
+<script src="assets/funding-views.js?v=930"></script>
+<script src="assets/years.js?v=930"></script>
+<script src="assets/layers.js?v=930"></script>
+<script src="assets/critique-gallery-data.js?v=930"></script>
+<script src="assets/critique-captions.js?v=930"></script>
+<script src="assets/critique-gallery.js?v=930"></script>
+<script src="assets/hq-detail.js?v=930"></script>
+<script src="assets/influence-mode.js?v=930"></script>
+<script src="assets/bubbles.js?v=930" defer></script>
+<script src="assets/phone-maps.js?v=930"></script>
+<script src="assets/desktop-maps.js?v=930"></script>
+<script src="assets/chat-resize.js?v=930"></script>
+<script src="assets/frame-refusers.js?v=930"></script>
+<script src="assets/link-pane.js?v=930"></script>
+<script src="assets/tab-suggest.js?v=930"></script>
 </body>
 </html>
