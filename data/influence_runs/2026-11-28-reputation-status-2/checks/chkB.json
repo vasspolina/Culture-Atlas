@@ -1,0 +1,457 @@
+[
+ {
+  "file": "rs4",
+  "funder": "tisch",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "nyu-tisch-school-of-the-arts-new-york",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The school honoured the Tisch family at its 2016 gala for their contributions since the 1982 naming gift. Andrew, Jonathan and Steve Tisch accepted for the family.",
+   "date": "2016",
+   "source": "https://tisch.nyu.edu/giving/the-tisch-gala/tisch-gala-2016/the-tisch-family",
+   "evidence": "At the 2016 Tisch Gala, the school honored the Tisch family, recognizing their remarkable contributions",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The school's own page states the 2016 gala honour, the 1982 naming gift and the three Dean's Council members who accepted; the curl copy was cut short, a second fetch gave the full text."
+ },
+ {
+  "file": "rs4",
+  "funder": "tisch",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "the-shed",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "The board elected Jonathan Tisch chair in April 2022, succeeding founding chair Daniel Doctoroff. A board member since 2013, he set up the centre's first commissioning fund with his wife Lizzie.",
+   "date": "2022-04",
+   "source": "https://broadwayworld.com/off-off-broadway/article/The-Shed-Elects-Jonathan-M-Tisch-as-Board-Chair-Succeeding-Founding-Chair-Daniel-L-Doctoroff-20220429",
+   "evidence": "announced the election of Jonathan M. Tisch as Chair of its Board of Directors",
+   "replaces": "d24097b2ce",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "BroadwayWorld, 29 Apr 2022, carries the Shed's announcement: elected chair after Doctoroff, on the board since 2013, first commissioning fund with his wife Lizzie; it states on_record d24097b2ce more fully, so replaces stands."
+ },
+ {
+  "file": "rs4",
+  "funder": "iberdrola",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "museo-de-bellas-artes-de-bilbao",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Imanol Pradales, the Lehendakari, led the opening of the museum's exhibition of the Iberdrola collection with executive chairman Ignacio Galán in April 2026. The show marks the company's 125th anniversary.",
+   "date": "2026-04",
+   "source": "https://solarquarter.com/2026/04/29/iberdrola-celebrates-125th-anniversary-with-major-art-exhibition-at-the-reopened-bilbao-fine-arts-museum/",
+   "evidence": "led by Ignacio Galán, the company’s Executive Chairman, together with Imanol Pradales, the Lehendakari",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "status: presence not tied to the funder's giving",
+   "regional head of government, not a royal or head of state",
+   "company's own anniversary show"
+  ],
+  "reason": "The page reports the Lehendakari and Galán at the opening of the company's 125th anniversary collection show and says nothing of sponsorship or a gift to the museum, so it is the company's own occasion, not an honour for giving."
+ },
+ {
+  "file": "rs4",
+  "funder": "jameel",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "jameel-arts-centre",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Sheikh Maktoum bin Mohammed, Deputy Ruler of Dubai, inaugurated the centre in November 2018. Fady Jameel, chairman and founder of Art Jameel, briefed him on it.",
+   "date": "2018-11",
+   "source": "https://dubaiholding.com/en/media-hub/press-releases/maktoum-bin-mohammed-opens-jameel-arts-centre-jaddaf-waterfront",
+   "evidence": "he inaugurated Jameel Arts Centre, Dubai’s first contemporary arts museum",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Dubai Holding's release of 8 Nov 2018 states that the Deputy Ruler inaugurated the centre and that Fady Jameel, chairman and founder of Art Jameel, briefed him: a member of the ruling family opening the centre the funder paid for."
+ },
+ {
+  "file": "rs5",
+  "funder": "vale",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "instituto-inhotim",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In March 2026 the writer Ycarim Melgaço called Vale's sponsorship of Inhotim a clear marketing move in Jornal Opção, and wrote that the company tries to change its image with culture and gardens.",
+   "date": "2026-03",
+   "source": "https://www.jornalopcao.com.br/colunas-e-blogs/cronicas-de-viagens/o-eden-e-o-minerio-as-contradicoes-em-inhotim-802464/",
+   "evidence": "movimento de marketing claro. A empresa tenta mudar sua imagem com cultura e jardins.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The column of 10 March 2026 by Ycarim Melgaço (professor and writer) has both sentences as paraphrased, right after naming Vale as a main sponsor of Inhotim; no quotation marks are used for the translation."
+ },
+ {
+  "file": "rs5",
+  "funder": "fastretailing",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "moma-the-museum-of-modern-art",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In July 2015 David Aaker, vice chairman of the consultancy Prophet, wrote that the MoMA partnership gives Uniqlo “a brand image lift”.",
+   "date": "2015-07",
+   "source": "https://prophet.com/?p=9787",
+   "evidence": "The partnership works for four reasons: It provides a brand image lift.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Prophet's own page has the quoted words under author David Aaker, Vice Chairman, and its metadata dates it 1 July 2015; a named person says the MoMA sponsorship lifts the brand image, though as a marketing reading and not as criticism."
+ },
+ {
+  "file": "rs5",
+  "funder": "santander",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "centro-botin",
+   "kinds": [
+    "status"
+   ],
+   "summary": "In March 2025 the city of Santander honoured Emilio Botín, who chaired Banco Santander and the Fundación Botín, with a plaque in the square that bears his name, for projects such as the Centro Botín.",
+   "date": "2025-03",
+   "source": "https://www.bolsamania.com/noticias/mercados/economia--santander-reconoce-la-figura-y-compromiso-de-emilio-botin-y-su-huella-imborrable-en-la-ciudad--19190723.html",
+   "evidence": "con proyectos como el Centro Botín, del que fue su creador e impulsor",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Europa Press report of 21 March 2025 ties the city's plaque to the Centro Botín in its first sentence (creator and promoter) and the mayor's words place it in the square that houses the centre; his two chairs are on the page."
+ },
+ {
+  "file": "rs5",
+  "funder": "waltonfamily",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "crystal-bridges",
+   "kinds": [
+    "status"
+   ],
+   "summary": "In February 2020 the J. Paul Getty Trust named Alice Walton for its Getty Medal. Its president James Cuno credited her philanthropy, and the announcement named her as founder of Crystal Bridges.",
+   "date": "2020-02",
+   "source": "https://www.getty.edu/news/getty-medal-to-alice-walton-martin-puryear-kwame-anthony-appiah/",
+   "evidence": "Ms. Walton founded the Crystal Bridges American Art Museum in Bentonville, Arkansas, in 2011.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Getty's announcement of 21 Feb 2020 gives the medal, Cuno's words on her philanthropy and, in the same passage, her founding of Crystal Bridges, so the honour is tied to the museum on the page."
+ },
+ {
+  "file": "rs5",
+  "funder": "waltonfamily",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "crystal-bridges",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Alice Walton chaired the museum's board of directors in February 2020, when she also sat on the board of the Walton Family Foundation.",
+   "date": "2020-02",
+   "source": "https://www.getty.edu/news/getty-medal-to-alice-walton-martin-puryear-kwame-anthony-appiah/",
+   "evidence": "serves as chairwoman of the museum’s Board of Directors. She is a board member",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The same Getty page states she chairs the museum's board and sits on the Walton Family Foundation board; none of the funder's on_record lines holds a seat, so it is no repeat."
+ },
+ {
+  "file": "rs6",
+  "funder": "leonidmikhelsonvac",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "ges-2-house-of-culture-moscow",
+   "kinds": [
+    "status"
+   ],
+   "summary": "President Vladimir Putin took a private tour of GES-2 with Mikhelson in December 2021, days before it opened to the public (The Telegraph).",
+   "date": "2021-12",
+   "source": "https://uk.news.yahoo.com/russia-richest-man-opens-mammoth-150615510.html",
+   "evidence": "Leonid Mikhelson talks to President Putin during a tour of the art centre.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Telegraph report on Yahoo, 5 Dec 2021, says Putin was given a private tour on the Wednesday before the Saturday opening, and its photo caption shows Mikhelson talking to him during the tour."
+ },
+ {
+  "file": "rs6",
+  "funder": "benesse",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "benesse-art-site-naoshima",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Soichiro Fukutake, former head of Benesse Corporation, received the Japan Foundation Award in 2026. The citation credits him with leading the development of Benesse Art Site Naoshima.",
+   "date": "2026",
+   "source": "https://www.jpf.go.jp/e/about/award/archive/2026/index.html",
+   "evidence": "has led the development of Benesse Art Site Naoshima since the opening of Benesse House",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "repetition: the 1992 opening of Benesse House is on_record e06b74f0f0"
+  ],
+  "reason": "The Japan Foundation page bears out the award and citation and names him Representative Director of Benesse Corporation; the 1992 opening restated an on_record line and is cut."
+ },
+ {
+  "file": "rs6",
+  "funder": "benesse",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "benesse-art-site-naoshima",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Soichiro Fukutake received Japan's Montblanc de la Culture Arts Patronage Award in July 2012. The jury named his founding of Benesse Art Site Naoshima as the reason (AFPBB News).",
+   "date": "2012-07",
+   "source": "https://www.afpbb.com/articles/-/2893251",
+   "evidence": "福武氏は、いまや世界中から注目を集める日本のアートスポット、瀬戸内海の「ベネッセアートサイト直島」の発起人。",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "AFPBB (6 Aug 2012) reports the 30 July 2012 ceremony and that his realising of Benesse Art Site Naoshima, of which it calls him the initiator, moved the jury; his Benesse role is on the Japan Foundation page (jpf.go.jp/e/about/award/archive/2026/index.html)."
+ },
+ {
+  "file": "rs6",
+  "funder": "agnesgund",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "moma-ps1",
+   "kinds": [
+    "status"
+   ],
+   "summary": "MoMA PS1 held its benefit gala in honour of Agnes Gund in May 2022 (Avenue Magazine).",
+   "date": "2022-05",
+   "source": "https://avenuemagazine.com/whitney-gala-2022-society-of-msk-winter-lunch-lehmann-maupin-frieze-week-party-saks-rise-aapi-dinner-ali-forney-center-gala-hollywood-reporter-media-issue-moma-ps1-benefit-gala-gordon-parks-foundation",
+   "evidence": "On Wednesday, MoMA PS1 held a benefit gala in honor of Agnes Gund",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Avenue Magazine, 20 May 2022, says MoMA PS1 held a benefit gala in honour of Agnes Gund (and three artists) that Wednesday: the museum's own honour to the funder."
+ },
+ {
+  "file": "rs6",
+  "funder": "agnesgund",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "moma-ps1",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Agnes Gund was chairman of the PS1 board of directors in June 2017 (W Magazine).",
+   "date": "2017-06",
+   "source": "https://www.wmagazine.com/story/agnes-gund-interview-mass-incarceration-moma-ps1-gala",
+   "evidence": "the chairman of the PS1 Board of Directors",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "W Magazine, 21 June 2017, calls her chairman of the PS1 Board of Directors in headline deck and text; on_record holds only a money line for PS1, so it is no repeat."
+ },
+ {
+  "file": "rs6",
+  "funder": "sainsbury",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "national-gallery-london",
+   "kinds": [
+    "status"
+   ],
+   "summary": "John Sainsbury and his brothers Simon and Tim escorted the Queen through the opening ceremony of the Sainsbury Wing in July 1991 (The Art Newspaper, 2022).",
+   "date": "1991-07",
+   "source": "https://www.theartnewspaper.com/2022/01/17/john-sainsbury-former-supermarket-boss-and-major-patron-of-british-museums-has-died-aged-94",
+   "evidence": "escorted the Queen through the opening ceremony",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Art Newspaper obituary says he, his brothers (named Simon and Tim on the page) and Jacob Rothschild escorted the Queen through the opening ceremony of the wing, opened July 1991."
+ },
+ {
+  "file": "rs7",
+  "funder": "northerntrust",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "museum-of-contemporary-art-chicago-mca",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The museum gave Northern Trust its 2022 Arts Philanthropy Award at the Visionary luncheon, accepted by chairman and chief executive Michael O'Grady. The bank has supported the MCA since 1975.",
+   "date": "2022",
+   "source": "https://citizennewspapergroup.com/news/2022/oct/12/mca-chicago-hosts-annual-visionary-luncheon-honori",
+   "evidence": "Michael O'Grady accepted the 2022 Arts Philanthropy Award",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Citizen report (URL dated 12 Oct 2022; the page text carries no date) states the 2022 Arts Philanthropy Award, O'Grady's acceptance and support since 1975."
+ },
+ {
+  "file": "rs7",
+  "funder": "northerntrust",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "space": "museum-of-contemporary-art-chicago-mca",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Michael O'Grady of Northern Trust chaired the museum's board of trustees from 2018 to 2022 and then became its vice chairman.",
+   "date": "2018",
+   "source": "https://citizennewspapergroup.com/news/2022/oct/12/mca-chicago-hosts-annual-visionary-luncheon-honori",
+   "evidence": "He served as Chair until 2022, and serves as Vice-Chairman now",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "said less than the page: the chair ended in 2022",
+   "repetition: his title is in the award entry"
+  ],
+  "reason": "The page says he was elected chair in 2018, served until 2022 and is now vice chairman; the summary now gives the whole term and no longer repeats his title."
+ },
+ {
+  "file": "rs7",
+  "funder": "eczacibasi",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "istanbul-modern",
+   "kinds": [
+    "status"
+   ],
+   "summary": "France named Oya Eczacıbaşı to the Légion d'honneur in March 2011. The reasons NTV reported included creating a meeting point at Istanbul Modern.",
+   "date": "2011-03",
+   "source": "https://www.ntv.com.tr/turkiye/eczacibasi-ve-tanere-devlet-nisani,QNie27Pjt0Svilmgz3vB8g",
+   "evidence": "İstanbul Modern’de bir buluşma noktası yaratması nedeniyle",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "repetition: 'whose board she chairs' is on_record 34f4987db9"
+  ],
+  "reason": "NTV, 2 March 2011, gives the honour and names Istanbul Modern among the reasons; the clause on her chair repeated an on_record line and is cut."
+ },
+ {
+  "file": "rs7",
+  "funder": "eczacibasi",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "istanbul-biennial-iksv",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Writing in soL in November 2025, Osman Gece named Eczacıbaşı's İKSV among institutions that he said launder the image of capital and produce soft power through culture.",
+   "date": "2025-11",
+   "source": "https://haber.sol.org.tr/ortaklasa/ayakta-kalan-sanat-mi-sermaye-mi-403024",
+   "evidence": "aynı stratejiyi izliyor: sermayenin imajını aklamak, kültür üzerinden yumuşak güç üretmek",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "soL refused curl (403) but WebFetch read it: Osman Gece, 6 Nov 2025, lists İKSV (Eczacıbaşı) first among institutions following the strategy quoted in evidence, and the piece is about the Istanbul Biennial; the summary names the outlet and author."
+ },
+ {
+  "file": "rs7",
+  "funder": "hearst",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "lincoln-center-for-the-performing-arts",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Lincoln Center said in March 2023 that Steven R. Swartz, chief executive of Hearst, would succeed Katherine Farley as board chair that June. A director since 2012, he led its Corporate Fund for ten years.",
+   "date": "2023-03",
+   "source": "https://pressroom.lincolncenter.org/press-releases/view/640a00e035b24d3a2c4b01c3",
+   "evidence": "She will be succeeded by Steven R. Swartz, CEO of Hearst",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "page is the March 2023 announcement, not a report that he took the chair in June",
+   "the $75 million figure is left out to stay within 35 words"
+  ],
+  "reason": "The release of 9 March 2023 announces the succession for June and gives his board seat since 2012 and ten years chairing the Corporate Fund; the summary now says what the page says, dated to the release."
+ },
+ {
+  "file": "rs7",
+  "funder": "hearst",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "international-center-of-photography-new-york",
+   "kinds": [
+    "status"
+   ],
+   "summary": "ICP gave its 2010 Infinity Award, the Trustees Award, to Gilbert C. Maurer, a Hearst Corporation board member and a director of The Hearst Foundations.",
+   "date": "2010",
+   "source": "https://www.icp.org/node/67112",
+   "evidence": "member of the Corporation's Board of Directors, director of The Hearst Foundations",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "ICP's own page names Maurer the 2010 Trustees Award recipient and gives his Hearst board seat and Hearst Foundations directorship; it is the museum's own award to the funder's officer, which the rule admits without a stated reason."
+ }
+]
