@@ -206,7 +206,7 @@
     else bySpace.push({ key, id, names: [sp.name], ties: sp.ties.slice(), images: sp.images });
   });
   // A tie that another tie of the same group starts with (Tate's, inside the Rijksakademie's) says nothing the longer one does not.
-  bySpace.forEach(g => { g.title = g.names.join(' · '); g.sub = g.ties.filter(t => !g.ties.some(u => u !== t && u.startsWith(t))).join('. ') + '.'; g.toc = g.title; g.space = true; });
+  bySpace.forEach(g => { g.title = g.names.join(' – '); g.sub = g.ties.filter(t => !g.ties.some(u => u !== t && u.startsWith(t))).join('. ') + '.'; g.toc = g.title; g.space = true; });
   bySpace.sort((a, b) => b.images.length - a.images.length || a.title.localeCompare(b.title));
 
   let groups = byWork;
@@ -220,7 +220,7 @@
       return `<li><a class="act" href="#${g.id}">${esc(g.toc)}, ${n}</a></li>`;
     }).join('');
     document.getElementById('groups').innerHTML = groups.map((g, gi) => `<section class="ai-group" id="${g.id}" aria-labelledby="h-${gi}">
-        <div class="label"><h2 id="h-${gi}">${g.year ? `${esc(g.year)} · ` : ''}${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
+        <div class="label"><h2 id="h-${gi}">${g.year ? `${esc(g.year)} – ` : ''}${esc(g.title)}</h2><span>${plural(g.images.length)}</span></div>
         <p class="ai-tie">${esc(g.sub)}${g.note ? `${/[.?!]$/.test(g.sub) ? '' : '.'} ${esc(g.note)}` : ''}</p>
         ${g.story ? `<details class="ai-more"><summary>Learn more</summary><p>${esc(g.story)}</p></details>` : ''}
         <ul class="ai-grid">${g.images.map((im, i) => {

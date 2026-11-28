@@ -338,7 +338,7 @@
         if (said.length) rows.append(row('hqWhatT', 'What it is', '', h('div', { class: 'hq-prose' }, said.map(t => h('p', { class: 'no-indent', text: t })))));
         if (pf.money) rows.append(row('hqMoneyT', 'Where the money comes from', '', h('div', { class: 'hq-prose' }, h('p', { class: 'no-indent', text: pf.money }))));
         if (pf.facts && pf.facts.length) rows.append(row('hqFactsT', 'On record', '', listOf(pf.facts, f => h('li', { class: 'hq-fact' },
-          h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' / ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
+          h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' – ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
         if (pf.src && pf.src.length) rows.append(row('hqSrcT', 'Sources', '', h('ul', { class: 'd-row-list hq-src' }, pf.src.map(u => h('li', null, link(u))))));
       }
       const sp = hq().spaces(e).map(s => (s.text || e.kind !== 'org') ? s : Object.assign({}, s, { text: giftLines(s.rec, names) })), rel = hq().related(e);

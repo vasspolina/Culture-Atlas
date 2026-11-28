@@ -2197,6 +2197,11 @@ body:not(.influence-mode-active) :is(#gmdChips,#gmChips) [data-influence-measure
 body.influence-mode-active :is(#gmdChips,#gmChips)>button:not([data-influence-measure]):not(#sh-x):not(#sh-y){display:none!important}
 .influence-chat ul{list-style:none!important;margin:0 0 var(--sh-gap) 0!important;padding:0!important}
 .influence-chat li::before{content:"\2013\00a0"!important}
+/* One item takes no dash (user, 28 Nov 2026: "do not do dashes if it is only one item"): the dash sets the items of a list
+   apart, and a single item has nothing beside it. In the ledger's rows, the chat's ledger answers and the chat's own lists. */
+.influence-part .influence-entry:only-child>p:first-child::before,
+.influence-chat li:only-child::before,
+:is(#curatorMessages,#curatorDrawerLiveStream) .curator-message-wrap li:only-child::before{content:none!important}
 /* A funder's museums sit under its name with no second dash and no second indent (user, 17 Nov 2026: "Don't do double dash
    with indent"): the nested items take the parent's text edge, the one the funder's name starts on, and the nested list
    keeps no space under it; one gap separates one funder from the next. */
