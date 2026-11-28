@@ -1,0 +1,294 @@
+[
+ {
+  "file": "rs1",
+  "funder": "apeejay",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "musee-guimet",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Priti Paul, who runs the group's Oxford Bookstore, sits on the board of the Société des Amis du Musée Guimet, the museum's 2022 activity report states.",
+   "date": "2022",
+   "source": "https://www.guimet.fr/sites/default/files/rapport-activite-2022/77-Musee-Guimet-Rapport-d-activite-2022.html",
+   "evidence": "Priti Paul, membre du Conseil d’Administration de la Société des Amis du Musée Guimet",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "seat is at the friends' society, not at the museum"
+  ],
+  "reason": "The 2022 activity report bears out the words, but the seat is on the board of the Société des Amis du Musée Guimet, a separate friends' association, and a seat entry needs a seat at the museum itself."
+ },
+ {
+  "file": "rs1",
+  "funder": "lassonde",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "musée-national-des-beaux-arts-du-québec-quebec-city",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Pierre Lassonde joined the museum's board in 2005 and was its chair by 2016.",
+   "date": "2016",
+   "source": "https://site-cciq.storage.googleapis.com/uploads/20230517200844/gq2016-lassonde.pdf",
+   "evidence": "Administrateur du Musée national des beaux-arts du Québec (MNBAQ) depuis 2005",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "present tense 'has sat' reaches past the 2016 page"
+  ],
+  "reason": "The 2016 Grands Québécois sheet calls him administrateur of the museum since 2005 and président du conseil d'administration; no on_record line holds the seat; the page is from 2016, so the present tense was cut back."
+ },
+ {
+  "file": "rs1",
+  "funder": "lassonde",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "musée-national-des-beaux-arts-du-québec-quebec-city",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Pierre Lassonde was received as a Grand Québécois of the cultural sector in 2016. The citation credits his contribution to financing the museum's new pavilion.",
+   "date": "2016",
+   "source": "https://site-cciq.storage.googleapis.com/uploads/20230517200844/gq2016-lassonde.pdf",
+   "evidence": "Son importante contribution au financement d'un nouveau pavillon marquera à jamais le paysage culturel",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The sheet is headed Grands Québécois 2016, Secteur culturel, and ties the honour to his contribution to financing the new pavilion; the summary names no awarding body, and the page gives none, so nothing is added."
+ },
+ {
+  "file": "rs1",
+  "funder": "lassonde",
+  "i": 2,
+  "verdict": "fix",
+  "after": {
+   "space": "musée-national-des-beaux-arts-du-québec-quebec-city",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Pierre Lassonde was promoted to Officer of the Order of Canada in 2022. The citation names his donations to institutions in the arts and education and the administrative expertise he lent the museum.",
+   "date": "2022-11",
+   "source": "https://www.gg.ca/en/honours/recipients/146-6623",
+   "evidence": "lent his administrative expertise to a variety of organizations, including the Musée national des beaux-arts",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "'donations to arts institutions' is narrower than the citation"
+  ],
+  "reason": "The Governor General's page gives the promotion to Officer on 2022-11-09 and its citation names the museum for his administrative expertise; the donations are to institutions 'particularly in the arts and education', so that phrase was matched to the page."
+ },
+ {
+  "file": "rs1",
+  "funder": "lassonde",
+  "i": 3,
+  "verdict": "fix",
+  "after": {
+   "space": "musée-national-des-beaux-arts-du-québec-quebec-city",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Business/Arts gave Pierre Lassonde its Edmund C. Bovey Award in October 2023 for a lifetime commitment to arts philanthropy. The Globe and Mail's report lists the museum's $110 million fundraising campaign among his contributions.",
+   "date": "2023-10",
+   "source": "https://www.theglobeandmail.com/business/article-pitching-in-supporting-the-arts-as-a-philanthropist/",
+   "evidence": "helped transform the Musée national des beaux-arts du Québec through a $110-million fundraising campaign",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "'his $110 million fundraising campaign': the page does not call the campaign his",
+   "awarding body spelled 'Business / Arts'"
+  ],
+  "reason": "The Globe and Mail (3 Nov 2023) says he was honoured 'for his many contributions' straight after naming the museum campaign, which is the tie; the page says he helped transform the museum through the campaign, not that the campaign was his, and writes the body as Business/Arts."
+ },
+ {
+  "file": "rs1",
+  "funder": "adani",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "When the deal was announced in October 2021, Mia Watanabe of the campaign group Market Forces called it \"greenwash plain and simple\".",
+   "date": "2021-10",
+   "source": "https://www.desmog.com/2021/10/19/coal-mining-giant-to-sponsor-green-energy-gallery-at-uk-science-museum",
+   "evidence": "Mia Watanabe, UK campaigner at Market Forces, said",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "repetition: restates the greenwashing charge of two other Adani entries"
+  ],
+  "reason": "DeSmog (19 Oct 2021) bears out the Watanabe quotation, but it is a third campaigner's 'greenwash' line on the same deal beside the Haigh and Shah entries, and the announcement itself is on_record f0fc8240e1."
+ },
+ {
+  "file": "rs1",
+  "funder": "adani",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Trustees Jo Foster and Hannah Fry resigned in November 2021 after the museum partnered with Adani Green Energy. Fry wrote in The Times that such ties give \"the false impression\" fossil fuel companies' efforts suffice.",
+   "date": "2021-11",
+   "source": "https://www.civilsociety.co.uk/news/science-museum-trustees-quit-after-the-charity-partners-with-fossil-fuel-company.html",
+   "evidence": "I worry that the Science Museum gives the false impression that scientists believe",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "Jo Foster left out although the page names her",
+   "repetition: Stop Adani greenwashing line restates the other Adani entries"
+  ],
+  "reason": "Civil Society (3 Nov 2021) names both trustees, Jo Foster and Hannah Fry; the Stop Adani greenwashing line repeated the other entries and was replaced by Fry's own words from the same page. The old lint line promo: 'Foster' was a false positive on her surname; lint.py as it stands at 07:41 passes the name."
+ },
+ {
+  "file": "rs1",
+  "funder": "adani",
+  "i": 2,
+  "verdict": "keep",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Joanna Haigh, former co-director of the Grantham Institute, told The Art Newspaper in March 2023 the deal was \"greenwashing at its most blatant\", letting the company \"gain respectability by association\".",
+   "date": "2023-03",
+   "source": "https://www.theartnewspaper.com/2023/03/01/critics-line-up-to-condemn-science-museums-sponsorship-deal-with-adani-green-energy",
+   "evidence": "This is greenwashing at its most blatant, allowing a company that makes enormous profits",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Art Newspaper (1 March 2023) carries both quotations word for word and gives Haigh as former co-director of the Grantham Institute; she is the one speaker who says what the company gains."
+ },
+ {
+  "file": "rs1",
+  "funder": "adani",
+  "i": 3,
+  "verdict": "keep",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "More than 150 people occupied the museum in March 2024, days before the gallery opened. Mukti Shah of South Asia Solidarity Group said the museum was helping to \"greenwash\" the corporation.",
+   "date": "2024-03",
+   "source": "https://www.theartnewspaper.com/2024/03/25/protestors-at-london-science-museum-rally-against-greenwashing-new-sponsor",
+   "evidence": "the Science Museum is helping to greenwash this murderous corporation by accepting its sponsorship",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "The Art Newspaper (25 March 2024) reports more than 150 people occupying the museum on the Saturday before the Tuesday opening and Mukti Shah's 'greenwash' words; a distinct event that on_record does not hold."
+ },
+ {
+  "file": "rs2",
+  "funder": "nadar",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "kiran-nadar-museum-of-art-new-delhi",
+   "kinds": [
+    "status"
+   ],
+   "summary": "In 2023 the French ambassador Emmanuel Lenain made Kiran Nadar a Chevalier of the Légion d'honneur for her work in art. Eastern Eye's report credits her role as chairperson of the museum.",
+   "date": "2023",
+   "source": "https://www.easterneye.biz/france-honours-kiran-nadar-with-highest-civilian-award-for-contribution-to-art-and-culture",
+   "evidence": "Nadar, as chairperson of the Kiran Nadar Museum of Art (KNMA)",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Eastern Eye (3 April 2023) reports the award from ambassador Emmanuel Lenain for achievements in the art field and names her as chairperson of the museum; the article gives no award day, so the date stays at the year, which the Padma citation also gives."
+ },
+ {
+  "file": "rs2",
+  "funder": "nadar",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "space": "kiran-nadar-museum-of-art-new-delhi",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Kiran Nadar received India's Padma Shri in 2024. The official citation opens with her as founder and chairperson of the museum and credits her guidance of it since 2010.",
+   "date": "2024",
+   "source": "https://padmaawards.gov.in/Document/pdf/CitationsForTickets/2024/202482.pdf",
+   "evidence": "Smt. Kiran Nadar is the Founder and Chairperson of Kiran Nadar Museum for Art",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "year 2024 is in the URL only, not in the citation text (confirmed on a second page)",
+   "'credits her with building it' says more than the citation"
+  ],
+  "reason": "The citation PDF opens with her as founder and chairperson and credits her guidance of the museum since 2010, but it prints no award year; 2024 is confirmed by The Tribune of 4 Feb 2024 (tribuneindia.com/news/features/padma-shri-for-kiran-nadar-40-years-and-counting-587190/amp, 'honoured with the Padma Shri this year'); 'building it' was cut back to the page's words."
+ },
+ {
+  "file": "rs2",
+  "funder": "fundacincostantini",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Queen Sofía handed Eduardo Costantini the Premio Internacional de Mecenazgo in Madrid in March 2025. The jury's ruling said the museum he created has become a world reference.",
+   "date": "2025-03",
+   "source": "https://www.lanacion.com.ar/cultura/eduardo-costantini-recibio-en-madrid-el-premio-internacional-de-mecenazgo-nid03032025",
+   "evidence": "Ha creado un espacio que se ha convertido en un referente en el mundo",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "La Nación (3 March 2025), read directly, has Queen Sofía handing him the diploma in Madrid while the jury's ruling on Malba was read; 'world reference' is an unquoted translation of the ruling."
+ },
+ {
+  "file": "rs2",
+  "funder": "fundacincostantini",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "space": "museo-de-arte-latinoamericano-de-buenos-aires-malba",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Argentina's culture secretary Leonardo Cifelli handed Eduardo Costantini the distinction of Personalidad Emérita de la Cultura de la Nación in September 2025 and stressed Malba's role as an international reference.",
+   "date": "2025-09",
+   "source": "https://www.cadena3.com/noticia/cultura/eduardo-costantini-fue-distinguido-como-personalidad-emerita-de-la-cultura-de-la-nacion_463905",
+   "evidence": "expresó Cifelli, y destacó el rol del Malba como espacio de referencia internacional",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "'Cifelli declared': the page says Cifelli handed over the distinction"
+  ],
+  "reason": "Cadena 3 (12 Sept 2025), read directly with curl, says he was declared Personalidad Emérita and that Cifelli handed over the distinction and stressed Malba's role; the page does not say Cifelli made the declaration."
+ }
+]
