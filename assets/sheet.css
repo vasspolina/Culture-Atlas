@@ -2886,16 +2886,18 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    screenshot of the name over the world map, where the pane of frosted glass of 25 Nov lay across the map's whole top: it
    paled the land's dots in a band and smeared the tags that came under it). The pane is gone and the map is drawn clear to
    its top edge. The name, and the country's or city's line when one is open, each stand on a patch of that glass no larger
-   than their own letters: the paper, translucent, the map behind it blurred 3px, feathered to nothing over 16px at the
+   than their own letters: the paper, translucent, the map behind it blurred 2px, feathered to nothing over 16px at the
    sides and 8px above and below, so it has no edge. The name's patch is a second item in the heading's one grid cell, so
    it is as wide as the words and the heading keeps its box (index.html centres it on the window by that box); the line is
-   as wide as its words and carries its patch inside its own padding. The tint under the letters is the pane's: the light
-   sheet's paper at 58% keeps its black ink at 4.9:1 or better even over pure black, the dark sheet's at 78% keeps its ink
-   (#e6e1d7) at 4.8:1 or better even over pure white. Where a browser has no backdrop-filter, and where the reader asks for
-   less transparency, the patch is paper at 92%. With the chat wide there is no map, no name and no patch. ---- */
+   as wide as its words and carries its patch inside its own padding. The tint is lighter than the pane's was (user, 28 Nov
+   2026: "make the fade a bit lighter, or remove the fade"): the light sheet's paper at 38%, the dark sheet's at 58%, where
+   the pane had 58% and 78%. That is enough over the map's own grounds (the land's dots, the street map's lines), and no
+   longer a promise of 4.5:1 over anything: a black tag straight behind the black name leaves it 3.4:1. Where a browser has
+   no backdrop-filter, and where the reader asks for less transparency, the patch is paper at 92%. With the chat wide there
+   is no map, no name and no patch. ---- */
 @layer sheet{
-  :root{--sh-glass-a:58%}
-  :root[data-theme="dark"]{--sh-glass-a:78%}
+  :root{--sh-glass-a:38%}
+  :root[data-theme="dark"]{--sh-glass-a:58%}
   @media (min-width:768px){
     :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #gmdTitle{display:grid!important;grid-template-columns:minmax(0,max-content)!important;justify-content:center!important;align-content:center!important}
     :root.gmd.gmd:not(.chat-wide):not(#sh-mid):not(#sh-top) #gmdTitle button{grid-area:1/1!important;display:block!important}
@@ -2906,7 +2908,7 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
       --sh-fade-x:16px;--sh-fade-y:8px;
       content:""!important;display:block!important;z-index:-1!important;pointer-events:none!important;
       background:color-mix(in srgb,var(--sh-paper) var(--sh-glass-a),transparent)!important;
-      -webkit-backdrop-filter:blur(3px)!important;backdrop-filter:blur(3px)!important;
+      -webkit-backdrop-filter:blur(2px)!important;backdrop-filter:blur(2px)!important;
       -webkit-mask-image:linear-gradient(to right,transparent,#000 var(--sh-fade-x),#000 calc(100% - var(--sh-fade-x)),transparent),
         linear-gradient(to bottom,transparent,#000 var(--sh-fade-y),#000 calc(100% - var(--sh-fade-y)),transparent)!important;
       mask-image:linear-gradient(to right,transparent,#000 var(--sh-fade-x),#000 calc(100% - var(--sh-fade-x)),transparent),
