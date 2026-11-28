@@ -1,0 +1,382 @@
+[
+ {
+  "file": "rs1",
+  "funder": "tata",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "hay-festival-hay-on-wye",
+   "kinds": [],
+   "summary": "Tata withdrew its funding in March 2019 and declined to say why. Arundhati Roy, a critic of Tata, then agreed to appear at the festival.",
+   "date": "2019-03",
+   "source": "https://accessaa.co.uk/hay-festivals-major-sponsor-pulls-out/",
+   "evidence": "Hay Festival's main sponsor Tata has pulled its funding from the event",
+   "replaces": "",
+   "ended": true,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Page (26 March 2019) says Tata pulled its funding, declined to comment on why, and that Roy, 'an outspoken critic of Tata', then agreed to take part; on_record holds only the 2017 sponsorship, not the end."
+ },
+ {
+  "file": "rs1",
+  "funder": "allianz",
+  "i": 0,
+  "verdict": "drop",
+  "problems": [
+   "not an honour: a founder tier entered by agreement"
+  ],
+  "reason": "The page calls it an agreement completed by co-optation into the foundation's membership, which is the sponsorship tier and not an award or title of honour; the seat it brings is the next entry."
+ },
+ {
+  "file": "rs1",
+  "funder": "allianz",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "teatro-alla-scala",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Allianz holds a seat on the theatre's board. Its chief executive Giacomo Campora was confirmed for the 2025 to 2028 term in February 2025.",
+   "date": "2025-02",
+   "source": "https://tg24.sky.it/cronaca/2025/02/13/teatro-alla-scala-milano-cda",
+   "evidence": "per Allianz l'ad e direttore generale Giacomo Campora",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Sky TG24 (13 Feb 2025) lists Campora, 'per Allianz l'ad e direttore generale', as confirmed on the board for 2025 to 2028; the seat is not in on_record."
+ },
+ {
+  "file": "rs1",
+  "funder": "siemens",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "salzburger-festspiele",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In August 2020 Fridays for Future Salzburg staged a die-in outside the Festspielhaus. Its statement named Siemens among the sponsors and said the festival gives them a platform to improve their image.",
+   "date": "2020-08",
+   "source": "https://www.salzburg24.at/news/salzburg/stadt/aktivisten-protestieren-gegen-festspiel-sponsoren-art-231336",
+   "evidence": "bieten diesen eine Plattform zur Verbesserung ihres Images",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "The statement quoted on the page names Siemens (for its work with Adani) among the sponsors and says the festival offers them a platform to improve their image; the summary says the line covers the sponsors together and does not single Siemens out."
+ },
+ {
+  "file": "rs1",
+  "funder": "equinor",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "bergen-international-festival-bergen",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Greenpeace activist and climate researcher Christine van der Horst carried a banner onto the catwalk at the festival's opening in May 2023 and said the sponsorship lets Equinor greenwash itself.",
+   "date": "2023-05",
+   "source": "https://www.greenpeace.org/norway/nyheter/energi/aksjonerte-mot-equinors-sponsing-av-festspillene-i-bergen/",
+   "evidence": "Equinor får lov til å grønnvaske seg gjennom å sponse festivaler som Festspillene",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "Greenpeace Norway's page gives the banner, the catwalk, the 24 May 2023 opening and her words that Equinor is allowed to greenwash itself by sponsoring the festival."
+ },
+ {
+  "file": "rs1",
+  "funder": "equinor",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "bergen-international-festival-bergen",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "A petition started by the climate campaign Folk mot Fossilmakta says the sponsorship lets Equinor use art to polish its reputation and gives the oil company social acceptance.",
+   "date": "",
+   "source": "https://actionnetwork.org/petitions/frigjor-kunsten-fra-fossilt-krev-equinor-ut-av-festspillene-i-bergen",
+   "evidence": "får bruke kunst og kultur til å pynte på sitt omdømme",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "The petition page itself carries both lines (polish its reputation, social acceptance) and names Folk mot Fossilmakta as initiator; it shows no date, so date stays empty and it cannot be tied to the 2025 on_record line."
+ },
+ {
+  "file": "rs1",
+  "funder": "equinor",
+  "i": 2,
+  "verdict": "keep",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In November 2023 Julie Forchhammer, co-founder of the Norwegian group Klimakultur, called Equinor's sponsorship of the Wonderlab gallery part of a \"culture-washing\" strategy.",
+   "date": "2023-11",
+   "source": "https://www.theartnewspaper.com/2023/11/16/science-museum-in-london-criticised-for-promoting-oil-giant-backer",
+   "evidence": "Equinor’s sponsorship is part of a “culture-washing” strategy",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Art Newspaper (16 Nov 2023) gives Forchhammer, co-founder of Klimakultur, the quoted word 'culture-washing' and the Wonderlab gallery."
+ },
+ {
+  "file": "rs1",
+  "funder": "equinor",
+  "i": 3,
+  "verdict": "fix",
+  "after": {
+   "space": "science-museum-london",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Culture Unstained said in July 2024 that Equinor had sponsored the children's Wonderlab gallery since 2016 to lift its brand in the UK. The museum did not renew the deal.",
+   "date": "2024-07",
+   "source": "https://cultureunstained.org/2024/07/13/science-museum-drops-equinor-sponsorship-as-it-fails-to-align-with-1-5c-paris-target/",
+   "evidence": "‘Wonderlab’ gallery for children since 2016 in a bid to boost its brand",
+   "replaces": "d6ac57db64",
+   "ended": true,
+   "protest": true
+  },
+  "problems": [
+   "repeats on_record 'Sponsorship ended in 2024.'"
+  ],
+  "reason": "Text is on the page (13 July 2024); it states the on_record end line more fully, so it replaces that line."
+ },
+ {
+  "file": "rs1",
+  "funder": "eon",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "kunstpalast",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Emmanuel Mir's 2006 thesis at Düsseldorf University says the partnership was meant to spread a positive picture of E.ON as a corporate citizen, and that E.ON used the museum's rooms for representation.",
+   "date": "2006",
+   "source": "https://docserv.uni-duesseldorf.de/servlets/DerivateServlet/Derivate-1765",
+   "evidence": "ein positives Bild der Organisation verbreiten, die sich im Sinne eines corporate citizen",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Opened the PDF: Mir's Magisterarbeit, Heinrich-Heine-Universität Düsseldorf, March 2006, p. 92 has both the positive picture as corporate citizen and the use of the museum's rooms for representative purposes."
+ },
+ {
+  "file": "rs1",
+  "funder": "nasher",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "nasher-museum-of-art-at-duke-durham",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The Duke Alumni Association gave Raymond Nasher its Distinguished Alumni Award in 2004. The citation calls him the museum's guiding force and chief patron.",
+   "date": "2004-09",
+   "source": "https://today.duke.edu/2004/09/alumni_0904.html",
+   "evidence": "Ray has been the museum's guiding force and chief patron",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Duke's page prints the citation of the 2004 Distinguished Alumni Award (30 September 2004) with 'the museum's guiding force and chief patron', so the honour is tied to his giving to this museum."
+ },
+ {
+  "file": "rs1",
+  "funder": "bronfman",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "mac-montr-al",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Stephen Bronfman was named a Commander of the Ordre de Montréal in 2026. The city's citation names his engagement with the Musée d'art contemporain and his lead in major fundraising campaigns.",
+   "date": "2026",
+   "source": "https://ville.montreal.qc.ca/ordre/en/node/595",
+   "evidence": "his engagement with the Musée d'art contemporain, the Canadian Centre for Architecture, and C2 Montréal",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Ordre de Montréal page gives Commander, 2026, and a citation naming the Musée d'art contemporain and his lead in major fundraising campaigns."
+ },
+ {
+  "file": "rs2",
+  "funder": "moribuilding",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "mori-art-museum",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Yoshiko Mori, a Mori Building director and the museum's chairperson emerita, received an honorary OBE in November 2025. The British Embassy cited the museum's support of UK artists under her stewardship.",
+   "date": "2025-11",
+   "source": "https://art-view.roppongihills.com/common/download/press/2025/OBE_251107_en_web.pdf",
+   "evidence": "Under her stewardship the Mori Art Museum has championed and supported",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The museum's release (7 Nov 2025) gives her Mori Building board seat, chairperson emerita title, the honorary OBE and the embassy's words on the museum's support of UK artists under her stewardship."
+ },
+ {
+  "file": "rs2",
+  "funder": "prada",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "fondazione-prada",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The American Academy in Rome gave Miuccia Prada its McKim Medal in May 2010, citing her contributions to the visual arts as cofounder of the Fondazione Prada.",
+   "date": "2010-05",
+   "source": "https://aarome.org/news/features/miuccia-prada-awarded-2010-aar-mckim-medal",
+   "evidence": "for her contributions to the visual arts as cofounder of the Fondazione Prada",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Academy's page gives the medal, 26 May 2010 and the cofounder wording; her Prada role (head designer of the Prada fashion house) is stated on https://www.e-flux.com/announcements/31967/miuccia-prada-and-germano-celant."
+ },
+ {
+  "file": "rs2",
+  "funder": "prada",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "fondazione-prada",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Independent Curators International named Miuccia Prada, head designer of Prada, for its 2013 Leo Award, acknowledging her work at Fondazione Prada.",
+   "date": "2013-11",
+   "source": "https://www.e-flux.com/announcements/31967/miuccia-prada-and-germano-celant",
+   "evidence": "will honor Miuccia Prada with the 2013 Leo Award",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The e-flux announcement (1 Nov 2013) says ICI 'will honor' her on 19 November for work at Fondazione Prada and calls her head designer; the summary says 'named', not 'received', which is what the page bears out."
+ },
+ {
+  "file": "rs2",
+  "funder": "eni",
+  "i": 0,
+  "verdict": "drop",
+  "problems": [
+   "licence not borne out: 'art-wash' is aimed at injustices and the museum, not Eni's image",
+   "repeats on_record 1805680d9f"
+  ],
+  "reason": "The artists say their work would art-wash injustices and fault MAXXI's stance; no one on the page says Eni's money buys Eni a better image, and the withdrawal itself is already on_record."
+ },
+ {
+  "file": "rs2",
+  "funder": "fundacinjumexgrants",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "museo-jumex",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Queen Sofía of Spain handed Eugenio López the Premio Iberoamericano de Mecenazgo in Madrid in February 2023 for his work for contemporary art. The report credits him with creating the Fundación Jumex and Museo Jumex.",
+   "date": "2023-02",
+   "source": "https://www.quien.com/circulos/2023/02/20/eugenio-lopez-recibe-premio-por-de-manos-de-la-reina-sofia-de-espana",
+   "evidence": "recibió este lunes el Premio Iberoamericano de Mecenazgo de manos de la Su Majestad",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported on source: the stated reason for the award and 'Jumex heir' are not on this page"
+  ],
+  "reason": "Quién gives the award's reason only as his work for contemporary art and names the foundation and museum as his creations; the fuller reason is on https://www.milenio.com/cultura/reconoceran-eugenio-lopez-valentin-diez-morodo-espana, so the summary is cut back to the source."
+ },
+ {
+  "file": "rs3",
+  "funder": "riotinto",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "montreal-museum-of-fine-arts",
+   "kinds": [
+    "access"
+   ],
+   "summary": "Jérôme Pécresse, Rio Tinto's chief executive for aluminium, was one of four co-chairs of the museum's 2025 Museum Ball, its 65th.",
+   "date": "2025",
+   "source": "https://www.mbam.qc.ca/en/news/co-chairs-of-the-2025-edition-of-the-museum-ball/",
+   "evidence": "Jérôme Pécresse, Chief Executive, Aluminium, Rio Tinto",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The museum's page names Pécresse, 'Chief Executive, Aluminium, Rio Tinto', as one of four co-chairs of the 65th ball held in the museum's halls; he heads the division (Rio Tinto Alcan) that on_record lists as the donor, and the entry claims no sponsorship."
+ },
+ {
+  "file": "rs3",
+  "funder": "disney",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "redcat-los-angeles",
+   "kinds": [
+    "status"
+   ],
+   "summary": "The Walt Disney Company received a REDCAT Award at the 2013 REDCAT Gala, honoured as instrumental in founding and supporting CalArts and its REDCAT space.",
+   "date": "2013-03",
+   "source": "https://blog.calarts.edu/2013/03/20/redcat-gala-honors-the-walt-disney-company-and-catherine-opie/",
+   "evidence": "The Walt Disney Company—instrumental in founding and supporting the influential school and its REDCAT space",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "CalArts' page (20 March 2013) says the company received a 2013 REDCAT Award at the gala held at REDCAT, with the 'instrumental in founding and supporting' wording."
+ },
+ {
+  "file": "rs3",
+  "funder": "standardbank",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "national-arts-festival",
+   "kinds": [
+    "status"
+   ],
+   "summary": "In November 2020 Business and Arts South Africa gave Standard Bank and the festival its Long-Term Partnership Award for the Standard Bank Young Artist project, recognising 36 years of collaboration.",
+   "date": "2020-11",
+   "source": "https://standardbank.co.za/southafrica/news-and-media/newsroom/long-term-partnership-pays-off-for-national-arts-festival-and-standard-bank",
+   "evidence": "Thirty-six years of collaboration were recognised",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The bank's newsroom page (19 Nov 2020) states the BASA Long-Term Partnership Award to the bank and the festival for the Young Artist project and the 36 years; a plain fact about an award tied to this festival, which the bank's own page can carry."
+ }
+]
