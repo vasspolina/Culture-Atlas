@@ -327,10 +327,10 @@
     // A row is shown only when it has something in it: no 'no other name', 'no space', 'None' lines (user, 3 Nov 2026).
     // While the offices load, the slot stays empty rather than showing a "Loading…" row; fill() runs again once they arrive.
     if (ready) {
-      // The other spellings only: the funder's own name is the title above, and the sentence that explained the list is gone
-      // (user, 9 Nov 2026: "Slop"). No row when every funding line spells it as the title does.
+      // The spellings the funding lines use for this funder: they find its gifts in each space's record. They are not
+      // listed: the "Also written" row is gone (user, 28 Nov 2026: "whats this", then "remove it").
       // `sn` is the profile's short name (tools/build_hq.py): one more spelling the records can use for this funder.
-      const names = hq().names(e).concat(e.sn && !hq().names(e).some(n => n.toLowerCase() === e.sn.toLowerCase()) ? [e.sn] : []), others = names.filter(n => n !== e.n);
+      const names = hq().names(e).concat(e.sn && !hq().names(e).some(n => n.toLowerCase() === e.sn.toLowerCase()) ? [e.sn] : []);
       // The profile: what the funder is, where its money comes from, what it gives to culture, each a sentence from a
       // source opened for it, with those sources under them; then the dated facts the influence study read.
       if (pf) {
@@ -338,7 +338,7 @@
         if (said.length) rows.append(row('hqWhatT', 'What it is', '', h('div', { class: 'hq-prose' }, said.map(t => h('p', { class: 'no-indent', text: t })))));
         if (pf.money) rows.append(row('hqMoneyT', 'Where the money comes from', '', h('div', { class: 'hq-prose' }, h('p', { class: 'no-indent', text: pf.money }))));
         if (pf.facts && pf.facts.length) rows.append(row('hqFactsT', 'On record', '', listOf(pf.facts, f => h('li', { class: 'hq-fact' },
-          h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' / ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
+          h('span', { text: f.t }), f.d || f.s ? h('span', { class: 'hq-s' }, f.d ? f.d : '', f.d && f.s ? ' – ' : '', f.s ? link(f.s) : '') : null), LIST_SHOWN)));
         if (pf.src && pf.src.length) rows.append(row('hqSrcT', 'Sources', '', h('ul', { class: 'd-row-list hq-src' }, pf.src.map(u => h('li', null, link(u))))));
       }
       const sp = hq().spaces(e).map(s => (s.text || e.kind !== 'org') ? s : Object.assign({}, s, { text: giftLines(s.rec, names) })), rel = hq().related(e);
@@ -349,7 +349,6 @@
         group('hqConnFunders', 'Funds alongside', rel.funders, r => officeRow(r.e, r.shared));
         group('hqConnPeople', 'Named with these museums in the Epstein files', rel.people, r => officeRow(r.e, r.shared));
       }
-      if (others.length) rows.append(row('hqNamesT', 'Also written', '', h('ul', { class: 'd-row-list hq-names' }, others.map(n => h('li', { text: n })))));
     }
     if (rows.childElementCount) p.replaceChildren(head, rows); else p.replaceChildren(head);
     toTop(p);

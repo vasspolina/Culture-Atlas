@@ -359,7 +359,7 @@
     LIFTED.forEach(({ f, x, y, hot }) => {
       const s = 4 + Math.min(6, Math.sqrt(f.n)), col = A.COL[f.kind];
       ctx.beginPath(); ctx.arc(x, y, s, 0, Math.PI * 2); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = hot ? 1.6 : 0.8; ctx.strokeStyle = dark ? '#fff' : '#000'; ctx.stroke();
-      A.pushMark({ x, y, r: s + 4, col, key: f.keys[0], kind: f.kind, space: f.hub, name: f.name, label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} · funds ${f.n} museums`, sub2: `Head office: ${f.hub.c ? f.hub.c + ', ' : ''}${f.hub.co || ''}`, ask: `Which institutions does ${f.name} fund?` });
+      A.pushMark({ x, y, r: s + 4, col, key: f.keys[0], kind: f.kind, space: f.hub, name: f.name, label: f.name, sub: `${KIND_WORD[f.kind] || 'Funder'} – funds ${f.n} museums`, sub2: `Head office: ${f.hub.c ? f.hub.c + ', ' : ''}${f.hub.co || ''}`, ask: `Which institutions does ${f.name} fund?` });
       // Names when the view is close, or for the funder in play.
       if (!(hot || r >= baseRadius * 2.2)) return;
       // The whole name as plain type on a halo of ground, no block (user, 16 Nov 2026: names "dont need background or frame").

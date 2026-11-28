@@ -176,7 +176,7 @@ return maplibregl$1;
           show('tap ' + (b ? (b.id || (b.textContent || '').trim().slice(0, 18)) : (e.target && e.target.tagName)) + ' | mode=' + (document.body.dataset.mobileMode || '-') + ' | body=' + document.body.className + ' | w=' + innerWidth + 'x' + innerHeight + ' vv=' + Math.round((window.visualViewport || {}).height || 0));
         }, 120);
       }, true);
-      if (on) show('debug on · ' + navigator.userAgent.slice(0, 90));
+      if (on) show('debug on – ' + navigator.userAgent.slice(0, 90));
     })();
   </script>
 
@@ -13251,7 +13251,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
       const regLinks = [];
       if (reg) regLinks.push(`Official register: ${link(reg, registryName(reg))}`);
       if (fil && fil !== reg) regLinks.push(`Annual filings: ${link(fil, registryName(fil))}`);
-      if (regLinks.length) rows.push(`<p class="t-lead no-indent source-note">${regLinks.join(' · ')}</p>`);
+      if (regLinks.length) rows.push(`<p class="t-lead no-indent source-note">${regLinks.join(' – ')}</p>`);
       if (!rows.length) return '';
       return `<div class="py-3 rule-b space-y-2" role="region" aria-label="Funding"><span class="kicker block">Funding</span>${rows.join('')}</div>`;
     }
@@ -13934,7 +13934,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
         sheetName.style.setProperty('--title-length', Math.max((inst.name || '').length, 1));
         sheetName.title = inst.name || '';
       }
-      text('dossier-sheet-meta', [[inst.category, [inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(' · '), inst.architecture_status].filter(Boolean).join(' · '));
+      text('dossier-sheet-meta', [[inst.category, [inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(' – '), inst.architecture_status].filter(Boolean).join(' – '));
       // In Gossip mode a watch line that passes the gossip test is the reported item below, so it is not repeated here.
       const reported = documentedRecordHtml(inst), watchReported = isGossipModeActive && !reported && watchIsGossip(inst.watch);
       text('dossier-sheet-summary', [inst.highlight, watchReported ? '' : inst.watch].filter(Boolean).join(' '));
@@ -14867,7 +14867,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
       if (fil && fil !== reg) regLinks.push(`Annual filings: ${link(fil, registryName(fil))}`);
       // Where the founding year and the address came from leads the list; the registry and the filings close it.
       const basics = sourcesHtml(inst, true, true) || [];
-      rows.push(proseRow('Sources', d.retrieved ? `Checked ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' · ')}</li>`] : []), { fold: 6, cls: 'is-sources' }));
+      rows.push(proseRow('Sources', d.retrieved ? `Checked ${escapeHtml(humanDate(d.retrieved))}` : '', basics.concat(proseLinkList(urls, 12).map(a => `<li>${a}</li>`), regLinks.length ? [`<li>${regLinks.join(' – ')}</li>`] : []), { fold: 6, cls: 'is-sources' }));
       return proseRows(rows, 'Reporting and context');
     }
     // Accounts from review sites and Reddit, and what readers sent in: the same rows, the caution said once as the subtitle.
@@ -15064,7 +15064,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
       // Plain words, and no link-check housekeeping (user, 13 Nov 2026: "use plain language and do not be overly descriptive").
       const type = GOSSIP_SOURCE_TYPE[g.who_says] || '';
       const status = { talk: 'Rumour', denied: 'Denied', confirmed: 'Confirmed', resolved: 'Settled', stale: 'Old rumour' }[g.status] || '';
-      return [type, status].filter(Boolean).join(' · ');
+      return [type, status].filter(Boolean).join(' – ');
     }
     // One item as plain text for the chat's record answers: the headline, what is said, who says it, the response, its status.
     function gossipItemText(g) {

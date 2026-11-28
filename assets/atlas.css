@@ -1507,7 +1507,6 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 #hqPanel .hq-link:hover{padding-left:6px}
 #hqPanel .hq-list .hq-note{margin:0 0 8px}
 #hqPanel .hq-more{margin-top:6px;padding:0;min-height:32px;border:0;background:transparent;color:var(--ink);font:inherit;text-decoration:underline;text-underline-offset:var(--ul-off)}
-#hqPanel .hq-names li{padding:2px 0}
 #hqPanel.is-sheet,#hqPanel.is-sheet.is-right{left:8px;right:8px;width:auto;max-width:none;top:auto;bottom:56px;max-height:40%}
 #hqPanel.is-sheet.is-top{top:88px;bottom:auto;max-height:calc(50% - 100px)}
 
@@ -1561,7 +1560,6 @@ body.gossip-mode-active :is(#curatorMessages,#curatorDrawerLiveStream){padding-b
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel ul.d-row-list.hq-list>li{padding-left:0}
 :root :is(#desktopDossierRecordBody,#detailBody,#dossier-sheet-scrollable-body) #hqPanel ul.d-row-list.hq-list>li::before{content:none}
 #hqPanel.is-details .hq-list .hq-note{margin:calc(var(--H) / 2) 0 0}
-#hqPanel.is-details .hq-names li{padding:0}
 /* The funder's profile (19 Nov 2026): its sentences as prose, each dated fact with its date and source on a line under it. */
 #hqPanel .hq-prose p{margin:0}
 #hqPanel .hq-prose p+p{margin-top:calc(var(--H) / 2)}
