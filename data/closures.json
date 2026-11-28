@@ -1,0 +1,26 @@
+{
+  "about": "Closing years of the spaces on the atlas. Every entry is taken from the record's own text (institutions.json), never from a guess: the record says the space closed for good, or has been closed since a date with no reopening on record, and names the year. A closure for renovation, a strike, a season or a closed branch is not entered. year_closed is null when the record says the space closed and gives no year. tools/attach_closures.py writes year_closed and closed_note into institutions.json.",
+  "reviewed": "2026-11-28",
+  "closures": [
+    {"id": "angkor-panorama-museum", "year_closed": 2019, "closed_note": "Shut since 4 December 2019.", "field": "watch"},
+    {"id": "museo-de-la-revolucion-democratica-y-cultural", "year_closed": 2020, "closed_note": "Closed since 2020.", "field": "watch"},
+    {"id": "y-gallery-minsk", "year_closed": 2020, "closed_note": "Dissolved on 29 October 2020.", "field": "records_note"},
+    {"id": "kx-space-kryly-khalopa-theatre-prastora-kx-closed-2021-brest", "year_closed": 2021, "closed_note": "Liquidated on 18 June 2021 at the Brest prosecutor's request.", "field": "details.wider_context"},
+    {"id": "ok16-cultural-hub-minsk", "year_closed": 2021, "closed_note": "Closed since January 2021.", "field": "details.overview"},
+    {"id": "taipei-contemporary-art-center-taipei", "year_closed": 2021, "closed_note": "Closed its space and dissolved its association in February 2021.", "field": "details.overview"},
+    {"id": "ntu-centre-for-contemporary-art-singapore-singapore", "year_closed": 2021, "closed_note": "Its exhibition and residency spaces closed in March 2021.", "field": "details.overview"},
+    {"id": "art-siadziba-minsk", "year_closed": 2022, "closed_note": "Ended its activity in January 2022, after it was put on the liquidation list in July 2021.", "field": "watch"},
+    {"id": "typography-center-krasnodar", "year_closed": 2022, "closed_note": "Closed since 12 May 2022. Its legal entity was liquidated in 2025.", "field": "details.overview"},
+    {"id": "kuindzhi-art-museum", "year_closed": 2022, "closed_note": "Reported destroyed by an airstrike in March 2022 and listed as dissolved that year.", "field": "details.overview"},
+    {"id": "guangdong-times-museum-guangzhou", "year_closed": 2022, "closed_note": "Closed on 9 October 2022.", "field": "details.overview"},
+    {"id": "fundaci-n-casa-de-los-tres-mundos-granada", "year_closed": 2024, "closed_note": "Closed by the Nicaraguan state in August 2024.", "field": "funding"},
+    {"id": "rubin-museum-of-art", "year_closed": 2024, "closed_note": "Closed its Chelsea building on 6 October 2024 and carries on without one.", "field": "watch"},
+    {"id": "kropka-belarusian-community-space-listed-in-place-of-krokva-tbilisi", "year_closed": 2025, "closed_note": "Shut down in January 2025.", "field": "records_note"},
+    {"id": "cca-glasgow", "year_closed": 2026, "closed_note": "Closed on 30 January 2026 and entered liquidation.", "field": "details.overview"},
+    {"id": "national-centre-for-contemporary-arts-minsk", "year_closed": 2026, "closed_note": "Closed on 29 October 2026 under a Council of Ministers resolution of 3 August 2026.", "field": "records_note"},
+    {"id": "biennale-jogja", "year_closed": 2026, "closed_note": "Announced its closure on 9 October 2026, after 16 years.", "field": "watch"},
+    {"id": "museum-fur-deutsche-geschichte", "year_closed": 1990, "closed_note": "Dissolved with effect from 15 September 1990.", "field": "details.overview"},
+    {"id": "central-lenin-museum", "year_closed": 1993, "closed_note": "Disbanded in 1993 by order of the Russian president.", "field": "details.overview"},
+    {"id": "state-of-concept-athens", "year_closed": null, "closed_note": "Its space in Athens is permanently closed.", "field": "highlight"}
+  ]
+}

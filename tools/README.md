@@ -32,6 +32,7 @@ Descriptions below are each script's own docstring; read the script for details.
 | `attach_artifact_findings.py` | Carry what the Sponsor Atlas artifact of 19 Oct 2026 holds beyond the study lines into the records. |
 | `attach_critiques.py` | Put the critical frames in data/research_attach/institutional_critiques.json on the records they apply to. |
 | `attach_finance_scale.py` | Attach the structured accounts figures to records as `finance`. |
+| `attach_closures.py` | Write the closing years in data/closures.json into institutions.json (year_closed, closed_note), then run tools/embed_data.py. No year is entered that the record's own text does not name. |
 | `attach_flag_details.py` | Add the further detail found for "Why it is flagged" to each flagged record as flag_details: |
 | `attach_gossip.py` | Write the gossip items from data/gossip_items.json onto the records they are about, as `gossip_data.gossip`. |
 | `tell_gossip.py` | The gossip items retold in the voice of Gossip mode (`told`): lists the items still to retell, checks retellings against their items and writes them in. |

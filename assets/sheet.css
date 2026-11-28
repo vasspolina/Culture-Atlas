@@ -2892,3 +2892,30 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    its top edge and the name stands on it with no ground, tint or blur, as on 17 Nov ("no need to add background behind
    title"). The country's or city's line stands the same way: the paper halo it had round its letters since 15 Nov is
    gone too (user, 28 Nov 2026: "remove the halo on the city line too"). ---- */
+
+/* ---- YEARS ON THE MAP (assets/years.js). Two chips at the end of the filter row, Closed 2006–2026 and By year, and under
+   them a box: the year (a number box and a slider for the same value), what that year leaves on the map, and one line
+   that counts the years on record. On the desktop the box is the last line of the filter row; on the phone, where the
+   row is one bar, it stands under the bar. ---- */
+@layer sheet{
+  .sh-years:not(#sh-x):not(#sh-y):not(#sh-z){display:block!important;flex:0 0 100%!important;box-sizing:border-box!important;width:100%!important;max-width:46em!important;margin:2px 0 0!important;padding:0!important;
+    font-family:var(--sh-serif)!important;font-size:calc(var(--sh-s) * .85)!important;line-height:1.3!important;color:var(--sh-ink)!important;text-align:left!important}
+  .sh-years[hidden]:not(#sh-x):not(#sh-y):not(#sh-z),.sh-years .sh-years-row[hidden]:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important}
+  .sh-years .sh-years-row:not(#sh-x):not(#sh-y):not(#sh-z){font-size:calc(var(--sh-s) * .85)!important;line-height:1.3!important;display:flex!important;flex-wrap:wrap!important;align-items:center!important;gap:4px 10px!important;margin:0 0 4px!important;padding:0!important}
+  .sh-years label:not(#sh-x):not(#sh-y):not(#sh-z){margin:0!important;padding:0!important;font:inherit!important;color:inherit!important;text-transform:none!important;letter-spacing:0!important}
+  .sh-years input[type="number"]:not(#sh-x):not(#sh-y):not(#sh-z){box-sizing:border-box!important;width:4.8em!important;min-height:0!important;height:auto!important;margin:0!important;padding:.08em .5em .12em!important;
+    border:1px solid var(--sh-ink)!important;border-radius:999px!important;background:var(--sh-paper)!important;color:var(--sh-ink)!important;font:inherit!important;text-align:center!important;-moz-appearance:textfield!important}
+  .sh-years input[type="range"]:not(#sh-x):not(#sh-y):not(#sh-z){flex:1 1 150px!important;min-width:130px!important;max-width:340px!important;height:24px!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;accent-color:var(--sh-ink)!important}
+  .sh-years :is(input[type="number"],input[type="range"]):focus-visible:not(#sh-x):not(#sh-y):not(#sh-z){outline:2px solid var(--sh-hover,var(--sh-ink))!important;outline-offset:2px!important}
+  .sh-years .sh-years-shown:not(#sh-x):not(#sh-y):not(#sh-z){flex:1 1 100%!important;font:inherit!important;color:inherit!important}
+  .sh-years .sh-years-note:not(#sh-x):not(#sh-y):not(#sh-z){display:block!important;margin:0!important;padding:0!important;font:inherit!important;color:inherit!important;text-indent:0!important;text-align:left!important;max-width:none!important}
+  .sh-years.sh-years-float .sh-years-row:not(#sh-x):not(#sh-y):not(#sh-z):not(#sh-w){font-size:14px!important}
+  .sh-years.sh-years-float:not(#sh-x):not(#sh-y):not(#sh-z){display:none!important;position:fixed!important;left:0!important;right:0!important;z-index:30!important;max-width:none!important;margin:0!important;padding:6px var(--sh-pad) 8px!important;
+    background:var(--sh-paper)!important;border-bottom:1px solid var(--sh-ink)!important;font-size:14px!important}
+  :root.gm-map .sh-years.sh-years-float:not([hidden]):not(#sh-x):not(#sh-y):not(#sh-z){display:block!important}
+  .sh-years-list:not(#sh-x):not(#sh-y):not(#sh-z){margin:0!important;padding:0!important;list-style:none!important}
+  .sh-years-list li:not(#sh-x):not(#sh-y):not(#sh-z){margin:0 0 .35em!important;padding:0!important;text-indent:0!important}
+  /* A closed space on the street map: a cross over its mark, as on the globe. */
+  .custom-inst-pin[data-closed]:not(#sh-x):not(#sh-y)::after{content:""!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;pointer-events:none!important;
+    width:22px!important;height:22px!important;background:linear-gradient(45deg,transparent calc(50% - 2.5px),var(--sh-paper) calc(50% - 2.5px),var(--sh-paper) calc(50% - 1px),var(--sh-ink) calc(50% - 1px),var(--sh-ink) calc(50% + 1px),var(--sh-paper) calc(50% + 1px),var(--sh-paper) calc(50% + 2.5px),transparent calc(50% + 2.5px)),linear-gradient(-45deg,transparent calc(50% - 2.5px),var(--sh-paper) calc(50% - 2.5px),var(--sh-paper) calc(50% - 1px),var(--sh-ink) calc(50% - 1px),var(--sh-ink) calc(50% + 1px),var(--sh-paper) calc(50% + 1px),var(--sh-paper) calc(50% + 2.5px),transparent calc(50% + 2.5px))!important}
+}

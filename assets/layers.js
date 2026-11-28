@@ -200,7 +200,7 @@
     });
     // The phone adds its grade chips to the same row (assets/phone-maps.js) and keeps their state itself, so they are left out:
     // painted here they all showed pressed whenever the Images chip was pressed.
-    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button:not([data-grade])').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
+    const paint = () => { const on = window.atlasSpaceFilter(); host.querySelectorAll('button:not([data-grade]):not([data-years])').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.layer ? b.dataset.layer === on : !on))); };
     paint(); document.addEventListener('atlas:filter', paint);
     // The row wraps rather than scrolls (user, 7 Nov 2026: "make the filters row not scroll, fit all on screen"), so its
     // height varies with the width. It is published as --<id>-h on the root, and what sits under the row (the page's name
@@ -238,10 +238,12 @@
     if (FILTERS.size && keyIndex) { funded = new Set(); FILTERS.forEach(t => t.keys.forEach(k => (keyIndex.get(k) || []).forEach(id => funded.add(id)))); }
     // A mode over the whole page (Influence mode, assets/influence-mode.js) narrows the map as a filter does, under any filter on.
     const mode = typeof window.atlasModeKeep === 'function' ? window.atlasModeKeep() : null;
-    if (!on.length && !funded && !GRADE && !LETTER && !mode) return null;
+    // The years (assets/years.js): only the spaces closed in the last twenty years, or the ones opened by the year shown.
+    const years = typeof window.atlasYearsKeep === 'function' ? window.atlasYearsKeep() : null;
+    if (!on.length && !funded && !GRADE && !LETTER && !mode && !years) return null;
     // Funding and Epstein read the funding maps; until they are in, those two keep nothing, and the map fills in once they load.
     if (on.some(k => k === 'funding' || k === 'epstein') && !recById) loadMoney();
-    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE) && (!LETTER || Number(i.grade) === LETTER) && (!mode || mode(i));
+    return i => (!on.length || on.some(k => SPACE_TEST[k](i))) && (!funded || funded.has(i.id)) && (!GRADE || gradeOf(i) === GRADE) && (!LETTER || Number(i.grade) === LETTER) && (!mode || mode(i)) && (!years || years(i));
   };
   let pinIndex = null;
   function refilter() {

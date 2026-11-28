@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <!-- The load image is picked and asked for here, before the 2 MB of head, so it is on its way while the page parses
        (user, 14 Nov 2026: "the image is not showing while its loading"). assets/load-image.js shows the same pick. -->
-  <script src="assets/load-image-data.js?v=927"></script>
+  <script src="assets/load-image-data.js?v=928"></script>
   <script>(function(){var l=window.LOAD_IMAGES;if(!l||!l.length)return;var p=l[Math.floor(Math.random()*l.length)];var i=new Image();try{i.fetchPriority='high';}catch(e){}i.decoding='async';i.src=p.src;window.LOAD_PICK=p;window.LOAD_PICK_IMG=i;})();</script>
   <script>/* iOS zooms into any field under 16px on focus; the phone type is 14px. Safari still allows pinch zoom with this set. */(function(){if(/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)){var m=document.querySelector('meta[name=viewport]');if(m)m.setAttribute('content',m.getAttribute('content')+', maximum-scale=1')}})()</script>
   <meta name="theme-color" content="#ffffff" />
@@ -78,15 +78,15 @@
     })();
   </script>
   <link rel="stylesheet" href="assets/maplibre-gl.css">
-  <link rel="stylesheet" href="assets/atlas.css?v=927">
-  <link rel="stylesheet" href="assets/sheet.css?v=927">
-  <script src="assets/config.js?v=927"></script>
-  <script src="assets/analytics.js?v=927"></script>
-  <script src="assets/subtopic.js?v=927"></script>
-  <script src="assets/names.js?v=927"></script>
-  <script src="assets/grounding.js?v=927"></script>
-  <script src="assets/repeats.js?v=927"></script>
-  <script src="assets/intro-narration.js?v=927"></script>
+  <link rel="stylesheet" href="assets/atlas.css?v=928">
+  <link rel="stylesheet" href="assets/sheet.css?v=928">
+  <script src="assets/config.js?v=928"></script>
+  <script src="assets/analytics.js?v=928"></script>
+  <script src="assets/subtopic.js?v=928"></script>
+  <script src="assets/names.js?v=928"></script>
+  <script src="assets/grounding.js?v=928"></script>
+  <script src="assets/repeats.js?v=928"></script>
+  <script src="assets/intro-narration.js?v=928"></script>
   <script>
 /**
  * MapLibre GL JS
@@ -151,7 +151,7 @@ return maplibregl$1;
   </script>
 </head>
 <body>
-  <script src="assets/load-image.js?v=927"></script>
+  <script src="assets/load-image.js?v=928"></script>
   <script>
     // Debug mode: add ?debug to the address and every error, and every tap with the state the page was in, is written on screen.
     // Without ?debug nothing is shown. atlasDebugLog is also called by guarded steps that would otherwise fail silently.
@@ -1182,8 +1182,8 @@ return maplibregl$1;
   <!-- ========================================================= -->
   <div id="statutoryFilingsModal" class="hidden"></div><div id="closeFilingsModalBtn" class="hidden"></div><div id="filingInstitutionSelect" class="hidden"></div><div id="filingTabOverview" class="hidden"></div><div id="filingTabScheduleL" class="hidden"></div><div id="filingTabExecComp" class="hidden"></div><div id="statutoryFilingsBody" class="hidden"></div><div id="closeFilingsModalFooterBtn" class="hidden"></div>
 
-  <script src="assets/institutions.js?v=927"></script>
-  <script src="assets/money-ids.js?v=927"></script>
+  <script src="assets/institutions.js?v=928"></script>
+  <script src="assets/money-ids.js?v=928"></script>
   <script>
 
     // Embedded Data Sources (Enriched by Researcher Pipeline)
@@ -9094,8 +9094,10 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
         const nameSpan = document.createElement('span');
         nameSpan.className = 'inst-pin-label-name';
         // The whole name is in the badge; the CSS cuts it at 22ch with an ellipsis and opens it out on hover, focus and selection.
-        nameSpan.textContent = inst.name;
+        const pinYearWords = window.atlasYearWords ? window.atlasYearWords(inst) : '';
+        nameSpan.textContent = inst.name + (pinYearWords ? ', ' + pinYearWords : '');
         nameSpan.setAttribute('aria-hidden', 'true');
+        if (pinYearWords) { pinEl.setAttribute('data-closed', ''); labelEl.setAttribute('aria-label', inst.name + ', ' + pinYearWords); }
         if (inst.tier === 'A' || inst.tier === 'B') labelEl.setAttribute('data-tier', inst.tier);
         labelEl.setAttribute('data-g', String(gradeKey(inst)));   // its colour, the grade's (assets/sheet.css)
 
@@ -11012,11 +11014,11 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     window.atlasGradeKey = gradeKey;
     window.atlasSpaceInk = spaceInk;
     // The release this copy of the page belongs to: the same number as CACHE_NAME in sw.js.
-    const ATLAS_RELEASE = 'culture-atlas-v927';
+    const ATLAS_RELEASE = 'culture-atlas-v928';
     const ATLAS_SETTLE_MS = 20000;
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js?v=927').then((reg) => {
+        navigator.serviceWorker.register('sw.js?v=928').then((reg) => {
           reg.update();
         }).catch((err) => {
           console.warn('SW registration bypassed:', err);
@@ -12622,6 +12624,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
 
         let activeMicroDot = null;
         const drawnInstLabelBoxes = [];
+        const drawnYearBoxes = [];
         const shownInstLabels = new Set();
         let selMarkOnTop = null;   // set while the picked space is drawn; called again over the Influence map's funders
         // Where the picked space's mark and its ring stand this frame, so the Influence map's funder names keep clear of it.
@@ -12655,7 +12658,10 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
             ? (hasGossip(d.inst) ? (GLOBE_LIGHT ? '#3d7a0f' : '#cfcfba') : (GLOBE_LIGHT ? '#1e4d2b' : '#7d9a3a'))
             : spaceInk(d.inst, GLOBE_LIGHT);
           // In gossip mode a space with no gossip stays a hollow outline, so the ones with gossip stand out as before.
-          const hollow = isGossipModeActive && !hasGossip(d.inst) && !isSel;
+          // The years (assets/years.js): a closed space is an outline with a cross over it, so it is told from the others by
+          // shape and not by colour; a space with no opening year is an outline while a year is being shown.
+          const yearMark = window.atlasYearMark ? window.atlasYearMark(d.inst) : null;
+          const hollow = (isGossipModeActive && !hasGossip(d.inst) && !isSel) || !!yearMark;
           const paintMark = () => {
             ctx.lineJoin = 'round';
             // The picked mark has no ring round it (user, 23 Nov 2026: "I still see separate triangle outline"): the ring, ink
@@ -12663,7 +12669,16 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
             // name's bubble, filled in its grade's colour.
             markPath(0);
             ctx.fillStyle = hollow ? G_GROUND : markInk; ctx.fill();
-            ctx.strokeStyle = hollow ? markInk : G_GROUND; ctx.lineWidth = 1; ctx.stroke();
+            ctx.strokeStyle = hollow ? markInk : G_GROUND; ctx.lineWidth = hollow && yearMark ? 1.5 : 1; ctx.stroke();
+            if (yearMark && yearMark.closed) {
+              const a = shapeR + 3;
+              ctx.beginPath();
+              ctx.moveTo(d.x - a, d.y - a); ctx.lineTo(d.x + a, d.y + a);
+              ctx.moveTo(d.x + a, d.y - a); ctx.lineTo(d.x - a, d.y + a);
+              ctx.lineCap = 'round';
+              ctx.strokeStyle = G_GROUND; ctx.lineWidth = 4.5; ctx.stroke();
+              ctx.strokeStyle = G_TEXT; ctx.lineWidth = 1.75; ctx.stroke();
+            }
           };
           paintMark();
           ctx.restore();
@@ -12694,7 +12709,8 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
             ctx.textAlign = 'center';
             ctx.textBaseline = 'bottom';
             if (isSel) lastSelDotAt = { name: d.inst.name, x: d.x, y: d.y };
-            const nameTxt = atlasLabelName(d.inst.name, isSel);
+            const yearWords = window.atlasYearWords ? window.atlasYearWords(d.inst) : '';
+            const nameTxt = atlasLabelName(d.inst.name, isSel) + (yearWords ? ', ' + yearWords : '');
             ctx.font = isSel ? atlasSelFont() : atlasMonoFont();
             const tw = ctx.measureText(nameTxt).width;
             const bw = tw + (isSel ? ATLAS_SEL_PAD : 28);
@@ -12729,6 +12745,24 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
               d.labelBox = { x: bx, y: by, w: bw, h: bh };
 
               drawPillLabel(nameTxt, d.x, by + bh / 2, !!isSel, d.inst, { x: d.x, y: d.y, r: markTop });
+            }
+            ctx.restore();
+          }
+          // The closing year beside a closed mark while a year control is on, where the space's name is not already drawn
+          // (the name carries the year) and no other year stands there.
+          if (yearMark && yearMark.label && !d.labelBox) {
+            ctx.save();
+            ctx.font = atlasMonoFont();
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            const yw = ctx.measureText(yearMark.label).width, yx = d.x + d.markR + 7, yb = { x: yx - 2, y: d.y - 8, w: yw + 4, h: 16 };
+            const taken = [...drawnYearBoxes, ...drawnInstLabelBoxes, ...drawnCityBoxes].some(b => !(yb.x + yb.w < b.x || yb.x > b.x + b.w || yb.y + yb.h < b.y || yb.y > b.y + b.h));
+            if (!taken || isSel || isHov) {
+              drawnYearBoxes.push(yb);
+              ctx.globalAlpha = limbD;
+              ctx.lineJoin = 'round';
+              ctx.strokeStyle = G_GROUND; ctx.lineWidth = 3; ctx.strokeText(yearMark.label, yx, d.y + 0.5);
+              ctx.fillStyle = G_TEXT; ctx.fillText(yearMark.label, yx, d.y + 0.5);
             }
             ctx.restore();
           }
@@ -13811,7 +13845,9 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     function headFactHtml(inst) {
       const place = inst.location || inst.city || '';
       const year = inst.year_founded ? String(inst.year_founded) : '';
-      const rest = inst.category ? inst.category + (year ? `, founded ${year}` : '') : (year ? `Founded ${year}` : '');
+      // "founded 2009, closed 2020": the closing year only where the record has one (assets/years.js).
+      const when = [year ? `founded ${year}` : '', window.atlasYearWords ? window.atlasYearWords(inst) : ''].filter(Boolean).join(', ');
+      const rest = inst.category ? inst.category + (when ? `, ${when}` : '') : (when ? when[0].toUpperCase() + when.slice(1) : '');
       if (!place && !rest) return '';
       return `<p class="no-indent head-fact">${place ? `<strong class="lead-in">${escapeHtml(place)}</strong> ` : ''}${escapeHtml(rest)}</p>`;
     }
@@ -13890,9 +13926,14 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
     function headRowsHtml(inst, isCommunity) {
       const place = inst.location || inst.city || '';
       const year = inst.year_founded ? String(inst.year_founded) : '';
-      const rest = inst.category ? inst.category + (year ? `, founded ${year}` : '') : (year ? `Founded ${year}` : '');
+      // "founded 2009, closed 2020": the closing year only where the record has one (assets/years.js).
+      const when = [year ? `founded ${year}` : '', window.atlasYearWords ? window.atlasYearWords(inst) : ''].filter(Boolean).join(', ');
+      const rest = inst.category ? inst.category + (when ? `, ${when}` : '') : (when ? when[0].toUpperCase() + when.slice(1) : '');
       const li = (html) => html ? `<li>${html}</li>` : '';
+      // A closed space says so first, with its closing year and its opening year where the record has them (assets/years.js).
+      const shut = window.atlasYearWords ? window.atlasYearWords(inst) : '';
       const state = [
+        shut ? `<p class="no-indent year-line">${escapeHtml(proseCap(shut))}${year ? ` – opened ${year}` : ''}</p>` : '',
         isCommunity ? '' : gradeLineHtml(inst),
         inst.architecture_status ? `<p class="architecture-status">${escapeHtml(inst.architecture_status)}</p>` : '',
         inst.watch && !watchIsAboutMoney(inst.watch) ? `<p${watchIsGossip(inst.watch) ? ' data-gossip="watch"' : ''}>${escapeHtml(inst.watch)}</p>` : '',
@@ -13934,7 +13975,7 @@ Rules: use only the facts in the ITEMS. The reporting belongs to whoever the ITE
         sheetName.style.setProperty('--title-length', Math.max((inst.name || '').length, 1));
         sheetName.title = inst.name || '';
       }
-      text('dossier-sheet-meta', [[inst.category, [inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(' – '), inst.architecture_status].filter(Boolean).join(' – '));
+      text('dossier-sheet-meta', [[inst.category, [inst.city, inst.country].filter(Boolean).join(', '), inst.curatorial_focus].filter(Boolean).join(' – '), inst.architecture_status, window.atlasYearWords ? window.atlasYearWords(inst) : ''].filter(Boolean).join(' – '));
       // In Gossip mode a watch line that passes the gossip test is the reported item below, so it is not repeated here.
       const reported = documentedRecordHtml(inst), watchReported = isGossipModeActive && !reported && watchIsGossip(inst.watch);
       text('dossier-sheet-summary', [inst.highlight, watchReported ? '' : inst.watch].filter(Boolean).join(' '));
@@ -23146,24 +23187,25 @@ FORMATTING & DOSSIER PRESENTATION RULES:
     }
   
   </script>
-<script src="assets/typeset.js?v=927"></script>
-<script src="assets/note-aids.js?v=927" defer></script>
-<script src="assets/place-list.js?v=927" defer></script>
-<script src="assets/chat-share.js?v=927" defer></script>
-<script src="assets/note-files.js?v=927" defer></script>
-<script src="assets/funding-views.js?v=927"></script>
-<script src="assets/layers.js?v=927"></script>
-<script src="assets/critique-gallery-data.js?v=927"></script>
-<script src="assets/critique-captions.js?v=927"></script>
-<script src="assets/critique-gallery.js?v=927"></script>
-<script src="assets/hq-detail.js?v=927"></script>
-<script src="assets/influence-mode.js?v=927"></script>
-<script src="assets/bubbles.js?v=927" defer></script>
-<script src="assets/phone-maps.js?v=927"></script>
-<script src="assets/desktop-maps.js?v=927"></script>
-<script src="assets/chat-resize.js?v=927"></script>
-<script src="assets/frame-refusers.js?v=927"></script>
-<script src="assets/link-pane.js?v=927"></script>
-<script src="assets/tab-suggest.js?v=927"></script>
+<script src="assets/typeset.js?v=928"></script>
+<script src="assets/note-aids.js?v=928" defer></script>
+<script src="assets/place-list.js?v=928" defer></script>
+<script src="assets/chat-share.js?v=928" defer></script>
+<script src="assets/note-files.js?v=928" defer></script>
+<script src="assets/funding-views.js?v=928"></script>
+<script src="assets/years.js?v=928"></script>
+<script src="assets/layers.js?v=928"></script>
+<script src="assets/critique-gallery-data.js?v=928"></script>
+<script src="assets/critique-captions.js?v=928"></script>
+<script src="assets/critique-gallery.js?v=928"></script>
+<script src="assets/hq-detail.js?v=928"></script>
+<script src="assets/influence-mode.js?v=928"></script>
+<script src="assets/bubbles.js?v=928" defer></script>
+<script src="assets/phone-maps.js?v=928"></script>
+<script src="assets/desktop-maps.js?v=928"></script>
+<script src="assets/chat-resize.js?v=928"></script>
+<script src="assets/frame-refusers.js?v=928"></script>
+<script src="assets/link-pane.js?v=928"></script>
+<script src="assets/tab-suggest.js?v=928"></script>
 </body>
 </html>
