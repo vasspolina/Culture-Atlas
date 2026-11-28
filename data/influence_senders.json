@@ -1,5 +1,5 @@
 {
- "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries. Figures (17 Nov 2026): each funder also carries `figures` for the map’s measures: culture (spaces, entries, and the largest cultural gift the atlas entries state, picked by hand, with that entry’s source; totals of a building’s cost, plans and debts are not gifts), US federal lobbying for 2025 (lda.gov), EU lobbying (the register’s band), and corporate PAC contributions to federal candidates in the 2023 to 2024 cycle from the Federal Election Commission’s bulk files (transaction type 24K, refunds netted, memo lines left out), the filings OpenSecrets compiles. Shell’s PAC reported no contributions to candidates in that file; BMW, Hyundai, Chanel, TotalEnergies, Eni, Equinor, Japan Tobacco, Vale, Purdue Pharma, Access Industries and the Lauder family have no corporate PAC in it. Personal giving (17 Nov 2026): what the people behind a family or individual funder gave in their own names in the 2023 to 2024 cycle, from the FEC’s individual contributions bulk file (indiv24, 58.2 million rows, streamed, only matching rows kept). A row counts only when the contributor’s name matches and the employer or occupation they reported names the funder’s company (Citadel for Ken Griffin, Bloomberg for Michael Bloomberg, Koch Industries for Charles Koch, Estée Lauder for Leonard Lauder, Access Industries for Len Blavatnik), so namesakes are left out: Charles J. Koch of Boston Beer, and Sacklers none of whom report Purdue. Conduit lines (24T at ActBlue and WinRed) repeat the money the recipient reports as earmarked (15E) and are left out, as are memo lines; refunds (20Y, 22Y) are taken off. Super PAC gifts are included. Executives of a company are not counted as the company, so the banks, oil companies and carmakers have no personal figure. Charles Koch’s giving runs mostly through groups that report no individual donors, such as Americans for Prosperity, which this file does not show. Lauder family (17 Nov 2026, user: \"drop Ronald Lauder, keep only Leonard\"): the atlas tie is Leonard Lauder’s gift to the Whitney, so only Leonard Lauder’s giving is counted; Ronald Lauder’s facts are left out. Company political funds, second pass (28 Nov 2026, user: \"research political giving for the other funders\"): every company funder was matched by hand against the FEC committee master file for 2023 to 2024 (cm24) and its fund's payments to federal candidates summed from the committee-to-candidate file (pas224) by the same rule as the first pass (type 24K, memo lines left out), which reproduces the first pass's BP, Chevron, UBS and Bank of America figures exactly. 47 more funders have a figure; `fund_of` names the company or US arm whose fund it is. Matched funds that reported no payment to a candidate get no figure: Shell, Deutsche Bank, Netflix, Barrick Gold, CIBC. A family is not credited with its company's fund (Walton and Walmart, Tisch and Loews, Adelson and Las Vegas Sands, Murdoch and Fox, Dell, Mittal), and a namesake is not the funder (BNY Mellon is not the Mellon Foundation). Independent bottlers and distributors (Coca-Cola bottlers, Gulf States Toyota) and separately listed companies (Siemens Energy, Siemens Healthineers) are left out. UK political donations (28 Nov 2026): from the Electoral Commission's register of donations to political parties accepted from 1 January 2023 to 31 December 2024, read through its CSV export by two independent readings that agree row for row (Sainsbury 9 rows, Rausing 33, HSBC 4). The register was also searched and holds nothing in that period for Wittington Investments, Associated British Foods or the Weston family, Lord Wolfson, Blavatnik or Access Industries, Getty, Baillie Gifford, Barclays, BP or Shell. Left out: a 'David W Harding' (5,000 pounds to the Conservatives) the register does not let us tell from the Winton founder, and auction prizes worth 8,400 pounds from Nathaniel Rothschild. Lord John Sainsbury died in 2022; his two rows are bequests accepted in September 2023. Personal giving, second pass (28 Nov 2026): the same bulk file (reissued 22 November 2026, 58,210,199 rows) and the same rule, run by tools/fec_personal.py for 38 named people behind family and individual funders; with it Ken Griffin's first-pass total comes out 6,600 dollars higher, the reissue's difference. 33 people behind 24 funders have a figure. Because a row counts only when the reported employer or occupation names the person's company or foundation, a figure can be a floor: gifts a donor reported as 'not employed', 'retired' or 'self-employed' are not counted unless the name is one of a kind (Agnes Gund, Edythe Broad), which is why Steven Cohen, Les Wexner, Rob Walton, Abigail Johnson and Jeff Bezos show small sums. Every match was read by employer and city before use. Left out: Steve Wynn (his rows report Valmore GP, not Wynn Resorts, which he left in 2018), Gordon Getty (no employer names a Getty body), Ronald Perelman and George Lucas (only namesakes matched), Glenn Dubin, Leon Black and Teresa Heinz (no matching row), a Google engineer named Eric Schmidt and a Wendy Schmidt in Virginia. Timothy Mellon's giving is not the Mellon Foundation's and is not attributed to it.",
+ "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries. Figures (17 Nov 2026): each funder also carries `figures` for the map’s measures: culture (spaces, entries, and the largest cultural gift the atlas entries state, picked by hand, with that entry’s source; totals of a building’s cost, plans and debts are not gifts), US federal lobbying for 2025 (lda.gov), EU lobbying (the register’s band), and corporate PAC contributions to federal candidates in the 2023 to 2024 cycle from the Federal Election Commission’s bulk files (transaction type 24K, refunds netted, memo lines left out), the filings OpenSecrets compiles. Shell’s PAC reported no contributions to candidates in that file; BMW, Hyundai, Chanel, TotalEnergies, Eni, Equinor, Japan Tobacco, Vale, Purdue Pharma, Access Industries and the Lauder family have no corporate PAC in it. Personal giving (17 Nov 2026): what the people behind a family or individual funder gave in their own names in the 2023 to 2024 cycle, from the FEC’s individual contributions bulk file (indiv24, 58.2 million rows, streamed, only matching rows kept). A row counts only when the contributor’s name matches and the employer or occupation they reported names the funder’s company (Citadel for Ken Griffin, Bloomberg for Michael Bloomberg, Koch Industries for Charles Koch, Estée Lauder for Leonard Lauder, Access Industries for Len Blavatnik), so namesakes are left out: Charles J. Koch of Boston Beer, and Sacklers none of whom report Purdue. Conduit lines (24T at ActBlue and WinRed) repeat the money the recipient reports as earmarked (15E) and are left out, as are memo lines; refunds (20Y, 22Y) are taken off. Super PAC gifts are included. Executives of a company are not counted as the company, so the banks, oil companies and carmakers have no personal figure. Charles Koch’s giving runs mostly through groups that report no individual donors, such as Americans for Prosperity, which this file does not show. Lauder family (17 Nov 2026, user: \"drop Ronald Lauder, keep only Leonard\"): the atlas tie is Leonard Lauder’s gift to the Whitney, so only Leonard Lauder’s giving is counted; Ronald Lauder’s facts are left out. Company political funds, second pass (28 Nov 2026, user: \"research political giving for the other funders\"): every company funder was matched by hand against the FEC committee master file for 2023 to 2024 (cm24) and its fund's payments to federal candidates summed from the committee-to-candidate file (pas224) by the same rule as the first pass (type 24K, memo lines left out), which reproduces the first pass's BP, Chevron, UBS and Bank of America figures exactly. 47 more funders have a figure; `fund_of` names the company or US arm whose fund it is. Matched funds that reported no payment to a candidate get no figure: Shell, Deutsche Bank, Netflix, Barrick Gold, CIBC. A family is not credited with its company's fund (Walton and Walmart, Tisch and Loews, Adelson and Las Vegas Sands, Murdoch and Fox, Dell, Mittal), and a namesake is not the funder (BNY Mellon is not the Mellon Foundation). Independent bottlers and distributors (Coca-Cola bottlers, Gulf States Toyota) and separately listed companies (Siemens Energy, Siemens Healthineers) are left out. UK political donations (28 Nov 2026): from the Electoral Commission's register of donations to political parties accepted from 1 January 2023 to 31 December 2024, read through its CSV export by two independent readings that agree row for row (Sainsbury 9 rows, Rausing 33, HSBC 4). The register was also searched and holds nothing in that period for Wittington Investments, Associated British Foods or the Weston family, Lord Wolfson, Blavatnik or Access Industries, Getty, Baillie Gifford, Barclays, BP or Shell. Left out: a 'David W Harding' (5,000 pounds to the Conservatives) the register does not let us tell from the Winton founder, and auction prizes worth 8,400 pounds from Nathaniel Rothschild. Lord John Sainsbury died in 2022; his two rows are bequests accepted in September 2023. Personal giving, second pass (28 Nov 2026): the same bulk file (reissued 22 November 2026, 58,210,199 rows) and the same rule, run by tools/fec_personal.py for 38 named people behind family and individual funders; with it Ken Griffin's first-pass total comes out 6,600 dollars higher, the reissue's difference. 33 people behind 24 funders have a figure. Because a row counts only when the reported employer or occupation names the person's company or foundation, a figure can be a floor: gifts a donor reported as 'not employed', 'retired' or 'self-employed' are not counted unless the name is one of a kind (Agnes Gund, Edythe Broad), which is why Steven Cohen, Les Wexner, Rob Walton, Abigail Johnson and Jeff Bezos show small sums. Every match was read by employer and city before use. Left out: Steve Wynn (his rows report Valmore GP, not Wynn Resorts, which he left in 2018), Gordon Getty (no employer names a Getty body), Ronald Perelman and George Lucas (only namesakes matched), Glenn Dubin, Leon Black and Teresa Heinz (no matching row), a Google engineer named Eric Schmidt and a Wendy Schmidt in Virginia. Timothy Mellon's giving is not the Mellon Foundation's and is not attributed to it. Australian political donations (28 Nov 2026, user: \"search them\", of the Canadian and Australian registers): from the Australian Electoral Commission's Transparency Register, the donor returns in its annual data download (Donations Made.csv, issued 17 November 2026) for the financial years 2023-24 and 2024-25, which run from July 2023 to June 2025. Every funder was matched against the donor names by hand; 23 have a figure. Each line is what the donor itself reported, which can include payments for party events. Payments to the Clean Energy Council, an industry body, are not party giving and are left out, which leaves Equinor Australia and Fortescue with nothing. Not the funder: Fox Group Holdings (Lindsay Fox's family company, not the Murdochs' Fox), Philip Morris Limited (the atlas ties are Altria's), Seven West Media (listed apart from Seven Group), Nicholas Fairfax, Santos for Isabel dos Santos. Consolidated Press Holdings is the Packer family's own company and The Gandel Group the Gandel family's, so each is named on the family's line. Canada was not searched: Elections Canada's site fails its certificate check through this reader's proxy, federal law has barred company donations since 2007 and caps a person at about 1,750 dollars a year to each party, and the register gives no employer to tell namesakes apart.",
  "bp": {
   "made_from": "BP’s money comes from producing, refining and trading oil and gas.",
   "facts": [
@@ -271,6 +271,21 @@
     "cycle": "2023-24",
     "committee": "CHEVRON EMPLOYEES POLITICAL ACTION COMMITTEE - CHEVRON CORPORATION",
     "source": "https://www.fec.gov/data/committee/C00035006/?cycle=2024"
+   },
+   "au_political": {
+    "aud": 262128,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Chevron Australia",
+      "register_name": "Chevron Australia Ptd Ltd",
+      "aud": 262128,
+      "n": 27,
+      "labor_aud": 166153,
+      "coalition_aud": 95975,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -2206,6 +2221,27 @@
    "culture": {
     "spaces": 1,
     "entries": 3
+   },
+   "au_political": {
+    "aud": 842500,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Adani Mining",
+      "register_name": "Adani Mining Pty Ltd",
+      "aud": 842500,
+      "n": 13,
+      "labor_aud": 121000,
+      "coalition_aud": 621500,
+      "source": "https://transparency.aec.gov.au/Donor",
+      "other": [
+       {
+        "to": "Katter's Australian Party",
+        "aud": 100000
+       }
+      ]
+     }
+    ]
    }
   }
  },
@@ -4745,6 +4781,21 @@
     "cycle": "2023-24",
     "committee": "CONOCOPHILLIPS SPIRIT PAC",
     "source": "https://www.fec.gov/data/committee/C00112896/?cycle=2024"
+   },
+   "au_political": {
+    "aud": 27000,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "ConocoPhillips Australia",
+      "register_name": "ConocoPhillips Australia Operations Pty Ltd",
+      "aud": 27000,
+      "n": 1,
+      "labor_aud": 27000,
+      "coalition_aud": 0,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -5148,6 +5199,30 @@
     "committee": "ROCHE DIAGNOSTICS CORPORATION PAC (ROCHE DXPAC); GENENTECH INC. POLITICAL ACTION COMMITTEE (GENENPAC)",
     "source": "https://www.fec.gov/data/committee/C00199257/?cycle=2024",
     "fund_of": "Roche Diagnostics and Genentech"
+   },
+   "au_political": {
+    "aud": 136400,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Roche Products",
+      "register_name": "Roche Products Pty Ltd",
+      "aud": 116400,
+      "n": 5,
+      "labor_aud": 88000,
+      "coalition_aud": 28400,
+      "source": "https://transparency.aec.gov.au/Donor"
+     },
+     {
+      "name": "Roche Diagnostics Australia",
+      "register_name": "Roche Diagnostics Australia",
+      "aud": 20000,
+      "n": 1,
+      "labor_aud": 20000,
+      "coalition_aud": 0,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -5502,6 +5577,21 @@
     "committee": "AZOA SERVICES CORPORATION POLITICAL ACTION COMMITTEE (ALLIANZ OF AMERICA PAC)",
     "source": "https://www.fec.gov/data/committee/C00095109/?cycle=2024",
     "fund_of": "Allianz of America"
+   },
+   "au_political": {
+    "aud": 137350,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Allianz Australia",
+      "register_name": "Allianz Australia Limited",
+      "aud": 137350,
+      "n": 13,
+      "labor_aud": 80000,
+      "coalition_aud": 57350,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -6521,6 +6611,21 @@
       "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Bezos%2C+Jeffrey&two_year_transaction_period=2024"
      }
     ]
+   },
+   "au_political": {
+    "aud": 238347,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Amazon Commercial Services",
+      "register_name": "Amazon Commercial Services Pty Ltd",
+      "aud": 238347,
+      "n": 12,
+      "labor_aud": 128547,
+      "coalition_aud": 109800,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -6821,6 +6926,21 @@
     "cycle": "2023-24",
     "committee": "PFIZER INC. PAC",
     "source": "https://www.fec.gov/data/committee/C00016683/?cycle=2024"
+   },
+   "au_political": {
+    "aud": 101692,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Pfizer Australia",
+      "register_name": "Pfizer Australia Pty Ltd",
+      "aud": 101692,
+      "n": 21,
+      "labor_aud": 51822,
+      "coalition_aud": 49870,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -7194,6 +7314,21 @@
     "committee": "NOVARTIS CORPORATION POLITICAL ACTION COMMITTEE",
     "source": "https://www.fec.gov/data/committee/C00033969/?cycle=2024",
     "fund_of": "Novartis Corporation, its US arm,"
+   },
+   "au_political": {
+    "aud": 63000,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Novartis Pharmaceuticals Australia",
+      "register_name": "Novartis Pharmaceuticals Australia Pty Limited",
+      "aud": 63000,
+      "n": 2,
+      "labor_aud": 33000,
+      "coalition_aud": 30000,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -7262,6 +7397,21 @@
    "culture": {
     "spaces": 5,
     "entries": 5
+   },
+   "au_political": {
+    "aud": 22900,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Iberdrola Australia",
+      "register_name": "Iberdrola Australia Limited",
+      "aud": 22900,
+      "n": 4,
+      "labor_aud": 22900,
+      "coalition_aud": 0,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -8100,6 +8250,21 @@
     "committee": "BAYER US LLC EMPLOYEE POLITICAL ACTION COMMITTEE (BAYERPAC)",
     "source": "https://www.fec.gov/data/committee/C00281162/?cycle=2024",
     "fund_of": "Bayer US"
+   },
+   "au_political": {
+    "aud": 100259,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Bayer Australia",
+      "register_name": "Bayer Australia Ltd",
+      "aud": 100259,
+      "n": 7,
+      "labor_aud": 30000,
+      "coalition_aud": 70259,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -8223,7 +8388,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 4
+   },
+   "au_political": {
+    "aud": 61800,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Wesfarmers",
+      "register_name": "Wesfarmers Limited",
+      "aud": 61800,
+      "n": 9,
+      "labor_aud": 34300,
+      "coalition_aud": 27500,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "qantas": {
   "made_from": "Qantas is Australia’s largest airline, with Jetstar and the Qantas loyalty business.",
@@ -8268,6 +8453,21 @@
     },
     "spaces": 2,
     "entries": 3
+   },
+   "au_political": {
+    "aud": 362405,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "INPEX Operations Australia",
+      "register_name": "INPEX Operations Australia Pty Ltd",
+      "aud": 362405,
+      "n": 29,
+      "labor_aud": 152080,
+      "coalition_aud": 210325,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -8297,7 +8497,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "au_political": {
+    "aud": 159200,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Ampol",
+      "register_name": "Ampol Limited",
+      "aud": 159200,
+      "n": 11,
+      "labor_aud": 76000,
+      "coalition_aud": 83200,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "minderoo": {
   "made_from": "Minderoo Foundation is Andrew and Nicola Forrest’s philanthropy, funded from their iron ore company Fortescue; in 2023 they gave it Fortescue shares worth $5 billion.",
@@ -8331,7 +8551,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "au_political": {
+    "aud": 135950,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Telstra",
+      "register_name": "Telstra Corporation",
+      "aud": 135950,
+      "n": 7,
+      "labor_aud": 51150,
+      "coalition_aud": 84800,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "anz": {
   "made_from": "ANZ is one of Australia’s four major banks.",
@@ -8348,7 +8588,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 4
+   },
+   "au_political": {
+    "aud": 120500,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "ANZ Banking Group",
+      "register_name": "ANZ Banking Group Limited",
+      "aud": 120500,
+      "n": 4,
+      "labor_aud": 50000,
+      "coalition_aud": 70500,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "westpac": {
   "made_from": "Westpac is one of Australia’s four major banks.",
@@ -8371,7 +8631,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "au_political": {
+    "aud": 350819,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Westpac",
+      "register_name": "Westpac Banking Corporation",
+      "aud": 350819,
+      "n": 62,
+      "labor_aud": 172061,
+      "coalition_aud": 178758,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "macquarie": {
   "made_from": "Macquarie Group is a Sydney investment bank and asset manager.",
@@ -8388,7 +8668,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "au_political": {
+    "aud": 402441,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Macquarie Group",
+      "register_name": "Macquarie Group Limited",
+      "aud": 402441,
+      "n": 50,
+      "labor_aud": 204543,
+      "coalition_aud": 197898,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "nab": {
   "made_from": "National Australia Bank is one of Australia’s four major banks.",
@@ -8405,7 +8705,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "au_political": {
+    "aud": 285000,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "National Australia Bank",
+      "register_name": "National Australia Bank Limited",
+      "aud": 285000,
+      "n": 6,
+      "labor_aud": 132000,
+      "coalition_aud": 153000,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "lendlease": {
   "made_from": "Lendlease is a Sydney property developer, builder and investment manager.",
@@ -8434,7 +8754,42 @@
     "date": "2023-07",
     "source": "https://www.crownresorts.com.au/getsydmedia/faed2d0a-635d-4378-bbfd-ec9180025618/230711-crown-resorts-media-centre-statement-on-austrac-penalty-hearing.pdf?ext=.pdf"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "au_political": {
+    "aud": 225000,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Consolidated Press Holdings, the Packer family company,",
+      "register_name": "Consolidated Press Holdings Pty Limited",
+      "aud": 150000,
+      "n": 1,
+      "labor_aud": 0,
+      "coalition_aud": 0,
+      "source": "https://transparency.aec.gov.au/Donor",
+      "other": [
+       {
+        "to": "Advance Australia, a campaign group",
+        "aud": 150000
+       }
+      ]
+     },
+     {
+      "name": "Roslyn Packer",
+      "register_name": "Packer, Roslyn",
+      "aud": 75000,
+      "n": 2,
+      "labor_aud": 0,
+      "coalition_aud": 75000,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "kerrystokes": {
   "made_from": "Kerry Stokes’s money comes from his private company Australian Capital Equity and from SGH (formerly Seven Group Holdings), whose businesses include WesTrac, Boral, Coates and Beach Energy.",
@@ -8462,7 +8817,27 @@
     "date": "2025",
     "source": "https://transparency.aec.gov.au/AnnualDonor"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 4
+   },
+   "au_political": {
+    "aud": 405000,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "The Gandel Group",
+      "register_name": "The Gandel Group Pty Ltd",
+      "aud": 405000,
+      "n": 7,
+      "labor_aud": 20000,
+      "coalition_aud": 385000,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
  },
  "besen": {
   "made_from": "Marc and Eva Besen’s money came from the Sussan women’s clothing chain, which Marc Besen co-founded and bought outright from John Gandel in 1985, and from shopping-centre interests.",
@@ -8522,6 +8897,21 @@
     },
     "spaces": 6,
     "entries": 6
+   },
+   "au_political": {
+    "aud": 20000,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Andrew Myer",
+      "register_name": "Myer, Andrew",
+      "aud": 20000,
+      "n": 1,
+      "labor_aud": 0,
+      "coalition_aud": 20000,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
    }
   }
  },
@@ -10230,6 +10620,54 @@
        }
       ],
       "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Kanders%2C+Warren&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "woodside": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "au_political": {
+    "aud": 182265,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Woodside Energy Group",
+      "register_name": "Woodside Energy Group Ltd",
+      "aud": 182265,
+      "n": 46,
+      "labor_aud": 91075,
+      "coalition_aud": 91190,
+      "source": "https://transparency.aec.gov.au/Donor"
+     }
+    ]
+   }
+  }
+ },
+ "santos": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "au_political": {
+    "aud": 314750,
+    "period": "2023-25",
+    "donors": [
+     {
+      "name": "Santos",
+      "register_name": "Santos Limited",
+      "aud": 314750,
+      "n": 27,
+      "labor_aud": 134750,
+      "coalition_aud": 180000,
+      "source": "https://transparency.aec.gov.au/Donor"
      }
     ]
    }
