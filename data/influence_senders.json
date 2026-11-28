@@ -1,5 +1,5 @@
 {
- "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries. Figures (17 Nov 2026): each funder also carries `figures` for the map’s measures: culture (spaces, entries, and the largest cultural gift the atlas entries state, picked by hand, with that entry’s source; totals of a building’s cost, plans and debts are not gifts), US federal lobbying for 2025 (lda.gov), EU lobbying (the register’s band), and corporate PAC contributions to federal candidates in the 2023 to 2024 cycle from the Federal Election Commission’s bulk files (transaction type 24K, refunds netted, memo lines left out), the filings OpenSecrets compiles. Shell’s PAC reported no contributions to candidates in that file; BMW, Hyundai, Chanel, TotalEnergies, Eni, Equinor, Japan Tobacco, Vale, Purdue Pharma, Access Industries and the Lauder family have no corporate PAC in it. Personal giving (17 Nov 2026): what the people behind a family or individual funder gave in their own names in the 2023 to 2024 cycle, from the FEC’s individual contributions bulk file (indiv24, 58.2 million rows, streamed, only matching rows kept). A row counts only when the contributor’s name matches and the employer or occupation they reported names the funder’s company (Citadel for Ken Griffin, Bloomberg for Michael Bloomberg, Koch Industries for Charles Koch, Estée Lauder for Leonard Lauder, Access Industries for Len Blavatnik), so namesakes are left out: Charles J. Koch of Boston Beer, and Sacklers none of whom report Purdue. Conduit lines (24T at ActBlue and WinRed) repeat the money the recipient reports as earmarked (15E) and are left out, as are memo lines; refunds (20Y, 22Y) are taken off. Super PAC gifts are included. Executives of a company are not counted as the company, so the banks, oil companies and carmakers have no personal figure. Charles Koch’s giving runs mostly through groups that report no individual donors, such as Americans for Prosperity, which this file does not show. Lauder family (17 Nov 2026, user: \"drop Ronald Lauder, keep only Leonard\"): the atlas tie is Leonard Lauder’s gift to the Whitney, so only Leonard Lauder’s giving is counted; Ronald Lauder’s facts are left out.",
+ "_about": "The sender's side of Influence mode: what each funder's money is made from and what else it pays for beside culture. Keyed by the funder keys of assets/influence.json. Each fact: kind (harm, scale, lobbying, politics, after), text, date (YYYY or YYYY-MM), source, read on that page. tools/build_influence.py copies it into assets/influence.json. First batch researched 17 Nov 2026: EU lobbying from LobbyFacts (the EU Transparency Register), climate-lobbying grades from InfluenceMap; OpenSecrets would not load, so there are no US federal lobbying totals, and Chevron's figure is California state lobbying. Every fact was read on its source page; BP’s, Shell’s and Vale’s profit and Japan Tobacco’s revenue were re-checked on their pages on 17 Nov 2026, and BP’s and Japan Tobacco’s moved to pages that open. Second pass 17 Nov 2026: the EU Transparency Register for all 25 funders, each figure read on its LobbyFacts datacard and checked against the register’s own export of 16 November 2026; InfluenceMap grades re-read on each company page (UBS and J.P. Morgan pages showed no score, RBC, Bloomberg and Chanel have none); US federal lobbying for 2025 from the Senate Lobbying Disclosure Act reports on lda.gov, the filings OpenSecrets compiles, since OpenSecrets itself still refuses this reader: a company’s own in-house reports for the year, summed, or where it files none, the fees its outside firms reported. Checked against the atlas: each fact names the entity the atlas ties name, so Philip Morris International’s facts were removed (the atlas ties are Altria’s), Bloomberg L.P. and Bloomberg Philanthropies are named apart, and the Lauder family’s Estée Lauder Companies lobbying is not attributed to the family. Not registered in the EU: BMO, the Royal Bank of Canada itself, Koch, Purdue Pharma, Access Industries. No 2025 federal lobbying report: RBC, Access Industries. Figures (17 Nov 2026): each funder also carries `figures` for the map’s measures: culture (spaces, entries, and the largest cultural gift the atlas entries state, picked by hand, with that entry’s source; totals of a building’s cost, plans and debts are not gifts), US federal lobbying for 2025 (lda.gov), EU lobbying (the register’s band), and corporate PAC contributions to federal candidates in the 2023 to 2024 cycle from the Federal Election Commission’s bulk files (transaction type 24K, refunds netted, memo lines left out), the filings OpenSecrets compiles. Shell’s PAC reported no contributions to candidates in that file; BMW, Hyundai, Chanel, TotalEnergies, Eni, Equinor, Japan Tobacco, Vale, Purdue Pharma, Access Industries and the Lauder family have no corporate PAC in it. Personal giving (17 Nov 2026): what the people behind a family or individual funder gave in their own names in the 2023 to 2024 cycle, from the FEC’s individual contributions bulk file (indiv24, 58.2 million rows, streamed, only matching rows kept). A row counts only when the contributor’s name matches and the employer or occupation they reported names the funder’s company (Citadel for Ken Griffin, Bloomberg for Michael Bloomberg, Koch Industries for Charles Koch, Estée Lauder for Leonard Lauder, Access Industries for Len Blavatnik), so namesakes are left out: Charles J. Koch of Boston Beer, and Sacklers none of whom report Purdue. Conduit lines (24T at ActBlue and WinRed) repeat the money the recipient reports as earmarked (15E) and are left out, as are memo lines; refunds (20Y, 22Y) are taken off. Super PAC gifts are included. Executives of a company are not counted as the company, so the banks, oil companies and carmakers have no personal figure. Charles Koch’s giving runs mostly through groups that report no individual donors, such as Americans for Prosperity, which this file does not show. Lauder family (17 Nov 2026, user: \"drop Ronald Lauder, keep only Leonard\"): the atlas tie is Leonard Lauder’s gift to the Whitney, so only Leonard Lauder’s giving is counted; Ronald Lauder’s facts are left out. Company political funds, second pass (28 Nov 2026, user: \"research political giving for the other funders\"): every company funder was matched by hand against the FEC committee master file for 2023 to 2024 (cm24) and its fund's payments to federal candidates summed from the committee-to-candidate file (pas224) by the same rule as the first pass (type 24K, memo lines left out), which reproduces the first pass's BP, Chevron, UBS and Bank of America figures exactly. 47 more funders have a figure; `fund_of` names the company or US arm whose fund it is. Matched funds that reported no payment to a candidate get no figure: Shell, Deutsche Bank, Netflix, Barrick Gold, CIBC. A family is not credited with its company's fund (Walton and Walmart, Tisch and Loews, Adelson and Las Vegas Sands, Murdoch and Fox, Dell, Mittal), and a namesake is not the funder (BNY Mellon is not the Mellon Foundation). Independent bottlers and distributors (Coca-Cola bottlers, Gulf States Toyota) and separately listed companies (Siemens Energy, Siemens Healthineers) are left out. UK political donations (28 Nov 2026): from the Electoral Commission's register of donations to political parties accepted from 1 January 2023 to 31 December 2024, read through its CSV export by two independent readings that agree row for row (Sainsbury 9 rows, Rausing 33, HSBC 4). The register was also searched and holds nothing in that period for Wittington Investments, Associated British Foods or the Weston family, Lord Wolfson, Blavatnik or Access Industries, Getty, Baillie Gifford, Barclays, BP or Shell. Left out: a 'David W Harding' (5,000 pounds to the Conservatives) the register does not let us tell from the Winton founder, and auction prizes worth 8,400 pounds from Nathaniel Rothschild. Lord John Sainsbury died in 2022; his two rows are bequests accepted in September 2023. Personal giving, second pass (28 Nov 2026): the same bulk file (reissued 22 November 2026, 58,210,199 rows) and the same rule, run by tools/fec_personal.py for 38 named people behind family and individual funders; with it Ken Griffin's first-pass total comes out 6,600 dollars higher, the reissue's difference. 33 people behind 24 funders have a figure. Because a row counts only when the reported employer or occupation names the person's company or foundation, a figure can be a floor: gifts a donor reported as 'not employed', 'retired' or 'self-employed' are not counted unless the name is one of a kind (Agnes Gund, Edythe Broad), which is why Steven Cohen, Les Wexner, Rob Walton, Abigail Johnson and Jeff Bezos show small sums. Every match was read by employer and city before use. Left out: Steve Wynn (his rows report Valmore GP, not Wynn Resorts, which he left in 2018), Gordon Getty (no employer names a Getty body), Ronald Perelman and George Lucas (only namesakes matched), Glenn Dubin, Leon Black and Teresa Heinz (no matching row), a Google engineer named Eric Schmidt and a Wendy Schmidt in Virginia. Timothy Mellon's giving is not the Mellon Foundation's and is not attributed to it.",
  "bp": {
   "made_from": "BP’s money comes from producing, refining and trading oil and gas.",
   "facts": [
@@ -2388,7 +2388,21 @@
     "date": "2022-08",
     "source": "https://www.pbs.org/newshour/world/south-korean-president-to-pardon-samsung-leader-lee-jae-yong"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 14
+   },
+   "political": {
+    "usd": 330000,
+    "rep_usd": 155500,
+    "dem_usd": 170500,
+    "cycle": "2023-24",
+    "committee": "SAMSUNG ELECTRONICS AMERICA INC POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00590315/?cycle=2024",
+    "fund_of": "Samsung Electronics America"
+   }
+  }
  },
  "lg": {
   "made_from": "LG’s money here comes from LG Electronics, which makes televisions, home appliances, vehicle parts and air conditioning.",
@@ -2522,7 +2536,21 @@
  },
  "suntory": {
   "made_from": "Suntory’s money comes from beer, spirits (Beam Suntory, now Suntory Global Spirits) and soft drinks.",
-  "facts": []
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "political": {
+    "usd": 86557,
+    "rep_usd": 46557,
+    "dem_usd": 37500,
+    "cycle": "2023-24",
+    "committee": "BEAM SUNTORY INC POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00194126/?cycle=2024",
+    "fund_of": "Beam Suntory"
+   }
+  }
  },
  "pola": {
   "made_from": "The money came from the Pola cosmetics company and the Suzuki family that founded it; the foundation was set up with Tsuneji Suzuki’s personal assets.",
@@ -2543,7 +2571,21 @@
     "date": "2014-02",
     "source": "https://www.fbi.gov/cleveland/press-releases/2014/bridgestone-corp.-agrees-to-plead-guilty-to-price-fixing-on-automobile-parts-installed-in-u.s.-cars"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "political": {
+    "usd": 24500,
+    "rep_usd": 12500,
+    "dem_usd": 11000,
+    "cycle": "2023-24",
+    "committee": "BRIDGESTONE AMERICAS INC. PAC",
+    "source": "https://www.fec.gov/data/committee/C00371948/?cycle=2024",
+    "fund_of": "Bridgestone Americas"
+   }
+  }
  },
  "mitsubishi": {
   "made_from": "The ties name separate Mitsubishi companies, mostly Mitsubishi Electric (electrical and industrial equipment), and also Mitsubishi Motors, Mitsubishi Chemical and Mitsubishi Gas Chemical.",
@@ -2587,7 +2629,21 @@
     "date": "2025-04",
     "source": "https://www.toyota-tsusho.com/english/press/detail/250428_006573.html"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 3
+   },
+   "political": {
+    "usd": 1141000,
+    "rep_usd": 680000,
+    "dem_usd": 456500,
+    "cycle": "2023-24",
+    "committee": "TOYOTA MOTOR NORTH AMERICA, INC POLITICAL ACTION COMMITTEE (TOYOTA/LEXUS PAC)",
+    "source": "https://www.fec.gov/data/committee/C00542365/?cycle=2024",
+    "fund_of": "Toyota Motor North America"
+   }
+  }
  },
  "canon": {
   "made_from": "Canon’s money comes from cameras, printers and office equipment, medical imaging and semiconductor equipment.",
@@ -2663,7 +2719,21 @@
     "date": "2021-11",
     "source": "https://thenationalnews.com/business/banking/2021/11/26/mizuho-ceo-quits-after-criticism-by-japans-financial-regulator-on-system-issues"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "political": {
+    "usd": 7000,
+    "rep_usd": 3000,
+    "dem_usd": 4000,
+    "cycle": "2023-24",
+    "committee": "MIZUHO AMERICAS GOOD GOVERNMENT FUND (MIZUHO AMERICAS PAC)",
+    "source": "https://www.fec.gov/data/committee/C00878199/?cycle=2024",
+    "fund_of": "Mizuho Americas"
+   }
+  }
  },
  "nomura": {
   "made_from": "Nomura’s money comes from securities brokerage, investment banking and asset management; the ties are Nomura Securities and the Nomura Foundation.",
@@ -2674,7 +2744,21 @@
     "date": "2024-11",
     "source": "https://fortune.com/2024/11/03/nomura-ceo-pay-cut-bond-market-manipulation/"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "political": {
+    "usd": 110000,
+    "rep_usd": 62500,
+    "dem_usd": 47500,
+    "cycle": "2023-24",
+    "committee": "NOMURA HOLDING AMERICA INC. POLITICAL ACTION COMMITTEE (NOMURAPAC)",
+    "source": "https://www.fec.gov/data/committee/C00491951/?cycle=2024",
+    "fund_of": "Nomura Holding America"
+   }
+  }
  },
  "nipponfoundation": {
   "made_from": "The Nippon Foundation’s money comes from a share of the proceeds of betting on motorboat racing in Japan; the Great Britain Sasakawa Foundation bears the name of its founder, Ryoichi Sasakawa.",
@@ -3305,6 +3389,29 @@
    "culture": {
     "spaces": 7,
     "entries": 8
+   },
+   "political": {
+    "usd": 130000,
+    "rep_usd": 60000,
+    "dem_usd": 72500,
+    "cycle": "2023-24",
+    "committee": "HSBC TECHNOLOGY AND SERVICES USA INC. FEDERAL, STATE, AND LOCAL PAC (HSBC COMBINED PAC); HSBC TECHNOLOGY AND SERVICES USA INC. FEDERAL PAC (HSBC FEDERAL PAC)",
+    "source": "https://www.fec.gov/data/committee/C00681437/?cycle=2024",
+    "fund_of": "HSBC in the US"
+   },
+   "uk_political": {
+    "gbp": 75615.15,
+    "period": "2023-24",
+    "donors": [
+     {
+      "name": "HSBC Bank PLC",
+      "gbp": 75615.15,
+      "n": 4,
+      "party": "the Labour Party",
+      "in_kind": "staff costs and premises",
+      "source": "https://search.electoralcommission.org.uk/?query=HSBC&et=pp&date=Accepted&from=2023-01-01&to=2024-12-31"
+     }
+    ]
    }
   }
  },
@@ -3585,7 +3692,31 @@
     "date": "2026-02",
     "source": "https://www.democracynow.org/2026/2/19/headlines/former_victoria_s_secret_ceo_les_wexner_testifies_about_his_links_to_epstein"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "personal": {
+    "usd": 6600,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Les Wexner",
+      "usd": 6600,
+      "rows": 2,
+      "top": [
+       {
+        "name": "Beatty for Congress",
+        "id": "C00507368",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Wexner%2C+Leslie&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "morganstanley": {
   "made_from": "Morgan Stanley is a US investment bank and wealth manager.",
@@ -3625,6 +3756,14 @@
    "culture": {
     "spaces": 8,
     "entries": 10
+   },
+   "political": {
+    "usd": 633500,
+    "rep_usd": 346500,
+    "dem_usd": 284500,
+    "cycle": "2023-24",
+    "committee": "MORGAN STANLEY POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00337626/?cycle=2024"
    }
   }
  },
@@ -3666,6 +3805,14 @@
    "culture": {
     "spaces": 7,
     "entries": 7
+   },
+   "political": {
+    "usd": 243500,
+    "rep_usd": 121500,
+    "dem_usd": 119000,
+    "cycle": "2023-24",
+    "committee": "MASTERCARD INTERNATIONAL INC. EMPLOYEE PAC (MASTERCARD PAC) OR (MASTERCARD EMPLOYEE PAC)",
+    "source": "https://www.fec.gov/data/committee/C00410274/?cycle=2024"
    }
   }
  },
@@ -3689,12 +3836,54 @@
    "culture": {
     "spaces": 5,
     "entries": 5
+   },
+   "political": {
+    "usd": 60000,
+    "rep_usd": 18000,
+    "dem_usd": 41000,
+    "cycle": "2023-24",
+    "committee": "NORTHERN TRUST CORPORATION POLITICAL ACTION COMMITTEE (NORTHERN TRUST PAC); NORTHERN TRUST CORPORATION FEDERAL POLITICAL ACTION COMMITTEE (NORTHERN TRUST FEDERAL PAC)",
+    "source": "https://www.fec.gov/data/committee/C00515148/?cycle=2024"
    }
   }
  },
  "broad": {
   "made_from": "Eli Broad's fortune came from insurance and home construction (KB Home and SunAmerica).",
-  "facts": []
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "personal": {
+    "usd": 277663,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Edythe Broad",
+      "usd": 277663,
+      "rows": 19,
+      "top": [
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 100000
+       },
+       {
+        "name": "Jeffries Victory Fund",
+        "id": "C00768200",
+        "usd": 100000
+       },
+       {
+        "name": "DCCC",
+        "id": "C00000935",
+        "usd": 50000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Broad%2C+Edythe&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "exxonmobil": {
   "made_from": "ExxonMobil produces and refines oil and gas and makes chemicals; Mobil merged into it in 1999.",
@@ -3740,6 +3929,14 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "political": {
+    "usd": 510750,
+    "rep_usd": 356250,
+    "dem_usd": 143500,
+    "cycle": "2023-24",
+    "committee": "EXXON MOBIL CORPORATION POLITICAL ACTION COMMITTEE (EXXONMOBIL PAC)",
+    "source": "https://www.fec.gov/data/committee/C00121368/?cycle=2024"
    }
   }
  },
@@ -3749,7 +3946,41 @@
  },
  "murdoch": {
   "made_from": "The tie here is Freelands Foundation, set up by Elisabeth Murdoch, daughter of Rupert Murdoch, whose family controls News Corp and Fox Corporation.",
-  "facts": []
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "personal": {
+    "usd": 2360000,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Rupert Murdoch",
+      "usd": 2360000,
+      "rows": 5,
+      "top": [
+       {
+        "name": "Senate Leadership Fund",
+        "id": "C00571703",
+        "usd": 2000000
+       },
+       {
+        "name": "NHA Action",
+        "id": "C00876409",
+        "usd": 250000
+       },
+       {
+        "name": "Cornyn Victory Committee",
+        "id": "C00770180",
+        "usd": 100000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Murdoch%2C+Rupert&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "wynn": {
   "made_from": "Wynn Resorts runs casino resorts in Las Vegas, Macau and Boston; its founder Steve Wynn resigned as chief executive in 2018.",
@@ -3783,6 +4014,15 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 20000,
+    "rep_usd": 0,
+    "dem_usd": 10000,
+    "cycle": "2023-24",
+    "committee": "WYNN RESORTS LIMITED INITIATIVE FOR PUBLIC POLICY",
+    "source": "https://www.fec.gov/data/committee/C00475475/?cycle=2024",
+    "fund_of": "Wynn Resorts"
    }
   }
  },
@@ -3830,12 +4070,77 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 461000,
+    "rep_usd": 250500,
+    "dem_usd": 205500,
+    "cycle": "2023-24",
+    "committee": "THE GOLDMAN SACHS GROUP, INC. POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00350744/?cycle=2024"
    }
   }
  },
  "ericschmidt": {
   "made_from": "Eric and Wendy Schmidt's money comes mostly from Google (Alphabet), which Eric Schmidt ran as chief executive and chairman.",
-  "facts": []
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "personal": {
+    "usd": 8748255,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Eric Schmidt",
+      "usd": 8203945,
+      "rows": 130,
+      "top": [
+       {
+        "name": "SMP",
+        "id": "C00484642",
+        "usd": 4800000
+       },
+       {
+        "name": "FF PAC",
+        "id": "C00669259",
+        "usd": 1600000
+       },
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 500000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Schmidt%2C+Eric&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Wendy Schmidt",
+      "usd": 544310,
+      "rows": 27,
+      "top": [
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 470000
+       },
+       {
+        "name": "Jeffries Victory Fund",
+        "id": "C00768200",
+        "usd": 20650
+       },
+       {
+        "name": "Mondaire for Congress",
+        "id": "C00711150",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Schmidt%2C+Wendy&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "nike": {
   "made_from": "Nike designs and sells sports shoes, clothing and equipment, made by contract factories.",
@@ -3875,6 +4180,14 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "political": {
+    "usd": 356000,
+    "rep_usd": 93000,
+    "dem_usd": 270500,
+    "cycle": "2023-24",
+    "committee": "NIKE INC FEDERAL POLITICAL ACTION COMMITTEE (NIKE FEDERAL PAC)",
+    "source": "https://www.fec.gov/data/committee/C00142786/?cycle=2024"
    }
   }
  },
@@ -3915,6 +4228,15 @@
     },
     "spaces": 32,
     "entries": 34
+   },
+   "political": {
+    "usd": 170500,
+    "rep_usd": 78500,
+    "dem_usd": 92000,
+    "cycle": "2023-24",
+    "committee": "FORD MOTOR COMPANY CIVIC ACTION FUND",
+    "source": "https://www.fec.gov/data/committee/C00046474/?cycle=2024",
+    "fund_of": "Ford Motor"
    }
   }
  },
@@ -3944,6 +4266,94 @@
    "culture": {
     "spaces": 5,
     "entries": 7
+   },
+   "personal": {
+    "usd": 1156599,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Jonathan Tisch",
+      "usd": 1009060,
+      "rows": 93,
+      "top": [
+       {
+        "name": "DSCC",
+        "id": "C00042366",
+        "usd": 191300
+       },
+       {
+        "name": "Jeffries Victory Fund",
+        "id": "C00768200",
+        "usd": 150000
+       },
+       {
+        "name": "DCCC",
+        "id": "C00000935",
+        "usd": 102700
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Tisch%2C+Jonathan&two_year_transaction_period=2024"
+     },
+     {
+      "name": "James Tisch",
+      "usd": 90700,
+      "rows": 21,
+      "top": [
+       {
+        "name": "Manchin Leadership Fund",
+        "id": "C00817700",
+        "usd": 10000
+       },
+       {
+        "name": "Tim Scott Victory Fund",
+        "id": "C00776526",
+        "usd": 10000
+       },
+       {
+        "name": "NRSC",
+        "id": "C00027466",
+        "usd": 10000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Tisch%2C+James&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Andrew Tisch",
+      "usd": 50239,
+      "rows": 22,
+      "top": [
+       {
+        "name": "Booker Victory Fund",
+        "id": "C00734319",
+        "usd": 10800
+       },
+       {
+        "name": "Rosen for Nevada",
+        "id": "C00606939",
+        "usd": 5600
+       },
+       {
+        "name": "Building America's Economy",
+        "id": "C00803593",
+        "usd": 5000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Tisch%2C+Andrew&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Steve Tisch",
+      "usd": 6600,
+      "rows": 2,
+      "top": [
+       {
+        "name": "Tammy Murphy for Senate",
+        "id": "C00856765",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Tisch%2C+Steve&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -4019,6 +4429,71 @@
     },
     "spaces": 3,
     "entries": 5
+   },
+   "personal": {
+    "usd": 17759600,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Jim Walton",
+      "usd": 12743100,
+      "rows": 24,
+      "top": [
+       {
+        "name": "Americans for Prosperity Action, Inc. (AFP Action) Dba Cva Action and Dba Libre Action",
+        "id": "C00687103",
+        "usd": 10000000
+       },
+       {
+        "name": "Senate Leadership Fund",
+        "id": "C00571703",
+        "usd": 2000000
+       },
+       {
+        "name": "Fix Washington PAC",
+        "id": "C00870592",
+        "usd": 500000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Walton%2C+Jim&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Alice Walton",
+      "usd": 5006600,
+      "rows": 2,
+      "top": [
+       {
+        "name": "Americans for Prosperity Action, Inc. (AFP Action) Dba Cva Action and Dba Libre Action",
+        "id": "C00687103",
+        "usd": 5000000
+       },
+       {
+        "name": "Team Asa, Inc.",
+        "id": "C00839480",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Walton%2C+Alice&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Rob Walton",
+      "usd": 9900,
+      "rows": 3,
+      "top": [
+       {
+        "name": "Lisa Murkowski for US Senate",
+        "id": "C00384529",
+        "usd": 6600
+       },
+       {
+        "name": "Will Rollins for Congress",
+        "id": "C00792507",
+        "usd": 3300
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Walton%2C+Rob&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -4048,6 +4523,34 @@
    "culture": {
     "spaces": 9,
     "entries": 9
+   },
+   "political": {
+    "usd": 712500,
+    "rep_usd": 407500,
+    "dem_usd": 299500,
+    "cycle": "2023-24",
+    "committee": "FMR LLC POLITICAL ACTION COMMITTEE STATE FEDERAL (FIDELITY PAC); FMR LLC POLITICAL ACTION COMMITTEE - FEDERAL (FIDELITY PAC)",
+    "source": "https://www.fec.gov/data/committee/C00380550/?cycle=2024",
+    "fund_of": "Fidelity (FMR LLC)"
+   },
+   "personal": {
+    "usd": 3300,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Abigail Johnson",
+      "usd": 3300,
+      "rows": 1,
+      "top": [
+       {
+        "name": "Richard E Neal for Congress Committee",
+        "id": "C00226522",
+        "usd": 3300
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Johnson%2C+Abigail&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -4083,6 +4586,15 @@
    "culture": {
     "spaces": 4,
     "entries": 5
+   },
+   "political": {
+    "usd": 188500,
+    "rep_usd": 97000,
+    "dem_usd": 89500,
+    "cycle": "2023-24",
+    "committee": "TWDC ENTERPRISES 18 CORP. EMPLOYEES PAC AKA 'THE WALT DISNEY COMPANY EMPLOYEES PAC' OR 'DISNEY PAC'",
+    "source": "https://www.fec.gov/data/committee/C00197749/?cycle=2024",
+    "fund_of": "The Walt Disney Company"
    }
   }
  },
@@ -4100,6 +4612,30 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "personal": {
+    "usd": 16600,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "David Geffen",
+      "usd": 16600,
+      "rows": 2,
+      "top": [
+       {
+        "name": "Planned Parenthood Advocacy Project Los Angeles County Action Fund",
+        "id": "C00687491",
+        "usd": 10000
+       },
+       {
+        "name": "Jacky Rosen Victory Fund",
+        "id": "C00772517",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Geffen%2C+David&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -4135,6 +4671,14 @@
    "culture": {
     "spaces": 1,
     "entries": 2
+   },
+   "political": {
+    "usd": 1526500,
+    "rep_usd": 869000,
+    "dem_usd": 642500,
+    "cycle": "2023-24",
+    "committee": "LOCKHEED MARTIN CORPORATION EMPLOYEES' POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00303024/?cycle=2024"
    }
   }
  },
@@ -4193,6 +4737,14 @@
    "culture": {
     "spaces": 3,
     "entries": 4
+   },
+   "political": {
+    "usd": 299000,
+    "rep_usd": 247000,
+    "dem_usd": 52000,
+    "cycle": "2023-24",
+    "committee": "CONOCOPHILLIPS SPIRIT PAC",
+    "source": "https://www.fec.gov/data/committee/C00112896/?cycle=2024"
    }
   }
  },
@@ -4234,7 +4786,54 @@
     "date": "2025",
     "source": "https://s22.q4cdn.com/891946778/files/doc_financials/2025/q4/GD-2025-12-31-Exhibit-99-1-Final.pdf"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "personal": {
+    "usd": 839700,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Lester Crown",
+      "usd": 833100,
+      "rows": 67,
+      "top": [
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 500000
+       },
+       {
+        "name": "Harris Action Fund",
+        "id": "C00838912",
+        "usd": 100000
+       },
+       {
+        "name": "Schumer Majority Committee",
+        "id": "C00878116",
+        "usd": 25000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Crown%2C+Lester&two_year_transaction_period=2024"
+     },
+     {
+      "name": "James Crown",
+      "usd": 6600,
+      "rows": 2,
+      "top": [
+       {
+        "name": "Josh Gottheimer for Congress",
+        "id": "C00573949",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Crown%2C+James&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "perelman": {
   "made_from": "Ronald Perelman's money comes from MacAndrews & Forbes, the holding company through which he bought and sold businesses from candy to cosmetics, Revlon among them.",
@@ -4273,6 +4872,25 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "personal": {
+    "usd": 10000,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Michael Dell",
+      "usd": 10000,
+      "rows": 2,
+      "top": [
+       {
+        "name": "Dell Technologies, Inc. Political Action Committee",
+        "id": "C00369751",
+        "usd": 10000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Dell%2C+Michael&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -4302,6 +4920,14 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 1002500,
+    "rep_usd": 624000,
+    "dem_usd": 358500,
+    "cycle": "2023-24",
+    "committee": "DELTA AIR LINES PAC",
+    "source": "https://www.fec.gov/data/committee/C00104802/?cycle=2024"
    }
   }
  },
@@ -4314,7 +4940,41 @@
     "date": "2026",
     "source": "https://www.forbes.com/profile/george-lucas/"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "personal": {
+    "usd": 1954560,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Mellody Hobson",
+      "usd": 1954560,
+      "rows": 49,
+      "top": [
+       {
+        "name": "Harris Action Fund",
+        "id": "C00838912",
+        "usd": 788000
+       },
+       {
+        "name": "SMP",
+        "id": "C00484642",
+        "usd": 600000
+       },
+       {
+        "name": "DCCC",
+        "id": "C00000935",
+        "usd": 299100
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Hobson%2C+Mellody&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "wellsfargo": {
   "made_from": "Wells Fargo's money comes from consumer and commercial banking, lending and wealth management.",
@@ -4348,6 +5008,14 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 586000,
+    "rep_usd": 328500,
+    "dem_usd": 250000,
+    "cycle": "2023-24",
+    "committee": "WELLS FARGO AND COMPANY EMPLOYEE PAC (AKA WELLS FARGO EMPLOYEE PAC); WELLS FARGO AND COMPANY EMPLOYEES GOOD GOVERNMENT FEDERAL FUND II",
+    "source": "https://www.fec.gov/data/committee/C00300178/?cycle=2024"
    }
   }
  },
@@ -4471,6 +5139,15 @@
    "culture": {
     "spaces": 5,
     "entries": 5
+   },
+   "political": {
+    "usd": 437150,
+    "rep_usd": 193650,
+    "dem_usd": 243500,
+    "cycle": "2023-24",
+    "committee": "ROCHE DIAGNOSTICS CORPORATION PAC (ROCHE DXPAC); GENENTECH INC. POLITICAL ACTION COMMITTEE (GENENPAC)",
+    "source": "https://www.fec.gov/data/committee/C00199257/?cycle=2024",
+    "fund_of": "Roche Diagnostics and Genentech"
    }
   }
  },
@@ -4547,6 +5224,15 @@
    "culture": {
     "spaces": 4,
     "entries": 4
+   },
+   "political": {
+    "usd": 217500,
+    "rep_usd": 118500,
+    "dem_usd": 99000,
+    "cycle": "2023-24",
+    "committee": "SIEMENS CORPORATION PAC",
+    "source": "https://www.fec.gov/data/committee/C00353797/?cycle=2024",
+    "fund_of": "Siemens Corporation, its US arm,"
    }
   }
  },
@@ -4664,6 +5350,28 @@
    "culture": {
     "spaces": 3,
     "entries": 5
+   },
+   "uk_political": {
+    "gbp": 15825326.05,
+    "period": "2023-24",
+    "donors": [
+     {
+      "name": "Lord David Sainsbury of Turville",
+      "gbp": 5623640.84,
+      "n": 7,
+      "party": "the Labour Party",
+      "source": "https://search.electoralcommission.org.uk/?query=Sainsbury&et=pp&date=Accepted&from=2023-01-01&to=2024-12-31"
+     },
+     {
+      "name": "Lord John Sainsbury",
+      "gbp": 10201685.21,
+      "n": 2,
+      "party": "the Conservative and Unionist Party",
+      "bequest": true,
+      "accepted": "2023-09",
+      "source": "https://search.electoralcommission.org.uk/?query=Sainsbury&et=pp&date=Accepted&from=2023-01-01&to=2024-12-31"
+     }
+    ]
    }
   }
  },
@@ -4723,6 +5431,15 @@
     },
     "spaces": 4,
     "entries": 6
+   },
+   "political": {
+    "usd": 94500,
+    "rep_usd": 43000,
+    "dem_usd": 53000,
+    "cycle": "2023-24",
+    "committee": "SANTANDER HOLDINGS USA INC. PAC (SANTANDER US PAC)",
+    "source": "https://www.fec.gov/data/committee/C00327072/?cycle=2024",
+    "fund_of": "Santander Holdings USA"
    }
   }
  },
@@ -4776,6 +5493,15 @@
     },
     "spaces": 5,
     "entries": 5
+   },
+   "political": {
+    "usd": 51000,
+    "rep_usd": 22500,
+    "dem_usd": 28500,
+    "cycle": "2023-24",
+    "committee": "AZOA SERVICES CORPORATION POLITICAL ACTION COMMITTEE (ALLIANZ OF AMERICA PAC)",
+    "source": "https://www.fec.gov/data/committee/C00095109/?cycle=2024",
+    "fund_of": "Allianz of America"
    }
   }
  },
@@ -4887,6 +5613,15 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "political": {
+    "usd": 658500,
+    "rep_usd": 404000,
+    "dem_usd": 247500,
+    "cycle": "2023-24",
+    "committee": "BAE SYSTEMS INC. POLITICAL ACTION COMMITTEE (BAE SYSTEMS USA PAC)",
+    "source": "https://www.fec.gov/data/committee/C00281212/?cycle=2024",
+    "fund_of": "BAE Systems Inc., its US arm,"
    }
   }
  },
@@ -4934,6 +5669,15 @@
     },
     "spaces": 3,
     "entries": 3
+   },
+   "political": {
+    "usd": 27500,
+    "rep_usd": 20000,
+    "dem_usd": 7500,
+    "cycle": "2023-24",
+    "committee": "PERNOD RICARD USA, LLC POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00380527/?cycle=2024",
+    "fund_of": "Pernod Ricard USA"
    }
   }
  },
@@ -4987,6 +5731,15 @@
     },
     "spaces": 3,
     "entries": 3
+   },
+   "political": {
+    "usd": 130181,
+    "rep_usd": 69000,
+    "dem_usd": 60181,
+    "cycle": "2023-24",
+    "committee": "BARCLAYS GROUP US INC. POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00448852/?cycle=2024",
+    "fund_of": "Barclays Group US"
    }
   }
  },
@@ -5034,6 +5787,15 @@
    "culture": {
     "spaces": 3,
     "entries": 3
+   },
+   "political": {
+    "usd": 358000,
+    "rep_usd": 179000,
+    "dem_usd": 184000,
+    "cycle": "2023-24",
+    "committee": "NOVO NORDISK INC. PAC (NOVO NORDISK PAC)",
+    "source": "https://www.fec.gov/data/committee/C00424838/?cycle=2024",
+    "fund_of": "Novo Nordisk Inc., its US arm,"
    }
   }
  },
@@ -5179,6 +5941,15 @@
    "culture": {
     "spaces": 14,
     "entries": 14
+   },
+   "political": {
+    "usd": 725000,
+    "rep_usd": 364000,
+    "dem_usd": 353500,
+    "cycle": "2023-24",
+    "committee": "GOOGLE LLC NETPAC",
+    "source": "https://www.fec.gov/data/committee/C00428623/?cycle=2024",
+    "fund_of": "Google"
    }
   }
  },
@@ -5202,6 +5973,48 @@
     },
     "spaces": 9,
     "entries": 9
+   },
+   "personal": {
+    "usd": 379099,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Penny Pritzker",
+      "usd": 374099,
+      "rows": 12,
+      "top": [
+       {
+        "name": "Harris Action Fund",
+        "id": "C00838912",
+        "usd": 168500
+       },
+       {
+        "name": "DCCC",
+        "id": "C00000935",
+        "usd": 100000
+       },
+       {
+        "name": "House Victory Project 2024",
+        "id": "C00873406",
+        "usd": 85800
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Pritzker%2C+Penny&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Thomas Pritzker",
+      "usd": 5000,
+      "rows": 1,
+      "top": [
+       {
+        "name": "American Hotel and Lodging Association Political Action Committee ('hotelpac')",
+        "id": "C00001198",
+        "usd": 5000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Pritzker%2C+Thomas&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -5214,7 +6027,41 @@
     "date": "2023",
     "source": "https://projects.propublica.org/nonprofits/api/v2/organizations/236257083.json"
    }
-  ]
+  ],
+  "figures": {
+   "culture": {
+    "spaces": 5
+   },
+   "personal": {
+    "usd": 56600,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Wallis Annenberg",
+      "usd": 56600,
+      "rows": 3,
+      "top": [
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 50000
+       },
+       {
+        "name": "Tammy Murphy for Senate",
+        "id": "C00856765",
+        "usd": 3300
+       },
+       {
+        "name": "Jacky Rosen Victory Fund",
+        "id": "C00772517",
+        "usd": 3300
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Annenberg%2C+Wallis&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  },
  "citi": {
   "made_from": "Citi's money comes from Citigroup's banking: consumer and corporate banking, markets and wealth management.",
@@ -5260,6 +6107,15 @@
    "culture": {
     "spaces": 9,
     "entries": 9
+   },
+   "political": {
+    "usd": 457500,
+    "rep_usd": 284000,
+    "dem_usd": 169000,
+    "cycle": "2023-24",
+    "committee": "CITIGROUP INC. PAC - FEDERAL (CITI PAC - FEDERAL)",
+    "source": "https://www.fec.gov/data/committee/C00008474/?cycle=2024",
+    "fund_of": "Citigroup"
    }
   }
  },
@@ -5301,6 +6157,14 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "political": {
+    "usd": 135150,
+    "rep_usd": 80000,
+    "dem_usd": 55150,
+    "cycle": "2023-24",
+    "committee": "THE COCA-COLA COMPANY NONPARTISAN COMMITTEE FOR GOOD GOVERNMENT",
+    "source": "https://www.fec.gov/data/committee/C00012468/?cycle=2024"
    }
   }
  },
@@ -5342,6 +6206,14 @@
    "culture": {
     "spaces": 8,
     "entries": 8
+   },
+   "political": {
+    "usd": 550500,
+    "rep_usd": 268500,
+    "dem_usd": 268000,
+    "cycle": "2023-24",
+    "committee": "AMERICAN EXPRESS COMPANY POLITICAL ACTION COMMITTEE (AXPPAC)",
+    "source": "https://www.fec.gov/data/committee/C00040535/?cycle=2024"
    }
   }
  },
@@ -5389,6 +6261,14 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "political": {
+    "usd": 1574500,
+    "rep_usd": 977500,
+    "dem_usd": 582000,
+    "cycle": "2023-24",
+    "committee": "THE BOEING COMPANY POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00142711/?cycle=2024"
    }
   }
  },
@@ -5430,6 +6310,35 @@
     },
     "spaces": 3,
     "entries": 3
+   },
+   "personal": {
+    "usd": 140811800,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Miriam Adelson",
+      "usd": 140811800,
+      "rows": 24,
+      "top": [
+       {
+        "name": "Preserve America PAC",
+        "id": "C00878801",
+        "usd": 106000000
+       },
+       {
+        "name": "Senate Leadership Fund",
+        "id": "C00571703",
+        "usd": 15000000
+       },
+       {
+        "name": "Congressional Leadership Fund",
+        "id": "C00504530",
+        "usd": 10000000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Adelson%2C+Miriam&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -5494,6 +6403,44 @@
     },
     "spaces": 4,
     "entries": 4
+   },
+   "political": {
+    "usd": 803000,
+    "rep_usd": 424000,
+    "dem_usd": 363000,
+    "cycle": "2023-24",
+    "committee": "MICROSOFT CORPORATION STAKEHOLDERS VOLUNTARY PAC - MSVPAC",
+    "source": "https://www.fec.gov/data/committee/C00227546/?cycle=2024",
+    "fund_of": "Microsoft"
+   },
+   "personal": {
+    "usd": 301200,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Bill Gates",
+      "usd": 301200,
+      "rows": 77,
+      "top": [
+       {
+        "name": "Alaskans for Dan Sullivan",
+        "id": "C00570994",
+        "usd": 6600
+       },
+       {
+        "name": "Hickenlooper for Colorado",
+        "id": "C00716720",
+        "usd": 6600
+       },
+       {
+        "name": "Whitehouse for Senate",
+        "id": "C00410803",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Gates%2C+William&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -5541,6 +6488,39 @@
    "culture": {
     "spaces": 3,
     "entries": 4
+   },
+   "political": {
+    "usd": 800500,
+    "rep_usd": 395000,
+    "dem_usd": 405500,
+    "cycle": "2023-24",
+    "committee": "AMAZON.COM SERVICES LLC SEPARATE SEGREGATED FUND (AMAZON PAC)",
+    "source": "https://www.fec.gov/data/committee/C00360354/?cycle=2024",
+    "fund_of": "Amazon"
+   },
+   "personal": {
+    "usd": 15000,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Jeff Bezos",
+      "usd": 15000,
+      "rows": 3,
+      "top": [
+       {
+        "name": "Amazon.com Services LLC Separate Segregated Fund (amazon PAC)",
+        "id": "C00360354",
+        "usd": 10000
+       },
+       {
+        "name": "Blue Origin LLC Political Action Committee (blue Origin PAC)",
+        "id": "C00557793",
+        "usd": 5000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Bezos%2C+Jeffrey&two_year_transaction_period=2024"
+     }
+    ]
    }
   }
  },
@@ -5588,6 +6568,14 @@
     },
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 954500,
+    "rep_usd": 659500,
+    "dem_usd": 280000,
+    "cycle": "2023-24",
+    "committee": "CATERPILLAR INC. POLITICAL ACTION COMMITTEE (CATPAC)",
+    "source": "https://www.fec.gov/data/committee/C00148031/?cycle=2024"
    }
   }
  },
@@ -5641,6 +6629,14 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 231500,
+    "rep_usd": 200000,
+    "dem_usd": 31500,
+    "cycle": "2023-24",
+    "committee": "OCCIDENTAL PETROLEUM CORPORATION POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00083857/?cycle=2024"
    }
   }
  },
@@ -5817,6 +6813,14 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 611500,
+    "rep_usd": 367500,
+    "dem_usd": 239000,
+    "cycle": "2023-24",
+    "committee": "PFIZER INC. PAC",
+    "source": "https://www.fec.gov/data/committee/C00016683/?cycle=2024"
    }
   }
  },
@@ -5923,6 +6927,15 @@
    "culture": {
     "spaces": 4,
     "entries": 4
+   },
+   "political": {
+    "usd": 5000,
+    "rep_usd": 3000,
+    "dem_usd": 2000,
+    "cycle": "2023-24",
+    "committee": "MERCEDES-BENZ NORTH AMERICA CORPORATION US EMPLOYEES PAC",
+    "source": "https://www.fec.gov/data/committee/C00611897/?cycle=2024",
+    "fund_of": "Mercedes-Benz North America"
    }
   }
  },
@@ -6087,6 +7100,15 @@
    "culture": {
     "spaces": 8,
     "entries": 9
+   },
+   "political": {
+    "usd": 28750,
+    "rep_usd": 20500,
+    "dem_usd": 8250,
+    "cycle": "2023-24",
+    "committee": "ENGIE NORTH AMERICA, INC. PAC (ENA PAC)",
+    "source": "https://www.fec.gov/data/committee/C00375568/?cycle=2024",
+    "fund_of": "Engie North America"
    }
   }
  },
@@ -6163,6 +7185,15 @@
    "culture": {
     "spaces": 4,
     "entries": 4
+   },
+   "political": {
+    "usd": 283000,
+    "rep_usd": 142500,
+    "dem_usd": 134500,
+    "cycle": "2023-24",
+    "committee": "NOVARTIS CORPORATION POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00033969/?cycle=2024",
+    "fund_of": "Novartis Corporation, its US arm,"
    }
   }
  },
@@ -7060,6 +8091,15 @@
    "culture": {
     "spaces": 2,
     "entries": 2
+   },
+   "political": {
+    "usd": 210500,
+    "rep_usd": 125500,
+    "dem_usd": 76500,
+    "cycle": "2023-24",
+    "committee": "BAYER US LLC EMPLOYEE POLITICAL ACTION COMMITTEE (BAYERPAC)",
+    "source": "https://www.fec.gov/data/committee/C00281162/?cycle=2024",
+    "fund_of": "Bayer US"
    }
   }
  },
@@ -7818,6 +8858,15 @@
     },
     "spaces": 13,
     "entries": 15
+   },
+   "political": {
+    "usd": 472000,
+    "rep_usd": 218500,
+    "dem_usd": 245500,
+    "cycle": "2023-24",
+    "committee": "TD BANK N.A. POLITICAL ACTION COMMITTEE",
+    "source": "https://www.fec.gov/data/committee/C00501429/?cycle=2024",
+    "fund_of": "TD Bank N.A., its US bank,"
    }
   }
  },
@@ -8095,6 +9144,15 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 110100,
+    "rep_usd": 75700,
+    "dem_usd": 29400,
+    "cycle": "2023-24",
+    "committee": "ENBRIDGE (U.S.) INC. POLITICAL ACTION COMMITTEE (ENBRIDGE PAC)",
+    "source": "https://www.fec.gov/data/committee/C00429662/?cycle=2024",
+    "fund_of": "Enbridge (U.S.)"
    }
   }
  },
@@ -8290,7 +9348,21 @@
  },
  "bombardier": {
   "made_from": "The Beaudoin-Bombardier family’s money comes from Bombardier and BRP, the companies founded by Joseph-Armand Bombardier that it controls, given through the Fondation J. Armand Bombardier.",
-  "facts": []
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "political": {
+    "usd": 30500,
+    "rep_usd": 25500,
+    "dem_usd": 5000,
+    "cycle": "2023-24",
+    "committee": "BOMBARDIER AEROSPACE (HOLDINGS) USA INC. PAC (BOMBARDIER PAC)",
+    "source": "https://www.fec.gov/data/committee/C00546473/?cycle=2024",
+    "fund_of": "Bombardier Aerospace in the US"
+   }
+  }
  },
  "rogers": {
   "made_from": "The Rogers family’s money comes from Rogers Communications, the wireless, cable and media company it controls; the ties here are gifts in the company’s name.",
@@ -8423,6 +9495,15 @@
    "culture": {
     "spaces": 1,
     "entries": 1
+   },
+   "political": {
+    "usd": 224250,
+    "rep_usd": 107250,
+    "dem_usd": 115000,
+    "cycle": "2023-24",
+    "committee": "AES CORPORATION POLITICAL ACTION COMMITTEE; THE",
+    "source": "https://www.fec.gov/data/committee/C00507962/?cycle=2024",
+    "fund_of": "AES and its utility AES Ohio"
    }
   }
  },
@@ -8807,5 +9888,351 @@
     "source": "https://cdn3.bci.cl/uploads/2db87fed-a7aa-41e3-9752-a9b0a58edd44/original/Informe_de_Resultados_2025.pdf"
    }
   ]
+ },
+ "sigridrausingtrust": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 13
+   },
+   "uk_political": {
+    "gbp": 1011000.0,
+    "period": "2023-24",
+    "donors": [
+     {
+      "name": "Lisbet Rausing",
+      "gbp": 861000.0,
+      "n": 32,
+      "party": "the Labour Party",
+      "source": "https://search.electoralcommission.org.uk/?query=Rausing&et=pp&date=Accepted&from=2023-01-01&to=2024-12-31"
+     },
+     {
+      "name": "Sigrid Rausing",
+      "gbp": 150000.0,
+      "n": 1,
+      "party": "the Labour Party",
+      "source": "https://search.electoralcommission.org.uk/?query=Rausing&et=pp&date=Accepted&from=2023-01-01&to=2024-12-31"
+     }
+    ]
+   }
+  }
+ },
+ "schwarzman": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 1
+   },
+   "personal": {
+    "usd": 38887018,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Stephen Schwarzman",
+      "usd": 38887018,
+      "rows": 355,
+      "top": [
+       {
+        "name": "Senate Leadership Fund",
+        "id": "C00571703",
+        "usd": 9000000
+       },
+       {
+        "name": "More Jobs, Less Government",
+        "id": "C00693838",
+        "usd": 8000000
+       },
+       {
+        "name": "GLCF, Inc.",
+        "id": "C00853861",
+        "usd": 4500000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Schwarzman%2C+Stephen&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "paulsonfamily": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "personal": {
+    "usd": 1170104,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "John Paulson",
+      "usd": 1170104,
+      "rows": 15,
+      "top": [
+       {
+        "name": "Trump 47 Committee, Inc.",
+        "id": "C00867937",
+        "usd": 927900
+       },
+       {
+        "name": "Grow the Majority",
+        "id": "C00858373",
+        "usd": 100000
+       },
+       {
+        "name": "Truth and Courage PAC",
+        "id": "C00796045",
+        "usd": 55854
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Paulson%2C+John&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "opensociety": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 11
+   },
+   "personal": {
+    "usd": 4078582,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "George Soros",
+      "usd": 4043782,
+      "rows": 72,
+      "top": [
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 1803000
+       },
+       {
+        "name": "Texas Organizing Project Political Action Committee",
+        "id": "C00756940",
+        "usd": 850000
+       },
+       {
+        "name": "Justice & Public Safety PAC",
+        "id": "C00651505",
+        "usd": 463725
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Soros%2C+George&two_year_transaction_period=2024"
+     },
+     {
+      "name": "Alexander Soros",
+      "usd": 34800,
+      "rows": 11,
+      "top": [
+       {
+        "name": "Newsom for California Governor 2022",
+        "id": "C00836353",
+        "usd": 10000
+       },
+       {
+        "name": "Gallego for Arizona",
+        "id": "C00558627",
+        "usd": 6600
+       },
+       {
+        "name": "Colin Allred for Senate",
+        "id": "C00839597",
+        "usd": 6600
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Soros%2C+Alexander&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "agnesgund": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 4
+   },
+   "personal": {
+    "usd": 1590304,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Agnes Gund",
+      "usd": 1590304,
+      "rows": 170,
+      "top": [
+       {
+        "name": "Harris Victory Fund",
+        "id": "C00744946",
+        "usd": 897044
+       },
+       {
+        "name": "Fair Fight",
+        "id": "C00693515",
+        "usd": 102670
+       },
+       {
+        "name": "AB PAC",
+        "id": "C00492140",
+        "usd": 50000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Gund%2C+Agnes&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "arisonarts": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 8
+   },
+   "personal": {
+    "usd": 145200,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Micky Arison",
+      "usd": 145200,
+      "rows": 40,
+      "top": [
+       {
+        "name": "Victory 2024",
+        "id": "C00766972",
+        "usd": 20000
+       },
+       {
+        "name": "DSCC",
+        "id": "C00042366",
+        "usd": 20000
+       },
+       {
+        "name": "Cantwell Victory 2024",
+        "id": "C00723189",
+        "usd": 10000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Arison%2C+Micky&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "kkr": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 4
+   },
+   "personal": {
+    "usd": 598700,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Henry Kravis",
+      "usd": 598700,
+      "rows": 18,
+      "top": [
+       {
+        "name": "Unite America Reform Fund",
+        "id": "C00667196",
+        "usd": 250000
+       },
+       {
+        "name": "Keystone Renewal PAC",
+        "id": "C00849489",
+        "usd": 250000
+       },
+       {
+        "name": "Maryland's Future",
+        "id": "C00870030",
+        "usd": 50000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Kravis%2C+Henry&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "right:cohen": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "personal": {
+    "usd": 173200,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Steven Cohen",
+      "usd": 173200,
+      "rows": 5,
+      "top": [
+       {
+        "name": "Jeffries Victory Fund",
+        "id": "C00768200",
+        "usd": 150000
+       },
+       {
+        "name": "Meeks Victory Fund 2024",
+        "id": "C00833319",
+        "usd": 11600
+       },
+       {
+        "name": "Office of the Commissioner of Major League Baseball Political Action Committee",
+        "id": "C00368142",
+        "usd": 5000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Cohen%2C+Steven&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
+ },
+ "kanderses": {
+  "made_from": "",
+  "facts": [],
+  "figures": {
+   "culture": {
+    "spaces": 2
+   },
+   "personal": {
+    "usd": 25000,
+    "cycle": "2023-24",
+    "people": [
+     {
+      "name": "Warren Kanders",
+      "usd": 25000,
+      "rows": 1,
+      "top": [
+       {
+        "name": "Servant Leadership Fund",
+        "id": "C00695163",
+        "usd": 25000
+       }
+      ],
+      "source": "https://www.fec.gov/data/receipts/individual-contributions/?contributor_name=Kanders%2C+Warren&two_year_transaction_period=2024"
+     }
+    ]
+   }
+  }
  }
 }

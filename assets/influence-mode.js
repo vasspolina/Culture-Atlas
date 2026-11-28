@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=32', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=33', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -970,21 +970,37 @@
   // for 2023 and 2024. Drawn only where data/influence_senders.json holds a figure; a company's executives are not
   // counted as the company.
   function politicsRow(f) {
-    const p = fig(f).political, q = fig(f).personal;
-    if (!p && !q) return '';
+    const p = fig(f).political, q = fig(f).personal, uk = fig(f).uk_political;
+    if (!p && !q && !uk) return '';
     const line = (text, src) => `<li class="influence-entry"><p class="no-indent">${esc(text)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
     const years = c => String(c || '2023-24') === '2023-24' ? '2023 and 2024' : String(c);
     let lis = '';
     if (p && p.usd) {
       const split = p.rep_usd != null ? ` ${fmtMoney(p.rep_usd, 'USD')} went to Republicans and ${fmtMoney(p.dem_usd || 0, 'USD')} to Democrats.` : '';
-      lis += line(`Its company political fund gave US candidates ${fmtMoney(p.usd, 'USD')} in ${years(p.cycle)}.${split}`, p.source);
+      // `fund_of` names the company where the funder is not simply that company (Microsoft's fund on "Bill Gates and
+      // Microsoft", Ford Motor's on "Ford Foundation and Ford Motor", a US arm such as Beam Suntory).
+      lis += line(`${p.fund_of ? `The political fund of ${p.fund_of}` : 'Its company political fund'} gave US candidates ${fmtMoney(p.usd, 'USD')} in ${years(p.cycle)}.${split}`, p.source);
     }
     ((q && q.people) || []).forEach(x => {
       if (!x.usd) return;
-      const top = (x.top || []).slice(0, 3).map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`);
+      // Recipients are named only where the largest gift is a large one; three $7k gifts say nothing about $301k.
+      const top = (x.top || []).length && x.top[0].usd >= 25000 ? x.top.filter(t => t.usd >= 25000).slice(0, 3).map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`) : [];
       lis += line(`${x.name} gave ${fmtMoney(x.usd, 'USD')} in personal political contributions in ${years(q.cycle)}.${top.length ? ` The largest went to ${top.length > 1 ? top.slice(0, -1).join(', ') + ' and ' + top[top.length - 1] : top[0]}.` : ''}`, x.source);
     });
-    return lis ? row('Political giving', '', `<ul class="d-row-list influence-list">${lis}</ul>`) : '';
+    // UK donations to political parties, from the Electoral Commission's register (28 Nov 2026), donor by donor: a bequest
+    // and a gift in kind are said as such.
+    ((uk && uk.donors) || []).forEach(x => {
+      if (!x.gbp) return;
+      const n = x.n > 1 ? `${x.n} donations` : 'one donation';
+      const text = x.bequest ? `${x.name}'s estate left ${fmtMoney(x.gbp, 'GBP')} to ${x.party}, a bequest the party accepted in 2023.`
+        : x.in_kind ? `${x.name} gave ${x.party} ${fmtMoney(x.gbp, 'GBP')} in kind in ${years(uk.period)}: ${x.in_kind} (${n}).`
+        : `${x.name} gave ${fmtMoney(x.gbp, 'GBP')} to ${x.party} in ${years(uk.period)} (${n}).`;
+      lis += line(text, x.source);
+    });
+    // A US personal figure counts only gifts where the donor reported the company or foundation as employer, so it can be
+    // a floor; the row says so instead of letting a small sum read as the whole.
+    const floor = q && (q.people || []).length ? '<p class="no-indent influence-meta">US personal figures count only gifts where the donor reported their company or foundation as employer, so a total can be lower than what the person gave.</p>' : '';
+    return lis ? row('Political giving', '', `<ul class="d-row-list influence-list">${lis}</ul>${floor}`) : '';
   }
 
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.
