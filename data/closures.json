@@ -1,26 +1,208 @@
 {
-  "about": "Closing years of the spaces on the atlas. Every entry is taken from the record's own text (institutions.json), never from a guess: the record says the space closed for good, or has been closed since a date with no reopening on record, and names the year. A closure for renovation, a strike, a season or a closed branch is not entered. year_closed is null when the record says the space closed and gives no year. tools/attach_closures.py writes year_closed and closed_note into institutions.json.",
-  "reviewed": "2026-11-28",
-  "closures": [
-    {"id": "angkor-panorama-museum", "year_closed": 2019, "closed_note": "Shut since 4 December 2019.", "field": "watch"},
-    {"id": "museo-de-la-revolucion-democratica-y-cultural", "year_closed": 2020, "closed_note": "Closed since 2020.", "field": "watch"},
-    {"id": "y-gallery-minsk", "year_closed": 2020, "closed_note": "Dissolved on 29 October 2020.", "field": "records_note"},
-    {"id": "kx-space-kryly-khalopa-theatre-prastora-kx-closed-2021-brest", "year_closed": 2021, "closed_note": "Liquidated on 18 June 2021 at the Brest prosecutor's request.", "field": "details.wider_context"},
-    {"id": "ok16-cultural-hub-minsk", "year_closed": 2021, "closed_note": "Closed since January 2021.", "field": "details.overview"},
-    {"id": "taipei-contemporary-art-center-taipei", "year_closed": 2021, "closed_note": "Closed its space and dissolved its association in February 2021.", "field": "details.overview"},
-    {"id": "ntu-centre-for-contemporary-art-singapore-singapore", "year_closed": 2021, "closed_note": "Its exhibition and residency spaces closed in March 2021.", "field": "details.overview"},
-    {"id": "art-siadziba-minsk", "year_closed": 2022, "closed_note": "Ended its activity in January 2022, after it was put on the liquidation list in July 2021.", "field": "watch"},
-    {"id": "typography-center-krasnodar", "year_closed": 2022, "closed_note": "Closed since 12 May 2022. Its legal entity was liquidated in 2025.", "field": "details.overview"},
-    {"id": "kuindzhi-art-museum", "year_closed": 2022, "closed_note": "Reported destroyed by an airstrike in March 2022 and listed as dissolved that year.", "field": "details.overview"},
-    {"id": "guangdong-times-museum-guangzhou", "year_closed": 2022, "closed_note": "Closed on 9 October 2022.", "field": "details.overview"},
-    {"id": "fundaci-n-casa-de-los-tres-mundos-granada", "year_closed": 2024, "closed_note": "Closed by the Nicaraguan state in August 2024.", "field": "funding"},
-    {"id": "rubin-museum-of-art", "year_closed": 2024, "closed_note": "Closed its Chelsea building on 6 October 2024 and carries on without one.", "field": "watch"},
-    {"id": "kropka-belarusian-community-space-listed-in-place-of-krokva-tbilisi", "year_closed": 2025, "closed_note": "Shut down in January 2025.", "field": "records_note"},
-    {"id": "cca-glasgow", "year_closed": 2026, "closed_note": "Closed on 30 January 2026 and entered liquidation.", "field": "details.overview"},
-    {"id": "national-centre-for-contemporary-arts-minsk", "year_closed": 2026, "closed_note": "Closed on 29 October 2026 under a Council of Ministers resolution of 3 August 2026.", "field": "records_note"},
-    {"id": "biennale-jogja", "year_closed": 2026, "closed_note": "Announced its closure on 9 October 2026, after 16 years.", "field": "watch"},
-    {"id": "museum-fur-deutsche-geschichte", "year_closed": 1990, "closed_note": "Dissolved with effect from 15 September 1990.", "field": "details.overview"},
-    {"id": "central-lenin-museum", "year_closed": 1993, "closed_note": "Disbanded in 1993 by order of the Russian president.", "field": "details.overview"},
-    {"id": "state-of-concept-athens", "year_closed": null, "closed_note": "Its space in Athens is permanently closed.", "field": "highlight"}
-  ]
+ "about": "Closing years of the spaces on the atlas. An entry comes from the record's own text (it names the `field`) or from a page outside it (it gives `source`, the page's address, and `basis`: press or own site); never from a guess. In both cases the text says the space closed for good, or has been closed since a date with no reopening on record, and names the year. A closure for renovation, a strike, a season or a closed branch is not entered. year_closed is null when the text says the space closed and gives no year. `last_seen` is kept apart: the year of the latest dated activity a search found where no page says the space closed. It is not a closing year and the map never draws it as one. `entity_ended` is for the year a register says the legal body ended, entered only when the space's own papers name that company or charity number; a register search by name is not enough (28 Nov 2026: Companies House lists dissolved companies named Primary Ltd, Spike Island Limited and The Hepworth Wakefield Trust while all three spaces are running). tools/attach_closures.py writes all of it into institutions.json.",
+ "reviewed": "2026-11-28",
+ "closures": [
+  {
+   "id": "makan-art-space-amman",
+   "year_closed": 2016,
+   "closed_note": "Closed its doors on 1 January 2016 after 13 years (ArtAsiaPacific).",
+   "basis": "press",
+   "source": "https://www.artasiapacific.com/jordan/"
+  },
+  {
+   "id": "angkor-panorama-museum",
+   "year_closed": 2019,
+   "closed_note": "Shut since 4 December 2019.",
+   "field": "watch"
+  },
+  {
+   "id": "townhouse-gallery-cairo",
+   "year_closed": 2019,
+   "closed_note": "Closed in 2019 after 21 years. Access Art Space opened in the same building in 2020, run by members of its team (The Sandy Times, 30 August 2026).",
+   "basis": "press",
+   "source": "https://sandytimes.ae/articles/5358/a-different-way-to-see-cairo-through-its-galleries"
+  },
+  {
+   "id": "museo-de-la-revolucion-democratica-y-cultural",
+   "year_closed": 2020,
+   "closed_note": "Closed since 2020.",
+   "field": "watch"
+  },
+  {
+   "id": "y-gallery-minsk",
+   "year_closed": 2020,
+   "closed_note": "Dissolved on 29 October 2020.",
+   "field": "records_note"
+  },
+  {
+   "id": "kx-space-kryly-khalopa-theatre-prastora-kx-closed-2021-brest",
+   "year_closed": 2021,
+   "closed_note": "Liquidated on 18 June 2021 at the Brest prosecutor's request.",
+   "field": "details.wider_context"
+  },
+  {
+   "id": "ok16-cultural-hub-minsk",
+   "year_closed": 2021,
+   "closed_note": "Closed since January 2021.",
+   "field": "details.overview"
+  },
+  {
+   "id": "taipei-contemporary-art-center-taipei",
+   "year_closed": 2021,
+   "closed_note": "Closed its space and dissolved its association in February 2021.",
+   "field": "details.overview"
+  },
+  {
+   "id": "ntu-centre-for-contemporary-art-singapore-singapore",
+   "year_closed": 2021,
+   "closed_note": "Its exhibition and residency spaces closed in March 2021.",
+   "field": "details.overview"
+  },
+  {
+   "id": "art-siadziba-minsk",
+   "year_closed": 2022,
+   "closed_note": "Ended its activity in January 2022, after it was put on the liquidation list in July 2021.",
+   "field": "watch"
+  },
+  {
+   "id": "typography-center-krasnodar",
+   "year_closed": 2022,
+   "closed_note": "Closed since 12 May 2022. Its legal entity was liquidated in 2025.",
+   "field": "details.overview"
+  },
+  {
+   "id": "kuindzhi-art-museum",
+   "year_closed": 2022,
+   "closed_note": "Reported destroyed by an airstrike in March 2022 and listed as dissolved that year.",
+   "field": "details.overview"
+  },
+  {
+   "id": "guangdong-times-museum-guangzhou",
+   "year_closed": 2022,
+   "closed_note": "Closed on 9 October 2022.",
+   "field": "details.overview"
+  },
+  {
+   "id": "dk-rozy-st-petersburg",
+   "year_closed": 2022,
+   "closed_note": "Forced to cease its work in 2022, in its organisers' words (Chto Delat, June 2023).",
+   "basis": "own site",
+   "source": "https://chtodelat.org/c215-embodied-projects/one-year-after-the-closure-of-the-dk-rosa-june-2023-3/"
+  },
+  {
+   "id": "fundaci-n-casa-de-los-tres-mundos-granada",
+   "year_closed": 2024,
+   "closed_note": "Closed by the Nicaraguan state in August 2024.",
+   "field": "funding"
+  },
+  {
+   "id": "rubin-museum-of-art",
+   "year_closed": 2024,
+   "closed_note": "Closed its Chelsea building on 6 October 2024 and carries on without one.",
+   "field": "watch"
+  },
+  {
+   "id": "sa-sa-art-projects-phnom-penh",
+   "year_closed": 2024,
+   "closed_note": "Closed in 2024 (ArtReview, 23 July 2026).",
+   "basis": "press",
+   "source": "https://artreview.com/art-at-the-cambodian-kep-beach-resort-max-crosbie-jones/"
+  },
+  {
+   "id": "het-hem-zaandam",
+   "year_closed": 2024,
+   "closed_note": "Its owner Amerborgh ended its activity in Zaandam in summer 2024 and said it was looking for a place in Amsterdam (Het HEM, 17 June 2024).",
+   "basis": "own site",
+   "source": "https://hethem.nl/en/Blog/2024-06-17/Het-HEM-Is-Closing-Its-Doors-On-The-Hembrugterrein-In-Zaandam"
+  },
+  {
+   "id": "state-of-concept-athens",
+   "year_closed": 2024,
+   "closed_note": "Its space in Athens is permanently closed. Its site showed a show open until 14 September 2024 and carried the closing notice by 2 December 2024 (Internet Archive).",
+   "basis": "own site",
+   "source": "https://web.archive.org/web/20241202152233/https://stateofconcept.org/"
+  },
+  {
+   "id": "kropka-belarusian-community-space-listed-in-place-of-krokva-tbilisi",
+   "year_closed": 2025,
+   "closed_note": "Shut down in January 2025.",
+   "field": "records_note"
+  },
+  {
+   "id": "kunstforum-wien-bank-austria",
+   "year_closed": 2025,
+   "closed_note": "Closed its house on the Freyung on 31 August 2025 (ORF Wien, 11 June 2025).",
+   "basis": "press",
+   "source": "https://wien.orf.at/stories/3309091/"
+  },
+  {
+   "id": "cca-glasgow",
+   "year_closed": 2026,
+   "closed_note": "Closed on 30 January 2026 and entered liquidation.",
+   "field": "details.overview"
+  },
+  {
+   "id": "national-centre-for-contemporary-arts-minsk",
+   "year_closed": 2026,
+   "closed_note": "Closed on 29 October 2026 under a Council of Ministers resolution of 3 August 2026.",
+   "field": "records_note"
+  },
+  {
+   "id": "biennale-jogja",
+   "year_closed": 2026,
+   "closed_note": "Announced its closure on 9 October 2026, after 16 years.",
+   "field": "watch"
+  },
+  {
+   "id": "museum-fur-deutsche-geschichte",
+   "year_closed": 1990,
+   "closed_note": "Dissolved with effect from 15 September 1990.",
+   "field": "details.overview"
+  },
+  {
+   "id": "central-lenin-museum",
+   "year_closed": 1993,
+   "closed_note": "Disbanded in 1993 by order of the Russian president.",
+   "field": "details.overview"
+  }
+ ],
+ "last_seen": [
+  {
+   "id": "san-art-ho-chi-minh-city",
+   "year": 2019,
+   "note": "A fundraising show at the space on 14 December 2019 (Saigoneer).",
+   "source": "https://www.saigoneer.com/saigon-events/18038-opaque-signs-sàn-art"
+  },
+  {
+   "id": "kin-artstudio-kinshasa",
+   "year": 2021,
+   "note": "An interview of 1 March 2021 on its tenth year and the second Congo Biennale (MoMAA).",
+   "source": "https://momaa.org/from-kinstudio-to-congo-biennale-vitshois-mwilambwe-bondo/"
+  },
+  {
+   "id": "mansudae-art-museum-mansudae-art-studio-gallery-798-beijing",
+   "year": 2021,
+   "note": "Reported open and selling works in June 2021 (New Daily, from a Channel A broadcast).",
+   "source": "https://www.newdaily.co.kr/site/data/html/2021/06/22/2021062200130.html"
+  },
+  {
+   "id": "nha-san-collective-hanoi",
+   "year": 2022,
+   "note": "Events at documenta fifteen from 19 June to 25 September 2022, in Kassel and in Hanoi.",
+   "source": "https://documenta-fifteen.de/en/lumbung-members-artists/nha-san-collective"
+  },
+  {
+   "id": "theertha-artists-collective-colombo",
+   "year": 2025,
+   "note": "Three days of workshops and performances on 6 to 8 January 2025 (The Sunday Times, Sri Lanka).",
+   "source": "https://www.sundaytimes.lk/250105/plus/theertha-performance-platform-joins-hands-with-genesis-project-2-583534.html"
+  },
+  {
+   "id": "image-factory-art-foundation-imagination-factory-belize-city",
+   "year": 2025,
+   "note": "A book launch at the space on 11 June 2025 (Amandala).",
+   "source": "https://amandala.com.bz/news/?p=360362"
+  }
+ ],
+ "entity_ended": []
 }
