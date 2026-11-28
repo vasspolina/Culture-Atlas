@@ -402,7 +402,7 @@
       h('div', { class: 'head-grid' }, h('div', { class: 'head-side record-actions record-action-row' }, ask), h('div', { class: 'head-main' }, h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Info' }, info))));
     const rows = h('div', { class: 'prose-part d-rows', role: 'region', 'aria-label': 'Museums' });
     if (n) rows.append(row('hqConnSpaces', 'Museums', '', listOf(c.spaces, inst => {
-      const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: inst.shortName || inst.name }), h('span', { class: 'hq-s', text: [inst.neighborhood, inst.category].filter(Boolean).join(' / ') }));
+      const b = h('button', { type: 'button', class: 'hq-link' }, h('span', { class: 'hq-l', text: inst.shortName || inst.name }), h('span', { class: 'hq-s', text: [inst.neighborhood, inst.category, window.atlasYearWords ? window.atlasYearWords(inst) : ''].filter(Boolean).join(' / ') }));
       b.addEventListener('click', () => { if (typeof window.selectInstitution === 'function') window.selectInstitution(inst, false); });
       return h('li', null, b);
     }, LIST_SHOWN)));

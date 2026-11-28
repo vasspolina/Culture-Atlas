@@ -46,6 +46,7 @@
     var head = '- INSTITUTION: ' + i.name + (i.aliases && i.aliases.length ? ' (also: ' + i.aliases.slice(0, 4).join(', ') + ')' : '') +
       '\n  Place: ' + [i.city, i.country].filter(Boolean).join(', ') + (i.address ? ' — ' + i.address : '') + (i.neighborhood ? ' — ' + cut(i.neighborhood, 160) : '') +
       (i.year_founded ? '\n  Founded: ' + i.year_founded : '') +
+      (i.closed_note ? '\n  Closed: ' + (i.year_closed ? i.year_closed + '. ' : '') + i.closed_note : '') +
       (i.size ? '\n  Size: ' + ({ S: 'small', M: 'medium', L: 'large', XL: 'very large' }[i.size] || i.size) : '') +
       (i.website ? '\n  Website: ' + i.website : '');
     parts.push(head);
