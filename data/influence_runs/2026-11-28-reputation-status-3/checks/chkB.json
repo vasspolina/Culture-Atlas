@@ -1,0 +1,297 @@
+[
+ {
+  "file": "rs3",
+  "funder": "ing",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "rijksmuseum-amsterdam",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Bénédicte Ficq, lawyer for Fossielvrij NL, said in May 2024 of ING at the Rijksmuseum that the sponsor buys its advertising and legitimises itself through the good name of the institution it sponsors.",
+   "date": "2024-05",
+   "source": "https://www.banken.nl/nieuws/25286/fossielvrij-nl-roept-rijksmuseum-op-om-sponsorrelatie-met-ing-te-verbreken",
+   "evidence": "legitimeert de sponsor zichzelf via de goede naam van de gesponsorde",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "36 words",
+   "did not say the remark was about ING"
+  ],
+  "reason": "Banken.nl (17 May 2024) carries both quotations inside Ficq's statement about ING's gifts to the Rijksmuseum, where she calls ING 'de sponsor'; text tied to ING and cut to 35 words."
+ },
+ {
+  "file": "rs3",
+  "funder": "ing",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "rijksmuseum-amsterdam",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Extinction Rebellion accused ING of \"artwashing\" in its campaign for the Rijksmuseum to break with the sponsor. On 1 March 2025 its supporters reserved thousands of museum tickets and stayed away.",
+   "date": "2025-03",
+   "source": "https://www.dutchnews.nl/2025/03/extinction-rebellion-reserve-rijksmuseum-tickets-but-dont-show",
+   "evidence": "break its ties with sponsor ING, accusing the financial services group of “artwashing”",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [],
+  "reason": "DutchNews (1 March 2025) has the artwashing accusation and the ticket action; on_record d3a5488c38 is a different action, the smoke flares of 1 April 2025."
+ },
+ {
+  "file": "rs3",
+  "funder": "mapfre",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "museo-reina-sof-a",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "A culture ministry order of 29 July 2024 renewed Antonio Huertas Mejías on the museum's Real Patronato for three years as representative of Mapfre SA. The order opens such seats to contributors to the museum.",
+   "date": "2024-07",
+   "source": "https://boe.es/boe/dias/2024/08/06/pdfs/BOE-A-2024-16238.pdf",
+   "evidence": "Don Antonio Huertas Mejías, en representación de la entidad MAPFRE, SA",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The BOE order of 29 July 2024 renews Huertas 'en representación de la entidad MAPFRE, SA' for three years and cites the statute opening seats to contributors; the summary gives him no role beyond that."
+ },
+ {
+  "file": "rs4",
+  "funder": "sobey",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "national-gallery-of-canada",
+   "kinds": [
+    "status"
+   ],
+   "summary": "Donald Sobey was made a Member of the Order of Canada in 2013. The Governor General's record cites his philanthropy and names his support of the National Gallery of Canada.",
+   "date": "2013-11",
+   "source": "https://www.gg.ca/en/honours/recipients/146-5971",
+   "evidence": "supporting such institutions as the National Gallery of Canada",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "The Governor General's record (awarded 2013-11-21) cites his philanthropy and names the National Gallery of Canada."
+ },
+ {
+  "file": "rs4",
+  "funder": "sobey",
+  "i": 1,
+  "verdict": "keep",
+  "after": {
+   "space": "national-gallery-of-canada",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Donald Sobey chaired the gallery's board of trustees from 2002 to 2008 and sat on the board of the gallery's foundation from 2007 to 2020.",
+   "date": "2002",
+   "source": "https://www.newswire.ca/news-releases/the-national-gallery-of-canada-mourns-the-loss-of-donald-r-sobey-one-of-canada-s-greatest-cultural-philanthropists-802672864.html",
+   "evidence": "Chairman of the Board of Trustees from 2002 to 2008",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "Newswire refused curl (403) but opened through WebFetch: the gallery's release of 24 March 2021 gives chairman of the trustees 2002 to 2008 and the foundation board 2007 to 2020."
+ },
+ {
+  "file": "rs4",
+  "funder": "sobey",
+  "i": 2,
+  "verdict": "fix",
+  "after": {
+   "space": "art-gallery-of-nova-scotia",
+   "kinds": [
+    "status",
+    "seat"
+   ],
+   "summary": "Rob Sobey, chairman of the Sobey Art Foundation, was appointed to the Order of Nova Scotia in 2024. The citation names his role as past chairman of the Art Gallery of Nova Scotia.",
+   "date": "2024",
+   "source": "https://novascotia.ca/iga/2024recipients.asp",
+   "evidence": "For his roles as past Chairman of the Art Gallery of Nova Scotia",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "date: page gives only 2024"
+  ],
+  "reason": "The Order of Nova Scotia 2024 recipients page carries the citation and both roles, but gives no month."
+ },
+ {
+  "file": "rs4",
+  "funder": "kanderses",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "whitney-museum-of-american-art",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "The letter “Kanders Must Go” of April 2019, signed by over 120 scholars and critics, said institutions like the Whitney “provide cover for the likes of Kanders” and called for a conversation about “artwashing”.",
+   "date": "2019-04",
+   "source": "https://www.dazeddigital.com/art-photography/article/43950/1/art-activists-letter-dismissal-whitney-museum-arms-manufacturer-warren-b-kanders",
+   "evidence": "provide cover for the likes of Kanders as they profit from war",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "ended rests on another page",
+   "summary restated the call to remove him, already on record"
+  ],
+  "reason": "Dazed (8 April 2019) quotes the letter on artwashing and on cover for Kanders; that is new beside seat line ddc63e4596, which must stay for the seat and resignation, so no replaces, and ended is unset because the resignation is not on this page."
+ },
+ {
+  "file": "rs5",
+  "funder": "omv",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "leopold-museum",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "A Letzte Generation activist who glued himself to the Klimt in November 2022 said fossil firms such as OMV use arts sponsorship to give themselves a good image.",
+   "date": "2022-11",
+   "source": "https://wien.orf.at/stories/3182250/",
+   "evidence": "wie die OMV immer noch versuchen würden, sich durch Kunst- und Kultursponsoring ein gutes Image",
+   "replaces": "",
+   "ended": false,
+   "protest": true
+  },
+  "problems": [
+   "blood line is the activist's moralising and adds nothing on the funder",
+   "restated the protest already on record"
+  ],
+  "reason": "ORF Wien reports the 24-year-old Letzte Generation activist's words on OMV and image at the Leopold Museum, where OMV sponsored that day's free entry; cut to the image claim, the protest itself is on record in 3e0cacf9c2."
+ },
+ {
+  "file": "rs5",
+  "funder": "omv",
+  "i": 1,
+  "verdict": "fix",
+  "after": {
+   "space": "wiener-staatsoper",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In Vienna for the Opera Ball in February 2023, Jane Fonda said fossil fuel firms give money to museums and operas to make themselves \"socially acceptable\" and was sorry to learn OMV sponsors the opera.",
+   "date": "2023-02",
+   "source": "https://jordantimes.com/news/features/jane-fonda-urges-vienna-opera-cut-ties-fossil-fuel-firms",
+   "evidence": "to make themselves socially acceptable is give money to museums and operas",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "protest: a statement to the press, not a protest or campaign"
+  ],
+  "reason": "The AFP report in the Jordan Times (18 February 2023) has both quotations and her regret that OMV sponsors the opera; a remark to journalists is not a protest, so protest is false."
+ },
+ {
+  "file": "rs6",
+  "funder": "inpex",
+  "i": 0,
+  "verdict": "drop",
+  "after": {
+   "space": "munch-oslo",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "Mariann Enge wrote in Kunstkritikk in December 2022 that the Munch Museum, sponsored by Idemitsu, vouches for the fossil fuel business, and that sponsors expect “credibility and legitimacy” in return.",
+   "date": "2022-12",
+   "source": "https://kunstkritikk.com/museums-must-become-active-allies-in-the-climate-struggle/",
+   "evidence": "When the Munch Museum is sponsored by Aker BP and Idemitsu, this by definition means",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "role 'editor' not on the page",
+   "general sentence led the summary"
+  ],
+  "reason": "Editor, 28 Nov 2026: too weak to publish. Kunstkritikk (20 December 2022) says the Munch Museum, sponsored by Aker BP and Idemitsu, vouches for the fossil fuel business, in an editorial whose argument is that sponsors expect legitimacy; Idemitsu Petroleum Norge is the predecessor of INPEX Idemitsu Norge (https://inpex.com/english/sustainability/2023/20230207.html). Enge's title is not on the page, and the general sentence now follows the Munch one."
+ },
+ {
+  "file": "rs6",
+  "funder": "swire",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "dulwich-picture-gallery-london",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "James Hughes-Hallett, who joined the Swire Group in 1976 and chaired several of its branches from 1999 to 2015, was a trustee of the gallery from 2005 to 2013.",
+   "date": "2005",
+   "source": "https://courtauld.ac.uk/jameshughes-hallettcmg1949-2019",
+   "evidence": "a Trustee of Dulwich Picture Gallery (2005-2013)",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "unsupported: 'chairman of John Swire & Sons from 2005 to 2015'",
+   "ended: the seat ended, the funding tie did not"
+  ],
+  "reason": "The Courtauld obituary gives the Dulwich trusteeship 2005 to 2013 and says he joined the Swire Group in 1976 and chaired several of its branches from 1999 to 2015; 'chairman of John Swire & Sons from 2005' is not on the page, and no source says Swire's giving to the gallery ended."
+ },
+ {
+  "file": "rs7",
+  "funder": "qantas",
+  "i": 0,
+  "verdict": "fix",
+  "after": {
+   "space": "museum-of-contemporary-art-australia-mca",
+   "kinds": [
+    "seat"
+   ],
+   "summary": "Alan Joyce, then chief executive of the Qantas Group, joined the museum's board of directors in September 2019.",
+   "date": "2019-09",
+   "source": "https://camd.org.au/alan-joyce-christine-evans-join-mca-board/",
+   "evidence": "appointment of two new board members, Alan Joyce AC, CEO of Qantas Group",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [
+   "present-tense role sourced to a 2019 page"
+  ],
+  "reason": "The MCA release of 5 September 2019 names Joyce as CEO of Qantas Group joining the board; a seat needs no tie to the sponsorship, and the role is put in the past because the page states it only as of 2019."
+ },
+ {
+  "file": "rs7",
+  "funder": "itsincludesoilrefinertpra",
+  "i": 0,
+  "verdict": "keep",
+  "after": {
+   "space": "istanbul-biennial-iksv",
+   "kinds": [
+    "licence"
+   ],
+   "summary": "In November 2025 Osman Gece wrote in soL's Ortaklaşa, in a piece on the 18th Biennial and its sponsor, that Koç Holding deliberately uses the language of art as a legitimacy shield for its class.",
+   "date": "2025-11",
+   "source": "https://haber.sol.org.tr/ortaklasa/ayakta-kalan-sanat-mi-sermaye-mi-403024",
+   "evidence": "Koç Holding’in sanatın dilini kendi sınıfının meşruiyet kalkanı olarak kullanması bilinçli bir strateji.",
+   "replaces": "",
+   "ended": false,
+   "protest": false
+  },
+  "problems": [],
+  "reason": "soL refused curl (403) but opened through WebFetch: Osman Gece's piece of 6 November 2025 on the 18th Biennial names Koç Holding as its sponsor to 2036 and carries the sentence quoted in evidence; the outlet is named in the summary."
+ }
+]
