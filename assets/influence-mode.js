@@ -964,6 +964,29 @@
     return lis ? row('US and EU lobbying', '', `<ul class="d-row-list influence-list">${lis}</ul>`) : '';
   }
 
+  // Political giving, back on the record beside the lobbying (user, 28 Nov 2026: "add political giving if that exists").
+  // Two kinds of filing, told apart: what the company's political fund (its PAC) gave US candidates, and what the people
+  // behind a family or individual funder gave in personal contributions, both from Federal Election Commission reports
+  // for 2023 and 2024. Drawn only where data/influence_senders.json holds a figure; a company's executives are not
+  // counted as the company.
+  function politicsRow(f) {
+    const p = fig(f).political, q = fig(f).personal;
+    if (!p && !q) return '';
+    const line = (text, src) => `<li class="influence-entry"><p class="no-indent">${esc(text)}</p>${src ? `<p class="no-indent influence-meta"><a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a></p>` : ''}</li>`;
+    const years = c => String(c || '2023-24') === '2023-24' ? '2023 and 2024' : String(c);
+    let lis = '';
+    if (p && p.usd) {
+      const split = p.rep_usd != null ? ` ${fmtMoney(p.rep_usd, 'USD')} went to Republicans and ${fmtMoney(p.dem_usd || 0, 'USD')} to Democrats.` : '';
+      lis += line(`Its company political fund gave US candidates ${fmtMoney(p.usd, 'USD')} in ${years(p.cycle)}.${split}`, p.source);
+    }
+    ((q && q.people) || []).forEach(x => {
+      if (!x.usd) return;
+      const top = (x.top || []).slice(0, 3).map(t => `${t.name} (${fmtMoney(t.usd, 'USD')})`);
+      lis += line(`${x.name} gave ${fmtMoney(x.usd, 'USD')} in personal political contributions in ${years(q.cycle)}.${top.length ? ` The largest went to ${top.length > 1 ? top.slice(0, -1).join(', ') + ' and ' + top[top.length - 1] : top[0]}.` : ''}`, x.source);
+    });
+    return lis ? row('Political giving', '', `<ul class="d-row-list influence-list">${lis}</ul>`) : '';
+  }
+
   // What the records say its lobbying or political money did at a space, measure by measure, each with its source.
   function linkRows(f) {
     const items = f.ties.flatMap(t => (t.links || []).map(l => ({ t, l })));
@@ -1069,6 +1092,7 @@
     html += compareRow(f);
     html += artRow(f);
     html += lobbyRow(f);
+    html += politicsRow(f);
     html += linkRows(f);
     html += senderRows(f);
     html += c.money;
