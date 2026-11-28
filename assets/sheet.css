@@ -1865,7 +1865,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
    map: the title was drawn over Gossip mode at every width under 1440px, and at 768px over the panel's pages too. The
    head bar has no room for both (at 1280px the pages end at 641px and the buttons begin at 1001px, and the line with a
    country in it is 420px), so the line leaves the bar and takes a place of its own on the map, centred under the name
-   with the name's paper halo. The title stays on one line and whole: in a map too narrow for the way back (World, the
+   (it had the name's paper halo until 28 Nov; see NOTHING BEHIND THE NAME). The title stays on one line and whole: in a map too narrow for the way back (World, the
    country) and the title side by side, the title goes to a row of its own under them, and it is cut only when it alone
    is wider than the map. ---- */
 @layer sheet{
@@ -1874,7 +1874,7 @@ main#main :is(h2,h3):not(#sh-x):not(#sh-y) *{color:var(--sh-brown)!important}
       top:calc(var(--sh-head) + 1px + var(--sh-pad) * .6 + var(--sh-l-lh))!important;left:var(--sh-map-l)!important;right:0!important;width:auto!important;
       height:auto!important;padding:calc(var(--sh-pad) * .3) calc(var(--sh-pad) * .5)!important;justify-content:center!important;flex-wrap:wrap!important;row-gap:0!important;overflow:hidden!important;
       background:transparent!important;z-index:44!important;pointer-events:none!important;
-      text-shadow:0 0 3px var(--sh-paper),0 0 6px var(--sh-paper),0 0 12px var(--sh-paper)!important}
+      text-shadow:none!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #cityViewControlBanner:not(#sh-x) :is(button,div,span){line-height:calc(var(--sh-head) * .8)!important}
     :root.gmd.gmd:not(#sh-mid):not(#sh-top) #cityViewControlBanner:not(#sh-x) button{flex:0 0 auto!important;max-width:100%!important;overflow:hidden!important;
       text-overflow:ellipsis!important;white-space:nowrap!important;pointer-events:auto!important}
@@ -2890,4 +2890,5 @@ body.chat-input-mode-active #noteFormHead>#noteFormCloseBtn{grid-column:3!import
    "make the fade a bit lighter, or remove the fade", then "Remove the fade"). The pane of frosted glass of 25 Nov across
    the map's whole top, and the letter-sized patches that replaced it for a day, are both gone: the map is drawn clear to
    its top edge and the name stands on it with no ground, tint or blur, as on 17 Nov ("no need to add background behind
-   title"). The country's or city's line keeps the paper halo on its letters that it has had since 15 Nov. ---- */
+   title"). The country's or city's line stands the same way: the paper halo it had round its letters since 15 Nov is
+   gone too (user, 28 Nov 2026: "remove the halo on the city line too"). ---- */
