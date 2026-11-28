@@ -551,6 +551,8 @@ KINDS = [
     ('licence',   'Licence to operate', r"\blobb|\bpermits?\b|\blicen[cs]e to operate\b|\bsocial licen|\bgreenwash|\bartwash|\bwhitewash|\breputation|\blegitimacy\b|\bimage\b|\bdrilling\b|\bconcession"),
     ('tax',       'Tax',                r"\btax\b|\btaxes\b|\bRouanet\b|\bdeduct"),
     ('building',  'Building',           r"\bmasterplan\b|\brefurbish|\brenovat|\bconstruction\b|\bcapital (?:campaign|project|gift|donor)|\bendow|\bnew (?:wing|building|campus)\b|\bbuilt\b"),
+    # Set by research only (27 Nov 2026): an honour, title or award a source ties to the giving.
+    ('status',    'Honours and standing', r"(?!x)x"),
     # Set by the review only: a tie the records state, with nothing said about what came with the money.
     ('money',     'Money only',         r"(?!x)x"),
 ]

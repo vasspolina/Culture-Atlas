@@ -11,7 +11,7 @@
 //     switch the map from culture spaces to cultural funders"); a picked funder shows its spaces, joined to its office
 //     (window.atlasModeKeep, read by assets/layers.js; atlasInfluenceDraw and atlasInfluencePointer, called by index.html)
 //   - the chat says in two lines what the mode is
-//   - a space's record leads with "What came with the money"
+//   - a space's record leads with "What influence the sponsorship buys" (once "What came with the money")
 //   - a funder's record (assets/hq-detail.js) leads with its ledger: what it got, kind by kind, space by space
 //
 // The sender is the subject (user, 17 Nov 2026: "If the money doesn't go to culture it doesn't disappear so who is at
@@ -28,7 +28,7 @@
   function load() {
     if (DATA) return Promise.resolve(DATA);
     if (loading) return loading;
-    loading = fetch('assets/influence.json?v=26', { cache: 'no-cache' }).then(r => r.json()).then(d => {
+    loading = fetch('assets/influence.json?v=27', { cache: 'no-cache' }).then(r => r.json()).then(d => {
       DATA = d;
       d.funders.forEach(f => {
         BY_FUNDER.set(f.key, f);
@@ -55,11 +55,14 @@
   // keeps its own labels and these win. "Its name on something" became "Its name on a building, room or prize" (user, 19 Nov 2026).
   const CAME = { name: 'Its name on a building, room or prize', seat: 'A board seat', programme: 'A show or programme it paid for',
     building: 'A building or endowment', access: 'Galas and perks', silence: 'Secrecy', licence: 'An image clean-up',
-    tax: 'A tax break', money: 'Money only' };
+    tax: 'A tax break', money: 'Money only', status: 'Honours and standing' };
   const label = k => { if (CAME[k]) return CAME[k]; const x = DATA && DATA.kinds.find(q => q.key === k); return x ? x.label : k; };
+  // The ledger's title (user, 27 Nov 2026: "rename it nto What influence does museum sponsorship buy or similar"); it was
+  // "What came with the money".
+  const TITLE = 'What influence the sponsorship buys';
   const plural = (n, one, many) => `${n} ${n === 1 ? one : (many || one + 's')}`;
   // The order a ledger lists kinds: what was bought first, money alone last.
-  const ORDER = ['name', 'seat', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
+  const ORDER = ['name', 'seat', 'status', 'programme', 'building', 'access', 'silence', 'licence', 'tax', 'money'];
 
   function tally(ties) {
     const n = {};
@@ -885,8 +888,8 @@
     const all = [...byF.entries()];
     const came = all.filter(([, ties]) => ties.some(t => !(t.kinds.length === 1 && t.kinds[0] === 'money')));
     const money = all.filter(x => !came.includes(x));
-    el.setAttribute('aria-label', came.length ? 'What came with the money' : 'Money only');
-    el.innerHTML = (came.length ? row('What came with the money', '', came.map(fLine).join('')) : '') +
+    el.setAttribute('aria-label', came.length ? TITLE : 'Money only');
+    el.innerHTML = (came.length ? row(TITLE, '', came.map(fLine).join('')) : '') +
       (money.length ? row(label('money'), '', money.map(fLine).join('')) : '') + study;
     return el;
   }
@@ -1033,7 +1036,7 @@
     const came = ORDER.filter(k => k !== 'money').map(block).filter(Boolean);
     const money = block('money');
     return {
-      came: came.length ? row('What came with the money', '', came.map(({ k, ties }) => `<p class="no-indent influence-kind"><span class="lead-in">${esc(label(k))}.</span></p>${foldList(ties.map(x => lineFor(x, true, null)))}`).join('')) : '',
+      came: came.length ? row(TITLE, '', came.map(({ k, ties }) => `<p class="no-indent influence-kind"><span class="lead-in">${esc(label(k))}.</span></p>${foldList(ties.map(x => lineFor(x, true, null)))}`).join('')) : '',
       money: money ? row(label('money'), '', foldList(money.ties.map(x => lineFor(x, true, null)))) : ''
     };
   }
@@ -1043,7 +1046,7 @@
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
     const c = cameRows(f);
-    el.setAttribute('aria-label', c.came ? 'What came with the money' : 'Giving to museums');
+    el.setAttribute('aria-label', c.came ? TITLE : 'Giving to museums');
     let html = c.came;
     html += compareRow(f);
     html += artRow(f);
