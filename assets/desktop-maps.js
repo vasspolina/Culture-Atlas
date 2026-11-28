@@ -99,7 +99,7 @@
       const out = [];
       ix.cities.forEach((x) => {
         const s = x.n === n ? 0 : x.n.startsWith(n) ? 1 : -1;
-        if (s >= 0) out.push({ kind: 'city', s, x: x.c, label: x.c.name, sub: [x.c.country, x.c.count ? x.c.count + (x.c.count === 1 ? ' museum' : ' museums') : ''].filter(Boolean).join(' · ') });
+        if (s >= 0) out.push({ kind: 'city', s, x: x.c, label: x.c.name, sub: [x.c.country, x.c.count ? x.c.count + (x.c.count === 1 ? ' museum' : ' museums') : ''].filter(Boolean).join(' – ') });
       });
       ix.insts.forEach((x) => {
         let s = -1;

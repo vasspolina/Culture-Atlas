@@ -839,7 +839,7 @@
     const where = withSpace ? `<a href="#" class="influence-space-link" data-influence-space="${esc(t.space)}">${esc(t.space_name)}</a>${t.city ? `<span class="influence-meta">, ${esc(t.city)}</span>` : ''}` : '';
     return `<li class="influence-entry">
 <p class="no-indent">${who || where ? `<span class="influence-who">${who || where}</span> ` : ''}${kinds ? `<span class="lead-in">${esc(kinds)}.</span> ` : ''}${esc(t.summary)}</p>
-<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' · ')}</p>
+<p class="no-indent influence-meta">${[t.date ? esc(String(t.date).slice(0, 10)) : '', marks ? `<span class="influence-mark">${esc(marks)}</span>` : '', src ? `<a href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(host(src))}</a>` : ''].filter(Boolean).join(' – ')}</p>
 </li>`;
   };
   // A long list shows its first few lines and folds the rest behind "N more" (user, 20 Nov 2026: "no toggle through
@@ -902,7 +902,7 @@
   ];
   // Lobbying and politics facts are no longer drawn in the record (user, 17 Nov 2026: "only keep relevant info to cultural
   // spaces"); they stay in the data.
-  const factLine = x => `<li class="influence-entry"><p class="no-indent">${esc(x.text)}</p><p class="no-indent influence-meta">${[x.date ? esc(x.date) : '', x.source ? `<a href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">${esc(host(x.source))}</a>` : ''].filter(Boolean).join(' · ')}</p></li>`;
+  const factLine = x => `<li class="influence-entry"><p class="no-indent">${esc(x.text)}</p><p class="no-indent influence-meta">${[x.date ? esc(x.date) : '', x.source ? `<a href="${esc(x.source)}" target="_blank" rel="noopener noreferrer">${esc(host(x.source))}</a>` : ''].filter(Boolean).join(' – ')}</p></li>`;
   function senderRows(f) {
     const s = f.sender; if (!s) return '';
     const facts = s.facts || [];
@@ -992,7 +992,7 @@
       const fromGift = !!keys;
       if (keys) keys = keys.length >= 4 ? ['all'] : keys;
       else keys = !s ? ['none'] : s.f === 'all' ? ['all'] : (s.p || [s.f]);
-      keys.forEach(k => { if (!groups.has(k)) groups.set(k, []); groups.get(k).push({ id, name: x.name, gift: fromGift, field: s && !s.p ? s.f : null }); });
+      keys.forEach(k => { if (!groups.has(k)) groups.set(k, []); groups.get(k).push({ id, name: x.name, gift: fromGift }); });
     }
     groups.forEach(l => l.sort((a, b) => String(a.name).localeCompare(String(b.name))));
     return groups;
@@ -1003,18 +1003,18 @@
     return x ? x.label : k;
   };
   const artSpan = k => { const x = ART && ART.periods.find(q => q.key === k); return x ? x.span : ''; };
-  // One line for the chat: the periods first, then everything that is not visual art in one count.
+  // One line for the chat: the periods first, then each other art by its name (user, 28 Nov 2026: "why it called not visual
+  // art?? name art instead").
   function artLine(f) {
     const g = artGroups(f); if (!g || !g.size) return '';
     const parts = ART_KEYS.filter(k => g.has(k)).map(k => `${artLabel(k).toLowerCase()} ${g.get(k).length}`);
-    const other = new Set(NOT_ART.flatMap(k => (g.get(k) || []).map(x => x.id))).size;
-    if (other) parts.push(`not visual art ${other}`);
+    NOT_ART.filter(k => g.has(k)).forEach(k => parts.push(`${artLabel(k).toLowerCase()} ${g.get(k).length}`));
     if (g.has('none')) parts.push(`not stated ${g.get('none').length}`);
     return parts.length ? `What art it backs: ${parts.join(', ')}.` : '';
   }
   const ART_SHOWN = 8;
-  function artNames(list, withField) {
-    const one = x => `<a href="#" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</a>${withField && x.field ? `<span class="influence-meta"> (${esc(artLabel(x.field).toLowerCase())})</span>` : ''}${x.gift ? '<span class="influence-meta"> (named in the gift)</span>' : ''}`;
+  function artNames(list) {
+    const one = x => `<a href="#" class="influence-space-link" data-influence-space="${esc(x.id)}">${esc(x.name)}</a>${x.gift ? '<span class="influence-meta"> (named in the gift)</span>' : ''}`;
     const shown = list.slice(0, ART_SHOWN).map(one).join(', '), rest = list.slice(ART_SHOWN).map(one).join(', ');
     return shown + (rest ? `<details class="influence-art-more"><summary><span class="fold-closed">${list.length - ART_SHOWN} more</span><span class="fold-open">Fewer</span></summary>${rest}</details>` : '');
   }
@@ -1022,14 +1022,11 @@
     const g = artGroups(f);
     // Not drawn when no museum of the funder's says what it shows: a row of "not stated" alone tells nothing.
     if (!g || !g.size || (g.size === 1 && g.has('none'))) return '';
-    const line = (lead, list, meta, withField) => `<li class="influence-entry"><p class="no-indent"><span class="lead-in">${esc(lead)}.</span> ${plural(list.length, 'museum')}: ${artNames(list, withField)}</p>${meta ? `<p class="no-indent influence-meta">${esc(meta)}</p>` : ''}</li>`;
-    let lis = ART_KEYS.filter(k => g.has(k)).map(k => line(artLabel(k), g.get(k), artSpan(k), false)).join('');
-    const seen = new Set(), other = [];
-    NOT_ART.forEach(k => (g.get(k) || []).forEach(x => { if (!seen.has(x.id)) { seen.add(x.id); other.push(x); } }));
-    other.sort((a, b) => String(a.name).localeCompare(String(b.name)));
-    if (other.length) lis += line('Not visual art', other, '', true);
-    if (g.has('none')) lis += line('Not stated', g.get('none'), 'the atlas does not yet say what these show', false);
-    return row('What art it backs', '', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-meta">From each museum’s own description in the atlas, or the gift’s own line where it names the art.</p>`);
+    const line = (lead, list, meta) => `<li class="influence-entry"><p class="no-indent"><span class="lead-in">${esc(lead)}.</span> ${plural(list.length, 'museum')}: ${artNames(list)}</p>${meta ? `<p class="no-indent influence-meta">${esc(meta)}</p>` : ''}</li>`;
+    // Every art under its own name: books, music, design and the rest each get a line, as the periods do.
+    let lis = [...ART_KEYS, ...NOT_ART].filter(k => g.has(k)).map(k => line(artLabel(k), g.get(k), artSpan(k))).join('');
+    if (g.has('none')) lis += line('Not stated', g.get('none'), 'the atlas does not yet say what these show');
+    return row('What art it backs', '', `<ul class="d-row-list influence-list">${lis}</ul>`);
   }
   // A funder from the funding maps alone has no ledger, but its museums still say what they show.
   function artPart(f) {
@@ -1110,7 +1107,7 @@
     el.className = 'prose-part d-rows influence-part';
     el.setAttribute('role', 'region');
     el.setAttribute('aria-label', 'At MoMA');
-    el.innerHTML = row('At MoMA', 'from the MoMA Influence Map', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> · <a href="${esc(STUDY.page)}">Open the study</a></p>`);
+    el.innerHTML = row('At MoMA', 'from the MoMA Influence Map', `<ul class="d-row-list influence-list">${lis}</ul><p class="no-indent influence-more"><a href="#" class="influence-space-link" data-influence-space="${esc(STUDY.space)}">MoMA</a> – <a href="${esc(STUDY.page)}">Open the study</a></p>`);
     return el;
   }
   // The funder's own record (assets/hq-detail.js) has a "Where the money comes from" of its own, from its profile; the
@@ -1118,12 +1115,28 @@
   // repetition"): the record's words join the ledger's row, unless they say the same, and its own section goes.
   function oneMoneyRow(panel, part) {
     const own = panel.querySelector('#hqMoneyT'), sec = own && own.closest('section');
-    const mine = [...part.querySelectorAll('.d-row-title')].find(t => t.textContent.trim() === own?.textContent.trim());
+    // Compared letter by letter, spaces aside: the typesetter may already have tied the record's last two words with a
+    // no-break space when the ledger's row, just built, still has a plain one, and the two titles then never matched.
+    const mine = own && [...part.querySelectorAll('.d-row-title')].find(t => norm(t.textContent) === norm(own.textContent));
     if (!sec || !mine) return;
     const inner = mine.closest('section'), have = norm(inner.textContent);
     let at = inner.querySelector('.d-row-head');
     sec.querySelectorAll('.hq-prose p').forEach(p => { if (!have.includes(norm(p.textContent))) { at.after(p); at = p; } });
     sec.remove();
+  }
+  // The record's "On record" list (assets/hq-detail.js) holds every dated fact of the sender; the ledger's rows print some of
+  // them first. A fact the ledger already says leaves that list, and a list left empty takes its section with it (user,
+  // 28 Nov 2026: "repetition").
+  function oneFactsRow(panel, part) {
+    const own = panel.querySelector('#hqFactsT'), sec = own && own.closest('section');
+    if (!sec) return;
+    const have = norm(part.textContent);
+    sec.querySelectorAll('.hq-fact').forEach(li => { const t = norm(li.firstElementChild && li.firstElementChild.textContent); if (t && have.includes(t)) li.remove(); });
+    const left = sec.querySelectorAll('.hq-fact');
+    if (!left.length) { sec.remove(); return; }
+    // "Show all N" counted the list before the cut: what is left is shown whole.
+    const more = sec.querySelector('.hq-more');
+    if (more) { left.forEach(li => { li.hidden = false; }); more.remove(); }
   }
   function decorate() {
     if (busy) return;
@@ -1138,7 +1151,7 @@
         // A record titled with its bare key ("bajaj") takes the ledger's name.
         const ttl = panel.querySelector('#hqPanelTitle');
         if (f && ttl && f.name && norm(ttl.textContent) === norm(f.key)) ttl.textContent = f.name;
-        if (f && !f.moneyOnly && head) { const part = funderPart(f); head.after(part); oneMoneyRow(panel, part); }
+        if (f && !f.moneyOnly && head) { const part = funderPart(f); head.after(part); oneMoneyRow(panel, part); oneFactsRow(panel, part); }
         else if (f && f.study && head) { const part = studyFunderPart(f); if (part) head.after(part); }
         else if (f && f.moneyOnly && head) { const part = artPart(f); if (part) head.after(part); }
       }
